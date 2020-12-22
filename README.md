@@ -10,6 +10,8 @@ npm run dev
 yarn dev
 ```
 
+Yes the production env are opened to the public. No, it's not dangerous since we are handling permissions correctly from Firebase.
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
