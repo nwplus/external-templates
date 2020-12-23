@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@components": ["src/components/*"],
+      "@constants": ["src/constants/*"],
+      "@images": ["public/images/*"],
+      "@backgrounds": ["backgrounds/backgrounds/*"]
+    }
+  },
+  "exclude": ["node_modules"]
+}
