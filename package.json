@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "bulma": "^0.9.1",
     "imagemin-optipng": "^8.0.0",
     "imagemin-svgo": "^8.0.0",
     "next": "10.0.3",
