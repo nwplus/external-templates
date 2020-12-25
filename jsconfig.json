@@ -5,6 +5,7 @@
       "@components/*": ["./src/components/*"],
       "@constants/*": ["./src/constants/*"],
       "@utilities/*": ["./src/utilities/*"],
+      "@styles/*": ["./src/styles/*"],
       "@images/*": ["./public/images/*"],
       "@backgrounds/*": ["./public/backgrounds/*"]
     }

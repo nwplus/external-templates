@@ -10,6 +10,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "bulma": "^0.9.1",
     "firebase": "^8.2.1",
     "imagemin-optipng": "^8.0.0",
     "imagemin-svgo": "^8.0.0",
