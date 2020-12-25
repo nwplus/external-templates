@@ -5,6 +5,8 @@
   "scripts": {
     "dev": "NODE_OPTIONS='--inspect' next dev",
     "build": "next build && next export",
+    "build:staging": "cross-env DEPLOY_ENV=STAGING next build && next export",
+    "build:prod": "cross-env DEPLOY_ENV=PRODUCTION next build && next export",
     "start": "next start"
   },
   "dependencies": {
@@ -19,6 +21,7 @@
     "webp-loader": "^0.6.0"
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^7.1.0",
