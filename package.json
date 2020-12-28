@@ -7,7 +7,7 @@
     "build": "next build && next export",
     "build:staging": "cross-env DEPLOY_ENV=STAGING next build && next export",
     "build:prod": "cross-env DEPLOY_ENV=PRODUCTION next build && next export",
-    "start": "next start"
+    "start": "next build && next start"
   },
   "dependencies": {
     "bulma": "^0.9.1",
