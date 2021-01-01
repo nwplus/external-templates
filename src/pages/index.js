@@ -1,8 +1,9 @@
 import Head from 'next/head'
 import React from 'react'
 import GlobalStyles from '@styles/global'
+import fireDb from '@utilities/firebase'
 
-export default function Home() {
+export default function Index({ flags }) {
   return (
     <div>
       <GlobalStyles />
@@ -11,15 +12,30 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1>Website</h1>
-      <p>This is a paragraph</p>
-
-      <footer>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        ></a>
-      </footer>
+      <p>This is a paragraph and here are some flags for example: {flags}</p>
     </div>
   )
+}
+
+export async function getStaticProps(context) {
+  const targetedHackathon = await fireDb.getTargetedHackathon()
+
+  // Uncomment if you want to update config
+  // await fireDb.updateConfig(targetedHackathon)
+
+  if (!targetedHackathon) {
+    return {
+      notFound: true,
+    }
+  }
+
+  const websiteData = await fireDb.getWebsiteData(targetedHackathon)
+
+  const { FeatureFlags } = websiteData
+
+  return {
+    props: {
+      flags: JSON.stringify(FeatureFlags),
+    }, // will be passed to the page component as props
+  }
 }
