@@ -3,6 +3,7 @@ import 'firebase/firestore'
 import 'firebase/storage'
 import 'firebase/analytics'
 import { HACKATHONS, INTERNAL_WEBSITES, CMS } from '@constants/utilities'
+import buildConfig from '../../buildconfig'
 
 if (!firebase.apps.length) {
   const config = {
@@ -41,6 +42,10 @@ const fireDb = {
     const data = await ref.get()
     const { targetSite } = data.data()
     return targetSite
+  },
+  updateConfig: async hackathon => {
+    const ref = db.collection(HACKATHONS).doc(hackathon)
+    await ref.update(buildConfig)
   },
 }
 
