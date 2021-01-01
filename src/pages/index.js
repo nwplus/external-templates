@@ -35,7 +35,7 @@ export async function getStaticProps(context) {
 
   return {
     props: {
-      flags: JSON.stringify(featureFlags),
+      flags: JSON.stringify(FeatureFlags),
     }, // will be passed to the page component as props
   }
 }
