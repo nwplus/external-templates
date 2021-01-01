@@ -31,7 +31,7 @@ export async function getStaticProps(context) {
 
   const websiteData = await fireDb.getWebsiteData(targetedHackathon)
 
-  const { featureFlags } = websiteData
+  const { FeatureFlags } = websiteData
 
   return {
     props: {
