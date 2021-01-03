@@ -47,8 +47,8 @@ const FaqContainer = props => {
   useEffect(() => {
     try {
       const { faq } = props
-      const faqObj = JSON.parse(faq)
-      distributeFaq(faqObj)
+      // const faqObj = JSON.parse(faq)
+      distributeFaq(faq)
     } catch (e) {
       console.error(e)
     }

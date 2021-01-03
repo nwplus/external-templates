@@ -2,6 +2,7 @@ import Head from 'next/head'
 import React from 'react'
 import GlobalStyles from '@styles/global'
 import fireDb from '@utilities/firebase'
+import { serialize } from '@utilities/format'
 import FAQExpandable from '@components/faqTemplates/faq_category_expandable'
 
 export default function Index(props) {
@@ -12,9 +13,10 @@ export default function Index(props) {
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <FAQExpandable faq={props.faq} />
+      {/* Example template faq */}
+      {props.flags.faqFlag && <FAQExpandable faq={props.faq} />}
       <h1>Website</h1>
-      <p>This is a paragraph and here are some flags for example: {props.flags}</p>
+      <p>This is a paragraph and here are some flags for example: {props.example}</p>
     </div>
   )
 }
@@ -33,13 +35,14 @@ export async function getStaticProps(context) {
 
   const websiteData = await fireDb.getWebsiteData(targetedHackathon)
 
-  const { FeatureFlags } = websiteData
+  const { featureFlags } = websiteData
   const faq = await fireDb.getCollection(targetedHackathon, 'FAQ')
-  console.log(faq)
+
   return {
     props: {
-      flags: JSON.stringify(FeatureFlags),
-      faq: JSON.stringify(faq),
+      example: JSON.stringify(featureFlags),
+      flags: serialize(featureFlags),
+      faq: serialize(faq),
     }, // will be passed to the page component as props
   }
 }
