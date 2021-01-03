@@ -3,7 +3,7 @@ import React from 'react'
 import GlobalStyles from '@styles/global'
 import fireDb from '@utilities/firebase'
 
-export default function Index({ flags }) {
+export default function Index(props) {
   return (
     <div>
       <GlobalStyles />
@@ -12,7 +12,7 @@ export default function Index({ flags }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1>Website</h1>
-      <p>This is a paragraph and here are some flags for example: {flags}</p>
+      <p>This is a paragraph and here are some flags for example: {props.faqs}</p>
     </div>
   )
 }
@@ -32,10 +32,12 @@ export async function getStaticProps(context) {
   const websiteData = await fireDb.getWebsiteData(targetedHackathon)
 
   const { FeatureFlags } = websiteData
+  const faqs = await fireDb.getCollection(targetedHackathon, 'FAQ')
 
   return {
     props: {
       flags: JSON.stringify(FeatureFlags),
+      faqs: JSON.stringify(faqs),
     }, // will be passed to the page component as props
   }
 }
