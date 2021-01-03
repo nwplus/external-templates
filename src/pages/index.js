@@ -3,7 +3,7 @@ import React from 'react'
 import GlobalStyles from '@styles/global'
 import fireDb from '@utilities/firebase'
 import { serialize } from '@utilities/format'
-import FAQExpandable from '@components/faqTemplates/faq_category_expandable'
+import FAQExpandable from '@components/faqTemplates/ExpandableWithCategories'
 
 export default function Index(props) {
   return (
@@ -12,10 +12,11 @@ export default function Index(props) {
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
+      <h1>Website</h1>
       {/* Example template faq */}
       {props.flags.faqFlag && <FAQExpandable faq={props.faq} />}
-      <h1>Website</h1>
       <p>This is a paragraph and here are some flags for example: {props.example}</p>
     </div>
   )
