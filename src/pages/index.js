@@ -16,7 +16,7 @@ export default function Index(props) {
       </Head>
       <h1>Website</h1>
       {/* Example template faq */}
-      {props.flags.faqFlag && <FAQExpandable faq={props.faq} />}
+      {props.flags.faqFlag && <FAQExpandable faq={props.faq} config={props.faqConfig} />}
       <p>This is a paragraph and here are some flags for example: {props.example}</p>
     </div>
   )
@@ -26,7 +26,7 @@ export async function getStaticProps(context) {
   const targetedHackathon = await fireDb.getTargetedHackathon()
 
   // Uncomment if you want to update config
-  // await fireDb.updateConfig(targetedHackathon)
+  await fireDb.updateConfig(targetedHackathon)
 
   if (!targetedHackathon) {
     return {
@@ -36,7 +36,7 @@ export async function getStaticProps(context) {
 
   const websiteData = await fireDb.getWebsiteData(targetedHackathon)
 
-  const { featureFlags } = websiteData
+  const { featureFlags, BuildConfig } = websiteData
   const faq = await fireDb.getCollection(targetedHackathon, 'FAQ')
 
   return {
@@ -44,6 +44,7 @@ export async function getStaticProps(context) {
       example: JSON.stringify(featureFlags),
       flags: serialize(featureFlags),
       faq: serialize(faq),
+      faqConfig: serialize(BuildConfig.componentStyling.faq),
     }, // will be passed to the page component as props
   }
 }

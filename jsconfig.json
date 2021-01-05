@@ -6,6 +6,7 @@
       "@constants/*": ["./src/constants/*"],
       "@utilities/*": ["./src/utilities/*"],
       "@styles/*": ["./src/styles/*"],
+      "@styled-library/*": ["./src/styled-library/*"],
       "@images/*": ["./public/images/*"],
       "@backgrounds/*": ["./public/backgrounds/*"]
     }

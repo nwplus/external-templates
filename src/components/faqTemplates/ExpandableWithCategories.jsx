@@ -1,51 +1,48 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
+import { SectionContainer } from '@styled-library/Containers'
 
-const StyledFaqBox = styled.div``
+const FaqAnswerContainer = styled.div`
+  display: ${props => (props.shouldDisplay ? 'block' : 'none')};
+  overflow: hidden;
+  margin: auto;
+  margin-bottom: 2%;
+`
+
+const Accordion = styled.button`
+  width: 100%;
+  cursor: pointer;
+  text-align: left;
+  outline: none;
+  border: 3px solid black;
+  border-radius: 10px;
+  background-color: transparent;
+`
 
 const ExpandableFaq = ({ question, answer }) => {
   const [isExpanded, toggleExpansion] = useState(false)
-  // const [width, setWidth] = useState()
 
   const FaqQuestionContainer = styled.div``
-
-  const FaqAnswerContainer = styled.div`
-    display: ${isExpanded ? 'block' : 'none'};
-    overflow: hidden;
-    border: 3px solid black;
-    border-top: none;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    margin: auto;
-    margin-bottom: 2%;
-  `
-
-  const Accordion = styled.button`
-    cursor: pointer;
-    text-align: left;
-    outline: none;
-    border: 3px solid black;
-    border-radius: 10px;
-    background-color: transparent;
-    border-bottom: ${isExpanded && 'none'};
-    border-bottom-left-radius: ${isExpanded && '0px'};
-    border-bottom-right-radius: ${isExpanded && '0px'};
-    margin-bottom: ${isExpanded && '-1px'};
-    padding-bottom: ${isExpanded && '10px'};
-  `
 
   return (
     <>
       <Accordion onClick={() => toggleExpansion(!isExpanded)}>
-        {/* <img src="expandArrow" alt="expand-arrow" /> */}
         <FaqQuestionContainer>{question}</FaqQuestionContainer>
+        <FaqAnswerContainer shouldDisplay={isExpanded}>{answer}</FaqAnswerContainer>
       </Accordion>
-      <FaqAnswerContainer display={isExpanded}>{answer}</FaqAnswerContainer>
     </>
   )
 }
 
-const FaqContainer = props => {
+const TitleImg = styled.img`
+  margin-bottom: ${props => props.marginBottom};
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+`
+
+const FaqSection = props => {
   const [generalBin, setGeneralBin] = useState([])
   const [logisticsBin, setLogisticsBin] = useState([])
   const [teamsBin, setTeamsBin] = useState([])
@@ -68,21 +65,12 @@ const FaqContainer = props => {
     })
   }
 
-  const generalFaq = generalBin.map(({ question, answer }, idx) => (
-    <StyledFaqBox key={idx}>
-      <ExpandableFaq question={question} answer={answer} />
-    </StyledFaqBox>
-  ))
-  const logisticsFaq = logisticsBin.map(({ question, answer }, idx) => (
-    <StyledFaqBox key={idx}>
-      <ExpandableFaq question={question} answer={answer} />
-    </StyledFaqBox>
-  ))
-  const teamsFaq = teamsBin.map(({ question, answer }, idx) => (
-    <StyledFaqBox key={idx}>
-      <ExpandableFaq question={question} answer={answer} />
-    </StyledFaqBox>
-  ))
+  const renderFaq = list =>
+    list.map(({ question, answer }, idx) => (
+      <div key={idx}>
+        <ExpandableFaq question={question} answer={answer} />
+      </div>
+    ))
 
   useEffect(() => {
     try {
@@ -94,14 +82,23 @@ const FaqContainer = props => {
   }, [props])
 
   return (
-    <div className="columns">
-      <div className="column column-left">{generalFaq}</div>
-      <div className="column column-right">
-        {logisticsFaq}
-        {teamsFaq}
+    <SectionContainer width={props.config.containerWidth} margin={props.config.containerMargin}>
+      <TitleImg
+        src={props.config.titleImg}
+        alt={props.config.titleAlt}
+        marginBottom={props.config.marginBottomTitle}
+      />
+      <div className="columns">
+        <div className="column column-left">General{renderFaq(generalBin)}</div>
+        <div className="column column-right">
+          Logistics
+          {renderFaq(logisticsBin)}
+          Teams &amp; Projects
+          {renderFaq(teamsBin)}
+        </div>
       </div>
-    </div>
+    </SectionContainer>
   )
 }
 
-export default FaqContainer
+export default FaqSection
