@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { SectionContainer } from '@styled-library/Containers'
+import { SectionContainer } from '@lib/Containers'
+import { Spacers } from '@lib/Helpers'
 
 const FaqAnswerContainer = styled.div`
   display: ${props => (props.shouldDisplay ? 'block' : 'none')};
@@ -19,10 +20,10 @@ const Accordion = styled.button`
   background-color: transparent;
 `
 
+const FaqQuestionContainer = styled.div``
+
 const ExpandableFaq = ({ question, answer }) => {
   const [isExpanded, toggleExpansion] = useState(false)
-
-  const FaqQuestionContainer = styled.div``
 
   return (
     <>
@@ -88,6 +89,7 @@ const FaqSection = props => {
         alt={props.config.titleAlt}
         marginBottom={props.config.marginBottomTitle}
       />
+      <Spacers height={props.config.titleBottomSpacing} />
       <div className="columns">
         <div className="column column-left">General{renderFaq(generalBin)}</div>
         <div className="column column-right">
