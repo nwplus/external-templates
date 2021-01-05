@@ -43,6 +43,9 @@ const TitleImg = styled.img`
   width: 50%;
 `
 
+// FAQ Section with two columns with layout:
+// General    Logistics
+//            Teams & Projects
 const FaqSection = props => {
   const [generalBin, setGeneralBin] = useState([])
   const [logisticsBin, setLogisticsBin] = useState([])
