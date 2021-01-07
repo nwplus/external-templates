@@ -4,8 +4,9 @@ import GlobalStyles from '@styles/global'
 import fireDb from '@utilities/firebase'
 import { serialize } from '@utilities/format'
 import FAQExpandable from '@components/faqTemplates/ExpandableWithCategories'
+import About from '@components/about/About'
 
-export default function Index(props) {
+export default function Index({ flags: { faqFlag }, faq, faqConfig, example, intro }) {
   return (
     <div>
       <GlobalStyles />
@@ -16,8 +17,9 @@ export default function Index(props) {
       </Head>
       <h1>Website</h1>
       {/* Example template faq */}
-      {props.flags.faqFlag && <FAQExpandable faq={props.faq} config={props.faqConfig} />}
-      <p>This is a paragraph and here are some flags for example: {props.example}</p>
+      {faqFlag && <FAQExpandable faq={faq} config={faqConfig} />}
+      <p>This is a paragraph and here are some flags for example: {example}</p>
+      <About intro={intro} />
     </div>
   )
 }
@@ -36,7 +38,7 @@ export async function getStaticProps(context) {
 
   const websiteData = await fireDb.getWebsiteData(targetedHackathon)
 
-  const { featureFlags, BuildConfig } = websiteData
+  const { featureFlags, BuildConfig, WebsiteData: { Intro } } = websiteData
   const faq = await fireDb.getCollection(targetedHackathon, 'FAQ')
 
   return {
@@ -45,6 +47,7 @@ export async function getStaticProps(context) {
       flags: serialize(featureFlags),
       faq: serialize(faq),
       faqConfig: serialize(BuildConfig.componentStyling.faq),
+      intro: Intro,
     }, // will be passed to the page component as props
   }
 }
