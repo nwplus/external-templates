@@ -26,12 +26,10 @@ const ExpandableFaq = ({ question, answer }) => {
   const [isExpanded, toggleExpansion] = useState(false)
 
   return (
-    <>
-      <Accordion onClick={() => toggleExpansion(!isExpanded)}>
-        <FaqQuestionContainer>{question}</FaqQuestionContainer>
-        <FaqAnswerContainer shouldDisplay={isExpanded}>{answer}</FaqAnswerContainer>
-      </Accordion>
-    </>
+    <Accordion onClick={() => toggleExpansion(!isExpanded)}>
+      <FaqQuestionContainer>{question}</FaqQuestionContainer>
+      <FaqAnswerContainer shouldDisplay={isExpanded}>{answer}</FaqAnswerContainer>
+    </Accordion>
   )
 }
 
