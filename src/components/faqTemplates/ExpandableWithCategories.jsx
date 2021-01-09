@@ -4,7 +4,7 @@ import { SectionContainer } from '@lib/Containers'
 import { Spacers } from '@lib/Helpers'
 
 const FaqAnswerContainer = styled.div`
-  display: ${props => (props.shouldDisplay ? 'block' : 'none')};
+  display: ${p => (p.shouldDisplay ? 'block' : 'none')};
   overflow: hidden;
   margin: auto;
   margin-bottom: 2%;
@@ -34,7 +34,7 @@ const ExpandableFaq = ({ question, answer }) => {
 }
 
 const TitleImg = styled.img`
-  margin-bottom: ${props => props.marginBottom};
+  margin-bottom: ${p => p.marginBottom};
   display: block;
   margin-left: auto;
   margin-right: auto;
