@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { SectionContainer } from '@lib/Containers'
+import { SectionContainer, Columns, Column } from '@lib/Containers'
 import { Spacers } from '@lib/Helpers'
 
 const FaqAnswerContainer = styled.div`
@@ -91,15 +91,19 @@ const FaqSection = props => {
         marginBottom={props.config.marginBottomTitle}
       />
       <Spacers height={props.config.titleBottomSpacing} />
-      <div className="columns">
-        <div className="column column-left">General{renderFaq(generalBin)}</div>
-        <div className="column column-right">
-          Logistics
-          {renderFaq(logisticsBin)}
-          Teams &amp; Projects
-          {renderFaq(teamsBin)}
-        </div>
-      </div>
+      <Columns>
+        <Column>
+          <div>General{renderFaq(generalBin)}</div>
+        </Column>
+        <Column>
+          <div>
+            Logistics
+            {renderFaq(logisticsBin)}
+            Teams &amp; Projects
+            {renderFaq(teamsBin)}
+          </div>{' '}
+        </Column>
+      </Columns>
     </SectionContainer>
   )
 }
