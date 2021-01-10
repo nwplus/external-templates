@@ -33,6 +33,14 @@ const ExpandableFaq = ({ question, answer }) => {
   )
 }
 
+const FaqList = ({ list }) => {
+  return list.map(({ question, answer }, idx) => (
+    <div key={idx}>
+      <ExpandableFaq question={question} answer={answer} />
+    </div>
+  ))
+}
+
 const TitleImg = styled.img`
   margin-bottom: ${p => p.marginBottom};
   display: block;
@@ -67,13 +75,6 @@ const FaqSection = props => {
     })
   }
 
-  const renderFaq = list =>
-    list.map(({ question, answer }, idx) => (
-      <div key={idx}>
-        <ExpandableFaq question={question} answer={answer} />
-      </div>
-    ))
-
   useEffect(() => {
     try {
       const { faq } = props
@@ -93,15 +94,14 @@ const FaqSection = props => {
       <Spacers height={props.config.titleBottomSpacing} />
       <Columns>
         <Column>
-          <div>General{renderFaq(generalBin)}</div>
+          General
+          <FaqList list={generalBin} />
         </Column>
         <Column>
-          <div>
-            Logistics
-            {renderFaq(logisticsBin)}
-            Teams &amp; Projects
-            {renderFaq(teamsBin)}
-          </div>{' '}
+          Logistics
+          <FaqList list={logisticsBin} />
+          Teams &amp; Projects
+          <FaqList list={teamsBin} />
         </Column>
       </Columns>
     </SectionContainer>
