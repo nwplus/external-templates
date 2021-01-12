@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { MOBILE_WIDTH } from '@constants/measurements'
 
 // Basic section container
 export const SectionContainer = styled.div`
@@ -8,7 +9,7 @@ export const SectionContainer = styled.div`
 export const Columns = styled.div`
   display: flex;
   flex-direction: row;
-  @media (max-width: 800px) {
+  @media (max-width: ${MOBILE_WIDTH}) {
     flex-direction: column;
   }
 `
