@@ -2,7 +2,7 @@ import firebase from 'firebase/app'
 import 'firebase/firestore'
 import 'firebase/storage'
 import 'firebase/analytics'
-import { HACKATHONS, INTERNAL_WEBSITES, CMS } from '@constants/utilities'
+import { HACKATHONS, INTERNAL_WEBSITES, CMS } from '@constants/firebase'
 import buildConfig from '../../buildconfig'
 
 if (!firebase.apps.length) {

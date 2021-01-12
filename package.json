@@ -10,7 +10,6 @@
     "start": "next build && next start"
   },
   "dependencies": {
-    "bulma": "^0.9.1",
     "firebase": "^8.2.1",
     "imagemin-optipng": "^8.0.0",
     "imagemin-svgo": "^8.0.0",
@@ -18,11 +17,11 @@
     "next-optimized-images": "^2.6.2",
     "react": "17.0.1",
     "react-dom": "17.0.1",
-    "sass": "^1.30.0",
     "styled-components": "^5.2.1",
     "webp-loader": "^0.6.0"
   },
   "devDependencies": {
+    "babel-plugin-styled-components": "^1.12.0",
     "cross-env": "^7.0.3",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^18.2.1",
