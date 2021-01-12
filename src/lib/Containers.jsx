@@ -15,6 +15,5 @@ export const Columns = styled.div`
 
 export const Column = styled.div`
   width: 100%;
-  margin-left: 2vw;
-  margin-right: 2vw;
+  margin: 0 2vw;
 `
