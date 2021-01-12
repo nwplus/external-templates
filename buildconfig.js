@@ -1,4 +1,9 @@
 export default {
+  // Template
+  // 'BuildConfig.componentStyling.faq.templateSelection': 1,
+  // 'BuildConfig.componentStyling.sponsor.templateSelection': 1,
+  // 'BuildConfig.componentStyling.footer.templateSelection': 1,
+  // Styling
   // 'BuildConfig.componentStyling.hero.marginBottom': '0px',
   // 'BuildConfig.componentStyling.hero.marginTop': '1px',
   // 'BuildConfig.componentStyling.faq.containerWidth': '80%',
@@ -12,11 +17,10 @@ export default {
   // 'BuildConfig.componentStyling.faq.titleBottomSpacing': '100px',
   // 'BuildConfig.componentStyling.sponsor.marginBottom': '0px',
   // 'BuildConfig.componentStyling.sponsor.marginTop': '1px',
+  // Global Styling
   // 'BuildConfig.globalStyling.background': 'string',
   // 'BuildConfig.globalStyling.font': 'string',
-  // 'BuildConfig.templateSelection.faq': 1,
-  // 'BuildConfig.templateSelection.sponsor': 1,
-  // 'BuildConfig.templateSelection.footer': 1,
+  // Flags
   // 'featureFlags.faqFlag': false,
   // 'featureFlags.mentorFlag': false,
   // 'featureFlags.registerationFlag': false,
