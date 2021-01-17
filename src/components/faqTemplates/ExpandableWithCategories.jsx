@@ -21,19 +21,20 @@ const ExpandableWithCategories = ({ faq, config }) => {
   const [teamsBin, setTeamsBin] = useState([])
 
   const distributeFaq = faq => {
-    faq.forEach(item => {
-      switch (item.category) {
+    faq.forEach(({ category, question, answer }) => {
+      const reducedFaq = { question, answer }
+      switch (category) {
         case 'General':
-          setGeneralBin([...generalBin, item])
+          setGeneralBin([...generalBin, reducedFaq])
           break
         case 'Logistics':
-          setLogisticsBin([...logisticsBin, item])
+          setLogisticsBin([...logisticsBin, reducedFaq])
           break
         case 'Teams & Projects':
-          setTeamsBin([...teamsBin, item])
+          setTeamsBin([...teamsBin, reducedFaq])
           break
         default:
-          throw new Error(`FAQ category ${item.category} not found`)
+          throw new Error(`FAQ category ${category} not found`)
       }
     })
   }
