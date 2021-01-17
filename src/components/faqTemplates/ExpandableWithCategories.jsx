@@ -20,6 +20,7 @@ const ExpandableWithCategories = ({ faq, config }) => {
   const [logisticsBin, setLogisticsBin] = useState([])
   const [teamsBin, setTeamsBin] = useState([])
 
+  // Categorize FAQ
   const distributeFaq = faq => {
     faq.forEach(({ category, question, answer }) => {
       const reducedFaq = { question, answer }

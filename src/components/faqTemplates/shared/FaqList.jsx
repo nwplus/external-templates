@@ -9,4 +9,5 @@ const ExpandableFaqList = ({ list }) => {
   ))
 }
 
+// Export different types of lists here
 export { ExpandableFaqList }
