@@ -2,44 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { SectionContainer, Columns, Column } from '@lib/Containers'
 import { Spacers } from '@lib/Helpers'
-
-const FaqAnswerContainer = styled.div`
-  display: ${p => (p.shouldDisplay ? 'block' : 'none')};
-  overflow: hidden;
-  margin: auto;
-  margin-bottom: 2%;
-`
-
-const Accordion = styled.button`
-  width: 100%;
-  cursor: pointer;
-  text-align: left;
-  outline: none;
-  border: 3px solid black;
-  border-radius: 10px;
-  background-color: transparent;
-`
-
-const FaqQuestionContainer = styled.div``
-
-const ExpandableFaq = ({ question, answer }) => {
-  const [isExpanded, toggleExpansion] = useState(false)
-
-  return (
-    <Accordion onClick={() => toggleExpansion(!isExpanded)}>
-      <FaqQuestionContainer>{question}</FaqQuestionContainer>
-      <FaqAnswerContainer shouldDisplay={isExpanded}>{answer}</FaqAnswerContainer>
-    </Accordion>
-  )
-}
-
-const FaqList = ({ list }) => {
-  return list.map(({ question, answer }, idx) => (
-    <div key={idx}>
-      <ExpandableFaq question={question} answer={answer} />
-    </div>
-  ))
-}
+import { ExpandableFaqList } from './shared/FaqList'
 
 const TitleImg = styled.img`
   margin-bottom: ${p => p.marginBottom};
@@ -52,7 +15,7 @@ const TitleImg = styled.img`
 // FAQ Section with two columns with layout:
 // General    Logistics
 //            Teams & Projects
-const FaqSection = props => {
+const ExpandableWithCategories = ({ faq, config }) => {
   const [generalBin, setGeneralBin] = useState([])
   const [logisticsBin, setLogisticsBin] = useState([])
   const [teamsBin, setTeamsBin] = useState([])
@@ -77,35 +40,34 @@ const FaqSection = props => {
 
   useEffect(() => {
     try {
-      const { faq } = props
       distributeFaq(faq)
     } catch (e) {
       console.error(e)
     }
-  }, [props])
+  }, [faq])
 
   return (
-    <SectionContainer width={props.config.containerWidth} margin={props.config.containerMargin}>
+    <SectionContainer width={config.containerWidth} margin={config.containerMargin}>
       <TitleImg
-        src={props.config.titleImg}
-        alt={props.config.titleAlt}
-        marginBottom={props.config.marginBottomTitle}
+        src={config.titleImg}
+        alt={config.titleAlt}
+        marginBottom={config.marginBottomTitle}
       />
-      <Spacers height={props.config.titleBottomSpacing} />
+      <Spacers height={config.titleBottomSpacing} />
       <Columns>
         <Column>
           General
-          <FaqList list={generalBin} />
+          <ExpandableFaqList list={generalBin} />
         </Column>
         <Column>
           Logistics
-          <FaqList list={logisticsBin} />
+          <ExpandableFaqList list={logisticsBin} />
           Teams &amp; Projects
-          <FaqList list={teamsBin} />
+          <ExpandableFaqList list={teamsBin} />
         </Column>
       </Columns>
     </SectionContainer>
   )
 }
 
-export default FaqSection
+export default ExpandableWithCategories
