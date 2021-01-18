@@ -4,7 +4,7 @@ import GlobalStyles from '@styles/global'
 import fireDb from '@utilities/firebase'
 import { serialize } from '@utilities/format'
 import FAQExpandable from '@components/faqTemplates/ExpandableWithCategories'
-import About from '@components/about/About'
+import About from '@components/about/TwoColumnsAbout'
 
 export default function Index({ flags: { faqFlag }, faq, faqConfig, example, intro }) {
   return (
