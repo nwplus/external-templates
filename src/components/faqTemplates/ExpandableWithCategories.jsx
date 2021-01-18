@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { SectionContainer, Columns, Column } from '@lib/Containers'
 import { Spacers } from '@lib/Helpers'
 import { ExpandableFaqList } from './shared/FaqList'
+import { Categories } from '@constants/components'
 
 const TitleImg = styled.img`
   margin-bottom: ${p => p.marginBottom};
@@ -16,33 +17,27 @@ const TitleImg = styled.img`
 // General    Logistics
 //            Teams & Projects
 const ExpandableWithCategories = ({ faq, config }) => {
-  const [generalBin, setGeneralBin] = useState([])
-  const [logisticsBin, setLogisticsBin] = useState([])
-  const [teamsBin, setTeamsBin] = useState([])
+  const [categorizedFaqMap, setFaqMap] = useState(new Map())
 
-  // Categorize FAQ
-  const distributeFaq = faq => {
+  const categorizeFaq = faq => {
     faq.forEach(({ category, question, answer }) => {
-      const reducedFaq = { question, answer }
-      switch (category) {
-        case 'General':
-          setGeneralBin([...generalBin, reducedFaq])
-          break
-        case 'Logistics':
-          setLogisticsBin([...logisticsBin, reducedFaq])
-          break
-        case 'Teams & Projects':
-          setTeamsBin([...teamsBin, reducedFaq])
-          break
-        default:
-          throw new Error(`FAQ category ${category} not found`)
+      try {
+        const reducedFaq = { question, answer }
+
+        const currFaqList = categorizedFaqMap.get(category)
+        const updatedFaqList = currFaqList ? [reducedFaq, ...currFaqList] : [reducedFaq]
+
+        const updatedMap = categorizedFaqMap.set(category, updatedFaqList)
+        setFaqMap(new Map(updatedMap))
+      } catch (e) {
+        throw new Error(e)
       }
     })
   }
 
   useEffect(() => {
     try {
-      distributeFaq(faq)
+      categorizeFaq(faq)
     } catch (e) {
       console.error(e)
     }
@@ -59,13 +54,13 @@ const ExpandableWithCategories = ({ faq, config }) => {
       <Columns>
         <Column>
           General
-          <ExpandableFaqList list={generalBin} />
+          <ExpandableFaqList list={categorizedFaqMap.get('General') ?? []} />
         </Column>
         <Column>
           Logistics
-          <ExpandableFaqList list={logisticsBin} />
+          <ExpandableFaqList list={categorizedFaqMap.get('Logistics') ?? []} />
           Teams &amp; Projects
-          <ExpandableFaqList list={teamsBin} />
+          <ExpandableFaqList list={categorizedFaqMap.get('Teams & Projects') ?? []} />
         </Column>
       </Columns>
     </SectionContainer>
