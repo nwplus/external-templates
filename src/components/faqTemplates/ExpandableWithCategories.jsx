@@ -20,26 +20,18 @@ const ExpandableWithCategories = ({ faq, config }) => {
 
   const categorizeFaq = faq => {
     faq.forEach(({ category, question, answer }) => {
-      try {
-        const reducedFaq = { question, answer }
+      const reducedFaq = { question, answer }
 
-        const currFaqList = categorizedFaqMap.get(category)
-        const updatedFaqList = currFaqList ? [reducedFaq, ...currFaqList] : [reducedFaq]
+      const currFaqList = categorizedFaqMap.get(category)
+      const updatedFaqList = currFaqList ? [reducedFaq, ...currFaqList] : [reducedFaq]
 
-        const updatedMap = categorizedFaqMap.set(category, updatedFaqList)
-        setFaqMap(new Map(updatedMap))
-      } catch (e) {
-        throw new Error(e)
-      }
+      const updatedMap = categorizedFaqMap.set(category, updatedFaqList)
+      setFaqMap(new Map(updatedMap))
     })
   }
 
   useEffect(() => {
-    try {
-      categorizeFaq(faq)
-    } catch (e) {
-      console.error(e)
-    }
+    categorizeFaq(faq)
   }, [faq])
 
   return (
@@ -53,13 +45,13 @@ const ExpandableWithCategories = ({ faq, config }) => {
       <Columns>
         <Column>
           General
-          <ExpandableFaqList list={categorizedFaqMap.get('General') ?? []} />
+          <ExpandableFaqList list={categorizedFaqMap.get('General')} />
         </Column>
         <Column>
           Logistics
-          <ExpandableFaqList list={categorizedFaqMap.get('Logistics') ?? []} />
+          <ExpandableFaqList list={categorizedFaqMap.get('Logistics')} />
           Teams &amp; Projects
-          <ExpandableFaqList list={categorizedFaqMap.get('Teams & Projects') ?? []} />
+          <ExpandableFaqList list={categorizedFaqMap.get('Teams & Projects')} />
         </Column>
       </Columns>
     </SectionContainer>
