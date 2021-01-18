@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import logo from '../../assets/logo.png'
+import logo from '@assets/logo.png'
+import { Columns, Column } from '@lib/Containers'
 
 const Logo = styled.img`
     display: block;
@@ -8,9 +9,6 @@ const Logo = styled.img`
 `
 const Intro = styled.p`
     text-align: center;
-`
-const Section = styled.div`
-    column-count: 2;
 `
 
 const About = ({ intro }) => {
@@ -20,10 +18,10 @@ const About = ({ intro }) => {
             <Logo src={logo} />
             <div>
                 <Intro>{top}</Intro>
-                <Section>
-                    <p>{left}</p>
-                    <p>{right}</p>
-                </Section>
+                <Columns>
+                    <Column>{left}</Column>
+                    <Column>{right}</Column>
+                </Columns>
             </div>
         </>
     )
