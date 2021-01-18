@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import { SectionContainer, Columns, Column } from '@lib/Containers'
 import { Spacers } from '@lib/Helpers'
 import { ExpandableFaqList } from './shared/FaqList'
-import { Categories } from '@constants/components'
 
 const TitleImg = styled.img`
   margin-bottom: ${p => p.marginBottom};
