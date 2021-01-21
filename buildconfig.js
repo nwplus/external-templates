@@ -27,4 +27,7 @@ export default {
   // 'featureFlags.rsvpOpenFlag': false,
   // 'featureFlags.sponsorFlag': false,
   // 'featureFlags.volunteerFlag': false,
+  // 'StaticData.About.top': 'string',
+  // 'StaticData.About.left': 'string',
+  // 'StaticData.About.right': 'string',
 }
