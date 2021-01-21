@@ -6,7 +6,7 @@ import { serialize } from '@utilities/format'
 import FAQExpandable from '@components/faqTemplates/ExpandableWithCategories'
 import About from '@components/about/TwoColumnsAbout'
 
-export default function Index({ flags: { faqFlag }, faq, faqConfig, example, intro }) {
+export default function Index({ flags: { faqFlag }, faq, faqConfig, example, about }) {
   return (
     <div>
       <GlobalStyles />
@@ -19,7 +19,7 @@ export default function Index({ flags: { faqFlag }, faq, faqConfig, example, int
       {/* Example template faq */}
       {faqFlag && <FAQExpandable faq={faq} config={faqConfig} />}
       <p>This is a paragraph and here are some flags for example: {example}</p>
-      <About intro={intro} />
+      <About about={about} />
     </div>
   )
 }
@@ -38,7 +38,7 @@ export async function getStaticProps(context) {
 
   const websiteData = await fireDb.getWebsiteData(targetedHackathon)
 
-  const { featureFlags, BuildConfig, StaticData: { Intro } } = websiteData
+  const { featureFlags, BuildConfig, StaticData: { About } } = websiteData
   const faq = await fireDb.getCollection(targetedHackathon, 'FAQ')
 
   return {
@@ -47,7 +47,7 @@ export async function getStaticProps(context) {
       flags: serialize(featureFlags),
       faq: serialize(faq),
       faqConfig: serialize(BuildConfig.componentStyling.faq),
-      intro: Intro,
+      about: About,
     }, // will be passed to the page component as props
   }
 }

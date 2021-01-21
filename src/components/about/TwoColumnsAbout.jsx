@@ -1,29 +1,29 @@
 import React from 'react'
 import styled from 'styled-components'
 import logo from '@assets/logo.png'
-import { Columns, Column } from '@lib/Containers'
+import { Columns, Column, SectionContainer } from '@lib/Containers'
 
 const Logo = styled.img`
     display: block;
     margin: auto;
 `
-const Intro = styled.p`
+const Title = styled.p`
     text-align: center;
 `
 
-const About = ({ intro }) => {
-    const { top, left, right } = intro
+const About = ({ about }) => {
+    const { top, left, right } = about
     return (
-        <>
+        <SectionContainer>
             <Logo src={logo} />
             <div>
-                <Intro>{top}</Intro>
+                <Title>{top}</Title>
                 <Columns>
                     <Column>{left}</Column>
                     <Column>{right}</Column>
                 </Columns>
             </div>
-        </>
+        </SectionContainer>
     )
 }
 
