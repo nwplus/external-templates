@@ -12,9 +12,14 @@ const Nav = styled.nav`
     transition: 0.5s ease-in-out;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    margin-right: 80px;
+`
+
+const NavItemContainer = styled.div`
+    display: flex;
     justify-content: flex-end;
     align-items: center;
-    margin-right: 80px;
 `
 
 const NavItem = styled.a`
@@ -46,8 +51,15 @@ const NavItem = styled.a`
 `
 
 const Logo = styled.img`
-  height: 50px;
-  margin: 20px 20px;
+    height: 50px;
+    margin: 20px 40px;
+`
+
+const Banner = styled.a`
+    max-width: 70px;
+    min-width: 50px;
+    width: 10%;
+    margin-left: 50px;
 `
 
 const Navbar = ({ config, flags }) => {
@@ -73,16 +85,22 @@ const Navbar = ({ config, flags }) => {
 
   return (
     <Nav visible={visible} role="navigation" aria-label="main navigation">
-      <NavItem href="#about" fontColor={fontColor}>About</NavItem>
-      {faqFlag && <NavItem href="#faq" fontColor={fontColor}>FAQ</NavItem>}
-      {sponsorFlag && <NavItem href="#sponsors" fontColor={fontColor}>Sponsors</NavItem>}
-      <NavItem href={previousYearLink} fontColor={fontColor}>Last Year</NavItem>
-      <a href="https://www.nwplus.io/" target="_blank" rel="noopener">
-        <Logo
-          src="/nwplus-logo.png"
-          alt="nwPlus logo"
-        />
-      </a>
+      <Banner href="https://mlh.io/seasons/2021/events?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2021-season&utm_content=black" target="_blank">
+        <img src="https://s3.amazonaws.com/logged-assets/trust-badge/2021/mlh-trust-badge-2021-black.svg" alt="Major League Hacking 2021 Hackathon Season" />
+      </Banner>
+
+      <NavItemContainer>
+        <NavItem href="#about" fontColor={fontColor}>About</NavItem>
+        {faqFlag && <NavItem href="#faq" fontColor={fontColor}>FAQ</NavItem>}
+        {sponsorFlag && <NavItem href="#sponsors" fontColor={fontColor}>Sponsors</NavItem>}
+        <NavItem href={previousYearLink} fontColor={fontColor}>Last Year</NavItem>
+        <a href="https://www.nwplus.io/" target="_blank" rel="noopener">
+          <Logo
+            src="/nwplus-logo.png"
+            alt="nwPlus logo"
+          />
+        </a>
+      </NavItemContainer>
     </Nav>
   )
 }
