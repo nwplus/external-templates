@@ -42,18 +42,12 @@ const ExpandableWithCategories = ({ faq, config }) => {
         marginBottom={config.marginBottomTitle}
       />
       <Spacers height={config.titleBottomSpacing} />
-      <Columns>
-        <Column>
-          General
-          <ExpandableFaqList list={categorizedFaqMap.get('General')} />
-        </Column>
-        <Column>
-          Logistics
-          <ExpandableFaqList list={categorizedFaqMap.get('Logistics')} />
-          Teams &amp; Projects
-          <ExpandableFaqList list={categorizedFaqMap.get('Teams & Projects')} />
-        </Column>
-      </Columns>
+      General
+      <ExpandableFaqList list={categorizedFaqMap.get('General')} />
+      Logistics
+      <ExpandableFaqList list={categorizedFaqMap.get('Logistics')} />
+      Teams &amp; Projects
+      <ExpandableFaqList list={categorizedFaqMap.get('Teams & Projects')} />
     </SectionContainer>
   )
 }
