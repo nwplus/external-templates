@@ -3,7 +3,7 @@ import React from 'react'
 import GlobalStyles from '@styles/global'
 import fireDb from '@utilities/firebase'
 import { serialize } from '@utilities/format'
-import FAQExpandable from '@components/faqTemplates/ExpandableWithCategories'
+import FAQExpandable from '@components/faqTemplates/ExpandableScatteredCategories'
 import About from '@components/about/TwoColumnsAbout'
 
 export default function Index({ flags: { faqFlag }, faq, faqConfig, example, about }) {
@@ -38,7 +38,11 @@ export async function getStaticProps(context) {
 
   const websiteData = await fireDb.getWebsiteData(targetedHackathon)
 
-  const { featureFlags, BuildConfig, StaticData: { About } } = websiteData
+  const {
+    featureFlags,
+    BuildConfig,
+    StaticData: { About },
+  } = websiteData
   const faq = await fireDb.getCollection(targetedHackathon, 'FAQ')
 
   return {

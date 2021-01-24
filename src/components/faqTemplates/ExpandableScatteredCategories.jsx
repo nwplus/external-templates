@@ -12,6 +12,18 @@ const TitleImg = styled.img`
   width: 50%;
 `
 
+const ParentContainer = styled.div`
+  position: relative;
+`
+
+const PositionBlock = styled.div`
+  top: ${p => p.top};
+  left: ${p => p.left};
+  right: ${p => p.right};
+  bottom: ${p => p.top};
+  position: absolute;
+`
+
 // FAQ Section with two columns with layout:
 // General    Logistics
 //            Teams & Projects
@@ -42,18 +54,20 @@ const ExpandableWithCategories = ({ faq, config }) => {
         marginBottom={config.marginBottomTitle}
       />
       <Spacers height={config.titleBottomSpacing} />
-      <Columns>
-        <Column>
+      <ParentContainer>
+        <PositionBlock>
           General
           <ExpandableFaqList list={categorizedFaqMap.get('General')} />
-        </Column>
-        <Column>
+        </PositionBlock>
+        <PositionBlock>
           Logistics
           <ExpandableFaqList list={categorizedFaqMap.get('Logistics')} />
+        </PositionBlock>
+        <PositionBlock>
           Teams &amp; Projects
           <ExpandableFaqList list={categorizedFaqMap.get('Teams & Projects')} />
-        </Column>
-      </Columns>
+        </PositionBlock>
+      </ParentContainer>
     </SectionContainer>
   )
 }
