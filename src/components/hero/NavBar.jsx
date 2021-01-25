@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
+import hamburger from '@assets/navbar__hamburger.svg'
+import close from '@assets/navbar__close.svg'
 import styled from 'styled-components'
-import logo from '@assets/logo.png'
-import { Columns, Column, SectionContainer } from '@lib/Containers'
 import { debounce } from '@lib/Helpers'
 
 const Nav = styled.nav`
@@ -23,6 +23,7 @@ const NavItemContainer = styled.div`
 `
 
 const NavItem = styled.a`
+    font-family: Source Sans Pro;
     font-size: 18px;
     padding: 0px 32px;
     text-decoration: none;
@@ -62,7 +63,45 @@ const Banner = styled.a`
     margin-left: 50px;
 `
 
+const Hamburger = styled.a`
+    cursor: pointer;
+    margin: 40px;
+`
+
+const NwLogo = () => (
+  <a href="https://www.nwplus.io/" target="_blank" rel="noopener">
+    <Logo
+      src="/nwplus-logo.png"
+      alt="nwPlus logo"
+    />
+  </a>
+)
+
+const Sidebar = styled.div`
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+    background: #1e313f;
+    overflow: hidden;
+`
+
+const SidebarItems = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+
+    & > a {
+      font-size: 22px;
+      margin: 25px 0;
+    }
+`
+
 const Navbar = ({ config, flags }) => {
+  // handles the navbar being visible when scrolling
   const { fontColor, previousYearLink } = config
   const { faqFlag, sponsorFlag } = flags
 
@@ -83,26 +122,63 @@ const Navbar = ({ config, flags }) => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [prevScrollPos, visible, handleScroll])
 
-  return (
-    <Nav visible={visible} role="navigation" aria-label="main navigation">
-      <Banner href="https://mlh.io/seasons/2021/events?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2021-season&utm_content=black" target="_blank">
-        <img src="https://s3.amazonaws.com/logged-assets/trust-badge/2021/mlh-trust-badge-2021-black.svg" alt="Major League Hacking 2021 Hackathon Season" />
-      </Banner>
+  // handles screen resizing and toggling of the sidebar
+  const [width, setWidth] = useState(0);
+  const handleWindowSizeChange = debounce(() => setWidth(window.innerWidth))
 
-      <NavItemContainer>
-        <NavItem href="#about" fontColor={fontColor}>About</NavItem>
-        {faqFlag && <NavItem href="#faq" fontColor={fontColor}>FAQ</NavItem>}
-        {sponsorFlag && <NavItem href="#sponsors" fontColor={fontColor}>Sponsors</NavItem>}
-        <NavItem href={previousYearLink} fontColor={fontColor}>Last Year</NavItem>
-        <a href="https://www.nwplus.io/" target="_blank" rel="noopener">
-          <Logo
-            src="/nwplus-logo.png"
-            alt="nwPlus logo"
-          />
-        </a>
-      </NavItemContainer>
-    </Nav>
-  )
+  useEffect(() => {
+    window.addEventListener('resize', handleWindowSizeChange)
+    handleWindowSizeChange()
+
+    return () => window.removeEventListener('resize', handleWindowSizeChange)
+  }, [width, handleWindowSizeChange])
+
+  const [open, setOpen] = useState(false)
+
+  const toggle = () => {
+    setOpen(!open)
+  }
+
+  if (!open) {
+    return (
+      <Nav visible={visible} role="navigation" aria-label="main navigation">
+        <Banner href="https://mlh.io/seasons/2021/events?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2021-season&utm_content=black" target="_blank">
+          <img src="https://s3.amazonaws.com/logged-assets/trust-badge/2021/mlh-trust-badge-2021-black.svg" alt="Major League Hacking 2021 Hackathon Season" />
+        </Banner>
+
+        {(width <= 786) ? (
+          <Hamburger onClick={toggle}>
+            <img src={hamburger} alt="hamburger menu" />
+          </Hamburger>
+        ) : (
+            <NavItemContainer>
+              <NavItem href="#about" fontColor={fontColor}>About</NavItem>
+              {faqFlag && <NavItem href="#faq" fontColor={fontColor}>FAQ</NavItem>}
+              {sponsorFlag && <NavItem href="#sponsors" fontColor={fontColor}>Sponsors</NavItem>}
+              <NavItem href={previousYearLink} fontColor={fontColor}>Last Year</NavItem>
+              <NwLogo />
+            </NavItemContainer>
+
+          )}
+      </Nav>
+    )
+  } else {
+    return (
+      <Sidebar>
+        <NwLogo />
+        <SidebarItems>
+          <NavItem href="#about" fontColor="white">About</NavItem>
+          {faqFlag && <NavItem href="#faq" fontColor="white">FAQ</NavItem>}
+          {sponsorFlag && <NavItem href="#sponsors" fontColor="white">Sponsors</NavItem>}
+          <NavItem href={previousYearLink} fontColor="white">Last Year</NavItem>
+        </SidebarItems>
+        <Hamburger onClick={toggle}>
+          <img src={close} alt="close hamburger menu" />
+        </Hamburger>
+      </Sidebar>
+    )
+  }
+
 }
 
 export default Navbar
