@@ -12,16 +12,8 @@ const TitleImg = styled.img`
   width: 50%;
 `
 
-const ParentContainer = styled.div`
-  position: relative;
-`
-
-const PositionBlock = styled.div`
-  top: ${p => p.top};
-  left: ${p => p.left};
-  right: ${p => p.right};
-  bottom: ${p => p.top};
-  position: absolute;
+const AdjustmentContainer = styled.div`
+  margin: ${p => p.shift};
 `
 
 // FAQ Section with two columns with layout:
@@ -54,20 +46,24 @@ const ExpandableWithCategories = ({ faq, config }) => {
         marginBottom={config.marginBottomTitle}
       />
       <Spacers height={config.titleBottomSpacing} />
-      <ParentContainer>
-        <PositionBlock>
-          General
-          <ExpandableFaqList list={categorizedFaqMap.get('General')} />
-        </PositionBlock>
-        <PositionBlock>
-          Logistics
-          <ExpandableFaqList list={categorizedFaqMap.get('Logistics')} />
-        </PositionBlock>
-        <PositionBlock>
-          Teams &amp; Projects
-          <ExpandableFaqList list={categorizedFaqMap.get('Teams & Projects')} />
-        </PositionBlock>
-      </ParentContainer>
+      <Columns>
+        <Column>
+          <AdjustmentContainer shift="2vh 0 0 -1vh">
+            General
+            <ExpandableFaqList list={categorizedFaqMap.get('General')} />
+          </AdjustmentContainer>
+        </Column>
+        <Column>
+          <AdjustmentContainer shift="0 0 0 2vh">
+            Logistics
+            <ExpandableFaqList list={categorizedFaqMap.get('Logistics')} />
+          </AdjustmentContainer>
+          <AdjustmentContainer shift="2vh 0 0 0vh">
+            Teams &amp; Projects
+            <ExpandableFaqList list={categorizedFaqMap.get('Teams & Projects')} />
+          </AdjustmentContainer>
+        </Column>
+      </Columns>
     </SectionContainer>
   )
 }

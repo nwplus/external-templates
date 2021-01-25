@@ -4,6 +4,7 @@ import { MOBILE_WIDTH } from '@constants/measurements'
 // Basic section container
 export const SectionContainer = styled.div`
   width: ${p => p.width};
+  height: ${p => p.height};
   margin: ${p => p.margin};
 `
 export const Columns = styled.div`
