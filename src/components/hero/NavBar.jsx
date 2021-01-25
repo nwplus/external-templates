@@ -66,10 +66,11 @@ const Banner = styled.a`
 const Hamburger = styled.a`
     cursor: pointer;
     margin: 40px;
+    height: 20px;
 `
 
-const NwLogo = () => (
-  <a href="https://www.nwplus.io/" target="_blank" rel="noopener">
+const NwLogo = (props) => (
+  <a href="https://www.nwplus.io/" target="_blank" rel="noopener" {...props}>
     <Logo
       src="/nwplus-logo.png"
       alt="nwPlus logo"
@@ -165,7 +166,7 @@ const Navbar = ({ config, flags }) => {
   } else {
     return (
       <Sidebar>
-        <NwLogo />
+        <NwLogo style={{ height: '40px' }} />
         <SidebarItems>
           <NavItem href="#about" fontColor="white">About</NavItem>
           {faqFlag && <NavItem href="#faq" fontColor="white">FAQ</NavItem>}

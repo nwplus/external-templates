@@ -32,4 +32,6 @@ export default {
   // 'StaticData.About.top': 'string',
   // 'StaticData.About.left': 'string',
   // 'StaticData.About.right': 'string',
+  // 'StaticData.Hero.buttonText': 'string',
+  // 'StaticData.Hero.applyActive': 'string',
 }
