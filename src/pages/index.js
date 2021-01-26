@@ -41,6 +41,7 @@ export default function Index({
       {faqFlag && <FAQExpandable faq={faq} config={faqConfig} />}
       <About about={about} />
       <Video video={video} />
+      <Value />
       <Footer />
     </div>
   )
