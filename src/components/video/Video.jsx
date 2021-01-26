@@ -50,12 +50,16 @@ const Video = () => {
     return (
         <SectionContainer src={background}>
             <VideoContainer>
-                <Iframe src="https://www.youtube.com/embed/HwSv6NsqDWM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen />
+                <Iframe
+                src="https://www.youtube.com/embed/HwSv6NsqDWM"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen />
                 <div className="info">
                     <div>
                         <img src={logo} />
                         <div>
-                            <p>cmd-f 2020 | British Columbia's largest all-women* hackathon</p>
+                            <p>cmd-f 2020 | British Columbia's largest all-women* hackathon 🌱</p>
                             <p>nwPlus • Mar 21, 2020</p>
                         </div>
                     </div>
