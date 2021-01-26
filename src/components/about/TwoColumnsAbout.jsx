@@ -2,11 +2,11 @@ import React from 'react'
 import styled from 'styled-components'
 import logo from '@assets/logo__cmdf.png'
 import background from '@assets/about__bg.svg'
-import { MOBILE_S, MOBILE_M, MOBILE, MOBILE_H, TABLET, LAPTOP, LAPTOP_L } from '@constants/measurements'
+import { LAPTOP, fontsize } from '@constants/measurements'
 import { Columns, Column, SectionContainerWithBackground as Base } from '@lib/Containers'
 
 const SectionContainer = styled(Base)`
-    font-size: 2rem;
+    font-size: ${() => fontsize(320, 1440, 6, 32)};
     height: 125.5vw;
     .intro {
         width: 61vw;
@@ -26,30 +26,11 @@ const SectionContainer = styled(Base)`
         margin-bottom: 4vw;
         width: 12vw;
     }
-    @media (max-width: ${LAPTOP_L}) {
-        font-size: 1.5rem;
-    }
     @media (max-width: ${LAPTOP}) {
-        font-size: 1rem;
         div {
             width: inherit;
             margin: 2vw;
         }
-    }
-    @media (max-width: ${TABLET}) {
-        font-size: .75rem;
-    }
-    @media (max-width: ${MOBILE_H}) {
-        font-size: .65rem;
-    }
-    @media (max-width: ${MOBILE}) {
-        font-size: .5rem;
-    }
-    @media (max-width: ${MOBILE_M}) {
-        font-size: 8px;
-    }
-    @media (max-width: ${MOBILE_S}) {
-        font-size: 6px;
     }
 `
 
