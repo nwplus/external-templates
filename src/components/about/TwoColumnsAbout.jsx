@@ -29,6 +29,7 @@ const SectionContainer = styled(Base)`
         font-family: 'Fira Code', monospace;
         font-size: ${() => fontsize(320, 1440, 10, 48)};
         font-weight: 700;
+        margin-top: 14vw;
     }
     img {
         display: block;
@@ -44,8 +45,8 @@ const SectionContainer = styled(Base)`
     }
 `
 
-const CountDown = () => {
-    const countDownDate = new Date("Mar 8, 2021").getTime()
+const CountDown = ({ date }) => {
+    const countDownDate = new Date(date).getTime()
     const now = new Date().getTime()
     const distance = countDownDate - now
 
@@ -58,7 +59,7 @@ const CountDown = () => {
 }
 
 const About = ({ about }) => {
-    const { top, bottom } = about
+    const { top, bottom, date } = about
     return (
         <SectionContainer src={background}>
             <div className="intro">
@@ -68,7 +69,7 @@ const About = ({ about }) => {
             <div className="copy">
                 {bottom}
             </div>
-            <CountDown />
+            <CountDown date={date}/>
         </SectionContainer>
     )
 }

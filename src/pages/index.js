@@ -15,6 +15,7 @@ export default function Index({
   faq,
   about,
   hero,
+  video,
   configs: { navbarConfig, faqConfig },
 }) {
   return (
@@ -29,7 +30,7 @@ export default function Index({
       <Hero hero={hero} />
       {faqFlag && <FAQExpandable faq={faq} config={faqConfig} />}
       <About about={about} />
-      <Video />
+      <Video video={video}/>
     </div>
   )
 }
@@ -51,7 +52,7 @@ export async function getStaticProps(context) {
   const {
     featureFlags,
     BuildConfig,
-    StaticData: { About, Hero },
+    StaticData: { About, Hero, Video },
   } = websiteData
   const faq = await fireDb.getCollection(targetedHackathon, 'FAQ')
 
@@ -61,6 +62,7 @@ export async function getStaticProps(context) {
       faq: serialize(faq),
       about: About,
       hero: Hero,
+      video: Video,
       configs: {
         navbarConfig: serialize(BuildConfig.componentStyling.navbar),
         faqConfig: serialize(BuildConfig.componentStyling.faq),

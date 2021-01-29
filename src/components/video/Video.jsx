@@ -39,12 +39,12 @@ const Iframe = styled.iframe`
     margin: auto;
 `
 
-const Video = () => {
+const Video = ({ video: { url, title, subtitle } }) => {
     return (
         <SectionContainer src={background}>
             <VideoContainer>
                 <Iframe
-                src="https://www.youtube.com/embed/HwSv6NsqDWM"
+                src={url}
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen />
@@ -52,8 +52,8 @@ const Video = () => {
                     <div>
                         <img src={logo} />
                         <div>
-                            <p className="title">cmd-f 2020 | British Columbia's largest all-women* hackathon 🌱</p>
-                            <p className="subtitle">nwPlus • Mar 21, 2020</p>
+                            <p className="title">{title}</p>
+                            <p className="subtitle">{subtitle}</p>
                         </div>
                     </div>
                 </div>
