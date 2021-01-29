@@ -39,7 +39,7 @@ const Iframe = styled.iframe`
     margin: auto;
 `
 
-const Video = ({ video: { url, title, subtitle } }) => {
+const Video = ({ url, title, subtitle }) => {
     return (
         <SectionContainer src={background}>
             <VideoContainer>

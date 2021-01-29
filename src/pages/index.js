@@ -9,16 +9,16 @@ import Video from '@components/video/Video'
 import Footer from '@components/footer/Footer'
 import NavBar from '@components/hero/NavBar'
 import Hero from '@components/hero/Hero'
+import Values from '@components/value/ThreeColumnsValue'
 
-export default function Index({
-  flags,
-  flags: { faqFlag },
-  faq,
-  about,
-  hero,
-  video,
-  configs: { navbarConfig, faqConfig },
-}) {
+export default function Index({ flags, ...props }) {
+  // configurations
+  const { faqConfig, navbarConfig } = props
+  // component properties
+  const { about, hero, values, video, faq } = props
+  // flags
+  const { faqFlag } = flags
+
   return (
     <div>
       <GlobalStyles />
@@ -39,9 +39,9 @@ export default function Index({
       <NavBar config={navbarConfig} flags={flags} />
       <Hero hero={hero} />
       {faqFlag && <FAQExpandable faq={faq} config={faqConfig} />}
-      <About about={about} />
-      <Video video={video} />
-      <Value />
+      <About {...about}/>
+      <Video {...video}/>
+      <Values {...values}/>
       <Footer />
     </div>
   )
@@ -64,7 +64,7 @@ export async function getStaticProps(context) {
   const {
     featureFlags,
     BuildConfig,
-    StaticData: { About, Hero, Video },
+    StaticData: { About, Hero, Values, Video },
   } = websiteData
   const faq = await fireDb.getCollection(targetedHackathon, 'FAQ')
 
@@ -74,6 +74,7 @@ export async function getStaticProps(context) {
       faq: serialize(faq),
       about: About,
       hero: Hero,
+      values: Values,
       video: Video,
       configs: {
         navbarConfig: serialize(BuildConfig.componentStyling.navbar),

@@ -58,8 +58,7 @@ const CountDown = ({ date }) => {
     )
 }
 
-const About = ({ about }) => {
-    const { top, bottom, date } = about
+const About = ({ top, bottom, date }) => {
     return (
         <SectionContainer src={background}>
             <div className="intro">
