@@ -7,8 +7,19 @@ import FAQExpandable from '@components/faqTemplates/ExpandableWithCategories'
 import About from '@components/about/TwoColumnsAbout'
 import NavBar from '@components/hero/NavBar'
 import Hero from '@components/hero/Hero'
+import SponsorSection from '@components/sponsors/sponsorSection'
+import buildconfig from 'buildconfig'
 
-export default function Index({ flags, faq, faqConfig, example, about, navbarConfig, hero }) {
+export default function Index({
+  flags,
+  faq,
+  faqConfig,
+  example,
+  about,
+  navbarConfig,
+  hero,
+  sponsorData,
+}) {
   const { faqFlag } = flags
 
   return (
@@ -22,6 +33,7 @@ export default function Index({ flags, faq, faqConfig, example, about, navbarCon
       <NavBar config={navbarConfig} flags={flags}></NavBar>
       <h1>Website</h1>
       <Hero hero={hero} />
+      <SponsorSection sponsorData={sponsorData}></SponsorSection>
       {/* Example template faq */}
       {faqFlag && <FAQExpandable faq={faq} config={faqConfig} />}
       <p>This is a paragraph and here are some flags for example: {example}</p>
@@ -44,7 +56,14 @@ export async function getStaticProps(context) {
 
   const websiteData = await fireDb.getWebsiteData(targetedHackathon)
 
-  const { featureFlags, BuildConfig, StaticData: { About, Hero } } = websiteData
+  const sponsorData = await fireDb.getCollection(targetedHackathon, 'Sponsors')
+  console.log(sponsorData)
+
+  const {
+    featureFlags,
+    BuildConfig,
+    StaticData: { About, Hero },
+  } = websiteData
   const faq = await fireDb.getCollection(targetedHackathon, 'FAQ')
 
   return {
@@ -55,7 +74,8 @@ export async function getStaticProps(context) {
       faqConfig: serialize(BuildConfig.componentStyling.faq),
       about: About,
       hero: Hero,
-      navbarConfig: serialize(BuildConfig.componentStyling.navbar)
+      navbarConfig: serialize(BuildConfig.componentStyling.navbar),
+      sponsorData: serialize(sponsorData),
     }, // will be passed to the page component as props
   }
 }
