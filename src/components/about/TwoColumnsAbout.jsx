@@ -3,11 +3,14 @@ import styled from 'styled-components'
 import logo from '@assets/logo__cmdf.png'
 import background from '@assets/about__bg.svg'
 import { LAPTOP, fontsize } from '@constants/measurements'
-import { Columns, Column, SectionContainerWithBackground as Base } from '@lib/Containers'
+import { SectionContainerWithBackground as Base } from '@lib/Containers'
 
 const SectionContainer = styled(Base)`
-    font-size: ${() => fontsize(320, 1440, 6, 32)};
-    height: 125.5vw;
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@700&display=swap');
+
+    font-size: ${() => fontsize(320, 1440, 6, 28)};
+    text-align: center;
+    height: 93vw;
     .intro {
         width: 61vw;
         margin: auto;
@@ -15,10 +18,17 @@ const SectionContainer = styled(Base)`
         align-items: center;
         flex-direction: column;
         justify-content: space-around;
-        padding: 22vw 5vw 10vw;
+        padding: 5vw;
     }
-    .title {
-        text-align: center;
+    .copy {
+        margin: auto;
+        width: 66vw;
+    }
+    .countdown {
+        color: #fff;
+        font-family: 'Fira Code', monospace;
+        font-size: ${() => fontsize(320, 1440, 10, 48)};
+        font-weight: 700;
     }
     img {
         display: block;
@@ -34,18 +44,31 @@ const SectionContainer = styled(Base)`
     }
 `
 
+const CountDown = () => {
+    const countDownDate = new Date("Mar 8, 2021").getTime()
+    const now = new Date().getTime()
+    const distance = countDownDate - now
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24))
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+
+    return (
+        <div className="countdown">{days}d {hours}h</div>
+    )
+}
+
 const About = ({ about }) => {
-    const { top, left, right } = about
+    const { top, bottom } = about
     return (
         <SectionContainer src={background}>
             <div className="intro">
                 <img src={logo} />
                 <p className="title">{top}</p>
             </div>
-            <Columns>
-                <Column>{left}</Column>
-                <Column>{right}</Column>
-            </Columns>
+            <div className="copy">
+                {bottom}
+            </div>
+            <CountDown />
         </SectionContainer>
     )
 }
