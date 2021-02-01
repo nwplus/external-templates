@@ -8,23 +8,25 @@ import About from '@components/about/TwoColumnsAbout'
 import NavBar from '@components/hero/NavBar'
 import Hero from '@components/hero/Hero'
 
-export default function Index({ flags, faq, faqConfig, example, about, navbarConfig, hero }) {
-  const { faqFlag } = flags
-
+export default function Index({
+  flags,
+  flags: { faqFlag },
+  faq,
+  about,
+  hero,
+  configs: { navbarConfig, faqConfig },
+}) {
   return (
     <div>
       <GlobalStyles />
       <Head>
-        <title>Create Next App</title>
+        <title>cmd-f 2021</title>
         <link rel="icon" href="/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <NavBar config={navbarConfig} flags={flags}></NavBar>
-      <h1>Website</h1>
+      <NavBar config={navbarConfig} flags={flags} />
       <Hero hero={hero} />
-      {/* Example template faq */}
       {faqFlag && <FAQExpandable faq={faq} config={faqConfig} />}
-      <p>This is a paragraph and here are some flags for example: {example}</p>
       <About about={about} />
     </div>
   )
@@ -43,8 +45,6 @@ export async function getStaticProps(context) {
   }
 
   const websiteData = await fireDb.getWebsiteData(targetedHackathon)
-  const sponsorData = await fireDb.getCollection(targetedHackathon, 'Sponsors')
-  console.log(sponsorData)
 
   const {
     featureFlags,
@@ -55,14 +55,14 @@ export async function getStaticProps(context) {
 
   return {
     props: {
-      example: JSON.stringify(featureFlags),
       flags: serialize(featureFlags),
       faq: serialize(faq),
-      faqConfig: serialize(BuildConfig.componentStyling.faq),
       about: About,
       hero: Hero,
-      navbarConfig: serialize(BuildConfig.componentStyling.navbar),
-      sponsorData: serialize(sponsorData),
+      configs: {
+        navbarConfig: serialize(BuildConfig.componentStyling.navbar),
+        faqConfig: serialize(BuildConfig.componentStyling.faq),
+      },
     }, // will be passed to the page component as props
   }
 }
