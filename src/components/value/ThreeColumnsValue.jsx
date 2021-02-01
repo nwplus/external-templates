@@ -8,7 +8,7 @@ import { Columns as ColumnsBase, Column as ColumnBase, SectionContainerWithBackg
 const SectionContainer = styled(Base)`
     @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@700&family=Fira+Mono:wght@700&display=swap');
     
-    height: 152vw;
+    height: 153vw;
     color: #2F4246;
     .title {
         padding-bottom: ${() => fontsize(787, 1440, 16, 32)};

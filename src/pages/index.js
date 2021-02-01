@@ -11,14 +11,16 @@ import NavBar from '@components/hero/NavBar'
 import Hero from '@components/hero/Hero'
 import Values from '@components/value/ThreeColumnsValue'
 
-export default function Index({ flags, ...props }) {
-  // configurations
-  const { faqConfig, navbarConfig } = props
-  // component properties
-  const { about, hero, values, video, faq } = props
-  // flags
-  const { faqFlag } = flags
-
+export default function Index({
+  flags,
+  flags: { faqFlag },
+  faq,
+  about,
+  hero,
+  video,
+  values,
+  configs: { navbarConfig, faqConfig },
+}) {
   return (
     <div>
       <GlobalStyles />
