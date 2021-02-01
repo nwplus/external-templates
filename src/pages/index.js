@@ -7,19 +7,8 @@ import FAQExpandable from '@components/faqTemplates/ExpandableWithCategories'
 import About from '@components/about/TwoColumnsAbout'
 import NavBar from '@components/hero/NavBar'
 import Hero from '@components/hero/Hero'
-import SponsorSection from '@components/sponsors/sponsorSection'
-import buildconfig from 'buildconfig'
 
-export default function Index({
-  flags,
-  faq,
-  faqConfig,
-  example,
-  about,
-  navbarConfig,
-  hero,
-  sponsorData,
-}) {
+export default function Index({ flags, faq, faqConfig, example, about, navbarConfig, hero }) {
   const { faqFlag } = flags
 
   return (
@@ -33,7 +22,6 @@ export default function Index({
       <NavBar config={navbarConfig} flags={flags}></NavBar>
       <h1>Website</h1>
       <Hero hero={hero} />
-      <SponsorSection sponsorData={sponsorData}></SponsorSection>
       {/* Example template faq */}
       {faqFlag && <FAQExpandable faq={faq} config={faqConfig} />}
       <p>This is a paragraph and here are some flags for example: {example}</p>
@@ -55,7 +43,6 @@ export async function getStaticProps(context) {
   }
 
   const websiteData = await fireDb.getWebsiteData(targetedHackathon)
-
   const sponsorData = await fireDb.getCollection(targetedHackathon, 'Sponsors')
   console.log(sponsorData)
 
