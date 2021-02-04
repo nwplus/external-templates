@@ -5,6 +5,7 @@ import fireDb from '@utilities/firebase'
 import { serialize } from '@utilities/format'
 import FAQExpandable from '@components/faqTemplates/ExpandableWithCategories'
 import About from '@components/about/TwoColumnsAbout'
+import Video from '@components/video/Video'
 import NavBar from '@components/hero/NavBar'
 import Hero from '@components/hero/Hero'
 
@@ -14,6 +15,7 @@ export default function Index({
   faq,
   about,
   hero,
+  video,
   configs: { navbarConfig, faqConfig },
 }) {
   return (
@@ -28,6 +30,7 @@ export default function Index({
       <Hero hero={hero} />
       {faqFlag && <FAQExpandable faq={faq} config={faqConfig} />}
       <About about={about} />
+      <Video video={video}/>
     </div>
   )
 }
@@ -49,7 +52,7 @@ export async function getStaticProps(context) {
   const {
     featureFlags,
     BuildConfig,
-    StaticData: { About, Hero },
+    StaticData: { About, Hero, Video },
   } = websiteData
   const faq = await fireDb.getCollection(targetedHackathon, 'FAQ')
 
@@ -59,6 +62,7 @@ export async function getStaticProps(context) {
       faq: serialize(faq),
       about: About,
       hero: Hero,
+      video: Video,
       configs: {
         navbarConfig: serialize(BuildConfig.componentStyling.navbar),
         faqConfig: serialize(BuildConfig.componentStyling.faq),
