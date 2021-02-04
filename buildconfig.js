@@ -4,6 +4,8 @@ export default {
   // 'BuildConfig.componentStyling.sponsor.templateSelection': 1,
   // 'BuildConfig.componentStyling.footer.templateSelection': 1,
   // Styling
+  // 'BuildConfig.componentStyling.navbar.fontColor': 'black',
+  // 'BuildConfig.componentStyling.navbar.previousYearLink': 'https://cmd-f.nwplus.io/',
   // 'BuildConfig.componentStyling.hero.marginBottom': '0px',
   // 'BuildConfig.componentStyling.hero.marginTop': '1px',
   // 'BuildConfig.componentStyling.faq.containerWidth': '80%',
@@ -30,4 +32,6 @@ export default {
   // 'StaticData.About.top': 'string',
   // 'StaticData.About.left': 'string',
   // 'StaticData.About.right': 'string',
+  // 'StaticData.Hero.buttonText': 'string',
+  // 'StaticData.Hero.applyActive': 'string',
 }

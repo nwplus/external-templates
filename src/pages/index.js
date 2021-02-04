@@ -5,21 +5,32 @@ import fireDb from '@utilities/firebase'
 import { serialize } from '@utilities/format'
 import FAQExpandable from '@components/faqTemplates/ExpandableScatteredCategories'
 import About from '@components/about/TwoColumnsAbout'
+import Video from '@components/video/Video'
+import NavBar from '@components/hero/NavBar'
+import Hero from '@components/hero/Hero'
 
-export default function Index({ flags: { faqFlag }, faq, faqConfig, example, about }) {
+export default function Index({
+  flags,
+  flags: { faqFlag },
+  faq,
+  about,
+  hero,
+  video,
+  configs: { navbarConfig, faqConfig },
+}) {
   return (
     <div>
       <GlobalStyles />
       <Head>
-        <title>Create Next App</title>
+        <title>cmd-f 2021</title>
         <link rel="icon" href="/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <h1>Website</h1>
-      {/* Example template faq */}
+      <NavBar config={navbarConfig} flags={flags} />
+      <Hero hero={hero} />
       {faqFlag && <FAQExpandable faq={faq} config={faqConfig} />}
-      <p>This is a paragraph and here are some flags for example: {example}</p>
       <About about={about} />
+      <Video video={video}/>
     </div>
   )
 }
@@ -41,17 +52,25 @@ export async function getStaticProps(context) {
   const {
     featureFlags,
     BuildConfig,
+<<<<<<< HEAD
     StaticData: { About },
+=======
+    StaticData: { About, Hero, Video },
+>>>>>>> cmd-f_dev
   } = websiteData
   const faq = await fireDb.getCollection(targetedHackathon, 'FAQ')
 
   return {
     props: {
-      example: JSON.stringify(featureFlags),
       flags: serialize(featureFlags),
       faq: serialize(faq),
-      faqConfig: serialize(BuildConfig.componentStyling.faq),
       about: About,
+      hero: Hero,
+      video: Video,
+      configs: {
+        navbarConfig: serialize(BuildConfig.componentStyling.navbar),
+        faqConfig: serialize(BuildConfig.componentStyling.faq),
+      },
     }, // will be passed to the page component as props
   }
 }
