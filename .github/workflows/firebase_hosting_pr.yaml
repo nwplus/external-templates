@@ -20,6 +20,8 @@ jobs:
       - run: |
           sudo npm install -g firebase-tools --unsafe
           firebase use ${{ secrets.DEV_FIREBASE_PROJECT_ID }} --token ${{ secrets.FIREBASE_TOKEN }}
+          firebase target:clear hosting root
+          firebase target:clear hosting cmd-f_dev
           firebase target:apply hosting root nwplus-roott
           firebase target:apply hosting cmd-f_dev nwplus-cmd-ff
       - uses: FirebaseExtended/action-hosting-deploy@v0
