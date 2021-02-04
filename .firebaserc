@@ -1,5 +1,17 @@
 {
   "projects": {
     "default": "nwplus-ubc-dev"
+  },
+  "targets": {
+    "production": {
+      "hosting": {
+        "root": [
+          "nwplus-root"
+        ],
+        "cmd-f_dev": [
+          "nwplus-cmd-f"
+        ]
+      }
+    }
   }
 }

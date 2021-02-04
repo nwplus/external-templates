@@ -1,6 +1,14 @@
 {
-  "hosting": {
-    "public": "out",
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
-  }
+  "hosting": [
+    {
+      "target": "root",
+      "public": "out",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+    },
+    {
+      "target": "cmd-f_dev",
+      "public": "out",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+    }
+  ] 
 }
