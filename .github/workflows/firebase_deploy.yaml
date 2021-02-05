@@ -2,17 +2,21 @@ name: Continuous deployment to firebase hosting
 
 on:
   push: 
-    branches:
-      - cmd-f_dev
+    branches: [ cmd-f ]
 
 jobs:
   firebase_deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - run: yarn install --frozen-lockfile && yarn build:prod
-      - uses: w9jds/firebase-action@master
-        with:
-          args: deploy --only hosting ${GITHUB_REF##*/}
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+
+      - name: Set up firebase
+        run: |
+          sudo npm install -g firebase-tools --unsafe
+          firebase use ${{ secrets.PROD_FIREBASE_PROJECT_ID }} --token ${{ secrets.FIREBASE_TOKEN }}
+
+      - name: Build website
+        run: yarn install --frozen-lockfile && yarn build:prod
+
+      - name: Deploy to site associated with branch name
+        run: firebase deploy --only hosting:${ GITHUB_REF##*/ } --non-interactive --token ${{ secrets.FIREBASE_TOKEN }}

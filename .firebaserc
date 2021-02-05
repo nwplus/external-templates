@@ -13,16 +13,6 @@
           "nwplus-cmd-f"
         ]
       }
-    },
-    "nwplus-ubc-dev": {
-      "hosting": {
-        "root": [
-          "nwplus-root"
-        ],
-        "cmd-f_dev": [
-          "nwplus-cmd-f"
-        ]
-      }
     }
   }
 }
