@@ -7,11 +7,19 @@ import { TABLET, fontsize } from '@constants/measurements'
 import { SectionContainerWithBackground as Base, SectionContainer as Container } from '@lib/Containers'
 
 const SectionContainer = styled(Base)`
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Mono:wght@700&display=swap');
+
     height: 82vw;
+    color: #2F4246;
+    h1 {
+        text-align: center;
+        font-family: 'Fira Mono', monospace;
+        font-size: ${() => fontsize(787, 1440, 28, 48)};
+    }
     .info {
         display: flex;
         margin: auto;
-        height: 7.5vw;
+        height: 7vw;
         > div {
             display: flex;
             align-items: flex-start;
@@ -31,7 +39,11 @@ const SectionContainer = styled(Base)`
     }
     @media (max-width: ${TABLET}) {
         background-image: url(${mobile});
-        height: 179vw;
+        height: 272vw;
+        h1 {
+            font-size: ${() => fontsize(320, 786, 28, 48)};
+            padding-top: 76vw;
+        }
         .info {
             width: 72vw;
             margin: 5vw auto;
@@ -49,9 +61,9 @@ const SectionContainer = styled(Base)`
     }
 `
 const VideoContainer = styled(Container)`
-    padding: 15vw 30vw 0;
+    padding: 11vw 30vw 0;
     @media (max-width: ${TABLET}) {
-        padding: 24vw 11vw 0;
+        padding: 33vw 11vw 0;
     }
 `
 const Iframe = styled.iframe`
@@ -61,13 +73,14 @@ const Iframe = styled.iframe`
     margin: auto;
     @media (max-width: ${TABLET}) {
         width: 78vw;
-        height: 44vw;
+        height: 45vw;
     }
 `
 
 const Video = ({ url, title, subtitle }) => {
     return (
         <SectionContainer src={background}>
+            <h1>2020 Recap</h1>
             <VideoContainer>
                 <Iframe
                 src={url}
