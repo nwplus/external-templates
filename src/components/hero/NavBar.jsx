@@ -85,6 +85,7 @@ const Sidebar = styled.div`
   width: 100%;
   background: #1e313f;
   overflow: hidden;
+  z-index: 999;
 `
 
 const SidebarItems = styled.div`
