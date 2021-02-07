@@ -23,7 +23,9 @@ const NavItemContainer = styled.div`
 `
 
 const NavItem = styled.a`
-  font-family: Source Sans Pro;
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
+
+  font-family: 'DM Sans', sans-serif;
   font-size: 18px;
   padding: 0px 32px;
   text-decoration: none;
