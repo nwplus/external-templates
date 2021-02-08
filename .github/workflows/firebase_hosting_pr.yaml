@@ -21,6 +21,7 @@ jobs:
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_NWPLUS_UBC_DEV }}'
+          target: nwplus-dev-root
           projectId: nwplus-ubc-dev
           expires: 10d
         env:
