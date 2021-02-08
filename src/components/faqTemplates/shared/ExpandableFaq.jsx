@@ -13,9 +13,13 @@ const Accordion = styled.button`
   cursor: pointer;
   text-align: left;
   outline: none;
-  border: 3px solid black;
-  border-radius: 10px;
+  border: 0px;
+  color: #4a5759;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 23.44px;
   background-color: transparent;
+  padding: 2vh 2vw 2vh 2vw;
 `
 
 const FaqQuestionContainer = styled.div``

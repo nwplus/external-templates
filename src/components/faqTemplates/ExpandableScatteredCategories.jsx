@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { SectionContainer, Columns, Column } from '@lib/Containers'
+import { SectionContainerWithBackground, Columns, Column } from '@lib/Containers'
 import { Spacers } from '@lib/Helpers'
 import { ExpandableFaqList } from './shared/FaqList'
+import backgroundPlants from '@assets/faq__background_plants.svg'
 
 const TitleImg = styled.img`
   margin-bottom: ${p => p.marginBottom};
@@ -14,12 +15,26 @@ const TitleImg = styled.img`
 
 const AdjustmentContainer = styled.div`
   margin: ${p => p.shift};
+  background-color: #efedea;
+  border: 5px solid #4a5759;
+  border-radius: 8px;
+`
+
+const FaqTitle = styled.div`
+  color: #192825;
+  padding: 0.5vh 0 0.5vh 0;
+  font-weight: 700;
+  font-size: 19px;
+  line-height: 21px;
+  text-align: center;
+  border-bottom: 5px solid #4a5759;
+  background-color: #c8bfb6;
 `
 
 // FAQ Section with two columns with layout:
 // General    Logistics
 //            Teams & Projects
-const ExpandableWithCategories = ({ faq, config }) => {
+const ExpandableScatteredCategories = ({ faq, config }) => {
   const [categorizedFaqMap, setFaqMap] = useState(new Map())
 
   const categorizeFaq = faq => {
@@ -39,7 +54,11 @@ const ExpandableWithCategories = ({ faq, config }) => {
   }, [faq])
 
   return (
-    <SectionContainer width={config.containerWidth} margin={config.containerMargin}>
+    <SectionContainerWithBackground
+      width={config.containerWidth}
+      margin={config.containerMargin}
+      src={backgroundPlants}
+    >
       <TitleImg
         src={config.titleImg}
         alt={config.titleAlt}
@@ -48,24 +67,24 @@ const ExpandableWithCategories = ({ faq, config }) => {
       <Spacers height={config.titleBottomSpacing} />
       <Columns>
         <Column>
-          <AdjustmentContainer shift="2vh 0 0 -1vh">
-            General
+          <AdjustmentContainer shift="2vh 9vh 0 3vh">
+            <FaqTitle>general.faq</FaqTitle>
             <ExpandableFaqList list={categorizedFaqMap.get('General')} />
           </AdjustmentContainer>
         </Column>
         <Column>
-          <AdjustmentContainer shift="0 0 0 2vh">
-            Logistics
-            <ExpandableFaqList list={categorizedFaqMap.get('Logistics')} />
-          </AdjustmentContainer>
-          <AdjustmentContainer shift="2vh 0 0 0vh">
-            Teams &amp; Projects
+          <AdjustmentContainer shift="0 2vw 0 6vw">
+            <FaqTitle>teams&amp;projects.faq</FaqTitle>
             <ExpandableFaqList list={categorizedFaqMap.get('Teams & Projects')} />
+          </AdjustmentContainer>
+          <AdjustmentContainer shift="20vh 9vw 0 -8vh">
+            <FaqTitle>logistics.faq</FaqTitle>
+            <ExpandableFaqList list={categorizedFaqMap.get('Logistics')} />
           </AdjustmentContainer>
         </Column>
       </Columns>
-    </SectionContainer>
+    </SectionContainerWithBackground>
   )
 }
 
-export default ExpandableWithCategories
+export default ExpandableScatteredCategories

@@ -30,7 +30,7 @@ export default function Index({
       <Hero hero={hero} />
       {faqFlag && <FAQExpandable faq={faq} config={faqConfig} />}
       <About about={about} />
-      <Video video={video}/>
+      <Video video={video} />
     </div>
   )
 }
@@ -52,11 +52,7 @@ export async function getStaticProps(context) {
   const {
     featureFlags,
     BuildConfig,
-<<<<<<< HEAD
-    StaticData: { About },
-=======
     StaticData: { About, Hero, Video },
->>>>>>> cmd-f_dev
   } = websiteData
   const faq = await fireDb.getCollection(targetedHackathon, 'FAQ')
 
