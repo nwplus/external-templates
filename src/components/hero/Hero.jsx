@@ -55,14 +55,14 @@ const HeroContainer = styled.div`
 `
 
 const Hero = ({ hero }) => {
-  const { buttonText, applyActive } = hero
+  const { buttonText, titleText, dateText, applyActive } = hero
   return (
     <SectionContainer src={background}>
       <HeroContainer>
         <img src={logo} alt="cmd-f logo" />
-        <h1 className="title">Vancouver’s all-female* hackathon</h1>
+        <h1 className="title">{titleText}</h1>
         <Button enabled={applyActive}>{buttonText}</Button>
-        <p className="date">March 6-7, 2021</p>
+        <p className="date">{dateText}</p>
       </HeroContainer>
     </SectionContainer>
   )

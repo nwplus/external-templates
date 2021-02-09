@@ -14,7 +14,7 @@ const Nav = styled.nav`
   flex-direction: row;
   justify-content: space-between;
   margin-right: 80px;
-  z-index: 1;
+  z-index: 999;
 `
 
 const NavItemContainer = styled.div`
