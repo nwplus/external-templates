@@ -18,6 +18,9 @@
         ],
         "cmd-f_dev": [
           "nwplus-cmd-f"
+        ],
+        "andy-test-cd": [
+          "nwplus-test"
         ]
       }
     }
