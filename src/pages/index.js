@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import GlobalStyles from '@styles/global'
 import fireDb from '@utilities/firebase'
 import { serialize } from '@utilities/format'
@@ -10,6 +10,7 @@ import Footer from '@components/footer/Footer'
 import NavBar from '@components/hero/NavBar'
 import Hero from '@components/hero/Hero'
 import Values from '@components/value/ThreeColumnsValue'
+import Loading from '@components/Loading'
 
 export default function Index({
   flags,
@@ -21,8 +22,11 @@ export default function Index({
   values,
   configs: { navbarConfig, faqConfig },
 }) {
+  const [loaded, setLoaded] = useState(false)
+  useEffect(() => setTimeout(() => setLoaded(false), 1000), [])
+
   return (
-    <div>
+    loaded ? <div>
       <GlobalStyles />
       <Head>
         <title>cmd-f 2021</title>
@@ -38,7 +42,7 @@ export default function Index({
       <Video {...video} />
       <Values {...values} />
       <Footer />
-    </div>
+    </div> : <Loading />
   )
 }
 
