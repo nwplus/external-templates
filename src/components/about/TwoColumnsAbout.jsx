@@ -2,13 +2,13 @@ import React from 'react'
 import styled from 'styled-components'
 import logo from '@assets/logo__cmdf.png'
 import background from '@assets/about__bg.svg'
-import { LAPTOP, fontsize } from '@constants/measurements'
+import { LAPTOP, scale } from '@constants/measurements'
 import { SectionContainerWithBackground as Base } from '@lib/Containers'
 
 const SectionContainer = styled(Base)`
     @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@700&display=swap');
 
-    font-size: ${() => fontsize(320, 1440, 6, 28)};
+    font-size: ${() => scale(320, 1440, 6, 28)};
     text-align: center;
     height: 93vw;
     .intro {
@@ -27,7 +27,7 @@ const SectionContainer = styled(Base)`
     .countdown {
         color: #fff;
         font-family: 'Fira Code', monospace;
-        font-size: ${() => fontsize(320, 1440, 10, 48)};
+        font-size: ${() => scale(320, 1440, 10, 48)};
         font-weight: 700;
         margin-top: 14vw;
     }
@@ -68,7 +68,7 @@ const About = ({ top, bottom, date }) => {
             <div className="copy">
                 {bottom}
             </div>
-            <CountDown date={date}/>
+            <CountDown date={date} />
         </SectionContainer>
     )
 }

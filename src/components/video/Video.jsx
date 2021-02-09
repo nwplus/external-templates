@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import logo from '@assets/logo__nwplus.jpg'
 import background from '@assets/video__frame.svg'
 import mobile from '@assets/video__frame_sm.svg'
-import { TABLET, fontsize } from '@constants/measurements'
+import { TABLET, scale } from '@constants/measurements'
 import { SectionContainerWithBackground as Base, SectionContainer as Container } from '@lib/Containers'
 
 const SectionContainer = styled(Base)`
@@ -14,7 +14,7 @@ const SectionContainer = styled(Base)`
     h1 {
         text-align: center;
         font-family: 'Fira Mono', monospace;
-        font-size: ${() => fontsize(787, 1440, 28, 48)};
+        font-size: ${() => scale(787, 1440, 28, 48)};
     }
     .info {
         display: flex;
@@ -31,27 +31,27 @@ const SectionContainer = styled(Base)`
             width: 3vw;
         }
         .title {
-            font-size: ${() => fontsize(787, 1440, 12, 20)};
+            font-size: ${() => scale(787, 1440, 12, 20)};
         }
         .subtitle {
-            font-size: ${() => fontsize(787, 1440, 8, 16)};
+            font-size: ${() => scale(787, 1440, 8, 16)};
         }
     }
     @media (max-width: ${TABLET}) {
         background-image: url(${mobile});
         height: 272vw;
         h1 {
-            font-size: ${() => fontsize(320, 786, 28, 48)};
+            font-size: ${() => scale(320, 786, 28, 48)};
             padding-top: 76vw;
         }
         .info {
             width: 72vw;
             margin: 5vw auto;
             .title {
-                font-size: ${() => fontsize(320, 786, 12, 36)};
+                font-size: ${() => scale(320, 786, 12, 36)};
             }
             .subtitle {
-                font-size: ${() => fontsize(320, 786, 10, 24)};
+                font-size: ${() => scale(320, 786, 10, 24)};
                 margin-top: 2vw;
             }
             img {
