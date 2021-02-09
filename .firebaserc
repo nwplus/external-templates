@@ -14,7 +14,7 @@
         ]
       }
     },
-    "nwplus-ubc-dev": {
+    "default": {
       "hosting": {
         "root": [
           "nwplus-dev-root"
