@@ -67,14 +67,14 @@ const SectionContainer = styled(Base)`
             }
         }
         .covid {
-            padding: 116vw 5vw 0;
+            padding: 404vw 5vw 0;
             .title {
                 font-size: ${() => scale(320, 786, 32, 72)};
                 text-align: left;
                 width: 66vw;
             }
             .blob {
-                font-size: ${() => scale(320, 786, 12, 20)};
+                font-size: ${() => scale(320, 786, 16, 40)};
                 width: 100%;
             }
         }
@@ -86,17 +86,20 @@ const Columns = styled(ColumnsBase)`
     margin: auto;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 `
 const Column = styled(ColumnBase)`
     width: ${() => scale(787, 1440, 180, 330)};
     margin: 0;
     @media (max-width: ${TABLET}) {
         width: ${() => scale(320, 786, 230, 600)};
+        position: absolute;
+        top: 143vw;
         &:first-child {
-            margin: ${() => scale(320, 786, 45, 150)} 0 ${() => scale(320, 786, 145, 506)};
+            top: 28vw;
         }
         &:last-child {
-            margin: ${() => scale(320, 786, 112, 506)} 0 0;
+            top: 250vw;
         }
     }
 `
