@@ -2,19 +2,19 @@ import React from 'react'
 import ExpandableFaq from './ExpandableFaq'
 import styled from 'styled-components'
 
-const ListContainer = styled.div`
-  padding: 3vh 0 3vh 0;
+const FaqList = styled.div`
+  padding: 1vh 0 1vh 0;
 `
 
-const ExpandableFaqList = ({ list }) => {
+const ExpandableFaqList = ({ list, decor }) => {
   return (
-    <ListContainer>
+    <FaqList>
       {list?.map(({ question, answer }) => (
         <div key={question}>
-          <ExpandableFaq question={question} answer={answer} />
+          <ExpandableFaq question={question} answer={answer} decor={decor} />
         </div>
       )) ?? null}
-    </ListContainer>
+    </FaqList>
   )
 }
 

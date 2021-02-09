@@ -4,6 +4,9 @@ import { SectionContainerWithBackground, Columns, Column } from '@lib/Containers
 import { Spacers } from '@lib/Helpers'
 import { ExpandableFaqList } from './shared/FaqList'
 import backgroundPlants from '@assets/faq__background_plants.svg'
+import titleOptions from '@assets/faq__title_options.svg'
+import questionLeftDecor from '@assets/faq__question_leftdecor.svg'
+import questionRightDecor from '@assets/faq__question_rightdecor.svg'
 
 const TitleImg = styled.img`
   margin-bottom: ${p => p.marginBottom};
@@ -21,6 +24,8 @@ const AdjustmentContainer = styled.div`
 `
 
 const FaqTitle = styled.div`
+  position: relative;
+  z-index: 0;
   color: #192825;
   padding: 0.5vh 0 0.5vh 0;
   font-weight: 700;
@@ -31,9 +36,15 @@ const FaqTitle = styled.div`
   background-color: #c8bfb6;
 `
 
-// FAQ Section with two columns with layout:
+const FaqTitleBackground = styled.img`
+  position: absolute;
+  top: 8px;
+  right: 1vw;
+`
+
+// FAQ Section with two columns and scattered layout:
 // General    Logistics
-//            Teams & Projects
+//          Teams & Projects
 const ExpandableScatteredCategories = ({ faq, config }) => {
   const [categorizedFaqMap, setFaqMap] = useState(new Map())
 
@@ -67,19 +78,37 @@ const ExpandableScatteredCategories = ({ faq, config }) => {
       <Spacers height={config.titleBottomSpacing} />
       <Columns>
         <Column>
-          <AdjustmentContainer shift="2vh 9vh 0 3vh">
-            <FaqTitle>general.faq</FaqTitle>
-            <ExpandableFaqList list={categorizedFaqMap.get('General')} />
+          <AdjustmentContainer shift="2vh 4vw 0 4vw">
+            <FaqTitle>
+              general.faq
+              <FaqTitleBackground src={titleOptions} />
+            </FaqTitle>
+            <ExpandableFaqList
+              list={categorizedFaqMap.get('General')}
+              decor={{ leftDecor: questionLeftDecor, rightDecor: questionRightDecor }}
+            />
           </AdjustmentContainer>
         </Column>
         <Column>
-          <AdjustmentContainer shift="0 2vw 0 6vw">
-            <FaqTitle>teams&amp;projects.faq</FaqTitle>
-            <ExpandableFaqList list={categorizedFaqMap.get('Teams & Projects')} />
+          <AdjustmentContainer shift="0 3vw 0 5vw">
+            <FaqTitle>
+              teams&amp;projects.faq
+              <FaqTitleBackground src={titleOptions} />
+            </FaqTitle>
+            <ExpandableFaqList
+              list={categorizedFaqMap.get('Teams & Projects')}
+              decor={{ leftDecor: questionLeftDecor, rightDecor: questionRightDecor }}
+            />
           </AdjustmentContainer>
-          <AdjustmentContainer shift="20vh 9vw 0 -8vh">
-            <FaqTitle>logistics.faq</FaqTitle>
-            <ExpandableFaqList list={categorizedFaqMap.get('Logistics')} />
+          <AdjustmentContainer shift="20vh 7vw 0 -5vw">
+            <FaqTitle>
+              logistics.faq
+              <FaqTitleBackground src={titleOptions} />
+            </FaqTitle>
+            <ExpandableFaqList
+              list={categorizedFaqMap.get('Logistics')}
+              decor={{ leftDecor: questionLeftDecor, rightDecor: questionRightDecor }}
+            />
           </AdjustmentContainer>
         </Column>
       </Columns>
