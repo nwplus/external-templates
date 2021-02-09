@@ -9,6 +9,11 @@
       "target": "cmd-f_dev",
       "public": "out",
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+    },
+    {
+      "target": "andy-test-cd",
+      "public": "out",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
     }
   ] 
 }
