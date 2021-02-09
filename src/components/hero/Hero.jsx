@@ -23,7 +23,7 @@ const Hero = ({ hero }) => {
         <SectionContainer>
             <HeroContainer>
                 <Button enabled={applyActive}>{buttonText}</Button>
-                <p>March 2021</p>
+                <p>March 2021</p> 
             </HeroContainer>
         </SectionContainer>
     )
