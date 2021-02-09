@@ -4,20 +4,20 @@
     "production": "nwplus-ubc"
   },
   "targets": {
-    "production": {
+    "nwplus-ubc-dev": {
+      "hosting": {
+        "root": [
+          "nwplus-dev-root"
+        ]
+      }
+    },
+    "nwplus-ubc": {
       "hosting": {
         "root": [
           "nwplus-root"
         ],
         "cmd-f_dev": [
           "nwplus-cmd-f"
-        ]
-      }
-    },
-    "default": {
-      "hosting": {
-        "root": [
-          "nwplus-dev-root"
         ]
       }
     }
