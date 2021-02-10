@@ -6,6 +6,7 @@ import { serialize } from '@utilities/format'
 import FAQExpandable from '@components/faqTemplates/ExpandableWithCategories'
 import About from '@components/about/TwoColumnsAbout'
 import Video from '@components/video/Video'
+import Footer from '@components/footer/Footer'
 import NavBar from '@components/hero/NavBar'
 import Hero from '@components/hero/Hero'
 
@@ -40,6 +41,7 @@ export default function Index({
       {faqFlag && <FAQExpandable faq={faq} config={faqConfig} />}
       <About about={about} />
       <Video video={video} />
+      <Footer />
     </div>
   )
 }
