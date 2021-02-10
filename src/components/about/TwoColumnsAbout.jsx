@@ -8,6 +8,7 @@ import { SectionContainerWithBackground as Base } from '@lib/Containers'
 
 const SectionContainer = styled(Base)`
     font-size: ${() => scale(320, 1440, 6, 28)};
+    background-size: contain;
     position: relative;
     text-align: center;
     height: 93vw;
