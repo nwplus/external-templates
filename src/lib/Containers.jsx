@@ -13,7 +13,7 @@ export const SectionContainerWithBackground = styled(SectionContainer)`
   background-image: url(${p => p.src});
   background-position: center;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   height: ${p => p.height};
 `
 export const Columns = styled.div`

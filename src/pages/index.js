@@ -23,7 +23,7 @@ export default function Index({
   configs: { navbarConfig, faqConfig },
 }) {
   const [loaded, setLoaded] = useState(false)
-  useEffect(() => setTimeout(() => setLoaded(false), 1000), [])
+  useEffect(() => setTimeout(() => setLoaded(false), 2000), [])
 
   return (
     loaded ? <div>

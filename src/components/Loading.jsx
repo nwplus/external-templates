@@ -2,21 +2,20 @@ import React from 'react'
 import styled from 'styled-components'
 import { SectionContainerWithBackground as Base } from '@lib/Containers'
 import logo from '@assets/loading_logo.svg'
-import h from '@assets/loading_h.svg'
-import v from '@assets/loading_v.svg'
+import background from '@assets/loading_bg.svg'
 
 const Background = styled(Base)`
+    height: 100vh;
+    width: 100vw;
     position: absolute;
     margin: -8px;
-    height: 71vw;
-    width: 100%;
     background-color: transparent;
     @media (max-width: 768px) {
         display: none;
     }
 `
 const SectionContainer = styled(Base)`
-    height: 71vw;
+    height: calc(100vh - 16px);
     background-color: transparent;
     display: flex;
     align-items: center;
@@ -24,13 +23,15 @@ const SectionContainer = styled(Base)`
 `
 const Logo = styled.img`
     margin: auto;
+    @media (max-width: 768px) {
+        width: 50%;
+    }
 `
 
 const Loading = () => {
     return (
         <SectionContainer>
-            <Background src={v} />
-            <Background src={h} height="71vw"/>
+            <Background src={background} />
             <Logo src={logo} alt="cmd-f logo" />
         </SectionContainer>
     )
