@@ -2,7 +2,7 @@ name: Continuous deployment to firebase hosting
 
 on:
   push: 
-    branches: [ cmd-f ]
+    branches: [ cmd-f, andy-test-cd ]
 
 jobs:
   firebase_deploy:
@@ -19,4 +19,4 @@ jobs:
         run: yarn cache clean && yarn install && yarn build:prod
 
       - name: Deploy to site associated with branch name
-        run: firebase deploy --only hosting:${ GITHUB_REF##*/ } --non-interactive --token ${{ secrets.FIREBASE_TOKEN }}
+        run: firebase deploy --only hosting:${{ github.head_ref }} --non-interactive --token ${{ secrets.FIREBASE_TOKEN }}

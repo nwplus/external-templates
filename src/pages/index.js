@@ -41,7 +41,9 @@ export async function getStaticProps(context) {
 
   if (!targetedHackathon) {
     return {
-      notFound: true,
+      props: {
+        notFound: true,
+      }
     }
   }
 
