@@ -7,8 +7,6 @@ import { LAPTOP, TABLET, scale } from '@constants/measurements'
 import { SectionContainerWithBackground as Base } from '@lib/Containers'
 
 const SectionContainer = styled(Base)`
-    @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@700&display=swap');
-
     font-size: ${() => scale(320, 1440, 6, 28)};
     position: relative;
     text-align: center;

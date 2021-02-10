@@ -6,8 +6,6 @@ import { TABLET, scale } from '@constants/measurements'
 import { Columns as ColumnsBase, Column as ColumnBase, SectionContainerWithBackground as Base } from '@lib/Containers'
 
 const SectionContainer = styled(Base)`
-    @import url('https://fonts.googleapis.com/css2?family=Fira+Mono:wght@700&display=swap');
-    
     height: 153vw;
     color: #2F4246;
     .title {
