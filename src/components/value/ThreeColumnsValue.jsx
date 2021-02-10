@@ -52,7 +52,7 @@ const SectionContainer = styled(Base)`
             font-size: ${() => scale(320, 786, 18, 36)};
         }
         .subtitle {
-            font-size: ${() => scale(320, 786, 16, 32)};
+            font-size: ${() => scale(320, 786, 14, 32)};
         }
         .main {
             &.title {

@@ -29,19 +29,15 @@ const SectionContainer = styled(Base)`
         font-family: 'Fira Code', monospace;
         font-size: ${() => scale(320, 1440, 10, 48)};
         font-weight: 700;
-        margin-top: 14vw;
+        position: absolute;
+        top: 57.5vw;
+        left: 43.5vw;
     }
     img {
         display: block;
         margin: auto;
         margin-bottom: 4vw;
         width: 12vw;
-    }
-    @media (max-width: ${LAPTOP}) {
-        div {
-            width: inherit;
-            margin: 2vw;
-        }
     }
     @media (max-width: ${TABLET}) {
         background-image: url(${mobile});
@@ -58,10 +54,9 @@ const SectionContainer = styled(Base)`
             width: 72vw;
         }
         .countdown {
-            position: absolute;
-            top: 147vw;
-            left: 54vw;
-            font-size: 54px;
+            top: 159vw;
+            left: 55vw;
+            margin: 0;
             font-size: ${() => scale(320, 786, 22, 54)};
         }
         img {
