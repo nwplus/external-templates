@@ -81,12 +81,14 @@ const SectionContainer = styled(Base)`
     }
 `
 const Columns = styled(ColumnsBase)`
-    padding-top: 10vw;
-    width: ${() => scale(787, 1440, 650, 1200)};
-    margin: auto;
     justify-content: space-between;
-    align-items: center;
+    margin: auto;
+    padding-top: 10vw;
     position: relative;
+    width: ${() => scale(787, 1440, 650, 1200)};
+    @media (max-width: ${TABLET}) {
+        align-items: center;
+    }
 `
 const Column = styled(ColumnBase)`
     width: ${() => scale(787, 1440, 180, 330)};
@@ -94,7 +96,7 @@ const Column = styled(ColumnBase)`
     @media (max-width: ${TABLET}) {
         width: ${() => scale(320, 786, 230, 600)};
         position: absolute;
-        top: 143vw;
+        top: 138vw;
         &:first-child {
             top: 28vw;
         }
