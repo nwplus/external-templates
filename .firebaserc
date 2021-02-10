@@ -8,6 +8,9 @@
       "hosting": {
         "root": [
           "nwplus-dev-root"
+        ],
+        "andy-test-cd": [
+          "nwplus-andy"
         ]
       }
     },
