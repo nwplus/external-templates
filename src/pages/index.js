@@ -47,11 +47,11 @@ export async function getStaticProps(context) {
 
   const websiteData = await fireDb.getWebsiteData(targetedHackathon)
 
-  // const {
-  //   featureFlags,
-  //   BuildConfig,
-  //   StaticData: { About, Hero },
-  // } = websiteData
+  const {
+    featureFlags,
+    BuildConfig,
+    StaticData: { About, Hero },
+  } = websiteData
   // const faq = await fireDb.getCollection(targetedHackathon, 'FAQ')
 
   return {
