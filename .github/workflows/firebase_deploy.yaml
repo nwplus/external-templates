@@ -9,6 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
+      - name: Print ref
+        run: echo ${{ github.head_ref }}
 
       - name: Set up firebase
         run: |

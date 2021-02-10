@@ -2,7 +2,7 @@ name: Deploy to targeted site on merge
 
 on:
   push:
-    branches: [ ]
+    branches: [ cmd-f_dev ]
 
 jobs:
   deploy_live_website:
