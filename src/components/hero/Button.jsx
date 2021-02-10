@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { LAPTOP, fontsize } from '@constants/measurements'
+import { LAPTOP, scale } from '@constants/measurements'
 
 const Button = styled.button.attrs(({ applyActive }) => ({
   type: 'button',
@@ -14,7 +14,7 @@ const Button = styled.button.attrs(({ applyActive }) => ({
   color: white;
   transition-duration: 0.2s;
   cursor: pointer;
-  font-size: ${() => fontsize(320, 1440, 6, 18)};
+  font-size: ${() => scale(320, 1440, 6, 18)};
   font-family: 'DM Sans', sans-serif;
 
   &:hover {
@@ -24,7 +24,7 @@ const Button = styled.button.attrs(({ applyActive }) => ({
   @media (max-width: ${LAPTOP}) {
     width: 20vw;
     height: 5vw;
-    font-size: ${() => fontsize(320, 1440, 9, 30)};
+    font-size: ${() => scale(320, 1440, 9, 30)};
   }
 `
 

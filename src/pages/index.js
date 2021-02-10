@@ -9,6 +9,7 @@ import Video from '@components/video/Video'
 import Footer from '@components/footer/Footer'
 import NavBar from '@components/hero/NavBar'
 import Hero from '@components/hero/Hero'
+import Values from '@components/value/ThreeColumnsValue'
 
 export default function Index({
   flags,
@@ -17,6 +18,7 @@ export default function Index({
   about,
   hero,
   video,
+  values,
   configs: { navbarConfig, faqConfig },
 }) {
   return (
@@ -26,21 +28,15 @@ export default function Index({
         <title>cmd-f 2021</title>
         <link rel="icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap"
-          rel="stylesheet"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap"
-          rel="stylesheet"
-        />
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Fira+Code:wght@700&family=Fira+Mono:wght@700&display=swap" rel="stylesheet" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <NavBar config={navbarConfig} flags={flags} />
       <Hero hero={hero} />
       {faqFlag && <FAQExpandable faq={faq} config={faqConfig} />}
-      <About about={about} />
-      <Video video={video} />
+      <About {...about} />
+      <Video {...video} />
+      <Values {...values} />
       <Footer />
     </div>
   )
@@ -63,7 +59,7 @@ export async function getStaticProps(context) {
   const {
     featureFlags,
     BuildConfig,
-    StaticData: { About, Hero, Video },
+    StaticData: { About, Hero, Values, Video },
   } = websiteData
   const faq = await fireDb.getCollection(targetedHackathon, 'FAQ')
 
@@ -73,6 +69,7 @@ export async function getStaticProps(context) {
       faq: serialize(faq),
       about: About,
       hero: Hero,
+      values: Values,
       video: Video,
       configs: {
         navbarConfig: serialize(BuildConfig.componentStyling.navbar),

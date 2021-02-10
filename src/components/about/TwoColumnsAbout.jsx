@@ -2,13 +2,13 @@ import React from 'react'
 import styled from 'styled-components'
 import logo from '@assets/logo__cmdf.png'
 import background from '@assets/about__bg.svg'
-import { LAPTOP, fontsize } from '@constants/measurements'
+import mobile from '@assets/about__bg_sm.svg'
+import { LAPTOP, TABLET, scale } from '@constants/measurements'
 import { SectionContainerWithBackground as Base } from '@lib/Containers'
 
 const SectionContainer = styled(Base)`
-    @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@700&display=swap');
-
-    font-size: ${() => fontsize(320, 1440, 6, 28)};
+    font-size: ${() => scale(320, 1440, 6, 28)};
+    position: relative;
     text-align: center;
     height: 93vw;
     .intro {
@@ -27,9 +27,11 @@ const SectionContainer = styled(Base)`
     .countdown {
         color: #fff;
         font-family: 'Fira Code', monospace;
-        font-size: ${() => fontsize(320, 1440, 10, 48)};
+        font-size: ${() => scale(320, 1440, 10, 48)};
         font-weight: 700;
-        margin-top: 14vw;
+        position: absolute;
+        top: 57.5vw;
+        left: 43.5vw;
     }
     img {
         display: block;
@@ -37,10 +39,28 @@ const SectionContainer = styled(Base)`
         margin-bottom: 4vw;
         width: 12vw;
     }
-    @media (max-width: ${LAPTOP}) {
-        div {
-            width: inherit;
-            margin: 2vw;
+    @media (max-width: ${TABLET}) {
+        background-image: url(${mobile});
+        background-position: top;
+        height: 285vw;
+        .intro {
+            padding: 97vw 0 0;
+            font-size: ${() => scale(320, 786, 14, 32)};
+        }
+        .copy {
+            padding-top: 79vw;
+            font-size: ${() => scale(320, 786, 14, 36)};
+            text-align: left;
+            width: 72vw;
+        }
+        .countdown {
+            top: 159vw;
+            left: 55vw;
+            margin: 0;
+            font-size: ${() => scale(320, 786, 22, 54)};
+        }
+        img {
+            display: none;
         }
     }
 `
@@ -58,8 +78,7 @@ const CountDown = ({ date }) => {
     )
 }
 
-const About = ({ about }) => {
-    const { top, bottom, date } = about
+const About = ({ top, bottom, date }) => {
     return (
         <SectionContainer src={background}>
             <div className="intro">
@@ -69,7 +88,7 @@ const About = ({ about }) => {
             <div className="copy">
                 {bottom}
             </div>
-            <CountDown date={date}/>
+            <CountDown date={date} />
         </SectionContainer>
     )
 }
