@@ -52,7 +52,7 @@ export async function getStaticProps(context) {
     BuildConfig,
     StaticData: { About, Hero },
   } = websiteData
-  // const faq = await fireDb.getCollection(targetedHackathon, 'FAQ')
+  const faq = await fireDb.getCollection(targetedHackathon, 'FAQ')
 
   return {
     props: {
