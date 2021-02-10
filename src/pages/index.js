@@ -56,14 +56,14 @@ export async function getStaticProps(context) {
 
   return {
     props: {
-      // flags: serialize(featureFlags),
-      // faq: serialize(faq),
-      // about: About,
-      // hero: Hero,
-      // configs: {
-      //   navbarConfig: serialize(BuildConfig.componentStyling.navbar),
-      //   faqConfig: serialize(BuildConfig.componentStyling.faq),
-      // },
+      flags: serialize(featureFlags),
+      faq: serialize(faq),
+      about: About,
+      hero: Hero,
+      configs: {
+        navbarConfig: serialize(BuildConfig.componentStyling.navbar),
+        faqConfig: serialize(BuildConfig.componentStyling.faq),
+      },
     }, // will be passed to the page component as props
   }
 }
