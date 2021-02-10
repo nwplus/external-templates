@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: Print ref
-        run: echo ${{ github.head_ref }}
+        run: echo ${GITHUB_REF#refs/*/}
 
       - name: Set up firebase
         run: |
@@ -21,4 +21,4 @@ jobs:
         run: yarn cache clean && yarn install && yarn build:prod
 
       - name: Deploy to site associated with branch name
-        run: firebase deploy --only hosting:${{ github.head_ref }} --non-interactive --token ${{ secrets.FIREBASE_TOKEN }}
+        run: firebase deploy --only hosting:${GITHUB_REF#refs/*/} --non-interactive --token ${{ secrets.FIREBASE_TOKEN }}
