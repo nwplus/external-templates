@@ -4,13 +4,13 @@ import mobile from '@assets/hero__bg_sm.svg'
 import styled from 'styled-components'
 import Button from './Button'
 import background from '@assets/hero__bg.svg'
-import { LAPTOP, fontsize } from '@constants/measurements'
+import { LAPTOP, scale } from '@constants/measurements'
 import { SectionContainerWithBackground as Base } from '@lib/Containers'
 
 const SectionContainer = styled(Base)`
   @import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
 
-  font-size: ${() => fontsize(320, 1440, 6, 11.5)};
+  font-size: ${() => scale(320, 1440, 6, 11.5)};
   width: 100vw;
   height: 85.75vw;
   img {
@@ -25,7 +25,7 @@ const SectionContainer = styled(Base)`
   }
   @media (max-width: ${LAPTOP}) {
     background-image: url(${mobile});
-    font-size: ${() => fontsize(320, 1440, 6, 34)};
+    font-size: ${() => scale(320, 1440, 6, 34)};
     height: 250vw;
     img {
       width: 16vw;
