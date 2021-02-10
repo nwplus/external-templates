@@ -55,6 +55,7 @@ const SectionContainer = styled(Base)`
             padding-top: 79vw;
             font-size: ${() => scale(320, 786, 14, 36)};
             text-align: left;
+            width: 72vw;
         }
         .countdown {
             position: absolute;

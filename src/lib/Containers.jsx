@@ -3,6 +3,8 @@ import { TABLET } from '@constants/measurements'
 
 // Basic section container
 export const SectionContainer = styled.div`
+  color: #2F4246;
+  font-family: 'DM Sans', sans-serif;
   width: ${p => p.width};
   margin: ${p => p.margin};
 `

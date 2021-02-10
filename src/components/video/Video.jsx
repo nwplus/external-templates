@@ -8,7 +8,6 @@ import { SectionContainerWithBackground as Base, SectionContainer as Container }
 
 const SectionContainer = styled(Base)`
     height: 82vw;
-    color: #2F4246;
     h1 {
         text-align: center;
         font-family: 'Fira Mono', monospace;

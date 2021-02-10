@@ -7,7 +7,6 @@ import { Columns as ColumnsBase, Column as ColumnBase, SectionContainerWithBackg
 
 const SectionContainer = styled(Base)`
     height: 153vw;
-    color: #2F4246;
     .title {
         padding-bottom: ${() => scale(787, 1440, 16, 32)};
         text-align: center;
