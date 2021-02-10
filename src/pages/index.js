@@ -9,16 +9,16 @@ import NavBar from '@components/hero/NavBar'
 import Hero from '@components/hero/Hero'
 
 export default function Index({
-  flags,
-  flags: { faqFlag },
-  faq,
-  about,
-  hero,
-  configs: { navbarConfig, faqConfig },
+  // flags,
+  // flags: { faqFlag },
+  // faq,
+  // about,
+  // hero,
+  // configs: { navbarConfig, faqConfig },
 }) {
   return (
     <div>
-      <GlobalStyles />
+      {/* <GlobalStyles />
       <Head>
         <title>cmd-f 2021</title>
         <link rel="icon" href="/favicon.ico" />
@@ -27,42 +27,43 @@ export default function Index({
       <NavBar config={navbarConfig} flags={flags} />
       <Hero hero={hero} />
       {faqFlag && <FAQExpandable faq={faq} config={faqConfig} />}
-      <About about={about} />
+      <About about={about} /> */}
+      hi
     </div>
   )
 }
 
 export async function getStaticProps(context) {
-  const targetedHackathon = await fireDb.getTargetedHackathon()
+  // const targetedHackathon = await fireDb.getTargetedHackathon()
 
-  // Uncomment if you want to update config
-  // await fireDb.updateConfig(targetedHackathon)
+  // // Uncomment if you want to update config
+  // // await fireDb.updateConfig(targetedHackathon)
 
-  if (!targetedHackathon) {
-    return {
-      notFound: true,
-    }
-  }
+  // if (!targetedHackathon) {
+  //   return {
+  //     notFound: true,
+  //   }
+  // }
 
-  const websiteData = await fireDb.getWebsiteData(targetedHackathon)
+  // const websiteData = await fireDb.getWebsiteData(targetedHackathon)
 
-  const {
-    featureFlags,
-    BuildConfig,
-    StaticData: { About, Hero },
-  } = websiteData
-  const faq = await fireDb.getCollection(targetedHackathon, 'FAQ')
+  // const {
+  //   featureFlags,
+  //   BuildConfig,
+  //   StaticData: { About, Hero },
+  // } = websiteData
+  // const faq = await fireDb.getCollection(targetedHackathon, 'FAQ')
 
   return {
     props: {
-      flags: serialize(featureFlags),
-      faq: serialize(faq),
-      about: About,
-      hero: Hero,
-      configs: {
-        navbarConfig: serialize(BuildConfig.componentStyling.navbar),
-        faqConfig: serialize(BuildConfig.componentStyling.faq),
-      },
+      // flags: serialize(featureFlags),
+      // faq: serialize(faq),
+      // about: About,
+      // hero: Hero,
+      // configs: {
+      //   navbarConfig: serialize(BuildConfig.componentStyling.navbar),
+      //   faqConfig: serialize(BuildConfig.componentStyling.faq),
+      // },
     }, // will be passed to the page component as props
   }
 }
