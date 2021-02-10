@@ -25,13 +25,22 @@ export default function Index({
       <Head>
         <title>cmd-f 2021</title>
         <link rel="icon" href="/favicon.ico" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap"
+          rel="stylesheet"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap"
+          rel="stylesheet"
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <NavBar config={navbarConfig} flags={flags} />
       <Hero hero={hero} />
       {faqFlag && <FAQExpandable faq={faq} config={faqConfig} />}
       <About about={about} />
-      <Video video={video}/>
+      <Video video={video} />
       <Footer />
     </div>
   )
