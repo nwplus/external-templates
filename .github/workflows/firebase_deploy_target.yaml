@@ -14,6 +14,6 @@ jobs:
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_NWPLUS_UBC_DEV }}'
-          target: '${GITHUB_REF#refs/*/}'
+          target: '${{GITHUB_REF#refs/*/}}'
           projectId: nwplus-ubc
           channelId: live
