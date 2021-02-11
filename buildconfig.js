@@ -33,5 +33,7 @@ export default {
   // 'StaticData.About.left': 'string',
   // 'StaticData.About.right': 'string',
   // 'StaticData.Hero.buttonText': 'string',
+  // 'StaticData.Hero.titleText': 'string',
+  // 'StaticData.Hero.dateText': 'string',
   // 'StaticData.Hero.applyActive': 'string',
 }
