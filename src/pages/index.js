@@ -18,7 +18,7 @@ export default function Index({
 }) {
   return (
     <div>
-      <GlobalStyles />
+      {/* <GlobalStyles />
       <Head>
         <title>cmd-f 2021</title>
         <link rel="icon" href="/favicon.ico" />
@@ -27,7 +27,8 @@ export default function Index({
       <NavBar config={navbarConfig} flags={flags} />
       <Hero hero={hero} />
       {faqFlag && <FAQExpandable faq={faq} config={faqConfig} />}
-      <About about={about} />
+      <About about={about} /> */}
+      hi
     </div>
   )
 }
