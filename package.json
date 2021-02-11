@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "cross-env DEPLOY_ENV=PRODUCTION NODE_OPTIONS='--inspect' next build && next dev",
+    "dev": "cross-env NODE_OPTIONS='--inspect' next dev",
     "build": "next build && next export",
     "build:staging": "cross-env DEPLOY_ENV=STAGING next build && next export",
     "build:prod": "cross-env DEPLOY_ENV=PRODUCTION next build && next export",
