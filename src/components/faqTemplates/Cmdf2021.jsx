@@ -10,6 +10,7 @@ import questionRightDecor from '@assets/faq__question_rightdecor.svg'
 import headsetDecor from '@assets/faq__decor_general.svg'
 import ducksDecor from '@assets/faq__decor_teams.svg'
 import laptopDecor from '@assets/faq__decor_logistics.svg'
+import mLaptopDecor from '@assets/faq__decor_logistics_m.svg'
 import { TABLET } from '@constants/measurements'
 
 const TitleImg = styled.img`
@@ -35,6 +36,8 @@ const AdjustmentContainer = styled.div`
 `
 
 const FaqTitle = styled.div`
+  position: relative;
+  z-index: 1;
   color: #192825;
   padding: 0.5vh 0 0.5vh 0;
   font-weight: 700;
@@ -47,19 +50,21 @@ const FaqTitle = styled.div`
 
 const FaqTitleBackground = styled.img`
   position: absolute;
+  z-index: -1;
   top: 8px;
   right: 1vw;
 `
 
 const Decor = styled.img`
   position: absolute;
-  z-index: 0;
+  z-index: 2;
 `
 const GeneralBoxDecor = styled(Decor)`
   top: -8px;
   left: 33.5vw;
   @media only screen and (max-width: ${TABLET}) {
-    left: 74vw;
+    left: 70vw;
+    width: 18vw;
   }
 `
 const LogisticsBoxDecor = styled(Decor)`
@@ -69,8 +74,19 @@ const LogisticsBoxDecor = styled(Decor)`
   width: 90%;
   @media only screen and (max-width: ${TABLET}) {
     bottom: 99%;
+    height: 90%;
+    visibility: hidden;
   }
 `
+const MobileLogisticsBoxDecor = styled(LogisticsBoxDecor)`
+  @media only screen and (max-width: ${TABLET}) {
+    bottom: 100%;
+    left: 20vw;
+    height: 16vh;
+    visibility: visible;
+  }
+`
+
 const TeamsProjectBoxDecor = styled(Decor)`
   left: 20px;
   bottom: 100%;
@@ -140,6 +156,7 @@ const ExpandableScatteredCategories = ({ faq, config }) => {
           </AdjustmentContainer>
           <AdjustmentContainer shift="20vh 7vw 0 -5vw">
             <LogisticsBoxDecor src={laptopDecor} />
+            <MobileLogisticsBoxDecor src={mLaptopDecor} />
             <FaqTitle>
               logistics.faq
               <FaqTitleBackground src={titleOptions} />

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import { TABLET } from '@constants/measurements'
 
 const Accordion = styled.button`
   position: relative;
@@ -14,7 +15,10 @@ const Accordion = styled.button`
   font-size: 18px;
   line-height: 23.44px;
   background-color: transparent;
-  padding: 1vh 3vw 1vh 3vw;
+  padding: 1vh 3.5vw 1vh 3.5vw;
+  @media only screen and (max-width: ${TABLET}) {
+    padding: 1vh 6vw 1vh 6vw;
+  }
 `
 
 const FaqQuestionContainer = styled.div`

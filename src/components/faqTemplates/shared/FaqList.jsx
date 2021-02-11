@@ -3,7 +3,7 @@ import ExpandableFaq from './ExpandableFaq'
 import styled from 'styled-components'
 
 const FaqList = styled.div`
-  padding: 1vh 0 1vh 0;
+  padding: 1.2vh 0 1.2vh 0;
 `
 
 const ExpandableFaqList = ({ list, decor }) => {
