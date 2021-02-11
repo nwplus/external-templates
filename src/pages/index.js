@@ -9,16 +9,16 @@ import NavBar from '@components/hero/NavBar'
 import Hero from '@components/hero/Hero'
 
 export default function Index({
-  // flags,
-  // flags: { faqFlag },
-  // faq,
-  // about,
-  // hero,
-  // configs: { navbarConfig, faqConfig },
+  flags,
+  flags: { faqFlag },
+  faq,
+  about,
+  hero,
+  configs: { navbarConfig, faqConfig },
 }) {
   return (
     <div>
-      {/* <GlobalStyles />
+      <GlobalStyles />
       <Head>
         <title>cmd-f 2021</title>
         <link rel="icon" href="/favicon.ico" />
@@ -27,8 +27,7 @@ export default function Index({
       <NavBar config={navbarConfig} flags={flags} />
       <Hero hero={hero} />
       {faqFlag && <FAQExpandable faq={faq} config={faqConfig} />}
-      <About about={about} /> */}
-      hi
+      <About about={about} />
     </div>
   )
 }
@@ -37,7 +36,7 @@ export async function getStaticProps(context) {
   const targetedHackathon = await fireDb.getTargetedHackathon()
 
   // Uncomment if you want to update config 
-  await fireDb.updateConfig(targetedHackathon)
+  // await fireDb.updateConfig(targetedHackathon)
 
   if (!targetedHackathon) {
     return {
