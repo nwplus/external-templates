@@ -2,7 +2,7 @@ name: Continuous deployment to firebase hosting
 
 on:
   push: 
-    branches: [ cmd-f, andy-test-cd ]
+    branches: [ cmd-f_dev ]
 
 jobs:
   firebase_deploy:
