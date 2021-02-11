@@ -36,11 +36,7 @@ const ExpandableWithCategories = ({ faq, config }) => {
 
   return (
     <SectionContainer width={config.containerWidth} margin={config.containerMargin}>
-      <TitleImg
-        src={config.titleImg}
-        alt={config.titleAlt}
-        marginBottom={config.marginBottomTitle}
-      />
+      <TitleImg src={config.titleImg} alt={config.titleAlt} marginBottom={config.marginBottomTitle} />
       <Spacers height={config.titleBottomSpacing} />
       <Columns>
         <Column>

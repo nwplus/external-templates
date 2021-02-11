@@ -73,7 +73,7 @@ const Hamburger = styled.a`
 `
 
 const NwLogo = props => (
-  <a href="https://www.nwplus.io/" target="_blank" rel="noopener" {...props}>
+  <a href="https://www.nwplus.io/" target="_blank" rel="noopener noreferrer" {...props}>
     <Logo src="/nwplus-logo.png" alt="nwPlus logo" />
   </a>
 )
@@ -113,10 +113,7 @@ const Navbar = ({ config, flags }) => {
   const handleScroll = debounce(() => {
     const currentScrollPos = window.pageYOffset
 
-    setVisible(
-      (prevScrollPos > currentScrollPos && prevScrollPos - currentScrollPos > 70) ||
-        currentScrollPos < 10
-    )
+    setVisible((prevScrollPos > currentScrollPos && prevScrollPos - currentScrollPos > 70) || currentScrollPos < 10)
 
     setPrevScrollPos(currentScrollPos)
   }, 100)
@@ -184,34 +181,33 @@ const Navbar = ({ config, flags }) => {
         )}
       </Nav>
     )
-  } else {
-    return (
-      <Sidebar>
-        <NwLogo style={{ height: '40px' }} />
-        <SidebarItems>
-          <NavItem href="#about" fontColor="white">
-            About
-          </NavItem>
-          {faqFlag && (
-            <NavItem href="#faq" fontColor="white">
-              FAQ
-            </NavItem>
-          )}
-          {sponsorFlag && (
-            <NavItem href="#sponsors" fontColor="white">
-              Sponsors
-            </NavItem>
-          )}
-          <NavItem href={previousYearLink} fontColor="white">
-            Last Year
-          </NavItem>
-        </SidebarItems>
-        <Hamburger onClick={toggle}>
-          <img src={close} alt="close hamburger menu" />
-        </Hamburger>
-      </Sidebar>
-    )
   }
+  return (
+    <Sidebar>
+      <NwLogo style={{ height: '40px' }} />
+      <SidebarItems>
+        <NavItem href="#about" fontColor="white">
+          About
+        </NavItem>
+        {faqFlag && (
+          <NavItem href="#faq" fontColor="white">
+            FAQ
+          </NavItem>
+        )}
+        {sponsorFlag && (
+          <NavItem href="#sponsors" fontColor="white">
+            Sponsors
+          </NavItem>
+        )}
+        <NavItem href={previousYearLink} fontColor="white">
+          Last Year
+        </NavItem>
+      </SidebarItems>
+      <Hamburger onClick={toggle}>
+        <img src={close} alt="close hamburger menu" />
+      </Hamburger>
+    </Sidebar>
+  )
 }
 
 export default Navbar

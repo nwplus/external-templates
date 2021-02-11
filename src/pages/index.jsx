@@ -28,7 +28,10 @@ export default function Index({
         <title>cmd-f 2021</title>
         <link rel="icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Fira+Code:wght@700&family=Fira+Mono:wght@700&display=swap" rel="stylesheet" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Fira+Code:wght@700&family=Fira+Mono:wght@700&display=swap"
+          rel="stylesheet"
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <NavBar config={navbarConfig} flags={flags} />
@@ -56,21 +59,17 @@ export async function getStaticProps(context) {
 
   const websiteData = await fireDb.getWebsiteData(targetedHackathon)
 
-  const {
-    featureFlags,
-    BuildConfig,
-    StaticData: { About, Hero, Values, Video },
-  } = websiteData
+  const { featureFlags, BuildConfig, StaticData } = websiteData
   const faq = await fireDb.getCollection(targetedHackathon, 'FAQ')
 
   return {
     props: {
       flags: serialize(featureFlags),
       faq: serialize(faq),
-      about: About,
-      hero: Hero,
-      values: Values,
-      video: Video,
+      about: StaticData?.About,
+      hero: StaticData?.Hero,
+      values: StaticData?.Values,
+      video: StaticData?.Video,
       configs: {
         navbarConfig: serialize(BuildConfig.componentStyling.navbar),
         faqConfig: serialize(BuildConfig.componentStyling.faq),
