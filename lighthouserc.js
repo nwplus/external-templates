@@ -1,7 +1,4 @@
 module.exports = {
-  upload: {
-    target: 'temporary-public-storage',
-  },
   ci: {
     assert: {
       assertions: {

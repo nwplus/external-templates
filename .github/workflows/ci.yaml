@@ -20,7 +20,7 @@ jobs:
         uses: actions/setup-node@v1
       - name: yarn install and build
         run: |
-          yarn install
+          yarn install --frozen-lockfile
           yarn build:staging
         env:
           NEXT_PUBLIC_FIREBASE_API_KEY: ${{ secrets.DEV_FIREBASE_API_KEY }}
