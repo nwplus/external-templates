@@ -16,11 +16,13 @@ const Header = styled.div`
     border-bottom: 4px solid #4A5759;
     padding: 4px;
     background-color: #C8BFB6;
+    font-family: 'Fira Mono', monospace;
 `
 
 const Body = styled.div`
     text-align: center;
     padding: 2em;
+    color: #B95D1D;
 `
 
 const BtnsImg = styled.img`
