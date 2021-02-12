@@ -1,22 +1,12 @@
 import React from 'react'
 import ExpandableFaq from './ExpandableFaq'
-import styled from 'styled-components'
 
-const FaqList = styled.div`
-  padding: 1.2vh 0 1.2vh 0;
-`
-
-const ExpandableFaqList = ({ list, decor }) => {
-  return (
-    <FaqList>
-      {list?.map(({ question, answer }) => (
-        <div key={question}>
-          <ExpandableFaq question={question} answer={answer} decor={decor} />
-        </div>
-      )) ?? null}
-    </FaqList>
-  )
-}
+const ExpandableFaqList = ({ list }) =>
+  list?.map(({ question, answer }) => (
+    <div key={question}>
+      <ExpandableFaq question={question} answer={answer} />
+    </div>
+  )) ?? null
 
 // Export different types of lists here
-export { ExpandableFaqList }
+export default ExpandableFaqList

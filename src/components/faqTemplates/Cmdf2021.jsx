@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { SectionContainerWithBackground, Columns, Column } from '@lib/Containers'
-import { Spacers } from '@lib/Helpers'
-import { ExpandableFaqList } from './shared/FaqList'
 import backgroundPlants from '@assets/faq__background_plants.svg'
 import titleOptions from '@assets/faq__title_options.svg'
 import questionLeftDecor from '@assets/faq__question_leftdecor.svg'
@@ -11,14 +9,19 @@ import headsetDecor from '@assets/faq__decor_general.svg'
 import ducksDecor from '@assets/faq__decor_teams.svg'
 import laptopDecor from '@assets/faq__decor_logistics.svg'
 import mLaptopDecor from '@assets/faq__decor_logistics_m.svg'
+import faqTitle from '@assets/faq__title.svg'
 import { TABLET } from '@constants/measurements'
+import ExpandableFaqList from './shared/FaqList'
 
 const TitleImg = styled.img`
   margin-bottom: ${p => p.marginBottom};
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
+  width: 10vw;
+  @media only screen and (max-width: ${TABLET}) {
+    width: 20vw;
+  }
 `
 
 const AdjustmentContainer = styled.div`
@@ -79,6 +82,7 @@ const LogisticsBoxDecor = styled(Decor)`
   }
 `
 const MobileLogisticsBoxDecor = styled(LogisticsBoxDecor)`
+  visibility: hidden;
   @media only screen and (max-width: ${TABLET}) {
     bottom: 100%;
     left: 20vw;
@@ -99,8 +103,8 @@ const TeamsProjectBoxDecor = styled(Decor)`
 const ExpandableScatteredCategories = ({ faq, config }) => {
   const [categorizedFaqMap, setFaqMap] = useState(new Map())
 
-  const categorizeFaq = faq => {
-    faq.forEach(({ category, question, answer }) => {
+  const categorizeFaq = faqList => {
+    faqList.forEach(({ category, question, answer }) => {
       const reducedFaq = { question, answer }
 
       const currFaqList = categorizedFaqMap.get(category)
@@ -122,12 +126,7 @@ const ExpandableScatteredCategories = ({ faq, config }) => {
       padding="10% 0 10% 0"
       src={backgroundPlants}
     >
-      <TitleImg
-        src={config.titleImg}
-        alt={config.titleAlt}
-        marginBottom={config.marginBottomTitle}
-      />
-      <Spacers height={config.titleBottomSpacing} />
+      <TitleImg src={faqTitle} alt={config.titleAlt} marginBottom={config.marginBottomTitle} />
       <Columns>
         <Column>
           <AdjustmentContainer shift="2vh 4vw 0 4vw">
