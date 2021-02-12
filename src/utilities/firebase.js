@@ -22,7 +22,8 @@ const db = firebase.firestore()
 
 const fireDb = {
   getCollection: async (hackathon, collection) => {
-    let ref, data
+    let ref
+    let data
     if (collection.toUpperCase() === 'FAQ') {
       ref = db.collection('FAQ').where('hackathonIDs', 'array-contains', hackathon)
     } else {

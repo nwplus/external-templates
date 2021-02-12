@@ -1,7 +1,7 @@
 const withOptimizedImages = require('next-optimized-images')
 
 module.exports = () => {
-  if (process.env.DEPLOY_ENV !== 'PRODUCTION')
+  if (process.env.DEPLOY_ENV !== 'PRODUCTION') {
     return withOptimizedImages({
       reactStrictMode: true,
       poweredByHeader: false,
@@ -16,6 +16,7 @@ module.exports = () => {
         NEXT_PUBLIC_FIREBASE_APP_ID: process.env.NEXT_ENV_FIREBASE_APP_ID,
       },
     })
+  }
   return withOptimizedImages({
     poweredByHeader: false,
     env: {
