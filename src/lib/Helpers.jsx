@@ -1,3 +1,4 @@
+/* eslint-disable prefer-rest-params */
 import styled from 'styled-components'
 
 // Add spacing between components

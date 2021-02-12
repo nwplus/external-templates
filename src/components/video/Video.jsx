@@ -86,7 +86,7 @@ const Video = ({ url, title, subtitle }) => (
       />
       <div className="info">
         <div>
-          <img src={logo} />
+          <img src={logo} alt="nwplusLogo" />
           <div>
             <p className="title">{title}</p>
             <p className="subtitle">{subtitle}</p>

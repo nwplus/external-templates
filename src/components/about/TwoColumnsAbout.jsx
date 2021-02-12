@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import logo from '@assets/logo__cmdf.png'
 import background from '@assets/about__bg.svg'
 import mobile from '@assets/about__bg_sm.svg'
-import { LAPTOP, TABLET, scale } from '@constants/measurements'
+import { TABLET, scale } from '@constants/measurements'
 import { SectionContainerWithBackground as Base } from '@lib/Containers'
 
 const SectionContainer = styled(Base)`
@@ -76,16 +76,17 @@ const CountDown = ({ date }) => {
   return (
     <div className="countdown">
       {days}
-d{hours}
-h
-</div>
+      d
+      {hours}
+      h
+    </div>
   )
 }
 
 const About = ({ top, bottom, date }) => (
   <SectionContainer src={background}>
     <div className="intro">
-      <img src={logo} />
+      <img src={logo} alt="cmd-fLogo" />
       <p className="title">{top}</p>
     </div>
     <div className="copy">{bottom}</div>

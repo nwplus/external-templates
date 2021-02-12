@@ -3,5 +3,4 @@
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
   "editor.detectIndentation": false,
-  "eslint.codeActionsOnSave.mode": "all"
 }

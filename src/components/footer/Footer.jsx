@@ -1,9 +1,8 @@
 import React from 'react'
-import styled from 'styled-components'
 import Window from '@components/Window'
-import { SectionContainerWithBackground as Base, SectionContainer as Container } from '@lib/Containers'
+import { SectionContainerWithBackground as Base } from '@lib/Containers'
 
-const Footer = ({ test }) => (
+const Footer = () => (
   <Base>
     <Window title="footer.png">CONTENT</Window>
   </Base>
