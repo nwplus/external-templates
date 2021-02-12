@@ -1,7 +1,6 @@
 module.exports = {
   ci: {
     assert: {
-      preset: 'lighthouse:recommended',
       assertions: {
         'apple-touch-icon': 'off',
         'html-has-lang': 'off',
