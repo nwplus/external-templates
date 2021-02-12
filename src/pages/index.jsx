@@ -2,7 +2,7 @@ import Head from 'next/head'
 import React, { useState, useEffect } from 'react'
 import GlobalStyles from '@styles/global'
 import fireDb from '@utilities/firebase'
-import { serialize } from '@utilities/format'
+import serialize from '@utilities/format'
 import FAQExpandable from '@components/faqTemplates/ExpandableWithCategories'
 import About from '@components/about/TwoColumnsAbout'
 import Video from '@components/video/Video'
@@ -32,7 +32,10 @@ export default function Index({
         <title>cmd-f 2021</title>
         <link rel="icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Fira+Code:wght@700&family=Fira+Mono:wght@700&display=swap" rel="stylesheet" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Fira+Code:wght@700&family=Fira+Mono:wght@700&display=swap"
+          rel="stylesheet"
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <NavBar config={navbarConfig} flags={flags} />
@@ -46,7 +49,7 @@ export default function Index({
   )
 }
 
-export async function getStaticProps(context) {
+export async function getStaticProps() {
   const targetedHackathon = await fireDb.getTargetedHackathon()
 
   // Uncomment if you want to update config
@@ -60,21 +63,17 @@ export async function getStaticProps(context) {
 
   const websiteData = await fireDb.getWebsiteData(targetedHackathon)
 
-  const {
-    featureFlags,
-    BuildConfig,
-    StaticData: { About, Hero, Values, Video },
-  } = websiteData
+  const { featureFlags, BuildConfig, StaticData } = websiteData
   const faq = await fireDb.getCollection(targetedHackathon, 'FAQ')
 
   return {
     props: {
       flags: serialize(featureFlags),
       faq: serialize(faq),
-      about: About,
-      hero: Hero,
-      values: Values,
-      video: Video,
+      about: StaticData?.About,
+      hero: StaticData?.Hero,
+      values: StaticData?.Values,
+      video: StaticData?.Video,
       configs: {
         navbarConfig: serialize(BuildConfig.componentStyling.navbar),
         faqConfig: serialize(BuildConfig.componentStyling.faq),
