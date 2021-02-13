@@ -11,8 +11,9 @@ export const SectionContainer = styled.div`
 export const SectionContainerWithBackground = styled(SectionContainer)`
   background-color: #F9F6EF;
   background-image: url(${p => p.src});
+  background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
   height: ${p => p.height};
 `
 export const Columns = styled.div`
