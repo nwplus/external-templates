@@ -32,7 +32,7 @@ const SectionContainer = styled(Base)`
     font-weight: 700;
     position: absolute;
     top: 57.5vw;
-    left: 43.5vw;
+    left: 42.5vw;
   }
   img {
     display: block;
@@ -76,10 +76,7 @@ const CountDown = ({ date }) => {
 
   return (
     <div className="countdown">
-      {days}
-      d
-      {hours}
-      h
+      {`${days}d ${hours}h`}
     </div>
   )
 }

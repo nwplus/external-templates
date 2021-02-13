@@ -29,9 +29,9 @@ export default {
   // 'featureFlags.rsvpOpenFlag': false,
   // 'featureFlags.sponsorFlag': false,
   // 'featureFlags.volunteerFlag': false,
-  // 'StaticData.About.top': 'string',
-  // 'StaticData.About.left': 'string',
-  // 'StaticData.About.right': 'string',
+  // 'StaticData.About.date': "Mar 8, 2021",
+  // 'StaticData.About.top': "Join us on International Women*’s Day at British Columbia’s first and largest all-female* hackathon to explore new technologies and celebrate women* in tech!",
+  // 'StaticData.About.bottom': "We're here to break stereotypes and create a safe space for women* where they can learn new skills, build confidence, and discover a supportive community. Whether you're a first time hacker or a veteran, we want to help you take your next steps in tech. Come join us for a fun weekend of hacking with amazing workshops, social events, and food!"
   // 'StaticData.Hero.buttonText': 'string',
   // 'StaticData.Hero.titleText': 'string',
   // 'StaticData.Hero.dateText': 'string',

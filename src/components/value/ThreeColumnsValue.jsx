@@ -30,7 +30,7 @@ const SectionContainer = styled(Base)`
   }
   .covid {
     padding-left: 5vw;
-    padding-top: ${() => scale(787, 1440, 220, 532)};
+    padding-top: ${() => scale(787, 1440, 200, 500)};
     .title {
       font-size: ${() => scale(787, 1440, 32, 48)};
       width: fit-content;

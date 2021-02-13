@@ -23,7 +23,7 @@ export default function Index({
   configs: { navbarConfig, faqConfig },
 }) {
   const [loaded, setLoaded] = useState(false)
-  useEffect(() => setTimeout(() => setLoaded(true), 2000), [])
+  useEffect(() => setTimeout(() => setLoaded(true), 3500), [])
 
   return (
     loaded ? <div>
@@ -40,10 +40,10 @@ export default function Index({
       </Head>
       <NavBar config={navbarConfig} flags={flags} />
       <Hero hero={hero} />
-      {faqFlag && <FAQExpandable faq={faq} config={faqConfig} />}
       <About {...about} />
       <Video {...video} />
       <Values {...values} />
+      {faqFlag && <FAQExpandable faq={faq} config={faqConfig} />}
       <Footer />
     </div> : <Loading />
   )
