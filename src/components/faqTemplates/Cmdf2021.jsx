@@ -85,8 +85,9 @@ const MobileLogisticsBoxDecor = styled(LogisticsBoxDecor)`
   visibility: hidden;
   @media only screen and (max-width: ${TABLET}) {
     bottom: 100%;
-    left: 20vw;
+    left: 35vw;
     height: 13vh;
+    max-width: 200px;
     visibility: visible;
   }
 `
