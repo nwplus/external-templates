@@ -6,6 +6,7 @@ import icon_twitter from '@assets/icon_twitter.svg'
 import icon_insta from '@assets/icon_insta.svg'
 import icon_medium from '@assets/icon_medium.svg'
 import footer_icons from '@assets/footer_icons.svg'
+import background from '@assets/footer_plants.svg'
 import { SectionContainerWithBackground as Base } from '@lib/Containers'
 
 const Container = styled(Base)`
@@ -28,7 +29,7 @@ const StyledIcon = styled.img`
 
 const Footer = () => {
     return (
-        <Container>
+        <Container src={background}>
             <Window title="footer.png">
                 <a href="https://www.facebook.com/nwplusubc/">
                     <StyledIcon src={icon_fb} alt="Facebook"/>
