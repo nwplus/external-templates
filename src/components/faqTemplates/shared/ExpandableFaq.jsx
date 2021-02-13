@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { TABLET } from '@constants/measurements'
+import { scale } from '@utilities/format'
 
 const Accordion = styled.button`
   position: relative;
@@ -12,7 +13,7 @@ const Accordion = styled.button`
   outline: none;
   border: 0px;
   color: #4a5759;
-  font-size: 18px;
+  font-size: ${() => scale(320, 1440, 8, 18)};
   line-height: 23.44px;
   background-color: transparent;
   padding: 1vh 3.5vw 1vh 3.5vw;
@@ -23,6 +24,7 @@ const Accordion = styled.button`
 
 const FaqQuestionContainer = styled.div`
   font-weight: 700;
+  font-size: 25px;
 `
 
 const FaqAnswerContainer = styled.div`

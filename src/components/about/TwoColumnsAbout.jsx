@@ -3,7 +3,8 @@ import styled from 'styled-components'
 import logo from '@assets/logo__cmdf.png'
 import background from '@assets/about__bg.svg'
 import mobile from '@assets/about__bg_sm.svg'
-import { TABLET, scale } from '@constants/measurements'
+import { TABLET } from '@constants/measurements'
+import { scale } from '@utilities/format'
 import { SectionContainerWithBackground as Base } from '@lib/Containers'
 
 const SectionContainer = styled(Base)`
@@ -75,10 +76,7 @@ const CountDown = ({ date }) => {
 
   return (
     <div className="countdown">
-      {days}
-      d
-      {hours}
-      h
+      {days}d{hours}h
     </div>
   )
 }

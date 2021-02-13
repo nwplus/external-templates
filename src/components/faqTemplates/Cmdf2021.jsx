@@ -86,7 +86,7 @@ const MobileLogisticsBoxDecor = styled(LogisticsBoxDecor)`
   @media only screen and (max-width: ${TABLET}) {
     bottom: 100%;
     left: 20vw;
-    height: 16vh;
+    height: 13vh;
     visibility: visible;
   }
 `
@@ -153,7 +153,7 @@ const ExpandableScatteredCategories = ({ faq, config }) => {
               decor={{ leftDecor: questionLeftDecor, rightDecor: questionRightDecor }}
             />
           </AdjustmentContainer>
-          <AdjustmentContainer shift="20vh 7vw 0 -5vw">
+          <AdjustmentContainer shift="20vh 8vw 0 -5vw">
             <LogisticsBoxDecor src={laptopDecor} />
             <MobileLogisticsBoxDecor src={mLaptopDecor} />
             <FaqTitle>
