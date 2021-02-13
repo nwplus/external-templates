@@ -27,3 +27,13 @@ export const Column = styled.div`
   width: 100%;
   margin: 0 2vw;
 `
+
+export const Rows = styled.div`
+  display: flex;
+  flex-direction: column;  
+`
+
+export const Row = styled.div`
+  width: 100%;
+  margin-top: 2vw;
+`
