@@ -13,7 +13,7 @@ const Accordion = styled.button`
   outline: none;
   border: 0px;
   color: #4a5759;
-  font-size: ${() => scale(320, 1440, 8, 18)};
+  font-size: ${() => scale(320, 1440, 16, 20)};
   line-height: 23.44px;
   background-color: transparent;
   padding: 1vh 3.5vw 1vh 3.5vw;
@@ -24,7 +24,6 @@ const Accordion = styled.button`
 
 const FaqQuestionContainer = styled.div`
   font-weight: 700;
-  font-size: 25px;
 `
 
 const FaqAnswerContainer = styled.div`
