@@ -74,7 +74,7 @@ const LogisticsBoxDecor = styled(Decor)`
   position: absolute;
   left: 20px;
   bottom: 98%;
-  width: 90%;
+  width: 70%;
   @media only screen and (max-width: ${TABLET}) {
     bottom: 99%;
     height: 90%;

@@ -28,9 +28,8 @@ const FaqQuestionContainer = styled.div`
 
 const FaqAnswerContainer = styled.div`
   display: ${p => (p.shouldDisplay ? 'block' : 'none')};
-  overflow: hidden;
-  margin: auto;
-  margin-bottom: 2%;
+  font-weight: 400px;
+  margin: 0.5vh auto 0 auto;
 `
 const LeftFaqDecor = styled.img`
   position: absolute;
