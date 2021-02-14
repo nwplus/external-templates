@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { SectionContainerWithBackground, Columns, Column } from '@lib/Containers'
+import {
+  SectionContainerWithBackground as SectionContainerWithContainBackground,
+  Columns,
+  Column,
+} from '@lib/Containers'
 import backgroundPlants from '@assets/faq__background_plants.svg'
 import titleOptions from '@assets/faq__title_options.svg'
 import questionLeftDecor from '@assets/faq__question_leftdecor.svg'
@@ -98,6 +102,9 @@ const TeamsProjectBoxDecor = styled(Decor)`
   width: 90%;
 `
 
+const SectionContainerWithBackground = styled(SectionContainerWithContainBackground)`
+  background-size: cover;
+`
 // FAQ Section with two columns and scattered layout:
 // General    Logistics
 //          Teams & Projects
