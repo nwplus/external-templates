@@ -15,6 +15,7 @@ import laptopDecor from '@assets/faq__decor_logistics.svg'
 import mLaptopDecor from '@assets/faq__decor_logistics_m.svg'
 import faqTitle from '@assets/faq__title.svg'
 import { TABLET } from '@constants/measurements'
+import { scale } from '@utilities/format'
 import ExpandableFaqList from './shared/FaqList'
 
 const TitleImg = styled.img`
@@ -33,11 +34,9 @@ const AdjustmentContainer = styled.div`
   z-index: 0;
   margin: ${p => p.shift};
   background-color: #efedea;
-  border: 5px solid #4a5759;
-  border-radius: 8px;
+  border: ${() => scale(320, 1440, 4, 5)} solid #4a5759;
+  border-radius: ${() => scale(320, 1440, 5, 8)};
   @media only screen and (max-width: ${TABLET}) {
-    border: 3px solid #4a5759;
-    border-radius: 5px;
     width: 80%;
     padding: 0;
     margin: 10vh auto 0 auto;
@@ -50,15 +49,11 @@ const FaqTitle = styled.div`
   color: #192825;
   padding: 0.5vh 0 0.5vh 0;
   font-weight: 700;
-  font-size: 19px;
+  font-size: ${() => scale(320, 1440, 17, 19)};
   line-height: 21px;
   text-align: center;
-  border-bottom: 5px solid #4a5759;
+  border-bottom: ${() => scale(320, 1440, 4, 5)} solid #4a5759;
   background-color: #c8bfb6;
-  @media only screen and (max-width: ${TABLET}) {
-    border-bottom: 3px solid #4a5759;
-    font-size: 16px;
-  }
 `
 
 const FaqTitleBackground = styled.img`

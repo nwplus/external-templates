@@ -10,7 +10,7 @@ import Button from './Button'
 
 const SectionContainer = styled(Base)`
   @import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
-
+  background-size: cover;
   font-size: ${() => scale(320, 1440, 6, 11.5)};
   width: 100vw;
   height: 85.75vw;
