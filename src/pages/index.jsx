@@ -48,7 +48,6 @@ export async function getStaticProps() {
 
   return {
     props: {
-      hackathon: targetedHackathon,
       flags: serialize(featureFlags),
       about: StaticData?.About,
       hero: StaticData?.Hero,
