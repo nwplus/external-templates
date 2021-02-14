@@ -115,14 +115,15 @@ const ExpandableScatteredCategories = ({ config }) => {
   const [faq, setFaq] = useState([])
 
   const categorizeFaq = faqList => {
+    const updatedMap = new Map()
     faqList.forEach(({ category, question, answer }) => {
       const reducedFaq = { question, answer }
 
-      const currFaqList = categorizedFaqMap.get(category)
+      const currFaqList = updatedMap.get(category)
       const updatedFaqList = currFaqList ? [reducedFaq, ...currFaqList] : [reducedFaq]
 
-      const updatedMap = categorizedFaqMap.set(category, updatedFaqList)
-      setFaqMap(new Map(updatedMap))
+      updatedMap.set(category, updatedFaqList)
+      setFaqMap(updatedMap)
     })
   }
 
