@@ -36,6 +36,8 @@ const AdjustmentContainer = styled.div`
   border: 5px solid #4a5759;
   border-radius: 8px;
   @media only screen and (max-width: ${TABLET}) {
+    border: 3px solid #4a5759;
+    border-radius: 5px;
     width: 80%;
     padding: 0;
     margin: 10vh auto 0 auto;
@@ -53,6 +55,10 @@ const FaqTitle = styled.div`
   text-align: center;
   border-bottom: 5px solid #4a5759;
   background-color: #c8bfb6;
+  @media only screen and (max-width: ${TABLET}) {
+    border-bottom: 3px solid #4a5759;
+    font-size: 16px;
+  }
 `
 
 const FaqTitleBackground = styled.img`

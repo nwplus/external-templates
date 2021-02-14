@@ -13,7 +13,7 @@ const Accordion = styled.button`
   outline: none;
   border: 0px;
   color: #4a5759;
-  font-size: ${() => scale(320, 1440, 16, 20)};
+  font-size: ${() => scale(320, 1440, 15, 20)};
   line-height: 23.44px;
   background-color: transparent;
   padding: 1vh 3.5vw 1vh 3.5vw;
