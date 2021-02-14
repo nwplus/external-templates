@@ -49,11 +49,13 @@ export async function getStaticProps() {
   const targetedHackathon = await fireDb.getTargetedHackathon()
 
   // Uncomment if you want to update config
-  await fireDb.updateConfig(targetedHackathon)
+  // await fireDb.updateConfig(targetedHackathon)
 
   if (!targetedHackathon) {
     return {
-      notFound: true,
+      props: {
+        notFound: true,
+      }
     }
   }
 
