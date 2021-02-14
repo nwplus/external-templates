@@ -11,15 +11,7 @@ import NavBar from '@components/hero/NavBar'
 import Hero from '@components/hero/Hero'
 import Values from '@components/value/ThreeColumnsValue'
 
-export default function Index({
-  flags,
-  // flags: { faqFlag },
-  about,
-  hero,
-  video,
-  values,
-  configs: { navbarConfig, faqConfig },
-}) {
+export default function Index({ flags, about, hero, video, values, configs: { navbarConfig, faqConfig } }) {
   return (
     <div>
       <GlobalStyles />
@@ -50,25 +42,14 @@ export async function getStaticProps() {
   // Uncomment if you want to update config
   // await fireDb.updateConfig(targetedHackathon)
 
-  if (!targetedHackathon) {
-    return {
-      props: {
-        notFound: true,
-      },
-    }
-  }
-
   const websiteData = await fireDb.getWebsiteData(targetedHackathon)
 
   const { featureFlags, BuildConfig, StaticData } = websiteData
-
-  // const faq = await fireDb.getCollection(targetedHackathon, 'FAQ')
 
   return {
     props: {
       hackathon: targetedHackathon,
       flags: serialize(featureFlags),
-      // faq: serialize(faq),
       about: StaticData?.About,
       hero: StaticData?.Hero,
       values: StaticData?.Values,
