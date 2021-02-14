@@ -19,6 +19,7 @@ const Accordion = styled.button`
   padding: 1vh 3.5vw 1vh 3.5vw;
   @media only screen and (max-width: ${TABLET}) {
     padding: 1vh 6vw 1vh 6vw;
+    font-size: 15px;
   }
 `
 
