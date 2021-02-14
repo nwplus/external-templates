@@ -7,7 +7,10 @@
     "nwplus-ubc-dev": {
       "hosting": {
         "root": [
-          "nwplus-dev-root"
+          "dev-nwplus-root"
+        ],
+        "cmd-f_dev": [
+          "dev-nwplus-cmd-f"
         ]
       }
     },
@@ -16,7 +19,7 @@
         "root": [
           "nwplus-root"
         ],
-        "cmd-f_dev": [
+        "cmd-f_main": [
           "nwplus-cmd-f"
         ]
       }
