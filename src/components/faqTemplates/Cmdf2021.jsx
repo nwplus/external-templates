@@ -129,7 +129,7 @@ const ExpandableScatteredCategories = ({ config }) => {
   useEffect(() => fireDb.subscribeToCollection('cmd-f2021', 'FAQ', setFaq), [])
 
   useEffect(() => {
-    if (faq) categorizeFaq(faq)
+    categorizeFaq(faq)
   }, [faq])
 
   return (
