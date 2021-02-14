@@ -26,7 +26,7 @@ const fireDb = {
     if (collection.toUpperCase() === 'FAQ') {
       ref = db.collection('FAQ').where('hackathonIDs', 'array-contains', hackathon)
     } else {
-      ref = db.collection(HACKATHONS).doc(hackathon).collection(collection)
+      ref = db.collection(HACKATHONS).doc(hackathon).collection(collection).get()
     }
     return ref.onSnapshot(snapshot => {
       const data = []
