@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { SectionContainer, Columns, Column } from '@lib/Containers'
 import { Spacers } from '@lib/Helpers'
-import { ExpandableFaqList } from './shared/FaqList'
+import ExpandableFaqList from './shared/FaqList'
 
 const TitleImg = styled.img`
   margin-bottom: ${p => p.marginBottom};
@@ -18,8 +18,8 @@ const TitleImg = styled.img`
 const ExpandableWithCategories = ({ faq, config }) => {
   const [categorizedFaqMap, setFaqMap] = useState(new Map())
 
-  const categorizeFaq = faq => {
-    faq.forEach(({ category, question, answer }) => {
+  const categorizeFaq = faqList => {
+    faqList.forEach(({ category, question, answer }) => {
       const reducedFaq = { question, answer }
 
       const currFaqList = categorizedFaqMap.get(category)
@@ -36,11 +36,7 @@ const ExpandableWithCategories = ({ faq, config }) => {
 
   return (
     <SectionContainer width={config.containerWidth} margin={config.containerMargin}>
-      <TitleImg
-        src={config.titleImg}
-        alt={config.titleAlt}
-        marginBottom={config.marginBottomTitle}
-      />
+      <TitleImg src={config.titleImg} alt={config.titleAlt} marginBottom={config.marginBottomTitle} />
       <Spacers height={config.titleBottomSpacing} />
       <Columns>
         <Column>

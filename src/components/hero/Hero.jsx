@@ -2,10 +2,10 @@ import React from 'react'
 import logo from '@assets/logo__cmdf.png'
 import mobile from '@assets/hero__bg_sm.svg'
 import styled from 'styled-components'
-import Button from './Button'
 import background from '@assets/hero__bg.svg'
 import { LAPTOP, scale } from '@constants/measurements'
 import { SectionContainerWithBackground as Base } from '@lib/Containers'
+import Button from './Button'
 
 const SectionContainer = styled(Base)`
   @import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
