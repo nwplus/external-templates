@@ -11,6 +11,10 @@ import { SectionContainerWithBackground as Base } from '@lib/Containers'
 
 const Container = styled(Base)`
     text-align: center;
+    position: relative;
+    background-image: url(${p => p.src});
+    background-position: bottom;
+    min-height: 34vw;
 `
 
 const StyledA = styled.a`
