@@ -1,3 +1,4 @@
+/* eslint react/jsx-filename-extension: 0 */
 // https://dev.to/rsanchezp/next-js-and-styled-components-style-loading-issue-3i68
 import Document from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
