@@ -21,12 +21,12 @@ if (!firebase.apps.length) {
 const db = firebase.firestore()
 
 const fireDb = {
-  subscribeToCollection: async (hackathon, collection, callback) => {
+  subscribeToCollection: (hackathon, collection, callback) => {
     let ref
     if (collection.toUpperCase() === 'FAQ') {
       ref = db.collection('FAQ').where('hackathonIDs', 'array-contains', hackathon)
     } else {
-      ref = db.collection(HACKATHONS).doc(hackathon).collection(collection).get()
+      ref = db.collection(HACKATHONS).doc(hackathon).collection(collection)
     }
     return ref.onSnapshot(snapshot => {
       const data = []
