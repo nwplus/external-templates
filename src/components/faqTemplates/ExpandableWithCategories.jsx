@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { SectionContainer, Columns, Column } from '@lib/Containers'
-import { Spacers } from '@lib/Helpers'
+import Spacers from '@lib/Helpers'
 import ExpandableFaqList from './shared/FaqList'
 
 const TitleImg = styled.img`

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import hamburger from '@assets/navbar__hamburger.svg'
 import close from '@assets/navbar__close.svg'
 import styled from 'styled-components'
-import { debounce } from '@lib/Helpers'
+import debounce from '@utilities/debounce'
 
 const Nav = styled.nav`
   position: fixed;
