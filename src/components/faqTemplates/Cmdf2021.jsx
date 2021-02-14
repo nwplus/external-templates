@@ -87,7 +87,7 @@ const MobileLogisticsBoxDecor = styled(LogisticsBoxDecor)`
     bottom: 100%;
     left: 35vw;
     height: 13vh;
-    max-width: 150px;
+    width: auto;
     visibility: visible;
   }
 `
