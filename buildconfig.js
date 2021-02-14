@@ -8,7 +8,7 @@ export default {
   // 'BuildConfig.componentStyling.navbar.previousYearLink': 'https://cmd-f.nwplus.io/',
   // 'BuildConfig.componentStyling.hero.marginBottom': '0px',
   // 'BuildConfig.componentStyling.hero.marginTop': '1px',
-  // 'BuildConfig.componentStyling.faq.containerWidth': '80%',
+  // 'BuildConfig.componentStyling.faq.containerWidth': '100%',
   // 'BuildConfig.componentStyling.faq.containerMargin': 'auto',
   // 'BuildConfig.componentStyling.faq.marginBottom': '0px',
   // 'BuildConfig.componentStyling.faq.marginTop': '1px',

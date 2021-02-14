@@ -1,5 +1,6 @@
 import styled from 'styled-components'
-import { LAPTOP, scale } from '@constants/measurements'
+import { LAPTOP } from '@constants/measurements'
+import { scale } from '@utilities/format'
 
 const Button = styled.button.attrs(({ applyActive }) => ({
   type: 'button',

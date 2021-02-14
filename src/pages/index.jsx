@@ -2,8 +2,8 @@ import Head from 'next/head'
 import React from 'react'
 import GlobalStyles from '@styles/global'
 import fireDb from '@utilities/firebase'
-import serialize from '@utilities/format'
-import FAQExpandable from '@components/faqTemplates/ExpandableWithCategories'
+import { serialize } from '@utilities/format'
+import FAQExpandable from '@components/faqTemplates/Cmdf2021'
 import About from '@components/about/TwoColumnsAbout'
 import Video from '@components/video/Video'
 import Footer from '@components/footer/Footer'
@@ -36,10 +36,10 @@ export default function Index({
       </Head>
       <NavBar config={navbarConfig} flags={flags} />
       <Hero hero={hero} />
-      {faqFlag && <FAQExpandable faq={faq} config={faqConfig} />}
       <About {...about} />
       <Video {...video} />
       <Values {...values} />
+      {faqFlag && <FAQExpandable faq={faq} config={faqConfig} />}
       <Footer />
     </div>
   )

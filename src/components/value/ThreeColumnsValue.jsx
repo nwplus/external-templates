@@ -2,7 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import background from '@assets/value__bg.svg'
 import mobile from '@assets/value__bg_sm.svg'
-import { TABLET, scale } from '@constants/measurements'
+import { TABLET } from '@constants/measurements'
+import { scale } from '@utilities/format'
 import { Columns as ColumnsBase, Column as ColumnBase, SectionContainerWithBackground as Base } from '@lib/Containers'
 
 const SectionContainer = styled(Base)`
