@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { SectionContainerWithBackground, Rows, Row } from '@lib/Containers'
 import background from '@assets/sponsor_bg.svg'
-import { LAPTOP, scale } from '@constants/measurements'
+import { TABLET, scale } from '@constants/measurements'
 
 const SectionContainer = styled(SectionContainerWithBackground)`
   display: flex;
@@ -23,6 +23,10 @@ const SectionContainer = styled(SectionContainerWithBackground)`
 
 const StyledH1 = styled.h1`
   margin-bottom: 5rem;
+
+  @media only screen and (max-width: ${TABLET}) {
+    margin-bottom: 3rem;
+  }
 `
 
 const Button = styled.button.attrs(({ applyActive }) => ({
@@ -46,10 +50,9 @@ const Button = styled.button.attrs(({ applyActive }) => ({
     filter: drop-shadow(0px 8px 4px rgba(0, 0, 0, 0.25));
   }
 
-  @media (max-width: ${LAPTOP}) {
-    width: 20vw;
-    height: 5vw;
-    font-size: ${() => scale(320, 1440, 9, 30)};
+  @media only screen and (max-width: ${TABLET}) {
+    height: 6vw;
+    width: 14vw;
   }
 `
 
@@ -58,12 +61,22 @@ const PlatniumImg = styled.img`
   max-height: 300px;
   margin-left: 2rem;
   margin-top: 2vw;
+
+  @media only screen and (max-width: ${TABLET}) {
+    max-width: 50vw;
+    max-height: 20vh;
+  }
 `
 const GoldImg = styled.img`
   max-width: 700px;
   max-height: 250px;
   margin-left: 2rem;
   margin-top: 2vw;
+
+  @media only screen and (max-width: ${TABLET}) {
+    max-width: 45vw;
+    max-height: 20vh;
+  }
 `
 
 const SilverImg = styled.img`
@@ -71,6 +84,11 @@ const SilverImg = styled.img`
   max-height: 200px;
   margin-left: 2rem;
   margin-top: 2vw;
+
+  @media only screen and (max-width: ${TABLET}) {
+    max-width: 40vw;
+    max-height: 20vh;
+  }
 `
 
 const BronzeImg = styled.img`
@@ -78,6 +96,11 @@ const BronzeImg = styled.img`
   max-height: 150px;
   margin-left: 2rem;
   margin-top: 2vw;
+
+  @media only screen and (max-width: ${TABLET}) {
+    max-width: 35vw;    
+    max-height: 15vh;
+  }
 `
 
 const InkindImg = styled.img`
@@ -85,14 +108,19 @@ const InkindImg = styled.img`
   max-height: 150px;
   margin-left: 2rem;
   margin-top: 2vw;
+
+  @media only screen and (max-width: ${TABLET}) {
+    max-width: 30vw;
+    max-height: 15vh;
+  }
 `
 
-// in-kind -> bronze -> silver -> gold -> platinum
+// Inkind -> bronze -> silver -> gold -> platinum
 const SponsorSection = ({ sponsorData }) => {
   const [categorizedSponsorMap, setSponsorMap] = useState(new Map())
 
   const categorizeSponsor = sponsorList => {
-    sponsorList.forEach(({ imgName, imgURL, link, name, tier }) => {
+    sponsorList.forEach(({ imgURL, link, tier }) => {
       const reducedSponsor = { imgURL, link }
 
       const currSponsorList = categorizedSponsorMap.get(tier)
@@ -107,6 +135,20 @@ const SponsorSection = ({ sponsorData }) => {
     categorizeSponsor(sponsorData)
   }, [sponsorData])
 
+  const SponsorsComponent = ({ tier }) => {
+    return (
+      <Row>
+        {categorizedSponsorMap.get(tier)?.map(({ imgURL, link }) => (
+          <a href={link} target="_blank">
+            {tier === 'platinum' ? <PlatniumImg src={imgURL} /> : tier === 'gold' ? <GoldImg src={imgURL} /> :
+              tier === 'silver' ? <SilverImg src={imgURL} /> : tier === 'bronze' ? <BronzeImg src={imgURL} /> : tier === 'Inkind' ? <InkindImg src={imgURL} /> : void 0
+            }
+          </a>
+        ))}
+      </Row>
+    )
+  }
+
   return (
     <SectionContainer
       src={background}
@@ -114,41 +156,11 @@ const SponsorSection = ({ sponsorData }) => {
     >
       <StyledH1>Sponsors</StyledH1>
       <Rows>
-        <Row>
-          {categorizedSponsorMap.get('platinum')?.map(({ imgURL, link }) => (
-            <a href={link} target="_blank">
-              <PlatniumImg src={imgURL} />
-            </a>
-          ))}
-        </Row>
-        <Row>
-          {categorizedSponsorMap.get('gold')?.map(({ imgURL, link }) => (
-            <a href={link} target="_blank">
-              <GoldImg src={imgURL} />
-            </a>
-          ))}
-        </Row>
-        <Row>
-          {categorizedSponsorMap.get('silver')?.map(({ imgURL, link }) => (
-            <a href={link} target="_blank">
-              <SilverImg src={imgURL} />
-            </a>
-          ))}
-        </Row>
-        <Row>
-          {categorizedSponsorMap.get('bronze')?.map(({ imgURL, link }) => (
-            <a href={link} target="_blank">
-              <BronzeImg src={imgURL} />
-            </a>
-          ))}
-        </Row>
-        <Row>
-          {categorizedSponsorMap.get('Inkind')?.map(({ imgURL, link }) => (
-            <a href={link} target="_blank">
-              <InkindImg src={imgURL} />
-            </a>
-          ))}
-        </Row>
+        <SponsorsComponent tier='platinum' />
+        <SponsorsComponent tier='gold' />
+        <SponsorsComponent tier='silver' />
+        <SponsorsComponent tier='bronze' />
+        <SponsorsComponent tier='Inkind' />
       </Rows>
       <a href="mailto:sponsorship@nwplus.io?Subject=Sponsorship">
         <Button>Become a Sponsor</Button>
