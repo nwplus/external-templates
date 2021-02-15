@@ -3,7 +3,8 @@ import styled from 'styled-components'
 import logo from '@assets/logo__nwplus.jpg'
 import background from '@assets/video__frame.svg'
 import mobile from '@assets/video__frame_sm.svg'
-import { TABLET, scale } from '@constants/measurements'
+import { TABLET } from '@constants/measurements'
+import { scale } from '@utilities/format'
 import { SectionContainerWithBackground as Base, SectionContainer as Container } from '@lib/Containers'
 
 const SectionContainer = styled(Base)`

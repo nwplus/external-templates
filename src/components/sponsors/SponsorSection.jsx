@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { SectionContainerWithBackground, Rows, Row } from '@lib/Containers'
 import background from '@assets/sponsor_bg.svg'
-import { TABLET, scale } from '@constants/measurements'
+import { TABLET } from '@constants/measurements'
+import { scale } from '@utilities/format'
 
 const SectionContainer = styled(SectionContainerWithBackground)`
   display: flex;

@@ -6,7 +6,9 @@ export const SectionContainer = styled.div`
   color: #2f4246;
   font-family: 'DM Sans', sans-serif;
   width: ${p => p.width};
+  height: ${p => p.height};
   margin: ${p => p.margin};
+  padding: ${p => p.padding};
 `
 export const SectionContainerWithBackground = styled(SectionContainer)`
   background-color: #f9f6ef;
