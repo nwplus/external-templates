@@ -3,29 +3,51 @@ import styled from 'styled-components'
 import { SectionContainerWithBackground, Rows, Row } from '@lib/Containers'
 import background from '@assets/sponsor_bg.svg'
 import Button from '../hero/Button'
+import { scale } from '@constants/measurements'
 
-const GreenTextDiv = styled.div`
-  color: green;
-  font-style: italic;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-`
+const SectionContainer = styled(SectionContainerWithBackground)`
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  flex-direction: column;
 
-const ImgDiv = styled.img`
-  width: 10rem;
-  height: 10rem;
+  h1 {
+    text-align: center;
+    font-family: 'Fira Mono', monospace;
+    font-size: ${() => scale(787, 1440, 28, 48)};
+  }
 `
-const SponsorImgDiv = styled.img`
+const StyledButton = styled(Button)`
+  width: 12vw;
+  height: 3.5vw;
+`
+const PlatniumImg = styled.img`
+  max-width: 900px;
+  max-height: 300px;
+  margin-left: 2rem;
+`
+const GoldImg = styled.img`
   max-width: 700px;
+  max-height: 250px;
+  margin-left: 2rem;
 `
 
-const TitleImg = styled.img`
-  margin-bottom: ${p => p.marginBottom};
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
+const SilverImg = styled.img`
+  max-width: 500px;
+  max-height: 200px;
+  margin-left: 2rem;
+`
+
+const BronzeImg = styled.img`
+  max-width: 300px;
+  max-height: 150px;
+  margin-left: 2rem;
+`
+
+const InkindImg = styled.img`
+  max-width: 100px;
+  max-height: 100px;
+  margin-left: 2rem;
 `
 
 // in-kind -> bronze -> silver -> gold -> platinum
@@ -49,65 +71,50 @@ const SponsorSection = ({ sponsorData }) => {
   }, [sponsorData])
 
   return (
-    <SectionContainerWithBackground
+    <SectionContainer
       src={background}
-      style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}
     >
       <h1>Sponsors</h1>
       <Rows>
-        {categorizedSponsorMap.get('platinum')?.map(({ imgURL, link }) => (
-          <>
-            <Row>
-              <a href={link} target="_blank">
-                <SponsorImgDiv src={imgURL} />
-              </a>
-            </Row>
-            <Row />
-          </>
-        ))}
+        <Row>
+          {categorizedSponsorMap.get('platinum')?.map(({ imgURL, link }) => (
+
+            <a href={link} target="_blank">
+              <PlatniumImg src={imgURL} />
+            </a>
+          ))}
+        </Row>
         <Row>
           {categorizedSponsorMap.get('gold')?.map(({ imgURL, link }) => (
             <a href={link} target="_blank">
-              <SponsorImgDiv src={imgURL} />
+              <GoldImg src={imgURL} />
             </a>
           ))}
         </Row>
         <Row>
           {categorizedSponsorMap.get('silver')?.map(({ imgURL, link }) => (
             <a href={link} target="_blank">
-              <SponsorImgDiv src={imgURL} />
+              <SilverImg src={imgURL} />
             </a>
           ))}
         </Row>
         <Row>
           {categorizedSponsorMap.get('bronze')?.map(({ imgURL, link }) => (
             <a href={link} target="_blank">
-              <SponsorImgDiv src={imgURL} />
+              <BronzeImg src={imgURL} />
             </a>
           ))}
         </Row>
         <Row>
           {categorizedSponsorMap.get('Inkind')?.map(({ imgURL, link }) => (
             <a href={link} target="_blank">
-              <SponsorImgDiv src={imgURL} />
+              <InkindImg src={imgURL} />
             </a>
           ))}
         </Row>
-        {/* <Row>
-          categorizedSponsorMap.get('gold')
-        </Row>
-        <Row>
-          categorizedSponsorMap.get('silver')
-        </Row>
-        <Row>
-          categorizedSponsorMap.get('bronze')
-        </Row>
-        <Row>
-          categorizedSponsorMap.get('Inkind')
-        </Row> */}
       </Rows>
-      <Button>Become a Sponsor</Button>
-    </SectionContainerWithBackground>
+      <StyledButton>Become a Sponsor</StyledButton>
+    </SectionContainer>
   )
 }
 

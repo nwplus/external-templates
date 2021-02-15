@@ -34,6 +34,10 @@ export const Rows = styled.div`
 `
 
 export const Row = styled.div`
-  width: 100%;
+  height: 100%;
   margin-top: 2vw;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 `
