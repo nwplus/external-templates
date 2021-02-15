@@ -60,7 +60,8 @@ const Button = styled.button.attrs(({ applyActive }) => ({
 const PlatniumImg = styled.img`
   max-width: 900px;
   max-height: 300px;
-  margin-left: 2rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
   margin-top: 2vw;
 
   @media only screen and (max-width: ${TABLET}) {
@@ -71,7 +72,8 @@ const PlatniumImg = styled.img`
 const GoldImg = styled.img`
   max-width: 700px;
   max-height: 250px;
-  margin-left: 2rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
   margin-top: 2vw;
 
   @media only screen and (max-width: ${TABLET}) {
@@ -83,7 +85,8 @@ const GoldImg = styled.img`
 const SilverImg = styled.img`
   max-width: 500px;
   max-height: 200px;
-  margin-left: 2rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
   margin-top: 2vw;
 
   @media only screen and (max-width: ${TABLET}) {
@@ -95,7 +98,8 @@ const SilverImg = styled.img`
 const BronzeImg = styled.img`
   max-width: 300px;
   max-height: 150px;
-  margin-left: 2rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
   margin-top: 2vw;
 
   @media only screen and (max-width: ${TABLET}) {
@@ -107,7 +111,8 @@ const BronzeImg = styled.img`
 const InkindImg = styled.img`
   max-width: 200px;
   max-height: 150px;
-  margin-left: 2rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
   margin-top: 2vw;
 
   @media only screen and (max-width: ${TABLET}) {
