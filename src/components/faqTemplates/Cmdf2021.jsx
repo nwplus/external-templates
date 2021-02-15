@@ -5,6 +5,7 @@ import {
   Columns,
   Column,
 } from '@lib/Containers'
+import ExpandableFaqList from '@components/faqTemplates/shared/FaqList'
 import backgroundPlants from '@assets/faq__background_plants.svg'
 import titleOptions from '@assets/faq__title_options.svg'
 import questionLeftDecor from '@assets/faq__question_leftdecor.svg'
@@ -16,7 +17,7 @@ import mLaptopDecor from '@assets/faq__decor_logistics_m.svg'
 import faqTitle from '@assets/faq__title.svg'
 import { TABLET } from '@constants/measurements'
 import { scale } from '@utilities/format'
-import ExpandableFaqList from './shared/FaqList'
+import fireDb from '@utilities/firebase'
 
 const TitleImg = styled.img`
   margin-bottom: ${p => p.marginBottom};
@@ -109,20 +110,24 @@ const SectionContainerWithBackground = styled(SectionContainerWithContainBackgro
 // FAQ Section with two columns and scattered layout:
 // General    Logistics
 //          Teams & Projects
-const ExpandableScatteredCategories = ({ faq, config }) => {
+const ExpandableScatteredCategories = ({ config }) => {
   const [categorizedFaqMap, setFaqMap] = useState(new Map())
+  const [faq, setFaq] = useState([])
 
   const categorizeFaq = faqList => {
+    const updatedMap = new Map()
     faqList.forEach(({ category, question, answer }) => {
       const reducedFaq = { question, answer }
 
-      const currFaqList = categorizedFaqMap.get(category)
+      const currFaqList = updatedMap.get(category)
       const updatedFaqList = currFaqList ? [reducedFaq, ...currFaqList] : [reducedFaq]
 
-      const updatedMap = categorizedFaqMap.set(category, updatedFaqList)
-      setFaqMap(new Map(updatedMap))
+      updatedMap.set(category, updatedFaqList)
+      setFaqMap(updatedMap)
     })
   }
+
+  useEffect(() => fireDb.subscribeToCollection('cmd-f2021', 'FAQ', setFaq), [])
 
   useEffect(() => {
     categorizeFaq(faq)

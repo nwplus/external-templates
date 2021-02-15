@@ -3,7 +3,7 @@ import React from 'react'
 import GlobalStyles from '@styles/global'
 import fireDb from '@utilities/firebase'
 import { serialize } from '@utilities/format'
-import FAQExpandable from '@components/faqTemplates/Cmdf2021'
+import Faq from '@components/faqTemplates/Cmdf2021'
 import About from '@components/about/TwoColumnsAbout'
 import Video from '@components/video/Video'
 import Footer from '@components/footer/Footer'
@@ -11,16 +11,7 @@ import NavBar from '@components/hero/NavBar'
 import Hero from '@components/hero/Hero'
 import Values from '@components/value/ThreeColumnsValue'
 
-export default function Index({
-  flags,
-  flags: { faqFlag },
-  faq,
-  about,
-  hero,
-  video,
-  values,
-  configs: { navbarConfig, faqConfig },
-}) {
+export default function Index({ flags, about, hero, video, values, configs: { navbarConfig, faqConfig } }) {
   return (
     <div>
       <GlobalStyles />
@@ -39,7 +30,7 @@ export default function Index({
       <About {...about} />
       <Video {...video} />
       <Values {...values} />
-      {faqFlag && <FAQExpandable faq={faq} config={faqConfig} />}
+      <Faq config={faqConfig} />
       <Footer />
     </div>
   )
@@ -51,23 +42,13 @@ export async function getStaticProps() {
   // Uncomment if you want to update config
   // await fireDb.updateConfig(targetedHackathon)
 
-  if (!targetedHackathon) {
-    return {
-      props: {
-        notFound: true,
-      }
-    }
-  }
-
   const websiteData = await fireDb.getWebsiteData(targetedHackathon)
 
   const { featureFlags, BuildConfig, StaticData } = websiteData
-  const faq = await fireDb.getCollection(targetedHackathon, 'FAQ')
 
   return {
     props: {
       flags: serialize(featureFlags),
-      faq: serialize(faq),
       about: StaticData?.About,
       hero: StaticData?.Hero,
       values: StaticData?.Values,
