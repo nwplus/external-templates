@@ -141,24 +141,37 @@ const SponsorSection = ({ sponsorData }) => {
     categorizeSponsor(sponsorData)
   }, [sponsorData])
 
-  const SponsorsComponent = ({ tier }) => {
-    return (
-      <Row>
-        {categorizedSponsorMap.get(tier)?.map(({ imgURL, link }) => (
-          <a href={link} target="_blank">
-            {tier === 'platinum' ? <PlatniumImg src={imgURL} /> : tier === 'gold' ? <GoldImg src={imgURL} /> :
-              tier === 'silver' ? <SilverImg src={imgURL} /> : tier === 'bronze' ? <BronzeImg src={imgURL} /> : tier === 'Inkind' ? <InkindImg src={imgURL} /> : void 0
+  const SponsorsComponent = ({ tier }) => (
+    <Row>
+      {categorizedSponsorMap.get(tier)?.map(({ imgURL, link }) => (
+        <a href={link} target="_blank" rel="noreferrer">
+          {(() => {
+            switch (tier) {
+              case 'platinum':
+                return <PlatniumImg src={imgURL} />
+
+              case 'gold':
+                return <GoldImg src={imgURL} />
+
+              case 'silver':
+                return <SilverImg src={imgURL} />
+
+              case 'bronze':
+                return <BronzeImg src={imgURL} />
+
+              default:
+                return <InkindImg src={imgURL} />
             }
-          </a>
-        ))}
-      </Row>
-    )
-  }
+          })()}
+        </a>
+      ))}
+    </Row>
+  )
 
   return (
     <SectionContainer
       src={background}
-      empty={categorizedSponsorMap.size == 0}
+      empty={categorizedSponsorMap.size === 0}
     >
       <StyledH1>Sponsors</StyledH1>
       <Rows>
