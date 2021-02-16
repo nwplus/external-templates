@@ -62,7 +62,9 @@ const Hero = ({ hero }) => {
       <HeroContainer>
         <img src={logo} alt="cmd-f logo" />
         <h1 className="title">{titleText}</h1>
-        <Button enabled={applyActive}>{buttonText}</Button>
+        <Button enabled={applyActive}>
+          {applyActive ? <a href="https://forms.gle/qN3RYkXt5McnhpjF8">{buttonText}</a> : buttonText}
+        </Button>
         <p className="date">{dateText}</p>
       </HeroContainer>
     </SectionContainer>
