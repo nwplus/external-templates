@@ -29,3 +29,18 @@ export const Column = styled.div`
   width: 100%;
   margin: 0 2vw;
 `
+
+export const Rows = styled.div`
+  display: flex;
+  flex-direction: column;  
+`
+
+export const Row = styled.div`
+  height: 100%;  
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 55vw;
+`
