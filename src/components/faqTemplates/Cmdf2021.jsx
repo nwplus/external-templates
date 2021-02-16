@@ -35,7 +35,7 @@ const AdjustmentContainer = styled.div`
   z-index: 0;
   margin: ${p => p.shift};
   background-color: #efedea;
-  border: ${() => scale(320, 1440, 4, 5)} solid #4a5759;
+  border: ${() => scale(320, 1440, 3, 5)} solid #4a5759;
   border-radius: ${() => scale(320, 1440, 5, 8)};
   @media only screen and (max-width: ${TABLET}) {
     width: 80%;
