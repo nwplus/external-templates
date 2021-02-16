@@ -2,7 +2,9 @@ import styled from 'styled-components'
 import { TABLET } from '@constants/measurements'
 
 // Basic section container
-export const SectionContainer = styled.div`
+export const SectionContainer = styled.div.attrs(props => ({
+  id: props?.id,
+}))`
   color: #2f4246;
   font-family: 'DM Sans', sans-serif;
   width: ${p => p.width};
@@ -32,11 +34,11 @@ export const Column = styled.div`
 
 export const Rows = styled.div`
   display: flex;
-  flex-direction: column;  
+  flex-direction: column;
 `
 
 export const Row = styled.div`
-  height: 100%;  
+  height: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;

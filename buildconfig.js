@@ -5,7 +5,7 @@ export default {
   // 'BuildConfig.componentStyling.footer.templateSelection': 1,
   // Styling
   // 'BuildConfig.componentStyling.navbar.fontColor': 'black',
-  // 'BuildConfig.componentStyling.navbar.previousYearLink': 'https://cmd-f.nwplus.io/',
+  'BuildConfig.componentStyling.navbar.previousYearLink': 'https://cmd-f2020.nwplus.io/',
   // 'BuildConfig.componentStyling.hero.marginBottom': '0px',
   // 'BuildConfig.componentStyling.hero.marginTop': '1px',
   // 'BuildConfig.componentStyling.faq.containerWidth': '100%',
