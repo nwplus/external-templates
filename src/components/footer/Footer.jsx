@@ -1,4 +1,5 @@
 import React from 'react'
+import styled from 'styled-components'
 import Window from '@components/Window'
 import icon_fb from '@assets/icon_fb.svg'
 import icon_twitter from '@assets/icon_twitter.svg'
@@ -48,7 +49,7 @@ const Footer = () => {
         </a>
         <br />
         <StyledA href="mailto: cmd-f@nwplus.io">E-mail Us</StyledA>
-        <StyledA href="http://google.com">Code of Conduct</StyledA>
+        <StyledA href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">Code of Conduct</StyledA>
         <StyledA href="mailto: sponsorship@nwplus.uo">Become a Sponsor</StyledA>
         <p>Organized and held by nwPlus</p>
         <p>Copyright © cmd-f 2021</p>
