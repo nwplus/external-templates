@@ -19,7 +19,7 @@ jobs:
         run: |
           yarn install
           yarn build:prod
-          echo "cmd-f_main.nwplus.io" >> ./out/CNAME
+          echo "cmd-f.nwplus.io" >> ./out/CNAME
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
