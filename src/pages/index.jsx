@@ -12,7 +12,15 @@ import Hero from '@components/hero/Hero'
 import Values from '@components/value/ThreeColumnsValue'
 import SponsorSection from '@components/sponsors/SponsorSection'
 
-export default function Index({ flags, about, hero, sponsorData, video, values, configs: { navbarConfig, faqConfig } }) {
+export default function Index({
+  flags,
+  about,
+  hero,
+  sponsorData,
+  video,
+  values,
+  configs: { navbarConfig, faqConfig },
+}) {
   return (
     <div>
       <GlobalStyles />
@@ -28,11 +36,11 @@ export default function Index({ flags, about, hero, sponsorData, video, values, 
       </Head>
       <NavBar config={navbarConfig} flags={flags} />
       <Hero hero={hero} />
-      <SponsorSection sponsorData={sponsorData} />
       <About {...about} />
       <Video {...video} />
       <Values {...values} />
-      <Faq config={faqConfig} />
+      {flags?.faqFlag && <Faq config={faqConfig} />}
+      {flags?.sponsorFlag && <SponsorSection sponsorData={sponsorData} />}
       <Footer />
     </div>
   )
