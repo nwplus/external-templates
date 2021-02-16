@@ -8,7 +8,7 @@ import { scale } from '@utilities/format'
 const SectionContainer = styled(SectionContainerWithBackground)`
   display: flex;
   align-items: center;
-  justify-content: center; 
+  justify-content: center;
   flex-direction: column;
 
   h1 {
@@ -17,7 +17,9 @@ const SectionContainer = styled(SectionContainerWithBackground)`
     font-size: ${() => scale(787, 1440, 28, 48)};
   }
 
-  ${({ empty }) => empty && `
+  ${({ empty }) =>
+    empty &&
+    `
     height: 100vh;
     `}
 `
@@ -103,7 +105,7 @@ const BronzeImg = styled.img`
   margin-top: 2vw;
 
   @media only screen and (max-width: ${TABLET}) {
-    max-width: 35vw;    
+    max-width: 35vw;
     max-height: 15vh;
   }
 `
@@ -126,14 +128,15 @@ const SponsorSection = ({ sponsorData }) => {
   const [categorizedSponsorMap, setSponsorMap] = useState(new Map())
 
   const categorizeSponsor = sponsorList => {
+    const updatedSponsors = new Map()
     sponsorList.forEach(({ imgURL, link, tier }) => {
       const reducedSponsor = { imgURL, link }
 
-      const currSponsorList = categorizedSponsorMap.get(tier)
+      const currSponsorList = updatedSponsors.get(tier)
       const updatedSponsorList = currSponsorList ? [reducedSponsor, ...currSponsorList] : [reducedSponsor]
 
-      const updatedMap = categorizedSponsorMap.set(tier, updatedSponsorList)
-      setSponsorMap(new Map(updatedMap))
+      updatedSponsors.set(tier, updatedSponsorList)
+      setSponsorMap(new Map(updatedSponsors))
     })
   }
 
@@ -169,17 +172,14 @@ const SponsorSection = ({ sponsorData }) => {
   )
 
   return (
-    <SectionContainer
-      src={background}
-      empty={categorizedSponsorMap.size === 0}
-    >
+    <SectionContainer src={background} empty={categorizedSponsorMap.size === 0}>
       <StyledH1>Sponsors</StyledH1>
       <Rows>
-        <SponsorsComponent tier='platinum' />
-        <SponsorsComponent tier='gold' />
-        <SponsorsComponent tier='silver' />
-        <SponsorsComponent tier='bronze' />
-        <SponsorsComponent tier='Inkind' />
+        <SponsorsComponent tier="platinum" />
+        <SponsorsComponent tier="gold" />
+        <SponsorsComponent tier="silver" />
+        <SponsorsComponent tier="bronze" />
+        <SponsorsComponent tier="Inkind" />
       </Rows>
       <a href="mailto:sponsorship@nwplus.io?Subject=Sponsorship">
         <Button>Become a Sponsor</Button>
