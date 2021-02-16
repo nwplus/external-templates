@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from 'styled-components'
 import Window from '@components/Window'
 import icon_fb from '@assets/icon_fb.svg'
 import icon_twitter from '@assets/icon_twitter.svg'
@@ -32,32 +31,32 @@ const StyledIcon = styled.img`
 `
 
 const Footer = () => {
-    return (
-        <Container src={background}>
-            <Window title="footer.png">
-                <a href="https://www.facebook.com/nwplusubc/">
-                    <StyledIcon src={icon_fb} alt="Facebook"/>
-                </a>
-                <a href="https://twitter.com/nwplusubc">
-                <StyledIcon src={icon_twitter} alt="Twitter"/>
-                </a>
-                <a href="https://www.instagram.com/nwplusubc/">
-                <StyledIcon src={icon_insta} alt="Instagram"/>
-                </a>
-                <a href="https://medium.com/nwplusubc">
-                <StyledIcon src={icon_medium} alt="Medium"/>
-                </a>
-                <br />
-                <StyledA href="mailto: test@nwplus.io">E-mail Us</StyledA>
-                <StyledA href="http://google.com">Code of Conduct</StyledA>
-                <StyledA href="http://google.com">Become a Sponsor</StyledA>
-                <p>Organized and held by nwPlus</p>
-                <p>Copyright © cmd-f 2021</p>
-            </Window>
+  return (
+    <Container src={background}>
+      <Window title="footer.png">
+        <a href="https://www.facebook.com/nwplusubc/">
+          <StyledIcon src={icon_fb} alt="Facebook" />
+        </a>
+        <a href="https://twitter.com/nwplusubc">
+          <StyledIcon src={icon_twitter} alt="Twitter" />
+        </a>
+        <a href="https://www.instagram.com/nwplusubc/">
+          <StyledIcon src={icon_insta} alt="Instagram" />
+        </a>
+        <a href="https://medium.com/nwplusubc">
+          <StyledIcon src={icon_medium} alt="Medium" />
+        </a>
+        <br />
+        <StyledA href="mailto: cmd-f@nwplus.io">E-mail Us</StyledA>
+        <StyledA href="http://google.com">Code of Conduct</StyledA>
+        <StyledA href="mailto: sponsorship@nwplus.uo">Become a Sponsor</StyledA>
+        <p>Organized and held by nwPlus</p>
+        <p>Copyright © cmd-f 2021</p>
+      </Window>
 
-            <Icons src={footer_icons} alt="Computer icons" />
-        </Container>
-    )
+      <Icons src={footer_icons} alt="Computer icons" />
+    </Container>
+  )
 }
 
 export default Footer
