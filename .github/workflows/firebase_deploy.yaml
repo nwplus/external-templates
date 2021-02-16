@@ -1,0 +1,46 @@
+name: Continuous deployment to firebase hosting
+
+on:
+  push:
+    branches: [cmd-f_dev, cmd-f_main]
+
+jobs:
+  firebase_deploy:
+    runs-on: ubuntu-latest
+    env:
+      IS_PRODUCTION: ${{ endsWith(github.ref, 'main') }}
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Set up firebase
+        run: sudo npm install -g firebase-tools --unsafe
+
+      - name: Choose dev firebase project
+        if: ${{ env.IS_PRODUCTION == 'false' }}
+        run: firebase use ${{ secrets.DEV_FIREBASE_PROJECT_ID }} --token ${{ secrets.FIREBASE_TOKEN }}
+
+      - name: Choose prod firebase project
+        if: ${{ env.IS_PRODUCTION == 'true' }}
+        run: firebase use ${{ secrets.PROD_FIREBASE_PROJECT_ID }} --token ${{ secrets.FIREBASE_TOKEN }}
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build with dev env variables
+        if: ${{ env.IS_PRODUCTION == 'false' }}
+        run: yarn build:staging
+        env:
+          NEXT_PUBLIC_FIREBASE_API_KEY: ${{ secrets.DEV_FIREBASE_API_KEY }}
+          NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN: ${{ secrets.DEV_FIREBASE_AUTH_DOMAIN }}
+          NEXT_PUBLIC_FIREBASE_DATABASE_URL: ${{ secrets.DEV_FIREBASE_DATABASE_URL }}
+          NEXT_PUBLIC_FIREBASE_PROJECT_ID: ${{ secrets.DEV_FIREBASE_PROJECT_ID }}
+          NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET: ${{ secrets.DEV_FIREBASE_STORAGE_BUCKET }}
+          NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.DEV_FIREBASE_MESSAGING_SENDER_ID }}
+          NEXT_PUBLIC_FIREBASE_APP_ID: ${{ secrets.DEV_FIREBASE_APP_ID }}
+
+      - name: Build with prod env variables
+        if: ${{ env.IS_PRODUCTION == 'true' }}
+        run: yarn build:prod
+
+      - name: Deploy to site associated with branch name
+        run: firebase deploy --only hosting:${GITHUB_REF#refs/*/} --non-interactive --token ${{ secrets.FIREBASE_TOKEN }}

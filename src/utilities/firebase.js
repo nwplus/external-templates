@@ -2,7 +2,7 @@ import firebase from 'firebase/app'
 import 'firebase/firestore'
 import 'firebase/storage'
 import 'firebase/analytics'
-import { HACKATHONS, INTERNAL_WEBSITES, CMS } from '@constants/utilities'
+import { HACKATHONS, INTERNAL_WEBSITES, CMS } from '@constants/firebase'
 import buildConfig from '../../buildconfig'
 
 if (!firebase.apps.length) {
@@ -21,8 +21,24 @@ if (!firebase.apps.length) {
 const db = firebase.firestore()
 
 const fireDb = {
+  subscribeToCollection: (hackathon, collection, callback) => {
+    let ref
+    if (collection.toUpperCase() === 'FAQ') {
+      ref = db.collection('FAQ').where('hackathonIDs', 'array-contains', hackathon)
+    } else {
+      ref = db.collection(HACKATHONS).doc(hackathon).collection(collection)
+    }
+    return ref.onSnapshot(snapshot => {
+      const data = []
+      snapshot.forEach(doc => {
+        data.push(doc.data())
+      })
+      callback(data)
+    })
+  },
   getCollection: async (hackathon, collection) => {
-    let ref, data
+    let ref
+    let data
     if (collection.toUpperCase() === 'FAQ') {
       ref = db.collection('FAQ').where('hackathonIDs', 'array-contains', hackathon)
     } else {
