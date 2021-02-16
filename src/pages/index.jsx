@@ -10,8 +10,17 @@ import Footer from '@components/footer/Footer'
 import NavBar from '@components/hero/NavBar'
 import Hero from '@components/hero/Hero'
 import Values from '@components/value/ThreeColumnsValue'
+import SponsorSection from '@components/sponsors/SponsorSection'
 
-export default function Index({ flags, about, hero, video, values, configs: { navbarConfig, faqConfig } }) {
+export default function Index({
+  flags,
+  about,
+  hero,
+  sponsorData,
+  video,
+  values,
+  configs: { navbarConfig, faqConfig },
+}) {
   return (
     <div>
       <GlobalStyles />
@@ -30,7 +39,8 @@ export default function Index({ flags, about, hero, video, values, configs: { na
       <About {...about} />
       <Video {...video} />
       <Values {...values} />
-      <Faq config={faqConfig} />
+      {flags?.faqFlag && <Faq config={faqConfig} />}
+      {flags?.sponsorFlag && <SponsorSection sponsorData={sponsorData} />}
       <Footer />
     </div>
   )
@@ -45,12 +55,14 @@ export async function getStaticProps() {
   const websiteData = await fireDb.getWebsiteData(targetedHackathon)
 
   const { featureFlags, BuildConfig, StaticData } = websiteData
+  const sponsorData = await fireDb.getCollection(targetedHackathon, 'Sponsors')
 
   return {
     props: {
       flags: serialize(featureFlags),
       about: StaticData?.About,
       hero: StaticData?.Hero,
+      sponsorData: serialize(sponsorData),
       values: StaticData?.Values,
       video: StaticData?.Video,
       configs: {

@@ -5,7 +5,6 @@ import { scale } from '@utilities/format'
 const Button = styled.button.attrs(({ applyActive }) => ({
   type: 'button',
   disabled: applyActive,
-  onClick: () => alert('Hello world!'),
 }))`
   background: #b95d1d;
   border-radius: 5px;
