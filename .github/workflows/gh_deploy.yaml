@@ -19,9 +19,9 @@ jobs:
         run: |
           yarn install
           yarn build:prod
-          echo "cmd-f_main.nwplus.io" >> dist/CNAME
+          echo "cmd-f_main.nwplus.io" >> ./out/CNAME
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          publish_dir: ./out
