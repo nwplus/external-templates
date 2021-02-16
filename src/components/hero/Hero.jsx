@@ -2,14 +2,15 @@ import React from 'react'
 import logo from '@assets/logo__cmdf.png'
 import mobile from '@assets/hero__bg_sm.svg'
 import styled from 'styled-components'
-import Button from './Button'
 import background from '@assets/hero__bg.svg'
-import { LAPTOP, scale } from '@constants/measurements'
+import { LAPTOP } from '@constants/measurements'
+import { scale } from '@utilities/format'
 import { SectionContainerWithBackground as Base } from '@lib/Containers'
+import Button from './Button'
 
 const SectionContainer = styled(Base)`
   @import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
-
+  background-size: cover;
   font-size: ${() => scale(320, 1440, 6, 11.5)};
   width: 100vw;
   height: 85.75vw;

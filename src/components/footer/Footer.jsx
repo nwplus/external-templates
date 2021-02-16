@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from 'styled-components'
 import Window from '@components/Window'
 import icon_fb from '@assets/icon_fb.svg'
 import icon_twitter from '@assets/icon_twitter.svg'
@@ -17,22 +16,22 @@ const StyledIcon = styled.img`
 `
 
 const Footer = ({ test }) => {
-    return (
-        <Base>
-            <Window title="footer.png">
-                <StyledIcon src={icon_fb} alt="Facebook"/>
-                <StyledIcon src={icon_twitter} alt="Facebook"/>
-                <StyledIcon src={icon_insta} alt="Facebook"/>
-                <StyledIcon src={icon_medium} alt="Facebook"/>
-                <br />
-                <StyledA href="mailto: test@nwplus.io">E-mail Us</StyledA>
-                <StyledA href="http://google.com">Code of Conduct</StyledA>
-                <StyledA href="http://google.com">Become a Sponsor</StyledA>
-                <p>Organized and held by nwPlus</p>
-                <p>Copyright © cmd-f 2021</p>
-            </Window>
-        </Base>
-    )
+  return (
+    <Base>
+      <Window title="footer.png">
+        <StyledIcon src={icon_fb} alt="Facebook" />
+        <StyledIcon src={icon_twitter} alt="Facebook" />
+        <StyledIcon src={icon_insta} alt="Facebook" />
+        <StyledIcon src={icon_medium} alt="Facebook" />
+        <br />
+        <StyledA href="mailto: test@nwplus.io">E-mail Us</StyledA>
+        <StyledA href="http://google.com">Code of Conduct</StyledA>
+        <StyledA href="http://google.com">Become a Sponsor</StyledA>
+        <p>Organized and held by nwPlus</p>
+        <p>Copyright © cmd-f 2021</p>
+      </Window>
+    </Base>
+  )
 }
 
 export default Footer
