@@ -172,7 +172,7 @@ const SponsorSection = ({ sponsorData }) => {
   )
 
   return (
-    <SectionContainer src={background} empty={categorizedSponsorMap.size === 0}>
+    <SectionContainer src={background} empty={categorizedSponsorMap.size === 0} id="sponsors">
       <StyledH1>Sponsors</StyledH1>
       <Rows>
         <SponsorsComponent tier="platinum" />

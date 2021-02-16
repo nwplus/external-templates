@@ -82,7 +82,7 @@ const CountDown = ({ date }) => {
 }
 
 const About = ({ top, bottom, date }) => (
-  <SectionContainer src={background}>
+  <SectionContainer src={background} id="about">
     <div className="intro">
       <img src={logo} alt="cmd-fLogo" />
       <p className="title">{top}</p>

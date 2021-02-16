@@ -139,6 +139,7 @@ const ExpandableScatteredCategories = ({ config }) => {
       margin={config.containerMargin}
       padding="10% 0 10% 0"
       src={backgroundPlants}
+      id="faq"
     >
       <TitleImg src={faqTitle} alt={config.titleAlt} marginBottom={config.marginBottomTitle} />
       <Columns>

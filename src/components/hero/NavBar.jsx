@@ -186,20 +186,20 @@ const Navbar = ({ config, flags }) => {
     <Sidebar>
       <NwLogo style={{ height: '40px' }} />
       <SidebarItems>
-        <NavItem href="#about" fontColor="white">
+        <NavItem onClick={toggle} href="#about" fontColor="white">
           About
         </NavItem>
         {faqFlag && (
-          <NavItem href="#faq" fontColor="white">
+          <NavItem onClick={toggle} href="#faq" fontColor="white">
             FAQ
           </NavItem>
         )}
         {sponsorFlag && (
-          <NavItem href="#sponsors" fontColor="white">
+          <NavItem onClick={toggle} href="#sponsors" fontColor="white">
             Sponsors
           </NavItem>
         )}
-        <NavItem href={previousYearLink} fontColor="white">
+        <NavItem onClick={toggle} href={previousYearLink} fontColor="white">
           Last Year
         </NavItem>
       </SidebarItems>

@@ -39,8 +39,8 @@ export default function Index({
       <About {...about} />
       <Video {...video} />
       <Values {...values} />
-      {flags?.faqFlag && <Faq config={faqConfig} />}
-      {flags?.sponsorFlag && <SponsorSection sponsorData={sponsorData} />}
+      {flags?.faqFlag && <Faq id="faq" config={faqConfig} />}
+      {flags?.sponsorFlag && <SponsorSection id="sponsors" sponsorData={sponsorData} />}
       <Footer />
     </div>
   )
