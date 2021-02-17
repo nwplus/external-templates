@@ -5,6 +5,7 @@ import { TABLET } from '@constants/measurements'
 export const SectionContainer = styled.div.attrs(props => ({
   id: props?.id,
 }))`
+  background-color: #f9f6ef;
   color: #2f4246;
   font-family: 'DM Sans', sans-serif;
   width: ${p => p.width};
@@ -13,7 +14,6 @@ export const SectionContainer = styled.div.attrs(props => ({
   padding: ${p => p.padding};
 `
 export const SectionContainerWithBackground = styled(SectionContainer)`
-  background-color: #f9f6ef;
   background-image: url(${p => p.src});
   background-position: center;
   background-repeat: no-repeat;

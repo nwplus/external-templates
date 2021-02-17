@@ -3,6 +3,8 @@ import React from 'react'
 import GlobalStyles from '@styles/global'
 import fireDb from '@utilities/firebase'
 import { serialize } from '@utilities/format'
+import { SectionContainer } from '@lib/Containers'
+import Button from '@lib/Button'
 import Faq from '@components/faqTemplates/Cmdf2021'
 import About from '@components/about/TwoColumnsAbout'
 import Video from '@components/video/Video'
@@ -22,7 +24,7 @@ export default function Index({
   configs: { navbarConfig, faqConfig },
 }) {
   return (
-    <div>
+    <SectionContainer>
       <GlobalStyles />
       <Head>
         <title>cmd-f 2021</title>
@@ -40,9 +42,9 @@ export default function Index({
       <Video {...video} />
       <Values {...values} />
       {flags?.faqFlag && <Faq id="faq" config={faqConfig} />}
-      {flags?.sponsorFlag && <SponsorSection id="sponsors" sponsorData={sponsorData} />}
+      {flags?.sponsorFlag && <SponsorSection id="sponsors" sponsorData={sponsorData} mentorFlag={flags?.mentorFlag}/>}
       <Footer />
-    </div>
+    </SectionContainer>
   )
 }
 

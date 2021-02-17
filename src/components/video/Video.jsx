@@ -58,7 +58,7 @@ const SectionContainer = styled(Base)`
     }
   }
 `
-const VideoContainer = styled(Container)`
+const VideoContainer = styled.div`
   padding: 11vw 30vw 0;
   @media (max-width: ${TABLET}) {
     padding: 33vw 11vw 0;
