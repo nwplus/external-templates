@@ -35,7 +35,7 @@ export default function Index({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <NavBar config={navbarConfig} flags={flags} />
-      <Hero hero={hero} />
+      <Hero {...hero} open={flags?.registerationFlag} />
       <About {...about} />
       <Video {...video} />
       <Values {...values} />
