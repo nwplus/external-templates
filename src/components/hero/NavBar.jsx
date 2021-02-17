@@ -105,7 +105,7 @@ const SidebarItems = styled.div`
 const Navbar = ({ config, flags }) => {
   // handles the navbar being visible when scrolling
   const { fontColor, previousYearLink } = config
-  const { faqFlag, sponsorFlag } = flags
+  const { faqFlag, sponsorFlag, mentorFlag } = flags
 
   const [prevScrollPos, setPrevScrollPos] = useState(0)
   const [visible, setVisible] = useState(true)
@@ -173,6 +173,11 @@ const Navbar = ({ config, flags }) => {
                 Sponsors
               </NavItem>
             )}
+            {mentorFlag && (
+              <NavItem href="#mentors" fontColor={fontColor}>
+                Mentors
+              </NavItem>
+            )}
             <NavItem href={previousYearLink} fontColor={fontColor}>
               Last Year
             </NavItem>
@@ -197,6 +202,11 @@ const Navbar = ({ config, flags }) => {
         {sponsorFlag && (
           <NavItem onClick={toggle} href="#sponsors" fontColor="white">
             Sponsors
+          </NavItem>
+        )}
+        {mentorFlag && (
+          <NavItem onClick={toggle} href="#mentors" fontColor="white">
+            Mentors
           </NavItem>
         )}
         <NavItem onClick={toggle} href={previousYearLink} fontColor="white">

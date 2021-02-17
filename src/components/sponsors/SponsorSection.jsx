@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { SectionContainerWithBackground, Rows, Row } from '@lib/Containers'
+import Button from '@lib/Button'
 import background from '@assets/sponsor_bg.svg'
 import { TABLET } from '@constants/measurements'
 import { scale } from '@utilities/format'
@@ -29,33 +30,6 @@ const StyledH1 = styled.h1`
 
   @media only screen and (max-width: ${TABLET}) {
     margin-bottom: 3rem;
-  }
-`
-
-const Button = styled.button.attrs(({ applyActive }) => ({
-  type: 'button',
-  disabled: applyActive,
-}))`
-  background: #b95d1d;
-  border-radius: 5px;
-  border: none;
-  width: 12vw;
-  height: 3.5vw;
-  color: white;
-  transition-duration: 0.2s;
-  cursor: pointer;
-  font-size: ${() => scale(320, 1440, 6, 18)};
-  font-family: 'DM Sans', sans-serif;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-
-  &:hover {
-    filter: drop-shadow(0px 8px 4px rgba(0, 0, 0, 0.25));
-  }
-
-  @media only screen and (max-width: ${TABLET}) {
-    height: 6vw;
-    width: 14vw;
   }
 `
 
@@ -123,8 +97,19 @@ const InkindImg = styled.img`
   }
 `
 
+const Buttons = styled.div.attrs(() => ({
+  id: "mentors"
+}))`
+  display: flex;
+  height: 15vw;
+
+  @media (max-width: ${TABLET}) {
+    height: 25vw;
+  }
+`
+
 // Inkind -> bronze -> silver -> gold -> platinum
-const SponsorSection = ({ sponsorData }) => {
+const SponsorSection = ({ sponsorData, mentorFlag }) => {
   const [categorizedSponsorMap, setSponsorMap] = useState(new Map())
 
   const categorizeSponsor = sponsorList => {
@@ -181,9 +166,14 @@ const SponsorSection = ({ sponsorData }) => {
         <SponsorsComponent tier="bronze" />
         <SponsorsComponent tier="Inkind" />
       </Rows>
-      <a href="mailto:sponsorship@nwplus.io?Subject=Sponsorship">
-        <Button>Become a Sponsor</Button>
-      </a>
+      <Buttons>
+        <Button>
+          <a href="mailto:sponsorship@nwplus.io?Subject=Sponsorship">Become a Sponsor</a>
+        </Button>
+        <Button applyActive={mentorFlag}>
+          <a href="https://forms.gle/9ACGyWD9axtpp1wFA">Become a Mentor</a>
+        </Button>
+      </Buttons>
     </SectionContainer>
   )
 }
