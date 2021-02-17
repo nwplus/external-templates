@@ -41,8 +41,8 @@ const SectionContainer = styled(Base)`
 
 const HeroContainer = styled.div`
   position: relative;
-  right: 4vw;
-  top: 21.5vw;
+  right: 3vw;
+  top: 22.5vw;
   display: flex;
   flex-direction: column;
   justify-content: center;

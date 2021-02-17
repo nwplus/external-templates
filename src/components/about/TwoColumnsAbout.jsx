@@ -21,9 +21,14 @@ const SectionContainer = styled(Base)`
     justify-content: space-around;
     padding: 5vw;
   }
-  .copy {
+  .blurb {
+    font-style: italic;
+    padding-top: 2vw;
+  }
+  .bottom {
+    font-size: ${() => scale(320, 1440, 6, 18)};
     margin: auto;
-    width: 66vw;
+    width: 56vw;
   }
   .countdown {
     color: #fff;
@@ -32,7 +37,7 @@ const SectionContainer = styled(Base)`
     font-weight: 700;
     position: absolute;
     top: 57.5vw;
-    left: 43.5vw;
+    left: 42.5vw;
   }
   img {
     display: block;
@@ -43,12 +48,12 @@ const SectionContainer = styled(Base)`
   @media (max-width: ${TABLET}) {
     background-image: url(${mobile});
     background-position: top;
-    height: 285vw;
+    height: 355vw;
     .intro {
       padding: 97vw 0 0;
       font-size: ${() => scale(320, 786, 14, 32)};
     }
-    .copy {
+    .bottom {
       padding-top: 79vw;
       font-size: ${() => scale(320, 786, 14, 36)};
       text-align: left;
@@ -56,7 +61,7 @@ const SectionContainer = styled(Base)`
     }
     .countdown {
       top: 159vw;
-      left: 55vw;
+      left: 53vw;
       margin: 0;
       font-size: ${() => scale(320, 786, 22, 54)};
     }
@@ -76,18 +81,24 @@ const CountDown = ({ date }) => {
 
   return (
     <div className="countdown">
-      {days}d{hours}h
+      {days < 10 && "0"}
+      {`${days}d `}
+      {hours < 10 && "0"}
+      {`${hours}h`}
     </div>
   )
 }
 
-const About = ({ top, bottom, date }) => (
+const About = ({ top, middle, bottom, date }) => (
   <SectionContainer src={background} id="about">
     <div className="intro">
       <img src={logo} alt="cmd-fLogo" />
-      <p className="title">{top}</p>
+      <p>{top}</p>
     </div>
-    <div className="copy">{bottom}</div>
+    <div className="bottom">
+      {middle}
+      <div className="blurb">{bottom}</div>
+    </div>
     <CountDown date={date} />
   </SectionContainer>
 )
