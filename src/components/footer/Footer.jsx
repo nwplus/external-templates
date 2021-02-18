@@ -7,13 +7,18 @@ import iconInsta from '@assets/icon_insta.svg'
 import iconMedium from '@assets/icon_medium.svg'
 import footerIcons from '@assets/footer_icons.svg'
 import background from '@assets/footer_plants.svg'
-import { SectionContainerWithBackground as Base } from '@lib/Containers'
+import leftGif from '@assets/footer_art.gif'
+import rightGif from '@assets/footer_google.gif'
+import sideImage from '@assets/footer_bg_icons.svg'
+import { SectionContainerWithBackground as Base, Columns } from '@lib/Containers'
+import { TABLET } from '@constants/measurements'
 
 const Container = styled(Base)`
   text-align: center;
   position: relative;
   background-image: url(${p => p.src});
   background-position: bottom;
+  padding-top: 2em;
   min-height: 34vw;
 `
 
@@ -31,8 +36,58 @@ const StyledIcon = styled.img`
   margin: 1em;
 `
 
+const LeftWindow = styled(Window)`
+  max-width: 350px;
+  max-height: 380px;
+  margin: initial;
+  margin-top: 2em;
+  margin-right: 5em;
+  @media (max-width: ${TABLET}) {
+    margin: auto;
+  }
+`
+
+const RightWindow = styled(Window)`
+  max-width: 600px;
+  margin: initial;
+  @media (max-width: ${TABLET}) {
+    display: none;
+  }
+`
+
+const WindowImage = styled.img`
+  width: 100%;
+  display: block;
+`
+
+const StyledColumns = styled(Columns)`
+  margin-bottom: 4em;
+  justify-content: center;
+  position: relative;
+  z-index: 10;
+`
+
+const SideImage = styled.img`
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  right: 2em;
+  @media (max-width: ${TABLET}) {
+    display: none;
+  }
+`
+
 const Footer = () => (
   <Container src={background}>
+    <SideImage src={sideImage} />
+    <StyledColumns>
+      <LeftWindow title="say hi.svg" padding="0">
+        <WindowImage src={leftGif} />
+      </LeftWindow>
+      <RightWindow title="graphics.png">
+        <WindowImage src={rightGif} />
+      </RightWindow>
+    </StyledColumns>
     <Window title="footer.png">
       <a href="https://www.facebook.com/nwplusubc/">
         <StyledIcon src={iconFb} alt="Facebook" />
