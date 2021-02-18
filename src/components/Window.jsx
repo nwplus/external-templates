@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import btns from '@assets/btns.svg'
+import { TABLET } from '@constants/measurements'
 
 const WindowContainer = styled.div`
   max-width: 700px;
@@ -8,6 +9,9 @@ const WindowContainer = styled.div`
   margin: auto;
   border: 4px solid #4a5759;
   border-radius: 4px;
+  @media (max-width: ${TABLET}) {
+    max-width: 92vw;
+  }
 `
 
 const Header = styled.div`
