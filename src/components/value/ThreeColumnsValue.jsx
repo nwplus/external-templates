@@ -31,17 +31,20 @@ const SectionContainer = styled(Base)`
   }
   .covid {
     padding-left: 5vw;
-    padding-top: ${() => scale(787, 1440, 220, 532)};
+    padding-top: ${() => scale(787, 1440, 200, 480)};
     .title {
       font-size: ${() => scale(787, 1440, 32, 48)};
       width: fit-content;
     }
     .blob {
       padding-top: ${() => scale(787, 1440, 0, 75)};
-      font-size: ${() => scale(787, 1440, 14, 20)};
+      font-size: ${() => scale(787, 1440, 12, 20)};
       width: 28vw;
-      p:first-child {
-        padding-bottom: 5vw;
+      p {
+        padding-top: 2vw;
+        &:first-child {
+          padding: 0;
+        }
       }
     }
   }
@@ -74,6 +77,12 @@ const SectionContainer = styled(Base)`
       .blob {
         font-size: ${() => scale(320, 786, 16, 40)};
         width: 100%;
+        p {
+          padding-top: 4vw;
+          &:first-child {
+            padding: 0;
+          }
+        }
       }
     }
   }
@@ -103,11 +112,12 @@ const Column = styled(ColumnBase)`
     }
   }
 `
-const Announcement = ({ title, top, bottom }) => (
+const Announcement = ({ title, top, middle, bottom }) => (
   <div className="covid">
     <p className="title">{title}</p>
     <div className="blob">
       <p>{top}</p>
+      <p>{middle}</p>
       <p>{bottom}</p>
     </div>
   </div>

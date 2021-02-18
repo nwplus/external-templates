@@ -5,7 +5,7 @@ import background from '@assets/video__frame.svg'
 import mobile from '@assets/video__frame_sm.svg'
 import { TABLET } from '@constants/measurements'
 import { scale } from '@utilities/format'
-import { SectionContainerWithBackground as Base, SectionContainer as Container } from '@lib/Containers'
+import { SectionContainerWithBackground as Base } from '@lib/Containers'
 
 const SectionContainer = styled(Base)`
   height: 82vw;
@@ -58,7 +58,7 @@ const SectionContainer = styled(Base)`
     }
   }
 `
-const VideoContainer = styled(Container)`
+const VideoContainer = styled.div`
   padding: 11vw 30vw 0;
   @media (max-width: ${TABLET}) {
     padding: 33vw 11vw 0;

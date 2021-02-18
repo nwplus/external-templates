@@ -41,8 +41,8 @@ const SectionContainer = styled(Base)`
 
 const HeroContainer = styled.div`
   position: relative;
-  right: 4vw;
-  top: 21.5vw;
+  right: 3vw;
+  top: 22.5vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -55,20 +55,17 @@ const HeroContainer = styled.div`
   }
 `
 
-const Hero = ({ hero }) => {
-  const { buttonText, titleText, dateText, applyActive } = hero
-  return (
+const Hero = ({ buttonText, titleText, dateText, applyActive, open }) => (
     <SectionContainer src={background}>
       <HeroContainer>
         <img src={logo} alt="cmd-f logo" />
         <h1 className="title">{titleText}</h1>
-        <Button enabled={applyActive}>
-          {applyActive ? <a href="https://forms.gle/qN3RYkXt5McnhpjF8">{buttonText}</a> : buttonText}
+        <Button enabled={open}>
+          {open ? <a href="https://forms.gle/qN3RYkXt5McnhpjF8">{applyActive}</a> : buttonText}
         </Button>
         <p className="date">{dateText}</p>
       </HeroContainer>
     </SectionContainer>
   )
-}
 
 export default Hero
