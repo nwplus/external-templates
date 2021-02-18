@@ -9,6 +9,7 @@ import footerIcons from '@assets/footer_icons.svg'
 import background from '@assets/footer_plants.svg'
 import leftGif from '@assets/footer_art.gif'
 import rightGif from '@assets/footer_google.gif'
+import sideImage from '@assets/footer_bg_icons.svg'
 import { SectionContainerWithBackground as Base, Columns } from '@lib/Containers'
 import { TABLET } from '@constants/measurements'
 
@@ -62,10 +63,23 @@ const WindowImage = styled.img`
 const StyledColumns = styled(Columns)`
   margin-bottom: 4em;
   justify-content: center;
+  position: relative;
+  z-index: 10;
+`
+
+const SideImage = styled.img`
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  right: 2em;
+  @media (max-width: ${TABLET}) {
+    display: none;
+  }
 `
 
 const Footer = () => (
   <Container src={background}>
+    <SideImage src={sideImage} />
     <StyledColumns>
       <LeftWindow title="say hi.svg" padding="0">
         <WindowImage src={leftGif} />
