@@ -21,7 +21,7 @@ const Header = styled.div`
 
 const Body = styled.div`
     text-align: center;
-    padding: 2em;
+    padding: ${p => p.padding || '2em'};
     color: #B95D1D;
 `
 
@@ -30,13 +30,13 @@ const BtnsImg = styled.img`
   right: 0.5em;
 `
 
-const Footer = ({ title, children }) => (
-  <WindowContainer>
+const Footer = ({ title, children, padding, ...props }) => (
+  <WindowContainer {...props}>
     <Header>
       {title}
       <BtnsImg src={btns} />
     </Header>
-    <Body>{children}</Body>
+    <Body padding={padding}>{children}</Body>
   </WindowContainer>
 )
 
