@@ -6,9 +6,9 @@ import background from '@assets/hero__bg.svg'
 import { LAPTOP } from '@constants/measurements'
 import { scale } from '@utilities/format'
 import { SectionContainerWithBackground as Base } from '@lib/Containers'
-import Button from './Button'
 import Lottie from 'lottie-react'
 import globeAnimation from '@assets/hero__globe_animation.json'
+import Button from './Button'
 
 const SectionContainer = styled(Base)`
   @import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
