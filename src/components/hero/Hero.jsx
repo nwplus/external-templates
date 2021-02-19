@@ -7,6 +7,8 @@ import { LAPTOP } from '@constants/measurements'
 import { scale } from '@utilities/format'
 import { SectionContainerWithBackground as Base } from '@lib/Containers'
 import Button from './Button'
+import Lottie from 'lottie-react'
+import globeAnimation from '@assets/hero__globe_animation.json'
 
 const SectionContainer = styled(Base)`
   @import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
@@ -24,10 +26,19 @@ const SectionContainer = styled(Base)`
     font-family: 'DM Sans', sans-serif;
     font-weight: bold;
   }
+  .globe {
+    position: relative;
+    top: 2.75vw;
+    left: 48.6vw;
+    width: 68vw;
+  }
   @media (max-width: ${LAPTOP}) {
     background-image: url(${mobile});
     font-size: ${() => scale(320, 1440, 6, 34)};
     height: 250vw;
+    .globe {
+      display: none;
+    }
     img {
       width: 16vw;
     }
@@ -56,16 +67,17 @@ const HeroContainer = styled.div`
 `
 
 const Hero = ({ buttonText, titleText, dateText, applyActive, open }) => (
-    <SectionContainer src={background}>
-      <HeroContainer>
-        <img src={logo} alt="cmd-f logo" />
-        <h1 className="title">{titleText}</h1>
-        <Button enabled={open}>
-          {open ? <a href="https://forms.gle/qN3RYkXt5McnhpjF8">{applyActive}</a> : buttonText}
-        </Button>
-        <p className="date">{dateText}</p>
-      </HeroContainer>
-    </SectionContainer>
-  )
+  <SectionContainer src={background}>
+    <HeroContainer>
+      <img src={logo} alt="cmd-f logo" />
+      <h1 className="title">{titleText}</h1>
+      <Button enabled={open}>
+        {open ? <a href="https://forms.gle/qN3RYkXt5McnhpjF8">{applyActive}</a> : buttonText}
+      </Button>
+      <p className="date">{dateText}</p>
+    </HeroContainer>
+    <Lottie class="globe" animationData={globeAnimation} />
+  </SectionContainer>
+)
 
 export default Hero
