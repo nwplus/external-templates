@@ -34,6 +34,8 @@ export default function Index({
           rel="stylesheet"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="British Columbia's first and largest all-women* hackathon dedicated to exploring new technologies and celebrating women* in tech! This year cmd-f will be taking place virtually from March 6th to 7th!" />
+        <meta property="og:image" content="/preview.png" />
       </Head>
       <NavBar config={navbarConfig} flags={flags} />
       <Hero {...hero} open={flags?.registerationFlag} />
