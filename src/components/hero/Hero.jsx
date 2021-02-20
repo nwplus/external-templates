@@ -76,7 +76,7 @@ const Hero = ({ buttonText, titleText, dateText, applyActive, open }) => (
       </Button>
       <p className="date">{dateText}</p>
     </HeroContainer>
-    <Lottie class="globe" animationData={globeAnimation} />
+    <Lottie className="globe" animationData={globeAnimation} />
   </SectionContainer>
 )
 
