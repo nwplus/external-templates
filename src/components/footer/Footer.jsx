@@ -9,7 +9,6 @@ import footerIcons from '@assets/footer_icons.svg'
 import background from '@assets/footer_plants.svg'
 import leftGif from '@assets/footer_art.gif'
 import rightGif from '@assets/footer_google.gif'
-import sideImage from '@assets/footer_bg_icons.svg'
 import { SectionContainerWithBackground as Base, Columns } from '@lib/Containers'
 import { TABLET } from '@constants/measurements'
 
