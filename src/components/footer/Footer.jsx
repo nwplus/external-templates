@@ -67,19 +67,8 @@ const StyledColumns = styled(Columns)`
   z-index: 10;
 `
 
-const SideImage = styled.img`
-  position: absolute;
-  z-index: 0;
-  top: 0;
-  right: 2em;
-  @media (max-width: ${TABLET}) {
-    display: none;
-  }
-`
-
 const Footer = () => (
   <Container src={background}>
-    <SideImage src={sideImage} />
     <StyledColumns>
       <LeftWindow title="say hi.svg" padding="0">
         <WindowImage src={leftGif} />
