@@ -72,28 +72,24 @@ const SilverImg = styled.img`
 `
 
 const BronzeImg = styled.img`
-  max-width: 300px;
-  max-height: 150px;
+  width: 350px;
   margin-left: 1rem;
   margin-right: 1rem;
   margin-top: 2vw;
 
   @media only screen and (max-width: ${TABLET}) {
-    max-width: 35vw;
-    max-height: 15vh;
+    width: 35vw;
   }
 `
 
 const InkindImg = styled.img`
-  max-width: 200px;
-  max-height: 150px;
+  width: 200px;
   margin-left: 1rem;
   margin-right: 1rem;
   margin-top: 2vw;
 
   @media only screen and (max-width: ${TABLET}) {
-    max-width: 30vw;
-    max-height: 15vh;
+    width: 30vw;
   }
 `
 
