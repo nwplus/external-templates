@@ -34,38 +34,44 @@ const StyledH1 = styled.h1`
 `
 
 const PlatniumImg = styled.img`
+  min-width: 450px;
   max-width: 900px;
-  max-height: 300px;
+  max-height: 450px;
   margin-left: 1rem;
   margin-right: 1rem;
   margin-top: 2vw;
 
   @media only screen and (max-width: ${TABLET}) {
+    min-width: 20vh;
     max-width: 50vw;
     max-height: 20vh;
   }
 `
 const GoldImg = styled.img`
+  min-width: 350px;
   max-width: 700px;
-  max-height: 250px;
+  max-height: 350px;
   margin-left: 1rem;
   margin-right: 1rem;
   margin-top: 2vw;
 
   @media only screen and (max-width: ${TABLET}) {
+    min-width: 20vh;
     max-width: 45vw;
     max-height: 20vh;
   }
 `
 
 const SilverImg = styled.img`
+  min-width: 250px;
   max-width: 500px;
-  max-height: 200px;
+  max-height: 250px;
   margin-left: 1rem;
   margin-right: 1rem;
   margin-top: 2vw;
 
   @media only screen and (max-width: ${TABLET}) {
+    min-width: 20vh;
     max-width: 40vw;
     max-height: 20vh;
   }
