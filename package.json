@@ -7,8 +7,7 @@
     "build": "next build && next export",
     "build:staging": "cross-env DEPLOY_ENV=STAGING next build && next export",
     "build:prod": "cross-env DEPLOY_ENV=PRODUCTION next build && next export",
-    "start:staging": "cross-env DEPLOY_ENV=STAGING next build && next start",
-    "start:prod": "cross-env DEPLOY_ENV=PRODUCTION next build && next start",
+    "start": "cross-env DEPLOY_ENV=STAGING next build && next start",
     "lint": "eslint --ext .js,.jsx --ignore-path .gitignore ."
   },
   "dependencies": {
