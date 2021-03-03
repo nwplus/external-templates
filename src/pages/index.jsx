@@ -43,13 +43,15 @@ export default function Index({
       <Video {...video} />
       <Values {...values} />
       {flags?.faqFlag && <Faq id="faq" config={faqConfig} />}
-      {flags?.sponsorFlag && <SponsorSection id="sponsors" sponsorData={sponsorData} mentorFlag={flags?.mentorFlag}/>}
+      {flags?.sponsorFlag && <SponsorSection id="sponsors" sponsorData={sponsorData} mentorFlag={flags?.mentorFlag} />}
       <Footer />
     </SectionContainer>
   )
 }
 
-export async function getStaticProps() {
+export async function getStaticProps(context) {
+  console.log("CALLING GET STATIC PROP")
+  console.log(context)
   const targetedHackathon = await fireDb.getTargetedHackathon()
 
   // Uncomment if you want to update config
