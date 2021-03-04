@@ -66,7 +66,7 @@ const StyledColumns = styled(Columns)`
   z-index: 10;
 `
 
-const Footer = () => (
+const Footer = ({ mailForLogs, mailForSponsorship, codeOfConductUrl }) => (
   <Container src={background}>
     <StyledColumns>
       <LeftWindow title="say hi.svg" padding="0">
@@ -90,9 +90,9 @@ const Footer = () => (
         <StyledIcon src={iconMedium} alt="Medium" />
       </a>
       <br />
-      <StyledA href="mailto: cmd-f@nwplus.io">E-mail Us</StyledA>
-      <StyledA href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">Code of Conduct</StyledA>
-      <StyledA href="mailto: sponsorship@nwplus.uo">Become a Sponsor</StyledA>
+      <StyledA href={`mailto: ${mailForLogs}`}>E-mail Us</StyledA>
+      <StyledA href={`${codeOfConductUrl}`}>Code of Conduct</StyledA>
+      <StyledA href={`mailto: ${mailForSponsorship}`}>Become a Sponsor</StyledA>
       <p>Organized and held by nwPlus</p>
       <p>Copyright © cmd-f 2021</p>
     </Window>

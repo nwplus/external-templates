@@ -100,7 +100,7 @@ const InkindImg = styled.img`
 `
 
 const Buttons = styled.div.attrs(() => ({
-  id: "mentors"
+  id: 'mentors',
 }))`
   display: flex;
   height: 15vw;
@@ -111,7 +111,7 @@ const Buttons = styled.div.attrs(() => ({
 `
 
 // Inkind -> bronze -> silver -> gold -> platinum
-const SponsorSection = ({ sponsorData, mentorFlag }) => {
+const SponsorSection = ({ sponsorData, mentorFlag, mailForSponsorship }) => {
   const [categorizedSponsorMap, setSponsorMap] = useState(new Map())
 
   const categorizeSponsor = sponsorList => {
@@ -170,7 +170,7 @@ const SponsorSection = ({ sponsorData, mentorFlag }) => {
       </Rows>
       <Buttons>
         <Button>
-          <a href="mailto:sponsorship@nwplus.io?Subject=Sponsorship">Become a Sponsor</a>
+          <a href={`mailto:${mailForSponsorship}?Subject=Sponsorship`}>Become a Sponsor</a>
         </Button>
         <Button applyActive={mentorFlag}>
           <a href="https://forms.gle/9ACGyWD9axtpp1wFA">Become a Mentor</a>
