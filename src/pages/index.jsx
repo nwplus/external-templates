@@ -20,6 +20,8 @@ export default function Index({
   sponsorData,
   video,
   values,
+  footer,
+  sponsor,
   configs: { navbarConfig, faqConfig },
 }) {
   return (
@@ -34,7 +36,10 @@ export default function Index({
           rel="stylesheet"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="British Columbia's first and largest all-women* hackathon dedicated to exploring new technologies and celebrating women* in tech! This year cmd-f will be taking place virtually from March 6th to 7th!" />
+        <meta
+          name="description"
+          content="British Columbia's first and largest all-women* hackathon dedicated to exploring new technologies and celebrating women* in tech! This year cmd-f will be taking place virtually from March 6th to 7th!"
+        />
         <meta property="og:image" content="/preview.png" />
       </Head>
       <NavBar config={navbarConfig} flags={flags} />
@@ -43,8 +48,10 @@ export default function Index({
       <Video {...video} />
       <Values {...values} />
       {flags?.faqFlag && <Faq id="faq" config={faqConfig} />}
-      {flags?.sponsorFlag && <SponsorSection id="sponsors" sponsorData={sponsorData} mentorFlag={flags?.mentorFlag}/>}
-      <Footer />
+      {flags?.sponsorFlag && (
+        <SponsorSection id="sponsors" sponsorData={sponsorData} mentorFlag={flags?.mentorFlag} {...sponsor} />
+      )}
+      <Footer {...footer} />
     </SectionContainer>
   )
 }
@@ -68,6 +75,8 @@ export async function getStaticProps() {
       sponsorData: serialize(sponsorData),
       values: StaticData?.Values,
       video: StaticData?.Video,
+      footer: StaticData?.Footer,
+      sponsor: StaticData?.Sponsor,
       configs: {
         navbarConfig: serialize(BuildConfig.componentStyling.navbar),
         faqConfig: serialize(BuildConfig.componentStyling.faq),
