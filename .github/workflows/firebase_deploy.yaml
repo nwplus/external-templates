@@ -14,6 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       IS_PRODUCTION: ${{ endsWith(github.ref, 'main') || endsWith(github.event.inputs.targetedHackathon, 'main') }}
+      TARGETED_HACKATHON: ${{ vincent_work }}
     steps:
       - uses: actions/checkout@master
 
@@ -48,4 +49,4 @@ jobs:
         run: yarn build:prod
 
       - name: Deploy to site associated with branch name
-        run: firebase deploy --only hosting:${GITHUB_REF#refs/*/} --non-interactive --token ${{ secrets.FIREBASE_TOKEN }}
+        run: firebase deploy --only hosting:${TARGETED_HACKATHON} --non-interactive --token ${{ secrets.FIREBASE_TOKEN }}
