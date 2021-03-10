@@ -2,6 +2,10 @@ name: Continuous deployment to firebase hosting
 
 on:
   workflow_dispatch:
+    inputs:
+      targetedHackathon:
+        description: 'Targetted hackathon to build'
+        required: true
   push:
     branches: [cmd-f_dev, cmd-f_main]
 
@@ -10,6 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       IS_PRODUCTION: ${{ endsWith(github.ref, 'main') }}
+      HAS_HACKATHON: ${{ github.event.inputs.targetedHackathon }}
     steps:
       - uses: actions/checkout@master
 
