@@ -2,7 +2,7 @@ name: Continuous deployment to firebase hosting
 
 on:
   repository_dispatch:
-    types: cms-deploy
+    types: [cms-deploy]
   push:
     branches: [cmd-f_dev, cmd-f_main]
 
