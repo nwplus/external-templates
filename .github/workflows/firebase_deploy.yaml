@@ -1,6 +1,7 @@
 name: Continuous deployment to firebase hosting
 
 on:
+  workflow_dispatch:
   push:
     branches: [cmd-f_dev, cmd-f_main]
 
