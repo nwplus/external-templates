@@ -6,6 +6,7 @@ on:
       targetedHackathon:
         description: 'Targetted hackathon to build'
         required: true
+        default: github.ref
   push:
     branches: [cmd-f_dev, cmd-f_main]
 
@@ -13,8 +14,7 @@ jobs:
   firebase_deploy:
     runs-on: ubuntu-latest
     env:
-      IS_PRODUCTION: ${{ endsWith(github.ref, 'main') }}
-      HAS_HACKATHON: ${{ github.event.inputs.targetedHackathon }}
+      IS_PRODUCTION: ${{ endsWith(github.event.inputs.targetedHackathon, 'main') }}
     steps:
       - uses: actions/checkout@master
 
