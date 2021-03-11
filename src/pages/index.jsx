@@ -33,9 +33,9 @@ export async function getStaticProps() {
 
   const websiteData = await fireDb.getWebsiteData(targetedHackathon)
 
-  const { featureFlags, BuildConfig, StaticData } = websiteData
   const sponsorData = await fireDb.getCollection(targetedHackathon, 'Sponsors')
 
+  const { featureFlags, BuildConfig, StaticData } = websiteData
   const { faqFlag, registerationFlag, sponsorFlag, mentorFlag } = serialize(featureFlags)
   const {
     componentStyling: { faq, navbar },
