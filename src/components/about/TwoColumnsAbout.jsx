@@ -76,8 +76,8 @@ const CountDown = ({ date }) => {
   const now = new Date().getTime()
   const distance = countDownDate - now
 
-  const days = Math.floor(distance / (1000 * 60 * 60 * 24))
-  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+  const days = Math.max(Math.floor(distance / (1000 * 60 * 60 * 24)), 0)
+  const hours = Math.max(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)), 0)
 
   return (
     <div className="countdown">
