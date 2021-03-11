@@ -110,7 +110,7 @@ const SectionContainerWithBackground = styled(SectionContainerWithContainBackgro
 // FAQ Section with two columns and scattered layout:
 // General    Logistics
 //          Teams & Projects
-const ExpandableScatteredCategories = ({ config, shouldDisplay }) => {
+const ExpandableScatteredCategories = ({ config }) => {
   const [categorizedFaqMap, setFaqMap] = useState(new Map())
   const [faq, setFaq] = useState([])
 
@@ -133,7 +133,7 @@ const ExpandableScatteredCategories = ({ config, shouldDisplay }) => {
     categorizeFaq(faq)
   }, [faq])
 
-  return shouldDisplay ? (
+  return (
     <SectionContainerWithBackground
       width={config.containerWidth}
       margin={config.containerMargin}
@@ -183,7 +183,7 @@ const ExpandableScatteredCategories = ({ config, shouldDisplay }) => {
         </Column>
       </Columns>
     </SectionContainerWithBackground>
-  ) : null
+  )
 }
 
 export default ExpandableScatteredCategories
