@@ -66,13 +66,13 @@ const HeroContainer = styled.div`
   }
 `
 
-const Hero = ({ buttonText, titleText, dateText, applyActive, open }) => (
+const Hero = ({ buttonText, titleText, dateText, applyActive, registerationFlag }) => (
   <SectionContainer src={background}>
     <HeroContainer>
       <img src={logo} alt="cmd-f logo" />
       <h1 className="title">{titleText}</h1>
-      <Button enabled={open}>
-        {open ? <a href="https://forms.gle/qN3RYkXt5McnhpjF8">{applyActive}</a> : buttonText}
+      <Button enabled={registerationFlag}>
+        {registerationFlag ? <a href="https://forms.gle/qN3RYkXt5McnhpjF8">{applyActive}</a> : buttonText}
       </Button>
       <p className="date">{dateText}</p>
     </HeroContainer>

@@ -34,66 +34,68 @@ const StyledH1 = styled.h1`
 `
 
 const PlatniumImg = styled.img`
+  min-width: 450px;
   max-width: 900px;
-  max-height: 300px;
+  max-height: 450px;
   margin-left: 1rem;
   margin-right: 1rem;
   margin-top: 2vw;
 
   @media only screen and (max-width: ${TABLET}) {
+    min-width: 20vh;
     max-width: 50vw;
     max-height: 20vh;
   }
 `
 const GoldImg = styled.img`
+  min-width: 350px;
   max-width: 700px;
-  max-height: 250px;
+  max-height: 350px;
   margin-left: 1rem;
   margin-right: 1rem;
   margin-top: 2vw;
 
   @media only screen and (max-width: ${TABLET}) {
+    min-width: 20vh;
     max-width: 45vw;
     max-height: 20vh;
   }
 `
 
 const SilverImg = styled.img`
+  min-width: 250px;
   max-width: 500px;
-  max-height: 200px;
+  max-height: 250px;
   margin-left: 1rem;
   margin-right: 1rem;
   margin-top: 2vw;
 
   @media only screen and (max-width: ${TABLET}) {
+    min-width: 20vh;
     max-width: 40vw;
     max-height: 20vh;
   }
 `
 
 const BronzeImg = styled.img`
-  max-width: 300px;
-  max-height: 150px;
+  width: 350px;
   margin-left: 1rem;
   margin-right: 1rem;
   margin-top: 2vw;
 
   @media only screen and (max-width: ${TABLET}) {
-    max-width: 35vw;
-    max-height: 15vh;
+    width: 35vw;
   }
 `
 
 const InkindImg = styled.img`
-  max-width: 200px;
-  max-height: 150px;
+  width: 200px;
   margin-left: 1rem;
   margin-right: 1rem;
   margin-top: 2vw;
 
   @media only screen and (max-width: ${TABLET}) {
-    max-width: 30vw;
-    max-height: 15vh;
+    width: 30vw;
   }
 `
 
@@ -109,7 +111,7 @@ const Buttons = styled.div.attrs(() => ({
 `
 
 // Inkind -> bronze -> silver -> gold -> platinum
-const SponsorSection = ({ sponsorData, mentorFlag, mailForSponsorship }) => {
+const SponsorSection = ({ sponsorData, mentorFlag, sponsorFlag, mailForSponsorship }) => {
   const [categorizedSponsorMap, setSponsorMap] = useState(new Map())
 
   const categorizeSponsor = sponsorList => {
@@ -156,7 +158,7 @@ const SponsorSection = ({ sponsorData, mentorFlag, mailForSponsorship }) => {
     </Row>
   )
 
-  return (
+  return sponsorFlag ? (
     <SectionContainer src={background} empty={categorizedSponsorMap.size === 0} id="sponsors">
       <StyledH1>Sponsors</StyledH1>
       <Rows>
@@ -175,7 +177,7 @@ const SponsorSection = ({ sponsorData, mentorFlag, mailForSponsorship }) => {
         </Button>
       </Buttons>
     </SectionContainer>
-  )
+  ) : null
 }
 
 export default SponsorSection
