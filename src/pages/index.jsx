@@ -9,11 +9,13 @@ import NavBar from '@components/hero/NavBar'
 import Hero from '@components/hero/Hero'
 import Values from '@components/value/ThreeColumnsValue'
 import Sponsor from '@components/sponsors/SponsorSection'
+import DummyLoader from '@components/dummy/Dummy'
 
-export default function Index({ about, hero, video, values, footer, sponsor, faq, navbar }) {
+export default function Index({ dummy, about, hero, video, values, footer, sponsor, faq, navbar }) {
   return (
     <SectionContainer>
       <NavBar {...navbar} />
+      <DummyLoader {...dummy} />
       <Hero {...hero} />
       <About {...about} />
       <Video {...video} />
@@ -46,6 +48,9 @@ export async function getStaticProps() {
       navbar: {
         config: navbar,
         flags: serialize(featureFlags),
+      },
+      dummy: {
+        chosenTemplate: 'dummy1',
       },
       hero: {
         ...StaticData?.Hero,
