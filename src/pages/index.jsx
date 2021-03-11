@@ -1,9 +1,7 @@
-import GlobalStyles from '@styles/global'
 import fireDb from '@utilities/firebase'
 import { serialize } from '@utilities/format'
 import { SectionContainer } from '@lib/Containers'
-import Header from '@components/Header'
-import Faq from '@components/faqTemplates/Cmdf2021'
+import Faq from '@components/faq/Cmdf2021'
 import About from '@components/about/TwoColumnsAbout'
 import Video from '@components/video/Video'
 import Footer from '@components/footer/Footer'
@@ -12,27 +10,15 @@ import Hero from '@components/hero/Hero'
 import Values from '@components/value/ThreeColumnsValue'
 import SponsorSection from '@components/sponsors/SponsorSection'
 
-export default function Index({
-  flags,
-  about,
-  hero,
-  sponsorData,
-  video,
-  values,
-  footer,
-  sponsor,
-  configs: { navbarConfig, faqConfig },
-}) {
+export default function Index({ flags, about, hero, sponsorData, video, values, footer, sponsor, faq, navbar }) {
   return (
     <SectionContainer>
-      <Header />
-      <GlobalStyles />
-      <NavBar config={navbarConfig} flags={flags} />
+      <NavBar {...navbar} />
       <Hero {...hero} open={flags?.registerationFlag} />
       <About {...about} />
       <Video {...video} />
       <Values {...values} />
-      {flags?.faqFlag && <Faq id="faq" config={faqConfig} />}
+      <Faq id="faq" {...faq} />
       {flags?.sponsorFlag && (
         <SponsorSection id="sponsors" sponsorData={sponsorData} mentorFlag={flags?.mentorFlag} {...sponsor} />
       )}
@@ -51,10 +37,16 @@ export async function getStaticProps() {
 
   const { featureFlags, BuildConfig, StaticData } = websiteData
   const sponsorData = await fireDb.getCollection(targetedHackathon, 'Sponsors')
+  // , mentorFlag, sponsorFlag, rsvpOpenFlag, registerationFlag
+  const { faqFlag, registerationFlag } = serialize(featureFlags)
+  const {
+    componentStyling: { faq, navbar },
+  } = serialize(BuildConfig)
+
+  console.log(navbar)
 
   return {
     props: {
-      flags: serialize(featureFlags),
       about: StaticData?.About,
       hero: StaticData?.Hero,
       sponsorData: serialize(sponsorData),
@@ -62,9 +54,13 @@ export async function getStaticProps() {
       video: StaticData?.Video,
       footer: StaticData?.Footer,
       sponsor: StaticData?.Sponsor,
-      configs: {
-        navbarConfig: serialize(BuildConfig.componentStyling.navbar),
-        faqConfig: serialize(BuildConfig.componentStyling.faq),
+      faq: {
+        shouldDisplay: faqFlag,
+        config: faq,
+      },
+      navbar: {
+        config: navbar,
+        flags: serialize(featureFlags),
       },
     }, // will be passed to the page component as props
   }
