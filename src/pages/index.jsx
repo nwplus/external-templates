@@ -8,20 +8,18 @@ import Footer from '@components/footer/Footer'
 import NavBar from '@components/hero/NavBar'
 import Hero from '@components/hero/Hero'
 import Values from '@components/value/ThreeColumnsValue'
-import SponsorSection from '@components/sponsors/SponsorSection'
+import Sponsor from '@components/sponsors/SponsorSection'
 
-export default function Index({ flags, about, hero, sponsorData, video, values, footer, sponsor, faq, navbar }) {
+export default function Index({ about, hero, video, values, footer, sponsor, faq, navbar }) {
   return (
     <SectionContainer>
       <NavBar {...navbar} />
-      <Hero {...hero} open={flags?.registerationFlag} />
+      <Hero {...hero} />
       <About {...about} />
       <Video {...video} />
       <Values {...values} />
       <Faq id="faq" {...faq} />
-      {flags?.sponsorFlag && (
-        <SponsorSection id="sponsors" sponsorData={sponsorData} mentorFlag={flags?.mentorFlag} {...sponsor} />
-      )}
+      <Sponsor id="sponsors" {...sponsor} />
       <Footer {...footer} />
     </SectionContainer>
   )
@@ -37,31 +35,36 @@ export async function getStaticProps() {
 
   const { featureFlags, BuildConfig, StaticData } = websiteData
   const sponsorData = await fireDb.getCollection(targetedHackathon, 'Sponsors')
-  // , mentorFlag, sponsorFlag, rsvpOpenFlag, registerationFlag
-  const { faqFlag, registerationFlag } = serialize(featureFlags)
+
+  const { faqFlag, registerationFlag, sponsorFlag, mentorFlag } = serialize(featureFlags)
   const {
     componentStyling: { faq, navbar },
   } = serialize(BuildConfig)
 
-  console.log(navbar)
-
   return {
     props: {
-      about: StaticData?.About,
-      hero: StaticData?.Hero,
-      sponsorData: serialize(sponsorData),
-      values: StaticData?.Values,
-      video: StaticData?.Video,
-      footer: StaticData?.Footer,
-      sponsor: StaticData?.Sponsor,
-      faq: {
-        shouldDisplay: faqFlag,
-        config: faq,
-      },
       navbar: {
         config: navbar,
         flags: serialize(featureFlags),
       },
+      hero: {
+        ...StaticData?.Hero,
+        registerationFlag,
+      },
+      about: StaticData?.About,
+      values: StaticData?.Values,
+      video: StaticData?.Video,
+      faq: {
+        shouldDisplay: faqFlag,
+        config: faq,
+      },
+      sponsor: {
+        ...StaticData?.Sponsor,
+        sponsorData: serialize(sponsorData),
+        sponsorFlag,
+        mentorFlag,
+      },
+      footer: StaticData?.Footer,
     }, // will be passed to the page component as props
   }
 }
