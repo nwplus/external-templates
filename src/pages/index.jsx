@@ -1,9 +1,8 @@
-import Head from 'next/head'
-import React from 'react'
 import GlobalStyles from '@styles/global'
 import fireDb from '@utilities/firebase'
 import { serialize } from '@utilities/format'
 import { SectionContainer } from '@lib/Containers'
+import Header from '@components/Header'
 import Faq from '@components/faqTemplates/Cmdf2021'
 import About from '@components/about/TwoColumnsAbout'
 import Video from '@components/video/Video'
@@ -26,22 +25,8 @@ export default function Index({
 }) {
   return (
     <SectionContainer>
+      <Header />
       <GlobalStyles />
-      <Head>
-        <title>cmd-f 2021</title>
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Fira+Code:wght@700&family=Fira+Mono:wght@700&display=swap"
-          rel="stylesheet"
-        />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta
-          name="description"
-          content="British Columbia's first and largest all-women* hackathon dedicated to exploring new technologies and celebrating women* in tech! This year cmd-f will be taking place virtually from March 6th to 7th!"
-        />
-        <meta property="og:image" content="/preview.png" />
-      </Head>
       <NavBar config={navbarConfig} flags={flags} />
       <Hero {...hero} open={flags?.registerationFlag} />
       <About {...about} />
