@@ -1,56 +1,25 @@
-import Head from 'next/head'
-import React from 'react'
-import GlobalStyles from '@styles/global'
 import fireDb from '@utilities/firebase'
 import { serialize } from '@utilities/format'
 import { SectionContainer } from '@lib/Containers'
-import Faq from '@components/faqTemplates/Cmdf2021'
+import Faq from '@components/faq/Cmdf2021'
 import About from '@components/about/TwoColumnsAbout'
 import Video from '@components/video/Video'
 import Footer from '@components/footer/Footer'
 import NavBar from '@components/hero/NavBar'
 import Hero from '@components/hero/Hero'
 import Values from '@components/value/ThreeColumnsValue'
-import SponsorSection from '@components/sponsors/SponsorSection'
+import Sponsor from '@components/sponsors/SponsorSection'
 
-export default function Index({
-  flags,
-  about,
-  hero,
-  sponsorData,
-  video,
-  values,
-  footer,
-  sponsor,
-  configs: { navbarConfig, faqConfig },
-}) {
+export default function Index({ about, hero, video, values, footer, sponsor, faq, navbar }) {
   return (
     <SectionContainer>
-      <GlobalStyles />
-      <Head>
-        <title>cmd-f 2021</title>
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Fira+Code:wght@700&family=Fira+Mono:wght@700&display=swap"
-          rel="stylesheet"
-        />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta
-          name="description"
-          content="British Columbia's first and largest all-women* hackathon dedicated to exploring new technologies and celebrating women* in tech! This year cmd-f will be taking place virtually from March 6th to 7th!"
-        />
-        <meta property="og:image" content="/preview.png" />
-      </Head>
-      <NavBar config={navbarConfig} flags={flags} />
-      <Hero {...hero} open={flags?.registerationFlag} />
+      <NavBar {...navbar} />
+      <Hero {...hero} />
       <About {...about} />
       <Video {...video} />
       <Values {...values} />
-      {flags?.faqFlag && <Faq id="faq" config={faqConfig} />}
-      {flags?.sponsorFlag && (
-        <SponsorSection id="sponsors" sponsorData={sponsorData} mentorFlag={flags?.mentorFlag} {...sponsor} />
-      )}
+      <Faq id="faq" {...faq} />
+      <Sponsor id="sponsors" {...sponsor} />
       <Footer {...footer} />
     </SectionContainer>
   )
@@ -64,23 +33,38 @@ export async function getStaticProps() {
 
   const websiteData = await fireDb.getWebsiteData(targetedHackathon)
 
-  const { featureFlags, BuildConfig, StaticData } = websiteData
   const sponsorData = await fireDb.getCollection(targetedHackathon, 'Sponsors')
+
+  const { featureFlags, BuildConfig, StaticData } = websiteData
+  const { faqFlag, registerationFlag, sponsorFlag, mentorFlag } = serialize(featureFlags)
+  const {
+    componentStyling: { faq, navbar },
+  } = serialize(BuildConfig)
 
   return {
     props: {
-      flags: serialize(featureFlags),
+      navbar: {
+        config: navbar,
+        flags: serialize(featureFlags),
+      },
+      hero: {
+        ...StaticData?.Hero,
+        registerationFlag,
+      },
       about: StaticData?.About,
-      hero: StaticData?.Hero,
-      sponsorData: serialize(sponsorData),
       values: StaticData?.Values,
       video: StaticData?.Video,
-      footer: StaticData?.Footer,
-      sponsor: StaticData?.Sponsor,
-      configs: {
-        navbarConfig: serialize(BuildConfig.componentStyling.navbar),
-        faqConfig: serialize(BuildConfig.componentStyling.faq),
+      faq: {
+        shouldDisplay: faqFlag,
+        config: faq,
       },
+      sponsor: {
+        ...StaticData?.Sponsor,
+        sponsorData: serialize(sponsorData),
+        sponsorFlag,
+        mentorFlag,
+      },
+      footer: StaticData?.Footer,
     }, // will be passed to the page component as props
   }
 }

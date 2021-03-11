@@ -111,7 +111,7 @@ const Buttons = styled.div.attrs(() => ({
 `
 
 // Inkind -> bronze -> silver -> gold -> platinum
-const SponsorSection = ({ sponsorData, mentorFlag, mailForSponsorship }) => {
+const SponsorSection = ({ sponsorData, mentorFlag, sponsorFlag, mailForSponsorship }) => {
   const [categorizedSponsorMap, setSponsorMap] = useState(new Map())
 
   const categorizeSponsor = sponsorList => {
@@ -158,7 +158,7 @@ const SponsorSection = ({ sponsorData, mentorFlag, mailForSponsorship }) => {
     </Row>
   )
 
-  return (
+  return sponsorFlag ? (
     <SectionContainer src={background} empty={categorizedSponsorMap.size === 0} id="sponsors">
       <StyledH1>Sponsors</StyledH1>
       <Rows>
@@ -177,7 +177,7 @@ const SponsorSection = ({ sponsorData, mentorFlag, mailForSponsorship }) => {
         </Button>
       </Buttons>
     </SectionContainer>
-  )
+  ) : null
 }
 
 export default SponsorSection
