@@ -5,7 +5,7 @@ import {
   Columns,
   Column,
 } from '@lib/Containers'
-import ExpandableFaqList from '@components/faq/shared/FaqList'
+import ExpandableFaqList from '@components/faq/lib/FaqList'
 import backgroundPlants from '@assets/faq__background_plants.svg'
 import titleOptions from '@assets/faq__title_options.svg'
 import questionLeftDecor from '@assets/faq__question_leftdecor.svg'
@@ -110,7 +110,7 @@ const SectionContainerWithBackground = styled(SectionContainerWithContainBackgro
 // FAQ Section with two columns and scattered layout:
 // General    Logistics
 //          Teams & Projects
-const ExpandableScatteredCategories = ({ config, shouldDisplay }) => {
+const ExpandableScatteredCategories = ({ config }) => {
   const [categorizedFaqMap, setFaqMap] = useState(new Map())
   const [faq, setFaq] = useState([])
 
@@ -133,7 +133,7 @@ const ExpandableScatteredCategories = ({ config, shouldDisplay }) => {
     categorizeFaq(faq)
   }, [faq])
 
-  return shouldDisplay ? (
+  return (
     <SectionContainerWithBackground
       width={config.containerWidth}
       margin={config.containerMargin}
@@ -183,7 +183,7 @@ const ExpandableScatteredCategories = ({ config, shouldDisplay }) => {
         </Column>
       </Columns>
     </SectionContainerWithBackground>
-  ) : null
+  )
 }
 
 export default ExpandableScatteredCategories

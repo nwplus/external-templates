@@ -1,7 +1,7 @@
 import fireDb from '@utilities/firebase'
 import { serialize } from '@utilities/format'
 import { SectionContainer } from '@lib/Containers'
-import Faq from '@components/faq/Cmdf2021'
+import Faq from '@components/faq/FaqLoader'
 import About from '@components/about/TwoColumnsAbout'
 import Video from '@components/video/Video'
 import Footer from '@components/footer/Footer'
@@ -39,6 +39,7 @@ export async function getStaticProps() {
   const { faqFlag, registerationFlag, sponsorFlag, mentorFlag } = serialize(featureFlags)
   const {
     componentStyling: { faq, navbar },
+    globalStyling: { faqTemplate },
   } = serialize(BuildConfig)
 
   return {
@@ -55,6 +56,7 @@ export async function getStaticProps() {
       values: StaticData?.Values,
       video: StaticData?.Video,
       faq: {
+        chosenTemplate: faqTemplate,
         shouldDisplay: faqFlag,
         config: faq,
       },
