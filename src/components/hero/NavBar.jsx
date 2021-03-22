@@ -72,9 +72,9 @@ const Hamburger = styled.a`
   height: 20px;
 `
 
-const NwLogo = props => (
+const NwLogo = ({ logo, ...props }) => (
   <a href="https://www.nwplus.io/" target="_blank" rel="noopener noreferrer" {...props}>
-    <Logo src="/nwplus-logo.png" alt="nwPlus logo" />
+    <Logo src={logo} alt="nwPlus logo" />
   </a>
 )
 
@@ -104,8 +104,8 @@ const SidebarItems = styled.div`
 
 const Navbar = ({ config, flags }) => {
   // handles the navbar being visible when scrolling
-  const { fontColor, previousYearLink } = config
-  const { faqFlag, sponsorFlag, mentorFlag } = flags
+  const { fontColor, previousYearLink, mlhBannerLink, mlhBannerLogo, nwLogo } = config
+  const { faqFlag, sponsorFlag, mentorFlag, mlhFlag } = flags
 
   const [prevScrollPos, setPrevScrollPos] = useState(0)
   const [visible, setVisible] = useState(true)
@@ -144,15 +144,13 @@ const Navbar = ({ config, flags }) => {
   if (!open) {
     return (
       <Nav visible={visible} role="navigation" aria-label="main navigation">
-        <Banner
-          href="https://mlh.io/seasons/2021/events?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2021-season&utm_content=black"
-          target="_blank"
-        >
-          <img
-            src="https://s3.amazonaws.com/logged-assets/trust-badge/2021/mlh-trust-badge-2021-black.svg"
-            alt="Major League Hacking 2021 Hackathon Season"
-          />
-        </Banner>
+        {mlhFlag ? (
+          <Banner href={mlhBannerLink} target="_blank">
+            <img src={mlhBannerLogo} alt="Major League Hacking 2021 Hackathon Season" />
+          </Banner>
+        ) : (
+          <div></div>
+        )}
 
         {width <= 786 ? (
           <Hamburger onClick={toggle}>
@@ -181,7 +179,7 @@ const Navbar = ({ config, flags }) => {
             <NavItem href={previousYearLink} fontColor={fontColor}>
               Last Year
             </NavItem>
-            <NwLogo />
+            <NwLogo logo={nwLogo} />
           </NavItemContainer>
         )}
       </Nav>
@@ -189,7 +187,7 @@ const Navbar = ({ config, flags }) => {
   }
   return (
     <Sidebar>
-      <NwLogo style={{ height: '40px' }} />
+      <NwLogo logo={nwLogo} style={{ height: '40px' }} />
       <SidebarItems>
         <NavItem onClick={toggle} href="#about" fontColor="white">
           About

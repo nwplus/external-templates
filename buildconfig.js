@@ -6,6 +6,12 @@ export default {
   // Styling
   // 'BuildConfig.componentStyling.navbar.fontColor': 'black',
   // 'BuildConfig.componentStyling.navbar.previousYearLink': 'https://cmd-f2020.nwplus.io/',
+  // 'BuildConfig.componentStyling.navbar.mlhBannerLink':
+  //   'https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Test-Logo.svg/783px-Test-Logo.svg.png',
+  // 'BuildConfig.componentStyling.navbar.mlhBannerLogo':
+  //   'https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Test-Logo.svg/783px-Test-Logo.svg.png',
+  // 'BuildConfig.componentStyling.navbar.nwLogo':
+  //   'https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Test-Logo.svg/783px-Test-Logo.svg.png',
   // 'BuildConfig.componentStyling.hero.marginBottom': '0px',
   // 'BuildConfig.componentStyling.hero.marginTop': '1px',
   // 'BuildConfig.componentStyling.faq.containerWidth': '100%',
@@ -29,6 +35,7 @@ export default {
   // 'featureFlags.rsvpOpenFlag': false,
   // 'featureFlags.sponsorFlag': false,
   // 'featureFlags.volunteerFlag': false,
+  // 'featureFlags.mlhFlag': false,
   // 'StaticData.About.top': 'string',
   // 'StaticData.About.left': 'string',
   // 'StaticData.About.right': 'string',
