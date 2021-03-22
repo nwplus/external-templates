@@ -149,7 +149,7 @@ const Navbar = ({ config, flags }) => {
             <img src={mlhBannerLogo} alt="Major League Hacking 2021 Hackathon Season" />
           </Banner>
         ) : (
-          <div></div>
+          <div />
         )}
 
         {width <= 786 ? (
