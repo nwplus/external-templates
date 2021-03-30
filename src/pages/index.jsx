@@ -5,7 +5,7 @@ import Faq from '@components/faq/FaqLoader'
 import About from '@components/about/TwoColumnsAbout'
 import Video from '@components/video/Video'
 import Footer from '@components/footer/Footer'
-import NavBar from '@components/hero/NavBar'
+import Navbar from '@components/navbar/Navbar'
 import Hero from '@components/hero/Hero'
 import Values from '@components/value/ThreeColumnsValue'
 import Sponsor from '@components/sponsors/SponsorSection'
@@ -13,7 +13,7 @@ import Sponsor from '@components/sponsors/SponsorSection'
 export default function Index({ about, hero, video, values, footer, sponsor, faq, navbar }) {
   return (
     <SectionContainer>
-      <NavBar {...navbar} />
+      <Navbar {...navbar} />
       <Hero {...hero} />
       <About {...about} />
       <Video {...video} />
