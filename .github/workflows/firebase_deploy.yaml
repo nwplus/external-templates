@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       IS_PRODUCTION: ${{ endsWith(github.ref, 'main') || endsWith(github.event.inputs.targetedHackathon, 'main') }}
-      TARGETED_HACKATHON: ${{ env.GITHUB_REF#refs/*/ || github.event.inputs.targetedHackathon }}
+      TARGETED_HACKATHON: ${ GITHUB_REF#refs/*/} || ${{ github.event.inputs.targetedHackathon }}
     steps:
       - uses: actions/checkout@master
 
