@@ -14,7 +14,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       IS_PRODUCTION: ${{ endsWith(github.ref, 'main') || endsWith(github.event.inputs.targetedHackathon, 'main') }}
-      TARGETED_HACKATHON: ${{ github.base_ref || github.event.inputs.targetedHackathon }}
     steps:
       - uses: actions/checkout@master
 
@@ -48,5 +47,10 @@ jobs:
         if: ${{ env.IS_PRODUCTION == 'true' }}
         run: yarn build:prod
 
+      - name: Check for targeted hackathon
+        if: ${{ !github.event.inputs.targetedHackathon }}
+        run: firebase deploy --only hosting:${GITHUB_REF#refs/*/} --non-interactive --token ${{ secrets.FIREBASE_TOKEN }}
+
       - name: Deploy to site associated with branch name
-        run: firebase deploy --only hosting:${{ env.TARGETED_HACKATHON }} --non-interactive --token ${{ secrets.FIREBASE_TOKEN }}
+        if: ${{ github.event.inputs.targetedHackathon }}
+        run: firebase deploy --only hosting:${{ github.event.inputs.targetedHackathon }} --non-interactive --token ${{ secrets.FIREBASE_TOKEN }}
