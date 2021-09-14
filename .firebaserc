@@ -13,7 +13,7 @@
           "dev-nwplus-cmd-f"
         ],
         "hackcamp2021_dev": [
-          "dev-nwplus-hackcamp-2021"
+          "dev-nwplus-hackcamp2021"
         ]
       }
     },
@@ -26,7 +26,7 @@
           "nwplus-cmd-f"
         ],
         "hackcamp2021_main": [
-          "nwplus-hackcamp-2021"
+          "nwplus-hackcamp2021"
         ]
       }
     }
