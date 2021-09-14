@@ -1,12 +1,14 @@
 import styled from 'styled-components'
 import { TABLET } from '@constants/measurements'
 
+// ================
+// Remind team that we can modify dimensions and colors to these standard components
+// ================
+
 // Basic section container
 export const SectionContainer = styled.div.attrs(props => ({
   id: props?.id,
 }))`
-  background-color: #f9f6ef;
-  color: #2f4246;
   font-family: 'DM Sans', sans-serif;
   width: ${p => p.width};
   height: ${p => p.height};
@@ -29,7 +31,6 @@ export const Columns = styled.div`
 `
 export const Column = styled.div`
   width: 100%;
-  margin: 0 2vw;
 `
 
 export const Rows = styled.div`
@@ -44,5 +45,4 @@ export const Row = styled.div`
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  max-width: 55vw;
 `

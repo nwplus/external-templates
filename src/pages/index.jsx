@@ -1,72 +1,37 @@
-import fireDb from '@utilities/firebase'
-import { serialize } from '@utilities/format'
+import Head from 'next/head'
+import React from 'react'
+import GlobalStyles from '@styles/global'
+// import fireDb from '@utilities/firebase'
 import { SectionContainer } from '@lib/Containers'
-import Faq from '@components/faq/FaqLoader'
-import About from '@components/about/TwoColumnsAbout'
-import Video from '@components/video/Video'
-import Footer from '@components/footer/Footer'
-import Navbar from '@components/navbar/Navbar'
-import Hero from '@components/hero/Hero'
-import Values from '@components/value/ThreeColumnsValue'
-import Sponsor from '@components/sponsors/SponsorSection'
 
-export default function Index({ about, hero, video, values, footer, sponsor, faq, navbar }) {
+export default function Index({ title }) {
   return (
     <SectionContainer>
-      <Navbar {...navbar} />
-      <Hero {...hero} />
-      <About {...about} />
-      <Video {...video} />
-      <Values {...values} />
-      <Faq id="faq" {...faq} />
-      <Sponsor id="sponsors" {...sponsor} />
-      <Footer {...footer} />
+      <GlobalStyles />
+      <Head>
+        {/* Remove comment once title is set */}
+        <title> {title} </title>
+        {/* Remove comment once favicon is set */}
+        <link rel="icon" href="/favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        {/* Remove comment once description is written */}
+        <meta
+          name="description"
+          content=""
+        />
+        {/* Remove comment once preview image is set */}
+        <meta property="og:image" content="/preview.png" />
+      </Head>
+      {/* Components Starts */}
+      {/* Components Ends */}
     </SectionContainer>
   )
 }
 
 export async function getStaticProps() {
-  const targetedHackathon = await fireDb.getTargetedHackathon()
-
-  // Uncomment if you want to update config
-  // await fireDb.updateConfig(targetedHackathon)
-
-  const websiteData = await fireDb.getWebsiteData(targetedHackathon)
-
-  const sponsorData = await fireDb.getCollection(targetedHackathon, 'Sponsors')
-
-  const { featureFlags, BuildConfig, StaticData } = websiteData
-  const { faqFlag, registerationFlag, sponsorFlag, mentorFlag } = serialize(featureFlags)
-  const {
-    componentStyling: { faq, navbar },
-    globalStyling: { faqTemplate },
-  } = serialize(BuildConfig)
-
   return {
     props: {
-      navbar: {
-        config: navbar,
-        flags: serialize(featureFlags),
-      },
-      hero: {
-        ...StaticData?.Hero,
-        registerationFlag,
-      },
-      about: StaticData?.About,
-      values: StaticData?.Values,
-      video: StaticData?.Video,
-      faq: {
-        chosenTemplate: faqTemplate,
-        shouldDisplay: faqFlag,
-        config: faq,
-      },
-      sponsor: {
-        ...StaticData?.Sponsor,
-        sponsorData: serialize(sponsorData),
-        sponsorFlag,
-        mentorFlag,
-      },
-      footer: StaticData?.Footer,
+      title: "example title"
     }, // will be passed to the page component as props
   }
 }

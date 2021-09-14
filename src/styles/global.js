@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
 
+// Remove comment once font is replaced
 export const GlobalStyles = createGlobalStyle`
   * {
     margin: 0;
@@ -12,13 +13,14 @@ export const GlobalStyles = createGlobalStyle`
   body {
     position: relative
   }
+  
   :root {
       @font-face {
-        font-family: 'HK Grotesk';
-        src: local('HK Grotesk'), url(./fonts/HKGrotesk-Regular.otf) format('otf');
+        font-family: 'Example font';
+        src: local('Example font'), url(./fonts/local_example_font.otf) format('otf');
       }
 
-      font-family: 'HK Grotesk';
+      font-family: 'Example font';
 
       @media (min-width: 768px) {
       }
