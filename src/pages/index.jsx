@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import React from 'react'
 import GlobalStyles from '@styles/global'
-import fireDb from '@utilities/firebase'
+// import fireDb from '@utilities/firebase'
 import { SectionContainer } from '@lib/Containers'
 
 export default function Index({ title }) {
