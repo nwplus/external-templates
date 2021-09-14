@@ -14,6 +14,16 @@
       "target": "cmd-f_main",
       "public": "out",
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+    },
+    {
+      "target": "hackcamp_dev",
+      "public": "out",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+    },
+    {
+      "target": "hackcamp_main",
+      "public": "out",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
     }
   ] 
 }
