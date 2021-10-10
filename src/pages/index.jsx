@@ -1,8 +1,15 @@
 import Head from 'next/head'
 import React from 'react'
 import GlobalStyles from '@styles/global'
+import styled from 'styled-components'
 // import fireDb from '@utilities/firebase'
 import { SectionContainer } from '@lib/Containers'
+import Footer from '@components/Footer'
+
+// Footer component needs space above it to not be cut off
+const DummyContainer = styled.div`
+  height: 100vh;
+`;
 
 export default function Index({ title }) {
   return (
@@ -22,8 +29,8 @@ export default function Index({ title }) {
         {/* Remove comment once preview image is set */}
         <meta property="og:image" content="/preview.png" />
       </Head>
-      {/* Components Starts */}
-      {/* Components Ends */}
+      <DummyContainer />
+      <Footer />
     </SectionContainer>
   )
 }
