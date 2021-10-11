@@ -19,9 +19,26 @@ const StyledButton = styled.button`
   }
 `;
 
-export default function Button({ backgroundColor, textColor, height, width, borderRadius, onClick, children, fontSize, isGradient = false, isHover = false }) {
+export default function Button({
+  backgroundColor,
+  textColor,
+  height,
+  width,
+  borderRadius,
+  children,
+  fontSize,
+  isGradient = false,
+  isHover = false }) {
   return (
-    <StyledButton backgroundColor={backgroundColor} textColor={textColor} height={height} width={width} borderRadius={borderRadius} fontSize={fontSize} isGradient={isGradient} isHover={isHover}>
+    <StyledButton
+      backgroundColor={backgroundColor}
+      textColor={textColor}
+      height={height}
+      width={width}
+      borderRadius={borderRadius}
+      fontSize={fontSize}
+      isGradient={isGradient}
+      isHover={isHover}>
       {children}
     </StyledButton>
   )
