@@ -1,13 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 
-const StyledButton = styled.button`
+const StyledButton = styled.a`
   background: ${p => p.isGradient ? 'linear-gradient(92.58deg, #0DEFE1 0%, #78FF96 100%)' : p.backgroundColor};
   color: ${p => p.textColor};  
   height: ${p => p.height};
   width: ${p => p.width};
   border-radius: ${p => p.borderRadius};
   border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   ${(p) =>
     p.isHover &&
@@ -15,6 +18,7 @@ const StyledButton = styled.button`
       cursor: pointer;
       color: #224B5C;
       background: none;
+      border: solid;
     }`
   }
 `;
