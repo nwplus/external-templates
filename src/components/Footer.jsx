@@ -11,7 +11,7 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 
 const Background = styled.div`
-  background-image: url('/background/snow.svg');
+  background-image: url('/assets/background/snow.svg');
   background-size: auto 100%;
   background-position: center;
   background-repeat: no-repeat;
@@ -62,7 +62,7 @@ const Links = styled.div`
 export default function Footer() {
   return (
     <Background>
-      <Image src="/background/friends.svg" />
+      <Image src="/assets/background/friends.svg" />
       <SocialMediaIcons>
         <a
           href='https://www.facebook.com/nwplusubc'

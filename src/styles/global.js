@@ -27,19 +27,78 @@ export const GlobalStyles = createGlobalStyle`
   }
   
   :root {
-      @font-face {
-        font-family: 'Example font';
-        src: local('Example font'), url(./fonts/local_example_font.otf) format('otf');
-      }
-
-      font-family: 'Example font';
-
-      @media (min-width: 768px) {
-      }
-
-      @media (min-width: 1024px) {
-      }
+    @font-face {
+      font-family: 'HK Grotesk';
+      src: url('/assets/fonts/HKGrotesk-Black.woff');
+      font-style: normal;
+      font-weight: 900;
+      font-display: swap;
     }
+    
+    @font-face {
+      font-family: 'HK Grotesk';
+      src: url('/assets/fonts/HKGrotesk-Bold.woff');
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+    }
+    
+    @font-face {
+      font-family: 'HK Grotesk';
+      src: url('/assets/fonts/HKGrotesk-ExtraBold.woff');
+      font-style: normal;
+      font-weight: 800;
+      font-display: swap;
+    }
+    
+    @font-face {
+      font-family: 'HK Grotesk';
+      src: url('/assets/fonts/HKGrotesk-Italic.woff');
+      font-style: italic;
+      font-weight: 400;
+      font-display: swap;
+    }
+    
+    @font-face {
+      font-family: 'HK Grotesk';
+      src: url('/assets/fonts/HKGrotesk-Light.woff');
+      font-style: normal;
+      font-weight: 300;
+      font-display: swap;
+    }
+    
+    @font-face {
+      font-family: 'HK Grotesk';
+      src: url('/assets/fonts/HKGrotesk-Medium.woff');
+      font-style: normal;
+      font-weight: 500;
+      font-display: swap;
+    }
+    
+    @font-face {
+      font-family: 'HK Grotesk';
+      src: url('/assets/fonts/HKGrotesk-Regular.woff');
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+    }
+    
+    @font-face {
+      font-family: 'HK Grotesk';
+      src: url('/assets/fonts/HKGrotesk-SemiBold.woff');
+      font-style: normal;
+      font-weight: 600;
+      font-display: swap;
+    }    
+
+    font-family: 'HK Grotesk', sans-serif;
+
+    @media (min-width: 768px) {
+    }
+
+    @media (min-width: 1024px) {
+    }
+  }
 `
 
 export default GlobalStyles
