@@ -9,20 +9,13 @@ const StyledButton = styled.button`
   border-radius: ${p => p.borderRadius};
   border: none;
 
-  ${p => {
-    if (p.isHover) return
+  ${(p) =>
+    p.isHover &&
     `&:hover {
+      cursor: pointer;
       color: #224B5C;
       background: none;
-    }
-    `
-  }}
-
-  ${p => !p.isHover} {
-    &:hover {
-      color: #224B5C;
-      background: none;
-    }
+    }`
   }
 `;
 
