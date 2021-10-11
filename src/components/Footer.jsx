@@ -104,8 +104,8 @@ export default function Footer() {
         </a>
       </SocialMediaIcons>
       <Links>
-        <a href="mailto:info@nwplus.io" target="_blank">Email Us</a>
-        <a href="mailto:sponsorship@nwplus.io?subject=Sponsorship" target="_blank">Become a Sponsor</a>
+        <a href="mailto:info@nwplus.io" target="_blank" rel='noreferrer'>Email Us</a>
+        <a href="mailto:sponsorship@nwplus.io?subject=Sponsorship" target="_blank" rel='noreferrer'>Become a Sponsor</a>
       </Links>
       <div>
         <div>Organized and held by nwPlus</div>
