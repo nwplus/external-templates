@@ -11,7 +11,19 @@ export const GlobalStyles = createGlobalStyle`
     overflow-x: hidden;
   }
   body {
-    position: relative
+    position: relative;
+    background: black;
+  }
+
+  a {
+    color: #052446;
+    text-decoration: underline;
+    transition: 200ms;
+
+    &:hover {
+      color: #00D88A;
+      text-decoration: underline;
+    }
   }
   
   :root {
