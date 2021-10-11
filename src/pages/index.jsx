@@ -6,38 +6,19 @@ import Button from '@components/Button'
 import { SectionContainer } from '@lib/Containers'
 import styled from "styled-components";
 
-const StyledButton = styled.button`
-  color: ${p => p.backgroundColor}
-  background: ${p => p.backgroundColor}
-  height: ${p => p.height}
-  width: ${p => p.width}
-  border-radius: ${p => p.borderRadius}
-`;
+const Container = styled.div`
+  background-color: #3D3F59;
+  border-radius: 8px;
+  height: 200px;
+  width: 800px;
+  display: flex;
+`
 
 export default function Index({ title }) {
   return (
     <SectionContainer>
       <GlobalStyles />
       <Head>
-        <div>hello</div>
-        <button>
-          ligma
-        </button>
-        <StyledButton width='257px' height='60px' backgroundColor='#224B5C' borderRadius='8px' textColor='#AFBFE5'>
-          hasldfjl;dsai
-        </StyledButton>
-        <Button>
-          ooooo
-        </Button>
-        <Button width='257px' height='60px' backgroundColor='#224B5C' borderRadius='8px' textColor='#AFBFE5'>
-          Register Now
-        </Button>
-        <Button width='129px' height='44px' backgroundColor='#224B5C' borderRadius='100px' textColor='#2C2543'>
-          Live Portal
-        </Button>
-        <Button width='312px' height='60px' backgroundColor='#FFFFFF' borderRadius='8px' textColor='#0D3153'>
-          Become a Sponsor
-        </Button>
         {/* Remove comment once title is set */}
         <title> {title} </title>
         {/* Remove comment once favicon is set */}
@@ -52,6 +33,17 @@ export default function Index({ title }) {
         <meta property="og:image" content="/preview.png" />
       </Head>
       {/* Components Starts */}
+      <Container>
+        <Button width='257px' height='60px' backgroundColor='#224B5C' borderRadius='8px' textColor='#AFBFE5' isHover={true}>
+          Register Now
+        </Button>
+        <Button width='129px' height='44px' backgroundColor='#224B5C' borderRadius='100px' textColor='#2C2543' isGradient={true}>
+          Live Portal
+        </Button>
+        <Button width='312px' height='60px' backgroundColor='#FFFFFF' borderRadius='8px' textColor='#0D3153'>
+          Become a Sponsor
+        </Button>
+      </Container>
       {/* Components Ends */}
     </SectionContainer>
   )
