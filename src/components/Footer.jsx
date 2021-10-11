@@ -47,12 +47,6 @@ const SocialMediaIcons = styled.div`
 
   a {
     margin: 0 32px;
-    color: #052446;
-    transition: color 200ms;
-
-    &:hover {
-      color: white;
-    }
 
     @media only screen and (max-width: 768px) {
       margin: 0 10px;
@@ -110,8 +104,8 @@ export default function Footer() {
         </a>
       </SocialMediaIcons>
       <Links>
-        <a href="mailto:info@nwplus.io">Email Us</a>
-        <a href="mailto:sponsorship@nwplus.io?subject=Sponsorship">Become a Sponsor</a>
+        <a href="mailto:info@nwplus.io" target="_blank">Email Us</a>
+        <a href="mailto:sponsorship@nwplus.io?subject=Sponsorship" target="_blank">Become a Sponsor</a>
       </Links>
       <div>
         <div>Organized and held by nwPlus</div>
