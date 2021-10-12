@@ -12,11 +12,14 @@ const StyledButton = styled.a`
   justify-content: center;
   align-items: center;
 
+  &:hover {
+    cursor: pointer;
+  }
+
   ${(p) =>
     p.isHover &&
     `&:hover {
-      cursor: pointer;
-      color: #224B5C;
+      color: ${p.backgroundColor};
       background: none;
       border: solid;
     }`

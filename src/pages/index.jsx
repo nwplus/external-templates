@@ -40,7 +40,7 @@ export default function Index({ title }) {
         <Button width='129px' height='44px' backgroundColor='#224B5C' borderRadius='100px' textColor='#2C2543' isGradient>
           Live Portal
         </Button>
-        <Button width='312px' height='60px' backgroundColor='#FFFFFF' borderRadius='8px' textColor='#0D3153'>
+        <Button width='312px' height='60px' backgroundColor='#FFFFFF' borderRadius='8px' textColor='#0D3153' isHover>
           Become a Sponsor
         </Button>
       </Container>
