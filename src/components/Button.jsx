@@ -11,9 +11,12 @@ const StyledButton = styled.a`
   display: flex;
   justify-content: center;
   align-items: center;
+  text-decoration: none;
 
   &:hover {
     cursor: pointer;
+    text-decoration: none;
+    color: ${p => p.textColor};
   }
 
   ${(p) =>

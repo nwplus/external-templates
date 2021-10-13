@@ -5,6 +5,12 @@ import Button from '@components/Button'
 // import fireDb from '@utilities/firebase'
 import { SectionContainer } from '@lib/Containers'
 import styled from "styled-components";
+import Footer from '@components/Footer'
+
+// Footer component needs space above it to not be cut off
+const DummyContainer = styled.div`
+  height: 100vh;
+`;
 
 const Container = styled.div`
   background-color: #3D3F59;
@@ -45,6 +51,8 @@ export default function Index({ title }) {
         </Button>
       </Container>
       {/* Components Ends */}
+      <DummyContainer />
+      <Footer />
     </SectionContainer>
   )
 }
