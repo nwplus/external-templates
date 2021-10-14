@@ -6,6 +6,7 @@ import Button from '@components/Button'
 import { SectionContainer } from '@lib/Containers'
 import styled from "styled-components";
 import Footer from '@components/Footer'
+import Hero from '@components/Hero'
 
 // Footer component needs space above it to not be cut off
 const DummyContainer = styled.div`
@@ -40,6 +41,7 @@ export default function Index({ title }) {
       </Head>
       {/* Components Starts */}
       <Container>
+        <Hero />
         <Button width='257px' height='60px' backgroundColor='#224B5C' borderRadius='8px' textColor='#AFBFE5' isHover>
           Register Now
         </Button>
