@@ -23,7 +23,7 @@
     "next-optimized-images": "^2.6.2",
     "react": "17.0.1",
     "react-dom": "17.0.1",
-    "styled-components": "^5.2.1",
+    "styled-components": "^5.3.1",
     "webp-loader": "^0.6.0"
   },
   "devDependencies": {

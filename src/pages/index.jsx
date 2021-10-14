@@ -1,15 +1,24 @@
 import Head from 'next/head'
 import React from 'react'
 import GlobalStyles from '@styles/global'
-import styled from 'styled-components'
+import Button from '@components/Button'
 // import fireDb from '@utilities/firebase'
 import { SectionContainer } from '@lib/Containers'
+import styled from "styled-components";
 import Footer from '@components/Footer'
 
 // Footer component needs space above it to not be cut off
 const DummyContainer = styled.div`
   height: 100vh;
 `;
+
+const Container = styled.div`
+  background-color: #3D3F59;
+  border-radius: 8px;
+  height: 200px;
+  width: 800px;
+  display: flex;
+`
 
 export default function Index({ title }) {
   return (
@@ -29,6 +38,19 @@ export default function Index({ title }) {
         {/* Remove comment once preview image is set */}
         <meta property="og:image" content="/preview.png" />
       </Head>
+      {/* Components Starts */}
+      <Container>
+        <Button width='257px' height='60px' backgroundColor='#224B5C' borderRadius='8px' textColor='#AFBFE5' isHover>
+          Register Now
+        </Button>
+        <Button width='129px' height='44px' backgroundColor='#224B5C' borderRadius='100px' textColor='#2C2543' isGradient>
+          Live Portal
+        </Button>
+        <Button width='312px' height='60px' backgroundColor='#FFFFFF' borderRadius='8px' textColor='#0D3153' isHover>
+          Become a Sponsor
+        </Button>
+      </Container>
+      {/* Components Ends */}
       <DummyContainer />
       <Footer />
     </SectionContainer>

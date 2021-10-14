@@ -18,7 +18,6 @@ export const GlobalStyles = createGlobalStyle`
   a {
     color: #052446;
     text-decoration: underline;
-    transition: 200ms;
 
     &:hover {
       color: #00D88A;
