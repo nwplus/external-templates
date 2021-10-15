@@ -6,6 +6,7 @@ import Button from '@components/Button'
 import { SectionContainer } from '@lib/Containers'
 import styled from "styled-components";
 import Footer from '@components/Footer'
+import EventBox from '@components/EventBox'
 
 // Footer component needs space above it to not be cut off
 const DummyContainer = styled.div`
@@ -50,6 +51,7 @@ export default function Index({ title }) {
           Become a Sponsor
         </Button>
       </Container>
+      <EventBox title="Learn" dateString="Nov. 6, 2021" body="A day of workshops and skill building. We make the entry into the tech field less daunting." />
       {/* Components Ends */}
       <DummyContainer />
       <Footer />
