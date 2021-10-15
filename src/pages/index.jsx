@@ -6,7 +6,11 @@ import Button from '@components/Button'
 import { SectionContainer } from '@lib/Containers'
 import styled from "styled-components";
 import Footer from '@components/Footer'
-import {Body, Header1, Header2, Header3} from "@components/Typography";
+<<<<<<< HEAD
+import { Body, Header1, Header2, Header3 } from "@components/Typography";
+=======
+import EventBox from '@components/EventBox'
+>>>>>>> 2b4e30b (event box component)
 
 // Footer component needs space above it to not be cut off
 const DummyContainer = styled.div`
@@ -52,11 +56,12 @@ export default function Index({ title }) {
         </Button>
       </Container>
       <div>
-          <Header1>Large Title</Header1>
-          <Header2>Title 1</Header2>
-          <Header3>Title 2</Header3>
-          <Body>Some long lorem ipsum body text that will probably never see the light of day but that is a-ok.</Body>
+        <Header1>Large Title</Header1>
+        <Header2>Title 1</Header2>
+        <Header3>Title 2</Header3>
+        <Body>Some long lorem ipsum body text that will probably never see the light of day but that is a-ok.</Body>
       </div>
+      <EventBox title="Learn" dateString="Nov. 6, 2021" body="A day of workshops and skill building. We make the entry into the tech field less daunting." />
       {/* Components Ends */}
       <DummyContainer />
       <Footer />
