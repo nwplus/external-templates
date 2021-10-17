@@ -1,12 +1,11 @@
 import Head from 'next/head'
 import React from 'react'
-import GlobalStyles from '../theme/GlobalStyle'
+import GlobalStyles from '@styles/global'
 import Button from '@components/Button'
 // import fireDb from '@utilities/firebase'
 import { SectionContainer } from '@lib/Containers'
 import styled from "styled-components";
 import Footer from '@components/Footer'
-import {Body, LargeTitle, Title1, Title2} from "@components/Typography";
 
 // Footer component needs space above it to not be cut off
 const DummyContainer = styled.div`
@@ -50,12 +49,6 @@ export default function Index({ title }) {
         <Button width='312px' height='60px' backgroundColor='#FFFFFF' borderRadius='8px' textColor='#0D3153' isHover>
           Become a Sponsor
         </Button>
-          <div>
-              <LargeTitle>Large Title</LargeTitle>
-              <Title1>Title 1</Title1>
-              <Title2>Title 2</Title2>
-              <Body>Lorem ipsum some random body text this might be pretty long I think. Bottom text.</Body>
-          </div>
       </Container>
       {/* Components Ends */}
       <DummyContainer />
