@@ -1,0 +1,246 @@
+import styled from 'styled-components';
+import { useState, useEffect } from 'react';
+import { SCREEN_BREAKPOINTS } from '../theme/ThemeProvider';
+import fireDb from '../utilities/firebase';
+import Button from './Button';
+
+const NavBarContainer = styled.nav`
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  z-index: 3;
+  max-width: 1600px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  visibility: ${(p) => p.visibility};
+  opacity: ${(p) => p.opacity};
+  transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+  padding: 48px 40px 0;
+
+  ${(p) => p.theme.mediaQueries.mobile} {
+    padding: 24px 40px 0;
+  }
+`;
+
+const NavGroupContainer = styled.div`
+  display: flex;
+  gap: 28px;
+  align-items: center;
+
+  ${(p) => p.theme.mediaQueries.tablet} {
+    gap: 5px;
+  }
+`;
+
+const NavTextContainer = styled.div`
+  display: flex;
+  gap: 28px;
+  align-items: center;
+
+  ${(p) => p.theme.mediaQueries.tablet} {
+    gap: 15px;
+  }
+
+  ${(p) => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
+`;
+
+const NwPlusLogo = styled.img`
+  margin-right: 18px;
+
+  ${(p) => p.theme.mediaQueries.mobile} {
+    width: 21.89px;
+  }
+`;
+
+const LinkText = styled.a`
+  font-weight: bold;
+  color: ${(p) => p.theme.colors.text};
+  font-feature-settings: 'liga' off;
+
+  &:hover {
+    background: ${(p) => p.theme.colors.primaryGradient};
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+  }
+`;
+
+const HamburgerMenu = styled.img`
+  display: none;
+  ${(p) => p.theme.mediaQueries.mobile} {
+    display: block;
+    width: 30px;
+  }
+`;
+
+const DropDownContentContainer = styled.div`
+  position: fixed;
+  top: 54px;
+  z-index: 3;
+  padding: 24px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  width: 100%;
+`;
+
+const MenuItem = ({ name, href, isAnchor }) => {
+  const [anchorTarget, setAnchorTarget] = useState(null);
+
+  useEffect(() => {
+    if (isAnchor) {
+      setAnchorTarget(document.getElementById(href));
+    }
+  }, [href]);
+
+  const handleClick = (event) => {
+    if (isAnchor && anchorTarget) {
+      event.preventDefault();
+      anchorTarget.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  return (
+    <LinkText href={href} onClick={handleClick}>
+      {name}
+    </LinkText>
+  );
+};
+
+const MenuList = () => {
+  return (
+    <>
+      <MenuItem name='About' href='/#about' isAnchor />
+      <MenuItem name='Events' href='/#events' isAnchor />
+      <MenuItem name='FAQ' href='/#faq' isAnchor />
+      <MenuItem name='Sponsor' href='/#sponsor' isAnchor />
+    </>
+  );
+};
+
+const PortalButton = () => {
+  const [portalOpen, setPortalOpen] = useState(null);
+
+  const getPortalFlag = async () => {
+    const hackcampData = await fireDb.getWebsiteData('HackCamp2021');
+    setPortalOpen(hackcampData.featureFlags.isOpen);
+  }
+
+  useEffect(() => {
+    getPortalFlag();
+  }, []);
+
+  return (
+    <Button
+      width='130px'
+      height='45px'
+      borderRadius='100px'
+      isGradient
+      weight='bold'
+      textColor='black'
+      href='https://www.portal.nwplus.io'
+      target='_blank'
+      disabled={!portalOpen}
+      shouldRender={portalOpen}
+    >
+      Live Portal
+    </Button>
+  )
+}
+
+const NavBar = () => {
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [visibility, setVisibility] = useState('visible');
+  const [opacity, setOpacity] = useState('1');
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll());
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  const handleResize = () => {
+    if (window.innerWidth >= SCREEN_BREAKPOINTS.mobile) {
+      setShowDropdown(false);
+    }
+  };
+
+  const handleScroll = () => {
+    var lastScroll = 0;
+    return () => {
+      const scroll = window.pageYOffset || document.documentElement.scrollTop;
+      if (scroll <= 0) {
+        setVisibility('visible');
+        setOpacity('1');
+      } else if (scroll > lastScroll) {
+        setVisibility('hidden');
+        setOpacity('0');
+      } else {
+        setVisibility('visible');
+        setOpacity('1');
+      }
+      lastScroll = scroll;
+    };
+  };
+
+  if (showDropdown) {
+    return (
+      <>
+        <NavBarContainer>
+          <a href='/'>
+            <NwPlusLogo
+              src='/assets/logo/nwPlus_Logo.svg'
+              alt='nwPlus club logo in white'
+            />
+          </a>
+          <HamburgerMenu
+            src='/assets/icons/cross.svg'
+            alt='dropdown menu icon'
+            onClick={() => setShowDropdown(false)}
+          />
+        </NavBarContainer>
+        <DropDownContentContainer>
+          <MenuList />
+          <PortalButton />
+        </DropDownContentContainer>
+      </>
+    );
+  }
+
+  return (
+    <NavBarContainer visibility={visibility} opacity={opacity}>
+      <NavGroupContainer>
+        <a href='/'>
+          <NwPlusLogo
+            src='/assets/logo/nwPlus_Logo.svg'
+            alt='nwPlus club logo in white'
+          />
+        </a>
+        <NavTextContainer>
+          <MenuList />
+        </NavTextContainer>
+      </NavGroupContainer>
+      <NavTextContainer>
+        <PortalButton />
+      </NavTextContainer>
+      <HamburgerMenu
+        src='/assets/icons/menu.svg'
+        alt='dropdown menu icon'
+        onClick={() => setShowDropdown(true)}
+      />
+    </NavBarContainer>
+  );
+};
+
+export default NavBar;
