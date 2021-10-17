@@ -39,31 +39,31 @@ const header = ({
     letterSpacing,
 }) => css`
   ${(p) => `
-    font-family: ${p.theme.typography.headerFont}
+    font-family: ${p.theme.typography.headerFont};
   `}
   font-weight: ${fontWeight};
   font-size: ${fontSize};
   line-height: ${lineHeight};
-  letterSpacing: ${letterSpacing};
+  letter-spacing: ${letterSpacing};
 `
 
 
 // definitions
-export const LargeTitle = styled.h1`
+export const Header1 = styled.h1`
   ${text}
-  ${(p) => header(p.theme.typography.largeTitle)}
+  ${(p) => header(p.theme.typography.header1)}
 `;
 
-export const Title1 = styled.h1`
+export const Header2 = styled.h2`
   ${text}
-  ${(p) => header(p.theme.typography.title1)}
+  ${(p) => header(p.theme.typography.header2)}
   ${underline}
   ${hover}
 `;
 
-export const Title2 = styled.h2`
+export const Header3 = styled.h3`
   ${text}
-  ${(p) => header(p.theme.typography.title2)}
+  ${(p) => header(p.theme.typography.header3)}
 `;
 
 export const Body = styled.p`

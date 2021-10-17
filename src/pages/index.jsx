@@ -6,7 +6,7 @@ import Button from '@components/Button'
 import { SectionContainer } from '@lib/Containers'
 import styled from "styled-components";
 import Footer from '@components/Footer'
-import {Body, LargeTitle, Title1, Title2} from "@components/Typography";
+import {Body, Header1, Header2, Header3} from "@components/Typography";
 
 // Footer component needs space above it to not be cut off
 const DummyContainer = styled.div`
@@ -52,9 +52,9 @@ export default function Index({ title }) {
         </Button>
       </Container>
       <div>
-          <LargeTitle>Large Title</LargeTitle>
-          <Title1>Title 1</Title1>
-          <Title2>Title 2</Title2>
+          <Header1>Large Title</Header1>
+          <Header2>Title 1</Header2>
+          <Header3>Title 2</Header3>
           <Body>Some long lorem ipsum body text that will probably never see the light of day but that is a-ok.</Body>
       </div>
       {/* Components Ends */}

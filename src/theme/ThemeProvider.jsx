@@ -17,29 +17,29 @@ const base = {
     typography: {
         headerFont: 'HK Grotesk',
         bodyFont: 'HK Grotesk',
-        largeTitle: {
+        header1: {
             fontWeight: 900,
-            fontSize: '4em',
-            lineHeight: '2em',
-            letterSpacing: 'normal',
+            fontSize: '3.5em',
+            lineHeight: '3.5em',
+            letterSpacing: '0.025em',
         },
-        title1: {
+        header2: {
             fontWeight: 800,
-            fontSize: '3em',
-            lineHeight: '1.5em',
-            letterSpacing: 'normal',
+            fontSize: '2.625em',
+            lineHeight: '2.125em',
+            letterSpacing: '0.02375em',
         },
-        title2: {
-            fontWeight: 500,
+        header3: {
+            fontWeight: 600,
             fontSize: '2em',
-            lineHeight: '1em',
-            letterSpacing: 'normal',
+            lineHeight: '1.75em',
+            letterSpacing: '-0.01625em',
         },
         body: {
-            fontWeight: 'normal',
-            fontSize: '1em',
-            lineHeight: '1em',
-            letterSpacing: 'normal',
+            fontWeight: 400,
+            fontSize: '1.125em',
+            lineHeight: '1.375em',
+            letterSpacing: '-0.026875em',
         }
     },
     mediaQueries: {
