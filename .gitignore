@@ -31,5 +31,6 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 
-# vscode settings
+# ide settings
 .vscode/
+.idea

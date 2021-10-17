@@ -1,16 +1,16 @@
-import GlobalStyles from '@styles/global'
-import { config } from '@fortawesome/fontawesome-svg-core'
+import GlobalStyle from "../theme/GlobalStyle";
 import '@fortawesome/fontawesome-svg-core/styles.css'
+import ThemeProvider from "../theme/ThemeProvider";
+import '../theme/fonts/style.css'
 
-config.autoAddCss = false
 /* eslint react/jsx-filename-extension: 0 */
 
 function App({ Component, pageProps }) {
   return (
-    <>
-      <GlobalStyles />
+    <ThemeProvider>
+      <GlobalStyle />
       <Component {...pageProps} />
-    </>
+    </ThemeProvider>
   )
 }
 
