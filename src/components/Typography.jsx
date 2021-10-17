@@ -27,7 +27,7 @@ const text = css`
   ${(p) => p.background && `background: ${p.background};`}
   ${(p) => `color: ${p.color || p.theme.colors.text};`}
     ${(p) => `
-    font-family: ${p.theme.typography.bodyFont}
+    font-family: ${p.theme.typography.bodyFont};
   `}
   ${align}
 `;
