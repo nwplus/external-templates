@@ -2,30 +2,30 @@ import styled, { css } from 'styled-components';
 
 // mixins
 const align = css`
-  ${(p) => p.align ? `text-align: ${p.align}` : ''};
-`
+  ${(p) => p.align ? `text-align: ${p.align};` : ''}
+`;
 
 const underline = css`
   ${(p) =>
     p.underline &&
     'text-decoration: underline;'
   }
-`
+`;
 
 const hover = css`
   ${(p) =>
     p.hover &&
     `&:hover {
       cursor: pointer;
-      color: ${p.theme.colors.primary}
+      color: ${p.theme.colors.primary};
     }`
 }
-`
+`;
 
 // can manually override
 const text = css`
-  ${(p) => p.background && `background: ${p.background}`};
-  ${(p) => `color: ${p.color || p.theme.colors.text}`};
+  ${(p) => p.background && `background: ${p.background};`}
+  ${(p) => `color: ${p.color || p.theme.colors.text};`}
     ${(p) => `
     font-family: ${p.theme.typography.bodyFont}
   `}
@@ -45,7 +45,7 @@ const header = ({
   font-size: ${fontSize};
   line-height: ${lineHeight};
   letter-spacing: ${letterSpacing};
-`
+`;
 
 
 // definitions
