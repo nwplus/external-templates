@@ -23,57 +23,49 @@ const hover = css`
 `
 
 // can manually override
-// props:
-//  background  -> override background
-//  color       -> override colour
-//  withGradien -> use gradient
 const text = css`
   ${(p) => p.background && `background: ${p.background}`};
-  ${(p) => p.color && `color: ${p.color}`};
+  ${(p) => `color: ${p.color || p.theme.colors.text}`};
     ${(p) => `
     font-family: ${p.theme.typography.bodyFont}
   `}
-  ${(p) =>
-    p.withGradient &&
-    `background: ${p.colors.gradient};
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;`}
   ${align}
 `;
 
-const header = css`
+const header = ({
+    fontWeight,
+    fontSize,
+    lineHeight,
+    letterSpacing,
+}) => css`
   ${(p) => `
     font-family: ${p.theme.typography.headerFont}
   `}
+  font-weight: ${fontWeight};
+  font-size: ${fontSize};
+  line-height: ${lineHeight};
+  letterSpacing: ${letterSpacing};
 `
 
+
 // definitions
-export const LargeTitle = styled.h1.attrs((p) => ({
-    color: p.color || p.theme.colors.secondary,
-    ...p.theme.typography.largeTitle,
-}))`
+export const LargeTitle = styled.h1`
   ${text}
-  ${header}
+  ${(p) => header(p.theme.typography.largeTitle)}
 `;
 
-export const Title1 = styled.h1.attrs((p) => ({
-    color: p.color || p.theme.colors.secondary,
-}))`
+export const Title1 = styled.h1`
   ${text}
-  ${header}
+  ${(p) => header(p.theme.typography.title1)}
   ${underline}
   ${hover}
 `;
 
-export const Title2 = styled.h2.attrs((p) => ({
-    color: p.color || p.theme.colors.secondary,
-}))`
+export const Title2 = styled.h2`
   ${text}
-  ${header}
+  ${(p) => header(p.theme.typography.title2)}
 `;
 
-export const Body = styled.p.attrs((p) => ({
-    color: p.color || p.theme.colors.text,
-}))`
+export const Body = styled.p`
   ${text}
 `;

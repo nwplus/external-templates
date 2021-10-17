@@ -11,9 +11,8 @@ const SCREEN_BREAKPOINTS = {
 
 const base = {
     colors: {
-        background: 'black',
-        text: '#2D2937',
-        gradient: '-webkit-linear-gradient(92deg, #19cbcb 1.55%, #78ff96 100%);',
+        background: '#2D2937',
+        text: '#fff',
     },
     typography: {
         headerFont: 'HK Grotesk',
@@ -21,19 +20,19 @@ const base = {
         largeTitle: {
             fontWeight: 900,
             fontSize: '4em',
-            lineHeight: '4em',
+            lineHeight: '2em',
             letterSpacing: 'normal',
         },
         title1: {
             fontWeight: 800,
             fontSize: '3em',
-            lineHeight: '3em',
+            lineHeight: '1.5em',
             letterSpacing: 'normal',
         },
         title2: {
             fontWeight: 500,
             fontSize: '2em',
-            lineHeight: '2em',
+            lineHeight: '1em',
             letterSpacing: 'normal',
         },
         body: {
