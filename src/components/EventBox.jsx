@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from "styled-components";
+import { Body, Header3 } from "@components/Typography";
 
 const Container = styled.div`
   background-color: #3D3F59;
@@ -9,14 +10,14 @@ const Container = styled.div`
   word-wrap: break-word;
 `
 
+const TextContainer = styled.div`
+  margin-left: 30px;
+`
+
 const Header = styled.div`
   display: flex;
   color: #FFFF;
   padding-top: 20px;
-`
-
-const Title = styled.h3`
-  margin-left: 30px;
 `
 
 const Date = styled.h4`
@@ -24,20 +25,18 @@ const Date = styled.h4`
   margin-right: 30px;
 `
 
-const Body = styled.p`
-  color: #FFFF;
-  margin: 20px 30px 0px 30px;
-`
-
 export default function EventBox({ title, dateString, body }) {
   return (
     <Container>
-      <Header>
-        <Title>{title}</Title>
-        <Date>{dateString}</Date>
-      </Header>
-      <Body>{body}</Body>
-
+      <TextContainer>
+        <Header>
+          <Header3>{title}</Header3>
+          <Date>
+            <Header3>{dateString}</Header3>
+          </Date>
+        </Header>
+        <Body>{body}</Body>
+      </TextContainer>
     </Container>
   )
 }

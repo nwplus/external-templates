@@ -6,11 +6,8 @@ import Button from '@components/Button'
 import { SectionContainer } from '@lib/Containers'
 import styled from "styled-components";
 import Footer from '@components/Footer'
-<<<<<<< HEAD
 import { Body, Header1, Header2, Header3 } from "@components/Typography";
-=======
 import EventBox from '@components/EventBox'
->>>>>>> 2b4e30b (event box component)
 
 // Footer component needs space above it to not be cut off
 const DummyContainer = styled.div`
