@@ -14,11 +14,6 @@ const StyledButton = styled.a`
   align-items: center;
   text-decoration: none;
 
-  visibility: ${(p) => p.shouldRender === null ? 'hidden' : 'visible'};
-  opacity: ${(p) => p.shouldRender === null ? '0' : '1'};
-  transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
-
-
   &:hover {
     cursor: pointer;
     text-decoration: none;
@@ -36,12 +31,10 @@ const StyledButton = styled.a`
 
   ${p =>
     p.disabled &&
-    `
-    {
+    `{
       pointer-events: none;
       cursor: not-allowed;
-    }
-    `
+    }`
   }
 `;
 
@@ -57,7 +50,6 @@ export default function Button({
   href,
   target,
   disabled,
-  shouldRender,
   isGradient = false,
   isHover = false }) {
   return (
@@ -72,7 +64,6 @@ export default function Button({
       href={href}
       target={target}
       disabled={disabled}
-      shouldRender={shouldRender}
       isGradient={isGradient}
       isHover={isHover}>
       {children}

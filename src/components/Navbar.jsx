@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { SCREEN_BREAKPOINTS } from '../theme/ThemeProvider';
 import fireDb from '../utilities/firebase';
 import Button from './Button';
+import { Header3 } from './Typography';
 
 const NavBarContainer = styled.nav`
   position: fixed;
@@ -58,18 +59,18 @@ const NwPlusLogo = styled.img`
 `;
 
 const LinkText = styled.a`
-  font-weight: bold;
   color: ${(p) => p.theme.colors.text};
-  font-feature-settings: 'liga' off;
+  text-decoration: none;
 
   &:hover {
-    background: ${(p) => p.theme.colors.primaryGradient};
-    -webkit-background-clip: text;
-    -moz-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -moz-text-fill-color: transparent;
+    color: white;
+    text-decoration: none;
   }
 `;
+
+const StyledLinkHeaders = styled(Header3)`
+  font-size: 1.5em;
+`
 
 const HamburgerMenu = styled.img`
   display: none;
@@ -91,6 +92,12 @@ const DropDownContentContainer = styled.div`
   width: 100%;
 `;
 
+const PortalButtonContainer = styled.div`
+  visibility: ${(p) => p.portalOpen !== null ? 'visible' : 'hidden'};
+  opacity: ${(p) => p.portalOpen !== null ? '1' : '0'};
+  transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+`;
+
 const MenuItem = ({ name, href, isAnchor }) => {
   const [anchorTarget, setAnchorTarget] = useState(null);
 
@@ -109,7 +116,7 @@ const MenuItem = ({ name, href, isAnchor }) => {
 
   return (
     <LinkText href={href} onClick={handleClick}>
-      {name}
+      <StyledLinkHeaders>{name}</StyledLinkHeaders>
     </LinkText>
   );
 };
@@ -128,30 +135,31 @@ const MenuList = () => {
 const PortalButton = () => {
   const [portalOpen, setPortalOpen] = useState(null);
 
-  const getPortalFlag = async () => {
+  const setPortalFlag = async () => {
     const hackcampData = await fireDb.getWebsiteData('HackCamp2021');
     setPortalOpen(hackcampData.featureFlags.isOpen);
   }
 
   useEffect(() => {
-    getPortalFlag();
+    setPortalFlag();
   }, []);
 
   return (
-    <Button
-      width='130px'
-      height='45px'
-      borderRadius='100px'
-      isGradient
-      weight='bold'
-      textColor='black'
-      href='https://www.portal.nwplus.io'
-      target='_blank'
-      disabled={!portalOpen}
-      shouldRender={portalOpen}
-    >
-      Live Portal
-    </Button>
+    <PortalButtonContainer portalOpen={portalOpen}>
+      <Button
+        width='130px'
+        height='45px'
+        borderRadius='100px'
+        isGradient
+        weight='bold'
+        textColor='black'
+        href='https://www.portal.nwplus.io'
+        target='_blank'
+        disabled={!portalOpen}
+      >
+        Live Portal
+      </Button>
+    </PortalButtonContainer>
   )
 }
 
