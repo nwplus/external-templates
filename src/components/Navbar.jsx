@@ -6,6 +6,7 @@ import Button from './Button';
 import { Header3 } from './Typography';
 
 const NavBarContainer = styled.nav`
+  ${p => p.mobileView && `background-color: ${p.theme.colors.navbar}`};
   position: fixed;
   top: 0;
   left: 50%;
@@ -90,6 +91,7 @@ const DropDownContentContainer = styled.div`
   align-items: flex-start;
   gap: 24px;
   width: 100%;
+  background-color: ${p => p.theme.colors.navbar};
 `;
 
 const PortalButtonContainer = styled.div`
@@ -132,51 +134,36 @@ const MenuList = () => {
   );
 };
 
-const PortalButton = () => {
-  const [portalOpen, setPortalOpen] = useState(null);
-
-  const setPortalFlag = async () => {
-    const hackcampData = await fireDb.getWebsiteData('HackCamp2021');
-    setPortalOpen(hackcampData.featureFlags.isOpen);
-  }
-
-  useEffect(() => {
-    setPortalFlag();
-  }, []);
-
-  return (
-    <PortalButtonContainer portalOpen={portalOpen}>
-      <Button
-        width='130px'
-        height='45px'
-        borderRadius='100px'
-        isGradient
-        weight='bold'
-        textColor='black'
-        href='https://www.portal.nwplus.io'
-        target='_blank'
-        disabled={!portalOpen}
-      >
-        Live Portal
-      </Button>
-    </PortalButtonContainer>
-  )
-}
+const PortalButton = ({ portalOpen }) =>
+(
+  <PortalButtonContainer portalOpen={portalOpen}>
+    <Button
+      width='130px'
+      height='45px'
+      borderRadius='100px'
+      isGradient
+      weight='bold'
+      textColor='black'
+      href='https://www.portal.nwplus.io'
+      target='_blank'
+      disabled={!portalOpen}
+    >
+      Live Portal
+    </Button>
+  </PortalButtonContainer>
+)
 
 const NavBar = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   const [visibility, setVisibility] = useState('visible');
   const [opacity, setOpacity] = useState('1');
 
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll());
-    window.addEventListener('resize', handleResize);
+  const [portalOpen, setPortalOpen] = useState(null);
 
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
+  const setPortalFlag = async () => {
+    const hackcampData = await fireDb.getWebsiteData('HackCamp2021');
+    setPortalOpen(hackcampData.featureFlags.isOpen);
+  }
 
   const handleResize = () => {
     if (window.innerWidth >= SCREEN_BREAKPOINTS.mobile) {
@@ -185,7 +172,7 @@ const NavBar = () => {
   };
 
   const handleScroll = () => {
-    var lastScroll = 0;
+    let lastScroll = 0;
     return () => {
       const scroll = window.pageYOffset || document.documentElement.scrollTop;
       if (scroll <= 0) {
@@ -202,10 +189,22 @@ const NavBar = () => {
     };
   };
 
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll());
+    window.addEventListener('resize', handleResize);
+
+    setPortalFlag();
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   if (showDropdown) {
     return (
       <>
-        <NavBarContainer>
+        <NavBarContainer mobileView>
           <a href='/'>
             <NwPlusLogo
               src='/assets/logo/nwPlus_Logo.svg'
@@ -220,7 +219,7 @@ const NavBar = () => {
         </NavBarContainer>
         <DropDownContentContainer>
           <MenuList />
-          <PortalButton />
+          <PortalButton portalOpen={portalOpen} />
         </DropDownContentContainer>
       </>
     );
@@ -240,7 +239,7 @@ const NavBar = () => {
         </NavTextContainer>
       </NavGroupContainer>
       <NavTextContainer>
-        <PortalButton />
+        <PortalButton portalOpen={portalOpen} />
       </NavTextContainer>
       <HamburgerMenu
         src='/assets/icons/menu.svg'

@@ -15,6 +15,7 @@ const base = {
     text: '#fff',
     primaryGradient: 'linear-gradient(92.58deg, #20FFAF 0%, #78FF96 100%)',
     disabled: 'rgba(255, 255, 255, 0.6)',
+    navbar: '#A4D3F7'
   },
   typography: {
     headerFont: 'HK Grotesk',
