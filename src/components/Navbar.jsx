@@ -100,6 +100,10 @@ const PortalButtonContainer = styled.div`
   transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
 `;
 
+const StyledPortalText = styled.div`
+  color: ${p => p.disabled && p.theme.colors.disabledText};
+`;
+
 const MenuItem = ({ name, href, isAnchor }) => {
   const [anchorTarget, setAnchorTarget] = useState(null);
 
@@ -123,19 +127,16 @@ const MenuItem = ({ name, href, isAnchor }) => {
   );
 };
 
-const MenuList = () => {
-  return (
-    <>
-      <MenuItem name='About' href='/#about' isAnchor />
-      <MenuItem name='Events' href='/#events' isAnchor />
-      <MenuItem name='FAQ' href='/#faq' isAnchor />
-      <MenuItem name='Sponsor' href='/#sponsor' isAnchor />
-    </>
-  );
-};
+const MenuList = () => (
+  <>
+    <MenuItem name='About' href='/#about' isAnchor />
+    <MenuItem name='Events' href='/#events' isAnchor />
+    <MenuItem name='FAQ' href='/#faq' isAnchor />
+    <MenuItem name='Sponsor' href='/#sponsor' isAnchor />
+  </>
+);
 
-const PortalButton = ({ portalOpen }) =>
-(
+const PortalButton = ({ portalOpen }) => (
   <PortalButtonContainer portalOpen={portalOpen}>
     <Button
       width='130px'
@@ -148,7 +149,9 @@ const PortalButton = ({ portalOpen }) =>
       target='_blank'
       disabled={!portalOpen}
     >
-      Live Portal
+      <StyledPortalText disabled={!portalOpen}>
+        Live Portal
+      </StyledPortalText>
     </Button>
   </PortalButtonContainer>
 )

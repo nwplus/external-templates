@@ -32,6 +32,7 @@ const StyledButton = styled.a`
   ${p =>
     p.disabled &&
     `{
+      background: ${p.theme.colors.disabledButton};
       pointer-events: none;
       cursor: not-allowed;
     }`

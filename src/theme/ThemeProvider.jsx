@@ -14,7 +14,8 @@ const base = {
     background: '#2D2937',
     text: '#fff',
     primaryGradient: 'linear-gradient(92.58deg, #20FFAF 0%, #78FF96 100%)',
-    disabled: 'rgba(255, 255, 255, 0.6)',
+    disabledButton: 'white',
+    disabledText: '#C6CCD1',
     navbar: '#A4D3F7'
   },
   typography: {
