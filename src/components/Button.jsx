@@ -3,8 +3,7 @@ import styled from "styled-components";
 
 const StyledButton = styled.a`
   background: ${p => p.isGradient ? 'linear-gradient(92.58deg, #0DEFE1 0%, #78FF96 100%)' : p.backgroundColor};
-  ${p => p.weight && `font-weight: ${p.weight};`}
-  color: ${p => p.textColor ? p.textColor : p.theme.colors.text};  
+  color: ${p => p.textColor};
   height: ${p => p.height};
   width: ${p => p.width};
   border-radius: ${p => p.borderRadius};
@@ -43,14 +42,13 @@ const StyledButtonWrapper = styled.div`
 `;
 
 export default function Button({
-  backgroundColor,
   textColor,
+  backgroundColor,
   height,
   width,
   borderRadius,
   children,
   fontSize,
-  weight,
   href,
   target,
   disabled,
@@ -63,7 +61,6 @@ export default function Button({
         textColor={textColor}
         height={height}
         width={width}
-        weight={weight}
         borderRadius={borderRadius}
         fontSize={fontSize}
         href={href}

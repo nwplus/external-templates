@@ -64,7 +64,7 @@ const LinkText = styled.a`
   text-decoration: none;
 
   &:hover {
-    color: white;
+    color: ${(p) => p.theme.colors.text};
     text-decoration: none;
   }
 `;
@@ -102,6 +102,7 @@ const PortalButtonContainer = styled.div`
 
 const StyledPortalText = styled.div`
   color: ${p => p.disabled && p.theme.colors.disabledText};
+  font-weight: bold;
 `;
 
 const MenuItem = ({ name, href, isAnchor }) => {
@@ -143,7 +144,6 @@ const PortalButton = ({ portalOpen }) => (
       height='45px'
       borderRadius='100px'
       isGradient
-      weight='bold'
       textColor='black'
       href='https://www.portal.nwplus.io'
       target='_blank'
