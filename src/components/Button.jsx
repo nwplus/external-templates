@@ -34,9 +34,12 @@ const StyledButton = styled.a`
     `{
       background: ${p.theme.colors.disabledButton};
       pointer-events: none;
-      cursor: not-allowed;
     }`
   }
+`;
+
+const StyledButtonWrapper = styled.div`
+  ${p => p.disabled && 'cursor: not-allowed;'}
 `;
 
 export default function Button({
@@ -54,20 +57,22 @@ export default function Button({
   isGradient = false,
   isHover = false }) {
   return (
-    <StyledButton
-      backgroundColor={backgroundColor}
-      textColor={textColor}
-      height={height}
-      width={width}
-      weight={weight}
-      borderRadius={borderRadius}
-      fontSize={fontSize}
-      href={href}
-      target={target}
-      disabled={disabled}
-      isGradient={isGradient}
-      isHover={isHover}>
-      {children}
-    </StyledButton>
+    <StyledButtonWrapper disabled={disabled}>
+      <StyledButton
+        backgroundColor={backgroundColor}
+        textColor={textColor}
+        height={height}
+        width={width}
+        weight={weight}
+        borderRadius={borderRadius}
+        fontSize={fontSize}
+        href={href}
+        target={target}
+        disabled={disabled}
+        isGradient={isGradient}
+        isHover={isHover}>
+        {children}
+      </StyledButton>
+    </StyledButtonWrapper>
   )
 }
