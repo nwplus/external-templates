@@ -1,6 +1,11 @@
 name: Continuous deployment to firebase hosting
 
 on:
+  workflow_dispatch:
+    inputs:
+      targetedHackathon:
+        description: 'Targetted hackathon to build'
+        required: true
   push:
     branches: [cmd-f_dev, cmd-f_main, hackcamp2021_dev, hackcamp2021_main]
 
@@ -8,7 +13,7 @@ jobs:
   firebase_deploy:
     runs-on: ubuntu-latest
     env:
-      IS_PRODUCTION: ${{ endsWith(github.ref, 'main') }}
+      IS_PRODUCTION: ${{ endsWith(github.ref, 'main') || endsWith(github.event.inputs.targetedHackathon, 'main') }}
     steps:
       - uses: actions/checkout@master
 
@@ -42,5 +47,10 @@ jobs:
         if: ${{ env.IS_PRODUCTION == 'true' }}
         run: yarn build:prod
 
-      - name: Deploy to site associated with branch name
+      - name: Check for targeted hackathon
+        if: ${{ !github.event.inputs.targetedHackathon }}
         run: firebase deploy --only hosting:${GITHUB_REF#refs/*/} --non-interactive --token ${{ secrets.FIREBASE_TOKEN }}
+
+      - name: Deploy to site associated with branch name
+        if: ${{ github.event.inputs.targetedHackathon }}
+        run: firebase deploy --only hosting:${{ github.event.inputs.targetedHackathon }} --non-interactive --token ${{ secrets.FIREBASE_TOKEN }}
