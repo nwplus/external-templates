@@ -64,11 +64,9 @@ const faqData = {
   ],
 }
 
-const singleEntry = (entry, i) => {
-  return (
-    <FaqBox key={i} title={entry.title}>{entry.description}</FaqBox>
-  )
-}
+const singleEntry = (entry) => (
+  <FaqBox key={entry.title} title={entry.title}>{entry.description}</FaqBox>
+)
 
 export default function FaqCollection() {
   const [width, setWidth] = useState(window.innerWidth);
