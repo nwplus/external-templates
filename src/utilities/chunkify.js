@@ -1,3 +1,4 @@
+/* eslint-disable */
 // given array, split into array of chunks of size n
 // "balanced" (subarrays' lengths differ as less as possible) or
 // "even" (all subarrays but the last have the same length):

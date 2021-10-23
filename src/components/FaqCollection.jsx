@@ -88,8 +88,8 @@ export default function FaqCollection() {
           <>
             {title}
             <Columns>
-              {chunkify(content, COLUMNS_OF_FAQ, true).map((chunk, i) => (
-                <Column key={i}>{chunk.map(singleEntry)}</Column>
+              {chunkify(content, COLUMNS_OF_FAQ, true).map((chunk) => (
+                <Column key={chunk[0].title}>{chunk.map(singleEntry)}</Column>
               ))}
             </Columns>
           </>
