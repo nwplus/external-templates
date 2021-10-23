@@ -1,9 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import FaqBox from '@components/FaqBox';
 import { chunkify } from '@utilities/chunkify';
-
-const COLUMNS_OF_FAQ = 3;
 
 const Container = styled.div`
   text-align: center;
@@ -15,16 +13,12 @@ const Columns = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   margin: auto;
-  width: 800px;
+  max-width: 800px;
 `
 
 const Column = styled.div`
   display: flex;
   flex-direction: column;
-`
-
-const Title = styled.b`
-  display: block;
 `
 
 const faqData = {
@@ -77,6 +71,15 @@ const singleEntry = (entry, i) => {
 }
 
 export default function FaqCollection() {
+  const [width, setWidth] = useState(window.innerWidth);
+  const mobileBreakpoint = 768;
+
+  useEffect(() => {
+    window.addEventListener("resize", () => setWidth(window.innerWidth));
+  }, []);
+
+  const COLUMNS_OF_FAQ = width > mobileBreakpoint ? 3 : 2;
+
   return (
     <Container>
       <h1>Frequently Asked Questions</h1>
