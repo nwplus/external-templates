@@ -9,6 +9,7 @@ import Footer from '@components/Footer'
 import { Body, Header1, Header2, Header3 } from "@components/Typography";
 import EventBox from '@components/EventBox'
 import FaqBox from '@components/FaqBox'
+import Stats from '@components/Stats'
 
 // Footer component needs space above it to not be cut off
 const DummyContainer = styled.div`
@@ -55,6 +56,7 @@ export default function Index({ title }) {
       </Container>
       <div>
         <FaqBox />
+        <Stats />
         <Header1>Large Title</Header1>
         <Header2>Title 1</Header2>
         <Header3>Title 2</Header3>
