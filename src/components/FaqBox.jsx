@@ -21,7 +21,7 @@ const BoxContent = styled.div`
 `
 
 
-export default function FaqBox({ title = "AHDSJDAKSKDKKKK JASJDJ", description = "asdasd", children }) {
+export default function FaqBox({ title, description, children }) {
   return (
     <Container>
       <BearPaw />
