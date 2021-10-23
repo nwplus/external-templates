@@ -15,21 +15,18 @@ const Container = styled.div`
   }
 `
 
-
-const BoxContent = styled.div`
-
+const Title = styled.b`
+  display: block;
 `
-
 
 export default function FaqBox({ title, children }) {
   return (
     <Container>
       <BearPaw />
-      <BoxContent>
-        <b>{title}</b>
-        <br />
+      <div>
+        <Title>{title}</Title>
         {children}
-      </BoxContent>
+      </div>
     </Container >
   )
 }
