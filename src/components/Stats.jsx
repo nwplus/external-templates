@@ -9,8 +9,6 @@ const Image = styled.img`
 
 export default function Stats() {
   return (
-    <>
       <Image src={PC_STATS} />
-    </>
   )
 }
