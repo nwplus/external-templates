@@ -69,11 +69,12 @@ const singleEntry = (entry) => (
 )
 
 export default function FaqCollection() {
-  const [width, setWidth] = useState(window && window.innerWidth);
+  const [width, setWidth] = useState();
   const mobileBreakpoint = 768;
 
   useEffect(() => {
-    window && window.addEventListener("resize", () => setWidth(window.innerWidth));
+    setWidth(window.innerWidth);
+    window.addEventListener("resize", () => setWidth(window.innerWidth));
   }, []);
 
   const COLUMNS_OF_FAQ = width > mobileBreakpoint ? 3 : 2;
