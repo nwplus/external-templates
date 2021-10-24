@@ -9,6 +9,6 @@ const Image = styled.img`
 
 export default function Stats() {
   return (
-      <Image src={PC_STATS} />
+    <Image src={PC_STATS} alt="HackCamp Stats" />
   )
 }
