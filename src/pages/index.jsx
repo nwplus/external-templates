@@ -32,7 +32,6 @@ export default function Index({ title }) {
       {/* Components Starts */}
       <Welcome />
       <DummyContainer />
-      {/* Components Ends */}
       <Footer />
     </>
   )
