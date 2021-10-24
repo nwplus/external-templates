@@ -9,6 +9,7 @@ import Footer from '@components/Footer'
 import { Body, Header1, Header2, Header3 } from "@components/Typography";
 import EventBox from '@components/EventBox'
 import FaqBox from '@components/FaqBox'
+import SponsorSection from '@components/SponsorSection'
 
 // Footer component needs space above it to not be cut off
 const DummyContainer = styled.div`
@@ -61,6 +62,7 @@ export default function Index({ title }) {
         <Body>Some long lorem ipsum body text that will probably never see the light of day but that is a-ok.</Body>
       </div>
       <EventBox title="Learn" dateString="Nov. 6, 2021" body="A day of workshops and skill building. We make the entry into the tech field less daunting." />
+      <SponsorSection />
       {/* Components Ends */}
       <DummyContainer />
       <Footer />
