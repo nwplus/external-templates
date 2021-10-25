@@ -29,10 +29,12 @@ export default function Stats1() {
 
   return (
     <BgSectionContainer>
-      <Image
-        src={windowWidth <= mobileBreakpoint ? '/assets/stats1_mobile.svg' : '/assets/stats1.svg'}
-        alt="$1200 donated to charity, 528 hackers registered, 48 projects submitted"
-      />
+      {windowWidth &&
+        <Image
+          src={windowWidth > mobileBreakpoint ? '/assets/stats1.svg' : '/assets/stats1_mobile.svg'}
+          alt="$1200 donated to charity, 528 hackers registered, 48 projects submitted"
+        />
+      }
     </BgSectionContainer>
   )
 }
