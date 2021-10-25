@@ -11,7 +11,7 @@ const Wrapper = styled.div`
   grid-column: 3 / span 10;
 `
 
-export default function FAQ() {
+export default function Faq() {
   return (
     <BgSectionContainer>
       <Wrapper>
