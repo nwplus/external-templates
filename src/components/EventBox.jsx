@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from "styled-components";
-import { Body, Header3 } from "@components/Typography";
+import { Body, Header3, Header4 } from "@components/Typography";
 
 const Container = styled.div`
   display: flex;
@@ -21,27 +21,13 @@ const Card = styled.div`
   padding: 20px 30px;
 `
 
-const Header = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  color: #FFFF;
-`
-
-const Date = styled.h4`
-`
-
 export default function EventBox({ title, dateString, body, imgSrc, imgAlt }) {
   return (
     <Container>
       <Image src={imgSrc} alt={imgAlt} />
       <Card>
-        <Header>
-          <Header3>{title}</Header3>
-          <Date>
-            <Header3>{dateString}</Header3>
-          </Date>
-        </Header>
+        <Header3>{title}</Header3>
+        <Header4>{dateString}</Header4>
         <Body>{body}</Body>
       </Card>
     </Container>

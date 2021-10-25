@@ -38,6 +38,12 @@ const base = {
       lineHeight: '1.75rem',
       letterSpacing: '-0.01625rem',
     },
+    header4: {
+      fontWeight: 600,
+      fontSize: '1.5rem',
+      lineHeight: '1.5625rem',
+      letterSpacing: '-0.028125rem',
+    },
     body: {
       fontWeight: 400,
       fontSize: '1.125rem',
