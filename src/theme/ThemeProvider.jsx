@@ -13,14 +13,10 @@ const base = {
   colors: {
     background: '#2D2937',
     text: '#fff',
-
-    // added by navbar-andy
     primaryGradient: 'linear-gradient(92.58deg, #20FFAF 0%, #78FF96 100%)',
     disabledButton: 'white',
     disabledText: '#C6CCD1',
     navbar: '#A4D3F7',
-
-    // added by hackcamp2021_dev
     altText: '#1E3E56',
     boxBackground: '#E1F0FF',
   },

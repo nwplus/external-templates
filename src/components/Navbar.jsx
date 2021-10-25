@@ -205,6 +205,7 @@ const NavBar = () => {
   }, []);
 
   if (showDropdown) {
+    // For mobile version
     return (
       <>
         <NavBarContainer mobileView>
@@ -228,6 +229,7 @@ const NavBar = () => {
     );
   }
 
+  // For desktop version
   return (
     <NavBarContainer visibility={visibility} opacity={opacity}>
       <NavGroupContainer>
