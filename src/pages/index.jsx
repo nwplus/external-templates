@@ -3,6 +3,7 @@ import React from 'react'
 import GlobalStyles from '@styles/global'
 // import fireDb from '@utilities/firebase'
 import styled from "styled-components";
+import Events from '@sections/Events';
 import Footer from '@components/Footer'
 import Welcome from '@sections/Welcome';
 
@@ -31,6 +32,7 @@ export default function Index({ title }) {
       </Head>
       {/* Components Starts */}
       <Welcome />
+      <Events />
       <DummyContainer />
       <Footer />
     </>
