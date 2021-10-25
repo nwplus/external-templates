@@ -24,6 +24,8 @@ const Container = styled.div`
   display: flex;
 `
 
+const MOCK_SPONSORS = [{ imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'gold' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'gold' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'gold' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'gold' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'platinum' }, { imgURL: "/assets/john5.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'platinum' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'platinum' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'silver' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'silver' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'silver' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'silver' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'silver' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'bronze' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'bronze' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'bronze' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'bronze' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'bronze' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'bronze' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'Inkind' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'Inkind' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'Inkind' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'Inkind' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'Inkind' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'Inkind' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'Inkind' }]
+
 export default function Index({ title }) {
   return (
     <SectionContainer>
@@ -62,7 +64,7 @@ export default function Index({ title }) {
         <Body>Some long lorem ipsum body text that will probably never see the light of day but that is a-ok.</Body>
       </div>
       <EventBox title="Learn" dateString="Nov. 6, 2021" body="A day of workshops and skill building. We make the entry into the tech field less daunting." />
-      <SponsorSection />
+      <SponsorSection sponsorData={MOCK_SPONSORS} />
       {/* Components Ends */}
       <DummyContainer />
       <Footer />

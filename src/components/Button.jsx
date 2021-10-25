@@ -30,6 +30,7 @@ const StyledButton = styled.a`
 `;
 
 export default function Button({
+  className,
   backgroundColor,
   textColor,
   height,
@@ -41,6 +42,7 @@ export default function Button({
   isHover = false }) {
   return (
     <StyledButton
+      className={className}
       backgroundColor={backgroundColor}
       textColor={textColor}
       height={height}

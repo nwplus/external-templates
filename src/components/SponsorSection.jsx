@@ -11,14 +11,22 @@ const Container = styled.div`
   justify-content: center;
 `
 
+const TextContainer = styled.div`
+  display: flex;
+  width: 50%;
+  align-items: center;
+  justify-content: center;
+  @media only screen and (max-width: ${TABLET}) {
+    width: 80%
+  }
+`
+
 const ButtonContainer = styled.div`
   display: flex;
   margin-top: 20px;
+  margin-bottom: 10px;
 `
-const StyledButton = styled(Button)`
-  display: flex;  
-  margin-top: 20px;
-`
+
 const Row = styled.div`
   height: 100%;  
   display: flex;
@@ -28,6 +36,7 @@ const Row = styled.div`
   flex-wrap: wrap;
   max-width: 55vw;
 `
+
 const Rows = styled.div`
   display: flex;
   flex-direction: column;  
@@ -44,6 +53,7 @@ const PlatniumImg = styled.img`
     max-height: 20vh;
   }
 `
+
 const GoldImg = styled.img`
   max-width: 200px;
   max-height: 250px;
@@ -91,7 +101,6 @@ const InkindImg = styled.img`
     max-height: 15vh;
   }
 `
-const MOCK_SPONSORS = [{ imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'gold' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'gold' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'gold' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'gold' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'platinum' }, { imgURL: "/assets/john2.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'platinum' }, { imgURL: "/assets/john3.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'platinum' }, { imgURL: "/assets/john4.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'platinum' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'platinum' }, { imgURL: "/assets/john5.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'platinum' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'platinum' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'silver' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'silver' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'silver' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'silver' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'silver' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'bronze' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'bronze' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'bronze' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'bronze' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'bronze' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'bronze' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'Inkind' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'Inkind' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'Inkind' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'Inkind' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'Inkind' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'Inkind' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'Inkind' }]
 
 // startup/Inkind -> bronze -> silver -> gold -> platinum
 const SponsorSection = ({ sponsorData }) => {
@@ -111,12 +120,8 @@ const SponsorSection = ({ sponsorData }) => {
   }
 
   useEffect(() => {
-    categorizeSponsor(MOCK_SPONSORS)
-  }, [])
-
-  // useEffect(() => {
-  //   categorizeSponsor(sponsorData)
-  // }, [sponsorData])
+    categorizeSponsor(sponsorData)
+  }, [sponsorData])
 
   const SponsorsComponent = ({ tier }) => (
     <Row>
@@ -148,8 +153,9 @@ const SponsorSection = ({ sponsorData }) => {
   return (
     <Container>
       <Header3>Sponsors</Header3>
-      <Body>nwPlus is always looking for new ventures, opportunities, and connections. If you are interested in working</Body>
-      <Body>with us, joining us, or speaking at one of our events, feel free to reach out to us at info@nwplus.io</Body>
+      <TextContainer>
+        <Body>nwPlus is always looking for new ventures, opportunities, and connections. If you are interested in working with us, joining us, or speaking at one of our events, feel free to reach out to us at info@nwplus.io</Body>
+      </TextContainer>
       <ButtonContainer>
         <Button href="mailto:sponsorship@nwplus.io?Subject=Sponsorship" width='312px' height='60px' backgroundColor='#FFFFFF' borderRadius='8px' textColor='#0D3153' isHover>
           Become a Sponsor
