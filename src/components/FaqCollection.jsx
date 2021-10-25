@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import FaqBox from '@components/FaqBox';
-import { Header1 } from "@components/Typography";
+import { Header1, Header3 } from "@components/Typography";
 import { chunkify } from '@utilities/chunkify';
 
 const Container = styled.div`
   text-align: center;
+`
+
+const CategoryTitle = styled(Header3)`
+  margin: 2rem 0 1rem;
 `
 
 const Columns = styled.div`
@@ -82,13 +86,13 @@ export default function FaqCollection() {
 
   return (
     <Container>
-      <Header1>Frequently Asked Questions</Header1>
+      <Header1 id="faq">Frequently Asked Questions</Header1>
 
       {
 
         Object.entries(faqData).map(([title, content]) => (
           <>
-            {title}
+            <CategoryTitle>{title}</CategoryTitle>
             <Columns>
               {chunkify(content, COLUMNS_OF_FAQ, true).map((chunk) => (
                 <Column key={chunk[0].title}>{chunk.map(singleEntry)}</Column>
