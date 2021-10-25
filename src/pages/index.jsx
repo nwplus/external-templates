@@ -11,6 +11,7 @@ import EventBox from '@components/EventBox'
 import FaqBox from '@components/FaqBox'
 import Stats from '@components/Stats'
 import Welcome from '@sections/Welcome';
+import Register from 'src/sections/Register';
 
 // Footer component needs space above it to not be cut off
 const DummyContainer = styled.div`
@@ -44,6 +45,7 @@ export default function Index({ title }) {
         <meta property="og:image" content="/preview.png" />
       </Head>
       {/* Components Starts */}
+      <Register />
       <Welcome />
       <Container>
         <NavBar />
