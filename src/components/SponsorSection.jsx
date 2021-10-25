@@ -4,6 +4,21 @@ import { TABLET } from '@constants/measurements'
 import { Body, Header3 } from "@components/Typography";
 import Button from '@components/Button';
 
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`
+
+const ButtonContainer = styled.div`
+  display: flex;
+  margin-top: 20px;
+`
+const StyledButton = styled(Button)`
+  display: flex;  
+  margin-top: 20px;
+`
 const Row = styled.div`
   height: 100%;  
   display: flex;
@@ -126,12 +141,15 @@ const SponsorSection = ({ sponsorData }) => {
   // )
 
   return (
-    <div>
+    <Container>
       <Header3>Sponsors</Header3>
-      <Body>nwPlus is always looking for new ventures, opportunities, and connections. If you are interested in working with us, joining us, or speaking at one of our events, feel free to reach out to us at info@nwplus.io</Body>
-      <Button href="mailto:sponsorship@nwplus.io?Subject=Sponsorship" width='312px' height='60px' backgroundColor='#FFFFFF' borderRadius='8px' textColor='#0D3153' isHover>
-        Become a Sponsor
-      </Button>
+      <Body>nwPlus is always looking for new ventures, opportunities, and connections. If you are interested in working</Body>
+      <Body>with us, joining us, or speaking at one of our events, feel free to reach out to us at info@nwplus.io</Body>
+      <ButtonContainer>
+        <Button href="mailto:sponsorship@nwplus.io?Subject=Sponsorship" width='312px' height='60px' backgroundColor='#FFFFFF' borderRadius='8px' textColor='#0D3153' isHover>
+          Become a Sponsor
+        </Button>
+      </ButtonContainer>
       <Rows>
         {/* <SponsorsComponent tier="platinum" />
         <SponsorsComponent tier="gold" />
@@ -139,7 +157,7 @@ const SponsorSection = ({ sponsorData }) => {
         <SponsorsComponent tier="bronze" />
         <SponsorsComponent tier="Inkind" /> */}
       </Rows>
-    </div>
+    </Container>
   )
 }
 
