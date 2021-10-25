@@ -5,6 +5,7 @@ import GlobalStyles from '@styles/global'
 import styled from "styled-components";
 import Events from '@sections/Events';
 import Footer from '@components/Footer'
+import NavBar from '@components/Navbar'
 import Welcome from '@sections/Welcome';
 
 // Footer component needs space above it to not be cut off
@@ -31,10 +32,12 @@ export default function Index({ title }) {
         <meta property="og:image" content="/preview.png" />
       </Head>
       {/* Components Starts */}
+      <NavBar />
       <Welcome />
       <Events />
       <DummyContainer />
       <Footer />
+      {/* Components Ends */}
     </>
   )
 }
