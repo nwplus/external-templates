@@ -7,8 +7,8 @@ import styled from "styled-components";
 import Footer from '@components/Footer'
 import NavBar from '@components/Navbar'
 import { Body, Header1, Header2, Header3 } from "@components/Typography";
+import FaqCollection from '@components/FaqCollection'
 import EventBox from '@components/EventBox'
-import FaqBox from '@components/FaqBox'
 import Stats from '@components/Stats'
 import Welcome from '@sections/Welcome';
 
@@ -58,12 +58,12 @@ export default function Index({ title }) {
         </Button>
       </Container>
       <div>
-        <FaqBox />
         <Stats />
         <Header1>Large Title</Header1>
         <Header2>Title 1</Header2>
         <Header3>Title 2</Header3>
         <Body>Some long lorem ipsum body text that will probably never see the light of day but that is a-ok.</Body>
+        <FaqCollection />
       </div>
       <EventBox title="Learn" dateString="Nov. 6, 2021" body="A day of workshops and skill building. We make the entry into the tech field less daunting." />
       {/* Components Ends */}

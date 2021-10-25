@@ -5,10 +5,12 @@ import BearPaw from '@components/icons/bearpaw';
 const Container = styled.div`
   border-radius: 20px;
   background-color: ${p => p.theme.colors.boxBackground};
-  padding: 1em;
-  transition: all 100ms;
-
   color: ${p => p.theme.colors.altText};
+  padding: 1.2em;
+  transition: all 100ms;
+  width: 240px;
+  margin: 0.3em;
+  text-align: left;
 
   &:hover{
     transform: scale(1.05);
@@ -17,6 +19,7 @@ const Container = styled.div`
 
 const Title = styled.b`
   display: block;
+  font-size: 1.2em;
 `
 
 export default function FaqBox({ title, children }) {
