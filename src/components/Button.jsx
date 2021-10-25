@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const StyledButton = styled.a`
   background: ${p => p.isGradient ? 'linear-gradient(92.58deg, #0DEFE1 0%, #78FF96 100%)' : p.backgroundColor};
-  color: ${p => p.textColor};  
+  color: ${p => p.textColor};
   height: ${p => p.height};
   width: ${p => p.width};
   border-radius: ${p => p.borderRadius};
@@ -27,29 +27,49 @@ const StyledButton = styled.a`
       border: solid;
     }`
   }
+
+  ${p =>
+    p.disabled &&
+    `{
+      background: ${p.theme.colors.disabledButton};
+      pointer-events: none;
+    }`
+  }
+`;
+
+const StyledButtonWrapper = styled.div`
+  ${p => p.disabled && 'cursor: not-allowed;'}
 `;
 
 export default function Button({
-  backgroundColor,
   textColor,
+  backgroundColor,
   height,
   width,
   borderRadius,
   children,
   fontSize,
+  href,
+  target,
+  disabled,
   isGradient = false,
   isHover = false }) {
   return (
-    <StyledButton
-      backgroundColor={backgroundColor}
-      textColor={textColor}
-      height={height}
-      width={width}
-      borderRadius={borderRadius}
-      fontSize={fontSize}
-      isGradient={isGradient}
-      isHover={isHover}>
-      {children}
-    </StyledButton>
+    <StyledButtonWrapper disabled={disabled}>
+      <StyledButton
+        backgroundColor={backgroundColor}
+        textColor={textColor}
+        height={height}
+        width={width}
+        borderRadius={borderRadius}
+        fontSize={fontSize}
+        href={href}
+        target={target}
+        disabled={disabled}
+        isGradient={isGradient}
+        isHover={isHover}>
+        {children}
+      </StyledButton>
+    </StyledButtonWrapper>
   )
 }

@@ -11,8 +11,9 @@ export const SectionContainer = styled.div.attrs(props => ({
 }))`
   width: ${p => p.width};
   height: ${p => p.height};
-  margin: ${p => p.margin};
-  padding: ${p => p.padding};
+  display: grid;
+  grid-template-columns: repeat(14, 1fr);
+  gap: 1.25rem;
 `
 export const SectionContainerWithBackground = styled(SectionContainer)`
   background-image: url(${p => p.src});
@@ -20,6 +21,10 @@ export const SectionContainerWithBackground = styled(SectionContainer)`
   background-repeat: no-repeat;
   background-size: contain;
   height: ${p => p.height};
+`
+export const GridContainer = styled.div`
+  grid-column: ${p => p.gridColumn};
+  grid-row: ${p => p.gridRows};
 `
 export const Columns = styled.div`
   display: flex;
