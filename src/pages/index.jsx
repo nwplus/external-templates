@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import React from 'react'
 import GlobalStyles from '@styles/global'
+import Button from '@components/Button'
 // import fireDb from '@utilities/firebase'
 import styled from "styled-components";
 import Footer from '@components/Footer'
@@ -15,6 +16,14 @@ import Welcome from '@sections/Welcome';
 const DummyContainer = styled.div`
   height: 100vh;
 `;
+
+const Container = styled.div`
+  background-color: #3D3F59;
+  border-radius: 8px;
+  height: 200px;
+  width: 800px;
+  display: flex;
+`
 
 export default function Index({ title }) {
   return (
