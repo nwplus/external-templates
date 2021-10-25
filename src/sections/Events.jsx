@@ -26,7 +26,7 @@ export default function Events() {
   return (
     <BgSectionContainer>
       <Description>
-        <Header1>Our Events</Header1>
+        <Header1 id="events">Our Events</Header1>
         <Body>This year, we are bringing you a 3-day virtual event where participants worldwide can learn new skills, connect with fellow tech enthusiasts, and build solutions to tackle challenges together.</Body>
       </Description>
       <EventsContainer>
