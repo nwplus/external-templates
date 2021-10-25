@@ -34,7 +34,7 @@ const Rows = styled.div`
 `
 
 const PlatniumImg = styled.img`
-  max-width: 900px;
+  max-width: 250px;
   max-height: 300px;
   margin-left: 1rem;
   margin-right: 1rem;
@@ -45,7 +45,7 @@ const PlatniumImg = styled.img`
   }
 `
 const GoldImg = styled.img`
-  max-width: 700px;
+  max-width: 200px;
   max-height: 250px;
   margin-left: 1rem;
   margin-right: 1rem;
@@ -57,7 +57,7 @@ const GoldImg = styled.img`
 `
 
 const SilverImg = styled.img`
-  max-width: 500px;
+  max-width: 150px;
   max-height: 200px;
   margin-left: 1rem;
   margin-right: 1rem;
@@ -69,7 +69,7 @@ const SilverImg = styled.img`
 `
 
 const BronzeImg = styled.img`
-  max-width: 300px;
+  max-width: 100px;
   max-height: 150px;
   margin-left: 1rem;
   margin-right: 1rem;
@@ -81,7 +81,7 @@ const BronzeImg = styled.img`
 `
 
 const InkindImg = styled.img`
-  max-width: 200px;
+  max-width: 50px;
   max-height: 150px;
   margin-left: 1rem;
   margin-right: 1rem;
@@ -91,54 +91,59 @@ const InkindImg = styled.img`
     max-height: 15vh;
   }
 `
+const MOCK_SPONSORS = [{ imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'gold' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'gold' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'gold' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'gold' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'platinum' }, { imgURL: "/assets/john2.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'platinum' }, { imgURL: "/assets/john3.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'platinum' }, { imgURL: "/assets/john4.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'platinum' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'platinum' }, { imgURL: "/assets/john5.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'platinum' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'platinum' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'silver' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'silver' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'silver' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'silver' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'silver' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'bronze' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'bronze' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'bronze' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'bronze' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'bronze' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'bronze' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'Inkind' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'Inkind' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'Inkind' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'Inkind' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'Inkind' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'Inkind' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'Inkind' }]
 
-// Inkind -> bronze -> silver -> gold -> platinum
+// startup/Inkind -> bronze -> silver -> gold -> platinum
 const SponsorSection = ({ sponsorData }) => {
-  // const [categorizedSponsorMap, setSponsorMap] = useState(new Map())
+  const [categorizedSponsorMap, setSponsorMap] = useState(new Map())
 
-  // const categorizeSponsor = sponsorList => {
-  //   const updatedSponsors = new Map()
-  //   sponsorList.forEach(({ imgURL, link, tier }) => {
-  //     const reducedSponsor = { imgURL, link }
+  const categorizeSponsor = sponsorList => {
+    const updatedSponsors = new Map()
+    sponsorList.forEach(({ imgURL, link, tier }) => {
+      const reducedSponsor = { imgURL, link }
 
-  //     const currSponsorList = updatedSponsors.get(tier)
-  //     const updatedSponsorList = currSponsorList ? [reducedSponsor, ...currSponsorList] : [reducedSponsor]
+      const currSponsorList = updatedSponsors.get(tier)
+      const updatedSponsorList = currSponsorList ? [reducedSponsor, ...currSponsorList] : [reducedSponsor]
 
-  //     updatedSponsors.set(tier, updatedSponsorList)
-  //     setSponsorMap(new Map(updatedSponsors))
-  //   })
-  // }
+      updatedSponsors.set(tier, updatedSponsorList)
+      setSponsorMap(new Map(updatedSponsors))
+    })
+  }
+
+  useEffect(() => {
+    categorizeSponsor(MOCK_SPONSORS)
+  }, [])
 
   // useEffect(() => {
   //   categorizeSponsor(sponsorData)
   // }, [sponsorData])
 
-  // const SponsorsComponent = ({ tier }) => (
-  //   <Row>
-  //     {categorizedSponsorMap.get(tier)?.map(({ imgURL, link }) => (
-  //       <a href={link} target="_blank" rel="noreferrer">
-  //         {(() => {
-  //           switch (tier) {
-  //             case 'platinum':
-  //               return <PlatniumImg src={imgURL} />
+  const SponsorsComponent = ({ tier }) => (
+    <Row>
+      {categorizedSponsorMap.get(tier)?.map(({ imgURL, link }) => (
+        <a href={link} target="_blank" rel="noreferrer">
+          {(() => {
+            switch (tier) {
+              case 'platinum':
+                return <PlatniumImg src={imgURL} />
 
-  //             case 'gold':
-  //               return <GoldImg src={imgURL} />
+              case 'gold':
+                return <GoldImg src={imgURL} />
 
-  //             case 'silver':
-  //               return <SilverImg src={imgURL} />
+              case 'silver':
+                return <SilverImg src={imgURL} />
 
-  //             case 'bronze':
-  //               return <BronzeImg src={imgURL} />
+              case 'bronze':
+                return <BronzeImg src={imgURL} />
 
-  //             default:
-  //               return <InkindImg src={imgURL} />
-  //           }
-  //         })()}
-  //       </a>
-  //     ))}
-  //   </Row>
-  // )
+              default:
+                return <InkindImg src={imgURL} />
+            }
+          })()}
+        </a>
+      ))}
+    </Row>
+  )
 
   return (
     <Container>
@@ -151,11 +156,11 @@ const SponsorSection = ({ sponsorData }) => {
         </Button>
       </ButtonContainer>
       <Rows>
-        {/* <SponsorsComponent tier="platinum" />
+        <SponsorsComponent tier="platinum" />
         <SponsorsComponent tier="gold" />
         <SponsorsComponent tier="silver" />
         <SponsorsComponent tier="bronze" />
-        <SponsorsComponent tier="Inkind" /> */}
+        <SponsorsComponent tier="Inkind" />
       </Rows>
     </Container>
   )
