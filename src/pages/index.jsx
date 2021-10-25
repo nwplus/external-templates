@@ -3,13 +3,15 @@ import React from 'react'
 import GlobalStyles from '@styles/global'
 import Button from '@components/Button'
 // import fireDb from '@utilities/firebase'
-import { SectionContainer } from '@lib/Containers'
 import styled from "styled-components";
 import Footer from '@components/Footer'
+import NavBar from '@components/Navbar'
 import { Body, Header1, Header2, Header3 } from "@components/Typography";
 import EventBox from '@components/EventBox'
 import FaqBox from '@components/FaqBox'
 import SponsorSection from '@components/SponsorSection'
+import Stats from '@components/Stats'
+import Welcome from '@sections/Welcome';
 
 // Footer component needs space above it to not be cut off
 const DummyContainer = styled.div`
@@ -28,7 +30,7 @@ const MOCK_SPONSORS = [{ imgURL: "/assets/john1.jpeg", link: 'https://www.linked
 
 export default function Index({ title }) {
   return (
-    <SectionContainer>
+    <>
       <GlobalStyles />
       <Head>
         {/* Remove comment once title is set */}
@@ -45,7 +47,9 @@ export default function Index({ title }) {
         <meta property="og:image" content="/preview.png" />
       </Head>
       {/* Components Starts */}
+      <Welcome />
       <Container>
+        <NavBar />
         <Button width='257px' height='60px' backgroundColor='#224B5C' borderRadius='8px' textColor='#AFBFE5' isHover>
           Register Now
         </Button>
@@ -58,6 +62,7 @@ export default function Index({ title }) {
       </Container>
       <div>
         <FaqBox />
+        <Stats />
         <Header1>Large Title</Header1>
         <Header2>Title 1</Header2>
         <Header3>Title 2</Header3>
@@ -68,7 +73,7 @@ export default function Index({ title }) {
       {/* Components Ends */}
       <DummyContainer />
       <Footer />
-    </SectionContainer>
+    </>
   )
 }
 

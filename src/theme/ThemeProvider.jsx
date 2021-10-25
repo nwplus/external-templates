@@ -1,7 +1,7 @@
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
 
-const SCREEN_BREAKPOINTS = {
+export const SCREEN_BREAKPOINTS = {
   xs: 576,
   mobile: 768,
   tablet: 992,
@@ -13,6 +13,11 @@ const base = {
   colors: {
     background: '#2D2937',
     text: '#fff',
+    primaryGradient: 'linear-gradient(92.58deg, #20FFAF 0%, #78FF96 100%)',
+    disabledButton: 'white',
+    disabledText: '#C6CCD1',
+    navbar: '#A4D3F7',
+    darkBlue: '#244A5C',
     altText: '#1E3E56',
     boxBackground: '#E1F0FF',
   },
@@ -21,27 +26,27 @@ const base = {
     bodyFont: 'HK Grotesk',
     header1: {
       fontWeight: 900,
-      fontSize: '3.5em',
-      lineHeight: '3.5em',
-      letterSpacing: '0.025em',
+      fontSize: '3.5rem',
+      lineHeight: '3.5rem',
+      letterSpacing: '0.025rem',
     },
     header2: {
       fontWeight: 800,
-      fontSize: '2.625em',
-      lineHeight: '2.125em',
-      letterSpacing: '0.02375em',
+      fontSize: '2.625rem',
+      lineHeight: '2.125rem',
+      letterSpacing: '0.02375rem',
     },
     header3: {
       fontWeight: 600,
-      fontSize: '2em',
-      lineHeight: '1.75em',
-      letterSpacing: '-0.01625em',
+      fontSize: '2rem',
+      lineHeight: '1.75rem',
+      letterSpacing: '-0.01625rem',
     },
     body: {
       fontWeight: 400,
-      fontSize: '1.125em',
-      lineHeight: '1.375em',
-      letterSpacing: '-0.026875em',
+      fontSize: '1.125rem',
+      lineHeight: '1.375rem',
+      letterSpacing: '-0.026875rem',
     }
   },
   mediaQueries: {
