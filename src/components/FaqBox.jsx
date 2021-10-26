@@ -11,6 +11,7 @@ const Container = styled.div`
   width: 240px;
   margin: 0.3em;
   text-align: left;
+  word-break: break-word;
 
   &:hover{
     transform: scale(1.05);
