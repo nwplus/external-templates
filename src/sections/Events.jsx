@@ -4,7 +4,7 @@ import { SectionContainer } from "@lib/Containers";
 import { Header1, Body } from "@components/Typography";
 
 const BgSectionContainer = styled(SectionContainer)`
-  background: linear-gradient(180deg, #434767 0%, #55597A 99.31%);
+  background: url('assets/background/noise.png'), linear-gradient(180deg, #434767 0%, #55597A 99.31%);
   padding: 6rem 0;
 `
 
