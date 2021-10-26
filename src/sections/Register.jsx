@@ -7,11 +7,10 @@ import Logo from '@components/icons/logo';
 
 const BgSectionContainer = styled(SectionContainer)`
   background: url('assets/background/hero.png'), radial-gradient(50% 50% at 50% 50%, #F9F0DF 0%, #9FB4E6 100%);
-  background-size: cover;
+  background-size: 100vw;
   background-repeat: no-repeat;
   background-position: center center;
-  height: min-content;
-  padding: 20% 0;
+  height: 76vw;
 
   ${p => p.theme.mediaQueries.mobile} {
     background: url('assets/background/hero_mobile.png');
@@ -32,8 +31,7 @@ const MobileContainer = styled.div`
 `
 
 const MediaContainer = styled.div`
-  position: relative;
-  bottom: 250px;
+  padding-top: 12vw;
 `
 
 const BodyContainer = styled.div`
@@ -55,7 +53,7 @@ export default function Register() {
   return (
     <BgSectionContainer>
       <GridContainer>
-        {windowWidth <= mobileBreakpoint ?
+        {windowWidth && windowWidth <= mobileBreakpoint ?
           <MobileContainer>
             <Body color='#244A5C'>nwPlus presents</Body>
             <Header1 color='#234B5C'>HackCamp</Header1>
