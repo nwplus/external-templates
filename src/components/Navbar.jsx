@@ -118,7 +118,7 @@ const StyledPortalText = styled.div`
   font-weight: bold;
 `;
 
-const MenuItem = ({ name, href, isAnchor }) => {
+const MenuItem = ({ name, href, isAnchor, target, rel }) => {
   const [anchorTarget, setAnchorTarget] = useState(null);
 
   useEffect(() => {
@@ -135,7 +135,7 @@ const MenuItem = ({ name, href, isAnchor }) => {
   };
 
   return (
-    <LinkText href={href} onClick={handleClick}>
+    <LinkText href={href} onClick={handleClick} target={target} rel={rel}>
       <StyledLinkHeaders>{name}</StyledLinkHeaders>
     </LinkText>
   );
@@ -147,6 +147,7 @@ const MenuList = () => (
     <MenuItem name='Events' href='/#events' isAnchor />
     <MenuItem name='FAQ' href='/#faq' isAnchor />
     <MenuItem name='Sponsors' href='/#sponsors' isAnchor />
+    <MenuItem name='2020' href='https://hackcamp-2020.nwplus.io' target='_blank' rel='noopener' />
   </>
 );
 
