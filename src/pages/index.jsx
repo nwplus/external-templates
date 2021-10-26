@@ -4,8 +4,9 @@ import GlobalStyles from '@styles/global'
 // import fireDb from '@utilities/firebase'
 import styled from "styled-components";
 import Events from '@sections/Events';
-import Footer from '@components/Footer'
-import NavBar from '@components/Navbar'
+import Footer from '@components/Footer';
+import NavBar from '@components/Navbar';
+import Stats1 from '@sections/Stats1';
 import Welcome from '@sections/Welcome';
 
 // Footer component needs space above it to not be cut off
@@ -35,6 +36,7 @@ export default function Index({ title }) {
       <NavBar />
       <Welcome />
       <Events />
+      <Stats1 />
       <DummyContainer />
       <Footer />
       {/* Components Ends */}
