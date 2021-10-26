@@ -20,7 +20,7 @@ export default function Index({ title }) {
         {/* Remove comment once favicon is set */}
         <link rel="icon" href="/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta itemProp="image" content="/assets/meta-image.png" />
+        <meta itemProp="image" content="/meta-image.png" />
         {/* Remove comment once description is written */}
         <meta
           name="description"
