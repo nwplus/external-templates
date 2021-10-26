@@ -15,19 +15,14 @@ export default function Index({ title }) {
     <>
       <GlobalStyles />
       <Head>
-        {/* Remove comment once title is set */}
         <title> {title} </title>
-        {/* Remove comment once favicon is set */}
         <link rel="icon" href="/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta itemProp="image" content="/assets/meta-image.png" />
-        {/* Remove comment once description is written */}
         <meta
           name="description"
           content="At HackCamp, we welcome hundreds of tech newbies to learn new skills, build cool projects, and share new experiences! We are part of an international celebration of diversity, accessibility, and inclusivity for newcomers in the Greater Vancouver hackathon and tech community."
         />
-        {/* Remove comment once preview image is set */}
-        <meta property="og:image" content="/preview.png" />
+        <meta property="og:image" content="/meta-image.png" />
       </Head>
       {/* Components Starts */}
       <NavBar />

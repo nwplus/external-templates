@@ -48,10 +48,10 @@ export default function Welcome() {
         {windowWidth <= mobileBreakpoint ?
           <div>
             <div>Welcome to</div>
-            <Header1>HackCamp</Header1>
+            <Header1 id="about">HackCamp</Header1>
           </div>
           :
-          <Header1>Welcome to HackCamp</Header1>
+          <Header1 id="about">Welcome to HackCamp</Header1>
         }
         <Body>HackCamp revolves around inclusivity, diversity, and accessibility — we want you to bring your unique perspectives and experiences to the table!</Body>
         <Body>Over the past 4 years, HackCamp, or formerly UBC Local Hack Day, has been focused on encouraging beginners and people who are curious about technology to work on a project that focuses on these three main pillars.</Body>
