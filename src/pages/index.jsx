@@ -9,6 +9,7 @@ import NavBar from '@components/Navbar';
 import Stats from '@sections/Stats';
 import Sponsors from '@sections/Sponsors';
 import Welcome from '@sections/Welcome';
+import Register from 'src/sections/Register';
 
 export default function Index({ title }) {
   return (
@@ -26,6 +27,7 @@ export default function Index({ title }) {
       </Head>
       {/* Components Starts */}
       <NavBar />
+      <Register />
       <Welcome />
       <Events />
       <Stats />
