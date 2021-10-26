@@ -4,6 +4,7 @@ import GlobalStyles from '@styles/global'
 // import fireDb from '@utilities/firebase'
 import styled from "styled-components";
 import Events from '@sections/Events';
+import Faq from '@sections/Faq';
 import Footer from '@components/Footer';
 import NavBar from '@components/Navbar';
 import Stats1 from '@sections/Stats1';
@@ -37,6 +38,7 @@ export default function Index({ title }) {
       <Welcome />
       <Events />
       <Stats1 />
+      <Faq />
       <DummyContainer />
       <Footer />
       {/* Components Ends */}
