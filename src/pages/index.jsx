@@ -1,32 +1,18 @@
 import Head from 'next/head'
 import React from 'react'
 import GlobalStyles from '@styles/global'
-import Button from '@components/Button'
 // import fireDb from '@utilities/firebase'
 import styled from "styled-components";
-import Footer from '@components/Footer'
-import NavBar from '@components/Navbar'
-import { Body, Header1, Header2, Header3 } from "@components/Typography";
-import EventBox from '@components/EventBox'
-import FaqBox from '@components/FaqBox'
-import SponsorSection from '@components/SponsorSection'
-import Stats from '@components/Stats'
+import Events from '@sections/Events';
+import Footer from '@components/Footer';
+import NavBar from '@components/Navbar';
+import Stats1 from '@sections/Stats1';
 import Welcome from '@sections/Welcome';
 
 // Footer component needs space above it to not be cut off
 const DummyContainer = styled.div`
   height: 100vh;
 `;
-
-const Container = styled.div`
-  background-color: #3D3F59;
-  border-radius: 8px;
-  height: 200px;
-  width: 800px;
-  display: flex;
-`
-
-const MOCK_SPONSORS = [{ imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'gold' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'gold' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'gold' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'gold' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'platinum' }, { imgURL: "/assets/john5.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'platinum' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'platinum' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'silver' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'silver' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'silver' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'silver' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'silver' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'bronze' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'bronze' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'bronze' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'bronze' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'bronze' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'bronze' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'Inkind' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'Inkind' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'Inkind' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'Inkind' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'Inkind' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'Inkind' }, { imgURL: "/assets/john1.jpeg", link: 'https://www.linkedin.com/in/vincent-chiang/', tier: 'Inkind' }]
 
 export default function Index({ title }) {
   return (
@@ -47,32 +33,13 @@ export default function Index({ title }) {
         <meta property="og:image" content="/preview.png" />
       </Head>
       {/* Components Starts */}
+      <NavBar />
       <Welcome />
-      <Container>
-        <NavBar />
-        <Button width='257px' height='60px' backgroundColor='#224B5C' borderRadius='8px' textColor='#AFBFE5' isHover>
-          Register Now
-        </Button>
-        <Button width='129px' height='44px' backgroundColor='#224B5C' borderRadius='100px' textColor='#2C2543' isGradient>
-          Live Portal
-        </Button>
-        <Button width='312px' height='60px' backgroundColor='#FFFFFF' borderRadius='8px' textColor='#0D3153' isHover>
-          Become a Sponsor
-        </Button>
-      </Container>
-      <div>
-        <FaqBox />
-        <Stats />
-        <Header1>Large Title</Header1>
-        <Header2>Title 1</Header2>
-        <Header3>Title 2</Header3>
-        <Body>Some long lorem ipsum body text that will probably never see the light of day but that is a-ok.</Body>
-      </div>
-      <EventBox title="Learn" dateString="Nov. 6, 2021" body="A day of workshops and skill building. We make the entry into the tech field less daunting." />
-      <SponsorSection sponsorData={MOCK_SPONSORS} />
-      {/* Components Ends */}
+      <Events />
+      <Stats1 />
       <DummyContainer />
       <Footer />
+      {/* Components Ends */}
     </>
   )
 }

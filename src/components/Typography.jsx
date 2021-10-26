@@ -19,7 +19,7 @@ const hover = css`
       cursor: pointer;
       color: ${p.theme.colors.primary};
     }`
-}
+  }
 `;
 
 // can manually override
@@ -33,10 +33,10 @@ const text = css`
 `;
 
 const header = ({
-    fontWeight,
-    fontSize,
-    lineHeight,
-    letterSpacing,
+  fontWeight,
+  fontSize,
+  lineHeight,
+  letterSpacing,
 }) => css`
   ${(p) => `
     font-family: ${p.theme.typography.headerFont};
@@ -64,6 +64,11 @@ export const Header2 = styled.h2`
 export const Header3 = styled.h3`
   ${text}
   ${(p) => header(p.theme.typography.header3)}
+`;
+
+export const Header4 = styled.h4`
+  ${text}
+  ${(p) => header(p.theme.typography.header4)}
 `;
 
 export const Body = styled.p`
