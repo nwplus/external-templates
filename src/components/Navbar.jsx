@@ -146,7 +146,7 @@ const MenuList = () => (
     <MenuItem name='About' href='/#about' isAnchor />
     <MenuItem name='Events' href='/#events' isAnchor />
     <MenuItem name='FAQ' href='/#faq' isAnchor />
-    <MenuItem name='Sponsor' href='/#sponsor' isAnchor />
+    <MenuItem name='Sponsors' href='/#sponsors' isAnchor />
   </>
 );
 
