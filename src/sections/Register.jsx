@@ -20,10 +20,16 @@ const BgSectionContainer = styled(SectionContainer)`
   }
 `
 
-const MediaContainer = styled.div`
+const MobileContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`
 
-position: relative;
-bottom: 250px;
+const MediaContainer = styled.div`
+  position: relative;
+  bottom: 250px;
 `
 
 const BodyContainer = styled.div`
@@ -58,19 +64,33 @@ export default function Register() {
   return (
     <BgSectionContainer>
       <GridContainer>
-        <MediaContainer>
-          <Logo />
-          <Header1 color='#234B5C'>HackCamp</Header1>
-          <BodyContainer>
-            <Body color='#244A5C'>Western Canada’s biggest
-              beginner-friendly hackathon</Body>
-          </BodyContainer>
-          <Button target="_blank" rel="noopener noreferrer" href="https://forms.gle/z8NRDBzewHpMsV7bA" width='257px' height='60px' backgroundColor='#224B5C' borderRadius='8px' textColor='#AFBFE5' isHover>
-            Register Now
-          </Button>
-        </MediaContainer>
+        {windowWidth <= mobileBreakpoint ?
+          <MobileContainer>
+            <Body color='#244A5C'>nwPlus presents</Body>
+            <Header1 color='#234B5C'>HackCamp</Header1>
+            <BodyContainer>
+              <Body color='#244A5C'>Western Canada’s biggest
+                beginner-friendly hackathon</Body>
+            </BodyContainer>
+            <Button target="_blank" rel="noopener noreferrer" href="https://forms.gle/z8NRDBzewHpMsV7bA" width='257px' height='60px' backgroundColor='#224B5C' borderRadius='8px' textColor='#AFBFE5' isHover>
+              Register Now
+            </Button>
+          </MobileContainer>
+          :
+          <MediaContainer>
+            <Logo />
+            <Header1 color='#234B5C'>HackCamp</Header1>
+            <BodyContainer>
+              <Body color='#244A5C'>Western Canada’s biggest
+                beginner-friendly hackathon</Body>
+            </BodyContainer>
+            <Button target="_blank" rel="noopener noreferrer" href="https://forms.gle/z8NRDBzewHpMsV7bA" width='257px' height='60px' backgroundColor='#224B5C' borderRadius='8px' textColor='#AFBFE5' isHover>
+              Register Now
+            </Button>
+          </MediaContainer>}
+
       </GridContainer>
-      <Image src="/assets/background/welcome/welcome_mobile.png" />
+      <Image src="/assets/background/hero-mobile.png" />
     </BgSectionContainer>
   )
 }
