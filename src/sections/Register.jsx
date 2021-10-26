@@ -14,7 +14,11 @@ const BgSectionContainer = styled(SectionContainer)`
   padding: 20% 0;
 
   ${p => p.theme.mediaQueries.mobile} {
-    background: radial-gradient(50% 50% at 50% 50%, #F9F0DF 0%, #9FB4E6 100%);
+    background: url('assets/background/hero_mobile.png');
+    background-size: 100vw;
+    background-repeat: no-repeat;
+    background-position: center top;
+    height: 152vw;
     padding: 3.625rem 0 0;
     text-align: center;
   }
@@ -41,19 +45,6 @@ const GridContainer = styled.div`
 
   ${p => p.theme.mediaQueries.mobile} {
     grid-column: 3 / span 10;
-  }
-`
-
-// Mobile styling to make the image extend past the container
-const Image = styled.img`
-  display: none;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    display: block;
-    width: 100%;
-    grid-column: 1 / span 14;
-    grid-row: 2;
-    margin-bottom: -12%;
   }
 `
 
@@ -88,9 +79,7 @@ export default function Register() {
               Register Now
             </Button>
           </MediaContainer>}
-
       </GridContainer>
-      <Image src="/assets/background/hero-mobile.png" />
     </BgSectionContainer>
   )
 }
