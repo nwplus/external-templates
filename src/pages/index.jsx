@@ -6,7 +6,7 @@ import Events from '@sections/Events';
 import Faq from '@sections/Faq';
 import Footer from '@components/Footer';
 import NavBar from '@components/Navbar';
-import Stats1 from '@sections/Stats1';
+import Stats from '@sections/Stats';
 import Sponsors from '@sections/Sponsors';
 import Welcome from '@sections/Welcome';
 
@@ -28,7 +28,7 @@ export default function Index({ title }) {
       <NavBar />
       <Welcome />
       <Events />
-      <Stats1 />
+      <Stats />
       <Faq />
       <Sponsors />
       <Footer />

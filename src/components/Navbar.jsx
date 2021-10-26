@@ -62,10 +62,23 @@ const NwPlusLogo = styled.img`
 const LinkText = styled.a`
   color: ${(p) => p.theme.colors.text};
   text-decoration: none;
+  
+  ::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 2px;
+    transition: width 0.5s ease;
+    background: white;
+  }
 
   &:hover {
     color: ${(p) => p.theme.colors.text};
     text-decoration: none;
+    
+    ::after {
+      width: 100%;
+    }
   }
 `;
 
