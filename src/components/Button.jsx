@@ -42,6 +42,7 @@ const StyledButtonWrapper = styled.div`
 `;
 
 export default function Button({
+  className,
   textColor,
   backgroundColor,
   height,
@@ -57,6 +58,7 @@ export default function Button({
   return (
     <StyledButtonWrapper disabled={disabled}>
       <StyledButton
+        className={className}
         backgroundColor={backgroundColor}
         textColor={textColor}
         height={height}
