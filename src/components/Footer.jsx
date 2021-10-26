@@ -118,7 +118,7 @@ export default function Footer() {
 export async function getStaticProps() {
   return {
     props: {
-      title: "example title"
+      title: "HackCamp 2021"
     }, // will be passed to the page component as props
   }
 }
