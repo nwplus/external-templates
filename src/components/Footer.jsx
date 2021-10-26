@@ -11,35 +11,49 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 
 const Background = styled.div`
-  background-image: url('/assets/background/snow.svg');
-  background-size: auto 100%;
-  background-position: center;
-  background-repeat: no-repeat;
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: flex-end;
   gap: 20px;
-  height: 442px;
+  height: 32vw;
   color: #052446;
   text-align: center;
-  padding-bottom: 1em;
-
-  @media only screen and (min-width: 1439px) {
-    background-size: cover;
-  }
+  margin-top: -20%;
 `;
 
+// Snow
+const BgImage = styled.img`
+  z-index: 2;
+  width: 100%;
+  height: inherit;
+  position: absolute;
+  object-fit: cover;
+
+  ${p => p.theme.mediaQueries.desktop} {
+    height: 442px;
+    width: auto;
+  }
+`
+
+// Mascots
 const Image = styled.img`
-  z-index: -1;
+  z-index: 1;
+  position: absolute;
   width: 75%;
   max-width: 850px;
-
-  @media only screen and (max-width: 500px) {
-    transform: rotate(-20deg);
-    margin-bottom: 5%;
-  }
+  margin-bottom: 140px;
 `;
+
+// Footer content
+const Content = styled.div`
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 1rem;
+`
 
 const SocialMediaIcons = styled.div`
   display: flex;
@@ -48,7 +62,7 @@ const SocialMediaIcons = styled.div`
   a {
     margin: 0 32px;
 
-    @media only screen and (max-width: 768px) {
+    ${p => p.theme.mediaQueries.mobile} {
       margin: 0 10px;
     }
   }
@@ -62,55 +76,58 @@ const Links = styled.div`
 export default function Footer() {
   return (
     <Background>
+      <BgImage src="/assets/background/snow.svg" />
       <Image src="/assets/background/friends.svg" />
-      <SocialMediaIcons>
-        <a
-          href='https://www.facebook.com/nwplusubc'
-          target='_blank'
-          rel='noreferrer'
-        >
-          <FontAwesomeIcon icon={faFacebook} />
-        </a>
-        <a
-          href='https://www.instagram.com/nwplusubc'
-          target='_blank'
-          rel='noreferrer'
-        >
-          <FontAwesomeIcon icon={faInstagram} />
-        </a>
-        <a
-          href='https://twitter.com/nwplusubc'
-          target='_blank'
-          rel='noreferrer'
-        >
-          <FontAwesomeIcon icon={faTwitter} />
-        </a>
-        <a
-          href='https://www.linkedin.com/company/nwplus'
-          target='_blank'
-          rel='noreferrer'
-        >
-          <FontAwesomeIcon icon={faLinkedinIn} />
-        </a>
-        <a
-          href='https://www.youtube.com/c/nwPlusUBC'
-          target='_blank'
-          rel='noreferrer'
-        >
-          <FontAwesomeIcon icon={faYoutube} />
-        </a>
-        <a href='https://medium.com/nwplusubc' target='_blank' rel='noreferrer'>
-          <FontAwesomeIcon icon={faMediumM} />
-        </a>
-      </SocialMediaIcons>
-      <Links>
-        <a href="mailto:info@nwplus.io" target="_blank" rel='noreferrer'>Email Us</a>
-        <a href="mailto:sponsorship@nwplus.io?subject=Sponsorship" target="_blank" rel='noreferrer'>Become a Sponsor</a>
-      </Links>
-      <div>
-        <div>Organized and held by nwPlus</div>
-        <div>Copyright &copy; HackCamp 2021</div>
-      </div>
+      <Content>
+        <SocialMediaIcons>
+          <a
+            href='https://www.facebook.com/nwplusubc'
+            target='_blank'
+            rel='noreferrer'
+          >
+            <FontAwesomeIcon icon={faFacebook} />
+          </a>
+          <a
+            href='https://www.instagram.com/nwplusubc'
+            target='_blank'
+            rel='noreferrer'
+          >
+            <FontAwesomeIcon icon={faInstagram} />
+          </a>
+          <a
+            href='https://twitter.com/nwplusubc'
+            target='_blank'
+            rel='noreferrer'
+          >
+            <FontAwesomeIcon icon={faTwitter} />
+          </a>
+          <a
+            href='https://www.linkedin.com/company/nwplus'
+            target='_blank'
+            rel='noreferrer'
+          >
+            <FontAwesomeIcon icon={faLinkedinIn} />
+          </a>
+          <a
+            href='https://www.youtube.com/c/nwPlusUBC'
+            target='_blank'
+            rel='noreferrer'
+          >
+            <FontAwesomeIcon icon={faYoutube} />
+          </a>
+          <a href='https://medium.com/nwplusubc' target='_blank' rel='noreferrer'>
+            <FontAwesomeIcon icon={faMediumM} />
+          </a>
+        </SocialMediaIcons>
+        <Links>
+          <a href="mailto:info@nwplus.io" target="_blank" rel='noreferrer'>Email Us</a>
+          <a href="mailto:sponsorship@nwplus.io?subject=Sponsorship" target="_blank" rel='noreferrer'>Become a Sponsor</a>
+        </Links>
+        <div>
+          <div>Organized and held by nwPlus</div>
+          <div>Copyright &copy; HackCamp 2021</div>
+        </div>
+      </Content>
     </Background>
   )
 }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { TABLET } from '@constants/measurements'
-import { Body, Header3 } from "@components/Typography";
+import { Body, Header2 } from "@components/Typography";
 import Button from '@components/Button';
 
 const Container = styled.div`
@@ -13,9 +13,10 @@ const Container = styled.div`
 
 const TextContainer = styled.div`
   display: flex;
-  width: 50%;
+  width: 60%;
   align-items: center;
   justify-content: center;
+  text-align: center;
   @media only screen and (max-width: ${TABLET}) {
     width: 80%
   }
@@ -120,7 +121,9 @@ const SponsorSection = ({ sponsorData }) => {
   }
 
   useEffect(() => {
-    categorizeSponsor(sponsorData)
+    if (sponsorData) {
+      categorizeSponsor(sponsorData)
+    }
   }, [sponsorData])
 
   const SponsorsComponent = ({ tier }) => (
@@ -152,7 +155,7 @@ const SponsorSection = ({ sponsorData }) => {
 
   return (
     <Container>
-      <Header3>Sponsors</Header3>
+      <Header2 id="sponsor">Sponsors</Header2>
       <TextContainer>
         <Body>nwPlus is always looking for new ventures, opportunities, and connections. If you are interested in working with us, joining us, or speaking at one of our events, feel free to reach out to us at info@nwplus.io</Body>
       </TextContainer>

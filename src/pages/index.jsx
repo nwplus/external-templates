@@ -2,18 +2,13 @@ import Head from 'next/head'
 import React from 'react'
 import GlobalStyles from '@styles/global'
 // import fireDb from '@utilities/firebase'
-import styled from "styled-components";
 import Events from '@sections/Events';
 import Faq from '@sections/Faq';
 import Footer from '@components/Footer';
 import NavBar from '@components/Navbar';
 import Stats1 from '@sections/Stats1';
+import Sponsors from '@sections/Sponsors';
 import Welcome from '@sections/Welcome';
-
-// Footer component needs space above it to not be cut off
-const DummyContainer = styled.div`
-  height: 100vh;
-`;
 
 export default function Index({ title }) {
   return (
@@ -39,7 +34,7 @@ export default function Index({ title }) {
       <Events />
       <Stats1 />
       <Faq />
-      <DummyContainer />
+      <Sponsors />
       <Footer />
       {/* Components Ends */}
     </>
