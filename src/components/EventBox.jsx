@@ -1,42 +1,35 @@
 import React from 'react'
 import styled from "styled-components";
-import { Body, Header3 } from "@components/Typography";
+import { Body, Header3, Header4 } from "@components/Typography";
 
 const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+
+const Image = styled.img`
+  height: 40%;
+  width: min-content;
+  margin-bottom: 1rem;
+`
+
+const Card = styled.div`
   background-color: #3D3F59;
   border-radius: 25px;
-  height: 180px;
-  width: 412px;
-  word-wrap: break-word;
+  min-width: 300px;
+  padding: 20px 30px;
 `
 
-const TextContainer = styled.div`
-  margin-left: 30px;
-`
-
-const Header = styled.div`
-  display: flex;
-  color: #FFFF;
-  padding-top: 20px;
-`
-
-const Date = styled.h4`
-  margin-left: auto;
-  margin-right: 30px;
-`
-
-export default function EventBox({ title, dateString, body }) {
+export default function EventBox({ title, dateString, body, imgSrc, imgAlt }) {
   return (
     <Container>
-      <TextContainer>
-        <Header>
-          <Header3>{title}</Header3>
-          <Date>
-            <Header3>{dateString}</Header3>
-          </Date>
-        </Header>
+      <Image src={imgSrc} alt={imgAlt} />
+      <Card>
+        <Header3>{title}</Header3>
+        <Header4>{dateString}</Header4>
         <Body>{body}</Body>
-      </TextContainer>
+      </Card>
     </Container>
   )
 }
