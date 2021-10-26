@@ -17,6 +17,11 @@ const TextContainer = styled.div`
   align-items: center;
   justify-content: center;
   text-align: center;
+
+  a {
+    color: white;
+  }
+
   @media only screen and (max-width: ${TABLET}) {
     width: 80%
   }
@@ -155,9 +160,9 @@ const SponsorSection = ({ sponsorData }) => {
 
   return (
     <Container>
-      <Header2 id="sponsor">Sponsors</Header2>
+      <Header2 id="sponsors">Sponsors</Header2>
       <TextContainer>
-        <Body>nwPlus is always looking for new ventures, opportunities, and connections. If you are interested in working with us, joining us, or speaking at one of our events, feel free to reach out to us at info@nwplus.io</Body>
+        <Body>nwPlus is always looking for new ventures, opportunities, and connections. If you are interested in working with us, joining us, or speaking at one of our events, feel free to reach out to us at <a href="mailto:info@nwplus.io" target="_blank" rel='noreferrer'>info@nwplus.io</a></Body>
       </TextContainer>
       <ButtonContainer>
         <Button href="mailto:sponsorship@nwplus.io?Subject=Sponsorship" width='312px' height='60px' backgroundColor='#FFFFFF' borderRadius='8px' textColor='#0D3153' isHover>

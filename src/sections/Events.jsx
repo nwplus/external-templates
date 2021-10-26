@@ -19,7 +19,7 @@ const EventsContainer = styled.div`
   gap: 1.25rem;
   grid-row: 2;
   grid-column: 3 / span 10;
-  overflow-x: scroll;
+  overflow-x: auto;
 `
 
 export default function Events() {

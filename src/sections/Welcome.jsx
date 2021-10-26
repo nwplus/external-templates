@@ -7,6 +7,8 @@ const Transition = styled.img`
   position: absolute;
   width: 100%;
   margin-top: -6vw;
+  pointer-events: none;
+  user-select: none;
 
   ${p => p.theme.mediaQueries.mobile} {
     margin-top: -10vw;

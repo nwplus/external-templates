@@ -23,7 +23,7 @@ const Image = styled.img`
   z-index: 2;
 `
 
-export default function Stats1() {
+export default function Stats() {
   const windowWidth = useWindowWidth();
   const mobileBreakpoint = SCREEN_BREAKPOINTS.mobile;
 
@@ -31,7 +31,7 @@ export default function Stats1() {
     <BgSectionContainer>
       {windowWidth &&
         <Image
-          src={windowWidth > mobileBreakpoint ? '/assets/stats1.svg' : '/assets/stats1_mobile.svg'}
+          src={windowWidth > mobileBreakpoint ? '/assets/stats.svg' : '/assets/stats_mobile.svg'}
           alt="$1200 donated to charity, 528 hackers registered, 48 projects submitted"
         />
       }

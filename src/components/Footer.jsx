@@ -29,6 +29,8 @@ const BgImage = styled.img`
   height: inherit;
   position: absolute;
   object-fit: cover;
+  pointer-events: none;
+  user-select: none;
 
   ${p => p.theme.mediaQueries.desktop} {
     height: 442px;
@@ -43,6 +45,8 @@ const Image = styled.img`
   width: 75%;
   max-width: 850px;
   margin-bottom: 140px;
+  pointer-events: none;
+  user-select: none;
 `;
 
 // Footer content
