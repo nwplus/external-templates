@@ -13,7 +13,7 @@ const BgSectionContainer = styled(SectionContainer)`
   height: 76vw;
 
   ${p => p.theme.mediaQueries.mobile} {
-    background: url('assets/background/hero_mobile.png');
+    background: url('assets/background/vince-this-one.png');
     background-size: 100vw;
     background-repeat: no-repeat;
     background-position: center top;
