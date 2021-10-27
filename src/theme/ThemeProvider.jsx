@@ -16,7 +16,7 @@ const base = {
     primaryGradient: 'linear-gradient(92.58deg, #20FFAF 0%, #78FF96 100%)',
     disabledButton: 'white',
     disabledText: '#C6CCD1',
-    navbar: '#A4D3F7',
+    navbar: '#9FB4E6',
     darkBlue: '#244A5C',
     altText: '#1E3E56',
     boxBackground: '#E1F0FF',
