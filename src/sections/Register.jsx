@@ -25,7 +25,7 @@ const BgSectionContainer = styled(SectionContainer)`
 
 const HeroContainer = styled.div`
   padding-top: 12vw;
-  @media (max-width: 768px) {
+  ${p => p.theme.mediaQueries.mobile} {
     display: flex;
     flex-direction: column;
     align-items: center;
