@@ -1,4 +1,3 @@
-import { useWindowWidth } from '@react-hook/window-size';
 import styled from 'styled-components';
 import { SectionContainer } from '@lib/Containers';
 import { Body, Header1 } from '@components/Typography';
@@ -20,6 +19,12 @@ const BgSectionContainer = styled(SectionContainer)`
     height: 152vw;
     padding: 3.625rem 0 0;
     text-align: center;
+  }
+`
+
+const LogoWrapper = styled.div`
+  ${p => p.theme.mediaQueries.mobile} {
+    display:none;
   }
 `
 
@@ -51,6 +56,9 @@ export default function Register() {
     <BgSectionContainer>
       <GridContainer>
         <HeroContainer>
+          <LogoWrapper>
+            <Logo />
+          </LogoWrapper>
           <Body color='#244A5C'>nwPlus presents</Body>
           <Header1 color='#234B5C'>HackCamp</Header1>
           <BodyContainer>
