@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { useWindowWidth } from '@react-hook/window-size';
 import { SectionContainer } from '@lib/Containers';
-import { SCREEN_BREAKPOINTS } from '../theme/ThemeProvider';
 import { Header1 } from "@components/Typography";
+import { SCREEN_BREAKPOINTS } from '../theme/ThemeProvider';
 
 const BgSectionContainer = styled(SectionContainer)`
   background: url('/assets/background/stats/mountains.png') bottom center, linear-gradient(180deg, #55597A 0%, #F36FFF 74.12%);
