@@ -20,6 +20,14 @@ const EventsContainer = styled.div`
   grid-row: 2;
   grid-column: 3 / span 10;
   overflow-x: auto;
+  
+  ${p => p.theme.mediaQueries.mobile} {
+    width:100%; 
+    gap:0;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: 1fr;
+    overflow-x:hidden;
+  }
 `
 
 export default function Events() {
