@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { TABLET } from '@constants/measurements'
 import { Body, Header2 } from "@components/Typography";
 import Button from '@components/Button';
+import fireDb from '@utilities/firebase';
 
 const Container = styled.div`
   display: flex;
@@ -22,7 +22,7 @@ const TextContainer = styled.div`
     color: white;
   }
 
-  @media only screen and (max-width: ${TABLET}) {
+  ${(p) => p.theme.mediaQueries.tablet} {
     width: 80%
   }
 `
@@ -47,14 +47,25 @@ const Rows = styled.div`
   display: flex;
   flex-direction: column;  
 `
-
+const TitleImg = styled.img`
+  max-width: 550px;
+  max-height: 300px;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-top: 2vw;
+  padding: 15px;
+  ${(p) => p.theme.mediaQueries.tablet} {
+    max-width: 80vw;
+    max-height: 50vh;
+  }
+`
 const PlatniumImg = styled.img`
   max-width: 250px;
   max-height: 300px;
   margin-left: 1rem;
   margin-right: 1rem;
   margin-top: 2vw;
-  @media only screen and (max-width: ${TABLET}) {
+  ${(p) => p.theme.mediaQueries.tablet} {
     max-width: 50vw;
     max-height: 20vh;
   }
@@ -66,7 +77,7 @@ const GoldImg = styled.img`
   margin-left: 1rem;
   margin-right: 1rem;
   margin-top: 2vw;
-  @media only screen and (max-width: ${TABLET}) {
+  ${(p) => p.theme.mediaQueries.tablet} {
     max-width: 45vw;
     max-height: 20vh;
   }
@@ -78,7 +89,7 @@ const SilverImg = styled.img`
   margin-left: 1rem;
   margin-right: 1rem;
   margin-top: 2vw;
-  @media only screen and (max-width: ${TABLET}) {
+  ${(p) => p.theme.mediaQueries.tablet} {
     max-width: 40vw;
     max-height: 20vh;
   }
@@ -90,7 +101,7 @@ const BronzeImg = styled.img`
   margin-left: 1rem;
   margin-right: 1rem;
   margin-top: 2vw;
-  @media only screen and (max-width: ${TABLET}) {
+  ${(p) => p.theme.mediaQueries.tablet} {
     max-width: 35vw;
     max-height: 15vh;
   }
@@ -102,20 +113,21 @@ const InkindImg = styled.img`
   margin-left: 1rem;
   margin-right: 1rem;
   margin-top: 2vw;
-  @media only screen and (max-width: ${TABLET}) {
+  ${(p) => p.theme.mediaQueries.tablet} {
     max-width: 30vw;
     max-height: 15vh;
   }
 `
 
 // startup/Inkind -> bronze -> silver -> gold -> platinum
-const SponsorSection = ({ sponsorData }) => {
+const SponsorSection = () => {
   const [categorizedSponsorMap, setSponsorMap] = useState(new Map())
 
   const categorizeSponsor = sponsorList => {
     const updatedSponsors = new Map()
-    sponsorList.forEach(({ imgURL, link, tier }) => {
-      const reducedSponsor = { imgURL, link }
+
+    sponsorList.forEach(({ imgURL, link, tier, altImgURL }) => {
+      const reducedSponsor = { imgURL, link, altImgURL }
 
       const currSponsorList = updatedSponsors.get(tier)
       const updatedSponsorList = currSponsorList ? [reducedSponsor, ...currSponsorList] : [reducedSponsor]
@@ -125,18 +137,22 @@ const SponsorSection = ({ sponsorData }) => {
     })
   }
 
-  useEffect(() => {
-    if (sponsorData) {
-      categorizeSponsor(sponsorData)
+  useEffect(async () => {
+    const data = await fireDb.getCollection('HackCamp2021', 'Sponsors')
+    if (data) {
+      categorizeSponsor(data)
     }
-  }, [sponsorData])
+  }, [])
 
   const SponsorsComponent = ({ tier }) => (
     <Row>
-      {categorizedSponsorMap.get(tier)?.map(({ imgURL, link }) => (
+      {categorizedSponsorMap.get(tier)?.map(({ imgURL, link, altImgURL }) => (
         <a href={link} target="_blank" rel="noreferrer">
           {(() => {
             switch (tier) {
+              case 'title':
+                return <TitleImg src={altImgURL} onMouseOver={(e) => { e.currentTarget.src = imgURL }} onMouseOut={(e) => { e.currentTarget.src = altImgURL }} />
+
               case 'platinum':
                 return <PlatniumImg src={imgURL} />
 
@@ -170,6 +186,7 @@ const SponsorSection = ({ sponsorData }) => {
         </Button>
       </ButtonContainer>
       <Rows>
+        <SponsorsComponent tier="title" />
         <SponsorsComponent tier="platinum" />
         <SponsorsComponent tier="gold" />
         <SponsorsComponent tier="silver" />
