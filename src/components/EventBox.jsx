@@ -21,15 +21,16 @@ const Card = styled.div`
   padding: 20px 30px;
 `
 
-export default function EventBox({ title, dateString, body, imgSrc, imgAlt }) {
+export default function EventBox({ title, dateString, body, imgSrc, imgAlt, footer, link }) {
   return (
     <Container>
       <Image src={imgSrc} alt={imgAlt} />
       <Card>
-        <Header3>{title}</Header3>
+        <Header3 as="a" href={link}>{title}</Header3>
         <Header4>{dateString}</Header4>
         <Body>{body}</Body>
       </Card>
+      <Body>{footer}</Body>
     </Container>
   )
 }

@@ -20,6 +20,9 @@ const Background = styled.div`
   color: #052446;
   text-align: center;
   margin-top: -20%;
+  ${(p) => p.theme.mediaQueries.tablet} {
+    margin-top: 0;
+  }
 `;
 
 // Snow

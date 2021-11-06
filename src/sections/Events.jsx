@@ -35,6 +35,7 @@ export default function Events() {
           dateString="Nov.6, 2021"
           body="A day of workshops and skill building. We make the entry into the tech field less daunting."
           imgSrc="/assets/learn_deer.png"
+          link="https://fb.me/e/1Gm2D9m7o"
           imgAlt="A deer reading a book by a bookshelf"
         />
         <EventBox
@@ -42,6 +43,7 @@ export default function Events() {
           dateString="Nov.13, 2021"
           body="A day of networking and connecting with industry professionals."
           imgSrc="/assets/network_bear.png"
+          link="https://fb.me/e/5NNlzR0Fu"
           imgAlt="A bear using a breadboard"
         />
         <EventBox
@@ -50,6 +52,8 @@ export default function Events() {
           body="A 12-hour hackathon focused around creating projects centered around inclusivity, diversity, and accessibility."
           imgSrc="/assets/build_beaver.png"
           imgAlt="A beaver at a craft bench"
+          link="https://fb.me/e/5NNlzR0Fu"
+          footer="Each submission will donate $25 to a charity of your choice. Regardless if it’s finished or not."
         />
       </EventsContainer>
     </BgSectionContainer>
