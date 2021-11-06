@@ -152,7 +152,7 @@ const SponsorSection = () => {
           {(() => {
             switch (tier) {
               case 'title':
-                return <TitleImg src={altImgURL} onMouseOver={e => e.currentTarget.src = imgURL} onMouseOut={e => e.currentTarget.src = altImgURL} />
+                return <TitleImg src={altImgURL} onMouseOver={e => (e.currentTarget.src = imgURL)} onMouseOut={e => (e.currentTarget.src = altImgURL)} />
 
               case 'platinum':
                 return <PlatniumImg src={imgURL} />
