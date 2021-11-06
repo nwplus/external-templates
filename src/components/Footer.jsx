@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components';
-import { TABLET } from '@constants/measurements'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faFacebook,
@@ -21,7 +20,7 @@ const Background = styled.div`
   color: #052446;
   text-align: center;
   margin-top: -20%;
-  @media only screen and (max-width: ${TABLET}) {
+  ${(p) => p.theme.mediaQueries.tablet} {
     margin-top: 0;
   }
 `;

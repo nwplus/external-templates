@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { TABLET } from '@constants/measurements'
 import { Body, Header2 } from "@components/Typography";
 import Button from '@components/Button';
 import fireDb from '@utilities/firebase';
@@ -23,7 +22,7 @@ const TextContainer = styled.div`
     color: white;
   }
 
-  @media only screen and (max-width: ${TABLET}) {
+  ${(p) => p.theme.mediaQueries.tablet} {
     width: 80%
   }
 `
@@ -55,7 +54,7 @@ const TitleImg = styled.img`
   margin-right: 1rem;
   margin-top: 2vw;
   padding: 15px;
-  @media only screen and (max-width: ${TABLET}) {
+  ${(p) => p.theme.mediaQueries.tablet} {
     max-width: 80vw;
     max-height: 50vh;
   }
@@ -66,7 +65,7 @@ const PlatniumImg = styled.img`
   margin-left: 1rem;
   margin-right: 1rem;
   margin-top: 2vw;
-  @media only screen and (max-width: ${TABLET}) {
+  ${(p) => p.theme.mediaQueries.tablet} {
     max-width: 50vw;
     max-height: 20vh;
   }
@@ -78,7 +77,7 @@ const GoldImg = styled.img`
   margin-left: 1rem;
   margin-right: 1rem;
   margin-top: 2vw;
-  @media only screen and (max-width: ${TABLET}) {
+  ${(p) => p.theme.mediaQueries.tablet} {
     max-width: 45vw;
     max-height: 20vh;
   }
@@ -90,7 +89,7 @@ const SilverImg = styled.img`
   margin-left: 1rem;
   margin-right: 1rem;
   margin-top: 2vw;
-  @media only screen and (max-width: ${TABLET}) {
+  ${(p) => p.theme.mediaQueries.tablet} {
     max-width: 40vw;
     max-height: 20vh;
   }
@@ -102,7 +101,7 @@ const BronzeImg = styled.img`
   margin-left: 1rem;
   margin-right: 1rem;
   margin-top: 2vw;
-  @media only screen and (max-width: ${TABLET}) {
+  ${(p) => p.theme.mediaQueries.tablet} {
     max-width: 35vw;
     max-height: 15vh;
   }
@@ -114,7 +113,7 @@ const InkindImg = styled.img`
   margin-left: 1rem;
   margin-right: 1rem;
   margin-top: 2vw;
-  @media only screen and (max-width: ${TABLET}) {
+  ${(p) => p.theme.mediaQueries.tablet} {
     max-width: 30vw;
     max-height: 15vh;
   }
