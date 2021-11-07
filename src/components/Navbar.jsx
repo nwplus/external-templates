@@ -159,7 +159,7 @@ const PortalButton = ({ portalOpen }) => (
       borderRadius='100px'
       isGradient
       textColor='black'
-      href='https://www.portal.nwplus.io'
+      href='https://portal.nwplus.io'
       target='_blank'
       disabled={!portalOpen}
     >
