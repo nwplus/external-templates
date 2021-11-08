@@ -46,7 +46,7 @@
       ]
     },
     {
-      "target": "nwhacks2021_dev",
+      "target": "nwhacks2022_dev",
       "public": "out",
       "ignore": [
         "firebase.json",
@@ -55,7 +55,7 @@
       ]
     },
     {
-      "target": "nwhacks2021_main",
+      "target": "nwhacks2022_main",
       "public": "out",
       "ignore": [
         "firebase.json",
