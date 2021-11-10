@@ -23,10 +23,10 @@ const EventsContainer = styled.div`
   
   ${p => p.theme.mediaQueries.mobile} {
     width:100%; 
+    display:flex;
+    flex-direction:column;
     gap:0;
-    grid-template-rows: repeat(3, 1fr);
-    grid-template-columns: 1fr;
-    overflow-x:hidden;
+    grid-column: 0;
   }
 `
 

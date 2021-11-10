@@ -19,6 +19,11 @@ const Card = styled.div`
   border-radius: 25px;
   min-width: 300px;
   padding: 20px 30px;
+  
+  ${p => p.theme.mediaQueries.mobile} {
+    min-width:100%;
+    margin-bottom:-10vh;
+  }
 `
 
 export default function EventBox({ title, dateString, body, imgSrc, imgAlt }) {
