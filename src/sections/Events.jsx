@@ -20,6 +20,14 @@ const EventsContainer = styled.div`
   grid-row: 2;
   grid-column: 3 / span 10;
   overflow-x: auto;
+  
+  ${p => p.theme.mediaQueries.mobile} {
+    width:100%; 
+    display:flex;
+    flex-direction:column;
+    gap:0;
+    grid-column: 0;
+  }
 `
 
 export default function Events() {

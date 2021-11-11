@@ -1,4 +1,3 @@
-import { useWindowWidth } from '@react-hook/window-size';
 import styled from 'styled-components';
 import { SectionContainer } from '@lib/Containers';
 import { Body, Header1 } from '@components/Typography';
@@ -23,15 +22,20 @@ const BgSectionContainer = styled(SectionContainer)`
   }
 `
 
-const MobileContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+const LogoWrapper = styled.div`
+  ${p => p.theme.mediaQueries.mobile} {
+    display:none;
+  }
 `
 
-const MediaContainer = styled.div`
+const HeroContainer = styled.div`
   padding-top: 12vw;
+  ${p => p.theme.mediaQueries.mobile} {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 `
 
 const BodyContainer = styled.div`
@@ -47,36 +51,24 @@ const GridContainer = styled.div`
 `
 
 export default function Register() {
-  const windowWidth = useWindowWidth();
-  const mobileBreakpoint = 768;
 
   return (
     <BgSectionContainer>
       <GridContainer>
-        {windowWidth && windowWidth <= mobileBreakpoint ?
-          <MobileContainer>
-            <Body color='#244A5C'>nwPlus presents</Body>
-            <Header1 color='#234B5C'>HackCamp</Header1>
-            <BodyContainer>
-              <Body color='#244A5C'>Western Canada’s biggest
-                beginner-friendly hackathon</Body>
-            </BodyContainer>
-            <Button target="_blank" rel="noopener noreferrer" href="https://forms.gle/z8NRDBzewHpMsV7bA" width='257px' height='60px' backgroundColor='#224B5C' borderRadius='8px' textColor='#AFBFE5' isHover>
-              Register Now
-            </Button>
-          </MobileContainer>
-          :
-          <MediaContainer>
+        <HeroContainer>
+          <LogoWrapper>
             <Logo />
-            <Header1 color='#234B5C'>HackCamp</Header1>
-            <BodyContainer>
-              <Body color='#244A5C'>Western Canada’s biggest
-                beginner-friendly hackathon</Body>
-            </BodyContainer>
-            <Button target="_blank" rel="noopener noreferrer" href="https://forms.gle/z8NRDBzewHpMsV7bA" width='257px' height='60px' backgroundColor='#224B5C' borderRadius='8px' textColor='#AFBFE5' isHover>
-              Register Now
-            </Button>
-          </MediaContainer>}
+          </LogoWrapper>
+          <Body color='#244A5C'>nwPlus presents</Body>
+          <Header1 color='#234B5C'>HackCamp</Header1>
+          <BodyContainer>
+            <Body color='#244A5C'>Western Canada’s biggest
+              beginner-friendly hackathon</Body>
+          </BodyContainer>
+          <Button target="_blank" rel="noopener noreferrer" href="https://forms.gle/z8NRDBzewHpMsV7bA" width='257px' height='60px' backgroundColor='#224B5C' borderRadius='8px' textColor='#AFBFE5' isHover>
+            Register Now
+          </Button>
+        </HeroContainer>
       </GridContainer>
     </BgSectionContainer>
   )
