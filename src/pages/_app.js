@@ -1,11 +1,14 @@
 import GlobalStyles from '@styles/global'
+import CustomThemeProvider from '../theme/ThemeProvider'
 /* eslint react/jsx-filename-extension: 0 */
 
 function App({ Component, pageProps }) {
   return (
     <>
       <GlobalStyles />
-      <Component {...pageProps} />
+      <CustomThemeProvider>
+        <Component {...pageProps} />
+      </CustomThemeProvider>
     </>
   )
 }

@@ -1,14 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
-
-const SCREEN_BREAKPOINTS = {
-  xs: 576,
-  mobile: 768,
-  tablet: 992,
-  tabletLarge: 1024,
-  desktop: 1200,
-}
+import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider';
 
 const NavBarContainer = styled.nav`
   ${p => p.mobileView && `background-color: ${p.theme.colors.navbar}`};
@@ -156,25 +149,6 @@ const MenuList = () => (
   </>
 );
 
-const PortalButton = ({ portalOpen }) => (
-  <PortalButtonContainer portalOpen={portalOpen}>
-    <Button
-      width='130px'
-      height='45px'
-      borderRadius='100px'
-      isGradient
-      textColor='black'
-      href='https://www.portal.nwplus.io'
-      target='_blank'
-      disabled={!portalOpen}
-    >
-      <StyledPortalText disabled={!portalOpen}>
-        Live Portal
-      </StyledPortalText>
-    </Button>
-  </PortalButtonContainer>
-)
-
 const NavBar = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   const [visibility, setVisibility] = useState('visible');
@@ -207,8 +181,6 @@ const NavBar = () => {
   useEffect(() => {
     window.addEventListener('scroll', handleScroll());
     window.addEventListener('resize', handleResize);
-
-    setPortalFlag();
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
