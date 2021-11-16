@@ -3,6 +3,16 @@ import React from 'react'
 import GlobalStyles from '@styles/global'
 // import fireDb from '@utilities/firebase'
 import { SectionContainer } from '@lib/Containers'
+import Button from '@components/Button'
+import styled from "styled-components";
+
+const Container = styled.div`
+  background-color: #3D3F59;
+  border-radius: 8px;
+  height: 200px;
+  width: 800px;
+  display: flex;
+`
 
 export default function Index({ title }) {
   return (
@@ -23,6 +33,18 @@ export default function Index({ title }) {
         <meta property="og:image" content="/preview.png" />
       </Head>
       {/* Components Starts */}
+      <Container>
+        <Button width='137px' height='44px' backgroundColor='#FFD12C' borderRadius='100px' textColor='#FFFFFF' isHover isGradient>
+          Apply Now!
+        </Button>
+        <Button width='137px' height='44px' backgroundColor='#FFD12C' borderRadius='100px' textColor='#FFFFFF' isHover isGradient>
+          Live Portal
+        </Button>
+        <Button width='137px' height='44px' backgroundColor='#FFD12C' borderRadius='100px' textColor='#FFFFFF' isHover>
+          Be a Mentor!
+        </Button>
+      </Container>
+      <span>ligma</span>
       {/* Components Ends */}
     </SectionContainer>
   )
