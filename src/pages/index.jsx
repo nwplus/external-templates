@@ -2,6 +2,7 @@ import Head from 'next/head'
 import React from 'react'
 // import fireDb from '@utilities/firebase'
 import { SectionContainer } from '@lib/Containers'
+import Stats from '@components/Stats'
 import { Body, Header1, Header2, Header3 } from "@components/Typography";
 import GlobalStyle from "../theme/GlobalStyle";
 
@@ -31,6 +32,7 @@ export default function Index({ title }) {
         <meta property="og:image" content="/preview.png" />
       </Head>
       {/* Components Starts */}
+      <Stats />
       {/* Components Ends */}
     </SectionContainer>
   )
