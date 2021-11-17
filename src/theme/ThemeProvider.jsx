@@ -12,7 +12,8 @@ export const SCREEN_BREAKPOINTS = {
 const base = {
   colors: {
     background: 'black',
-    text: '#fff'
+    text: '#FFFFFF',
+    primary: '#1D4CBD'
   },
   typography: {
     headerFont: 'HK Grotesk',

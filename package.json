@@ -11,6 +11,9 @@
     "lint": "eslint --ext .js,.jsx --ignore-path .gitignore ."
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-brands-svg-icons": "^5.15.4",
+    "@fortawesome/react-fontawesome": "^0.1.16",
     "eslint-plugin-import": "^2.22.1",
     "firebase": "^8.2.1",
     "imagemin-optipng": "^8.0.0",
