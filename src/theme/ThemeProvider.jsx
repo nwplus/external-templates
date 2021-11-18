@@ -11,15 +11,8 @@ export const SCREEN_BREAKPOINTS = {
 
 const base = {
   colors: {
-    background: '#2D2937',
-    text: '#fff',
-    primaryGradient: 'linear-gradient(92.58deg, #20FFAF 0%, #78FF96 100%)',
-    disabledButton: 'white',
-    disabledText: '#C6CCD1',
-    navbar: '#A4D3F7',
-    darkBlue: '#244A5C',
-    altText: '#1E3E56',
-    boxBackground: '#E1F0FF',
+    background: 'black',
+    text: '#fff'
   },
   typography: {
     headerFont: 'HK Grotesk',
