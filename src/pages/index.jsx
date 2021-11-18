@@ -13,10 +13,10 @@ export default function Index({ title }) {
     <SectionContainer>
       <GlobalStyle />
       <div>
-        {/* <Header1>Large Title</Header1>
+        <Header1>Large Title</Header1>
         <Header2>Title 1</Header2>
         <Header3>Title 2</Header3>
-        <Body>Some long lorem ipsum body text that will probably never see the light of day but that is a-ok.</Body> */}
+        <Body>Some long lorem ipsum body text that will probably never see the light of day but that is a-ok.</Body>
       </div>
       <Head>
         {/* Remove comment once title is set */}
