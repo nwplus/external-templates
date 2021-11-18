@@ -177,7 +177,7 @@ const Badge = styled.div`
   }
 `;
 
-const MLGBadge = styled.img`
+const MLHBadge = styled.img`
   width:100%;
 `;
 
@@ -236,7 +236,7 @@ const MenuList = () => (
 const TrustBadge = () => (
   <Badge>
     <a id="mlh-trust-badge" href={`https://mlh.io/seasons/2022/events?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2022-season&utm_content=black`} target="_blank">
-      <MLGBadge src="/icons/badge.svg" />
+      <MLHBadge alt="Major League Hacking 2022 Hackathon Season" src="/icons/badge.svg" />
     </a>
   </Badge>
 );
