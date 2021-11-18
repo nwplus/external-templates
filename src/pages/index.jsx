@@ -2,7 +2,8 @@ import Head from 'next/head'
 import React from 'react'
 // import fireDb from '@utilities/firebase'
 import { SectionContainer } from '@lib/Containers'
-import Stats from '@components/Stats'
+import NavBar from '@components/Navbar'
+// import Stats from '@components/Stats'
 import { Body, Header1, Header2, Header3 } from "@components/Typography";
 import Footer from "@components/Footer"
 import GlobalStyle from "../theme/GlobalStyle";
@@ -34,7 +35,9 @@ export default function Index({ title }) {
       </Head>
       <Footer />
       {/* Components Starts */}
-      <Stats />
+
+      <NavBar />
+
       {/* Components Ends */}
     </SectionContainer >
   )
