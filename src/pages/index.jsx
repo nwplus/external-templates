@@ -5,6 +5,7 @@ import { SectionContainer } from '@lib/Containers'
 import NavBar from '@components/Navbar'
 // import Stats from '@components/Stats'
 import { Body, Header1, Header2, Header3 } from "@components/Typography";
+import Footer from "@components/Footer"
 import GlobalStyle from "../theme/GlobalStyle";
 
 
@@ -32,12 +33,13 @@ export default function Index({ title }) {
         {/* Remove comment once preview image is set */}
         <meta property="og:image" content="/preview.png" />
       </Head>
+      <Footer />
       {/* Components Starts */}
 
       <NavBar />
 
       {/* Components Ends */}
-    </SectionContainer>
+    </SectionContainer >
   )
 }
 
