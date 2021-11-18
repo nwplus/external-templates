@@ -145,7 +145,7 @@ const MenuList = () => (
     <MenuItem name='Events' href='/#events' isAnchor />
     <MenuItem name='FAQ' href='/#faq' isAnchor />
     <MenuItem name='Sponsors' href='/#sponsors' isAnchor />
-    <MenuItem name='2020' href='https://hackcamp-2020.nwplus.io' target='_blank' rel='noopener' />
+    <MenuItem name='2020' href='https://2021.nwhacks.io' target='_blank' rel='noopener' />
   </>
 );
 
