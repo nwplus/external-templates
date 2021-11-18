@@ -4,11 +4,8 @@ import styled from 'styled-components';
 import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider';
 
 const NavBarContainer = styled.nav`
-  ${p => p.mobileView && `background-color: ${p.theme.colors.navbar}`};
   position: fixed;
   top: 0;
-  left: 50%;
-  transform: translate(-50%, 0);
   z-index: 3;
   max-width: 1600px;
   width: 100%;
@@ -21,7 +18,10 @@ const NavBarContainer = styled.nav`
   padding: 48px 40px 0;
 
   ${(p) => p.theme.mediaQueries.mobile} {
+    background-color: ${p => p.theme.colors.navbar};
     padding: 24px 40px 0;
+    z-index:10;
+    justify-content:flex-end;
   }
 `;
 
@@ -29,9 +29,14 @@ const NavGroupContainer = styled.div`
   display: flex;
   gap: 28px;
   align-items: center;
+  justify-content:space-between;
 
   ${(p) => p.theme.mediaQueries.tablet} {
     gap: 5px;
+  }
+
+  ${(p) => p.theme.mediaQueries.mobile} {
+    display:none;
   }
 `;
 
@@ -50,6 +55,7 @@ const NavTextContainer = styled.div`
 `;
 
 const NwPlusLogo = styled.img`
+  max-height:50px;
   margin-right: 18px;
 
   ${(p) => p.theme.mediaQueries.mobile} {
@@ -81,7 +87,8 @@ const LinkText = styled.a`
 `;
 
 const StyledLinkHeaders = styled.h3`
-  font-size: 1.5em;
+  font-size: 1.2em;
+  font-weight:400;
 `
 
 const HamburgerMenu = styled.img`
@@ -94,15 +101,16 @@ const HamburgerMenu = styled.img`
 
 const DropDownContentContainer = styled.div`
   position: fixed;
-  top: 54px;
+  top:0;
   z-index: 3;
-  padding: 24px 40px;
+  padding: 100px 40px 24px 40px;
   display: flex;
+  min-height:100%;
   flex-direction: column;
   align-items: flex-start;
   gap: 24px;
   width: 100%;
-  background-color: ${p => p.theme.colors.navbar};
+  background: ${p => p.theme.colors.mobileBackground};
 `;
 
 const PortalButtonContainer = styled.div`
@@ -113,7 +121,64 @@ const PortalButtonContainer = styled.div`
 
 const StyledPortalText = styled.div`
   color: ${p => p.disabled && p.theme.colors.disabledText};
-  font-weight: bold;
+`;
+
+const Button = styled.div`
+  position:relative;
+  padding:11px 21px;
+  border-radius:50px;
+  font-weight:normal;
+  background:linear-gradient(to bottom, rgba(245, 207, 43, 1), rgba(254, 128, 11));
+
+  &::before {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    content: "Live Portal";
+    color:#00A399;
+    
+    border-radius:50px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    z-index: 1;
+    transition: opacity 0.25s ease-in-out;
+    opacity: 0;
+    
+    background-image: linear-gradient(
+      to right,
+      #D6FFF0,
+      #7BFECF
+    );
+  }
+
+  &:hover {
+    cursor:pointer;
+  }
+
+  &:hover::before {
+    opacity: 1;
+  }
+`;
+
+const Badge = styled.div`
+  position:fixed;
+  top:0;
+  right:40px;
+  width:70px;
+  z-index:900;
+  
+  ${(p) => p.theme.mediaQueries.mobile} {
+    left:25px;
+    width:40px;
+  }
+`;
+
+const MLGBadge = styled.img`
+  width:100%;
 `;
 
 const MenuItem = ({ name, href, isAnchor, target, rel }) => {
@@ -139,14 +204,41 @@ const MenuItem = ({ name, href, isAnchor, target, rel }) => {
   );
 };
 
+const PortalButton = ({ portalOpen }) => (
+  <PortalButtonContainer portalOpen={portalOpen}>
+    <Button
+      width='130px'
+      height='45px'
+      borderRadius='100px'
+      isGradient
+      textColor='black'
+      href='https://portal.nwplus.io'
+      target='_blank'
+      disabled={!portalOpen}
+    >
+      <StyledPortalText disabled={!portalOpen}>
+        Live Portal
+      </StyledPortalText>
+    </Button>
+  </PortalButtonContainer>
+)
+
 const MenuList = () => (
   <>
     <MenuItem name='About' href='/#about' isAnchor />
-    <MenuItem name='Events' href='/#events' isAnchor />
     <MenuItem name='FAQ' href='/#faq' isAnchor />
     <MenuItem name='Sponsors' href='/#sponsors' isAnchor />
-    <MenuItem name='2020' href='https://2021.nwhacks.io' target='_blank' rel='noopener' />
+    <MenuItem name='Mentors' href='/#mentors' isAnchor />
+    <MenuItem name='2021' href='https://2021.nwhacks.io' target='_blank' rel='noopener' />
   </>
+);
+
+const TrustBadge = () => (
+  <Badge>
+    <a id="mlh-trust-badge" href={`https://mlh.io/seasons/2022/events?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2022-season&utm_content=black`} target="_blank">
+      <MLGBadge src="/icons/badge.svg" />
+    </a>
+  </Badge>
 );
 
 const NavBar = () => {
@@ -189,48 +281,55 @@ const NavBar = () => {
   }, []);
 
   if (showDropdown) {
-    // For mobile version
+
+    // Mobile version
     return (
       <>
         <NavBarContainer mobileView>
-          <a href='/'>
-            <NwPlusLogo
-              src='/assets/logo/nwPlus_Logo.svg'
-              alt='nwPlus club logo in white'
-            />
-          </a>
           <HamburgerMenu
             src='/assets/icons/cross.svg'
             alt='dropdown menu icon'
             onClick={() => setShowDropdown(false)}
           />
         </NavBarContainer>
+
         <DropDownContentContainer>
+          <a href='/'>
+            <NwPlusLogo
+              src='/assets/logo/nwPlus_Logo.svg'
+              alt='nwPlus club logo in white'
+            />
+          </a>
           <MenuList />
+          <PortalButton portalOpen={false} />
         </DropDownContentContainer>
+
+        <TrustBadge />
       </>
     );
   }
 
-  // For desktop version
+  // Only for desktop version
   return (
     <NavBarContainer visibility={visibility} opacity={opacity}>
       <NavGroupContainer>
         <a href='/'>
           <NwPlusLogo
             src='/assets/logo/nwPlus_Logo.svg'
-            alt='nwPlus club logo in white'
-          />
+            alt='nwPlus club logo in white' />
         </a>
         <NavTextContainer>
           <MenuList />
+          <PortalButton portalOpen={false} />
         </NavTextContainer>
       </NavGroupContainer>
+
       <HamburgerMenu
         src='/assets/icons/menu.svg'
         alt='dropdown menu icon'
-        onClick={() => setShowDropdown(true)}
-      />
+        onClick={() => setShowDropdown(true)} />
+
+      <TrustBadge />
     </NavBarContainer>
   );
 };
