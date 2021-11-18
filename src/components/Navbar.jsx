@@ -235,8 +235,8 @@ const MenuList = () => (
 
 const TrustBadge = () => (
   <Badge>
-    <a id="mlh-trust-badge" href={`https://mlh.io/seasons/2022/events?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2022-season&utm_content=black`} target="_blank">
-      <MLHBadge alt="Major League Hacking 2022 Hackathon Season" src="/icons/badge.svg" />
+    <a id="mlh-trust-badge" href="https://mlh.io/seasons/2022/events?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2022-season&utm_content=black" rel="noreferrer" target="_blank">
+      <MLHBadge alt="Major League Hacking 2022 Hackathon Season" src="/logo/badge.svg" />
     </a>
   </Badge>
 );
@@ -330,6 +330,7 @@ const NavBar = () => {
         onClick={() => setShowDropdown(true)} />
 
       <TrustBadge />
+
     </NavBarContainer>
   );
 };
