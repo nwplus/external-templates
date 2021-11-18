@@ -5,23 +5,6 @@ const align = css`
   ${(p) => p.align ? `text-align: ${p.align};` : ''}
 `;
 
-const underline = css`
-  ${(p) =>
-    p.underline &&
-    'text-decoration: underline;'
-  }
-`;
-
-const hover = css`
-  ${(p) =>
-    p.hover &&
-    `&:hover {
-      cursor: pointer;
-      color: ${p.theme.colors.primary};
-    }`
-  }
-`;
-
 // can manually override
 const text = css`
   ${(p) => p.background && `background: ${p.background};`}
@@ -57,8 +40,6 @@ export const Header1 = styled.h1`
 export const Header2 = styled.h2`
   ${text}
   ${(p) => header(p.theme.typography.header2)}
-  ${underline}
-  ${hover}
 `;
 
 export const Header3 = styled.h3`
