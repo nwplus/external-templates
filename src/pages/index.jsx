@@ -34,17 +34,16 @@ export default function Index({ title }) {
       </Head>
       {/* Components Starts */}
       <Container>
-        <Button width='137px' height='44px' backgroundColor='#FFD12C' borderRadius='100px' textColor='#FFFFFF' isHover isGradient>
+        <Button width='137px' height='44px' backgroundColor='#FFD12C' borderRadius='100px' textColor='#FFFFFF' isHover>
           Apply Now!
         </Button>
-        <Button width='137px' height='44px' backgroundColor='#FFD12C' borderRadius='100px' textColor='#FFFFFF' isHover isGradient>
+        <Button width='137px' height='44px' backgroundColor='#FFD12C' borderRadius='100px' textColor='#FFFFFF' isHover>
           Live Portal
         </Button>
-        <Button width='137px' height='44px' backgroundColor='#FFD12C' borderRadius='100px' textColor='#FFFFFF' isHover>
+        <Button width='137px' height='44px' borderRadius='100px' isHover isMentor>
           Be a Mentor!
         </Button>
       </Container>
-      <span>ligma</span>
       {/* Components Ends */}
     </SectionContainer>
   )
