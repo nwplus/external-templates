@@ -3,7 +3,7 @@ import React from 'react'
 // import fireDb from '@utilities/firebase'
 import { SectionContainer } from '@lib/Containers'
 import NavBar from '@components/Navbar'
-import Stats from '@components/Stats'
+// import Stats from '@components/Stats'
 import { Body, Header1, Header2, Header3 } from "@components/Typography";
 import GlobalStyle from "../theme/GlobalStyle";
 
