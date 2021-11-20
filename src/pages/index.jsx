@@ -2,12 +2,21 @@ import Head from 'next/head'
 import React from 'react'
 // import fireDb from '@utilities/firebase'
 import { SectionContainer } from '@lib/Containers'
+import Button from '@components/Button'
+import styled from "styled-components";
 import NavBar from '@components/Navbar'
 // import Stats from '@components/Stats'
 import { Body, Header1, Header2, Header3 } from "@components/Typography";
 import Footer from "@components/Footer"
 import GlobalStyle from "../theme/GlobalStyle";
 
+const Container = styled.div`
+  background-color: #3D3F59;
+  border-radius: 8px;
+  height: 200px;
+  width: 800px;
+  display: flex;
+`
 
 export default function Index({ title }) {
   return (
@@ -35,8 +44,18 @@ export default function Index({ title }) {
       </Head>
       <Footer />
       {/* Components Starts */}
-
       <NavBar />
+      <Container>
+        <Button width='137px' height='44px' backgroundColor='#FFD12C' borderRadius='100px' textColor='#FFFFFF' isHover>
+          Apply Now!
+        </Button>
+        <Button width='137px' height='44px' backgroundColor='#FFD12C' borderRadius='100px' textColor='#FFFFFF' isHover>
+          Live Portal
+        </Button>
+        <Button width='137px' height='44px' borderRadius='100px' isHover secondary>
+          Be a Mentor!
+        </Button>
+      </Container>
 
       {/* Components Ends */}
     </SectionContainer >
