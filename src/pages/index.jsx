@@ -52,7 +52,7 @@ export default function Index({ title }) {
         <Button width='137px' height='44px' backgroundColor='#FFD12C' borderRadius='100px' textColor='#FFFFFF' isHover>
           Live Portal
         </Button>
-        <Button width='137px' height='44px' borderRadius='100px' isHover isMentor>
+        <Button width='137px' height='44px' borderRadius='100px' isHover secondary>
           Be a Mentor!
         </Button>
       </Container>

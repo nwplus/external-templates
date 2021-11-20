@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledButton = styled.a`
-  background: ${p => p.isMentor ? 'rgba(255, 183, 44, 0.15)' : 'linear-gradient(180deg, #FFD12C 0%, #FE800B 100%)'};
+  background: ${p => p.secondary ? 'rgba(255, 183, 44, 0.15)' : 'linear-gradient(180deg, #FFD12C 0%, #FE800B 100%)'};
   margin: 10px;
   color: ${p => p.textColor};  
   height: ${p => p.height};
@@ -19,7 +19,7 @@ const StyledButton = styled.a`
     text-decoration: none;
     color: ${p => p.textColor};
   }
-  ${(p) => p.isMentor &&
+  ${(p) => p.secondary &&
     `border: solid;
     color: 'linear-gradient(180deg, #FFD12C 0%, #FE800B 100%)';
     `
@@ -42,7 +42,7 @@ export default function Button({
   borderRadius,
   children,
   fontSize,
-  isMentor = false,
+  secondary = false,
   isHover = false }) {
   return (
     <StyledButton
@@ -52,7 +52,7 @@ export default function Button({
       width={width}
       borderRadius={borderRadius}
       fontSize={fontSize}
-      isMentor={isMentor}
+      secondary={secondary}
       isHover={isHover}>
       {children}
     </StyledButton>
