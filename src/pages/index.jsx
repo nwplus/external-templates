@@ -31,7 +31,6 @@ export default function Index({ title }) {
       <Head>
         {/* Remove comment once title is set */}
         <title> {title} </title>
-        {/* Remove comment once favicon is set */}
         <link rel="icon" href="/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
