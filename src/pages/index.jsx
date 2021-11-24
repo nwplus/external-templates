@@ -2,7 +2,6 @@ import Head from 'next/head'
 import React from 'react'
 // import fireDb from '@utilities/firebase'
 import { SectionContainer } from '@lib/Containers'
-import styled from "styled-components";
 import NavBar from '@components/Navbar'
 // import Stats from '@components/Stats'
 import Footer from "@components/Footer"

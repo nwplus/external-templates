@@ -75,7 +75,7 @@ export default function Register() {
             <Button target="_blank" rel="noopener noreferrer" href="https://forms.gle/z8NRDBzewHpMsV7bA" width='259px' height='40px' backgroundColor='linear-gradient(180deg, #FFD12C 0%, #FE800B 100%)' borderRadius='100px' textColor='#224260' borderColor="#FFB72C" isHover isGradientText>
               Apply Now!
             </Button>
-            <Button target="_blank" rel="noopener noreferrer" href="https://forms.gle/z8NRDBzewHpMsV7bA" width='259px' height='40px' backgroundColor='rgba(255, 183, 44, 0.15)' borderRadius='100px' textColor='#FFB72C' borderColor="#FFB72C" isHover isGradientText isOutline>
+            <Button target="_blank" rel="noopener noreferrer" href="https://forms.gle/z8NRDBzewHpMsV7bA" width='259px' height='40px' borderRadius='100px' textColor='#FFB72C' borderColor="#FFB72C" isHover secondary isGradientText isOutline>
               Be a Mentor!
             </Button>
             <SponsorLink href="mailto:sponsorship@nwplus.io?subject=Sponsorship" target="_blank" rel='noreferrer'>Become a Sponsor!</SponsorLink>
@@ -91,7 +91,7 @@ export default function Register() {
               <Button target="_blank" rel="noopener noreferrer" href="https://forms.gle/z8NRDBzewHpMsV7bA" width='137px' height='44px' backgroundColor='linear-gradient(180deg, #FFD12C 0%, #FE800B 100%)' borderRadius='100px' textColor='#224260' borderColor="#FFB72C" isHover isGradientText>
                 Apply Now!
               </Button>
-              <Button target="_blank" rel="noopener noreferrer" href="https://forms.gle/z8NRDBzewHpMsV7bA" width='137px' height='44px' backgroundColor='rgba(255, 183, 44, 0.15)' borderRadius='100px' textColor='#FFB72C' borderColor="#FFB72C" isHover isGradientText isOutline>
+              <Button target="_blank" rel="noopener noreferrer" href="https://forms.gle/z8NRDBzewHpMsV7bA" width='137px' height='44px' borderRadius='100px' textColor='#FFB72C' borderColor="#FFB72C" isHover secondary isGradientText isOutline>
                 Be a Mentor!
               </Button>
               <Body>

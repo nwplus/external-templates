@@ -2,7 +2,9 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledButton = styled.a`
-  background: ${p => p.secondary ? 'rgba(255, 183, 44, 0.15)' : p.backgroundColor ? p.backgroundColor : 'linear-gradient(180deg, #FFD12C 0%, #FE800B 100%)'};
+  background: ${p => p.secondary
+    ? 'rgba(255, 183, 44, 0.15)'
+    : 'linear-gradient(180deg, #FFD12C 0%, #FE800B 100%)'};
   ${(p) => p.isOutline ? `border: solid; border-color: ${p.borderColor};` : `border: none;`}
   margin: 10px;
   color: ${p => p.textColor};
