@@ -88,8 +88,8 @@ const Faq = () => {
   const [faqData, setFaqData] = useState(null);
 
   // (@htdf processData)
-  // (@signature Array -> Object)
-  // produces a dict where key = category, value = array of questions of category from array of questions and data
+  // (@signature (listof FAQ) -> Object)
+  // produces a dict where key = category, value = array of questions from an array of FAQ objects
   function processData(data) {
     // categorize questions 
 
