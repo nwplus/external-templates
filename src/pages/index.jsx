@@ -9,6 +9,7 @@ import NavBar from '@components/Navbar'
 import { Body, Header1, Header2, Header3 } from "@components/Typography";
 import Footer from "@components/Footer"
 import GlobalStyle from "../theme/GlobalStyle";
+import Info from 'src/sections/Info';
 
 const Container = styled.div`
   background-color: #3D3F59;
@@ -42,6 +43,7 @@ export default function Index({ title }) {
         {/* Remove comment once preview image is set */}
         <meta property="og:image" content="/preview.png" />
       </Head>
+      <Info />
       <Footer />
       {/* Components Starts */}
       <NavBar />
