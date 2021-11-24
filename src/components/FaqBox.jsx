@@ -29,6 +29,10 @@ const Top = styled.div`
     font-size: 1rem;
     padding: 0.8rem;
   }
+
+  &:hover {
+    cursor:pointer;
+  }
 `;
 
 const AnswerBox = styled.div`
@@ -42,10 +46,6 @@ const AnswerBox = styled.div`
   ${p => p.theme.mediaQueries.mobile} {
     font-size: 0.9rem;
   }
-`;
-
-const TopText = styled.div`
-
 `;
 
 const TopExpand = styled.div`
@@ -70,9 +70,7 @@ const FaqBox = ({ question, answer }) => {
       <Top
         expanded={isExpanded}
         onClick={() => setIsExpanded(!isExpanded)}>
-        <TopText>
-          {question}
-        </TopText>
+        {question}
         <TopExpand style={isExpanded ? { transform: 'rotate(0)' } : { transform: 'rotate(180deg)' }}>
           <Arrow />
         </TopExpand>

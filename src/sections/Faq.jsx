@@ -87,11 +87,13 @@ const FaqCollection = ({ category, faqs }) => (
 const Faq = () => {
   const [faqData, setFaqData] = useState(null);
 
+  // (@htdf processData)
+  // (@signature Array -> Object)
+  // produces a dict where key = category, value = array of questions of category from array of questions and data
   function processData(data) {
     // categorize questions 
 
     const categories = {};
-    // dict/object where key = category, value = array of questions of category
     data.forEach((faq) => {
       if (!categories[faq.category]) {
         categories[faq.category] = [];

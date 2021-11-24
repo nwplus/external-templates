@@ -43,11 +43,11 @@ export default function Index({ title }) {
         {/* Remove comment once preview image is set */}
         <meta property="og:image" content="/preview.png" />
       </Head>
-      <Footer />
       {/* Components Starts */}
 
       <NavBar />
       <Faq />
+      <Footer />
 
       <Container>
         <Button width='137px' height='44px' backgroundColor='#FFD12C' borderRadius='100px' textColor='#FFFFFF' isHover>
