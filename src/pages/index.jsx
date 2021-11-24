@@ -9,6 +9,7 @@ import NavBar from '@components/Navbar'
 import { Body, Header1, Header2, Header3 } from "@components/Typography";
 import Footer from "@components/Footer"
 import GlobalStyle from "../theme/GlobalStyle";
+import Faq from '../sections/Faq'
 
 const Container = styled.div`
   background-color: #3D3F59;
@@ -44,7 +45,10 @@ export default function Index({ title }) {
       </Head>
       <Footer />
       {/* Components Starts */}
+
       <NavBar />
+      <Faq />
+
       <Container>
         <Button width='137px' height='44px' backgroundColor='#FFD12C' borderRadius='100px' textColor='#FFFFFF' isHover>
           Apply Now!
@@ -65,7 +69,7 @@ export default function Index({ title }) {
 export async function getStaticProps() {
   return {
     props: {
-      title: "example title"
+      title: "nwHacks 2022"
     }, // will be passed to the page component as props
   }
 }
