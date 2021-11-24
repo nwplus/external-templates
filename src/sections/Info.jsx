@@ -1,6 +1,4 @@
-import { Header2 } from "@components/Typography"
-import { Body } from "@components/Typography"
-import { Header3 } from "@components/Typography"
+import { Body, Header2, Header3 } from "@components/Typography"
 import styled from "styled-components"
 
 const InfoContainer = styled.div`
@@ -209,44 +207,42 @@ const MobileBottomStars = styled.img`
   }
 `
 
-const Info = () => {
-  return (
-    <InfoContainer>
-      <TextContainer>
-        <StyledTitle>About nwHacks</StyledTitle>
-        <RowContainer>
-          <div>
-            <StyledHeader3>Connect, collaborate, create.</StyledHeader3>
-            <StyledBody>Join us at nwHacks on Jan 15-16th 2022! Apply by Dec 27th, 2021 to participate as a hacker and apply by Dec 22nd, 2021 to participate as a mentor or a volunteer.</StyledBody>
-            <StyledBody>Whether you're a seasoned hacker or a tech newbie, nwHacks welcomes you; just bring an open mind and an insatiable desire to learn, and we'll take care of the rest. Create a product, learn new skills, and have fun with friends, old and new — all in 24 hours.</StyledBody>
-            <StyledBody>nwPlus is always looking for new ventures, opportunities, and connections. If you are interested in working with us, joining us or speaking at one of our events, feel free to reach out to us at logistics@nwplus.io.</StyledBody>
-          </div>
-          <Submarine src='assets/Info/submarine.svg' />
-        </RowContainer>
-        <RowContainer isLastRow>
-          <Orcas src='assets/Info/orcas.svg' />
-          <Paragraph2>
-            <StyledHeader3>We're back in person!</StyledHeader3>
-            <StyledBody>Last year we connected over 1200 of the brightest developers, engineers, and designers worldwide to collaborate and create amazing projects online. This year we want to make a return to our in-person operations, providing you with a more traditional hackathon experience. However, the event is only open to those who will be double-vaccinated by January 2022.</StyledBody>
-            <StyledBody>Please note that this decision is subject to change depending on the provincial and UBC health guidelines.</StyledBody>
-          </Paragraph2>
-        </RowContainer>
-      </TextContainer>
-      <TopWave src='assets/Info/topWave.svg' />
-      <Seaweed src='assets/Info/seaweed.svg' />
-      <LeftCoral src='assets/Info/leftCoral.svg' />
-      <Fish src='assets/Info/fish.svg' />
-      <MiddleWave src='assets/Info/middleWave.svg' />
-      <LeftStars src='assets/Info/leftStars.svg' />
-      <RightStars src='assets/Info/rightStars.svg' />
-      
-      <MobileSeaweed src='assets/Info/mobileSeaweed.svg' />
-      <MobileFish src='assets/Info/fish.svg' />
-      <MobileTopStars src='assets/Info/mobileTopStars.svg' />
-      <MobileMiddleStars src='assets/Info/mobileMiddleStars.svg' />
-      <MobileBottomStars src='assets/Info/mobileBottomStars.svg' />
-    </InfoContainer>
-  )
-}
+const Info = () => (
+  <InfoContainer>
+    <TextContainer>
+      <StyledTitle>About nwHacks</StyledTitle>
+      <RowContainer>
+        <div>
+          <StyledHeader3>Connect, collaborate, create.</StyledHeader3>
+          <StyledBody>Join us at nwHacks on Jan 15-16th 2022! Apply by Dec 27th, 2021 to participate as a hacker and apply by Dec 22nd, 2021 to participate as a mentor or a volunteer.</StyledBody>
+          <StyledBody>Whether you&apos;re a seasoned hacker or a tech newbie, nwHacks welcomes you; just bring an open mind and an insatiable desire to learn, and we&apos;ll take care of the rest. Create a product, learn new skills, and have fun with friends, old and new — all in 24 hours.</StyledBody>
+          <StyledBody>nwPlus is always looking for new ventures, opportunities, and connections. If you are interested in working with us, joining us or speaking at one of our events, feel free to reach out to us at logistics@nwplus.io.</StyledBody>
+        </div>
+        <Submarine src='assets/Info/submarine.svg' />
+      </RowContainer>
+      <RowContainer isLastRow>
+        <Orcas src='assets/Info/orcas.svg' />
+        <Paragraph2>
+          <StyledHeader3>We&apos;re back in person!</StyledHeader3>
+          <StyledBody>Last year we connected over 1200 of the brightest developers, engineers, and designers worldwide to collaborate and create amazing projects online. This year we want to make a return to our in-person operations, providing you with a more traditional hackathon experience. However, the event is only open to those who will be double-vaccinated by January 2022.</StyledBody>
+          <StyledBody>Please note that this decision is subject to change depending on the provincial and UBC health guidelines.</StyledBody>
+        </Paragraph2>
+      </RowContainer>
+    </TextContainer>
+    <TopWave src='assets/Info/topWave.svg' />
+    <Seaweed src='assets/Info/seaweed.svg' />
+    <LeftCoral src='assets/Info/leftCoral.svg' />
+    <Fish src='assets/Info/fish.svg' />
+    <MiddleWave src='assets/Info/middleWave.svg' />
+    <LeftStars src='assets/Info/leftStars.svg' />
+    <RightStars src='assets/Info/rightStars.svg' />
+    
+    <MobileSeaweed src='assets/Info/mobileSeaweed.svg' />
+    <MobileFish src='assets/Info/fish.svg' />
+    <MobileTopStars src='assets/Info/mobileTopStars.svg' />
+    <MobileMiddleStars src='assets/Info/mobileMiddleStars.svg' />
+    <MobileBottomStars src='assets/Info/mobileBottomStars.svg' />
+  </InfoContainer>
+)
 
 export default Info

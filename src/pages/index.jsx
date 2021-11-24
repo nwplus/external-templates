@@ -8,8 +8,8 @@ import NavBar from '@components/Navbar'
 // import Stats from '@components/Stats'
 import { Body, Header1, Header2, Header3 } from "@components/Typography";
 import Footer from "@components/Footer"
-import GlobalStyle from "../theme/GlobalStyle";
 import Info from 'src/sections/Info';
+import GlobalStyle from "../theme/GlobalStyle";
 
 const Container = styled.div`
   background-color: #3D3F59;
