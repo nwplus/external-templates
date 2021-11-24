@@ -54,6 +54,10 @@ const Paragraph2 = styled.div`
   }
 `
 
+const StyledEmailLink = styled.a`
+  color: ${(p) => p.theme.colors.text};
+`
+
 const TopWave = styled.img`
   position: absolute;
   top: 0px;
@@ -123,6 +127,7 @@ const MiddleWave = styled.img`
   top: 30%;
   width: 100%;
   mix-blend-mode: soft-light;
+  z-index: -1;
 
   ${(p) => p.theme.mediaQueries.mobile} {
     display: none;
@@ -181,6 +186,7 @@ const MobileTopStars = styled.img`
     display: inherit;
     top: 0px;
     width: 100%;
+    z-index: -1;
   }
 `
 
@@ -192,6 +198,7 @@ const MobileMiddleStars = styled.img`
     display: inherit;
     top: 0px;
     width: 100%;
+    z-index: -1;
   }
 `
 
@@ -204,6 +211,7 @@ const MobileBottomStars = styled.img`
     bottom: 0px;
     width: 100%;
     height: 50%;
+    z-index: -1;
   }
 `
 
@@ -216,7 +224,7 @@ const Info = () => (
           <StyledHeader3>Connect, collaborate, create.</StyledHeader3>
           <StyledBody>Join us at nwHacks on Jan 15-16th 2022! Apply by Dec 27th, 2021 to participate as a hacker and apply by Dec 22nd, 2021 to participate as a mentor or a volunteer.</StyledBody>
           <StyledBody>Whether you&apos;re a seasoned hacker or a tech newbie, nwHacks welcomes you; just bring an open mind and an insatiable desire to learn, and we&apos;ll take care of the rest. Create a product, learn new skills, and have fun with friends, old and new — all in 24 hours.</StyledBody>
-          <StyledBody>nwPlus is always looking for new ventures, opportunities, and connections. If you are interested in working with us, joining us or speaking at one of our events, feel free to reach out to us at logistics@nwplus.io.</StyledBody>
+          <StyledBody>nwPlus is always looking for new ventures, opportunities, and connections. If you are interested in working with us, joining us or speaking at one of our events, feel free to reach out to us at <StyledEmailLink href="mailto:logistics@nwplus.io">logistics@nwplus.io</StyledEmailLink>.</StyledBody>
         </div>
         <Submarine src='assets/Info/submarine.svg' />
       </RowContainer>
