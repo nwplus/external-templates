@@ -145,7 +145,7 @@ const SponsorContainer = () => {
   )
 
   return (
-    <Container>
+    <Container id="sponsors">
       <Rows>
         <SponsorsComponent tier="title" />
         <SponsorsComponent tier="platinum" />

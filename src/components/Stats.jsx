@@ -46,7 +46,7 @@ export default function Stats() {
   const windowWidth = useWindowWidth();
   const mobileBreakpoint = SCREEN_BREAKPOINTS.mobile;
   return (
-    <BgSectionContainer>
+    <BgSectionContainer id="statistics">
       <StyledTitle>Statistics</StyledTitle>
       {windowWidth > mobileBreakpoint && <StyledBody>Based on last nwHacks in 2021</StyledBody>}
     </BgSectionContainer>

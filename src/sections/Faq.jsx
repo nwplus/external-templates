@@ -112,7 +112,7 @@ const Faq = () => {
   return (
     <>
       <BgSectionContainer>
-        <Wrapper>
+        <Wrapper id="faq">
 
           {faqData ? (
             <FaqGrid>
