@@ -7,6 +7,7 @@ import NavBar from '@components/Navbar'
 import Footer from "@components/Footer"
 import Info from 'src/sections/Info';
 import Register from 'src/sections/Register';
+import Sponsor from 'src/sections/Sponsor'
 import GlobalStyle from "../theme/GlobalStyle";
 import Faq from '../sections/Faq'
 
@@ -14,12 +15,6 @@ export default function Index({ title }) {
   return (
     <SectionContainer>
       <GlobalStyle />
-      {/* <div>
-        <Header1>Large Title</Header1>
-        <Header2>Title 1</Header2>
-        <Header3>Title 2</Header3>
-        <Body>Some long lorem ipsum body text that will probably never see the light of day but that is a-ok.</Body>
-      </div> */}
       <Head>
         {/* Remove comment once title is set */}
         <title> {title} </title>
@@ -37,9 +32,10 @@ export default function Index({ title }) {
       <Register />
       <Info />
       <Faq />
+      <Sponsor />
       <Footer />
-
       {/* Components Ends */}
+
     </SectionContainer >
   )
 }
