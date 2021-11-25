@@ -5,10 +5,10 @@ import { SectionContainer } from '@lib/Containers'
 import NavBar from '@components/Navbar'
 // import Stats from '@components/Stats'
 import Footer from "@components/Footer"
+import Stats from '@components/Stats';
 import Info from 'src/sections/Info';
 import Register from 'src/sections/Register';
 import GlobalStyle from "../theme/GlobalStyle";
-import Stats from '@components/Stats';
 import Faq from '../sections/Faq'
 
 export default function Index({ title }) {

@@ -1,9 +1,8 @@
 import { SectionContainer } from '@lib/Containers'
+import { useWindowWidth } from '@react-hook/window-size';
 import React from 'react'
 import styled from 'styled-components'
-import { Body } from './Typography'
-import { Header2 } from './Typography'
-import { useWindowWidth } from '@react-hook/window-size';
+import { Body, Header2 } from './Typography'
 import { SCREEN_BREAKPOINTS } from '../theme/ThemeProvider';
 
 const BgSectionContainer = styled(SectionContainer)`
