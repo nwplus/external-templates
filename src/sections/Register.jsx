@@ -16,7 +16,7 @@ const BgSectionContainer = styled(SectionContainer)`
     background-size: 100vw;
     background-repeat: no-repeat;
     background-position: center top;
-    height: 152vw;
+    height: 217vw;
     padding: 3.625rem 0 0;
     text-align: center;
   }
@@ -45,7 +45,7 @@ const ButtonContainer = styled.div`
 `
 
 const MobileButtonContainer = styled.div`
-  margin-top: 95vw;
+  margin-top: 120vw;
 `
 
 const GridContainer = styled.div`
