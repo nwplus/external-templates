@@ -9,6 +9,7 @@ import NavBar from '@components/Navbar'
 import { Body, Header1, Header2, Header3 } from "@components/Typography";
 import Footer from "@components/Footer"
 import GlobalStyle from "../theme/GlobalStyle";
+import Stats from '@components/Stats';
 
 const Container = styled.div`
   background-color: #3D3F59;
@@ -22,12 +23,6 @@ export default function Index({ title }) {
   return (
     <SectionContainer>
       <GlobalStyle />
-      <div>
-        <Header1>Large Title</Header1>
-        <Header2>Title 1</Header2>
-        <Header3>Title 2</Header3>
-        <Body>Some long lorem ipsum body text that will probably never see the light of day but that is a-ok.</Body>
-      </div>
       <Head>
         {/* Remove comment once title is set */}
         <title> {title} </title>
@@ -42,21 +37,16 @@ export default function Index({ title }) {
         {/* Remove comment once preview image is set */}
         <meta property="og:image" content="/preview.png" />
       </Head>
-      <Footer />
       {/* Components Starts */}
       <NavBar />
-      <Container>
-        <Button width='137px' height='44px' backgroundColor='#FFD12C' borderRadius='100px' textColor='#FFFFFF' isHover>
-          Apply Now!
-        </Button>
-        <Button width='137px' height='44px' backgroundColor='#FFD12C' borderRadius='100px' textColor='#FFFFFF' isHover>
-          Live Portal
-        </Button>
-        <Button width='137px' height='44px' borderRadius='100px' isHover secondary>
-          Be a Mentor!
-        </Button>
-      </Container>
-
+      <Stats />
+      <div>
+        <Header1>Large Title</Header1>
+        <Header2>Title 1</Header2>
+        <Header3>Title 2</Header3>
+        <Body>Some long lorem ipsum body text that will probably never see the light of day but that is a-ok.</Body>
+      </div>
+      <Footer />
       {/* Components Ends */}
     </SectionContainer >
   )
