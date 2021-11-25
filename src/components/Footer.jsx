@@ -14,12 +14,13 @@ import Team from "@components/Team"
 const Container = styled.div`
   position: relative;
   width: 100%;
-  min-height: 75vw;
+  min-height: 89vw;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   gap: 20px;
+  margin-top: -42vw;
   padding-top: 21vw;
   padding-bottom: 20px;
   a {

@@ -11,7 +11,7 @@ export const SCREEN_BREAKPOINTS = {
 
 const base = {
   colors: {
-    background: 'black',
+    background: '#071B3F',
     text: '#FFFFFF',
     primary: '#1D4CBD',
     light: '#D0FFFF',

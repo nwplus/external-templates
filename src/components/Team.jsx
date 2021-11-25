@@ -304,6 +304,7 @@ const profiles = [
 const StyledTitle = styled(Header3)`
   margin-top: 1em;
   color: ${(p) => p.theme.colors.light};
+  filter: drop-shadow(0 0 4px ${(p) => p.theme.colors.light});
 `;
 
 const ProfileContent = styled.p`
