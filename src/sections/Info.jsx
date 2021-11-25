@@ -11,15 +11,21 @@ const TextContainer = styled.div`
   flex-direction: column;
   margin: 0em 10em;
   padding: 5em 0em;
+  position: relative;
+  z-index: 2;
 
   ${(p) => p.theme.mediaQueries.mobile} {
-    margin: 0em 5em;
+    margin: 0em 3em;
     padding: 5em 0em 0em;
   }
 `
 
 const StyledTitle = styled(Header2)`
   text-align: center;
+
+  ${(p) => p.theme.mediaQueries.mobile} {
+    font-size: 2em;
+  }
 `
 
 const StyledHeader3 = styled(Header3)`
@@ -28,6 +34,7 @@ const StyledHeader3 = styled(Header3)`
 
   ${(p) => p.theme.mediaQueries.mobile} {
     text-align: center;
+    font-size: 1.5em;
   }
 `
 
@@ -96,7 +103,7 @@ const Orcas = styled.img`
     transform: scale(0.6);
     margin-right: 0em;
     top: -50px;
-    right: -130px;
+    right: -100px;
   }
 `
 
@@ -116,9 +123,9 @@ const Fish = styled.img`
   top: 45%;
 
   ${(p) => p.theme.mediaQueries.mobile} {
-    transform: scale(0.5);
-    right: -140px;
-    top: 50%;
+    transform: scale(0.35);
+    right: -200px;
+    top: 53%;
   }
 `
 
@@ -127,7 +134,7 @@ const MiddleWave = styled.img`
   top: 30%;
   width: 100%;
   mix-blend-mode: soft-light;
-  z-index: -1;
+  z-index: 0;
 
   ${(p) => p.theme.mediaQueries.mobile} {
     display: none;
@@ -160,7 +167,7 @@ const MobileSeaweed = styled.img`
   ${(p) => p.theme.mediaQueries.mobile} {
     position: absolute;
     display: inherit;
-    top: 100px;
+    top: 75px;
     right: 10px;
     transform: scale(1.4);
   }
@@ -172,9 +179,9 @@ const MobileFish = styled.img`
   ${(p) => p.theme.mediaQueries.mobile} {
     position: absolute;
     display: inherit;
-    bottom: 120px;
-    left: -180px;
-    transform: scale(0.55) scaleX(-1);
+    bottom: 75px;
+    left: -210px;
+    transform: scale(0.5) scaleX(-1);
   }
 `
 
@@ -186,7 +193,7 @@ const MobileTopStars = styled.img`
     display: inherit;
     top: 0px;
     width: 100%;
-    z-index: -1;
+    z-index: 0;
   }
 `
 
@@ -196,9 +203,9 @@ const MobileMiddleStars = styled.img`
   ${(p) => p.theme.mediaQueries.mobile} {
     position: absolute;
     display: inherit;
-    top: 0px;
+    top: 25%;
     width: 100%;
-    z-index: -1;
+    z-index: 0;
   }
 `
 
@@ -208,10 +215,9 @@ const MobileBottomStars = styled.img`
   ${(p) => p.theme.mediaQueries.mobile} {
     position: absolute;
     display: inherit;
-    bottom: 0px;
+    top: 75%;
     width: 100%;
-    height: 50%;
-    z-index: -1;
+    z-index: 0;
   }
 `
 
