@@ -12,6 +12,7 @@ const text = css`
     ${(p) => `
     font-family: ${p.theme.typography.bodyFont};
   `}
+  ${(p) => p.isGradient && `-webkit-background-clip: text; -webkit-text-fill-color: transparent;`}
   ${align}
 `;
 
