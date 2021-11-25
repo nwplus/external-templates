@@ -2,14 +2,14 @@ import Head from 'next/head'
 import React from 'react'
 // import fireDb from '@utilities/firebase'
 import { SectionContainer } from '@lib/Containers'
-import Button from '@components/Button'
-import styled from "styled-components";
 import NavBar from '@components/Navbar'
 // import Stats from '@components/Stats'
-import { Body, Header1, Header2, Header3 } from "@components/Typography";
 import Footer from "@components/Footer"
+import Info from 'src/sections/Info';
+import Register from 'src/sections/Register';
 import GlobalStyle from "../theme/GlobalStyle";
 import Stats from '@components/Stats';
+import Faq from '../sections/Faq'
 
 const Container = styled.div`
   background-color: #3D3F59;
@@ -19,10 +19,17 @@ const Container = styled.div`
   display: flex;
 `
 
+
 export default function Index({ title }) {
   return (
     <SectionContainer>
       <GlobalStyle />
+      {/* <div>
+        <Header1>Large Title</Header1>
+        <Header2>Title 1</Header2>
+        <Header3>Title 2</Header3>
+        <Body>Some long lorem ipsum body text that will probably never see the light of day but that is a-ok.</Body>
+      </div> */}
       <Head>
         {/* Remove comment once title is set */}
         <title> {title} </title>
@@ -37,16 +44,15 @@ export default function Index({ title }) {
         {/* Remove comment once preview image is set */}
         <meta property="og:image" content="/preview.png" />
       </Head>
+
       {/* Components Starts */}
       <NavBar />
+      <Register />
+      <Info />
       <Stats />
-      <div>
-        <Header1>Large Title</Header1>
-        <Header2>Title 1</Header2>
-        <Header3>Title 2</Header3>
-        <Body>Some long lorem ipsum body text that will probably never see the light of day but that is a-ok.</Body>
-      </div>
+      <Faq />
       <Footer />
+
       {/* Components Ends */}
     </SectionContainer >
   )
@@ -55,7 +61,7 @@ export default function Index({ title }) {
 export async function getStaticProps() {
   return {
     props: {
-      title: "example title"
+      title: "nwHacks 2022"
     }, // will be passed to the page component as props
   }
 }
