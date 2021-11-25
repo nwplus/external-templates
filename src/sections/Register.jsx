@@ -72,7 +72,8 @@ export default function Register() {
           <MobileContainer>
             <Header1 isGradient background='-webkit-linear-gradient(180deg, #FFD12C 0%, #FE800B 100%)'>nwHacks</Header1>
             <BodyContainer>
-              <Header3 color='#FFFFFF'>Western Canada’s largest hackathon</Header3>
+              <Header3 color='#FFFFFF'>Western Canada’s</Header3>
+              <Header3 color='#FFFFFF'>largest hackathon</Header3>
               <Body color='#FFFFFF'>In-person event @ <u>UBC Robert H. Lee Alumni Centre</u></Body>
             </BodyContainer>
             <MobileButtonContainer>
