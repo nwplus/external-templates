@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import styled from 'styled-components';
 // eslint-disable-next-line import/no-named-default
 import anime from 'animejs';
-import { Header2 } from '@components/Typography';
+import { Header3 } from '@components/Typography';
 
 const profiles = [
   {
@@ -301,8 +301,9 @@ const profiles = [
   },
 ];
 
-const StyledTitle = styled(Header2)`
-  color: ${(p) => p.theme.colors.primary};
+const StyledTitle = styled(Header3)`
+  margin-top: 1em;
+  color: ${(p) => p.theme.colors.light};
 `;
 
 const ProfileContent = styled.p`
@@ -317,10 +318,9 @@ const ProfileContent = styled.p`
 `;
 
 const ProfileList = styled.div`
-  height: 130px;
+  height: 110px;
   overflow-x: hidden;
   white-space: nowrap;
-  margin-bottom: 20px;
 `;
 
 const ProfileImage = styled.img`
@@ -328,17 +328,17 @@ const ProfileImage = styled.img`
     transform: scale(1.15);
     opacity: 1;
   }
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   border-radius: 1000px;
   background-color: ${(p) => p.color};
   object-fit: cover;
-  margin: 10px;
+  margin: 8px;
   transition: all 100ms ease-in-out;
-  opacity: 0.42;
+  opacity: 0.69;
   ${(p) => p.theme.mediaQueries.mobile} {
-    width: 46px;
-    height: 46px;
+    width: 50px;
+    height: 50px;
   }
 `;
 

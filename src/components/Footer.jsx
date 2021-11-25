@@ -12,13 +12,16 @@ import {
 import Team from "@components/Team"
 
 const Container = styled.div`
+  position: relative;
   width: 100%;
+  min-height: 75vw;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   gap: 20px;
-  margin-bottom: 20px;
+  padding-top: 21vw;
+  padding-bottom: 20px;
   a {
     transition: ${p => p.theme.transition.small};
     color: ${p => p.theme.colors.text};
@@ -27,6 +30,8 @@ const Container = styled.div`
       color: ${p => p.theme.colors.primary};
     }
   }
+  background: url('assets/background/footer.svg');
+  background-size: cover;
 `
 
 const SocialMediaIcons = styled.div`
@@ -44,6 +49,16 @@ const Links = styled.div`
   gap: 52px;
 `;
 
+const TeamContainer = styled.div`
+  width: 450px;
+  position: absolute;
+  right: 2vw;
+  bottom: 3vw;
+  text-align: center;
+  border: 4px solid #57EAEF;
+  border-radius: 8px;
+  background: #57EAEF4D;
+`
 
 export default function Footer() {
   return (
@@ -92,12 +107,13 @@ export default function Footer() {
         <a href="mailto:info@nwplus.io" target="_blank" rel='noreferrer'>Email Us</a>
         <a href="mailto:sponsorship@nwplus.io?subject=Sponsorship" target="_blank" rel='noreferrer'>Become a Sponsor</a>
       </Links>
-
-      <Team />
       <div>
         <div>Organized and held by nwPlus</div>
         <div>Copyright &copy; HackCamp 2021</div>
       </div>
+      <TeamContainer>
+        <Team />
+      </TeamContainer>
     </Container>
   )
 }

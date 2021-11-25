@@ -14,6 +14,7 @@ const base = {
     background: 'black',
     text: '#FFFFFF',
     primary: '#1D4CBD',
+    light: '#D0FFFF',
     mobileBackground: 'linear-gradient(to bottom, rgba(81, 152, 158, 1), rgba(5, 20, 57, 1))'
   },
   typography: {
