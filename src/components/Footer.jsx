@@ -9,6 +9,7 @@ import {
   faTwitter,
   faYoutube,
 } from '@fortawesome/free-brands-svg-icons';
+import Team from "@components/Team"
 
 const Container = styled.div`
   width: 100%;
@@ -91,6 +92,8 @@ export default function Footer() {
         <a href="mailto:info@nwplus.io" target="_blank" rel='noreferrer'>Email Us</a>
         <a href="mailto:sponsorship@nwplus.io?subject=Sponsorship" target="_blank" rel='noreferrer'>Become a Sponsor</a>
       </Links>
+
+      <Team />
       <div>
         <div>Organized and held by nwPlus</div>
         <div>Copyright &copy; HackCamp 2021</div>
