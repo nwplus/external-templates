@@ -11,9 +11,10 @@ export const SCREEN_BREAKPOINTS = {
 
 const base = {
   colors: {
-    background: 'black',
+    background: '#3B7580',
     text: '#FFFFFF',
     primary: '#1D4CBD',
+    light: '#D0FFFF',
     mobileBackground: 'linear-gradient(to bottom, rgba(81, 152, 158, 1), rgba(5, 20, 57, 1))'
   },
   typography: {
@@ -57,6 +58,9 @@ const base = {
     tabletLarge: `@media only screen and (max-width: ${SCREEN_BREAKPOINTS.tabletLarge}px)`,
     desktop: `@media only screen and (max-width: ${SCREEN_BREAKPOINTS.desktop}px)`,
   },
+  transition: {
+    small: `all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1)`
+  }
 }
 
 const CustomThemeProvider = ({ children }) => (
