@@ -19,6 +19,7 @@ const Container = styled.div`
   gap: 20px;
   margin-bottom: 20px;
   a {
+    transition: ${p => p.theme.transition.small};
     color: ${p => p.theme.colors.text};
     :hover {
       cursor: pointer;
@@ -28,14 +29,13 @@ const Container = styled.div`
 `
 
 const SocialMediaIcons = styled.div`
+  justify-content: center;
+  align-items: center;
   display: flex;
-  font-size: 32px;
   a {
-    margin: 0 32px;
-    ${p => p.theme.mediaQueries.mobile} {
-      margin: 0 10px;
-    }
+    width: 32px;
   }
+  gap: 20px;
 `;
 
 const Links = styled.div`

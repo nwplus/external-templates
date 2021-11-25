@@ -57,6 +57,9 @@ const base = {
     tabletLarge: `@media only screen and (max-width: ${SCREEN_BREAKPOINTS.tabletLarge}px)`,
     desktop: `@media only screen and (max-width: ${SCREEN_BREAKPOINTS.desktop}px)`,
   },
+  transition: {
+    small: `all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1)`
+  }
 }
 
 const CustomThemeProvider = ({ children }) => (
