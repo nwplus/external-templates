@@ -9,10 +9,10 @@ const BgSectionContainer = styled(SectionContainer)`
   background-size: 100vw;
   background-repeat: no-repeat;
   background-position: center center;
-  height: 76vw;
+  height: 60vw;
 
   ${p => p.theme.mediaQueries.mobile} {
-    background: url('assets/background/vince-this-one.png');
+    background: url('assets/background/mobileHero.png');
     background-size: 100vw;
     background-repeat: no-repeat;
     background-position: center top;
@@ -27,7 +27,6 @@ const MobileContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-left: 101px;
 `
 
 const MediaContainer = styled.div`
@@ -42,6 +41,11 @@ const BodyContainer = styled.div`
 
 const ButtonContainer = styled.div`
   display: flex;
+  margin-top: 35px;
+`
+
+const MobileButtonContainer = styled.div`
+  margin-top: 95vw;
 `
 
 const GridContainer = styled.div`
@@ -66,19 +70,20 @@ export default function Register() {
       <GridContainer>
         {windowWidth && windowWidth <= mobileBreakpoint ?
           <MobileContainer>
-            <Body color='#244A5C'>nwPlus presents</Body>
             <Header1 isGradient background='-webkit-linear-gradient(180deg, #FFD12C 0%, #FE800B 100%)'>nwHacks</Header1>
             <BodyContainer>
               <Header3 color='#FFFFFF'>Western Canada’s largest hackathon</Header3>
               <Body color='#FFFFFF'>In-person event @ <u>UBC Robert H. Lee Alumni Centre</u></Body>
             </BodyContainer>
-            <Button target="_blank" rel="noopener noreferrer" href="https://forms.gle/z8NRDBzewHpMsV7bA" width='259px' height='40px' backgroundColor='linear-gradient(180deg, #FFD12C 0%, #FE800B 100%)' borderRadius='100px' textColor='#224260' borderColor="#FFB72C" isHover isGradientText>
-              Apply Now!
-            </Button>
-            <Button target="_blank" rel="noopener noreferrer" href="https://forms.gle/z8NRDBzewHpMsV7bA" width='259px' height='40px' borderRadius='100px' textColor='#FFB72C' borderColor="#FFB72C" isHover secondary isGradientText isOutline>
-              Be a Mentor!
-            </Button>
-            <SponsorLink href="mailto:sponsorship@nwplus.io?subject=Sponsorship" target="_blank" rel='noreferrer'>Become a Sponsor!</SponsorLink>
+            <MobileButtonContainer>
+              <Button target="_blank" rel="noopener noreferrer" href="https://forms.gle/z8NRDBzewHpMsV7bA" width='259px' height='40px' backgroundColor='linear-gradient(180deg, #FFD12C 0%, #FE800B 100%)' borderRadius='100px' textColor='#224260' borderColor="#FFB72C" isHover isGradientText>
+                Apply Now!
+              </Button>
+              <Button target="_blank" rel="noopener noreferrer" href="https://docs.google.com/forms/d/1TdvYy6trgRehIdnVhheaLwowBrGmC3zcNUl8UuoMwrI/edit?usp=sharing" width='259px' height='40px' borderRadius='100px' textColor='#FFB72C' borderColor="#FFB72C" isHover secondary isGradientText isOutline>
+                Be a Mentor!
+              </Button>
+              <SponsorLink href="mailto:sponsorship@nwplus.io?subject=Sponsorship" target="_blank" rel='noreferrer'>Become a Sponsor!</SponsorLink>
+            </MobileButtonContainer>
           </MobileContainer>
           :
           <MediaContainer>
@@ -91,10 +96,10 @@ export default function Register() {
               <Button target="_blank" rel="noopener noreferrer" href="https://forms.gle/z8NRDBzewHpMsV7bA" width='137px' height='44px' backgroundColor='linear-gradient(180deg, #FFD12C 0%, #FE800B 100%)' borderRadius='100px' textColor='#224260' borderColor="#FFB72C" isHover isGradientText>
                 Apply Now!
               </Button>
-              <Button target="_blank" rel="noopener noreferrer" href="https://forms.gle/z8NRDBzewHpMsV7bA" width='137px' height='44px' borderRadius='100px' textColor='#FFB72C' borderColor="#FFB72C" isHover secondary isGradientText isOutline>
+              <Button target="_blank" rel="noopener noreferrer" href="https://docs.google.com/forms/d/1TdvYy6trgRehIdnVhheaLwowBrGmC3zcNUl8UuoMwrI/edit?usp=sharing" width='137px' height='44px' borderRadius='100px' textColor='#FFB72C' borderColor="#FFB72C" isHover secondary isGradientText isOutline>
                 Be a Mentor!
               </Button>
-              <Body>
+              <Body align="center">
                 <SponsorLink href="mailto:sponsorship@nwplus.io?subject=Sponsorship" target="_blank" rel='noreferrer'>Become a Sponsor!</SponsorLink>
               </Body>
             </ButtonContainer>
