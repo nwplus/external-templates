@@ -49,7 +49,7 @@ const Links = styled.div`
 
 const TextContainer = styled.div`
   position: absolute;
-  bottom: 400px;
+  bottom: 40vw;
   display: flex;
   align-items: center;
   justify-content: center;
