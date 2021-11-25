@@ -65,7 +65,7 @@ const TeamContainer = styled.div`
     width: 40vw;
   }
   ${(p) => p.theme.mediaQueries.mobile} {
-    width: 60vw;
+    display: none;
   }
   position: absolute;
   right: 2vw;
