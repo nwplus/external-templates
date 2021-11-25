@@ -34,19 +34,18 @@ export default function Index({ title }) {
         {/* Remove comment once preview image is set */}
         <meta property="og:image" content="/preview.png" />
       </Head>
-      <Info />
-      <Footer />
-      {/* Components Starts */}
 
+      {/* Components Starts */}
       <NavBar />
       <Register />
+      <Info />
       <Faq />
       <Footer />
 
       {/* Components Ends */}
     </SectionContainer >
   )
-} 
+}
 
 export async function getStaticProps() {
   return {
