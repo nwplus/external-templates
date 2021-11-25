@@ -222,7 +222,7 @@ const MobileBottomStars = styled.img`
 `
 
 const Info = () => (
-  <InfoContainer>
+  <InfoContainer id="about">
     <TextContainer>
       <StyledTitle>About nwHacks</StyledTitle>
       <RowContainer>
@@ -250,7 +250,7 @@ const Info = () => (
     <MiddleWave src='assets/Info/middleWave.svg' />
     <LeftStars src='assets/Info/leftStars.svg' />
     <RightStars src='assets/Info/rightStars.svg' />
-    
+
     <MobileSeaweed src='assets/Info/mobileSeaweed.svg' />
     <MobileFish src='assets/Info/fish.svg' />
     <MobileTopStars src='assets/Info/mobileTopStars.svg' />

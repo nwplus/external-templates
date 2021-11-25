@@ -60,6 +60,8 @@ const NwPlusLogo = styled.img`
 
   ${(p) => p.theme.mediaQueries.mobile} {
     width: 21.89px;
+    margin-right: 0;
+    margin-bottom: 30px;
   }
 `;
 
@@ -103,11 +105,10 @@ const DropDownContentContainer = styled.div`
   position: fixed;
   top:0;
   z-index: 3;
-  padding: 100px 40px 24px 40px;
-  display: flex;
-  min-height:100%;
+  padding: 30px 40px 24px 40px;
+  display: flex;  
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   gap: 24px;
   width: 100%;
   background: ${p => p.theme.colors.mobileBackground};
@@ -128,14 +129,15 @@ const Button = styled.div`
   padding:11px 21px;
   border-radius:50px;
   font-weight:normal;
-  background:linear-gradient(to bottom, rgba(245, 207, 43, 1), rgba(254, 128, 11));
+  background: #FFFFFF;
+  color: #458192;
 
   &::before {
     display:flex;
     align-items:center;
     justify-content:center;
     content: "Live Portal";
-    color:#00A399;
+    color:#1A6C5B;
     
     border-radius:50px;
     position: absolute;
@@ -148,11 +150,7 @@ const Button = styled.div`
     transition: opacity 0.25s ease-in-out;
     opacity: 0;
     
-    background-image: linear-gradient(
-      to right,
-      #D6FFF0,
-      #7BFECF
-    );
+    background: #57EAEF;
   }
 
   &:hover {
@@ -181,7 +179,7 @@ const MLHBadge = styled.img`
   width:100%;
 `;
 
-const MenuItem = ({ name, href, isAnchor, target, rel }) => {
+const MenuItem = ({ name, href, isAnchor, target, rel, isMobile, closeDropdown }) => {
   const [anchorTarget, setAnchorTarget] = useState(null);
 
   useEffect(() => {
@@ -194,6 +192,9 @@ const MenuItem = ({ name, href, isAnchor, target, rel }) => {
     if (isAnchor && anchorTarget) {
       event.preventDefault();
       anchorTarget.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    if (isMobile) {
+      closeDropdown(false);
     }
   };
 
@@ -223,20 +224,20 @@ const PortalButton = ({ portalOpen }) => (
   </PortalButtonContainer>
 )
 
-const MenuList = () => (
+const MenuList = ({ isMobile, closeDropdown }) => (
   <>
-    <MenuItem name='About' href='/#about' isAnchor />
-    <MenuItem name='FAQ' href='/#faq' isAnchor />
-    <MenuItem name='Sponsors' href='/#sponsors' isAnchor />
-    <MenuItem name='Mentors' href='/#mentors' isAnchor />
-    <MenuItem name='2021' href='https://2021.nwhacks.io' target='_blank' rel='noopener' />
+    <MenuItem name='About' href='/#about' isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
+    <MenuItem name='Statistics' href='/#statistics' isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
+    <MenuItem name='FAQ' href='/#faq' isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
+    <MenuItem name='Sponsors' href='/#sponsors' isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
+    <MenuItem name='2021' href='https://2021.nwhacks.io' target='_blank' rel='noopener' isMobile={isMobile} closeDropdown={closeDropdown} />
   </>
 );
 
 const TrustBadge = () => (
   <Badge>
     <a id="mlh-trust-badge" href="https://mlh.io/seasons/2022/events?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2022-season&utm_content=black" rel="noreferrer" target="_blank">
-      <MLHBadge alt="Major League Hacking 2022 Hackathon Season" src="https://s3.amazonaws.com/logged-assets/trust-badge/2022/mlh-trust-badge-2022-black.svg" />
+      <MLHBadge alt="Major League Hacking 2022 Hackathon Season" src="https://s3.amazonaws.com/logged-assets/trust-badge/2022/mlh-trust-badge-2022-white.svg" />
     </a>
   </Badge>
 );
@@ -300,7 +301,7 @@ const NavBar = () => {
               alt='nwPlus club logo in white'
             />
           </a>
-          <MenuList />
+          <MenuList isMobile={showDropdown} closeDropdown={setShowDropdown} />
           <PortalButton portalOpen={false} />
         </DropDownContentContainer>
 
