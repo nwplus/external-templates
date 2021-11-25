@@ -7,7 +7,10 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-top: 20vw;
+  padding: 20vw 0vw 20vw 0vw;
+  ${(p) => p.theme.mediaQueries.mobile} {
+    padding-top: 30vw;
+  }
 `
 
 const Row = styled.div`
@@ -18,6 +21,9 @@ const Row = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   max-width: 80vw;
+  ${(p) => p.theme.mediaQueries.mobile} {
+    max-width: 90vw;
+  }
 `
 
 const Rows = styled.div`
@@ -31,9 +37,9 @@ const PlatinumImg = styled.img`
   margin-left: 1rem;
   margin-right: 1rem;
   margin-top: 2vw;
-  ${(p) => p.theme.mediaQueries.tablet} {
-    max-width: 50vw;
-    max-height: 20vh;
+  ${(p) => p.theme.mediaQueries.mobile} {
+    max-width: 30vw;
+    max-height: 30vw;
   }
 `
 
@@ -43,9 +49,9 @@ const GoldImg = styled.img`
   margin-left: 1rem;
   margin-right: 1rem;
   margin-top: 2vw;
-  ${(p) => p.theme.mediaQueries.tablet} {
-    max-width: 45vw;
-    max-height: 20vh;
+  ${(p) => p.theme.mediaQueries.mobile} {
+    max-width: 21vw;
+    max-height: 21vw;
   }
 `
 
@@ -55,9 +61,9 @@ const SilverImg = styled.img`
   margin-left: 1rem;
   margin-right: 1rem;
   margin-top: 2vw;
-  ${(p) => p.theme.mediaQueries.tablet} {
-    max-width: 40vw;
-    max-height: 20vh;
+  ${(p) => p.theme.mediaQueries.mobile} {
+    max-width: 18vw;
+    max-height: 18vw;
   }
 `
 
@@ -68,8 +74,8 @@ const BronzeImg = styled.img`
   margin-right: 1rem;
   margin-top: 2vw;
   ${(p) => p.theme.mediaQueries.tablet} {
-    max-width: 35vw;
-    max-height: 15vh;
+    max-width: 14vw;
+    max-height: 14vw;
   }
 `
 
@@ -80,8 +86,8 @@ const InkindImg = styled.img`
   margin-right: 1rem;
   margin-top: 2vw;
   ${(p) => p.theme.mediaQueries.tablet} {
-    max-width: 30vw;
-    max-height: 15vh;
+    max-width: 12vw;
+    max-height: 12vw;
   }
 `
 
