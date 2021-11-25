@@ -7,6 +7,7 @@ import NavBar from '@components/Navbar'
 import Footer from "@components/Footer"
 import Register from 'src/sections/Register';
 import GlobalStyle from "../theme/GlobalStyle";
+import Faq from '../sections/Faq'
 
 export default function Index({ title }) {
   return (
@@ -33,8 +34,10 @@ export default function Index({ title }) {
         <meta property="og:image" content="/preview.png" />
       </Head>
       {/* Components Starts */}
+
       <NavBar />
       <Register />
+      <Faq />
       <Footer />
 
       {/* Components Ends */}
@@ -45,7 +48,7 @@ export default function Index({ title }) {
 export async function getStaticProps() {
   return {
     props: {
-      title: "example title"
+      title: "nwHacks 2022"
     }, // will be passed to the page component as props
   }
 }
