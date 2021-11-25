@@ -11,15 +11,6 @@ import GlobalStyle from "../theme/GlobalStyle";
 import Stats from '@components/Stats';
 import Faq from '../sections/Faq'
 
-const Container = styled.div`
-  background-color: #3D3F59;
-  border-radius: 8px;
-  height: 200px;
-  width: 800px;
-  display: flex;
-`
-
-
 export default function Index({ title }) {
   return (
     <SectionContainer>
