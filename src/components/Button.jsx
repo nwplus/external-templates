@@ -26,15 +26,16 @@ const StyledButton = styled.a`
     color: 'linear-gradient(180deg, #FFD12C 0%, #FE800B 100%)';
     `
   }
+  transition: 0.25s ease-in-out;
+  
   ${(p) =>
     p.isHover &&
     `&:hover {
-      color: ${p.isOutline ? p.borderColor : p.backgroundColor};
-      background: ${p.isGradientText ? p.backgroundColor : "none"};
-      border: solid;
-      ${p.borderColor && `border-color: ${p.borderColor};`}
-      ${p.isGradientText && `-webkit-background-clip: text; -webkit-text-fill-color: transparent;`}
-    }`
+      color: ${p.secondary ? '#7BFFCF' : '#00A399'};
+      background: ${p.secondary ? 'rgba(188, 252, 248, 0.15)' : 'linear-gradient(90deg, #D7FFF0 0%, #7BFFCF 100%)'};      
+      border-color: #7BFFCF;
+    }
+    `
   }
 `;
 

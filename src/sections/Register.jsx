@@ -57,8 +57,13 @@ const GridContainer = styled.div`
 `
 
 const SponsorLink = styled.a`
-  color: #FFFFFF;
-  font-weight: bold;
+    transition: 0.25s ease-in-out;
+    color: ${p => p.theme.colors.text};
+    font-weight: bold;
+    :hover {
+      cursor: pointer;
+      color: #00D88A;
+    }
 `
 
 export default function Register() {
