@@ -82,7 +82,7 @@ export default function Register() {
               <Body color='#FFFFFF'>In-person event @ <u>UBC Robert H. Lee Alumni Centre</u></Body>
             </BodyContainer>
             <MobileButtonContainer>
-              <Button target="_blank" rel="noopener noreferrer" href="https://forms.gle/z8NRDBzewHpMsV7bA" width='259px' height='40px' backgroundColor='linear-gradient(180deg, #FFD12C 0%, #FE800B 100%)' borderRadius='100px' textColor='#224260' borderColor="#FFB72C" isHover isGradientText>
+              <Button target="_blank" rel="noopener noreferrer" href="https://portal.nwplus.io/application" width='259px' height='40px' backgroundColor='linear-gradient(180deg, #FFD12C 0%, #FE800B 100%)' borderRadius='100px' textColor='#224260' borderColor="#FFB72C" isHover isGradientText>
                 Apply Now!
               </Button>
               <Button target="_blank" rel="noopener noreferrer" href="https://docs.google.com/forms/d/1TdvYy6trgRehIdnVhheaLwowBrGmC3zcNUl8UuoMwrI/edit?usp=sharing" width='259px' height='40px' borderRadius='100px' textColor='#FFB72C' borderColor="#FFB72C" isHover secondary isGradientText isOutline>
@@ -99,7 +99,7 @@ export default function Register() {
               <Body color='#FFFFFF'>In-person event @ <u>UBC Robert H. Lee Alumni Centre</u></Body>
             </BodyContainer>
             <ButtonContainer>
-              <Button target="_blank" rel="noopener noreferrer" href="https://forms.gle/z8NRDBzewHpMsV7bA" width='137px' height='44px' backgroundColor='linear-gradient(180deg, #FFD12C 0%, #FE800B 100%)' borderRadius='100px' textColor='#224260' borderColor="#FFB72C" isHover isGradientText>
+              <Button target="_blank" rel="noopener noreferrer" href="https://portal.nwplus.io/application" width='137px' height='44px' backgroundColor='linear-gradient(180deg, #FFD12C 0%, #FE800B 100%)' borderRadius='100px' textColor='#224260' borderColor="#FFB72C" isHover isGradientText>
                 Apply Now!
               </Button>
               <Button target="_blank" rel="noopener noreferrer" href="https://docs.google.com/forms/d/1TdvYy6trgRehIdnVhheaLwowBrGmC3zcNUl8UuoMwrI/edit?usp=sharing" width='137px' height='44px' borderRadius='100px' textColor='#FFB72C' borderColor="#FFB72C" isHover secondary isGradientText isOutline>
