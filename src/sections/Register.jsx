@@ -11,6 +11,13 @@ const BgSectionContainer = styled(SectionContainer)`
   background-position: center center;
   height: 60vw;
 
+  a {
+    :visited {
+      color: #FFFFFF;
+    } 
+
+  }
+
   ${p => p.theme.mediaQueries.mobile} {
     background: url('assets/background/mobileHero.png');
     background-size: 100vw;
@@ -42,6 +49,7 @@ const BodyContainer = styled.div`
 const ButtonContainer = styled.div`
   display: flex;
   margin-top: 35px;
+  align-items: center;
 `
 
 const MobileButtonContainer = styled.div`
@@ -57,12 +65,16 @@ const GridContainer = styled.div`
 `
 
 const SponsorLink = styled.a`
+    margin-left: 20px;
     transition: 0.25s ease-in-out;
     color: ${p => p.theme.colors.text};
     font-weight: bold;
     :hover {
       cursor: pointer;
       color: #00D88A;
+    }
+    ${p => p.theme.mediaQueries.mobile} {
+      margin-left: 0px;
     }
 `
 
@@ -79,7 +91,7 @@ export default function Register() {
             <BodyContainer>
               <Header3 color='#FFFFFF'>Western Canada’s</Header3>
               <Header3 color='#FFFFFF'>largest hackathon</Header3>
-              <Body color='#FFFFFF'>In-person event @ <u>UBC Robert H. Lee Alumni Centre</u></Body>
+              <Body color='#FFFFFF'>In-person event @ <u><a target="_blank" rel="noopener noreferrer" href="https://www.google.ca/maps/place/Robert+H.+Lee+Alumni+Centre/@49.2659434,-123.2517296,17z/data=!3m1!4b1!4m5!3m4!1s0x548672b6360dff9d:0x82fa3ec0bf22ed35!8m2!3d49.2659399!4d-123.2495409">UBC Robert H. Lee Alumni Centre</a></u></Body>
             </BodyContainer>
             <MobileButtonContainer>
               <Button target="_blank" rel="noopener noreferrer" href="https://portal.nwplus.io/application" width='259px' height='40px' backgroundColor='linear-gradient(180deg, #FFD12C 0%, #FE800B 100%)' borderRadius='100px' textColor='#224260' borderColor="#FFB72C" isHover isGradientText>
@@ -96,7 +108,7 @@ export default function Register() {
             <Header1 isGradient background='linear-gradient(180deg, #FFD12C 0%, #FE800B 100%)'>nwHacks</Header1>
             <BodyContainer>
               <Header3 color='#FFFFFF'>Western Canada’s largest hackathon</Header3>
-              <Body color='#FFFFFF'>In-person event @ <u>UBC Robert H. Lee Alumni Centre</u></Body>
+              <Body color='#FFFFFF'>In-person event @ <u><a target="_blank" rel="noopener noreferrer" href="https://www.google.ca/maps/place/Robert+H.+Lee+Alumni+Centre/@49.2659434,-123.2517296,17z/data=!3m1!4b1!4m5!3m4!1s0x548672b6360dff9d:0x82fa3ec0bf22ed35!8m2!3d49.2659399!4d-123.2495409">UBC Robert H. Lee Alumni Centre</a></u></Body>
             </BodyContainer>
             <ButtonContainer>
               <Button target="_blank" rel="noopener noreferrer" href="https://portal.nwplus.io/application" width='137px' height='44px' backgroundColor='linear-gradient(180deg, #FFD12C 0%, #FE800B 100%)' borderRadius='100px' textColor='#224260' borderColor="#FFB72C" isHover isGradientText>
