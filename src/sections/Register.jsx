@@ -55,27 +55,14 @@ const GridContainer = styled.div`
     grid-column: 3 / span 10;
   }
 `
-// color: #FFFFFF;
-//   font-weight: bold;
 
-//   &:hover{
-//     background: linear-gradient(90deg, #00DBCE 0%, #00D88A 100%);
-//     -webkit-background-clip: text;
-//   -webkit-text-fill-color: transparent;
-//   text-decoration: underline !important;
-//     -webkit-text-decoration-line:  underline !important;
-//   }  
 const SponsorLink = styled.a`
-  transition: ${p => p.theme.transition.small};
+    transition: 0.25s ease-in-out;
     color: ${p => p.theme.colors.text};
     font-weight: bold;
-    text-decoration: underline;
     :hover {
       cursor: pointer;
-      background: linear-gradient(90deg, #00DBCE 0%, #00D88A 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-decoration: underline;
+      color: #00D88A;
     }
 `
 
