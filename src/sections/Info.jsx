@@ -61,10 +61,6 @@ const Paragraph2 = styled.div`
   }
 `
 
-const StyledEmailLink = styled.a`
-  color: ${(p) => p.theme.colors.text};
-`
-
 const TopWave = styled.img`
   position: absolute;
   top: 0px;
