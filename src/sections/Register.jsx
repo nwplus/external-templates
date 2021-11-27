@@ -1,4 +1,3 @@
-import { useWindowWidth } from '@react-hook/window-size';
 import styled from 'styled-components';
 import { SectionContainer } from '@lib/Containers';
 import { Body, Header1, Header3 } from '@components/Typography';
@@ -30,15 +29,22 @@ const BgSectionContainer = styled(SectionContainer)`
 `
 
 const MobileContainer = styled.div`
-  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  display: none;
+  ${p => p.theme.mediaQueries.mobile} {
+    display: flex;
+  }
 `
 
 const MediaContainer = styled.div`
   padding-top: 12vw;
   margin-left: 101px;
+  display: block;
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const BodyContainer = styled.div`
@@ -79,13 +85,11 @@ const SponsorLink = styled.a`
 `
 
 export default function Register() {
-  const windowWidth = useWindowWidth();
-  const mobileBreakpoint = 768;
 
   return (
     <BgSectionContainer>
       <GridContainer>
-        {windowWidth && windowWidth <= mobileBreakpoint ?
+        <div>
           <MobileContainer>
             <Header1 isGradient background='-webkit-linear-gradient(180deg, #FFD12C 0%, #FE800B 100%)'>nwHacks</Header1>
             <BodyContainer>
@@ -103,7 +107,6 @@ export default function Register() {
               <SponsorLink href="mailto:sponsorship@nwplus.io?subject=Sponsorship" target="_blank" rel='noreferrer'>Become a Sponsor!</SponsorLink>
             </MobileButtonContainer>
           </MobileContainer>
-          :
           <MediaContainer>
             <Header1 isGradient background='linear-gradient(180deg, #FFD12C 0%, #FE800B 100%)'>nwHacks</Header1>
             <BodyContainer>
@@ -121,7 +124,8 @@ export default function Register() {
                 <SponsorLink href="mailto:sponsorship@nwplus.io?subject=Sponsorship" target="_blank" rel='noreferrer'>Become a Sponsor!</SponsorLink>
               </Body>
             </ButtonContainer>
-          </MediaContainer>}
+          </MediaContainer>
+        </div>
       </GridContainer>
     </BgSectionContainer>
   )
