@@ -10,13 +10,6 @@ const BgSectionContainer = styled(SectionContainer)`
   background-position: center center;
   height: 60vw;
 
-  a {
-    :visited {
-      color: #FFFFFF;
-    } 
-
-  }
-
   ${p => p.theme.mediaQueries.mobile} {
     background: url('assets/background/mobileHero.png');
     background-size: 100vw;
@@ -86,6 +79,8 @@ const SponsorLink = styled.a`
     ${p => p.theme.mediaQueries.mobile} {
       margin-left: 0px;
     }
+    :visited {
+      color: #FFFFFF;
 `
 
 export default function Register() {
@@ -109,7 +104,7 @@ export default function Register() {
               <Button target="_blank" rel="noopener noreferrer" href="https://docs.google.com/forms/d/1TdvYy6trgRehIdnVhheaLwowBrGmC3zcNUl8UuoMwrI/edit?usp=sharing" width='259px' height='40px' borderRadius='100px' textColor='#FFB72C' borderColor="#FFB72C" isHover secondary isGradientText isOutline>
                 Be a Mentor!
               </Button>
-              <SponsorLink href="mailto:sponsorship@nwplus.io?subject=Sponsorship" target="_blank" rel='noreferrer'>Become a Sponsor!</SponsorLink>
+              <SponsorLink href="https://docs.google.com/forms/d/1TdvYy6trgRehIdnVhheaLwowBrGmC3zcNUl8UuoMwrI/edit?usp=sharing" target="_blank" rel='noreferrer'>Become a Volunteer!</SponsorLink>
             </MobileButtonContainer>
           </MobileContainer>
           <MediaContainer>
@@ -126,7 +121,7 @@ export default function Register() {
                 Be a Mentor!
               </Button>
               <Body align="center">
-                <SponsorLink href="mailto:sponsorship@nwplus.io?subject=Sponsorship" target="_blank" rel='noreferrer'>Become a Sponsor!</SponsorLink>
+                <SponsorLink href="https://docs.google.com/forms/d/1TdvYy6trgRehIdnVhheaLwowBrGmC3zcNUl8UuoMwrI/edit?usp=sharing" target="_blank" rel='noreferrer'>Become a Volunteer!</SponsorLink>
               </Body>
             </ButtonContainer>
           </MediaContainer>

@@ -295,7 +295,9 @@ const NavBar = () => {
         </NavBarContainer>
 
         <DropDownContentContainer>
-          <a href='/'>
+          <a href='https://nwplus.io/'
+            target='_blank'
+            rel='noreferrer'>
             <NwPlusLogo
               src='/assets/logo/nwPlus_Logo.svg'
               alt='nwPlus club logo in white'
@@ -314,7 +316,9 @@ const NavBar = () => {
   return (
     <NavBarContainer visibility={visibility} opacity={opacity}>
       <NavGroupContainer>
-        <a href='/'>
+        <a href='https://nwplus.io/'
+          target='_blank'
+          rel='noreferrer'>
           <NwPlusLogo
             src='/assets/logo/nwPlus_Logo.svg'
             alt='nwPlus club logo in white' />

@@ -40,6 +40,7 @@ const StyledButton = styled.a`
 `;
 
 export default function Button({
+  className,
   backgroundColor,
   textColor,
   height,
@@ -50,10 +51,13 @@ export default function Button({
   borderColor,
   secondary = false,
   isHover = false,
+  href,
+  target,
   isGradientText = false,
   isOutline = false, }) {
   return (
     <StyledButton
+      className={className}
       backgroundColor={backgroundColor}
       textColor={textColor}
       height={height}
@@ -62,6 +66,8 @@ export default function Button({
       fontSize={fontSize}
       borderColor={borderColor}
       secondary={secondary}
+      href={href}
+      target={target}
       isHover={isHover}
       isGradientText={isGradientText}
       isOutline={isOutline}>
