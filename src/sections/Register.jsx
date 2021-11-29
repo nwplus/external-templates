@@ -67,7 +67,7 @@ const WhiteURL = styled.a`
   color: #FFFFFF;
 `
 
-const SponsorLink = styled.a`
+const VolunteerLink = styled.a`
     margin-left: 20px;
     transition: 0.25s ease-in-out;
     color: ${p => p.theme.colors.text};
@@ -79,8 +79,7 @@ const SponsorLink = styled.a`
     ${p => p.theme.mediaQueries.mobile} {
       margin-left: 0px;
     }
-    :visited {
-      color: #FFFFFF;
+    
 `
 
 export default function Register() {
@@ -104,7 +103,7 @@ export default function Register() {
               <Button target="_blank" rel="noopener noreferrer" href="https://docs.google.com/forms/d/1TdvYy6trgRehIdnVhheaLwowBrGmC3zcNUl8UuoMwrI/edit?usp=sharing" width='259px' height='40px' borderRadius='100px' textColor='#FFB72C' borderColor="#FFB72C" isHover secondary isGradientText isOutline>
                 Be a Mentor!
               </Button>
-              <SponsorLink href="https://docs.google.com/forms/d/1TdvYy6trgRehIdnVhheaLwowBrGmC3zcNUl8UuoMwrI/edit?usp=sharing" target="_blank" rel='noreferrer'>Become a Volunteer!</SponsorLink>
+              <VolunteerLink href="https://docs.google.com/forms/d/1TdvYy6trgRehIdnVhheaLwowBrGmC3zcNUl8UuoMwrI/edit?usp=sharing" target="_blank" rel='noreferrer'>Become a Volunteer!</VolunteerLink>
             </MobileButtonContainer>
           </MobileContainer>
           <MediaContainer>
@@ -121,7 +120,7 @@ export default function Register() {
                 Be a Mentor!
               </Button>
               <Body align="center">
-                <SponsorLink href="https://docs.google.com/forms/d/1TdvYy6trgRehIdnVhheaLwowBrGmC3zcNUl8UuoMwrI/edit?usp=sharing" target="_blank" rel='noreferrer'>Become a Volunteer!</SponsorLink>
+                <VolunteerLink href="https://docs.google.com/forms/d/1TdvYy6trgRehIdnVhheaLwowBrGmC3zcNUl8UuoMwrI/edit?usp=sharing" target="_blank" rel='noreferrer'>Become a Volunteer!</VolunteerLink>
               </Body>
             </ButtonContainer>
           </MediaContainer>
