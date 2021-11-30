@@ -238,7 +238,7 @@ const Info = () => (
         </Paragraph2>
       </RowContainer>
     </TextContainer>
-    <TopWave src='assets/Info/topWave.svg' />
+    <TopWave src='assets/Info/About-topwave.svg' />
     <Seaweed src='assets/Info/seaweed.svg' />
     <LeftCoral src='assets/Info/leftCoral.svg' />
     <Fish src='assets/Info/fish.svg' />
