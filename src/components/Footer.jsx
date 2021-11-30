@@ -36,15 +36,18 @@ const SocialMediaIcons = styled.div`
   justify-content: center;
   align-items: center;
   display: flex;
+  gap: 1em;
   a {
-    width: 32px;
+    width: 2em;
+    ${(p) => p.theme.mediaQueries.mobile} {
+      width: 1.5em;
+    }
   }
-  gap: 20px;
 `;
 
 const Links = styled.div`
   display: flex;
-  gap: 52px;
+  gap: 1em;
 `;
 
 const TextContainer = styled.div`
@@ -56,16 +59,16 @@ const TextContainer = styled.div`
   flex-direction: column;
   text-align: center;
   gap: 20px;
+
+  ${(p) => p.theme.mediaQueries.mobile} {
+    font-size: 0.8em;
+  }
 `
 
 const TeamContainer = styled.div`
   width: 27vw;
-  
   ${(p) => p.theme.mediaQueries.tabletLarge} {
     width: 40vw;
-  }
-  ${(p) => p.theme.mediaQueries.mobile} {
-    display: none;
   }
   position: absolute;
   right: 2vw;
@@ -74,6 +77,13 @@ const TeamContainer = styled.div`
   border: 4px solid #57EAEF;
   border-radius: 8px;
   background: #39537B;
+  ${(p) => p.theme.mediaQueries.mobile} {
+    top: -36vw;
+    right: initial;
+    bottom: initial;
+    width: 85vw;
+    box-sizing: border-box;
+  }
 `
 
 export default function Footer() {

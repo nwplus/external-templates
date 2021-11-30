@@ -319,6 +319,10 @@ const StyledTitle = styled(Header3)`
   margin-top: 1em;
   color: ${(p) => p.theme.colors.light};
   filter: drop-shadow(0 0 4px ${(p) => p.theme.colors.light});
+  ${(p) => p.theme.mediaQueries.mobile} {
+    margin-top: 0.9em;
+    font-size: 1.1em;
+  }
 `;
 
 const ProfileContent = styled.p`
@@ -330,12 +334,20 @@ const ProfileContent = styled.p`
   b {
     margin-right: 8px;
   }
+  ${(p) => p.theme.mediaQueries.mobile} {
+    font-size: 0.8em;
+    height: 0.7em;
+    margin-top: 0.9em;
+  }
 `;
 
 const ProfileList = styled.div`
   height: 110px;
   overflow-x: hidden;
   white-space: nowrap;
+  ${(p) => p.theme.mediaQueries.mobile} {
+    height: 80px;
+  }
 `;
 
 const ProfileImage = styled.img`

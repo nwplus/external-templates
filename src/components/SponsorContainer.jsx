@@ -12,6 +12,9 @@ const Container = styled.div`
     padding-top: 30vw;
   }
   padding-bottom: 40vw;
+  ${(p) => p.theme.mediaQueries.mobile} {
+    padding-bottom: 100vw;
+  }
 `
 
 const Row = styled.div`
