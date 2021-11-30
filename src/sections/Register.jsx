@@ -109,7 +109,7 @@ export default function Register() {
               <Button target="_blank" rel="noopener noreferrer" href="https://portal.nwplus.io/application" width='259px' height='40px' backgroundColor='linear-gradient(180deg, #FFD12C 0%, #FE800B 100%)' borderRadius='100px' textColor='#224260' borderColor="#FFB72C" isHover isGradientText>
                 Apply Now!
               </Button>
-              <Button target="_blank" rel="noopener noreferrer" href="https://docs.google.com/forms/d/1TdvYy6trgRehIdnVhheaLwowBrGmC3zcNUl8UuoMwrI/edit?usp=sharing" width='259px' height='40px' borderRadius='100px' textColor='#FFB72C' borderColor="#FFB72C" isHover secondary isGradientText isOutline>
+              <Button target="_blank" rel="noopener noreferrer" href="https://forms.gle/aTdVwx1d9GWHmrQ16" width='259px' height='40px' borderRadius='100px' textColor='#FFB72C' borderColor="#FFB72C" isHover secondary isGradientText isOutline>
                 Be a Mentor!
               </Button>
               <VolunteerLink href="https://forms.gle/TYcDUfeiTp5JoX5r9" target="_blank" rel='noreferrer'>Become a Volunteer!</VolunteerLink>
@@ -127,7 +127,7 @@ export default function Register() {
               <Button target="_blank" rel="noopener noreferrer" href="https://portal.nwplus.io/application" width='137px' height='44px' backgroundColor='linear-gradient(180deg, #FFD12C 0%, #FE800B 100%)' borderRadius='100px' textColor='#224260' borderColor="#FFB72C" isHover isGradientText>
                 Apply Now!
               </Button>
-              <Button target="_blank" rel="noopener noreferrer" href="https://docs.google.com/forms/d/1TdvYy6trgRehIdnVhheaLwowBrGmC3zcNUl8UuoMwrI/edit?usp=sharing" width='137px' height='44px' borderRadius='100px' textColor='#FFB72C' borderColor="#FFB72C" isHover secondary isGradientText isOutline>
+              <Button target="_blank" rel="noopener noreferrer" href="https://forms.gle/aTdVwx1d9GWHmrQ16" width='137px' height='44px' borderRadius='100px' textColor='#FFB72C' borderColor="#FFB72C" isHover secondary isGradientText isOutline>
                 Be a Mentor!
               </Button>
               <Body align="center">
