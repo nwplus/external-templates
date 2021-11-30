@@ -65,6 +65,11 @@ const GridContainer = styled.div`
 
 const WhiteURL = styled.a`
   color: #FFFFFF;
+  
+  ${p => p.theme.mediaQueries.mobile} {
+    position: relative;
+    top: -15px;
+  }
 `
 
 const ContentContainer = styled.div`
