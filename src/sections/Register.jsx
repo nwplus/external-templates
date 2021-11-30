@@ -65,9 +65,6 @@ const GridContainer = styled.div`
 
 const WhiteURL = styled.a`
   color: #FFFFFF;
-  ${p => p.theme.mediaQueries.mobile} {
-    margin-top:-5px;
-  }  
 `
 
 const ContentContainer = styled.div`
