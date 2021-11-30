@@ -67,12 +67,8 @@ const TextContainer = styled.div`
 
 const TeamContainer = styled.div`
   width: 27vw;
-  
   ${(p) => p.theme.mediaQueries.tabletLarge} {
     width: 40vw;
-  }
-  ${(p) => p.theme.mediaQueries.mobile} {
-    display: none;
   }
   position: absolute;
   right: 2vw;
@@ -81,6 +77,13 @@ const TeamContainer = styled.div`
   border: 4px solid #57EAEF;
   border-radius: 8px;
   background: #39537B;
+  ${(p) => p.theme.mediaQueries.mobile} {
+    top: -36vw;
+    right: initial;
+    bottom: initial;
+    width: 85vw;
+    box-sizing: border-box;
+  }
 `
 
 export default function Footer() {
