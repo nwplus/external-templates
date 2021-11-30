@@ -126,7 +126,7 @@ export default function Footer() {
         </Links>
         <div>
           <div>Organized and held by nwPlus</div>
-          <div>Copyright &copy; HackCamp 2021</div>
+          <div>Copyright &copy; nwHacks 2022</div>
         </div>
       </TextContainer>
       <TeamContainer>
