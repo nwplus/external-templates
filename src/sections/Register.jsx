@@ -52,7 +52,7 @@ const ButtonContainer = styled.div`
 `
 
 const MobileButtonContainer = styled.div`
-  margin-top: 120vw;
+  margin-top: 100vw;
 `
 
 const GridContainer = styled.div`
@@ -107,7 +107,7 @@ export default function Register() {
               <Button target="_blank" rel="noopener noreferrer" href="https://docs.google.com/forms/d/1TdvYy6trgRehIdnVhheaLwowBrGmC3zcNUl8UuoMwrI/edit?usp=sharing" width='259px' height='40px' borderRadius='100px' textColor='#FFB72C' borderColor="#FFB72C" isHover secondary isGradientText isOutline>
                 Be a Mentor!
               </Button>
-              <VolunteerLink href="https://docs.google.com/forms/d/1TdvYy6trgRehIdnVhheaLwowBrGmC3zcNUl8UuoMwrI/edit?usp=sharing" target="_blank" rel='noreferrer'>Become a Volunteer!</VolunteerLink>
+              <VolunteerLink href="https://forms.gle/TYcDUfeiTp5JoX5r9" target="_blank" rel='noreferrer'>Become a Volunteer!</VolunteerLink>
             </MobileButtonContainer>
           </MobileContainer>
           <MediaContainer>
@@ -126,7 +126,7 @@ export default function Register() {
                 Be a Mentor!
               </Button>
               <Body align="center">
-                <VolunteerLink href="https://docs.google.com/forms/d/1TdvYy6trgRehIdnVhheaLwowBrGmC3zcNUl8UuoMwrI/edit?usp=sharing" target="_blank" rel='noreferrer'>Become a Volunteer!</VolunteerLink>
+                <VolunteerLink href="https://forms.gle/TYcDUfeiTp5JoX5r9" target="_blank" rel='noreferrer'>Become a Volunteer!</VolunteerLink>
               </Body>
             </ButtonContainer>
           </MediaContainer>
