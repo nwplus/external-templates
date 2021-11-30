@@ -36,15 +36,18 @@ const SocialMediaIcons = styled.div`
   justify-content: center;
   align-items: center;
   display: flex;
+  gap: 1em;
   a {
-    width: 32px;
+    width: 2em;
+    ${(p) => p.theme.mediaQueries.mobile} {
+      width: 1.5em;
+    }
   }
-  gap: 20px;
 `;
 
 const Links = styled.div`
   display: flex;
-  gap: 52px;
+  gap: 1em;
 `;
 
 const TextContainer = styled.div`
@@ -56,6 +59,10 @@ const TextContainer = styled.div`
   flex-direction: column;
   text-align: center;
   gap: 20px;
+
+  ${(p) => p.theme.mediaQueries.mobile} {
+    font-size: 0.8em;
+  }
 `
 
 const TeamContainer = styled.div`
