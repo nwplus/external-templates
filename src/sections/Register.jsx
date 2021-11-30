@@ -65,6 +65,13 @@ const GridContainer = styled.div`
 
 const WhiteURL = styled.a`
   color: #FFFFFF;
+  ${p => p.theme.mediaQueries.mobile} {
+    margin-top:-5px;
+  }  
+`
+
+const ContentContainer = styled.div`
+  margin-top: 60px;
 `
 
 const VolunteerLink = styled.a`
@@ -107,11 +114,13 @@ export default function Register() {
             </MobileButtonContainer>
           </MobileContainer>
           <MediaContainer>
-            <Header1 isGradient background='linear-gradient(180deg, #FFD12C 0%, #FE800B 100%)'>nwHacks</Header1>
-            <BodyContainer>
-              <Header3 color='#FFFFFF'>Western Canada’s largest hackathon</Header3>
-              <Body color='#FFFFFF'>In-person event @ <u><WhiteURL target="_blank" rel="noopener noreferrer" href="https://www.google.ca/maps/place/Robert+H.+Lee+Alumni+Centre/@49.2659434,-123.2517296,17z/data=!3m1!4b1!4m5!3m4!1s0x548672b6360dff9d:0x82fa3ec0bf22ed35!8m2!3d49.2659399!4d-123.2495409">UBC Robert H. Lee Alumni Centre</WhiteURL></u></Body>
-            </BodyContainer>
+            <ContentContainer>
+              <Header1 isGradient background='linear-gradient(180deg, #FFD12C 0%, #FE800B 100%)'>nwHacks</Header1>
+              <BodyContainer>
+                <Header3 color='#FFFFFF'>Western Canada’s largest hackathon</Header3>
+                <Body color='#FFFFFF'>In-person event @ <u><WhiteURL target="_blank" rel="noopener noreferrer" href="https://www.google.ca/maps/place/Robert+H.+Lee+Alumni+Centre/@49.2659434,-123.2517296,17z/data=!3m1!4b1!4m5!3m4!1s0x548672b6360dff9d:0x82fa3ec0bf22ed35!8m2!3d49.2659399!4d-123.2495409">UBC Robert H. Lee Alumni Centre</WhiteURL></u></Body>
+              </BodyContainer>
+            </ContentContainer>
             <ButtonContainer>
               <Button target="_blank" rel="noopener noreferrer" href="https://portal.nwplus.io/application" width='137px' height='44px' backgroundColor='linear-gradient(180deg, #FFD12C 0%, #FE800B 100%)' borderRadius='100px' textColor='#224260' borderColor="#FFB72C" isHover isGradientText>
                 Apply Now!
