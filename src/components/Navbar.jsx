@@ -114,53 +114,53 @@ const DropDownContentContainer = styled.div`
   background: ${p => p.theme.colors.mobileBackground};
 `;
 
-const PortalButtonContainer = styled.div`
-  visibility: ${(p) => p.portalOpen !== null ? 'visible' : 'hidden'};
-  opacity: ${(p) => p.portalOpen !== null ? '1' : '0'};
-  transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
-`;
+// const PortalButtonContainer = styled.div`
+//   visibility: ${(p) => p.portalOpen !== null ? 'visible' : 'hidden'};
+//   opacity: ${(p) => p.portalOpen !== null ? '1' : '0'};
+//   transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+// `;
 
-const StyledPortalText = styled.div`
-  color: ${p => p.disabled && p.theme.colors.disabledText};
-`;
+// const StyledPortalText = styled.div`
+//   color: ${p => p.disabled && p.theme.colors.disabledText};
+// `;
 
-const Button = styled.div`
-  position:relative;
-  padding:11px 21px;
-  border-radius:50px;
-  font-weight:normal;
-  background: #FFFFFF;
-  color: #458192;
+// const Button = styled.div`
+//   position:relative;
+//   padding:11px 21px;
+//   border-radius:50px;
+//   font-weight:normal;
+//   background: #FFFFFF;
+//   color: #458192;
 
-  &::before {
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    content: "Live Portal";
-    color:#1A6C5B;
-    
-    border-radius:50px;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+//   &::before {
+//     display:flex;
+//     align-items:center;
+//     justify-content:center;
+//     content: "Live Portal";
+//     color:#1A6C5B;
 
-    z-index: 1;
-    transition: opacity 0.25s ease-in-out;
-    opacity: 0;
-    
-    background: #57EAEF;
-  }
+//     border-radius:50px;
+//     position: absolute;
+//     top: 0;
+//     right: 0;
+//     bottom: 0;
+//     left: 0;
 
-  &:hover {
-    cursor:pointer;
-  }
+//     z-index: 1;
+//     transition: opacity 0.25s ease-in-out;
+//     opacity: 0;
 
-  &:hover::before {
-    opacity: 1;
-  }
-`;
+//     background: #57EAEF;
+//   }
+
+//   &:hover {
+//     cursor:pointer;
+//   }
+
+//   &:hover::before {
+//     opacity: 1;
+//   }
+// `;
 
 const Badge = styled.div`
   position:fixed;
@@ -205,24 +205,24 @@ const MenuItem = ({ name, href, isAnchor, target, rel, isMobile, closeDropdown }
   );
 };
 
-const PortalButton = ({ portalOpen }) => (
-  <PortalButtonContainer portalOpen={portalOpen}>
-    <Button
-      width='130px'
-      height='45px'
-      borderRadius='100px'
-      isGradient
-      textColor='black'
-      href='https://portal.nwplus.io'
-      target='_blank'
-      disabled={!portalOpen}
-    >
-      <StyledPortalText disabled={!portalOpen}>
-        Live Portal
-      </StyledPortalText>
-    </Button>
-  </PortalButtonContainer>
-)
+// const PortalButton = ({ portalOpen }) => (
+//   <PortalButtonContainer portalOpen={portalOpen}>
+//     <Button
+//       width='130px'
+//       height='45px'
+//       borderRadius='100px'
+//       isGradient
+//       textColor='black'
+//       href='https://portal.nwplus.io'
+//       target='_blank'
+//       disabled={!portalOpen}
+//     >
+//       <StyledPortalText disabled={!portalOpen}>
+//         Live Portal
+//       </StyledPortalText>
+//     </Button>
+//   </PortalButtonContainer>
+// )
 
 const MenuList = ({ isMobile, closeDropdown }) => (
   <>
@@ -304,7 +304,7 @@ const NavBar = () => {
             />
           </a>
           <MenuList isMobile={showDropdown} closeDropdown={setShowDropdown} />
-          <PortalButton portalOpen={false} />
+          {/* <PortalButton portalOpen={false} /> */}
         </DropDownContentContainer>
 
         <TrustBadge />
@@ -325,7 +325,7 @@ const NavBar = () => {
         </a>
         <NavTextContainer>
           <MenuList />
-          <PortalButton portalOpen={false} />
+          {/* <PortalButton portalOpen={false} /> */}
         </NavTextContainer>
       </NavGroupContainer>
 
