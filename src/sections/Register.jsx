@@ -79,6 +79,7 @@ const ContentContainer = styled.div`
 const VolunteerLink = styled.a`
     margin-left: 20px;
     transition: 0.25s ease-in-out;
+    pointer-events: none;
     color: ${p => p.theme.colors.text};
     font-weight: bold;
     :hover {
