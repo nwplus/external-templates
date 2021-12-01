@@ -304,7 +304,7 @@ const NavBar = () => {
             />
           </a>
           <MenuList isMobile={showDropdown} closeDropdown={setShowDropdown} />
-          <PortalButton portalOpen={false} />
+          {/* <PortalButton portalOpen={false} /> */}
         </DropDownContentContainer>
 
         <TrustBadge />
@@ -325,7 +325,7 @@ const NavBar = () => {
         </a>
         <NavTextContainer>
           <MenuList />
-          <PortalButton portalOpen={false} />
+          {/* <PortalButton portalOpen={false} /> */}
         </NavTextContainer>
       </NavGroupContainer>
 
