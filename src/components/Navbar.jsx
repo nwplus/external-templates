@@ -114,11 +114,11 @@ const DropDownContentContainer = styled.div`
   background: ${p => p.theme.colors.mobileBackground};
 `;
 
-const PortalButtonContainer = styled.div`
-  visibility: ${(p) => p.portalOpen !== null ? 'visible' : 'hidden'};
-  opacity: ${(p) => p.portalOpen !== null ? '1' : '0'};
-  transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
-`;
+// const PortalButtonContainer = styled.div`
+//   visibility: ${(p) => p.portalOpen !== null ? 'visible' : 'hidden'};
+//   opacity: ${(p) => p.portalOpen !== null ? '1' : '0'};
+//   transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+// `;
 
 const StyledPortalText = styled.div`
   color: ${p => p.disabled && p.theme.colors.disabledText};
@@ -205,24 +205,24 @@ const MenuItem = ({ name, href, isAnchor, target, rel, isMobile, closeDropdown }
   );
 };
 
-const PortalButton = ({ portalOpen }) => (
-  <PortalButtonContainer portalOpen={portalOpen}>
-    <Button
-      width='130px'
-      height='45px'
-      borderRadius='100px'
-      isGradient
-      textColor='black'
-      href='https://portal.nwplus.io'
-      target='_blank'
-      disabled={!portalOpen}
-    >
-      <StyledPortalText disabled={!portalOpen}>
-        Live Portal
-      </StyledPortalText>
-    </Button>
-  </PortalButtonContainer>
-)
+// const PortalButton = ({ portalOpen }) => (
+//   <PortalButtonContainer portalOpen={portalOpen}>
+//     <Button
+//       width='130px'
+//       height='45px'
+//       borderRadius='100px'
+//       isGradient
+//       textColor='black'
+//       href='https://portal.nwplus.io'
+//       target='_blank'
+//       disabled={!portalOpen}
+//     >
+//       <StyledPortalText disabled={!portalOpen}>
+//         Live Portal
+//       </StyledPortalText>
+//     </Button>
+//   </PortalButtonContainer>
+// )
 
 const MenuList = ({ isMobile, closeDropdown }) => (
   <>
