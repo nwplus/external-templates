@@ -79,6 +79,7 @@ const ContentContainer = styled.div`
 const VolunteerLink = styled.a`
     margin-left: 20px;
     transition: 0.25s ease-in-out;
+    pointer-events: none;
     color: ${p => p.theme.colors.text};
     font-weight: bold;
     :hover {
@@ -112,7 +113,7 @@ export default function Register() {
               <Button target="_blank" rel="noopener noreferrer" href="https://forms.gle/aTdVwx1d9GWHmrQ16" width='259px' height='40px' borderRadius='100px' textColor='#FFB72C' borderColor="#FFB72C" isHover secondary isGradientText isOutline>
                 Be a Mentor!
               </Button>
-              <VolunteerLink href="https://forms.gle/TYcDUfeiTp5JoX5r9" target="_blank" rel='noreferrer'>Become a Volunteer!</VolunteerLink>
+              <VolunteerLink href="https://forms.gle/TYcDUfeiTp5JoX5r9" target="_blank" rel='noreferrer'>Be a Volunteer!</VolunteerLink>
             </MobileButtonContainer>
           </MobileContainer>
           <MediaContainer>
@@ -131,7 +132,7 @@ export default function Register() {
                 Be a Mentor!
               </Button>
               <Body align="center">
-                <VolunteerLink href="https://forms.gle/TYcDUfeiTp5JoX5r9" target="_blank" rel='noreferrer'>Become a Volunteer!</VolunteerLink>
+                <VolunteerLink href="https://forms.gle/TYcDUfeiTp5JoX5r9" target="_blank" rel='noreferrer'>Be a Volunteer!</VolunteerLink>
               </Body>
             </ButtonContainer>
           </MediaContainer>
