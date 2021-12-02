@@ -27,7 +27,6 @@ const StyledButton = styled.a`
     `
   }
   transition: 0.25s ease-in-out;
-  pointer-events: none;
   
   ${(p) =>
     p.isHover &&
