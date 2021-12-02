@@ -233,8 +233,8 @@ const Info = () => (
         <Orcas src='assets/Info/orcas.svg' />
         <Paragraph2>
           <StyledHeader3>We&apos;re back in person!</StyledHeader3>
-          <StyledBody>Last year we connected over 1200 of the brightest developers, engineers, and designers worldwide to collaborate and create amazing projects online. This year we want to make a return to our in-person operations, providing you with a more traditional hackathon experience. However, the event is only open to those who will be double-vaccinated by January 2022.</StyledBody>
-          <StyledBody>Please note that this decision is subject to change depending on the provincial and UBC health guidelines.</StyledBody>
+          <StyledBody>Last year we connected over 1200 of the brightest developers, engineers, and designers worldwide to collaborate and create amazing projects online. This year we are excited to invite everyone back in person!</StyledBody>
+          <StyledBody>Please note: to attend nwHacks 2022, you must be fully vaccinated according to the British Columbia government guidelines by January 2022. Additional safety considerations include a lower capacity limit in attendees, social distancing guidelines, mask mandates, and sanitization stations. These decisions are subject to change depending on the provincial and UBC health guidelines.</StyledBody>
         </Paragraph2>
       </RowContainer>
     </TextContainer>
