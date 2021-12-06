@@ -103,7 +103,7 @@ const H3Container = styled.div`
     margin-top: 100vw;
 `
 
-const IS_APPLICATIONS_OPEN = false;
+const IS_APPLICATIONS_OPEN = true;
 
 export default function Register() {
 
