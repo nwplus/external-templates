@@ -234,7 +234,7 @@ const Info = () => (
         <Paragraph2>
           <StyledHeader3>Join us online from around the world!</StyledHeader3>
           <StyledBody>Last year we connected over 1200 of the brightest developers, engineers, and designers worldwide to collaborate and create amazing projects online. This year we are excited to create something amazing together, again!</StyledBody>
-          <StyledBody>While we were excited to see our amazing hacker community in-person this year, safety remains our top priority. Nonetheless, the organizing team is working immensely hard to make your experience at nwHacks 2022 just as bright as it would've been in-person!</StyledBody>
+          <StyledBody>While we were excited to see our amazing hacker community in-person this year, safety remains our top priority. Nonetheless, the organizing team is working immensely hard to make your experience at nwHacks 2022 just as bright as it would&apos;ve been in-person!</StyledBody>
         </Paragraph2>
       </RowContainer>
     </TextContainer>

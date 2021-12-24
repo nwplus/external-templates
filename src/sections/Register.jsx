@@ -63,32 +63,8 @@ const GridContainer = styled.div`
   }
 `
 
-const WhiteURL = styled.a`
-  color: #FFFFFF;
-  
-  ${p => p.theme.mediaQueries.mobile} {
-    position: relative;
-    top: -15px;
-  }
-`
-
 const ContentContainer = styled.div`
   margin-top: 60px;
-`
-
-const VolunteerLink = styled.a`
-    margin-left: 20px;
-    transition: 0.25s ease-in-out;
-    color: ${p => p.theme.colors.text};
-    font-weight: bold;
-    :hover {
-      cursor: pointer;
-      color: #00D88A;
-    }
-    ${p => p.theme.mediaQueries.mobile} {
-      margin-left: 0px;
-    }
-    
 `
 
 const StyledH3 = styled(Header3)`
