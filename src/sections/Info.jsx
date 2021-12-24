@@ -224,7 +224,7 @@ const Info = () => (
       <RowContainer>
         <div>
           <StyledHeader3>Connect, collaborate, create.</StyledHeader3>
-          <StyledBody>Join us at nwHacks on Jan 15-16th 2022! Apply by Dec 27th, 2021 to participate as a hacker and apply by Dec 22nd, 2021 to participate as a mentor or a volunteer.</StyledBody>
+          <StyledBody>Join us at nwHacks on Jan 15-16th 2022! Apply by Dec 29th, 2021 to participate as a hacker or mentor.</StyledBody>
           <StyledBody>Whether you&apos;re a seasoned hacker or a tech newbie, nwHacks welcomes you; just bring an open mind and an insatiable desire to learn, and we&apos;ll take care of the rest. Create a product, learn new skills, and have fun with friends, old and new — all in 24 hours.</StyledBody>
         </div>
         <Submarine src='assets/Info/submarine.svg' />
@@ -232,9 +232,9 @@ const Info = () => (
       <RowContainer isLastRow>
         <Orcas src='assets/Info/orcas.svg' />
         <Paragraph2>
-          <StyledHeader3>We&apos;re back in person!</StyledHeader3>
-          <StyledBody>Last year we connected over 1200 of the brightest developers, engineers, and designers worldwide to collaborate and create amazing projects online. This year we are excited to invite everyone back in person!</StyledBody>
-          <StyledBody>Please note: to attend nwHacks 2022, you must be fully vaccinated according to the British Columbia government guidelines by January 2022. Additional safety considerations include a lower capacity limit in attendees, social distancing guidelines, mask mandates, and sanitization stations. These decisions are subject to change depending on the provincial and UBC health guidelines.</StyledBody>
+          <StyledHeader3>Join us online from around the world!</StyledHeader3>
+          <StyledBody>Last year we connected over 1200 of the brightest developers, engineers, and designers worldwide to collaborate and create amazing projects online. This year we are excited to create something amazing together, again!</StyledBody>
+          <StyledBody>While we were excited to see our amazing hacker community in-person this year, safety remains our top priority. Nonetheless, the organizing team is working immensely hard to make your experience at nwHacks 2022 just as bright as it would've been in-person!</StyledBody>
         </Paragraph2>
       </RowContainer>
     </TextContainer>
