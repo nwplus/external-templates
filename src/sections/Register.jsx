@@ -63,32 +63,8 @@ const GridContainer = styled.div`
   }
 `
 
-const WhiteURL = styled.a`
-  color: #FFFFFF;
-  
-  ${p => p.theme.mediaQueries.mobile} {
-    position: relative;
-    top: -15px;
-  }
-`
-
 const ContentContainer = styled.div`
   margin-top: 60px;
-`
-
-const VolunteerLink = styled.a`
-    margin-left: 20px;
-    transition: 0.25s ease-in-out;
-    color: ${p => p.theme.colors.text};
-    font-weight: bold;
-    :hover {
-      cursor: pointer;
-      color: #00D88A;
-    }
-    ${p => p.theme.mediaQueries.mobile} {
-      margin-left: 0px;
-    }
-    
 `
 
 const StyledH3 = styled(Header3)`
@@ -116,8 +92,8 @@ export default function Register() {
             <BodyContainer>
               <Header3 color='#FFFFFF'>Western Canada’s</Header3>
               <Header3 color='#FFFFFF'>largest hackathon</Header3>
-              <Body color='#FFFFFF'>In-person event @</Body>
-              <u><WhiteURL target="_blank" rel="noopener noreferrer" href="https://www.google.ca/maps/place/Robert+H.+Lee+Alumni+Centre/@49.2659434,-123.2517296,17z/data=!3m1!4b1!4m5!3m4!1s0x548672b6360dff9d:0x82fa3ec0bf22ed35!8m2!3d49.2659399!4d-123.2495409">UBC Robert H. Lee Alumni Centre</WhiteURL></u>
+              <Body color='#FFFFFF'>Virtual event</Body>
+
               {!IS_APPLICATIONS_OPEN &&
                 <H3Container>
                   <StyledH3>Applications</StyledH3>
@@ -132,7 +108,6 @@ export default function Register() {
                 <Button target="_blank" rel="noopener noreferrer" href="https://forms.gle/aTdVwx1d9GWHmrQ16" width='259px' height='40px' borderRadius='100px' textColor='#FFB72C' borderColor="#FFB72C" isHover secondary isGradientText isOutline>
                   Be a Mentor!
                 </Button>
-                <VolunteerLink href="https://forms.gle/TYcDUfeiTp5JoX5r9" target="_blank" rel='noreferrer'>Be a Volunteer!</VolunteerLink>
               </MobileButtonContainer>}
           </MobileContainer>
           <MediaContainer>
@@ -140,7 +115,7 @@ export default function Register() {
               <Header1 isGradient background='linear-gradient(180deg, #FFD12C 0%, #FE800B 100%)'>nwHacks</Header1>
               <BodyContainer>
                 <Header3 color='#FFFFFF'>Western Canada’s largest hackathon</Header3>
-                <Body color='#FFFFFF'>In-person event @ <u><WhiteURL target="_blank" rel="noopener noreferrer" href="https://www.google.ca/maps/place/Robert+H.+Lee+Alumni+Centre/@49.2659434,-123.2517296,17z/data=!3m1!4b1!4m5!3m4!1s0x548672b6360dff9d:0x82fa3ec0bf22ed35!8m2!3d49.2659399!4d-123.2495409">UBC Robert H. Lee Alumni Centre</WhiteURL></u></Body>
+                <Body color='#FFFFFF'>Virtual event</Body>
                 {!IS_APPLICATIONS_OPEN && <StyledH3 color='#FFFFFF'>Applications Open Soon</StyledH3>}
               </BodyContainer>
             </ContentContainer>
@@ -152,9 +127,6 @@ export default function Register() {
                 <Button target="_blank" rel="noopener noreferrer" href="https://forms.gle/aTdVwx1d9GWHmrQ16" width='137px' height='44px' borderRadius='100px' textColor='#FFB72C' borderColor="#FFB72C" isHover secondary isGradientText isOutline>
                   Be a Mentor!
                 </Button>
-                <Body align="center">
-                  <VolunteerLink href="https://forms.gle/TYcDUfeiTp5JoX5r9" target="_blank" rel='noreferrer'>Be a Volunteer!</VolunteerLink>
-                </Body>
               </ButtonContainer>}
           </MediaContainer>
         </div>
