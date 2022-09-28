@@ -45,12 +45,14 @@ export default function Button({
   children,
   fontSize,
   borderColor,
+  href,
   secondary = false,
   isHover = false,
   isGradientText = false,
   isOutline = false, }) {
   return (
     <StyledButton
+      href={href}
       backgroundColor={backgroundColor}
       textColor={textColor}
       height={height}

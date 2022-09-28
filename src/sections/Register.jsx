@@ -217,7 +217,7 @@ export default function Register() {
             <Button
               target="_blank"
               rel="noopener noreferrer"
-              href="https://docs.google.com/forms/d/1TdvYy6trgRehIdnVhheaLwowBrGmC3zcNUl8UuoMwrI/edit?usp=sharing"
+              href="https://forms.gle/GQ3k8ZbtfULfVYxq6"
               width='175px'
               height='50px'
               borderRadius='7px'

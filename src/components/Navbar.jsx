@@ -157,13 +157,24 @@ const Button = styled.a`
     background: linear-gradient(to right, #00DBCE, #00D88A);
   }
 
-  &:hover {
-    cursor:pointer;
-  }
-
   &:hover::before {
     opacity: 1;
   }
+
+  ${p => !p.disabled && `
+    &:hover {
+      cursor:pointer;
+    }
+  `}
+
+  ${p => p.disabled && `
+    display: none;
+    cursor: default;
+
+    &:hover::before {
+      opacity: 0;
+    }
+  `}
 `;
 
 const MenuItem = ({ name, href, isAnchor, target, rel, isMobile, closeDropdown }) => {
@@ -281,7 +292,7 @@ const NavBar = () => {
             />
           </a>
           <MenuList isMobile={showDropdown} closeDropdown={setShowDropdown} />
-          <PortalButton portalOpen />
+          <PortalButton portalOpen={false} />
         </DropDownContentContainer>
 
         {/* <TrustBadge /> */}
