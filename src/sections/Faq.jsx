@@ -21,8 +21,9 @@ const BgSectionContainer = styled(SectionContainer)`
   background: linear-gradient(to bottom, #F2B491, #8C5050);
   
   ${p => p.theme.mediaQueries.mobile} {
-    background: url('assets/background/faq-top-mobile.png') top/100vw no-repeat, 
-                linear-gradient(to bottom, #F2B491, #8C5050);
+    background: url('assets/mobile/faq/background.svg') #8C5050;
+    aspect-ratio: auto;
+    background-repeat: no-repeat;
   }
 `
 
@@ -40,6 +41,10 @@ const MgScroll = styled(SectionContainer)`
   height: 100%;
   aspect-ratio: 1440/1723;
   
+  ${p => p.theme.mediaQueries.mobile} {
+    background: none;
+    aspect-ratio: 482/1344;
+  }
 `
 
 const FgScroll = styled(SectionContainer)`
@@ -55,6 +60,11 @@ const FgScroll = styled(SectionContainer)`
   width: 100%;
   aspect-ratio: 1440/1723;
   height: 100%;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    background: none;
+    aspect-ratio: 482/1344;
+  }
 `
 
 const Wrapper = styled.div`
@@ -63,11 +73,13 @@ const Wrapper = styled.div`
   margin: 0 auto;
   width: 75vw;
   min-width: 900px;
+  max-width: 1200px;
   z-index: 88;
   position: relative;
   
   ${p => p.theme.mediaQueries.mobile} {
     grid-column: 2 / span 12;
+    min-width: 0;
   }
 `
 
@@ -84,6 +96,7 @@ const FaqGrid = styled.div`
     flex-direction: column;
     gap: 24px;
     margin-top: 100px;
+    padding-bottom: 4rem;
   }
 `;
 
@@ -126,7 +139,7 @@ const StyledTitle = styled(Header2)`
   padding-top: 5rem;
 
   ${(p) => p.theme.mediaQueries.mobile} {
-    font-size: 2em;
+    font-size: 3.8em;
   }
 `
 
@@ -158,7 +171,7 @@ const Faq = () => {
   }
 
   useEffect(async () => {
-    const data = await fireDb.getCollection('nwHacks2022', 'FAQ');
+    const data = await fireDb.getCollection('HackCamp2022', 'FAQ');
     const processedData = processData(data);
     setFaqData(processedData);
   }, [])

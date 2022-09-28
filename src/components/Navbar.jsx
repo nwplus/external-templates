@@ -19,7 +19,7 @@ const NavBarContainer = styled.nav`
   ${(p) => p.theme.mediaQueries.mobile} {
     background-color: ${p => p.theme.colors.navbar};
     padding: 24px 40px 0;
-    z-index:10;
+    z-index:999;
     justify-content:flex-end;
   }
 `;
@@ -60,9 +60,8 @@ const NwPlusLogo = styled.img`
   margin-right: 18px;
 
   ${(p) => p.theme.mediaQueries.mobile} {
-    width: 21.89px;
+    width: 50px;
     margin-right: 0;
-    margin-bottom: 30px;
   }
 `;
 
@@ -105,14 +104,14 @@ const HamburgerMenu = styled.img`
 const DropDownContentContainer = styled.div`
   position: fixed;
   top:0;
-  z-index: 3;
+  z-index: 998;
   padding: 30px 40px 24px 40px;
   display: flex;  
   flex-direction: column;
   align-items: center;
   gap: 24px;
   width: 100%;
-  background: ${p => p.theme.colors.mobileBackground};
+  background: #002F4D;
 `;
 
 const PortalButtonContainer = styled.div`
@@ -162,23 +161,6 @@ const Button = styled.div`
   &:hover::before {
     opacity: 1;
   }
-`;
-
-const Badge = styled.div`
-  position:fixed;
-  top:0;
-  right:40px;
-  width:70px;
-  z-index:900;
-  
-  ${(p) => p.theme.mediaQueries.mobile} {
-    left:25px;
-    width:40px;
-  }
-`;
-
-const MLHBadge = styled.img`
-  width:100%;
 `;
 
 const MenuItem = ({ name, href, isAnchor, target, rel, isMobile, closeDropdown }) => {
@@ -236,14 +218,6 @@ const MenuList = ({ isMobile, closeDropdown }) => (
   </>
 );
 
-const TrustBadge = () => (
-  <Badge>
-    <a id="mlh-trust-badge" href="https://mlh.io/seasons/2022/events?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2022-season&utm_content=black" rel="noreferrer" target="_blank">
-      <MLHBadge alt="Major League Hacking 2022 Hackathon Season" src="https://s3.amazonaws.com/logged-assets/trust-badge/2022/mlh-trust-badge-2022-white.svg" />
-    </a>
-  </Badge>
-);
-
 const NavBar = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   const [visibility, setVisibility] = useState('visible');
@@ -299,15 +273,15 @@ const NavBar = () => {
         <DropDownContentContainer>
           <a href='/'>
             <NwPlusLogo
-              src='/assets/logo/nwPlus_Logo.svg'
-              alt='nwPlus club logo in white'
+              src='/assets/tent.svg'
+              alt='HackCamp logo'
             />
           </a>
           <MenuList isMobile={showDropdown} closeDropdown={setShowDropdown} />
           <PortalButton portalOpen={false} />
         </DropDownContentContainer>
 
-        <TrustBadge />
+        {/* <TrustBadge /> */}
       </>
     );
   }

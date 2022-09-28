@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import React from 'react'
 // import fireDb from '@utilities/firebase'
-import { SectionContainer } from '@lib/Containers'
+// import { SectionContainer } from '@lib/Containers'
 import NavBar from '@components/Navbar'
 // import Stats from '@components/Stats'
 import Footer from "@components/Footer"
@@ -16,7 +16,7 @@ import Faq from '../sections/Faq'
 
 export default function Index({ title }) {
   return (
-    <SectionContainer>
+    <>
       <GlobalStyle />
       <Head>
         {/* Remove comment once title is set */}
@@ -43,7 +43,7 @@ export default function Index({ title }) {
       <Footer />
       {/* Components Ends */}
 
-    </SectionContainer >
+    </>
   )
 }
 

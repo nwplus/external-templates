@@ -9,8 +9,18 @@ const InfoContainer = styled.div`
 
   width: 100%;
   aspect-ratio: 1440/1057;
-  z-index: 13;
+  z-index: 2;
   overflow: hidden;
+  
+
+  ${(p) => p.theme.mediaQueries.mobile} {
+    background: url('assets/mobile/events/bg.svg');
+    background-size: 100vw;
+    background-repeat: no-repeat;
+    background-position: center center;
+    
+    aspect-ratio: 428/1280;
+  }
 `
 const BgScroll = styled(SectionContainer)`
   background: url('assets/background/learn/background.svg');
@@ -23,6 +33,10 @@ const BgScroll = styled(SectionContainer)`
   left: 0;
   height: 100%;
   width: 100%;
+
+  ${(p) => p.theme.mediaQueries.mobile} {
+    background: none;
+  }
 `
 const MgScroll = styled(SectionContainer)`
   background: url('assets/background/learn/midground.svg');
@@ -36,6 +50,10 @@ const MgScroll = styled(SectionContainer)`
   height: 100%;
   width: 100%;
 
+  ${(p) => p.theme.mediaQueries.mobile} {
+    background: none;
+  }
+
 `
 const FgScroll = styled(SectionContainer)`
   background: url('assets/background/learn/foreground_tall.svg');
@@ -48,12 +66,17 @@ const FgScroll = styled(SectionContainer)`
   left: 0;
   height: 100%;
   width: 100%;
+
+  ${(p) => p.theme.mediaQueries.mobile} {
+    background: none;
+  }
 `
 
 
 const TextContainer = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   margin: 0em 10em;
   padding: 5em 0em;
   position: relative;
@@ -81,30 +104,43 @@ const PushinP = styled.p`
   text-align: center;
   width: 50vw;
   min-width: 500px;
+  max-width: 800px;
   margin: 0 auto;
   padding-top: 2rem;
 `
 
 const ContentInner = styled.div`
   min-height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
   width: 100%;
   align-items: center;
+  
+  ${(p) => p.theme.mediaQueries.mobile} {
+    min-height: 0px;
+    display: none;
+  }
 `
 
 const CardContainer = styled.div`
   width: 75vw;
   min-width: 1000px;
+  max-width: 1100px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
+  
+  ${(p) => p.theme.mediaQueries.mobile} {
+    flex-direction: column;
+  }
 `
 
 const Card = styled.div`
   width: 497px;
   height: 570px;
+  aspect-ratio: 497 / 570;
   
   background: url('assets/largescroll_${p => p.type.toLowerCase()}.svg');
   color: #482C16;
@@ -147,7 +183,7 @@ const Learn = () => {
   });
 
   const { ref: ref3 } = useParallax({
-    speed: -10,
+    speed: -5,
   });
 
   return (

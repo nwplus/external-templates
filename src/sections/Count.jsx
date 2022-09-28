@@ -11,7 +11,13 @@ const InfoContainer = styled.div`
   aspect-ratio: 1440/1375;
 
   z-index: 10;
-  overflow: hidden;
+  overflow-y: hidden;
+
+  ${(p) => p.theme.mediaQueries.mobile} {
+    background: linear-gradient(to bottom, #FEFFCA 0%, #83F6F7 100%);
+    background-repeat: no-repeat;
+    aspect-ratio: 428/860;
+  }
   
 `
 const BgScroll = styled(SectionContainer)`
@@ -24,6 +30,11 @@ const BgScroll = styled(SectionContainer)`
   top: 0;
   width: 100%;
   height: 100%;
+
+  ${(p) => p.theme.mediaQueries.mobile} {
+    background: url('assets/mobile/countdown/background.svg');
+    background-repeat: no-repeat;
+  }
 `
 const MgScroll = styled(SectionContainer)`
   background: url('assets/background/countdown/foreground_tall.svg');
@@ -35,19 +46,25 @@ const MgScroll = styled(SectionContainer)`
   top: 0;
   width: 100%;
   height: 100%;
+
+  ${(p) => p.theme.mediaQueries.mobile} {
+    background: url('assets/mobile/countdown/foreground_tall.svg');
+    background-repeat: no-repeat;
+  }
 `
 
 const TextContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 0em 10em;
   position: relative;
   z-index: 2;
   height: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 
   ${(p) => p.theme.mediaQueries.mobile} {
-    margin: 0em 3em;
+    margin: 0em 1em;
     padding: 5em 0em 0em;
   }
 `
@@ -61,6 +78,7 @@ const StyledTitle = styled(Header2)`
 
   ${(p) => p.theme.mediaQueries.mobile} {
     font-size: 2em;
+    padding-bottom: 3rem;
   }
 `
 
@@ -70,7 +88,7 @@ const CountdownContainer = styled.div`
   padding: 5rem 0 10rem 0;
 
   ${(p) => p.theme.mediaQueries.mobile} {
-    flex-direction: column;
+    display: none;
     ${p => p.isLastRow && 'margin-bottom: -4em'};
   }
 `
@@ -111,6 +129,7 @@ const ShadowText = styled.div`
   font-weight: 900;
 
   position: relative;
+  letter-spacing: 1px;
 
   :before {
     content: '${p => p.text}';
@@ -126,6 +145,26 @@ const ShadowText = styled.div`
     position: absolute;
     top: 2px;
     left: 2px;
+  }
+  
+  ${(p) => p.theme.mediaQueries.mobile} {
+    font-size: 3rem;
+  }
+`
+
+const MobileCountdown = styled.div`
+  width: 100%;
+  aspect-ratio: 347 / 91;
+  background: url('assets/mobile/board.svg');
+  background-repeat: no-repeat;
+  background-position: center top;
+
+  align-items: center;
+  justify-content: center;
+
+  display: none;
+  ${(p) => p.theme.mediaQueries.mobile} {
+    display: flex;
   }
 `
 
@@ -153,6 +192,7 @@ const Count = () => {
     speed: -10,
   });
 
+
   return (
     <InfoContainer>
       <BgScroll ref={ref1} />
@@ -160,6 +200,11 @@ const Count = () => {
 
       <TextContainer>
         <StyledTitle>Registration Closes</StyledTitle>
+        <MobileCountdown>
+          <ShadowText text={`${count.days[0]}${count.days[1]} : ${count.hours[0]}${count.hours[1]} : ${count.minutes[0]}${count.minutes[1]}`}>
+            {`${count.days[0]}${count.days[1]} : ${count.hours[0]}${count.hours[1]} : ${count.minutes[0]}${count.minutes[1]}`}
+          </ShadowText>
+        </MobileCountdown>
         <CountdownContainer>
           {[
             {

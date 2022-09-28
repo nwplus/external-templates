@@ -12,6 +12,7 @@ export const GlobalStyles = createGlobalStyle`
   }
   body {
     position: relative
+    background: none;
   }
   
   :root {
