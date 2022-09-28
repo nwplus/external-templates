@@ -15,6 +15,9 @@
         "hackcamp2021_dev": [
           "dev-nwplus-hackcamp2021"
         ],
+        "hackcamp2022_dev": [
+          "dev-nwplus-hackcamp2022"
+        ],
         "nwhacks2022_dev": [
           "dev-nwplus-nwhacks2022"
         ]
@@ -30,6 +33,9 @@
         ],
         "hackcamp2021_main": [
           "nwplus-hackcamp2021"
+        ],
+        "hackcamp2022_main": [
+          "nwplus-hackcamp2022"
         ],
         "nwhacks2022_main": [
           "nwplus-nwhacks2022"
