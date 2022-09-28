@@ -135,6 +135,11 @@ const MobileDino = styled.div`
   animation-name: ${mobileBop};
   animation-duration: 8s;
   animation-iteration-count: infinite;
+  
+  display: none;
+  ${(p) => p.theme.mediaQueries.mobile} {
+    display: table;
+  }
 `
 
 const TextContainer = styled.div`

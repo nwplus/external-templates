@@ -168,21 +168,58 @@ const MobileCountdown = styled.div`
   }
 `
 
-const Count = () => {
+// blog.greenroots.info
+const getReturnValues = (countDown) => {
+  // calculate time left
+  const days = Math.floor(countDown / (1000 * 60 * 60 * 24));
+  const hours = Math.floor(
+    (countDown % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+  );
+  const minutes = Math.floor((countDown % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((countDown % (1000 * 60)) / 1000);
 
-  const [count, setCount] = useState({
-    days: [0, 0],
-    hours: [0, 0],
-    minutes: [0, 0]
-  })
+  return [days, hours, minutes, seconds];
+};
+
+const useCountdown = (targetDate) => {
+  const countDownDate = new Date(targetDate).getTime();
+
+  const [countDown, setCountDown] = useState(
+    countDownDate - new Date().getTime()
+  );
 
   useEffect(() => {
-    setCount({
-      days: [0, 0],
-      hours: [0, 0],
-      minutes: [0, 0]
-    })
-  }, [])
+    const interval = setInterval(() => {
+      setCountDown(countDownDate - new Date().getTime());
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [countDownDate]);
+
+  return getReturnValues(countDown);
+};
+
+export { useCountdown };
+
+const Count = () => {
+
+  const countDownDate = new Date("Oct 14, 2022 00:00:00").getTime();
+  const [days, hours, minutes] = useCountdown(countDownDate);
+
+  const twoify = (num) => {
+    const str = num.toString()
+    if (str.length === 1) {
+      return `0${str}`
+    }
+
+    return str
+  }
+
+  const count = {
+    days: twoify(days),
+    hours: twoify(hours),
+    minutes: twoify(minutes)
+  }
 
   const { ref: ref1 } = useParallax({
     speed: -20,

@@ -119,13 +119,16 @@ const PortalButtonContainer = styled.div`
   opacity: ${(p) => p.portalOpen !== null ? '1' : '0'};
   transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
   justify-self: flex-end;
+  user-select: none;
 `;
 
 const StyledPortalText = styled.div`
   color: ${p => p.disabled && p.theme.colors.disabledText};
 `;
 
-const Button = styled.div`
+const Button = styled.a`
+  display: table;
+  text-decoration: none;
   position:relative;
   padding:11px 21px;
   border-radius:50px;
@@ -278,7 +281,7 @@ const NavBar = () => {
             />
           </a>
           <MenuList isMobile={showDropdown} closeDropdown={setShowDropdown} />
-          <PortalButton portalOpen={false} />
+          <PortalButton portalOpen />
         </DropDownContentContainer>
 
         {/* <TrustBadge /> */}

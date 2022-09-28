@@ -35,7 +35,7 @@ const CaveTop = styled.div`
     color: #5C1B59;
     :hover {
       cursor: pointer;
-      color: ${p => p.theme.colors.primary};
+      color: #014C58;
     }
   }
 

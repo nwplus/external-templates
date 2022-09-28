@@ -2,7 +2,8 @@ import styled from 'styled-components';
 import { SectionContainer } from '@lib/Containers';
 import SponsorContainer from '@components/SponsorContainer';
 import { Header2 } from '@components/Typography';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import fireDb from '@utilities/firebase';
 
 const BgSectionContainer = styled(SectionContainer)`
   background: url('assets/background/sponsors/background.svg'), linear-gradient(to bottom, #8C5050 0%, #8C5050 70%, #220639 100%) ;
@@ -46,8 +47,22 @@ const PushinP = styled.p`
   }
 `
 
+const Skip = styled.div`
+  height: 10rem;
+  background: linear-gradient(to bottom, #8C5050, #220639);
+`
+
 export default function Sponsor() {
-  return (
+  const [sponsors, setSponsors] = useState(null)
+
+  useEffect(async () => {
+    const data = await fireDb.getCollection('HackCamp2022', 'Sponsors')
+    if (data) {
+      setSponsors(data)
+    }
+  }, [])
+
+  return sponsors?.length > 0 ? (
     <BgSectionContainer>
       <StyledTitle>
         Sponsors
@@ -57,7 +72,7 @@ export default function Sponsor() {
         If you are interested in working with us, joining us, or speaking at one of
         our events, feel free to reach out to us at logistics@nwplus.io
       </PushinP>
-      <SponsorContainer />
+      <SponsorContainer sponsors={sponsors} />
     </BgSectionContainer>
-  )
+  ) : <Skip />
 }
