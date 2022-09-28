@@ -22,7 +22,7 @@ jobs:
 
       - name: Choose dev firebase project
         if: ${{ env.IS_PRODUCTION == 'false' }}
-        run: firebase use ${{ secrets.DEV_FIREBASE_PROJECT_ID }} --token ${{ secrets.FIREBASE_TOKEN }}
+        run: firebase use nwplus-ubc-dev --token ${{ secrets.FIREBASE_TOKEN }}
 
       - name: Choose prod firebase project
         if: ${{ env.IS_PRODUCTION == 'true' }}
