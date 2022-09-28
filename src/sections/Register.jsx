@@ -1,16 +1,22 @@
+import { useParallax } from 'react-scroll-parallax';
 import { useWindowWidth } from '@react-hook/window-size';
 import styled from 'styled-components';
 import { SectionContainer } from '@lib/Containers';
-import { Body, Header1, Header3 } from '@components/Typography';
+import { Body, Header2, Header3 } from '@components/Typography';
 import Button from '@components/Button';
 
 const BgSectionContainer = styled(SectionContainer)`
-  background: url('assets/background/hero.png'), radial-gradient(50% 50% at 50% 50%, #F9F0DF 0%, #9FB4E6 100%);
+  background: linear-gradient(to bottom, rgba(48,242,207,1) 0%, rgba(217,252,188,1) 33%, rgba(253,217,158,1) 100%);
   background-size: 100vw;
   background-repeat: no-repeat;
-  background-position: center center;
-  height: 60vw;
+  background-position: center bottom;
+  
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1440/1200;
+  z-index: 10;
 
+  
   ${p => p.theme.mediaQueries.mobile} {
     background: url('assets/background/mobileHero.png');
     background-size: 100vw;
@@ -20,6 +26,46 @@ const BgSectionContainer = styled(SectionContainer)`
     padding: 3.625rem 0 0;
     text-align: center;
   }
+`
+const BgScroll = styled(SectionContainer)`
+  background: url('assets/background/hero/background.svg');
+  background-size: 100vw;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 100%;
+  width: 100%;
+  
+  position: absolute;
+  top: 0;
+  z-index: 1;
+`
+const MgScroll = styled(SectionContainer)`
+  background: url('assets/background/hero/midground.svg');
+  background-size: 100vw;
+  background-repeat: no-repeat;
+  background-position: center 90%;
+  height: 100%;
+  width: 100%;
+
+  position: absolute;
+  top: 0;
+  z-index: 2;
+`
+
+// background: url('assets/background/hero/foreground.svg');
+
+const FgScroll = styled(SectionContainer)`
+  background: url('assets/background/hero/foreground_tall.svg');
+  background-size: 100vw;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  height: 100%;
+  width: 100%;
+  
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
 `
 
 const MobileContainer = styled.div`
@@ -31,11 +77,16 @@ const MobileContainer = styled.div`
 
 const MediaContainer = styled.div`
   padding-top: 12vw;
-  margin-left: 101px;
+  margin: 0 auto;
+  width: 1400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 `
 
 const BodyContainer = styled.div`
-  width: 526px;
+  width: 906px;
   margin-top: 20px;
 `
 
@@ -49,6 +100,8 @@ const MobileButtonContainer = styled.div`
 `
 
 const GridContainer = styled.div`
+  z-index: 99;
+  position: relative;
   grid-column: 3 / span 4;
 
   ${p => p.theme.mediaQueries.mobile} {
@@ -56,52 +109,106 @@ const GridContainer = styled.div`
   }
 `
 
-const SponsorLink = styled.a`
-  color: #FFFFFF;
-  font-weight: bold;
+const HackCampHeader = styled(Header2)`
+  font-size: 5rem !important;
+  letter-spacing: -0.5px;
+  font-weight: 900;
+  color: #00455E !important;
+  padding-top: 3rem;
+  padding-bottom: 1rem;
 `
+
+const HackCampSubheader = styled.div`
+  font-size: 1.4rem;
+  color: #00455E;
+`
+
+const HCSub = styled.div`
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #00455E;
+  padding-top: 0.5rem;
+`
+
+const Tent = styled.div`
+  background: url('assets/tent.svg');
+  width: 110px;
+  height: 70px;
+`
+
+// const SponsorLink = styled.a`
+//   color: #FFFFFF;
+//   font-weight: bold;
+// `
 
 export default function Register() {
   const windowWidth = useWindowWidth();
   const mobileBreakpoint = 768;
 
+  const { ref: ref1 } = useParallax({
+    speed: -30,
+  });
+
+  const { ref: ref2 } = useParallax({
+    speed: -20,
+  });
+
+  const { ref: ref3 } = useParallax({
+    speed: -10,
+  });
+
+  // const parallaxOffset = useParallax({
+  //   speed: -30
+  // })
+
   return (
     <BgSectionContainer>
+      <BgScroll ref={ref1} />
+      <MgScroll ref={ref2} />
+      <FgScroll ref={ref3} />
+
       <GridContainer>
         {windowWidth && windowWidth <= mobileBreakpoint ?
           <MobileContainer>
-            <Header1 isGradient background='-webkit-linear-gradient(180deg, #FFD12C 0%, #FE800B 100%)'>nwHacks</Header1>
+            <Tent />
+            <HackCampHeader color="#00455E">HackCamp</HackCampHeader>
             <BodyContainer>
-              <Header3 color='#FFFFFF'>Western Canada’s</Header3>
+              <Header3 color='#FFFFFF'>Western Canada’s largest beginner-friendly hackathon</Header3>
               <Header3 color='#FFFFFF'>largest hackathon</Header3>
-              <Body color='#FFFFFF'>In-person event @ <u>UBC Robert H. Lee Alumni Centre</u></Body>
+              <Body color='#FFFFFF'>In-person event</Body>
             </BodyContainer>
             <MobileButtonContainer>
-              <Button target="_blank" rel="noopener noreferrer" href="https://forms.gle/z8NRDBzewHpMsV7bA" width='259px' height='40px' backgroundColor='linear-gradient(180deg, #FFD12C 0%, #FE800B 100%)' borderRadius='100px' textColor='#224260' borderColor="#FFB72C" isHover isGradientText>
-                Apply Now!
-              </Button>
               <Button target="_blank" rel="noopener noreferrer" href="https://docs.google.com/forms/d/1TdvYy6trgRehIdnVhheaLwowBrGmC3zcNUl8UuoMwrI/edit?usp=sharing" width='259px' height='40px' borderRadius='100px' textColor='#FFB72C' borderColor="#FFB72C" isHover secondary isGradientText isOutline>
-                Be a Mentor!
+                Register Now
               </Button>
-              <SponsorLink href="mailto:sponsorship@nwplus.io?subject=Sponsorship" target="_blank" rel='noreferrer'>Become a Sponsor!</SponsorLink>
+              {/* <SponsorLink href="mailto:sponsorship@nwplus.io?subject=Sponsorship" target="_blank" rel='noreferrer'>Become a Sponsor!</SponsorLink> */}
             </MobileButtonContainer>
           </MobileContainer>
           :
           <MediaContainer>
-            <Header1 isGradient background='linear-gradient(180deg, #FFD12C 0%, #FE800B 100%)'>nwHacks</Header1>
+            <Tent />
+            <HackCampHeader>
+              HackCamp
+            </HackCampHeader>
             <BodyContainer>
-              <Header3 color='#FFFFFF'>Western Canada’s largest hackathon</Header3>
-              <Body color='#FFFFFF'>In-person event @ <u>UBC Robert H. Lee Alumni Centre</u></Body>
+              <HackCampSubheader color='#00455E'>Western Canada’s largest beginner-friendly hackathon</HackCampSubheader>
+              <HCSub color='#00455E'>In-person event</HCSub>
             </BodyContainer>
             <ButtonContainer>
-              <Button target="_blank" rel="noopener noreferrer" href="https://forms.gle/z8NRDBzewHpMsV7bA" width='137px' height='44px' backgroundColor='linear-gradient(180deg, #FFD12C 0%, #FE800B 100%)' borderRadius='100px' textColor='#224260' borderColor="#FFB72C" isHover isGradientText>
-                Apply Now!
-              </Button>
-              <Button target="_blank" rel="noopener noreferrer" href="https://docs.google.com/forms/d/1TdvYy6trgRehIdnVhheaLwowBrGmC3zcNUl8UuoMwrI/edit?usp=sharing" width='137px' height='44px' borderRadius='100px' textColor='#FFB72C' borderColor="#FFB72C" isHover secondary isGradientText isOutline>
-                Be a Mentor!
+              <Button
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://docs.google.com/forms/d/1TdvYy6trgRehIdnVhheaLwowBrGmC3zcNUl8UuoMwrI/edit?usp=sharing"
+                width='175px'
+                height='50px'
+                borderRadius='7px'
+                textColor='#FFFFFF'
+                backgroundColor="#DB693B"
+                isHover>
+                Register Now
               </Button>
               <Body align="center">
-                <SponsorLink href="mailto:sponsorship@nwplus.io?subject=Sponsorship" target="_blank" rel='noreferrer'>Become a Sponsor!</SponsorLink>
+                {/* <SponsorLink href="mailto:sponsorship@nwplus.io?subject=Sponsorship" target="_blank" rel='noreferrer'>Become a Sponsor!</SponsorLink> */}
               </Body>
             </ButtonContainer>
           </MediaContainer>}

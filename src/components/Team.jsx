@@ -303,8 +303,8 @@ const profiles = [
 
 const StyledTitle = styled(Header3)`
   margin-top: 1em;
-  color: ${(p) => p.theme.colors.light};
-  filter: drop-shadow(0 0 4px ${(p) => p.theme.colors.light});
+  color: #E2D6FF;
+  filter: drop-shadow(0 0 4px #E2D6FF);
 `;
 
 const ProfileContent = styled.p`
@@ -319,7 +319,6 @@ const ProfileContent = styled.p`
 `;
 
 const ProfileList = styled.div`
-  height: 110px;
   overflow-x: hidden;
   white-space: nowrap;
 `;
@@ -329,12 +328,12 @@ const ProfileImage = styled.img`
     transform: scale(1.15);
     opacity: 1;
   }
-  width: 80px;
-  height: 80px;
-  border-radius: 1000px;
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
   background-color: ${(p) => p.color};
   object-fit: cover;
-  margin: 8px;
+  margin: 10px 15px;
   transition: all 100ms ease-in-out;
   opacity: 0.69;
   ${(p) => p.theme.mediaQueries.mobile} {
@@ -400,7 +399,7 @@ export default function Team() {
 
   return (
     <>
-      <StyledTitle>Made with 💖 by the nwPlus team</StyledTitle>
+      <StyledTitle>Meet the minds behind HackCamp</StyledTitle>
       <ProfileContent>
         <span>
           <b>{selectedProfile?.name}</b> {selectedProfile?.emoji}

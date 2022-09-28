@@ -6,16 +6,15 @@ import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider';
 const NavBarContainer = styled.nav`
   position: fixed;
   top: 0;
-  z-index: 3;
-  max-width: 1600px;
+  z-index: 999;
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: stretch;
   visibility: ${(p) => p.visibility};
   opacity: ${(p) => p.opacity};
   transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
-  padding: 48px 40px 0;
+  padding: 1.7rem 4rem 0;
 
   ${(p) => p.theme.mediaQueries.mobile} {
     background-color: ${p => p.theme.colors.navbar};
@@ -30,6 +29,7 @@ const NavGroupContainer = styled.div`
   gap: 28px;
   align-items: center;
   justify-content:space-between;
+  width: 100%;
 
   ${(p) => p.theme.mediaQueries.tablet} {
     gap: 5px;
@@ -44,6 +44,7 @@ const NavTextContainer = styled.div`
   display: flex;
   gap: 28px;
   align-items: center;
+  flex-grow: 2;
 
   ${(p) => p.theme.mediaQueries.tablet} {
     gap: 15px;
@@ -89,7 +90,7 @@ const LinkText = styled.a`
 `;
 
 const StyledLinkHeaders = styled.h3`
-  font-size: 1.2em;
+  font-size: 1.14rem;
   font-weight:400;
 `
 
@@ -118,6 +119,7 @@ const PortalButtonContainer = styled.div`
   visibility: ${(p) => p.portalOpen !== null ? 'visible' : 'hidden'};
   opacity: ${(p) => p.portalOpen !== null ? '1' : '0'};
   transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+  justify-self: flex-end;
 `;
 
 const StyledPortalText = styled.div`
@@ -128,16 +130,16 @@ const Button = styled.div`
   position:relative;
   padding:11px 21px;
   border-radius:50px;
-  font-weight:normal;
-  background: #FFFFFF;
-  color: #458192;
+  font-weight: bold;
+  background: linear-gradient(to right, #0DEFE1, #78FF96);
+  color: #2C2543;
 
   &::before {
     display:flex;
     align-items:center;
     justify-content:center;
     content: "Live Portal";
-    color:#1A6C5B;
+    color:#2C2543;
     
     border-radius:50px;
     position: absolute;
@@ -150,7 +152,7 @@ const Button = styled.div`
     transition: opacity 0.25s ease-in-out;
     opacity: 0;
     
-    background: #57EAEF;
+    background: linear-gradient(to right, #00DBCE, #00D88A);
   }
 
   &:hover {
@@ -227,10 +229,10 @@ const PortalButton = ({ portalOpen }) => (
 const MenuList = ({ isMobile, closeDropdown }) => (
   <>
     <MenuItem name='About' href='/#about' isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
-    <MenuItem name='Statistics' href='/#statistics' isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
+    {/* <MenuItem name='Statistics' href='/#statistics' isAnchor isMobile={isMobile} closeDropdown={closeDropdown} /> */}
     <MenuItem name='FAQ' href='/#faq' isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
     <MenuItem name='Sponsors' href='/#sponsors' isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
-    <MenuItem name='2021' href='https://2021.nwhacks.io' target='_blank' rel='noopener' isMobile={isMobile} closeDropdown={closeDropdown} />
+    <MenuItem name='2021' href='https://hackcamp-2021.nwplus.io' target='_blank' rel='noopener' isMobile={isMobile} closeDropdown={closeDropdown} />
   </>
 );
 
@@ -321,8 +323,8 @@ const NavBar = () => {
         </a>
         <NavTextContainer>
           <MenuList />
-          <PortalButton portalOpen={false} />
         </NavTextContainer>
+        <PortalButton portalOpen={false} />
       </NavGroupContainer>
 
       <HamburgerMenu
@@ -330,7 +332,7 @@ const NavBar = () => {
         alt='dropdown menu icon'
         onClick={() => setShowDropdown(true)} />
 
-      <TrustBadge />
+      {/* <TrustBadge /> */}
 
     </NavBarContainer>
   );

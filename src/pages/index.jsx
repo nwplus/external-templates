@@ -9,6 +9,8 @@ import Stats from '@components/Stats';
 import Info from 'src/sections/Info';
 import Register from 'src/sections/Register';
 import Sponsor from 'src/sections/Sponsor'
+import Count from 'src/sections/Count'
+import Learn from 'src/sections/Learn'
 import GlobalStyle from "../theme/GlobalStyle";
 import Faq from '../sections/Faq'
 
@@ -29,9 +31,12 @@ export default function Index({ title }) {
       </Head>
 
       {/* Components Starts */}
+
       <NavBar />
       <Register />
+      <Count />
       <Info />
+      <Learn />
       <Stats />
       <Faq />
       <Sponsor />
@@ -45,7 +50,7 @@ export default function Index({ title }) {
 export async function getStaticProps() {
   return {
     props: {
-      title: "nwHacks 2022"
+      title: "HackCamp 2022"
     }, // will be passed to the page component as props
   }
 }
