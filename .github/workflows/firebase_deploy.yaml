@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       targetedHackathon:
-        description: hackcamp2022_dev
+        description: 'hackcamp2022_dev'
         required: true
   push:
     branches: [cmd-f_dev, cmd-f_main, hackcamp2021_dev, hackcamp2021_main, hackcamp2022_dev, nwhacks2022_dev, nwhacks2022_main]
