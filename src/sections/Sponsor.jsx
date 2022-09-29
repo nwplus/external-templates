@@ -50,6 +50,10 @@ const PushinP = styled.p`
 const Skip = styled.div`
   height: 10rem;
   background: linear-gradient(to bottom, #8C5050, #220639);
+  
+  ${(p) => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 export default function Sponsor() {

@@ -28,7 +28,7 @@ const CaveTop = styled.div`
   
   width: 100%;
   aspect-ratio: 1440/665;
-  height: 120vh;
+  height: 130vh;
   
   a {
     transition: ${p => p.theme.transition.small};
