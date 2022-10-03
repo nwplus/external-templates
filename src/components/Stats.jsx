@@ -3,6 +3,11 @@ import { SectionContainer } from '@lib/Containers'
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
 import { Header2 } from './Typography'
+
+import "animate.css/animate.min.css";
+import { AnimationOnScroll } from 'react-animation-on-scroll';
+
+
 // import { useWindowWidth } from '@react-hook/window-size';
 // import { Body, Header2 } from './Typography'
 // import { SCREEN_BREAKPOINTS } from '../theme/ThemeProvider';
@@ -62,7 +67,6 @@ const MgScroll = styled(SectionContainer)`
 
 `
 
-
 const bop = keyframes`
   0% {
     transform: translate(0, -0%);
@@ -84,22 +88,39 @@ const Crane = styled.img`
     width: 100%;
     object-fit: contain;
     margin: 0;
-    
+    position: relative;
     animation-name: ${bop};
     animation-duration: 8s;
     animation-iteration-count: infinite;
   }
 `
 
+const bopdesktop = keyframes`
+  0% {
+    transform: translate(0, -0%);
+  }
+  50% {
+    transform: translate(0, -10%);
+  }
+  100% {
+    transform: translate(0, -0%);
+  }
+`
+
+
 const Flying = styled(SectionContainer)`
-  background: url('assets/background/stats/foreground.svg');
+  background: url('assets/background/stats/foreground.svg'); // flying dino holding stats
   background-size: 100vw;
   background-repeat: no-repeat;
   background-position: center center;
-  width: 100%;
+  width: 100vw;
   aspect-ratio: 1479 / 400;
   margin: 5rem 0;
   z-index: 15;
+  position: relative;
+  animation-name: ${bopdesktop};
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
 `
 
 const ContentInner = styled.div`
@@ -108,6 +129,7 @@ const ContentInner = styled.div`
   justify-content: center;
   width: 100%;
   align-items: center;
+  overflow-x: hidden;
 `
 
 const StyledTitle = styled(Header2)`
@@ -144,7 +166,11 @@ export default function Stats() {
         <StyledTitle>
           Statistics
         </StyledTitle>
-        <Flying />
+
+        <AnimationOnScroll style={{ zIndex: 15 }} animateIn="animate__fadeInRightBig">
+          <Flying />
+        </AnimationOnScroll>
+
       </ContentInner>
     </BgSectionContainer>
   )
