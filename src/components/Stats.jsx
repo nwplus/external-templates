@@ -1,10 +1,9 @@
+import "animate.css/animate.min.css";
 // import { useParallax } from 'react-scroll-parallax';
 import { SectionContainer } from '@lib/Containers'
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
 import { Header2 } from './Typography'
-
-import "animate.css/animate.min.css";
 import { AnimationOnScroll } from 'react-animation-on-scroll';
 
 
