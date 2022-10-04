@@ -1,11 +1,11 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react'
+import styled from 'styled-components'
 
 const StyledButton = styled.a`
   background: ${p => p.secondary
     ? 'rgba(255, 183, 44, 0.15)'
     : '#DB693B'};
-  ${(p) => p.isOutline ? `border: solid; border-color: ${p.borderColor};` : `border: none;`}
+  ${(p) => p.isOutline ? `border: solid; border-color: ${p.borderColor};` : 'border: none;'}
   margin: 10px;
   color: ${p => p.textColor};
   height: ${p => p.height};
@@ -34,9 +34,9 @@ const StyledButton = styled.a`
       
     }`
   }
-`;
+`
 
-export default function Button({
+export default function Button ({
   backgroundColor,
   textColor,
   height,
@@ -49,7 +49,8 @@ export default function Button({
   secondary = false,
   isHover = false,
   isGradientText = false,
-  isOutline = false, }) {
+  isOutline = false
+}) {
   return (
     <StyledButton
       href={href}

@@ -1,8 +1,8 @@
-import { useParallax } from 'react-scroll-parallax';
-import { Header2 } from "@components/Typography"
-import { SectionContainer } from "@lib/Containers"
-import { useEffect, useState } from "react"
-import styled from "styled-components"
+import { useParallax } from 'react-scroll-parallax'
+import { Header2 } from '@components/Typography'
+import { SectionContainer } from '@lib/Containers'
+import { useEffect, useState } from 'react'
+import styled from 'styled-components'
 
 const InfoContainer = styled.div`
   background: linear-gradient(to bottom, #FEFFCA 0%, #83F6F7 66%, #83F6F7 100%);
@@ -171,40 +171,39 @@ const MobileCountdown = styled.div`
 // blog.greenroots.info
 const getReturnValues = (countDown) => {
   // calculate time left
-  const days = Math.floor(countDown / (1000 * 60 * 60 * 24));
+  const days = Math.floor(countDown / (1000 * 60 * 60 * 24))
   const hours = Math.floor(
     (countDown % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-  );
-  const minutes = Math.floor((countDown % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((countDown % (1000 * 60)) / 1000);
+  )
+  const minutes = Math.floor((countDown % (1000 * 60 * 60)) / (1000 * 60))
+  const seconds = Math.floor((countDown % (1000 * 60)) / 1000)
 
-  return [days, hours, minutes, seconds];
-};
+  return [days, hours, minutes, seconds]
+}
 
 const useCountdown = (targetDate) => {
-  const countDownDate = new Date(targetDate).getTime();
+  const countDownDate = new Date(targetDate).getTime()
 
   const [countDown, setCountDown] = useState(
     countDownDate - new Date().getTime()
-  );
+  )
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCountDown(countDownDate - new Date().getTime());
-    }, 5000);
+      setCountDown(countDownDate - new Date().getTime())
+    }, 5000)
 
-    return () => clearInterval(interval);
-  }, [countDownDate]);
+    return () => clearInterval(interval)
+  }, [countDownDate])
 
-  return getReturnValues(countDown);
-};
+  return getReturnValues(countDown)
+}
 
-export { useCountdown };
+export { useCountdown }
 
 const Count = () => {
-
-  const countDownDate = new Date("Oct 14, 2022 00:00:00").getTime();
-  const [days, hours, minutes] = useCountdown(countDownDate);
+  const countDownDate = new Date('Oct 14, 2022 00:00:00').getTime()
+  const [days, hours, minutes] = useCountdown(countDownDate)
 
   const twoify = (num) => {
     const str = num.toString()
@@ -222,13 +221,12 @@ const Count = () => {
   }
 
   const { ref: ref1 } = useParallax({
-    speed: -20,
-  });
+    speed: -20
+  })
 
   const { ref: ref2 } = useParallax({
-    speed: -10,
-  });
-
+    speed: -10
+  })
 
   return (
     <InfoContainer>

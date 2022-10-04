@@ -1,15 +1,15 @@
 import React from 'react'
-import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import styled from 'styled-components'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faFacebook,
   faInstagram,
   faLinkedinIn,
   faMediumM,
   faTwitter,
-  faYoutube,
-} from '@fortawesome/free-brands-svg-icons';
-import Team from "@components/Team"
+  faYoutube
+} from '@fortawesome/free-brands-svg-icons'
+import Team from '@components/Team'
 
 const CaveTop = styled.div`
   background: url('assets/background/footer/foreground.svg');
@@ -85,13 +85,13 @@ const SocialMediaIcons = styled.div`
     }
     gap: 1rem;
   }
-`;
+`
 
 const Links = styled.div`
   display: flex;
   gap: 2rem;
   font-size: 1.5rem;
-`;
+`
 
 const TextContainer = styled.div`
   display: flex;
@@ -130,8 +130,7 @@ const TeamContainer = styled.div`
   width: 100%;
 `
 
-export default function Footer() {
-
+export default function Footer () {
   return (
     <>
       <CaveTop>

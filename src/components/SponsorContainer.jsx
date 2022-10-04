@@ -45,7 +45,6 @@ const SponsorImg = styled.img`
 `
 
 const SponsorContainer = ({ sponsors }) => {
-
   const Sponsor = ({ link, url }) => (
     <a href={link} target="_blank" rel="noreferrer" style={{
       width: '100%',
@@ -61,13 +60,15 @@ const SponsorContainer = ({ sponsors }) => {
   return (
     <Container id="sponsors">
       <Grid>
-        {sponsors?.length > 0 ? sponsors.map(item => (
+        {sponsors?.length > 0
+          ? sponsors.map(item => (
           <Sponsor {...{
             key: item.name,
             link: item.link,
             url: item.imgURL
           }} />
-        )) : ''}
+          ))
+          : ''}
       </Grid>
     </Container>
   )

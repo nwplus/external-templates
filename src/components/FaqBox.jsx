@@ -9,16 +9,18 @@ const Container = styled.div`
   box-sizing:border-box;
   overflow:hidden;
 
-  ${p => p.expanded ? `
+  ${p => p.expanded
+? `
     border-color: #FFF;
-  ` : `
+  `
+: `
     border-color: #78FF96;
   `}
   
   &:not(:last-child) {
     margin-bottom: 20px;
   }
-`;
+`
 
 const Top = styled.div`
   color:#252525;
@@ -44,7 +46,7 @@ const Top = styled.div`
   &:hover {
     cursor:pointer;
   }
-`;
+`
 
 const AnswerBox = styled.div`
 
@@ -57,13 +59,13 @@ const AnswerBox = styled.div`
   ${p => p.theme.mediaQueries.mobile} {
     font-size: 0.9rem;
   }
-`;
+`
 
 const TopExpand = styled.div`
   display:flex;
   align-items:center;
   transition:0.2s transform cubic-bezier(.6,0,.4,1);
-`;
+`
 
 // style={{ transform: `rotate(${false ? '0deg' : ''});` }}
 
@@ -74,7 +76,7 @@ const Arrow = ({ color }) => (
 )
 
 const FaqBox = ({ question, answer }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false)
 
   return (
     <Container
@@ -93,7 +95,7 @@ const FaqBox = ({ question, answer }) => {
         </div>
       </AnswerBox>
     </Container>
-  );
+  )
 }
 
-export default FaqBox;
+export default FaqBox

@@ -1,7 +1,7 @@
-import { useParallax } from 'react-scroll-parallax';
-import { Header2 } from "@components/Typography"
-import { SectionContainer } from "@lib/Containers"
-import styled, { keyframes } from "styled-components"
+import { useParallax } from 'react-scroll-parallax'
+import { Header2 } from '@components/Typography'
+import { SectionContainer } from '@lib/Containers'
+import styled, { keyframes } from 'styled-components'
 
 const InfoContainer = styled.div`
   background: linear-gradient(to bottom, #83F6F7 0%, #A9D7EF 100%);
@@ -179,18 +179,17 @@ const PushinP = styled.p`
 `
 
 const Info = () => {
-
   const { ref: ref1 } = useParallax({
-    speed: -30,
-  });
+    speed: -30
+  })
 
   const { ref: ref2 } = useParallax({
-    speed: -20,
-  });
+    speed: -20
+  })
 
   const { ref: ref3 } = useParallax({
-    speed: -10,
-  });
+    speed: -10
+  })
 
   return (
     <InfoContainer id="about">

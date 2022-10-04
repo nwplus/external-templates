@@ -1,9 +1,9 @@
-import styled from 'styled-components';
-import { SectionContainer } from '@lib/Containers';
-import SponsorContainer from '@components/SponsorContainer';
-import { Header2 } from '@components/Typography';
-import React, { useEffect, useState } from 'react';
-import fireDb from '@utilities/firebase';
+import styled from 'styled-components'
+import { SectionContainer } from '@lib/Containers'
+import SponsorContainer from '@components/SponsorContainer'
+import { Header2 } from '@components/Typography'
+import React, { useEffect, useState } from 'react'
+import fireDb from '@utilities/firebase'
 
 const BgSectionContainer = styled(SectionContainer)`
   background: url('assets/background/sponsors/background.svg'), linear-gradient(to bottom, #8C5050 0%, #8C5050 70%, #220639 100%) ;
@@ -56,7 +56,7 @@ const Skip = styled.div`
   }
 `
 
-export default function Sponsor() {
+export default function Sponsor () {
   const [sponsors, setSponsors] = useState(null)
 
   useEffect(async () => {
@@ -66,7 +66,8 @@ export default function Sponsor() {
     }
   }, [])
 
-  return sponsors?.length > 0 ? (
+  return sponsors?.length > 0
+    ? (
     <BgSectionContainer>
       <StyledTitle>
         Sponsors
@@ -78,5 +79,6 @@ export default function Sponsor() {
       </PushinP>
       <SponsorContainer sponsors={sponsors} />
     </BgSectionContainer>
-  ) : <Skip />
+      )
+    : <Skip />
 }

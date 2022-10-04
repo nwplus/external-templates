@@ -1,7 +1,7 @@
-import { useParallax } from 'react-scroll-parallax';
-import { Header2 } from "@components/Typography"
-import { SectionContainer } from "@lib/Containers"
-import styled from "styled-components"
+import { useParallax } from 'react-scroll-parallax'
+import { Header2 } from '@components/Typography'
+import { SectionContainer } from '@lib/Containers'
+import styled from 'styled-components'
 
 const InfoContainer = styled.div`
   background: linear-gradient(to bottom, #A9D7EF 0%, #ADDBF3 100%);
@@ -71,7 +71,6 @@ const FgScroll = styled(SectionContainer)`
     background: none;
   }
 `
-
 
 const TextContainer = styled.div`
   display: flex;
@@ -173,18 +172,17 @@ const CardContent = styled.p`
 `
 
 const Learn = () => {
-
   const { ref: ref1 } = useParallax({
-    speed: -25,
-  });
+    speed: -25
+  })
 
   const { ref: ref2 } = useParallax({
-    speed: -20,
-  });
+    speed: -20
+  })
 
   const { ref: ref3 } = useParallax({
-    speed: -5,
-  });
+    speed: -5
+  })
 
   return (
     <InfoContainer id="about">
@@ -206,7 +204,7 @@ const Learn = () => {
             {
               title: 'Learn',
               date: 'Oct. 29, 2022',
-              text: `A day of workshops and skill building. From web development to machine learning, we'll have something for you`
+              text: 'A day of workshops and skill building. From web development to machine learning, we\'ll have something for you'
             },
             {
               title: 'Build',

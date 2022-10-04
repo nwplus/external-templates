@@ -1,7 +1,7 @@
 // import { useParallax } from 'react-scroll-parallax';
 import styled from 'styled-components'
 import { useState, useEffect } from 'react'
-import { SectionContainer } from "@lib/Containers"
+import { SectionContainer } from '@lib/Containers'
 import fireDb from '@utilities/firebase'
 import { Header2 } from '@components/Typography'
 import FaqBox from '../components/FaqBox'
@@ -98,7 +98,7 @@ const FaqGrid = styled.div`
     margin-top: 100px;
     padding-bottom: 4rem;
   }
-`;
+`
 
 // for proper grid positioning
 const FaqColumn = styled.div`
@@ -112,14 +112,14 @@ const FaqColumn = styled.div`
       margin-top: 24px;
     }
   }
-`;
+`
 
 // Collection -> questions of specific category
 const CollectionContainer = styled.div`
   text-align:center;
   display:flex;
   flex-direction:column;
-`;
+`
 
 const CollectionName = styled.div`
   color:#0E304B;
@@ -130,7 +130,7 @@ const CollectionName = styled.div`
   ${p => p.theme.mediaQueries.mobile} {
     font-size: 1.2rem;
   }
-`;
+`
 
 const StyledTitle = styled(Header2)`
   text-align: center;
@@ -149,33 +149,32 @@ const FaqCollection = ({ category, faqs }) => (
 
     {faqs.map(q => <FaqBox key={q.question} question={q.question} answer={q.answer} />)}
   </CollectionContainer>
-);
+)
 
 const Faq = () => {
-  const [faqData, setFaqData] = useState(null);
+  const [faqData, setFaqData] = useState(null)
 
   // (@htdf processData)
   // (@signature (listof FAQ) -> Object)
   // produces a dict where key = category, value = array of questions from an array of FAQ objects
-  function processData(data) {
-    // categorize questions 
+  function processData (data) {
+    // categorize questions
 
-    const categories = {};
+    const categories = {}
     data.forEach((faq) => {
       if (!categories[faq.category]) {
-        categories[faq.category] = [];
+        categories[faq.category] = []
       }
-      categories[faq.category].push(faq);
-    });
-    return categories;
+      categories[faq.category].push(faq)
+    })
+    return categories
   }
 
   useEffect(async () => {
-    const data = await fireDb.getCollection('HackCamp2022', 'FAQ');
-    const processedData = processData(data);
-    setFaqData(processedData);
+    const data = await fireDb.getCollection('HackCamp2022', 'FAQ')
+    const processedData = processData(data)
+    setFaqData(processedData)
   }, [])
-
 
   // const { ref: ref1 } = useParallax({
   //   speed: -20,
@@ -195,7 +194,8 @@ const Faq = () => {
           FAQ
         </StyledTitle>
 
-        {faqData ? (
+        {faqData
+          ? (
           <FaqGrid>
 
             <FaqColumn>
@@ -214,11 +214,12 @@ const Faq = () => {
             </FaqColumn>
 
           </FaqGrid>
-        ) : 'loading...'}
+            )
+          : 'loading...'}
 
       </Wrapper>
     </BgSectionContainer>
-  );
+  )
 }
 
-export default Faq;
+export default Faq

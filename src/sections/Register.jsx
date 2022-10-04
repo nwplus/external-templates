@@ -1,9 +1,9 @@
-import { useParallax } from 'react-scroll-parallax';
+import { useParallax } from 'react-scroll-parallax'
 // import { useWindowWidth } from '@react-hook/window-size';
-import styled from 'styled-components';
-import { SectionContainer } from '@lib/Containers';
-import { Body, Header2 } from '@components/Typography';
-import Button from '@components/Button';
+import styled from 'styled-components'
+import { SectionContainer } from '@lib/Containers'
+import { Body, Header2 } from '@components/Typography'
+import Button from '@components/Button'
 
 const BgSectionContainer = styled(SectionContainer)`
   background: linear-gradient(to bottom, rgba(48,242,207,1) 0%, rgba(217,252,188,1) 33%, rgba(253,217,158,1) 100%);
@@ -176,22 +176,22 @@ const Tent = styled.div`
 //   font-weight: bold;
 // `
 
-export default function Register() {
+export default function Register () {
   // not using these hooks because they don't work on initial load -> better practice to pass an isMobile props from getServerSideProps after checking userAgent
   // const windowWidth = useWindowWidth();
   // const mobileBreakpoint = 768;
 
   const { ref: ref1 } = useParallax({
-    speed: -30,
-  });
+    speed: -30
+  })
 
   const { ref: ref2 } = useParallax({
-    speed: -20,
-  });
+    speed: -20
+  })
 
   const { ref: ref3 } = useParallax({
-    speed: -10,
-  });
+    speed: -10
+  })
 
   // const parallaxOffset = useParallax({
   //   speed: -30

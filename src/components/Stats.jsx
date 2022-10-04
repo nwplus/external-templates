@@ -1,11 +1,10 @@
-import "animate.css/animate.min.css";
+import 'animate.css/animate.min.css'
 // import { useParallax } from 'react-scroll-parallax';
 import { SectionContainer } from '@lib/Containers'
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
 import { Header2 } from './Typography'
-import { AnimationOnScroll } from 'react-animation-on-scroll';
-
+import { AnimationOnScroll } from 'react-animation-on-scroll'
 
 // import { useWindowWidth } from '@react-hook/window-size';
 // import { Body, Header2 } from './Typography'
@@ -106,7 +105,6 @@ const bopdesktop = keyframes`
   }
 `
 
-
 const Flying = styled(SectionContainer)`
   background: url('assets/background/stats/foreground.svg'); // flying dino holding stats
   background-size: 100vw;
@@ -143,7 +141,7 @@ const StyledTitle = styled(Header2)`
   }
 `
 
-export default function Stats() {
+export default function Stats () {
   // const windowWidth = useWindowWidth();
   // const mobileBreakpoint = SCREEN_BREAKPOINTS.mobile;
 
