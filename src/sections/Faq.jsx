@@ -1,7 +1,7 @@
 // import { useParallax } from 'react-scroll-parallax';
 import styled from 'styled-components'
 import { useState, useEffect } from 'react'
-import { SectionContainer } from "@lib/Containers"
+import { SectionContainer } from '@lib/Containers'
 import fireDb from '@utilities/firebase'
 import { Header2 } from '@components/Typography'
 import FaqBox from '../components/FaqBox'
@@ -21,8 +21,9 @@ const BgSectionContainer = styled(SectionContainer)`
   background: linear-gradient(to bottom, #F2B491, #8C5050);
   
   ${p => p.theme.mediaQueries.mobile} {
-    background: url('assets/background/faq-top-mobile.png') top/100vw no-repeat, 
-                linear-gradient(to bottom, #F2B491, #8C5050);
+    background: url('assets/mobile/faq/background.svg') #8C5050;
+    aspect-ratio: auto;
+    background-repeat: no-repeat;
   }
 `
 
@@ -40,6 +41,10 @@ const MgScroll = styled(SectionContainer)`
   height: 100%;
   aspect-ratio: 1440/1723;
   
+  ${p => p.theme.mediaQueries.mobile} {
+    background: none;
+    aspect-ratio: 482/1344;
+  }
 `
 
 const FgScroll = styled(SectionContainer)`
@@ -55,6 +60,11 @@ const FgScroll = styled(SectionContainer)`
   width: 100%;
   aspect-ratio: 1440/1723;
   height: 100%;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    background: none;
+    aspect-ratio: 482/1344;
+  }
 `
 
 const Wrapper = styled.div`
@@ -63,11 +73,13 @@ const Wrapper = styled.div`
   margin: 0 auto;
   width: 75vw;
   min-width: 900px;
+  max-width: 1200px;
   z-index: 88;
   position: relative;
   
   ${p => p.theme.mediaQueries.mobile} {
     grid-column: 2 / span 12;
+    min-width: 0;
   }
 `
 
@@ -84,8 +96,9 @@ const FaqGrid = styled.div`
     flex-direction: column;
     gap: 24px;
     margin-top: 100px;
+    padding-bottom: 4rem;
   }
-`;
+`
 
 // for proper grid positioning
 const FaqColumn = styled.div`
@@ -99,14 +112,14 @@ const FaqColumn = styled.div`
       margin-top: 24px;
     }
   }
-`;
+`
 
 // Collection -> questions of specific category
 const CollectionContainer = styled.div`
   text-align:center;
   display:flex;
   flex-direction:column;
-`;
+`
 
 const CollectionName = styled.div`
   color:#0E304B;
@@ -117,7 +130,7 @@ const CollectionName = styled.div`
   ${p => p.theme.mediaQueries.mobile} {
     font-size: 1.2rem;
   }
-`;
+`
 
 const StyledTitle = styled(Header2)`
   text-align: center;
@@ -126,7 +139,7 @@ const StyledTitle = styled(Header2)`
   padding-top: 5rem;
 
   ${(p) => p.theme.mediaQueries.mobile} {
-    font-size: 2em;
+    font-size: 3.8em;
   }
 `
 
@@ -136,33 +149,32 @@ const FaqCollection = ({ category, faqs }) => (
 
     {faqs.map(q => <FaqBox key={q.question} question={q.question} answer={q.answer} />)}
   </CollectionContainer>
-);
+)
 
 const Faq = () => {
-  const [faqData, setFaqData] = useState(null);
+  const [faqData, setFaqData] = useState(null)
 
   // (@htdf processData)
   // (@signature (listof FAQ) -> Object)
   // produces a dict where key = category, value = array of questions from an array of FAQ objects
-  function processData(data) {
-    // categorize questions 
+  function processData (data) {
+    // categorize questions
 
-    const categories = {};
+    const categories = {}
     data.forEach((faq) => {
       if (!categories[faq.category]) {
-        categories[faq.category] = [];
+        categories[faq.category] = []
       }
-      categories[faq.category].push(faq);
-    });
-    return categories;
+      categories[faq.category].push(faq)
+    })
+    return categories
   }
 
   useEffect(async () => {
-    const data = await fireDb.getCollection('nwHacks2022', 'FAQ');
-    const processedData = processData(data);
-    setFaqData(processedData);
+    const data = await fireDb.getCollection('HackCamp2022', 'FAQ')
+    const processedData = processData(data)
+    setFaqData(processedData)
   }, [])
-
 
   // const { ref: ref1 } = useParallax({
   //   speed: -20,
@@ -182,7 +194,8 @@ const Faq = () => {
           FAQ
         </StyledTitle>
 
-        {faqData ? (
+        {faqData
+          ? (
           <FaqGrid>
 
             <FaqColumn>
@@ -201,11 +214,12 @@ const Faq = () => {
             </FaqColumn>
 
           </FaqGrid>
-        ) : 'loading...'}
+            )
+          : 'loading...'}
 
       </Wrapper>
     </BgSectionContainer>
-  );
+  )
 }
 
-export default Faq;
+export default Faq

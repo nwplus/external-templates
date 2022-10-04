@@ -13,7 +13,7 @@ if (!firebase.apps.length) {
     projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
     storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
     messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
-    appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+    appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID
   }
   firebase.initializeApp(config)
 }
@@ -62,7 +62,7 @@ const fireDb = {
   updateConfig: async hackathon => {
     const ref = db.collection(HACKATHONS).doc(hackathon)
     await ref.update(buildConfig)
-  },
+  }
 }
 
 export default fireDb
