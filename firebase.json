@@ -46,6 +46,24 @@
       ]
     },
     {
+      "target": "hackcamp2022_dev",
+      "public": "out",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ]
+    },
+    {
+      "target": "hackcamp2022_main",
+      "public": "out",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ]
+    },
+    {
       "target": "nwhacks2022_dev",
       "public": "out",
       "ignore": [

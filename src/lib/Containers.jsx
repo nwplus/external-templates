@@ -7,7 +7,7 @@ import { TABLET } from '@constants/measurements'
 
 // Basic section container
 export const SectionContainer = styled.div.attrs(props => ({
-  id: props?.id,
+  id: props?.id
 }))`
   font-family: 'DM Sans', sans-serif;
   width: ${p => p.width};

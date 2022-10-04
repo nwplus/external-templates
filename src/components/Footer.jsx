@@ -1,58 +1,55 @@
 import React from 'react'
-import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import styled from 'styled-components'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faFacebook,
   faInstagram,
   faLinkedinIn,
   faMediumM,
   faTwitter,
-  faYoutube,
-} from '@fortawesome/free-brands-svg-icons';
-import Team from "@components/Team"
-
-const Container = styled.div`
-  position: relative;
-  
-  width: 100%;
-  aspect-ratio: 1440/1390;
-  
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  
-  a {
-    transition: ${p => p.theme.transition.small};
-    color: #2C2543;
-    :hover {
-      cursor: pointer;
-      color: ${p => p.theme.colors.primary};
-    }
-  }
-`
+  faYoutube
+} from '@fortawesome/free-brands-svg-icons'
+import Team from '@components/Team'
 
 const CaveTop = styled.div`
   background: url('assets/background/footer/foreground.svg');
-  background-size: 100vw;
+  background-size: 100%;
   background-repeat: no-repeat;
-  background-position: center bottom;
+  background-position: center top;
   
   display: flex;
   justify-content: center;
   align-items: center;
 
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
-  z-index: 1;
+  z-index: 997;
   
   width: 100%;
-  aspect-ratio: 1440/1390;
+  aspect-ratio: 1440/665;
+  height: 145vh;
+  
+  a {
+    transition: ${p => p.theme.transition.small};
+    color: #5C1B59;
+    :hover {
+      cursor: pointer;
+      color: #014C58;
+    }
+  }
+
+  ${(p) => p.theme.mediaQueries.mobile} {
+    background: url('assets/mobile/footer/foreground.svg');
+    background-repeat: no-repeat;
+    aspect-ratio: 428/377;
+  }
+
 `
 
 const CaveBottom = styled.div`
   background: url('assets/background/footer/background.svg'), linear-gradient(to bottom, #220639, #AC306C);
-  background-size: 100vw;
+  background-size: 100%;
   background-repeat: no-repeat;
   background-position: center bottom;
   overflow-y: hidden;
@@ -64,6 +61,13 @@ const CaveBottom = styled.div`
 
   width: 100%;
   aspect-ratio: 1440/1390;
+  
+  ${(p) => p.theme.mediaQueries.mobile} {
+    background: url('assets/mobile/footer/background.svg');
+    background-repeat: no-repeat;
+    aspect-ratio: 428/1237;
+  }
+  
 `
 
 const SocialMediaIcons = styled.div`
@@ -74,13 +78,20 @@ const SocialMediaIcons = styled.div`
     width: 50px;
   }
   gap: 2rem;
-`;
+  
+  ${(p) => p.theme.mediaQueries.mobile} {
+    a {
+      width: 25px;
+    }
+    gap: 1rem;
+  }
+`
 
 const Links = styled.div`
   display: flex;
   gap: 2rem;
   font-size: 1.5rem;
-`;
+`
 
 const TextContainer = styled.div`
   display: flex;
@@ -91,8 +102,9 @@ const TextContainer = styled.div`
   padding-top: 15rem;
   gap: 1rem;
   color: #2C2543;
-  position: fixed;
-  bottom: calc(50vh + 10rem);
+  position: absolute;
+  z-index: 999;
+  bottom: 50vh;
 `
 
 const SmallText = styled.div`
@@ -118,12 +130,10 @@ const TeamContainer = styled.div`
   width: 100%;
 `
 
-export default function Footer() {
+export default function Footer () {
   return (
-    <Container>
-      <CaveTop />
-      <CaveBottom>
-
+    <>
+      <CaveTop>
         <TextContainer>
           <SocialMediaIcons>
             <a
@@ -177,7 +187,8 @@ export default function Footer() {
         <TeamContainer>
           <Team />
         </TeamContainer>
-      </CaveBottom>
-    </Container>
+      </CaveTop>
+      <CaveBottom />
+    </>
   )
 }

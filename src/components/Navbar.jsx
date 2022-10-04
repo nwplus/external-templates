@@ -1,7 +1,7 @@
 
-import { useState, useEffect } from 'react';
-import styled from 'styled-components';
-import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider';
+import { useState, useEffect } from 'react'
+import styled from 'styled-components'
+import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
 
 const NavBarContainer = styled.nav`
   position: fixed;
@@ -19,10 +19,10 @@ const NavBarContainer = styled.nav`
   ${(p) => p.theme.mediaQueries.mobile} {
     background-color: ${p => p.theme.colors.navbar};
     padding: 24px 40px 0;
-    z-index:10;
+    z-index:999;
     justify-content:flex-end;
   }
-`;
+`
 
 const NavGroupContainer = styled.div`
   display: flex;
@@ -38,7 +38,7 @@ const NavGroupContainer = styled.div`
   ${(p) => p.theme.mediaQueries.mobile} {
     display:none;
   }
-`;
+`
 
 const NavTextContainer = styled.div`
   display: flex;
@@ -53,18 +53,17 @@ const NavTextContainer = styled.div`
   ${(p) => p.theme.mediaQueries.mobile} {
     display: none;
   }
-`;
+`
 
 const NwPlusLogo = styled.img`
   max-height:50px;
   margin-right: 18px;
 
   ${(p) => p.theme.mediaQueries.mobile} {
-    width: 21.89px;
+    width: 50px;
     margin-right: 0;
-    margin-bottom: 30px;
   }
-`;
+`
 
 const LinkText = styled.a`
   color: ${(p) => p.theme.colors.text};
@@ -87,7 +86,7 @@ const LinkText = styled.a`
       width: 100%;
     }
   }
-`;
+`
 
 const StyledLinkHeaders = styled.h3`
   font-size: 1.14rem;
@@ -100,33 +99,36 @@ const HamburgerMenu = styled.img`
     display: block;
     width: 30px;
   }
-`;
+`
 
 const DropDownContentContainer = styled.div`
   position: fixed;
   top:0;
-  z-index: 3;
+  z-index: 998;
   padding: 30px 40px 24px 40px;
   display: flex;  
   flex-direction: column;
   align-items: center;
   gap: 24px;
   width: 100%;
-  background: ${p => p.theme.colors.mobileBackground};
-`;
+  background: #002F4D;
+`
 
 const PortalButtonContainer = styled.div`
   visibility: ${(p) => p.portalOpen !== null ? 'visible' : 'hidden'};
   opacity: ${(p) => p.portalOpen !== null ? '1' : '0'};
   transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
   justify-self: flex-end;
-`;
+  user-select: none;
+`
 
 const StyledPortalText = styled.div`
   color: ${p => p.disabled && p.theme.colors.disabledText};
-`;
+`
 
-const Button = styled.div`
+const Button = styled.a`
+  display: table;
+  text-decoration: none;
   position:relative;
   padding:11px 21px;
   border-radius:50px;
@@ -155,57 +157,51 @@ const Button = styled.div`
     background: linear-gradient(to right, #00DBCE, #00D88A);
   }
 
-  &:hover {
-    cursor:pointer;
-  }
-
   &:hover::before {
     opacity: 1;
   }
-`;
 
-const Badge = styled.div`
-  position:fixed;
-  top:0;
-  right:40px;
-  width:70px;
-  z-index:900;
-  
-  ${(p) => p.theme.mediaQueries.mobile} {
-    left:25px;
-    width:40px;
-  }
-`;
+  ${p => !p.disabled && `
+    &:hover {
+      cursor:pointer;
+    }
+  `}
 
-const MLHBadge = styled.img`
-  width:100%;
-`;
+  ${p => p.disabled && `
+    display: none;
+    cursor: default;
+
+    &:hover::before {
+      opacity: 0;
+    }
+  `}
+`
 
 const MenuItem = ({ name, href, isAnchor, target, rel, isMobile, closeDropdown }) => {
-  const [anchorTarget, setAnchorTarget] = useState(null);
+  const [anchorTarget, setAnchorTarget] = useState(null)
 
   useEffect(() => {
     if (isAnchor) {
-      setAnchorTarget(document.getElementById(href));
+      setAnchorTarget(document.getElementById(href))
     }
-  }, [href]);
+  }, [href])
 
   const handleClick = (event) => {
     if (isAnchor && anchorTarget) {
-      event.preventDefault();
-      anchorTarget.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      event.preventDefault()
+      anchorTarget.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }
     if (isMobile) {
-      closeDropdown(false);
+      closeDropdown(false)
     }
-  };
+  }
 
   return (
     <LinkText href={href} onClick={handleClick} target={target} rel={rel}>
       <StyledLinkHeaders>{name}</StyledLinkHeaders>
     </LinkText>
-  );
-};
+  )
+}
 
 const PortalButton = ({ portalOpen }) => (
   <PortalButtonContainer portalOpen={portalOpen}>
@@ -232,59 +228,50 @@ const MenuList = ({ isMobile, closeDropdown }) => (
     {/* <MenuItem name='Statistics' href='/#statistics' isAnchor isMobile={isMobile} closeDropdown={closeDropdown} /> */}
     <MenuItem name='FAQ' href='/#faq' isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
     <MenuItem name='Sponsors' href='/#sponsors' isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
-    <MenuItem name='2021' href='https://hackcamp-2021.nwplus.io' target='_blank' rel='noopener' isMobile={isMobile} closeDropdown={closeDropdown} />
+    <MenuItem name='2021' href='https://hackcamp2021.nwplus.io' target='_blank' rel='noopener' isMobile={isMobile} closeDropdown={closeDropdown} />
   </>
-);
-
-const TrustBadge = () => (
-  <Badge>
-    <a id="mlh-trust-badge" href="https://mlh.io/seasons/2022/events?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2022-season&utm_content=black" rel="noreferrer" target="_blank">
-      <MLHBadge alt="Major League Hacking 2022 Hackathon Season" src="https://s3.amazonaws.com/logged-assets/trust-badge/2022/mlh-trust-badge-2022-white.svg" />
-    </a>
-  </Badge>
-);
+)
 
 const NavBar = () => {
-  const [showDropdown, setShowDropdown] = useState(false);
-  const [visibility, setVisibility] = useState('visible');
-  const [opacity, setOpacity] = useState('1');
+  const [showDropdown, setShowDropdown] = useState(false)
+  const [visibility, setVisibility] = useState('visible')
+  const [opacity, setOpacity] = useState('1')
 
   const handleResize = () => {
     if (window.innerWidth >= SCREEN_BREAKPOINTS.mobile) {
-      setShowDropdown(false);
+      setShowDropdown(false)
     }
-  };
+  }
 
   const handleScroll = () => {
-    let lastScroll = 0;
+    let lastScroll = 0
     return () => {
-      const scroll = window.pageYOffset || document.documentElement.scrollTop;
+      const scroll = window.pageYOffset || document.documentElement.scrollTop
       if (scroll <= 0) {
-        setVisibility('visible');
-        setOpacity('1');
+        setVisibility('visible')
+        setOpacity('1')
       } else if (scroll > lastScroll) {
-        setVisibility('hidden');
-        setOpacity('0');
+        setVisibility('hidden')
+        setOpacity('0')
       } else {
-        setVisibility('visible');
-        setOpacity('1');
+        setVisibility('visible')
+        setOpacity('1')
       }
-      lastScroll = scroll;
-    };
-  };
+      lastScroll = scroll
+    }
+  }
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll());
-    window.addEventListener('resize', handleResize);
+    window.addEventListener('scroll', handleScroll())
+    window.addEventListener('resize', handleResize)
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
+      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
 
   if (showDropdown) {
-
     // Mobile version
     return (
       <>
@@ -299,17 +286,17 @@ const NavBar = () => {
         <DropDownContentContainer>
           <a href='/'>
             <NwPlusLogo
-              src='/assets/logo/nwPlus_Logo.svg'
-              alt='nwPlus club logo in white'
+              src='/assets/tent.svg'
+              alt='HackCamp logo'
             />
           </a>
           <MenuList isMobile={showDropdown} closeDropdown={setShowDropdown} />
           <PortalButton portalOpen={false} />
         </DropDownContentContainer>
 
-        <TrustBadge />
+        {/* <TrustBadge /> */}
       </>
-    );
+    )
   }
 
   // Only for desktop version
@@ -335,7 +322,7 @@ const NavBar = () => {
       {/* <TrustBadge /> */}
 
     </NavBarContainer>
-  );
-};
+  )
+}
 
-export default NavBar;
+export default NavBar

@@ -1,22 +1,22 @@
 import Head from 'next/head'
 import React from 'react'
 // import fireDb from '@utilities/firebase'
-import { SectionContainer } from '@lib/Containers'
+// import { SectionContainer } from '@lib/Containers'
 import NavBar from '@components/Navbar'
 // import Stats from '@components/Stats'
-import Footer from "@components/Footer"
-import Stats from '@components/Stats';
-import Info from 'src/sections/Info';
-import Register from 'src/sections/Register';
+import Footer from '@components/Footer'
+import Stats from '@components/Stats'
+import Info from 'src/sections/Info'
+import Register from 'src/sections/Register'
 import Sponsor from 'src/sections/Sponsor'
 import Count from 'src/sections/Count'
 import Learn from 'src/sections/Learn'
-import GlobalStyle from "../theme/GlobalStyle";
+import GlobalStyle from '../theme/GlobalStyle'
 import Faq from '../sections/Faq'
 
-export default function Index({ title }) {
+export default function Index ({ title }) {
   return (
-    <SectionContainer>
+    <>
       <GlobalStyle />
       <Head>
         {/* Remove comment once title is set */}
@@ -25,9 +25,11 @@ export default function Index({ title }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
           name="description"
-          content="nwHacks 2022 is the largest hackathon in Western Canada, located at the University of British Columbia in Vancouver, BC. Be part of this amazing gathering of developers, engineers, and designers from around the world. nwHacks is part of nwPlus, a team committed to supporting tech communities in BC and beyond."
+          content="This year, we are bringing you a 2-day in-person event where
+          participants can learn new skills, connect with fellow tech
+          enthusiasts, and build solutions to tackle challenges together."
         />
-        <meta property="og:image" content="/nwhacks-metaimage.png" />
+        <meta property="og:image" content="/hc-og.png" />
       </Head>
 
       {/* Components Starts */}
@@ -43,14 +45,14 @@ export default function Index({ title }) {
       <Footer />
       {/* Components Ends */}
 
-    </SectionContainer >
+    </>
   )
 }
 
-export async function getStaticProps() {
+export async function getStaticProps () {
   return {
     props: {
-      title: "HackCamp 2022"
-    }, // will be passed to the page component as props
+      title: 'HackCamp 2022'
+    } // will be passed to the page component as props
   }
 }
