@@ -203,7 +203,7 @@ const Learn = () => {
           {[
             {
               title: 'Learn',
-              date: 'Oct. 29, 2022',
+              date: 'Nov. 5, 2022',
               text: 'A day of workshops and skill building. From web development to machine learning, we\'ll have something for you'
             },
             {
