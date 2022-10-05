@@ -176,7 +176,7 @@ const Tent = styled.div`
 //   font-weight: bold;
 // `
 
-export default function Register () {
+export default function Register() {
   // not using these hooks because they don't work on initial load -> better practice to pass an isMobile props from getServerSideProps after checking userAgent
   // const windowWidth = useWindowWidth();
   // const mobileBreakpoint = 768;
@@ -211,7 +211,7 @@ export default function Register () {
           </HackCampHeader>
           <BodyContainer>
             <HackCampSubheader color='#00455E'>Western Canada’s largest beginner-friendly hackathon</HackCampSubheader>
-            <HCSub color='#00455E'>In-person event</HCSub>
+            <HCSub color='#00455E'>In-person event on November 5 to 6</HCSub>
           </BodyContainer>
           <ButtonContainer>
             <Button
@@ -224,7 +224,7 @@ export default function Register () {
               textColor='#FFFFFF'
               backgroundColor="#DB693B"
               isHover>
-              Register Now
+              Apply Now
             </Button>
             <Body align="center">
               {/* <SponsorLink href="mailto:sponsorship@nwplus.io?subject=Sponsorship" target="_blank" rel='noreferrer'>Become a Sponsor!</SponsorLink> */}

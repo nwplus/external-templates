@@ -82,6 +82,13 @@ const StyledTitle = styled(Header2)`
   }
 `
 
+const StyledDescription = styled.p`
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-align: center;
+  color: rgb(54, 28, 28);
+`
+
 const CountdownContainer = styled.div`
   display: flex;
   justify-content: space-between;
@@ -234,7 +241,9 @@ const Count = () => {
       <MgScroll ref={ref2} />
 
       <TextContainer>
-        <StyledTitle>Registration Closes</StyledTitle>
+        <StyledTitle>Applications Close on October 14</StyledTitle>
+        {/* <StyledDescription>on October 14</StyledDescription> */}
+
         <MobileCountdown>
           <ShadowText text={`${count.days[0]}${count.days[1]} : ${count.hours[0]}${count.hours[1]} : ${count.minutes[0]}${count.minutes[1]}`}>
             {`${count.days[0]}${count.days[1]} : ${count.hours[0]}${count.hours[1]} : ${count.minutes[0]}${count.minutes[1]}`}
