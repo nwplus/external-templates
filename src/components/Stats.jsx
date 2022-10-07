@@ -118,6 +118,10 @@ const Flying = styled(SectionContainer)`
   animation-name: ${bopdesktop};
   animation-duration: 4s;
   animation-iteration-count: infinite;
+  margin-left: 50px;
+  ${(p) => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const ContentInner = styled.div`
@@ -141,7 +145,7 @@ const StyledTitle = styled(Header2)`
   }
 `
 
-export default function Stats () {
+export default function Stats() {
   // const windowWidth = useWindowWidth();
   // const mobileBreakpoint = SCREEN_BREAKPOINTS.mobile;
 
