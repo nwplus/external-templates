@@ -82,6 +82,17 @@ const StyledTitle = styled(Header2)`
   }
 `
 
+const HCSub = styled.div`
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-align: center;
+  color: #361C1C;
+  padding-top: 1rem;
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: 1rem;
+  }
+`
+
 const CountdownContainer = styled.div`
   display: flex;
   justify-content: space-between;
@@ -202,7 +213,7 @@ const useCountdown = (targetDate) => {
 export { useCountdown }
 
 const Count = () => {
-  const countDownDate = new Date('Oct 14, 2022 00:00:00').getTime()
+  const countDownDate = new Date('Oct 15, 2022 00:00:00').getTime()
   const [days, hours, minutes] = useCountdown(countDownDate)
 
   const twoify = (num) => {
@@ -234,7 +245,8 @@ const Count = () => {
       <MgScroll ref={ref2} />
 
       <TextContainer>
-        <StyledTitle>Registration Closes</StyledTitle>
+        <StyledTitle>Applications Close on October 14</StyledTitle>
+        {/* <HCSub color='#00455E'>Closes on October 14</HCSub> */}
         <MobileCountdown>
           <ShadowText text={`${count.days[0]}${count.days[1]} : ${count.hours[0]}${count.hours[1]} : ${count.minutes[0]}${count.minutes[1]}`}>
             {`${count.days[0]}${count.days[1]} : ${count.hours[0]}${count.hours[1]} : ${count.minutes[0]}${count.minutes[1]}`}

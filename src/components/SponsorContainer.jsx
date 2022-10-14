@@ -37,7 +37,7 @@ const SponsorImg = styled.img`
   height: 100%;
   width: 100%;
   border: none;
-  object-fit: cover;
+  object-fit: contain;
 
   ${(p) => p.theme.mediaQueries.mobile} {
     
@@ -62,11 +62,11 @@ const SponsorContainer = ({ sponsors }) => {
       <Grid>
         {sponsors?.length > 0
           ? sponsors.map(item => (
-          <Sponsor {...{
-            key: item.name,
-            link: item.link,
-            url: item.imgURL
-          }} />
+            <Sponsor {...{
+              key: item.name,
+              link: item.link,
+              url: item.imgURL
+            }} />
           ))
           : ''}
       </Grid>

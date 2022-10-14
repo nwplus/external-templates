@@ -90,13 +90,6 @@ const profiles = [
     title: 'Marketing Coordinator'
   },
   {
-    img: '/assets/profiles/Christopher_Tse.png',
-    name: 'Christopher Tse',
-    emoji: '🐯',
-    color: '#FFFFFF',
-    title: 'nwHacks Logistics Coordinator'
-  },
-  {
     img: '/assets/profiles/Daphne_Tian.png',
     name: 'Daphne Tian',
     emoji: '🐅',
@@ -251,13 +244,6 @@ const profiles = [
     title: 'Design Coordinator'
   },
   {
-    img: '/assets/profiles/Phoenix_Liu.png',
-    name: 'Phoenix Liu',
-    emoji: '🕊',
-    color: '#FFA7A7',
-    title: 'Development Coordinator'
-  },
-  {
     img: '/assets/profiles/Samantha_Tseng.png',
     name: 'Samantha Tseng',
     emoji: '✨',
@@ -360,7 +346,7 @@ let lastTime = -1
 let accumulateTime = -1
 const MAX_SPEED = 2
 
-export default function Team () {
+export default function Team() {
   const [animator, setAnimator] = useState()
   const [selectedProfile, setSelectedProfile] = useState(null)
   const [accel, setAccel] = useState(1)

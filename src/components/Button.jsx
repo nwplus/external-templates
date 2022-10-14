@@ -4,7 +4,7 @@ import styled from 'styled-components'
 const StyledButton = styled.a`
   background: ${p => p.secondary
     ? 'rgba(255, 183, 44, 0.15)'
-    : '#DB693B'};
+    : p.backgroundColor};
   ${(p) => p.isOutline ? `border: solid; border-color: ${p.borderColor};` : 'border: none;'}
   margin: 10px;
   color: ${p => p.textColor};
@@ -36,7 +36,7 @@ const StyledButton = styled.a`
   }
 `
 
-export default function Button ({
+export default function Button({
   backgroundColor,
   textColor,
   height,

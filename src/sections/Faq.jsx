@@ -157,7 +157,7 @@ const Faq = () => {
   // (@htdf processData)
   // (@signature (listof FAQ) -> Object)
   // produces a dict where key = category, value = array of questions from an array of FAQ objects
-  function processData (data) {
+  function processData(data) {
     // categorize questions
 
     const categories = {}
@@ -196,25 +196,25 @@ const Faq = () => {
 
         {faqData
           ? (
-          <FaqGrid>
+            <FaqGrid>
 
-            <FaqColumn>
-              {faqData.General &&
-                <FaqCollection category="General" faqs={faqData.General} />
-              }
-            </FaqColumn>
+              <FaqColumn>
+                {faqData.General &&
+                  <FaqCollection category="General" faqs={faqData.General} />
+                }
+              </FaqColumn>
 
-            <FaqColumn>
-              {faqData['Teams & Projects'] &&
-                <FaqCollection category="Teams & Projects" faqs={faqData['Teams & Projects']} />
-              }
-              {faqData.Logistics &&
-                <FaqCollection category="Logistics" faqs={faqData.Logistics} />
-              }
-            </FaqColumn>
+              <FaqColumn>
+                {faqData.Projects &&
+                  <FaqCollection category="Projects" faqs={faqData.Projects} />
+                }
+                {faqData.Logistics &&
+                  <FaqCollection category="Logistics" faqs={faqData.Logistics} />
+                }
+              </FaqColumn>
 
-          </FaqGrid>
-            )
+            </FaqGrid>
+          )
           : 'loading...'}
 
       </Wrapper>
