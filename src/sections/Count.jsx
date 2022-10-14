@@ -209,7 +209,7 @@ const useCountdown = (targetDate) => {
 export { useCountdown }
 
 const Count = () => {
-  const countDownDate = new Date('Oct 14, 2022 00:00:00').getTime()
+  const countDownDate = new Date('Oct 14, 2022 23:59:59').getTime()
   const [days, hours, minutes] = useCountdown(countDownDate)
 
   const twoify = (num) => {
