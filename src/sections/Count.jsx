@@ -189,6 +189,10 @@ const getReturnValues = (countDown) => {
   const minutes = Math.floor((countDown % (1000 * 60 * 60)) / (1000 * 60))
   const seconds = Math.floor((countDown % (1000 * 60)) / 1000)
 
+  if (days < 0 || hours < 0 || seconds < 0) {
+    return [0, 0, 0, 0]
+  }
+
   return [days, hours, minutes, seconds]
 }
 
@@ -245,8 +249,7 @@ const Count = () => {
       <MgScroll ref={ref2} />
 
       <TextContainer>
-        <StyledTitle>Applications Close on October 14</StyledTitle>
-        {/* <HCSub color='#00455E'>Closes on October 14</HCSub> */}
+        <StyledTitle>Registration Closes</StyledTitle>
         <MobileCountdown>
           <ShadowText text={`${count.days[0]}${count.days[1]} : ${count.hours[0]}${count.hours[1]} : ${count.minutes[0]}${count.minutes[1]}`}>
             {`${count.days[0]}${count.days[1]} : ${count.hours[0]}${count.hours[1]} : ${count.minutes[0]}${count.minutes[1]}`}
