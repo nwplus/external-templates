@@ -1,2 +1,2 @@
-User-agent: Googlebot-Image
+User-agent: *
 Disallow: /assets/profiles/*
