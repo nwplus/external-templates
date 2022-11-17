@@ -17,6 +17,4 @@ Open http://localhost:3000 with your browser to see the result.
 
 ## Deploying
 <!--- Guide on how one would deploy this app -->
-
-## Contributing
-Check out our [contribution guidelines](<!--- Link to CONTRIBUTING.md -->)
+It is automatically deployed via our firebase pipeline. On new projects, follow the template and change up the branches in `firebase.json` and `.firebaserc`.
