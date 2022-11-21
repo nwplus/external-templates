@@ -3,6 +3,7 @@ import React from 'react'
 import GlobalStyles from '@styles/global'
 // import fireDb from '@utilities/firebase'
 import { SectionContainer } from '@lib/Containers'
+import Test from 'src/sections/Test'
 
 export default function Index({ title }) {
   return (
@@ -23,6 +24,9 @@ export default function Index({ title }) {
         <meta property="og:image" content="/preview.png" />
       </Head>
       {/* Components Starts */}
+
+      <Test />
+
       {/* Components Ends */}
     </SectionContainer>
   )
