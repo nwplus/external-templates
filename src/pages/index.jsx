@@ -7,6 +7,8 @@ import { SectionContainer } from '@lib/Containers'
 import logo from '../assets/logos/nwplus-logo.svg';
 import NavigationBar from '../components/NavigationBar';
 
+import MainGraphics from '../assets/images/MainImage.svg';
+
 export default function Index({ title }) {
   return (
     <SectionContainer>
@@ -38,6 +40,7 @@ export default function Index({ title }) {
 
       <div style={{ height: "90vh", width: "100vw", background: "blue" }}></div> {/* TEMP HEADER */}
 
+      <img src={MainGraphics} style={{ position: "relative" }}></img>
       {/* About section */}
       {/* Registration Countdown timer */}
       {/* Background */}

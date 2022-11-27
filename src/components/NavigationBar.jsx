@@ -12,6 +12,7 @@ const NavbarUl = styled.ul`
     height: 60px;
     padding-right: 2.5%;
     padding-left: 2.5%;
+    z-index: 999;
 `
 
 const NavbarLi = styled.li`
