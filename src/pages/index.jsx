@@ -31,7 +31,21 @@ export default function Index({ title }) {
       </Head>
       {/* Components Starts */}
 
+      {/* Rough layout Guide start */}
+
       <NavigationBar />
+      {/* Header section */}
+
+      <div style={{ height: "90vh", width: "100vw", background: "blue" }}></div> {/* TEMP HEADER */}
+
+      {/* About section */}
+      {/* Registration Countdown timer */}
+      {/* Background */}
+      {/* FAQ */}
+      {/* Sponsors */}
+      {/* Footer */}
+
+      {/* Rough layout Guide end */}
 
 
       {/* Components Ends */}
