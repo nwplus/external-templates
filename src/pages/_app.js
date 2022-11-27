@@ -1,7 +1,10 @@
+
 import GlobalStyles from '@styles/global'
 /* eslint react/jsx-filename-extension: 0 */
 import ThemeProvider from '../theme/ThemeProvider'
 import '../theme/fonts/style.css'
+
+// import NavigationBar from '../components/NavigationBar';
 
 function App({ Component, pageProps }) {
   return (
@@ -14,4 +17,4 @@ function App({ Component, pageProps }) {
   )
 }
 
-export default App
+export default App;

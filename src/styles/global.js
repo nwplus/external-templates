@@ -9,6 +9,7 @@ export const GlobalStyles = createGlobalStyle`
   }
   html, body {
     overflow-x: hidden;
+    background: blue;
   }
   body {
     position: relative
