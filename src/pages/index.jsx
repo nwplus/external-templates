@@ -3,7 +3,6 @@ import React from 'react'
 import GlobalStyles from '@styles/global'
 // import fireDb from '@utilities/firebase'
 import { SectionContainer } from '@lib/Containers'
-import Test from 'src/sections/Test'
 
 export default function Index({ title }) {
   return (
@@ -25,7 +24,7 @@ export default function Index({ title }) {
       </Head>
       {/* Components Starts */}
 
-      <Test />
+
 
       {/* Components Ends */}
     </SectionContainer>
