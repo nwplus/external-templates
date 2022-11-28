@@ -1,4 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
+import MainGraphics from '../assets/images/MainImage.svg'
+
 
 // Remove comment once font is replaced
 export const GlobalStyles = createGlobalStyle`
@@ -9,10 +11,15 @@ export const GlobalStyles = createGlobalStyle`
   }
   html, body {
     overflow-x: hidden;
+    position: relative;
     // background: blue;
-    height: 300%; // For now
-    background: linear-gradient(180deg, #FED9CD 0%, #CDCAEC 40.1%, #081160 100%);
-    transform: matrix(-1, 0, 0, 1, 0, 0);
+    height: 7900px; // For now
+    //background-color: linear-gradient(180deg, #FED9CD 0%, #CDCAEC 40.1%, #081160 100%);
+    // transform: matrix(-1, 0, 0, 1, 0, 0);
+    background-image: url(${MainGraphics}), linear-gradient(180deg, #FED9CD 0%, #CDCAEC 40.1%, #081160 100%);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
   body {
     position: relative

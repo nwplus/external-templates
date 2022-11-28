@@ -9,12 +9,13 @@ import logo from '../assets/logos/nwplus-logo.svg'
 import NavigationBar from '../components/NavigationBar'
 import Hero from '../components/Hero'
 
-import MainGraphics from '../assets/images/MainImage.svg'
+// import MainGraphics from '../assets/images/MainImage.svg'
 
 export default function Index({ title }) {
-
-  const BigBoy = styled.img`
-	  min-height: calc( calc(7452 / 1440) * 100vw) !important;
+  const BigBoy = styled.div`
+    /*min-height: calc( calc(7452 / 1440) * 100vw) !important;*/
+    width: 100vw;
+    position: relative;
   `
 
   return (
@@ -42,11 +43,12 @@ export default function Index({ title }) {
 
       {/* <div style={{ height: "90vh", width: "100vw", background: "blue" }}></div> TEMP HEADER */}
 
-      <img src={MainGraphics} style={{ position: "absolute" }}></img>
+      {/* <img src={MainGraphics} style={{ position: "absolute" }}></img> */}
       {/* Hero section */}
       <Hero />
       {/* TEMP HEADER */}
-      <BigBoy src={MainGraphics} alt="background" />
+      {/* <BigBoy src={MainGraphics} alt="background" /> */}
+      {/* <BigBoy /> */}
       {/* About section */}
       {/* Registration Countdown timer */}
       {/* Background */}
