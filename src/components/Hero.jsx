@@ -1,6 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 import { LAPTOP, TABLET } from '@constants/measurements'
+import { useParallax } from 'react-scroll-parallax'
+import CarAndMap from '../assets/images/CarAndMapNoShadows.svg'
+import CarScenery from '../assets/images/CarScenery.svg'
+import RamBodyImage from '../assets/images/RamBody.svg'
+import RamHeadImage from '../assets/images/RamHead.svg'
 
 const HeroContainer = styled.div`
   position: relative;
@@ -9,7 +14,7 @@ const HeroContainer = styled.div`
 const OuterContainer = styled.div`
   position: absolute;
   width: 100%;
-  top: 35vh;
+  top: 23rem;
 `
 
 const IntroContainer = styled.div`
@@ -165,11 +170,45 @@ const BeAMentorText = styled.span`
   color: #8486e4;
 `
 
+const ZeroHeightImage = styled.div`
+  height: 0;
+`
+
+const CarAndMapImage = styled.img`
+  min-height: calc(calc(775 / 1440) * 100vw);
+  z-index: 1;
+`
+
+const CarSceneryImage = styled.img`
+  margin-top: -10rem;
+  min-height: calc(calc(530 / 1440) * 100vw);
+  z-index: -1;
+`
+
+const RamBody = styled.img`
+  
+`
+
+const RamHead = styled.img`
+`
+
 const Hero = () => {
-  const func = () => {}
-  const redirect = () => {}
+  const func = () => { }
+  const redirect = () => { }
+
+  const parallax = useParallax({ speed: -15 });
+  const parallax2 = useParallax({ speed: 0 });
+
   return (
     <HeroContainer>
+      <ZeroHeightImage>
+        <CarSceneryImage src={CarScenery} ref={parallax.ref} alt="The Beautiful nwHacks Scenery" />
+      </ZeroHeightImage>
+      <ZeroHeightImage>
+        <CarAndMapImage src={CarAndMap} ref={parallax2.ref} alt="Dashboard and Map" />
+      </ZeroHeightImage>
+      <RamBody src={RamBodyImage} alt="Ram body" />
+      <RamHead src={RamHeadImage} alt="A bobbing Ram head" />
       <OuterContainer>
         <IntroContainer>
           <Opening>Welcome to</Opening>

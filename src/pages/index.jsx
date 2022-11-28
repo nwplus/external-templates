@@ -13,8 +13,14 @@ import MainGraphics from '../assets/images/MainImage.svg'
 
 export default function Index({ title }) {
 
+  const BigBoyContainer = styled.div`
+    min-height: calc( calc(7252 / 1440) * 100vw) !important;
+  `
+
   const BigBoy = styled.img`
-	  min-height: calc( calc(7452 / 1440) * 100vw) !important;
+    position: absolute;
+    top: 0;
+	  min-height: calc( calc(7252 / 1440) * 100vw) !important;
   `
 
   return (
@@ -38,17 +44,18 @@ export default function Index({ title }) {
       {/* Components Starts */}
       {/* Rough layout Guide start */}
       <NavigationBar />
-      {/* Hero section */}
-      <Hero />
-      {/* TEMP HEADER */}
-      <BigBoy src={MainGraphics} alt="background" />
-      {/* About section */}
-      {/* Registration Countdown timer */}
-      {/* Background */}
-      {/* FAQ */}
-      {/* Sponsors */}
-      {/* Footer */}
-      {/* Rough layout Guide end */}
+      <BigBoyContainer>
+        <BigBoy src={MainGraphics} alt="Background image" />
+        {/* Hero section */}
+        <Hero />
+        {/* About section */}
+        {/* Registration Countdown timer */}
+        {/* Background (Stats are in the image) */}
+        {/* FAQ */}
+        {/* Sponsors */}
+        {/* Footer */}
+
+      </BigBoyContainer>
       {/* Components Ends */}
     </SectionContainer>
   )

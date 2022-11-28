@@ -11,11 +11,11 @@ export const GlobalStyles = createGlobalStyle`
     overflow-x: hidden;
     // background: blue;
     // height: 300%; // For now
-    background: linear-gradient(180deg, #FED9CD 0%, #CDCAEC 40.1%, #081160 100%);
+    background: linear-gradient(to bottom, #FED9CD, #081160);
     transform: matrix(-1, 0, 0, 1, 0, 0);
   }
   body {
-    position: relative
+    position: relative;
   }
   
   :root {

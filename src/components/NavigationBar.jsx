@@ -26,12 +26,16 @@ const NavbarHyperlink = styled.a`
     line-height: 20px;
     font-weight: bold;
 
+    font-size: 1.1rem;
+
     background-image: linear-gradient(#FFF, #FFF);
     background-size: 0% 0.1em;
     background-position-y: 100%;
     background-position-x: 0%;
     background-repeat: no-repeat;
     transition: background-size 0.3s ease-in-out;
+
+    font-family: "HK Grotesk", sans-serif;
 
     &:hover, &:focus, &:active {
       background-size: 100% 0.1em;
@@ -66,10 +70,10 @@ function NavigationBar() {
           <img src={logo} style={{ position: "relative", top: "15px" }} alt="nwPlus Logo" />
         </NavbarHyperlink>
       </NavbarLi>
-      <NavbarLi><NavbarHyperlink href="">About</NavbarHyperlink></NavbarLi>
-      <NavbarLi><NavbarHyperlink href="">Hackathons</NavbarHyperlink></NavbarLi>
-      <NavbarLi><NavbarHyperlink href="">Resources</NavbarHyperlink></NavbarLi>
-      <NavbarLi><NavbarHyperlink href="">FAQ</NavbarHyperlink></NavbarLi>
+      <NavbarLi><NavbarHyperlink href="#">About</NavbarHyperlink></NavbarLi>
+      <NavbarLi><NavbarHyperlink href="#">Hackathons</NavbarHyperlink></NavbarLi>
+      <NavbarLi><NavbarHyperlink href="#">Resources</NavbarHyperlink></NavbarLi>
+      <NavbarLi><NavbarHyperlink href="#">FAQ</NavbarHyperlink></NavbarLi>
 
       <NavbarLi><LivePortalBtn href="https://portal.nwplus.io/">Live Portal</LivePortalBtn></NavbarLi>
     </NavbarUl >
