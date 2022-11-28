@@ -14,12 +14,13 @@ import MainGraphics from '../assets/images/MainImage.svg'
 export default function Index({ title }) {
 
   const BigBoyContainer = styled.div`
+    position: relative;
     min-height: calc( calc(7252 / 1440) * 100vw) !important;
   `
 
   const BigBoy = styled.img`
-    position: absolute;
     top: 0;
+    position: absolute;
 	  min-height: calc( calc(7252 / 1440) * 100vw) !important;
   `
 
