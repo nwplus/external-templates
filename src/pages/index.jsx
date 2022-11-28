@@ -5,12 +5,15 @@ import GlobalStyles from '@styles/global'
 import { SectionContainer } from '@lib/Containers'
 import styled from 'styled-components'
 
-import logo from '../assets/logos/nwplus-logo.svg'
+import Sponsors from 'src/sections/Sponsors'
+import FAQ from 'src/sections/FAQ'
+import Footer from 'src/sections/Footer'
+
 import NavigationBar from '../components/NavigationBar'
 import Hero from '../components/Hero'
 
-import MainGraphicsTop from '../assets/images/MainBackgroundTop.svg'
-import MainGraphicsBottom from '../assets/images/MainBackgroundBottom.svg'
+import logo from '../assets/logos/nwplus-logo.svg'
+import MainGraphicsTop from '../assets/images/MainBackground.svg'
 
 export default function Index({ title }) {
 
@@ -47,18 +50,14 @@ export default function Index({ title }) {
       <NavigationBar />
       <HalfContainer>
         <HalfBackgroundImage src={MainGraphicsTop} alt="Background image" />
-        {/* Hero section */}
         <Hero />
         {/* About section */}
         {/* Registration Countdown timer */}
         {/* Background (Stats are in the image) */}
       </HalfContainer>
-      {/* FAQ */}
-      <HalfContainer>
-        <HalfBackgroundImage src={MainGraphicsBottom} alt="Background image" />
-        {/* Sponsors */}
-        {/* Footer */}
-      </HalfContainer>
+      <FAQ />
+      <Sponsors />
+      <Footer />
 
 
 
