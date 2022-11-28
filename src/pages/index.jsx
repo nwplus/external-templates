@@ -3,6 +3,7 @@ import React from 'react'
 import GlobalStyles from '@styles/global'
 // import fireDb from '@utilities/firebase'
 import { SectionContainer } from '@lib/Containers'
+import styled from 'styled-components'
 
 import logo from '../assets/logos/nwplus-logo.svg'
 import NavigationBar from '../components/NavigationBar'
@@ -11,13 +12,18 @@ import Hero from '../components/Hero'
 import MainGraphics from '../assets/images/MainImage.svg'
 
 export default function Index({ title }) {
+
+  const BigBoy = styled.img`
+	  min-height: calc( calc(7452 / 1440) * 100vw) !important;
+  `
+
   return (
     <SectionContainer>
       <GlobalStyles />
       <Head>
         {/* Remove comment once title is set */}
         {/* <title> {title} </title> */}
-        <title>nwHacks 2023</title>
+        <title>{title}</title>
         {/* Remove comment once favicon is set */}
         {/* <link rel="icon" href="/favicon.ico" /> */}
 
@@ -40,7 +46,7 @@ export default function Index({ title }) {
       {/* Hero section */}
       <Hero />
       {/* TEMP HEADER */}
-      <img src={MainGraphics} alt="background" />
+      <BigBoy src={MainGraphics} alt="background" />
       {/* About section */}
       {/* Registration Countdown timer */}
       {/* Background */}
@@ -56,7 +62,7 @@ export default function Index({ title }) {
 export async function getStaticProps() {
   return {
     props: {
-      title: 'example title',
+      title: 'nwHacks 2023',
     }, // will be passed to the page component as props
   }
 }
