@@ -6,7 +6,7 @@ import { SectionContainer } from '@lib/Containers'
 
 import logo from '../assets/logos/nwplus-logo.svg'
 import NavigationBar from '../components/NavigationBar'
-import Header from '../components/Header'
+import Hero from '../components/Hero'
 
 import MainGraphics from '../assets/images/MainImage.svg'
 
@@ -32,8 +32,8 @@ export default function Index({ title }) {
       {/* Components Starts */}
       {/* Rough layout Guide start */}
       <NavigationBar />
-      {/* Header section */}
-      <Header />
+      {/* Hero section */}
+      <Hero />
       {/* TEMP HEADER */}
       <img src={MainGraphics} alt="background" />
       {/* About section */}

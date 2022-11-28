@@ -1,17 +1,19 @@
 import React from 'react'
 import styled from 'styled-components'
 import { LAPTOP, TABLET } from '@constants/measurements'
-import { scale } from '@utilities/format'
 
-const HeaderContainer = styled.div`
+const HeroContainer = styled.div`
   position: relative;
 `
 
 const OuterContainer = styled.div`
   position: absolute;
-  top: 35vh;
-  margin-left: 10vw;
   width: 100%;
+  top: 35vh;
+`
+
+const IntroContainer = styled.div`
+  margin-left: 10vw;
   text-align: left;
   color: #433860;
 `
@@ -24,6 +26,13 @@ const Opening = styled.p`
   font-weight: 600;
   line-height: 26px;
   letter-spacing: -0.44999998807907104px;
+  @media (max-width: ${LAPTOP}) {
+    font-size: 20px;
+  }
+  @media (max-width: ${TABLET}) {
+    top: 20px;
+    font-size: 18px;
+  }
 `
 
 const Title = styled.p`
@@ -40,11 +49,15 @@ const Title = styled.p`
     background: linear-gradient(265.48deg, #959afb 70.67%, #9ad4de);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    font-size: 80px;
+    line-height: 80px;
   }
   @media (max-width: ${TABLET}) {
     background: linear-gradient(265.48deg, #959afb 60.67%, #9ad4de);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    font-size: 75px;
+    line-height: 65px;
   }
 `
 
@@ -55,6 +68,12 @@ const Subtitle = styled.p`
   font-weight: 600;
   line-height: 32px;
   letter-spacing: -0.25999999046325684px;
+  @media (max-width: ${LAPTOP}) {
+    font-size: 23px;
+  }
+  @media (max-width: ${TABLET}) {
+    font-size: 23px;
+  }
 `
 
 const Description = styled.p`
@@ -67,15 +86,23 @@ const Description = styled.p`
 `
 
 const ButtonsContainer = styled.div`
+  margin-left: 10vw;
   position: relative;
-  display: flex;
-  flex-direction: row;
   margin-top: 15px;
+  display: inline-box;
+  @media (max-width: ${TABLET}) {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 20px;
+    width: 50%;
+    align-items: center;
+  }
 `
 
-const ApplyButton = styled.button.attrs(({ applyActive }) => ({
+const ApplyButton = styled.button.attrs(({ isInactive }) => ({
   type: 'button',
-  disabled: applyActive,
+  disabled: isInactive,
 }))`
   position: relative;
   border-radius: 3px;
@@ -83,14 +110,17 @@ const ApplyButton = styled.button.attrs(({ applyActive }) => ({
   color: white;
   cursor: pointer;
   display: block;
-  font-size: ${() => scale(320, 1440, 6, 18)};
+  font-size: 18px;
   background: linear-gradient(265.48deg, #959afb 3.67%, #9ad4de 78.93%);
   height: 60px;
   width: 175px;
   border-radius: 12px;
+  @media (max-width: ${TABLET}) {
+    margin-top: 10px;
+  }
 `
 
-const ApplyButtonText = styled.p`
+const ApplyButtonText = styled.span`
   font-family: HK Grotesk;
   font-size: 24px;
   font-weight: 700;
@@ -98,60 +128,65 @@ const ApplyButtonText = styled.p`
   letter-spacing: -0.44999998807907104px;
 `
 
-const BeAMentorButton = styled.button.attrs(({ applyActive }) => ({
+const BeAMentorButton = styled.button.attrs(({ isInactive }) => ({
   type: 'button',
-  disabled: applyActive,
+  disabled: isInactive,
 }))`
   position: relative;
-  border: double 1em transparent;
+  margin-left: 36px;
   color: white;
   cursor: pointer;
   display: block;
-  font-size: ${() => scale(320, 1440, 6, 18)};
-  background: white;
   height: 60px;
   width: 175px;
-  border-radius: 12px;
-  border: 3px solid;
-  border-radius: 3px;
-  border-image-source: linear-gradient(263.82deg, #9ea4fc 38.58%, #9bd3df 78.17%);
-  // border-image-slice: 1;
+  background: transparent;
+  background-image: linear-gradient(90deg, white, white), linear-gradient(263.82deg, #9ea4fc 38.58%, #9bd3df 78.17%);
+  background-clip: padding-box, border-box;
   background-origin: border-box;
-  background-clip: content-box, border-box;
-  margin-left: 40px;
+  border: 3px solid transparent;
+  border-radius: 12px;
+  @media (max-width: ${LAPTOP}) {
+    margin-left: 15px;
+  }
+  @media (max-width: ${TABLET}) {
+    margin-left: 0px;
+    margin-top: 10px;
+  }
 `
 
-const BeAMentorText = styled.p`
+const BeAMentorText = styled.span`
   font-family: HK Grotesk;
   font-size: 24px;
   font-weight: 700;
   line-height: 26px;
   letter-spacing: -0.44999998807907104px;
-  background: #8486e4;
+  background-clip: text;
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #8486e4;
 `
 
-const Header = () => {
+const Hero = () => {
   const func = () => {}
   return (
-    <HeaderContainer>
+    <HeroContainer>
       <OuterContainer>
-        <Opening>Welcome to</Opening>
-        <Title>nwHacks</Title>
-        <Subtitle>Western Canada’s Largest Hackathon</Subtitle>
-        <Description>January 14 - 15 2023 | In-Person Event @ UBC Life Sciences Institute </Description>
+        <IntroContainer>
+          <Opening>Welcome to</Opening>
+          <Title>nwHacks</Title>
+          <Subtitle>Western Canada’s Largest Hackathon</Subtitle>
+          <Description>January 14 - 15 2023 | In-Person Event @ UBC Life Sciences Institute </Description>
+        </IntroContainer>
         <ButtonsContainer>
-          <ApplyButton applyActive={func} onClick={func}>
+          <ApplyButton isInactive={func} onClick={func}>
             <ApplyButtonText>Apply Now!</ApplyButtonText>
           </ApplyButton>
-          <BeAMentorButton applyActive={func} onClick={func}>
+          <BeAMentorButton isInactive={func} onClick={func}>
             <BeAMentorText>Be a Mentor!</BeAMentorText>
           </BeAMentorButton>
         </ButtonsContainer>
       </OuterContainer>
-    </HeaderContainer>
+    </HeroContainer>
   )
 }
 
-export default Header
+export default Hero
