@@ -40,7 +40,7 @@ export default function Index({ title }) {
 
       <div style={{ height: "90vh", width: "100vw", background: "blue" }}></div> {/* TEMP HEADER */}
 
-      <img src={MainGraphics} style={{ position: "relative" }}></img>
+      <img src={MainGraphics} style={{ position: "absolute" }}></img>
       {/* About section */}
       {/* Registration Countdown timer */}
       {/* Background */}
