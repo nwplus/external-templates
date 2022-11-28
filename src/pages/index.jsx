@@ -9,19 +9,19 @@ import logo from '../assets/logos/nwplus-logo.svg'
 import NavigationBar from '../components/NavigationBar'
 import Hero from '../components/Hero'
 
-import MainGraphics from '../assets/images/MainImage.svg'
+import MainGraphicsTop from '../assets/images/MainBackgroundTop.svg'
+import MainGraphicsBottom from '../assets/images/MainBackgroundBottom.svg'
 
 export default function Index({ title }) {
 
-  const BigBoyContainer = styled.div`
+  const HalfContainer = styled.div`
     position: relative;
-    min-height: calc( calc(7252 / 1440) * 100vw) !important;
+    min-height: calc( calc(3606 / 1440) * 100vw) !important;
   `
-
-  const BigBoy = styled.img`
+  const HalfBackgroundImage = styled.img`
     top: 0;
     position: absolute;
-	  min-height: calc( calc(7252 / 1440) * 100vw) !important;
+	  min-height: calc( calc(3606 / 1440) * 100vw) !important;
   `
 
   return (
@@ -43,20 +43,25 @@ export default function Index({ title }) {
         <meta property="og:image" content="/preview.png" />
       </Head>
       {/* Components Starts */}
-      {/* Rough layout Guide start */}
+
       <NavigationBar />
-      <BigBoyContainer>
-        <BigBoy src={MainGraphics} alt="Background image" />
+      <HalfContainer>
+        <HalfBackgroundImage src={MainGraphicsTop} alt="Background image" />
         {/* Hero section */}
         <Hero />
         {/* About section */}
         {/* Registration Countdown timer */}
         {/* Background (Stats are in the image) */}
-        {/* FAQ */}
+      </HalfContainer>
+      {/* FAQ */}
+      <HalfContainer>
+        <HalfBackgroundImage src={MainGraphicsBottom} alt="Background image" />
         {/* Sponsors */}
         {/* Footer */}
+      </HalfContainer>
 
-      </BigBoyContainer>
+
+
       {/* Components Ends */}
     </SectionContainer>
   )
