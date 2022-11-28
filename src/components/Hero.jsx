@@ -167,6 +167,7 @@ const BeAMentorText = styled.span`
 
 const Hero = () => {
   const func = () => {}
+  const redirect = () => {}
   return (
     <HeroContainer>
       <OuterContainer>
@@ -177,10 +178,10 @@ const Hero = () => {
           <Description>January 14 - 15 2023 | In-Person Event @ UBC Life Sciences Institute </Description>
         </IntroContainer>
         <ButtonsContainer>
-          <ApplyButton isInactive={func} onClick={func}>
+          <ApplyButton isInactive={func} onClick={redirect}>
             <ApplyButtonText>Apply Now!</ApplyButtonText>
           </ApplyButton>
-          <BeAMentorButton isInactive={func} onClick={func}>
+          <BeAMentorButton isInactive={redirect} onClick={func}>
             <BeAMentorText>Be a Mentor!</BeAMentorText>
           </BeAMentorButton>
         </ButtonsContainer>
