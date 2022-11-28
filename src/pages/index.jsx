@@ -9,6 +9,8 @@ import logo from '../assets/logos/nwplus-logo.svg'
 import NavigationBar from '../components/NavigationBar'
 import Hero from '../components/Hero'
 
+import About from '../components/About'
+
 // import MainGraphics from '../assets/images/MainImage.svg'
 
 export default function Index({ title }) {
@@ -38,25 +40,24 @@ export default function Index({ title }) {
       </Head>
       {/* Components Starts */}
       {/* Rough layout Guide start */}
+
       <NavigationBar />
       {/* Header section */}
-
-      {/* <div style={{ height: "90vh", width: "100vw", background: "blue" }}></div> TEMP HEADER */}
-
-      {/* <img src={MainGraphics} style={{ position: "absolute" }}></img> */}
       {/* Hero section */}
       <Hero />
       {/* TEMP HEADER */}
-      {/* <BigBoy src={MainGraphics} alt="background" /> */}
-      {/* <BigBoy /> */}
+
       {/* About section */}
+      <About />
       {/* Registration Countdown timer */}
       {/* Background */}
       {/* FAQ */}
       {/* Sponsors */}
       {/* Footer */}
+
       {/* Rough layout Guide end */}
       {/* Components Ends */}
+
     </SectionContainer>
   )
 }

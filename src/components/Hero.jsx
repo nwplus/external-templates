@@ -7,8 +7,9 @@ const HeroContainer = styled.div`
 `
 
 const OuterContainer = styled.div`
-  position: absolute;
+  position: relative;
   width: 100%;
+  height: 100vh;
   top: 35vh;
 `
 
@@ -166,8 +167,8 @@ const BeAMentorText = styled.span`
 `
 
 const Hero = () => {
-  const func = () => {}
-  const redirect = () => {}
+  const func = () => { }
+  const redirect = () => { }
   return (
     <HeroContainer>
       <OuterContainer>

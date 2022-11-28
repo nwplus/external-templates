@@ -13,13 +13,13 @@ export const GlobalStyles = createGlobalStyle`
     overflow-x: hidden;
     position: relative;
     // background: blue;
-    height: 7900px; // For now
+    height: 7000px; // For now
     //background-color: linear-gradient(180deg, #FED9CD 0%, #CDCAEC 40.1%, #081160 100%);
     // transform: matrix(-1, 0, 0, 1, 0, 0);
     background-image: url(${MainGraphics}), linear-gradient(180deg, #FED9CD 0%, #CDCAEC 40.1%, #081160 100%);
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: (100%, 100%);
   }
   body {
     position: relative
