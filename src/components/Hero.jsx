@@ -98,6 +98,7 @@ const Description = styled.p`
 const ButtonsContainer = styled.div`
   margin-left: 10vw;
   position: relative;
+  padding-top: 1rem;
   display: flex;
   gap: 1.5rem;
   @media (max-width: ${TABLET}) {

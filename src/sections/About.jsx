@@ -7,15 +7,17 @@ const AboutContainer = styled.div`
   min-height: calc(calc(779 / 1440) * 100vw);
   position: relative;
   z-index: 1;
+  display: flex;
+  align-items: center;
 `
 
 const AboutInner = styled.div`
-  width: 75vw;
+  width: 72vw;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 5rem;
-  padding-top: 2rem;
+  padding-bottom: 5rem;
 `
 
 const BlurbContainer = styled.div`
