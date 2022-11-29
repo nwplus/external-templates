@@ -14,6 +14,7 @@ const CountdownContainer = styled.div`
 const FauxBillboard = styled.div`
   min-height: calc(calc(482 / 1139) * 75vw);
   display: flex;
+  max-width: 1200px;
   align-items: center;
   margin-top: 10%;
   margin-left: auto;
@@ -51,6 +52,7 @@ const Digits = styled.h2`
 const BillboardText = styled(Header3)``
 
 const Keychain = styled.img`
+min-height: calc(calc(1109 / 1493) * 100vw);
   position: absolute;
   top: 45%;
   left: -20%;

@@ -17,7 +17,7 @@ const HeroContainer = styled.div`
 const OuterContainer = styled.div`
   position: absolute;
   width: 100%;
-  top: 36vh;
+  top: calc(calc(400 / 1440) * 100vw);
 `
 
 const IntroContainer = styled.div`

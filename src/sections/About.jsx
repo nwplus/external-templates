@@ -13,6 +13,8 @@ const AboutContainer = styled.div`
 
 const AboutInner = styled.div`
   width: 72vw;
+  min-width: 900px;
+  max-width: 1200px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
