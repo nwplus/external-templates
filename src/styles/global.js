@@ -9,22 +9,14 @@ export const GlobalStyles = createGlobalStyle`
   }
   html, body {
     overflow-x: hidden;
-    // background: blue;
-    height: 300%; // For now
-    background: linear-gradient(180deg, #FED9CD 0%, #CDCAEC 40.1%, #081160 100%);
-    transform: matrix(-1, 0, 0, 1, 0, 0);
+    background: linear-gradient(to bottom, #FED9CD, #081160);
   }
   body {
-    position: relative
+    position: relative;
   }
   
   :root {
-      @font-face {
-        font-family: 'Example font';
-        src: local('Example font'), url(./fonts/local_example_font.otf) format('otf');
-      }
-
-      font-family: 'Example font';
+      font-family: 'HK Grotesk', sans-serif;
 
       @media (min-width: 768px) {
       }

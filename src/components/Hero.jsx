@@ -1,9 +1,15 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import { LAPTOP, TABLET } from '@constants/measurements'
+import { useParallax } from 'react-scroll-parallax'
+import CarAndMap from '../assets/images/CarAndMapNoShadows.svg'
+import CarScenery from '../assets/images/CarScenery.svg'
+import RamBodyImage from '../assets/images/RamBody.svg'
+import RamHeadImage from '../assets/images/RamHead.svg'
 
 const HeroContainer = styled.div`
   position: relative;
+  min-height: calc(calc(802 / 1440) * 100vw);
 `
 
 const OuterContainer = styled.div`
@@ -165,11 +171,76 @@ const BeAMentorText = styled.span`
   color: #8486e4;
 `
 
+const ZeroHeightContainer = styled.div`
+  height: 0;
+`
+
+const CarAndMapImage = styled.img`
+  min-height: calc(calc(775 / 1440) * 100vw);
+  z-index: 1;
+`
+
+const CarSceneryImage = styled.img`
+  margin-top: -10rem;
+  min-height: calc(calc(530 / 1440) * 100vw);
+  z-index: -1;
+`
+
+const RamContainer = styled.div`
+  position: absolute;
+  width: 100%;
+  right: 12vw;
+  top: calc(calc(200 / 1440) * 100vw);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+`
+
+const RamBody = styled.img`
+  margin-top: -1.35rem;
+  z-index: 2;
+`
+
+const bobAnimation = keyframes`
+  0% {
+    transform: rotateZ(0deg)
+  }
+  50% {
+    transform: rotateZ(10deg)
+  }
+  100% {
+    transform: rotateZ(0deg)
+  }
+`
+
+const RamHead = styled.img`
+  margin-right: -0.25rem;
+  z-index: 1;
+
+  animation-name: ${bobAnimation};
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+`
+
 const Hero = () => {
-  const func = () => {}
-  const redirect = () => {}
+  const func = () => { }
+  const redirect = () => { }
+
+  const parallax = useParallax({ speed: -15 });
+  const parallax2 = useParallax({ speed: 0 });
+
   return (
     <HeroContainer>
+      <ZeroHeightContainer>
+        <CarSceneryImage src={CarScenery} ref={parallax.ref} alt="The Beautiful nwHacks Scenery" />
+      </ZeroHeightContainer>
+      <ZeroHeightContainer>
+        <CarAndMapImage src={CarAndMap} ref={parallax2.ref} alt="Dashboard and Map" />
+      </ZeroHeightContainer>
+      <RamContainer>
+        <RamHead src={RamHeadImage} alt="A bobbing Ram head" />
+        <RamBody src={RamBodyImage} alt="Ram body" />
+      </RamContainer>
       <OuterContainer>
         <IntroContainer>
           <Opening>Welcome to</Opening>
