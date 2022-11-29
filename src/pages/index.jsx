@@ -2,7 +2,6 @@ import Head from 'next/head'
 import React from 'react'
 import GlobalStyles from '@styles/global'
 import styled from 'styled-components'
-import { MOBILE } from '@constants/measurements'
 
 import Sponsors from 'src/sections/Sponsors'
 import Faq from 'src/sections/FAQ'
@@ -18,16 +17,27 @@ import MainGraphicsTop from '../assets/images/MainBackground.svg'
 import MainGraphicsMobile from '../assets/images/mobile/MainBackground.svg'
 
 const HalfContainer = styled.div`
-  background: url(${MainGraphicsTop}), linear-gradient(to bottom, #83F6F7 0%, #A9D7EF 100%);
   position: relative;
   height: auto;
   width: 100%;
   
-  @media (max-width: ${MOBILE}) {
-    background: url(${MainGraphicsMobile}), linear-gradient(to bottom, #83F6F7, #A9D7EF);
+  ${(p) => p.theme.mediaQueries.mobile} {
+    background: url(${MainGraphicsMobile}), linear-gradient(to bottom, #83F6F7, #BFEFF0);
     background-repeat: no-repeat;
     background-position: top center;
     aspect-ratio: 428/2661;
+    min-width: 100%;
+  }
+`
+const HalfBackgroundImage = styled.img`
+  top: 0;
+  z-index: 0;
+  position: absolute;
+  user-select: none;
+  min-height: calc( calc(3606 / 1440) * 100vw);
+  
+  ${(p) => p.theme.mediaQueries.mobile} {
+    display: none;
   }
 `
 
@@ -54,6 +64,7 @@ export default function Index({ title }) {
 
       <NavigationBar />
       <HalfContainer>
+        <HalfBackgroundImage src={MainGraphicsTop} alt="Background image" />
         <Hero />
         <About />
         <Countdown />

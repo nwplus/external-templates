@@ -1,5 +1,4 @@
 import { Header2, Header3 } from '@components/Typography'
-import { MOBILE } from '@constants/measurements'
 import React, { useEffect, useState } from 'react'
 import { useParallax } from 'react-scroll-parallax'
 import styled from 'styled-components'
@@ -11,7 +10,7 @@ const CountdownContainer = styled.div`
   position: relative;
   z-index: 1;
   
-  @media (max-width: ${MOBILE}) {
+  ${(p) => p.theme.mediaQueries.mobile} {
     min-height: calc(calc(746 / 428) * 100vw);
   }
 `
@@ -27,13 +26,13 @@ const FauxBillboard = styled.div`
   width: 75vw;
   text-shadow: 0 0 10px rgba(233,233,233,0.4);
   
-  @media (max-width: ${MOBILE}) {
-    margin-top: 76.5%;
+  ${(p) => p.theme.mediaQueries.mobile} {
     min-height: calc(calc(482 / 428) * 75vw);
     max-width: 100vw;
-    min-height: 0;
     width: 75vw;
     flex-direction: column;
+    position: absolute;
+    top: 00px;
   }
 `
 
@@ -44,7 +43,7 @@ const StyledHeader = styled(Header2)`
   line-height: 120%;
   max-width: 40%;
   
-  @media (max-width: ${MOBILE}) {
+  ${(p) => p.theme.mediaQueries.mobile} {
     font-size: 1.4rem;
     max-width: 90%;
   }
@@ -55,7 +54,7 @@ const CountdownGrid = styled.div`
   grid-template-columns: repeat(3, 1fr);
   flex-grow: 2;
   
-  @media (max-width: ${MOBILE}) {
+  ${(p) => p.theme.mediaQueries.mobile} {
     gap: 1rem;
   }
 `
@@ -71,14 +70,14 @@ const Digits = styled.h2`
   font-size: 5.5rem;
   letter-spacing: 0.2rem;
   
-  @media (max-width: ${MOBILE}) {
+  ${(p) => p.theme.mediaQueries.mobile} {
     font-size: 3rem;
     letter-spacing: 0;
   }
 `
 
 const BillboardText = styled(Header3)`
-  @media (max-width: ${MOBILE}) {
+  ${(p) => p.theme.mediaQueries.mobile} {
     font-size: 1rem;
   }
 `
@@ -89,7 +88,7 @@ const Keychain = styled.img`
   top: 18%;
   left: -20%;
   
-  @media (max-width: ${MOBILE}) {
+  ${(p) => p.theme.mediaQueries.mobile} {
     min-height: 0;
     width: 100%;
     top: auto;

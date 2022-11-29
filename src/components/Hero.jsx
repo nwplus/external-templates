@@ -1,6 +1,6 @@
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
-import { LAPTOP, MOBILE, TABLET } from '@constants/measurements'
+import { LAPTOP, TABLET } from '@constants/measurements'
 import { useParallax } from 'react-scroll-parallax'
 import CarAndMap from '../assets/images/CarAndMapNoShadows.svg'
 import CarScenery from '../assets/images/CarScenery.svg'
@@ -13,7 +13,7 @@ const HeroContainer = styled.div`
   position: relative;
   min-height: calc(calc(802 / 1440) * 100vw);
   
-  @media (max-width: ${MOBILE}) {
+  ${(p) => p.theme.mediaQueries.mobile} {
     min-height: calc(calc(628 / 428) * 100vw);
   }
 `
@@ -23,7 +23,7 @@ const OuterContainer = styled.div`
   width: 100%;
   top: calc(calc(350 / 1440) * 100vw);
 
-  @media (max-width: ${MOBILE}) {
+  ${(p) => p.theme.mediaQueries.mobile} {
     bottom: 0;
     display: flex;
     flex-direction: column;
@@ -37,7 +37,7 @@ const IntroContainer = styled.div`
   text-align: left;
   color: #433860;
   
-  @media (max-width: ${MOBILE}) {
+  ${(p) => p.theme.mediaQueries.mobile} {
     margin: 0;
     padding: 0 6vw;
     display: flex;
@@ -61,7 +61,7 @@ const Opening = styled.p`
     top: 20px;
     font-size: 18px;
   }
-  @media (max-width: ${MOBILE}) {
+  ${(p) => p.theme.mediaQueries.mobile} {
     display: none;
   }
 `
@@ -107,7 +107,7 @@ const Subtitle = styled.p`
   @media (max-width: ${TABLET}) {
     font-size: 23px;
   }
-  @media (max-width: ${MOBILE}) {
+  ${(p) => p.theme.mediaQueries.mobile} {
     font-size: 1.1rem;
   }
 `
@@ -118,7 +118,7 @@ const DescriptionContainer = styled.div`
   font-size: 20px;
   font-weight: 500;
   
-  @media (max-width: ${MOBILE}) {
+  ${(p) => p.theme.mediaQueries.mobile} {
     flex-direction: column;
     align-items: center;
     font-size: 1rem;
@@ -126,7 +126,7 @@ const DescriptionContainer = styled.div`
 `
 
 const HideMobile = styled.div`
-  @media (max-width: ${MOBILE}) {
+  ${(p) => p.theme.mediaQueries.mobile} {
     display: none;
   }
 `
@@ -153,7 +153,7 @@ const ButtonsContainer = styled.div`
     align-items: center;
   }
   
-  @media (max-width: ${MOBILE}) {
+  ${(p) => p.theme.mediaQueries.mobile} {
     padding-top: 0.5rem;
     margin-top: 0;
     font-size: 10px;
@@ -165,7 +165,7 @@ const ButtonsContainer = styled.div`
 const ZeroHeightContainer = styled.div`
   height: 0;
   
-  @media (max-width: ${MOBILE}) {
+  ${(p) => p.theme.mediaQueries.mobile} {
     display: none;
   }
 `
@@ -175,7 +175,7 @@ const CarAndMapImage = styled.img`
   z-index: 1;
   user-select: none;
   
-  @media (max-width: ${MOBILE}) {
+  ${(p) => p.theme.mediaQueries.mobile} {
     display: none;
   }
 `
@@ -186,7 +186,7 @@ const CarSceneryImage = styled.img`
   z-index: -1;
   user-select: none;
   
-  @media (max-width: ${MOBILE}) {
+  ${(p) => p.theme.mediaQueries.mobile} {
     display: none;
   }
 `
@@ -200,7 +200,7 @@ const RamContainer = styled.div`
   flex-direction: column;
   align-items: flex-end;
   
-  @media (max-width: ${MOBILE}) {
+  ${(p) => p.theme.mediaQueries.mobile} {
     display: none;
   }
 `
@@ -237,7 +237,7 @@ const TitleContainer = styled.div`
   display: flex;
   align-items: flex-end;
   
-  @media (max-width: ${MOBILE}) {
+  ${(p) => p.theme.mediaQueries.mobile} {
     flex-direction: column;
     align-items: center;
   }
@@ -250,7 +250,7 @@ const LivepeerContainer = styled.div`
   padding-bottom: 0.5rem;
   padding-left: 0.5rem;
   
-  @media (max-width: ${MOBILE}) {
+  ${(p) => p.theme.mediaQueries.mobile} {
     padding-bottom: 0;
     padding-left: 0;
     flex-direction: row;
@@ -266,7 +266,7 @@ const PoweredBy = styled.div`
 const Livepeer = styled.img`
   margin-left: -0.5rem;
   
-  @media (max-width: ${MOBILE}) {
+  ${(p) => p.theme.mediaQueries.mobile} {
     width: 85px;
   }
 `

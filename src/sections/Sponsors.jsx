@@ -5,7 +5,6 @@ import { Header2 } from '@components/Typography'
 import SponsorsGrid from '@components/SponsorsGrid'
 import Button from '@components/Button'
 import fireDb from '@utilities/firebase'
-import { MOBILE } from '@constants/measurements'
 
 import SponsorBackgroundImage from '../assets/images/SponsorBackground.svg'
 import SponsorBackgroundMobile from '../assets/images/mobile/SponsorBackground.svg'
@@ -23,7 +22,7 @@ const SponsorsContainer = styled.div`
   position: relative;
   min-height: calc( calc(2050 / 1440) * 100vw);
   
-  @media (max-width: ${MOBILE}) {
+  ${(p) => p.theme.mediaQueries.mobile} {
     min-height: calc(calc(974 / 428) * 100vw);
 
     background: url(${SponsorBackgroundMobile}), linear-gradient(to bottom, #8486B8, #383E82);
@@ -39,7 +38,7 @@ const SponsorsBackground = styled.img`
   user-select: none;
   min-height: calc( calc(1282 / 1440) * 100vw) !important;
   
-  @media (max-width: ${MOBILE}) {
+  ${(p) => p.theme.mediaQueries.mobile} {
     display: none;
   }
 `
@@ -55,7 +54,7 @@ export const Stamp = styled.img`
   transition: all 0.2s; 
   user-select: none;
   
-  @media (max-width: ${MOBILE}) {
+  ${(p) => p.theme.mediaQueries.mobile} {
     display: none;
   }
 `
@@ -79,7 +78,7 @@ const DuckContainer = styled.div`
   display: flex;
   flex-direction: column;
 
-  @media (max-width: ${MOBILE}) {
+  ${(p) => p.theme.mediaQueries.mobile} {
     display: none;
   }
 `
@@ -102,7 +101,7 @@ const SeabusContainer = styled.div`
   display: flex;
   align-items: flex-end;
   
-  @media (max-width: ${MOBILE}) {
+  ${(p) => p.theme.mediaQueries.mobile} {
     display: none;
   }
 `

@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import fireDb from '@utilities/firebase'
 import FaqBox from '@components/FaqBox'
 import { Header2, Header3 } from '@components/Typography'
-import { MOBILE } from '@constants/measurements'
 
 const FaqContainer = styled.div`
   position: relative;
@@ -11,7 +10,7 @@ const FaqContainer = styled.div`
   min-height: 50vh;
   
   
-  @media (max-width: ${MOBILE}) {
+  ${(p) => p.theme.mediaQueries.mobile} {
     min-height: 0;
     background: linear-gradient(to bottom, #BFEFF0, #79DAE4);
   }

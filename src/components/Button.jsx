@@ -1,4 +1,4 @@
-import { MOBILE, TABLET } from '@constants/measurements'
+import { TABLET } from '@constants/measurements'
 import React from 'react'
 import styled from 'styled-components'
 
@@ -18,7 +18,7 @@ const getButtonStyles = (variant) => {
         background-origin: border-box;
         border: 3px solid transparent;
 
-        @media (max-width: ${MOBILE}) {
+        ${(p) => p.theme.mediaQueries.mobile} {
           border: 1.5px solid transparent;
         }
       `
@@ -41,7 +41,7 @@ const ButtonContainer = styled.a`
     margin-top: 10px;
   }
 
-  @media (max-width: ${MOBILE}) {
+  ${(p) => p.theme.mediaQueries.mobile} {
     border-radius: 5px;
   }
   
@@ -74,7 +74,7 @@ const ButtonText = styled.div`
     padding: calc(0.6rem + 6px) calc(2rem + 6px);
   `}
   
-  @media (max-width: ${MOBILE}) {
+  ${(p) => p.theme.mediaQueries.mobile} {
     font-size: 1.1rem;
     padding: 0.5rem 2rem;
     min-width: 220px;

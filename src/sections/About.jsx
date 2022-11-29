@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import { useParallax } from 'react-scroll-parallax'
 import { Body, Header2 } from '@components/Typography'
-import { MOBILE } from '@constants/measurements'
 
 const AboutContainer = styled.div`
   min-height: calc(calc(779 / 1440) * 100vw);
@@ -11,7 +10,7 @@ const AboutContainer = styled.div`
   display: flex;
   align-items: center;
   
-  @media (max-width: ${MOBILE}) {
+  ${(p) => p.theme.mediaQueries.mobile} {
     min-height: calc(calc(1218 / 428) * 100vw);
     align-items: flex-end;
   }
@@ -27,7 +26,7 @@ const AboutInner = styled.div`
   gap: 5rem;
   padding-bottom: 5rem;
   
-  @media (max-width: ${MOBILE}) {
+  ${(p) => p.theme.mediaQueries.mobile} {
     padding-bottom: 0;
   }
 `
@@ -43,7 +42,7 @@ const BlurbContainer = styled.div`
     margin-left: auto;
   `}
   
-  @media (max-width: ${MOBILE}) {
+  ${(p) => p.theme.mediaQueries.mobile} {
     max-width: 100vw;
     margin: 0;
     padding: 0 6vw;

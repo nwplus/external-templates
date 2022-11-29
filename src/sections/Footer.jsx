@@ -11,7 +11,6 @@ import {
   faYoutube
 } from '@fortawesome/free-brands-svg-icons'
 import Team from '@components/Team'
-import { MOBILE } from '@constants/measurements'
 
 import { Stamp } from './Sponsors'
 import FooterBackgroundImage from '../assets/images/FooterBackground.svg'
@@ -24,7 +23,7 @@ const FooterContainer = styled.div`
   position: relative;
   min-height: calc( calc(1556 / 1440) * 100vw);
   
-  @media (max-width: ${MOBILE}) {
+  ${(p) => p.theme.mediaQueries.mobile} {
     min-height: calc(calc(974 / 428) * 100vw);
 
     background: url(${FooterBackgroundMobile}), linear-gradient(to bottom, #83F6F7, #FFF);
@@ -41,7 +40,7 @@ const FooterBackground = styled.img`
   user-select: none;
   min-height: calc( calc(1163 / 1440) * 100vw) !important;
 
-  @media (max-width: ${MOBILE}) {
+  ${(p) => p.theme.mediaQueries.mobile} {
     display: none;
   }
 `
