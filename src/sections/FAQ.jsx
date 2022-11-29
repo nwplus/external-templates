@@ -1,12 +1,35 @@
 import React, { useState, useEffect } from 'react'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import fireDb from '@utilities/firebase'
 import FaqBox from '@components/FaqBox'
 import { Header2, Header3 } from '@components/Typography'
 
+import UltiAnimationImg from '../assets/images/UltiAnimation.gif'
+
 const FaqContainer = styled.div`
   background: linear-gradient(to bottom, #AFEBEE, #99E4EA);
   min-height: 50vh;
+`
+const moveUltiAnimation = keyframes`
+  0% {  
+    // transform: rotate(-1deg);
+        left: 180px;  
+        top: -70px;
+  }
+  100% {  
+    // transform: rotate(1deg); 
+          left: 185px;
+          top: -65px;
+        }
+`
+const UltiAnimation = styled.img`
+  position: relative;
+  left: 180px;
+  margin-bottom: 300px;
+  width: 180px;
+  height: auto;
+
+  animation: ${moveUltiAnimation} 1s infinite ease-in alternate;
 `
 
 const Wrapper = styled.div`
@@ -113,6 +136,7 @@ const Faq = () => {
 
   return (
     <FaqContainer>
+      <UltiAnimation src={UltiAnimationImg} alt="Nugget and Reindeer tossing around a Firsbee"></UltiAnimation>
       <Wrapper id="faq">
         <StyledTitle
           color="#5667CF"
