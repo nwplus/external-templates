@@ -6,7 +6,7 @@ import GlobalStyles from '@styles/global'
 import styled from 'styled-components'
 
 import Sponsors from 'src/sections/Sponsors'
-import FAQ from 'src/sections/FAQ'
+import Faq from 'src/sections/Faq'
 import Footer from 'src/sections/Footer'
 
 import NavigationBar from '../components/NavigationBar'
@@ -54,7 +54,7 @@ export default function Index({ title }) {
         {/* Registration Countdown timer */}
         {/* Background (Stats are in the image) */}
       </HalfContainer>
-      <FAQ />
+      <Faq />
       <Sponsors />
       <Footer />
 
