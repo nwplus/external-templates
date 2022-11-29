@@ -1,4 +1,4 @@
-import { TABLET } from '@constants/measurements'
+import { MOBILE, TABLET } from '@constants/measurements'
 import React from 'react'
 import styled from 'styled-components'
 
@@ -13,10 +13,14 @@ const getButtonStyles = (variant) => {
       return `
         box-sizing: border-box;
         background: transparent;
-        background-image: linear-gradient(90deg, #FFF8F5, #FFF8F5), linear-gradient(263.82deg, #9ea4fc 38.58%, #9bd3df 78.17%);
+        background-image: linear-gradient(90deg, #F9E9E2, #F9E9E2), linear-gradient(263.82deg, #9ea4fc 38.58%, #9bd3df 78.17%);
         background-clip: padding-box, border-box;
         background-origin: border-box;
         border: 3px solid transparent;
+
+        @media (max-width: ${MOBILE}) {
+          border: 1.5px solid transparent;
+        }
       `
     default:
       break;
@@ -35,6 +39,10 @@ const ButtonContainer = styled.a`
 
   @media (max-width: ${TABLET}) {
     margin-top: 10px;
+  }
+
+  @media (max-width: ${MOBILE}) {
+    border-radius: 5px;
   }
   
   &:hover {
@@ -59,11 +67,24 @@ const ButtonText = styled.div`
   -webkit-background-clip: text;
   color: #8486e4;
   padding: 0.75rem 2rem;
+  white-space: nowrap;
 
   ${p => p && p.variant === 'solid' && `
     color: white;
     padding: calc(0.6rem + 6px) calc(2rem + 6px);
   `}
+  
+  @media (max-width: ${MOBILE}) {
+    font-size: 1.1rem;
+    padding: 0.5rem 2rem;
+    min-width: 220px;
+    text-align: center;
+
+  ${p => p && p.variant === 'solid' && `
+    color: white;
+    padding: calc(0.4rem + 3px) calc(2rem + 3px);
+  `}
+  }
 `
 
 const Button = ({

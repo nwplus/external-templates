@@ -5,8 +5,10 @@ import { Header2 } from '@components/Typography'
 import SponsorsGrid from '@components/SponsorsGrid'
 import Button from '@components/Button'
 import fireDb from '@utilities/firebase'
+import { MOBILE } from '@constants/measurements'
 
 import SponsorBackgroundImage from '../assets/images/SponsorBackground.svg'
+import SponsorBackgroundMobile from '../assets/images/mobile/SponsorBackground.svg'
 import DuckImage from '../assets/images/Duck.svg'
 import DuckRipplesImage from '../assets/images/DuckRipples.svg'
 import SeabusImage from '../assets/images/Seabus.svg'
@@ -19,7 +21,16 @@ import GastownStamp from '../assets/images/stamps/Gastown.svg'
 
 const SponsorsContainer = styled.div`
   position: relative;
-  min-height: calc( calc(2050 / 1440) * 100vw) !important;
+  min-height: calc( calc(2050 / 1440) * 100vw);
+  
+  @media (max-width: ${MOBILE}) {
+    min-height: calc(calc(974 / 428) * 100vw);
+
+    background: url(${SponsorBackgroundMobile}), linear-gradient(to bottom, #8486B8, #383E82);
+    background-repeat: no-repeat;
+    background-position: top center;
+    aspect-ratio: 428/974;
+  }
 `
 
 const SponsorsBackground = styled.img`
@@ -27,6 +38,10 @@ const SponsorsBackground = styled.img`
   position: absolute;
   user-select: none;
   min-height: calc( calc(1282 / 1440) * 100vw) !important;
+  
+  @media (max-width: ${MOBILE}) {
+    display: none;
+  }
 `
 
 export const Stamp = styled.img`
@@ -39,6 +54,10 @@ export const Stamp = styled.img`
 
   transition: all 0.2s; 
   user-select: none;
+  
+  @media (max-width: ${MOBILE}) {
+    display: none;
+  }
 `
 
 const duckyAnimation = keyframes`
@@ -59,6 +78,10 @@ const DuckContainer = styled.div`
   top: 5rem;
   display: flex;
   flex-direction: column;
+
+  @media (max-width: ${MOBILE}) {
+    display: none;
+  }
 `
 
 const Duck = styled.img`  
@@ -78,6 +101,10 @@ const SeabusContainer = styled.div`
   top: 10rem;
   display: flex;
   align-items: flex-end;
+  
+  @media (max-width: ${MOBILE}) {
+    display: none;
+  }
 `
 
 const Seabus = styled.img`
@@ -105,7 +132,7 @@ const StyledTitle = styled(Header2)`
   padding-top: 18rem;
   ${(p) => p.theme.mediaQueries.mobile} {
     font-size: 3em;
-    padding-top: 10rem;
+    padding-top: 14rem;
   }
 `
 
@@ -122,7 +149,9 @@ const PushinP = styled.p`
   padding-bottom: 2rem;
   
   ${(p) => p.theme.mediaQueries.mobile} {
-    display: none;
+    min-width: 0;
+    width: 100%;
+    padding: 1.5rem 6vw 1rem 6vw;
   }
 `
 

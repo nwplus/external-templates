@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { useParallax } from 'react-scroll-parallax'
 import { Body, Header2 } from '@components/Typography'
+import { MOBILE } from '@constants/measurements'
 
 const AboutContainer = styled.div`
   min-height: calc(calc(779 / 1440) * 100vw);
@@ -9,6 +10,11 @@ const AboutContainer = styled.div`
   z-index: 1;
   display: flex;
   align-items: center;
+  
+  @media (max-width: ${MOBILE}) {
+    min-height: calc(calc(1218 / 428) * 100vw);
+    align-items: flex-end;
+  }
 `
 
 const AboutInner = styled.div`
@@ -20,6 +26,10 @@ const AboutInner = styled.div`
   flex-direction: column;
   gap: 5rem;
   padding-bottom: 5rem;
+  
+  @media (max-width: ${MOBILE}) {
+    padding-bottom: 0;
+  }
 `
 
 const BlurbContainer = styled.div`
@@ -32,7 +42,12 @@ const BlurbContainer = styled.div`
   ` : `
     margin-left: auto;
   `}
-
+  
+  @media (max-width: ${MOBILE}) {
+    max-width: 100vw;
+    margin: 0;
+    padding: 0 6vw;
+  }
 `
 
 const BlurbHeader = styled(Header2)`

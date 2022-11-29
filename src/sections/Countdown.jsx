@@ -1,4 +1,5 @@
 import { Header2, Header3 } from '@components/Typography'
+import { MOBILE } from '@constants/measurements'
 import React, { useEffect, useState } from 'react'
 import { useParallax } from 'react-scroll-parallax'
 import styled from 'styled-components'
@@ -6,9 +7,13 @@ import styled from 'styled-components'
 import KeychainImage from '../assets/images/Keychain.svg'
 
 const CountdownContainer = styled.div`
-  min-height: calc(calc(706 / 1440) * 100vw);
+  min-height: calc(calc(1883 / 1440) * 100vw);
   position: relative;
   z-index: 1;
+  
+  @media (max-width: ${MOBILE}) {
+    min-height: calc(calc(746 / 428) * 100vw);
+  }
 `
 
 const FauxBillboard = styled.div`
@@ -21,6 +26,15 @@ const FauxBillboard = styled.div`
   margin-right: auto;
   width: 75vw;
   text-shadow: 0 0 10px rgba(233,233,233,0.4);
+  
+  @media (max-width: ${MOBILE}) {
+    margin-top: 76.5%;
+    min-height: calc(calc(482 / 428) * 75vw);
+    max-width: 100vw;
+    min-height: 0;
+    width: 75vw;
+    flex-direction: column;
+  }
 `
 
 const StyledHeader = styled(Header2)`
@@ -29,12 +43,21 @@ const StyledHeader = styled(Header2)`
   text-align: center;
   line-height: 120%;
   max-width: 40%;
+  
+  @media (max-width: ${MOBILE}) {
+    font-size: 1.4rem;
+    max-width: 90%;
+  }
 `
 
 const CountdownGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   flex-grow: 2;
+  
+  @media (max-width: ${MOBILE}) {
+    gap: 1rem;
+  }
 `
 
 const TimeUnit = styled.div`
@@ -47,15 +70,31 @@ const Digits = styled.h2`
   font-weight: 600;
   font-size: 5.5rem;
   letter-spacing: 0.2rem;
+  
+  @media (max-width: ${MOBILE}) {
+    font-size: 3rem;
+    letter-spacing: 0;
+  }
 `
 
-const BillboardText = styled(Header3)``
+const BillboardText = styled(Header3)`
+  @media (max-width: ${MOBILE}) {
+    font-size: 1rem;
+  }
+`
 
 const Keychain = styled.img`
-min-height: calc(calc(1109 / 1493) * 100vw);
+  min-height: calc(calc(1109 / 1493) * 100vw);
   position: absolute;
-  top: 45%;
+  top: 18%;
   left: -20%;
+  
+  @media (max-width: ${MOBILE}) {
+    min-height: 0;
+    width: 100%;
+    top: auto;
+    bottom: 30%;
+  }
 `
 
 
@@ -95,7 +134,7 @@ const useCountdown = (targetDate) => {
 
 const Countdown = () => {
 
-  const parallax = useParallax({ speed: 15 })
+  const parallax = useParallax({ speed: 10 })
 
   const countDownDate = new Date('Dec 19, 2022 23:59:59').getTime()
   const countdown = useCountdown(countDownDate)

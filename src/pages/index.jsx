@@ -1,9 +1,8 @@
 import Head from 'next/head'
 import React from 'react'
 import GlobalStyles from '@styles/global'
-// import fireDb from '@utilities/firebase'
-// import { SectionContainer } from '@lib/Containers'
 import styled from 'styled-components'
+import { MOBILE } from '@constants/measurements'
 
 import Sponsors from 'src/sections/Sponsors'
 import Faq from 'src/sections/FAQ'
@@ -16,17 +15,20 @@ import Hero from '../components/Hero'
 
 import logo from '../assets/logos/nwplus-logo.svg'
 import MainGraphicsTop from '../assets/images/MainBackground.svg'
+import MainGraphicsMobile from '../assets/images/mobile/MainBackground.svg'
 
 const HalfContainer = styled.div`
+  background: url(${MainGraphicsTop}), linear-gradient(to bottom, #83F6F7 0%, #A9D7EF 100%);
   position: relative;
-  min-height: calc( calc(3606 / 1440) * 100vw);
-`
-const HalfBackgroundImage = styled.img`
-  top: 0;
-  z-index: 0;
-  position: absolute;
-  user-select: none;
-  min-height: calc( calc(3606 / 1440) * 100vw);
+  height: auto;
+  width: 100%;
+  
+  @media (max-width: ${MOBILE}) {
+    background: url(${MainGraphicsMobile}), linear-gradient(to bottom, #83F6F7, #A9D7EF);
+    background-repeat: no-repeat;
+    background-position: top center;
+    aspect-ratio: 428/2661;
+  }
 `
 
 export default function Index({ title }) {
@@ -52,7 +54,6 @@ export default function Index({ title }) {
 
       <NavigationBar />
       <HalfContainer>
-        <HalfBackgroundImage src={MainGraphicsTop} alt="Background image" />
         <Hero />
         <About />
         <Countdown />
