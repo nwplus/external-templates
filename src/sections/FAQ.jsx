@@ -71,6 +71,7 @@ const CollectionName = styled(Header3)`
 `
 
 const StyledTitle = styled(Header2)`
+  font-size: 3rem;
   text-align: center;
   ${(p) => p.theme.mediaQueries.mobile} {
     font-size: 3.8em;
