@@ -21,11 +21,9 @@ const SponsorsBackground = styled.img`
   top: 0;
   position: absolute;
   min-height: calc( calc(1282 / 1440) * 100vw) !important;
-  z-index: -1;
 `
 
 export const Stamp = styled.img`
-  transition: all 0.35s; 
   z-index: 4;
   position: absolute;
   ${p => p.top && `top: ${p.top};`}
@@ -33,6 +31,7 @@ export const Stamp = styled.img`
   ${p => p.right && `right: ${p.right};`}
   ${p => p.left && `left: ${p.left};`}
 
+  transition: all 0.2s; 
   // &:hover {
   //   transform: scale(1.1);
   // }
@@ -53,7 +52,7 @@ const duckyAnimation = keyframes`
 const DuckContainer = styled.div`
   position: absolute;
   right: 0;
-  top: 13rem;
+  top: 5rem;
   display: flex;
   flex-direction: column;
 `

@@ -7,18 +7,23 @@ import FooterBackgroundImage from '../assets/images/FooterBackground.svg'
 import VictoriaStamp from '../assets/images/stamps/Victoria.svg'
 import WhistlerStamp from '../assets/images/stamps/Whistler.svg'
 
+const FooterContainer = styled.div`
+  position: relative;
+  min-height: calc( calc(1556 / 1440) * 100vw) !important;
+`
+
+const FooterBackground = styled.img`
+  bottom: 0;
+  position: absolute;
+  min-height: calc( calc(1163 / 1440) * 100vw) !important;
+`
+
 const Footer = () => {
 
-  const FooterContainer = styled.div`
-    position: relative;
-    min-height: calc( calc(1556 / 1440) * 100vw) !important;
-  `
-
-  const FooterBackground = styled.img`
-    bottom: 0;
-    position: absolute;
-    min-height: calc( calc(1163 / 1440) * 100vw) !important;
-  `
+  const stampPArr = [
+    useParallax({ speed: 5 }),
+    useParallax({ speed: 6 })
+  ]
 
   const stamps = [
     {
@@ -32,11 +37,6 @@ const Footer = () => {
       top: '20%',
       right: '-5rem'
     }
-  ]
-
-  const stampPArr = [
-    useParallax({ speed: 4 }),
-    useParallax({ speed: 5 }),
   ]
 
   return (

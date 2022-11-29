@@ -9,10 +9,7 @@ export const GlobalStyles = createGlobalStyle`
   }
   html, body {
     overflow-x: hidden;
-    // background: blue;
-    // height: 300%; // For now
     background: linear-gradient(to bottom, #FED9CD, #081160);
-    transform: matrix(-1, 0, 0, 1, 0, 0);
   }
   body {
     position: relative;

@@ -3,10 +3,10 @@ import React from 'react';
 import styled from 'styled-components';
 import logo from '../assets/logos/nwplus-logo.svg';
 
-const NavbarUl = styled.ul`
+const NavbarUl = styled.nav`
     position: fixed;
-    list-style-type: none;
-    display: inline;
+    top: 0;
+    
     padding: 0;
     width:100%;
     height: 60px;
