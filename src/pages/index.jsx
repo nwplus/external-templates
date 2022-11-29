@@ -6,8 +6,10 @@ import GlobalStyles from '@styles/global'
 import styled from 'styled-components'
 
 import Sponsors from 'src/sections/Sponsors'
-import Faq from 'src/sections/Faq'
+import Faq from 'src/sections/FAQ'
 import Footer from 'src/sections/Footer'
+import Countdown from 'src/sections/Countdown'
+import About from 'src/sections/About'
 
 import NavigationBar from '../components/NavigationBar'
 import Hero from '../components/Hero'
@@ -21,6 +23,7 @@ const HalfContainer = styled.div`
 `
 const HalfBackgroundImage = styled.img`
   top: 0;
+  z-index: 0;
   position: absolute;
   min-height: calc( calc(3606 / 1440) * 100vw);
 `
@@ -50,9 +53,8 @@ export default function Index({ title }) {
       <HalfContainer>
         <HalfBackgroundImage src={MainGraphicsTop} alt="Background image" />
         <Hero />
-        {/* About section */}
-        {/* Registration Countdown timer */}
-        {/* Background (Stats are in the image) */}
+        <About />
+        <Countdown />
       </HalfContainer>
       <Faq />
       <Sponsors />

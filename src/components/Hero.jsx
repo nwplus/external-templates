@@ -9,12 +9,13 @@ import RamHeadImage from '../assets/images/RamHead.svg'
 
 const HeroContainer = styled.div`
   position: relative;
+  min-height: calc(calc(802 / 1440) * 100vw);
 `
 
 const OuterContainer = styled.div`
   position: absolute;
   width: 100%;
-  top: calc(35vh - 50%);
+  top: 35vh;
 `
 
 const IntroContainer = styled.div`
