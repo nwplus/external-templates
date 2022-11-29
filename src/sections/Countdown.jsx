@@ -84,7 +84,7 @@ const useCountdown = (targetDate) => {
 
 const Countdown = () => {
 
-  const countDownDate = new Date('Jan 14, 2023 00:00:00').getTime()
+  const countDownDate = new Date('Dec 19, 2022 23:59:59').getTime()
   const countdown = useCountdown(countDownDate)
 
   return (
@@ -95,7 +95,7 @@ const Countdown = () => {
         </StyledHeader>
         <CountdownGrid>
           {['Days', 'Hours', 'Minutes'].map((item, index) => (
-            <TimeUnit>
+            <TimeUnit key={item}>
               <Digits>
                 {countdown[index]}
               </Digits>
