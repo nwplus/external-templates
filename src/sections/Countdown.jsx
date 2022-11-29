@@ -33,7 +33,7 @@ const FauxBillboard = styled.div`
     flex-direction: column;
     position: absolute;
     margin-top: 0;
-    padding-top: calc(calc(90 / 750) * 100vw);
+    padding-top: calc(calc(60 / 750) * 100vw);
     justify-content: center;
   }
 `
@@ -89,7 +89,9 @@ const Keychain = styled.img`
   min-height: calc(calc(1109 / 1493) * 100vw);
   position: absolute;
   top: 18%;
-  left: -20%;
+  left: -25%;
+  aspect-ratio: 1493 / 1109;
+  width: 100%;
   
   ${(p) => p.theme.mediaQueries.mobile} {
     min-height: 0;

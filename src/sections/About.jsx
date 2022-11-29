@@ -9,6 +9,8 @@ const AboutContainer = styled.div`
   z-index: 1;
   display: flex;
   align-items: center;
+  width: 100%;
+  aspect-ratio: 1440 / 779;
   
   ${(p) => p.theme.mediaQueries.mobile} {
     min-height: calc(calc(1350 / 428) * 100vw);
@@ -29,6 +31,7 @@ const AboutInner = styled.div`
   ${(p) => p.theme.mediaQueries.mobile} {
     padding-top: 10rem;
     padding-bottom: 0;
+    gap: 2rem;
   }
 `
 
@@ -52,6 +55,10 @@ const BlurbContainer = styled.div`
 
 const BlurbHeader = styled(Header2)`
   color: #4453B0;
+  
+  ${(p) => p.theme.mediaQueries.mobile} {
+    font-size: 2rem;
+  }
 `
 
 const BlurbText = styled(Body)`

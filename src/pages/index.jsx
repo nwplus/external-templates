@@ -17,8 +17,9 @@ import MainGraphicsTop from '../assets/images/MainBackground.svg'
 import MainGraphicsMobile from '../assets/images/mobile/MainBackground.svg'
 
 const HalfContainer = styled.div`
+  min-height: calc( calc(3606 / 1440) * 100vw);
   position: relative;
-  height: auto;
+  aspect-ratio: 1440 / 3606;
   width: 100%;
   
   ${(p) => p.theme.mediaQueries.mobile} {
@@ -36,6 +37,13 @@ const HalfBackgroundImage = styled.img`
   position: absolute;
   user-select: none;
   min-height: calc( calc(3606 / 1440) * 100vw);
+  object-fit: cover;
+  aspect-ratio: 1440 / 3606;
+  width: 100%;
+
+  @media-query (max-width: 1440px) {
+    min-height: none;
+  }
   
   ${(p) => p.theme.mediaQueries.mobile} {
     display: none;

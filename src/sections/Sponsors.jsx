@@ -33,6 +33,8 @@ const SponsorsBackground = styled.img`
   position: absolute;
   user-select: none;
   min-height: calc( calc(1282 / 1440) * 100vw);
+  aspect-ratio: 1440 / 1282;
+  width: 100%;
   
   ${(p) => p.theme.mediaQueries.mobile} {
     display: none;
@@ -205,7 +207,7 @@ const Sponsors = () => {
 
   useEffect(async () => {
     // use cmd-f2022 collection to test
-    const data = await fireDb.getCollection('cmd-f2022', 'Sponsors')
+    const data = await fireDb.getCollection('nwHacks2023', 'Sponsors')
     if (data) {
       setSponsors(data)
     }
