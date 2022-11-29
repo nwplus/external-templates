@@ -7,6 +7,7 @@ import CarScenery from '../assets/images/CarScenery.svg'
 import RamBodyImage from '../assets/images/RamBody.svg'
 import RamHeadImage from '../assets/images/RamHead.svg'
 import Button from './Button'
+import LivepeerImage from '../assets/images/Livepeer.svg'
 
 const HeroContainer = styled.div`
   position: relative;
@@ -16,7 +17,7 @@ const HeroContainer = styled.div`
 const OuterContainer = styled.div`
   position: absolute;
   width: 100%;
-  top: 35vh;
+  top: 36vh;
 `
 
 const IntroContainer = styled.div`
@@ -73,6 +74,8 @@ const Subtitle = styled.p`
   font-family: HK Grotesk;
   font-size: 32px;
   font-weight: 600;
+  padding-top: 0.5rem;
+  padding-bottom: 0.2rem;
   line-height: 32px;
   letter-spacing: -0.25999999046325684px;
   @media (max-width: ${LAPTOP}) {
@@ -95,7 +98,6 @@ const Description = styled.p`
 const ButtonsContainer = styled.div`
   margin-left: 10vw;
   position: relative;
-  margin-top: 15px;
   display: flex;
   gap: 1.5rem;
   @media (max-width: ${TABLET}) {
@@ -163,9 +165,32 @@ const RamHead = styled.img`
   animation-iteration-count: infinite;
 `
 
+const TitleContainer = styled.div`
+  display: flex;
+  align-items: flex-end;
+`
+
+const LivepeerContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.5rem;
+`
+
+const PoweredBy = styled.div`
+  font-size: 1.25rem;
+  font-weight: 600;
+`
+
+const Livepeer = styled.img`
+  margin-left: -0.5rem;
+`
+
 const Hero = () => {
   const parallax = useParallax({ speed: -15 });
   const parallax2 = useParallax({ speed: 0 });
+  const parallax3 = useParallax({ speed: 5 });
 
   return (
     <HeroContainer>
@@ -179,15 +204,22 @@ const Hero = () => {
         <RamHead src={RamHeadImage} alt="A bobbing Ram head" />
         <RamBody src={RamBodyImage} alt="Ram body" />
       </RamContainer>
-      <OuterContainer>
+      <OuterContainer ref={parallax3.ref}>
         <IntroContainer>
           <Opening>Welcome to</Opening>
-          <Title>nwHacks</Title>
+          <TitleContainer>
+            <Title>nwHacks</Title>
+            <LivepeerContainer>
+              <PoweredBy>
+                powered by
+              </PoweredBy>
+              <Livepeer src={LivepeerImage} alt="Title sponsor: Livepeer" />
+            </LivepeerContainer>
+          </TitleContainer>
           <Subtitle>Western Canada’s Largest Hackathon</Subtitle>
           <Description>January 14 - 15 2023 | In-Person Event @ UBC Life Sciences Institute </Description>
         </IntroContainer>
         <ButtonsContainer>
-
           <Button
             variant="solid"
             href="#">
@@ -198,7 +230,6 @@ const Hero = () => {
             href="#">
             Be a Mentor!
           </Button>
-
         </ButtonsContainer>
       </OuterContainer>
     </HeroContainer>
