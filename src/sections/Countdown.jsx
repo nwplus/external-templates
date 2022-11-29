@@ -1,6 +1,9 @@
 import { Header2, Header3 } from '@components/Typography'
 import React, { useEffect, useState } from 'react'
+import { useParallax } from 'react-scroll-parallax'
 import styled from 'styled-components'
+
+import KeychainImage from '../assets/images/Keychain.svg'
 
 const CountdownContainer = styled.div`
   min-height: calc(calc(706 / 1440) * 100vw);
@@ -11,6 +14,7 @@ const CountdownContainer = styled.div`
 const FauxBillboard = styled.div`
   min-height: calc(calc(482 / 1139) * 75vw);
   display: flex;
+  max-width: 1200px;
   align-items: center;
   margin-top: 10%;
   margin-left: auto;
@@ -45,8 +49,15 @@ const Digits = styled.h2`
   letter-spacing: 0.2rem;
 `
 
-const BillboardText = styled(Header3)`
+const BillboardText = styled(Header3)``
+
+const Keychain = styled.img`
+min-height: calc(calc(1109 / 1493) * 100vw);
+  position: absolute;
+  top: 45%;
+  left: -20%;
 `
+
 
 const getReturnValues = (countDown) => {
   // calculate time left
@@ -84,11 +95,14 @@ const useCountdown = (targetDate) => {
 
 const Countdown = () => {
 
+  const parallax = useParallax({ speed: 15 })
+
   const countDownDate = new Date('Dec 19, 2022 23:59:59').getTime()
   const countdown = useCountdown(countDownDate)
 
   return (
     <CountdownContainer>
+      <Keychain ref={parallax.ref} src={KeychainImage} alt="Keychain" />
       <FauxBillboard>
         <StyledHeader>
           Registration closes in:

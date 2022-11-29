@@ -17,7 +17,7 @@ const HeroContainer = styled.div`
 const OuterContainer = styled.div`
   position: absolute;
   width: 100%;
-  top: 36vh;
+  top: calc(calc(400 / 1440) * 100vw);
 `
 
 const IntroContainer = styled.div`
@@ -98,6 +98,7 @@ const Description = styled.p`
 const ButtonsContainer = styled.div`
   margin-left: 10vw;
   position: relative;
+  padding-top: 1rem;
   display: flex;
   gap: 1.5rem;
   @media (max-width: ${TABLET}) {
