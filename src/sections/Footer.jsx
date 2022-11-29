@@ -25,6 +25,7 @@ const FooterContainer = styled.div`
 const FooterBackground = styled.img`
   bottom: 0;
   position: absolute;
+  user-select: none;
   min-height: calc( calc(1163 / 1440) * 100vw) !important;
 `
 
@@ -72,7 +73,9 @@ const TextContainer = styled.div`
 `
 
 const SmallText = styled.div`
+  user-select: none;
   padding-top: 2.5rem;
+  text-align: center;
 
   div {
     color: #E2D6FF;

@@ -25,6 +25,7 @@ const HalfBackgroundImage = styled.img`
   top: 0;
   z-index: 0;
   position: absolute;
+  user-select: none;
   min-height: calc( calc(3606 / 1440) * 100vw);
 `
 
