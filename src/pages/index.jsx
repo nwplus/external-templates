@@ -50,24 +50,6 @@ export default function Index({ title }) {
       {/* Components Starts */}
 
       <NavigationBar />
-<<<<<<< HEAD
-      {/* Header section */}
-
-      {/* <div style={{ height: "90vh", width: "100vw", background: "blue" }}></div> TEMP HEADER */}
-
-      <img src={MainGraphics} style={{ position: "absolute" }}></img>
-      {/* Hero section */}
-      <Hero />
-      {/* TEMP HEADER */}
-      <BigBoy src={MainGraphics} alt="background" />
-      {/* About section */}
-      {/* Registration Countdown timer */}
-      {/* Background */}
-      {/* FAQ */}
-      {/* Sponsors */}
-      {/* Footer */}
-      {/* Rough layout Guide end */}
-=======
       <HalfContainer>
         <HalfBackgroundImage src={MainGraphicsTop} alt="Background image" />
         <Hero />
@@ -78,7 +60,6 @@ export default function Index({ title }) {
       <Sponsors />
       <Footer />
 
->>>>>>> 95be2668474cabf00eeff23904e139204c1f1448
       {/* Components Ends */}
     </>
   )
