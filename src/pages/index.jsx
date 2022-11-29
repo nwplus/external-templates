@@ -6,7 +6,7 @@ import GlobalStyles from '@styles/global'
 import styled from 'styled-components'
 
 import Sponsors from 'src/sections/Sponsors'
-import Faq from 'src/sections/Faq'
+import Faq from 'src/sections/FAQ'
 import Footer from 'src/sections/Footer'
 import Countdown from 'src/sections/Countdown'
 import About from 'src/sections/About'
