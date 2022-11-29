@@ -1,6 +1,11 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled, { keyframes } from 'styled-components'
 import { useParallax } from 'react-scroll-parallax'
+import { Header2 } from '@components/Typography'
+import SponsorsGrid from '@components/SponsorsGrid'
+import Button from '@components/Button'
+import fireDb from '@utilities/firebase'
+
 import SponsorBackgroundImage from '../assets/images/SponsorBackground.svg'
 import DuckImage from '../assets/images/Duck.svg'
 import DuckRipplesImage from '../assets/images/DuckRipples.svg'
@@ -20,6 +25,7 @@ const SponsorsContainer = styled.div`
 const SponsorsBackground = styled.img`
   top: 0;
   position: absolute;
+  user-select: none;
   min-height: calc( calc(1282 / 1440) * 100vw) !important;
 `
 
@@ -32,9 +38,7 @@ export const Stamp = styled.img`
   ${p => p.left && `left: ${p.left};`}
 
   transition: all 0.2s; 
-  // &:hover {
-  //   transform: scale(1.1);
-  // }
+  user-select: none;
 `
 
 const duckyAnimation = keyframes`
@@ -84,6 +88,44 @@ const SeabusRipples = styled.img`
   margin-left: -15%;
 `
 
+const StaticContainer = styled.div`
+  position: absolute;
+  top: 0;
+  width: 100%;
+  padding-top: calc(calc(750 / 1440) * 100vw);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+
+const StyledTitle = styled(Header2)`
+  text-align: center;
+  color: #FFF;
+  font-size: 3rem;
+  padding-top: 18rem;
+  ${(p) => p.theme.mediaQueries.mobile} {
+    font-size: 3em;
+    padding-top: 10rem;
+  }
+`
+
+const PushinP = styled.p`
+  color: #FFF;
+  text-align: center;
+  font-weight: 550;
+  font-size: 1.1rem;
+  width: 50vw;
+  min-width: 500px;
+  margin: 0 auto;
+  padding-top: 2rem;
+  max-width: 800px;
+  padding-bottom: 2rem;
+  
+  ${(p) => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
+`
+
 const Sponsors = () => {
 
   const stampPArr = [
@@ -119,6 +161,16 @@ const Sponsors = () => {
     },
   ]
 
+  const [sponsors, setSponsors] = useState(null)
+
+  useEffect(async () => {
+    // use cmd-f2022 collection to test
+    const data = await fireDb.getCollection('nwHacks2023', 'Sponsors')
+    if (data) {
+      setSponsors(data)
+    }
+  }, [])
+
   return (
     <SponsorsContainer>
       <SponsorsBackground src={SponsorBackgroundImage} alt="Sponsor section background" />
@@ -141,6 +193,20 @@ const Sponsors = () => {
         <Seabus src={SeabusImage} alt="A seabus" />
         <SeabusRipples src={SeabusRipplesImage} alt="Ripples in the water caused by a seabus" />
       </SeabusContainer>
+      <StaticContainer>
+        <StyledTitle>
+          Sponsors
+        </StyledTitle>
+        <PushinP>
+          Sponsors make this event happen. If you are interested in working with us, joining us or speaking at one of our events, please reach out to us below!
+        </PushinP>
+        <Button
+          variant="solid"
+          href="mailto:sponsorship@nwplus.io">
+          Sponsor nwHacks!
+        </Button>
+        <SponsorsGrid sponsors={sponsors} />
+      </StaticContainer>
     </SponsorsContainer>
   )
 }
