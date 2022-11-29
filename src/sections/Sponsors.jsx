@@ -21,14 +21,10 @@ import GastownStamp from '../assets/images/stamps/Gastown.svg'
 const SponsorsContainer = styled.div`
   position: relative;
   min-height: calc( calc(2050 / 1440) * 100vw);
-  
-  ${(p) => p.theme.mediaQueries.mobile} {
-    min-height: calc(calc(974 / 428) * 100vw);
 
-    background: url(${SponsorBackgroundMobile}), linear-gradient(to bottom, #8486B8, #383E82);
-    background-repeat: no-repeat;
-    background-position: top center;
-    aspect-ratio: 428/974;
+  ${p => p.theme.mediaQueries.mobile} {
+    min-height: calc( calc(488 / 428) * 100vw);
+    background: linear-gradient(to bottom, #8486B8, #383E82);
   }
 `
 
@@ -36,10 +32,22 @@ const SponsorsBackground = styled.img`
   top: 0;
   position: absolute;
   user-select: none;
-  min-height: calc( calc(1282 / 1440) * 100vw) !important;
+  min-height: calc( calc(1282 / 1440) * 100vw);
   
   ${(p) => p.theme.mediaQueries.mobile} {
     display: none;
+  }
+`
+
+const SponsorsBackgroundMobile = styled.img`
+  top: 0;
+  position: absolute;
+  user-select: none;
+  min-height: calc( calc(488 / 428) * 100vw);
+  display: none;
+
+  ${(p) => p.theme.mediaQueries.mobile} {
+    display: block;
   }
 `
 
@@ -115,13 +123,17 @@ const SeabusRipples = styled.img`
 `
 
 const StaticContainer = styled.div`
-  position: absolute;
   top: 0;
   width: 100%;
   padding-top: calc(calc(750 / 1440) * 100vw);
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  ${(p) => p.theme.mediaQueries.mobile} {
+    position: relative;
+    padding-top: calc(calc(488 / 428) * 100vw);
+  }
 `
 
 const StyledTitle = styled(Header2)`
@@ -131,7 +143,7 @@ const StyledTitle = styled(Header2)`
   padding-top: 18rem;
   ${(p) => p.theme.mediaQueries.mobile} {
     font-size: 3em;
-    padding-top: 14rem;
+    padding-top: 0;
   }
 `
 
@@ -193,7 +205,7 @@ const Sponsors = () => {
 
   useEffect(async () => {
     // use cmd-f2022 collection to test
-    const data = await fireDb.getCollection('nwHacks2023', 'Sponsors')
+    const data = await fireDb.getCollection('cmd-f2022', 'Sponsors')
     if (data) {
       setSponsors(data)
     }
@@ -202,6 +214,7 @@ const Sponsors = () => {
   return (
     <SponsorsContainer>
       <SponsorsBackground src={SponsorBackgroundImage} alt="Sponsor section background" />
+      <SponsorsBackgroundMobile src={SponsorBackgroundMobile} alt="Sponsor section background" />
       {stamps.map((item, index) => (
         <Stamp
           ref={stampPArr[index].ref}

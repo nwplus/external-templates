@@ -25,6 +25,7 @@ const HalfContainer = styled.div`
     background: url(${MainGraphicsMobile}), linear-gradient(to bottom, #83F6F7, #BFEFF0);
     background-repeat: no-repeat;
     background-position: top center;
+    background-size: cover;
     aspect-ratio: 428/2661;
     min-width: 100%;
   }

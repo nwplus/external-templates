@@ -11,8 +11,8 @@ const AboutContainer = styled.div`
   align-items: center;
   
   ${(p) => p.theme.mediaQueries.mobile} {
-    min-height: calc(calc(1218 / 428) * 100vw);
-    align-items: flex-end;
+    min-height: calc(calc(1350 / 428) * 100vw);
+    align-items: center;
   }
 `
 
@@ -27,6 +27,7 @@ const AboutInner = styled.div`
   padding-bottom: 5rem;
   
   ${(p) => p.theme.mediaQueries.mobile} {
+    padding-top: 10rem;
     padding-bottom: 0;
   }
 `

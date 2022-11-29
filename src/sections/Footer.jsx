@@ -29,6 +29,7 @@ const FooterContainer = styled.div`
     background: url(${FooterBackgroundMobile}), linear-gradient(to bottom, #83F6F7, #FFF);
     background-repeat: no-repeat;
     background-position: top center;
+    background-size: cover;
     width: 100%;
     aspect-ratio: 428/974;
   }

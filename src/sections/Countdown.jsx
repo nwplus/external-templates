@@ -27,12 +27,14 @@ const FauxBillboard = styled.div`
   text-shadow: 0 0 10px rgba(233,233,233,0.4);
   
   ${(p) => p.theme.mediaQueries.mobile} {
-    min-height: calc(calc(482 / 428) * 75vw);
+    min-height: calc(calc(290 / 636) * 100vw);
     max-width: 100vw;
-    width: 75vw;
+    width: 100vw;
     flex-direction: column;
     position: absolute;
-    top: 00px;
+    margin-top: 0;
+    padding-top: calc(calc(90 / 750) * 100vw);
+    justify-content: center;
   }
 `
 
@@ -56,6 +58,7 @@ const CountdownGrid = styled.div`
   
   ${(p) => p.theme.mediaQueries.mobile} {
     gap: 1rem;
+    flex-grow: 0;
   }
 `
 
@@ -133,7 +136,7 @@ const useCountdown = (targetDate) => {
 
 const Countdown = () => {
 
-  const parallax = useParallax({ speed: 10 })
+  const parallax = useParallax({ speed: 15 })
 
   const countDownDate = new Date('Dec 19, 2022 23:59:59').getTime()
   const countdown = useCountdown(countDownDate)

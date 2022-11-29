@@ -11,10 +11,10 @@ import LivepeerImage from '../assets/images/Livepeer.svg'
 
 const HeroContainer = styled.div`
   position: relative;
-  min-height: calc(calc(802 / 1440) * 100vw);
+  min-height: calc(calc(800 / 1440) * 100vw);
   
   ${(p) => p.theme.mediaQueries.mobile} {
-    min-height: calc(calc(628 / 428) * 100vw);
+    min-height: calc(calc(1200 / 882) * 100vw);
   }
 `
 
