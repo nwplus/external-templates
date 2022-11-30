@@ -22,6 +22,7 @@ import WhistlerStamp from '../assets/images/stamps/Whistler.svg'
 const FooterContainer = styled.div`
   position: relative;
   min-height: calc( calc(1556 / 1440) * 100vw);
+  margin-top: -0.5rem;
   
   ${(p) => p.theme.mediaQueries.mobile} {
     min-height: calc(calc(974 / 428) * 100vw);

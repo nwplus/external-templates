@@ -21,7 +21,7 @@ import GastownStamp from '../assets/images/stamps/Gastown.svg'
 const SponsorsContainer = styled.div`
   position: relative;
   min-height: calc(calc(2050 / 1440) * 100vw);
-  margin-top: -1rem;
+  margin-top: -0.5rem;
 
   ${p => p.theme.mediaQueries.mobile} {
     min-height: calc( calc(488 / 428) * 100vw);
@@ -238,7 +238,7 @@ const Sponsors = () => {
         <SeabusRipples src={SeabusRipplesImage} alt="Ripples in the water caused by a seabus" />
       </SeabusContainer>
       <StaticContainer>
-        <StyledTitle>
+        <StyledTitle id="sponsors">
           Sponsors
         </StyledTitle>
         <PushinP>

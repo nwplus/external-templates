@@ -76,7 +76,7 @@ const About = () => {
   return (
     <AboutContainer>
       <AboutInner ref={parallax.ref}>
-        <BlurbContainer bias="left">
+        <BlurbContainer bias="left" id="about">
           <BlurbHeader>
             About nwHacks
           </BlurbHeader>

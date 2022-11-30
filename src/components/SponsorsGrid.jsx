@@ -56,7 +56,7 @@ const SponsorsGrid = ({ sponsors }) => {
   )
 
   return (
-    <Container id="sponsors">
+    <Container>
       <Grid>
         {sponsors?.length > 0
           ? sponsors.map(item => (

@@ -95,9 +95,9 @@ const Keychain = styled.img`
   
   ${(p) => p.theme.mediaQueries.mobile} {
     min-height: 0;
-    width: 100%;
+    width: 120%;
     top: auto;
-    bottom: 30%;
+    bottom: 20%;
   }
 `
 
@@ -138,7 +138,7 @@ const useCountdown = (targetDate) => {
 
 const Countdown = () => {
 
-  const parallax = useParallax({ speed: 15 })
+  const parallax = useParallax({ speed: 6 })
 
   const countDownDate = new Date('Dec 19, 2022 23:59:59').getTime()
   const countdown = useCountdown(countDownDate)
