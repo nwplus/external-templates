@@ -304,6 +304,10 @@ const profiles = [
 const StyledTitle = styled(Header3)`
   color: #E2D6FF;
   filter: drop-shadow(0 0 4px #E2D6FF);
+  
+  ${(p) => p.theme.mediaQueries.mobile} {
+    font-size: 1.1rem;;
+  }
 `
 
 const ProfileContent = styled.p`
@@ -315,6 +319,12 @@ const ProfileContent = styled.p`
   height: 1em;
   b {
     margin-right: 8px;
+  }
+  
+  
+  ${(p) => p.theme.mediaQueries.mobile} {
+    font-size: 1rem;
+    padding: 0.35rem 0 0.5rem 0;
   }
 `
 

@@ -1,3 +1,4 @@
+import { MOBILE } from '@constants/measurements'
 import { createGlobalStyle } from 'styled-components'
 
 // Remove comment once font is replaced
@@ -10,6 +11,10 @@ export const GlobalStyles = createGlobalStyle`
   html, body {
     overflow-x: hidden;
     background: linear-gradient(to bottom, #FED9CD, #081160);
+
+    @media-query (max-width: ${MOBILE}) {
+      background: #BFEFF0;
+    }
   }
   body {
     position: relative;
