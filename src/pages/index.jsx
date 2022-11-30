@@ -12,7 +12,6 @@ import About from 'src/sections/About'
 import NavigationBar from '../components/NavigationBar'
 import Hero from '../components/Hero'
 
-import logo from '../assets/logos/nwplus-logo.svg'
 import MainGraphicsTop from '../assets/images/MainBackground.svg'
 import MainGraphicsMobile from '../assets/images/mobile/MainBackground.svg'
 
@@ -61,7 +60,7 @@ export default function Index({ title }) {
 
         {/* Remove comment once favicon is set */}
         {/* <link rel="icon" href="/favicon.ico" /> */}
-        <link rel="icon" href={logo} />
+        <link rel="icon" href='/images/icons/nwplus-logo.svg' />
 
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         {/* Remove comment once description is written */}

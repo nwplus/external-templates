@@ -20,7 +20,8 @@ import GastownStamp from '../assets/images/stamps/Gastown.svg'
 
 const SponsorsContainer = styled.div`
   position: relative;
-  min-height: calc( calc(2050 / 1440) * 100vw);
+  min-height: calc(calc(2050 / 1440) * 100vw);
+  margin-top: -1rem;
 
   ${p => p.theme.mediaQueries.mobile} {
     min-height: calc( calc(488 / 428) * 100vw);
@@ -32,7 +33,7 @@ const SponsorsBackground = styled.img`
   top: 0;
   position: absolute;
   user-select: none;
-  min-height: calc( calc(1282 / 1440) * 100vw);
+  min-height: calc(calc(1282 / 1440) * 100vw);
   aspect-ratio: 1440 / 1282;
   width: 100%;
   

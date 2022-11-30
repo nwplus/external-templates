@@ -13,7 +13,8 @@ const AboutContainer = styled.div`
   aspect-ratio: 1440 / 779;
   
   ${(p) => p.theme.mediaQueries.mobile} {
-    min-height: calc(calc(1350 / 428) * 100vw);
+    min-height: calc(calc(1344 / 428) * 100vw);
+    aspect-ratio: 428 / 1344;
     align-items: center;
   }
 `
