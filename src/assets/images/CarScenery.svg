@@ -23,7 +23,7 @@
 </g>
 </g>
 <g filter="url(#filter4_d_206_34200)">
-<path d="M757.142 269.881C719.676 269.881 740.825 269.881 717.824 269.881C694.822 269.881 727.444 269.881 673.845 269.881C673.845 246.846 692.491 228.172 715.493 228.172C738.495 228.172 757.142 246.846 757.142 269.881Z" fill="url(#paint7_radial_206_34200)"/>
+<path d="M757.142 269.881C719.676 269.881 740.826 269.881 717.824 269.881C694.822 269.881 727.444 269.881 673.845 269.881C673.845 246.846 692.491 228.172 715.493 228.172C738.495 228.172 757.142 246.846 757.142 269.881Z" fill="url(#paint7_radial_206_34200)"/>
 </g>
 <g opacity="0.75" filter="url(#filter5_f_206_34200)">
 <mask id="mask1_206_34200" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="281" y="200" width="251" height="50">
@@ -47,7 +47,7 @@
 <path d="M-5.26465 164.029V270.895L1442.82 273.041V202.55C1444.36 210.044 1457.31 128.637 1442.82 144C1424.72 163.204 1396.28 225.03 1352.76 211.136C1309.24 197.241 1307.65 246.381 1273.19 257C1238.72 267.619 1220.61 238.812 1199.49 238.812C1178.36 238.812 1165.02 257 1115.47 257C1065.91 257 1076.53 225.03 1030.98 225.03C1011.12 225.03 951.708 266.602 890.081 265.585C828.453 264.569 800.4 237.968 782.292 252.187C752.23 275.791 644.002 252.82 617 246.381C589.998 239.942 588.913 225.03 577 225.03C565.087 225.03 523.493 257 500.938 257C478.384 257 451.382 246.381 427.398 238.812C403.414 231.244 407.862 257 370.218 257C332.575 257 331.304 225.03 317.644 225.03C303.985 225.03 284.607 252.707 254.587 257C224.568 261.293 229.015 234.633 212.496 246.381C195.978 258.13 153.887 199.387 134.509 196.111C115.131 192.835 86.5196 196.111 56.5001 196.111C32.4844 196.111 7.75972 181.84 -5.26465 164.029Z" fill="url(#paint15_radial_206_34200)"/>
 <path d="M263.481 350.267L679.5 259L751 262C921.002 300.433 1017.4 328.853 1178.17 366.031C1185.22 366.851 1211.35 373.617 1211.35 373.617C1199.98 371.045 1188.93 368.518 1178.17 366.031C1177.93 366.003 1177.71 365.982 1177.52 365.968C1038.06 356.214 1113.57 345.481 721.462 345.481C329.359 345.481 191.964 359.114 191.964 359.114L263.481 350.267Z" fill="url(#paint16_linear_206_34200)" fill-opacity="0.65"/>
 <g filter="url(#filter7_b_206_34200)">
-<path d="M0.5 243.5L-3 -2H1440V330.5C1436.83 321.471 1420.5 290 1402 284.5C1332.45 241.683 1009 223.881 802.058 223.881C637.899 223.881 197 233 0.5 243.5Z" fill="url(#paint17_radial_206_34200)"/>
+<path d="M0.5 390.8L-3 -2H1440V530C1436.83 515.553 1420.5 465.2 1402 456.4C1332.45 387.893 1009 359.409 802.058 359.409C637.899 359.409 197 374 0.5 390.8Z" fill="url(#paint17_radial_206_34200)"/>
 </g>
 </g>
 <defs>
@@ -106,7 +106,7 @@
 <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
 <feGaussianBlur stdDeviation="1.48855" result="effect1_foregroundBlur_206_34200"/>
 </filter>
-<filter id="filter7_b_206_34200" x="-9" y="-8" width="1455" height="344.5" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<filter id="filter7_b_206_34200" x="-9" y="-8" width="1455" height="544" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
 <feFlood flood-opacity="0" result="BackgroundImageFix"/>
 <feGaussianBlur in="BackgroundImageFix" stdDeviation="3"/>
 <feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_206_34200"/>
@@ -183,7 +183,7 @@
 <stop offset="1" stop-color="#FDE0A7" stop-opacity="0.2"/>
 <stop offset="1" stop-color="#FDE0A7" stop-opacity="0.5"/>
 </linearGradient>
-<radialGradient id="paint17_radial_206_34200" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(9.97942 7.58015) rotate(12.1913) scale(1440.36 951.508)">
+<radialGradient id="paint17_radial_206_34200" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(9.97942 13.3282) rotate(19.0691) scale(1489.62 1472.07)">
 <stop stop-color="white" stop-opacity="0.4"/>
 <stop offset="1" stop-color="white" stop-opacity="0"/>
 </radialGradient>

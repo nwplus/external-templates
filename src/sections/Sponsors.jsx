@@ -7,6 +7,7 @@ import Button from '@components/Button'
 import fireDb from '@utilities/firebase'
 
 import SponsorBackgroundImage from '../assets/images/SponsorBackground.svg'
+import SponsorBackgroundMobile from '../assets/images/mobile/SponsorBackground.svg'
 import DuckImage from '../assets/images/Duck.svg'
 import DuckRipplesImage from '../assets/images/DuckRipples.svg'
 import SeabusImage from '../assets/images/Seabus.svg'
@@ -19,14 +20,38 @@ import GastownStamp from '../assets/images/stamps/Gastown.svg'
 
 const SponsorsContainer = styled.div`
   position: relative;
-  min-height: calc( calc(2050 / 1440) * 100vw) !important;
+  min-height: calc(calc(2050 / 1440) * 100vw);
+  margin-top: -0.5rem;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    min-height: calc( calc(488 / 428) * 100vw);
+    background: linear-gradient(to bottom, #8486B8, #383E82);
+  }
 `
 
 const SponsorsBackground = styled.img`
   top: 0;
   position: absolute;
   user-select: none;
-  min-height: calc( calc(1282 / 1440) * 100vw) !important;
+  min-height: calc(calc(1282 / 1440) * 100vw);
+  aspect-ratio: 1440 / 1282;
+  width: 100%;
+  
+  ${(p) => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
+`
+
+const SponsorsBackgroundMobile = styled.img`
+  top: 0;
+  position: absolute;
+  user-select: none;
+  min-height: calc( calc(488 / 428) * 100vw);
+  display: none;
+
+  ${(p) => p.theme.mediaQueries.mobile} {
+    display: block;
+  }
 `
 
 export const Stamp = styled.img`
@@ -39,6 +64,10 @@ export const Stamp = styled.img`
 
   transition: all 0.2s; 
   user-select: none;
+  
+  ${(p) => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const duckyAnimation = keyframes`
@@ -59,6 +88,10 @@ const DuckContainer = styled.div`
   top: 5rem;
   display: flex;
   flex-direction: column;
+
+  ${(p) => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const Duck = styled.img`  
@@ -78,6 +111,10 @@ const SeabusContainer = styled.div`
   top: 10rem;
   display: flex;
   align-items: flex-end;
+  
+  ${(p) => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const Seabus = styled.img`
@@ -89,13 +126,17 @@ const SeabusRipples = styled.img`
 `
 
 const StaticContainer = styled.div`
-  position: absolute;
   top: 0;
   width: 100%;
   padding-top: calc(calc(750 / 1440) * 100vw);
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  ${(p) => p.theme.mediaQueries.mobile} {
+    position: relative;
+    padding-top: calc(calc(488 / 428) * 100vw);
+  }
 `
 
 const StyledTitle = styled(Header2)`
@@ -105,7 +146,7 @@ const StyledTitle = styled(Header2)`
   padding-top: 18rem;
   ${(p) => p.theme.mediaQueries.mobile} {
     font-size: 3em;
-    padding-top: 10rem;
+    padding-top: 0;
   }
 `
 
@@ -122,7 +163,9 @@ const PushinP = styled.p`
   padding-bottom: 2rem;
   
   ${(p) => p.theme.mediaQueries.mobile} {
-    display: none;
+    min-width: 0;
+    width: 100%;
+    padding: 1.5rem 6vw 1rem 6vw;
   }
 `
 
@@ -174,6 +217,7 @@ const Sponsors = () => {
   return (
     <SponsorsContainer>
       <SponsorsBackground src={SponsorBackgroundImage} alt="Sponsor section background" />
+      <SponsorsBackgroundMobile src={SponsorBackgroundMobile} alt="Sponsor section background" />
       {stamps.map((item, index) => (
         <Stamp
           ref={stampPArr[index].ref}
@@ -194,7 +238,7 @@ const Sponsors = () => {
         <SeabusRipples src={SeabusRipplesImage} alt="Ripples in the water caused by a seabus" />
       </SeabusContainer>
       <StaticContainer>
-        <StyledTitle>
+        <StyledTitle id="sponsors">
           Sponsors
         </StyledTitle>
         <PushinP>

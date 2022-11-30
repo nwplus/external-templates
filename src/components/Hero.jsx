@@ -2,7 +2,7 @@ import React from 'react'
 import styled, { keyframes } from 'styled-components'
 import { LAPTOP, TABLET } from '@constants/measurements'
 import { useParallax } from 'react-scroll-parallax'
-import CarAndMap from '../assets/images/CarAndMapNoShadows.svg'
+import CarAndMap from '../assets/images/CarAndMap.svg'
 import CarScenery from '../assets/images/CarScenery.svg'
 import RamBodyImage from '../assets/images/RamBody.svg'
 import RamHeadImage from '../assets/images/RamHead.svg'
@@ -11,19 +11,39 @@ import LivepeerImage from '../assets/images/Livepeer.svg'
 
 const HeroContainer = styled.div`
   position: relative;
-  min-height: calc(calc(802 / 1440) * 100vw);
+  min-height: calc(calc(800 / 1440) * 100vw);
+  
+  ${(p) => p.theme.mediaQueries.mobile} {
+    min-height: calc(calc(1200 / 882) * 100vw);
+  }
 `
 
 const OuterContainer = styled.div`
   position: absolute;
   width: 100%;
-  top: calc(calc(400 / 1440) * 100vw);
+  top: calc(calc(350 / 1440) * 100vw);
+
+  ${(p) => p.theme.mediaQueries.mobile} {
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  
 `
 
 const IntroContainer = styled.div`
   margin-left: 10vw;
   text-align: left;
   color: #433860;
+  
+  ${(p) => p.theme.mediaQueries.mobile} {
+    margin: 0;
+    padding: 0 6vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 `
 
 const Opening = styled.p`
@@ -41,6 +61,9 @@ const Opening = styled.p`
     top: 20px;
     font-size: 18px;
   }
+  ${(p) => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const Title = styled.p`
@@ -50,18 +73,18 @@ const Title = styled.p`
   font-weight: 900;
   line-height: 100px;
   letter-spacing: 0em;
-  background: linear-gradient(265.48deg, #959afb 80.67%, #9ad4de);
+  background: linear-gradient(265.48deg, #959afb 50%, #9ad4de);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   @media (max-width: ${LAPTOP}) {
-    background: linear-gradient(265.48deg, #959afb 70.67%, #9ad4de);
+    background: linear-gradient(265.48deg, #959afb 50%, #9ad4de);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 80px;
     line-height: 80px;
   }
   @media (max-width: ${TABLET}) {
-    background: linear-gradient(265.48deg, #959afb 60.67%, #9ad4de);
+    background: linear-gradient(265.48deg, #959afb 50%, #9ad4de);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 75px;
@@ -84,13 +107,32 @@ const Subtitle = styled.p`
   @media (max-width: ${TABLET}) {
     font-size: 23px;
   }
+  ${(p) => p.theme.mediaQueries.mobile} {
+    font-size: 1.1rem;
+  }
+`
+
+const DescriptionContainer = styled.div`
+  display: flex;
+  font-family: HK Grotesk;
+  font-size: 20px;
+  font-weight: 500;
+  
+  ${(p) => p.theme.mediaQueries.mobile} {
+    flex-direction: column;
+    align-items: center;
+    font-size: 1rem;
+  }
+`
+
+const HideMobile = styled.div`
+  ${(p) => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const Description = styled.p`
   position: relative;
-  font-family: HK Grotesk;
-  font-size: 20px;
-  font-weight: 500;
   line-height: 28px;
   letter-spacing: 0em;
 `
@@ -101,24 +143,41 @@ const ButtonsContainer = styled.div`
   padding-top: 1rem;
   display: flex;
   gap: 1.5rem;
+
   @media (max-width: ${TABLET}) {
     display: flex;
     flex-direction: column;
     margin: auto;
-    margin-top: 20px;
+    padding-top: 20px;
     width: 50%;
     align-items: center;
+  }
+  
+  ${(p) => p.theme.mediaQueries.mobile} {
+    padding-top: 0.5rem;
+    margin-top: 0;
+    font-size: 10px;
+    margin-bottom: 0;
+    gap: 0rem;
   }
 `
 
 const ZeroHeightContainer = styled.div`
   height: 0;
+  
+  ${(p) => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const CarAndMapImage = styled.img`
   min-height: calc(calc(775 / 1440) * 100vw);
   z-index: 1;
   user-select: none;
+  
+  ${(p) => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const CarSceneryImage = styled.img`
@@ -126,6 +185,10 @@ const CarSceneryImage = styled.img`
   min-height: calc(calc(530 / 1440) * 100vw);
   z-index: -1;
   user-select: none;
+  
+  ${(p) => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const RamContainer = styled.div`
@@ -136,6 +199,10 @@ const RamContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  
+  ${(p) => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const RamBody = styled.img`
@@ -169,6 +236,11 @@ const RamHead = styled.img`
 const TitleContainer = styled.div`
   display: flex;
   align-items: flex-end;
+  
+  ${(p) => p.theme.mediaQueries.mobile} {
+    flex-direction: column;
+    align-items: center;
+  }
 `
 
 const LivepeerContainer = styled.div`
@@ -177,6 +249,13 @@ const LivepeerContainer = styled.div`
   font-size: 1rem;
   padding-bottom: 0.5rem;
   padding-left: 0.5rem;
+  
+  ${(p) => p.theme.mediaQueries.mobile} {
+    padding-bottom: 0;
+    padding-left: 0;
+    flex-direction: row;
+    gap: 0.47rem;
+  }
 `
 
 const PoweredBy = styled.div`
@@ -186,6 +265,10 @@ const PoweredBy = styled.div`
 
 const Livepeer = styled.img`
   margin-left: -0.5rem;
+  
+  ${(p) => p.theme.mediaQueries.mobile} {
+    width: 85px;
+  }
 `
 
 const Hero = () => {
@@ -218,7 +301,11 @@ const Hero = () => {
             </LivepeerContainer>
           </TitleContainer>
           <Subtitle>Western Canada’s Largest Hackathon</Subtitle>
-          <Description>January 14 - 15 2023 | In-Person Event @ UBC Life Sciences Institute </Description>
+          <DescriptionContainer>
+            <Description>January 14 - 15 2023</Description>
+            <HideMobile>&nbsp;|&nbsp;</HideMobile>
+            <Description>In-Person Event @ UBC Life Sciences Institute </Description>
+          </DescriptionContainer>
         </IntroContainer>
         <ButtonsContainer>
           <Button
@@ -229,7 +316,7 @@ const Hero = () => {
           <Button
             variant="outlined"
             href="#">
-            Be a Mentor!
+            Become a Mentor!
           </Button>
         </ButtonsContainer>
       </OuterContainer>
