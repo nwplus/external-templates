@@ -305,10 +305,10 @@ const Hero = () => {
           </DescriptionContainer>
         </IntroContainer>
         <ButtonsContainer>
-          <Button variant="solid" href="#">
+          <Button variant="solid" target="_blank" rel="noreferrer" href="https://portal.nwplus.io">
             Apply Now!
           </Button>
-          <Button variant="outlined" href="#">
+          <Button variant="outlined" target="_blank" rel="noreferrer" href="https://forms.gle/ianRSs3wd1SYjSDR8">
             Become a Mentor!
           </Button>
         </ButtonsContainer>
