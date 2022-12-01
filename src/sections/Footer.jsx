@@ -27,7 +27,7 @@ const FooterContainer = styled.div`
   ${(p) => p.theme.mediaQueries.mobile} {
     min-height: calc(calc(974 / 428) * 100vw);
 
-    background: url(${FooterBackgroundMobile}), linear-gradient(to bottom, #83F6F7, #FFF);
+    background: url(${FooterBackgroundMobile}), #383E82;
     background-repeat: no-repeat;
     background-position: top center;
     background-size: cover;
