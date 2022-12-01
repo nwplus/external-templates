@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
+import { scale } from '@utilities/format'
 
 const NavBarContainer = styled.nav`
   position: fixed;
@@ -27,7 +28,7 @@ const NavBarContainer = styled.nav`
 
 const NavGroupContainer = styled.div`
   display: flex;
-  gap: 48px;
+  gap: 3%;
   align-items: center;
   justify-content: space-between;
   width: 100%;
@@ -39,7 +40,7 @@ const NavGroupContainer = styled.div`
 
 const NavTextContainer = styled.div`
   display: flex;
-  gap: 48px;
+  gap: 4%;
   align-items: center;
   flex-grow: 2;
 
@@ -83,8 +84,8 @@ const LinkText = styled.a`
 
 const StyledLinkHeaders = styled.h3`
   font-family: HK Grotesk;
-  font-size: 18px;
-  font-weight: 700;
+  font-size: ${() => scale(768, 1440, 16, 18)};
+  font-weight: 600;
   line-height: 23px;
   letter-spacing: 0px;
   text-align: center;
