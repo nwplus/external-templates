@@ -311,7 +311,7 @@ const NavigationBar = () => {
         <NavTextContainer>
           <MenuList />
         </NavTextContainer>
-        <PortalButton portalOpen={true} />
+        <PortalButton portalOpen={false} />
       </NavGroupContainer>
 
       <HamburgerMenu
