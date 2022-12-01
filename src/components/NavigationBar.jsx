@@ -119,6 +119,7 @@ const PortalButtonContainer = styled.div`
   transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
   justify-self: flex-end;
   user-select: none;
+  right: 20%;
 `
 
 const StyledPortalText = styled.div`
@@ -134,6 +135,7 @@ const Button = styled.a`
   font-weight: bold;
   background: linear-gradient(to right, #0DEFE1, #78FF96);
   color: #2C2543;
+  right: 100px;
 
   &::before {
     display:flex;
@@ -309,7 +311,7 @@ const NavigationBar = () => {
         <NavTextContainer>
           <MenuList />
         </NavTextContainer>
-        <PortalButton portalOpen={false} />
+        <PortalButton portalOpen={true} />
       </NavGroupContainer>
 
       <HamburgerMenu
@@ -318,6 +320,10 @@ const NavigationBar = () => {
         onClick={() => setShowDropdown(true)} />
 
       {/* <TrustBadge /> */}
+
+      <a id="mlh-trust-badge" style={{ display: "block", maxWidth: "100px", minWidth: "60px", position: "fixed", right: "50px", top: "0", width: "10%", zIndex: "10000" }} href="https://mlh.io/na?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2023-season&utm_content=white" target="_blank">
+        <img src="https://s3.amazonaws.com/logged-assets/trust-badge/2023/mlh-trust-badge-2023-white.svg" alt="Major League Hacking 2023 Hackathon Season" style={{ width: "100%" }} />
+      </a>
 
     </NavBarContainer>
   )
