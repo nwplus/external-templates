@@ -55,18 +55,13 @@ export default function Index({ title }) {
     <>
       <GlobalStyles />
       <Head>
-        {/* Remove comment once title is set */}
         <title>{title}</title>
 
-        {/* Remove comment once favicon is set */}
-        {/* <link rel="icon" href="/favicon.ico" /> */}
-        <link rel="icon" href='/images/logos/nwplus-logo.svg' />
+        <link rel="icon" href='/favicon.ico' />
 
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        {/* Remove comment once description is written */}
-        <meta name="description" content="" />
-        {/* Remove comment once preview image is set */}
-        <meta property="og:image" content="/preview.png" />
+        <meta name="description" content="Western Canada’s largest (in-person) hackathon" />
+        <meta property="og:image" content="/og_preview.png" />
       </Head>
       {/* Components Starts */}
 
