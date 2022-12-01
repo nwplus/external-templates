@@ -109,7 +109,7 @@ const DropDownContentContainer = styled.div`
   align-items: center;
   gap: 24px;
   width: 100%;
-  background: #dbcee3;
+  background: #959afb;
 `
 
 const PortalButtonContainer = styled.div`
@@ -228,7 +228,7 @@ const MenuList = ({ isMobile, closeDropdown }) => (
     {/* <MenuItem name='Statistics' href='/#statistics' isAnchor isMobile={isMobile} closeDropdown={closeDropdown} /> */}
     <MenuItem name="FAQ" href="/#faq" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
     <MenuItem name="Sponsors" href="/#sponsors" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
-    {/* <MenuItem name='2022' href='https://2022.nwhacks.io' target='_blank' rel='noopener' isMobile={isMobile} closeDropdown={closeDropdown} /> */}
+    <MenuItem name='2022' href='https://2022.nwhacks.io' target='_blank' rel='noopener' isMobile={isMobile} closeDropdown={closeDropdown} />
   </>
 )
 

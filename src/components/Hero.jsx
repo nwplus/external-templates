@@ -72,18 +72,18 @@ const Title = styled.p`
   font-weight: 900;
   line-height: 100px;
   letter-spacing: 0em;
-  background: linear-gradient(265.48deg, #959afb 50%, #9ad4de);
+  background: linear-gradient(265.48deg, #959afb 30%, #9ad4de);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   @media (max-width: ${LAPTOP}) {
-    background: linear-gradient(265.48deg, #959afb 50%, #9ad4de);
+    background: linear-gradient(265.48deg, #959afb 30%, #9ad4de);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 80px;
     line-height: 80px;
   }
   @media (max-width: ${TABLET}) {
-    background: linear-gradient(265.48deg, #959afb 50%, #9ad4de);
+    background: linear-gradient(265.48deg, #959afb 30%, #9ad4de);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 75px;
