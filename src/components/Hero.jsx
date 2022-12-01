@@ -12,8 +12,8 @@ import LivepeerImage from '../assets/images/Livepeer.svg'
 const HeroContainer = styled.div`
   position: relative;
   min-height: calc(calc(800 / 1440) * 100vw);
-  
-  ${(p) => p.theme.mediaQueries.mobile} {
+
+  ${p => p.theme.mediaQueries.mobile} {
     min-height: calc(calc(1200 / 882) * 100vw);
   }
 `
@@ -23,21 +23,20 @@ const OuterContainer = styled.div`
   width: 100%;
   top: calc(calc(350 / 1440) * 100vw);
 
-  ${(p) => p.theme.mediaQueries.mobile} {
+  ${p => p.theme.mediaQueries.mobile} {
     bottom: 0;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
   }
-  
 `
 
 const IntroContainer = styled.div`
   margin-left: 10vw;
   text-align: left;
   color: #433860;
-  
-  ${(p) => p.theme.mediaQueries.mobile} {
+
+  ${p => p.theme.mediaQueries.mobile} {
     margin: 0;
     padding: 0 6vw;
     display: flex;
@@ -61,7 +60,7 @@ const Opening = styled.p`
     top: 20px;
     font-size: 18px;
   }
-  ${(p) => p.theme.mediaQueries.mobile} {
+  ${p => p.theme.mediaQueries.mobile} {
     display: none;
   }
 `
@@ -107,7 +106,7 @@ const Subtitle = styled.p`
   @media (max-width: ${TABLET}) {
     font-size: 23px;
   }
-  ${(p) => p.theme.mediaQueries.mobile} {
+  ${p => p.theme.mediaQueries.mobile} {
     font-size: 1.1rem;
   }
 `
@@ -117,8 +116,8 @@ const DescriptionContainer = styled.div`
   font-family: HK Grotesk;
   font-size: 20px;
   font-weight: 500;
-  
-  ${(p) => p.theme.mediaQueries.mobile} {
+
+  ${p => p.theme.mediaQueries.mobile} {
     flex-direction: column;
     align-items: center;
     font-size: 1rem;
@@ -126,7 +125,7 @@ const DescriptionContainer = styled.div`
 `
 
 const HideMobile = styled.div`
-  ${(p) => p.theme.mediaQueries.mobile} {
+  ${p => p.theme.mediaQueries.mobile} {
     display: none;
   }
 `
@@ -152,8 +151,8 @@ const ButtonsContainer = styled.div`
     width: 50%;
     align-items: center;
   }
-  
-  ${(p) => p.theme.mediaQueries.mobile} {
+
+  ${p => p.theme.mediaQueries.mobile} {
     padding-top: 0.5rem;
     margin-top: 0;
     font-size: 10px;
@@ -164,8 +163,8 @@ const ButtonsContainer = styled.div`
 
 const ZeroHeightContainer = styled.div`
   height: 0;
-  
-  ${(p) => p.theme.mediaQueries.mobile} {
+
+  ${p => p.theme.mediaQueries.mobile} {
     display: none;
   }
 `
@@ -174,8 +173,8 @@ const CarAndMapImage = styled.img`
   min-height: calc(calc(775 / 1440) * 100vw);
   z-index: 1;
   user-select: none;
-  
-  ${(p) => p.theme.mediaQueries.mobile} {
+
+  ${p => p.theme.mediaQueries.mobile} {
     display: none;
   }
 `
@@ -185,8 +184,8 @@ const CarSceneryImage = styled.img`
   min-height: calc(calc(530 / 1440) * 100vw);
   z-index: -1;
   user-select: none;
-  
-  ${(p) => p.theme.mediaQueries.mobile} {
+
+  ${p => p.theme.mediaQueries.mobile} {
     display: none;
   }
 `
@@ -199,8 +198,8 @@ const RamContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  
-  ${(p) => p.theme.mediaQueries.mobile} {
+
+  ${p => p.theme.mediaQueries.mobile} {
     display: none;
   }
 `
@@ -236,8 +235,8 @@ const RamHead = styled.img`
 const TitleContainer = styled.div`
   display: flex;
   align-items: flex-end;
-  
-  ${(p) => p.theme.mediaQueries.mobile} {
+
+  ${p => p.theme.mediaQueries.mobile} {
     flex-direction: column;
     align-items: center;
   }
@@ -249,8 +248,8 @@ const LivepeerContainer = styled.div`
   font-size: 1rem;
   padding-bottom: 0.5rem;
   padding-left: 0.5rem;
-  
-  ${(p) => p.theme.mediaQueries.mobile} {
+
+  ${p => p.theme.mediaQueries.mobile} {
     padding-bottom: 0;
     padding-left: 0;
     flex-direction: row;
@@ -265,16 +264,16 @@ const PoweredBy = styled.div`
 
 const Livepeer = styled.img`
   margin-left: -0.5rem;
-  
-  ${(p) => p.theme.mediaQueries.mobile} {
+
+  ${p => p.theme.mediaQueries.mobile} {
     width: 85px;
   }
 `
 
 const Hero = () => {
-  const parallax = useParallax({ speed: -15 });
-  const parallax2 = useParallax({ speed: 0 });
-  const parallax3 = useParallax({ speed: 5 });
+  const parallax = useParallax({ speed: -15 })
+  const parallax2 = useParallax({ speed: 0 })
+  const parallax3 = useParallax({ speed: 5 })
 
   return (
     <HeroContainer>
@@ -294,9 +293,7 @@ const Hero = () => {
           <TitleContainer>
             <Title>nwHacks</Title>
             <LivepeerContainer>
-              <PoweredBy>
-                powered by
-              </PoweredBy>
+              <PoweredBy>powered by</PoweredBy>
               <Livepeer src={LivepeerImage} alt="Title sponsor: Livepeer" />
             </LivepeerContainer>
           </TitleContainer>
@@ -308,14 +305,10 @@ const Hero = () => {
           </DescriptionContainer>
         </IntroContainer>
         <ButtonsContainer>
-          <Button
-            variant="solid"
-            href="#">
+          <Button variant="solid" href="#">
             Apply Now!
           </Button>
-          <Button
-            variant="outlined"
-            href="#">
+          <Button variant="outlined" href="#">
             Become a Mentor!
           </Button>
         </ButtonsContainer>
