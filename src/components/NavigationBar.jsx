@@ -15,7 +15,7 @@ const NavBarContainer = styled.nav`
   visibility: ${p => p.visibility};
   opacity: ${p => p.opacity};
   transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
-  padding: 0.75rem 4rem 0;
+  padding: 0.6rem 4rem 0;
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 49.73%, rgba(89, 88, 90, 0) 100%);
 
   ${p => p.theme.mediaQueries.mobile} {
