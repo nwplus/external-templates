@@ -60,7 +60,7 @@ export default function Index({ title }) {
 
         {/* Remove comment once favicon is set */}
         {/* <link rel="icon" href="/favicon.ico" /> */}
-        <link rel="icon" href='/images/icons/nwplus-logo.svg' />
+        <link rel="icon" href='/images/logos/nwplus-logo.svg' />
 
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         {/* Remove comment once description is written */}
