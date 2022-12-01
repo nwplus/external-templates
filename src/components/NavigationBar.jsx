@@ -119,7 +119,6 @@ const PortalButtonContainer = styled.div`
   transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
   justify-self: flex-end;
   user-select: none;
-  right: 20%;
 `
 
 const StyledPortalText = styled.div`
