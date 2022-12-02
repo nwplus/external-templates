@@ -23,7 +23,9 @@
 <line y1="-2.5" x2="82.3985" y2="-2.5" transform="matrix(0.998449 -0.0553487 0.0562578 0.998431 -24.167 384.031)" stroke="#44413E" stroke-width="5"/>
 <line y1="-2.5" x2="85.3948" y2="-2.5" transform="matrix(0.998449 -0.0553487 0.0562578 0.998431 -23.2998 399.425)" stroke="#605B50" stroke-width="5"/>
 </g>
+<g filter="url(#filter3_d_1_9292)">
 <path d="M1681.38 754.643L1286.03 351.592L1012.31 245.959L850.809 316.286L629.706 249.961L408.077 320.917L196.067 270.85L-313.846 566.165L-80.9037 593.633L265.038 706.46L623.034 604.661L987.275 681.746L1305.26 587.72L1681.38 754.643Z" fill="url(#paint7_linear_205_34054)"/>
+</g>
 <path d="M1011 248L1303.17 582.53" stroke="url(#paint8_linear_205_34054)" stroke-width="5"/>
 <path d="M851.024 316.652L985.21 677.117" stroke="url(#paint9_linear_205_34054)" stroke-width="5"/>
 <path d="M630.005 251L623.174 600.953" stroke="url(#paint10_linear_205_34054)" stroke-width="5"/>
@@ -116,6 +118,19 @@
 <feColorMatrix type="matrix" values="0 0 0 0 0.533813 0 0 0 0 0.8125 0 0 0 0 0.314844 0 0 0 0.19 0"/>
 <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_205_34054"/>
 <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_205_34054" result="shape"/>
+</filter>
+<filter id="filter3_d_1_9292" x="-382.04" y="189.919" width="2071.22" height="550.684" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="-25"/>
+<feGaussianBlur stdDeviation="19"/>
+<feComponentTransfer>
+<feFuncA type="gamma" exponent="3" amplitude="1.5"/>
+</feComponentTransfer>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.958333 0 0 0 0 0.808514 0 0 0 0 0.423264 0 0 0 0.33 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_9292"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_9292" result="shape"/>
 </filter>
 <filter id="filter4_d_205_34054" x="488.811" y="231.274" width="97.5513" height="90.7114" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
 <feFlood flood-opacity="0" result="BackgroundImageFix"/>
