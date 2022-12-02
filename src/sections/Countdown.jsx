@@ -94,10 +94,7 @@ const Keychain = styled.img`
   width: 100%;
   
   ${(p) => p.theme.mediaQueries.mobile} {
-    min-height: 0;
-    width: 120%;
-    top: auto;
-    bottom: 20%;
+    display: none;
   }
 `
 
