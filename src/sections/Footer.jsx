@@ -27,7 +27,7 @@ const FooterContainer = styled.div`
   ${(p) => p.theme.mediaQueries.mobile} {
     min-height: calc(calc(974 / 428) * 100vw);
 
-    background: url(${FooterBackgroundMobile}), linear-gradient(to bottom, #83F6F7, #FFF);
+    background: url(${FooterBackgroundMobile}), #383E82;
     background-repeat: no-repeat;
     background-position: top center;
     background-size: cover;
@@ -237,8 +237,7 @@ const Footer = () => {
           <Links>
             <a href="mailto:info@nwplus.io" target="_blank" rel='noreferrer'>Email Us</a>
             <a href="mailto:sponsorship@nwplus.io?subject=Sponsorship" target="_blank" rel='noreferrer'>Become a Sponsor</a>
-            {/* TODO: Replace with the actual code of conduct page */}
-            <a href="https://www.notion.so/nwplus/PUBLIC-nwHacks-2023-Hacker-Package-24cdb56533364c719308cde2b7e39c87" target="_blank" rel='noreferrer'>Code of Conduct</a>
+            <a href="https://mlh.io/code-of-conduct" target="_blank" rel='noreferrer'>Code of Conduct</a>
           </Links>
           <SmallText>
             <div>Organized and held by nwPlus</div>
