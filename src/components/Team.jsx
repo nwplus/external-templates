@@ -54,13 +54,13 @@ const profiles = [
     color: '#878EBB',
     title: 'Development Coordinator'
   },
-  // {
-  //   img: '/profiles/Aurora_Cheng.png',
-  //   name: 'Aurora Cheng',
-  //   emoji: '✨',
-  //   color: '#FFF',
-  //   title: 'Marketing Coordinator'
-  // },
+  {
+    img: '/profiles/Aurora_Cheng.png',
+    name: 'Aurora Cheng',
+    emoji: '✨',
+    color: '#FFF',
+    title: 'Marketing Coordinator'
+  },
   {
     img: '/profiles/Austin_Leung.png',
     name: 'Austin Leung',
