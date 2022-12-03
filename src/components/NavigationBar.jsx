@@ -116,7 +116,7 @@ const PortalButtonContainer = styled.div`
   visibility: ${p => (p.portalOpen !== null ? 'visible' : 'hidden')};
   opacity: ${p => (p.portalOpen !== null ? '1' : '0')};
   transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
-  justify-self: flex-end;
+  justify-self: center;
   user-select: none;
 `
 
@@ -131,8 +131,12 @@ const Button = styled.a`
   padding: 11px 21px;
   border-radius: 50px;
   font-weight: bold;
-  background: linear-gradient(to right, #0defe1, #78ff96);
-  color: #2c2543;
+  background: linear-gradient(to right, #0DEFE1, #78FF96);
+  color: #2C2543;
+  right: 100px;
+  ${p => p.theme.mediaQueries.mobile} {
+    right: 0;
+  }
 
   &::before {
     display: flex;
@@ -177,6 +181,21 @@ const Button = styled.a`
       opacity: 0;
     }
   `}
+`
+
+const TrustBadgeLink = styled.a`
+    display: block;
+    max-width: 100px;
+    min-width: 60px;
+    position: fixed;
+    right: 50px;
+    top: 0;
+    width: 5%;
+    z-index: 1000;
+
+    ${p => p.theme.mediaQueries.mobile} {
+      left: 50px;
+    }
 `
 
 const MenuItem = ({ name, href, isAnchor, target, rel, isMobile, closeDropdown }) => {
@@ -232,6 +251,12 @@ const MenuList = ({ isMobile, closeDropdown }) => (
   </>
 )
 
+const TrustBadge = () => (
+  <TrustBadgeLink id="mlh-trust-badge" rel="noreferrer" href="https://mlh.io/na?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2023-season&utm_content=white" target="_blank">
+    <img src="https://s3.amazonaws.com/logged-assets/trust-badge/2023/mlh-trust-badge-2023-white.svg" alt="Major League Hacking 2023 Hackathon Season" style={{ width: "100%" }} />
+  </TrustBadgeLink>
+)
+
 const NavigationBar = () => {
   const [showDropdown, setShowDropdown] = useState(false)
   const [visibility, setVisibility] = useState('visible')
@@ -282,16 +307,15 @@ const NavigationBar = () => {
             onClick={() => setShowDropdown(false)}
           />
         </NavBarContainer>
-
         <DropDownContentContainer>
           <a href="/">
             <NwPlusLogo src="/images/logos/nwplus-logo.svg" alt="nwPlus club logo in white" />
           </a>
           <MenuList isMobile={showDropdown} closeDropdown={setShowDropdown} />
+          {/* Make sure desktop (below) has the same portalOpen value */}
           <PortalButton portalOpen={false} />
         </DropDownContentContainer>
-
-        {/* <TrustBadge /> */}
+        <TrustBadge />
       </>
     )
   }
@@ -306,12 +330,11 @@ const NavigationBar = () => {
         <NavTextContainer>
           <MenuList />
         </NavTextContainer>
+        {/* Make sure mobile (above) has the same portalOpen value */}
         <PortalButton portalOpen={false} />
       </NavGroupContainer>
-
       <HamburgerMenu src="/images/icons/menu.svg" alt="dropdown menu icon" onClick={() => setShowDropdown(true)} />
-
-      {/* <TrustBadge /> */}
+      <TrustBadge />
     </NavBarContainer>
   )
 }
