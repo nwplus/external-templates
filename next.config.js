@@ -3,11 +3,6 @@ const withOptimizedImages = require('next-optimized-images')
 module.exports = () => {
   if (process.env.DEPLOY_ENV !== 'PRODUCTION') {
     return withOptimizedImages({
-      experimental: {
-        images: {
-          allowFutureImage: true,
-        },
-      },
       reactStrictMode: true,
       poweredByHeader: false,
       env: {
@@ -23,11 +18,6 @@ module.exports = () => {
     })
   }
   return withOptimizedImages({
-    experimental: {
-      images: {
-        allowFutureImage: true,
-      },
-    },
     poweredByHeader: false,
     env: {
       NEXT_PUBLIC_FIREBASE_API_KEY: 'AIzaSyDGa7alU0NhfBATSQ6CalkY4Za9wWPrM7o',
