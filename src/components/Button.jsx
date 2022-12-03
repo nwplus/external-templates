@@ -8,6 +8,12 @@ const getButtonStyles = (variant) => {
       return `
         border: none;
         background: linear-gradient(265.48deg, #959afb 3.67%, #9ad4de 78.93%);
+        transition: 0.3s;
+
+        &:hover {
+          background: linear-gradient(265.48deg, #EAC3CA 3.67%, #97A4F7 108.22%);
+        }
+
       `
     case 'outlined':
       return `
@@ -17,9 +23,21 @@ const getButtonStyles = (variant) => {
         background-clip: padding-box, border-box;
         background-origin: border-box;
         border: 3px solid transparent;
+        transition: 0.3s;
 
         ${(p) => p.theme.mediaQueries.mobile} {
           border: 1.5px solid transparent;
+        }
+
+        &:hover {
+          box-sizing: border-box;
+          background: transparent;
+          background-image: linear-gradient(0deg, #FFF8F5, #FFF8F5), linear-gradient(263.82deg, #E9C3CB 38.58%, #A4A9F1 78.17%);
+          background-clip: padding-box, border-box;
+          background-origin: border-box;
+          border: 3px solid transparent;
+          transition: 0.3s;
+  
         }
       `
     default:
@@ -46,7 +64,6 @@ const ButtonContainer = styled.a`
   }
   
   &:hover {
-    filter: brightness(0.95);
     transform: scale(1.02);
   }
   &:active {
@@ -68,6 +85,12 @@ const ButtonText = styled.div`
   color: #8486e4;
   padding: 0.75rem 2rem;
   white-space: nowrap;
+
+  ${p => p && p.variant == 'outlined' && `
+    &:hover {
+      color: #6062CB;
+    }
+  `}
 
   ${p => p && p.variant === 'solid' && `
     color: white;
