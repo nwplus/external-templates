@@ -32,6 +32,7 @@ const Top = styled.div`
   margin-bottom:-1.2px;
   font-weight: 700;
   border-width:1px;
+  border-radius:5px 5px 0 0;
   ${p => p.expanded && `
     color:#FFF;
     background-color: #4453B0;
@@ -51,6 +52,7 @@ const AnswerBox = styled.div`
   box-sizing:border-box;
   overflow:hidden;
   transition:0.2s max-height cubic-bezier(.6,0,.4,1);
+  border-radius: 0 0 5px 5px;
   ${p => p.isOpen ? 'max-height:500px; background-color: #8486E4;' : 'max-height: 0;'}
   ${p => p.theme.mediaQueries.mobile} {
     font-size: 0.9rem;

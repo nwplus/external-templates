@@ -9,6 +9,14 @@ const AboutContainer = styled.div`
   z-index: 1;
   display: flex;
   align-items: center;
+  width: 100%;
+  aspect-ratio: 1440 / 779;
+  
+  ${(p) => p.theme.mediaQueries.mobile} {
+    min-height: calc(calc(1344 / 428) * 100vw);
+    aspect-ratio: 428 / 1344;
+    align-items: center;
+  }
 `
 
 const AboutInner = styled.div`
@@ -20,6 +28,12 @@ const AboutInner = styled.div`
   flex-direction: column;
   gap: 5rem;
   padding-bottom: 5rem;
+  
+  ${(p) => p.theme.mediaQueries.mobile} {
+    padding-top: 10rem;
+    padding-bottom: 0;
+    gap: 2rem;
+  }
 `
 
 const BlurbContainer = styled.div`
@@ -32,11 +46,20 @@ const BlurbContainer = styled.div`
   ` : `
     margin-left: auto;
   `}
-
+  
+  ${(p) => p.theme.mediaQueries.mobile} {
+    max-width: 100vw;
+    margin: 0;
+    padding: 0 6vw;
+  }
 `
 
 const BlurbHeader = styled(Header2)`
   color: #4453B0;
+  
+  ${(p) => p.theme.mediaQueries.mobile} {
+    font-size: 2rem;
+  }
 `
 
 const BlurbText = styled(Body)`
@@ -53,7 +76,7 @@ const About = () => {
   return (
     <AboutContainer>
       <AboutInner ref={parallax.ref}>
-        <BlurbContainer bias="left">
+        <BlurbContainer bias="left" id="about">
           <BlurbHeader>
             About nwHacks
           </BlurbHeader>

@@ -1,35 +1,19 @@
 import React, { useState, useEffect } from 'react'
-import styled, { keyframes } from 'styled-components'
+import styled from 'styled-components'
 import fireDb from '@utilities/firebase'
 import FaqBox from '@components/FaqBox'
 import { Header2, Header3 } from '@components/Typography'
 
-import UltiAnimationImg from '../assets/images/UltiAnimation.gif'
-
 const FaqContainer = styled.div`
+  position: relative;
   background: linear-gradient(to bottom, #AFEBEE, #99E4EA);
   min-height: 50vh;
-`
-const moveUltiAnimation = keyframes`
-  0% {  
-    // transform: rotate(-1deg);
-        left: 180px;  
-        top: -70px;
+  
+  
+  ${(p) => p.theme.mediaQueries.mobile} {
+    min-height: 0;
+    background: linear-gradient(to bottom, #BFEFF0, #79DAE4);
   }
-  100% {  
-    // transform: rotate(1deg); 
-          left: 185px;
-          top: -65px;
-        }
-`
-const UltiAnimation = styled.img`
-  position: relative;
-  left: 180px;
-  margin-bottom: 300px;
-  width: 180px;
-  height: auto;
-
-  animation: ${moveUltiAnimation} 1s infinite ease-in alternate;
 `
 
 const Wrapper = styled.div`
@@ -58,7 +42,7 @@ const FaqGrid = styled.div`
     display: flex;
     flex-direction: column;
     gap: 24px;
-    margin-top: 100px;
+    margin-top: 50px;
     padding-bottom: 4rem;
   }
 `
@@ -97,7 +81,7 @@ const StyledTitle = styled(Header2)`
   font-size: 3rem;
   text-align: center;
   ${(p) => p.theme.mediaQueries.mobile} {
-    font-size: 3.8em;
+    font-size: 3em;
   }
 `
 
@@ -136,7 +120,6 @@ const Faq = () => {
 
   return (
     <FaqContainer>
-      <UltiAnimation src={UltiAnimationImg} alt="Nugget and Reindeer tossing around a Firsbee"></UltiAnimation>
       <Wrapper id="faq">
         <StyledTitle
           color="#5667CF"
