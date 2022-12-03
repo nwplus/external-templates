@@ -171,8 +171,11 @@ const ZeroHeightContainer = styled.div`
 
 const CarAndMapImage = styled.img`
   min-height: calc(calc(775 / 1440) * 100vw);
+  aspect-ratio: 1440 / 775;
   z-index: 1;
   user-select: none;
+  object-fit: cover;
+  width: 100%;
 
   ${p => p.theme.mediaQueries.mobile} {
     display: none;
@@ -184,6 +187,8 @@ const CarSceneryImage = styled.img`
   min-height: calc(calc(530 / 1440) * 100vw);
   z-index: -1;
   user-select: none;
+  aspect-ratio: 1440 / 530;
+  width: 100%;
 
   ${p => p.theme.mediaQueries.mobile} {
     display: none;
