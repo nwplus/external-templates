@@ -11,6 +11,10 @@
     "lint": "eslint --ext .js,.jsx --ignore-path .gitignore ."
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.2.1",
+    "@fortawesome/free-brands-svg-icons": "^6.2.1",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "animejs": "^3.2.1",
     "eslint-plugin-import": "^2.22.1",
     "firebase": "^8.2.1",
     "imagemin-optipng": "^8.0.0",
@@ -20,6 +24,7 @@
     "next-optimized-images": "^2.6.2",
     "react": "17.0.1",
     "react-dom": "17.0.1",
+    "react-scroll-parallax": "^3.3.2",
     "styled-components": "^5.2.1",
     "webp-loader": "^0.6.0"
   },

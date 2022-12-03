@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;700&family=Fira+Code:wght@700&display=swap');
+
+@font-face {
+  font-family: 'HK Grotesk';
+  font-style: normal;
+  font-weight: normal;
+  src: local('HK Grotesk Regular'), url('HKGrotesk-Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'HK Grotesk';
+  font-style: italic;
+  font-weight: normal;
+  src: local('HK Grotesk Italic'), url('HKGrotesk-Italic.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'HK Grotesk';
+  font-style: normal;
+  font-weight: lighter;
+  src: local('HK Grotesk Light'), url('HKGrotesk-Light.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'HK Grotesk';
+  font-style: italic;
+  font-weight: lighter;
+  src: local('HK Grotesk Light Italic'), url('HKGrotesk-LightItalic.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'HK Grotesk Medium';
+  font-style: normal;
+  font-weight: 500;
+  src: local('HK Grotesk Medium'), url('HKGrotesk-Medium.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'HK Grotesk';
+  font-style: italic;
+  font-weight: 500;
+  src: local('HK Grotesk Medium Italic'), url('HKGrotesk-MediumItalic.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'HK Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  src: local('HK Grotesk SemiBold'), url('HKGrotesk-SemiBold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'HK Grotesk';
+  font-style: italic;
+  font-weight: 600;
+  src: local('HK Grotesk SemiBold Italic'), url('HKGrotesk-SemiBoldItalic.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'HK Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  src: local('HK Grotesk Bold'), url('HKGrotesk-Bold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'HK Grotesk';
+  font-style: italic;
+  font-weight: 700;
+  src: local('HK Grotesk Bold Italic'), url('HKGrotesk-BoldItalic.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'HK Grotesk';
+  font-style: normal;
+  font-weight: 900;
+  src: local('HK Grotesk Black'), url('HKGrotesk-Black.woff') format('woff');
+}
