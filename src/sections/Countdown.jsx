@@ -1,7 +1,6 @@
 import { Header2, Header3 } from '@components/Typography'
 import React, { useEffect, useState } from 'react'
 import { useParallax } from 'react-scroll-parallax'
-// import styled from 'styled-components'
 
 import KeychainImage from '../assets/images/Keychain.svg'
 
