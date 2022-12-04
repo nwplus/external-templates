@@ -97,6 +97,7 @@ const ButtonText = styled.div`
     &:hover {
       color: #6062CB;
     }
+  `}
 
   ${p => p.disabled && `
     cursor: default;
