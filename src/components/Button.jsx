@@ -89,11 +89,12 @@ const ButtonText = styled.div`
   ${(p) => p.theme.mediaQueries.mobile} {
     font-size: 1.1rem;
     padding: 0.5rem 2rem;
-    min-width: 220px;
+    min-width: 260px;
     text-align: center;
 
   ${p => p && p.variant === 'solid' && `
     color: white;
+    min-width: calc(260px + 0.5rem);
     padding: calc(0.5rem + 3px) calc(2rem + 3px);
   `}
   }
