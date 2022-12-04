@@ -136,12 +136,14 @@ const Description = styled.p`
   letter-spacing: 0em;
 `
 
-const ButtonsContainer = styled.div`
+const ActionsContainer = styled.div`
   margin-left: 10vw;
   position: relative;
   padding-top: 1rem;
   display: flex;
-  gap: 1.5rem;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: flex-start;
 
   @media (max-width: ${TABLET}) {
     display: flex;
@@ -157,7 +159,7 @@ const ButtonsContainer = styled.div`
     margin-top: 0;
     font-size: 10px;
     margin-bottom: 0;
-    gap: 0rem;
+    gap: 1rem;
   }
 `
 
@@ -171,8 +173,11 @@ const ZeroHeightContainer = styled.div`
 
 const CarAndMapImage = styled.img`
   min-height: calc(calc(775 / 1440) * 100vw);
+  aspect-ratio: 1440 / 775;
   z-index: 1;
   user-select: none;
+  object-fit: cover;
+  width: 100%;
 
   ${p => p.theme.mediaQueries.mobile} {
     display: none;
@@ -184,6 +189,8 @@ const CarSceneryImage = styled.img`
   min-height: calc(calc(530 / 1440) * 100vw);
   z-index: -1;
   user-select: none;
+  aspect-ratio: 1440 / 530;
+  width: 100%;
 
   ${p => p.theme.mediaQueries.mobile} {
     display: none;
@@ -270,6 +277,47 @@ const Livepeer = styled.img`
   }
 `
 
+const ButtonsContainer = styled.div`
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    flex-direction: column;
+    gap: 0rem;
+  }
+`
+
+const VolunteerLink = styled.a`
+  position: relative;
+  color: #969DFB;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  letter-spacing: -0.2px;
+  transition: color 0.13s linear;
+
+  &:after {
+    content: ' ';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #969DFB;
+    transition: background 0.13s linear;
+  }
+
+  &:hover {
+    color: #9AD4DE;
+
+    &:after {
+      background-color: #9AD4DE;
+    }
+  }
+
+`
+
 const Hero = () => {
   const parallax = useParallax({ speed: -15 })
   const parallax2 = useParallax({ speed: 0 })
@@ -304,14 +352,19 @@ const Hero = () => {
             <Description>In-Person Event @ UBC Life Sciences Institute </Description>
           </DescriptionContainer>
         </IntroContainer>
-        <ButtonsContainer>
-          <Button variant="solid" target="_blank" rel="noreferrer" href="https://portal.nwplus.io">
-            Apply Now!
-          </Button>
-          <Button variant="outlined" target="_blank" rel="noreferrer" href="https://forms.gle/ianRSs3wd1SYjSDR8">
-            Become a Mentor!
-          </Button>
-        </ButtonsContainer>
+        <ActionsContainer>
+          <ButtonsContainer>
+            <Button variant="solid" target="_blank" rel="noreferrer" href="https://portal.nwplus.io" disabled>
+              Apply Now!
+            </Button>
+            <Button variant="outlined" target="_blank" rel="noreferrer" href="https://forms.gle/ianRSs3wd1SYjSDR8">
+              Become a Mentor!
+            </Button>
+          </ButtonsContainer>
+          <VolunteerLink href="https://forms.gle/N6VYuPugFRfNCjFUA" target="_blank" rel="noreferrer">
+            Apply to be a volunteer!
+          </VolunteerLink>
+        </ActionsContainer>
       </OuterContainer>
     </HeroContainer>
   )

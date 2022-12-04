@@ -55,6 +55,11 @@ const ButtonContainer = styled.a`
   border-radius: 12px;
   user-select: none;
 
+  ${p => p.disabled && `
+    cursor: default;
+    background: #CCC !important;
+  `}
+
   @media (max-width: ${TABLET}) {
     margin-top: 10px;
   }
@@ -62,7 +67,8 @@ const ButtonContainer = styled.a`
   ${(p) => p.theme.mediaQueries.mobile} {
     border-radius: 5px;
   }
-  
+
+  ${p => !p.disabled && `
   &:hover {
     transform: scale(1.02);
   }
@@ -70,6 +76,7 @@ const ButtonContainer = styled.a`
     transform: scale(0.98);
   }
 
+  `}
   ${p => p && getButtonStyles(p.variant)}
 `
 
@@ -90,6 +97,10 @@ const ButtonText = styled.div`
     &:hover {
       color: #6062CB;
     }
+
+  ${p => p.disabled && `
+    cursor: default;
+    color: grey !important;
   `}
 
   ${p => p && p.variant === 'solid' && `
@@ -105,7 +116,7 @@ const ButtonText = styled.div`
 
   ${p => p && p.variant === 'solid' && `
     color: white;
-    padding: calc(0.4rem + 3px) calc(2rem + 3px);
+    padding: calc(0.5rem + 3px) calc(2rem + 3px);
   `}
   }
 `
@@ -113,10 +124,11 @@ const ButtonText = styled.div`
 const Button = ({
   href,
   children,
-  variant
+  variant,
+  disabled
 }) => (
-  <ButtonContainer variant={variant} href={href}>
-    <ButtonText variant={variant}>{children}</ButtonText>
+  <ButtonContainer variant={variant} href={disabled ? '#' : href} disabled={disabled}>
+    <ButtonText variant={variant} disabled={disabled}>{disabled ? 'Applications Open Dec. 5' : children}</ButtonText>
   </ButtonContainer>
 )
 
