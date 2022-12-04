@@ -1,9 +1,11 @@
 import { Header2, Header3 } from '@components/Typography'
 import React, { useEffect, useState } from 'react'
 import { useParallax } from 'react-scroll-parallax'
-import styled from 'styled-components'
 
 import KeychainImage from '../assets/images/Keychain.svg'
+
+import styled, { keyframes } from 'styled-components'
+import UltiAnimationImg from '../assets/images/UltiAnimation.gif'
 
 const CountdownContainer = styled.div`
   min-height: calc(calc(1883 / 1440) * 100vw);
@@ -98,6 +100,29 @@ const Keychain = styled.img`
   }
 `
 
+const moveUltiAnimation = keyframes`
+  0% {  
+    // transform: rotate(-1deg);
+        left: 180px;  
+        top: 77.5%;
+  }
+  100% {  
+    // transform: rotate(1deg); 
+          left: 185px;
+          top: 78%;
+        }
+`
+const UltiAnimation = styled.img`
+  // position: relative;
+  left: 180px;
+  position: absolute;
+  top: 78%;
+  width: 160px;
+  height: auto;
+
+  animation: ${moveUltiAnimation} 1s infinite ease-in alternate;
+`
+
 
 const getReturnValues = (countDown) => {
   // calculate time left
@@ -143,6 +168,7 @@ const Countdown = () => {
   return (
     <CountdownContainer>
       <Keychain ref={parallax.ref} src={KeychainImage} alt="Keychain" />
+      <UltiAnimation src={UltiAnimationImg} alt="Nugget and Reindeer tossing around a Firsbee"></UltiAnimation>
       <FauxBillboard>
         <StyledHeader>
           Registration closes in:
