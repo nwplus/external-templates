@@ -5,13 +5,13 @@ import anime from 'animejs'
 import { Header3 } from '@components/Typography'
 
 const profiles = [
-  // {
-  //   img: '/profiles/Alan_Wang.png',
-  //   name: 'Alan Wang',
-  //   emoji: '🪐',
-  //   color: '#FFFFFF',
-  //   title: 'nwHacks Logistics Coordinator'
-  // },
+  {
+    img: '/profiles/Alan_Wang.png',
+    name: 'Alan Wang',
+    emoji: '🪐',
+    color: '#FFFFFF',
+    title: 'nwHacks Logistics Coordinator'
+  },
   {
     img: '/profiles/Alex_Hernandez.png',
     name: 'Alex Hernandez',
@@ -124,13 +124,13 @@ const profiles = [
     color: '#3988FF',
     title: 'Development Coordinator'
   },
-  // {
-  //   img: '/profiles/Edward_Li.png',
-  //   name: 'Edward Li',
-  //   emoji: '🧙‍♂️',
-  //   color: '#66b900',
-  //   title: 'First Year Representative'
-  // },
+  {
+    img: '/profiles/Edward_Li.png',
+    name: 'Edward Li',
+    emoji: '🧙‍♂️',
+    color: '#66b900',
+    title: 'First Year Representative'
+  },
   {
     img: '/profiles/Gordon_Wu.png',
     name: 'Gordon Wu',
@@ -264,20 +264,20 @@ const profiles = [
     color: '#9CDDFB',
     title: 'Design Coordinator'
   },
-  // {
-  //   img: '/profiles/Nicholas_Wong.png',
-  //   name: 'Nicholas Wong',
-  //   emoji: '✨',
-  //   color: '#FFF',
-  //   title: 'Development Coordinator'
-  // },
-  // {
-  //   img: '/profiles/Rachel_Dong.png',
-  //   name: 'Rachel Dong',
-  //   emoji: '🥳',
-  //   color: '#bfe6ff',
-  //   title: 'First Year Representative'
-  // },
+  {
+    img: '/profiles/Nicholas_Wong.png',
+    name: 'Nicholas Wong',
+    emoji: '✨',
+    color: '#FFF',
+    title: 'Development Coordinator'
+  },
+  {
+    img: '/profiles/Rachel_Dong.png',
+    name: 'Rachel Dong',
+    emoji: '🥳',
+    color: '#bfe6ff',
+    title: 'First Year Representative'
+  },
   {
     img: '/profiles/Samantha_Tseng.png',
     name: 'Samantha Tseng',
