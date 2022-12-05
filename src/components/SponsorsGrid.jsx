@@ -73,7 +73,7 @@ const SponsorsGrid = ({ sponsors }) => {
 
   const ListByTier = ({ listOfSponsors }) => (
     <>
-      {listOfSponsors?.map(item => (
+      {listOfSponsors.map(item => (
         <Sponsor
           {...{
             key: item.name,
@@ -82,7 +82,7 @@ const SponsorsGrid = ({ sponsors }) => {
           }}
         />
       ))}
-      <br />
+      {listOfSponsors && <br />}
     </>
   )
 
