@@ -40,6 +40,7 @@ const HalfBackgroundImage = styled.img`
   aspect-ratio: 1440 / 3606;
   width: 100%;
 
+
   @media-query (max-width: 1440px) {
     min-height: none;
   }
