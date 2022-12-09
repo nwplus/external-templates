@@ -354,7 +354,7 @@ const Hero = () => {
         </IntroContainer>
         <ActionsContainer>
           <ButtonsContainer>
-            <Button variant="solid" target="_blank" rel="noreferrer" href="https://portal.nwplus.io" disabled>
+            <Button variant="solid" target="_blank" rel="noreferrer" href="https://portal.nwplus.io">
               Apply Now!
             </Button>
             <Button variant="outlined" target="_blank" rel="noreferrer" href="https://forms.gle/ianRSs3wd1SYjSDR8">
