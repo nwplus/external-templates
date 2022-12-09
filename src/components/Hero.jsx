@@ -347,7 +347,7 @@ const Hero = () => {
           </TitleContainer>
           <Subtitle>Western Canada’s Largest Hackathon</Subtitle>
           <DescriptionContainer>
-            <Description>January 14 - 15 2023</Description>
+            <Description>January 14 - 15, 2023</Description>
             <HideMobile>&nbsp;|&nbsp;</HideMobile>
             <Description>In-Person Event @ UBC Life Sciences Institute </Description>
           </DescriptionContainer>
