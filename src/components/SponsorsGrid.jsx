@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
 const Container = styled.div`
@@ -41,19 +41,6 @@ const SponsorImg = styled.img`
 `
 
 const SponsorsGrid = ({ sponsors }) => {
-  const emptyTierList = { platinum: [], gold: [], silver: [], bronze: [], Inkind: [] }
-  const [tierList, setTierList] = useState(emptyTierList)
-
-  useEffect(() => {
-    if (sponsors) {
-      const updatedTierList = emptyTierList
-      sponsors.forEach(sponsor => {
-        updatedTierList[sponsor.tier].push(sponsor)
-      })
-      setTierList(updatedTierList)
-    }
-  }, [sponsors])
-
   const Sponsor = ({ link, url }) => (
     <a
       href={link}
@@ -71,29 +58,20 @@ const SponsorsGrid = ({ sponsors }) => {
     </a>
   )
 
-  const ListByTier = ({ listOfSponsors }) => (
-    <>
-      {listOfSponsors.map(item => (
-        <Sponsor
-          {...{
-            key: item.name,
-            link: item.link,
-            url: item.imgURL,
-          }}
-        />
-      ))}
-      {listOfSponsors && <br />}
-    </>
-  )
-
   return (
     <Container>
       <Grid>
-        <ListByTier listOfSponsors={tierList.platinum} />
-        <ListByTier listOfSponsors={tierList.gold} />
-        <ListByTier listOfSponsors={tierList.silver} />
-        <ListByTier listOfSponsors={tierList.bronze} />
-        <ListByTier listOfSponsors={tierList.Inkind} />
+        {sponsors?.length > 0
+          ? sponsors.map(item => (
+              <Sponsor
+                {...{
+                  key: item.name,
+                  link: item.link,
+                  url: item.imgURL,
+                }}
+              />
+            ))
+          : ''}
       </Grid>
     </Container>
   )

@@ -2,7 +2,7 @@ import { TABLET } from '@constants/measurements'
 import React from 'react'
 import styled from 'styled-components'
 
-const getButtonStyles = (variant) => {
+const getButtonStyles = variant => {
   switch (variant) {
     case 'solid':
       return `
@@ -25,7 +25,7 @@ const getButtonStyles = (variant) => {
         border: 3px solid transparent;
         transition: 0.3s;
 
-        ${(p) => p.theme.mediaQueries.mobile} {
+        ${p => p.theme.mediaQueries.mobile} {
           border: 1.5px solid transparent;
         }
 
@@ -41,13 +41,13 @@ const getButtonStyles = (variant) => {
         }
       `
     default:
-      break;
+      break
   }
   return ``
 }
 
 const ButtonContainer = styled.a`
-  transition: all 0.2s cubic-bezier(.03,.49,.39,.97);
+  transition: all 0.2s cubic-bezier(0.03, 0.49, 0.39, 0.97);
   position: relative;
   cursor: pointer;
   display: table;
@@ -55,7 +55,9 @@ const ButtonContainer = styled.a`
   border-radius: 12px;
   user-select: none;
 
-  ${p => p.disabled && `
+  ${p =>
+    p.disabled &&
+    `
     cursor: default;
     background: #CCC !important;
   `}
@@ -64,11 +66,13 @@ const ButtonContainer = styled.a`
     margin-top: 10px;
   }
 
-  ${(p) => p.theme.mediaQueries.mobile} {
+  ${p => p.theme.mediaQueries.mobile} {
     border-radius: 5px;
   }
 
-  ${p => !p.disabled && `
+  ${p =>
+    !p.disabled &&
+    `
   &:hover {
     transform: scale(1.02);
   }
@@ -93,29 +97,40 @@ const ButtonText = styled.div`
   padding: 0.75rem 2rem;
   white-space: nowrap;
 
-  ${p => p && p.variant == 'outlined' && `
+  ${p =>
+    p &&
+    p.variant === 'outlined' &&
+    `
     &:hover {
       color: #6062CB;
     }
   `}
 
-  ${p => p.disabled && `
+  ${p =>
+    p.disabled &&
+    `
     cursor: default;
     color: grey !important;
   `}
 
-  ${p => p && p.variant === 'solid' && `
+  ${p =>
+    p &&
+    p.variant === 'solid' &&
+    `
     color: white;
     padding: calc(0.6rem + 6px) calc(2rem + 6px);
   `}
   
-  ${(p) => p.theme.mediaQueries.mobile} {
+  ${p => p.theme.mediaQueries.mobile} {
     font-size: 1.1rem;
     padding: 0.5rem 2rem;
     min-width: 260px;
     text-align: center;
 
-  ${p => p && p.variant === 'solid' && `
+    ${p =>
+      p &&
+      p.variant === 'solid' &&
+      `
     color: white;
     padding: calc(0.5rem + 3px) calc(2rem + 3px);
     min-width: calc(260px + 0.5rem);
@@ -123,14 +138,11 @@ const ButtonText = styled.div`
   }
 `
 
-const Button = ({
-  href,
-  children,
-  variant,
-  disabled
-}) => (
+const Button = ({ href, children, variant, disabled }) => (
   <ButtonContainer variant={variant} href={disabled ? '#' : href} disabled={disabled}>
-    <ButtonText variant={variant} disabled={disabled}>{disabled ? 'Applications Open Dec. 5' : children}</ButtonText>
+    <ButtonText variant={variant} disabled={disabled}>
+      {disabled ? 'Applications Open Dec. 5' : children}
+    </ButtonText>
   </ButtonContainer>
 )
 

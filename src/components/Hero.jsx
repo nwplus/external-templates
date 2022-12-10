@@ -290,7 +290,7 @@ const ButtonsContainer = styled.div`
 
 const VolunteerLink = styled.a`
   position: relative;
-  color: #969DFB;
+  color: #969dfb;
   text-decoration: none;
   font-weight: 600;
   font-size: 1.1rem;
@@ -304,18 +304,17 @@ const VolunteerLink = styled.a`
     left: 0;
     width: 100%;
     height: 2px;
-    background-color: #969DFB;
+    background-color: #969dfb;
     transition: background 0.13s linear;
   }
 
   &:hover {
-    color: #9AD4DE;
+    color: #9ad4de;
 
     &:after {
-      background-color: #9AD4DE;
+      background-color: #9ad4de;
     }
   }
-
 `
 
 const Hero = () => {
@@ -347,7 +346,7 @@ const Hero = () => {
           </TitleContainer>
           <Subtitle>Western Canada’s Largest Hackathon</Subtitle>
           <DescriptionContainer>
-            <Description>January 14 - 15 2023</Description>
+            <Description>January 14 - 15, 2023</Description>
             <HideMobile>&nbsp;|&nbsp;</HideMobile>
             <Description>In-Person Event @ UBC Life Sciences Institute </Description>
           </DescriptionContainer>
