@@ -14,21 +14,25 @@ const Container = styled.div`
   }
 `
 
-const Grid = styled.div`
+const Flex = styled.div`
   min-width: 800px;
   max-width: 1200px;
   width: 65vw;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding-top: 3rem;
   gap: 2rem;
 
   ${p => p.theme.mediaQueries.mobile} {
-    display: flex;
     flex-direction: column;
     min-width: 0;
     width: calc(100% -2rem);
   }
+`
+
+const SponsorContainer = styled.div`
+  width: 33%;
 `
 
 const SponsorImg = styled.img`
@@ -55,24 +59,26 @@ const SponsorsGrid = ({ sponsors }) => {
   }, [sponsors])
 
   const Sponsor = ({ link, url }) => (
-    <a
-      href={link}
-      target="_blank"
-      rel="noreferrer"
-      style={{
-        width: '100%',
-        aspectRatio: '1/1',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}
-    >
-      <SponsorImg src={url} />
-    </a>
+    <SponsorContainer>
+      <a
+        href={link}
+        target="_blank"
+        rel="noreferrer"
+        style={{
+          width: '100%',
+          aspectRatio: '1/1',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        <SponsorImg src={url} />
+      </a>
+    </SponsorContainer>
   )
 
   const ListByTier = ({ listOfSponsors }) => (
-    <>
+    <Flex>
       {listOfSponsors.map(item => (
         <Sponsor
           {...{
@@ -82,19 +88,16 @@ const SponsorsGrid = ({ sponsors }) => {
           }}
         />
       ))}
-      {listOfSponsors && <br />}
-    </>
+    </Flex>
   )
 
   return (
     <Container>
-      <Grid>
-        <ListByTier listOfSponsors={tierList.platinum} />
-        <ListByTier listOfSponsors={tierList.gold} />
-        <ListByTier listOfSponsors={tierList.silver} />
-        <ListByTier listOfSponsors={tierList.bronze} />
-        <ListByTier listOfSponsors={tierList.Inkind} />
-      </Grid>
+      <ListByTier listOfSponsors={tierList.platinum} />
+      <ListByTier listOfSponsors={tierList.gold} />
+      <ListByTier listOfSponsors={tierList.silver} />
+      <ListByTier listOfSponsors={tierList.bronze} />
+      <ListByTier listOfSponsors={tierList.Inkind} />
     </Container>
   )
 }
