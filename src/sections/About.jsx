@@ -81,7 +81,7 @@ const About = () => {
             About nwHacks
           </BlurbHeader>
           <BlurbText>
-            Join hundreds of hackers across the world at nwHacks on Jan 14-15th, 2023! Apply by December 19th, 2022 to participate as a hacker and apply by December 19th, 2022 to participate as a mentor or a volunteer.
+            Join hundreds of hackers across the world at nwHacks on Jan 14-15th, 2023! Apply by December 23rd, 2022 to participate as a hacker and apply by December 23rd, 2022 to participate as a mentor or a volunteer.
             <br /><br />
             Whether you{`'`}re a seasoned hacker or you{`'`}re just getting into tech, nwHacks welcomes you; just bring an open mind and an insatiable desire to learn, and we{`'`}ll take care of the rest. Create a project, learn new skills, and bond with friends, old and new — all in 24 hours.
           </BlurbText>
