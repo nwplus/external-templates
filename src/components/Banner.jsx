@@ -16,18 +16,18 @@ const BannerContainer = styled.div`
   padding: 20px 64px;
   gap: 10px;
   color: #2c2543;
+  font-size: 0.8rem;
   @media (min-width: 768px) {
     padding-right: 100px;
+    font-size: 20px;
   }
 `
 
 const BannerHeader = styled.div`
-  font-size: 0.8rem;
   font-weight: 700;
 `
 
 const BannerText = styled.div`
-  font-size: 0.8rem;
   font-weight: 400;
 `
 

@@ -68,7 +68,7 @@ export default function Index({ title }) {
       </Head>
       {/* Components Starts */}
       <Banner buttonLink="info" />
-      <NavigationBar />
+      <NavigationBar bannerExists />
       <HalfContainer>
         <HalfBackgroundImage src={MainGraphicsTop} alt="Background image" />
         <Hero />

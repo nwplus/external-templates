@@ -275,11 +275,11 @@ const TrustBadge = ({ stayAtTop }) => (
   </TrustBadgeLink>
 )
 
-const NavigationBar = () => {
+const NavigationBar = ({ bannerExists }) => {
   const [showDropdown, setShowDropdown] = useState(false)
   const [visibility, setVisibility] = useState('visible')
   const [opacity, setOpacity] = useState('1')
-  const [stayAtTop, setStayAtTop] = useState(true)
+  const [stayAtTop, setStayAtTop] = useState(bannerExists && true)
 
   const handleResize = () => {
     if (window.innerWidth >= SCREEN_BREAKPOINTS.mobile) {
@@ -292,7 +292,7 @@ const NavigationBar = () => {
     return () => {
       const scroll = window.pageYOffset || document.documentElement.scrollTop
       if (scroll <= BANNER_OFFSET) {
-        setStayAtTop(true)
+        setStayAtTop(bannerExists && true)
         setVisibility('visible')
         setOpacity('1')
       } else if (scroll > lastScroll) {
