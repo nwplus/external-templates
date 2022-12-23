@@ -9,17 +9,21 @@ import Footer from 'src/sections/Footer'
 import Countdown from 'src/sections/Countdown'
 import About from 'src/sections/About'
 
+import Banner from '../components/Banner'
 import NavigationBar from '../components/NavigationBar'
 import Hero from '../components/Hero'
 
 import MainGraphicsTop from '../assets/images/MainBackground.svg'
 import MainGraphicsMobile from '../assets/images/mobile/MainBackground.svg'
 
+import { BANNER_OFFSET_PX } from '../constants/measurements'
+
 const HalfContainer = styled.div`
   min-height: calc(calc(3606 / 1440) * 100vw);
   position: relative;
   aspect-ratio: 1440 / 3606;
   width: 100%;
+  top: ${BANNER_OFFSET_PX};
 
   ${p => p.theme.mediaQueries.mobile} {
     background: url(${MainGraphicsMobile}), linear-gradient(to bottom, #83f6f7, #bfeff0);
@@ -63,8 +67,8 @@ export default function Index({ title }) {
         <meta property="og:image" content="/og_preview.png" />
       </Head>
       {/* Components Starts */}
-
-      <NavigationBar />
+      <Banner buttonLink="info" />
+      <NavigationBar bannerExists />
       <HalfContainer>
         <HalfBackgroundImage src={MainGraphicsTop} alt="Background image" />
         <Hero />
