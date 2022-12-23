@@ -2,10 +2,11 @@ import { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
 import { scale } from '@utilities/format'
+import { BANNER_OFFSET } from '../constants/measurements'
 
 const NavBarContainer = styled.nav`
-  position: fixed;
-  top: 0;
+  position: ${p => (p.stayAtTop ? 'absolute' : 'fixed')};
+  top: ${p => (p.stayAtTop ? BANNER_OFFSET : '0')}px;
   z-index: 999;
   width: 100%;
   height: 100px;
@@ -131,9 +132,9 @@ const Button = styled.a`
   padding: 11px 21px;
   border-radius: 50px;
   font-weight: bold;
-  background: linear-gradient(to right, #0DEFE1, #78FF96);
-  color: #2C2543;
-  right: 100px;
+  background: linear-gradient(to right, #0defe1, #78ff96);
+  color: #2c2543;
+  right: 120px;
   ${p => p.theme.mediaQueries.mobile} {
     right: 0;
   }
@@ -184,18 +185,18 @@ const Button = styled.a`
 `
 
 const TrustBadgeLink = styled.a`
-    display: block;
-    max-width: 100px;
-    min-width: 60px;
-    position: fixed;
-    right: 50px;
-    top: 0;
-    width: 5%;
-    z-index: 1000;
+  display: block;
+  max-width: 100px;
+  min-width: 60px;
+  position: ${p => (p.stayAtTop ? 'absolute' : 'fixed')};
+  top: 0px;
+  right: 50px;
+  width: 5%;
+  z-index: 1000;
 
-    ${p => p.theme.mediaQueries.mobile} {
-      left: 50px;
-    }
+  ${p => p.theme.mediaQueries.mobile} {
+    left: 50px;
+  }
 `
 
 const MenuItem = ({ name, href, isAnchor, target, rel, isMobile, closeDropdown }) => {
@@ -247,13 +248,30 @@ const MenuList = ({ isMobile, closeDropdown }) => (
     {/* <MenuItem name='Statistics' href='/#statistics' isAnchor isMobile={isMobile} closeDropdown={closeDropdown} /> */}
     <MenuItem name="FAQ" href="/#faq" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
     <MenuItem name="Sponsors" href="/#sponsors" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
-    <MenuItem name='2022' href='https://2022.nwhacks.io' target='_blank' rel='noopener' isMobile={isMobile} closeDropdown={closeDropdown} />
+    <MenuItem
+      name="2022"
+      href="https://2022.nwhacks.io"
+      target="_blank"
+      rel="noopener"
+      isMobile={isMobile}
+      closeDropdown={closeDropdown}
+    />
   </>
 )
 
-const TrustBadge = () => (
-  <TrustBadgeLink id="mlh-trust-badge" rel="noreferrer" href="https://mlh.io/na?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2023-season&utm_content=white" target="_blank">
-    <img src="https://s3.amazonaws.com/logged-assets/trust-badge/2023/mlh-trust-badge-2023-white.svg" alt="Major League Hacking 2023 Hackathon Season" style={{ width: "100%" }} />
+const TrustBadge = ({ stayAtTop }) => (
+  <TrustBadgeLink
+    id="mlh-trust-badge"
+    rel="noreferrer"
+    href="https://mlh.io/na?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2023-season&utm_content=white"
+    target="_blank"
+    stayAtTop={stayAtTop}
+  >
+    <img
+      src="https://s3.amazonaws.com/logged-assets/trust-badge/2023/mlh-trust-badge-2023-white.svg"
+      alt="Major League Hacking 2023 Hackathon Season"
+      style={{ width: '100%' }}
+    />
   </TrustBadgeLink>
 )
 
@@ -261,6 +279,7 @@ const NavigationBar = () => {
   const [showDropdown, setShowDropdown] = useState(false)
   const [visibility, setVisibility] = useState('visible')
   const [opacity, setOpacity] = useState('1')
+  const [stayAtTop, setStayAtTop] = useState(true)
 
   const handleResize = () => {
     if (window.innerWidth >= SCREEN_BREAKPOINTS.mobile) {
@@ -272,12 +291,15 @@ const NavigationBar = () => {
     let lastScroll = 0
     return () => {
       const scroll = window.pageYOffset || document.documentElement.scrollTop
-      if (scroll <= 0) {
+      if (scroll <= BANNER_OFFSET) {
+        setStayAtTop(true)
         setVisibility('visible')
         setOpacity('1')
       } else if (scroll > lastScroll) {
+        setStayAtTop(false)
         setVisibility('hidden')
         setOpacity('0')
+        setStayAtTop(0)
       } else {
         setVisibility('visible')
         setOpacity('1')
@@ -315,14 +337,14 @@ const NavigationBar = () => {
           {/* Make sure desktop (below) has the same portalOpen value */}
           <PortalButton portalOpen={true} />
         </DropDownContentContainer>
-        <TrustBadge />
+        <TrustBadge stayAtTop={stayAtTop} />
       </>
     )
   }
 
   // Only for desktop version
   return (
-    <NavBarContainer visibility={visibility} opacity={opacity}>
+    <NavBarContainer visibility={visibility} opacity={opacity} stayAtTop={stayAtTop}>
       <NavGroupContainer>
         <a href="/">
           <NwPlusLogo src="/images/logos/nwplus-logo.svg" alt="nwPlus club logo in white" />
@@ -334,7 +356,7 @@ const NavigationBar = () => {
         <PortalButton portalOpen={true} />
       </NavGroupContainer>
       <HamburgerMenu src="/images/icons/menu.svg" alt="dropdown menu icon" onClick={() => setShowDropdown(true)} />
-      <TrustBadge />
+      <TrustBadge stayAtTop={stayAtTop} />
     </NavBarContainer>
   )
 }
