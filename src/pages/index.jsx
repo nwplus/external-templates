@@ -67,7 +67,7 @@ export default function Index({ title }) {
         <meta property="og:image" content="/og_preview.png" />
       </Head>
       {/* Components Starts */}
-      <Banner buttonLink="info" />
+      <Banner buttonLink="info.html" />
       <NavigationBar bannerExists />
       <HalfContainer>
         <HalfBackgroundImage src={MainGraphicsTop} alt="Background image" />
