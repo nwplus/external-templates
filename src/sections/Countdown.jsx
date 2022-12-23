@@ -154,7 +154,7 @@ const useCountdown = targetDate => {
 const Countdown = () => {
   const parallax = useParallax({ speed: 6 })
 
-  const countDownDate = new Date('Dec 23, 2022 23:59:59').getTime()
+  const countDownDate = new Date('Dec 25, 2022 23:59:59').getTime()
   const countdown = useCountdown(countDownDate)
 
   return (
