@@ -13,7 +13,7 @@ const BannerContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px 64px;
+  padding: 12px 64px;
   gap: 10px;
   color: #2c2543;
   font-size: 0.8rem;
