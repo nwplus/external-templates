@@ -111,7 +111,7 @@ const Faq = () => {
   }
 
   useEffect(async () => {
-    const data = await fireDb.getCollection('nwHacks2023', 'FAQ')
+    const data = await fireDb.getCollection('cmd-f2023', 'FAQ')
     const processedData = processData(data)
     setFaqData(processedData)
   }, [])

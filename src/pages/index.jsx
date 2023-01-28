@@ -41,7 +41,7 @@ export default function Index({ title }) {
 export async function getStaticProps() {
   return {
     props: {
-      title: 'nwHacks 2023',
+      title: 'cmd-f 2023',
     }, // will be passed to the page component as props
   }
 }
