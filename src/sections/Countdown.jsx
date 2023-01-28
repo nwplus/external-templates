@@ -1,9 +1,6 @@
 import { Header2, Header3 } from '@components/Typography'
 import React, { useEffect, useState } from 'react'
-import { useParallax } from 'react-scroll-parallax'
-import styled, { keyframes } from 'styled-components'
-import KeychainImage from '../assets/images/Keychain.svg'
-import UltiAnimationImg from '../assets/images/UltiAnimation.gif'
+import styled from 'styled-components'
 
 const CountdownContainer = styled.div`
   min-height: calc(calc(1883 / 1440) * 100vw);
@@ -12,29 +9,6 @@ const CountdownContainer = styled.div`
 
   ${p => p.theme.mediaQueries.mobile} {
     min-height: calc(calc(746 / 428) * 100vw);
-  }
-`
-
-const FauxBillboard = styled.div`
-  min-height: calc(calc(482 / 1139) * 75vw);
-  display: flex;
-  max-width: 1200px;
-  align-items: center;
-  margin-top: 10%;
-  margin-left: auto;
-  margin-right: auto;
-  width: 75vw;
-  text-shadow: 0 0 10px rgba(233, 233, 233, 0.4);
-
-  ${p => p.theme.mediaQueries.mobile} {
-    min-height: calc(calc(290 / 636) * 100vw);
-    max-width: 100vw;
-    width: 100vw;
-    flex-direction: column;
-    position: absolute;
-    margin-top: 0;
-    padding-top: calc(calc(60 / 750) * 100vw);
-    justify-content: center;
   }
 `
 
@@ -85,41 +59,6 @@ const BillboardText = styled(Header3)`
   }
 `
 
-const Keychain = styled.img`
-  min-height: calc(calc(1109 / 1493) * 100vw);
-  position: absolute;
-  top: 18%;
-  left: -25%;
-  aspect-ratio: 1493 / 1109;
-  width: 100%;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    display: none;
-  }
-`
-
-const moveUltiAnimation = keyframes`
-  0% {  
-    // transform: rotate(-1deg);
-        left: 180px;  
-        top: 77.5%;
-  }
-  100% {  
-    // transform: rotate(1deg); 
-          left: 185px;
-          top: 78%;
-        }
-`
-const UltiAnimation = styled.img`
-  // position: relative;
-  left: 180px;
-  position: absolute;
-  top: 78%;
-  width: 160px;
-  height: auto;
-
-  animation: ${moveUltiAnimation} 1s infinite ease-in alternate;
-`
 
 const getReturnValues = countDown => {
   // calculate time left
@@ -152,16 +91,11 @@ const useCountdown = targetDate => {
 }
 
 const Countdown = () => {
-  const parallax = useParallax({ speed: 6 })
-
   const countDownDate = new Date('Dec 25, 2022 23:59:59').getTime()
   const countdown = useCountdown(countDownDate)
 
   return (
     <CountdownContainer>
-      <Keychain ref={parallax.ref} src={KeychainImage} alt="Keychain" />
-      <UltiAnimation src={UltiAnimationImg} alt="Nugget and Reindeer tossing around a Firsbee"></UltiAnimation>
-      <FauxBillboard>
         <StyledHeader>Registration closes in:</StyledHeader>
         <CountdownGrid>
           {['Days', 'Hours', 'Minutes'].map((item, index) => (
@@ -171,7 +105,6 @@ const Countdown = () => {
             </TimeUnit>
           ))}
         </CountdownGrid>
-      </FauxBillboard>
     </CountdownContainer>
   )
 }

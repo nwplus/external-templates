@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useParallax } from 'react-scroll-parallax'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faFacebook,
@@ -12,13 +11,6 @@ import {
 } from '@fortawesome/free-brands-svg-icons'
 import Team from '@components/Team'
 
-import { Stamp } from './Sponsors'
-import FooterBackgroundImage from '../assets/images/FooterBackground.svg'
-import FooterBackgroundMobile from '../assets/images/mobile/FooterBackground.svg'
-
-import VictoriaStamp from '../assets/images/stamps/Victoria.svg'
-import WhistlerStamp from '../assets/images/stamps/Whistler.svg'
-
 const FooterContainer = styled.div`
   position: relative;
   min-height: calc( calc(1556 / 1440) * 100vw);
@@ -26,26 +18,6 @@ const FooterContainer = styled.div`
   
   ${(p) => p.theme.mediaQueries.mobile} {
     min-height: calc(calc(974 / 428) * 100vw);
-
-    background: url(${FooterBackgroundMobile}), #383E82;
-    background-repeat: no-repeat;
-    background-position: top center;
-    background-size: cover;
-    width: 100%;
-    aspect-ratio: 428/974;
-  }
-`
-
-const FooterBackground = styled.img`
-  bottom: 0;
-  position: absolute;
-  user-select: none;
-  min-height: calc( calc(1163 / 1440) * 100vw);
-  aspect-ratio: 1440 / 1163;
-  width: 100%;
-
-  ${(p) => p.theme.mediaQueries.mobile} {
-    display: none;
   }
 `
 
@@ -157,41 +129,8 @@ const StaticContainer = styled.div`
   }
 `
 
-const Footer = () => {
-
-  const stampPArr = [
-    useParallax({ speed: 5 }),
-    useParallax({ speed: 6 })
-  ]
-
-  const stamps = [
-    {
-      name: 'Victoria Stamp',
-      imgSrc: VictoriaStamp,
-      left: '-2rem'
-    },
-    {
-      name: 'Whistler Stamp',
-      imgSrc: WhistlerStamp,
-      top: '20%',
-      right: '-5rem'
-    }
-  ]
-
-  return (
+const Footer = () => (
     <FooterContainer>
-      <FooterBackground src={FooterBackgroundImage} alt="FAQ section background" />
-      {stamps.map((item, index) => (
-        <Stamp
-          ref={stampPArr[index].ref}
-          key={item.name}
-          src={item.imgSrc}
-          alt={item.name}
-          top={item.top || null}
-          right={item.right || null}
-          bottom={item.bottom || null}
-          left={item.left || null} />
-      ))}
       <StaticContainer>
         <TextContainer>
           <SocialMediaIcons>
@@ -241,7 +180,7 @@ const Footer = () => {
           </Links>
           <SmallText>
             <div>Organized and held by nwPlus</div>
-            <div>Copyright &copy; nwHacks 2023</div>
+            <div>Copyright &copy; cmd-f 2023</div>
           </SmallText>
         </TextContainer>
         <TeamContainer>
@@ -249,7 +188,6 @@ const Footer = () => {
         </TeamContainer>
       </StaticContainer>
     </FooterContainer>
-  )
-}
+)
 
 export default Footer

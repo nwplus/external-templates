@@ -1,3 +1,4 @@
+/* eslint-disable dot-notation */
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import fireDb from '@utilities/firebase'
@@ -6,13 +7,10 @@ import { Header2, Header3 } from '@components/Typography'
 
 const FaqContainer = styled.div`
   position: relative;
-  background: linear-gradient(to bottom, #AFEBEE, #99E4EA);
   min-height: 50vh;
-  
   
   ${(p) => p.theme.mediaQueries.mobile} {
     min-height: 0;
-    background: linear-gradient(to bottom, #BFEFF0, #79DAE4);
   }
 `
 

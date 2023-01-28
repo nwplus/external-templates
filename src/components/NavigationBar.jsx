@@ -5,8 +5,8 @@ import { scale } from '@utilities/format'
 import { BANNER_OFFSET } from '../constants/measurements'
 
 const NavBarContainer = styled.nav`
-  position: ${p => (p.stayAtTop ? 'absolute' : 'fixed')};
-  top: ${p => (p.stayAtTop ? BANNER_OFFSET : '0')}px;
+  position: fixed;
+  top: 0;
   z-index: 999;
   width: 100%;
   height: 100px;
@@ -188,7 +188,7 @@ const TrustBadgeLink = styled.a`
   display: block;
   max-width: 100px;
   min-width: 60px;
-  position: ${p => (p.stayAtTop ? 'absolute' : 'fixed')};
+  position: fixed;
   top: 0px;
   right: 50px;
   width: 5%;
@@ -245,12 +245,12 @@ const PortalButton = ({ portalOpen }) => (
 const MenuList = ({ isMobile, closeDropdown }) => (
   <>
     <MenuItem name="About" href="/#about" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
-    {/* <MenuItem name='Statistics' href='/#statistics' isAnchor isMobile={isMobile} closeDropdown={closeDropdown} /> */}
+    <MenuItem name='Hackathon' href='/#hackathon' isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
     <MenuItem name="FAQ" href="/#faq" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
     <MenuItem name="Sponsors" href="/#sponsors" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
     <MenuItem
       name="2022"
-      href="https://2022.nwhacks.io"
+      href="https://2022cmd-f.nwplus.io"
       target="_blank"
       rel="noopener"
       isMobile={isMobile}
@@ -259,13 +259,12 @@ const MenuList = ({ isMobile, closeDropdown }) => (
   </>
 )
 
-const TrustBadge = ({ stayAtTop }) => (
+const TrustBadge = () => (
   <TrustBadgeLink
     id="mlh-trust-badge"
     rel="noreferrer"
     href="https://mlh.io/na?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2023-season&utm_content=white"
     target="_blank"
-    stayAtTop={stayAtTop}
   >
     <img
       src="https://s3.amazonaws.com/logged-assets/trust-badge/2023/mlh-trust-badge-2023-white.svg"
@@ -275,11 +274,10 @@ const TrustBadge = ({ stayAtTop }) => (
   </TrustBadgeLink>
 )
 
-const NavigationBar = ({ bannerExists }) => {
+const NavigationBar = () => {
   const [showDropdown, setShowDropdown] = useState(false)
   const [visibility, setVisibility] = useState('visible')
   const [opacity, setOpacity] = useState('1')
-  const [stayAtTop, setStayAtTop] = useState(bannerExists && true)
 
   const handleResize = () => {
     if (window.innerWidth >= SCREEN_BREAKPOINTS.mobile) {
@@ -292,14 +290,11 @@ const NavigationBar = ({ bannerExists }) => {
     return () => {
       const scroll = window.pageYOffset || document.documentElement.scrollTop
       if (scroll <= BANNER_OFFSET) {
-        setStayAtTop(bannerExists && true)
         setVisibility('visible')
         setOpacity('1')
       } else if (scroll > lastScroll) {
-        setStayAtTop(false)
         setVisibility('hidden')
         setOpacity('0')
-        setStayAtTop(0)
       } else {
         setVisibility('visible')
         setOpacity('1')
@@ -335,16 +330,16 @@ const NavigationBar = ({ bannerExists }) => {
           </a>
           <MenuList isMobile={showDropdown} closeDropdown={setShowDropdown} />
           {/* Make sure desktop (below) has the same portalOpen value */}
-          <PortalButton portalOpen={true} />
+          <PortalButton portalOpen={false} />
         </DropDownContentContainer>
-        <TrustBadge stayAtTop={stayAtTop} />
+        <TrustBadge />
       </>
     )
   }
 
   // Only for desktop version
   return (
-    <NavBarContainer visibility={visibility} opacity={opacity} stayAtTop={stayAtTop}>
+    <NavBarContainer visibility={visibility} opacity={opacity}>
       <NavGroupContainer>
         <a href="/">
           <NwPlusLogo src="/images/logos/nwplus-logo.svg" alt="nwPlus club logo in white" />
@@ -353,10 +348,10 @@ const NavigationBar = ({ bannerExists }) => {
           <MenuList />
         </NavTextContainer>
         {/* Make sure mobile (above) has the same portalOpen value */}
-        <PortalButton portalOpen={true} />
+        <PortalButton portalOpen={false} />
       </NavGroupContainer>
       <HamburgerMenu src="/images/icons/menu.svg" alt="dropdown menu icon" onClick={() => setShowDropdown(true)} />
-      <TrustBadge stayAtTop={stayAtTop} />
+      <TrustBadge />
     </NavBarContainer>
   )
 }
