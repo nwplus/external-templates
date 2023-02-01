@@ -7,6 +7,7 @@ import Faq from 'src/sections/FAQ'
 import Footer from 'src/sections/Footer'
 import Countdown from 'src/sections/Countdown'
 import About from 'src/sections/About'
+import Values from 'src/sections/Values'
 
 import NavigationBar from '../components/NavigationBar'
 import Hero from '../components/Hero'
@@ -30,6 +31,7 @@ export default function Index({ title }) {
       <Hero />
       <About />
       <Countdown />
+      <Values />
       <Faq />
       <Sponsors />
       <Footer />
