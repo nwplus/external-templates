@@ -14,7 +14,7 @@ const Container = styled.div`
     border-color: #FFFFFF;
   `
     : `
-    border-color: #01DACC;
+    border-color: #CE7A68;
   `}
   
   &:not(:last-child) {
@@ -23,19 +23,20 @@ const Container = styled.div`
 `
 
 const Top = styled.div`
-  color: #252525;
+  color: #433860;
   padding:1rem;
   font-size:1.2rem;
   display:flex;
   justify-content:space-between;
   border-bottom:solid;
   margin-bottom:-1.2px;
-  font-weight: 700;
+  font-weight: 400;
   border-width:1px;
   border-radius:5px 5px 0 0;
   ${p => p.expanded && `
     color:#FFF;
-    background-color: #4453B0;
+    background-color: #CE7A68;
+    border: 1px solid white;
   `}
   
   ${p => p.theme.mediaQueries.mobile} {
@@ -53,7 +54,8 @@ const AnswerBox = styled.div`
   overflow:hidden;
   transition:0.2s max-height cubic-bezier(.6,0,.4,1);
   border-radius: 0 0 5px 5px;
-  ${p => p.isOpen ? 'max-height:500px; background-color: #8486E4;' : 'max-height: 0;'}
+  font-weight: 700;
+  ${p => p.isOpen ? 'max-height:500px; background-color: #95574E; border:1px solid white;' : 'max-height: 0;'}
   ${p => p.theme.mediaQueries.mobile} {
     font-size: 0.9rem;
   }
