@@ -1,16 +1,17 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 
 import AboutBackground from "../../public/images/backgrounds/About.svg"
-
+import OpenSign from "../../public/images/animated-graphics/OpenSign.svg"
 
 const AboutContainer = styled.div`
   position: relative;
   z-index: 1;
-  display: flex;
-  align-items: center;
+  // display: flex;
+  // align-items: center;
   width: 100%;
+  height: 1440px;
   
   // Aspect ratio & height calculation should be the aspect ratio of the background image
   // aspect-ratio: 1440 / 779;
@@ -36,10 +37,73 @@ const AboutBg = styled.img`
   user-select: none;
 `
 
+const AboutTitle = styled.h2`
+  font-family: 'HK Grotesk';
+  font-weight: bold;
+  text-align: center;
+  color: #4D4B4F;
+  z-index: 1;
+  width: 100vw;
+  display: block;
+  position: relative;
+  top: 15%;
+  font-size: 3em;
+  width: 80%;
+  text-align: center;
+`
+
+const AboutDescription = styled.p`
+  font-family: 'HK Grotesk';
+  top: 5px;
+  font-size: 1em;
+  color: #4D4B4F;
+  z-index: 1;
+  position: relative;
+  width: 50%;
+  left: 10%;
+  margin-top: 20%;
+`
+
+const swingSign = keyframes`
+ from { transform: rotate(3deg); }
+ to { transform: rotate(-3deg); }
+
+`
+
+const OpenSignImage = styled.img`
+  position: absolute;
+  right: 6.5%;
+  top: 56vh;
+  animation-name: ${swingSign};
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  transform-origin: 0px 50%;
+`
+
 const About = () => (
   <AboutContainer>
     <AboutBg src={AboutBackground} />
-    About
+
+    <AboutTitle>About cmd-f</AboutTitle>
+    <AboutDescription>Join us on March 11-12 for cmd-f 2023, an in-person hackathon celebrating underrepresented genders in tech!
+      <br /><br />
+      According to a UNESCO study, many underrepresented genders individuals in tech experience variations of imposter syndrome among their counterparts in the industry.
+      <br /><br />
+      At cmd-f, we welcome anyone who self-identifies as an underrepresented gender and hope to dedicate a safe space to:
+
+      <ul style={{ paddingLeft: "40px" }}>
+        <li>Develop new skills</li>
+        <li>Explore career opportunities</li>
+        <li>Build a supportive community in tech</li>
+      </ul>
+
+      <br />
+      Whether you're a first-time hacker or a veteran, we have workshops, prizes, and social activities for you! No technical experience needed.
+      <br /><br />
+      Stay tuned on our socials for updates on what to expect at cmd-f 2023!</AboutDescription>
+
+    <OpenSignImage src={OpenSign} />
   </AboutContainer>
 )
 
