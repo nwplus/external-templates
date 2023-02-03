@@ -8,6 +8,7 @@ import Footer from 'src/sections/Footer'
 import Countdown from 'src/sections/Countdown'
 import About from 'src/sections/About'
 import Values from 'src/sections/Values'
+import Statistics from 'src/sections/Statistics'
 
 import NavigationBar from '../components/NavigationBar'
 import Hero from '../components/Hero'
@@ -31,6 +32,7 @@ export default function Index({ title }) {
       <Hero />
       <About />
       <Countdown />
+      <Statistics />
       <Values />
       <Faq />
       <Sponsors />
