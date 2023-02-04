@@ -7,16 +7,16 @@ import {
   faLinkedinIn,
   faMediumM,
   faTwitter,
-  faYoutube
+  faYoutube,
 } from '@fortawesome/free-brands-svg-icons'
 import Team from '@components/Team'
 
 const FooterContainer = styled.div`
   position: relative;
-  min-height: calc( calc(1556 / 1440) * 100vw);
+  min-height: calc(calc(1556 / 1440) * 100vw);
   margin-top: -0.5rem;
-  
-  ${(p) => p.theme.mediaQueries.mobile} {
+
+  ${p => p.theme.mediaQueries.mobile} {
     min-height: calc(calc(974 / 428) * 100vw);
   }
 `
@@ -25,16 +25,16 @@ const SocialMediaIcons = styled.div`
   justify-content: center;
   align-items: center;
   display: flex;
-  
+
   a {
     width: 50px;
     text-decoration: none;
     color: white;
   }
-  
+
   gap: 2rem;
-  
-  ${(p) => p.theme.mediaQueries.mobile} {
+
+  ${p => p.theme.mediaQueries.mobile} {
     a {
       width: 25px;
     }
@@ -49,11 +49,11 @@ const Links = styled.div`
 
   a {
     font-weight: 600;
-    color: #E2D6FF;
-    text-shadow: 0 0 10px #59B0EF;
+    color: #e2d6ff;
+    text-shadow: 0 0 10px #59b0ef;
   }
-  
-  ${(p) => p.theme.mediaQueries.mobile} {
+
+  ${p => p.theme.mediaQueries.mobile} {
     font-size: 1.1rem;
     flex-wrap: wrap;
     justify-content: center;
@@ -74,7 +74,7 @@ const TextContainer = styled.div`
   padding-top: 30%;
   gap: 1rem;
 
-  ${(p) => p.theme.mediaQueries.mobile} {
+  ${p => p.theme.mediaQueries.mobile} {
     padding-top: 65%;
   }
 `
@@ -85,13 +85,13 @@ const SmallText = styled.div`
   text-align: center;
 
   div {
-    color: #E2D6FF;
-    text-shadow: 0 0 10px #59B0EF;
+    color: #e2d6ff;
+    text-shadow: 0 0 10px #59b0ef;
     font-size: 1.2rem;
     font-weight: 500;
   }
 
-  ${(p) => p.theme.mediaQueries.mobile} {
+  ${p => p.theme.mediaQueries.mobile} {
     div {
       font-size: 1rem;
     }
@@ -104,12 +104,12 @@ const TeamContainer = styled.div`
   bottom: 12%;
   text-align: center;
   width: 100%;
-  
-  ${(p) => p.theme.mediaQueries.tabletLarge} {
+
+  ${p => p.theme.mediaQueries.tabletLarge} {
     width: 40vw;
   }
 
-  ${(p) => p.theme.mediaQueries.mobile} {
+  ${p => p.theme.mediaQueries.mobile} {
     width: 100%;
     bottom: 1rem;
   }
@@ -122,7 +122,7 @@ const StaticContainer = styled.div`
   position: absolute;
   width: 100%;
   height: 100%;
-  
+
   ${p => p.theme.mediaQueries.mobile} {
     width: 100%;
     padding: 0 6vw;
@@ -130,64 +130,9 @@ const StaticContainer = styled.div`
 `
 
 const Footer = () => (
-    <FooterContainer>
-      <StaticContainer>
-        <TextContainer>
-          <SocialMediaIcons>
-            <a
-              href='https://www.facebook.com/nwplusubc'
-              target='_blank'
-              rel='noreferrer'
-            >
-              <FontAwesomeIcon icon={faFacebook} />
-            </a>
-            <a
-              href='https://www.instagram.com/nwplusubc'
-              target='_blank'
-              rel='noreferrer'
-            >
-              <FontAwesomeIcon icon={faInstagram} />
-            </a>
-            <a
-              href='https://twitter.com/nwplusubc'
-              target='_blank'
-              rel='noreferrer'
-            >
-              <FontAwesomeIcon icon={faTwitter} />
-            </a>
-            <a
-              href='https://www.linkedin.com/company/nwplus'
-              target='_blank'
-              rel='noreferrer'
-            >
-              <FontAwesomeIcon icon={faLinkedinIn} />
-            </a>
-            <a
-              href='https://www.youtube.com/c/nwPlusUBC'
-              target='_blank'
-              rel='noreferrer'
-            >
-              <FontAwesomeIcon icon={faYoutube} />
-            </a>
-            <a href='https://medium.com/nwplusubc' target='_blank' rel='noreferrer'>
-              <FontAwesomeIcon icon={faMediumM} />
-            </a>
-          </SocialMediaIcons>
-          <Links>
-            <a href="mailto:info@nwplus.io" target="_blank" rel='noreferrer'>Email Us</a>
-            <a href="mailto:sponsorship@nwplus.io?subject=Sponsorship" target="_blank" rel='noreferrer'>Become a Sponsor</a>
-            <a href="https://mlh.io/code-of-conduct" target="_blank" rel='noreferrer'>Code of Conduct</a>
-          </Links>
-          <SmallText>
-            <div>Organized and held by nwPlus</div>
-            <div>Copyright &copy; cmd-f 2023</div>
-          </SmallText>
-        </TextContainer>
-        <TeamContainer>
-          <Team />
-        </TeamContainer>
-      </StaticContainer>
-    </FooterContainer>
+  <div style={{ position: 'absolute', bottom: 50, zIndex: 100 }}>
+    <Team />
+  </div>
 )
 
 export default Footer
