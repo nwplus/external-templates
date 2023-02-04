@@ -3,7 +3,6 @@ import React from 'react'
 import GlobalStyles from '@styles/global'
 
 import Sponsors from 'src/sections/Sponsors'
-import Faq from 'src/sections/FAQ'
 import Footer from 'src/sections/Footer'
 import Countdown from 'src/sections/Countdown'
 import About from 'src/sections/About'
@@ -35,9 +34,9 @@ export default function Index({ title }) {
       <About />
       <Countdown />
       <Values />
-      {/* <Faq /> */}
+
       <Sponsors />
-      {/* <Footer /> */}
+      <Footer />
       {/* Components Ends */}
     </>
   )
