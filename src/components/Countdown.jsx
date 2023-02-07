@@ -1,34 +1,17 @@
-import { Header2, Header3 } from '@components/Typography'
+import { Header3 } from '@components/Typography'
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
 const CountdownContainer = styled.div`
-  min-height: calc(calc(1883 / 1440) * 100vw);
   position: relative;
-  z-index: 1;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    min-height: calc(calc(746 / 428) * 100vw);
-  }
+  z-index: 10;
+  user-select: none;
 `
-
-const StyledHeader = styled(Header2)`
-  font-weight: 600;
-  font-size: 3.8rem;
-  text-align: center;
-  line-height: 120%;
-  max-width: 40%;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    font-size: 1.4rem;
-    max-width: 90%;
-  }
-`
-
 const CountdownGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   flex-grow: 2;
+  gap: 2rem;
 
   ${p => p.theme.mediaQueries.mobile} {
     gap: 1rem;
@@ -42,7 +25,7 @@ const TimeUnit = styled.div`
 
 const Digits = styled.h2`
   font-family: 'HK Grotesk', sans-serif;
-  color: white;
+  color: #4D4B4F;
   font-weight: 600;
   font-size: 5.5rem;
   letter-spacing: 0.2rem;
@@ -54,6 +37,7 @@ const Digits = styled.h2`
 `
 
 const BillboardText = styled(Header3)`
+  color: #4D4B4F;
   ${p => p.theme.mediaQueries.mobile} {
     font-size: 1rem;
   }
@@ -91,12 +75,11 @@ const useCountdown = targetDate => {
 }
 
 const Countdown = () => {
-  const countDownDate = new Date('Dec 25, 2022 23:59:59').getTime()
+  const countDownDate = new Date('Feb 26, 2023 23:59:59').getTime()
   const countdown = useCountdown(countDownDate)
 
   return (
     <CountdownContainer>
-        <StyledHeader>Registration closes in:</StyledHeader>
         <CountdownGrid>
           {['Days', 'Hours', 'Minutes'].map((item, index) => (
             <TimeUnit key={item}>

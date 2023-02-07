@@ -7,11 +7,11 @@ const getButtonStyles = variant => {
     case 'solid':
       return `
         border: none;
-        background: linear-gradient(265.48deg, #959afb 3.67%, #9ad4de 78.93%);
+        background: linear-gradient(to right, #88B8E2 3.67%, #ACCFEB 100%);
         transition: 0.3s;
 
         &:hover {
-          background: linear-gradient(265.48deg, #EAC3CA 3.67%, #97A4F7 108.22%);
+          filter: brightness(0.95);
         }
 
       `
@@ -19,25 +19,18 @@ const getButtonStyles = variant => {
       return `
         box-sizing: border-box;
         background: transparent;
-        background-image: linear-gradient(90deg, #F9E9E2, #F9E9E2), linear-gradient(263.82deg, #9ea4fc 38.58%, #9bd3df 78.17%);
+        background-image: linear-gradient(0deg, #FFF8F5, #FFF8F5), linear-gradient(to right, #88B8E2 3.67%, #ACCFEB 100%);
         background-clip: padding-box, border-box;
         background-origin: border-box;
-        border: 3px solid transparent;
         transition: 0.3s;
-
+        border: 3px solid transparent;
+        
         ${p => p.theme.mediaQueries.mobile} {
-          border: 1.5px solid transparent;
+          border: 2px solid transparent;
         }
 
         &:hover {
-          box-sizing: border-box;
-          background: transparent;
-          background-image: linear-gradient(0deg, #FFF8F5, #FFF8F5), linear-gradient(263.82deg, #E9C3CB 38.58%, #A4A9F1 78.17%);
-          background-clip: padding-box, border-box;
-          background-origin: border-box;
-          border: 3px solid transparent;
-          transition: 0.3s;
-  
+          filter: brightness(0.95);
         }
       `
     default:
@@ -47,7 +40,7 @@ const getButtonStyles = variant => {
 }
 
 const ButtonContainer = styled.a`
-  transition: all 0.2s cubic-bezier(0.03, 0.49, 0.39, 0.97);
+  transition: all 0.2s ease;
   position: relative;
   cursor: pointer;
   display: table;
@@ -73,9 +66,6 @@ const ButtonContainer = styled.a`
   ${p =>
     !p.disabled &&
     `
-  &:hover {
-    transform: scale(1.02);
-  }
   &:active {
     transform: scale(0.98);
   }
@@ -101,8 +91,9 @@ const ButtonText = styled.div`
     p &&
     p.variant === 'outlined' &&
     `
+    color: #88B8E2;
     &:hover {
-      color: #6062CB;
+      color: #88B8E2;
     }
   `}
 

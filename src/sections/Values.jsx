@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Header2 } from '../components/Typography'
 import { SectionContainer } from '@lib/Containers'
+import { Header2 } from '../components/Typography'
 
 const BgSectionContainer = styled(SectionContainer)`
   background: url('/assets/values_bg.svg');
