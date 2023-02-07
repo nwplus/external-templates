@@ -7,6 +7,7 @@ import Faq from 'src/sections/FAQ'
 import Footer from 'src/sections/Footer'
 import About from 'src/sections/About'
 import Values from 'src/sections/Values'
+import Statistics from 'src/sections/Statistics'
 
 import NavigationBar from '../components/NavigationBar'
 import Hero from '../components/Hero'
@@ -29,6 +30,7 @@ export default function Index({ title }) {
       <NavigationBar />
       <Hero />
       <About />
+      <Statistics />
       <Values />
       <Faq />
       <Sponsors />
