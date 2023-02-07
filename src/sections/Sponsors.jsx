@@ -14,20 +14,20 @@ const SponsorText = styled.div`
   transform: translateX(-50%);
 `
 
-const Sponsors = () => {
-  return (
-    <div style={{ width: '100%', height: '100%', position: 'relative' }}>
-      <SponsorText>
-        <p style={{ display: 'inline' }}>
-          nwPlus is always looking for new ventures, opportunities, and connections. If you are interested in sponsoring
-          us, working with us, or speaking at one of our events, shoot us an email at&nbsp;
-        </p>
-        <a style={{ display: 'inline', textDecoration: 'underline', cursor: 'pointer' }}>sponsorship@nwplus.io.</a>
-      </SponsorText>
+const Sponsors = () => (
+  <div style={{ width: '100%', height: '100%', position: 'relative' }}>
+    <SponsorText>
+      <p style={{ display: 'inline' }}>
+        nwPlus is always looking for new ventures, opportunities, and connections. If you are interested in sponsoring
+        us, working with us, or speaking at one of our events, shoot us an email at&nbsp;
+      </p>
+      <a href="http://localhost:3000/" style={{ display: 'inline', textDecoration: 'underline', cursor: 'pointer' }}>
+        sponsorship@nwplus.io.
+      </a>
+    </SponsorText>
 
-      <SVG src="/assets/Sponsors + Footer.svg" />
-    </div>
-  )
-}
+    <SVG src="/assets/Sponsors + Footer.svg" />
+  </div>
+)
 
 export default Sponsors
