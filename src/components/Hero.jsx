@@ -99,15 +99,15 @@ const Hero = () => {
   return (
     <HeroContainer>
       <CloudsContainer ref={parallax.ref}>
-        <Image alt="mad aesthetic pretty pink clouds" layout="fill" objectFit="cover" src='/assets/hero/hero_background.svg' />
+        <Image unoptimized alt="mad aesthetic pretty pink clouds" layout="fill" objectFit="cover" src='/assets/hero/hero_background.svg' />
       </CloudsContainer>
       <HouseContainer>
-        <Image alt="pretty brick house meow" layout="fill" objectFit="cover" src='/assets/hero/countdown_background.svg' />
+        <Image unoptimized alt="pretty brick house meow" layout="fill" objectFit="cover" src='/assets/hero/countdown_background.svg' />
       </HouseContainer>
 
       <HeroContentContainer>
         <LogoContainer>
-          <Image  layout="fill" objectFit="contain" src="/assets/logo.png" alt="cmd-f logo" />
+          <Image unoptimized layout="fill" objectFit="contain" src="/assets/logo.png" alt="cmd-f logo" />
         </LogoContainer>
         <Header1 color="#1A61A0">
           {`Western Canada's largest hackathon celebrating underrepresented genders in tech`}
