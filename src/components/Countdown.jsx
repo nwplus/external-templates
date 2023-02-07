@@ -5,11 +5,13 @@ import styled from 'styled-components'
 const CountdownContainer = styled.div`
   position: relative;
   z-index: 10;
+  user-select: none;
 `
 const CountdownGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   flex-grow: 2;
+  gap: 2rem;
 
   ${p => p.theme.mediaQueries.mobile} {
     gap: 1rem;
@@ -73,7 +75,7 @@ const useCountdown = targetDate => {
 }
 
 const Countdown = () => {
-  const countDownDate = new Date('Dec 25, 2022 23:59:59').getTime()
+  const countDownDate = new Date('Feb 26, 2023 23:59:59').getTime()
   const countdown = useCountdown(countDownDate)
 
   return (

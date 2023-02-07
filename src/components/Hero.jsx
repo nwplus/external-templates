@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import Image from 'next/image'
 import { useParallax } from 'react-scroll-parallax'
 import Countdown from './Countdown'
 import Button from './Button'
@@ -39,7 +38,7 @@ const HeroContentContainer = styled.div`
   position: relative;
   z-index: 10;
   padding-left: 40px;
-  width: 75vw;
+  width: 80vw;
   min-width: 900px;
   max-width: 1400px;  
   margin: 0 auto;
@@ -88,7 +87,20 @@ const CountdownContainer = styled.div`
   flex-direction: column;
   justify-content: flex-end;
   padding-bottom: 13.5rem;
-  padding-left: 18rem;
+  padding-left: 16rem;
+`
+
+const StyledImage = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: relative;
+  user-select: none;
+`
+
+const Logo = styled.img`
+  width: 120px;
+  height: 100px;
 `
 
 const Hero = () => {
@@ -99,15 +111,15 @@ const Hero = () => {
   return (
     <HeroContainer>
       <CloudsContainer ref={parallax.ref}>
-        <Image unoptimized alt="mad aesthetic pretty pink clouds" layout="fill" objectFit="cover" src='/assets/hero/hero_background.svg' />
+        <StyledImage alt="mad aesthetic pretty pink clouds" src='/assets/hero/hero_background.svg' />
       </CloudsContainer>
       <HouseContainer>
-        <Image unoptimized alt="pretty brick house meow" layout="fill" objectFit="cover" src='/assets/hero/countdown_background.svg' />
+        <StyledImage alt="pretty brick house meow" src='/assets/hero/countdown_background.svg' />
       </HouseContainer>
 
       <HeroContentContainer>
         <LogoContainer>
-          <Image unoptimized layout="fill" objectFit="contain" src="/assets/logo.png" alt="cmd-f logo" />
+          <Logo layout="fill" objectFit="contain" src="/assets/logo.png" alt="cmd-f logo" />
         </LogoContainer>
         <Header1 color="#1A61A0">
           {`Western Canada's largest hackathon celebrating underrepresented genders in tech`}
@@ -127,10 +139,8 @@ const Hero = () => {
           Be a Volunteer!
         </StyledA>
       </HeroContentContainer>
-
       <CountdownContainer>
-        
-      <Countdown />
+        <Countdown />
       </CountdownContainer>
     </HeroContainer>
   )
