@@ -21,7 +21,10 @@ const Sponsors = () => (
         nwPlus is always looking for new ventures, opportunities, and connections. If you are interested in sponsoring
         us, working with us, or speaking at one of our events, shoot us an email at&nbsp;
       </p>
-      <a href="http://localhost:3000/" style={{ display: 'inline', textDecoration: 'underline', cursor: 'pointer' }}>
+      <a
+        href="http://localhost:3000/"
+        style={{ display: 'inline', textDecoration: 'underline', cursor: 'pointer', color: 'white' }}
+      >
         sponsorship@nwplus.io.
       </a>
     </SponsorText>
