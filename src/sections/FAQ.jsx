@@ -8,10 +8,16 @@ import { Header2, Header3 } from '@components/Typography'
 const FaqContainer = styled.div`
   position: relative;
   min-height: 50vh;
-  
-  ${(p) => p.theme.mediaQueries.mobile} {
+  background-image: url('/assets/faq_bg.svg'), linear-gradient(180deg, #D8937D 0%, #F8C2AB 40.12%, #F8EEBC 76.67%), linear-gradient(0deg, #FFFFFF, #FFFFFF);
+
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+
+  ${p => p.theme.mediaQueries.mobile} {
     min-height: 0;
   }
+  min-height: 2500px;
 `
 
 const Wrapper = styled.div`
@@ -19,7 +25,7 @@ const Wrapper = styled.div`
   margin: 0 auto;
   width: 75vw;
   min-width: 900px;
-  max-width: 1200px;
+  max-width: 1200px;  
   z-index: 88;
   position: relative;
   
@@ -59,17 +65,17 @@ const FaqColumn = styled.div`
 
 // Collection -> questions of specific category
 const CollectionContainer = styled.div`
-  text-align:center;
-  display:flex;
-  flex-direction:column;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
 `
 
 const CollectionName = styled(Header3)`
-  color:#5667CF;
-  font-size:1.75rem;
+  color: #5D3754;
+  font-size: 1.75rem;
   font-weight: 900;
-  padding-bottom:1rem;
-  
+  padding-bottom: 1rem;
+
   ${p => p.theme.mediaQueries.mobile} {
     font-size: 1.2rem;
   }
@@ -78,7 +84,8 @@ const CollectionName = styled(Header3)`
 const StyledTitle = styled(Header2)`
   font-size: 3rem;
   text-align: center;
-  ${(p) => p.theme.mediaQueries.mobile} {
+  padding-top: 12rem;
+  ${p => p.theme.mediaQueries.mobile} {
     font-size: 3em;
   }
 `
@@ -87,7 +94,9 @@ const FaqCollection = ({ category, faqs }) => (
   <CollectionContainer>
     <CollectionName>{category}</CollectionName>
 
-    {faqs.map(q => <FaqBox key={q.question} question={q.question} answer={q.answer} />)}
+    {faqs.map(q => (
+      <FaqBox key={q.question} question={q.question} answer={q.answer} />
+    ))}
   </CollectionContainer>
 )
 
@@ -101,7 +110,7 @@ const Faq = () => {
     // categorize questions
 
     const categories = {}
-    data.forEach((faq) => {
+    data.forEach(faq => {
       if (!categories[faq.category]) {
         categories[faq.category] = []
       }
@@ -119,38 +128,23 @@ const Faq = () => {
   return (
     <FaqContainer>
       <Wrapper id="faq">
-        <StyledTitle
-          color="#5667CF"
-          fontSize="5rem">
+        <StyledTitle color="#5D3754" fontSize="5rem">
           FAQ
         </StyledTitle>
 
-        {faqData
-          ? (
-            <FaqGrid>
+        {faqData ? (
+          <FaqGrid>
+            <FaqColumn>{faqData.General && <FaqCollection category="General" faqs={faqData.General} />}</FaqColumn>
 
-              <FaqColumn>
-                {faqData.General &&
-                  <FaqCollection category="General" faqs={faqData.General} />
-                }
-              </FaqColumn>
-
-              <FaqColumn>
-                {faqData['Teams & Projects'] &&
-                  <FaqCollection category="Teams & Projects" faqs={faqData['Teams & Projects']} />
-                }
-              </FaqColumn>
-
-              <FaqColumn>
-                {faqData['Logistics'] &&
-                  <FaqCollection category="Logistics" faqs={faqData['Logistics']} />
-                }
-              </FaqColumn>
-
-            </FaqGrid>
-          )
-          : ''}
-
+            <FaqColumn>
+              {faqData['Teams & Projects'] && (
+                <FaqCollection category="Teams & Projects" faqs={faqData['Teams & Projects']} />
+              )}
+            </FaqColumn>
+          </FaqGrid>
+        ) : (
+          ''
+        )}
       </Wrapper>
     </FaqContainer>
   )

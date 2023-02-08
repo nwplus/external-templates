@@ -21,10 +21,10 @@ const base = {
     headerFont: 'HK Grotesk',
     bodyFont: 'HK Grotesk',
     header1: {
-      fontWeight: 900,
-      fontSize: '3.5rem',
-      lineHeight: '3.5rem',
-      letterSpacing: '0.025rem'
+      fontWeight: 700,
+      fontSize: '2.2rem',
+      lineHeight: '2.5rem',
+      letterSpacing: '-0.05rem'
     },
     header2: {
       fontWeight: 800,
@@ -39,7 +39,7 @@ const base = {
       letterSpacing: '-0.01625rem'
     },
     header4: {
-      fontWeight: 600,
+      fontWeight: 500,
       fontSize: '1.5rem',
       lineHeight: '1.5625rem',
       letterSpacing: '-0.028125rem'

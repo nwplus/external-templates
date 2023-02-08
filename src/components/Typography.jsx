@@ -47,6 +47,11 @@ export const Header3 = styled.h3`
   ${(p) => header(p.theme.typography.header3)}
 `
 
+export const Header4 = styled.h4`
+  ${text}
+  ${(p) => header(p.theme.typography.header4)}
+`
+
 export const Body = styled.p`
   ${text}
 `
