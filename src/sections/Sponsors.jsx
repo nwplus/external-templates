@@ -1,3 +1,4 @@
+import SponsorList from '@components/SponsorList'
 import SVG from 'react-inlinesvg'
 import styled from 'styled-components'
 
@@ -14,23 +15,36 @@ const SponsorText = styled.div`
   transform: translateX(-50%);
 `
 
-const Sponsors = () => (
-  <div style={{ width: '100%', height: '100%', position: 'relative' }}>
-    <SponsorText>
-      <p style={{ display: 'inline' }}>
-        nwPlus is always looking for new ventures, opportunities, and connections. If you are interested in sponsoring
-        us, working with us, or speaking at one of our events, shoot us an email at&nbsp;
-      </p>
-      <a
-        href="http://localhost:3000/"
-        style={{ display: 'inline', textDecoration: 'underline', cursor: 'pointer', color: 'white' }}
-      >
-        sponsorship@nwplus.io.
-      </a>
-    </SponsorText>
+const Sponsors = () => {
+  const sponsorData = [
+    { id: 0, variant: 'v1', svg: '/assets/sponsors/companyLogo.svg' },
+    { id: 1, variant: 'v3', svg: '' },
+    { id: 2, variant: 'v3', svg: '' },
+    { id: 3, variant: 'v4', svg: '' },
+    { id: 4, variant: 'v4', svg: '' },
+    { id: 5, variant: 'v1', svg: '' },
+  ]
 
-    <SVG src="/assets/Sponsors + Footer.svg" />
-  </div>
-)
+  return (
+    <div style={{ width: '100%', height: '100%', position: 'relative' }}>
+      <SponsorText>
+        <p style={{ display: 'inline' }}>
+          nwPlus is always looking for new ventures, opportunities, and connections. If you are interested in sponsoring
+          us, working with us, or speaking at one of our events, shoot us an email at&nbsp;
+        </p>
+        <a
+          href="http://localhost:3000/"
+          style={{ display: 'inline', textDecoration: 'underline', cursor: 'pointer', color: 'white' }}
+        >
+          sponsorship@nwplus.io.
+        </a>
+      </SponsorText>
+      <div style={{ position: 'absolute', top: '90vh' }}>
+        <SponsorList sponsorList={sponsorData} />
+      </div>
+      <SVG src="/assets/Sponsors + Footer.svg" />
+    </div>
+  )
+}
 
 export default Sponsors
