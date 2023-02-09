@@ -54,8 +54,7 @@ const AboutTitle = styled.h2`
 
 const AboutDescription = styled.p`
   font-family: 'HK Grotesk';
-  top: 5px;
-  font-size: 1em;
+  font-size: 1.2vw;
   color: #4D4B4F;
   z-index: 1;
   position: relative;
@@ -64,10 +63,13 @@ const AboutDescription = styled.p`
   margin-top: 20%;
 `
 
-const swingSign = keyframes`
- from { transform: rotate(3deg); }
- to { transform: rotate(-3deg); }
 
+const swingSign = keyframes`
+ 0% { transform: rotateY(0deg) rotateX(-5deg); }
+ 25% { transform: rotateY(15deg) rotateX(-2deg); }
+ 50% { transform: rotateY(0deg) rotateX(-5deg); }
+ 75% { transform: rotateY(20deg) rotateX(-15deg); }
+ 100% { transform: rotateY(0deg) rotateX(-2deg); }
 `
 
 const OpenSignImage = styled.img`
@@ -75,10 +77,12 @@ const OpenSignImage = styled.img`
   right: 6.5%;
   top: 56vh;
   animation-name: ${swingSign};
-  animation-duration: 2s;
+  animation-duration: 4s;
   animation-iteration-count: infinite;
   animation-direction: alternate;
-  transform-origin: 0px 50%;
+  // transform-origin: 0px 50%;
+  // transform-origin: 0% 50%;
+  // transform: rotate(3deg);
 `
 
 const About = () => (
