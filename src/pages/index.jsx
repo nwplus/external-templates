@@ -4,7 +4,6 @@ import GlobalStyles from '@styles/global'
 
 import Sponsors from 'src/sections/Sponsors'
 import Footer from 'src/sections/Footer'
-import Countdown from 'src/sections/Countdown'
 import About from 'src/sections/About'
 import Values from 'src/sections/Values'
 import Statistics from 'src/sections/Statistics'
@@ -33,7 +32,6 @@ export default function Index({ title }) {
       <NavigationBar />
       <Hero />
       <About />
-      <Countdown />
       <Statistics />
       <Values />
 
