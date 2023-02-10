@@ -39,13 +39,13 @@ const ConfidenceContainer = styled.div`
 
 const PaperAndIPadContainer = styled.div`
   width: 100%;
-  display: inline-flex;
-  flex-wrap: nowrap;
+  display: flex;
   gap: 5em;
 `
 
 const IPadContainer = styled.div`
   align-self: flex-end;
+  flex-grow: 1;
 `
 
 const Column = styled.div`
