@@ -48,7 +48,7 @@ const Sponsors = () => {
           sponsorship@nwplus.io.
         </a>
       </SponsorText>
-      <div style={{ position: 'absolute', top: '85vh' }}>
+      <div style={{ position: 'absolute', marginTop: 600 }}>
         <SponsorList sponsorList={majorSponsorData} />
         <SponsorList sponsorList={minorSponsorData} variant="minor" />
       </div>
