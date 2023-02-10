@@ -3,16 +3,26 @@ import SVG from 'react-inlinesvg'
 import styled from 'styled-components'
 
 const SponsorText = styled.div`
-  position: absolute;
-  top: 9.5%;
+  margin: 0 auto;
+  margin-top: 400px;
   color: white;
   font-family: 'HK Grotesk';
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
   line-height: 22px;
-  left: 50%;
-  transform: translateX(-50%);
+  text-align: center;
+  width: 80%;
+  @media (max-width: 1280px) {
+    margin-top: 30%;
+  }
+`
+
+const AllSponsorContainer = styled.div`
+  margin-top: 120px;
+  @media (max-width: 900px) {
+    margin-top: 10%;
+  }
 `
 
 const Sponsors = () => {
@@ -36,21 +46,23 @@ const Sponsors = () => {
 
   return (
     <div style={{ width: '100%', height: '100%', position: 'relative' }}>
-      <SponsorText>
-        <p style={{ display: 'inline' }}>
-          nwPlus is always looking for new ventures, opportunities, and connections. If you are interested in sponsoring
-          us, working with us, or speaking at one of our events, shoot us an email at&nbsp;
-        </p>
-        <a
-          href="http://localhost:3000/"
-          style={{ display: 'inline', textDecoration: 'underline', cursor: 'pointer', color: 'white' }}
-        >
-          sponsorship@nwplus.io.
-        </a>
-      </SponsorText>
-      <div style={{ position: 'absolute', marginTop: 600 }}>
-        <SponsorList sponsorList={majorSponsorData} />
-        <SponsorList sponsorList={minorSponsorData} variant="minor" />
+      <div style={{ position: 'absolute', top: 0 }}>
+        <SponsorText>
+          <p style={{ display: 'inline' }}>
+            nwPlus is always looking for new ventures, opportunities, and connections. If you are interested in
+            sponsoring us, working with us, or speaking at one of our events, shoot us an email at&nbsp;
+          </p>
+          <a
+            href="http://localhost:3000/"
+            style={{ display: 'inline', textDecoration: 'underline', cursor: 'pointer', color: 'white' }}
+          >
+            sponsorship@nwplus.io.
+          </a>
+        </SponsorText>
+        <AllSponsorContainer>
+          <SponsorList sponsorList={majorSponsorData} />
+          <SponsorList sponsorList={minorSponsorData} variant="minor" />
+        </AllSponsorContainer>
       </div>
 
       <SVG src="/assets/Sponsors + Footer.svg" />
