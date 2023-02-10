@@ -16,13 +16,22 @@ const SponsorText = styled.div`
 `
 
 const Sponsors = () => {
-  const sponsorData = [
+  const majorSponsorData = [
     { id: 0, variant: 'v1', svg: '/assets/sponsors/companyLogo.svg' },
     { id: 1, variant: 'v3', svg: '' },
     { id: 2, variant: 'v3', svg: '' },
     { id: 3, variant: 'v4', svg: '' },
     { id: 4, variant: 'v4', svg: '' },
     { id: 5, variant: 'v1', svg: '' },
+  ]
+
+  const minorSponsorData = [
+    { id: 0, variant: 'v1', size: 'small' },
+    { id: 1, variant: 'v3', svg: '/assets/sponsors/minorSponsorLogo.svg', size: 'small' },
+    { id: 2, variant: 'v3', svg: '', size: 'small' },
+    { id: 3, variant: 'v4', svg: '', size: 'small' },
+    { id: 4, variant: 'v4', svg: '', size: 'small' },
+    { id: 5, variant: 'v1', svg: '', size: 'small' },
   ]
 
   return (
@@ -39,9 +48,11 @@ const Sponsors = () => {
           sponsorship@nwplus.io.
         </a>
       </SponsorText>
-      <div style={{ position: 'absolute', top: '90vh' }}>
-        <SponsorList sponsorList={sponsorData} />
+      <div style={{ position: 'absolute', top: '85vh' }}>
+        <SponsorList sponsorList={majorSponsorData} />
+        <SponsorList sponsorList={minorSponsorData} variant="minor" />
       </div>
+
       <SVG src="/assets/Sponsors + Footer.svg" />
     </div>
   )

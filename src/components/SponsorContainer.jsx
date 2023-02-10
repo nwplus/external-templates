@@ -9,19 +9,21 @@ const CompanyImg = styled.div`
   transform: translate(-50%, -50%);
 `
 const SponsorContainer = ({ variant, size, svg }) => {
-  const BgBox = ({ variant }) => {
-    if (variant === 'v2') {
+  const BgBox = ({ variantType }) => {
+    if (size === 'small') {
+      return <SVG src="/assets/sponsors/smallSponsorBox.svg" />
+    } else if (variantType === 'v2') {
       return <SVG src="/assets/sponsors/sponsorBoxV2.svg" />
-    } else if (variant === 'v3') {
+    } else if (variantType === 'v3') {
       return <SVG src="/assets/sponsors/sponsorBoxV3.svg" />
-    } else if (variant === 'v4') {
+    } else if (variantType === 'v4') {
       return <SVG src="/assets/sponsors/sponsorBoxV4.svg" />
     }
     return <SVG src="/assets/sponsors/sponsorBoxV1.svg" />
   }
   return (
-    <div style={{ position: 'relative' }}>
-      <BgBox variant={variant} />
+    <div style={{ position: 'relative', display: size === 'small' ? 'inline' : undefined }}>
+      <BgBox variantType={variant} />
       <CompanyImg>
         <SVG src={svg} />
       </CompanyImg>
