@@ -2,7 +2,8 @@ import React from 'react'
 import styled, { keyframes } from 'styled-components'
 
 
-import AboutBackground from "../../public/images/backgrounds/About.svg"
+import AboutBackgroundDesktop from "../../public/images/backgrounds/About.svg"
+import AboutBackgroundMobile from "../../public/images/backgrounds/AboutMobile.svg"
 import OpenSign from "../../public/images/animated-graphics/OpenSign.svg"
 
 const AboutContainer = styled.div`
@@ -11,7 +12,7 @@ const AboutContainer = styled.div`
   // display: flex;
   // align-items: center;
   width: 100%;
-  height: 1440px;
+  height: 1065px;
   
   // Aspect ratio & height calculation should be the aspect ratio of the background image
   // aspect-ratio: 1440 / 779;
@@ -26,7 +27,7 @@ const AboutContainer = styled.div`
   }
 `
 
-const AboutBg = styled.img`
+const AboutBgDesktop = styled.img`
   position: absolute;
   top: 0;
   width: 100%;
@@ -35,6 +36,24 @@ const AboutBg = styled.img`
   -moz-user-select: none;
   -webkit-user-select: none;
   user-select: none;
+  ${(p) => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
+`
+
+const AboutBgMobile = styled.img`
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: auto;
+  // Makes background non-selectable
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  display: none;
+  ${(p) => p.theme.mediaQueries.mobile} {
+    display: block;
+  }
 `
 
 const AboutTitle = styled.h2`
@@ -46,10 +65,14 @@ const AboutTitle = styled.h2`
   width: 100vw;
   display: block;
   position: relative;
-  top: 15%;
+  top: 20%;
   font-size: 3em;
   width: 80%;
   text-align: center;
+  ${(p) => p.theme.mediaQueries.mobile} {
+    width: 100%;
+    top: 100px;
+  }
 `
 
 const AboutDescription = styled.p`
@@ -61,8 +84,14 @@ const AboutDescription = styled.p`
   width: 50%;
   left: 10%;
   margin-top: 20%;
+  ${(p) => p.theme.mediaQueries.mobile} {
+    width: 75%;
+    margin: 0 auto;
+    left: 0;
+    top: 200px;
+    font-size: 1em;
+  }
 `
-
 
 const swingSign = keyframes`
  0% { transform: rotateY(0deg) rotateX(-5deg); }
@@ -83,11 +112,16 @@ const OpenSignImage = styled.img`
   // transform-origin: 0px 50%;
   // transform-origin: 0% 50%;
   // transform: rotate(3deg);
+  ${(p) => p.theme.mediaQueries.mobile} {
+      display: none;
+  }
 `
 
 const About = () => (
   <AboutContainer>
-    <AboutBg src={AboutBackground} />
+
+    <AboutBgDesktop src={AboutBackgroundDesktop} />
+    <AboutBgMobile src={AboutBackgroundMobile} />
 
     <AboutTitle>About cmd-f</AboutTitle>
     <AboutDescription>Join us on March 11-12 for cmd-f 2023, an in-person hackathon celebrating underrepresented genders in tech!
