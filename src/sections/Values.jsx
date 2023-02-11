@@ -18,7 +18,7 @@ const BgSectionContainer = styled(SectionContainer)`
 `
 
 const StyledTitle = styled(Header2)`
-  ${(p) => p.theme.mediaQueries.mobile} {
+  ${p => p.theme.mediaQueries.mobile} {
     font-size: 2em;
     text-align: center;
     margin: 0 1em 1em 0;
