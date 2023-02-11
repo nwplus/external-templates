@@ -1,35 +1,72 @@
-import React, { useEffect, useState } from 'react'
+import SponsorList from '@components/SponsorList'
+import SVG from 'react-inlinesvg'
 import styled from 'styled-components'
-import SponsorsGrid from '@components/SponsorsGrid'
-import fireDb from '@utilities/firebase'
 
-const SponsorsContainer = styled.div`
-  position: relative;
-  min-height: calc(calc(2050 / 1440) * 100vw);
-  margin-top: -0.5rem;
+const SponsorText = styled.div`
+  margin: 0 auto;
+  margin-top: 400px;
+  color: white;
+  font-family: 'HK Grotesk';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  width: 80%;
+  @media (max-width: 1280px) {
+    margin-top: 30%;
+  }
+`
 
-  ${p => p.theme.mediaQueries.mobile} {
-    min-height: calc( calc(488 / 428) * 100vw);
-    background: linear-gradient(to bottom, #8486B8, #383E82);
+const AllSponsorContainer = styled.div`
+  margin-top: 120px;
+  @media (max-width: 900px) {
+    margin-top: 10%;
   }
 `
 
 const Sponsors = () => {
-  const [sponsors, setSponsors] = useState(null)
+  const majorSponsorData = [
+    { id: 0, variant: 'v1', svg: '/assets/sponsors/companyLogo.svg' },
+    { id: 1, variant: 'v3', svg: '' },
+    { id: 2, variant: 'v3', svg: '' },
+    { id: 3, variant: 'v4', svg: '' },
+    { id: 4, variant: 'v4', svg: '' },
+    { id: 5, variant: 'v1', svg: '' },
+  ]
 
-  useEffect(async () => {
-    // use cmd-f2022 collection to test
-    const data = await fireDb.getCollection('cmd-f2023', 'Sponsors')
-    if (data) {
-      setSponsors(data)
-    }
-  }, [])
+  const minorSponsorData = [
+    { id: 0, variant: 'v1', size: 'small' },
+    { id: 1, variant: 'v3', svg: '/assets/sponsors/minorSponsorLogo.svg', size: 'small' },
+    { id: 2, variant: 'v3', svg: '', size: 'small' },
+    { id: 3, variant: 'v4', svg: '', size: 'small' },
+    { id: 4, variant: 'v4', svg: '', size: 'small' },
+    { id: 5, variant: 'v1', svg: '', size: 'small' },
+  ]
 
   return (
-    <SponsorsContainer>
-      hi
-      <SponsorsGrid sponsors={sponsors} />
-    </SponsorsContainer>
+    <div style={{ width: '100%', height: '100%', position: 'relative' }}>
+      <div style={{ position: 'absolute', top: 0 }}>
+        <SponsorText>
+          <p style={{ display: 'inline' }}>
+            nwPlus is always looking for new ventures, opportunities, and connections. If you are interested in
+            sponsoring us, working with us, or speaking at one of our events, shoot us an email at&nbsp;
+          </p>
+          <a
+            href="http://localhost:3000/"
+            style={{ display: 'inline', textDecoration: 'underline', cursor: 'pointer', color: 'white' }}
+          >
+            sponsorship@nwplus.io.
+          </a>
+        </SponsorText>
+        <AllSponsorContainer>
+          <SponsorList sponsorList={majorSponsorData} />
+          <SponsorList sponsorList={minorSponsorData} variant="minor" />
+        </AllSponsorContainer>
+      </div>
+
+      <SVG src="/assets/Sponsors + Footer.svg" />
+    </div>
   )
 }
 
