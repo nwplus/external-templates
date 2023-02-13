@@ -16,6 +16,10 @@ const SponsorBG = styled.div`
   @media (max-width: 1280px) {
     max-width: ${p => (p.size === 'small' ? '10vw' : '30vw')};
   }
+
+  @media (max-width: 600px) {
+    max-width: ${p => (p.size === 'small' ? '13vw' : '30vw')};
+  }
 `
 
 const SponsorContainer = ({ variant, size, svg }) => {

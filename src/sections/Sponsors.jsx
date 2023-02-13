@@ -36,6 +36,24 @@ const BtnContainer = styled.div`
     transform: scale(0.8);
     margin-top: 1rem;
   }
+  @media (max-width: 500px) {
+    transform: scale(0.8);
+    margin-top: 0.5rem;
+  }
+`
+
+const DesktopText = styled.div`
+  display: block;
+  @media (max-width: 750px) {
+    display: none;
+  }
+`
+
+const MobileText = styled.div`
+  display: none;
+  @media (max-width: 750px) {
+    display: block;
+  }
 `
 
 const Sponsors = () => {
@@ -57,20 +75,33 @@ const Sponsors = () => {
     { id: 5, variant: 'v1', svg: '', size: 'small' },
   ]
 
+  const MobileSponsorText = () => (
+    <MobileText>
+      Sponsors make this event happen. If you are interested in working with us, joining us or speaking at one of our
+      events, please reach out to us below!
+    </MobileText>
+  )
+  const DesktopSponsorText = () => (
+    <DesktopText>
+      <p style={{ display: 'inline' }}>
+        nwPlus is always looking for new ventures, opportunities, and connections. If you are interested in sponsoring
+        us, working with us, or speaking at one of our events, shoot us an email at&nbsp;
+      </p>
+      <a
+        href="http://localhost:3000/"
+        style={{ display: 'inline', textDecoration: 'underline', cursor: 'pointer', color: 'white' }}
+      >
+        sponsorship@nwplus.io.
+      </a>
+    </DesktopText>
+  )
+
   return (
     <div style={{ width: '100%', height: '100%', position: 'relative' }}>
       <div style={{ position: 'absolute', top: 0 }}>
         <SponsorText>
-          <p style={{ display: 'inline' }}>
-            nwPlus is always looking for new ventures, opportunities, and connections. If you are interested in
-            sponsoring us, working with us, or speaking at one of our events, shoot us an email at&nbsp;
-          </p>
-          <a
-            href="http://localhost:3000/"
-            style={{ display: 'inline', textDecoration: 'underline', cursor: 'pointer', color: 'white' }}
-          >
-            sponsorship@nwplus.io.
-          </a>
+          <DesktopSponsorText />
+          <MobileSponsorText />
           <BtnContainer>
             <Button variant="solid" styles={{ margin: 'auto' }}>
               Become a Sponsor

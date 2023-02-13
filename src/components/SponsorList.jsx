@@ -18,6 +18,10 @@ const MinorSponsorContainer = styled.div`
   justify-content: space-evenly;
   gap: 16px;
   margin-top: 1rem;
+  @media (max-width: 600px) {
+    gap: 4px;
+    margin-top: 0.5rem;
+  }
 `
 
 const SponsorList = ({ sponsorList, variant }) => {
