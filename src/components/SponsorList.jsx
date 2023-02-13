@@ -9,6 +9,9 @@ const OuterContainer = styled.div`
   justify-content: space-evenly;
   gap: 16px;
   width: 80%;
+  @media (max-width: 600px) {
+    gap: 8px;
+  }
 `
 
 const MinorSponsorContainer = styled.div`

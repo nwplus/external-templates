@@ -5,7 +5,7 @@ import styled from 'styled-components'
 
 const SponsorText = styled.div`
   margin: 0 auto;
-  margin-top: 400px;
+  margin-top: 16%;
   color: white;
   font-family: 'HK Grotesk';
   font-style: normal;
@@ -13,14 +13,6 @@ const SponsorText = styled.div`
   font-size: 18px;
   line-height: 22px;
   width: 80%;
-  @media (max-width: 1280px) {
-    margin-top: 30%;
-  }
-  @media (max-width: 600px) {
-    font-size: 12px;
-    line-height: normal;
-    margin-top: 28%;
-  }
 `
 
 const AllSponsorContainer = styled.div`
@@ -44,6 +36,7 @@ const BtnContainer = styled.div`
 
 const DesktopText = styled.div`
   display: block;
+  margin-top: 12%;
   @media (max-width: 750px) {
     display: none;
   }
@@ -51,8 +44,20 @@ const DesktopText = styled.div`
 
 const MobileText = styled.div`
   display: none;
+  margin-top: 12%;
   @media (max-width: 750px) {
     display: block;
+    margin-top: 8%;
+  }
+`
+
+const SponsorTitle = styled.div`
+  font-size: 56px;
+  text-align: center;
+  font-weight: 900;
+  @media (max-width: 600px) {
+    font-size: 42px;
+    font-weight: 800;
   }
 `
 
@@ -100,6 +105,7 @@ const Sponsors = () => {
     <div style={{ width: '100%', height: '100%', position: 'relative' }}>
       <div style={{ position: 'absolute', top: 0 }}>
         <SponsorText>
+          <SponsorTitle>Sponsors</SponsorTitle>
           <DesktopSponsorText />
           <MobileSponsorText />
           <BtnContainer>
