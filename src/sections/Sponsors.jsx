@@ -1,5 +1,6 @@
 import Button from '@components/Button'
 import SponsorList from '@components/SponsorList'
+import { useEffect, useState } from 'react'
 import SVG from 'react-inlinesvg'
 import styled from 'styled-components'
 
@@ -17,21 +18,10 @@ const SponsorText = styled.div`
 
 const AllSponsorContainer = styled.div`
   margin-top: 60px;
-  @media (max-width: 900px) {
-    margin-top: 3%;
-  }
 `
 
 const BtnContainer = styled.div`
   margin-top: 2rem;
-  @media (max-width: 700px) {
-    transform: scale(0.8);
-    margin-top: 1rem;
-  }
-  @media (max-width: 500px) {
-    transform: scale(0.8);
-    margin-top: 0.5rem;
-  }
 `
 
 const DesktopText = styled.div`
@@ -61,24 +51,38 @@ const SponsorTitle = styled.div`
   }
 `
 
-const Sponsors = () => {
-  const majorSponsorData = [
-    { id: 0, variant: 'v1', svg: '/assets/sponsors/companyLogo.svg' },
-    { id: 1, variant: 'v3', svg: '' },
-    { id: 2, variant: 'v3', svg: '' },
-    { id: 3, variant: 'v4', svg: '' },
-    { id: 4, variant: 'v4', svg: '' },
-    { id: 5, variant: 'v1', svg: '' },
-  ]
+const majorSponsorData = [
+  { id: 0, variant: 'v1', svg: '/assets/sponsors/companyLogo.svg' },
+  { id: 1, variant: 'v3', svg: '' },
+  { id: 2, variant: 'v3', svg: '' },
+  { id: 3, variant: 'v4', svg: '' },
+  { id: 4, variant: 'v4', svg: '' },
+  { id: 5, variant: 'v1', svg: '' },
+]
 
-  const minorSponsorData = [
-    { id: 0, variant: 'v1', size: 'small' },
-    { id: 1, variant: 'v3', svg: '/assets/sponsors/minorSponsorLogo.svg', size: 'small' },
-    { id: 2, variant: 'v3', svg: '', size: 'small' },
-    { id: 3, variant: 'v4', svg: '', size: 'small' },
-    { id: 4, variant: 'v4', svg: '', size: 'small' },
-    { id: 5, variant: 'v1', svg: '', size: 'small' },
-  ]
+const minorSponsorData = [
+  { id: 0, variant: 'v1', size: 'small' },
+  { id: 1, variant: 'v3', svg: '/assets/sponsors/minorSponsorLogo.svg', size: 'small' },
+  { id: 2, variant: 'v3', svg: '', size: 'small' },
+  { id: 3, variant: 'v4', svg: '', size: 'small' },
+  { id: 4, variant: 'v4', svg: '', size: 'small' },
+  { id: 5, variant: 'v1', svg: '', size: 'small' },
+]
+
+const Sponsors = () => {
+  const [isMobile, setIsMobile] = useState(false)
+
+  const handleResize = () => {
+    if (window.innerWidth < 720) {
+      setIsMobile(true)
+    } else {
+      setIsMobile(false)
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize)
+  })
 
   const MobileSponsorText = () => (
     <MobileText>
@@ -121,7 +125,7 @@ const Sponsors = () => {
         </AllSponsorContainer>
       </div>
 
-      <SVG src="/assets/Sponsors + Footer.svg" />
+      <SVG src={isMobile ? '/assets/sponsors/MOBILE Sponsors + Footer.svg' : '/assets/Sponsors + Footer.svg'} />
     </div>
   )
 }

@@ -9,8 +9,9 @@ const OuterContainer = styled.div`
   justify-content: space-evenly;
   gap: 16px;
   width: 80%;
-  @media (max-width: 600px) {
-    gap: 8px;
+  @media (max-width: 720px) {
+    gap: 32px 8px;
+    width: 85%;
   }
 `
 
@@ -21,8 +22,8 @@ const MinorSponsorContainer = styled.div`
   justify-content: space-evenly;
   gap: 16px;
   margin-top: 1rem;
-  @media (max-width: 600px) {
-    gap: 4px;
+  @media (max-width: 720px) {
+    gap: 16px 8px;
     margin-top: 0.5rem;
   }
 `
