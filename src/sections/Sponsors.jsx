@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react'
 import SVG from 'react-inlinesvg'
 import styled from 'styled-components'
 
+export const mobileWidth = 900
+
 const SponsorText = styled.div`
   margin: 0 auto;
   margin-top: 16%;
@@ -18,6 +20,9 @@ const SponsorText = styled.div`
 
 const AllSponsorContainer = styled.div`
   margin-top: 60px;
+  @media (max-width: 440px) {
+    margin-top: 30px;
+  }
 `
 
 const BtnContainer = styled.div`
@@ -27,7 +32,7 @@ const BtnContainer = styled.div`
 const DesktopText = styled.div`
   display: block;
   margin-top: 12%;
-  @media (max-width: 750px) {
+  @media (max-width: ${mobileWidth}) {
     display: none;
   }
 `
@@ -35,7 +40,7 @@ const DesktopText = styled.div`
 const MobileText = styled.div`
   display: none;
   margin-top: 12%;
-  @media (max-width: 750px) {
+  @media (max-width: ${mobileWidth}) {
     display: block;
     margin-top: 8%;
   }
@@ -73,7 +78,7 @@ const Sponsors = () => {
   const [isMobile, setIsMobile] = useState(false)
 
   const handleResize = () => {
-    if (window.innerWidth < 720) {
+    if (window.innerWidth < mobileWidth) {
       setIsMobile(true)
     } else {
       setIsMobile(false)
