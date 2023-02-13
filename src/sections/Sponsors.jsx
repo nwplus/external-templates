@@ -1,3 +1,4 @@
+import Button from '@components/Button'
 import SponsorList from '@components/SponsorList'
 import SVG from 'react-inlinesvg'
 import styled from 'styled-components'
@@ -11,17 +12,29 @@ const SponsorText = styled.div`
   font-weight: 500;
   font-size: 18px;
   line-height: 22px;
-  text-align: center;
   width: 80%;
   @media (max-width: 1280px) {
     margin-top: 30%;
   }
+  @media (max-width: 600px) {
+    font-size: 12px;
+    line-height: normal;
+    margin-top: 28%;
+  }
 `
 
 const AllSponsorContainer = styled.div`
-  margin-top: 120px;
+  margin-top: 60px;
   @media (max-width: 900px) {
-    margin-top: 10%;
+    margin-top: 3%;
+  }
+`
+
+const BtnContainer = styled.div`
+  margin-top: 2rem;
+  @media (max-width: 700px) {
+    transform: scale(0.8);
+    margin-top: 1rem;
   }
 `
 
@@ -58,7 +71,13 @@ const Sponsors = () => {
           >
             sponsorship@nwplus.io.
           </a>
+          <BtnContainer>
+            <Button variant="solid" styles={{ margin: 'auto' }}>
+              Become a Sponsor
+            </Button>
+          </BtnContainer>
         </SponsorText>
+
         <AllSponsorContainer>
           <SponsorList sponsorList={majorSponsorData} />
           <SponsorList sponsorList={minorSponsorData} variant="minor" />
