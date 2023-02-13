@@ -83,7 +83,7 @@ const AboutDescription = styled.p`
   position: relative;
   width: 50%;
   left: 10%;
-  margin-top: 20%;
+  margin-top: 21%;
   ${(p) => p.theme.mediaQueries.mobile} {
     width: 75%;
     margin: 0 auto;
@@ -124,12 +124,14 @@ const About = () => (
     <AboutBgMobile src={AboutBackgroundMobile} />
 
     <AboutTitle>About cmd-f</AboutTitle>
-    <AboutDescription>Join us on March 11-12 for cmd-f 2023, an in-person hackathon celebrating underrepresented genders in tech!
-      <br /><br />
-      According to a UNESCO study, many underrepresented genders individuals in tech experience variations of imposter syndrome among their counterparts in the industry.
-      <br /><br />
-      At cmd-f, we welcome anyone who self-identifies as an underrepresented gender and hope to dedicate a safe space to:
+    <AboutDescription>cmd-f is a hackathon focused on addressing gender inequality in technology.
+      Our main purpose is to create a safe, dedicated space for people who face gender inequalities to hack together.
+      Thus, cmd-f is only open to individuals that identify as an underrepresented gender in technology.
+      For more information on who is an underrepresented gender in technology, please email us at <a style={{ color: "#4D4B4F" }} href="mailto:cmd-f@nwplus.io">cmd-f@nwplus.io</a>.
 
+      <br /><br />
+      If you would like to support cmd-f as an ally, our mentor, media, and volunteer roles are open to all genders!
+      Join us on March 11-12 to:
       <ul style={{ paddingLeft: "40px" }}>
         <li>Develop new skills</li>
         <li>Explore career opportunities</li>
