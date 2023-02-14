@@ -1,7 +1,8 @@
 {
   "projects": {
     "default": "nwplus-ubc-dev",
-    "production": "nwplus-ubc"
+    "production": "nwplus-ubc",
+    "prod": "nwplus-ubc"
   },
   "targets": {
     "nwplus-ubc-dev": {
@@ -24,5 +25,6 @@
         ]
       }
     }
-  }
+  },
+  "etags": {}
 }
