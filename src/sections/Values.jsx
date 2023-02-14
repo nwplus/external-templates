@@ -5,6 +5,7 @@ import SVG from 'react-inlinesvg'
 
 const DesktopContainer = styled.div`
   width: 100vw;
+  z-index: 1;
   ${(p) => p.theme.mediaQueries.mobile} {
     display: none;
   }

@@ -1,6 +1,12 @@
-/* eslint-disable react/no-danger */
-import SVG from 'react-inlinesvg'
+import styled from 'styled-components'
 
-const Statistics = () => <SVG src="/assets/statistics.svg" />
+const Container = styled.div`
+  height: 100%;
+  aspect-ratio: 1440/1375;
+  background: url('assets/statistics.svg');
+`
+
+const Statistics = () =>
+  <Container />
 
 export default Statistics
