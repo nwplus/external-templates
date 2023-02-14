@@ -13,9 +13,12 @@ const CountdownGrid = styled.div`
   flex-grow: 2;
   gap: 2rem;
 
-  ${p => p.theme.mediaQueries.mobile} {
-    gap: 1rem;
+  ${p => p.theme.mediaQueries.tabletLarge} {
+    gap: 0.5rem;
     flex-grow: 0;
+  }
+  ${p => p.theme.mediaQueries.mobile} {
+    gap: 0.2rem;
   }
 `
 
@@ -30,15 +33,21 @@ const Digits = styled.h2`
   font-size: 5.5rem;
   letter-spacing: 0.2rem;
 
-  ${p => p.theme.mediaQueries.mobile} {
+  ${p => p.theme.mediaQueries.tabletLarge} {
     font-size: 3rem;
     letter-spacing: 0;
+  }
+  ${p => p.theme.mediaQueries.xs} {
+    font-size: 2rem;
   }
 `
 
 const BillboardText = styled(Header3)`
   color: #4D4B4F;
-  ${p => p.theme.mediaQueries.mobile} {
+  ${p => p.theme.mediaQueries.tabletLarge} {
+    font-size: 1.5rem;
+  }
+  ${p => p.theme.mediaQueries.xs} {
     font-size: 1rem;
   }
 `

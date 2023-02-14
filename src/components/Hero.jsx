@@ -88,6 +88,32 @@ const CountdownContainer = styled.div`
   justify-content: flex-end;
   padding-bottom: 13.5rem;
   padding-left: 16rem;
+
+  ${p => p.theme.mediaQueries.desktopLarge} {
+    padding-left: 12.5rem;
+    padding-bottom: 12.5rem;
+  }
+  ${p => p.theme.mediaQueries.desktop} {
+    padding-left: 10rem;
+    padding-bottom: 10rem;
+  }
+  ${p => p.theme.mediaQueries.tabletLarge} {
+    padding-left: 12rem;
+    padding-bottom: 10rem;
+  }
+  ${p => p.theme.mediaQueries.tablet} {
+    padding-left: 9.5rem;
+    padding-bottom: 8.5rem;
+  }
+  ${p => p.theme.mediaQueries.mobile} {
+    padding-left: 3rem;
+    padding-bottom: 7rem;
+  }
+  ${p => p.theme.mediaQueries.xs} {
+    padding-left: 2rem;
+    padding-bottom: 5rem;
+  }
+
 `
 
 const StyledImage = styled.img`
