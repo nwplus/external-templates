@@ -11,13 +11,30 @@ const FaqContainer = styled.div`
   background-image: url('/assets/faq_bg.svg'), linear-gradient(180deg, #D8937D 0%, #F8C2AB 40.12%, #F8EEBC 76.67%), linear-gradient(0deg, #FFFFFF, #FFFFFF);
 
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   background-position: center center;
+  min-height: 2500px;
+
+  ${p => p.theme.mediaQueries.desktopLarge} {
+    min-height: 1500px;
+  }
+
+  ${p => p.theme.mediaQueries.tabletLarge} {
+    min-height: 1800px;
+  }
 
   ${p => p.theme.mediaQueries.mobile} {
-    min-height: 0;
+    background-image: url('/assets/faq_mobile_bg.svg'),
+      linear-gradient(180deg, #d8937d 0%, #f8c2ab 40.12%, #f8eebc 76.67%), linear-gradient(0deg, #ffffff, #ffffff);
+    min-width: 100vw;
+    background-position: 0 0;
+    background-size: cover;
+    min-height: 3000px;
   }
-  min-height: 2500px;
+
+  ${p => p.theme.mediaQueries.xs} {
+    min-height: 2000px;
+  }
 `
 
 const Wrapper = styled.div`
@@ -77,7 +94,8 @@ const CollectionName = styled(Header3)`
   padding-bottom: 1rem;
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 1.2rem;
+    font-size: 1.75rem;
+    padding-bottom: 1.5rem;
   }
 `
 

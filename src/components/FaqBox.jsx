@@ -42,6 +42,8 @@ const Top = styled.div`
   ${p => p.theme.mediaQueries.mobile} {
     font-size: 1rem;
     padding: 0.8rem;
+    color: ${p => p.expanded ? '#FFFFFF' : '#433860'};
+    font-weight: 600;
   }
   &:hover {
     cursor:pointer;
@@ -55,9 +57,10 @@ const AnswerBox = styled.div`
   transition:0.2s max-height cubic-bezier(.6,0,.4,1);
   border-radius: 0 0 5px 5px;
   font-weight: 700;
-  ${p => p.isOpen ? 'max-height:500px; background-color: #95574E; border:1px solid white;' : 'max-height: 0;'}
+  ${p => p.isOpen ? 'max-height:500px; background-color: #95574E; border:1px solid white; padding: 1rem;' : 'max-height: 0;'}
   ${p => p.theme.mediaQueries.mobile} {
     font-size: 0.9rem;
+    font-weight: 500;
   }
 `
 
@@ -90,9 +93,7 @@ const FaqBox = ({ question, answer }) => {
         </TopExpand>
       </Top>
       <AnswerBox isOpen={isExpanded}>
-        <div style={{ padding: '1rem' }}>
-          {answer}
-        </div>
+        {answer}
       </AnswerBox>
     </Container>
   )
