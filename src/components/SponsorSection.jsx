@@ -22,11 +22,12 @@ const TextContainer = styled.div`
   a {
     color: white;
   }
-  ${(p) => p.theme.mediaQueries.tablet} {
-    width: 80%
-  }
+  padding-top: calc(calc(80 / 1440) * 100vw);
 
-  padding-top: calc(calc(80 / 1440) * 100vw);;
+  ${(p) => p.theme.mediaQueries.mobile} {
+    padding-top: 1rem;
+    width: 100%;
+  }
 `
 
 const ButtonContainer = styled.div`
@@ -49,6 +50,11 @@ const Row = styled.div`
   flex-wrap: wrap;
   max-width: 55vw;
   gap: 0.5rem;
+
+  ${(p) => p.theme.mediaQueries.tablet} {
+    display: flex;
+    justify-content: center;
+  }
 `
 
 const Rows = styled.div`
@@ -56,6 +62,7 @@ const Rows = styled.div`
   flex-direction: column;  
   gap: 0.5rem;
   align-items: center;
+  padding: 1rem;
 `
 const TitleImg = styled.img`
   // max-width: 550px;
@@ -132,7 +139,8 @@ const InkindImg = styled.img`
 const BigBoi = styled.div`
   ${p => `background: url("/assets/sponsors/sponsorBoxV${p.variant + 1}.svg")`};
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
+  background-position: center;
   width: 500px;
   height: 390px;
   padding: 1.5rem;
@@ -141,6 +149,11 @@ const BigBoi = styled.div`
     height: 100%;
     width: 100%;
     object-fit: contain;
+  }
+
+  ${(p) => p.theme.mediaQueries.tablet} {
+    width: 400px;
+    height: 290px;
   }
 `
 
@@ -151,6 +164,7 @@ const MicroscopicBoi = styled.div`
   width: 200px;
   height: 155px;
   padding: 1.5rem;
+  background-position: center;
 
   img {
     height: 100%;
@@ -178,7 +192,7 @@ const SponsorSection = () => {
   }
 
   useEffect(async () => {
-    const data = await fireDb.getCollection('cmd-f2023', 'Sponsors')
+    const data = await fireDb.getCollection('cmd-f2021', 'Sponsors')
     if (data) {
       categorizeSponsor(data)
     }

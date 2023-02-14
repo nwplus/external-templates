@@ -19,7 +19,8 @@ const FooterContainer = styled.div`
   background-size: cover;
 
   ${p => p.theme.mediaQueries.mobile} {
-    min-height: calc(calc(974 / 428) * 100vw);
+    background: url('/assets/footer/mobile_background.svg'), linear-gradient(to bottom, #645F70, #545364);
+    min-height: calc(calc(1419 / 428) * 100vw);
   }
 `
 
@@ -112,8 +113,9 @@ const StaticContainer = styled.div`
   position: absolute;
   width: 100%;
   top: 6rem;
-  @media (max-width: 900px) {
-    top: 46%;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    top: 3.5rem;
   }
 `
 
