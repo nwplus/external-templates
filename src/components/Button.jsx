@@ -72,6 +72,7 @@ const ButtonContainer = styled.a`
 
   `}
   ${p => p && getButtonStyles(p.variant)}
+  ${p => p.styles}
 `
 
 const ButtonText = styled.div`
@@ -129,8 +130,8 @@ const ButtonText = styled.div`
   }
 `
 
-const Button = ({ href, children, variant, disabled }) => (
-  <ButtonContainer variant={variant} href={disabled ? '#' : href} disabled={disabled}>
+const Button = ({ href, children, variant, disabled, styles }) => (
+  <ButtonContainer variant={variant} href={disabled ? '#' : href} disabled={disabled} style={styles}>
     <ButtonText variant={variant} disabled={disabled}>
       {disabled ? 'Applications Open Dec. 5' : children}
     </ButtonText>
