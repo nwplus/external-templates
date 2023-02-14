@@ -125,8 +125,25 @@ const CountdownContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding-bottom: 13.5rem;
-  padding-left: 16rem;
+  padding-bottom: 16%;
+  padding-left: 21%;
+  ${p => p.theme.mediaQueries.xl} {
+    padding-left: 20%;
+    padding-bottom: 16%;
+  }
+  ${p => p.theme.mediaQueries.desktopLarge} {
+    padding-left: 17%;
+    padding-bottom: 15%;
+  }
+  ${p => p.theme.mediaQueries.desktop} {
+    padding-left: 16%;
+    padding-bottom: 15%;
+  }
+  ${p => p.theme.mediaQueries.mobile} {
+    padding-left: 8%;
+    padding-bottom: 16%;
+  }
+
 `
 
 const StyledImage = styled.img`

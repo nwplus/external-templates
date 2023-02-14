@@ -13,9 +13,12 @@ const CountdownGrid = styled.div`
   flex-grow: 2;
   gap: 2rem;
 
-  ${p => p.theme.mediaQueries.mobile} {
-    gap: 1rem;
+  ${p => p.theme.mediaQueries.tabletLarge} {
+    gap: 0.5rem;
     flex-grow: 0;
+  }
+  ${p => p.theme.mediaQueries.mobile} {
+    gap: 0.2rem;
   }
 `
 
@@ -27,18 +30,31 @@ const Digits = styled.h2`
   font-family: 'HK Grotesk', sans-serif;
   color: #4D4B4F;
   font-weight: 600;
-  font-size: 5.5rem;
-  letter-spacing: 0.2rem;
+  font-size: 8rem;
 
-  ${p => p.theme.mediaQueries.mobile} {
+  ${p => p.theme.mediaQueries.xxl} {
+    font-size: 6rem;
+    letter-spacing: 0.2rem;
+  }
+  ${p => p.theme.mediaQueries.xl} {
+    font-size: 5rem;
+  }
+  ${p => p.theme.mediaQueries.tabletLarge} {
     font-size: 3rem;
     letter-spacing: 0;
+  }
+  ${p => p.theme.mediaQueries.xs} {
+    font-size: 2rem;
   }
 `
 
 const BillboardText = styled(Header3)`
   color: #4D4B4F;
-  ${p => p.theme.mediaQueries.mobile} {
+  font-size: 2rem;
+  ${p => p.theme.mediaQueries.tabletLarge} {
+    font-size: 1.5rem;
+  }
+  ${p => p.theme.mediaQueries.xs} {
     font-size: 1rem;
   }
 `
