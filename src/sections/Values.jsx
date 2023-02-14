@@ -17,6 +17,7 @@ const MobileContainer = styled.div`
   display: none;
   ${(p) => p.theme.mediaQueries.mobile} {
     display: block;
+    margin-bottom: -1rem;
   }
 `
 

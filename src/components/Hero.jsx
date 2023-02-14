@@ -66,7 +66,7 @@ const HeroContentContainer = styled.div`
     max-width: 100vw;
     min-width: 0;
     width: 100%;
-    padding: 8rem 2rem;
+    padding: 7rem 2rem;
     text-align: center;
     align-items: center;
     transform: scale(0.95);
@@ -140,8 +140,8 @@ const CountdownContainer = styled.div`
     padding-bottom: 15%;
   }
   ${p => p.theme.mediaQueries.mobile} {
-    padding-left: 8%;
-    padding-bottom: 16%;
+    padding-left: 20%;
+    padding-bottom: 53%;
   }
 
 `

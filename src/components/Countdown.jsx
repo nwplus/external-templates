@@ -18,7 +18,7 @@ const CountdownGrid = styled.div`
     flex-grow: 0;
   }
   ${p => p.theme.mediaQueries.mobile} {
-    gap: 0.2rem;
+    gap: 1rem;
   }
 `
 
@@ -45,6 +45,10 @@ const Digits = styled.h2`
   }
   ${p => p.theme.mediaQueries.xs} {
     font-size: 2rem;
+  }
+  
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: 3.5rem;
   }
 `
 
