@@ -1,9 +1,10 @@
 import Button from '@components/Button'
 import SponsorList from '@components/SponsorList'
+import Team from '@components/Team'
 import { useEffect, useState } from 'react'
 import SVG from 'react-inlinesvg'
 import styled from 'styled-components'
-
+import { SocialMediaContainer } from './Footer'
 export const mobileWidth = 900
 
 const SponsorText = styled.div`
@@ -131,6 +132,10 @@ const Sponsors = () => {
       </div>
 
       <SVG src={isMobile ? '/assets/sponsors/MOBILE Sponsors + Footer.svg' : '/assets/Sponsors + Footer.svg'} />
+      <SocialMediaContainer />
+      <div style={{ position: 'absolute', bottom: '40px' }}>
+        <Team />
+      </div>
     </div>
   )
 }
