@@ -1,8 +1,7 @@
 {
   "projects": {
     "default": "nwplus-ubc-dev",
-    "production": "nwplus-ubc",
-    "prod": "nwplus-ubc"
+    "production": "nwplus-ubc"
   },
   "targets": {
     "nwplus-ubc-dev": {
@@ -21,7 +20,7 @@
           "nwplus-root"
         ],
         "cmdf2023": [
-          "nwplus-cmdf2023"
+          "nwplus-cmd-f2023"
         ]
       }
     }
