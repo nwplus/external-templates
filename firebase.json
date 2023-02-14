@@ -6,7 +6,7 @@
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
     },
     {
-      "target": "cmdf2023",
+      "target": "cmd-f2023",
       "public": "out",
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
     },
