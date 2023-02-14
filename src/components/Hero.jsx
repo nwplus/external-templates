@@ -189,14 +189,14 @@ const Hero = () => {
           March 11-12, 2023 | Robert H. Lee Alumni Centre @ The University of British Columbia (UBC)
         </Header4>
         <CTA>
-          <Button variant="solid">
+          <Button variant="solid" href="https://portal.nwplus.io">
             Apply Now!
           </Button>
-          <Button variant="outlined">
+          <Button variant="outlined" href="https://docs.google.com/forms/d/1Imcoxry_GWRe6zM5GB7sgsffswmxGeXC6wwa1tZEsFU/">
             Be a Mentor!
           </Button>
         </CTA>
-        <StyledA href="#" target="_blank" rel="noreferrer noopener">
+        <StyledA href="https://docs.google.com/forms/d/e/1FAIpQLSc8jhBuq8zxC4cl_SXTrp9H3ZSyv0WD9VqlGLg7guwhJok6Jg/viewform" target="_blank" rel="noreferrer noopener">
           Be a Volunteer!
         </StyledA>
       </HeroContentContainer>

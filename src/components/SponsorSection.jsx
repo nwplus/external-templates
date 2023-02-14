@@ -40,6 +40,7 @@ const Row = styled.div`
   height: 100%;  
   ${p => p.flex ? `
     display: flex;
+    justify-content: center;
   ` : `
     display: grid;
     grid-template-columns: repeat(2, 1fr);

@@ -330,7 +330,7 @@ const NavigationBar = () => {
           </a>
           <MenuList isMobile={showDropdown} closeDropdown={setShowDropdown} />
           {/* Make sure desktop (below) has the same portalOpen value */}
-          <PortalButton portalOpen={false} />
+          <PortalButton portalOpen />
         </DropDownContentContainer>
         <TrustBadge />
       </>
@@ -348,7 +348,7 @@ const NavigationBar = () => {
           <MenuList />
         </NavTextContainer>
         {/* Make sure mobile (above) has the same portalOpen value */}
-        <PortalButton portalOpen={false} />
+        <PortalButton portalOpen />
       </NavGroupContainer>
       <HamburgerMenu src="/images/icons/menu.svg" alt="dropdown menu icon" onClick={() => setShowDropdown(true)} />
       <TrustBadge />
