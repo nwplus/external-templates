@@ -337,8 +337,7 @@ const profiles = [
 ]
 
 const StyledTitle = styled(Header3)`
-  color: #e2d6ff;
-  filter: drop-shadow(0 0 4px #e2d6ff);
+  color: white;
   position: absolute;
   z-index: 101;
   width: 100vw;
@@ -366,7 +365,7 @@ const ProfileContent = styled.p`
 `
 
 const ProfileList = styled.div`
-  padding-top: 1rem;
+  padding-top: 3rem;
   overflow-x: hidden;
   white-space: nowrap;
 `
@@ -444,12 +443,12 @@ export default function Team() {
   return (
     <>
       <StyledTitle>Made with 💖 by the nwPlus Team</StyledTitle>
-      <ProfileContent>
+      {/* <ProfileContent>
         <span>
           <b>{selectedProfile?.name}</b> {selectedProfile?.emoji}
         </span>
         {selectedProfile?.title}
-      </ProfileContent>
+      </ProfileContent> */}
       <ProfileList
         onMouseEnter={() => {
           setAccel(-1)
