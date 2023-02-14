@@ -98,6 +98,19 @@ const CTA = styled.div`
   }
 `
 
+const MoreCTA = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    flex-direction: column;
+    transform: scale(0.95);
+    gap: 0.5rem;
+    padding: 0;
+  }
+`
+
 const StyledA = styled.a`
   font-weight: 700;
   color: #1A61A0;
@@ -196,9 +209,14 @@ const Hero = () => {
             Be a Mentor!
           </Button>
         </CTA>
+        <MoreCTA>
         <StyledA href="https://docs.google.com/forms/d/e/1FAIpQLSc8jhBuq8zxC4cl_SXTrp9H3ZSyv0WD9VqlGLg7guwhJok6Jg/viewform" target="_blank" rel="noreferrer noopener">
           Be a Volunteer!
         </StyledA>
+        <StyledA href="https://docs.google.com/forms/d/e/1FAIpQLSfIMBVHOp5xoRYPZZhAsVmAmDOJx9oEsYEX6L8ZiGyOt1kIEw/viewform" target="_blank" rel="noreferrer noopener">
+          Apply for the media team!
+        </StyledA>
+        </MoreCTA>
       </HeroContentContainer>
       <CountdownContainer>
         <Countdown />
