@@ -193,7 +193,7 @@ const SponsorSection = () => {
   }
 
   useEffect(async () => {
-    const data = await fireDb.getCollection('cmd-f2021', 'Sponsors')
+    const data = await fireDb.getCollection('cmd-f2023', 'Sponsors')
     if (data) {
       categorizeSponsor(data)
     }
