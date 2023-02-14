@@ -433,7 +433,7 @@ export default function Team() {
         targets: ['#anim-profiles'],
         easing: 'linear',
         loop: true,
-        translateX: [-(90 * profiles.length), 0],
+        translateX: [-(90 * profiles.length * 2), 0],
         duration: 3000 * profiles.length,
         autoplay: false,
       })
