@@ -140,7 +140,7 @@ const CountdownContainer = styled.div`
     padding-bottom: 15%;
   }
   ${p => p.theme.mediaQueries.mobile} {
-    padding-left: 20%;
+    padding-left: 18%;
     padding-bottom: 53%;
   }
 

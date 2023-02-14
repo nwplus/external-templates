@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 import SVG from 'react-inlinesvg'
 import styled from 'styled-components'
 import { SocialMediaContainer } from './Footer'
+
 export const mobileWidth = 900
 
 const SponsorText = styled.div`
@@ -33,7 +34,7 @@ const BtnContainer = styled.div`
 const DesktopText = styled.div`
   display: block;
   margin-top: 12%;
-  @media (max-width: ${mobileWidth}) {
+  ${p => p.theme.mediaQueries.mobile} {
     display: none;
   }
 `
@@ -41,7 +42,9 @@ const DesktopText = styled.div`
 const MobileText = styled.div`
   display: none;
   margin-top: 12%;
-  @media (max-width: ${mobileWidth}) {
+  ${p => p.theme.mediaQueries.mobile} {
+    text-align: center;
+    font-size: 0.95rem;
     display: block;
     margin-top: 8%;
   }

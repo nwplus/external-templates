@@ -91,7 +91,7 @@ const AboutDescription = styled.p`
     width: 75%;
     margin: 0 auto;
     left: 0;
-    top: 200px;
+    top: 140px;
     font-size: 1em;
   }
 `

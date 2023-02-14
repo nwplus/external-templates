@@ -14,11 +14,11 @@ const CountdownGrid = styled.div`
   gap: 2rem;
 
   ${p => p.theme.mediaQueries.tabletLarge} {
-    gap: 0.5rem;
+    gap: 2rem;
     flex-grow: 0;
   }
   ${p => p.theme.mediaQueries.mobile} {
-    gap: 1rem;
+    gap: 2rem;
   }
 `
 
