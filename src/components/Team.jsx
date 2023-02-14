@@ -349,7 +349,7 @@ const StyledTitle = styled(Header3)`
 
 const ProfileContent = styled.p`
   color: white;
-  padding: 1rem 0;
+  padding-top: 3rem;
   span {
     margin-right: 8px;
   }
@@ -443,12 +443,12 @@ export default function Team() {
   return (
     <>
       <StyledTitle>Made with 💖 by the nwPlus Team</StyledTitle>
-      {/* <ProfileContent>
+      <ProfileContent>
         <span>
           <b>{selectedProfile?.name}</b> {selectedProfile?.emoji}
         </span>
         {selectedProfile?.title}
-      </ProfileContent> */}
+      </ProfileContent>
       <ProfileList
         onMouseEnter={() => {
           setAccel(-1)

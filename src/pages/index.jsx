@@ -7,6 +7,7 @@ import About from 'src/sections/About'
 import Values from 'src/sections/Values'
 import Statistics from 'src/sections/Statistics'
 import FAQ from 'src/sections/FAQ'
+import Footer from 'src/sections/Footer'
 
 import NavigationBar from '../components/NavigationBar'
 import Hero from '../components/Hero'
@@ -18,7 +19,7 @@ export default function Index({ title }) {
       <Head>
         <title>{title}</title>
 
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.png" />
 
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
@@ -36,6 +37,7 @@ export default function Index({ title }) {
       <Values />
       <FAQ />
       <Sponsors />
+      <Footer />
       {/* Components Ends */}
     </>
   )
