@@ -14,7 +14,10 @@ const HeroContainer = styled.div`
 
   ${p => p.theme.mediaQueries.mobile} {
     // Height calculation ratio should be the aspect ratio of the background image
-    min-height: calc(calc(1200 / 882) * 100vw);
+    min-height: calc(calc(1597 / 428) * 100vw);
+    background-image: url("/assets/hero/mobile_hero_background.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 `
 
@@ -24,6 +27,11 @@ const CloudsContainer = styled.div`
   top: 0;
   width: 100%;
   margin-top: -5rem; // to off-set the initial parallax position 
+
+  ${p => p.theme.mediaQueries.mobile} {
+    // Height calculation ratio should be the aspect ratio of the background image
+    display: none;
+  }
 `
 
 const HouseContainer = styled.div`
@@ -32,6 +40,12 @@ const HouseContainer = styled.div`
   width: 100%;
   top: 0;
   left: 0;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    // Height calculation ratio should be the aspect ratio of the background image
+    min-height: calc(calc(1200 / 882) * 100vw);
+    display: none;
+  }
 `
 
 const HeroContentContainer = styled.div`
@@ -47,6 +61,16 @@ const HeroContentContainer = styled.div`
   flex-direction: column;
   gap: 0.5rem;
   align-items: flex-start;
+  
+  ${p => p.theme.mediaQueries.mobile} {
+    max-width: 100vw;
+    min-width: 0;
+    width: 100%;
+    padding: 8rem 2rem;
+    text-align: center;
+    align-items: center;
+    transform: scale(0.95);
+  }
 `
 
 const LogoContainer = styled.div`
@@ -54,6 +78,10 @@ const LogoContainer = styled.div`
   height: 100px;
   position: relative;
   margin-bottom: 1.5rem;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    margin-bottom: 0.5rem;
+  }
 `
 
 const CTA = styled.div`
@@ -61,6 +89,13 @@ const CTA = styled.div`
   align-items: center;
   gap: 0.5rem;
   padding: 1.5rem 0;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    flex-direction: column;
+    transform: scale(0.95);
+    gap: 0rem;
+    padding: 0;
+  }
 `
 
 const StyledA = styled.a`
@@ -75,6 +110,10 @@ const StyledA = styled.a`
 
   :active {
     transform: scale(0.98);
+  }
+  
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: 1rem;
   }
 `
 
@@ -101,6 +140,11 @@ const StyledImage = styled.img`
 const Logo = styled.img`
   width: 120px;
   height: 100px;
+  
+  ${p => p.theme.mediaQueries.mobile} {
+    width: 100px;
+    object-fit: contain;
+  }
 `
 
 const Hero = () => {
@@ -119,7 +163,7 @@ const Hero = () => {
 
       <HeroContentContainer>
         <LogoContainer>
-          <Logo layout="fill" objectFit="contain" src="/assets/logo.png" alt="cmd-f logo" />
+          <Logo layout="fill" src="/assets/logo.png" alt="cmd-f logo" />
         </LogoContainer>
         <Header1 color="#1A61A0">
           {`Western Canada's largest hackathon celebrating underrepresented genders in tech`}
