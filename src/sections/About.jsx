@@ -121,7 +121,7 @@ const OpenSignImage = styled.img`
 `
 
 const About = () => (
-  <AboutContainer>
+  <AboutContainer id="about">
     <AboutBgDesktop src={AboutBackgroundDesktop} />
     <AboutBgMobile src={AboutBackgroundMobile} />
 

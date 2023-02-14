@@ -18,10 +18,10 @@ const StatisticsSection = styled.div`
 
 const Statistics = () => (
     <>
-      <StatisticsMobile>
+      <StatisticsMobile id="hackathon">
         <SVG src="/assets/statistics-mobile.svg" />
       </StatisticsMobile>
-      <StatisticsSection>
+      <StatisticsSection id="hackathon">
         <SVG src="/assets/statistics.svg" />
       </StatisticsSection>
     </>

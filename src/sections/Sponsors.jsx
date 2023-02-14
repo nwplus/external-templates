@@ -115,7 +115,7 @@ const Sponsors = () => {
   )
 
   return (
-    <div style={{ width: '100%', height: '100%', position: 'relative' }}>
+    <div style={{ width: '100%', height: '100%', position: 'relative' }} id="sponsors">
       <div style={{ position: 'absolute', top: 0 }}>
         <SponsorText>
           <SponsorTitle>Sponsors</SponsorTitle>
