@@ -33,6 +33,9 @@ const MinorSponsorContainer = styled.div`
     margin-top: 1rem;
     gap: 8px;
   }
+  @media (max-width: 400px) {
+    display: none;
+  }
 `
 
 const SponsorList = ({ sponsorList, variant }) => {
