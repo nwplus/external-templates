@@ -47,8 +47,7 @@ const Links = styled.div`
   font-size: 1.5rem;
   a {
     font-weight: 600;
-    color: #e2d6ff;
-    text-shadow: 0 0 10px #59b0ef;
+    color: white;
   }
 
   ${p => p.theme.mediaQueries.mobile} {
@@ -76,8 +75,7 @@ const SmallText = styled.div`
   padding-top: 2.5rem;
   text-align: center;
   div {
-    color: #e2d6ff;
-    text-shadow: 0 0 10px #59b0ef;
+    color: white;
     font-size: 1.2rem;
     font-weight: 500;
   }

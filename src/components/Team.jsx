@@ -337,8 +337,7 @@ const profiles = [
 ]
 
 const StyledTitle = styled(Header3)`
-  color: #e2d6ff;
-  filter: drop-shadow(0 0 4px #e2d6ff);
+  color: white;
   position: absolute;
   z-index: 101;
   width: 100vw;
