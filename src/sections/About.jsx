@@ -1,10 +1,9 @@
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
 
-
-import AboutBackgroundDesktop from "../../public/images/backgrounds/About.svg"
-import AboutBackgroundMobile from "../../public/images/backgrounds/AboutMobile.svg"
-import OpenSign from "../../public/images/animated-graphics/OpenSign.svg"
+import AboutBackgroundDesktop from '../../public/images/backgrounds/About.svg'
+import AboutBackgroundMobile from '../../public/images/backgrounds/AboutMobile.svg'
+import OpenSign from '../../public/images/animated-graphics/OpenSign.svg'
 
 const AboutContainer = styled.div`
   position: relative;
@@ -13,14 +12,14 @@ const AboutContainer = styled.div`
   // align-items: center;
   width: 100%;
   height: 1065px;
-  
+
   // Aspect ratio & height calculation should be the aspect ratio of the background image
   // aspect-ratio: 1440 / 779;
   // min-height: calc(calc(779 / 1440) * 100vw);
 
   ${p => p.theme.mediaQueries.mobile} {
     align-items: center;
-    
+
     // Aspect ratio & height calculation should be the aspect ratio of the background image
     // min-height: calc(calc(1344 / 428) * 100vw);
     // aspect-ratio: 428 / 1344;
@@ -36,7 +35,7 @@ const AboutBgDesktop = styled.img`
   -moz-user-select: none;
   -webkit-user-select: none;
   user-select: none;
-  ${(p) => p.theme.mediaQueries.mobile} {
+  ${p => p.theme.mediaQueries.mobile} {
     display: none;
   }
 `
@@ -51,7 +50,7 @@ const AboutBgMobile = styled.img`
   -webkit-user-select: none;
   user-select: none;
   display: none;
-  ${(p) => p.theme.mediaQueries.mobile} {
+  ${p => p.theme.mediaQueries.mobile} {
     display: block;
   }
 `
@@ -60,7 +59,7 @@ const AboutTitle = styled.h2`
   font-family: 'HK Grotesk';
   font-weight: bold;
   text-align: center;
-  color: #4D4B4F;
+  color: #4d4b4f;
   z-index: 1;
   width: 100vw;
   display: block;
@@ -69,7 +68,7 @@ const AboutTitle = styled.h2`
   font-size: 3em;
   width: 80%;
   text-align: center;
-  ${(p) => p.theme.mediaQueries.mobile} {
+  ${p => p.theme.mediaQueries.mobile} {
     width: 100%;
     top: 100px;
   }
@@ -78,13 +77,13 @@ const AboutTitle = styled.h2`
 const AboutDescription = styled.p`
   font-family: 'HK Grotesk';
   font-size: 1.2vw;
-  color: #4D4B4F;
+  color: #4d4b4f;
   z-index: 1;
   position: relative;
   width: 50%;
   left: 10%;
-  margin-top: 20%;
-  ${(p) => p.theme.mediaQueries.mobile} {
+  margin-top: 21%;
+  ${p => p.theme.mediaQueries.mobile} {
     width: 75%;
     margin: 0 auto;
     left: 0;
@@ -112,34 +111,41 @@ const OpenSignImage = styled.img`
   // transform-origin: 0px 50%;
   // transform-origin: 0% 50%;
   // transform: rotate(3deg);
-  ${(p) => p.theme.mediaQueries.mobile} {
-      display: none;
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
   }
 `
 
 const About = () => (
   <AboutContainer>
-
     <AboutBgDesktop src={AboutBackgroundDesktop} />
     <AboutBgMobile src={AboutBackgroundMobile} />
 
     <AboutTitle>About cmd-f</AboutTitle>
-    <AboutDescription>Join us on March 11-12 for cmd-f 2023, an in-person hackathon celebrating underrepresented genders in tech!
-      <br /><br />
-      According to a UNESCO study, many underrepresented genders individuals in tech experience variations of imposter syndrome among their counterparts in the industry.
-      <br /><br />
-      At cmd-f, we welcome anyone who self-identifies as an underrepresented gender and hope to dedicate a safe space to:
-
-      <ul style={{ paddingLeft: "40px" }}>
+    <AboutDescription>
+      cmd-f is a hackathon focused on addressing gender inequality in technology. Our main purpose is to create a safe,
+      dedicated space for people who face gender inequalities to hack together. Thus, cmd-f is only open to individuals
+      that identify as an underrepresented gender in technology. For more information on who is an underrepresented
+      gender in technology, please email us at{' '}
+      <a style={{ color: '#4D4B4F' }} href="mailto:cmd-f@nwplus.io">
+        cmd-f@nwplus.io
+      </a>
+      .
+      <br />
+      <br />
+      If you would like to support cmd-f as an ally, our mentor, media, and volunteer roles are open to all genders!
+      Join us on March 11-12 to:
+      <ul style={{ paddingLeft: '40px' }}>
         <li>Develop new skills</li>
         <li>Explore career opportunities</li>
         <li>Build a supportive community in tech</li>
       </ul>
-
       <br />
-      Whether you're a first-time hacker or a veteran, we have workshops, prizes, and social activities for you! No technical experience needed.
-      <br /><br />
-      Stay tuned on our socials for updates on what to expect at cmd-f 2023!</AboutDescription>
+      {`Whether you're a first-time hacker or a veteran, we have workshops, prizes, and social activities for you! No technical experience needed.`}
+      <br />
+      <br />
+      Stay tuned on our socials for updates on what to expect at cmd-f 2023!
+    </AboutDescription>
 
     <OpenSignImage src={OpenSign} />
   </AboutContainer>
