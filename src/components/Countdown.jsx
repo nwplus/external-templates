@@ -30,9 +30,15 @@ const Digits = styled.h2`
   font-family: 'HK Grotesk', sans-serif;
   color: #4D4B4F;
   font-weight: 600;
-  font-size: 5.5rem;
-  letter-spacing: 0.2rem;
+  font-size: 8rem;
 
+  ${p => p.theme.mediaQueries.xxl} {
+    font-size: 6rem;
+    letter-spacing: 0.2rem;
+  }
+  ${p => p.theme.mediaQueries.xl} {
+    font-size: 5rem;
+  }
   ${p => p.theme.mediaQueries.tabletLarge} {
     font-size: 3rem;
     letter-spacing: 0;
@@ -44,6 +50,7 @@ const Digits = styled.h2`
 
 const BillboardText = styled(Header3)`
   color: #4D4B4F;
+  font-size: 2rem;
   ${p => p.theme.mediaQueries.tabletLarge} {
     font-size: 1.5rem;
   }
