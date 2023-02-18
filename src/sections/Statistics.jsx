@@ -1,29 +1,24 @@
-/* eslint-disable react/no-danger */
-import SVG from 'react-inlinesvg'
 import styled from 'styled-components'
 
-const StatisticsMobile = styled.div`
-  margin-bottom: -170px;
-  display: none;
-  ${p => p.theme.mediaQueries.mobile} {
-    display: block;
-  }
-`
 const StatisticsSection = styled.div`
-  margin-bottom: -10px;
+  
+  min-height: calc(calc(1396 / 1440) * 100vw);
+  background-image: url("/assets/statistics/desktopBackground.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+
   ${p => p.theme.mediaQueries.mobile} {
-    display: none;
+    // Height calculation ratio should be the aspect ratio of the background image
+    min-height: calc(calc(1071 / 428) * 100vw);
+    background-image: url("/assets/statistics/mobileBackground.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 `
 
 const Statistics = () => (
     <div id="hackathon">
-      <StatisticsMobile>
-        <SVG src="/assets/statistics-mobile.svg" />
-      </StatisticsMobile>
-      <StatisticsSection>
-        <SVG src="/assets/statistics.svg" />
-      </StatisticsSection>
+      <StatisticsSection />
     </div>
 )
 
