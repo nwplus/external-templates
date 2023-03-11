@@ -7,7 +7,10 @@ export const SCREEN_BREAKPOINTS = {
   tablet: 992,
   tabletLarge: 1024,
   desktop: 1200,
-  desktopLarge: 1440
+  desktopLarge: 1440,
+  xl: 1700,
+  xxl: 2000,
+  xxxl: 2500
 }
 
 const base = {
@@ -58,7 +61,10 @@ const base = {
     tablet: `@media only screen and (max-width: ${SCREEN_BREAKPOINTS.tablet}px)`,
     tabletLarge: `@media only screen and (max-width: ${SCREEN_BREAKPOINTS.tabletLarge}px)`,
     desktop: `@media only screen and (max-width: ${SCREEN_BREAKPOINTS.desktop}px)`,
-    desktopLarge: `@media only screen and (max-width: ${SCREEN_BREAKPOINTS.desktopLarge}px)`
+    desktopLarge: `@media only screen and (max-width: ${SCREEN_BREAKPOINTS.desktopLarge}px)`,
+    xl: `@media only screen and (max-width: ${SCREEN_BREAKPOINTS.xl}px)`,
+    xxl: `@media only screen and (max-width: ${SCREEN_BREAKPOINTS.xxl}px)`,
+    xxxl: `@media only screen and (max-width: ${SCREEN_BREAKPOINTS.xxxl}px)`
   },
   transition: {
     small: 'all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1)'

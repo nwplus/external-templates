@@ -27,7 +27,7 @@ const FaqContainer = styled.div`
     background-image: url('/assets/faq_mobile_bg.svg'),
       linear-gradient(180deg, #d8937d 0%, #f8c2ab 40.12%, #f8eebc 76.67%), linear-gradient(0deg, #ffffff, #ffffff);
     min-width: 100vw;
-    background-position: 0 0;
+    background-position: center bottom;
     background-size: cover;
     min-height: 3000px;
   }

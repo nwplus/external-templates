@@ -3,7 +3,7 @@ import SVG from 'react-inlinesvg'
 import styled from 'styled-components'
 
 const StatisticsMobile = styled.div`
-  margin-bottom: -10px;
+  margin-bottom: -170px;
   display: none;
   ${p => p.theme.mediaQueries.mobile} {
     display: block;
@@ -16,19 +16,16 @@ const StatisticsSection = styled.div`
   }
 `
 
-const Statistics = () => {
-  return (
+const Statistics = () => (
     <>
-      <StatisticsMobile>
+      <StatisticsMobile id="hackathon">
         <SVG src="/assets/statistics-mobile.svg" />
       </StatisticsMobile>
-      <StatisticsSection>
+      <StatisticsSection id="hackathon">
         <SVG src="/assets/statistics.svg" />
       </StatisticsSection>
     </>
-  )
- 
-}
+)
 
 
 export default Statistics

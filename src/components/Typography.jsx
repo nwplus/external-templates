@@ -35,6 +35,10 @@ const header = ({
 export const Header1 = styled.h1`
   ${text}
   ${(p) => header(p.theme.typography.header1)}
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: 1.2rem;
+    line-height: 140%;
+  }
 `
 
 export const Header2 = styled.h2`
@@ -50,6 +54,10 @@ export const Header3 = styled.h3`
 export const Header4 = styled.h4`
   ${text}
   ${(p) => header(p.theme.typography.header4)}
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: 1.1rem;
+    line-height: 150%;
+  }
 `
 
 export const Body = styled.p`

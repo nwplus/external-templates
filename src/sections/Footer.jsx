@@ -9,14 +9,18 @@ import {
   faTwitter,
   faYoutube,
 } from '@fortawesome/free-brands-svg-icons'
+import Team from '@components/Team'
 
 const FooterContainer = styled.div`
   position: relative;
-  min-height: calc(calc(1556 / 1440) * 100vw);
-  margin-top: -0.5rem;
+  background: url('/assets/footer/desktop_background.svg'), linear-gradient(to bottom, #645F70, #545364);
+  min-height: calc(calc(2037 / 1436) * 100vw);
+  background-repeat: no-repeat;
+  background-size: cover;
 
   ${p => p.theme.mediaQueries.mobile} {
-    min-height: calc(calc(974 / 428) * 100vw);
+    background: url('/assets/footer/mobile_background.svg'), linear-gradient(to bottom, #645F70, #545364);
+    min-height: calc(calc(1419 / 428) * 100vw);
   }
 `
 
@@ -89,7 +93,7 @@ const SmallText = styled.div`
 const TeamContainer = styled.div`
   position: absolute;
   left: 0;
-  bottom: 12%;
+  bottom: 1rem;
   text-align: center;
   width: 100%;
 
@@ -108,13 +112,14 @@ const StaticContainer = styled.div`
   justify-content: space-between;
   position: absolute;
   width: 100%;
-  top: 55%;
-  @media (max-width: 900px) {
-    top: 46%;
+  top: 6rem;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    top: 3.5rem;
   }
 `
 
-export const SocialMediaContainer = () => (
+const SocialMediaContainer = () => (
   <StaticContainer>
     <TextContainer>
       <SocialMediaIcons>
@@ -155,3 +160,14 @@ export const SocialMediaContainer = () => (
     </TextContainer>
   </StaticContainer>
 )
+
+const Footer = () => (
+  <FooterContainer>
+    <SocialMediaContainer />
+    <TeamContainer>
+      <Team />
+    </TeamContainer>
+  </FooterContainer>
+)
+
+export default Footer

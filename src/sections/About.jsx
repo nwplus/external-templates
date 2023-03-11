@@ -20,6 +20,8 @@ const AboutContainer = styled.div`
 
   ${p => p.theme.mediaQueries.mobile} {
     align-items: center;
+    aspect-ratio: 428 / 1263;
+    width: 100%;
 
     // Aspect ratio & height calculation should be the aspect ratio of the background image
     // min-height: calc(calc(1344 / 428) * 100vw);
@@ -44,6 +46,7 @@ const AboutBgDesktop = styled.img`
 const AboutBgMobile = styled.img`
   position: absolute;
   top: 0;
+  aspect-ratio: 428 / 1263;
   width: 100%;
   height: auto;
   // Makes background non-selectable
@@ -88,7 +91,7 @@ const AboutDescription = styled.p`
     width: 75%;
     margin: 0 auto;
     left: 0;
-    top: 200px;
+    top: 140px;
     font-size: 1em;
   }
 `
@@ -118,7 +121,7 @@ const OpenSignImage = styled.img`
 `
 
 const About = () => (
-  <AboutContainer>
+  <AboutContainer id="about">
     <AboutBgDesktop src={AboutBackgroundDesktop} />
     <AboutBgMobile src={AboutBackgroundMobile} />
 
