@@ -124,28 +124,14 @@ const About = () => (
 
     <AboutTitle>About cmd-f</AboutTitle>
     <AboutDescription>
-      cmd-f is a hackathon focused on addressing gender inequality in technology. Our main purpose is to create a safe,
-      dedicated space for people who face gender inequalities to hack together. Thus, cmd-f is only open to individuals
-      that identify as an underrepresented gender in technology. For more information on who is an underrepresented
-      gender in technology, please email us at{' '}
+      cmd-f is a hackathon focused on addressing gender inequality in technology. Our main purpose is to create a safe, dedicated space for people who face gender inequalities to hack together. We're trying to create access for people who have historically been excluded. We have encouraged participation from women, trans people, non-binary individuals, and other gender-diverse people. Thus, cmd-f is only open to individuals that identify as an underrepresented gender in technology.
+      <br /><br />
+      We're aware that gender is not the only inequality in technology. We appreciate allyship and recognize it is important in the community. We are asking our allies to show their support by not hacking but helping in other forms, such as volunteering or mentoring. Please make sure your participation for this event is aligned with the intentions of the event. We ask all participants who attend to trust that everyone else who is attending is meant to be here.
+      <br /><br />
+      For more information on who is an underrepresented gender in technology, please email us at{' '}
       <a style={{ color: '#4D4B4F' }} href="mailto:cmd-f@nwplus.io">
         cmd-f@nwplus.io
-      </a>
-      .
-      <br />
-      <br />
-      If you would like to support cmd-f as an ally, our mentor, media, and volunteer roles are open to all genders!
-      Join us on March 11-12 to:
-      <ul style={{ paddingLeft: '40px' }}>
-        <li>Develop new skills</li>
-        <li>Explore career opportunities</li>
-        <li>Build a supportive community in tech</li>
-      </ul>
-      <br />
-      {`Whether you're a first-time hacker or a veteran, we have workshops, prizes, and social activities for you! No technical experience needed.`}
-      <br />
-      <br />
-      Stay tuned on our socials for updates on what to expect at cmd-f 2023!
+      </a>.
     </AboutDescription>
 
     <OpenSignImage src={OpenSign} />
