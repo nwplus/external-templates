@@ -18,6 +18,10 @@ export const GlobalStyles = createGlobalStyle`
   body {
     position: relative;
   }
+  .root-container {
+    position: relative;
+    padding-top: 120px;
+  }
   
   :root {
       font-family: 'HK Grotesk', sans-serif;
