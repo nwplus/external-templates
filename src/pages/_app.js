@@ -5,6 +5,7 @@ function App({ Component, pageProps }) {
   return (
     <>
       <GlobalStyles />
+      SE MINUS
       <Component {...pageProps} />
     </>
   )
