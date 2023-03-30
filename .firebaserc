@@ -17,6 +17,9 @@
         ],
         "nwhacks2022_dev": [
           "dev-nwplus-nwhacks2022"
+        ],
+        "seminus_dev": [
+          "dev-nwplus-seminus-2023"
         ]
       }
     },
@@ -33,6 +36,9 @@
         ],
         "nwhacks2022_main": [
           "nwplus-nwhacks2022"
+        ],
+        "seminus_main": [
+          "nwplus-seminus-2023"
         ]
       }
     }
