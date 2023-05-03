@@ -82,7 +82,7 @@ const About = () => {
         <BlurbContainer bias="left" id="about">
           <BlurbHeader>About nwHacks</BlurbHeader>
           <BlurbText>
-            Join hundreds of hackers across the world at nwHacks on January 21-22, 2023! Apply by December 25th, 2022 to
+            Join hundreds of hackers across the world at nwHacks in January 2024! Apply by late December 2023 to
             participate as a hacker, mentor, or a volunteer.
             <br />
             <br />
@@ -94,11 +94,11 @@ const About = () => {
         <BlurbContainer bias="right">
           <BlurbHeader>We{`'`}re back in person!</BlurbHeader>
           <BlurbText>
-            Last year, we connected over 650 of the brightest developers, engineers, and designers worldwide to
+            Last year, we connected hundreds of the brightest developers, engineers, and designers worldwide to
             collaborate and create amazing projects online. This year, not only are we back in-person, we will also be
             bigger and better than ever! We will be returning to our regular in-person operations, and providing you
             with a more traditional hackathon experience. We look forward to seeing you—whether we are reuniting or
-            meeting you for the first time—at nwHacks 2023.
+            meeting you for the first time—at nwHacks 2024.
           </BlurbText>
         </BlurbContainer>
       </AboutInner>

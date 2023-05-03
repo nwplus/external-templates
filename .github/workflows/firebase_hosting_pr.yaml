@@ -8,6 +8,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
+      # TEMP FIX FOR NODE ERRORS
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
+
       - run: yarn install --frozen-lockfile && yarn build:staging
         env:
           NEXT_PUBLIC_FIREBASE_API_KEY: ${{ secrets.DEV_FIREBASE_API_KEY }}
