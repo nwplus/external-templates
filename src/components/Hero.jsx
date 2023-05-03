@@ -339,19 +339,19 @@ const Hero = () => {
           <Opening>Welcome to</Opening>
           <TitleContainer>
             <Title>nwHacks</Title>
-            <LivepeerContainer>
+            {/* <LivepeerContainer>
               <PoweredBy>powered by</PoweredBy>
               <Livepeer src={LivepeerImage} alt="Title sponsor: Livepeer" />
-            </LivepeerContainer>
+            </LivepeerContainer> */}
           </TitleContainer>
           <Subtitle>Western Canada’s Largest Hackathon</Subtitle>
           <DescriptionContainer>
-            <Description>January 21 - 22, 2023</Description>
+            <Description>January 2024</Description>
             <HideMobile>&nbsp;|&nbsp;</HideMobile>
-            <Description>In-Person Event @ UBC Life Sciences Institute </Description>
+            <Description>In-Person Event @ UBC</Description>
           </DescriptionContainer>
         </IntroContainer>
-        <ActionsContainer>
+        {/* <ActionsContainer>
           <ButtonsContainer>
             <Button variant="solid" target="_blank" rel="noreferrer" href="https://portal.nwplus.io">
               Apply Now!
@@ -363,7 +363,7 @@ const Hero = () => {
           <VolunteerLink href="https://forms.gle/N6VYuPugFRfNCjFUA" target="_blank" rel="noreferrer">
             Apply to be a volunteer!
           </VolunteerLink>
-        </ActionsContainer>
+        </ActionsContainer> */}
       </OuterContainer>
     </HeroContainer>
   )

@@ -6,13 +6,12 @@ import { Header2, Header3 } from '@components/Typography'
 
 const FaqContainer = styled.div`
   position: relative;
-  background: linear-gradient(to bottom, #AFEBEE, #99E4EA);
+  background: linear-gradient(to bottom, #afebee, #99e4ea);
   min-height: 50vh;
-  
-  
-  ${(p) => p.theme.mediaQueries.mobile} {
+
+  ${p => p.theme.mediaQueries.mobile} {
     min-height: 0;
-    background: linear-gradient(to bottom, #BFEFF0, #79DAE4);
+    background: linear-gradient(to bottom, #bfeff0, #79dae4);
   }
 `
 
@@ -24,7 +23,7 @@ const Wrapper = styled.div`
   max-width: 1200px;
   z-index: 88;
   position: relative;
-  
+
   ${p => p.theme.mediaQueries.mobile} {
     grid-column: 2 / span 12;
     min-width: 0;
@@ -61,17 +60,17 @@ const FaqColumn = styled.div`
 
 // Collection -> questions of specific category
 const CollectionContainer = styled.div`
-  text-align:center;
-  display:flex;
-  flex-direction:column;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
 `
 
 const CollectionName = styled(Header3)`
-  color:#5667CF;
-  font-size:1.75rem;
+  color: #5667cf;
+  font-size: 1.75rem;
   font-weight: 900;
-  padding-bottom:1rem;
-  
+  padding-bottom: 1rem;
+
   ${p => p.theme.mediaQueries.mobile} {
     font-size: 1.2rem;
   }
@@ -80,7 +79,7 @@ const CollectionName = styled(Header3)`
 const StyledTitle = styled(Header2)`
   font-size: 3rem;
   text-align: center;
-  ${(p) => p.theme.mediaQueries.mobile} {
+  ${p => p.theme.mediaQueries.mobile} {
     font-size: 3em;
   }
 `
@@ -89,7 +88,9 @@ const FaqCollection = ({ category, faqs }) => (
   <CollectionContainer>
     <CollectionName>{category}</CollectionName>
 
-    {faqs.map(q => <FaqBox key={q.question} question={q.question} answer={q.answer} />)}
+    {faqs.map(q => (
+      <FaqBox key={q.question} question={q.question} answer={q.answer} />
+    ))}
   </CollectionContainer>
 )
 
@@ -103,7 +104,7 @@ const Faq = () => {
     // categorize questions
 
     const categories = {}
-    data.forEach((faq) => {
+    data.forEach(faq => {
       if (!categories[faq.category]) {
         categories[faq.category] = []
       }
@@ -113,7 +114,7 @@ const Faq = () => {
   }
 
   useEffect(async () => {
-    const data = await fireDb.getCollection('nwHacks2023', 'FAQ')
+    const data = await fireDb.getCollection('nwHacks2024', 'FAQ')
     const processedData = processData(data)
     setFaqData(processedData)
   }, [])
@@ -121,38 +122,27 @@ const Faq = () => {
   return (
     <FaqContainer>
       <Wrapper id="faq">
-        <StyledTitle
-          color="#5667CF"
-          fontSize="5rem">
+        <StyledTitle color="#5667CF" fontSize="5rem">
           FAQ
         </StyledTitle>
 
-        {faqData
-          ? (
-            <FaqGrid>
+        {faqData ? (
+          <FaqGrid>
+            <FaqColumn>{faqData.General && <FaqCollection category="General" faqs={faqData.General} />}</FaqColumn>
 
-              <FaqColumn>
-                {faqData.General &&
-                  <FaqCollection category="General" faqs={faqData.General} />
-                }
-              </FaqColumn>
+            <FaqColumn>
+              {faqData['Teams & Projects'] && (
+                <FaqCollection category="Teams & Projects" faqs={faqData['Teams & Projects']} />
+              )}
+            </FaqColumn>
 
-              <FaqColumn>
-                {faqData['Teams & Projects'] &&
-                  <FaqCollection category="Teams & Projects" faqs={faqData['Teams & Projects']} />
-                }
-              </FaqColumn>
-
-              <FaqColumn>
-                {faqData['Logistics'] &&
-                  <FaqCollection category="Logistics" faqs={faqData['Logistics']} />
-                }
-              </FaqColumn>
-
-            </FaqGrid>
-          )
-          : ''}
-
+            <FaqColumn>
+              {faqData['Logistics'] && <FaqCollection category="Logistics" faqs={faqData['Logistics']} />}
+            </FaqColumn>
+          </FaqGrid>
+        ) : (
+          ''
+        )}
       </Wrapper>
     </FaqContainer>
   )

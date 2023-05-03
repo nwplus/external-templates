@@ -8,7 +8,7 @@ import {
   faLinkedinIn,
   faMediumM,
   faTwitter,
-  faYoutube
+  faYoutube,
 } from '@fortawesome/free-brands-svg-icons'
 import Team from '@components/Team'
 
@@ -21,13 +21,13 @@ import WhistlerStamp from '../assets/images/stamps/Whistler.svg'
 
 const FooterContainer = styled.div`
   position: relative;
-  min-height: calc( calc(1556 / 1440) * 100vw);
+  min-height: calc(calc(1556 / 1440) * 100vw);
   margin-top: -0.5rem;
-  
-  ${(p) => p.theme.mediaQueries.mobile} {
+
+  ${p => p.theme.mediaQueries.mobile} {
     min-height: calc(calc(974 / 428) * 100vw);
 
-    background: url(${FooterBackgroundMobile}), #383E82;
+    background: url(${FooterBackgroundMobile}), #383e82;
     background-repeat: no-repeat;
     background-position: top center;
     background-size: cover;
@@ -40,11 +40,11 @@ const FooterBackground = styled.img`
   bottom: 0;
   position: absolute;
   user-select: none;
-  min-height: calc( calc(1163 / 1440) * 100vw);
+  min-height: calc(calc(1163 / 1440) * 100vw);
   aspect-ratio: 1440 / 1163;
   width: 100%;
 
-  ${(p) => p.theme.mediaQueries.mobile} {
+  ${p => p.theme.mediaQueries.mobile} {
     display: none;
   }
 `
@@ -53,16 +53,16 @@ const SocialMediaIcons = styled.div`
   justify-content: center;
   align-items: center;
   display: flex;
-  
+
   a {
     width: 50px;
     text-decoration: none;
     color: white;
   }
-  
+
   gap: 2rem;
-  
-  ${(p) => p.theme.mediaQueries.mobile} {
+
+  ${p => p.theme.mediaQueries.mobile} {
     a {
       width: 25px;
     }
@@ -77,11 +77,11 @@ const Links = styled.div`
 
   a {
     font-weight: 600;
-    color: #E2D6FF;
-    text-shadow: 0 0 10px #59B0EF;
+    color: #e2d6ff;
+    text-shadow: 0 0 10px #59b0ef;
   }
-  
-  ${(p) => p.theme.mediaQueries.mobile} {
+
+  ${p => p.theme.mediaQueries.mobile} {
     font-size: 1.1rem;
     flex-wrap: wrap;
     justify-content: center;
@@ -102,7 +102,7 @@ const TextContainer = styled.div`
   padding-top: 30%;
   gap: 1rem;
 
-  ${(p) => p.theme.mediaQueries.mobile} {
+  ${p => p.theme.mediaQueries.mobile} {
     padding-top: 65%;
   }
 `
@@ -113,13 +113,13 @@ const SmallText = styled.div`
   text-align: center;
 
   div {
-    color: #E2D6FF;
-    text-shadow: 0 0 10px #59B0EF;
+    color: #e2d6ff;
+    text-shadow: 0 0 10px #59b0ef;
     font-size: 1.2rem;
     font-weight: 500;
   }
 
-  ${(p) => p.theme.mediaQueries.mobile} {
+  ${p => p.theme.mediaQueries.mobile} {
     div {
       font-size: 1rem;
     }
@@ -132,12 +132,12 @@ const TeamContainer = styled.div`
   bottom: 12%;
   text-align: center;
   width: 100%;
-  
-  ${(p) => p.theme.mediaQueries.tabletLarge} {
+
+  ${p => p.theme.mediaQueries.tabletLarge} {
     width: 40vw;
   }
 
-  ${(p) => p.theme.mediaQueries.mobile} {
+  ${p => p.theme.mediaQueries.mobile} {
     width: 100%;
     bottom: 1rem;
   }
@@ -150,7 +150,7 @@ const StaticContainer = styled.div`
   position: absolute;
   width: 100%;
   height: 100%;
-  
+
   ${p => p.theme.mediaQueries.mobile} {
     width: 100%;
     padding: 0 6vw;
@@ -158,24 +158,20 @@ const StaticContainer = styled.div`
 `
 
 const Footer = () => {
-
-  const stampPArr = [
-    useParallax({ speed: 5 }),
-    useParallax({ speed: 6 })
-  ]
+  const stampPArr = [useParallax({ speed: 5 }), useParallax({ speed: 6 })]
 
   const stamps = [
     {
       name: 'Victoria Stamp',
       imgSrc: VictoriaStamp,
-      left: '-2rem'
+      left: '-2rem',
     },
     {
       name: 'Whistler Stamp',
       imgSrc: WhistlerStamp,
       top: '20%',
-      right: '-5rem'
-    }
+      right: '-5rem',
+    },
   ]
 
   return (
@@ -190,58 +186,45 @@ const Footer = () => {
           top={item.top || null}
           right={item.right || null}
           bottom={item.bottom || null}
-          left={item.left || null} />
+          left={item.left || null}
+        />
       ))}
       <StaticContainer>
         <TextContainer>
           <SocialMediaIcons>
-            <a
-              href='https://www.facebook.com/nwplusubc'
-              target='_blank'
-              rel='noreferrer'
-            >
+            <a href="https://www.facebook.com/nwplusubc" target="_blank" rel="noreferrer">
               <FontAwesomeIcon icon={faFacebook} />
             </a>
-            <a
-              href='https://www.instagram.com/nwplusubc'
-              target='_blank'
-              rel='noreferrer'
-            >
+            <a href="https://www.instagram.com/nwplusubc" target="_blank" rel="noreferrer">
               <FontAwesomeIcon icon={faInstagram} />
             </a>
-            <a
-              href='https://twitter.com/nwplusubc'
-              target='_blank'
-              rel='noreferrer'
-            >
+            <a href="https://twitter.com/nwplusubc" target="_blank" rel="noreferrer">
               <FontAwesomeIcon icon={faTwitter} />
             </a>
-            <a
-              href='https://www.linkedin.com/company/nwplus'
-              target='_blank'
-              rel='noreferrer'
-            >
+            <a href="https://www.linkedin.com/company/nwplus" target="_blank" rel="noreferrer">
               <FontAwesomeIcon icon={faLinkedinIn} />
             </a>
-            <a
-              href='https://www.youtube.com/c/nwPlusUBC'
-              target='_blank'
-              rel='noreferrer'
-            >
+            <a href="https://www.youtube.com/c/nwPlusUBC" target="_blank" rel="noreferrer">
               <FontAwesomeIcon icon={faYoutube} />
             </a>
-            <a href='https://medium.com/nwplusubc' target='_blank' rel='noreferrer'>
+            <a href="https://medium.com/nwplusubc" target="_blank" rel="noreferrer">
               <FontAwesomeIcon icon={faMediumM} />
             </a>
           </SocialMediaIcons>
           <Links>
-            <a href="mailto:info@nwplus.io" target="_blank" rel='noreferrer'>Email Us</a>
-            <a href="mailto:sponsorship@nwplus.io?subject=Sponsorship" target="_blank" rel='noreferrer'>Become a Sponsor</a>
-            <a href="https://mlh.io/code-of-conduct" target="_blank" rel='noreferrer'>Code of Conduct</a>
+            <a href="mailto:info@nwplus.io" target="_blank" rel="noreferrer">
+              Email Us
+            </a>
+            <a href="mailto:sponsorship@nwplus.io?subject=Sponsorship" target="_blank" rel="noreferrer">
+              Become a Sponsor
+            </a>
+            <a href="https://mlh.io/code-of-conduct" target="_blank" rel="noreferrer">
+              Code of Conduct
+            </a>
           </Links>
           <SmallText>
             <div>Organized and held by nwPlus</div>
-            <div>Copyright &copy; nwHacks 2023</div>
+            <div>Copyright &copy; nwHacks 2024</div>
           </SmallText>
         </TextContainer>
         <TeamContainer>

@@ -67,8 +67,9 @@ export default function Index({ title }) {
         <meta property="og:image" content="/og_preview.png" />
       </Head>
       {/* Components Starts */}
-      <Banner buttonLink="info.html" />
-      <NavigationBar bannerExists />
+      {/* <Banner buttonLink="info.html" /> */}
+      {/* <NavigationBar bannerExists /> */}
+      <NavigationBar />
       <HalfContainer>
         <HalfBackgroundImage src={MainGraphicsTop} alt="Background image" />
         <Hero />
@@ -87,7 +88,7 @@ export default function Index({ title }) {
 export async function getStaticProps() {
   return {
     props: {
-      title: 'nwHacks 2023',
+      title: 'nwHacks 2024',
     }, // will be passed to the page component as props
   }
 }
