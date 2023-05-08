@@ -6,7 +6,7 @@ import { BANNER_OFFSET } from '../constants/measurements'
 
 const NavBarContainer = styled.nav`
   position: fixed;
-  top: 0;
+  top: 120px;
   z-index: 999;
   width: 100%;
   height: 100px;
@@ -102,7 +102,7 @@ const HamburgerMenu = styled.img`
 
 const DropDownContentContainer = styled.div`
   position: fixed;
-  top: 0;
+  top: 120px;
   z-index: 998;
   padding: 30px 40px 24px 40px;
   display: flex;
@@ -189,7 +189,7 @@ const TrustBadgeLink = styled.a`
   max-width: 100px;
   min-width: 60px;
   position: fixed;
-  top: 0px;
+  top: 120px;
   right: 50px;
   width: 5%;
   z-index: 1000;
@@ -274,10 +274,11 @@ const TrustBadge = () => (
   </TrustBadgeLink>
 )
 
-const NavigationBar = () => {
+const NavigationBar = ({ bannerExists }) => {
   const [showDropdown, setShowDropdown] = useState(false)
   const [visibility, setVisibility] = useState('visible')
   const [opacity, setOpacity] = useState('1')
+  const [stayAtTop, setStayAtTop] = useState(bannerExists && true)
 
   const handleResize = () => {
     if (window.innerWidth >= SCREEN_BREAKPOINTS.mobile) {
@@ -290,11 +291,14 @@ const NavigationBar = () => {
     return () => {
       const scroll = window.pageYOffset || document.documentElement.scrollTop
       if (scroll <= BANNER_OFFSET) {
+        setStayAtTop(bannerExists && true)
         setVisibility('visible')
         setOpacity('1')
       } else if (scroll > lastScroll) {
+        setStayAtTop(false)
         setVisibility('hidden')
         setOpacity('0')
+        setStayAtTop(0)
       } else {
         setVisibility('visible')
         setOpacity('1')
@@ -330,16 +334,16 @@ const NavigationBar = () => {
           </a>
           <MenuList isMobile={showDropdown} closeDropdown={setShowDropdown} />
           {/* Make sure desktop (below) has the same portalOpen value */}
-          <PortalButton portalOpen={false} />
+          <PortalButton portalOpen />
         </DropDownContentContainer>
-        <TrustBadge />
+        <TrustBadge stayAtTop={stayAtTop} />
       </>
     )
   }
 
   // Only for desktop version
   return (
-    <NavBarContainer visibility={visibility} opacity={opacity}>
+    <NavBarContainer visibility={visibility} opacity={opacity} stayAtTop={stayAtTop}>
       <NavGroupContainer>
         <a href="/">
           <NwPlusLogo src="/images/logos/nwplus-logo.svg" alt="nwPlus club logo in white" />
@@ -348,7 +352,7 @@ const NavigationBar = () => {
           <MenuList />
         </NavTextContainer>
         {/* Make sure mobile (above) has the same portalOpen value */}
-        <PortalButton portalOpen={false} />
+        <PortalButton portalOpen />
       </NavGroupContainer>
       <HamburgerMenu src="/images/icons/menu.svg" alt="dropdown menu icon" onClick={() => setShowDropdown(true)} />
       <TrustBadge />

@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import React from 'react'
 import GlobalStyles from '@styles/global'
+import Banner from '@components/Banner'
 
 import Sponsors from 'src/sections/Sponsors'
 import About from 'src/sections/About'
@@ -14,7 +15,7 @@ import Hero from '../components/Hero'
 
 export default function Index({ title }) {
   return (
-    <>
+    <div className="root-container">
       <GlobalStyles />
       <Head>
         <title>{title}</title>
@@ -30,6 +31,7 @@ export default function Index({ title }) {
       </Head>
 
       {/* Components Starts */}
+      <Banner />
       <NavigationBar />
       <Hero />
       <About />
@@ -39,7 +41,7 @@ export default function Index({ title }) {
       <Sponsors />
       <Footer />
       {/* Components Ends */}
-    </>
+    </div>
   )
 }
 

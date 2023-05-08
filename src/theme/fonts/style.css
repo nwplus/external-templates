@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;700&family=Fira+Code:wght@700&display=swap&family=Source+Sans+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;700&family=Fira+Code:wght@700&display=swap&family=Source+Sans+Pro&display=swap&Kumbh+Sans:wght@700&display=swap');
 
 @font-face {
   font-family: 'Best Stories';
@@ -88,5 +88,5 @@
   font-family: 'HK Grotesk';
   font-style: normal;
   font-weight: 900;
-  src: local('HK Grotesk Black'), url('HKGrotesk-Black.woff') format('woff');
+  src: local('HK Grotesk Black'), url('HKGrotesk-Black.otf');
 }

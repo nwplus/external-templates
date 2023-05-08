@@ -40,6 +40,7 @@ const Row = styled.div`
   height: 100%;  
   ${p => p.flex ? `
     display: flex;
+    justify-content: center;
   ` : `
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -142,7 +143,87 @@ const BigBoi = styled.div`
   background-size: contain;
   background-position: center;
   width: 500px;
+  height: 400px;
+  padding: 1.5rem;
+
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+  }
+
+  ${(p) => p.theme.mediaQueries.tablet} {
+    width: 400px;
+    height: 290px;
+  }
+`
+const MediumBoi = styled.div`
+  ${p => `background: url("/assets/sponsors/sponsorBoxV${p.variant + 1}.svg")`};
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  width: 450px;
   height: 390px;
+  padding: 1.5rem;
+
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+  }
+
+  ${(p) => p.theme.mediaQueries.tablet} {
+    width: 400px;
+    height: 290px;
+  }
+`
+const SilverBoi = styled.div`
+  ${p => `background: url("/assets/sponsors/sponsorBoxV${p.variant + 1}.svg")`};
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  width: 400px;
+  height: 350px;
+  padding: 1.5rem;
+
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+  }
+
+  ${(p) => p.theme.mediaQueries.tablet} {
+    width: 400px;
+    height: 290px;
+  }
+`
+const BronzeBoi = styled.div`
+  ${p => `background: url("/assets/sponsors/sponsorBoxV${p.variant + 1}.svg")`};
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  width: 320px;
+  height: 250px;
+  padding: 1.5rem;
+
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+  }
+
+  ${(p) => p.theme.mediaQueries.tablet} {
+    width: 400px;
+    height: 290px;
+  }
+`
+const SVBoi = styled.div`
+  ${p => `background: url("/assets/sponsors/sponsorBoxV${p.variant + 1}.svg")`};
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  width: 275px;
+  height: 220px;
   padding: 1.5rem;
 
   img {
@@ -173,6 +254,11 @@ const MicroscopicBoi = styled.div`
   }
 `
 
+const StyledSponsorA = styled.a`
+  display: flex;
+  justify-content: center;
+`
+
 // startup/Inkind -> bronze -> silver -> gold -> platinum
 const SponsorSection = () => {
   const [categorizedSponsorMap, setSponsorMap] = useState(new Map())
@@ -192,9 +278,10 @@ const SponsorSection = () => {
   }
 
   useEffect(async () => {
-    const data = await fireDb.getCollection('cmd-f2021', 'Sponsors')
+    const data = await fireDb.getCollection('cmd-f2023', 'Sponsors')
     if (data) {
-      categorizeSponsor(data)
+      const lowerCasedData = data.map(sponsor => ({...sponsor, tier: sponsor.tier.toLowerCase()}))
+      categorizeSponsor(lowerCasedData)
     }
   }, [])
 
@@ -202,9 +289,10 @@ const SponsorSection = () => {
     <Row flex={flex}>
       {tiers.map((tier) => 
        categorizedSponsorMap.get(tier)?.map(({ imgURL, link, altImgURL }, index) => (
-        <a href={link} target="_blank" rel="noreferrer">
+        <StyledSponsorA href={link} target="_blank" rel="noreferrer">
           {(() => {
-            switch (tier) {
+            const tierlc = tier.toLowerCase()
+            switch (tierlc) {
               case 'title':
                 return (
                   <BigBoi variant={index % 4}>
@@ -214,30 +302,37 @@ const SponsorSection = () => {
 
               case 'platinum':
                 return (
-                  <BigBoi variant={index % 4}>
+                  <MediumBoi variant={index % 4}>
                     <PlatniumImg src={imgURL} />
-                  </BigBoi>
+                  </MediumBoi>
                 )
 
               case 'gold':
                 return (
-                  <BigBoi variant={index % 4}>
+                  <MediumBoi variant={index % 4}>
                     <GoldImg src={imgURL} />
-                  </BigBoi>
+                  </MediumBoi>
                 )
 
               case 'silver':
                 return (
-                  <MicroscopicBoi>
+                  <SilverBoi variant={index % 4}>
                     <SilverImg src={imgURL} />
-                  </MicroscopicBoi>
+                  </SilverBoi>
                 )
 
               case 'bronze':
                 return (
-                  <MicroscopicBoi>
+                  <BronzeBoi variant={index % 4}>
                     <BronzeImg src={imgURL} />
-                  </MicroscopicBoi>
+                  </BronzeBoi>
+                )
+
+              case 'startup':
+                return (
+                  <SVBoi variant={index % 4}>
+                    <BronzeImg src={imgURL} />
+                  </SVBoi>
                 )
 
               default:
@@ -248,7 +343,7 @@ const SponsorSection = () => {
                 )
             }
           })()}
-        </a>
+        </StyledSponsorA>
       ))
       )}
     </Row>
@@ -266,8 +361,12 @@ const SponsorSection = () => {
         </Button>
       </ButtonContainer>
       <Rows>
-        <SponsorsComponent tiers={['title', 'platinum', 'gold']} />
-        <SponsorsComponent tiers={['silver', 'bronze', 'Inkind']} flex />
+        <SponsorsComponent tiers={['platinum']}  />
+        <SponsorsComponent tiers={['gold']}  />
+        <SponsorsComponent tiers={['silver']} />
+        <SponsorsComponent tiers={['bronze']} />
+        <SponsorsComponent tiers={['startup']} />
+        <SponsorsComponent tiers={['inkind']} flex />
       </Rows>
     </Container>
   )
