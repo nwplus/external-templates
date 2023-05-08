@@ -6,12 +6,12 @@
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
     },
     {
-      "target": "cmdf2023_dev",
+      "target": "cmdf2024_dev",
       "public": "out",
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
     },
     {
-      "target": "cmdf2023",
+      "target": "cmdf2024",
       "public": "out",
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
     }

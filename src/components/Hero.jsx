@@ -186,7 +186,7 @@ const Hero = () => {
           {`Western Canada's largest hackathon celebrating underrepresented genders in tech`}
         </Header1>
         <Header4 color="#1A61A0">
-          March 11-12, 2023 | Robert H. Lee Alumni Centre @ The University of British Columbia (UBC)
+          March 2024 | The University of British Columbia (UBC)
         </Header4>
         <CTA>
           <Button variant="solid">
