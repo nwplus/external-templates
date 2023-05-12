@@ -202,20 +202,20 @@ const Hero = () => {
           March 2024 | The University of British Columbia (UBC)
         </Header4>
         <CTA>
-          <Button variant="solid" href="https://portal.nwplus.io">
+          <Button variant="solid" href="https://forms.gle/3U6yjkrEBiQCv4q27">
             Apply Now!
           </Button>
-          <Button variant="outlined" href="https://docs.google.com/forms/d/1Imcoxry_GWRe6zM5GB7sgsffswmxGeXC6wwa1tZEsFU/">
+          {/* <Button variant="outlined" href="https://docs.google.com/forms/d/1Imcoxry_GWRe6zM5GB7sgsffswmxGeXC6wwa1tZEsFU/">
             Be a Mentor!
-          </Button>
+          </Button> */}
         </CTA>
         <MoreCTA>
-        <StyledA href="https://docs.google.com/forms/d/e/1FAIpQLSc8jhBuq8zxC4cl_SXTrp9H3ZSyv0WD9VqlGLg7guwhJok6Jg/viewform" target="_blank" rel="noreferrer noopener">
+        {/* <StyledA href="https://docs.google.com/forms/d/e/1FAIpQLSc8jhBuq8zxC4cl_SXTrp9H3ZSyv0WD9VqlGLg7guwhJok6Jg/viewform" target="_blank" rel="noreferrer noopener">
           Be a Volunteer!
         </StyledA>
         <StyledA href="https://docs.google.com/forms/d/e/1FAIpQLSfIMBVHOp5xoRYPZZhAsVmAmDOJx9oEsYEX6L8ZiGyOt1kIEw/viewform" target="_blank" rel="noreferrer noopener">
           Apply for the media team!
-        </StyledA>
+        </StyledA> */}
         </MoreCTA>
       </HeroContentContainer>
       <CountdownContainer>
