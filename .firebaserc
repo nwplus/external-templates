@@ -19,7 +19,7 @@
         "root": [
           "nwplus-root"
         ],
-        "cmd-f2024": [
+        "cmd-f2024_main": [
           "nwplus-cmd-f2024"
         ]
       }

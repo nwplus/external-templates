@@ -7,7 +7,7 @@ on:
         description: 'Targetted hackathon to build'
         required: true
   push:
-    branches: [cmd-f2024_dev, cmd-f2024_main]
+    branches: [cmdf2024_dev, cmd-f2024_main]
 
 jobs:
   firebase_deploy:
