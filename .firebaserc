@@ -19,8 +19,8 @@
         "root": [
           "nwplus-root"
         ],
-        "cmdf2024": [
-          "nwplus-cmdf2024"
+        "cmd-f2024": [
+          "nwplus-cmd-f2024"
         ]
       }
     }
