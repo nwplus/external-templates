@@ -6,7 +6,7 @@ import { BANNER_OFFSET } from '../constants/measurements'
 
 const NavBarContainer = styled.nav`
   position: fixed;
-  top: 120px;
+  top: 0px;
   z-index: 999;
   width: 100%;
   height: 100px;
@@ -102,7 +102,7 @@ const HamburgerMenu = styled.img`
 
 const DropDownContentContainer = styled.div`
   position: fixed;
-  top: 120px;
+  top: 0px;
   z-index: 998;
   padding: 30px 40px 24px 40px;
   display: flex;
@@ -189,7 +189,7 @@ const TrustBadgeLink = styled.a`
   max-width: 100px;
   min-width: 60px;
   position: fixed;
-  top: 120px;
+  top: 0px;
   right: 50px;
   width: 5%;
   z-index: 1000;

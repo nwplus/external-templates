@@ -31,8 +31,8 @@ export default function Index({ title }) {
       </Head>
 
       {/* Components Starts */}
-      <Banner />
-      <NavigationBar />
+      {/* <Banner /> */}
+      <NavigationBar bannerExists={false}/>
       <Hero />
       <About />
       <Statistics />
