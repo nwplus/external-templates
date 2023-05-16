@@ -31,8 +31,8 @@ export default function Index({ title }) {
       </Head>
 
       {/* Components Starts */}
-      <Banner />
-      <NavigationBar />
+      {/* <Banner /> */}
+      <NavigationBar bannerExists={false}/>
       <Hero />
       <About />
       <Statistics />
@@ -48,7 +48,7 @@ export default function Index({ title }) {
 export async function getStaticProps() {
   return {
     props: {
-      title: 'cmd-f 2023',
+      title: 'cmd-f 2024',
     }, // will be passed to the page component as props
   }
 }

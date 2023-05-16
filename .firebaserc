@@ -9,8 +9,8 @@
         "root": [
           "dev-nwplus-root"
         ],
-        "cmdf2023_dev": [
-          "dev-nwplus-cmdf2023"
+        "cmd-f2024_dev": [
+          "dev-nwplus-cmdf2024"
         ]
       }
     },
@@ -19,8 +19,8 @@
         "root": [
           "nwplus-root"
         ],
-        "cmd-f2023": [
-          "nwplus-cmd-f2023"
+        "cmd-f2024_main": [
+          "nwplus-cmd-f2024"
         ]
       }
     }

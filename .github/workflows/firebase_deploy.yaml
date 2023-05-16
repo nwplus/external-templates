@@ -7,7 +7,7 @@ on:
         description: 'Targetted hackathon to build'
         required: true
   push:
-    branches: [cmdf2023, cmdf2023_dev]
+    branches: [cmd-f2024_dev, cmd-f2024_main]
 
 jobs:
   firebase_deploy:
@@ -16,6 +16,11 @@ jobs:
       IS_PRODUCTION: ${{ endsWith(github.ref, 'main') || endsWith(github.event.inputs.targetedHackathon, 'main') }}
     steps:
       - uses: actions/checkout@master
+
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
 
       - name: Set up firebase
         run: sudo npm install -g firebase-tools --unsafe

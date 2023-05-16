@@ -155,7 +155,7 @@ const SocialMediaContainer = () => (
       </Links>
       <SmallText>
         <div>Organized and held by nwPlus</div>
-        <div>Copyright &copy; cmd-f 2023</div>
+        <div>Copyright &copy; cmd-f 2024</div>
       </SmallText>
     </TextContainer>
   </StaticContainer>

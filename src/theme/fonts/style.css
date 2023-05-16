@@ -84,9 +84,9 @@
   src: local('HK Grotesk Bold Italic'), url('HKGrotesk-BoldItalic.woff') format('woff');
 }
 
-@font-face {
+/* @font-face {
   font-family: 'HK Grotesk';
   font-style: normal;
   font-weight: 900;
   src: local('HK Grotesk Black'), url('HKGrotesk-Black.otf');
-}
+} */
