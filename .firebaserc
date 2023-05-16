@@ -9,7 +9,7 @@
         "root": [
           "dev-nwplus-root"
         ],
-        "cmdf2024_dev": [
+        "cmd-f2024_dev": [
           "dev-nwplus-cmdf2024"
         ]
       }
