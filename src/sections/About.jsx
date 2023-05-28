@@ -92,13 +92,11 @@ const About = () => {
           </BlurbText>
         </BlurbContainer>
         <BlurbContainer bias="right">
-          <BlurbHeader>We{`'`}re back in person!</BlurbHeader>
+          <BlurbHeader>Join us for an unforgettable experience!</BlurbHeader>
           <BlurbText>
-            Last year, we connected hundreds of the brightest developers, engineers, and designers worldwide to
-            collaborate and create amazing projects online. This year, not only are we back in-person, we will also be
-            bigger and better than ever! We will be returning to our regular in-person operations, and providing you
-            with a more traditional hackathon experience. We look forward to seeing you—whether we are reuniting or
-            meeting you for the first time—at nwHacks 2024.
+            We're thrilled to announce that we're once again bringing you an incredible hackathon experience! Last year,
+            we connected hundreds of the brightest developers, engineers, and designers coming from all over North
+            America. Whether we're reuniting or meeting you for the first time, we can't wait to see you there!
           </BlurbText>
         </BlurbContainer>
       </AboutInner>

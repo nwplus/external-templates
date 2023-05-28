@@ -12,6 +12,7 @@ import LivepeerImage from '../assets/images/Livepeer.svg'
 const HeroContainer = styled.div`
   position: relative;
   min-height: calc(calc(800 / 1440) * 100vw);
+  margin-top: -15rem;
 
   ${p => p.theme.mediaQueries.mobile} {
     min-height: calc(calc(1200 / 882) * 100vw);
@@ -346,7 +347,7 @@ const Hero = () => {
           </TitleContainer>
           <Subtitle>Western Canada’s Largest Hackathon</Subtitle>
           <DescriptionContainer>
-            <Description>January 2024</Description>
+            <Description>January 20 - 21 2024</Description>
             <HideMobile>&nbsp;|&nbsp;</HideMobile>
             <Description>In-Person Event @ UBC</Description>
           </DescriptionContainer>
