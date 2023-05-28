@@ -249,8 +249,8 @@ const MenuList = ({ isMobile, closeDropdown }) => (
     <MenuItem name="FAQ" href="/#faq" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
     <MenuItem name="Sponsors" href="/#sponsors" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
     <MenuItem
-      name="2022"
-      href="https://2022.nwhacks.io"
+      name="2023"
+      href="https://2023.nwhacks.io"
       target="_blank"
       rel="noopener"
       isMobile={isMobile}
