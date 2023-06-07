@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
 import { scale } from '@utilities/format'
+import mlhImage from '@assets/images/mlhTrustBadgeWhite.svg'
 import { BANNER_OFFSET } from '../constants/measurements'
 
 const NavBarContainer = styled.nav`
@@ -267,11 +268,7 @@ const TrustBadge = ({ stayAtTop }) => (
     target="_blank"
     stayAtTop={stayAtTop}
   >
-    <img
-      src="https://s3.amazonaws.com/logged-assets/trust-badge/2023/mlh-trust-badge-2023-white.svg"
-      alt="Major League Hacking 2023 Hackathon Season"
-      style={{ width: '100%' }}
-    />
+    <img src={mlhImage} alt="Major League Hacking 2024 Hackathon Season" style={{ width: '100%' }} />
   </TrustBadgeLink>
 )
 
