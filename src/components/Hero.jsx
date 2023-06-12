@@ -199,7 +199,7 @@ const Hero = () => {
           {`Western Canada's largest hackathon celebrating underrepresented genders in tech`}
         </Header1>
         <Header4 color="#1A61A0">
-          March 2024 | The University of British Columbia (UBC)
+          March 9-10, 2024 | The University of British Columbia (UBC)
         </Header4>
         <CTA>
           <Button variant="solid" href="https://forms.gle/3U6yjkrEBiQCv4q27">
