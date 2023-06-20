@@ -248,14 +248,14 @@ const MenuList = ({ isMobile, closeDropdown }) => (
     <MenuItem name='Hackathon' href='/#hackathon' isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
     <MenuItem name="FAQ" href="/#faq" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
     <MenuItem name="Sponsors" href="/#sponsors" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
-    <MenuItem
+    {/* <MenuItem
       name="2023"
       href="https://cmd-f.nwplus.io/"
       target="_blank"
       rel="noopener"
       isMobile={isMobile}
       closeDropdown={closeDropdown}
-    />
+    /> */}
   </>
 )
 
