@@ -248,14 +248,14 @@ const MenuList = ({ isMobile, closeDropdown }) => (
     <MenuItem name='Hackathon' href='/#hackathon' isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
     <MenuItem name="FAQ" href="/#faq" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
     <MenuItem name="Sponsors" href="/#sponsors" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
-    <MenuItem
-      name="2022"
-      href="https://cmd-f2022.nwplus.io"
+    {/* <MenuItem
+      name="2023"
+      href="https://cmd-f.nwplus.io/"
       target="_blank"
       rel="noopener"
       isMobile={isMobile}
       closeDropdown={closeDropdown}
-    />
+    /> */}
   </>
 )
 
@@ -263,12 +263,12 @@ const TrustBadge = () => (
   <TrustBadgeLink
     id="mlh-trust-badge"
     rel="noreferrer"
-    href="https://mlh.io/na?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2023-season&utm_content=white"
+    href="https://mlh.io/na?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2024-season&utm_content=white"
     target="_blank"
   >
     <img
-      src="https://s3.amazonaws.com/logged-assets/trust-badge/2023/mlh-trust-badge-2023-white.svg"
-      alt="Major League Hacking 2023 Hackathon Season"
+      src="https://s3.amazonaws.com/logged-assets/trust-badge/2024/mlh-trust-badge-2024-white.svg"
+      alt="Major League Hacking 2024 Hackathon Season"
       style={{ width: '100%' }}
     />
   </TrustBadgeLink>
@@ -317,6 +317,8 @@ const NavigationBar = ({ bannerExists }) => {
     }
   }, [])
 
+  const portalOpen = false
+
   if (showDropdown) {
     // Mobile version
     return (
@@ -333,8 +335,7 @@ const NavigationBar = ({ bannerExists }) => {
             <NwPlusLogo src="/images/logos/nwplus-logo.svg" alt="nwPlus club logo in white" />
           </a>
           <MenuList isMobile={showDropdown} closeDropdown={setShowDropdown} />
-          {/* Make sure desktop (below) has the same portalOpen value */}
-          <PortalButton portalOpen />
+          <PortalButton portalOpen={portalOpen} />
         </DropDownContentContainer>
         <TrustBadge stayAtTop={stayAtTop} />
       </>
@@ -351,8 +352,7 @@ const NavigationBar = ({ bannerExists }) => {
         <NavTextContainer>
           <MenuList />
         </NavTextContainer>
-        {/* Make sure mobile (above) has the same portalOpen value */}
-        <PortalButton portalOpen />
+        <PortalButton portalOpen={portalOpen} />
       </NavGroupContainer>
       <HamburgerMenu src="/images/icons/menu.svg" alt="dropdown menu icon" onClick={() => setShowDropdown(true)} />
       <TrustBadge />
