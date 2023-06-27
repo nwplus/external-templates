@@ -148,31 +148,19 @@
 <rect x="25.7764" y="216.763" width="374.224" height="326.908" fill="#4D4B4F"/>
 </g>
 <text fill="#F4F7FF" xml:space="preserve" style="white-space: pre" font-family="HK Grotesk" font-size="42.117" letter-spacing="0.381058px"><tspan x="71.9595" y="485.498">Mentors</tspan></text>
-<<<<<<< HEAD
-<text fill="#F4F7FF" xml:space="preserve" style="white-space: pre" font-family="HK Grotesk" font-size="42.117" letter-spacing="0.381058px"><tspan x="326.912" y="485.498">xx</tspan></text>
-=======
-<text fill="#F4F7FF" xml:space="preserve" style="white-space: pre" font-family="HK Grotesk" font-size="42.117" letter-spacing="0.381058px"><tspan x="300.912" y="485.498">45</tspan></text>
->>>>>>> d8c27c1462a34360bf489ebb12ed3c14582b6043
+<text fill="#F4F7FF" xml:space="preserve" style="white-space: pre" font-family="HK Grotesk" font-size="42.117" letter-spacing="0.381058px"><tspan x="300.912" y="485.498">43</tspan></text>
 <g filter="url(#filter15_d_1381_1009)">
 <rect x="72" y="506" width="298" height="9" fill="#847064"/>
 </g>
 <text fill="#F4F7FF" xml:space="preserve" style="white-space: pre" font-family="HK Grotesk" font-size="42.117" letter-spacing="0.381058px"><tspan x="71.9595" y="387.294">Projects</tspan></text>
-<<<<<<< HEAD
-<text fill="#F4F7FF" xml:space="preserve" style="white-space: pre" font-family="HK Grotesk" font-size="42.117" letter-spacing="0.381058px"><tspan x="321.542" y="387.294">xx</tspan></text>
-=======
-<text fill="#F4F7FF" xml:space="preserve" style="white-space: pre" font-family="HK Grotesk" font-size="42.117" letter-spacing="0.381058px"><tspan x="300.542" y="387.294">30</tspan></text>
->>>>>>> d8c27c1462a34360bf489ebb12ed3c14582b6043
+<text fill="#F4F7FF" xml:space="preserve" style="white-space: pre" font-family="HK Grotesk" font-size="42.117" letter-spacing="0.381058px"><tspan x="300.542" y="387.294">44</tspan></text>
 <g filter="url(#filter16_d_1381_1009)">
 <rect x="72" y="407" width="293" height="9" fill="#847064"/>
 </g>
 <g filter="url(#filter17_d_1381_1009)">
 <rect x="72" y="309" width="293" height="9" fill="#847064"/>
 </g>
-<<<<<<< HEAD
-<text fill="#F4F7FF" xml:space="preserve" style="white-space: pre" font-family="HK Grotesk" font-size="42.117" letter-spacing="0.381058px"><tspan x="321.843" y="289.091">xx</tspan></text>
-=======
 <text fill="#F4F7FF" xml:space="preserve" style="white-space: pre" font-family="HK Grotesk" font-size="42.117" letter-spacing="0.381058px"><tspan x="260.843" y="289.091">200+</tspan></text>
->>>>>>> d8c27c1462a34360bf489ebb12ed3c14582b6043
 <text fill="#F4F7FF" xml:space="preserve" style="white-space: pre" font-family="HK Grotesk" font-size="42.117" letter-spacing="0.381058px"><tspan x="71.9595" y="289.091">Hackers</tspan></text>
 <path d="M112.151 538.235C112.25 538.492 112.121 538.782 111.863 538.88C111.605 538.979 111.316 538.85 111.217 538.593L112.151 538.235ZM113.191 522.164C112.432 523.476 111.417 524.441 110.716 525.305C110 526.189 109.499 527.071 109.499 528.414H108.499C108.499 526.756 109.143 525.658 109.939 524.676C110.751 523.675 111.616 522.889 112.325 521.663L113.191 522.164ZM109.499 528.414C109.499 529.104 109.655 530.059 109.905 531.128C110.153 532.189 110.485 533.332 110.818 534.388C111.151 535.443 111.485 536.405 111.735 537.104C111.86 537.454 111.964 537.737 112.037 537.933C112.073 538.03 112.102 538.106 112.121 538.157C112.131 538.183 112.138 538.202 112.143 538.215C112.146 538.222 112.148 538.227 112.149 538.23C112.149 538.232 112.15 538.233 112.15 538.233C112.15 538.234 112.15 538.234 112.151 538.234C112.151 538.234 112.151 538.234 112.151 538.234C112.151 538.235 112.151 538.235 111.684 538.414C111.217 538.593 111.217 538.593 111.217 538.592C111.217 538.592 111.217 538.592 111.217 538.592C111.217 538.592 111.217 538.592 111.216 538.591C111.216 538.59 111.215 538.589 111.215 538.587C111.213 538.583 111.211 538.578 111.209 538.571C111.204 538.558 111.196 538.537 111.186 538.511C111.166 538.458 111.137 538.381 111.1 538.281C111.026 538.082 110.92 537.795 110.794 537.441C110.54 536.734 110.203 535.759 109.864 534.689C109.527 533.62 109.187 532.45 108.931 531.355C108.678 530.269 108.499 529.223 108.499 528.414H109.499Z" fill="#207349"/>
 <path d="M119.202 509.914C119.937 511.331 118.665 513.914 118.665 513.914H115.443C115.443 513.914 113.49 511.866 113.832 510.414C114.149 509.065 115.034 507.929 116.517 507.914C117.86 507.9 118.618 508.788 119.202 509.914Z" fill="url(#paint5_linear_1381_1009)"/>
