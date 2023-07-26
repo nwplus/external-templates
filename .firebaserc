@@ -9,17 +9,8 @@
         "root": [
           "dev-nwplus-root"
         ],
-        "cmd-f_dev": [
-          "dev-nwplus-cmd-f"
-        ],
-        "hackcamp2021_dev": [
-          "dev-nwplus-hackcamp2021"
-        ],
-        "hackcamp2022_dev": [
-          "dev-nwplus-hackcamp2022"
-        ],
-        "nwhacks2022_dev": [
-          "dev-nwplus-nwhacks2022"
+        "hackcamp2023_dev": [
+          "dev-nwplus-hackcamp2023"
         ]
       }
     },
@@ -28,17 +19,8 @@
         "root": [
           "nwplus-root"
         ],
-        "cmd-f_main": [
-          "nwplus-cmd-f"
-        ],
-        "hackcamp2021_main": [
-          "nwplus-hackcamp2021"
-        ],
-        "hackcamp2022_main": [
-          "nwplus-hackcamp2022"
-        ],
-        "nwhacks2022_main": [
-          "nwplus-nwhacks2022"
+        "hackcamp2023_main": [
+          "nwplus-hackcamp2023"
         ]
       }
     }
