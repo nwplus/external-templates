@@ -337,7 +337,7 @@ const profiles = [
 ]
 
 const StyledTitle = styled(Header3)`
-  color: white;
+  color: #E2D6FF;
   position: absolute;
   z-index: 101;
   width: 100vw;
@@ -442,7 +442,7 @@ export default function Team() {
 
   return (
     <>
-      <StyledTitle>Made with 💖 by the nwPlus Team</StyledTitle>
+      <StyledTitle>Meet the minds behind HackCamp</StyledTitle>
       <ProfileContent>
         <span>
           <b>{selectedProfile?.name}</b> {selectedProfile?.emoji}

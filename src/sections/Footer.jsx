@@ -13,7 +13,7 @@ import Team from '@components/Team'
 
 const FooterContainer = styled.div`
   position: relative;
-  background: url('/assets/footer/desktop_background.svg'), linear-gradient(to bottom, #645F70, #545364);
+  background: url('/assets/footer/desktop_background.svg'), linear-gradient(to bottom, #231048, #181930);
   min-height: calc(calc(2037 / 1436) * 100vw);
   background-repeat: no-repeat;
   background-size: cover;
@@ -32,7 +32,7 @@ const SocialMediaIcons = styled.div`
   a {
     width: 50px;
     text-decoration: none;
-    color: white;
+    color: #E2D6FF;
   }
 
   gap: 2rem;
@@ -51,7 +51,7 @@ const Links = styled.div`
   font-size: 1.5rem;
   a {
     font-weight: 600;
-    color: white;
+    color: #E2D6FF;
   }
 
   ${p => p.theme.mediaQueries.mobile} {
@@ -79,8 +79,8 @@ const SmallText = styled.div`
   padding-top: 2.5rem;
   text-align: center;
   div {
-    color: white;
-    font-size: 1.2rem;
+    color: #E2D6FF;
+    font-size: 1rem;
     font-weight: 500;
   }
   ${p => p.theme.mediaQueries.mobile} {
@@ -93,7 +93,7 @@ const SmallText = styled.div`
 const TeamContainer = styled.div`
   position: absolute;
   left: 0;
-  bottom: 1rem;
+  bottom: 5rem;
   text-align: center;
   width: 100%;
 
@@ -110,9 +110,9 @@ const StaticContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  position: absolute;
+  position: relative;
   width: 100%;
-  top: 6rem;
+  top: 98rem;
 
   ${p => p.theme.mediaQueries.mobile} {
     top: 3.5rem;
