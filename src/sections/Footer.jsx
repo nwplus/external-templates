@@ -13,8 +13,8 @@ import Team from '@components/Team'
 
 const FooterContainer = styled.div`
   position: relative;
-  background: url('/assets/footer/desktop_background.svg'), linear-gradient(to bottom, #231048, #181930);
-  min-height: calc(calc(2037 / 1436) * 100vw);
+  background: url('/assets/footer/desktop_background.svg'), linear-gradient(to bottom, #150C27, #150C27);
+  min-height: 65vw;
   background-repeat: no-repeat;
   background-size: cover;
 
@@ -91,9 +91,9 @@ const SmallText = styled.div`
 `
 
 const TeamContainer = styled.div`
-  position: absolute;
+  position: relative;
   left: 0;
-  bottom: 5rem;
+  bottom: -5rem;
   text-align: center;
   width: 100%;
 
@@ -112,7 +112,7 @@ const StaticContainer = styled.div`
   justify-content: space-between;
   position: relative;
   width: 100%;
-  top: 98rem;
+  padding-top: 20rem;
 
   ${p => p.theme.mediaQueries.mobile} {
     top: 3.5rem;

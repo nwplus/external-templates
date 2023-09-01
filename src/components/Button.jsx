@@ -7,7 +7,7 @@ const getButtonStyles = variant => {
     case 'solid':
       return `
         border: none;
-        background: linear-gradient(to right, #88B8E2 3.67%, #ACCFEB 100%);
+        background: linear-gradient(to right, #9AD4DE 3.67%, #959AFB 100%);
         transition: 0.3s;
 
         &:hover {
@@ -19,7 +19,7 @@ const getButtonStyles = variant => {
       return `
         box-sizing: border-box;
         background: transparent;
-        background-image: linear-gradient(0deg, #FFF8F5, #FFF8F5), linear-gradient(to right, #88B8E2 3.67%, #ACCFEB 100%);
+        background-image: linear-gradient(0deg, #FFF8F5, #FFF8F5), linear-gradient(to right, #9AD4DE 3.67%, #959AFB 100%);
         background-clip: padding-box, border-box;
         background-origin: border-box;
         transition: 0.3s;

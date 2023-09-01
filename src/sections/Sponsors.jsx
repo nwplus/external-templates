@@ -2,14 +2,12 @@ import SponsorSection from '@components/SponsorSection'
 import styled from 'styled-components'
 
 const SponsorsContainer = styled.div`
-    background: url('/assets/sponsors/desktopBookshelf.svg'), linear-gradient(to bottom, #697280, #645F70);
+    background: url('/assets/sponsors/desktop_sponsor.svg'), linear-gradient(to bottom, #150C27, #150C27);
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
     background-position: center top;
-    padding: 5rem 1rem;
 
-    min-height: 500px;
-    padding-top: calc(calc(250 / 1440) * 100vw);
+    min-height: 1740px;
     ${p => p.theme.mediaQueries.mobile} {
       background: linear-gradient(to bottom, #697280, #645F70);
     }

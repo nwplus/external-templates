@@ -368,6 +368,7 @@ const ProfileList = styled.div`
   padding-top: 3rem;
   overflow-x: hidden;
   white-space: nowrap;
+  position:relative;
 `
 
 const ProfileImage = styled.img`

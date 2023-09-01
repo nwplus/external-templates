@@ -9,12 +9,12 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  padding-top: 36rem;
 `
 
 const TextContainer = styled.div`
   display: flex;
-  width: 60%;
+  width: 30%;
   align-items: center;
   justify-content: center;
   text-align: center;
@@ -32,7 +32,7 @@ const TextContainer = styled.div`
 
 const ButtonContainer = styled.div`
   display: flex;
-  margin-top: 10px;
+  margin-top: 30px;
   margin-bottom: 10px;
 `
 
@@ -48,7 +48,7 @@ const Row = styled.div`
   `}
   align-items: center;
   flex-wrap: wrap;
-  max-width: 55vw;
+  max-width: 50vw;
   gap: 0.5rem;
 
   ${(p) => p.theme.mediaQueries.tablet} {
@@ -137,12 +137,11 @@ const InkindImg = styled.img`
 `
 
 const BigBoi = styled.div`
-  ${p => `background: url("/assets/sponsors/sponsorBoxV${p.variant + 1}.svg")`};
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
-  width: 500px;
-  height: 390px;
+  width: 400px;
+  height: 280px;
   padding: 1.5rem;
 
   img {
@@ -158,11 +157,10 @@ const BigBoi = styled.div`
 `
 
 const MicroscopicBoi = styled.div`
-  background-image: url("/assets/sponsors/smallSponsorBox.svg");
   background-repeat: no-repeat;
   background-size: cover;
   width: 200px;
-  height: 155px;
+  height: 100px;
   padding: 1.5rem;
   background-position: center;
 
@@ -192,7 +190,7 @@ const SponsorSection = () => {
   }
 
   useEffect(async () => {
-    const data = await fireDb.getCollection('cmd-f2021', 'Sponsors')
+    const data = await fireDb.getCollection('hackcamp2023', 'Sponsors')
     if (data) {
       categorizeSponsor(data)
     }
@@ -257,18 +255,18 @@ const SponsorSection = () => {
   return (
     <Container>
       <Header2 id="sponsors">Sponsors</Header2>
-      <TextContainer>
-        <Body>nwPlus is always looking for new ventures, opportunities, and connections. If you are interested in working with us, joining us, or speaking at one of our events, feel free to reach out to us at <a href="mailto:info@nwplus.io" target="_blank" rel='noreferrer'>info@nwplus.io</a></Body>
-      </TextContainer>
-      <ButtonContainer>
-        <Button href="mailto:sponsorship@nwplus.io?Subject=Sponsorship" variant="solid" styles={{ margin: 'auto' }}>
-          Become a Sponsor
-        </Button>
-      </ButtonContainer>
       <Rows>
         <SponsorsComponent tiers={['title', 'platinum', 'gold']} />
         <SponsorsComponent tiers={['silver', 'bronze', 'Inkind']} flex />
       </Rows>
+      <TextContainer>
+        <Body>Sponsors make this event happen. If you are interested in working with us, joining us or speaking at one of our events, please reach out to us! <a href="mailto:info@nwplus.io" target="_blank" rel='noreferrer'>info@nwplus.io</a></Body>
+      </TextContainer>
+      <ButtonContainer>
+        <Button href="mailto:sponsorship@nwplus.io?Subject=Sponsorship" variant="solid" styles={{ margin: 'auto' }}>
+          Sponsor HackCamp!
+        </Button>
+      </ButtonContainer>
     </Container>
   )
 }
