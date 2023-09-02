@@ -5,16 +5,15 @@ const Container = styled.div`
   font-family: "HK Grotesk", sans-serif;
   text-align:left;
   background: white;
-  border:1.5px solid #FFF;
   border-radius:5px;
   box-sizing:border-box;
   overflow:hidden;
   ${p => p.expanded
     ? `
-    border-color: #FFFFFF;
+    border-color: #C4B2F0;
   `
     : `
-    border-color: #CE7A68;
+    border-color: #C4B2F0;
   `}
   
   &:not(:last-child) {
@@ -23,20 +22,18 @@ const Container = styled.div`
 `
 
 const Top = styled.div`
-  color: #433860;
+  color: #2C2543;
   padding:1rem;
   font-size:1.2rem;
   display:flex;
   justify-content:space-between;
-  border-bottom:solid;
-  margin-bottom:-1.2px;
-  font-weight: 400;
-  border-width:1px;
+  border: 1px solid #C4B2F0;
+  font-weight: 700;
   border-radius:5px 5px 0 0;
   ${p => p.expanded && `
-    color:#FFF;
-    background-color: #CE7A68;
-    border: 1px solid white;
+    color:#2C2543;
+    background-color: #FFFFFF;
+    border: 1px solid #C4B2F0;
   `}
   
   ${p => p.theme.mediaQueries.mobile} {
@@ -56,8 +53,8 @@ const AnswerBox = styled.div`
   overflow:hidden;
   transition:0.2s max-height cubic-bezier(.6,0,.4,1);
   border-radius: 0 0 5px 5px;
-  font-weight: 700;
-  ${p => p.isOpen ? 'max-height:500px; background-color: #95574E; border:1px solid white; padding: 1rem;' : 'max-height: 0;'}
+  font-weight: 400;
+  ${p => p.isOpen ? 'max-height:500px; background-color: #4A3488; border:1px solid #C4B2F0; padding: 1rem;' : 'max-height: 0;'}
   ${p => p.theme.mediaQueries.mobile} {
     font-size: 0.9rem;
     font-weight: 500;
@@ -89,7 +86,7 @@ const FaqBox = ({ question, answer }) => {
         onClick={() => setIsExpanded(!isExpanded)}>
         {question}
         <TopExpand style={isExpanded ? { transform: 'rotate(0)' } : { transform: 'rotate(180deg)' }}>
-          <Arrow color={isExpanded ? '#FFFFFF' : '#2C2543'} />
+          <Arrow color={isExpanded ? '#2C2543' : '#2C2543'} />
         </TopExpand>
       </Top>
       <AnswerBox isOpen={isExpanded}>

@@ -8,12 +8,12 @@ import { Header2, Header3 } from '@components/Typography'
 const FaqContainer = styled.div`
   position: relative;
   min-height: 50vh;
-  background-image: url('/assets/faq_bg.svg'), linear-gradient(180deg, #D8937D 0%, #F8C2AB 40.12%, #F8EEBC 76.67%), linear-gradient(0deg, #FFFFFF, #FFFFFF);
+  background-image: url('/assets/faq_bg.svg'), linear-gradient(180deg, #150C27 0%, #150C27 40.12%, #150C27 76.67%), linear-gradient(0deg, #FFFFFF, #FFFFFF);
 
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center center;
-  min-height: 2500px;
+  background-position: center bottom;
+  min-height: 1300px;
 
   ${p => p.theme.mediaQueries.desktopLarge} {
     min-height: 1500px;
@@ -88,7 +88,7 @@ const CollectionContainer = styled.div`
 `
 
 const CollectionName = styled(Header3)`
-  color: #5D3754;
+  color: #F0EEF2;
   font-size: 1.75rem;
   font-weight: 900;
   padding-bottom: 1rem;
@@ -138,7 +138,7 @@ const Faq = () => {
   }
 
   useEffect(async () => {
-    const data = await fireDb.getCollection('cmd-f2023', 'FAQ')
+    const data = await fireDb.getCollection('HackCamp2023', 'FAQ')
     const processedData = processData(data)
     setFaqData(processedData)
   }, [])
@@ -146,7 +146,7 @@ const Faq = () => {
   return (
     <FaqContainer>
       <Wrapper id="faq">
-        <StyledTitle color="#5D3754" fontSize="5rem">
+        <StyledTitle color="#F0EEF2" fontSize="5rem">
           FAQ
         </StyledTitle>
 
