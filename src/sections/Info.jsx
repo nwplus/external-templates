@@ -23,7 +23,7 @@ const InfoContainer = styled.div`
 `
 
 const BgScroll = styled(SectionContainer)`
-  background: url('assets/background/about/background.svg');
+  background: url('assets/background/about/background.png');
   background-size: 100vw;
   background-repeat: no-repeat;
   background-position: center top;
