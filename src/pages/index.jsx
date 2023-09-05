@@ -52,7 +52,7 @@ export default function Index ({ title }) {
 export async function getStaticProps () {
   return {
     props: {
-      title: 'HackCamp 2022'
+      title: 'HackCamp 2023'
     } // will be passed to the page component as props
   }
 }

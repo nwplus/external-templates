@@ -15,6 +15,7 @@ const NavBarContainer = styled.nav`
   opacity: ${(p) => p.opacity};
   transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
   padding: 1.7rem 4rem 0;
+  background: linear-gradient(180deg, rgba(0, 47, 77, 0.4) 0%, rgba(0, 47, 77, 0) 100%);
 
   ${(p) => p.theme.mediaQueries.mobile} {
     background-color: ${p => p.theme.colors.navbar};
@@ -89,8 +90,8 @@ const LinkText = styled.a`
 `
 
 const StyledLinkHeaders = styled.h3`
-  font-size: 1.14rem;
-  font-weight:400;
+  font-size: 1.125rem;
+  font-weight: 700;
 `
 
 const HamburgerMenu = styled.img`
@@ -225,10 +226,9 @@ const PortalButton = ({ portalOpen }) => (
 const MenuList = ({ isMobile, closeDropdown }) => (
   <>
     <MenuItem name='About' href='/#about' isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
-    {/* <MenuItem name='Statistics' href='/#statistics' isAnchor isMobile={isMobile} closeDropdown={closeDropdown} /> */}
+    <MenuItem name='Events' href='/#events' isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
     <MenuItem name='FAQ' href='/#faq' isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
-    <MenuItem name='Sponsors' href='/#sponsors' isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
-    <MenuItem name='2021' href='https://hackcamp2021.nwplus.io' target='_blank' rel='noopener' isMobile={isMobile} closeDropdown={closeDropdown} />
+    <MenuItem name='Sponsors' href='/#sponsors' isMobile={isMobile} closeDropdown={closeDropdown} />
   </>
 )
 
