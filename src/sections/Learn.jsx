@@ -4,12 +4,12 @@ import { SectionContainer } from '@lib/Containers'
 import styled from 'styled-components'
 
 const InfoContainer = styled.div`
-  background: linear-gradient(to bottom, #A9D7EF 0%, #ADDBF3 100%);
+  background: linear-gradient(to bottom, #150C27 0%, #ADDBF3 100%);
   position: relative;
 
   width: 100%;
-  aspect-ratio: 1440/1057;
-  z-index: 2;
+  aspect-ratio: 1440/989;
+  z-index: 99;
   overflow: hidden;
   
 
@@ -26,41 +26,8 @@ const BgScroll = styled(SectionContainer)`
   background: url('assets/background/learn/background.svg');
   background-size: 100vw;
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: center top;
 
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-
-  ${(p) => p.theme.mediaQueries.mobile} {
-    background: none;
-  }
-`
-const MgScroll = styled(SectionContainer)`
-  background: url('assets/background/learn/midground.svg');
-  background-size: 100vw;
-  background-repeat: no-repeat;
-  background-position: center center;
-
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-
-  ${(p) => p.theme.mediaQueries.mobile} {
-    background: none;
-  }
-
-`
-const FgScroll = styled(SectionContainer)`
-  background: url('assets/background/learn/foreground_tall.svg');
-  background-size: 100vw;
-  background-repeat: no-repeat;
-  background-position: center center;
-  
   position: absolute;
   top: 0;
   left: 0;
@@ -172,61 +139,10 @@ const CardContent = styled.p`
 `
 
 const Learn = () => {
-  const { ref: ref1 } = useParallax({
-    speed: -25
-  })
-
-  const { ref: ref2 } = useParallax({
-    speed: -20
-  })
-
-  const { ref: ref3 } = useParallax({
-    speed: -5
-  })
 
   return (
     <InfoContainer id="events">
-      <BgScroll ref={ref1} />
-      <MgScroll ref={ref2} />
-      <FgScroll ref={ref3} />
-
-      <ContentInner>
-        <TextContainer>
-          <StyledTitle>Our Events</StyledTitle>
-          <PushinP>
-            This year, we are bringing you a 2-day in-person event where
-            participants can learn new skills, connect with fellow tech
-            enthusiasts, and build solutions to tackle challenges together.
-          </PushinP>
-        </TextContainer>
-        <CardContainer>
-          {[
-            {
-              title: 'Learn',
-              date: 'Nov. 5, 2022',
-              text: 'A day of workshops and skill building. From web development to machine learning, we\'ll have something for you'
-            },
-            {
-              title: 'Build',
-              date: 'Nov. 6, 2022',
-              text: `A 12-hour hackathon focused around creating projects centered around inclusivity, diversity, and accessibility. 
-  Each submission will donate $15 to charity of your choice. Regardless of if it's finished or not`
-            }
-          ].map(item => (
-            <Card type={item.title}>
-              <CardTitle>
-                {item.title}
-              </CardTitle>
-              <CardDate>
-                {item.date}
-              </CardDate>
-              <CardContent>
-                {item.text}
-              </CardContent>
-            </Card>
-          ))}
-        </CardContainer>
-      </ContentInner>
+      <BgScroll/>
     </InfoContainer>
   )
 }

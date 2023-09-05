@@ -12,7 +12,7 @@ import {
 import Team from '@components/Team'
 
 const CaveTop = styled.div`
-  background: url('assets/background/footer/foreground.svg');
+  background: url('assets/background/footer/background.svg') #150C27;
   background-size: 100%;
   background-repeat: no-repeat;
   background-position: center top;
@@ -27,15 +27,15 @@ const CaveTop = styled.div`
   z-index: 997;
   
   width: 100%;
-  aspect-ratio: 1440/665;
-  height: 145vh;
+  aspect-ratio: 1440/934;
+  height: 100%;
   
   a {
     transition: ${p => p.theme.transition.small};
     color: #5C1B59;
     :hover {
       cursor: pointer;
-      color: #014C58;
+      color: #4A3488;
     }
   }
 
@@ -75,6 +75,7 @@ const SocialMediaIcons = styled.div`
   align-items: center;
   display: flex;
   a {
+    color: #E2D6FF;
     width: 50px;
   }
   gap: 2rem;
@@ -91,6 +92,9 @@ const Links = styled.div`
   display: flex;
   gap: 2rem;
   font-size: 1.5rem;
+  a {
+    color: #E2D6FF;
+  }
 `
 
 const TextContainer = styled.div`
@@ -99,12 +103,12 @@ const TextContainer = styled.div`
   justify-content: center;
   width: 100%;
   align-items: center;
-  padding-top: 15rem;
+  padding-top: 35rem;
   gap: 1rem;
-  color: #2C2543;
+  color: #E2D6FF ;
   position: absolute;
   z-index: 999;
-  bottom: 50vh;
+  bottom: 35vh;
 `
 
 const SmallText = styled.div`
@@ -181,14 +185,13 @@ export default function Footer () {
           </Links>
           <SmallText>
             <div>Organized and held by nwPlus</div>
-            <div>Copyright &copy; HackCamp 2022</div>
+            <div>Copyright &copy; HackCamp 2023</div>
           </SmallText>
         </TextContainer>
         <TeamContainer>
           <Team />
         </TeamContainer>
       </CaveTop>
-      <CaveBottom />
     </>
   )
 }
