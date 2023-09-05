@@ -185,7 +185,7 @@ const Learn = () => {
   })
 
   return (
-    <InfoContainer id="about">
+    <InfoContainer id="events">
       <BgScroll ref={ref1} />
       <MgScroll ref={ref2} />
       <FgScroll ref={ref3} />
