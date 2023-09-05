@@ -21,7 +21,7 @@ const InfoContainer = styled.div`
   
 `
 const BgScroll = styled(SectionContainer)`
-  background: url('assets/background/countdown/background.svg');
+  background: url('assets/background/countdown/background.png');
   background-size: 100vw;
   background-repeat: no-repeat;
   background-position: center center;
