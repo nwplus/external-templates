@@ -32,7 +32,7 @@ const BgSectionContainer = styled(SectionContainer)`
 `
 
 const BgScroll = styled(SectionContainer)`
-  background: url('assets/background/stats/background.svg');
+  background: url('assets/background/stats/background.png');
   background-size: 100vw;
   background-repeat: no-repeat;
   background-position: center top;
@@ -70,7 +70,7 @@ const Stems = styled(SectionContainer)`
 `
 
 const FgScroll = styled(SectionContainer)`
-  background: url('assets/background/stats/foreground.svg');
+  background: url('assets/background/stats/foreground.png');
   background-size: 100vw;
   background-repeat: no-repeat;
   background-position: center bottom;

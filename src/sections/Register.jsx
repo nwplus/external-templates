@@ -24,7 +24,7 @@ const BgSectionContainer = styled(SectionContainer)`
   }
 `
 const BgScroll = styled(SectionContainer)`
-  background: url('assets/background/hero/background.svg');
+  background: url('assets/background/hero/background.png');
   background-size: 100vw;
   background-repeat: no-repeat;
   background-position: center top;

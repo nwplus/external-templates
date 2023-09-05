@@ -12,7 +12,7 @@ import {
 import Team from '@components/Team'
 
 const CaveTop = styled.div`
-  background: url('assets/background/footer/background.svg') #150C27;
+  background: url('assets/background/footer/background.png') #150C27;
   background-size: 100%;
   background-repeat: no-repeat;
   background-position: center top;
@@ -103,12 +103,11 @@ const TextContainer = styled.div`
   justify-content: center;
   width: 100%;
   align-items: center;
-  padding-top: 35rem;
   gap: 1rem;
-  color: #E2D6FF ;
+  color: #E2D6FF;
   position: absolute;
   z-index: 999;
-  bottom: 35vh;
+  bottom: 22.5vw;
 `
 
 const SmallText = styled.div`

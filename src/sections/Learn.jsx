@@ -4,7 +4,7 @@ import { SectionContainer } from '@lib/Containers'
 import styled from 'styled-components'
 
 const InfoContainer = styled.div`
-  background: linear-gradient(to bottom, #150C27 0%, #ADDBF3 100%);
+  background: #150C27;
   position: relative;
 
   width: 100%;
@@ -23,7 +23,7 @@ const InfoContainer = styled.div`
   }
 `
 const BgScroll = styled(SectionContainer)`
-  background: url('assets/background/learn/background.svg');
+  background: url('assets/background/learn/background.png');
   background-size: 100vw;
   background-repeat: no-repeat;
   background-position: center top;

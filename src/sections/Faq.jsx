@@ -29,7 +29,7 @@ const BgSectionContainer = styled(SectionContainer)`
 
 const BgScroll = styled(SectionContainer)`
   grid-column: 1 / span 14;
-  background: url('assets/background/faq/background.svg');
+  background: url('assets/background/faq/background.png');
   background-size: 100vw;
   background-repeat: no-repeat;
   background-position: center top;

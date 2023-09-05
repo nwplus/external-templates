@@ -7,7 +7,7 @@ import fireDb from '@utilities/firebase'
 import Button from '@components/Button'
 
 const BgSectionContainer = styled(SectionContainer)`
-  background: url('assets/background/sponsors/background.svg'), #150C27;
+  background: url('assets/background/sponsors/background.png'), #150C27;
   background-size: 100vw;
   background-repeat: no-repeat;
   background-position: center top;
