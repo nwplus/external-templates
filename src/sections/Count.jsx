@@ -5,13 +5,13 @@ import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
 const InfoContainer = styled.div`
-  background: linear-gradient(to bottom, #FEFFCA 0%, #83F6F7 66%, #83F6F7 100%);
+  background: #150C27;
   position: relative;
   width: 100%;
-  aspect-ratio: 1440/1375;
+  aspect-ratio: 1440/1000;
 
   z-index: 10;
-  overflow-y: hidden;
+  overflow: hidden;
 
   ${(p) => p.theme.mediaQueries.mobile} {
     background: linear-gradient(to bottom, #FEFFCA 0%, #83F6F7 100%);
@@ -21,7 +21,7 @@ const InfoContainer = styled.div`
   
 `
 const BgScroll = styled(SectionContainer)`
-  background: url('assets/background/countdown/midground.svg');
+  background: url('assets/background/countdown/background.svg');
   background-size: 100vw;
   background-repeat: no-repeat;
   background-position: center center;
@@ -36,32 +36,31 @@ const BgScroll = styled(SectionContainer)`
     background-repeat: no-repeat;
   }
 `
-const MgScroll = styled(SectionContainer)`
-  background: url('assets/background/countdown/foreground_tall.svg');
+
+const Mascots = styled(SectionContainer)`
+  background: url('assets/background/countdown/mascots.svg');
   background-size: 100vw;
+  transform: scale(1.375);
   background-repeat: no-repeat;
   background-position: center center;
-  
+
   position: absolute;
-  top: 0;
+  top: 12.5vw;
+  left: 0px;
   width: 100%;
   height: 100%;
-
-  ${(p) => p.theme.mediaQueries.mobile} {
-    background: url('assets/mobile/countdown/foreground_tall.svg');
-    background-repeat: no-repeat;
-  }
 `
 
 const TextContainer = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   position: relative;
   z-index: 2;
+  width: 100%;
   height: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
+  padding: 0em 50vw 47.5vw 7vw;
 
   ${(p) => p.theme.mediaQueries.mobile} {
     margin: 0em 1em;
@@ -70,11 +69,13 @@ const TextContainer = styled.div`
 `
 
 const StyledTitle = styled(Header2)`
-  text-align: center;
-  color: #361C1C;
-  font-weight: 700;
-  font-size: 2.5rem;
-  letter-spacing: 0px;
+  text-align: left;
+  color: #F0EEF2;
+  font-weight: 900;
+  font-size: 3.5vw;
+  letter-spacing: 0.7px;
+  line-height: 56px;
+  max-width: 30vw;
 
   ${(p) => p.theme.mediaQueries.mobile} {
     font-size: 2em;
@@ -82,100 +83,46 @@ const StyledTitle = styled(Header2)`
   }
 `
 
-const HCSub = styled.div`
-  font-size: 1.4rem;
-  font-weight: 600;
-  text-align: center;
-  color: #361C1C;
-  padding-top: 1rem;
-  ${p => p.theme.mediaQueries.mobile} {
-    font-size: 1rem;
-  }
+const DaysTextContainer = styled.div`
+  position: absolute;
+  max-width: 100px;
+  word-spacing: 100px;
+  top: 4%;
+  left: 43%;
+  transform: rotate(-10.92deg);
+ 
 `
 
-const CountdownContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding: 5rem 0 10rem 0;
-
-  ${(p) => p.theme.mediaQueries.mobile} {
-    display: none;
-    ${p => p.isLastRow && 'margin-bottom: -4em'};
-  }
+const HoursTextContainer = styled.div`
+  position: absolute;
+  max-width: 150px;
+  word-spacing: 150px;
+  top: 37.5%;
+  left: 53.5%;
+  transform: rotate(17.73deg);
 `
 
-const CountdownGroup = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
-  font-size: 2rem;
-  font-weight: 900;
-  color: #482C16;
-`
-const Digits = styled.div`
-  display: flex;
-`
-const Digit = styled.div`
-  background: url('assets/scroll.svg');
-  background-repeat: no-repeat;
-  background-position: center top;
-
-  width: 100%;
-  aspect-ratio: 152 / 172;
-  height: 172px;
-  width: 152px;
-
-  transform: scale(1);
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-top: 1rem;
+const MinutesTextContainer = styled.div`
+  position: absolute;
+  max-width: 200px;
+  word-spacing: 200px;
+  top: 20%;
+  left: 83.5%;
+  transform: rotate(-23.75deg);
 `
 
 const ShadowText = styled.div`
-  font-size: 5rem;
-  color: #532A2A;
-  font-weight: 900;
+  text-align: center;
+  font-size: 3.2vw;
+  color: #FFFFFF;
+  text-shadow: 0px 1px 17px 0px rgba(255, 255, 255, 0.5);
+  font-weight: 800;
 
   position: relative;
   letter-spacing: 1px;
-
-  :before {
-    content: '${p => p.text}';
-    color: rgba(255,255,255,.05);
-    position: absolute;
-    top: 1px;
-    left: 1px;
-  }
-
-  :after {
-    content: '${p => p.text}';
-    color: rgba(255,255,255,.05);
-    position: absolute;
-    top: 2px;
-    left: 2px;
-  }
   
   ${(p) => p.theme.mediaQueries.mobile} {
     font-size: 3rem;
-  }
-`
-
-const MobileCountdown = styled.div`
-  width: 100%;
-  aspect-ratio: 347 / 91;
-  background: url('assets/mobile/board.svg');
-  background-repeat: no-repeat;
-  background-position: center top;
-
-  align-items: center;
-  justify-content: center;
-
-  display: none;
-  ${(p) => p.theme.mediaQueries.mobile} {
-    display: flex;
   }
 `
 
@@ -217,7 +164,7 @@ const useCountdown = (targetDate) => {
 export { useCountdown }
 
 const Count = () => {
-  const countDownDate = new Date('Oct 15, 2022 00:00:00').getTime()
+  const countDownDate = new Date('Oct 28, 2023 00:00:00').getTime()
   const [days, hours, minutes] = useCountdown(countDownDate)
 
   const twoify = (num) => {
@@ -235,56 +182,36 @@ const Count = () => {
     minutes: twoify(minutes)
   }
 
-  const { ref: ref1 } = useParallax({
-    speed: -20
-  })
+  // const { ref: ref1 } = useParallax({
+  //   speed: -20
+  // })
 
-  const { ref: ref2 } = useParallax({
-    speed: -10
-  })
+  // const { ref: ref2 } = useParallax({
+  //   speed: -20
+  // })
 
   return (
     <InfoContainer>
-      <BgScroll ref={ref1} />
-      <MgScroll ref={ref2} />
-
+      <BgScroll />
       <TextContainer>
-        <StyledTitle>Registration Closes</StyledTitle>
-        <MobileCountdown>
-          <ShadowText text={`${count.days[0]}${count.days[1]} : ${count.hours[0]}${count.hours[1]} : ${count.minutes[0]}${count.minutes[1]}`}>
-            {`${count.days[0]}${count.days[1]} : ${count.hours[0]}${count.hours[1]} : ${count.minutes[0]}${count.minutes[1]}`}
+        <StyledTitle>Registration closes in:</StyledTitle>
+        <DaysTextContainer>
+          <ShadowText text={`${count.days[0]}${count.days[1]} Days`}>
+            {`${count.days[0]}${count.days[1]} Days`}
           </ShadowText>
-        </MobileCountdown>
-        <CountdownContainer>
-          {[
-            {
-              label: 'Days',
-              key: 'days'
-            },
-            {
-              label: 'Hours',
-              key: 'hours'
-            },
-            {
-              label: 'Mins',
-              key: 'minutes'
-            }
-          ].map(item => (
-            <CountdownGroup key={item.label}>
-              <Digits>
-                {[0, 1].map(index => (
-                  <Digit>
-                    <ShadowText text={count[item.key][index]}>
-                      {count[item.key][index]}
-                    </ShadowText>
-                  </Digit>
-                ))}
-              </Digits>
-              {item.label}
-            </CountdownGroup>
-          ))}
-        </CountdownContainer>
+        </DaysTextContainer>
+        <HoursTextContainer>
+          <ShadowText text={`${count.hours[0]}${count.hours[1]} Hours`}>
+            {`${count.hours[0]}${count.hours[1]} Hours`}
+          </ShadowText>
+        </HoursTextContainer>
+        <MinutesTextContainer>
+          <ShadowText text={`${count.minutes[0]}${count.minutes[1]} Minutes`}>
+            {`${count.minutes[0]}${count.minutes[1]} Minutes`}
+          </ShadowText>
+        </MinutesTextContainer>
       </TextContainer>
+      <Mascots />
     </InfoContainer>
   )
 }

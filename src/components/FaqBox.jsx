@@ -11,10 +11,10 @@ const Container = styled.div`
 
   ${p => p.expanded
 ? `
-    border-color: #FFF;
+    border-color: #C4B2F0;
   `
 : `
-    border-color: #78FF96;
+    border-color: #C4B2F0;
   `}
   
   &:not(:last-child) {
@@ -34,8 +34,8 @@ const Top = styled.div`
   border-width:1px;
 
   ${p => p.expanded && `
-    color:#FFF;
-    background-color: #DB693B;
+    color:#252525;
+    background-color: #FFFFFF;
   `}
   
   ${p => p.theme.mediaQueries.mobile} {
@@ -54,7 +54,7 @@ const AnswerBox = styled.div`
   overflow:hidden;
   transition:0.2s max-height cubic-bezier(.6,0,.4,1);
 
-  ${p => p.isOpen ? 'max-height:500px; background-color: #FF9D66;' : 'max-height: 0;'}
+  ${p => p.isOpen ? 'max-height:500px; background-color: #4A3488;' : 'max-height: 0;'}
 
   ${p => p.theme.mediaQueries.mobile} {
     font-size: 0.9rem;
@@ -86,7 +86,7 @@ const FaqBox = ({ question, answer }) => {
         onClick={() => setIsExpanded(!isExpanded)}>
         {question}
         <TopExpand style={isExpanded ? { transform: 'rotate(0)' } : { transform: 'rotate(180deg)' }}>
-          <Arrow color={isExpanded ? '#FFFFFF' : '#2C2543'} />
+          <Arrow color={isExpanded ? '#2C2543' : '#2C2543'} />
         </TopExpand>
       </Top>
       <AnswerBox isOpen={isExpanded}>

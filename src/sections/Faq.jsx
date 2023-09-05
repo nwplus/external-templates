@@ -14,11 +14,11 @@ const BgSectionContainer = styled(SectionContainer)`
   position: relative;
   
   width: 100%;
-  aspect-ratio: 1440/1723;
+  aspect-ratio: 1440/1072;
   z-index: 17;
   overflow: hidden;
 
-  background: linear-gradient(to bottom, #F2B491, #8C5050);
+  background: #150C27;
   
   ${p => p.theme.mediaQueries.mobile} {
     background: url('assets/mobile/faq/background.svg') #8C5050;
@@ -27,19 +27,19 @@ const BgSectionContainer = styled(SectionContainer)`
   }
 `
 
-const MgScroll = styled(SectionContainer)`
+const BgScroll = styled(SectionContainer)`
   grid-column: 1 / span 14;
-  background: url('assets/background/faq/midground.svg');
+  background: url('assets/background/faq/background.svg');
   background-size: 100vw;
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: center top;
 
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  aspect-ratio: 1440/1723;
+  aspect-ratio: 1440/1072;
   
   ${p => p.theme.mediaQueries.mobile} {
     background: none;
@@ -122,7 +122,7 @@ const CollectionContainer = styled.div`
 `
 
 const CollectionName = styled.div`
-  color:#0E304B;
+  color:#F0EEF2;
   font-size:1.75rem;
   font-weight: 900;
   padding-bottom:1rem;
@@ -134,9 +134,9 @@ const CollectionName = styled.div`
 
 const StyledTitle = styled(Header2)`
   text-align: center;
-  color: #002F4D;
+  color: #F0EEF2;
   font-size: 3rem;
-  padding-top: 5rem;
+  padding-top: 1rem;
 
   ${(p) => p.theme.mediaQueries.mobile} {
     font-size: 3.8em;
@@ -171,7 +171,7 @@ const Faq = () => {
   }
 
   useEffect(async () => {
-    const data = await fireDb.getCollection('HackCamp2022', 'FAQ')
+    const data = await fireDb.getCollection('HackCamp2023', 'FAQ')
     const processedData = processData(data)
     setFaqData(processedData)
   }, [])
@@ -186,9 +186,7 @@ const Faq = () => {
 
   return (
     <BgSectionContainer>
-      <MgScroll />
-      <FgScroll />
-
+      <BgScroll/>
       <Wrapper id="faq">
         <StyledTitle>
           FAQ
@@ -205,8 +203,8 @@ const Faq = () => {
               </FaqColumn>
 
               <FaqColumn>
-                {faqData.Projects &&
-                  <FaqCollection category="Projects" faqs={faqData.Projects} />
+                {faqData["Teams & Projects"] &&
+                  <FaqCollection category="Projects" faqs={faqData["Teams & Projects"]} />
                 }
                 {faqData.Logistics &&
                   <FaqCollection category="Logistics" faqs={faqData.Logistics} />

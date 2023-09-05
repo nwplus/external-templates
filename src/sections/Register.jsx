@@ -1,27 +1,24 @@
 import { useParallax } from 'react-scroll-parallax'
-// import { useWindowWidth } from '@react-hook/window-size';
 import styled from 'styled-components'
 import { SectionContainer } from '@lib/Containers'
-import { Body, Header2 } from '@components/Typography'
+import { Header2 } from '@components/Typography'
 import Button from '@components/Button'
 
 const BgSectionContainer = styled(SectionContainer)`
-  background: linear-gradient(to bottom, rgba(48,242,207,1) 0%, rgba(217,252,188,1) 33%, rgba(253,217,158,1) 100%);
+  background: #150C27;
   background-size: 100vw;
   background-repeat: no-repeat;
   background-position: center top;
   
   position: relative;
   width: 100%;
-  aspect-ratio: 1440/1200;
+  aspect-ratio: 1440/1000;
   z-index: 0;
-  overflow-y: hidden;
+  overflow: hidden;
 
-  
   ${p => p.theme.mediaQueries.mobile} {
-    background: linear-gradient(to bottom, #30F2CF 0%, #D9FCBC 66%, #FDD99E 90%);
+    background: #150C27;
     background-repeat: no-repeat;
-
     text-align: center;
     aspect-ratio: 428/1082;
   }
@@ -44,16 +41,17 @@ const BgScroll = styled(SectionContainer)`
     z-index: -1;
   }
 `
-const MgScroll = styled(SectionContainer)`
-  background: url('assets/background/hero/midground.svg');
+const Portal = styled(SectionContainer)`
+  background: url('assets/background/hero/portal.svg');
   background-size: 100vw;
   background-repeat: no-repeat;
-  background-position: center 90%;
+  background-position: center right;
   height: 100%;
   width: 100%;
 
   position: absolute;
   top: 0;
+  left: 25vw;
   z-index: 2;
   
   ${p => p.theme.mediaQueries.mobile} {
@@ -63,36 +61,16 @@ const MgScroll = styled(SectionContainer)`
   }
 `
 
-// background: url('assets/background/hero/foreground.svg');
-
-const FgScroll = styled(SectionContainer)`
-  background: url('assets/background/hero/foreground_tall.svg');
-  background-size: 100vw;
-  background-repeat: no-repeat;
-  background-position: center bottom;
-  height: 100%;
-  width: 100%;
-  
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 3;
-  
-  ${p => p.theme.mediaQueries.mobile} {
-    background: url('assets/mobile/hero/foreground_tall.svg');
-    background-repeat: no-repeat;
-  }
-`
-
 const MediaContainer = styled.div`
-  padding-top: 12vw;
+  padding-top: 15vw;
+  padding-right: 42.5vw;
   margin: 0 auto;
   max-width: 1400px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-
+  
   ${p => p.theme.mediaQueries.mobile} {
     display: flex;
     flex-direction: column;
@@ -114,7 +92,7 @@ const BodyContainer = styled.div`
 
 const ButtonContainer = styled.div`
   display: flex;
-  margin-top: 35px;
+  margin-top: 20px;
 `
 
 const GridContainer = styled.div`
@@ -123,20 +101,19 @@ const GridContainer = styled.div`
   height: 100%;
   grid-column: 3 / span 4;
   width: 100%;
-
   ${p => p.theme.mediaQueries.mobile} {
-    display:flex;
+    display: flex;
     align-items: center;
   }
 `
 
 const HackCampHeader = styled(Header2)`
-  font-size: 5rem;
+  font-size: 6vw;
   letter-spacing: -0.5px;
   font-weight: 900;
-  color: #00455E !important;
+  color: #F0EFF2 !important;
   padding-top: 3rem;
-  padding-bottom: 1rem;
+  padding-bottom: 0.5vw;
   
   ${p => p.theme.mediaQueries.mobile} {
     font-size: 4rem;
@@ -144,18 +121,21 @@ const HackCampHeader = styled(Header2)`
 `
 
 const HackCampSubheader = styled.div`
-  font-size: 1.4rem;
-  color: #00455E;
+  font-size: 2vw;
+  line-height: 2rem;
+  font-weight: 600;
+  color: #D5D7FD;
+  padding-top: 1rem;
   ${p => p.theme.mediaQueries.mobile} {
     font-size: 1.2rem;
   }
 `
 
 const HCSub = styled.div`
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #00455E;
-  padding-top: 0.5rem;
+  font-size: 1.75vw;
+  color: #D5D7FD;
+  font-weight: 700;
+  padding-top: 1rem;
   ${p => p.theme.mediaQueries.mobile} {
     font-size: 1rem;
   }
@@ -171,27 +151,23 @@ const Tent = styled.div`
   }
 `
 
-// const SponsorLink = styled.a`
-//   color: #FFFFFF;
-//   font-weight: bold;
-// `
 
 export default function Register() {
   // not using these hooks because they don't work on initial load -> better practice to pass an isMobile props from getServerSideProps after checking userAgent
   // const windowWidth = useWindowWidth();
   // const mobileBreakpoint = 768;
 
-  const { ref: ref1 } = useParallax({
-    speed: -30
-  })
+  // const { ref: ref1 } = useParallax({
+  //   speed: -20
+  // })
 
-  const { ref: ref2 } = useParallax({
-    speed: -20
-  })
+  // const { ref: ref2 } = useParallax({
+  //   speed: -20
+  // })
 
-  const { ref: ref3 } = useParallax({
-    speed: -10
-  })
+  // const { ref: ref3 } = useParallax({
+  //   speed: -10
+  // })
 
   // const parallaxOffset = useParallax({
   //   speed: -30
@@ -199,10 +175,8 @@ export default function Register() {
 
   return (
     <BgSectionContainer>
-      <BgScroll ref={ref1} />
-      <MgScroll ref={ref2} />
-      <FgScroll ref={ref3} />
-
+      <BgScroll />
+      <Portal />
       <GridContainer>
         <MediaContainer>
           <Tent />
@@ -210,19 +184,20 @@ export default function Register() {
             HackCamp
           </HackCampHeader>
           <BodyContainer>
-            <HackCampSubheader color='#00455E'>Western Canada’s largest beginner-friendly hackathon</HackCampSubheader>
-            <HCSub color='#00455E'>In-person event on November 5 to 6</HCSub>
+            <HackCampSubheader>Canada’s largest beginner-friendly hackathon</HackCampSubheader>
+            <HCSub>In-person event</HCSub>
+            <HackCampSubheader>November 18-19, 2023</HackCampSubheader>
           </BodyContainer>
           <ButtonContainer>
             <Button
               target="_blank"
               rel="noopener noreferrer"
-              href="https://forms.gle/GQ3k8ZbtfULfVYxq6"
-              width='175px'
+              // href="https://forms.gle/GQ3k8ZbtfULfVYxq6"
+              width='205px'
               height='50px'
-              borderRadius='7px'
-              textColor='#FFFFFF'
-              backgroundColor="#DB693B"
+              borderRadius='6px'
+              textColor='#2C2543'
+              backgroundColor="#00DBCE"
               isHover>
               Apply Now
             </Button>
@@ -230,19 +205,16 @@ export default function Register() {
               isOutline
               target="_blank"
               rel="noopener noreferrer"
-              href="https://docs.google.com/forms/d/e/1FAIpQLScA2RtmikDSTaeLqi7vadLDq4Wom4N9N1wDVZu0rpZ5Xk2sow/viewform"
+              // href="https://docs.google.com/forms/d/e/1FAIpQLScA2RtmikDSTaeLqi7vadLDq4Wom4N9N1wDVZu0rpZ5Xk2sow/viewform"
               width='205px'
               height='50px'
-              borderRadius='7px'
-              borderColor='#DB693B'
-              textColor='#DB693B'
+              borderRadius='6px'
+              borderColor="#00DBCE"
+              textColor="#00DBCE"
               backgroundColor="transparent"
               isHover>
               Become a Mentor
             </Button>
-            <Body align="center">
-              {/* <SponsorLink href="mailto:sponsorship@nwplus.io?subject=Sponsorship" target="_blank" rel='noreferrer'>Become a Sponsor!</SponsorLink> */}
-            </Body>
           </ButtonContainer>
         </MediaContainer>
       </GridContainer>
