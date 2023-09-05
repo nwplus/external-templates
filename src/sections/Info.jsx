@@ -1,10 +1,10 @@
 import { useParallax } from 'react-scroll-parallax'
 import { Header2 } from '@components/Typography'
 import { SectionContainer } from '@lib/Containers'
-import styled, { keyframes } from 'styled-components'
+import styled from 'styled-components'
 
 const InfoContainer = styled.div`
-  background: linear-gradient(to bottom, #83F6F7 0%, #A9D7EF 100%);
+  background: #150C27;
   position: relative;
   height: auto;
 
@@ -12,7 +12,7 @@ const InfoContainer = styled.div`
   z-index: 12;
   
   width: 100%;
-  aspect-ratio: 1440 / 1375;
+  aspect-ratio: 1440 / 1100;
   
 
   ${(p) => p.theme.mediaQueries.mobile} {
@@ -26,7 +26,7 @@ const BgScroll = styled(SectionContainer)`
   background: url('assets/background/about/background.svg');
   background-size: 100vw;
   background-repeat: no-repeat;
-  background-position: center mid;
+  background-position: center top;
 
   position: absolute;
   top: 0;
@@ -37,108 +37,6 @@ const BgScroll = styled(SectionContainer)`
 
   ${(p) => p.theme.mediaQueries.mobile} {
     background: none;
-  }
-`
-const MgScroll = styled(SectionContainer)`
-  background: url('assets/background/about/midground.svg');
-  background-size: 100vw;
-  background-repeat: no-repeat;
-  background-position: center mid;
-
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  
-
-  ${(p) => p.theme.mediaQueries.mobile} {
-    background: none;
-  }
-
-`
-const FgScroll = styled(SectionContainer)`
-  background: url('assets/background/about/foreground_frame.svg');
-  background-size: 100vw;
-  background-repeat: no-repeat;
-  background-position: center mid;
-
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  
-
-  ${(p) => p.theme.mediaQueries.mobile} {
-    background: none;
-  }
-`
-
-const bop = keyframes`
-  0% {
-    transform: translate(-35px, -25%) rotate(0deg);
-  }
-  50% {
-    transform: translate(-20px, -20%) rotate(10deg);
-  }
-  100% {
-    transform: translate(-35px, -25%) rotate(0deg);
-  }
-`
-
-const Dino = styled.div`
-  background: url('assets/dino.svg');
-  width: 684px;
-  height: 774px;
-  background-repeat: no-repeat;
-  background-position: bottom left;
-
-  position: absolute;
-  top: 50%;
-  transform: translateY(-30%);
-  left: 0;
-
-  animation-name: ${bop};
-  animation-duration: 8s;
-  animation-iteration-count: infinite;
-  
-  ${(p) => p.theme.mediaQueries.mobile} {
-    display: none;
-  }
-`
-
-const mobileBop = keyframes`
-  0% {
-    transform: translate(-50%, -18%) rotate(0deg);
-  }
-  50% {
-    transform: translate(-50%, -15%) rotate(10deg);
-  }
-  100% {
-    transform: translate(-50%, -18%) rotate(0deg);
-  }
-`
-
-const MobileDino = styled.div`
-  background: url('assets/mobile/dino.svg');
-  width: 684px;
-  height: 774px;
-  background-repeat: no-repeat;
-  background-position: bottom left;
-
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%, 0);
-  left: 0;
-
-  animation-name: ${mobileBop};
-  animation-duration: 8s;
-  animation-iteration-count: infinite;
-  
-  display: none;
-  ${(p) => p.theme.mediaQueries.mobile} {
-    display: table;
   }
 `
 
@@ -149,9 +47,9 @@ const TextContainer = styled.div`
   align-items: flex-start;
   height: 100%;
 
-  padding-left: 45vw;
-  padding-right: 10vw;
-  padding-bottom: 5rem;
+  padding-left: 50vw;
+  padding-right: 7.5vw;
+  padding-bottom: 20rem;
 
   position: relative;
   z-index: 2;
@@ -164,8 +62,8 @@ const TextContainer = styled.div`
 `
 
 const StyledTitle = styled(Header2)`
-  color: #002F4D;
-  font-size: 3rem;
+  color: #F0EEF2;
+  font-size: 3.75vw;
   padding-bottom: 1rem;
   line-height: 100%;
   
@@ -175,44 +73,55 @@ const StyledTitle = styled(Header2)`
 `
 
 const PushinP = styled.p`
-  color: #002F4D;
+  color: #F0EEF2;
+  font-size: 1.45vw;
+`
+
+const FishingBear = styled.div`
+  background: url('assets/background/about/fishing_bear.svg');
+  background-size: 57.5vw;
+  background-repeat: no-repeat;
+  background-position: bottom left;
+
+  position: absolute;
+  top: -2vw;
+  left 4.75vw;
+  width: 100%;
+  height: 100%;
 `
 
 const Info = () => {
-  const { ref: ref1 } = useParallax({
-    speed: -30
-  })
+  // const { ref: ref1 } = useParallax({
+  //   speed: -30
+  // })
 
-  const { ref: ref2 } = useParallax({
-    speed: -20
-  })
+  // const { ref: ref2 } = useParallax({
+  //   speed: -20
+  // })
 
-  const { ref: ref3 } = useParallax({
-    speed: -10
-  })
+  // const { ref: ref3 } = useParallax({
+  //   speed: -10
+  // })
 
   return (
     <InfoContainer id="about">
-      <BgScroll ref={ref1} />
-      <MgScroll ref={ref2} />
-      <Dino ref={ref3} />
-      <MobileDino ref={ref1} />
-      <FgScroll ref={ref3} />
-
+      <BgScroll />
       <TextContainer>
         <StyledTitle>Welcome to HackCamp</StyledTitle>
         <PushinP>
           HackCamp revolves around inclusivity, diversity, and
-          accessibility&mdash;we want you to bring your unique
-          perspectives and experiences to the table!
+          accessibility &mdash; we want you to bring your unique
+          perspectives and experiences to the table, regardless
+          of whether you have coding experience or not!
           <br />
           <br />
-          Over the past 4 years, HackCamp, or formerly UBC
+          Over the past 6 years, HackCamp, or formerly UBC
           Local Hack Day, has been focused on encouraging
           beginners and people who are curious about technology
           to work on a project that focuses on these three main pillars.
         </PushinP>
       </TextContainer>
+      <FishingBear />
     </InfoContainer>
   )
 }
