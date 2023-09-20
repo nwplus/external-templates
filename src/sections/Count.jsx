@@ -164,7 +164,7 @@ const useCountdown = (targetDate) => {
 export { useCountdown }
 
 const Count = () => {
-  const countDownDate = new Date('Oct 28, 2023 00:00:00').getTime()
+  const countDownDate = new Date('Oct 6, 2023 00:00:00').getTime()
   const [days, hours, minutes] = useCountdown(countDownDate)
 
   const twoify = (num) => {
@@ -194,7 +194,7 @@ const Count = () => {
     <InfoContainer>
       <BgScroll />
       <TextContainer>
-        <StyledTitle>Registration closes in:</StyledTitle>
+        <StyledTitle>Registration opens in:</StyledTitle>
         <DaysTextContainer>
           <ShadowText text={`${count.days[0]}${count.days[1]} Days`}>
             {`${count.days[0]}${count.days[1]} Days`}
