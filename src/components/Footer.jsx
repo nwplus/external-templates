@@ -41,7 +41,9 @@ const CaveTop = styled.div`
 
   ${(p) => p.theme.mediaQueries.mobile} {
     background: url('assets/mobile/footer/background.svg') #150C27;
+    background-size: 100vw;
     background-repeat: no-repeat;
+    background-position: center center;
     aspect-ratio: 412/506;
   }
 

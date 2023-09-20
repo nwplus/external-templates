@@ -23,7 +23,9 @@ const BgSectionContainer = styled(SectionContainer)`
   ${p => p.theme.mediaQueries.mobile} {
     background: url('assets/mobile/faq/background.svg') #150C27;
     aspect-ratio: 412/1359;
+    background-size: 100vw;
     background-repeat: no-repeat;
+    background-position: center center;
   }
 `
 
