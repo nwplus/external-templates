@@ -112,7 +112,7 @@ const DropDownContentContainer = styled.div`
   align-items: center;
   gap: 24px;
   width: 100%;
-  background: #002F4D;
+  background: #150C27;
 `
 
 const PortalButtonContainer = styled.div`
