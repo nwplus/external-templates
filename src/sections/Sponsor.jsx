@@ -17,9 +17,9 @@ const BgSectionContainer = styled(SectionContainer)`
   z-index: 99;
 
   ${(p) => p.theme.mediaQueries.mobile} {
-    background: url('assets/mobile/sponsors/background.svg') #8C5050;
+    background: url('assets/mobile/sponsors/background.svg') #150C27;
     background-repeat: no-repeat;
-    aspect-ratio: auto;
+    aspect-ratio: 412/632;
   }
 `
 

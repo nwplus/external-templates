@@ -21,8 +21,8 @@ const BgSectionContainer = styled(SectionContainer)`
   background: #150C27;
   
   ${p => p.theme.mediaQueries.mobile} {
-    background: url('assets/mobile/faq/background.svg') #8C5050;
-    aspect-ratio: auto;
+    background: url('assets/mobile/faq/background.svg') #150C27;
+    aspect-ratio: 412/1359;
     background-repeat: no-repeat;
   }
 `
@@ -43,7 +43,7 @@ const BgScroll = styled(SectionContainer)`
   
   ${p => p.theme.mediaQueries.mobile} {
     background: none;
-    aspect-ratio: 482/1344;
+    aspect-ratio: 412/1359;
   }
 `
 

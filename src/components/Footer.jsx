@@ -40,9 +40,9 @@ const CaveTop = styled.div`
   }
 
   ${(p) => p.theme.mediaQueries.mobile} {
-    background: url('assets/mobile/footer/foreground.svg');
+    background: url('assets/mobile/footer/background.svg') #150C27;
     background-repeat: no-repeat;
-    aspect-ratio: 428/377;
+    aspect-ratio: 412/506;
   }
 
 `
@@ -63,9 +63,9 @@ const CaveBottom = styled.div`
   aspect-ratio: 1440/1390;
   
   ${(p) => p.theme.mediaQueries.mobile} {
-    background: url('assets/mobile/footer/background.svg');
+    background: url('assets/mobile/footer/background.svg'), linear-gradient(to bottom, #220639, #AC306C);
     background-repeat: no-repeat;
-    aspect-ratio: 428/1237;
+    aspect-ratio: 412/506;
   }
   
 `
@@ -82,6 +82,7 @@ const SocialMediaIcons = styled.div`
   
   ${(p) => p.theme.mediaQueries.mobile} {
     a {
+      color: #E2D6FF;
       width: 25px;
     }
     gap: 1rem;
