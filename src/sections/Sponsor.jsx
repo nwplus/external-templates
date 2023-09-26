@@ -30,11 +30,10 @@ const StyledTitle = styled(Header2)`
   color: #FFF;
   font-size: 3rem;
   padding-top: 33rem;
-  padding-right: 3rem;
 
   ${(p) => p.theme.mediaQueries.mobile} {
-    font-size: 3em;
-    padding-top: 10rem;
+    font-size: 2em;
+    padding-top: 12rem;
   }
 `
 
@@ -45,7 +44,6 @@ const PushinP = styled.p`
   min-width: 500px;
   margin: 0 auto;
   padding-top: 2rem;
-  padding-right: 3rem;
   max-width: 800px;
   
   ${(p) => p.theme.mediaQueries.mobile} {
@@ -56,7 +54,6 @@ const PushinP = styled.p`
 const ButtonContainer = styled.p`
   display: flex;
   justify-content: center;
-  padding-right: 3rem;
 `
 
 const Skip = styled.div`
