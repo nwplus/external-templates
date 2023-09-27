@@ -9,17 +9,17 @@ const InfoContainer = styled.div`
 
   width: 100%;
   aspect-ratio: 1440/989;
-  z-index: 99;
+  z-index: 98;
   overflow: hidden;
   
 
   ${(p) => p.theme.mediaQueries.mobile} {
-    background: url('assets/mobile/events/bg.svg');
+    background: url('assets/mobile/events/background.svg');
     background-size: 100vw;
     background-repeat: no-repeat;
     background-position: center center;
     
-    aspect-ratio: 428/1280;
+    aspect-ratio: 412/1154;
   }
 `
 const BgScroll = styled(SectionContainer)`
@@ -56,12 +56,12 @@ const TextContainer = styled.div`
 
 const StyledTitle = styled(Header2)`
   text-align: center;
-  color: #002F4D;
+  color: #F0EEF2;
   font-size: 3rem;
-  padding-top: 5rem;
+  padding-top: 1rem;
 
   ${(p) => p.theme.mediaQueries.mobile} {
-    font-size: 2em;
+    font-size: 2.8em;
   }
 `
 
@@ -139,10 +139,13 @@ const CardContent = styled.p`
 `
 
 const Learn = () => {
-
   return (
     <InfoContainer id="events">
-      <BgScroll/>
+      <BgScroll>
+      <StyledTitle>
+        Our Events
+      </StyledTitle>
+      </BgScroll>
     </InfoContainer>
   )
 }

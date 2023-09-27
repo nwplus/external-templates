@@ -13,13 +13,14 @@ const StyledButton = styled.a`
   border-radius: ${p => p.borderRadius};
   display: flex;
   justify-content: center;
-  font-size: 1.12rem;
+  font-size: ${p => p.fontSize ? p.fontSize : '1.12rem'};
   align-items: center;
   text-decoration: none;
+
   &:hover {
-    cursor: pointer;
+    cursor: ${p => p.disabled ? 'not-allowed' : 'pointer'};
     text-decoration: none;
-    filter: brightness(0.9);
+    filter: ${p => p.disabled ? '' : 'brightness(0.9)'};
     color: ${p => p.textColor};
   }
   transition: filter 0.13s ease-in;
@@ -49,7 +50,8 @@ export default function Button({
   secondary = false,
   isHover = false,
   isGradientText = false,
-  isOutline = false
+  isOutline = false,
+  disabled = false
 }) {
   return (
     <StyledButton
@@ -64,7 +66,9 @@ export default function Button({
       secondary={secondary}
       isHover={isHover}
       isGradientText={isGradientText}
-      isOutline={isOutline}>
+      isOutline={isOutline}
+      disabled={disabled}
+    >
       {children}
     </StyledButton>
   )

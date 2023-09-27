@@ -195,11 +195,14 @@ export default function Register() {
               // href="https://forms.gle/GQ3k8ZbtfULfVYxq6"
               width='205px'
               height='50px'
+              fontSize='0.75rem'
               borderRadius='6px'
               textColor='#2C2543'
               backgroundColor="#00DBCE"
-              isHover>
-              Apply Now
+              isHover
+              disabled
+            >
+              Applications Open October 6th!
             </Button>
             <Button
               isOutline
@@ -208,12 +211,15 @@ export default function Register() {
               // href="https://docs.google.com/forms/d/e/1FAIpQLScA2RtmikDSTaeLqi7vadLDq4Wom4N9N1wDVZu0rpZ5Xk2sow/viewform"
               width='205px'
               height='50px'
+              fontSize='0.75rem'
               borderRadius='6px'
               borderColor="#00DBCE"
               textColor="#00DBCE"
               backgroundColor="transparent"
-              isHover>
-              Become a Mentor
+              isHover
+              disabled
+            >
+              Applications Open October 6th!
             </Button>
           </ButtonContainer>
         </MediaContainer>
