@@ -1,5 +1,5 @@
 import { useParallax } from 'react-scroll-parallax'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import { SectionContainer } from '@lib/Containers'
 import { Header2 } from '@components/Typography'
 import Button from '@components/Button'
@@ -41,7 +41,19 @@ const BgScroll = styled(SectionContainer)`
     z-index: -1;
   }
 `
+
+const portalBob = keyframes`
+  0%, 100% {
+    top: -5px; 
+  }
+
+  50% {
+    top: 5px;
+  }
+`
+
 const Portal = styled(SectionContainer)`
+  animation: ${portalBob} 2s linear infinite;
   background: url('assets/background/hero/portal.svg');
   background-size: 100vw;
   background-repeat: no-repeat;

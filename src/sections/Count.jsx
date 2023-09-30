@@ -37,8 +37,8 @@ const BgScroll = styled(SectionContainer)`
   }
 `
 
-const Mascots = styled(SectionContainer)`
-  background: url('assets/background/countdown/mascots.svg');
+const Galaxy = styled(SectionContainer)`
+  background: url('assets/background/countdown/galaxy.svg');
   background-size: 100vw;
   transform: scale(1.375);
   background-repeat: no-repeat;
@@ -49,6 +49,48 @@ const Mascots = styled(SectionContainer)`
   left: 0px;
   width: 100%;
   height: 100%;
+`
+
+const Bear = styled(SectionContainer)`
+  background: url('assets/background/countdown/bear.svg');
+  background-size: 10vw;
+  background-repeat: no-repeat;
+  background-position: center right;
+
+  position: absolute;
+  top: 20vw;
+  left: -12.5vw;
+  width: 100%;
+  height: 100%;
+  opacity: 0.75;
+`
+
+const Deer = styled(SectionContainer)`
+  background: url('assets/background/countdown/deer.svg');
+  background-size: 15vw;
+  background-repeat: no-repeat;
+  background-position: center center;
+
+  position: absolute;
+  top: 10vw;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  opacity: 0.75;
+`
+
+const Nugget = styled(SectionContainer)`
+  background: url('assets/background/countdown/nugget.svg');
+  background-size: 25vw;
+  background-repeat: no-repeat;
+  background-position: center left;
+
+  position: absolute;
+  top: 5vw;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  opacity: 0.75;
 `
 
 const TextContainer = styled.div`
@@ -190,6 +232,28 @@ const Count = () => {
   //   speed: -20
   // })
 
+  const bearParallax = useParallax({
+    easing: 'easeOutQuad',
+    translateX: ['-400vw', '0vw'],
+    translateY: ['-35vw', '0vw'],
+    scale: [6, 1],
+    opacity: [1, 0.75]
+  })
+
+  const deerParallax = useParallax({
+    easing: 'easeOutQuad',
+    translateX: ['-400vw', '15vw'],
+    translateY: ['-35vw', '0vw'],
+    scale: [6, 1]
+  })
+
+  const nuggetParallax = useParallax({
+    easing: 'easeOutQuad',
+    translateX: ['-400vw', '15vw'],
+    translateY: ['-35vw', '0vw'],
+    scale: [6, 1]
+  })
+
   return (
     <InfoContainer>
       <BgScroll />
@@ -211,7 +275,10 @@ const Count = () => {
           </ShadowText>
         </MinutesTextContainer>
       </TextContainer>
-      <Mascots />
+      <Galaxy />
+      <Bear ref={bearParallax.ref}/>
+      <Deer ref={deerParallax.ref}/>
+      <Nugget ref={nuggetParallax.ref}/>
     </InfoContainer>
   )
 }

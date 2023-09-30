@@ -1,7 +1,7 @@
 import { useParallax } from 'react-scroll-parallax'
 import { Header2 } from '@components/Typography'
 import { SectionContainer } from '@lib/Containers'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 const InfoContainer = styled.div`
   background: #150C27;
@@ -77,7 +77,18 @@ const PushinP = styled.p`
   font-size: 1.45vw;
 `
 
+const fishingBearBob = keyframes`
+  0%, 100% {
+    top: -2vw; 
+  }
+
+  50% {
+    top: -1.5vw;
+  }
+`
+
 const FishingBear = styled.div`
+  animation: ${fishingBearBob} 4s linear infinite;
   background: url('assets/background/about/fishing_bear.svg');
   background-size: 57.5vw;
   background-repeat: no-repeat;
