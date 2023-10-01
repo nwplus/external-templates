@@ -14,9 +14,8 @@ const InfoContainer = styled.div`
   overflow: hidden;
 
   ${(p) => p.theme.mediaQueries.mobile} {
-    background: linear-gradient(to bottom, #FEFFCA 0%, #83F6F7 100%);
     background-repeat: no-repeat;
-    aspect-ratio: 428/860;
+    aspect-ratio: 428/724;
   }
   
 `
@@ -32,8 +31,9 @@ const BgScroll = styled(SectionContainer)`
   height: 100%;
 
   ${(p) => p.theme.mediaQueries.mobile} {
-    background: url('assets/mobile/countdown/background.svg');
+    background: url('assets/mobile/countdown/background.png');
     background-repeat: no-repeat;
+    background-size: 100vw;
   }
 `
 
@@ -49,6 +49,12 @@ const Galaxy = styled(SectionContainer)`
   left: 0px;
   width: 100%;
   height: 100%;
+
+  ${(p) => p.theme.mediaQueries.mobile} {
+    background-size: 120vw;
+    left: 10vw;
+    top: 60vw;
+  }
 `
 
 const Bear = styled(SectionContainer)`
@@ -105,8 +111,7 @@ const TextContainer = styled.div`
   padding: 0em 50vw 47.5vw 7vw;
 
   ${(p) => p.theme.mediaQueries.mobile} {
-    margin: 0em 1em;
-    padding: 5em 0em 0em;
+    padding: 0;
   }
 `
 
@@ -122,6 +127,12 @@ const StyledTitle = styled(Header2)`
   ${(p) => p.theme.mediaQueries.mobile} {
     font-size: 2em;
     padding-bottom: 3rem;
+    line-height: 36px;
+    max-width: 50vw;
+    text-align: center;
+    position: absolute;
+    top: 25px;
+    left: 25%;
   }
 `
 
@@ -133,6 +144,11 @@ const DaysTextContainer = styled.div`
   left: 43%;
   transform: rotate(-10.92deg);
  
+  ${(p) => p.theme.mediaQueries.mobile} {
+    transform: rotate(15.53deg);
+    top: 19%;
+    left: 7.5%;
+  }
 `
 
 const HoursTextContainer = styled.div`
@@ -142,6 +158,12 @@ const HoursTextContainer = styled.div`
   top: 37.5%;
   left: 53.5%;
   transform: rotate(17.73deg);
+
+  ${(p) => p.theme.mediaQueries.mobile} {
+    transform: rotate(21.61deg);
+    top: 57.5%;
+    left: 30%;
+  }
 `
 
 const MinutesTextContainer = styled.div`
@@ -151,6 +173,11 @@ const MinutesTextContainer = styled.div`
   top: 20%;
   left: 83.5%;
   transform: rotate(-23.75deg);
+
+  ${(p) => p.theme.mediaQueries.mobile} {
+    top: 30%;
+    left: 52.5%;
+  }
 `
 
 const ShadowText = styled.div`
@@ -164,7 +191,7 @@ const ShadowText = styled.div`
   letter-spacing: 1px;
   
   ${(p) => p.theme.mediaQueries.mobile} {
-    font-size: 3rem;
+    font-size: 2rem;
   }
 `
 
@@ -206,7 +233,7 @@ const useCountdown = (targetDate) => {
 export { useCountdown }
 
 const Count = () => {
-  const countDownDate = new Date('Oct 28, 2023 00:00:00').getTime()
+  const countDownDate = new Date('Oct 6, 2023 00:00:00').getTime()
   const [days, hours, minutes] = useCountdown(countDownDate)
 
   const twoify = (num) => {
@@ -258,7 +285,7 @@ const Count = () => {
     <InfoContainer>
       <BgScroll />
       <TextContainer>
-        <StyledTitle>Registration closes in:</StyledTitle>
+        <StyledTitle>Registration opens in:</StyledTitle>
         <DaysTextContainer>
           <ShadowText text={`${count.days[0]}${count.days[1]} Days`}>
             {`${count.days[0]}${count.days[1]} Days`}

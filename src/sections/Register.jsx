@@ -20,7 +20,7 @@ const BgSectionContainer = styled(SectionContainer)`
     background: #150C27;
     background-repeat: no-repeat;
     text-align: center;
-    aspect-ratio: 428/1082;
+    aspect-ratio: 412/843;
   }
 `
 const BgScroll = styled(SectionContainer)`
@@ -36,8 +36,9 @@ const BgScroll = styled(SectionContainer)`
   z-index: 1;
   
   ${p => p.theme.mediaQueries.mobile} {
-    background: url('assets/mobile/hero/background.svg');
+    background: url('assets/mobile/hero/background.png');
     background-repeat: no-repeat;
+    background-size: 100vw;
     z-index: -1;
   }
 `
@@ -67,9 +68,10 @@ const Portal = styled(SectionContainer)`
   z-index: 2;
   
   ${p => p.theme.mediaQueries.mobile} {
-    background: url('assets/mobile/hero/midground.svg');
-    background-position: center top;
-    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 150vw;
+    left: 0;
+    top: 175px;
   }
 `
 
@@ -89,7 +91,8 @@ const MediaContainer = styled.div`
     height: 100%;
     align-items: center;
     justify-content: center;
-    transform: translateY(-7rem);
+    transform: translateY(-8rem);
+    padding: 0;
   }
 `
 
@@ -105,6 +108,10 @@ const BodyContainer = styled.div`
 const ButtonContainer = styled.div`
   display: flex;
   margin-top: 20px;
+  ${p => p.theme.mediaQueries.mobile} {
+    flex-direction: column;
+    margin-top: 5px;
+  }
 `
 
 const GridContainer = styled.div`
@@ -128,7 +135,9 @@ const HackCampHeader = styled(Header2)`
   padding-bottom: 0.5vw;
   
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 4rem;
+    font-size: 3.5rem;
+    padding-top: 1.5rem;
+    padding-bottom: 0;
   }
 `
 
@@ -138,8 +147,11 @@ const HackCampSubheader = styled.div`
   font-weight: 600;
   color: #D5D7FD;
   padding-top: 1rem;
+
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 1.2rem;
+    font-size: 1rem;
+    padding-top: 0;
+    line-height: 1.5rem;
   }
 `
 
@@ -149,7 +161,9 @@ const HCSub = styled.div`
   font-weight: 700;
   padding-top: 1rem;
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 1rem;
+    font-size: 0.8rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
   }
 `
 
@@ -207,11 +221,14 @@ export default function Register() {
               // href="https://forms.gle/GQ3k8ZbtfULfVYxq6"
               width='205px'
               height='50px'
+              fontSize='0.75rem'
               borderRadius='6px'
               textColor='#2C2543'
               backgroundColor="#00DBCE"
-              isHover>
-              Apply Now
+              isHover
+              disabled
+            >
+              Applications Open October 6th!
             </Button>
             <Button
               isOutline
@@ -220,12 +237,15 @@ export default function Register() {
               // href="https://docs.google.com/forms/d/e/1FAIpQLScA2RtmikDSTaeLqi7vadLDq4Wom4N9N1wDVZu0rpZ5Xk2sow/viewform"
               width='205px'
               height='50px'
+              fontSize='0.75rem'
               borderRadius='6px'
               borderColor="#00DBCE"
               textColor="#00DBCE"
               backgroundColor="transparent"
-              isHover>
-              Become a Mentor
+              isHover
+              disabled
+            >
+              Applications Open October 6th!
             </Button>
           </ButtonContainer>
         </MediaContainer>
