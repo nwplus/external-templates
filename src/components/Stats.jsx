@@ -55,7 +55,7 @@ const stemsGlow = keyframes`
     filter: brightness(1);
   }
   to {
-    filter: brightness(1.2);
+    filter: brightness(1.4);
   }
 `
 

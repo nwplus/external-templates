@@ -15,7 +15,7 @@ const InfoContainer = styled.div`
 
   ${(p) => p.theme.mediaQueries.mobile} {
     background-repeat: no-repeat;
-    aspect-ratio: 428/724;
+    aspect-ratio: 412/724;
   }
   
 `
@@ -69,6 +69,10 @@ const Bear = styled(SectionContainer)`
   width: 100%;
   height: 100%;
   opacity: 0.75;
+
+  ${(p) => p.theme.mediaQueries.mobile} {
+    top: 60vw;
+  }
 `
 
 const Deer = styled(SectionContainer)`
@@ -83,6 +87,10 @@ const Deer = styled(SectionContainer)`
   width: 100%;
   height: 100%;
   opacity: 0.75;
+
+  ${(p) => p.theme.mediaQueries.mobile} {
+    top: 50vw;
+  }
 `
 
 const Nugget = styled(SectionContainer)`
@@ -97,6 +105,10 @@ const Nugget = styled(SectionContainer)`
   width: 100%;
   height: 100%;
   opacity: 0.75;
+
+  ${(p) => p.theme.mediaQueries.mobile} {
+    top: 45vw;
+  }
 `
 
 const TextContainer = styled.div`
