@@ -1,7 +1,7 @@
 import { useParallax } from 'react-scroll-parallax'
 import { Header2 } from '@components/Typography'
 import { SectionContainer } from '@lib/Containers'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 const InfoContainer = styled.div`
   background: #150C27;
@@ -138,13 +138,77 @@ const CardContent = styled.p`
   line-height: 150%;
 `
 
+const bubbleRise = keyframes`
+  0% {
+    transform: translateY(-25vw) translateX(-15vw);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-30vw) translateX(-15vw);
+    opacity: 0;
+  }
+`
+
+const Bubbles = styled.div`
+  background: url('assets/background/learn/bubbles.png') no-repeat center;
+  width: 100vw;
+  height: 100vw;
+  z-index: 4; 
+  position: absolute;
+  aspect-ratio: 1 / 1.5;
+  animation: ${bubbleRise} 5s infinite;
+  ${(p) => p.theme.mediaQueries.mobile} {
+    display:none;
+  }
+`
+
+const Jellyfish = styled.div`
+background: url('assets/background/learn/jellyfish.png') no-repeat center;
+width: 100vw;
+height: 100vw;
+position: absolute;
+aspect-ratio: 1 / 1.5;
+
+${(p) => p.theme.mediaQueries.mobile} {
+  display:none;
+}
+`
+
+const Turtle = styled.div`
+background: url('assets/background/learn/turtle.png') no-repeat center;
+width: 100vw;
+height: 100vw; 
+position: absolute;
+aspect-ratio: 1 / 1.5;
+
+${(p) => p.theme.mediaQueries.mobile} {
+  display:none;
+}
+`
+
 const Learn = () => {
+  const jellyfishParallax = useParallax({
+    easing: 'easeOutQuad',
+    translateX: ['-10vw', '-50vw'],
+    translateY: ['0vw', '0vw'],
+    scale: [1, 1]
+  })
+
+  const turtleParallax = useParallax({
+    easing: 'easeOutQuad',
+    translateX: ['10vw', '50vw'],
+    translateY: ['0vw', '0vw'],
+    scale: [1, 1]
+  })
   return (
     <InfoContainer id="events">
       <BgScroll>
       <StyledTitle>
         Our Events
       </StyledTitle>
+      <Jellyfish ref={jellyfishParallax.ref}></Jellyfish>
+      <Turtle ref={turtleParallax.ref}></Turtle>
+      <Bubbles></Bubbles>
       </BgScroll>
     </InfoContainer>
   )
