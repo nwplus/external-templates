@@ -45,11 +45,11 @@ const BgScroll = styled(SectionContainer)`
 
 const portalBob = keyframes`
   0%, 100% {
-    top: -5px; 
+    transform: translateY(0, -10px); 
   }
 
   50% {
-    top: 5px;
+    transform: translateY(-5px);
   }
 `
 

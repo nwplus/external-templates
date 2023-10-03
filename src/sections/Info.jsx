@@ -86,11 +86,11 @@ const PushinP = styled.p`
 
 const fishingBearBob = keyframes`
   0%, 100% {
-    top: -2vw; 
+    transform: translateY(0, -2vw);
   }
 
   50% {
-    top: -1.5vw;
+    transform: translateY(-1vw);
   }
 `
 
