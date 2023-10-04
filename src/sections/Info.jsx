@@ -16,9 +16,8 @@ const InfoContainer = styled.div`
   
 
   ${(p) => p.theme.mediaQueries.mobile} {
-    background: url('assets/mobile/about/foreground_frame.svg'), linear-gradient(to bottom, #83F6F7, #A9D7EF);
     background-repeat: no-repeat;
-    aspect-ratio: 428/1450;
+    aspect-ratio: 412/871;
   }
 `
 
@@ -36,7 +35,9 @@ const BgScroll = styled(SectionContainer)`
   
 
   ${(p) => p.theme.mediaQueries.mobile} {
-    background: none;
+    background: url('assets/mobile/about/background.png');
+    background-repeat: no-repeat;
+    background-size: 100vw;
   }
 `
 
@@ -55,9 +56,9 @@ const TextContainer = styled.div`
   z-index: 2;
 
   ${(p) => p.theme.mediaQueries.mobile} {
-    margin: 0em 3em;
-    padding: 5em 0em 0em;
-    display: none;
+    margin: 0 3.2em;
+    padding: 0;
+    height: 50%;
   }
 `
 
@@ -68,13 +69,19 @@ const StyledTitle = styled(Header2)`
   line-height: 100%;
   
   ${(p) => p.theme.mediaQueries.mobile} {
-    font-size: 2em;
+    font-size: 1.75em;
+    width: 100%;
+    text-align: center;
   }
 `
 
 const PushinP = styled.p`
   color: #F0EEF2;
   font-size: 1.45vw;
+
+  ${(p) => p.theme.mediaQueries.mobile} {
+    font-size: 1rem;
+  }
 `
 
 const FishingBear = styled.div`
@@ -88,6 +95,12 @@ const FishingBear = styled.div`
   left 4.75vw;
   width: 100%;
   height: 100%;
+
+  ${(p) => p.theme.mediaQueries.mobile} {
+    background-size: 67.5vw;
+    left: -30px;
+    top: -25px;
+  }
 `
 
 const Info = () => {
