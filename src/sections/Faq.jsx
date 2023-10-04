@@ -63,7 +63,7 @@ const Nugget = styled.div`
   background: url('assets/background/faq/nugget.png') no-repeat;
   width: 100vw;
   height:100vw;
-  z-index: 4;
+  z-index: 2;
   position: absolute;
   top:70%;
   animation: ${bobbing} 2s ease-in-out infinite;
@@ -172,23 +172,23 @@ const StyledTitle = styled(Header2)`
 const waving = keyframes`
   0%, 100% {
     transform: rotate(0deg);
-    transform-origin: left;
   }
   50% {
-    transform: rotate(1deg);
-    transform-origin: left;
+    transform: rotate(10deg);
   }
 `
 
 const DeerArm = styled.div`
-background: url('assets/background/faq/deararm.png') no-repeat;
-width: 100vw;
-height:100vw;
-z-index: 4;
+background: url('assets/background/faq/deerarm.png') no-repeat;
+width: 3vw;
+height:3vw;
+z-index: 5;
 position: absolute;
 animation: ${waving} 1s infinite;
 background-position: center center;
-right: 10%;
+transform-origin: bottom left;
+top: 68.5%;
+left: 42.5%;
 
 ${p => p.theme.mediaQueries.mobile} {
 display:none;
@@ -196,13 +196,14 @@ display:none;
 `
 const BearArm = styled.div`
 background: url('assets/background/faq/beararm.png') no-repeat;
-width: 100vw;
-height:100vw;
+width: 3vw;
+height:3vw;
 z-index: 4;
-left: 11.5%;
-top: 8%;
+left: 60%;
+top: 73.5%;
 position: absolute;
 animation: ${waving} 1s infinite;
+transform-origin: bottom left;
 background-position: center center;
 
 ${p => p.theme.mediaQueries.mobile} {
@@ -246,8 +247,8 @@ const Faq = () => {
   return (
     <BgSectionContainer>
       <Nugget></Nugget>
-      <DeerArm />
       <BearArm />
+      <DeerArm></DeerArm>
       <BgScroll/>
       <Wrapper id="faq">
         <StyledTitle>

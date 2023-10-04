@@ -141,6 +141,10 @@ const CardContent = styled.p`
 const bubbleRise = keyframes`
   0% {
     transform: translateY(-25vw) translateX(-15vw);
+    opacity: .5;
+  }
+  50% {
+    transform: translateY(-27vw) translateX(-15vw);
     opacity: 1;
   }
   100% {
@@ -156,7 +160,7 @@ const Bubbles = styled.div`
   z-index: 4; 
   position: absolute;
   aspect-ratio: 1 / 1.5;
-  animation: ${bubbleRise} 5s infinite;
+  animation: ${bubbleRise} linear 3s infinite;
   ${(p) => p.theme.mediaQueries.mobile} {
     display:none;
   }
