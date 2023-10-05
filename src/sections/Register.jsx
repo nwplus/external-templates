@@ -206,34 +206,30 @@ export default function Register() {
             <Button
               target="_blank"
               rel="noopener noreferrer"
-              // href="https://forms.gle/GQ3k8ZbtfULfVYxq6"
+              href="https://docs.google.com/forms/d/e/1FAIpQLSfs5nQk58vOudnXEra2Tb76bn6poFHrNpe-TZ7cvyyxmCFzZg/viewform?usp=sf_link"
               width='205px'
               height='50px'
-              fontSize='0.75rem'
               borderRadius='6px'
               textColor='#2C2543'
               backgroundColor="#00DBCE"
               isHover
-              disabled
             >
-              Applications Open October 6th!
+              Apply Now
             </Button>
             <Button
               isOutline
               target="_blank"
               rel="noopener noreferrer"
-              // href="https://docs.google.com/forms/d/e/1FAIpQLScA2RtmikDSTaeLqi7vadLDq4Wom4N9N1wDVZu0rpZ5Xk2sow/viewform"
+              href="https://forms.gle/kqAwC6tzVwC4Te1j8"
               width='205px'
               height='50px'
-              fontSize='0.75rem'
               borderRadius='6px'
               borderColor="#00DBCE"
               textColor="#00DBCE"
               backgroundColor="transparent"
               isHover
-              disabled
             >
-              Applications Open October 6th!
+              Become a mentor
             </Button>
           </ButtonContainer>
         </MediaContainer>
