@@ -18,6 +18,7 @@ const InfoContainer = styled.div`
     background-size: 100vw;
     background-repeat: no-repeat;
     background-position: center center;
+    background-color: #150C27;
     
     aspect-ratio: 412/1154;
   }

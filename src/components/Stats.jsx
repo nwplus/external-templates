@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useParallax } from 'react-scroll-parallax'
 import { SectionContainer } from '@lib/Containers'
 import styled, { keyframes } from 'styled-components'
@@ -49,15 +50,25 @@ const BgScroll = styled(SectionContainer)`
   }
 `
 
+const stemsGlow = keyframes`
+  from {
+    filter: brightness(1);
+  }
+  to {
+    filter: brightness(1.4);
+  }
+`
+
 const Stems = styled(SectionContainer)`
+  animation: ${stemsGlow} 2s infinite alternate;
   background: url('assets/background/stats/stems.svg');
   background-size: 100vw;
   transform: scale(1.205);
   background-repeat: no-repeat;
 
   position: absolute;
-  top: 46.5vw;
-  left: -0.5vw;
+  top: 46.25vw;
+  left: -1.0vw;
   width: 100%;
   height: 100%;
   z-index: 12;
@@ -83,6 +94,7 @@ const FgScroll = styled(SectionContainer)`
   width: 100%;
   height: 100%;
   z-index: 98;
+  top: 1vw;
 
   ${(p) => p.theme.mediaQueries.mobile} {
     background: url('assets/mobile/stats/foreground.png');
@@ -210,7 +222,7 @@ const GalleryImage = styled.img`
   margin: 10px 15px;
 `
 
-export default function Stats() {
+export default function Stats () {
   // const { ref: ref1 } = useParallax({
   //   speed: -20,
   // });
@@ -218,6 +230,38 @@ export default function Stats() {
   // const { ref: ref2 } = useParallax({
   //   speed: -10,
   // });
+  //   const observer = new IntersectionObserver(function (entries) {
+  //     entries.forEach((entry) => {
+  //       if (entry.isVisible) {
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const stats = window.document.querySelector('.stats')
+      const renderCountAnimation = () => {
+        const valueDisplays = window.document.querySelectorAll('.num')
+        const interval = 500
+        valueDisplays.forEach((valueDisplay) => {
+          let startValue = 0
+          const endValue = parseInt(valueDisplay.getAttribute('data-val'))
+          const id = valueDisplay.getAttribute('id')
+          const duration = Math.floor(interval / endValue)
+          const counter = setInterval(function () {
+            startValue += 1
+            valueDisplay.textContent = `${startValue}${id === 'percent' ? '%' : ''}`
+            if (startValue === endValue) {
+              clearInterval(counter)
+            }
+          }, duration)
+        })
+      }
+      const observer = new window.IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting) {
+          renderCountAnimation()
+        }
+      })
+      observer.observe(stats)
+    }
+  })
 
   return (
     <BgSectionContainer id="statistics">
@@ -227,21 +271,21 @@ export default function Stats() {
       <ContentInner>
         <StyledTitle>
           Last year we had:
-          <StatsGrid>
+          <StatsGrid className="stats">
             <StatTop>
-              <Number>26</Number>
+              <Number className="num" data-val="26">0</Number>
               Projects Submitted
             </StatTop>
             <StatTop>
-              <Number>197</Number>
+              <Number className="num" data-val="197">0</Number>
               Hackers Registered
             </StatTop>
             <StatBottom>
-              <Number>40%</Number>
+              <Number className="num" data-val="40" id="percent">0</Number>
               Gender Minority
             </StatBottom>
             <StatBottom>
-              <Number>64%</Number>
+              <Number className="num" data-val="64" id="percent">0</Number>
               First-Time Hackers
             </StatBottom>
           </StatsGrid>
