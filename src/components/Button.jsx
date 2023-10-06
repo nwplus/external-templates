@@ -38,6 +38,7 @@ const StyledButton = styled.a`
 `
 
 export default function Button({
+  target,
   backgroundColor,
   textColor,
   height,
@@ -55,6 +56,7 @@ export default function Button({
 }) {
   return (
     <StyledButton
+      target={target}
       href={href}
       backgroundColor={backgroundColor}
       textColor={textColor}
