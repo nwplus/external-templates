@@ -1,10 +1,11 @@
 // import { useParallax } from 'react-scroll-parallax';
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import { useState, useEffect } from 'react'
 import { SectionContainer } from '@lib/Containers'
 import fireDb from '@utilities/firebase'
 import { Header2 } from '@components/Typography'
 import FaqBox from '../components/FaqBox'
+import { useParallax } from 'react-scroll-parallax'
 
 const BgSectionContainer = styled(SectionContainer)`
   display:grid;
@@ -47,6 +48,29 @@ const BgScroll = styled(SectionContainer)`
     background: none;
     aspect-ratio: 412/1359;
   }
+`
+
+const bobbing = keyframes`
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+`;
+
+const Nugget = styled.div`
+  background: url('assets/background/faq/nugget.png') no-repeat;
+  width: 100vw;
+  height:100vw;
+  z-index: 2;
+  position: absolute;
+  top:70%;
+  animation: ${bobbing} 2s ease-in-out infinite;
+
+${p => p.theme.mediaQueries.mobile} {
+  display:none;
+}
 `
 
 const FgScroll = styled(SectionContainer)`
@@ -145,6 +169,48 @@ const StyledTitle = styled(Header2)`
   }
 `
 
+const waving = keyframes`
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+`
+
+const DeerArm = styled.div`
+background: url('assets/background/faq/deerarm.png') no-repeat;
+width: 3vw;
+height:3vw;
+z-index: 5;
+position: absolute;
+animation: ${waving} 1s infinite;
+background-position: center center;
+transform-origin: bottom left;
+top: 68.5%;
+left: 42.5%;
+
+${p => p.theme.mediaQueries.mobile} {
+display:none;
+}
+`
+const BearArm = styled.div`
+background: url('assets/background/faq/beararm.png') no-repeat;
+width: 3vw;
+height:3vw;
+z-index: 4;
+left: 60%;
+top: 73.5%;
+position: absolute;
+animation: ${waving} 1s infinite;
+transform-origin: bottom left;
+background-position: center center;
+
+${p => p.theme.mediaQueries.mobile} {
+display:none;
+}
+`
+
 const FaqCollection = ({ category, faqs }) => (
   <CollectionContainer>
     <CollectionName>{category}</CollectionName>
@@ -178,16 +244,11 @@ const Faq = () => {
     setFaqData(processedData)
   }, [])
 
-  // const { ref: ref1 } = useParallax({
-  //   speed: -20,
-  // });
-
-  // const { ref: ref2 } = useParallax({
-  //   speed: -10,
-  // });
-
   return (
     <BgSectionContainer>
+      <Nugget></Nugget>
+      <BearArm />
+      <DeerArm></DeerArm>
       <BgScroll/>
       <Wrapper id="faq">
         <StyledTitle>
