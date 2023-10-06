@@ -80,7 +80,7 @@ const StyledTitle = styled(Header2)`
   font-size: 3.5vw;
   letter-spacing: 0.7px;
   line-height: 56px;
-  max-width: 30vw;
+  max-width: 20vw;
 
   ${(p) => p.theme.mediaQueries.mobile} {
     font-size: 2em;
@@ -191,7 +191,7 @@ const useCountdown = (targetDate) => {
 export { useCountdown }
 
 const Count = () => {
-  const countDownDate = new Date('Oct 6, 2023 00:00:00').getTime()
+  const countDownDate = new Date('Nov 18, 2023 09:00:00').getTime()
   const [days, hours, minutes] = useCountdown(countDownDate)
 
   const twoify = (num) => {
@@ -221,7 +221,7 @@ const Count = () => {
     <InfoContainer>
       <BgScroll />
       <TextContainer>
-        <StyledTitle>Registration opens in:</StyledTitle>
+        <StyledTitle>HackCamp starts in:</StyledTitle>
         <DaysTextContainer>
           <ShadowText text={`${count.days[0]}${count.days[1]} Days`}>
             {`${count.days[0]}${count.days[1]} Days`}
