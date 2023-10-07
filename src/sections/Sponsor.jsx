@@ -86,6 +86,17 @@ ${(p) => p.theme.mediaQueries.mobile} {
 }
 `
 
+const Sponsors = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 2.5vw;
+`
+
+const SponsorLogo = styled.img`
+  width: 37.5vw;
+`
+
 const PushinP = styled.p`
   color: #FFF;
   text-align: left;
@@ -132,6 +143,9 @@ export default function Sponsor () {
       <StyledTitle>
         Sponsors
       </StyledTitle>
+      <Sponsors>
+        <SponsorLogo src="assets/logo/worksafebc.svg"/>
+      </Sponsors>
       <PushinP>
       Sponsors make this event happen. If you are interested in working with us, joining us or speaking at one of our events, please reach out to us!
       </PushinP>
