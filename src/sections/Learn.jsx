@@ -1,7 +1,7 @@
 import { useParallax } from 'react-scroll-parallax'
 import { Header2 } from '@components/Typography'
 import { SectionContainer } from '@lib/Containers'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 const InfoContainer = styled.div`
   background: #150C27;
@@ -139,13 +139,174 @@ const CardContent = styled.p`
   line-height: 150%;
 `
 
+const bubbleRise = keyframes`
+  0% {
+    transform: translateY(-25vw) translateX(-15vw);
+    opacity: .5;
+  }
+  50% {
+    transform: translateY(-27vw) translateX(-15vw);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-30vw) translateX(-15vw);
+    opacity: 0;
+  }
+`
+
+const Bubbles = styled.div`
+  background: url('assets/background/learn/bubbles.png') no-repeat center;
+  width: 100vw;
+  height: 100vw;
+  z-index: 4; 
+  position: absolute;
+  aspect-ratio: 1 / 1.5;
+  animation: ${bubbleRise} linear 3s infinite;
+  ${(p) => p.theme.mediaQueries.mobile} {
+    display:none;
+  }
+`
+
+const StyledText = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20vw;
+  margin-top: 24vw;
+
+  ${(p) => p.theme.mediaQueries.mobile} {
+    flex-direction: column-reverse;
+    align-items: center;
+    margin-top: 55vw;
+    gap: 80vw;
+  }
+`
+
+const Event = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 22.5vw;
+
+  ${(p) => p.theme.mediaQueries.mobile} {
+    width: 50vw;
+  }
+`
+
+const EventTitle = styled.div`
+  color: var(--Space-500, #231048);
+  text-align: center;
+  font-size: 2.5vw;
+  font-style: normal;
+  font-weight: 800;
+  letter-spacing: 0.38px;
+
+  ${(p) => p.theme.mediaQueries.mobile} {
+    font-size: 6vw;
+  }
+`
+
+const Date = styled.div`
+  color: var(--Space-500, #231048);
+  text-align: center;
+  font-size: 1.35vw;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: -0.45px;
+  margin-top: 4px;
+  margin-bottom: 16px;
+
+  ${(p) => p.theme.mediaQueries.mobile} {
+    font-size: 4vw;
+    margin-top: 0;
+    margin-bottom: 12px;
+  }
+`
+
+const Description = styled.div`
+  color: #1E4A73;
+  font-size: 1.2vw;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.5vw;
+  letter-spacing: -0.1px;
+
+  ${(p) => p.theme.mediaQueries.mobile} {
+    font-size: 3vw;
+    line-height: 3.5vw;
+  }
+`
+
+const Jellyfish = styled.div`
+background: url('assets/background/learn/jellyfish.png') no-repeat center;
+width: 100vw;
+height: 100vw;
+position: absolute;
+aspect-ratio: 1 / 1.5;
+
+${(p) => p.theme.mediaQueries.mobile} {
+  display:none;
+}
+`
+
+const Turtle = styled.div`
+background: url('assets/background/learn/turtle.png') no-repeat center;
+width: 100vw;
+height: 100vw; 
+position: absolute;
+aspect-ratio: 1 / 1.5;
+
+${(p) => p.theme.mediaQueries.mobile} {
+  display:none;
+}
+`
+
 const Learn = () => {
+  const jellyfishParallax = useParallax({
+    easing: 'easeOutQuad',
+    translateX: ['-10vw', '-50vw'],
+    translateY: ['0vw', '0vw'],
+    scale: [1, 1]
+  })
+
+  const turtleParallax = useParallax({
+    easing: 'easeOutQuad',
+    translateX: ['10vw', '50vw'],
+    translateY: ['0vw', '0vw'],
+    scale: [1, 1]
+  })
   return (
     <InfoContainer id="events">
       <BgScroll>
       <StyledTitle>
         Our Events
       </StyledTitle>
+      <StyledText>
+        <Event>
+          <EventTitle>
+            Learn Day
+          </EventTitle>
+          <Date>
+            Nov. 18, 2023
+          </Date>
+          <Description>
+            A day of workshops and skill building in preparation for Build Day. With topics ranging from web development, git, machine learning, and more, we make sure to have something for you!
+          </Description>
+        </Event>
+        <Event>
+          <EventTitle>
+            Build Day
+          </EventTitle>
+          <Date>
+            Nov. 19, 2023
+          </Date>
+          <Description>
+            A 12-hour hackathon focused around creating projects centered around inclusivity, diversity and accessibility. Each submission will donate $10 to a charity of your choice!
+          </Description>
+        </Event>
+      </StyledText>
+      <Jellyfish ref={jellyfishParallax.ref}></Jellyfish>
+      <Turtle ref={turtleParallax.ref}></Turtle>
+      <Bubbles></Bubbles>
       </BgScroll>
     </InfoContainer>
   )

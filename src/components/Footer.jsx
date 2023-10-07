@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faFacebook,
@@ -20,6 +20,7 @@ const CaveTop = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 
   position: relative;
   top: 0;
@@ -48,34 +49,61 @@ const CaveTop = styled.div`
   }
 
 `
+// const PlantsContainer = styled.div`
+//   position: absolute;
+//   left: 0;
+//   bottom: 0;
+//   display: flex;
+//   align-items: flex-end;
+//   background-size:cover;
 
-const CaveBottom = styled.div`
-  background: url('assets/background/footer/background.svg'), linear-gradient(to bottom, #220639, #AC306C);
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-position: center bottom;
-  overflow-y: hidden;
+//   ${(p) => p.theme.mediaQueries.mobile} {
+//     display: none;
+//   }
+// `
 
-  position: fixed;
-  z-index: -1;
-  left: 0;
-  bottom: 0;
-
-  width: 100%;
-  aspect-ratio: 1440/1390;
-  
-  ${(p) => p.theme.mediaQueries.mobile} {
-    background: url('assets/mobile/footer/background.svg'), linear-gradient(to bottom, #220639, #AC306C);
-    background-repeat: no-repeat;
-    aspect-ratio: 412/506;
+const glow = keyframes`
+  0% {
+    filter: brightness(1);
   }
-  
+  50% {
+    filter: brightness(1.25);
+  }
+  100% {
+    filter: brightness(1);
+  }
 `
 
+const Mushroom = styled.div`
+  background: url('assets/background/footer/mushroom.png') no-repeat center;
+  width: 100vw;
+  z-index: 1;  // below the Plant
+  position: absolute;
+  transform: translateX(-45vw);
+  aspect-ratio: 1 / 1.5;
+  animation: ${glow} 3s infinite;
+  ${(p) => p.theme.mediaQueries.mobile} {
+    display:none;
+  }
+`
+
+const Plant = styled.div`
+  background: url('assets/background/footer/plants.png') no-repeat center;
+  width: 100vw;
+  z-index: 2;  // below the Plant
+  transform: translateX(-43vw) translateY(20vw);
+  position: absolute;
+  aspect-ratio: 1 / 1.5;
+  ${(p) => p.theme.mediaQueries.mobile} {
+    display:none;
+  }
+`
 const SocialMediaIcons = styled.div`
   justify-content: center;
   align-items: center;
   display: flex;
+  position: relative;
+  z-index: 3;  // below the Plant
   a {
     color: #E2D6FF;
     width: 50px;
@@ -128,7 +156,7 @@ const TeamContainer = styled.div`
   ${(p) => p.theme.mediaQueries.mobile} {
     display: none;
   }
-
+  z-index:4;
   position: absolute;
   left: 0;
   bottom: 3vw;
@@ -140,6 +168,8 @@ export default function Footer () {
   return (
     <>
       <CaveTop>
+          <Mushroom></Mushroom>
+          <Plant></Plant>
         <TextContainer>
           <SocialMediaIcons>
             <a

@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import { SectionContainer } from '@lib/Containers'
 import SponsorContainer from '@components/SponsorContainer'
 import { Header2 } from '@components/Typography'
@@ -11,9 +11,12 @@ const BgSectionContainer = styled(SectionContainer)`
   background-size: 100vw;
   background-repeat: no-repeat;
   background-position: center top;
+  position: relative;
   width: 100%;
+  justify-content: center;
+  align-items: center;
   aspect-ratio: 1440/1630;
-  overflow-y: hidden;
+  overflow-y: visible;
   z-index: 99;
 
   ${(p) => p.theme.mediaQueries.mobile} {
@@ -35,6 +38,52 @@ const StyledTitle = styled(Header2)`
     font-size: 2em;
     padding-top: 12rem;
   }
+`
+
+const colorChange = keyframes`
+  0% {
+    filter: brightness(1) saturate(100%);
+  }
+  25% {
+    filter: brightness(1) saturate(150%);
+  }
+  50% {
+    filter: brightness(1.2) saturate(150%);
+  }
+  75% {
+    filter: brightness(1) saturate(150%);
+  }
+  100% {
+    filter: brightness(1) saturate(100%);
+  }
+`
+
+const UFO = styled.div`
+background: url('assets/background/sponsors/ufo.png') no-repeat center;
+width: 100vw;
+height: 100vw;
+aspect-ratio: 1293/564.05;
+transform: translateY(-15vw);
+position: absolute;
+z-index:2;
+
+${(p) => p.theme.mediaQueries.mobile} {
+  display:none;
+}
+`
+
+const UFOLight = styled.div`
+background: url('assets/background/sponsors/light.png') no-repeat center;
+width: 100vw;
+height: 100vw;
+aspect-ratio: 1/1.5;
+top: 15%;
+position: absolute;
+z-index:-1;
+animation: ${colorChange} 5s infinite; // apply the animation
+${(p) => p.theme.mediaQueries.mobile} {
+  display:none;
+}
 `
 
 const PushinP = styled.p`
@@ -78,6 +127,8 @@ export default function Sponsor () {
   return sponsors?.length > 0
     ? (
     <BgSectionContainer id="sponsors">
+      <UFO></UFO>
+      <UFOLight/>
       <StyledTitle>
         Sponsors
       </StyledTitle>
