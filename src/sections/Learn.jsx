@@ -47,7 +47,6 @@ const TextContainer = styled.div`
   margin: 0em 10em;
   padding: 5em 0em;
   position: relative;
-  z-index: 2;
 
   ${(p) => p.theme.mediaQueries.mobile} {
     margin: 0em 3em;
@@ -60,6 +59,7 @@ const StyledTitle = styled(Header2)`
   color: #F0EEF2;
   font-size: 3rem;
   padding-top: 1rem;
+  z-index: 5;
 
   ${(p) => p.theme.mediaQueries.mobile} {
     font-size: 2.8em;
@@ -141,24 +141,24 @@ const CardContent = styled.p`
 
 const bubbleRise = keyframes`
   0% {
-    transform: translateY(-25vw) translateX(-15vw);
+    transform: translateY(-42vw);
     opacity: .5;
   }
   50% {
-    transform: translateY(-27vw) translateX(-15vw);
+    transform: translateY(-45vw);
     opacity: 1;
   }
   100% {
-    transform: translateY(-30vw) translateX(-15vw);
+    transform: translateY(-48vw);
     opacity: 0;
   }
 `
 
 const Bubbles = styled.div`
-  background: url('assets/background/learn/bubbles.png') no-repeat center;
-  width: 100vw;
-  height: 100vw;
-  z-index: 4; 
+  background: url('assets/background/learn/bubbles.png') no-repeat right;
+  width: 52vw;
+  height: 60vw;
+  z-index: 1; 
   position: absolute;
   aspect-ratio: 1 / 1.5;
   animation: ${bubbleRise} linear 3s infinite;
@@ -173,6 +173,7 @@ const StyledText = styled.div`
   justify-content: center;
   gap: 20vw;
   margin-top: 24vw;
+  z-index:4;
 
   ${(p) => p.theme.mediaQueries.mobile} {
     flex-direction: column-reverse;
@@ -186,6 +187,7 @@ const Event = styled.div`
   display: flex;
   flex-direction: column;
   width: 22.5vw;
+  z-index: 4;
 
   ${(p) => p.theme.mediaQueries.mobile} {
     width: 50vw;
@@ -199,6 +201,7 @@ const EventTitle = styled.div`
   font-style: normal;
   font-weight: 800;
   letter-spacing: 0.38px;
+  z-index:4;
 
   ${(p) => p.theme.mediaQueries.mobile} {
     font-size: 6vw;
@@ -238,8 +241,8 @@ const Description = styled.div`
 
 const Jellyfish = styled.div`
 background: url('assets/background/learn/jellyfish.png') no-repeat center;
-width: 100vw;
-height: 100vw;
+width: 45vw;
+height: 15vw;
 position: absolute;
 aspect-ratio: 1 / 1.5;
 
@@ -250,8 +253,8 @@ ${(p) => p.theme.mediaQueries.mobile} {
 
 const Turtle = styled.div`
 background: url('assets/background/learn/turtle.png') no-repeat center;
-width: 100vw;
-height: 100vw; 
+width: 30vw;
+height: 30vw; 
 position: absolute;
 aspect-ratio: 1 / 1.5;
 
@@ -263,14 +266,14 @@ ${(p) => p.theme.mediaQueries.mobile} {
 const Learn = () => {
   const jellyfishParallax = useParallax({
     easing: 'easeOutQuad',
-    translateX: ['-10vw', '-50vw'],
-    translateY: ['0vw', '0vw'],
+    translateX: ['0vw', '-25vw'],
+    translateY: ['5vw', '5vw'],
     scale: [1, 1]
   })
 
   const turtleParallax = useParallax({
     easing: 'easeOutQuad',
-    translateX: ['10vw', '50vw'],
+    translateX: ['50vw', '90vw'],
     translateY: ['0vw', '0vw'],
     scale: [1, 1]
   })
