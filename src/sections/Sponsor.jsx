@@ -30,11 +30,13 @@ const BgSectionContainer = styled(SectionContainer)`
 
 const StyledTitle = styled(Header2)`
   text-align: center;
-  color: #FFF;
+  color: #fff;
   font-size: 3rem;
   padding-top: 33rem;
+  position: relative;
+  z-index: 3;
 
-  ${(p) => p.theme.mediaQueries.mobile} {
+  ${p => p.theme.mediaQueries.mobile} {
     font-size: 2em;
     padding-top: 12rem;
   }
@@ -91,6 +93,8 @@ const Sponsors = styled.div`
   justify-content: center;
   align-items: center;
   padding-top: 2.5vw;
+  position: relative;
+  z-index: 3;
 `
 
 const SponsorLogo = styled.img`
@@ -98,15 +102,17 @@ const SponsorLogo = styled.img`
 `
 
 const PushinP = styled.p`
-  color: #FFF;
+  color: #fff;
   text-align: left;
   width: 30vw;
   min-width: 500px;
   margin: 0 auto;
   padding-top: 2rem;
   max-width: 800px;
-  
-  ${(p) => p.theme.mediaQueries.mobile} {
+  position: relative;
+  z-index: 3;
+
+  ${p => p.theme.mediaQueries.mobile} {
     display: none;
   }
 `
