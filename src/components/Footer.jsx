@@ -139,6 +139,10 @@ const TextContainer = styled.div`
   position: absolute;
   z-index: 999;
   bottom: 22.5vw;
+
+  ${(p) => p.theme.mediaQueries.mobile} {
+    bottom: 50vw;
+  }
 `
 
 const SmallText = styled.div`
@@ -149,14 +153,7 @@ const SmallText = styled.div`
 `
 
 const TeamContainer = styled.div`
-  
-  ${(p) => p.theme.mediaQueries.tabletLarge} {
-    width: 40vw;
-  }
-  ${(p) => p.theme.mediaQueries.mobile} {
-    display: none;
-  }
-  z-index:4;
+  z-index: 4;
   position: absolute;
   left: 0;
   bottom: 3vw;

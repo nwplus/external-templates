@@ -30,11 +30,13 @@ const BgSectionContainer = styled(SectionContainer)`
 
 const StyledTitle = styled(Header2)`
   text-align: center;
-  color: #FFF;
+  color: #fff;
   font-size: 3rem;
   padding-top: 33rem;
+  position: relative;
+  z-index: 3;
 
-  ${(p) => p.theme.mediaQueries.mobile} {
+  ${p => p.theme.mediaQueries.mobile} {
     font-size: 2em;
     padding-top: 12rem;
   }
@@ -91,6 +93,8 @@ const Sponsors = styled.div`
   justify-content: center;
   align-items: center;
   padding-top: 2.5vw;
+  position: relative;
+  z-index: 3;
 `
 
 const SponsorLogo = styled.img`
@@ -98,15 +102,17 @@ const SponsorLogo = styled.img`
 `
 
 const PushinP = styled.p`
-  color: #FFF;
+  color: #fff;
   text-align: left;
   width: 30vw;
   min-width: 500px;
   margin: 0 auto;
   padding-top: 2rem;
   max-width: 800px;
-  
-  ${(p) => p.theme.mediaQueries.mobile} {
+  position: relative;
+  z-index: 3;
+
+  ${p => p.theme.mediaQueries.mobile} {
     display: none;
   }
 `
@@ -114,6 +120,8 @@ const PushinP = styled.p`
 const ButtonContainer = styled.p`
   display: flex;
   justify-content: center;
+  position: relative;
+  z-index: 3;
 `
 
 const Skip = styled.div`
@@ -129,7 +137,7 @@ export default function Sponsor () {
   const [sponsors, setSponsors] = useState(null)
 
   useEffect(async () => {
-    const data = await fireDb.getCollection('HackCamp2022', 'Sponsors')
+    const data = await fireDb.getCollection('HackCamp2023', 'Sponsors')
     if (data) {
       setSponsors(data)
     }
@@ -144,7 +152,9 @@ export default function Sponsor () {
         Sponsors
       </StyledTitle>
       <Sponsors>
-        <SponsorLogo src="assets/logo/worksafebc.svg"/>
+        {sponsors.map((sponsor) => (
+          <SponsorLogo src={sponsor.imgURL}/>
+        ))}
       </Sponsors>
       <PushinP>
       Sponsors make this event happen. If you are interested in working with us, joining us or speaking at one of our events, please reach out to us!

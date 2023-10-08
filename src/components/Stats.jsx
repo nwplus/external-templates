@@ -285,7 +285,7 @@ export default function Stats () {
               Gender Minority
             </StatBottom>
             <StatBottom>
-              <Number className="num" data-val="64" id="percent">0</Number>
+              <Number className="num" data-val="76" id="percent">0</Number>
               First-Time Hackers
             </StatBottom>
           </StatsGrid>

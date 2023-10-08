@@ -326,6 +326,10 @@ const StyledTitle = styled(Header3)`
   margin-top: 1em;
   color: #E2D6FF;
   filter: drop-shadow(0 0 4px #E2D6FF);
+
+  ${(p) => p.theme.mediaQueries.mobile} {
+    font-size: 5.5vw;
+  }
 `
 
 const ProfileContent = styled.p`
