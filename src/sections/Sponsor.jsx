@@ -129,7 +129,7 @@ export default function Sponsor () {
   const [sponsors, setSponsors] = useState(null)
 
   useEffect(async () => {
-    const data = await fireDb.getCollection('HackCamp2022', 'Sponsors')
+    const data = await fireDb.getCollection('HackCamp2023', 'Sponsors')
     if (data) {
       setSponsors(data)
     }
@@ -144,7 +144,9 @@ export default function Sponsor () {
         Sponsors
       </StyledTitle>
       <Sponsors>
-        <SponsorLogo src="assets/logo/worksafebc.svg"/>
+        {sponsors.map((sponsor) => (
+          <SponsorLogo src={sponsor.imgURL}/>
+        ))}
       </Sponsors>
       <PushinP>
       Sponsors make this event happen. If you are interested in working with us, joining us or speaking at one of our events, please reach out to us!
