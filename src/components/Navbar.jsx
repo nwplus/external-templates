@@ -229,6 +229,7 @@ const MenuList = ({ isMobile, closeDropdown }) => (
     <MenuItem name='Events' href='/#events' isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
     <MenuItem name='FAQ' href='/#faq' isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
     <MenuItem name='Sponsors' href='/#sponsors' isMobile={isMobile} closeDropdown={closeDropdown} />
+    <MenuItem name='2022' href='https://hackcamp2022.nwplus.io/' target='_blank' isMobile={isMobile} closeDropdown={closeDropdown} />
   </>
 )
 
