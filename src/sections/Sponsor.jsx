@@ -120,6 +120,8 @@ const PushinP = styled.p`
 const ButtonContainer = styled.p`
   display: flex;
   justify-content: center;
+  position: relative;
+  z-index: 3;
 `
 
 const Skip = styled.div`
