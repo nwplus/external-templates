@@ -10,10 +10,10 @@ const Container = styled.div`
   overflow:hidden;
 
   ${p => p.expanded
-? `
+    ? `
     border-color: #C4B2F0;
   `
-: `
+    : `
     border-color: #C4B2F0;
   `}
   
@@ -75,15 +75,10 @@ const Arrow = ({ color }) => (
   </svg>
 )
 
-const FaqBox = ({ question, answer }) => {
-  const [isExpanded, setIsExpanded] = useState(false)
-
+const FaqBox = ({ question, answer, isExpanded, onExpand }) => {
   return (
-    <Container
-      expanded={isExpanded}>
-      <Top
-        expanded={isExpanded}
-        onClick={() => setIsExpanded(!isExpanded)}>
+    <Container expanded={isExpanded}>
+      <Top expanded={isExpanded} onClick={onExpand}>
         {question}
         <TopExpand style={isExpanded ? { transform: 'rotate(0)' } : { transform: 'rotate(180deg)' }}>
           <Arrow color={isExpanded ? '#2C2543' : '#2C2543'} />
