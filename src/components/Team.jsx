@@ -147,7 +147,7 @@ const profiles = [
   },
   {
     img: '/assets/profiles/Jennifer_Nguyen.png',
-    name: 'Jennifer_Nguyen',
+    name: 'Jennifer Nguyen',
     emoji: '☆',
     color: '#01DACC',
     title: 'nwHacks Logistics Coordinator'
