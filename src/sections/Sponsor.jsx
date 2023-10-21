@@ -92,6 +92,7 @@ const Sponsors = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   width: 50vw;
   padding-top: 2.5vw;
   position: relative;
