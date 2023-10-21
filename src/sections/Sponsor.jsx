@@ -92,13 +92,16 @@ const Sponsors = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 50vw;
   padding-top: 2.5vw;
   position: relative;
   z-index: 3;
+  margin: auto;
 `
 
 const SponsorLogo = styled.img`
-  width: 37.5vw;
+  width: 50%;
+  flex: 50%;
 `
 
 const PushinP = styled.p`
