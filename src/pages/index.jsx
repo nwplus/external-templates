@@ -29,7 +29,7 @@ export default function Index ({ title }) {
           participants can learn new skills, connect with fellow tech
           enthusiasts, and build solutions to tackle challenges together."
         />
-        <meta property="og:image" content="/hc-og.png" />
+        <meta property="og:image" content="/hackcamp2023meta.png" />
       </Head>
 
       {/* Components Starts */}
