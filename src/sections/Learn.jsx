@@ -176,7 +176,7 @@ const StyledText = styled.div`
   z-index:4;
 
   ${(p) => p.theme.mediaQueries.mobile} {
-    flex-direction: column-reverse;
+    flex-direction: column;
     align-items: center;
     margin-top: 55vw;
     gap: 80vw;

@@ -57,7 +57,7 @@ const bobbing = keyframes`
   50% {
     transform: translateY(-20px);
   }
-`;
+`
 
 const Nugget = styled.div`
   background: url('assets/background/faq/nugget.png') no-repeat;
@@ -211,16 +211,31 @@ display:none;
 }
 `
 
-const FaqCollection = ({ category, faqs }) => (
+const FaqCollection = ({ category, faqs, expandedQuestion, setExpandedQuestion }) => (
   <CollectionContainer>
     <CollectionName>{category}</CollectionName>
 
-    {faqs.map(q => <FaqBox key={q.question} question={q.question} answer={q.answer} />)}
+    {faqs.map(q =>
+      <FaqBox
+        key={q.question}
+        question={q.question}
+        answer={q.answer}
+        isExpanded={expandedQuestion === q.question}
+        onExpand={() => {
+          if (expandedQuestion === q.question) {
+            setExpandedQuestion(null)
+          } else {
+            setExpandedQuestion(q.question)
+          }
+        }}
+      />
+    )}
   </CollectionContainer>
 )
 
 const Faq = () => {
   const [faqData, setFaqData] = useState(null)
+  const [expandedQuestion, setExpandedQuestion] = useState(null)
 
   // (@htdf processData)
   // (@signature (listof FAQ) -> Object)
@@ -249,7 +264,7 @@ const Faq = () => {
       <Nugget></Nugget>
       <BearArm />
       <DeerArm></DeerArm>
-      <BgScroll/>
+      <BgScroll />
       <Wrapper id="faq">
         <StyledTitle>
           FAQ
@@ -258,24 +273,30 @@ const Faq = () => {
         {faqData
           ? (
             <FaqGrid>
-
               <FaqColumn>
                 {faqData.General &&
-                  <FaqCollection category="General" faqs={faqData.General} />
+                  <FaqCollection
+                    category="General"
+                    faqs={faqData.General}
+                    expandedQuestion={expandedQuestion}
+                    setExpandedQuestion={setExpandedQuestion}
+                  />
                 }
               </FaqColumn>
 
               <FaqColumn>
-                {faqData["Teams & Projects"] &&
-                  <FaqCollection category="Projects" faqs={faqData["Teams & Projects"]} />
+                {faqData['Teams & Projects'] &&
+                  <FaqCollection category="Projects" faqs={faqData['Teams & Projects']} expandedQuestion={expandedQuestion}
+                    setExpandedQuestion={setExpandedQuestion} />
                 }
                 {faqData.Logistics &&
-                  <FaqCollection category="Logistics" faqs={faqData.Logistics} />
+                  <FaqCollection category="Logistics" faqs={faqData.Logistics} expandedQuestion={expandedQuestion}
+                    setExpandedQuestion={setExpandedQuestion} />
                 }
               </FaqColumn>
 
             </FaqGrid>
-          )
+            )
           : 'loading...'}
 
       </Wrapper>
