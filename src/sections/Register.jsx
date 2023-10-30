@@ -215,7 +215,7 @@ export default function Register() {
             <HackCampSubheader>November 18-19, 2023</HackCampSubheader>
           </BodyContainer>
           <ButtonContainer>
-            <Button
+            {/* <Button
               target="_blank"
               rel="noopener noreferrer"
               href="https://docs.google.com/forms/d/e/1FAIpQLSfs5nQk58vOudnXEra2Tb76bn6poFHrNpe-TZ7cvyyxmCFzZg/viewform?usp=sf_link"
@@ -227,7 +227,7 @@ export default function Register() {
               isHover
             >
               Apply Now
-            </Button>
+            </Button> */}
             <Button
               isOutline
               target="_blank"
