@@ -8,8 +8,8 @@ const InfoContainer = styled.div`
   position: relative;
   height: auto;
 
-  overflow: hidden;
-  z-index: 12;
+  overflow: visible;
+  z-index: 99;
   
   width: 100%;
   aspect-ratio: 1440 / 1100;
@@ -86,11 +86,11 @@ const PushinP = styled.p`
 
 const fishingBearBob = keyframes`
   0%, 100% {
-    transform: translateY(0, -2vw);
+    transform: translateY(0, 2vw);
   }
 
   50% {
-    transform: translateY(-1vw);
+    transform: translateY(1vw);
   }
 `
 
@@ -102,16 +102,31 @@ const FishingBear = styled.div`
   background-position: bottom left;
 
   position: absolute;
-  top: -2vw;
-  left 4.75vw;
+  top: 0vw;
+  left: 4vw;
   width: 100%;
   height: 100%;
+  z-index: 99;
 
   ${(p) => p.theme.mediaQueries.mobile} {
     background-size: 67.5vw;
     left: -30px;
     top: -25px;
   }
+`
+
+const Deer = styled.div`
+  background: url('assets/background/about/deer.svg');
+  background-size: 37.5vw;
+  background-repeat: no-repeat;
+  background-position: bottom right;
+
+  position: absolute;
+  top: 21.5vw;
+  left: 11vw;
+  width: 100%;
+  height: 100%;
+  z-index: 99;
 `
 
 const Info = () => {
@@ -146,6 +161,7 @@ const Info = () => {
         </PushinP>
       </TextContainer>
       <FishingBear />
+      <Deer />
     </InfoContainer>
   )
 }
