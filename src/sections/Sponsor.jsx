@@ -185,7 +185,9 @@ export default function Sponsor () {
         {Object.keys(sponsors).sort((a, b) => sponsorTierOrder[a] - sponsorTierOrder[b]).map((key) => (
           <SponsorTier>
             {sponsors[key].map((sponsor) => (
-              <SponsorLogo src={sponsor.imgURL}/>
+              <a href={sponsor.link} target="_blank" rel='noreferrer'>
+                <SponsorLogo src={sponsor.imgURL}/>
+              </a>
             ))}
           </SponsorTier>
         ))}
