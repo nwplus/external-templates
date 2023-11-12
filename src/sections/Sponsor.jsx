@@ -46,7 +46,6 @@ const StyledTitle = styled(Header2)`
 
   ${p => p.theme.mediaQueries.mobile} {
     font-size: 2em;
-    padding-top: 12rem;
   }
 `
 
@@ -101,26 +100,31 @@ const Sponsors = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 40vw;
+  width: 50vw;
   height: 30vw;
-  padding-top: 72.5vw;
+  padding-top: 70vw;
   position: relative;
   z-index: 3;
   margin: auto;
-  gap: 2.5vw;
 `
 
 const SponsorTier = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-content: center;
-  max-height: 8vw;
+  align-items: center;
+  max-height: 15vw;
   gap: 2.5vw;
 `
 
+const SponsorLink = styled.a`
+  display: flex;
+  align-items: center;
+  flex: 1 1 0px;
+`
+
 const SponsorLogo = styled.img`
-  height: 100%;
+  max-width: 100%;
 `
 
 const PushinP = styled.p`
@@ -185,9 +189,9 @@ export default function Sponsor () {
         {Object.keys(sponsors).sort((a, b) => sponsorTierOrder[a] - sponsorTierOrder[b]).map((key) => (
           <SponsorTier>
             {sponsors[key].map((sponsor) => (
-              <a href={sponsor.link} target="_blank" rel='noreferrer'>
+              <SponsorLink href={sponsor.link} target="_blank" rel='noreferrer'>
                 <SponsorLogo src={sponsor.imgURL}/>
-              </a>
+              </SponsorLink>
             ))}
           </SponsorTier>
         ))}
