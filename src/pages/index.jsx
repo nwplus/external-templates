@@ -13,8 +13,9 @@ import Count from 'src/sections/Count'
 import Learn from 'src/sections/Learn'
 import GlobalStyle from '../theme/GlobalStyle'
 import Faq from '../sections/Faq'
+import Banner from '../components/Banner'
 
-export default function Index ({ title }) {
+export default function Index({ title }) {
   return (
     <>
       <GlobalStyle />
@@ -34,6 +35,7 @@ export default function Index ({ title }) {
 
       {/* Components Starts */}
 
+      <Banner />
       <NavBar />
       <Register />
       <Count />
@@ -44,15 +46,14 @@ export default function Index ({ title }) {
       <Sponsor />
       <Footer />
       {/* Components Ends */}
-
     </>
   )
 }
 
-export async function getStaticProps () {
+export async function getStaticProps() {
   return {
     props: {
-      title: 'HackCamp 2023'
-    } // will be passed to the page component as props
+      title: 'HackCamp 2023',
+    }, // will be passed to the page component as props
   }
 }
