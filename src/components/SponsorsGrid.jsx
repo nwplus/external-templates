@@ -52,7 +52,7 @@ const SponsorsGrid = ({ sponsors }) => {
     if (sponsors) {
       const updatedTierList = emptyTierList
       sponsors.forEach(sponsor => {
-        updatedTierList[sponsor.tier].push(sponsor)
+        updatedTierList[sponsor.tier.toLowerCase()].push(sponsor)
       })
       setTierList(updatedTierList)
     }
