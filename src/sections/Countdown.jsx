@@ -1,6 +1,5 @@
 import { Header2, Header3 } from '@components/Typography'
 import React, { useEffect, useState } from 'react'
-import { useParallax } from 'react-scroll-parallax'
 import styled, { keyframes } from 'styled-components'
 import KeychainImage from '../assets/images/Keychain.svg'
 import UltiAnimationImg from '../assets/images/UltiAnimation.gif'
@@ -152,14 +151,12 @@ const useCountdown = targetDate => {
 }
 
 const Countdown = () => {
-  const parallax = useParallax({ speed: 6 })
-
   const countDownDate = new Date('Dec 31, 2023 23:59:59').getTime()
   const countdown = useCountdown(countDownDate)
 
   return (
     <CountdownContainer>
-      <Keychain ref={parallax.ref} src={KeychainImage} alt="Keychain" />
+      <Keychain src={KeychainImage} alt="Keychain" />
       <UltiAnimation src={UltiAnimationImg} alt="Nugget and Reindeer tossing around a Firsbee"></UltiAnimation>
       <FauxBillboard>
         <StyledHeader>Registration closes in:</StyledHeader>

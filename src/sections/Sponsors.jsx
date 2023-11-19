@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import styled, { keyframes } from 'styled-components'
-import { useParallax } from 'react-scroll-parallax'
 import { Header2 } from '@components/Typography'
 import SponsorsGrid from '@components/SponsorsGrid'
 import Button from '@components/Button'
@@ -170,13 +169,6 @@ const PushinP = styled.p`
 `
 
 const Sponsors = () => {
-  const stampPArr = [
-    useParallax({ speed: 6 }),
-    useParallax({ speed: 5 }),
-    useParallax({ speed: 4 }),
-    useParallax({ speed: 3 }),
-  ]
-
   const stamps = [
     {
       name: 'Chinatown Stamp',
@@ -219,7 +211,6 @@ const Sponsors = () => {
       <SponsorsBackgroundMobile src={SponsorBackgroundMobile} alt="Sponsor section background" />
       {stamps.map((item, index) => (
         <Stamp
-          ref={stampPArr[index].ref}
           key={item.name}
           src={item.imgSrc}
           alt={item.name}

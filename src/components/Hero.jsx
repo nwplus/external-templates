@@ -2,17 +2,21 @@ import React from 'react'
 import styled, { keyframes } from 'styled-components'
 import { LAPTOP, TABLET } from '@constants/measurements'
 import Button from './Button'
-
+import { HeroBG } from '../assets/images/Hero.svg'
 
 const HeroContainer = styled.div`
   position: relative;
   min-height: calc(calc(800 / 1440) * 100vw);
   margin-top: -15rem;
+  background-image: ${HeroBG};
+  background-size: 100% 100%;
 
   ${p => p.theme.mediaQueries.mobile} {
     min-height: calc(calc(1200 / 882) * 100vw);
   }
 `
+
+
 
 const IntroContainer = styled.div`
   margin-left: 10vw;

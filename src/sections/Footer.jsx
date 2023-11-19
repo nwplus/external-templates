@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useParallax } from 'react-scroll-parallax'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faFacebook,
@@ -158,8 +157,6 @@ const StaticContainer = styled.div`
 `
 
 const Footer = () => {
-  const stampPArr = [useParallax({ speed: 5 }), useParallax({ speed: 6 })]
-
   const stamps = [
     {
       name: 'Victoria Stamp',
@@ -179,7 +176,6 @@ const Footer = () => {
       <FooterBackground src={FooterBackgroundImage} alt="FAQ section background" />
       {stamps.map((item, index) => (
         <Stamp
-          ref={stampPArr[index].ref}
           key={item.name}
           src={item.imgSrc}
           alt={item.name}

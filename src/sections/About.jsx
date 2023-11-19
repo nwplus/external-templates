@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useParallax } from 'react-scroll-parallax'
 import { Body, Header2 } from '@components/Typography'
 
 const AboutContainer = styled.div`
@@ -74,11 +73,10 @@ const BlurbText = styled(Body)`
 `
 
 const About = () => {
-  const parallax = useParallax({ speed: 7 })
 
   return (
     <AboutContainer>
-      <AboutInner ref={parallax.ref}>
+      <AboutInner>
         <BlurbContainer bias="left" id="about">
           <BlurbHeader>About nwHacks</BlurbHeader>
           <BlurbText>
