@@ -133,8 +133,8 @@ const Button = styled.a`
   padding: 11px 21px;
   border-radius: 50px;
   font-weight: bold;
-  background: linear-gradient(to right, #0defe1, #78ff96);
-  color: #2c2543;
+  background: #AA4245;
+  color: #F3F5F4;
   right: 120px;
   ${p => p.theme.mediaQueries.mobile} {
     right: 0;
@@ -145,7 +145,7 @@ const Button = styled.a`
     align-items: center;
     justify-content: center;
     content: 'Live Portal';
-    color: #2c2543;
+    color: #244556;
 
     border-radius: 50px;
     position: absolute;
@@ -158,7 +158,7 @@ const Button = styled.a`
     transition: opacity 0.25s ease-in-out;
     opacity: 0;
 
-    background: linear-gradient(to right, #00dbce, #00d88a);
+    background: #DCB551;
   }
 
   &:hover::before {
