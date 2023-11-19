@@ -15,14 +15,11 @@ import Hero from '../components/Hero'
 import MainGraphics from '../assets/images/MainBackground.svg'
 import MainGraphicsMobile from '../assets/images/mobile/MainBackground.svg'
 
-import { BANNER_OFFSET_PX } from '../constants/measurements'
-
 const HalfContainer = styled.div`
   min-height: calc(calc(9229 / 1440) * 100vw);
   position: relative;
   aspect-ratio: 1440 / 9229px;
   width: 100%;
-  top: ${BANNER_OFFSET_PX};
 
   ${p => p.theme.mediaQueries.mobile} {
     background: url(${MainGraphicsMobile});
@@ -68,16 +65,16 @@ export default function Index({ title }) {
       {/* <Banner buttonLink="info.html" /> */}
       {/* <NavigationBar bannerExists /> */}
       <NavigationBar />
+
       <HalfContainer>
         <BackgroundImage src={MainGraphics} alt="Background image" />
         <Hero />
         <About />
         <Countdown />
+        <Faq />
+        <Sponsors />
+        <Footer />
       </HalfContainer>
-      <Faq />
-      <Sponsors />
-      <Footer />
-
       {/* Components Ends */}
     </>
   )

@@ -6,12 +6,10 @@ import { Header2, Header3 } from '@components/Typography'
 
 const FaqContainer = styled.div`
   position: relative;
-  background: linear-gradient(to bottom, #afebee, #99e4ea);
   min-height: 50vh;
 
   ${p => p.theme.mediaQueries.mobile} {
     min-height: 0;
-    background: linear-gradient(to bottom, #bfeff0, #79dae4);
   }
 `
 

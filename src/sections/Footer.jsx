@@ -24,19 +24,6 @@ const FooterContainer = styled.div`
   }
 `
 
-const FooterBackground = styled.img`
-  bottom: 0;
-  position: absolute;
-  user-select: none;
-  min-height: calc(calc(1163 / 1440) * 100vw);
-  aspect-ratio: 1440 / 1163;
-  width: 100%;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    display: none;
-  }
-`
-
 const SocialMediaIcons = styled.div`
   justify-content: center;
   align-items: center;
@@ -149,8 +136,6 @@ const Footer = () => {
 
   return (
     <FooterContainer>
-      <FooterBackground alt="FAQ section background" />
-
       <StaticContainer>
         <TextContainer>
           <SocialMediaIcons>
