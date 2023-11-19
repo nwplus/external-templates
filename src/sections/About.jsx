@@ -10,6 +10,7 @@ const AboutContainer = styled.div`
   align-items: center;
   width: 100%;
   aspect-ratio: 1440 / 779;
+  margin-top: 10rem;
 
   ${p => p.theme.mediaQueries.mobile} {
     min-height: calc(calc(1344 / 428) * 100vw);
@@ -57,7 +58,7 @@ const BlurbContainer = styled.div`
 `
 
 const BlurbHeader = styled(Header2)`
-  color: #4453b0;
+  color: #F3F5F4;
 
   ${p => p.theme.mediaQueries.mobile} {
     font-size: 2rem;
@@ -69,7 +70,7 @@ const BlurbText = styled(Body)`
   font-weight: normal;
   font-size: 1.1rem;
   line-height: 150%;
-  color: #4453b0;
+  color: #F3F5F4;
 `
 
 const About = () => {

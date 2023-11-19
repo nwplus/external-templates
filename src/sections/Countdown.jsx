@@ -1,8 +1,6 @@
 import { Header2, Header3 } from '@components/Typography'
 import React, { useEffect, useState } from 'react'
 import styled, { keyframes } from 'styled-components'
-import KeychainImage from '../assets/images/Keychain.svg'
-import UltiAnimationImg from '../assets/images/UltiAnimation.gif'
 
 const CountdownContainer = styled.div`
   min-height: calc(calc(1883 / 1440) * 100vw);
@@ -19,10 +17,12 @@ const FauxBillboard = styled.div`
   display: flex;
   max-width: 1200px;
   align-items: center;
-  margin-top: 10%;
+  margin-top: 7%;
   margin-left: auto;
   margin-right: auto;
-  width: 75vw;
+  position: relative;
+  left: 100px;
+  width: 400px;
   text-shadow: 0 0 10px rgba(233, 233, 233, 0.4);
 
   ${p => p.theme.mediaQueries.mobile} {
@@ -37,23 +37,11 @@ const FauxBillboard = styled.div`
   }
 `
 
-const StyledHeader = styled(Header2)`
-  font-weight: 600;
-  font-size: 3.8rem;
-  text-align: center;
-  line-height: 120%;
-  max-width: 40%;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    font-size: 1.4rem;
-    max-width: 90%;
-  }
-`
-
 const CountdownGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   flex-grow: 2;
+  transform: rotate(-11deg);
 
   ${p => p.theme.mediaQueries.mobile} {
     gap: 1rem;
@@ -67,10 +55,11 @@ const TimeUnit = styled.div`
 
 const Digits = styled.h2`
   font-family: 'HK Grotesk', sans-serif;
-  color: white;
+  color: #564D4A;
   font-weight: 600;
-  font-size: 5.5rem;
+  font-size: 5rem;
   letter-spacing: 0.2rem;
+  display: inline-block;
 
   ${p => p.theme.mediaQueries.mobile} {
     font-size: 3rem;
@@ -78,47 +67,19 @@ const Digits = styled.h2`
   }
 `
 
-const BillboardText = styled(Header3)`
-  ${p => p.theme.mediaQueries.mobile} {
-    font-size: 1rem;
-  }
-`
+// const Colon = styled.h2`
+//   font-family: 'HK Grotesk', sans-serif;
+//   color: #564D4A;
+//   font-weight: 600;
+//   font-size: 5.5rem;
+//   letter-spacing: 0.2rem;
+//   display: inline-block;
 
-const Keychain = styled.img`
-  min-height: calc(calc(1109 / 1493) * 100vw);
-  position: absolute;
-  top: 18%;
-  left: -25%;
-  aspect-ratio: 1493 / 1109;
-  width: 100%;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    display: none;
-  }
-`
-
-const moveUltiAnimation = keyframes`
-  0% {  
-    // transform: rotate(-1deg);
-        left: 180px;  
-        top: 77.5%;
-  }
-  100% {  
-    // transform: rotate(1deg); 
-          left: 185px;
-          top: 78%;
-        }
-`
-const UltiAnimation = styled.img`
-  // position: relative;
-  left: 180px;
-  position: absolute;
-  top: 78%;
-  width: 160px;
-  height: auto;
-
-  animation: ${moveUltiAnimation} 1s infinite ease-in alternate;
-`
+//   ${p => p.theme.mediaQueries.mobile} {
+//     font-size: 3rem;
+//     letter-spacing: 0;
+// }
+// `
 
 const getReturnValues = countDown => {
   // calculate time left
@@ -156,15 +117,14 @@ const Countdown = () => {
 
   return (
     <CountdownContainer>
-      <Keychain src={KeychainImage} alt="Keychain" />
-      <UltiAnimation src={UltiAnimationImg} alt="Nugget and Reindeer tossing around a Firsbee"></UltiAnimation>
       <FauxBillboard>
-        <StyledHeader>Registration closes in:</StyledHeader>
         <CountdownGrid>
           {['Days', 'Hours', 'Minutes'].map((item, index) => (
             <TimeUnit key={item}>
               <Digits>{countdown[index]}</Digits>
-              <BillboardText>{item}</BillboardText>
+              {/* {index < 2 &&
+                <Colon>&nbsp;&nbsp;:</Colon>
+              } */}
             </TimeUnit>
           ))}
         </CountdownGrid>

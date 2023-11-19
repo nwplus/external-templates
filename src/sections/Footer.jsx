@@ -11,13 +11,6 @@ import {
 } from '@fortawesome/free-brands-svg-icons'
 import Team from '@components/Team'
 
-import { Stamp } from './Sponsors'
-import FooterBackgroundImage from '../assets/images/FooterBackground.svg'
-import FooterBackgroundMobile from '../assets/images/mobile/FooterBackground.svg'
-
-import VictoriaStamp from '../assets/images/stamps/Victoria.svg'
-import WhistlerStamp from '../assets/images/stamps/Whistler.svg'
-
 const FooterContainer = styled.div`
   position: relative;
   min-height: calc(calc(1556 / 1440) * 100vw);
@@ -26,10 +19,6 @@ const FooterContainer = styled.div`
   ${p => p.theme.mediaQueries.mobile} {
     min-height: calc(calc(974 / 428) * 100vw);
 
-    background: url(${FooterBackgroundMobile}), #383e82;
-    background-repeat: no-repeat;
-    background-position: top center;
-    background-size: cover;
     width: 100%;
     aspect-ratio: 428/974;
   }
@@ -157,34 +146,11 @@ const StaticContainer = styled.div`
 `
 
 const Footer = () => {
-  const stamps = [
-    {
-      name: 'Victoria Stamp',
-      imgSrc: VictoriaStamp,
-      left: '-2rem',
-    },
-    {
-      name: 'Whistler Stamp',
-      imgSrc: WhistlerStamp,
-      top: '20%',
-      right: '-5rem',
-    },
-  ]
 
   return (
     <FooterContainer>
-      <FooterBackground src={FooterBackgroundImage} alt="FAQ section background" />
-      {stamps.map((item, index) => (
-        <Stamp
-          key={item.name}
-          src={item.imgSrc}
-          alt={item.name}
-          top={item.top || null}
-          right={item.right || null}
-          bottom={item.bottom || null}
-          left={item.left || null}
-        />
-      ))}
+      <FooterBackground alt="FAQ section background" />
+
       <StaticContainer>
         <TextContainer>
           <SocialMediaIcons>
