@@ -9,24 +9,23 @@ import Footer from 'src/sections/Footer'
 import Countdown from 'src/sections/Countdown'
 import About from 'src/sections/About'
 
-import Banner from '../components/Banner'
 import NavigationBar from '../components/NavigationBar'
 import Hero from '../components/Hero'
 
-import MainGraphicsTop from '../assets/images/MainBackground.svg'
+import MainGraphics from '../assets/images/MainBackground.svg'
 import MainGraphicsMobile from '../assets/images/mobile/MainBackground.svg'
 
 import { BANNER_OFFSET_PX } from '../constants/measurements'
 
 const HalfContainer = styled.div`
-  min-height: calc(calc(3606 / 1440) * 100vw);
+  min-height: calc(calc(9229 / 1440) * 100vw);
   position: relative;
-  aspect-ratio: 1440 / 3606;
+  aspect-ratio: 1440 / 9229px;
   width: 100%;
   top: ${BANNER_OFFSET_PX};
 
   ${p => p.theme.mediaQueries.mobile} {
-    background: url(${MainGraphicsMobile}), linear-gradient(to bottom, #83f6f7, #bfeff0);
+    background: url(${MainGraphicsMobile});
     background-repeat: no-repeat;
     background-position: top center;
     background-size: cover;
@@ -34,14 +33,13 @@ const HalfContainer = styled.div`
     min-width: 100%;
   }
 `
-const HalfBackgroundImage = styled.img`
+const BackgroundImage = styled.img`
   top: 0;
   z-index: 0;
   position: absolute;
   user-select: none;
-  min-height: calc(calc(3606 / 1440) * 100vw);
+  min-height: calc(calc(9229 / 1440) * 100vw);
   object-fit: cover;
-  aspect-ratio: 1440 / 3606;
   width: 100%;
 
   @media-query (max-width: 1440px) {
@@ -71,7 +69,7 @@ export default function Index({ title }) {
       {/* <NavigationBar bannerExists /> */}
       <NavigationBar />
       <HalfContainer>
-        <HalfBackgroundImage src={MainGraphicsTop} alt="Background image" />
+        <BackgroundImage src={MainGraphics} alt="Background image" />
         <Hero />
         <About />
         <Countdown />

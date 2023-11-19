@@ -13,7 +13,18 @@ const HeroContainer = styled.div`
   }
 `
 
+const OuterContainer = styled.div`
+  position: absolute;
+  width: 100%;
+  top: calc(calc(350 / 1440) * 100vw);
 
+  ${p => p.theme.mediaQueries.mobile} {
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+`
 
 const IntroContainer = styled.div`
   margin-left: 10vw;
@@ -155,37 +166,6 @@ const ZeroHeightContainer = styled.div`
   }
 `
 
-
-
-
-const RamBody = styled.img`
-  margin-top: -1.35rem;
-  z-index: 2;
-  user-select: none;
-`
-
-const bobAnimation = keyframes`
-  0% {
-    transform: rotateZ(0deg)
-  }
-  50% {
-    transform: rotateZ(10deg)
-  }
-  100% {
-    transform: rotateZ(0deg)
-  }
-`
-
-const RamHead = styled.img`
-  margin-right: -0.25rem;
-  z-index: 1;
-  user-select: none;
-
-  animation-name: ${bobAnimation};
-  animation-duration: 1s;
-  animation-iteration-count: infinite;
-`
-
 const TitleContainer = styled.div`
   display: flex;
   align-items: flex-end;
@@ -193,34 +173,6 @@ const TitleContainer = styled.div`
   ${p => p.theme.mediaQueries.mobile} {
     flex-direction: column;
     align-items: center;
-  }
-`
-
-const LivepeerContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  font-size: 1rem;
-  padding-bottom: 0.5rem;
-  padding-left: 0.5rem;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    padding-bottom: 0;
-    padding-left: 0;
-    flex-direction: row;
-    gap: 0.47rem;
-  }
-`
-
-const PoweredBy = styled.div`
-  font-size: 1.25rem;
-  font-weight: 600;
-`
-
-const Livepeer = styled.img`
-  margin-left: -0.5rem;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    width: 85px;
   }
 `
 
@@ -267,31 +219,33 @@ const VolunteerLink = styled.a`
 const Hero = () => {
   return (
     <HeroContainer>
-      <IntroContainer>
-        <Opening>Welcome to</Opening>
-        <TitleContainer>
-          <Title>nwHacks</Title>
-        </TitleContainer>
-        <Subtitle>Western Canada’s Largest Hackathon</Subtitle>
-        <DescriptionContainer>
-          <Description>January 20 - 21 2024</Description>
-          <HideMobile>&nbsp;|&nbsp;</HideMobile>
-          <Description>In-Person Event @ UBC</Description>
-        </DescriptionContainer>
-      </IntroContainer>
-      <ActionsContainer>
-        <ButtonsContainer>
-          <Button variant="solid" target="_blank" rel="noreferrer" href="https://portal.nwplus.io">
-            Apply Now!
-          </Button>
-          <Button variant="outlined" target="_blank" rel="noreferrer" href="https://forms.gle/ianRSs3wd1SYjSDR8">
-            Become a Mentor!
-          </Button>
-        </ButtonsContainer>
-        <VolunteerLink href="https://forms.gle/N6VYuPugFRfNCjFUA" target="_blank" rel="noreferrer">
-          Apply to be a volunteer!
-        </VolunteerLink>
-      </ActionsContainer>
+      <OuterContainer>
+        <IntroContainer>
+          <Opening>Welcome to</Opening>
+          <TitleContainer>
+            <Title>nwHacks</Title>
+          </TitleContainer>
+          <Subtitle>Western Canada’s Largest Hackathon</Subtitle>
+          <DescriptionContainer>
+            <Description>January 20 - 21 2024</Description>
+            <HideMobile>&nbsp;|&nbsp;</HideMobile>
+            <Description>In-Person Event @ UBC</Description>
+          </DescriptionContainer>
+        </IntroContainer>
+        <ActionsContainer>
+          <ButtonsContainer>
+            <Button variant="solid" target="_blank" rel="noreferrer" href="https://portal.nwplus.io">
+              Apply Now!
+            </Button>
+            <Button variant="outlined" target="_blank" rel="noreferrer" href="https://forms.gle/ianRSs3wd1SYjSDR8">
+              Become a Mentor!
+            </Button>
+          </ButtonsContainer>
+          <VolunteerLink href="https://forms.gle/N6VYuPugFRfNCjFUA" target="_blank" rel="noreferrer">
+            Apply to be a volunteer!
+          </VolunteerLink>
+        </ActionsContainer>
+      </OuterContainer>
     </HeroContainer>
   )
 }
