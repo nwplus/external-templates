@@ -1,13 +1,8 @@
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
 import { LAPTOP, TABLET } from '@constants/measurements'
-import { useParallax } from 'react-scroll-parallax'
-import CarAndMap from '../assets/images/CarAndMap.svg'
-import CarScenery from '../assets/images/CarScenery.svg'
-import RamBodyImage from '../assets/images/RamBody.svg'
-import RamHeadImage from '../assets/images/RamHead.svg'
 import Button from './Button'
-import LivepeerImage from '../assets/images/Livepeer.svg'
+
 
 const HeroContainer = styled.div`
   position: relative;
@@ -16,19 +11,6 @@ const HeroContainer = styled.div`
 
   ${p => p.theme.mediaQueries.mobile} {
     min-height: calc(calc(1200 / 882) * 100vw);
-  }
-`
-
-const OuterContainer = styled.div`
-  position: absolute;
-  width: 100%;
-  top: calc(calc(350 / 1440) * 100vw);
-
-  ${p => p.theme.mediaQueries.mobile} {
-    bottom: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
   }
 `
 
@@ -172,45 +154,8 @@ const ZeroHeightContainer = styled.div`
   }
 `
 
-const CarAndMapImage = styled.img`
-  min-height: calc(calc(775 / 1440) * 100vw);
-  aspect-ratio: 1440 / 775;
-  z-index: 1;
-  user-select: none;
-  object-fit: cover;
-  width: 100%;
 
-  ${p => p.theme.mediaQueries.mobile} {
-    display: none;
-  }
-`
 
-const CarSceneryImage = styled.img`
-  margin-top: -10rem;
-  min-height: calc(calc(530 / 1440) * 100vw);
-  z-index: -1;
-  user-select: none;
-  aspect-ratio: 1440 / 530;
-  width: 100%;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    display: none;
-  }
-`
-
-const RamContainer = styled.div`
-  position: absolute;
-  width: 100%;
-  right: 12vw;
-  top: calc(calc(200 / 1440) * 100vw);
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    display: none;
-  }
-`
 
 const RamBody = styled.img`
   margin-top: -1.35rem;
@@ -319,53 +264,33 @@ const VolunteerLink = styled.a`
 `
 
 const Hero = () => {
-  const parallax = useParallax({ speed: -15 })
-  const parallax2 = useParallax({ speed: 0 })
-  const parallax3 = useParallax({ speed: 5 })
-
   return (
     <HeroContainer>
-      <ZeroHeightContainer>
-        <CarSceneryImage src={CarScenery} ref={parallax.ref} alt="The Beautiful nwHacks Scenery" />
-      </ZeroHeightContainer>
-      <ZeroHeightContainer>
-        <CarAndMapImage src={CarAndMap} ref={parallax2.ref} alt="Dashboard and Map" />
-      </ZeroHeightContainer>
-      <RamContainer>
-        <RamHead src={RamHeadImage} alt="A bobbing Ram head" />
-        <RamBody src={RamBodyImage} alt="Ram body" />
-      </RamContainer>
-      <OuterContainer ref={parallax3.ref}>
-        <IntroContainer>
-          <Opening>Welcome to</Opening>
-          <TitleContainer>
-            <Title>nwHacks</Title>
-            {/* <LivepeerContainer>
-              <PoweredBy>powered by</PoweredBy>
-              <Livepeer src={LivepeerImage} alt="Title sponsor: Livepeer" />
-            </LivepeerContainer> */}
-          </TitleContainer>
-          <Subtitle>Western Canada’s Largest Hackathon</Subtitle>
-          <DescriptionContainer>
-            <Description>January 20 - 21 2024</Description>
-            <HideMobile>&nbsp;|&nbsp;</HideMobile>
-            <Description>In-Person Event @ UBC</Description>
-          </DescriptionContainer>
-        </IntroContainer>
-        {/* <ActionsContainer>
-          <ButtonsContainer>
-            <Button variant="solid" target="_blank" rel="noreferrer" href="https://portal.nwplus.io">
-              Apply Now!
-            </Button>
-            <Button variant="outlined" target="_blank" rel="noreferrer" href="https://forms.gle/ianRSs3wd1SYjSDR8">
-              Become a Mentor!
-            </Button>
-          </ButtonsContainer>
-          <VolunteerLink href="https://forms.gle/N6VYuPugFRfNCjFUA" target="_blank" rel="noreferrer">
-            Apply to be a volunteer!
-          </VolunteerLink>
-        </ActionsContainer> */}
-      </OuterContainer>
+      <IntroContainer>
+        <Opening>Welcome to</Opening>
+        <TitleContainer>
+          <Title>nwHacks</Title>
+        </TitleContainer>
+        <Subtitle>Western Canada’s Largest Hackathon</Subtitle>
+        <DescriptionContainer>
+          <Description>January 20 - 21 2024</Description>
+          <HideMobile>&nbsp;|&nbsp;</HideMobile>
+          <Description>In-Person Event @ UBC</Description>
+        </DescriptionContainer>
+      </IntroContainer>
+      <ActionsContainer>
+        <ButtonsContainer>
+          <Button variant="solid" target="_blank" rel="noreferrer" href="https://portal.nwplus.io">
+            Apply Now!
+          </Button>
+          <Button variant="outlined" target="_blank" rel="noreferrer" href="https://forms.gle/ianRSs3wd1SYjSDR8">
+            Become a Mentor!
+          </Button>
+        </ButtonsContainer>
+        <VolunteerLink href="https://forms.gle/N6VYuPugFRfNCjFUA" target="_blank" rel="noreferrer">
+          Apply to be a volunteer!
+        </VolunteerLink>
+      </ActionsContainer>
     </HeroContainer>
   )
 }
