@@ -29,7 +29,6 @@ const OuterContainer = styled.div`
 const IntroContainer = styled.div`
   margin-left: 10vw;
   text-align: left;
-  color: #433860;
 
   ${p => p.theme.mediaQueries.mobile} {
     margin: 0;
@@ -44,6 +43,7 @@ const Opening = styled.p`
   position: relative;
   top: 25px;
   font-family: HK Grotesk;
+  color: #DCB551;
   font-size: 24px;
   font-weight: 600;
   line-height: 26px;
@@ -67,20 +67,12 @@ const Title = styled.p`
   font-weight: 900;
   line-height: 100px;
   letter-spacing: 0em;
-  background: linear-gradient(265.48deg, #959afb 30%, #9ad4de);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #F3F5F4;
   @media (max-width: ${LAPTOP}) {
-    background: linear-gradient(265.48deg, #959afb 30%, #9ad4de);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     font-size: 80px;
     line-height: 80px;
   }
   @media (max-width: ${TABLET}) {
-    background: linear-gradient(265.48deg, #959afb 30%, #9ad4de);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     font-size: 75px;
     line-height: 65px;
   }
@@ -95,6 +87,7 @@ const Subtitle = styled.p`
   padding-bottom: 0.2rem;
   line-height: 32px;
   letter-spacing: -0.25999999046325684px;
+  color: #F3F5F4;
   @media (max-width: ${LAPTOP}) {
     font-size: 23px;
   }
@@ -111,6 +104,7 @@ const DescriptionContainer = styled.div`
   font-family: HK Grotesk;
   font-size: 20px;
   font-weight: 500;
+  color: #F3F5F4;
 
   ${p => p.theme.mediaQueries.mobile} {
     flex-direction: column;
@@ -189,7 +183,7 @@ const ButtonsContainer = styled.div`
 
 const VolunteerLink = styled.a`
   position: relative;
-  color: #969dfb;
+  color: #F3F5F4;
   text-decoration: none;
   font-weight: 600;
   font-size: 1.1rem;
@@ -203,15 +197,15 @@ const VolunteerLink = styled.a`
     left: 0;
     width: 100%;
     height: 2px;
-    background-color: #969dfb;
+    background-color: #F3F5F4;
     transition: background 0.13s linear;
   }
 
   &:hover {
-    color: #9ad4de;
+    color: #DCB551;
 
     &:after {
-      background-color: #9ad4de;
+      background-color: #DCB551;
     }
   }
 `
