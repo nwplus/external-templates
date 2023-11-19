@@ -77,24 +77,10 @@ const About = () => {
   return (
     <AboutContainer>
       <AboutInner>
-        <BlurbContainer bias="left" id="about">
-          <BlurbHeader>About nwHacks</BlurbHeader>
-          <BlurbText>
-            Join hundreds of hackers across the world at nwHacks in January 2024! Apply by late December 2023 to
-            participate as a hacker, mentor, or a volunteer.
-            <br />
-            <br />
-            Whether you{`'`}re a seasoned hacker or you{`'`}re just getting into tech, nwHacks welcomes you; just bring
-            an open mind and an insatiable desire to learn, and we{`'`}ll take care of the rest. Create a project, learn
-            new skills, and bond with friends, old and new — all in 24 hours.
-          </BlurbText>
-        </BlurbContainer>
         <BlurbContainer bias="right">
-          <BlurbHeader>Join us for an unforgettable experience!</BlurbHeader>
+          <BlurbHeader>Game on: Level up your tech journey at nwHacks!</BlurbHeader>
           <BlurbText>
-            We're thrilled to announce that we're once again bringing you an incredible hackathon experience! Last year,
-            we connected hundreds of the brightest developers, engineers, and designers coming from all over North
-            America. Whether we're reuniting or meeting you for the first time, we can't wait to see you there!
+            Whether you’re a seasoned hacker or you’re just getting into tech, you’re welcome at nwHacks. Join us in-person on January 20-21, 2024 for a weekend of creativity, community, and innovation! All you need is an open mind and an insatiable desire to learn, and we’ll take care of the rest. Create a project, learn new skills, and bond with friends, old and new — all in 24 hours.
           </BlurbText>
         </BlurbContainer>
       </AboutInner>
