@@ -69,7 +69,9 @@ export default function Index({ title }) {
       <NavigationBar />
 
       <HalfContainer>
+        {/* add if statement, show mobile background if mobile */}
         <BackgroundImage src={MainGraphics} alt="Background image" />
+
         <Hero />
         <About />
         <Countdown />

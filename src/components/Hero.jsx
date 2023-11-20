@@ -7,18 +7,19 @@ import { BANNER_OFFSET_PX } from '../constants/measurements'
 const HeroContainer = styled.div`
   position: relative;
   min-height: calc(calc(800 / 1440) * 100vw);
-  margin-top: -15rem;
+  margin-top: 0rem;
   top: ${BANNER_OFFSET_PX};
 
   ${p => p.theme.mediaQueries.mobile} {
-    min-height: calc(calc(1200 / 882) * 100vw);
+    min-height: calc(calc(1000 / 882) * 100vw);
+    margin-top: 0rem;
   }
 `
 
 const OuterContainer = styled.div`
   position: absolute;
   width: 100%;
-  top: calc(calc(350 / 1440) * 100vw);
+  top: calc(calc(75 / 1440) * 100vw);
 
   ${p => p.theme.mediaQueries.mobile} {
     bottom: 0;
@@ -58,7 +59,8 @@ const Opening = styled.p`
     font-size: 18px;
   }
   ${p => p.theme.mediaQueries.mobile} {
-    display: none;
+    left: 5px;
+    width: 100%;
   }
 `
 
