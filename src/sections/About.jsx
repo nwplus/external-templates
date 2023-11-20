@@ -60,9 +60,12 @@ const BlurbContainer = styled.div`
 
 const BlurbHeader = styled(Header2)`
   color: #F3F5F4;
+  line-height: 2.8rem;
 
   ${p => p.theme.mediaQueries.mobile} {
     font-size: 1.5rem;
+    line-height: 2rem;
+
   }
 `
 
