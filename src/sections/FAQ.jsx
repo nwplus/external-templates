@@ -64,7 +64,7 @@ const CollectionContainer = styled.div`
 `
 
 const CollectionName = styled(Header3)`
-  color: #5667cf;
+  color: #F0EEF2;
   font-size: 1.75rem;
   font-weight: 900;
   padding-bottom: 1rem;
@@ -120,7 +120,7 @@ const Faq = () => {
   return (
     <FaqContainer>
       <Wrapper id="faq">
-        <StyledTitle color="#5667CF" fontSize="5rem">
+        <StyledTitle color="#F0EEF2" fontSize="5rem">
           FAQ
         </StyledTitle>
 
