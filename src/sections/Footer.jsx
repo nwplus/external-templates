@@ -32,7 +32,11 @@ const SocialMediaIcons = styled.div`
   a {
     width: 50px;
     text-decoration: none;
-    color: white;
+    color: #EAC669;
+
+    &:hover {
+      color: #AED1E1;
+    }
   }
 
   gap: 2rem;
@@ -52,8 +56,11 @@ const Links = styled.div`
 
   a {
     font-weight: 600;
-    color: #e2d6ff;
-    text-shadow: 0 0 10px #59b0ef;
+    color: #EAC669;
+
+    &:hover {
+      color: #AED1E1;
+    }
   }
 
   ${p => p.theme.mediaQueries.mobile} {
@@ -88,8 +95,7 @@ const SmallText = styled.div`
   text-align: center;
 
   div {
-    color: #e2d6ff;
-    text-shadow: 0 0 10px #59b0ef;
+    color: #AED1E1;
     font-size: 1.2rem;
     font-weight: 500;
   }

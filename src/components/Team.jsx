@@ -337,8 +337,7 @@ const profiles = [
 ]
 
 const StyledTitle = styled(Header3)`
-  color: #E2D6FF;
-  filter: drop-shadow(0 0 4px #E2D6FF);
+  color: #AED1E1;
   
   ${(p) => p.theme.mediaQueries.mobile} {
     font-size: 1.1rem;;
@@ -445,7 +444,7 @@ export default function Team() {
 
   return (
     <>
-      <StyledTitle>Made with 💖 by the nwPlus Team</StyledTitle>
+      <StyledTitle>Meet the minds behind nwHacks</StyledTitle>
       <ProfileContent>
         <span>
           <b>{selectedProfile?.name}</b> {selectedProfile?.emoji}
