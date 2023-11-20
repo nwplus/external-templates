@@ -1,6 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Body, Header2 } from '@components/Typography'
+// Dices for About section
+import redDice from "../assets/images/redDice.svg"
+import yellowDice from "../assets/images/yellowDice.svg"
+import blueDice from "../assets/images/blueDice.svg"
+import smallBlueDice from "../assets/images/mobile/diceBlueSmall.svg"
 
 const AboutContainer = styled.div`
   min-height: calc(calc(779 / 1440) * 100vw);
@@ -77,11 +82,45 @@ const BlurbText = styled(Body)`
   color: #F3F5F4;
 `
 
+const RedDiceImg = styled.img`
+  position: absolute;
+  transform: scale(0.8);
+  left: 20px;
+  top: 30px;
+`
+
+const YellowDiceImg = styled.img`
+  position: absolute;
+  transform: scale(0.8);
+  left: 200px;
+  top: 400px;
+`
+
+const BlueDiceImg = styled.img`
+  position: absolute;
+  transform: scale(0.8);
+  left: 350px;
+  top: 300px;
+`
+
+const SmallBlueDiceImg = styled.img`
+  position: absolute;
+  display: none;
+  ${p => p.theme.mediaQueries.mobile} {
+    display: block;
+  }
+`
+
 const About = () => {
 
   return (
     <AboutContainer>
       <AboutInner>
+        <RedDiceImg src={redDice} />
+        <YellowDiceImg src={yellowDice} />
+        <BlueDiceImg src={blueDice} />
+        <SmallBlueDiceImg src={smallBlueDice} />
+
         <BlurbContainer bias="right">
           <BlurbHeader>Game on: Level up your tech journey at nwHacks!</BlurbHeader>
           <BlurbText>
