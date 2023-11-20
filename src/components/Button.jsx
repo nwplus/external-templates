@@ -14,12 +14,22 @@ const getButtonStyles = variant => {
         &:hover {
           box-shadow: -12px 12px 0px 0px #142E3D;
         }
-
       `
     case 'outlined':
       return `
         border: none;
         background: #F3F5F4;
+        transition: 0.3s;
+        box-shadow: -4px 4px 0px 0px #142E3D;
+
+        &:hover {
+          box-shadow: -12px 12px 0px 0px #142E3D;
+        }
+      `
+    case `solidRed`:
+      return `
+        border: none;
+        background: #AA4245;
         transition: 0.3s;
         box-shadow: -4px 4px 0px 0px #142E3D;
 
@@ -107,6 +117,13 @@ const ButtonText = styled.div`
     color: #142E3D;
   `}
   
+  ${p =>
+    p &&
+    p.variant === 'solidRed' &&
+    `
+    color: #F3F5F4;
+  `}
+
   ${p => p.theme.mediaQueries.mobile} {
     font-size: 1.1rem;
     padding: 0.5rem 2rem;

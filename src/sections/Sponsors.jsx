@@ -105,7 +105,7 @@ const Sponsors = () => {
           Sponsors make this event happen. If you are interested in working with us, joining us or speaking at one of
           our events, please reach out to us below!
         </PushinP>
-        <Button variant="solid" href="mailto:sponsorship@nwplus.io">
+        <Button variant="solidRed" href="mailto:sponsorship@nwplus.io">
           Sponsor nwHacks!
         </Button>
         <SponsorsGrid sponsors={sponsors} />
