@@ -27,7 +27,8 @@ const HalfContainer = styled.div`
     background-repeat: no-repeat;
     background-position: top center;
     background-size: cover;
-    aspect-ratio: 428/2661;
+    min-height: calc(calc(8363 / 414) * 100vw);
+    aspect-ratio: 414/8363;
     min-width: 100%;
   }
 `

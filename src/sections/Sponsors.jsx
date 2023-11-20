@@ -12,7 +12,6 @@ const SponsorsContainer = styled.div`
 
   ${p => p.theme.mediaQueries.mobile} {
     min-height: calc(calc(488 / 428) * 100vw);
-    background: linear-gradient(to bottom, #8486b8, #383e82);
   }
 `
 
