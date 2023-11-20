@@ -36,7 +36,7 @@ const AboutInner = styled.div`
   padding-bottom: 5rem;
 
   ${p => p.theme.mediaQueries.mobile} {
-    padding-top: 10rem;
+    padding-top: 15rem;
     padding-bottom: 0;
     gap: 2rem;
   }
@@ -87,6 +87,12 @@ const RedDiceImg = styled.img`
   transform: scale(0.8);
   left: 20px;
   top: 30px;
+  ${p => p.theme.mediaQueries.mobile} {
+    width: 150px;
+    height: auto;
+    top: 430px;
+    left: 0px;
+  }
 `
 
 const YellowDiceImg = styled.img`
@@ -94,6 +100,12 @@ const YellowDiceImg = styled.img`
   transform: scale(0.8);
   left: 200px;
   top: 400px;
+  ${p => p.theme.mediaQueries.mobile} {
+    width: 150px;
+    height: auto;
+    top: 850px;
+    left: 65%;
+  }
 `
 
 const BlueDiceImg = styled.img`
@@ -101,6 +113,12 @@ const BlueDiceImg = styled.img`
   transform: scale(0.8);
   left: 350px;
   top: 300px;
+  ${p => p.theme.mediaQueries.mobile} {
+    width: 80px;
+    height: auto;
+    top: 480px;
+    left: 125px;
+  }
 `
 
 const SmallBlueDiceImg = styled.img`
@@ -108,6 +126,8 @@ const SmallBlueDiceImg = styled.img`
   display: none;
   ${p => p.theme.mediaQueries.mobile} {
     display: block;
+    top: 920px;
+    left: 50%;
   }
 `
 
@@ -115,12 +135,11 @@ const About = () => {
 
   return (
     <AboutContainer>
+      <RedDiceImg src={redDice} />
+      <YellowDiceImg src={yellowDice} />
+      <BlueDiceImg src={blueDice} />
+      <SmallBlueDiceImg src={smallBlueDice} />
       <AboutInner>
-        <RedDiceImg src={redDice} />
-        <YellowDiceImg src={yellowDice} />
-        <BlueDiceImg src={blueDice} />
-        <SmallBlueDiceImg src={smallBlueDice} />
-
         <BlurbContainer bias="right">
           <BlurbHeader>Game on: Level up your tech journey at nwHacks!</BlurbHeader>
           <BlurbText>
