@@ -8,7 +8,7 @@ import fireDb from '@utilities/firebase'
 const SponsorsContainer = styled.div`
   position: relative;
   min-height: calc(calc(2050 / 1440) * 100vw);
-  margin-top: -0.5rem;
+  margin-top: -21.5rem;
 
   ${p => p.theme.mediaQueries.mobile} {
     min-height: calc(calc(488 / 428) * 100vw);
