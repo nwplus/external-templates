@@ -6,8 +6,6 @@ import CarAndMap from '../assets/images/CarAndMap.svg'
 import CarScenery from '../assets/images/CarScenery.svg'
 import RamBodyImage from '../assets/images/RamBody.svg'
 import RamHeadImage from '../assets/images/RamHead.svg'
-import Button from './Button'
-import LivepeerImage from '../assets/images/Livepeer.svg'
 
 const HeroContainer = styled.div`
   position: relative;
