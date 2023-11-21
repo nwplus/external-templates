@@ -94,9 +94,10 @@ const About = () => {
         <BlurbContainer bias="right">
           <BlurbHeader>Join us for an unforgettable experience!</BlurbHeader>
           <BlurbText>
-            We're thrilled to announce that we're once again bringing you an incredible hackathon experience! Last year,
-            we connected hundreds of the brightest developers, engineers, and designers coming from all over North
-            America. Whether we're reuniting or meeting you for the first time, we can't wait to see you there!
+            We{`'`}re thrilled to announce that we{`'`}re once again bringing you an incredible hackathon experience!
+            Last year, we connected hundreds of the brightest developers, engineers, and designers coming from all over
+            North America. Whether we{`'`}re reuniting or meeting you for the first time, we can{`'`}t wait to see you
+            there!
           </BlurbText>
         </BlurbContainer>
       </AboutInner>

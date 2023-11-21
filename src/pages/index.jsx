@@ -9,7 +9,6 @@ import Footer from 'src/sections/Footer'
 import Countdown from 'src/sections/Countdown'
 import About from 'src/sections/About'
 
-import Banner from '../components/Banner'
 import NavigationBar from '../components/NavigationBar'
 import Hero from '../components/Hero'
 
