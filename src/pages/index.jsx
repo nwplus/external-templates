@@ -9,6 +9,7 @@ import Footer from 'src/sections/Footer'
 import Countdown from 'src/sections/Countdown'
 import About from 'src/sections/About'
 import Track from 'src/sections/Tracks'
+import Stats from 'src/sections/Stats'
 
 import NavigationBar from '../components/NavigationBar'
 import Hero from '../components/Hero'
@@ -75,6 +76,7 @@ export default function Index({ title }) {
         <Hero />
         <About />
         <Countdown />
+        <Stats />
         <Track />
         <Faq />
         <Sponsors />
