@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react'
 import styled, { keyframes } from 'styled-components'
 
 import ClockSVG from "../assets/images/countdown.svg"
+import MobileClockSVG from "../assets/images/mobile/clock.svg"
+
 
 const CountdownContainer = styled.div`
   min-height: calc(calc(1027 / 1440) * 100vw);
@@ -10,7 +12,8 @@ const CountdownContainer = styled.div`
   z-index: 1;
 
   ${p => p.theme.mediaQueries.mobile} {
-    min-height: calc(calc(746 / 428) * 100vw);
+    min-height: calc(calc(387 / 414) * 100vw);
+    top:-200px;
   }
 `
 
@@ -23,6 +26,20 @@ const ClockImg = styled.img`
   position: absolute;
   width: 100%;
   height: auto;
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
+`
+
+const MobileClockImg = styled.img`
+  position: absolute;
+  width: 100%;
+  height: auto;
+  display: none;
+  
+  ${p => p.theme.mediaQueries.mobile} {
+    display: block;
+  }
 `
 
 const CountdownGrid = styled.div`
@@ -38,6 +55,8 @@ const CountdownGrid = styled.div`
   ${p => p.theme.mediaQueries.mobile} {
     gap: 1rem;
     flex-grow: 0;
+    padding-top: 30%;
+    left: 30%;
   }
 `
 
@@ -54,7 +73,7 @@ const Digits = styled.h2`
   display: inline-block;
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 2rem;
+    font-size: 2.2rem;
     letter-spacing: 0;
   }
 `
@@ -110,7 +129,10 @@ const Countdown = () => {
   return (
     <CountdownContainer>
       <Clock>
+
         <ClockImg src={ClockSVG} />
+        <MobileClockImg src={MobileClockSVG} />
+
         <CountdownGrid>
           {['Days', 'Hours', 'Minutes'].map((item, index) => (
             <TimeUnit key={item}>
