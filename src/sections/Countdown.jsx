@@ -14,15 +14,18 @@ const CountdownContainer = styled.div`
 
 const FauxBillboard = styled.div`
   min-height: calc(calc(482 / 1139) * 75vw);
+  
   display: flex;
   max-width: 1200px;
   align-items: center;
-  margin-top: 7%;
+  margin-top: 8vw;
   margin-left: auto;
   margin-right: auto;
   position: relative;
-  left: 100px;
-  width: 400px;
+
+  left: 7.5%;
+  width: 35%;
+
   text-shadow: 0 0 10px rgba(233, 233, 233, 0.4);
 
   ${p => p.theme.mediaQueries.mobile} {
@@ -34,6 +37,10 @@ const FauxBillboard = styled.div`
     margin-top: 0;
     padding-top: calc(calc(60 / 750) * 100vw);
     justify-content: center;
+
+    margin-top: 0%;
+    top: -10.3rem;
+    left: 1%;
   }
 `
 
@@ -57,12 +64,12 @@ const Digits = styled.h2`
   font-family: 'HK Grotesk', sans-serif;
   color: #564D4A;
   font-weight: 600;
-  font-size: 5rem;
+  font-size: 4rem;
   letter-spacing: 0.2rem;
   display: inline-block;
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 3rem;
+    font-size: 2rem;
     letter-spacing: 0;
   }
 `
