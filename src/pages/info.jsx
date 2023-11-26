@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import NavigationBar from '@components/NavigationBar'
 import InfoBackground from '@assets/images/InfoBackground.svg'
-import { LAPTOP, MOBILE } from '@constants/measurements'
+import { LAPTOP } from '@constants/measurements'
 
 const Container = styled.div`
   display: flex;

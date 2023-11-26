@@ -160,7 +160,7 @@ const Countdown = () => {
   return (
     <CountdownContainer>
       <Keychain ref={parallax.ref} src={KeychainImage} alt="Keychain" />
-      <UltiAnimation src={UltiAnimationImg} alt="Nugget and Reindeer tossing around a Firsbee"></UltiAnimation>
+      <UltiAnimation src={UltiAnimationImg} alt="Nugget and Reindeer tossing around a Firsbee" />
       <FauxBillboard>
         <StyledHeader>Registration closes in:</StyledHeader>
         <CountdownGrid>
