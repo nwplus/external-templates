@@ -1,7 +1,6 @@
-import React from 'react'
-import styled, { keyframes } from 'styled-components'
 import { LAPTOP, TABLET } from '@constants/measurements'
 import { useParallax } from 'react-scroll-parallax'
+import styled, { keyframes } from 'styled-components'
 import CarAndMap from '../assets/images/CarAndMap.svg'
 import CarScenery from '../assets/images/CarScenery.svg'
 import RamBodyImage from '../assets/images/RamBody.svg'
@@ -10,7 +9,6 @@ import RamHeadImage from '../assets/images/RamHead.svg'
 const HeroContainer = styled.div`
   position: relative;
   min-height: calc(calc(800 / 1440) * 100vw);
-  margin-top: -15rem;
 
   ${p => p.theme.mediaQueries.mobile} {
     min-height: calc(calc(1200 / 882) * 100vw);

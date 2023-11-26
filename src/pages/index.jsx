@@ -1,16 +1,16 @@
-import Head from 'next/head'
-import React from 'react'
 import GlobalStyles from '@styles/global'
+import Head from 'next/head'
 import styled from 'styled-components'
 
-import Sponsors from 'src/sections/Sponsors'
+import About from 'src/sections/About'
+import Countdown from 'src/sections/Countdown'
 import Faq from 'src/sections/FAQ'
 import Footer from 'src/sections/Footer'
-import Countdown from 'src/sections/Countdown'
-import About from 'src/sections/About'
+import Sponsors from 'src/sections/Sponsors'
+import Banner from '../components/Banner'
 
-import NavigationBar from '../components/NavigationBar'
 import Hero from '../components/Hero'
+import NavigationBar from '../components/NavigationBar'
 
 import MainGraphicsTop from '../assets/images/MainBackground.svg'
 import MainGraphicsMobile from '../assets/images/mobile/MainBackground.svg'
@@ -66,9 +66,9 @@ export default function Index({ title }) {
         <meta property="og:image" content="/og_preview.png" />
       </Head>
       {/* Components Starts */}
-      {/* <Banner buttonLink="info.html" /> */}
-      {/* <NavigationBar bannerExists /> */}
-      <NavigationBar />
+      <Banner />
+      <NavigationBar bannerExists />
+      {/* <NavigationBar /> */}
       <HalfContainer>
         <HalfBackgroundImage src={MainGraphicsTop} alt="Background image" />
         <Hero />
