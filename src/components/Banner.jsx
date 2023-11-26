@@ -30,6 +30,7 @@ const BannerText = styled.div`
   font-weight: 400;
 `
 
+// Used as a link on the Banner component (last used to redirect to info.jsx)
 // const LearnMore = styled.a`
 //   text-decoration: underline;
 //   color: #2c2543;
