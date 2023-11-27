@@ -4,6 +4,7 @@ import { Header2 } from '@components/Typography'
 import SponsorsGrid from '@components/SponsorsGrid'
 import Button from '@components/Button'
 import fireDb from '@utilities/firebase'
+import Carousel from '../components/Carousel'
 
 const SponsorsContainer = styled.div`
   position: relative;
@@ -85,7 +86,6 @@ const PushinP = styled.p`
 `
 
 const Sponsors = () => {
-
   const [sponsors, setSponsors] = useState(null)
 
   useEffect(async () => {
@@ -107,6 +107,10 @@ const Sponsors = () => {
         <Button variant="solidRed" href="mailto:sponsorship@nwplus.io">
           Sponsor nwHacks!
         </Button>
+        <Carousel>
+          <p>Hello</p>
+          <p>World</p>
+        </Carousel>
         <SponsorsGrid sponsors={sponsors} />
       </StaticContainer>
     </SponsorsContainer>
