@@ -42,12 +42,20 @@ const FaqGrid = styled.div`
     margin-top: 50px;
     padding-bottom: 4rem;
   }
+
+  & > div:nth-child(3) {
+    grid-column: 2; // move the column to the right
+    ${p => p.theme.mediaQueries.mobile} {
+      grid-column: 1;
+    }
+  }
 `
 
 // for proper grid positioning
 const FaqColumn = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: flex-end;
   & > div:not(:first-child) {
     margin-top: 40px;
     ${p => p.theme.mediaQueries.mobile} {
