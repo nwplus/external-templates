@@ -11,6 +11,7 @@ import About from 'src/sections/About'
 import Track from 'src/sections/Tracks'
 import Stats from 'src/sections/Stats'
 
+import LoadingScreen from '../components/LoadingScreen'
 import NavigationBar from '../components/NavigationBar'
 import Hero from '../components/Hero'
 
@@ -67,6 +68,9 @@ export default function Index({ title }) {
       {/* Components Starts */}
       {/* <Banner buttonLink="info.html" /> */}
       {/* <NavigationBar bannerExists /> */}
+
+      <LoadingScreen />
+
       <NavigationBar />
 
       <HalfContainer>
