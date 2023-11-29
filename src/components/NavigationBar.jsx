@@ -4,7 +4,7 @@ import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
 import { scale } from '@utilities/format'
 import mlhImage from '@assets/images/mlhTrustBadgeWhite.svg'
 import { BANNER_OFFSET } from '../constants/measurements'
-import MenuImg from '../../out/assets/icons/menu.svg'
+import MenuImg from '../../public/images/icons/menu.svg'
 
 
 const NavBarContainer = styled.nav`
