@@ -135,8 +135,8 @@ const Button = styled.a`
   padding: 11px 21px;
   border-radius: 50px;
   font-weight: bold;
-  background: #DCB551;
-  color: #142E3D;
+  background: #AA4245;
+  color: #F3F5F4;
   right: 120px;
   ${p => p.theme.mediaQueries.mobile} {
     right: 0;
