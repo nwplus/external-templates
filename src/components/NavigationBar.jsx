@@ -56,7 +56,7 @@ const NwPlusLogo = styled.img`
   margin-right: 18px;
 
   ${p => p.theme.mediaQueries.mobile} {
-    width: 50px;
+    width: 30px;
     margin-right: 0;
   }
 `
@@ -111,7 +111,7 @@ const DropDownContentContainer = styled.div`
   align-items: center;
   gap: 24px;
   width: 100%;
-  background: #DCB551;
+  background: #AA4245;
 `
 
 const PortalButtonContainer = styled.div`
@@ -133,8 +133,8 @@ const Button = styled.a`
   padding: 11px 21px;
   border-radius: 50px;
   font-weight: bold;
-  background: #AA4245;
-  color: #F3F5F4;
+  background: #DCB551;
+  color: #142E3D;
   right: 120px;
   ${p => p.theme.mediaQueries.mobile} {
     right: 0;
