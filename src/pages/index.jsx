@@ -60,6 +60,12 @@ const SusNuggetContainer = styled.img`
   width: 15%;
   height: auto;
   left: 37.5%;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    bottom: 5.8%;
+    left: 45%;
+    width: 18%;
+  }
 `
 
 export default function Index({ title }) {
