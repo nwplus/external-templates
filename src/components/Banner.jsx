@@ -1,6 +1,5 @@
 // implement a banner component that displays a message and a button
 
-import React from 'react'
 import styled from 'styled-components'
 
 const BannerContainer = styled.div`
@@ -31,20 +30,17 @@ const BannerText = styled.div`
   font-weight: 400;
 `
 
-const LearnMore = styled.a`
-  text-decoration: underline;
-  color: #2c2543;
-`
+// Used as a link on the Banner component (last used to redirect to info.jsx)
+// const LearnMore = styled.a`
+//   text-decoration: underline;
+//   color: #2c2543;
+// `
 
-const Banner = ({ buttonLink }) => (
+const Banner = () => (
   <BannerContainer>
     <BannerHeader>IMPORTANT UPDATE:</BannerHeader>
     <BannerText>
-      nwHacks 2023 is rescheduled to January 21-22, 2023. The event will still take place at the University of British
-      Columbia (UBC).{' '}
-      <span>
-        <LearnMore href={buttonLink}>Learn more here.</LearnMore>
-      </span>
+      nwHacks 2024 is not currently accepting applications. The application form will open on December 1st, 2023.
     </BannerText>
   </BannerContainer>
 )
