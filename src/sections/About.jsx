@@ -134,7 +134,7 @@ const SmallBlueDiceImg = styled.img`
 const About = () => {
 
   return (
-    <AboutContainer>
+    <AboutContainer id="about">
       <RedDiceImg src={redDice} />
       <YellowDiceImg src={yellowDice} />
       <BlueDiceImg src={blueDice} />
