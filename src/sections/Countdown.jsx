@@ -4,7 +4,7 @@ import styled, { keyframes } from 'styled-components'
 
 import ClockSVG from "../assets/images/countdown.svg"
 import MobileClockSVG from "../assets/images/mobile/clock.svg"
-
+import NuggetWaving from "../assets/images/animations/nugget-waving.gif"
 
 const CountdownContainer = styled.div`
   min-height: calc(calc(1027 / 1440) * 100vw);
@@ -20,6 +20,21 @@ const CountdownContainer = styled.div`
 const Clock = styled.div`
   width: 100vw;
   height: auto;
+`
+
+const NuggetWavingImg = styled.img`
+  position: absolute;
+  width: 155px;
+  height: auto;
+  left: 30%;
+  z-index: 1;
+  top: 30px;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: 65px;
+    top: 0px;
+    left: 20%;
+  }
 `
 
 const ClockImg = styled.img`
@@ -129,7 +144,7 @@ const Countdown = () => {
   return (
     <CountdownContainer>
       <Clock>
-
+        <NuggetWavingImg src={NuggetWaving} />
         <ClockImg src={ClockSVG} />
         <MobileClockImg src={MobileClockSVG} />
 

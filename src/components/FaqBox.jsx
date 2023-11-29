@@ -73,15 +73,13 @@ const Arrow = ({ color }) => (
   </svg>
 )
 
-const FaqBox = ({ question, answer }) => {
-  const [isExpanded, setIsExpanded] = useState(false)
-
+const FaqBox = ({ question, answer, isExpanded, onExpand }) => {
   return (
     <Container
       expanded={isExpanded}>
       <Top
         expanded={isExpanded}
-        onClick={() => setIsExpanded(!isExpanded)}>
+        onClick={onExpand}>
         {question}
         <TopExpand style={isExpanded ? { transform: 'rotate(0)' } : { transform: 'rotate(180deg)' }}>
           <Arrow color={isExpanded ? '#252525' : '#2C2543'} />

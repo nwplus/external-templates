@@ -11,11 +11,14 @@ import About from 'src/sections/About'
 import Track from 'src/sections/Tracks'
 import Stats from 'src/sections/Stats'
 
+import LoadingScreen from '../components/LoadingScreen'
 import NavigationBar from '../components/NavigationBar'
 import Hero from '../components/Hero'
 
 import MainGraphics from '../assets/images/MainBackground.svg'
 import MainGraphicsMobile from '../assets/images/mobile/MainBackground.svg'
+
+import SusNuggetGif from '../assets/images/animations/nugget-sus.gif'
 
 const HalfContainer = styled.div`
   min-height: calc(calc(9229 / 1440) * 100vw);
@@ -51,6 +54,14 @@ const BackgroundImage = styled.img`
   }
 `
 
+const SusNuggetContainer = styled.img`
+  position: absolute;
+  bottom: 10.5%;
+  width: 15%;
+  height: auto;
+  left: 37.5%;
+`
+
 export default function Index({ title }) {
   return (
     <>
@@ -67,12 +78,15 @@ export default function Index({ title }) {
       {/* Components Starts */}
       {/* <Banner buttonLink="info.html" /> */}
       {/* <NavigationBar bannerExists /> */}
+
+      <LoadingScreen />
+
       <NavigationBar />
 
       <HalfContainer>
         {/* add if statement, show mobile background if mobile */}
         <BackgroundImage src={MainGraphics} alt="Background image" />
-
+        <SusNuggetContainer src={SusNuggetGif} alt="Nugget with eyes looking around" />
         <Hero />
         <About />
         <Countdown />

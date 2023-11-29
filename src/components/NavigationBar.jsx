@@ -4,6 +4,8 @@ import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
 import { scale } from '@utilities/format'
 import mlhImage from '@assets/images/mlhTrustBadgeWhite.svg'
 import { BANNER_OFFSET } from '../constants/measurements'
+import MenuImg from '../../public/images/icons/menu.svg'
+
 
 const NavBarContainer = styled.nav`
   position: ${p => (p.stayAtTop ? 'absolute' : 'fixed')};
@@ -56,7 +58,7 @@ const NwPlusLogo = styled.img`
   margin-right: 18px;
 
   ${p => p.theme.mediaQueries.mobile} {
-    width: 50px;
+    width: 30px;
     margin-right: 0;
   }
 `
@@ -111,7 +113,7 @@ const DropDownContentContainer = styled.div`
   align-items: center;
   gap: 24px;
   width: 100%;
-  background: #DCB551;
+  background: #AA4245;
 `
 
 const PortalButtonContainer = styled.div`
@@ -183,6 +185,13 @@ const Button = styled.a`
       opacity: 0;
     }
   `}
+`
+
+const DropDownFooter = styled.div`
+    height: 20px;
+    background: #152E3A;
+    width: 100vw;
+    margin-bottom: -25px;
 `
 
 const TrustBadgeLink = styled.a`
@@ -333,6 +342,7 @@ const NavigationBar = ({ bannerExists }) => {
           <MenuList isMobile={showDropdown} closeDropdown={setShowDropdown} />
           {/* Make sure desktop (below) has the same portalOpen value */}
           <PortalButton portalOpen={true} />
+          <DropDownFooter />
         </DropDownContentContainer>
         <TrustBadge stayAtTop={stayAtTop} />
       </>
@@ -352,7 +362,7 @@ const NavigationBar = ({ bannerExists }) => {
         {/* Make sure mobile (above) has the same portalOpen value */}
         <PortalButton portalOpen={true} />
       </NavGroupContainer>
-      <HamburgerMenu src="/images/icons/menu.svg" alt="dropdown menu icon" onClick={() => setShowDropdown(true)} />
+      <HamburgerMenu src={MenuImg} alt="dropdown menu icon" onClick={() => setShowDropdown(true)} />
       <TrustBadge stayAtTop={stayAtTop} />
     </NavBarContainer>
   )

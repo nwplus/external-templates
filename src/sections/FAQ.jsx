@@ -42,12 +42,20 @@ const FaqGrid = styled.div`
     margin-top: 50px;
     padding-bottom: 4rem;
   }
+
+  & > div:nth-child(3) {
+    grid-column: 2; // move the column to the right
+    ${p => p.theme.mediaQueries.mobile} {
+      grid-column: 1;
+    }
+  }
 `
 
 // for proper grid positioning
 const FaqColumn = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: flex-end;
   & > div:not(:first-child) {
     margin-top: 40px;
     ${p => p.theme.mediaQueries.mobile} {
@@ -82,18 +90,31 @@ const StyledTitle = styled(Header2)`
   }
 `
 
-const FaqCollection = ({ category, faqs }) => (
+const FaqCollection = ({ category, faqs, expandedQuestion, setExpandedQuestion }) => (
   <CollectionContainer>
     <CollectionName>{category}</CollectionName>
 
-    {faqs.map(q => (
-      <FaqBox key={q.question} question={q.question} answer={q.answer} />
-    ))}
+    {faqs.map(q =>
+      <FaqBox
+        key={q.question}
+        question={q.question}
+        answer={q.answer}
+        isExpanded={expandedQuestion === q.question}
+        onExpand={() => {
+          if (expandedQuestion === q.question) {
+            setExpandedQuestion(null)
+          } else {
+            setExpandedQuestion(q.question)
+          }
+        }}
+      />
+    )}
   </CollectionContainer>
 )
 
 const Faq = () => {
   const [faqData, setFaqData] = useState(null)
+  const [expandedQuestion, setExpandedQuestion] = useState(null)
 
   // (@htdf processData)
   // (@signature (listof FAQ) -> Object)
@@ -126,16 +147,21 @@ const Faq = () => {
 
         {faqData ? (
           <FaqGrid>
-            <FaqColumn>{faqData.General && <FaqCollection category="General" faqs={faqData.General} />}</FaqColumn>
+            <FaqColumn>{faqData.General && <FaqCollection category="General" faqs={faqData.General} expandedQuestion={expandedQuestion} setExpandedQuestion={setExpandedQuestion} />}</FaqColumn>
 
             <FaqColumn>
               {faqData['Teams & Projects'] && (
-                <FaqCollection category="Teams & Projects" faqs={faqData['Teams & Projects']} />
+                <FaqCollection category="Teams & Projects" faqs={faqData['Teams & Projects']}
+                  expandedQuestion={expandedQuestion}
+                  setExpandedQuestion={setExpandedQuestion} />
               )}
             </FaqColumn>
 
             <FaqColumn>
-              {faqData['Logistics'] && <FaqCollection category="Logistics" faqs={faqData['Logistics']} />}
+              {faqData['Logistics'] && <FaqCollection category="Logistics" faqs={faqData['Logistics']}
+                expandedQuestion={expandedQuestion}
+                setExpandedQuestion={setExpandedQuestion}
+              />}
             </FaqColumn>
           </FaqGrid>
         ) : (
