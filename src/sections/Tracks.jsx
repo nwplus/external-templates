@@ -75,9 +75,8 @@ const Track = () => (
   <TrackContainer>
     <TrackInner>
       <BlurbContainer bias="left">
-        <BlurbHeader>Lincoln</BlurbHeader>
+        <BlurbHeader></BlurbHeader>
         <BlurbText>
-          You got this!!
         </BlurbText>
       </BlurbContainer>
     </TrackInner>
