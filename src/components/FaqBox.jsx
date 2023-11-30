@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
 const Container = styled.div`
@@ -73,8 +73,7 @@ const Arrow = ({ color }) => (
   </svg>
 )
 
-const FaqBox = ({ question, answer, isExpanded, onExpand }) => {
-  return (
+const FaqBox = ({ question, answer, isExpanded, onExpand }) => (
     <Container
       expanded={isExpanded}>
       <Top
@@ -92,6 +91,5 @@ const FaqBox = ({ question, answer, isExpanded, onExpand }) => {
       </AnswerBox>
     </Container>
   )
-}
 
 export default FaqBox

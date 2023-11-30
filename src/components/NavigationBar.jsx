@@ -258,6 +258,8 @@ const MenuList = ({ isMobile, closeDropdown }) => (
     {/* <MenuItem name='Statistics' href='/#statistics' isAnchor isMobile={isMobile} closeDropdown={closeDropdown} /> */}
     <MenuItem name="FAQ" href="/#faq" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
     <MenuItem name="Sponsors" href="/#sponsors" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
+    <MenuItem name="Tracks" href="/#tracks" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
+
     <MenuItem
       name="2023"
       href="https://2023.nwhacks.io"
@@ -341,7 +343,7 @@ const NavigationBar = ({ bannerExists }) => {
           </a>
           <MenuList isMobile={showDropdown} closeDropdown={setShowDropdown} />
           {/* Make sure desktop (below) has the same portalOpen value */}
-          <PortalButton portalOpen={true} />
+          <PortalButton portalOpen />
           <DropDownFooter />
         </DropDownContentContainer>
         <TrustBadge stayAtTop={stayAtTop} />
@@ -360,7 +362,7 @@ const NavigationBar = ({ bannerExists }) => {
           <MenuList />
         </NavTextContainer>
         {/* Make sure mobile (above) has the same portalOpen value */}
-        <PortalButton portalOpen={true} />
+        <PortalButton portalOpen />
       </NavGroupContainer>
       <HamburgerMenu src={MenuImg} alt="dropdown menu icon" onClick={() => setShowDropdown(true)} />
       <TrustBadge stayAtTop={stayAtTop} />

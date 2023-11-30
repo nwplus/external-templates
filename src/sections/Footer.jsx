@@ -138,9 +138,7 @@ const StaticContainer = styled.div`
   }
 `
 
-const Footer = () => {
-
-  return (
+const Footer = () => (
     <FooterContainer>
       <StaticContainer>
         <TextContainer>
@@ -186,6 +184,5 @@ const Footer = () => {
       </StaticContainer>
     </FooterContainer>
   )
-}
 
 export default Footer

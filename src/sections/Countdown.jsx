@@ -1,6 +1,5 @@
-import { Header2, Header3 } from '@components/Typography'
 import React, { useEffect, useState } from 'react'
-import styled, { keyframes } from 'styled-components'
+import styled from 'styled-components'
 
 import ClockSVG from "../assets/images/countdown.svg"
 import MobileClockSVG from "../assets/images/mobile/clock.svg"

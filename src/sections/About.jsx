@@ -15,10 +15,10 @@ const AboutContainer = styled.div`
   align-items: center;
   width: 100%;
   aspect-ratio: 1440 / 779;
-  margin-top: 10rem;
+  margin-top: 18rem;
 
   ${p => p.theme.mediaQueries.mobile} {
-    margin-top: -18rem;
+    margin-top: -12rem;
     min-height: calc(calc(1344 / 428) * 100vw);
     aspect-ratio: 428 / 1344;
     align-items: center;
@@ -103,7 +103,7 @@ const YellowDiceImg = styled.img`
   ${p => p.theme.mediaQueries.mobile} {
     width: 150px;
     height: auto;
-    top: 850px;
+    top: 900px;
     left: 65%;
   }
 `
@@ -126,29 +126,26 @@ const SmallBlueDiceImg = styled.img`
   display: none;
   ${p => p.theme.mediaQueries.mobile} {
     display: block;
-    top: 920px;
+    top: 950px;
     left: 50%;
   }
 `
 
-const About = () => {
-
-  return (
-    <AboutContainer id="about">
-      <RedDiceImg src={redDice} />
-      <YellowDiceImg src={yellowDice} />
-      <BlueDiceImg src={blueDice} />
-      <SmallBlueDiceImg src={smallBlueDice} />
-      <AboutInner>
-        <BlurbContainer bias="right">
-          <BlurbHeader>Game on: Level up your tech journey at nwHacks!</BlurbHeader>
-          <BlurbText>
-            Whether you’re a seasoned hacker or you’re just getting into tech, you’re welcome at nwHacks. Join us in-person on January 20-21, 2024 for a weekend of creativity, community, and innovation! All you need is an open mind and an insatiable desire to learn, and we’ll take care of the rest. Create a project, learn new skills, and bond with friends, old and new — all in 24 hours.
-          </BlurbText>
-        </BlurbContainer>
-      </AboutInner>
-    </AboutContainer>
-  )
-}
+const About = () => (
+  <AboutContainer id="about">
+    <RedDiceImg src={redDice} />
+    <YellowDiceImg src={yellowDice} />
+    <BlueDiceImg src={blueDice} />
+    <SmallBlueDiceImg src={smallBlueDice} />
+    <AboutInner>
+      <BlurbContainer bias="right">
+        <BlurbHeader>Game on: Level up your tech journey at nwHacks!</BlurbHeader>
+        <BlurbText>
+          Whether you’re a seasoned hacker or you’re just getting into tech, you’re welcome at nwHacks. Join us in-person on January 20-21, 2024 for a weekend of creativity, community, and innovation! All you need is an open mind and an insatiable desire to learn, and we’ll take care of the rest. Create a project, learn new skills, and bond with friends, old and new — all in 24 hours.
+        </BlurbText>
+      </BlurbContainer>
+    </AboutInner>
+  </AboutContainer>
+)
 
 export default About

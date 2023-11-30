@@ -11,7 +11,7 @@ import About from 'src/sections/About'
 import Track from 'src/sections/Tracks'
 import Stats from 'src/sections/Stats'
 
-import LoadingScreen from '../components/LoadingScreen'
+// import LoadingScreen from '../components/LoadingScreen'
 import NavigationBar from '../components/NavigationBar'
 import Hero from '../components/Hero'
 
@@ -60,6 +60,12 @@ const SusNuggetContainer = styled.img`
   width: 15%;
   height: auto;
   left: 37.5%;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    bottom: 5.8%;
+    left: 45%;
+    width: 18%;
+  }
 `
 
 export default function Index({ title }) {
@@ -79,7 +85,7 @@ export default function Index({ title }) {
       {/* <Banner buttonLink="info.html" /> */}
       {/* <NavigationBar bannerExists /> */}
 
-      <LoadingScreen />
+      {/* <LoadingScreen /> */}
 
       <NavigationBar />
 
