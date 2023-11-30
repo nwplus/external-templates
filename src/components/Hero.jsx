@@ -20,6 +20,7 @@ const OuterContainer = styled.div`
   position: absolute;
   width: 100%;
   top: calc(calc(75 / 1440) * 100vw);
+  margin-top 5%;
 
   ${p => p.theme.mediaQueries.mobile} {
     bottom: 0;
@@ -207,35 +208,35 @@ const VolunteerLink = styled.a`
 `
 
 const Hero = () => (
-    <HeroContainer>
-      <OuterContainer>
-        <IntroContainer>
-          <Opening>Welcome to</Opening>
-          <TitleContainer>
-            <Title>nwHacks</Title>
-          </TitleContainer>
-          <Subtitle>Western Canada’s Largest Hackathon</Subtitle>
-          <DescriptionContainer>
-            <Description>January 20 - 21 2024</Description>
-            <HideMobile>&nbsp;|&nbsp;</HideMobile>
-            <Description>In-Person Event @ UBC</Description>
-          </DescriptionContainer>
-        </IntroContainer>
-        <ActionsContainer>
-          <ButtonsContainer>
-            <Button variant="solid" target="_blank" rel="noreferrer" href="https://portal.nwplus.io">
-              Apply Now!
-            </Button>
-            <Button variant="outlined" target="_blank" rel="noreferrer" href="https://forms.gle/ianRSs3wd1SYjSDR8">
-              Become a Mentor!
-            </Button>
-          </ButtonsContainer>
-          <VolunteerLink href="https://forms.gle/N6VYuPugFRfNCjFUA" target="_blank" rel="noreferrer">
-            Apply to be a volunteer!
-          </VolunteerLink>
-        </ActionsContainer>
-      </OuterContainer>
-    </HeroContainer>
-  )
+  <HeroContainer>
+    <OuterContainer>
+      <IntroContainer>
+        <Opening>Welcome to</Opening>
+        <TitleContainer>
+          <Title>nwHacks</Title>
+        </TitleContainer>
+        <Subtitle>Western Canada’s Largest Hackathon</Subtitle>
+        <DescriptionContainer>
+          <Description>January 20 - 21 2024</Description>
+          <HideMobile>&nbsp;|&nbsp;</HideMobile>
+          <Description>In-Person Event @ UBC</Description>
+        </DescriptionContainer>
+      </IntroContainer>
+      <ActionsContainer>
+        <ButtonsContainer>
+          <Button variant="solid" target="_blank" rel="noreferrer" href="https://portal.nwplus.io">
+            Apply Now!
+          </Button>
+          <Button variant="outlined" target="_blank" rel="noreferrer" href="https://forms.gle/ianRSs3wd1SYjSDR8">
+            Become a Mentor!
+          </Button>
+        </ButtonsContainer>
+        <VolunteerLink href="https://forms.gle/N6VYuPugFRfNCjFUA" target="_blank" rel="noreferrer">
+          Apply to be a volunteer!
+        </VolunteerLink>
+      </ActionsContainer>
+    </OuterContainer>
+  </HeroContainer>
+)
 
 export default Hero
