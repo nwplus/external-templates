@@ -72,7 +72,7 @@ const BlurbText = styled(Body)`
 `
 
 const Track = () => (
-  <TrackContainer>
+  <TrackContainer id="tracks">
     <TrackInner>
       <BlurbContainer bias="left">
         <BlurbHeader></BlurbHeader>
