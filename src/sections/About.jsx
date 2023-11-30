@@ -86,7 +86,7 @@ const BlurbText = styled(Body)`
 
 const RedDiceImg = styled.img`
   position: absolute;
-  transform: scale(0.8);
+  transform: scale(1);
   left: 20px;
   top: 30px;
   ${p => p.theme.mediaQueries.mobile} {
@@ -94,32 +94,35 @@ const RedDiceImg = styled.img`
     height: auto;
     top: 430px;
     left: 0px;
+    transform: scale(0.8);
   }
 `
 
 const YellowDiceImg = styled.img`
   position: absolute;
-  transform: scale(0.8);
+  transform: scale(1);
   left: 200px;
-  top: 400px;
+  top: 450px;
   ${p => p.theme.mediaQueries.mobile} {
     width: 150px;
     height: auto;
-    top: 900px;
+    top: 950px;
     left: 65%;
+    transform: scale(0.8);
   }
 `
 
 const BlueDiceImg = styled.img`
   position: absolute;
-  transform: scale(0.8);
+  transform: scale(1);
   left: 350px;
-  top: 300px;
+  top: 350px;
   ${p => p.theme.mediaQueries.mobile} {
     width: 80px;
     height: auto;
     top: 480px;
     left: 125px;
+    transform: scale(0.8);
   }
 `
 
