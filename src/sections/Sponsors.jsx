@@ -9,10 +9,12 @@ import Carousel from '../components/Carousel'
 const SponsorsContainer = styled.div`
   position: relative;
   min-height: calc(calc(2050 / 1440) * 100vw);
-  margin-top: -21.5rem;
+  margin-top: 0rem;
 
   ${p => p.theme.mediaQueries.mobile} {
     min-height: calc(calc(488 / 428) * 100vw);
+    margin-top: -8rem;
+
   }
 `
 
@@ -82,10 +84,13 @@ const Sponsors = () => {
         <Button variant="solidRed" href="mailto:sponsorship@nwplus.io">
           Sponsor nwHacks!
         </Button>
-        <Carousel>
+
+        {/* each child in carousel is a sponsor */}
+        {/* <Carousel>
           <p>Hello</p>
           <p>World</p>
-        </Carousel>
+        </Carousel> */}
+
         <SponsorsGrid sponsors={sponsors} />
       </StaticContainer>
     </SponsorsContainer>
