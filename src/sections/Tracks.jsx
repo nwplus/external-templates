@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { Body, Header2, Header3 } from '@components/Typography'
+import { Body, Header2 } from '@components/Typography'
 import Healthcare from '@assets/images/card_healthcare.svg'
 import Community from '@assets/images/card_community.svg'
 import Sustainability from '@assets/images/card_sustainability.svg'
@@ -150,7 +150,7 @@ const CONTENT = {
     heading: 'Healthcare & Accessibility',
     description: (
       <Description>
-        Whether it's developing assistive technologies, improving healthcare accessibility, promoting mental health
+        Whether it&apos;s developing assistive technologies, improving healthcare accessibility, promoting mental health
         awareness, or supporting wellbeing, this track is all about fostering a world where everyone can thrive.
       </Description>
     ),
@@ -180,7 +180,7 @@ const CONTENT = {
     heading: 'Wildcard',
     description: (
       <Description>
-        Let your creativity run wild! There are no boundaries or limitations here; you're free to come up with
+        Let your creativity run wild! There are no boundaries or limitations here; you&apos;re free to come up with
         innovative ideas that might not fit neatly into traditional categories. Explore new technologies, try out a new
         API, and build something unique!
       </Description>
