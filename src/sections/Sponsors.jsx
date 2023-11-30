@@ -4,7 +4,7 @@ import { Header2 } from '@components/Typography'
 import SponsorsGrid from '@components/SponsorsGrid'
 import Button from '@components/Button'
 import fireDb from '@utilities/firebase'
-import Carousel from '../components/Carousel'
+// import Carousel from '../components/Carousel'
 
 const SponsorsContainer = styled.div`
   position: relative;
