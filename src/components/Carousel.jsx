@@ -17,7 +17,18 @@ const CarouselContainer = styled.div`
 const ContentContainer = styled.div`
   max-width: 900px;
   width: ${PAGE_FRAC_DESKTOP}vw;
+  height: fit-content;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+`
+
+const TopContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-grow: 1;
   flex-direction: row;
   justify-content: center;
   align-items: center;
@@ -113,6 +124,21 @@ const ChevronImg = styled.img`
   height: 0.9rem;
 `
 
+const Dots = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+`
+const Dot = styled.div`
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  background-color: white;
+  transition: 300ms;
+  cursor: pointer;
+`
+
 const Carousel = ({ children }) => {
   const [viewing, setViewing] = useState(0)
   const LeftButton = viewing == 0 ? BrickedButton : ActiveButton
@@ -121,34 +147,49 @@ const Carousel = ({ children }) => {
   return (
     <CarouselContainer>
       <ContentContainer>
-        <LeftButton
-          onClick={() => {
-            setViewing(prev => Math.max(0, prev - 1))
-          }}
-        >
-          <ChevronImg src={ChevronLeft} />
-        </LeftButton>
+        <TopContainer>
+          <LeftButton
+            onClick={() => {
+              setViewing(prev => Math.max(0, prev - 1))
+            }}
+          >
+            <ChevronImg src={ChevronLeft} />
+          </LeftButton>
 
-        <PagesContainer>
-          <PagesArrayD style={{ left: `calc(calc(calc(${PAGE_FRAC_DESKTOP}vw - 3rem) * -1) * ${viewing})` }}>
-            {children.map(c => (
-              <Page>{c}</Page>
-            ))}
-          </PagesArrayD>
-          <PagesArrayM style={{ left: `calc(calc(calc(${PAGE_FRAC_MOBILE}vw - 3rem) * -1) * ${viewing})` }}>
-            {children.map(c => (
-              <Page>{c}</Page>
-            ))}
-          </PagesArrayM>
-        </PagesContainer>
+          <PagesContainer>
+            <PagesArrayD style={{ left: `calc(calc(calc(${PAGE_FRAC_DESKTOP}vw - 3rem) * -1) * ${viewing})` }}>
+              {children.map(c => (
+                <Page>{c}</Page>
+              ))}
+            </PagesArrayD>
+            <PagesArrayM style={{ left: `calc(calc(calc(${PAGE_FRAC_MOBILE}vw - 3rem) * -1) * ${viewing})` }}>
+              {children.map(c => (
+                <Page>{c}</Page>
+              ))}
+            </PagesArrayM>
+          </PagesContainer>
 
-        <RightButton
-          onClick={() => {
-            setViewing(prev => Math.min(children.length - 1, prev + 1))
-          }}
-        >
-          <ChevronImg src={ChevronLeft} style={{ transform: 'scaleX(-1)' }} />
-        </RightButton>
+          <RightButton
+            onClick={() => {
+              setViewing(prev => Math.min(children.length - 1, prev + 1))
+            }}
+          >
+            <ChevronImg src={ChevronLeft} style={{ transform: 'scaleX(-1)' }} />
+          </RightButton>
+        </TopContainer>
+
+        <Dots>
+          {Array(children.length)
+            .fill(null)
+            .map((_, i) => (
+              <Dot
+                onClick={() => {
+                  setViewing(i)
+                }}
+                style={{ opacity: i == viewing ? 1 : 0.2 }}
+              />
+            ))}
+        </Dots>
       </ContentContainer>
     </CarouselContainer>
   )
