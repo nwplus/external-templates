@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { Body, Header2 } from '@components/Typography'
+import { Body, Header2, Header3 } from '@components/Typography'
 import Healthcare from '@assets/images/card_healthcare.svg'
 import Community from '@assets/images/card_community.svg'
 import Sustainability from '@assets/images/card_sustainability.svg'
@@ -12,13 +12,6 @@ const TrackContainer = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
-  aspect-ratio: 1440 / 779;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    min-height: calc(calc(1344 / 428) * 100vw);
-    aspect-ratio: 428 / 1344;
-    align-items: center;
-  }
 `
 
 const TrackInner = styled.div`
@@ -33,9 +26,9 @@ const TrackInner = styled.div`
   padding-bottom: 5rem;
 
   ${p => p.theme.mediaQueries.mobile} {
-    padding-top: 10rem;
-    padding-bottom: 0;
+    padding-bottom: 7rem;
     gap: 2rem;
+    min-width: 300px;
   }
 `
 
@@ -64,7 +57,10 @@ const Header = styled(Header2)`
   color: #f3f5f4;
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 2rem;
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    width: 100%;
+    text-align: left;
   }
 `
 
@@ -74,6 +70,13 @@ const Description = styled(Body)`
   font-size: 1.1rem;
   line-height: 150%;
   color: #f3f5f4;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: 1rem;
+    padding-top: 0.4rem;
+    width: 100%;
+    text-align: left;
+  }
 `
 
 const Instruction = styled.h3`
@@ -96,36 +99,92 @@ const CardImg = styled.img`
   box-shadow: #0f212c -12px 12px;
   border-radius: 15px;
   transition: 300ms;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: 200px;
+    margin-bottom: 1rem;
+  }
 `
 
-const LOREM =
-  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac justo consectetur ex cursus sagittis. Nam sit amet mi quis ipsum volutpat accumsan nec vitae nulla. Etiam lobortis tempus cursus. Nunc eu sem vitae risus porta iaculis sit amet eget ante. Fusce sed sem sit amet leo sagittis vehicula. Sed ac est aliquet, pharetra ligula vel, egestas orci. Aliquam aliquam arcu eget tristique pellentesque. Nunc nec risus non leo ullamcorper finibus. Aliquam imperdiet ac risus a auctor. Curabitur vehicula eu augue consectetur varius. Aenean ut ultricies velit. Mauris id elementum quam, vel lobortis urna.'
+const MobileContent = styled.div`
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  gap: 5rem;
+  align-items: center;
+  display: none;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: flex;
+  }
+`
+const MobileItem = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+
+const DesktopContent = styled.div`
+  display: flex;
+  gap: 3rem;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
+`
 
 const CONTENT = {
   default: {
     heading: 'What can I make at nwHacks?',
     description: (
-      <Description>{`This year, we’re introducing nwTracks! We’ll be rewarding the top projects in each category. You can submit to just one of the tracks - choose wisely!`}</Description>
+      <Description>
+        This year, we’re introducing nwTracks! We’ll be rewarding the top projects in each category. You can submit to
+        just one of the tracks - choose wisely!
+      </Description>
     ),
   },
   healthcare: {
     heading: 'Healthcare & Accessibility',
-    description: <Description>{LOREM}</Description>,
+    description: (
+      <Description>
+        Whether it's developing assistive technologies, improving healthcare accessibility, promoting mental health
+        awareness, or supporting wellbeing, this track is all about fostering a world where everyone can thrive.
+      </Description>
+    ),
     card: Healthcare,
   },
   sustainability: {
     heading: 'Sustainability & Environment',
-    description: <Description>{LOREM}</Description>,
+    description: (
+      <Description>
+        Find creative solutions to pressing environmental issues, including climate change, conservation, and
+        sustainable practices. Develop technologies that can contribute to a greener and more sustainable future!
+      </Description>
+    ),
     card: Sustainability,
   },
   community: {
     heading: 'Community & Connection',
-    description: <Description>{LOREM}</Description>,
+    description: (
+      <Description>
+        Explore ways to bring people closer and foster connection (in-person or online!). Build online communities,
+        virtual spaces or social platforms that strengthen bonds.
+      </Description>
+    ),
     card: Community,
   },
   wildcard: {
     heading: 'Wildcard',
-    description: <Description>{LOREM}</Description>,
+    description: (
+      <Description>
+        Let your creativity run wild! There are no boundaries or limitations here; you're free to come up with
+        innovative ideas that might not fit neatly into traditional categories. Explore new technologies, try out a new
+        API, and build something unique!
+      </Description>
+    ),
     card: Wildcard,
   },
 }
@@ -133,35 +192,47 @@ const CONTENT = {
 const Track = () => {
   const [selection, setSelection] = useState('default')
 
-  const getProps = key => ({
+  const getProps = (key, hover) => ({
     src: CONTENT[key].card,
     alt: CONTENT[key].heading,
     onMouseOver: () => {
       setSelection(key)
     },
-    style: { filter: !['default', key].includes(selection) ? 'grayscale(1)' : undefined },
+    style: { filter: hover && !['default', key].includes(selection) ? 'grayscale(1)' : undefined },
   })
 
   return (
     <TrackContainer>
       <TrackInner>
-        <TextElements bias="left">
-          <Header>{CONTENT[selection].heading}</Header>
-          {CONTENT[selection].description}
+        <MobileContent>
+          {Object.entries(CONTENT).map(([k, v]) => (
+            <MobileItem>
+              {v.card && <CardImg {...getProps(k)} />}
+              <Header style={{ marginTop: '1rem' }}>{v.heading}</Header>
+              <Description>{v.description}</Description>
+            </MobileItem>
+          ))}
+        </MobileContent>
 
-          {selection === 'default' && <Instruction>▶ Hover over each card to learn more!</Instruction>}
-        </TextElements>
+        <DesktopContent>
+          <TextElements bias="left">
+            <Header>{CONTENT[selection].heading}</Header>
+            {CONTENT[selection].description}
 
-        <CardGrid
-          onMouseLeave={() => {
-            setSelection('default')
-          }}
-        >
-          <CardImg {...getProps('healthcare')} />
-          <CardImg {...getProps('sustainability')} />
-          <CardImg {...getProps('community')} />
-          <CardImg {...getProps('wildcard')} />
-        </CardGrid>
+            {selection === 'default' && <Instruction>▶ Hover over each card to learn more!</Instruction>}
+          </TextElements>
+
+          <CardGrid
+            onMouseLeave={() => {
+              setSelection('default')
+            }}
+          >
+            <CardImg {...getProps('healthcare', true)} />
+            <CardImg {...getProps('sustainability', true)} />
+            <CardImg {...getProps('community', true)} />
+            <CardImg {...getProps('wildcard', true)} />
+          </CardGrid>
+        </DesktopContent>
       </TrackInner>
     </TrackContainer>
   )
