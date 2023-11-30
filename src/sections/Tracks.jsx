@@ -75,9 +75,8 @@ const Track = () => (
   <TrackContainer id="tracks">
     <TrackInner>
       <BlurbContainer bias="left">
-        <BlurbHeader></BlurbHeader>
-        <BlurbText>
-        </BlurbText>
+        <BlurbHeader>Tracks</BlurbHeader>
+        <BlurbText>Coming soon...</BlurbText>
       </BlurbContainer>
     </TrackInner>
   </TrackContainer>
