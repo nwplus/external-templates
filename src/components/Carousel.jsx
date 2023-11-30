@@ -2,10 +2,9 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import ChevronLeft from '@assets/images/chevron_left.svg'
 
-const PAGE_WIDTH = 700
 const PAGE_HEIGHT = 400
-const BUTTON_WIDTH = 30
-const SPACING = 20
+const PAGE_FRAC_MOBILE = 90 // width: ?vw for the carousel component on mobile
+const PAGE_FRAC_DESKTOP = 50 // width: ?vw for the carousel component on desktop
 
 const CarouselContainer = styled.div`
   display: flex;
@@ -13,27 +12,24 @@ const CarouselContainer = styled.div`
   width: 100%;
   margin-top: 5rem;
   margin-bottom: 5rem;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    min-height: calc(calc(1344 / 428) * 100vw);
-    aspect-ratio: 428 / 1344;
-    align-items: center;
-  }
 `
 
 const ContentContainer = styled.div`
-  min-width: ${PAGE_WIDTH + (BUTTON_WIDTH + SPACING) * 2}px;
   max-width: 900px;
-  width: 50vw;
+  width: ${PAGE_FRAC_DESKTOP}vw;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: ${SPACING}px;
+  gap: 1rem;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: ${PAGE_FRAC_MOBILE}vw;
+  }
 `
 
 const PagesContainer = styled.div`
-  width: ${PAGE_WIDTH}px;
+  flex-grow: 1;
   min-height: ${PAGE_HEIGHT}px;
   position: relative;
   background-color: rgba(255, 255, 255, 0.2);
@@ -42,9 +38,10 @@ const PagesContainer = styled.div`
   align-items: center;
   gap: 3rem;
   overflow: hidden;
+  border-radius: 10px;
 `
 
-const PagesArray = styled.div`
+const PagesArrayD = styled.div`
   position: absolute;
   display: flex;
   flex-direction: row;
@@ -53,19 +50,42 @@ const PagesArray = styled.div`
   width: fit-content;
   gap: 50px;
   transition: 500ms;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
+`
+
+const PagesArrayM = styled.div`
+  position: absolute;
+  display: none;
+  flex-direction: row;
+  align-items: center;
+  height: 100%;
+  width: fit-content;
+  gap: 50px;
+  transition: 500ms;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: flex;
+  }
 `
 
 const Page = styled.div`
-  width: ${PAGE_WIDTH}px;
+  width: calc(${PAGE_FRAC_DESKTOP}vw - 6rem);
   height: 100%;
   padding: 2rem;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(${PAGE_FRAC_MOBILE}vw - 6rem);
+  }
 `
 
-const Button = styled.div`
+const ActiveButton = styled.div`
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.2);
-  width: ${BUTTON_WIDTH}px;
-  height: ${BUTTON_WIDTH}px;
+  width: 2rem;
+  height: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -77,6 +97,17 @@ const Button = styled.div`
   }
 `
 
+const BrickedButton = styled.div`
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.2);
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.4;
+`
+
 const ChevronImg = styled.img`
   width: 0.5rem;
   height: 0.9rem;
@@ -84,33 +115,40 @@ const ChevronImg = styled.img`
 
 const Carousel = ({ children }) => {
   const [viewing, setViewing] = useState(0)
+  const LeftButton = viewing == 0 ? BrickedButton : ActiveButton
+  const RightButton = viewing == children.length - 1 ? BrickedButton : ActiveButton
 
   return (
     <CarouselContainer>
       <ContentContainer>
-        <Button
+        <LeftButton
           onClick={() => {
             setViewing(prev => Math.max(0, prev - 1))
           }}
         >
           <ChevronImg src={ChevronLeft} />
-        </Button>
+        </LeftButton>
 
         <PagesContainer>
-          <PagesArray style={{ left: `${-(PAGE_WIDTH + 50) * viewing}px` }}>
+          <PagesArrayD style={{ left: `calc(calc(calc(${PAGE_FRAC_DESKTOP}vw - 3rem) * -1) * ${viewing})` }}>
             {children.map(c => (
               <Page>{c}</Page>
             ))}
-          </PagesArray>
+          </PagesArrayD>
+          <PagesArrayM style={{ left: `calc(calc(calc(${PAGE_FRAC_MOBILE}vw - 3rem) * -1) * ${viewing})` }}>
+            {children.map(c => (
+              <Page>{c}</Page>
+            ))}
+          </PagesArrayM>
         </PagesContainer>
 
-        <Button
+        <RightButton
           onClick={() => {
             setViewing(prev => Math.min(children.length - 1, prev + 1))
           }}
         >
           <ChevronImg src={ChevronLeft} style={{ transform: 'scaleX(-1)' }} />
-        </Button>
+        </RightButton>
       </ContentContainer>
     </CarouselContainer>
   )
