@@ -10,7 +10,7 @@ export const GlobalStyles = createGlobalStyle`
   }
   html, body {
     overflow-x: hidden;
-    background: #1d2e3c;
+    background: #142E3D;
   }
   body {
     position: relative;
