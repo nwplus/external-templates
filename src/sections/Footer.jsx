@@ -17,10 +17,10 @@ const FooterContainer = styled.div`
   margin-top: -0.5rem;
 
   ${p => p.theme.mediaQueries.mobile} {
-    min-height: calc(calc(974 / 428) * 100vw);
+    min-height: calc(calc(800 / 428) * 100vw);
 
     width: 100%;
-    aspect-ratio: 428/974;
+    aspect-ratio: 428/800;
   }
 `
 
@@ -139,50 +139,50 @@ const StaticContainer = styled.div`
 `
 
 const Footer = () => (
-    <FooterContainer>
-      <StaticContainer>
-        <TextContainer>
-          <SocialMediaIcons>
-            <a href="https://www.facebook.com/nwplusubc" target="_blank" rel="noreferrer">
-              <FontAwesomeIcon icon={faFacebook} />
-            </a>
-            <a href="https://www.instagram.com/nwplusubc" target="_blank" rel="noreferrer">
-              <FontAwesomeIcon icon={faInstagram} />
-            </a>
-            <a href="https://twitter.com/nwplusubc" target="_blank" rel="noreferrer">
-              <FontAwesomeIcon icon={faTwitter} />
-            </a>
-            <a href="https://www.linkedin.com/company/nwplus" target="_blank" rel="noreferrer">
-              <FontAwesomeIcon icon={faLinkedinIn} />
-            </a>
-            <a href="https://www.youtube.com/c/nwPlusUBC" target="_blank" rel="noreferrer">
-              <FontAwesomeIcon icon={faYoutube} />
-            </a>
-            <a href="https://medium.com/nwplusubc" target="_blank" rel="noreferrer">
-              <FontAwesomeIcon icon={faMediumM} />
-            </a>
-          </SocialMediaIcons>
-          <Links>
-            <a href="mailto:info@nwplus.io" target="_blank" rel="noreferrer">
-              Email Us
-            </a>
-            <a href="mailto:sponsorship@nwplus.io?subject=Sponsorship" target="_blank" rel="noreferrer">
-              Become a Sponsor
-            </a>
-            <a href="https://mlh.io/code-of-conduct" target="_blank" rel="noreferrer">
-              Code of Conduct
-            </a>
-          </Links>
-          <SmallText>
-            <div>Organized and held by nwPlus</div>
-            <div>Copyright &copy; nwHacks 2024</div>
-          </SmallText>
-        </TextContainer>
-        <TeamContainer>
-          <Team />
-        </TeamContainer>
-      </StaticContainer>
-    </FooterContainer>
-  )
+  <FooterContainer>
+    <StaticContainer>
+      <TextContainer>
+        <SocialMediaIcons>
+          <a href="https://www.facebook.com/nwplusubc" target="_blank" rel="noreferrer">
+            <FontAwesomeIcon icon={faFacebook} />
+          </a>
+          <a href="https://www.instagram.com/nwplusubc" target="_blank" rel="noreferrer">
+            <FontAwesomeIcon icon={faInstagram} />
+          </a>
+          <a href="https://twitter.com/nwplusubc" target="_blank" rel="noreferrer">
+            <FontAwesomeIcon icon={faTwitter} />
+          </a>
+          <a href="https://www.linkedin.com/company/nwplus" target="_blank" rel="noreferrer">
+            <FontAwesomeIcon icon={faLinkedinIn} />
+          </a>
+          <a href="https://www.youtube.com/c/nwPlusUBC" target="_blank" rel="noreferrer">
+            <FontAwesomeIcon icon={faYoutube} />
+          </a>
+          <a href="https://medium.com/nwplusubc" target="_blank" rel="noreferrer">
+            <FontAwesomeIcon icon={faMediumM} />
+          </a>
+        </SocialMediaIcons>
+        <Links>
+          <a href="mailto:info@nwplus.io" target="_blank" rel="noreferrer">
+            Email Us
+          </a>
+          <a href="mailto:sponsorship@nwplus.io?subject=Sponsorship" target="_blank" rel="noreferrer">
+            Become a Sponsor
+          </a>
+          <a href="https://mlh.io/code-of-conduct" target="_blank" rel="noreferrer">
+            Code of Conduct
+          </a>
+        </Links>
+        <SmallText>
+          <div>Organized and held by nwPlus</div>
+          <div>Copyright &copy; nwHacks 2024</div>
+        </SmallText>
+      </TextContainer>
+      <TeamContainer>
+        <Team />
+      </TeamContainer>
+    </StaticContainer>
+  </FooterContainer>
+)
 
 export default Footer
