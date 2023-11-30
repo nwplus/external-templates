@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useParallax } from 'react-scroll-parallax'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faFacebook,
@@ -12,40 +11,16 @@ import {
 } from '@fortawesome/free-brands-svg-icons'
 import Team from '@components/Team'
 
-import { Stamp } from './Sponsors'
-import FooterBackgroundImage from '../assets/images/FooterBackground.svg'
-import FooterBackgroundMobile from '../assets/images/mobile/FooterBackground.svg'
-
-import VictoriaStamp from '../assets/images/stamps/Victoria.svg'
-import WhistlerStamp from '../assets/images/stamps/Whistler.svg'
-
 const FooterContainer = styled.div`
   position: relative;
   min-height: calc(calc(1556 / 1440) * 100vw);
   margin-top: -0.5rem;
 
   ${p => p.theme.mediaQueries.mobile} {
-    min-height: calc(calc(974 / 428) * 100vw);
+    min-height: calc(calc(800 / 428) * 100vw);
 
-    background: url(${FooterBackgroundMobile}), #383e82;
-    background-repeat: no-repeat;
-    background-position: top center;
-    background-size: cover;
     width: 100%;
-    aspect-ratio: 428/974;
-  }
-`
-
-const FooterBackground = styled.img`
-  bottom: 0;
-  position: absolute;
-  user-select: none;
-  min-height: calc(calc(1163 / 1440) * 100vw);
-  aspect-ratio: 1440 / 1163;
-  width: 100%;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    display: none;
+    aspect-ratio: 428/800;
   }
 `
 
@@ -57,7 +32,11 @@ const SocialMediaIcons = styled.div`
   a {
     width: 50px;
     text-decoration: none;
-    color: white;
+    color: #EAC669;
+
+    &:hover {
+      color: #AED1E1;
+    }
   }
 
   gap: 2rem;
@@ -77,8 +56,11 @@ const Links = styled.div`
 
   a {
     font-weight: 600;
-    color: #e2d6ff;
-    text-shadow: 0 0 10px #59b0ef;
+    color: #EAC669;
+
+    &:hover {
+      color: #AED1E1;
+    }
   }
 
   ${p => p.theme.mediaQueries.mobile} {
@@ -113,8 +95,7 @@ const SmallText = styled.div`
   text-align: center;
 
   div {
-    color: #e2d6ff;
-    text-shadow: 0 0 10px #59b0ef;
+    color: #AED1E1;
     font-size: 1.2rem;
     font-weight: 500;
   }
@@ -157,82 +138,51 @@ const StaticContainer = styled.div`
   }
 `
 
-const Footer = () => {
-  const stampPArr = [useParallax({ speed: 5 }), useParallax({ speed: 6 })]
-
-  const stamps = [
-    {
-      name: 'Victoria Stamp',
-      imgSrc: VictoriaStamp,
-      left: '-2rem',
-    },
-    {
-      name: 'Whistler Stamp',
-      imgSrc: WhistlerStamp,
-      top: '20%',
-      right: '-5rem',
-    },
-  ]
-
-  return (
-    <FooterContainer>
-      <FooterBackground src={FooterBackgroundImage} alt="FAQ section background" />
-      {stamps.map((item, index) => (
-        <Stamp
-          ref={stampPArr[index].ref}
-          key={item.name}
-          src={item.imgSrc}
-          alt={item.name}
-          top={item.top || null}
-          right={item.right || null}
-          bottom={item.bottom || null}
-          left={item.left || null}
-        />
-      ))}
-      <StaticContainer>
-        <TextContainer>
-          <SocialMediaIcons>
-            <a href="https://www.facebook.com/nwplusubc" target="_blank" rel="noreferrer">
-              <FontAwesomeIcon icon={faFacebook} />
-            </a>
-            <a href="https://www.instagram.com/nwplusubc" target="_blank" rel="noreferrer">
-              <FontAwesomeIcon icon={faInstagram} />
-            </a>
-            <a href="https://twitter.com/nwplusubc" target="_blank" rel="noreferrer">
-              <FontAwesomeIcon icon={faTwitter} />
-            </a>
-            <a href="https://www.linkedin.com/company/nwplus" target="_blank" rel="noreferrer">
-              <FontAwesomeIcon icon={faLinkedinIn} />
-            </a>
-            <a href="https://www.youtube.com/c/nwPlusUBC" target="_blank" rel="noreferrer">
-              <FontAwesomeIcon icon={faYoutube} />
-            </a>
-            <a href="https://medium.com/nwplusubc" target="_blank" rel="noreferrer">
-              <FontAwesomeIcon icon={faMediumM} />
-            </a>
-          </SocialMediaIcons>
-          <Links>
-            <a href="mailto:info@nwplus.io" target="_blank" rel="noreferrer">
-              Email Us
-            </a>
-            <a href="mailto:sponsorship@nwplus.io?subject=Sponsorship" target="_blank" rel="noreferrer">
-              Become a Sponsor
-            </a>
-            <a href="https://mlh.io/code-of-conduct" target="_blank" rel="noreferrer">
-              Code of Conduct
-            </a>
-          </Links>
-          <SmallText>
-            <div>Organized and held by nwPlus</div>
-            <div>Copyright &copy; nwHacks 2024</div>
-          </SmallText>
-        </TextContainer>
-        <TeamContainer>
-          <Team />
-        </TeamContainer>
-      </StaticContainer>
-    </FooterContainer>
-  )
-}
+const Footer = () => (
+  <FooterContainer>
+    <StaticContainer>
+      <TextContainer>
+        <SocialMediaIcons>
+          <a href="https://www.facebook.com/nwplusubc" target="_blank" rel="noreferrer">
+            <FontAwesomeIcon icon={faFacebook} />
+          </a>
+          <a href="https://www.instagram.com/nwplusubc" target="_blank" rel="noreferrer">
+            <FontAwesomeIcon icon={faInstagram} />
+          </a>
+          <a href="https://twitter.com/nwplusubc" target="_blank" rel="noreferrer">
+            <FontAwesomeIcon icon={faTwitter} />
+          </a>
+          <a href="https://www.linkedin.com/company/nwplus" target="_blank" rel="noreferrer">
+            <FontAwesomeIcon icon={faLinkedinIn} />
+          </a>
+          <a href="https://www.youtube.com/c/nwPlusUBC" target="_blank" rel="noreferrer">
+            <FontAwesomeIcon icon={faYoutube} />
+          </a>
+          <a href="https://medium.com/nwplusubc" target="_blank" rel="noreferrer">
+            <FontAwesomeIcon icon={faMediumM} />
+          </a>
+        </SocialMediaIcons>
+        <Links>
+          <a href="mailto:info@nwplus.io" target="_blank" rel="noreferrer">
+            Email Us
+          </a>
+          <a href="mailto:sponsorship@nwplus.io?subject=Sponsorship" target="_blank" rel="noreferrer">
+            Become a Sponsor
+          </a>
+          <a href="https://mlh.io/code-of-conduct" target="_blank" rel="noreferrer">
+            Code of Conduct
+          </a>
+        </Links>
+        <SmallText>
+          <div>Organized and held by nwPlus</div>
+          <div>Copyright &copy; nwHacks 2024</div>
+        </SmallText>
+      </TextContainer>
+      <TeamContainer>
+        <Team />
+      </TeamContainer>
+    </StaticContainer>
+  </FooterContainer>
+)
 
 export default Footer

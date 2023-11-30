@@ -6,12 +6,10 @@ import { Header2, Header3 } from '@components/Typography'
 
 const FaqContainer = styled.div`
   position: relative;
-  background: linear-gradient(to bottom, #afebee, #99e4ea);
   min-height: 50vh;
 
   ${p => p.theme.mediaQueries.mobile} {
     min-height: 0;
-    background: linear-gradient(to bottom, #bfeff0, #79dae4);
   }
 `
 
@@ -44,12 +42,20 @@ const FaqGrid = styled.div`
     margin-top: 50px;
     padding-bottom: 4rem;
   }
+
+  & > div:nth-child(3) {
+    grid-column: 2; // move the column to the right
+    ${p => p.theme.mediaQueries.mobile} {
+      grid-column: 1;
+    }
+  }
 `
 
 // for proper grid positioning
 const FaqColumn = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: flex-end;
   & > div:not(:first-child) {
     margin-top: 40px;
     ${p => p.theme.mediaQueries.mobile} {
@@ -66,7 +72,7 @@ const CollectionContainer = styled.div`
 `
 
 const CollectionName = styled(Header3)`
-  color: #5667cf;
+  color: #F0EEF2;
   font-size: 1.75rem;
   font-weight: 900;
   padding-bottom: 1rem;
@@ -84,18 +90,31 @@ const StyledTitle = styled(Header2)`
   }
 `
 
-const FaqCollection = ({ category, faqs }) => (
+const FaqCollection = ({ category, faqs, expandedQuestion, setExpandedQuestion }) => (
   <CollectionContainer>
     <CollectionName>{category}</CollectionName>
 
-    {faqs.map(q => (
-      <FaqBox key={q.question} question={q.question} answer={q.answer} />
-    ))}
+    {faqs.map(q =>
+      <FaqBox
+        key={q.question}
+        question={q.question}
+        answer={q.answer}
+        isExpanded={expandedQuestion === q.question}
+        onExpand={() => {
+          if (expandedQuestion === q.question) {
+            setExpandedQuestion(null)
+          } else {
+            setExpandedQuestion(q.question)
+          }
+        }}
+      />
+    )}
   </CollectionContainer>
 )
 
 const Faq = () => {
   const [faqData, setFaqData] = useState(null)
+  const [expandedQuestion, setExpandedQuestion] = useState(null)
 
   // (@htdf processData)
   // (@signature (listof FAQ) -> Object)
@@ -122,22 +141,27 @@ const Faq = () => {
   return (
     <FaqContainer>
       <Wrapper id="faq">
-        <StyledTitle color="#5667CF" fontSize="5rem">
+        <StyledTitle color="#F0EEF2" fontSize="5rem">
           FAQ
         </StyledTitle>
 
         {faqData ? (
           <FaqGrid>
-            <FaqColumn>{faqData.General && <FaqCollection category="General" faqs={faqData.General} />}</FaqColumn>
+            <FaqColumn>{faqData.General && <FaqCollection category="General" faqs={faqData.General} expandedQuestion={expandedQuestion} setExpandedQuestion={setExpandedQuestion} />}</FaqColumn>
 
             <FaqColumn>
               {faqData['Teams & Projects'] && (
-                <FaqCollection category="Teams & Projects" faqs={faqData['Teams & Projects']} />
+                <FaqCollection category="Teams & Projects" faqs={faqData['Teams & Projects']}
+                  expandedQuestion={expandedQuestion}
+                  setExpandedQuestion={setExpandedQuestion} />
               )}
             </FaqColumn>
 
             <FaqColumn>
-              {faqData.Logistics && <FaqCollection category="Logistics" faqs={faqData.Logistics} />}
+              {faqData.Logistics && <FaqCollection category="Logistics" faqs={faqData.Logistics}
+                expandedQuestion={expandedQuestion}
+                setExpandedQuestion={setExpandedQuestion}
+              />}
             </FaqColumn>
           </FaqGrid>
         ) : (

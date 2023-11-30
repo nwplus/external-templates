@@ -7,37 +7,34 @@ const getButtonStyles = variant => {
     case 'solid':
       return `
         border: none;
-        background: linear-gradient(265.48deg, #959afb 3.67%, #9ad4de 78.93%);
+        background: #DCB551;
         transition: 0.3s;
+        box-shadow: -4px 4px 0px 0px #142E3D;
 
         &:hover {
-          background: linear-gradient(265.48deg, #EAC3CA 3.67%, #97A4F7 108.22%);
+          box-shadow: -12px 12px 0px 0px #142E3D;
         }
-
       `
     case 'outlined':
       return `
-        box-sizing: border-box;
-        background: transparent;
-        background-image: linear-gradient(90deg, #F9E9E2, #F9E9E2), linear-gradient(263.82deg, #9ea4fc 38.58%, #9bd3df 78.17%);
-        background-clip: padding-box, border-box;
-        background-origin: border-box;
-        border: 3px solid transparent;
+        border: none;
+        background: #F3F5F4;
         transition: 0.3s;
-
-        ${p => p.theme.mediaQueries.mobile} {
-          border: 1.5px solid transparent;
-        }
+        box-shadow: -4px 4px 0px 0px #142E3D;
 
         &:hover {
-          box-sizing: border-box;
-          background: transparent;
-          background-image: linear-gradient(0deg, #FFF8F5, #FFF8F5), linear-gradient(263.82deg, #E9C3CB 38.58%, #A4A9F1 78.17%);
-          background-clip: padding-box, border-box;
-          background-origin: border-box;
-          border: 3px solid transparent;
-          transition: 0.3s;
-  
+          box-shadow: -12px 12px 0px 0px #142E3D;
+        }
+      `
+    case `solidRed`:
+      return `
+        border: none;
+        background: #AA4245;
+        transition: 0.3s;
+        box-shadow: -4px 4px 0px 0px #142E3D;
+
+        &:hover {
+          box-shadow: -12px 12px 0px 0px #142E3D;
         }
       `
     default:
@@ -93,7 +90,7 @@ const ButtonText = styled.div`
   letter-spacing: -0.5px;
   background-clip: text;
   -webkit-background-clip: text;
-  color: #8486e4;
+  color: #142E3D;
   padding: 0.75rem 2rem;
   white-space: nowrap;
 
@@ -102,7 +99,7 @@ const ButtonText = styled.div`
     p.variant === 'outlined' &&
     `
     &:hover {
-      color: #6062CB;
+      color: #142E3D;
     }
   `}
 
@@ -117,10 +114,16 @@ const ButtonText = styled.div`
     p &&
     p.variant === 'solid' &&
     `
-    color: white;
-    padding: calc(0.6rem + 6px) calc(2rem + 6px);
+    color: #142E3D;
   `}
   
+  ${p =>
+    p &&
+    p.variant === 'solidRed' &&
+    `
+    color: #F3F5F4;
+  `}
+
   ${p => p.theme.mediaQueries.mobile} {
     font-size: 1.1rem;
     padding: 0.5rem 2rem;
@@ -128,10 +131,10 @@ const ButtonText = styled.div`
     text-align: center;
 
     ${p =>
-      p &&
-      p.variant === 'solid' &&
-      `
-    color: white;
+    p &&
+    p.variant === 'solid' &&
+    `
+    color: #142E3D;
     padding: calc(0.5rem + 3px) calc(2rem + 3px);
     min-width: calc(260px + 0.5rem);
   `}

@@ -1,7 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useParallax } from 'react-scroll-parallax'
 import { Body, Header2 } from '@components/Typography'
+// Dices for About section
+// import { TABLET } from '@constants/measurements'
+import redDice from "../assets/images/redDice.svg"
+import yellowDice from "../assets/images/yellowDice.svg"
+import blueDice from "../assets/images/blueDice.svg"
+import smallBlueDice from "../assets/images/mobile/diceBlueSmall.svg"
+
 
 const AboutContainer = styled.div`
   min-height: calc(calc(779 / 1440) * 100vw);
@@ -11,8 +17,10 @@ const AboutContainer = styled.div`
   align-items: center;
   width: 100%;
   aspect-ratio: 1440 / 779;
+  margin-top: 18rem;
 
   ${p => p.theme.mediaQueries.mobile} {
+    margin-top: -16rem;
     min-height: calc(calc(1344 / 428) * 100vw);
     aspect-ratio: 428 / 1344;
     align-items: center;
@@ -58,51 +66,91 @@ const BlurbContainer = styled.div`
 `
 
 const BlurbHeader = styled(Header2)`
-  color: #4453b0;
+  color: #F3F5F4;
+  line-height: 2.8rem;
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 2rem;
+    font-size: 1.5rem;
+    line-height: 2rem;
+
   }
 `
 
 const BlurbText = styled(Body)`
-  padding-top: 2rem;
+  padding-top: 1rem;
   font-weight: normal;
-  font-size: 1.1rem;
+  font-size: 1rem;
   line-height: 150%;
-  color: #4453b0;
+  color: #F3F5F4;
 `
 
-const About = () => {
-  const parallax = useParallax({ speed: 7 })
+const RedDiceImg = styled.img`
+  position: absolute;
+  transform: scale(1);
+  left: 20px;
+  top: 30px;
+  ${p => p.theme.mediaQueries.mobile} {
+    width: 150px;
+    height: auto;
+    top: 430px;
+    left: 0px;
+    transform: scale(0.8);
+  }
+`
 
-  return (
-    <AboutContainer>
-      <AboutInner ref={parallax.ref}>
-        <BlurbContainer bias="left" id="about">
-          <BlurbHeader>About nwHacks</BlurbHeader>
-          <BlurbText>
-            Join hundreds of hackers across the world at nwHacks in January 2024! Apply by late December 2023 to
-            participate as a hacker, mentor, or a volunteer.
-            <br />
-            <br />
-            Whether you{`'`}re a seasoned hacker or you{`'`}re just getting into tech, nwHacks welcomes you; just bring
-            an open mind and an insatiable desire to learn, and we{`'`}ll take care of the rest. Create a project, learn
-            new skills, and bond with friends, old and new — all in 24 hours.
-          </BlurbText>
-        </BlurbContainer>
-        <BlurbContainer bias="right">
-          <BlurbHeader>Join us for an unforgettable experience!</BlurbHeader>
-          <BlurbText>
-            We{`'`}re thrilled to announce that we{`'`}re once again bringing you an incredible hackathon experience!
-            Last year, we connected hundreds of the brightest developers, engineers, and designers coming from all over
-            North America. Whether we{`'`}re reuniting or meeting you for the first time, we can{`'`}t wait to see you
-            there!
-          </BlurbText>
-        </BlurbContainer>
-      </AboutInner>
-    </AboutContainer>
-  )
-}
+const YellowDiceImg = styled.img`
+  position: absolute;
+  transform: scale(1);
+  left: 200px;
+  top: 450px;
+  ${p => p.theme.mediaQueries.mobile} {
+    width: 150px;
+    height: auto;
+    top: 950px;
+    left: 65%;
+    transform: scale(0.8);
+  }
+`
+
+const BlueDiceImg = styled.img`
+  position: absolute;
+  transform: scale(1);
+  left: 350px;
+  top: 350px;
+  ${p => p.theme.mediaQueries.mobile} {
+    width: 80px;
+    height: auto;
+    top: 480px;
+    left: 125px;
+    transform: scale(0.8);
+  }
+`
+
+const SmallBlueDiceImg = styled.img`
+  position: absolute;
+  display: none;
+  ${p => p.theme.mediaQueries.mobile} {
+    display: block;
+    top: 950px;
+    left: 50%;
+  }
+`
+
+const About = () => (
+  <AboutContainer id="about">
+    <RedDiceImg src={redDice} />
+    <YellowDiceImg src={yellowDice} />
+    <BlueDiceImg src={blueDice} />
+    <SmallBlueDiceImg src={smallBlueDice} />
+    <AboutInner>
+      <BlurbContainer bias="right">
+        <BlurbHeader>Game on: Level up your tech journey at nwHacks!</BlurbHeader>
+        <BlurbText>
+          Whether you’re a seasoned hacker or you’re just getting into tech, you’re welcome at nwHacks. Join us in-person on January 20-21, 2024 for a weekend of creativity, community, and innovation! All you need is an open mind and an insatiable desire to learn, and we’ll take care of the rest. Create a project, learn new skills, and bond with friends, old and new — all in 24 hours.
+        </BlurbText>
+      </BlurbContainer>
+    </AboutInner>
+  </AboutContainer>
+)
 
 export default About

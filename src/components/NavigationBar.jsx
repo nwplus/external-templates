@@ -4,6 +4,8 @@ import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
 import { scale } from '@utilities/format'
 import mlhImage from '@assets/images/mlhTrustBadgeWhite.svg'
 import { BANNER_OFFSET } from '../constants/measurements'
+import MenuImg from '../../public/images/icons/menu.svg'
+
 
 const NavBarContainer = styled.nav`
   position: ${p => (p.stayAtTop ? 'absolute' : 'fixed')};
@@ -56,7 +58,7 @@ const NwPlusLogo = styled.img`
   margin-right: 18px;
 
   ${p => p.theme.mediaQueries.mobile} {
-    width: 50px;
+    width: 30px;
     margin-right: 0;
   }
 `
@@ -111,7 +113,7 @@ const DropDownContentContainer = styled.div`
   align-items: center;
   gap: 24px;
   width: 100%;
-  background: #959afb;
+  background: #AA4245;
 `
 
 const PortalButtonContainer = styled.div`
@@ -133,8 +135,8 @@ const Button = styled.a`
   padding: 11px 21px;
   border-radius: 50px;
   font-weight: bold;
-  background: linear-gradient(to right, #0defe1, #78ff96);
-  color: #2c2543;
+  background: #AA4245;
+  color: #F3F5F4;
   right: 120px;
   ${p => p.theme.mediaQueries.mobile} {
     right: 0;
@@ -145,7 +147,7 @@ const Button = styled.a`
     align-items: center;
     justify-content: center;
     content: 'Live Portal';
-    color: #2c2543;
+    color: #244556;
 
     border-radius: 50px;
     position: absolute;
@@ -158,7 +160,7 @@ const Button = styled.a`
     transition: opacity 0.25s ease-in-out;
     opacity: 0;
 
-    background: linear-gradient(to right, #00dbce, #00d88a);
+    background: #DCB551;
   }
 
   &:hover::before {
@@ -183,6 +185,13 @@ const Button = styled.a`
       opacity: 0;
     }
   `}
+`
+
+const DropDownFooter = styled.div`
+    height: 20px;
+    background: #152E3A;
+    width: 100vw;
+    margin-bottom: -25px;
 `
 
 const TrustBadgeLink = styled.a`
@@ -249,6 +258,8 @@ const MenuList = ({ isMobile, closeDropdown }) => (
     {/* <MenuItem name='Statistics' href='/#statistics' isAnchor isMobile={isMobile} closeDropdown={closeDropdown} /> */}
     <MenuItem name="FAQ" href="/#faq" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
     <MenuItem name="Sponsors" href="/#sponsors" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
+    <MenuItem name="Tracks" href="/#tracks" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
+
     <MenuItem
       name="2023"
       href="https://2023.nwhacks.io"
@@ -333,6 +344,7 @@ const NavigationBar = ({ bannerExists }) => {
           <MenuList isMobile={showDropdown} closeDropdown={setShowDropdown} />
           {/* Make sure desktop (below) has the same portalOpen value */}
           <PortalButton portalOpen />
+          <DropDownFooter />
         </DropDownContentContainer>
         <TrustBadge stayAtTop={stayAtTop} />
       </>
@@ -352,7 +364,7 @@ const NavigationBar = ({ bannerExists }) => {
         {/* Make sure mobile (above) has the same portalOpen value */}
         <PortalButton portalOpen />
       </NavGroupContainer>
-      <HamburgerMenu src="/images/icons/menu.svg" alt="dropdown menu icon" onClick={() => setShowDropdown(true)} />
+      <HamburgerMenu src={MenuImg} alt="dropdown menu icon" onClick={() => setShowDropdown(true)} />
       <TrustBadge stayAtTop={stayAtTop} />
     </NavBarContainer>
   )

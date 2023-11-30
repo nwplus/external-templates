@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
 const Container = styled.div`
@@ -11,10 +11,10 @@ const Container = styled.div`
   overflow:hidden;
   ${p => p.expanded
     ? `
-    border-color: #FFFFFF;
+    border-color: #809CAA;
   `
     : `
-    border-color: #01DACC;
+    border-color: #809CAA;
   `}
   
   &:not(:last-child) {
@@ -34,8 +34,8 @@ const Top = styled.div`
   border-width:1px;
   border-radius:5px 5px 0 0;
   ${p => p.expanded && `
-    color:#FFF;
-    background-color: #4453B0;
+    color:#252525;
+    background-color: #FFF;
   `}
   
   ${p => p.theme.mediaQueries.mobile} {
@@ -53,7 +53,7 @@ const AnswerBox = styled.div`
   overflow:hidden;
   transition:0.2s max-height cubic-bezier(.6,0,.4,1);
   border-radius: 0 0 5px 5px;
-  ${p => p.isOpen ? 'max-height:500px; background-color: #8486E4;' : 'max-height: 0;'}
+  ${p => p.isOpen ? 'max-height:500px; background-color: #142E3D;' : 'max-height: 0;'}
   ${p => p.theme.mediaQueries.mobile} {
     font-size: 0.9rem;
   }
@@ -73,18 +73,15 @@ const Arrow = ({ color }) => (
   </svg>
 )
 
-const FaqBox = ({ question, answer }) => {
-  const [isExpanded, setIsExpanded] = useState(false)
-
-  return (
+const FaqBox = ({ question, answer, isExpanded, onExpand }) => (
     <Container
       expanded={isExpanded}>
       <Top
         expanded={isExpanded}
-        onClick={() => setIsExpanded(!isExpanded)}>
+        onClick={onExpand}>
         {question}
         <TopExpand style={isExpanded ? { transform: 'rotate(0)' } : { transform: 'rotate(180deg)' }}>
-          <Arrow color={isExpanded ? '#FFFFFF' : '#2C2543'} />
+          <Arrow color={isExpanded ? '#252525' : '#2C2543'} />
         </TopExpand>
       </Top>
       <AnswerBox isOpen={isExpanded}>
@@ -94,6 +91,5 @@ const FaqBox = ({ question, answer }) => {
       </AnswerBox>
     </Container>
   )
-}
 
 export default FaqBox
