@@ -10,10 +10,7 @@ export const GlobalStyles = createGlobalStyle`
   }
   html, body {
     overflow-x: hidden;
-
-    @media-query (max-width: ${MOBILE}) {
-      background: #BFEFF0;
-    }
+    background: #1d2e3c;
   }
   body {
     position: relative;
