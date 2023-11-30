@@ -141,8 +141,8 @@ const Dot = styled.div`
 
 const Carousel = ({ children }) => {
   const [viewing, setViewing] = useState(0)
-  const LeftButton = viewing == 0 ? BrickedButton : ActiveButton
-  const RightButton = viewing == children.length - 1 ? BrickedButton : ActiveButton
+  const LeftButton = viewing === 0 ? BrickedButton : ActiveButton
+  const RightButton = viewing === children.length - 1 ? BrickedButton : ActiveButton
 
   return (
     <CarouselContainer>
@@ -186,7 +186,7 @@ const Carousel = ({ children }) => {
                 onClick={() => {
                   setViewing(i)
                 }}
-                style={{ opacity: i == viewing ? 1 : 0.2 }}
+                style={{ opacity: i === viewing ? 1 : 0.2 }}
               />
             ))}
         </Dots>

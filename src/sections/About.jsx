@@ -2,10 +2,12 @@ import React from 'react'
 import styled from 'styled-components'
 import { Body, Header2 } from '@components/Typography'
 // Dices for About section
+// import { TABLET } from '@constants/measurements'
 import redDice from "../assets/images/redDice.svg"
 import yellowDice from "../assets/images/yellowDice.svg"
 import blueDice from "../assets/images/blueDice.svg"
 import smallBlueDice from "../assets/images/mobile/diceBlueSmall.svg"
+
 
 const AboutContainer = styled.div`
   min-height: calc(calc(779 / 1440) * 100vw);
@@ -18,7 +20,7 @@ const AboutContainer = styled.div`
   margin-top: 18rem;
 
   ${p => p.theme.mediaQueries.mobile} {
-    margin-top: -12rem;
+    margin-top: -16rem;
     min-height: calc(calc(1344 / 428) * 100vw);
     aspect-ratio: 428 / 1344;
     align-items: center;
@@ -36,7 +38,7 @@ const AboutInner = styled.div`
   padding-bottom: 5rem;
 
   ${p => p.theme.mediaQueries.mobile} {
-    padding-top: 15rem;
+    padding-top: 10rem;
     padding-bottom: 0;
     gap: 2rem;
   }
