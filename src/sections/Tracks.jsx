@@ -71,20 +71,17 @@ const BlurbText = styled(Body)`
   color: #F3F5F4;
 `
 
-const Track = () => {
-
-  return (
-    <TrackContainer>
-      <TrackInner>
-        <BlurbContainer bias="left">
-          <BlurbHeader>Lincoln's task :)</BlurbHeader>
-          <BlurbText>
-            You got this!!
-          </BlurbText>
-        </BlurbContainer>
-      </TrackInner>
-    </TrackContainer>
-  )
-}
+const Track = () => (
+  <TrackContainer>
+    <TrackInner>
+      <BlurbContainer bias="left">
+        <BlurbHeader>Lincoln</BlurbHeader>
+        <BlurbText>
+          You got this!!
+        </BlurbText>
+      </BlurbContainer>
+    </TrackInner>
+  </TrackContainer>
+)
 
 export default Track

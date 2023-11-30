@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import styled, { keyframes } from 'styled-components'
+import styled from 'styled-components'
 import { Header2 } from '@components/Typography'
 import SponsorsGrid from '@components/SponsorsGrid'
 import Button from '@components/Button'
@@ -12,31 +12,6 @@ const SponsorsContainer = styled.div`
 
   ${p => p.theme.mediaQueries.mobile} {
     min-height: calc(calc(488 / 428) * 100vw);
-  }
-`
-
-const SponsorsBackground = styled.img`
-  top: 0;
-  position: absolute;
-  user-select: none;
-  min-height: calc(calc(1282 / 1440) * 100vw);
-  aspect-ratio: 1440 / 1282;
-  width: 100%;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    display: none;
-  }
-`
-
-const SponsorsBackgroundMobile = styled.img`
-  top: 0;
-  position: absolute;
-  user-select: none;
-  min-height: calc(calc(488 / 428) * 100vw);
-  display: none;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    display: block;
   }
 `
 

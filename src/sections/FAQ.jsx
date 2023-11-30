@@ -158,7 +158,7 @@ const Faq = () => {
             </FaqColumn>
 
             <FaqColumn>
-              {faqData['Logistics'] && <FaqCollection category="Logistics" faqs={faqData['Logistics']}
+              {faqData.Logistics && <FaqCollection category="Logistics" faqs={faqData.Logistics}
                 expandedQuestion={expandedQuestion}
                 setExpandedQuestion={setExpandedQuestion}
               />}

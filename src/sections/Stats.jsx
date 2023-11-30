@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Body, Header2 } from '@components/Typography'
 
 import StatsSVG from "../assets/images/stats.svg"
 import MobileStatsSVG from "../assets/images/mobile/stats.svg"
@@ -29,14 +28,11 @@ const MobileStatsContainer = styled.img`
   }
 `
 
-const Stats = () => {
-
-  return (
+const Stats = () => (
     <>
       <StatsContainer src={StatsSVG} />
       <MobileStatsContainer src={MobileStatsSVG} />
     </>
   )
-}
 
 export default Stats

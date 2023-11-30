@@ -131,9 +131,7 @@ const SmallBlueDiceImg = styled.img`
   }
 `
 
-const About = () => {
-
-  return (
+const About = () => (
     <AboutContainer id="about">
       <RedDiceImg src={redDice} />
       <YellowDiceImg src={yellowDice} />
@@ -149,6 +147,5 @@ const About = () => {
       </AboutInner>
     </AboutContainer>
   )
-}
 
 export default About

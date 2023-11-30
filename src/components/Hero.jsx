@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, { keyframes } from 'styled-components'
+import styled from 'styled-components'
 import { LAPTOP, TABLET } from '@constants/measurements'
 import Button from './Button'
 import { BANNER_OFFSET_PX } from '../constants/measurements'
@@ -206,8 +206,7 @@ const VolunteerLink = styled.a`
   }
 `
 
-const Hero = () => {
-  return (
+const Hero = () => (
     <HeroContainer>
       <OuterContainer>
         <IntroContainer>
@@ -238,6 +237,5 @@ const Hero = () => {
       </OuterContainer>
     </HeroContainer>
   )
-}
 
 export default Hero
