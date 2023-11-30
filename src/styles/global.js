@@ -1,4 +1,4 @@
-import { MOBILE } from '@constants/measurements'
+// import { MOBILE } from '@constants/measurements'
 import { createGlobalStyle } from 'styled-components'
 
 // Remove comment once font is replaced
