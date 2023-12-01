@@ -1,64 +1,76 @@
-import { Header2, Header3 } from '@components/Typography'
 import React, { useEffect, useState } from 'react'
-import { useParallax } from 'react-scroll-parallax'
-import styled, { keyframes } from 'styled-components'
-import KeychainImage from '../assets/images/Keychain.svg'
-import UltiAnimationImg from '../assets/images/UltiAnimation.gif'
+import styled from 'styled-components'
+
+import ClockSVG from "../assets/images/countdown.svg"
+import MobileClockSVG from "../assets/images/mobile/clock.svg"
+import NuggetWaving from "../assets/images/animations/nugget-waving.gif"
 
 const CountdownContainer = styled.div`
-  min-height: calc(calc(1883 / 1440) * 100vw);
+  min-height: calc(calc(1027 / 1440) * 100vw);
   position: relative;
   z-index: 1;
 
   ${p => p.theme.mediaQueries.mobile} {
-    min-height: calc(calc(746 / 428) * 100vw);
+    min-height: calc(calc(387 / 414) * 100vw);
+    top:-200px;
   }
 `
 
-const FauxBillboard = styled.div`
-  min-height: calc(calc(482 / 1139) * 75vw);
-  display: flex;
-  max-width: 1200px;
-  align-items: center;
-  margin-top: 10%;
-  margin-left: auto;
-  margin-right: auto;
-  width: 75vw;
-  text-shadow: 0 0 10px rgba(233, 233, 233, 0.4);
+const Clock = styled.div`
+  width: 100vw;
+  height: auto;
+`
+
+const NuggetWavingImg = styled.img`
+  position: absolute;
+  width: 155px;
+  height: auto;
+  left: 32.5%;
+  z-index: 1;
+  top: 30px;
 
   ${p => p.theme.mediaQueries.mobile} {
-    min-height: calc(calc(290 / 636) * 100vw);
-    max-width: 100vw;
-    width: 100vw;
-    flex-direction: column;
-    position: absolute;
-    margin-top: 0;
-    padding-top: calc(calc(60 / 750) * 100vw);
-    justify-content: center;
+    width: 65px;
+    top: 10px;
+    left: 15%;
   }
 `
 
-const StyledHeader = styled(Header2)`
-  font-weight: 600;
-  font-size: 3.8rem;
-  text-align: center;
-  line-height: 120%;
-  max-width: 40%;
-
+const ClockImg = styled.img`
+  position: absolute;
+  width: 100%;
+  height: auto;
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 1.4rem;
-    max-width: 90%;
+    display: none;
+  }
+`
+
+const MobileClockImg = styled.img`
+  position: absolute;
+  width: 100%;
+  height: auto;
+  display: none;
+  
+  ${p => p.theme.mediaQueries.mobile} {
+    display: block;
   }
 `
 
 const CountdownGrid = styled.div`
+  position: relative;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   flex-grow: 2;
+  width: 30%;
+  transform: rotate(-11deg);
+  padding-top: 22%;
+  left: 40%;
 
   ${p => p.theme.mediaQueries.mobile} {
     gap: 1rem;
     flex-grow: 0;
+    padding-top: 30%;
+    left: 30%;
   }
 `
 
@@ -68,58 +80,31 @@ const TimeUnit = styled.div`
 
 const Digits = styled.h2`
   font-family: 'HK Grotesk', sans-serif;
-  color: white;
+  color: #564D4A;
   font-weight: 600;
-  font-size: 5.5rem;
+  font-size: 4rem;
   letter-spacing: 0.2rem;
+  display: inline-block;
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 3rem;
+    font-size: 2.2rem;
     letter-spacing: 0;
   }
 `
 
-const BillboardText = styled(Header3)`
-  ${p => p.theme.mediaQueries.mobile} {
-    font-size: 1rem;
-  }
-`
+// const Colon = styled.h2`
+//   font-family: 'HK Grotesk', sans-serif;
+//   color: #564D4A;
+//   font-weight: 600;
+//   font-size: 5.5rem;
+//   letter-spacing: 0.2rem;
+//   display: inline-block;
 
-const Keychain = styled.img`
-  min-height: calc(calc(1109 / 1493) * 100vw);
-  position: absolute;
-  top: 18%;
-  left: -25%;
-  aspect-ratio: 1493 / 1109;
-  width: 100%;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    display: none;
-  }
-`
-
-const moveUltiAnimation = keyframes`
-  0% {  
-    // transform: rotate(-1deg);
-        left: 180px;  
-        top: 77.5%;
-  }
-  100% {  
-    // transform: rotate(1deg); 
-          left: 185px;
-          top: 78%;
-        }
-`
-const UltiAnimation = styled.img`
-  // position: relative;
-  left: 180px;
-  position: absolute;
-  top: 78%;
-  width: 160px;
-  height: auto;
-
-  animation: ${moveUltiAnimation} 1s infinite ease-in alternate;
-`
+//   ${p => p.theme.mediaQueries.mobile} {
+//     font-size: 3rem;
+//     letter-spacing: 0;
+// }
+// `
 
 const getReturnValues = countDown => {
   // calculate time left
@@ -152,26 +137,27 @@ const useCountdown = targetDate => {
 }
 
 const Countdown = () => {
-  const parallax = useParallax({ speed: 6 })
-
   const countDownDate = new Date('Dec 31, 2023 23:59:59').getTime()
   const countdown = useCountdown(countDownDate)
 
   return (
     <CountdownContainer>
-      <Keychain ref={parallax.ref} src={KeychainImage} alt="Keychain" />
-      <UltiAnimation src={UltiAnimationImg} alt="Nugget and Reindeer tossing around a Firsbee" />
-      <FauxBillboard>
-        <StyledHeader>Registration closes in:</StyledHeader>
+      <Clock>
+        <NuggetWavingImg src={NuggetWaving} />
+        <ClockImg src={ClockSVG} />
+        <MobileClockImg src={MobileClockSVG} />
+
         <CountdownGrid>
           {['Days', 'Hours', 'Minutes'].map((item, index) => (
             <TimeUnit key={item}>
               <Digits>{countdown[index]}</Digits>
-              <BillboardText>{item}</BillboardText>
+              {/* {index < 2 &&
+                <Colon>&nbsp;&nbsp;:</Colon>
+              } */}
             </TimeUnit>
           ))}
         </CountdownGrid>
-      </FauxBillboard>
+      </Clock>
     </CountdownContainer>
   )
 }
