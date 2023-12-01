@@ -20,10 +20,11 @@ const AboutContainer = styled.div`
   margin-top: 18rem;
 
   ${p => p.theme.mediaQueries.mobile} {
-    margin-top: -16rem;
-    min-height: calc(calc(1344 / 428) * 100vw);
-    aspect-ratio: 428 / 1344;
+    margin-top: 10rem;
+    min-height: calc(calc(700 / 428) * 100vw);
+    aspect-ratio: 428 / 700;
     align-items: center;
+    margin-bottom: 16rem;
   }
 `
 
@@ -38,7 +39,7 @@ const AboutInner = styled.div`
   padding-bottom: 5rem;
 
   ${p => p.theme.mediaQueries.mobile} {
-    padding-top: 10rem;
+    padding-top: 0rem;
     padding-bottom: 0;
     gap: 2rem;
   }
@@ -92,7 +93,7 @@ const RedDiceImg = styled.img`
   ${p => p.theme.mediaQueries.mobile} {
     width: 150px;
     height: auto;
-    top: 430px;
+    top: 30px;
     left: 0px;
     transform: scale(0.8);
   }
@@ -106,7 +107,7 @@ const YellowDiceImg = styled.img`
   ${p => p.theme.mediaQueries.mobile} {
     width: 150px;
     height: auto;
-    top: 950px;
+    top: 450px;
     left: 65%;
     transform: scale(0.8);
   }
@@ -120,8 +121,8 @@ const BlueDiceImg = styled.img`
   ${p => p.theme.mediaQueries.mobile} {
     width: 80px;
     height: auto;
-    top: 480px;
-    left: 125px;
+    top: 80px;
+    left: 155px;
     transform: scale(0.8);
   }
 `
@@ -131,7 +132,7 @@ const SmallBlueDiceImg = styled.img`
   display: none;
   ${p => p.theme.mediaQueries.mobile} {
     display: block;
-    top: 950px;
+    top: 550px;
     left: 50%;
   }
 `
