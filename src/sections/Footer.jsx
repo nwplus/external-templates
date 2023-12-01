@@ -13,8 +13,8 @@ import Team from '@components/Team'
 
 const FooterContainer = styled.div`
   position: relative;
-  min-height: calc(calc(1556 / 1440) * 100vw);
-  margin-top: -0.5rem;
+  min-height: calc(calc(722 / 1440) * 100vw);
+  margin-top: calc(calc(922 / 1440) * 100vw);
 
   ${p => p.theme.mediaQueries.mobile} {
     min-height: calc(calc(800 / 428) * 100vw);
@@ -81,7 +81,7 @@ const TextContainer = styled.div`
   justify-content: center;
   width: 100%;
   align-items: center;
-  padding-top: 30%;
+  padding-top: 0%;
   gap: 1rem;
 
   ${p => p.theme.mediaQueries.mobile} {
@@ -110,7 +110,7 @@ const SmallText = styled.div`
 const TeamContainer = styled.div`
   position: absolute;
   left: 0;
-  bottom: 12%;
+  bottom: 0%;
   text-align: center;
   width: 100%;
 
