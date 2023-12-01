@@ -129,14 +129,14 @@ const ButtonText = styled.div`
     padding: 0.5rem 2rem;
     min-width: 260px;
     text-align: center;
+    padding: calc(0.5rem + 3px) calc(2rem + 3px);
+    min-width: calc(260px + 0.5rem);
 
     ${p =>
     p &&
     p.variant === 'solid' &&
     `
     color: #142E3D;
-    padding: calc(0.5rem + 3px) calc(2rem + 3px);
-    min-width: calc(260px + 0.5rem);
   `}
   }
 `
