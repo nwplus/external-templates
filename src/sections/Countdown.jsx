@@ -25,14 +25,14 @@ const NuggetWavingImg = styled.img`
   position: absolute;
   width: 155px;
   height: auto;
-  left: 30%;
+  left: 32.5%;
   z-index: 1;
   top: 30px;
 
   ${p => p.theme.mediaQueries.mobile} {
     width: 65px;
-    top: 0px;
-    left: 20%;
+    top: 10px;
+    left: 15%;
   }
 `
 
