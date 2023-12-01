@@ -217,7 +217,7 @@ const Hero = () => (
         </TitleContainer>
         <Subtitle>Western Canada’s Largest Hackathon</Subtitle>
         <DescriptionContainer>
-          <Description>January 20 - 21 2024</Description>
+          <Description>January 20 - 21, 2024</Description>
           <HideMobile>&nbsp;|&nbsp;</HideMobile>
           <Description>In-Person Event @ UBC</Description>
         </DescriptionContainer>
