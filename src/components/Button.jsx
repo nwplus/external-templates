@@ -142,7 +142,7 @@ const ButtonText = styled.div`
 `
 
 const Button = ({ href, children, variant, disabled }) => (
-  <ButtonContainer variant={variant} href={disabled ? '#' : href} disabled={disabled}>
+  <ButtonContainer variant={variant} href={disabled ? '#' : href} disabled={disabled} target="_blank">
     <ButtonText variant={variant} disabled={disabled}>
       {disabled ? 'Applications Open Dec. 5' : children}
     </ButtonText>
