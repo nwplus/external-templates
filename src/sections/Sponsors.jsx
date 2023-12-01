@@ -13,7 +13,7 @@ const SponsorsContainer = styled.div`
 
   ${p => p.theme.mediaQueries.mobile} {
     min-height: calc(calc(488 / 428) * 100vw);
-    margin-top: -8rem;
+    margin-top: 8rem;
 
   }
 `
@@ -58,7 +58,7 @@ const PushinP = styled.p`
   ${p => p.theme.mediaQueries.mobile} {
     min-width: 0;
     width: 100%;
-    padding: 1.5rem 6vw 1rem 6vw;
+    padding: 20px 6rem;
   }
 `
 
@@ -78,7 +78,7 @@ const Sponsors = () => {
       <StaticContainer>
         <StyledTitle id="sponsors">Sponsors</StyledTitle>
         <PushinP>
-          Sponsors make this event happen. If you are interested in working with us, joining us or speaking at one of
+          Sponsors make this event happen.<br /><br />If you are interested in working with us, joining us or speaking at one of
           our events, please reach out to us below!
         </PushinP>
         <Button variant="solidRed" href="mailto:sponsorship@nwplus.io">

@@ -12,6 +12,9 @@ const TrackContainer = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
+  ${p => p.theme.mediaQueries.mobile} {
+    margin-top: 3rem;
+  }
 `
 
 const TrackInner = styled.div`
