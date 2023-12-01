@@ -75,7 +75,7 @@ export default function Index({ title }) {
       <Head>
         <title>{title}</title>
 
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.png" />
 
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="description" content="Western Canada’s largest (in-person) hackathon" />
