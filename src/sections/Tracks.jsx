@@ -177,7 +177,7 @@ const CONTENT = {
     card: Community,
   },
   wildcard: {
-    heading: 'Wildcard',
+    heading: 'Wild Card',
     description: (
       <Description>
         Let your creativity run wild! There are no boundaries or limitations here; you&apos;re free to come up with
