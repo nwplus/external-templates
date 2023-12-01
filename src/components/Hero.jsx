@@ -224,14 +224,14 @@ const Hero = () => (
       </IntroContainer>
       <ActionsContainer>
         <ButtonsContainer>
-          <Button variant="solid" target="_blank" rel="noreferrer" href="https://portal.nwplus.io">
+          <Button variant="solid" rel="noreferrer" href="https://portal.nwplus.io">
             Apply Now!
           </Button>
-          <Button variant="outlined" target="_blank" rel="noreferrer" href="https://forms.gle/ianRSs3wd1SYjSDR8">
+          <Button variant="outlined" rel="noreferrer" href="https://docs.google.com/forms/d/e/1FAIpQLSeN0gkZFW-gQm0fNMI_aZP22IXi7HpEU6JTc_XcFhHo1ufv3g/viewform">
             Become a Mentor!
           </Button>
         </ButtonsContainer>
-        <VolunteerLink href="https://forms.gle/N6VYuPugFRfNCjFUA" target="_blank" rel="noreferrer">
+        <VolunteerLink href="https://docs.google.com/forms/d/e/1FAIpQLSchia8WiuZT7r1bLIBVLlLUohHAtwzklzszf5Nul2Zf240Vig/viewform" target="_blank" rel="noreferrer">
           Apply to be a volunteer!
         </VolunteerLink>
       </ActionsContainer>
