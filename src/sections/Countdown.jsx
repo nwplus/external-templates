@@ -23,7 +23,7 @@ const Clock = styled.div`
 
 const NuggetWavingImg = styled.img`
   position: absolute;
-  width: 155px;
+  width: 12vw;
   height: auto;
   left: 32.5%;
   z-index: 1;
@@ -59,7 +59,7 @@ const MobileClockImg = styled.img`
 const CountdownGrid = styled.div`
   position: relative;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   flex-grow: 2;
   width: 30%;
   transform: rotate(-11deg);
@@ -82,7 +82,7 @@ const Digits = styled.h2`
   font-family: 'HK Grotesk', sans-serif;
   color: #564D4A;
   font-weight: 600;
-  font-size: 4rem;
+  font-size: 4vw;
   letter-spacing: 0.2rem;
   display: inline-block;
 
@@ -91,20 +91,6 @@ const Digits = styled.h2`
     letter-spacing: 0;
   }
 `
-
-// const Colon = styled.h2`
-//   font-family: 'HK Grotesk', sans-serif;
-//   color: #564D4A;
-//   font-weight: 600;
-//   font-size: 5.5rem;
-//   letter-spacing: 0.2rem;
-//   display: inline-block;
-
-//   ${p => p.theme.mediaQueries.mobile} {
-//     font-size: 3rem;
-//     letter-spacing: 0;
-// }
-// `
 
 const getReturnValues = countDown => {
   // calculate time left
@@ -148,14 +134,29 @@ const Countdown = () => {
         <MobileClockImg src={MobileClockSVG} />
 
         <CountdownGrid>
-          {['Days', 'Hours', 'Minutes'].map((item, index) => (
+          {/* {['Days', 'Hours', 'Minutes'].map((item, index) => (
             <TimeUnit key={item}>
               <Digits>{countdown[index]}</Digits>
-              {/* {index < 2 &&
+             {index < 2 &&
                 <Colon>&nbsp;&nbsp;:</Colon>
-              } */}
+              
             </TimeUnit>
-          ))}
+          ))} */}
+          <TimeUnit>
+            <Digits>{countdown[0]}</Digits>
+          </TimeUnit>
+          <TimeUnit>
+            <Digits>:</Digits>
+          </TimeUnit>
+          <TimeUnit>
+            <Digits>{countdown[1]}</Digits>
+          </TimeUnit>
+          <TimeUnit>
+            <Digits>:</Digits>
+          </TimeUnit>
+          <TimeUnit>
+            <Digits>{countdown[2]}</Digits>
+          </TimeUnit>
         </CountdownGrid>
       </Clock>
     </CountdownContainer>
