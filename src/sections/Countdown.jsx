@@ -87,7 +87,8 @@ const Digits = styled.h2`
   display: inline-block;
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 2.2rem;
+    margin-top: 5px;
+    font-size: 6vw;
     letter-spacing: 0;
   }
 `
@@ -123,7 +124,7 @@ const useCountdown = targetDate => {
 }
 
 const Countdown = () => {
-  const countDownDate = new Date('Dec 31, 2023 23:59:59').getTime()
+  const countDownDate = new Date('Dec 16, 2023 23:59:59').getTime()
   const countdown = useCountdown(countDownDate)
 
   return (
