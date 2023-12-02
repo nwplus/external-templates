@@ -87,7 +87,8 @@ const Digits = styled.h2`
   display: inline-block;
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 2.2rem;
+    margin-top: 5px;
+    font-size: 6vw;
     letter-spacing: 0;
   }
 `
