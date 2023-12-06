@@ -55,11 +55,14 @@ const Opening = styled.p`
   @media (max-width: ${LAPTOP}) {
     font-size: 20px;
   }
-  @media (max-width: ${TABLET}) {
-    top: 20px;
+  
+  @media only screen and (max-width: ${p => p.theme.mediaQueries.tablet}) {
     font-size: 18px;
+    left: 22%;
+    top: 10px;
   }
-  ${p => p.theme.mediaQueries.mobile} {
+
+  @media only screen and (max-width: ${p => p.theme.mediaQueries.mobile}) {
     left: 5px;
     width: 100%;
   }
