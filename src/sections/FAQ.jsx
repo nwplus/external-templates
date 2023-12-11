@@ -4,6 +4,9 @@ import fireDb from '@utilities/firebase'
 import FaqBox from '@components/FaqBox'
 import { Header2, Header3 } from '@components/Typography'
 
+import flyingCardsImg from '../assets/images/flyingCards.svg'
+import { useParallax } from 'react-scroll-parallax'
+
 const FaqContainer = styled.div`
   position: relative;
   min-height: 50vh;
@@ -90,6 +93,15 @@ const StyledTitle = styled(Header2)`
   }
 `
 
+const FlyingCardsImgContainer = styled.img`
+  position: absolute;  
+  width: 100%;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
+`
+
 const FaqCollection = ({ category, faqs, expandedQuestion, setExpandedQuestion }) => (
   <CollectionContainer>
     <CollectionName>{category}</CollectionName>
@@ -138,8 +150,17 @@ const Faq = () => {
     setFaqData(processedData)
   }, [])
 
+
+  const flyingCards = useParallax({
+    speed: 1,
+    translateY: ['-40px', '40px']
+  });
+
   return (
     <FaqContainer>
+
+      <FlyingCardsImgContainer src={flyingCardsImg} ref={flyingCards.ref} />
+
       <Wrapper id="faq">
         <StyledTitle color="#F0EEF2" fontSize="5rem">
           FAQ
