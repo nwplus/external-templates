@@ -55,16 +55,11 @@ const Opening = styled.p`
   @media (max-width: ${LAPTOP}) {
     font-size: 20px;
   }
-  
-  @media only screen and (max-width: ${p => p.theme.mediaQueries.tablet}) {
-    font-size: 18px;
-    left: 22%;
-    top: 10px;
-  }
 
-  @media only screen and (max-width: ${p => p.theme.mediaQueries.mobile}) {
-    left: 5px;
+  ${p => p.theme.mediaQueries.mobile} {
     width: 100%;
+    top: 0px;
+    text-align: center;
   }
 `
 

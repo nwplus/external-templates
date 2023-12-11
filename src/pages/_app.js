@@ -4,14 +4,18 @@ import GlobalStyles from '@styles/global'
 import ThemeProvider from '../theme/ThemeProvider'
 import '../theme/fonts/style.css'
 
+import { ParallaxProvider } from 'react-scroll-parallax';
+
 // import NavigationBar from '../components/NavigationBar';
 
 function App({ Component, pageProps }) {
   return (
     <>
       <ThemeProvider>
-        <GlobalStyles />
-        <Component {...pageProps} />
+        <ParallaxProvider>
+          <GlobalStyles />
+          <Component {...pageProps} />
+        </ParallaxProvider>
       </ThemeProvider>
     </>
   )

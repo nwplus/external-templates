@@ -8,6 +8,7 @@ import yellowDice from "../assets/images/yellowDice.svg"
 import blueDice from "../assets/images/blueDice.svg"
 import smallBlueDice from "../assets/images/mobile/diceBlueSmall.svg"
 
+import { useParallax } from 'react-scroll-parallax'
 
 const AboutContainer = styled.div`
   min-height: calc(calc(779 / 1440) * 100vw);
@@ -137,21 +138,48 @@ const SmallBlueDiceImg = styled.img`
   }
 `
 
-const About = () => (
-  <AboutContainer id="about">
-    <RedDiceImg src={redDice} />
-    <YellowDiceImg src={yellowDice} />
-    <BlueDiceImg src={blueDice} />
-    <SmallBlueDiceImg src={smallBlueDice} />
-    <AboutInner>
-      <BlurbContainer bias="right">
-        <BlurbHeader>Game on: Level up your tech journey at nwHacks!</BlurbHeader>
-        <BlurbText>
-          Whether you’re a seasoned hacker or you’re just getting into tech, you’re welcome at nwHacks. Join us in-person on January 20-21, 2024 for a weekend of creativity, community, and innovation! All you need is an open mind and an insatiable desire to learn, and we’ll take care of the rest. Create a project, learn new skills, and bond with friends, old and new — all in 24 hours.
-        </BlurbText>
-      </BlurbContainer>
-    </AboutInner>
-  </AboutContainer>
-)
+const About = () => {
+  const redDiceParallax = useParallax({
+    speed: -10,
+    scale: [0.2, 1.2]
+  });
 
-export default About
+  const yellowDiceParallax = useParallax({
+    speed: -12,
+    scale: [0.2, 1]
+  });
+
+  const blueDiceParallax = useParallax({
+    speed: -12,
+    scale: [0.2, 1]
+  });
+
+  const smallBlueDiceParallax = useParallax({
+    speed: -10,
+    scale: [0.2, 1]
+  });
+
+  return (
+    <AboutContainer id="about">
+      {/* Use the parallax reference for the RedDiceImg */}
+
+      <RedDiceImg src={redDice} ref={redDiceParallax.ref} />
+
+      {/* Add parallax effects to the other dice images */}
+      <YellowDiceImg src={yellowDice} ref={yellowDiceParallax.ref} />
+      <BlueDiceImg src={blueDice} ref={blueDiceParallax.ref} />
+      <SmallBlueDiceImg src={smallBlueDice} ref={smallBlueDiceParallax.ref} />
+
+      <AboutInner>
+        <BlurbContainer bias="right">
+          <BlurbHeader>Game on: Level up your tech journey at nwHacks!</BlurbHeader>
+          <BlurbText>
+            Whether you’re a seasoned hacker or you’re just getting into tech, you’re welcome at nwHacks. Join us in-person on January 20-21, 2024, for a weekend of creativity, community, and innovation! All you need is an open mind and an insatiable desire to learn, and we’ll take care of the rest. Create a project, learn new skills, and bond with friends, old and new — all in 24 hours.
+          </BlurbText>
+        </BlurbContainer>
+      </AboutInner>
+    </AboutContainer>
+  );
+};
+
+export default About;

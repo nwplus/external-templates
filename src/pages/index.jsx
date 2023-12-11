@@ -19,6 +19,7 @@ import MainGraphics from '../assets/images/MainBackground.svg'
 import MainGraphicsMobile from '../assets/images/mobile/MainBackground.svg'
 
 import SusNuggetGif from '../assets/images/animations/nugget-sus.gif'
+import RedVanImg from '../assets/images/red_van.svg'
 
 const HalfContainer = styled.div`
   min-height: calc(calc(9229 / 1440) * 100vw);
@@ -68,7 +69,20 @@ const SusNuggetContainer = styled.img`
   }
 `
 
+const RedVanContainer = styled.img`
+  position: absolute;
+  bottom: 9%;
+  width: 12%;
+  height: auto;
+  
+  ${p => p.theme.mediaQueries.mobile} {
+    bottom: 360px;
+    width: 12%;
+  }
+`
+
 export default function Index({ title }) {
+
   return (
     <>
       <GlobalStyles />
@@ -93,6 +107,8 @@ export default function Index({ title }) {
         {/* add if statement, show mobile background if mobile */}
         <BackgroundImage src={MainGraphics} alt="Background image" />
         <SusNuggetContainer src={SusNuggetGif} alt="Nugget with eyes looking around" />
+        <RedVanContainer src={RedVanImg} />
+
         <Hero />
         <About />
         <Countdown />
