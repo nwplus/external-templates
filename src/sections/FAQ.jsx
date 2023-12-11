@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import fireDb from '@utilities/firebase'
+import { useParallax } from 'react-scroll-parallax'
 import FaqBox from '@components/FaqBox'
 import { Header2, Header3 } from '@components/Typography'
 
 import flyingCardsImg from '../assets/images/flyingCards.svg'
-import { useParallax } from 'react-scroll-parallax'
 
 const FaqContainer = styled.div`
   position: relative;

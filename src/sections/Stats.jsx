@@ -1,15 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
+import { useParallax } from 'react-scroll-parallax'
 
-import StatsSVG from "../assets/images/stats.svg"
+// import StatsSVG from "../assets/images/stats.svg"
 import MobileStatsSVG from "../assets/images/mobile/stats.svg"
 
 import StatsPart1 from "../assets/images/StatsPart1.svg"
 import StatsPart2 from "../assets/images/StatsPart2.svg"
 import StatsPart3 from "../assets/images/StatsPart3.svg"
-
-import { useParallax } from 'react-scroll-parallax'
-
 
 const StatsContainer = styled.div`
   min-height: calc(calc(900 / 1440) * 100vw);

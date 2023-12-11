@@ -1,14 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Body, Header2 } from '@components/Typography'
+import { useParallax } from 'react-scroll-parallax'
+
 // Dices for About section
 // import { TABLET } from '@constants/measurements'
 import redDice from "../assets/images/redDice.svg"
 import yellowDice from "../assets/images/yellowDice.svg"
 import blueDice from "../assets/images/blueDice.svg"
 import smallBlueDice from "../assets/images/mobile/diceBlueSmall.svg"
-
-import { useParallax } from 'react-scroll-parallax'
 
 const AboutContainer = styled.div`
   min-height: calc(calc(779 / 1440) * 100vw);
