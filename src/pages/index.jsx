@@ -57,7 +57,7 @@ const BackgroundImage = styled.img`
 
 const SusNuggetContainer = styled.img`
   position: absolute;
-  bottom: 10.5%;
+  bottom: 1900px;
   width: 15%;
   height: auto;
   left: 37.5%;
@@ -71,7 +71,7 @@ const SusNuggetContainer = styled.img`
 
 const RedVanContainer = styled.img`
   position: absolute;
-  bottom: 9%;
+  bottom: 1600px;
   width: 12%;
   height: auto;
   
