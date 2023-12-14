@@ -2,7 +2,7 @@ import Head from 'next/head'
 import React from 'react'
 import GlobalStyles from '@styles/global'
 import styled from 'styled-components'
-
+import { useParallax } from 'react-scroll-parallax'
 import Sponsors from 'src/sections/Sponsors'
 import Faq from 'src/sections/FAQ'
 import Footer from 'src/sections/Footer'
@@ -57,7 +57,7 @@ const BackgroundImage = styled.img`
 
 const SusNuggetContainer = styled.img`
   position: absolute;
-  bottom: 1900px;
+  bottom: 1650px;
   width: 15%;
   height: auto;
   left: 37.5%;
@@ -71,7 +71,7 @@ const SusNuggetContainer = styled.img`
 
 const RedVanContainer = styled.img`
   position: absolute;
-  bottom: 1600px;
+  bottom: 1300px;
   width: 12%;
   height: auto;
   
@@ -82,6 +82,12 @@ const RedVanContainer = styled.img`
 `
 
 export default function Index({ title }) {
+  const redVan = useParallax({
+    speed: -10,
+    translateX: ['0px', '100px'],
+    translateY: ['0px', '100px']
+  });
+
 
   return (
     <>
@@ -107,7 +113,7 @@ export default function Index({ title }) {
         {/* add if statement, show mobile background if mobile */}
         <BackgroundImage src={MainGraphics} alt="Background image" />
         <SusNuggetContainer src={SusNuggetGif} alt="Nugget with eyes looking around" />
-        <RedVanContainer src={RedVanImg} />
+        <RedVanContainer src={RedVanImg} ref={redVan.ref} />
 
         <Hero />
         <About />
