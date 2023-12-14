@@ -4,12 +4,12 @@ import { Header2 } from '@components/Typography'
 import SponsorsGrid from '@components/SponsorsGrid'
 import Button from '@components/Button'
 import fireDb from '@utilities/firebase'
-// import Carousel from '../components/Carousel'
+import Carousel from '../components/Carousel'
 
 const SponsorsContainer = styled.div`
   position: relative;
   min-height: calc(calc(2050 / 1440) * 100vw);
-  margin-top: 0rem;
+  margin-top: -20rem;
 
   ${p => p.theme.mediaQueries.mobile} {
     min-height: calc(calc(488 / 428) * 100vw);
@@ -61,6 +61,16 @@ const PushinP = styled.p`
     padding: 20px 6rem;
   }
 `
+const CarouselImg = styled.img`
+  height: 100px;
+  width: auto;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 20px;
+`
+const CarouseBlurb = styled.p`
+  color: #D9D9D9;
+`
 
 const Sponsors = () => {
   const [sponsors, setSponsors] = useState(null)
@@ -86,10 +96,20 @@ const Sponsors = () => {
         </Button>
 
         {/* each child in carousel is a sponsor */}
-        {/* <Carousel>
-          <p>Hello</p>
-          <p>World</p>
-        </Carousel> */}
+
+        {sponsors &&
+          <Carousel>
+            {sponsors.map(item => (
+
+              item.blurb &&
+              <>
+                <CarouselImg src={item.imgURL} />
+                <CarouseBlurb>{item.blurb}</CarouseBlurb>
+              </>
+
+            ))}
+          </Carousel>
+        }
 
         <SponsorsGrid sponsors={sponsors} />
       </StaticContainer>

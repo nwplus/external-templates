@@ -2,7 +2,7 @@ import Head from 'next/head'
 import React from 'react'
 import GlobalStyles from '@styles/global'
 import styled from 'styled-components'
-
+import { useParallax } from 'react-scroll-parallax'
 import Sponsors from 'src/sections/Sponsors'
 import Faq from 'src/sections/FAQ'
 import Footer from 'src/sections/Footer'
@@ -19,6 +19,7 @@ import MainGraphics from '../assets/images/MainBackground.svg'
 import MainGraphicsMobile from '../assets/images/mobile/MainBackground.svg'
 
 import SusNuggetGif from '../assets/images/animations/nugget-sus.gif'
+import RedVanImg from '../assets/images/red_van.svg'
 
 const HalfContainer = styled.div`
   min-height: calc(calc(9229 / 1440) * 100vw);
@@ -56,7 +57,7 @@ const BackgroundImage = styled.img`
 
 const SusNuggetContainer = styled.img`
   position: absolute;
-  bottom: 10.5%;
+  bottom: 1650px;
   width: 15%;
   height: auto;
   left: 37.5%;
@@ -68,7 +69,26 @@ const SusNuggetContainer = styled.img`
   }
 `
 
+const RedVanContainer = styled.img`
+  position: absolute;
+  bottom: 1300px;
+  width: 12%;
+  height: auto;
+  
+  ${p => p.theme.mediaQueries.mobile} {
+    bottom: 360px;
+    width: 12%;
+  }
+`
+
 export default function Index({ title }) {
+  const redVan = useParallax({
+    speed: -10,
+    translateX: ['0px', '100px'],
+    translateY: ['0px', '100px']
+  });
+
+
   return (
     <>
       <GlobalStyles />
@@ -93,6 +113,8 @@ export default function Index({ title }) {
         {/* add if statement, show mobile background if mobile */}
         <BackgroundImage src={MainGraphics} alt="Background image" />
         <SusNuggetContainer src={SusNuggetGif} alt="Nugget with eyes looking around" />
+        <RedVanContainer src={RedVanImg} ref={redVan.ref} />
+
         <Hero />
         <About />
         <Countdown />

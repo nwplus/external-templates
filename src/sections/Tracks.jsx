@@ -39,6 +39,7 @@ const TextElements = styled.div`
   display: flex;
   flex-direction: column;
   width: 60%;
+  margin-top: 10%;
 
   ${p =>
     p && p.bias && p.bias === 'left'
@@ -53,6 +54,7 @@ const TextElements = styled.div`
     max-width: 100vw;
     margin: 0;
     padding: 0 6vw;
+    margin-top: 0%;
   }
 `
 
