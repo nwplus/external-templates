@@ -45,7 +45,7 @@ const SponsorImg = styled.img`
 `
 
 const SponsorsGrid = ({ sponsors }) => {
-  const emptyTierList = { platinum: [], gold: [], silver: [], bronze: [], inkind: [] }
+  const emptyTierList = { platinum: [], gold: [], silver: [], bronze: [], startup: [], inkind: [] }
   const [tierList, setTierList] = useState(emptyTierList)
 
   useEffect(() => {
@@ -97,6 +97,7 @@ const SponsorsGrid = ({ sponsors }) => {
       <ListByTier listOfSponsors={tierList.gold} />
       <ListByTier listOfSponsors={tierList.silver} />
       <ListByTier listOfSponsors={tierList.bronze} />
+      <ListByTier listOfSponsors={tierList.startup} />
       <ListByTier listOfSponsors={tierList.inkind} />
     </Container>
   )
