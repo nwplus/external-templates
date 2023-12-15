@@ -24,7 +24,7 @@ jobs:
           node-version: '16.x'
 
       - name: Set up firebase
-        run: sudo npm install -g firebase-tools --unsafe
+        run: sudo npm install -g firebase-tools@12.9.1 --unsafe
 
       - name: Choose dev firebase project
         if: ${{ env.IS_PRODUCTION == 'false' }}
@@ -60,5 +60,3 @@ jobs:
       - name: Deploy to site associated with branch name
         if: ${{ github.event.inputs.targetedHackathon }}
         run: firebase deploy --only hosting:${{ github.event.inputs.targetedHackathon }} --non-interactive --token ${{ secrets.FIREBASE_TOKEN }}
-      - with:
-          firebaseToolsVersion: 12.9.1
