@@ -60,5 +60,3 @@ jobs:
       - name: Deploy to site associated with branch name
         if: ${{ github.event.inputs.targetedHackathon }}
         run: firebase deploy --only hosting:${{ github.event.inputs.targetedHackathon }} --non-interactive --token ${{ secrets.FIREBASE_TOKEN }}
-      - with:
-          firebaseToolsVersion: 12.9.1
