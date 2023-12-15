@@ -50,6 +50,10 @@ const PagesContainer = styled.div`
   gap: 3rem;
   overflow: hidden;
   border-radius: 10px;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    height: 550px;
+  }
 `
 
 const PagesArrayD = styled.div`

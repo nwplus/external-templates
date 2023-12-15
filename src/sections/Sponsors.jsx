@@ -67,9 +67,14 @@ const CarouselImg = styled.img`
   display: block;
   margin: 0 auto;
   margin-bottom: 20px;
+  ${p => p.theme.mediaQueries.mobile} {
+    height: 40px;
+    width: auto;
+  }
 `
 const CarouseBlurb = styled.p`
   color: #D9D9D9;
+  font-size: 1em;
 `
 
 const Sponsors = () => {
@@ -104,7 +109,12 @@ const Sponsors = () => {
               item.blurb &&
               <>
                 <CarouselImg src={item.imgURL} />
-                <CarouseBlurb>{item.blurb}</CarouseBlurb>
+
+                <CarouseBlurb>
+                  {window.innerWidth <= 425
+                    ? item.blurb.substring(0, 440) + "..."
+                    : item.blurb}
+                </CarouseBlurb>
               </>
 
             ))}
