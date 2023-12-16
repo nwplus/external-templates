@@ -55,13 +55,11 @@ const Opening = styled.p`
   @media (max-width: ${LAPTOP}) {
     font-size: 20px;
   }
-  @media (max-width: ${TABLET}) {
-    top: 20px;
-    font-size: 18px;
-  }
+
   ${p => p.theme.mediaQueries.mobile} {
-    left: 5px;
     width: 100%;
+    top: 0px;
+    text-align: center;
   }
 `
 

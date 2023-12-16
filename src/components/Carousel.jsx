@@ -50,6 +50,10 @@ const PagesContainer = styled.div`
   gap: 3rem;
   overflow: hidden;
   border-radius: 10px;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    height: 550px;
+  }
 `
 
 const PagesArrayD = styled.div`
@@ -144,6 +148,10 @@ const Carousel = ({ children }) => {
   const LeftButton = viewing === 0 ? BrickedButton : ActiveButton
   const RightButton = viewing === children.length - 1 ? BrickedButton : ActiveButton
 
+  // only display sponsors with a blurb
+  const sponsor = children.filter(child => child !== "");
+
+
   return (
     <CarouselContainer>
       <ContentContainer>
@@ -158,12 +166,12 @@ const Carousel = ({ children }) => {
 
           <PagesContainer>
             <PagesArrayD style={{ left: `calc(calc(calc(${PAGE_FRAC_DESKTOP}vw - 3rem) * -1) * ${viewing})` }}>
-              {children.map(c => (
+              {sponsor.map(c => (
                 <Page>{c}</Page>
               ))}
             </PagesArrayD>
             <PagesArrayM style={{ left: `calc(calc(calc(${PAGE_FRAC_MOBILE}vw - 3rem) * -1) * ${viewing})` }}>
-              {children.map(c => (
+              {sponsor.map(c => (
                 <Page>{c}</Page>
               ))}
             </PagesArrayM>
@@ -171,7 +179,7 @@ const Carousel = ({ children }) => {
 
           <RightButton
             onClick={() => {
-              setViewing(prev => Math.min(children.length - 1, prev + 1))
+              setViewing(prev => Math.min(sponsor.length - 1, prev + 1))
             }}
           >
             <ChevronImg src={ChevronLeft} style={{ transform: 'scaleX(-1)' }} />
@@ -179,7 +187,7 @@ const Carousel = ({ children }) => {
         </TopContainer>
 
         <Dots>
-          {Array(children.length)
+          {Array(sponsor.length)
             .fill(null)
             .map((_, i) => (
               <Dot
