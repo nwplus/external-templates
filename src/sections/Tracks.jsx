@@ -39,7 +39,6 @@ const TextElements = styled.div`
   display: flex;
   flex-direction: column;
   width: 60%;
-  margin-top: 10%;
 
   ${p =>
     p && p.bias && p.bias === 'left'
@@ -135,6 +134,7 @@ const DesktopContent = styled.div`
   gap: 3rem;
   margin-top: 3rem;
   margin-bottom: 3rem;
+  align-items: center;
 
   ${p => p.theme.mediaQueries.mobile} {
     display: none;
