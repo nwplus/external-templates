@@ -178,12 +178,12 @@ const Carousel = ({ children }) => {
 
           <PagesContainer>
             <PagesArrayD style={{ left: `calc(calc(calc(${PAGE_FRAC_DESKTOP}vw - 3rem) * -1) * ${viewing})` }}>
-              {sponsor.map(c => (
+              {children.map(c => (
                 <Page>{c}</Page>
               ))}
             </PagesArrayD>
             <PagesArrayM style={{ left: `calc(calc(calc(${PAGE_FRAC_MOBILE}vw - 3rem) * -1) * ${viewing})` }}>
-              {sponsor.map(c => (
+              {children.map(c => (
                 <Page>{c}</Page>
               ))}
             </PagesArrayM>
@@ -199,7 +199,7 @@ const Carousel = ({ children }) => {
         </TopContainer>
 
         <Dots>
-          {Array(sponsor.length)
+          {Array(children.length)
             .fill(null)
             .map((_, i) => (
               <Dot

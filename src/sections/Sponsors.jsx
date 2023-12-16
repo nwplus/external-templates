@@ -77,7 +77,7 @@ const CarouseBlurb = styled.p`
 `
 
 const Sponsors = () => {
-  const [sponsors, setSponsors] = useState(null)
+  const [sponsors, setSponsors] = useState([])
   const carouselSponsors = sponsors.filter(child => child !== '')
 
   useEffect(async () => {
