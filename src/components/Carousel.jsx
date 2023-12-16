@@ -90,10 +90,27 @@ const Page = styled.div`
   width: calc(${PAGE_FRAC_DESKTOP}vw - 6rem);
   height: 100%;
   padding: 2rem;
+  overflow-y: auto;
 
   ${p => p.theme.mediaQueries.mobile} {
     width: calc(${PAGE_FRAC_MOBILE}vw - 6rem);
   }
+
+  ::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 1rem;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+  }
+
+  /* For Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) rgba(255, 255, 255, 0.1);
 `
 
 const ActiveButton = styled.div`
@@ -149,8 +166,7 @@ const Carousel = ({ children }) => {
   const RightButton = viewing === children.length - 1 ? BrickedButton : ActiveButton
 
   // only display sponsors with a blurb
-  const sponsor = children.filter(child => child !== "");
-
+  const sponsor = children.filter(child => child !== '')
 
   return (
     <CarouselContainer>
