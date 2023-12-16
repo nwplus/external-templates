@@ -15,7 +15,6 @@ const CarouselContainer = styled.div`
 `
 
 const ContentContainer = styled.div`
-  max-width: 900px;
   width: ${PAGE_FRAC_DESKTOP}vw;
   height: fit-content;
   display: flex;
@@ -164,9 +163,6 @@ const Carousel = ({ children }) => {
   const [viewing, setViewing] = useState(0)
   const LeftButton = viewing === 0 ? BrickedButton : ActiveButton
   const RightButton = viewing === children.length - 1 ? BrickedButton : ActiveButton
-
-  // only display sponsors with a blurb
-  const sponsor = children.filter(child => child !== '')
 
   return (
     <CarouselContainer>
