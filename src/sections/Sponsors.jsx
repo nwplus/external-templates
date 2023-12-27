@@ -107,18 +107,20 @@ const Sponsors = () => {
 
         {carouselSponsors && (
           <Carousel>
-            {carouselSponsors.map(
-              item =>
-                item.blurb && (
-                  <>
-                    <CarouselImg src={item.imgURL} />
+            {carouselSponsors
+              .filter(e => e !== '')
+              .map(
+                item =>
+                  item.blurb && (
+                    <>
+                      <CarouselImg src={item.imgURL} />
 
-                    <CarouseBlurb>
-                      {window.innerWidth <= 425 ? `${item.blurb.substring(0, 440)}...` : item.blurb}
-                    </CarouseBlurb>
-                  </>
-                )
-            )}
+                      <CarouseBlurb>
+                        {window.innerWidth <= 425 ? `${item.blurb.substring(0, 440)}...` : item.blurb}
+                      </CarouseBlurb>
+                    </>
+                  )
+              )}
           </Carousel>
         )}
 
