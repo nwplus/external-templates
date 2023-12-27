@@ -62,7 +62,7 @@ const PagesArrayD = styled.div`
   align-items: center;
   height: 100%;
   width: fit-content;
-  gap: 50px;
+  gap: 3rem;
   transition: 500ms;
 
   ${p => p.theme.mediaQueries.mobile} {
@@ -77,7 +77,7 @@ const PagesArrayM = styled.div`
   align-items: center;
   height: 100%;
   width: fit-content;
-  gap: 50px;
+  gap: 3rem;
   transition: 500ms;
 
   ${p => p.theme.mediaQueries.mobile} {
