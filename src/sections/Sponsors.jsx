@@ -108,7 +108,6 @@ const Sponsors = () => {
         {carouselSponsors && (
           <Carousel>
             {carouselSponsors
-              .filter(e => e !== '')
               .map(
                 item =>
                   item.blurb && (
@@ -120,7 +119,8 @@ const Sponsors = () => {
                       </CarouseBlurb>
                     </>
                   )
-              )}
+              )
+              .filter(e => e !== '')}
           </Carousel>
         )}
 
