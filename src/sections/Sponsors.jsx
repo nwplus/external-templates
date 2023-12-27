@@ -14,7 +14,6 @@ const SponsorsContainer = styled.div`
   ${p => p.theme.mediaQueries.mobile} {
     min-height: calc(calc(488 / 428) * 100vw);
     margin-top: 8rem;
-
   }
 `
 
@@ -73,12 +72,13 @@ const CarouselImg = styled.img`
   }
 `
 const CarouseBlurb = styled.p`
-  color: #D9D9D9;
+  color: #d9d9d9;
   font-size: 1em;
 `
 
 const Sponsors = () => {
-  const [sponsors, setSponsors] = useState(null)
+  const [sponsors, setSponsors] = useState([])
+  const carouselSponsors = sponsors.filter(child => child !== '')
 
   useEffect(async () => {
     // use cmd-f2022 collection to test
@@ -93,8 +93,11 @@ const Sponsors = () => {
       <StaticContainer>
         <StyledTitle id="sponsors">Sponsors</StyledTitle>
         <PushinP>
-          Sponsors make this event happen.<br /><br />If you are interested in working with us, joining us or speaking at one of
-          our events, please reach out to us below!
+          Sponsors make this event happen.
+          <br />
+          <br />
+          If you are interested in working with us, joining us or speaking at one of our events, please reach out to us
+          below!
         </PushinP>
         <Button variant="solidRed" href="mailto:sponsorship@nwplus.io">
           Sponsor nwHacks!
@@ -102,24 +105,22 @@ const Sponsors = () => {
 
         {/* each child in carousel is a sponsor */}
 
-        {sponsors &&
+        {carouselSponsors && (
           <Carousel>
-            {sponsors.map(item => (
+            {carouselSponsors.map(
+              item =>
+                item.blurb && (
+                  <>
+                    <CarouselImg src={item.imgURL} />
 
-              item.blurb &&
-              <>
-                <CarouselImg src={item.imgURL} />
-
-                <CarouseBlurb>
-                  {window.innerWidth <= 425
-                    ? item.blurb.substring(0, 440) + "..."
-                    : item.blurb}
-                </CarouseBlurb>
-              </>
-
-            ))}
+                    <CarouseBlurb>
+                      {window.innerWidth <= 425 ? item.blurb.substring(0, 440) + '...' : item.blurb}
+                    </CarouseBlurb>
+                  </>
+                )
+            )}
           </Carousel>
-        }
+        )}
 
         <SponsorsGrid sponsors={sponsors} />
       </StaticContainer>

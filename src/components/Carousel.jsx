@@ -15,7 +15,6 @@ const CarouselContainer = styled.div`
 `
 
 const ContentContainer = styled.div`
-  max-width: 900px;
   width: ${PAGE_FRAC_DESKTOP}vw;
   height: fit-content;
   display: flex;
@@ -90,10 +89,27 @@ const Page = styled.div`
   width: calc(${PAGE_FRAC_DESKTOP}vw - 6rem);
   height: 100%;
   padding: 2rem;
+  overflow-y: auto;
 
   ${p => p.theme.mediaQueries.mobile} {
     width: calc(${PAGE_FRAC_MOBILE}vw - 6rem);
   }
+
+  ::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 1rem;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+  }
+
+  /* For Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) rgba(255, 255, 255, 0.1);
 `
 
 const ActiveButton = styled.div`
@@ -148,10 +164,6 @@ const Carousel = ({ children }) => {
   const LeftButton = viewing === 0 ? BrickedButton : ActiveButton
   const RightButton = viewing === children.length - 1 ? BrickedButton : ActiveButton
 
-  // only display sponsors with a blurb
-  const sponsor = children.filter(child => child !== "");
-
-
   return (
     <CarouselContainer>
       <ContentContainer>
@@ -166,12 +178,12 @@ const Carousel = ({ children }) => {
 
           <PagesContainer>
             <PagesArrayD style={{ left: `calc(calc(calc(${PAGE_FRAC_DESKTOP}vw - 3rem) * -1) * ${viewing})` }}>
-              {sponsor.map(c => (
+              {children.map(c => (
                 <Page>{c}</Page>
               ))}
             </PagesArrayD>
             <PagesArrayM style={{ left: `calc(calc(calc(${PAGE_FRAC_MOBILE}vw - 3rem) * -1) * ${viewing})` }}>
-              {sponsor.map(c => (
+              {children.map(c => (
                 <Page>{c}</Page>
               ))}
             </PagesArrayM>
@@ -187,7 +199,7 @@ const Carousel = ({ children }) => {
         </TopContainer>
 
         <Dots>
-          {Array(sponsor.length)
+          {Array(children.length)
             .fill(null)
             .map((_, i) => (
               <Dot
