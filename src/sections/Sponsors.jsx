@@ -114,7 +114,7 @@ const Sponsors = () => {
                     <CarouselImg src={item.imgURL} />
 
                     <CarouseBlurb>
-                      {window.innerWidth <= 425 ? item.blurb.substring(0, 440) + '...' : item.blurb}
+                      {window.innerWidth <= 425 ? `${item.blurb.substring(0, 440)}...` : item.blurb}
                     </CarouseBlurb>
                   </>
                 )

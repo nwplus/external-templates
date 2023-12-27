@@ -191,7 +191,7 @@ const Carousel = ({ children }) => {
 
           <RightButton
             onClick={() => {
-              setViewing(prev => Math.min(sponsor.length - 1, prev + 1))
+              setViewing(prev => Math.min(children.length - 1, prev + 1))
             }}
           >
             <ChevronImg src={ChevronLeft} style={{ transform: 'scaleX(-1)' }} />
