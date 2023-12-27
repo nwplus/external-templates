@@ -20,6 +20,7 @@ import MainGraphicsMobile from '../assets/images/mobile/MainBackground.svg'
 
 import SusNuggetGif from '../assets/images/animations/nugget-sus.gif'
 import RedVanImg from '../assets/images/red_van.svg'
+import LoadingScreen from '@components/LoadingScreen'
 
 const HalfContainer = styled.div`
   min-height: calc(calc(9229 / 1440) * 100vw);
@@ -74,7 +75,7 @@ const RedVanContainer = styled.img`
   bottom: 1300px;
   width: 12%;
   height: auto;
-  
+
   ${p => p.theme.mediaQueries.mobile} {
     bottom: 360px;
     width: 12%;
@@ -85,9 +86,8 @@ export default function Index({ title }) {
   const redVan = useParallax({
     speed: -10,
     translateX: ['0px', '100px'],
-    translateY: ['0px', '100px']
-  });
-
+    translateY: ['0px', '100px'],
+  })
 
   return (
     <>
@@ -105,7 +105,7 @@ export default function Index({ title }) {
       {/* <Banner buttonLink="info.html" /> */}
       {/* <NavigationBar bannerExists /> */}
 
-      {/* <LoadingScreen /> */}
+      <LoadingScreen />
 
       <NavigationBar />
 
