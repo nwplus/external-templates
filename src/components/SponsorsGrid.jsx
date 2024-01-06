@@ -32,7 +32,7 @@ const Flex = styled.div`
 `
 
 const SponsorContainer = styled.div`
-  width: 33%;
+  width: ${p => p.size || '33%'}; // Adjust the default width for each tier
 `
 
 const SponsorImg = styled.img`
@@ -45,7 +45,7 @@ const SponsorImg = styled.img`
 `
 
 const SponsorsGrid = ({ sponsors }) => {
-  const emptyTierList = { platinum: [], gold: [], silver: [], bronze: [], startup: [], inkind: [] }
+  const emptyTierList = { gold: [], silver: [], bronze: [], inkind: [] }
   const [tierList, setTierList] = useState(emptyTierList)
 
   useEffect(() => {
@@ -58,8 +58,8 @@ const SponsorsGrid = ({ sponsors }) => {
     }
   }, [sponsors])
 
-  const Sponsor = ({ link, url }) => (
-    <SponsorContainer>
+  const Sponsor = ({ link, url, size }) => (
+    <SponsorContainer size={size}>
       <a
         href={link}
         target="_blank"
@@ -77,15 +77,14 @@ const SponsorsGrid = ({ sponsors }) => {
     </SponsorContainer>
   )
 
-  const ListByTier = ({ listOfSponsors }) => (
+  const ListByTier = ({ listOfSponsors, tierSize }) => (
     <Flex>
       {listOfSponsors.map(item => (
         <Sponsor
-          {...{
-            key: item.name,
-            link: item.link,
-            url: item.imgURL,
-          }}
+          key={item.name}
+          link={item.link}
+          url={item.imgURL}
+          size={tierSize}
         />
       ))}
     </Flex>
@@ -93,12 +92,10 @@ const SponsorsGrid = ({ sponsors }) => {
 
   return (
     <Container>
-      <ListByTier listOfSponsors={tierList.platinum} />
-      <ListByTier listOfSponsors={tierList.gold} />
-      <ListByTier listOfSponsors={tierList.silver} />
-      <ListByTier listOfSponsors={tierList.bronze} />
-      <ListByTier listOfSponsors={tierList.startup} />
-      <ListByTier listOfSponsors={tierList.inkind} />
+      <ListByTier listOfSponsors={tierList.gold} tierSize="33%" />
+      <ListByTier listOfSponsors={tierList.silver} tierSize="25%" />
+      <ListByTier listOfSponsors={tierList.bronze} tierSize="20%" />
+      <ListByTier listOfSponsors={tierList.inkind} tierSize="15%" />
     </Container>
   )
 }
