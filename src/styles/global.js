@@ -15,7 +15,7 @@ export const GlobalStyles = createGlobalStyle`
   }
   body {
     position: relative;
-    min-width: 15935px; // probably temporary
+    min-width: 1562.3vh; // probably temporary
   }
 
   .root-container {
