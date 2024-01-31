@@ -18,9 +18,15 @@ export const GlobalStyles = createGlobalStyle`
   body {
     position: relative;
   }
+
   .root-container {
-    position: relative;
-    padding-top: 120px;
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 100vh;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
   }
   
   :root {

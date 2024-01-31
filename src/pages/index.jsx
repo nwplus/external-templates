@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import React from 'react'
+import { React, useEffect } from 'react'
 import GlobalStyles from '@styles/global'
 import Banner from '@components/Banner'
 
@@ -14,8 +14,28 @@ import NavigationBar from '../components/NavigationBar'
 import Hero from '../components/Hero'
 
 export default function Index({ title }) {
+
+  useEffect(() => {
+    const handleScroll = (event) => {
+        const horizontalScrollContainer = document.getElementById('horizontal-scroll-container');
+        const toLeft = event.deltaY < 0 && horizontalScrollContainer.scrollLeft > 0;
+        const toRight = event.deltaY > 0 && horizontalScrollContainer.scrollLeft < horizontalScrollContainer.scrollWidth - window.innerWidth;
+
+        if (toLeft || toRight) {
+            event.preventDefault();
+            horizontalScrollContainer.scrollLeft += event.deltaY;
+        }
+    };
+
+    window.addEventListener('wheel', handleScroll);
+
+    return () => {
+        window.removeEventListener('wheel', handleScroll);
+    };
+  }, []);
+
   return (
-    <div className="root-container">
+    <div className="root-container" id="horizontal-scroll-container">
       <GlobalStyles />
       <Head>
         <title>{title}</title>
