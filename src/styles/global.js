@@ -9,14 +9,13 @@ export const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
   }
   html, body {
-    overflow-x: hidden;
-
     @media-query (max-width: ${MOBILE}) {
       background: #BFEFF0;
     }
   }
   body {
     position: relative;
+    min-width: 15935px; // probably temporary
   }
 
   .root-container {
