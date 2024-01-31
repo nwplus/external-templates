@@ -1,26 +1,36 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const StatisticsSection = styled.div`
-  
-  min-height: calc(calc(1396 / 1440) * 100vw);
-  background-image: url("/assets/statistics/desktopBackground.svg");
-  background-repeat: no-repeat;
-  background-size: cover;
+  position: absolute;
+  left: 910vh;
+  top: 20vh;
+  text-align: center;
+`;
 
-  ${p => p.theme.mediaQueries.mobile} {
-    // Height calculation ratio should be the aspect ratio of the background image
-    min-height: calc(calc(1071 / 428) * 100vw);
-    background-image: url("/assets/statistics/mobileBackground.svg");
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-`
+const MainTitle = styled.h3`
+  font-size: 42px;
+  color: #311E1E;
+  margin: 0;
+  padding: 0;
+`;
+
+const SubTitle = styled.p`
+  font-size: 38px;
+  font-weight: bold;
+  color: #311E1E;
+  margin: 10px 0;
+  padding: 0;
+`;
 
 const Statistics = () => (
     <div id="hackathon">
-      <StatisticsSection />
+      <StatisticsSection>
+        <MainTitle>Last year we had...</MainTitle>
+        <SubTitle>189 hackers</SubTitle>
+        <SubTitle>44 projects</SubTitle>
+        <SubTitle>43 mentors</SubTitle>
+      </StatisticsSection>
     </div>
-)
+);
 
-
-export default Statistics
+export default Statistics;
