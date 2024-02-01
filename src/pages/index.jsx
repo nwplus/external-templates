@@ -11,7 +11,7 @@ import FAQ from 'src/sections/FAQ'
 import Footer from 'src/sections/Footer'
 
 import NavigationBar from '../components/NavigationBar'
-import Hero from '../components/Hero'
+import Hero from '../sections/Hero'
 import styled from 'styled-components'
 
 import BackgroundImage from '../../public/assets/background.svg'
@@ -56,6 +56,7 @@ export default function Index({ title }) {
         <title>{title}</title>
 
         <link rel="icon" href="/favicon.png" />
+        <link href="https://fonts.googleapis.com/css2?family=Yatra+One&display=swap" rel="stylesheet" />
 
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta

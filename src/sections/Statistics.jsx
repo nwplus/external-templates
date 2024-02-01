@@ -8,17 +8,19 @@ const StatisticsSection = styled.div`
 `;
 
 const MainTitle = styled.h3`
+  font-family: 'Yatra One', sans-serif;
   font-size: 42px;
+  font-weight: normal;
   color: #311E1E;
   margin: 0;
   padding: 0;
 `;
 
 const SubTitle = styled.p`
-  font-size: 38px;
+  font-size: 36px;
   font-weight: bold;
   color: #311E1E;
-  margin: 10px 0;
+  margin: 8px 0;
   padding: 0;
 `;
 
