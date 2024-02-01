@@ -17,6 +17,7 @@ import Encouragement from '../sections/Encouragement'
 import styled from 'styled-components'
 
 import BackgroundImage from '../../public/assets/background.svg'
+import MapImage from '../../public/assets/map.svg'
 
 const Background = styled.img`
   top: 0;
@@ -24,6 +25,19 @@ const Background = styled.img`
   position: absolute;
   user-select: none;
   height: 100%;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
+`
+
+const Map = styled.img`
+  z-index: 0;
+  position: absolute;
+  left: 230vh;
+  top: 5vh;
+  user-select: none;
+  height: 90%;
 
   ${p => p.theme.mediaQueries.mobile} {
     display: none;
@@ -71,10 +85,11 @@ export default function Index({ title }) {
       {/* Components Starts */}
       {/* <Banner /> */}
       <Background src={BackgroundImage} />
+      <Map src={MapImage} />
       {/* <NavigationBar bannerExists={false}/> */}
       <Hero />
       <Encouragement />
-      {/* <About /> */}
+      <About />
       <Tracks />
       <Statistics />
       {/* <Values />
