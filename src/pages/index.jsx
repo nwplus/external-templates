@@ -9,6 +9,7 @@ import Values from 'src/sections/Values'
 import Statistics from 'src/sections/Statistics'
 import FAQ from 'src/sections/FAQ'
 import Footer from 'src/sections/Footer'
+import Tracks from 'src/sections/Tracks'
 
 import NavigationBar from '../components/NavigationBar'
 import Hero from '../sections/Hero'
@@ -74,6 +75,7 @@ export default function Index({ title }) {
       <Hero />
       <Encouragement />
       {/* <About /> */}
+      <Tracks />
       <Statistics />
       {/* <Values />
       <FAQ />
