@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useParallax } from 'react-scroll-parallax'
-import Countdown from './Countdown'
-import Button from './Button'
-import { Header1, Header4 } from './Typography'
+import Countdown from '../components/Countdown'
+import Button from '../components/Button'
+import { Header1, Header4 } from '../components/Typography'
 
 const HeroContainer = styled.div`
   position: relative;
@@ -178,10 +178,6 @@ const Logo = styled.img`
 `
 
 const Hero = () => {
-  const parallax = useParallax({
-    speed: -20,
-  });
-
   return (
     <HeroContainer>
       <CloudsContainer ref={parallax.ref}>
