@@ -12,6 +12,7 @@ import Footer from 'src/sections/Footer'
 
 import NavigationBar from '../components/NavigationBar'
 import Hero from '../sections/Hero'
+import Encouragement from '../sections/Encouragement'
 import styled from 'styled-components'
 
 import BackgroundImage from '../../public/assets/background.svg'
@@ -71,6 +72,7 @@ export default function Index({ title }) {
       <Background src={BackgroundImage} />
       {/* <NavigationBar bannerExists={false}/> */}
       <Hero />
+      <Encouragement />
       {/* <About /> */}
       <Statistics />
       {/* <Values />
