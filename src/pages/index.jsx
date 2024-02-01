@@ -70,8 +70,8 @@ export default function Index({ title }) {
       {/* <Banner /> */}
       <Background src={BackgroundImage} />
       {/* <NavigationBar bannerExists={false}/> */}
-      {/* <Hero />
-      <About /> */}
+      <Hero />
+      {/* <About /> */}
       <Statistics />
       {/* <Values />
       <FAQ />

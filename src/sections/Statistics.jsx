@@ -25,7 +25,7 @@ const SubTitle = styled.p`
 `;
 
 const Statistics = () => (
-    <div id="hackathon">
+    <div id="statistics">
       <StatisticsSection>
         <MainTitle>Last year we had...</MainTitle>
         <SubTitle>189 hackers</SubTitle>
