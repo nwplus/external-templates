@@ -9,52 +9,52 @@ import MapImage from '../../public/assets/map.svg'
 
 const Map = styled.img`
   position: absolute;
-  left: 227.86vh;
-  top: 3.67vh;
-  height: 94.35vh;
-  width: 210vh;
+  left: 219.01vh;
+  top: 3.52vh;
+  height: 90.69vh;
+  width: 202.8vh;
 `
 
 const Title = styled.p`
   position: absolute;
-  left: 237.96vh;
-  top: 16.62vh;
-  width: 57.52vh;
+  left: 228.72vh;
+  top: 15.98vh;
+  width: 55.29vh;
 
   color: #08363C;
   font-family: "Yatra One";
-  font-size: 5.71vh;
+  font-size: 5.49vh;
   font-style: normal;
   font-weight: 400;
-  line-height: 5.71vh;
+  line-height: 5.49vh;
   letter-spacing: 0.4px;
 `
 
 const Description = styled.p`
   position: absolute;
-  left: 237.96vh;
-  top: 24.37vh;
-  width: 60.48vh;
+  left: 228.72vh;
+  top: 23.43vh;
+  width: 58.13vh;
 
   color: #08363C;
   font-family: "HK Grotesk";
-  font-size: 2.04vh;
+  font-size: 1.96vh;
   font-style: normal;
   font-weight: 500;
-  line-height: 2.24vh;
+  line-height: 110%;
   letter-spacing: -0.1px;
 `
 
 const DaysLabel = styled.p`
   position: absolute;
-  left: 323.28vh;
-  top: 31.51vh;
-  width: 16.5vh;
+  left: 310.72vh;
+  top: 30.29vh;
+  width: 16.17vh;
 
   color: #594632;
   text-align: center;
   font-family: "Yatra One";
-  font-size: 6.12vh;
+  font-size: 5.88vh;
   font-style: normal;
   font-weight: 400;
   line-height: 100%; /* 60px */
@@ -62,14 +62,14 @@ const DaysLabel = styled.p`
 
 const HoursLabel = styled.p`
   position: absolute;
-  left: 335.78vh;
-  top: 63.44vh;
-  width: 22.1vh;
+  left: 322.74vh;
+  top: 60.98vh;
+  width: 21.66vh;
 
   color: #594632;
   text-align: center;
   font-family: "Yatra One";
-  font-size: 6.12vh;
+  font-size: 5.88vh;
   font-style: normal;
   font-weight: 400;
   line-height: 100%;
@@ -77,14 +77,14 @@ const HoursLabel = styled.p`
 
 const MinutesLabel = styled.p`
   position: absolute;
-  left: 384.74vh;
-  top: 36.51vh;
-  width: 11.5vh;
+  left: 369.80vh;
+  top: 35.09vh;
+  width: 11.27vh;
 
   color: #594632;
   text-align: center;
   font-family: "Yatra One";
-  font-size: 6.12vh;
+  font-size: 5.88vh;
   font-style: normal;
   font-weight: 400;
   line-height: 100%;
@@ -92,13 +92,13 @@ const MinutesLabel = styled.p`
 
 const ApplicationsCloseInLabel = styled.p`
   position: absolute;
-  left: 362.14vh;
-  top: 16.62vh;
-  width: 29.07vh;
+  left: 348.07vh;
+  top: 15.88vh;
+  width: 27.94vh;
 
   color: #523A21;
   font-family: "Yatra One";
-  font-size: 4.823vh;
+  font-size: 4.63vh;
   font-style: normal;
   font-weight: 400;
   line-height: 100%;
@@ -106,18 +106,17 @@ const ApplicationsCloseInLabel = styled.p`
 
 const ApplicationsCloseFullLabel = styled.p`
   position: absolute;
-  left: 320.09vh;
-  top: 87.21vh;
-
-  width: 160vh
+  left: 307.74vh;
+  top: 83.8vh;
+  width: 65.68vh;
   text-align: center;
 
   color: #594632;
   font-family: "Yatra One";
-  font-size: 2.55vh;
+  font-size: 2.45vh;
   font-style: normal;
   font-weight: 400;
-  line-height: 2.24vh;
+  line-height: 88%;
   letter-spacing: -0.1px;
 `
 
