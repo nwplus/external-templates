@@ -26,12 +26,12 @@ const SubTitle = styled.p`
 
 const Statistics = () => (
     <div id="statistics">
-      <StatisticsSection>
+      {/* <StatisticsSection>
         <MainTitle>Last year we had...</MainTitle>
         <SubTitle>189 hackers</SubTitle>
         <SubTitle>44 projects</SubTitle>
         <SubTitle>43 mentors</SubTitle>
-      </StatisticsSection>
+      </StatisticsSection> */}
     </div>
 );
 
