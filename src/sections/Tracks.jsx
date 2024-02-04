@@ -2,74 +2,76 @@ import styled from 'styled-components';
 
 const SectionTitle = styled.h2`
   position: absolute;
-  left: 570vh;
-  top: 20vh;
+  left: 571.56vh;
+  top: 28.52vh;
 
   color: #08363C;
   font-family: "Yatra One";
-  font-size: 60px;
+  font-size: 5.88vh;
   font-style: normal;
   font-weight: 400;
-  line-height: 56px; /* 93.333% */
+  line-height: 93.33%;
   letter-spacing: 0.4px;
 `
 
-const CommunityTrackTitle = styled.h3`
+const CommunityTrackTitle = styled.p`
   position: absolute;
-  left: 610vh;
-  top: 70vh;
+  left: 611.02vh;
+  top: 71.76vh;
 
   color: #F6FEFF;
   font-feature-settings: 'liga' off;
   font-family: "Yatra One";
-  font-size: 42px;
+  font-size: 4.11vh;
   font-style: normal;
   font-weight: 400;
-  line-height: 140%; /* 58.8px */
+  line-height: 140%;
   letter-spacing: 0.38px;
 `
 
-const EducationTrackTitle = styled.h3`
+const EducationTrackTitle = styled.p`
   position: absolute;
-  left: 676vh;
-  top: 70vh;
+  left: 676.51vh;
+  top: 71.76vh;
 
   color: #F6FEFF;
   font-feature-settings: 'liga' off;
   font-family: "Yatra One";
-  font-size: 42px;
+  font-size: 4.11vh;
   font-style: normal;
   font-weight: 400;
-  line-height: 140%; /* 58.8px */
+  line-height: 140%;
   letter-spacing: 0.38px;
 `
 
-const HealthTrackTitle = styled.h3`
+const HealthTrackTitle = styled.p`
   position: absolute;
-  left: 733vh;
-  top: 70vh;
+  left: 735.83vh;
+  top: 71.76vh;
 
   color: #F6FEFF;
   font-feature-settings: 'liga' off;
   font-family: "Yatra One";
-  font-size: 42px;
+  font-size: 4.11vh;
   font-style: normal;
   font-weight: 400;
-  line-height: 140%; /* 58.8px */
+  line-height: 140%;
   letter-spacing: 0.38px;
 `
 
 const ExplanationLabel = styled.p`
   position: absolute;
-  left: 572vh;
-  top: 25vh;
+  left: 573.34vh;
+  top: 34.6vh;
+  width: 22.64vh;
+  height: 5.49vh;
 
   color: #185A62;
   font-feature-settings: 'liga' off;
-  font-size: 24px;
+  font-size: 2.35vh;
   font-style: normal;
   font-weight: 700;
-  line-height: 26px; /* 108.333% */
+  line-height: 108.3%;
   letter-spacing: -0.45px;
 `
 
