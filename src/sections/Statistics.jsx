@@ -1,38 +1,52 @@
 import styled from 'styled-components';
 
-const StatisticsSection = styled.div`
+const MainTitle = styled.h3`
   position: absolute;
-  left: 910vh;
-  top: 20vh;
+  left: 905.29vh;
+  top: 22.25vh;
+  width: 54.41vh;
+
+  color: #311E1E;
   text-align: center;
+  font-family: "Yatra One";
+  font-size: 5.49vh;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 100%;
+  letter-spacing: 0.4px;
 `;
 
-const MainTitle = styled.h3`
-  font-family: 'Yatra One', sans-serif;
-  font-size: 42px;
-  font-weight: normal;
-  color: #311E1E;
-  margin: 0;
-  padding: 0;
-`;
+const StatsContainer = styled.div`
+  position: absolute;
+  top: 29.9vh;
+  left: 907.55vh;
+  width: 48.23vh;
+`
 
 const SubTitle = styled.p`
-  font-size: 36px;
-  font-weight: bold;
+  position: relative;
+
   color: #311E1E;
-  margin: 8px 0;
-  padding: 0;
+  text-align: center;
+  font-family: "HK Grotesk";
+  font-size: 4.9vh;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 112%;
+  letter-spacing: 0.4px;
 `;
 
-const Statistics = () => (
-    <div id="statistics">
-      {/* <StatisticsSection>
+const Statistics = () => {
+  return (
+    <>
         <MainTitle>Last year we had...</MainTitle>
-        <SubTitle>189 hackers</SubTitle>
-        <SubTitle>44 projects</SubTitle>
-        <SubTitle>43 mentors</SubTitle>
-      </StatisticsSection> */}
-    </div>
-);
+        <StatsContainer>
+          <SubTitle>189 hackers</SubTitle>
+          <SubTitle style={{ marginTop: '2.05vh' }}>44 projects</SubTitle>
+          <SubTitle style={{ marginTop: '1.37vh' }}>43 mentors</SubTitle>
+        </StatsContainer>
+    </>
+  )
+};
 
 export default Statistics;
