@@ -5,49 +5,56 @@ import AboutBackgroundDesktop from '../../public/images/backgrounds/About.svg'
 import AboutBackgroundMobile from '../../public/images/backgrounds/AboutMobile.svg'
 import OpenSign from '../../public/images/animated-graphics/OpenSign.svg'
 
-const AboutDescription = styled.div`
+import MapImage from '../../public/assets/map.svg'
+
+const Map = styled.img`
   position: absolute;
-  left: 240vh;
-  top: 20vh;
-  text-align: center;
+  left: 227.86vh;
+  top: 3.67vh;
+  height: 94.35vh;
+  width: 210vh;
 `
 
-const AboutTitle = styled.h3`
-  text-align: left;
+const Title = styled.p`
+  position: absolute;
+  left: 237.96vh;
+  top: 16.62vh;
+  width: 57.52vh;
 
   color: #08363C;
   font-family: "Yatra One";
-  font-size: 56px;
+  font-size: 5.71vh;
   font-style: normal;
   font-weight: 400;
-  line-height: 56px; /* 100% */
+  line-height: 5.71vh;
   letter-spacing: 0.4px;
 `
 
-const AboutText = styled.p`
-  margin-top: 20px;
-
-  width: 600px;
-  text-align: left;
+const Description = styled.p`
+  position: absolute;
+  left: 237.96vh;
+  top: 24.37vh;
+  width: 60.48vh;
 
   color: #08363C;
   font-family: "HK Grotesk";
-  font-size: 20px;
+  font-size: 2.04vh;
   font-style: normal;
   font-weight: 500;
-  line-height: 22px; /* 110% */
+  line-height: 2.24vh;
   letter-spacing: -0.1px;
 `
 
 const DaysLabel = styled.p`
   position: absolute;
-  left: 82vh;
-  top: 13vh;
+  left: 323.28vh;
+  top: 31.51vh;
+  width: 16.5vh;
 
   color: #594632;
   text-align: center;
   font-family: "Yatra One";
-  font-size: 60px;
+  font-size: 6.12vh;
   font-style: normal;
   font-weight: 400;
   line-height: 100%; /* 60px */
@@ -55,78 +62,84 @@ const DaysLabel = styled.p`
 
 const HoursLabel = styled.p`
   position: absolute;
-  left: 93vh;
-  top: 43vh;
+  left: 335.78vh;
+  top: 63.44vh;
+  width: 22.1vh;
 
   color: #594632;
   text-align: center;
   font-family: "Yatra One";
-  font-size: 60px;
+  font-size: 6.12vh;
   font-style: normal;
   font-weight: 400;
-  line-height: 100%; /* 60px */
+  line-height: 100%;
 `
 
 const MinutesLabel = styled.p`
   position: absolute;
-  left: 140vh;
-  top: 18vh;
+  left: 384.74vh;
+  top: 36.51vh;
+  width: 11.5vh;
 
   color: #594632;
   text-align: center;
   font-family: "Yatra One";
-  font-size: 60px;
+  font-size: 6.12vh;
   font-style: normal;
   font-weight: 400;
-  line-height: 100%; /* 60px */
+  line-height: 100%;
 `
 
 const ApplicationsCloseInLabel = styled.p`
   position: absolute;
-  left: 115vh;
-  top: 0vh;
+  left: 362.14vh;
+  top: 16.62vh;
+  width: 29.07vh;
 
   color: #523A21;
   font-family: "Yatra One";
-  font-size: 47.288px;
+  font-size: 4.823vh;
   font-style: normal;
   font-weight: 400;
-  line-height: 100%; /* 47.288px */
+  line-height: 100%;
 `
 
 const ApplicationsCloseFullLabel = styled.p`
   position: absolute;
-  left: 76vh;
-  top: 65vh;
+  left: 320.09vh;
+  top: 87.21vh;
 
-  width: 900px;
+  width: 160vh
   text-align: center;
 
   color: #594632;
   font-family: "Yatra One";
-  font-size: 25px;
+  font-size: 2.55vh;
   font-style: normal;
   font-weight: 400;
-  line-height: 22px; /* 88% */
+  line-height: 2.24vh;
   letter-spacing: -0.1px;
 `
 
 
-const aboutText = 'cmd-f is a 24-hour hackathon focused on addressing gender inequality in technology. Our main purpose is to create a safe and dedicated space for historically excluded genders to hack together. We’re trying to create access for people who have faced systemic barriers to inclusion on the basis of gender. We encourage participation from women, and any trans, non-binary, Two-Spirit and gender diverse people. Thus, cmd-f is only open to individuals who identify as a member of an underrepresented gender in technology.\n\nWe’re aware that gender is not the only inequality in technology. We appreciate allyship and recognize it is important in the community. We invite allies to show their support by not hacking and instead contributing in other forms, such as volunteering or mentoring. Please make sure your participation in this event is aligned with the intentions of the event. We also ask all participants who attend to trust that everyone attending is meant to be here.\n\nFor more information on who is an underrepresented gender in technology, please email us at cmd-f@nwplus.io.'
+const About = () => {
 
-const About = () => (
- <>
-  <AboutDescription>
-    <AboutTitle>What is cmd-f?</AboutTitle>
-    <AboutText style={{ whiteSpace: 'pre-line' }}>{aboutText}</AboutText>
+  const descriptionText = `cmd-f is a 24-hour hackathon focused on addressing gender inequality in technology. Our main purpose is to create a safe and dedicated space for historically excluded genders to hack together. We’re trying to create access for people who have faced systemic barriers to inclusion on the basis of gender. We encourage participation from women, and any trans, non-binary, Two-Spirit and gender diverse people. Thus, cmd-f is only open to individuals who identify as a member of an underrepresented gender in technology.
+
+  We’re aware that gender is not the only inequality in technology. We appreciate allyship and recognize it is important in the community. We invite allies to show their support by not hacking and instead contributing in other forms, such as volunteering or mentoring. Please make sure your participation in this event is aligned with the intentions of the event. We also ask all participants who attend to trust that everyone attending is meant to be here.
+  
+  For more information on who is an underrepresented gender in technology, please email us at cmd-f@nwplus.io.`
+
+  return (<>
+    <Map src={MapImage}/>
+    <Title>What is cmd-f?</Title>
+    <Description style={{ whiteSpace: 'pre-line' }}>{descriptionText}</Description>
     <DaysLabel>30 DAYS</DaysLabel>
     <HoursLabel>10 HOURS</HoursLabel>
     <MinutesLabel>20 MIN</MinutesLabel>
-    <ApplicationsCloseInLabel>Applications close in</ApplicationsCloseInLabel>
+    <ApplicationsCloseInLabel>Applications close in:</ApplicationsCloseInLabel>
     <ApplicationsCloseFullLabel>Applications close Sunday, February 25 @ 11:59PM PST</ApplicationsCloseFullLabel>
-  </AboutDescription>
-  
-</>
-)
+    </>)
+}
 
 export default About
