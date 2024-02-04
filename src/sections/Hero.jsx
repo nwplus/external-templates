@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 // import { useParallax } from 'react-scroll-parallax'
 // import Countdown from '../components/Countdown'
@@ -9,126 +9,125 @@ import CmdFLogoImage from '../../public/assets/cmd-f-logo.svg'
 
 const Logo = styled.img`
   position: absolute;
-  top: 21.6vh;
-  left: 47.6vh;
-  width: 17.03vh;
-  height: 14.17vh;
+  top: 20.78vh;
+  left: 45.78vh;
+  width: 16.37vh;
+  height: 13.63vh;
 `
 
 const MainTitle = styled.h1`
   position: absolute;
-  top: 37.5vh;
-  left: 47.12vh;
-  width: 100.06vh;
+  top: 36.08vh;
+  left: 45.29vh;
+  width: 96.1vh;
 
   color: #2E2E2E;
   font-feature-settings: 'liga' off;
   font-family: "Yatra One";
-  font-size: 4.28vh;
+  font-size: 4.1vh;
   font-style: normal;
   font-weight: 400;
-  line-height: 5.14vh; /* 50.4px */
+  line-height: 120%;
   letter-spacing: 0.38px;
 `
 
 const InfoTitle = styled.p`
   position: absolute;
-  top: 49.36vh;
-  left: 47.12vh;
+  left: 45.29vh;
+  top: 47.5vh;
 
   color: #2E2E2E;
   font-feature-settings: 'liga' off;
-
   font-family: "HK Grotesk";
-  font-size: 3.26vh;
+  font-size: 3.1vh;
   font-style: normal;
   font-weight: 600;
-  line-height: 3.26vh;
+  line-height: 3.1vh;
   letter-spacing: -0.26px;
 `
 
 const ApplyLabel = styled.p`
   position: absolute;
-  top: 56.71vh;
-  left: 47.12vh;
+  left: 45.29vh;
+  top: 54.51vh;
 
   color: #2E2E2E;
   font-feature-settings: 'liga' off;
   font-family: "HK Grotesk";
-  font-size: 3.26vh;
+  font-size: 3.1vh;
   font-style: normal;
   font-weight: 700;
-  line-height: 3.26vh;
+  line-height: 3.1vh;
   letter-spacing: -0.26px;
 `
 
 const ApplyButtonsContainer = styled.div`
   position: absolute;
-  top: 62.8vh;
-  left: 47.12vh;
+  left: 45.29vh;
+  top: 60.39vh;
 
   display: inline-flex;
   align-items: flex-end;
-  gap: 1.73vh;
+  gap: 1.67vh;
 `
 
 const HackerButton = styled.button`
   display: flex;
-  padding: 1.83vh 2.85vh;
+  padding: 1.76vh 2.75vh;
   justify-content: center;
   align-items: center;
-  gap: 0.51vh;
+  gap: 0.49vh;
   border: none;
-  border-radius: 1.19vh;
+  border-radius: 1.15vh;
   background: linear-gradient(90deg, #CC5A5A 15.65%, #DB7859 94.27%);
 
   color: #FFF;
   font-feature-settings: 'liga' off;
   font-family: "HK Grotesk";
-  font-size: 2.44vh;
+  font-size: 2.35vh;
   font-style: normal;
   font-weight: 700;
-  line-height: 2.65vh;
+  line-height: 2.55vh;
   letter-spacing: -0.45px;
 `
 
 const MentorButton = styled.button`
   display: flex;
-  padding: 1.83vh 3vh;
+  padding: 1.76vh 2.89vh;
   justify-content: center;
   align-items: center;
-  gap: 0.51vh;
+  gap: 0.49vh;
   border: none;
-  border-radius: 1.19vh;
+  border-radius: 1.15vh;
   background: linear-gradient(90deg, #E48D4D 16.91%, #E9B145 100%);
 
   color: #FFF;
   font-feature-settings: 'liga' off;
   font-family: "HK Grotesk";
-  font-size: 2.44vh;
+  font-size: 2.35vh;
   font-style: normal;
   font-weight: 700;
-  line-height: 2.65vh;
+  line-height: 2.55vh;
   letter-spacing: -0.45px;
 `
 
 const VolunteerButton = styled.button`
   display: flex;
-  padding: 1.83vh 2.14vh;
+  padding: 1.76vh 2.06vh;
   justify-content: center;
   align-items: center;
-  gap: 0.51vh;
+  gap: 0.49vh;
   border: none;
-  border-radius: 1.19vh;
+  border-radius: 1.15vh;
   background: linear-gradient(90deg, #49AAB3 9.37%, #67C2B7 100%);
 
   color: #FFF;
   font-feature-settings: 'liga' off;
   font-family: "HK Grotesk";
-  font-size: 2.44vh;
+  font-size: 2.35vh;
   font-style: normal;
   font-weight: 700;
-  line-height: 2.65vh;
+  line-height: 2.55vh;
   letter-spacing: -0.45px;
 `
 
