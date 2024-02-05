@@ -11,13 +11,14 @@ import FAQ from 'src/sections/FAQ'
 import Footer from 'src/sections/Footer'
 import Tracks from 'src/sections/Tracks'
 
-import NavigationBar from '../components/NavigationBar'
+import NavBar from 'src/components/NavBar'
 import Hero from '../sections/Hero'
 import Encouragement from '../sections/Encouragement'
 import styled from 'styled-components'
 
+import Team from 'src/components/Team'
+
 import BackgroundImage from '../../public/assets/background.svg'
-import MapImage from '../../public/assets/map.svg'
 
 const Background = styled.img`
   top: 0;
@@ -25,19 +26,6 @@ const Background = styled.img`
   position: absolute;
   user-select: none;
   height: 100%;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    display: none;
-  }
-`
-
-const Map = styled.img`
-  z-index: 0;
-  position: absolute;
-  left: 230vh;
-  top: 5vh;
-  user-select: none;
-  height: 90%;
 
   ${p => p.theme.mediaQueries.mobile} {
     display: none;
@@ -85,17 +73,19 @@ export default function Index({ title }) {
       {/* Components Starts */}
       {/* <Banner /> */}
       <Background src={BackgroundImage} />
-      <Map src={MapImage} />
       {/* <NavigationBar bannerExists={false}/> */}
+      <NavBar />
       <Hero />
       <Encouragement />
       <About />
+      <Values />
       <Tracks />
       <Statistics />
       {/* <Values />
       <FAQ />
       <Sponsors />
       <Footer /> */}
+    {/* <Team /> */}
       {/* Components Ends */}
     </div>
   )
