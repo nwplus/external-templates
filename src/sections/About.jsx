@@ -129,7 +129,7 @@ const About = () => {
   
   For more information on who is an underrepresented gender in technology, please email us at cmd-f@nwplus.io.`
 
-  return (<>
+  return (<div id="about">
     <Map src={MapImage}/>
     <Title>What is cmd-f?</Title>
     <Description style={{ whiteSpace: 'pre-line' }}>{descriptionText}</Description>
@@ -138,7 +138,7 @@ const About = () => {
     <MinutesLabel>20 MIN</MinutesLabel>
     <ApplicationsCloseInLabel>Applications close in:</ApplicationsCloseInLabel>
     <ApplicationsCloseFullLabel>Applications close Sunday, February 25 @ 11:59PM PST</ApplicationsCloseFullLabel>
-    </>)
+    </div>)
 }
 
 export default About

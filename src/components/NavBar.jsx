@@ -7,6 +7,7 @@ const NavBarContainer = styled.div`
   top: 2.45vh;
   left: 6vh;
   height: 4.9vh;
+  z-index: 1000;
 
   display: inline-flex;
   justify-content: center;
@@ -29,9 +30,11 @@ const NavBarLink = styled.a`
   line-height: normal;
 `
 
-const LivePortalButton = styled.button`
+const LivePortalButton = styled.a`
   position: fixed;
-  left: 121.76vh;
+  // left: 121.76vh;
+  right: 5vh;
+  z-index: 1000;
   top: 2.74vh;
   display: inline-flex;
   height: 4.31vh;
@@ -51,6 +54,7 @@ const LivePortalButton = styled.button`
   font-style: normal;
   font-weight: 600;
   line-height: 22px; /* 122.222% */
+  text-decoration: none;
 `
 
 const NavBar = () => {
@@ -58,12 +62,12 @@ const NavBar = () => {
     <>
       <NavBarContainer>
         <Logo src={nwPlusLogo} />
-        <NavBarLink>About</NavBarLink>
+        <NavBarLink href="#about">About</NavBarLink>
         <NavBarLink>Hackathons</NavBarLink>
         <NavBarLink>Resources</NavBarLink>
         <NavBarLink>FAQ</NavBarLink>
       </NavBarContainer>
-      <LivePortalButton>Live Portal</LivePortalButton>
+      <LivePortalButton href="https://portal.nwplus.io" target="_blank">Live Portal</LivePortalButton>
     </>
   )
 }
