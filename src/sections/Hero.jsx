@@ -71,7 +71,7 @@ const ApplyButtonsContainer = styled.div`
   gap: 1.67vh;
 `
 
-const HackerButton = styled.button`
+const HackerButton = styled.a`
   display: flex;
   padding: 1.76vh 2.75vh;
   justify-content: center;
@@ -89,9 +89,10 @@ const HackerButton = styled.button`
   font-weight: 700;
   line-height: 2.55vh;
   letter-spacing: -0.45px;
+  text-decoration: none;
 `
 
-const MentorButton = styled.button`
+const MentorButton = styled.a`
   display: flex;
   padding: 1.76vh 2.89vh;
   justify-content: center;
@@ -109,9 +110,10 @@ const MentorButton = styled.button`
   font-weight: 700;
   line-height: 2.55vh;
   letter-spacing: -0.45px;
+  text-decoration: none;
 `
 
-const VolunteerButton = styled.button`
+const VolunteerButton = styled.a`
   display: flex;
   padding: 1.76vh 2.06vh;
   justify-content: center;
@@ -129,6 +131,7 @@ const VolunteerButton = styled.button`
   font-weight: 700;
   line-height: 2.55vh;
   letter-spacing: -0.45px;
+  text-decoration: none;
 `
 
 const Hero = () => {
@@ -138,9 +141,9 @@ const Hero = () => {
     <InfoTitle>March 9-10, 2024 | In-person (location TBD)</InfoTitle>
     <ApplyLabel>Apply to be a:</ApplyLabel>
     <ApplyButtonsContainer>
-      <HackerButton>Hacker</HackerButton>
-      <MentorButton>Mentor</MentorButton>
-      <VolunteerButton>Volunteer</VolunteerButton>
+      <HackerButton href="https://nwplus.io" target="_blank">Hacker</HackerButton>
+      <MentorButton href="https://nwplus.io" target="_blank">Mentor</MentorButton>
+      <VolunteerButton href="https://nwplus.io" target="_blank">Volunteer</VolunteerButton>
     </ApplyButtonsContainer>
   </div>
 }
