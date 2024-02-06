@@ -1,5 +1,33 @@
 import styled from 'styled-components';
 
+import CommyIslandImage from 'public/assets/islands/commy_island.svg'
+import EduIslandImage from 'public/assets/islands/edu_island.svg'
+import HelthIslandImage from 'public/assets/islands/helth_island.svg'
+
+const CommunityTrackIsland = styled.img`
+  position: absolute;
+  left: 598.43vh;
+  top: 41.66vh;
+  width: 68.83vh;
+  height: 29.17vh;
+`
+
+const EducationTrackIsland = styled.img`
+  position: absolute;
+  left: 667.35vh;
+  top: 37.84vh;
+  width: 53.76vh;
+  height: 32.41vh;
+`
+
+const HealthTrackIsland = styled.img`
+  position: absolute;
+  left: 726.76vh;
+  top: 38.03vh;
+  width: 48.93vh;
+  height: 32.92vh;
+`
+
 const SectionTitle = styled.h2`
   position: absolute;
   left: 571.56vh;
@@ -79,8 +107,11 @@ const Tracks = () => (
     <>
       <SectionTitle>Tracks</SectionTitle>
       <ExplanationLabel>Hover over each island to learn more!</ExplanationLabel>
+      <CommunityTrackIsland src={CommyIslandImage}/>
       <CommunityTrackTitle>Community Building</CommunityTrackTitle>
+      <EducationTrackIsland src={EduIslandImage}/>
       <EducationTrackTitle>Education Equity</EducationTrackTitle>
+      <HealthTrackIsland src={HelthIslandImage}/>
       <HealthTrackTitle>HealthTech for All</HealthTrackTitle>
     </>
 );
