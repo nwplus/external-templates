@@ -8,6 +8,8 @@ import CommyCloudImage from 'public/assets/islands/commy_cloud.svg'
 import EduCloudImage from 'public/assets/islands/edu_cloud.svg'
 import HelthCloudImage from 'public/assets/islands/helth_cloud.svg'
 
+import MouseIconImage from 'public/assets/mouse_icon.svg'
+
 const IslandImage = styled.img`
   width: 100%;
   height: 100%;
@@ -269,10 +271,19 @@ const ExplanationLabel = styled.p`
   letter-spacing: -0.45px;
 `
 
+const MouseIcon = styled.img`
+  position: absolute;
+  left: 570.09vh;
+  top: 37.05vh;
+  width: 2.4vh;
+  height: 1.71vh;
+`
+
 const Tracks = () => (
     <>
       <SectionTitle>Tracks</SectionTitle>
       <ExplanationLabel>Hover over each island to learn more!</ExplanationLabel>
+      <MouseIcon src={MouseIconImage}/>
 
       {/* Community track */}
       <CommunityTrackIsland>
