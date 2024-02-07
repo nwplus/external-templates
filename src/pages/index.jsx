@@ -72,6 +72,8 @@ export default function Index({ title }) {
       setIsMobile(window.innerWidth < 768);
     };
 
+    handleResize();
+
     window.addEventListener('resize', handleResize);
     // Cleanup the event listener on component unmount
     return () => window.removeEventListener('resize', handleResize);
