@@ -30,6 +30,8 @@ const ValueCircle = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-top: 0.19vh;
+  padding-right: 0.05vh;
 `
 
 const ValueTitle = styled.p`
