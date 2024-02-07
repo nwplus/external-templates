@@ -49,6 +49,7 @@ const ValueDescription = styled.p`
   width: 36.72vh;
 
   color: #08373D;
+  font-family: "HK Grotesk Medium";
   font-size: 1.83vh;
   font-style: normal;
   font-weight: 500;

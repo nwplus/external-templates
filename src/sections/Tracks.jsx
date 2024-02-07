@@ -126,7 +126,7 @@ const CommunityTrackCloudDescription = styled.p`
   margin-top: 0.2vh;
 
   color: #0A323B;
-  font-family: "HK Grotesk";
+  font-family: "HK Grotesk Medium";
   font-size: 1.76vh;
   font-style: normal;
   font-weight: 500;
@@ -157,7 +157,7 @@ const EducationTrackCloudDescription = styled.p`
   margin-top: 0.2vh;
 
   color: #0A323B;
-  font-family: "HK Grotesk";
+  font-family: "HK Grotesk Medium";
   font-size: 1.76vh;
   font-style: normal;
   font-weight: 500;
@@ -188,7 +188,7 @@ const HealthTrackCloudDescription = styled.p`
   margin-top: 0.2vh;
 
   color: #0A323B;
-  font-family: "HK Grotesk";
+  font-family: "HK Grotesk Medium";
   font-size: 1.76vh;
   font-style: normal;
   font-weight: 500;

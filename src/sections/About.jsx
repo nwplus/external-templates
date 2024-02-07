@@ -33,7 +33,7 @@ const Description = styled.p`
   width: 58.13vh;
 
   color: #08363C;
-  font-family: "HK Grotesk";
+  font-family: "HK Grotesk Medium";
   font-size: 1.96vh;
   font-style: normal;
   font-weight: 500;
