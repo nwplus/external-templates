@@ -137,7 +137,7 @@ const VolunteerButton = styled.a`
 const Hero = () => (<div id="hero">
     <Logo src={CmdFLogoImage}/>
     <MainTitle>Western Canada&apos;s largest hackathon <span style={{ color: '#B23C3C' }}>celebrating underrepresented genders in tech</span></MainTitle>
-    <InfoTitle>March 9-10, 2024 | In-person (location TBD)</InfoTitle>
+    <InfoTitle>March 9-10, 2024 | In-person @ UBC SLC</InfoTitle>
     <ApplyLabel>Apply to be a:</ApplyLabel>
     <ApplyButtonsContainer>
       <HackerButton href="https://nwplus.io" target="_blank">Hacker</HackerButton>
