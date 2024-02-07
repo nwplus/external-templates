@@ -149,17 +149,11 @@ const useCountdown = targetDate => {
 const About = () => {
   const countDownDate = new Date('Feb 23, 2024 23:59:59').getTime()
   const countdown = useCountdown(countDownDate)
-  
-  const descriptionText = `cmd-f is a 24-hour hackathon focused on addressing gender inequality in technology. Our main purpose is to create a safe and dedicated space for historically excluded genders to hack together. We’re trying to create access for people who have faced systemic barriers to inclusion on the basis of gender. We encourage participation from women, and any trans, non-binary, Two-Spirit and gender diverse people. Thus, cmd-f is only open to individuals who identify as a member of an underrepresented gender in technology.
-
-  We’re aware that gender is not the only inequality in technology. We appreciate allyship and recognize it is important in the community. We invite allies to show their support by not hacking and instead contributing in other forms, such as volunteering or mentoring. Please make sure your participation in this event is aligned with the intentions of the event. We also ask all participants who attend to trust that everyone attending is meant to be here.
-  
-  For more information on who is an underrepresented gender in technology, please email us at cmd-f@nwplus.io.`
 
   return (<div>
     <Map src={MapImage}/>
     <Title>What is cmd-f?</Title>
-    <Description style={{ whiteSpace: 'pre-line' }}>{descriptionText}</Description>
+    <Description style={{ whiteSpace: 'pre-line' }}>cmd-f is a <span style={{fontWeight: "700"}}>24-hour hackathon</span> focused on addressing gender inequality in technology. Our main purpose is to create a safe and dedicated space for historically excluded genders to hack together. We’re trying to create access for people who have faced systemic barriers to inclusion on the basis of gender. We encourage participation from women, and any trans, non-binary, Two-Spirit and gender diverse people. <span style={{fontWeight: "700"}}>Thus, cmd-f is only open to individuals who identify as a member of an underrepresented gender in technology.</span><br/><br/>We’re aware that gender is not the only inequality in technology. We appreciate allyship and recognize it is important in the community. <span style={{fontWeight: "700"}}>We invite allies to show their support by not hacking and instead contributing in other forms, such as volunteering or mentoring.</span> Please make sure your participation in this event is aligned with the intentions of the event. We also ask all participants who attend to trust that everyone attending is meant to be here.<br/><br/><span style={{fontWeight: "700"}}>For more information on who is an underrepresented gender in technology, please email us at cmd-f@nwplus.io.</span></Description>
     <DaysLabel>{countdown[0]} DAYS</DaysLabel>
     <HoursLabel>{countdown[1]} HOURS</HoursLabel>
     <MinutesLabel>{countdown[2]} MIN</MinutesLabel>
