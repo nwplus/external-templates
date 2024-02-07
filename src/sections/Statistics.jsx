@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { useEffect } from 'react';
 
 const MainTitle = styled.h3`
   position: absolute;
@@ -37,13 +38,65 @@ const SubTitle = styled.p`
 `;
 
 const Statistics = () => {
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const stats = window.document.querySelector('.stats')
+      const renderCountAnimation = () => {
+        const valueDisplays = window.document.querySelectorAll('.num')
+        const interval = 2000
+
+        valueDisplays.forEach((valueDisplay) => {
+          const endValue = parseInt(valueDisplay.getAttribute('data-val'), 10)
+          const id = valueDisplay.getAttribute('id')
+          let startValue = 0
+          const duration = Math.floor(interval / endValue)
+          let progress = 0;
+
+          const counter = setInterval(() => {
+            progress += duration / interval;
+            startValue = endValue * (1 - ((1 - progress) ** 5)); // cubic ease-out
+            if (progress >= 1) progress = 1;
+            let unitsLabel = "";
+            switch (id) {
+              case "hackers_count":
+                unitsLabel = "hackers";
+                break;
+              case "projects_count":
+                unitsLabel = "projects";
+                break;
+              case "mentors_count":
+                unitsLabel = "mentors";
+                break;
+              default:
+                unitsLabel = "units";
+                break;
+            }
+            valueDisplay.textContent = `${Math.round(startValue)} ${unitsLabel}`;
+            if (startValue >= endValue) {
+              // ensure setting to end value
+              valueDisplay.textContent = `${endValue} ${unitsLabel}`;
+              clearInterval(counter);
+            }
+          }, duration);
+        });
+      };
+
+      const observer = new window.IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+          renderCountAnimation();
+        }
+      });
+      observer.observe(stats);
+    }
+  });
+
   return (
     <>
         <MainTitle>Last year we had...</MainTitle>
-        <StatsContainer>
-          <SubTitle>189 hackers</SubTitle>
-          <SubTitle style={{ marginTop: '2.05vh' }}>44 projects</SubTitle>
-          <SubTitle style={{ marginTop: '1.37vh' }}>43 mentors</SubTitle>
+        <StatsContainer className='stats'>
+          <SubTitle className='num' data-val="189" id="hackers_count">0 hackers</SubTitle>
+          <SubTitle className='num' data-val="44" style={{ marginTop: '2.05vh' }} id="projects_count">0 projects</SubTitle>
+          <SubTitle className='num' data-val="43" style={{ marginTop: '1.37vh' }} id="mentors_count">0 mentors</SubTitle>
         </StatsContainer>
     </>
   )
