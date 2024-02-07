@@ -38,7 +38,6 @@ const NavBarLink = styled.a`
 
 const LivePortalButton = styled.a`
   position: fixed;
-  // left: 121.76vh;
   right: 5vh;
   z-index: 1000;
   top: 2.74vh;
@@ -56,7 +55,7 @@ const LivePortalButton = styled.a`
   color: #F3F5F4;
   font-feature-settings: 'liga' off;
   font-family: "HK Grotesk";
-  font-size: 18px;
+  font-size: 1.76vh;
   font-style: normal;
   font-weight: 600;
   line-height: 22px; /* 122.222% */
