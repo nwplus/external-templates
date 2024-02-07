@@ -88,7 +88,6 @@ export default function Index({ title }) {
       </Head>
 
       {/* Components Starts */}
-      {/* <Banner /> */}
       <Background src={BackgroundImage} />
       <NavBar isLight={isNavBarLight} />
       <Hero />
@@ -98,11 +97,8 @@ export default function Index({ title }) {
       <Tracks/>
       <Statistics />
       <FAQ/>
-      {/* <Values />
-      <FAQ />
-      <Sponsors />
-      <Footer /> */}
       <Sponsors/>
+      <Footer />
       <Team />
       {/* Components Ends */}
     </div>

@@ -11,8 +11,41 @@ import {
 } from '@fortawesome/free-brands-svg-icons'
 import Team from '@components/Team'
 
+const Title = styled.p`
+  position: absolute;
+  left: 1463.13vh;
+  top: 12.35vh;
+
+  color: #FFF;
+  text-align: center;
+  font-family: "Yatra One";
+  font-size: 5.49vh;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 100%;
+  letter-spacing: 0.4px;
+`
+
+const MeetMindsLabel = styled.p`
+  position: absolute;
+  left: 1468.33vh;
+  top: 74.01vh;
+
+  color: #F6FEFF;
+  font-feature-settings: 'liga' off;
+  font-family: "Yatra One";
+  font-size: 4.11vh;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+  letter-spacing: 0.38px;
+`
+
 const FooterContainer = styled.div`
-  position: relative;
+  position: absolute;
+  left: 1300vh;
+  top: 20vh;
+
   background: url('/assets/footer/desktop_background.svg'), linear-gradient(to bottom, #645F70, #545364);
   min-height: calc(calc(2037 / 1436) * 100vw);
   background-repeat: no-repeat;
@@ -48,7 +81,9 @@ const SocialMediaIcons = styled.div`
 const Links = styled.div`
   display: flex;
   gap: 2rem;
-  font-size: 1.5rem;
+  font-size: 2.35vh;
+  justify-content: center;
+  width: 100vh;
   a {
     font-weight: 600;
     color: white;
@@ -75,18 +110,17 @@ const TextContainer = styled.div`
 `
 
 const SmallText = styled.div`
+  position: absolute;
+  left: 1471.17vh;
+  top: 89vh;
+
   user-select: none;
   padding-top: 2.5rem;
   text-align: center;
   div {
     color: white;
-    font-size: 1.2rem;
+    font-size: 1.88vh;
     font-weight: 500;
-  }
-  ${p => p.theme.mediaQueries.mobile} {
-    div {
-      font-size: 1rem;
-    }
   }
 `
 
@@ -107,12 +141,13 @@ const TeamContainer = styled.div`
 `
 
 const StaticContainer = styled.div`
+  position: absolute;
+  left: 1428vh;
+  top: 21vh;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  position: absolute;
-  width: 100%;
-  top: 6rem;
 
   ${p => p.theme.mediaQueries.mobile} {
     top: 3.5rem;
@@ -153,21 +188,20 @@ const SocialMediaContainer = () => (
           Code of Conduct
         </a>
       </Links>
-      <SmallText>
-        <div>Organized and held by nwPlus</div>
-        <div>Copyright &copy; cmd-f 2024</div>
-      </SmallText>
     </TextContainer>
   </StaticContainer>
 )
 
-const Footer = () => (
-  <FooterContainer>
+const Footer = () => {
+  return (<>
+    <Title>Contact us!</Title>
     <SocialMediaContainer />
-    <TeamContainer>
-      <Team />
-    </TeamContainer>
-  </FooterContainer>
-)
+    <SmallText>
+      <div>Organized and held by nwPlus</div>
+      <div>Copyright &copy; cmd-f 2024</div>
+    </SmallText>
+    <MeetMindsLabel>Meet the minds behind cmd-f</MeetMindsLabel>
+  </>)
+}
 
 export default Footer
