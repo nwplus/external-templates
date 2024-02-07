@@ -21,6 +21,24 @@ import MobileBackgroundImage from '../../public/assets/mobile_background.svg'
 
 import HeroSlide from 'src/mobile_slides/HeroSlide'
 import EncouragementSlide from 'src/mobile_slides/EncouragementSlide'
+import AboutSlide from 'src/mobile_slides/AboutSlide'
+import ConfidenceSlide from 'src/mobile_slides/ConfidenceSlide'
+import CommunitySlide from 'src/mobile_slides/CommunitySlide'
+import EducationSlide from 'src/mobile_slides/EducationSlide'
+import HealthSlide from 'src/mobile_slides/HealthSlide'
+import SponsoredBySlide from 'src/mobile_slides/SponsoredBySlide'
+import BigSponsorsSlide from 'src/mobile_slides/BigSponsorsSlide'
+import SmallSponsorsSlide from 'src/mobile_slides/SmallSponsorsSlide'
+import ContactSlide from 'src/mobile_slides/ContactSlide'
+import LastSlide from 'src/mobile_slides/LastSlide'
+import GeneralFaqSlide from 'src/mobile_slides/GeneralFaqSlide'
+import TeamsFaqSlide from 'src/mobile_slides/TeamsFaqSlide'
+import LastYearSlide from 'src/mobile_slides/LastYearSlide'
+import StatisticsSlide from 'src/mobile_slides/StatisticsSlide'
+import Slide from 'src/mobile_slides/Slide'
+import MapSlide from 'src/mobile_slides/MapSlide'
+import ExploreSlide from 'src/mobile_slides/ExploreSlide'
+import LearnSlide from 'src/mobile_slides/LearnSlide'
 
 const Background = styled.img`
   top: 0;
@@ -114,7 +132,23 @@ export default function Index({ title }) {
           <MobileBackground src={MobileBackgroundImage} />
           <HeroSlide />
           <EncouragementSlide />
-          <EncouragementSlide />
+          <AboutSlide />
+          <MapSlide />
+          <ConfidenceSlide />
+          <LearnSlide />
+          <ExploreSlide />
+          <CommunitySlide />
+          <EducationSlide />
+          <HealthSlide />
+          <LastYearSlide />
+          <StatisticsSlide />
+          <GeneralFaqSlide />
+          <TeamsFaqSlide />
+          <SponsoredBySlide />
+          <BigSponsorsSlide />
+          <SmallSponsorsSlide />
+          <ContactSlide />
+          <LastSlide />
         </div>
       ) : (
         <div className="root-container" id="horizontal-scroll-container">
