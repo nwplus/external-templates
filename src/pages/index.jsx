@@ -17,6 +17,7 @@ import Hero from '../sections/Hero'
 import Encouragement from '../sections/Encouragement'
 
 import BackgroundImage from '../../public/assets/background.svg'
+import MobileBackgroundImage from '../../public/assets/mobile_background.svg'
 
 const Background = styled.img`
   top: 0;
@@ -30,60 +31,98 @@ const Background = styled.img`
   }
 `
 
+const MobileBackground = styled.img`
+  position: absolute;
+  top: 0;
+  z-index: 0;
+  user-select: none;
+  height: 100%;
+`
+
+const Slide = styled.section`
+  left: 0;
+  top: 0;
+  width: 100vw;
+  min-width: 100vw;
+  height: 100vh;
+  background-color: clear;
+  scroll-snap-align: center;  
+`
+
 export default function Index({ title }) {
   const [isNavBarLight, setIsNavBarLight] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollOffset = window.scrollX || document.documentElement.scrollX
-      // const horizontalScrollContainer = document.getElementById('horizontal-scroll-container');
-      // const scrollLeftTracker = document.getElementById('scroll-left-tracker');
-      // console.log('offfset left property:', horizontalScrollContainer.scrollLeft);
-      // const toLeft = event.deltaY < 0 && horizontalScrollContainer.scrollLeft > 0;
-      // const toRight = event.deltaY > 0 && horizontalScrollContainer.scrollLeft < horizontalScrollContainer.scrollWidth - window.innerWidth;
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     const scrollOffset = window.scrollX || document.documentElement.scrollX
+  //     // const horizontalScrollContainer = document.getElementById('horizontal-scroll-container');
+  //     // const scrollLeftTracker = document.getElementById('scroll-left-tracker');
+  //     // console.log('offfset left property:', horizontalScrollContainer.scrollLeft);
+  //     // const toLeft = event.deltaY < 0 && horizontalScrollContainer.scrollLeft > 0;
+  //     // const toRight = event.deltaY > 0 && horizontalScrollContainer.scrollLeft < horizontalScrollContainer.scrollWidth - window.innerWidth;
 
-      // if (toLeft || toRight) {
-      //     event.preventDefault();
-      //     horizontalScrollContainer.scrollLeft += event.deltaY;
-      // }
+  //     // if (toLeft || toRight) {
+  //     //     event.preventDefault();
+  //     //     horizontalScrollContainer.scrollLeft += event.deltaY;
+  //     // }
 
-      // event.preventDefault();
-      // const horizontalScrollContainer = document.getElementById('horizontal-scroll-container');
+  //     // event.preventDefault();
+  //     // const horizontalScrollContainer = document.getElementById('horizontal-scroll-container');
       
-      // horizontalScrollContainer.scrollLeft += event.deltaY;
+  //     // horizontalScrollContainer.scrollLeft += event.deltaY;
 
-      if (scrollOffset > 7.65 * window.innerHeight) {
-        setIsNavBarLight(true);
-      } else {
-        setIsNavBarLight(false);
-      }
-    };
+  //     if (scrollOffset > 7.65 * window.innerHeight) {
+  //       setIsNavBarLight(true);
+  //     } else {
+  //       setIsNavBarLight(false);
+  //     }
+  //   };
 
-    window.addEventListener('wheel', handleScroll);
+  //   window.addEventListener('wheel', handleScroll);
 
-    return () => {
-        window.removeEventListener('wheel', handleScroll);
-    };
-  }, []);
+  //   return () => {
+  //       window.removeEventListener('wheel', handleScroll);
+  //   };
+  // }, []);
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
+  // useEffect(() => {
+  //   const handleResize = () => {
+  //     setIsMobile(window.innerWidth < 768);
+  //   };
 
-    handleResize();
+  //   handleResize();
 
-    window.addEventListener('resize', handleResize);
-    // Cleanup the event listener on component unmount
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  //   window.addEventListener('resize', handleResize);
+  //   // Cleanup the event listener on component unmount
+  //   return () => window.removeEventListener('resize', handleResize);
+  // }, []);
+
+  const isMobileFixed = true;
 
   return (
     <div>
-      {isMobile ? (
-        <div>
-          <h1>Mobile is not supported</h1>
+      {isMobileFixed ? (
+        <div className="mobile-root-container">
+          <MobileBackground src={MobileBackgroundImage} />
+          <Slide className="mobile_slide" color="red" />
+          <Slide className="mobile_slide" color="green" />
+          <Slide className="mobile_slide" color="blue" />
+          <Slide className="mobile_slide" color="red" />
+          <Slide className="mobile_slide" color="green" />
+          <Slide className="mobile_slide" color="blue" />
+          <Slide className="mobile_slide" color="red" />
+          <Slide className="mobile_slide" color="green" />
+          <Slide className="mobile_slide" color="blue" />
+          <Slide className="mobile_slide" color="red" />
+          <Slide className="mobile_slide" color="green" />
+          <Slide className="mobile_slide" color="blue" />
+          <Slide className="mobile_slide" color="red" />
+          <Slide className="mobile_slide" color="green" />
+          <Slide className="mobile_slide" color="blue" />
+          <Slide className="mobile_slide" color="red" />
+          <Slide className="mobile_slide" color="green" />
+          <Slide className="mobile_slide" color="blue" />
         </div>
       ) : (
         <div className="root-container" id="horizontal-scroll-container">

@@ -16,6 +16,9 @@ export const GlobalStyles = createGlobalStyle`
   body {
     position: relative;
     min-width: 1562.3vh; // probably temporary
+    @media (max-width: 768px) {
+      min-width: 876.29vh;
+    }
   }
 
   .root-container {
@@ -25,6 +28,20 @@ export const GlobalStyles = createGlobalStyle`
     overflow-x: scroll;
     overflow-y: hidden;
     scroll-snap-type: x mandatory;
+  }
+
+  .mobile-root-container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 876.29vh;
+    width: 100vw;
+    height: 100vh;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scroll-snap-points-x: repeat(100vw);
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: none;
   }
   
   :root {
