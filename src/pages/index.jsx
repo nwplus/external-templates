@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { React, useEffect } from 'react'
+import { React, useEffect, useState } from 'react'
 import GlobalStyles from '@styles/global'
 import Banner from '@components/Banner'
 
@@ -18,6 +18,8 @@ import styled from 'styled-components'
 
 import Team from 'src/components/Team'
 
+import SponsorSection from 'src/components/SponsorSection'
+
 import BackgroundImage from '../../public/assets/background.svg'
 
 const Background = styled.img`
@@ -33,17 +35,32 @@ const Background = styled.img`
 `
 
 export default function Index({ title }) {
+  const [isNavBarLight, setIsNavBarLight] = useState(false);
 
   useEffect(() => {
     const handleScroll = (event) => {
-        const horizontalScrollContainer = document.getElementById('horizontal-scroll-container');
-        const toLeft = event.deltaY < 0 && horizontalScrollContainer.scrollLeft > 0;
-        const toRight = event.deltaY > 0 && horizontalScrollContainer.scrollLeft < horizontalScrollContainer.scrollWidth - window.innerWidth;
+      const scrollOffset = window.scrollX || document.documentElement.scrollX
+      // const horizontalScrollContainer = document.getElementById('horizontal-scroll-container');
+      // const scrollLeftTracker = document.getElementById('scroll-left-tracker');
+      // console.log('offfset left property:', horizontalScrollContainer.scrollLeft);
+      // const toLeft = event.deltaY < 0 && horizontalScrollContainer.scrollLeft > 0;
+      // const toRight = event.deltaY > 0 && horizontalScrollContainer.scrollLeft < horizontalScrollContainer.scrollWidth - window.innerWidth;
 
-        if (toLeft || toRight) {
-            event.preventDefault();
-            horizontalScrollContainer.scrollLeft += event.deltaY;
-        }
+      // if (toLeft || toRight) {
+      //     event.preventDefault();
+      //     horizontalScrollContainer.scrollLeft += event.deltaY;
+      // }
+
+      // event.preventDefault();
+      // const horizontalScrollContainer = document.getElementById('horizontal-scroll-container');
+      
+      // horizontalScrollContainer.scrollLeft += event.deltaY;
+
+      if (scrollOffset > 7.65 * window.innerHeight) {
+        setIsNavBarLight(true);
+      } else {
+        setIsNavBarLight(false);
+      }
     };
 
     window.addEventListener('wheel', handleScroll);
@@ -73,19 +90,20 @@ export default function Index({ title }) {
       {/* Components Starts */}
       {/* <Banner /> */}
       <Background src={BackgroundImage} />
-      {/* <NavigationBar bannerExists={false}/> */}
-      <NavBar />
+      <NavBar isLight={isNavBarLight} />
       <Hero />
       <Encouragement />
-      <About />
+      <About/>
       <Values />
-      <Tracks />
+      <Tracks/>
       <Statistics />
+      <FAQ/>
       {/* <Values />
       <FAQ />
       <Sponsors />
       <Footer /> */}
-    {/* <Team /> */}
+      <Sponsors/>
+      <Team />
       {/* Components Ends */}
     </div>
   )

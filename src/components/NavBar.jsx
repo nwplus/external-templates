@@ -1,6 +1,7 @@
 import styled from "styled-components"
 
 import nwPlusLogo from "../../public/assets/nwplus_logo.svg"
+import nwPlusLogoLight from "../../public/assets/nwplus_logo_light.svg"
 
 const NavBarContainer = styled.div`
   position: fixed;
@@ -19,7 +20,7 @@ const Logo = styled.img`
 `
 
 const NavBarLink = styled.a`
-  color: #264B65;
+  color: ${props => props.isLight ? "#fff" : "#264B65"};
   text-align: center;
   font-feature-settings: 'liga' off;
 
@@ -28,6 +29,11 @@ const NavBarLink = styled.a`
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+  text-decoration: none;
+
+  &:visited {
+    color: ${props => props.isLight ? "#fff" : "#264B65"};
+  }
 `
 
 const LivePortalButton = styled.a`
@@ -57,15 +63,15 @@ const LivePortalButton = styled.a`
   text-decoration: none;
 `
 
-const NavBar = () => {
+const NavBar = ({ isLight }) => {
   return (
     <>
       <NavBarContainer>
-        <Logo src={nwPlusLogo} />
-        <NavBarLink href="#about">About</NavBarLink>
-        <NavBarLink>Hackathons</NavBarLink>
-        <NavBarLink>Resources</NavBarLink>
-        <NavBarLink>FAQ</NavBarLink>
+        <Logo src={isLight ? nwPlusLogoLight : nwPlusLogo} />
+        <NavBarLink href="#about" isLight={isLight}>About</NavBarLink>
+        <NavBarLink href="#tracks" isLight={isLight}>Tracks</NavBarLink>
+        <NavBarLink href="#faq" isLight={isLight}>FAQ</NavBarLink>
+        <NavBarLink href="#sponsors" isLight={isLight}>Sponsors</NavBarLink>
       </NavBarContainer>
       <LivePortalButton href="https://portal.nwplus.io" target="_blank">Live Portal</LivePortalButton>
     </>
