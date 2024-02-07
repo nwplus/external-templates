@@ -20,6 +20,7 @@ import BackgroundImage from '../../public/assets/background.svg'
 import MobileBackgroundImage from '../../public/assets/mobile_background.svg'
 
 import HeroSlide from 'src/mobile_slides/HeroSlide'
+import EncouragementSlide from 'src/mobile_slides/EncouragementSlide'
 
 const Background = styled.img`
   top: 0;
@@ -112,8 +113,8 @@ export default function Index({ title }) {
         <div className="mobile-root-container">
           <MobileBackground src={MobileBackgroundImage} />
           <HeroSlide />
-          <HeroSlide />
-          <HeroSlide />
+          <EncouragementSlide />
+          <EncouragementSlide />
         </div>
       ) : (
         <div className="root-container" id="horizontal-scroll-container">

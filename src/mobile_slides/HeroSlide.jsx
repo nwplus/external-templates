@@ -1,21 +1,7 @@
 import styled from "styled-components";
+import Slide from "./Slide";
 
 import CmdFLogoImage from '../../public/assets/cmd-f-logo.svg'
-
-const Slide = styled.section`
-  position: relative;
-  left: 0;
-  top: 0;
-  width: 100vw;
-  min-width: 100vw;
-  height: 100vh;
-  background-color: clear;
-  scroll-snap-align: center;
-  
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`
 
 const Logo = styled.img`
   margin-top: 100px;
@@ -140,7 +126,7 @@ const VolunteerButton = styled.a`
 
 
 const HeroSlide = () => (
-    <Slide>
+    <Slide alignItems="center">
       <Logo src={CmdFLogoImage}/>
       <Title>Western Canada&apos;s largest hackathon <span style={{ color: '#B23C3C' }}>celebrating underrepresented genders in tech</span></Title>
       <InfoLabel>March 9-10, 2024 In-person @ UBC</InfoLabel>
