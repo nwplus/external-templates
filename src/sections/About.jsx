@@ -1,4 +1,4 @@
-import React from 'react'
+import { React, useEffect, useState } from 'react'
 import styled, { keyframes } from 'styled-components'
 
 import AboutBackgroundDesktop from '../../public/images/backgrounds/About.svg'
@@ -120,9 +120,40 @@ const ApplicationsCloseFullLabel = styled.p`
   letter-spacing: -0.1px;
 `
 
+const getReturnValues = countDown => {
+  // calculate time left
+  const days = Math.floor(countDown / (1000 * 60 * 60 * 24))
+  const hours = Math.floor((countDown % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+  const minutes = Math.floor((countDown % (1000 * 60 * 60)) / (1000 * 60))
+  const seconds = Math.floor((countDown % (1000 * 60)) / 1000)
+
+  if (days < 0 || hours < 0 || seconds < 0) {
+    return [0, 0, 0, 0]
+  }
+
+  return [days, hours, minutes, seconds]
+}
+
+const useCountdown = targetDate => {
+  const countDownDate = new Date(targetDate).getTime()
+
+  const [countDown, setCountDown] = useState(countDownDate - new Date().getTime())
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCountDown(countDownDate - new Date().getTime())
+    }, 5000)
+
+    return () => clearInterval(interval)
+  }, [countDownDate])
+
+  return getReturnValues(countDown)
+}
 
 const About = () => {
-
+  const countDownDate = new Date('Feb 23, 2024 23:59:59').getTime()
+  const countdown = useCountdown(countDownDate)
+  
   const descriptionText = `cmd-f is a 24-hour hackathon focused on addressing gender inequality in technology. Our main purpose is to create a safe and dedicated space for historically excluded genders to hack together. We’re trying to create access for people who have faced systemic barriers to inclusion on the basis of gender. We encourage participation from women, and any trans, non-binary, Two-Spirit and gender diverse people. Thus, cmd-f is only open to individuals who identify as a member of an underrepresented gender in technology.
 
   We’re aware that gender is not the only inequality in technology. We appreciate allyship and recognize it is important in the community. We invite allies to show their support by not hacking and instead contributing in other forms, such as volunteering or mentoring. Please make sure your participation in this event is aligned with the intentions of the event. We also ask all participants who attend to trust that everyone attending is meant to be here.
@@ -133,11 +164,11 @@ const About = () => {
     <Map src={MapImage}/>
     <Title>What is cmd-f?</Title>
     <Description style={{ whiteSpace: 'pre-line' }}>{descriptionText}</Description>
-    <DaysLabel>30 DAYS</DaysLabel>
-    <HoursLabel>10 HOURS</HoursLabel>
-    <MinutesLabel>20 MIN</MinutesLabel>
+    <DaysLabel>{countdown[0]} DAYS</DaysLabel>
+    <HoursLabel>{countdown[1]} HOURS</HoursLabel>
+    <MinutesLabel>{countdown[2]} MIN</MinutesLabel>
     <ApplicationsCloseInLabel>Applications close in:</ApplicationsCloseInLabel>
-    <ApplicationsCloseFullLabel>Applications close Sunday, February 25 @ 11:59PM PST</ApplicationsCloseFullLabel>
+    <ApplicationsCloseFullLabel>Applications close Friday, February 23 @ 11:59PM PST</ApplicationsCloseFullLabel>
     </div>)
 }
 
