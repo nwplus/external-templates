@@ -2,6 +2,8 @@ import Head from 'next/head'
 import { React, useEffect, useState } from 'react'
 import GlobalStyles from '@styles/global'
 
+import styled from 'styled-components'
+
 import Sponsors from 'src/sections/Sponsors'
 import About from 'src/sections/About'
 import Values from 'src/sections/Values'
@@ -13,7 +15,6 @@ import Tracks from 'src/sections/Tracks'
 import NavBar from 'src/components/NavBar'
 import Hero from '../sections/Hero'
 import Encouragement from '../sections/Encouragement'
-import styled from 'styled-components'
 
 import BackgroundImage from '../../public/assets/background.svg'
 
