@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import fireDb from '@utilities/firebase'
 import FaqBox from '@components/FaqBox'
 import { Header3 } from '@components/Typography'
+import Anchor from '@components/Anchor'
 
 const Title = styled.p`
   position: absolute;
@@ -151,9 +152,10 @@ const Faq = () => {
 
   return (
     <>
+      <Anchor id="faq" x="1000" />
       <Title>FAQ</Title>
       <FaqContainer>
-        <Wrapper id="faq">
+        <Wrapper>
           {faqData ? (
             <FaqGrid>
               <FaqColumn>

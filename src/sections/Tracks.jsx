@@ -281,7 +281,7 @@ const MouseIcon = styled.img`
 
 const Tracks = () => (
     <>
-      <SectionTitle>Tracks</SectionTitle>
+      <SectionTitle id="tracks">Tracks</SectionTitle>
       <ExplanationLabel>Hover over each island to learn more!</ExplanationLabel>
       <MouseIcon src={MouseIconImage}/>
 

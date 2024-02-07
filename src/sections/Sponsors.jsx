@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { useEffect, useState } from 'react'
 import fireDb from '@utilities/firebase';
+import Anchor from '@components/Anchor';
 
 const Title = styled.p`
   position: absolute;
@@ -81,6 +82,7 @@ const Sponsors = () => {
 
   return (
     <>
+      <Anchor id="sponsors" x="1300"/>
       <Title>Sponsors</Title>
       <SponsorTiers>
         <SponsorsRowComponent tier='silver' />
