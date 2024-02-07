@@ -5,6 +5,10 @@ import Button from '@components/Button';
 import fireDb from '@utilities/firebase';
 
 const Container = styled.div`
+  position: absolute;
+  top: 5vh;
+  left: 10vh;
+
   display: flex;
   flex-direction: column;
   align-items: center;

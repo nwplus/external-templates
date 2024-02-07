@@ -160,7 +160,7 @@ const About = () => {
   
   For more information on who is an underrepresented gender in technology, please email us at cmd-f@nwplus.io.`
 
-  return (<div id="about">
+  return (<div>
     <Map src={MapImage}/>
     <Title>What is cmd-f?</Title>
     <Description style={{ whiteSpace: 'pre-line' }}>{descriptionText}</Description>
