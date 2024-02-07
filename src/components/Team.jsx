@@ -336,33 +336,33 @@ const profiles = [
   },
 ]
 
-const StyledTitle = styled(Header3)`
-  color: white;
-  position: absolute;
-  z-index: 101;
-  width: 100vw;
-  text-align: center;
-  ${p => p.theme.mediaQueries.mobile} {
-    font-size: 1.1rem;
-  }
-`
+// const StyledTitle = styled(Header3)`
+//   color: white;
+//   position: absolute;
+//   z-index: 101;
+//   width: 100vw;
+//   text-align: center;
+//   ${p => p.theme.mediaQueries.mobile} {
+//     font-size: 1.1rem;
+//   }
+// `
 
-const ProfileContent = styled.p`
-  color: white;
-  padding-top: 3rem;
-  span {
-    margin-right: 8px;
-  }
-  height: 1em;
-  b {
-    margin-right: 8px;
-  }
+// const ProfileContent = styled.p`
+//   color: white;
+//   padding-top: 3rem;
+//   span {
+//     margin-right: 8px;
+//   }
+//   height: 1em;
+//   b {
+//     margin-right: 8px;
+//   }
 
-  ${p => p.theme.mediaQueries.mobile} {
-    font-size: 1rem;
-    padding: 0.35rem 0 0.5rem 0;
-  }
-`
+//   ${p => p.theme.mediaQueries.mobile} {
+//     font-size: 1rem;
+//     padding: 0.35rem 0 0.5rem 0;
+//   }
+// `
 
 const ProfileList = styled.div`
   padding-top: 3rem;
@@ -400,7 +400,7 @@ const MAX_SPEED = 2
 
 export default function Team() {
   const [animator, setAnimator] = useState()
-  const [selectedProfile, setSelectedProfile] = useState(null)
+  // const [selectedProfile, setSelectedProfile] = useState(null)
   const [accel, setAccel] = useState(1)
   const requestRef = useRef()
 

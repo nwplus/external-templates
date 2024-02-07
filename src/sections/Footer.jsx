@@ -41,21 +41,21 @@ const MeetMindsLabel = styled.p`
   letter-spacing: 0.38px;
 `
 
-const FooterContainer = styled.div`
-  position: absolute;
-  left: 1300vh;
-  top: 20vh;
+// const FooterContainer = styled.div`
+//   position: absolute;
+//   left: 1300vh;
+//   top: 20vh;
 
-  background: url('/assets/footer/desktop_background.svg'), linear-gradient(to bottom, #645F70, #545364);
-  min-height: calc(calc(2037 / 1436) * 100vw);
-  background-repeat: no-repeat;
-  background-size: cover;
+//   background: url('/assets/footer/desktop_background.svg'), linear-gradient(to bottom, #645F70, #545364);
+//   min-height: calc(calc(2037 / 1436) * 100vw);
+//   background-repeat: no-repeat;
+//   background-size: cover;
 
-  ${p => p.theme.mediaQueries.mobile} {
-    background: url('/assets/footer/mobile_background.svg'), linear-gradient(to bottom, #645F70, #545364);
-    min-height: calc(calc(1419 / 428) * 100vw);
-  }
-`
+//   ${p => p.theme.mediaQueries.mobile} {
+//     background: url('/assets/footer/mobile_background.svg'), linear-gradient(to bottom, #645F70, #545364);
+//     min-height: calc(calc(1419 / 428) * 100vw);
+//   }
+// `
 
 const SocialMediaIcons = styled.div`
   justify-content: center;
@@ -124,21 +124,21 @@ const SmallText = styled.div`
   }
 `
 
-const TeamContainer = styled.div`
-  position: absolute;
-  left: 0;
-  bottom: 1rem;
-  text-align: center;
-  width: 100%;
+// const TeamContainer = styled.div`
+//   position: absolute;
+//   left: 0;
+//   bottom: 1rem;
+//   text-align: center;
+//   width: 100%;
 
-  ${p => p.theme.mediaQueries.tabletLarge} {
-    width: 40vw;
-  }
-  ${p => p.theme.mediaQueries.mobile} {
-    width: 100%;
-    bottom: 1rem;
-  }
-`
+//   ${p => p.theme.mediaQueries.tabletLarge} {
+//     width: 40vw;
+//   }
+//   ${p => p.theme.mediaQueries.mobile} {
+//     width: 100%;
+//     bottom: 1rem;
+//   }
+// `
 
 const StaticContainer = styled.div`
   position: absolute;
@@ -192,8 +192,7 @@ const SocialMediaContainer = () => (
   </StaticContainer>
 )
 
-const Footer = () => {
-  return (<>
+const Footer = () => (<>
     <Title>Contact us!</Title>
     <SocialMediaContainer />
     <Team />
@@ -203,6 +202,5 @@ const Footer = () => {
     </SmallText>
     <MeetMindsLabel>Meet the minds behind cmd-f</MeetMindsLabel>
   </>)
-}
 
 export default Footer

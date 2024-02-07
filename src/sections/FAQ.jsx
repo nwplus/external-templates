@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import fireDb from '@utilities/firebase'
 import FaqBox from '@components/FaqBox'
-import { Header2, Header3 } from '@components/Typography'
+import { Header3 } from '@components/Typography'
 
 const Title = styled.p`
   position: absolute;

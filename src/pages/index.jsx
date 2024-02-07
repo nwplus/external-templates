@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import { React, useEffect, useState } from 'react'
 import GlobalStyles from '@styles/global'
-import Banner from '@components/Banner'
 
 import Sponsors from 'src/sections/Sponsors'
 import About from 'src/sections/About'
@@ -15,10 +14,6 @@ import NavBar from 'src/components/NavBar'
 import Hero from '../sections/Hero'
 import Encouragement from '../sections/Encouragement'
 import styled from 'styled-components'
-
-import Team from 'src/components/Team'
-
-import SponsorSection from 'src/components/SponsorSection'
 
 import BackgroundImage from '../../public/assets/background.svg'
 
@@ -38,7 +33,7 @@ export default function Index({ title }) {
   const [isNavBarLight, setIsNavBarLight] = useState(false);
 
   useEffect(() => {
-    const handleScroll = (event) => {
+    const handleScroll = () => {
       const scrollOffset = window.scrollX || document.documentElement.scrollX
       // const horizontalScrollContainer = document.getElementById('horizontal-scroll-container');
       // const scrollLeftTracker = document.getElementById('scroll-left-tracker');

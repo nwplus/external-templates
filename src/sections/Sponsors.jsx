@@ -1,4 +1,3 @@
-import SponsorSection from '@components/SponsorSection'
 import styled from 'styled-components'
 import { useEffect, useState } from 'react'
 import fireDb from '@utilities/firebase';
@@ -68,21 +67,17 @@ const Sponsors = () => {
     const data = await fireDb.getCollection('cmd-f2024', 'Sponsors')
     if (data) {
       const lowerCasedData = data.map(sponsor => ({...sponsor, tier: sponsor.tier.toLowerCase()}))
-      console.log(lowerCasedData)
       categorizeSponsor(lowerCasedData)
-      console.log('categorized map', categorizedSponsorMap)
     }
   }, [])
 
-  const SponsorsRowComponent = ({ tier }) => {
-    return (<SponsorRow>
-    {categorizedSponsorMap.get(tier)?.map(({ imgURL, link, altImgURL }, index) => (
+  const SponsorsRowComponent = ({ tier }) => (<SponsorRow>
+    {categorizedSponsorMap.get(tier)?.map(({ imgURL, link }) => (
       <SponsorsLink href={link} target="_blank" rel="noreferrer">
         <SilverBoi src={imgURL} />
       </SponsorsLink>
     ))}
     </SponsorRow>)
-  }
 
   return (
     <>

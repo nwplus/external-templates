@@ -1,9 +1,5 @@
 import { React, useEffect, useState } from 'react'
-import styled, { keyframes } from 'styled-components'
-
-import AboutBackgroundDesktop from '../../public/images/backgrounds/About.svg'
-import AboutBackgroundMobile from '../../public/images/backgrounds/AboutMobile.svg'
-import OpenSign from '../../public/images/animated-graphics/OpenSign.svg'
+import styled  from 'styled-components'
 
 import MapImage from '../../public/assets/map.svg'
 

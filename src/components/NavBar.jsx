@@ -62,8 +62,7 @@ const LivePortalButton = styled.a`
   text-decoration: none;
 `
 
-const NavBar = ({ isLight }) => {
-  return (
+const NavBar = ({ isLight }) => (
     <>
       <NavBarContainer>
         <Logo src={isLight ? nwPlusLogoLight : nwPlusLogo} />
@@ -75,6 +74,5 @@ const NavBar = ({ isLight }) => {
       <LivePortalButton href="https://portal.nwplus.io" target="_blank">Live Portal</LivePortalButton>
     </>
   )
-}
 
 export default NavBar;

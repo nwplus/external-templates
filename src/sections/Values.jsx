@@ -1,10 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 /* eslint-disable react/no-danger */
-import SVG from 'react-inlinesvg'
-import Dish from '@components/Dish'
-import Confidence from '@components/values/Confidence'
-import SafeSpace from '@components/values/SafeSpace'
 
 const SectionTitle = styled.p`
   position: absolute;

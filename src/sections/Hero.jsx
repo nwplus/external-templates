@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 // import { useParallax } from 'react-scroll-parallax'
 // import Countdown from '../components/Countdown'
@@ -134,10 +134,9 @@ const VolunteerButton = styled.a`
   text-decoration: none;
 `
 
-const Hero = () => {
-  return <div id="hero">
+const Hero = () => (<div id="hero">
     <Logo src={CmdFLogoImage}/>
-    <MainTitle>Western Canada's largest hackathon <span style={{ color: '#B23C3C' }}>celebrating underrepresented genders in tech</span></MainTitle>
+    <MainTitle>Western Canada&apos;s largest hackathon <span style={{ color: '#B23C3C' }}>celebrating underrepresented genders in tech</span></MainTitle>
     <InfoTitle>March 9-10, 2024 | In-person (location TBD)</InfoTitle>
     <ApplyLabel>Apply to be a:</ApplyLabel>
     <ApplyButtonsContainer>
@@ -145,7 +144,6 @@ const Hero = () => {
       <MentorButton href="https://nwplus.io" target="_blank">Mentor</MentorButton>
       <VolunteerButton href="https://nwplus.io" target="_blank">Volunteer</VolunteerButton>
     </ApplyButtonsContainer>
-  </div>
-}
+  </div>)
 
 export default Hero

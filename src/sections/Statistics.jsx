@@ -71,10 +71,11 @@ const Statistics = () => {
                 unitsLabel = "units";
                 break;
             }
-            valueDisplay.textContent = `${Math.round(startValue)} ${unitsLabel}`;
+            const displayedValue = valueDisplay
+            displayedValue.textContent = `${Math.round(startValue)} ${unitsLabel}`;
             if (startValue >= endValue) {
               // ensure setting to end value
-              valueDisplay.textContent = `${endValue} ${unitsLabel}`;
+              displayedValue.textContent = `${endValue} ${unitsLabel}`;
               clearInterval(counter);
             }
           }, duration);
