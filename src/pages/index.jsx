@@ -19,6 +19,8 @@ import Encouragement from '../sections/Encouragement'
 import BackgroundImage from '../../public/assets/background.svg'
 import MobileBackgroundImage from '../../public/assets/mobile_background.svg'
 
+import HeroSlide from 'src/mobile_slides/HeroSlide'
+
 const Background = styled.img`
   top: 0;
   z-index: 0;
@@ -37,16 +39,6 @@ const MobileBackground = styled.img`
   z-index: 0;
   user-select: none;
   height: 100%;
-`
-
-const Slide = styled.section`
-  left: 0;
-  top: 0;
-  width: 100vw;
-  min-width: 100vw;
-  height: 100vh;
-  background-color: clear;
-  scroll-snap-align: center;  
 `
 
 export default function Index({ title }) {
@@ -102,45 +94,29 @@ export default function Index({ title }) {
 
   return (
     <div>
+      <GlobalStyles />
+      <Head>
+        <title>{title}</title>
+
+        <link rel="icon" href="/favicon.png" />
+        <link href="https://fonts.googleapis.com/css2?family=Yatra+One&display=swap" rel="stylesheet" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta
+          name="description"
+          content={`Western Canada's largest hackathon celebrating underrepresented genders in tech`}
+        />
+        <meta property="og:image" content="/og_preview.png" />
+      </Head>
       {isMobileFixed ? (
         <div className="mobile-root-container">
           <MobileBackground src={MobileBackgroundImage} />
-          <Slide className="mobile_slide" color="red" />
-          <Slide className="mobile_slide" color="green" />
-          <Slide className="mobile_slide" color="blue" />
-          <Slide className="mobile_slide" color="red" />
-          <Slide className="mobile_slide" color="green" />
-          <Slide className="mobile_slide" color="blue" />
-          <Slide className="mobile_slide" color="red" />
-          <Slide className="mobile_slide" color="green" />
-          <Slide className="mobile_slide" color="blue" />
-          <Slide className="mobile_slide" color="red" />
-          <Slide className="mobile_slide" color="green" />
-          <Slide className="mobile_slide" color="blue" />
-          <Slide className="mobile_slide" color="red" />
-          <Slide className="mobile_slide" color="green" />
-          <Slide className="mobile_slide" color="blue" />
-          <Slide className="mobile_slide" color="red" />
-          <Slide className="mobile_slide" color="green" />
-          <Slide className="mobile_slide" color="blue" />
+          <HeroSlide />
+          <HeroSlide />
+          <HeroSlide />
         </div>
       ) : (
         <div className="root-container" id="horizontal-scroll-container">
-          <GlobalStyles />
-          <Head>
-            <title>{title}</title>
-
-            <link rel="icon" href="/favicon.png" />
-            <link href="https://fonts.googleapis.com/css2?family=Yatra+One&display=swap" rel="stylesheet" />
-
-            <meta name="viewport" content="width=device-width, initial-scale=1" />
-            <meta
-              name="description"
-              content={`Western Canada's largest hackathon celebrating underrepresented genders in tech`}
-            />
-            <meta property="og:image" content="/og_preview.png" />
-          </Head>
-
           {/* Components Starts */}
           <Background src={BackgroundImage} />
           <NavBar isLight={isNavBarLight} />
