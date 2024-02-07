@@ -9,40 +9,33 @@ const Container = styled.div`
   border-radius:5px;
   box-sizing:border-box;
   overflow:hidden;
-  ${p => p.expanded
-    ? `
-    border-color: #FFFFFF;
-  `
-    : `
-    border-color: #CE7A68;
-  `}
+  border-color: #556888;
   
   &:not(:last-child) {
-    margin-bottom: 20px;
+    margin-bottom: 1.75vh;
   }
 `
 
 const Top = styled.div`
   color: #433860;
-  padding:1rem;
-  font-size:1.2rem;
+  padding:1.5vh;
+  color: #252525;
+  font-family: "HK Grotesk";
+  font-size: 1.76vh;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
   display:flex;
   justify-content:space-between;
   border-bottom:solid;
   margin-bottom:-1.2px;
-  font-weight: 400;
   border-width:1px;
   border-radius:5px 5px 0 0;
-  ${p => p.expanded && `
-    color:#FFF;
-    background-color: #CE7A68;
-    border: 1px solid white;
-  `}
   
   ${p => p.theme.mediaQueries.mobile} {
     font-size: 1rem;
     padding: 0.8rem;
-    color: ${p => p.expanded ? '#FFFFFF' : '#433860'};
+    color: #433860;
     font-weight: 600;
   }
   &:hover {
@@ -56,8 +49,13 @@ const AnswerBox = styled.div`
   overflow:hidden;
   transition:0.2s max-height cubic-bezier(.6,0,.4,1);
   border-radius: 0 0 5px 5px;
-  font-weight: 700;
-  ${p => p.isOpen ? 'max-height:500px; background-color: #95574E; border:1px solid white; padding: 1rem;' : 'max-height: 0;'}
+  color: #FFF;
+  font-family: "HK Grotesk";
+  font-size: 1.37vh;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  ${p => p.isOpen ? 'max-height:500px; background-color: #323E52; border:1px solid white; padding: 1.5vh;' : 'max-height: 0;'}
   ${p => p.theme.mediaQueries.mobile} {
     font-size: 0.9rem;
     font-weight: 500;

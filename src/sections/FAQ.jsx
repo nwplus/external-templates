@@ -5,35 +5,29 @@ import fireDb from '@utilities/firebase'
 import FaqBox from '@components/FaqBox'
 import { Header2, Header3 } from '@components/Typography'
 
+const Title = styled.p`
+  position: absolute;
+  left: 1112.42vh;
+  top: 9.7vh;
+
+  color: #202020;
+  text-align: center;
+  font-family: "Yatra One";
+  font-size: 5.49vh;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 100%;
+  letter-spacing: 0.4px;
+`
+
 const FaqContainer = styled.div`
-  position: relative;
+  position: absolute;
+  left: 1068vh;
+  top: 15vh;
   min-height: 50vh;
-  background-image: url('/assets/faq_bg.svg'), linear-gradient(180deg, #D8937D 0%, #F8C2AB 40.12%, #F8EEBC 76.67%), linear-gradient(0deg, #FFFFFF, #FFFFFF);
-
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  min-height: 2500px;
-
-  ${p => p.theme.mediaQueries.desktopLarge} {
-    min-height: 1500px;
-  }
-
-  ${p => p.theme.mediaQueries.tabletLarge} {
-    min-height: 1800px;
-  }
 
   ${p => p.theme.mediaQueries.mobile} {
-    background-image: url('/assets/faq_mobile_bg.svg'),
-      linear-gradient(180deg, #d8937d 0%, #f8c2ab 40.12%, #f8eebc 76.67%), linear-gradient(0deg, #ffffff, #ffffff);
-    min-width: 100vw;
-    background-position: center bottom;
-    background-size: cover;
-    min-height: 3000px;
-  }
-
-  ${p => p.theme.mediaQueries.xs} {
-    min-height: 2000px;
+    min-height: 0;
   }
 `
 
@@ -41,11 +35,11 @@ const Wrapper = styled.div`
   grid-column: 3 / span 10;
   margin: 0 auto;
   width: 75vw;
-  min-width: 900px;
-  max-width: 1200px;  
+  min-width: 75vh;
+  max-width: 102vh;
   z-index: 88;
   position: relative;
-  
+
   ${p => p.theme.mediaQueries.mobile} {
     grid-column: 2 / span 12;
     min-width: 0;
@@ -57,8 +51,9 @@ const FaqGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
-  gap: 50px;
-  margin-top: 4rem;
+  gap: 4vh;
+  margin-top: 5vh;
+
   ${p => p.theme.mediaQueries.mobile} {
     display: flex;
     flex-direction: column;
@@ -66,14 +61,22 @@ const FaqGrid = styled.div`
     margin-top: 50px;
     padding-bottom: 4rem;
   }
+
+  & > div:nth-child(3) {
+    grid-column: 2; // move the column to the right
+    ${p => p.theme.mediaQueries.mobile} {
+      grid-column: 1;
+    }
+  }
 `
 
 // for proper grid positioning
 const FaqColumn = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: flex-end;
   & > div:not(:first-child) {
-    margin-top: 40px;
+    margin-top: 3vh;
     ${p => p.theme.mediaQueries.mobile} {
       margin-top: 24px;
     }
@@ -88,38 +91,41 @@ const CollectionContainer = styled.div`
 `
 
 const CollectionName = styled(Header3)`
-  color: #5D3754;
-  font-size: 1.75rem;
+  color: #202020;
+  font-size: 4vh;
   font-weight: 900;
-  padding-bottom: 1rem;
+  padding-bottom: 4.5vh;
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 1.75rem;
-    padding-bottom: 1.5rem;
+    font-size: 1.2rem;
   }
 `
 
-const StyledTitle = styled(Header2)`
-  font-size: 3rem;
-  text-align: center;
-  padding-top: 12rem;
-  ${p => p.theme.mediaQueries.mobile} {
-    font-size: 3em;
-  }
-`
-
-const FaqCollection = ({ category, faqs }) => (
+const FaqCollection = ({ category, faqs, expandedQuestion, setExpandedQuestion }) => (
   <CollectionContainer>
     <CollectionName>{category}</CollectionName>
 
-    {faqs.map(q => (
-      <FaqBox key={q.question} question={q.question} answer={q.answer} />
-    ))}
+    {faqs.map(q =>
+      <FaqBox
+        key={q.question}
+        question={q.question}
+        answer={q.answer}
+        isExpanded={expandedQuestion === q.question}
+        onExpand={() => {
+          if (expandedQuestion === q.question) {
+            setExpandedQuestion(null)
+          } else {
+            setExpandedQuestion(q.question)
+          }
+        }}
+      />
+    )}
   </CollectionContainer>
 )
 
 const Faq = () => {
   const [faqData, setFaqData] = useState(null)
+  const [expandedQuestion, setExpandedQuestion] = useState(null)
 
   // (@htdf processData)
   // (@signature (listof FAQ) -> Object)
@@ -138,34 +144,40 @@ const Faq = () => {
   }
 
   useEffect(async () => {
-    const data = await fireDb.getCollection('cmd-f2024', 'FAQ')
+    const data = await fireDb.getCollection('nwHacks2024', 'FAQ')
     const processedData = processData(data)
     setFaqData(processedData)
   }, [])
 
   return (
-    <FaqContainer>
-      <Wrapper id="faq">
-        <StyledTitle color="#5D3754" fontSize="5rem">
-          FAQ
-        </StyledTitle>
+    <>
+      <Title>FAQ</Title>
+      <FaqContainer>
+        <Wrapper id="faq">
+          {faqData ? (
+            <FaqGrid>
+              <FaqColumn>
+                {faqData['General'] && 
+                  <FaqCollection category="General" faqs={faqData['General']}
+                    expandedQuestion={expandedQuestion}
+                    setExpandedQuestion={setExpandedQuestion} />
+                  }
+                </FaqColumn>
 
-        {faqData ? (
-          <FaqGrid>
-            <FaqColumn>{faqData.General && <FaqCollection category="General" faqs={faqData.General} />}</FaqColumn>
-
-            <FaqColumn>
-              {faqData['Teams & Projects'] && (
-                <FaqCollection category="Teams & Projects" faqs={faqData['Teams & Projects']} />
-              )}
-            </FaqColumn>
-          </FaqGrid>
-        ) : (
-          ''
-        )}
-      </Wrapper>
-    </FaqContainer>
-  )
+              <FaqColumn>
+                {faqData['Teams & Projects'] &&
+                  <FaqCollection category="Teams & Projects" faqs={faqData['Teams & Projects']}
+                    expandedQuestion={expandedQuestion}
+                    setExpandedQuestion={setExpandedQuestion} />
+                }
+              </FaqColumn>
+            </FaqGrid>
+          ) : (
+            ''
+          )}
+        </Wrapper>
+      </FaqContainer>
+    </>)
 }
 
 export default Faq
