@@ -375,18 +375,23 @@ const ProfileImage = styled.img`
     transform: scale(1.15);
     opacity: 1;
   }
-  width: 100px;
-  height: 100px;
+  width: 10vh;
+  height: 10vh;
   border-radius: 13px;
   background-color: ${p => p.color};
   object-fit: cover;
-  margin: 10px 15px;
+  margin: 1vh 1.5vh;
   transition: all 100ms ease-in-out;
   opacity: 0.69;
-  ${p => p.theme.mediaQueries.mobile} {
-    width: 50px;
-    height: 50px;
-  }
+`
+
+const TeamContainer = styled.div`
+  position: absolute;
+  left: 1400vh;
+  top: 75vh;
+  width: 162.2vh;
+  mask-image: linear-gradient(to right, transparent, black 20%, black 100%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 20%, black 100%, transparent);
 `
 
 let lastTime = -1
@@ -441,14 +446,14 @@ export default function Team() {
   }, [setAnimator])
 
   return (
-    <>
-      <StyledTitle>Made with 💖 by the nwPlus Team</StyledTitle>
-      <ProfileContent>
+    <TeamContainer>
+      {/* <StyledTitle>Made with 💖 by the nwPlus Team</StyledTitle> */}
+      {/* <ProfileContent>
         <span>
           <b>{selectedProfile?.name}</b> {selectedProfile?.emoji}
         </span>
         {selectedProfile?.title}
-      </ProfileContent>
+      </ProfileContent> */}
       <ProfileList
         onMouseEnter={() => {
           setAccel(-1)
@@ -486,6 +491,6 @@ export default function Team() {
           ))}
         </div>
       </ProfileList>
-    </>
+    </TeamContainer>
   )
 }

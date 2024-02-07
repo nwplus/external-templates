@@ -99,7 +99,6 @@ export default function Index({ title }) {
       <FAQ/>
       <Sponsors/>
       <Footer />
-      <Team />
       {/* Components Ends */}
     </div>
   )
