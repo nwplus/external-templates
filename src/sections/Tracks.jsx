@@ -4,11 +4,11 @@ import CommyIslandImage from 'public/assets/islands/commy_island.svg'
 import EduIslandImage from 'public/assets/islands/edu_island.svg'
 import HelthIslandImage from 'public/assets/islands/helth_island.svg'
 
-import CommyCloudImage from 'public/assets/islands/commy_cloud.svg'
-import EduCloudImage from 'public/assets/islands/edu_cloud.svg'
-import HelthCloudImage from 'public/assets/islands/helth_cloud.svg'
+import CommyCloudImage from 'public/assets/clouds/commy_cloud.svg'
+import EduCloudImage from 'public/assets/clouds/edu_cloud.svg'
+import HelthCloudImage from 'public/assets/clouds/helth_cloud.svg'
 
-import MouseIconImage from 'public/assets/mouse_icon.svg'
+import MouseIconImage from 'public/assets/misc/mouse_icon.svg'
 
 const IslandImage = styled.img`
   width: 100%;

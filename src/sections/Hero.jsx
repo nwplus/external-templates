@@ -5,7 +5,7 @@ import styled from 'styled-components'
 // import Button from '../components/Button'
 // import { Header1, Header4 } from '../components/Typography'
 
-import CmdFLogoImage from '../../public/assets/cmd-f-logo.svg'
+import CmdFLogoImage from '../../public/assets/logos/cmd-f-logo.svg'
 
 const Logo = styled.img`
   position: absolute;

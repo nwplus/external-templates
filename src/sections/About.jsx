@@ -1,7 +1,7 @@
 import { React, useEffect, useState } from 'react'
 import styled  from 'styled-components'
 
-import MapImage from '../../public/assets/map.svg'
+import MapImage from '../../public/assets/map/horizontal_map.svg'
 
 const Map = styled.img`
   position: absolute;

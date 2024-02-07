@@ -16,7 +16,7 @@ import NavBar from 'src/components/NavBar'
 import Hero from '../sections/Hero'
 import Encouragement from '../sections/Encouragement'
 
-import BackgroundImage from '../../public/assets/background.svg'
+import DesktopBackgroundImage from '../../public/assets/background/desktop_background.svg'
 
 const Background = styled.img`
   top: 0;
@@ -84,7 +84,7 @@ export default function Index({ title }) {
       </Head>
 
       {/* Components Starts */}
-      <Background src={BackgroundImage} />
+      <Background src={DesktopBackgroundImage} />
       <NavBar isLight={isNavBarLight} />
       <Hero />
       <Encouragement />

@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
-import nwPlusLogo from "../../public/assets/nwplus_logo.svg"
-import nwPlusLogoLight from "../../public/assets/nwplus_logo_light.svg"
+import nwPlusLogo from "../../public/assets/logos/nwplus_logo.svg"
+import nwPlusLogoLight from "../../public/assets/logos/nwplus_logo_light.svg"
 
 const NavBarContainer = styled.div`
   position: fixed;
