@@ -32,6 +32,7 @@ const Background = styled.img`
 
 export default function Index({ title }) {
   const [isNavBarLight, setIsNavBarLight] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -66,36 +67,54 @@ export default function Index({ title }) {
     };
   }, []);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    // Cleanup the event listener on component unmount
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
-    <div className="root-container" id="horizontal-scroll-container">
-      <GlobalStyles />
-      <Head>
-        <title>{title}</title>
+    <div>
+      {isMobile ? (
+        <div>
+          <h1>Mobile is not supported</h1>
+        </div>
+      ) : (
+        <div className="root-container" id="horizontal-scroll-container">
+          <GlobalStyles />
+          <Head>
+            <title>{title}</title>
 
-        <link rel="icon" href="/favicon.png" />
-        <link href="https://fonts.googleapis.com/css2?family=Yatra+One&display=swap" rel="stylesheet" />
+            <link rel="icon" href="/favicon.png" />
+            <link href="https://fonts.googleapis.com/css2?family=Yatra+One&display=swap" rel="stylesheet" />
 
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta
-          name="description"
-          content={`Western Canada's largest hackathon celebrating underrepresented genders in tech`}
-        />
-        <meta property="og:image" content="/og_preview.png" />
-      </Head>
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <meta
+              name="description"
+              content={`Western Canada's largest hackathon celebrating underrepresented genders in tech`}
+            />
+            <meta property="og:image" content="/og_preview.png" />
+          </Head>
 
-      {/* Components Starts */}
-      <Background src={BackgroundImage} />
-      <NavBar isLight={isNavBarLight} />
-      <Hero />
-      <Encouragement />
-      <About/>
-      <Values />
-      <Tracks/>
-      <Statistics />
-      <FAQ/>
-      <Sponsors/>
-      <Footer />
-      {/* Components Ends */}
+          {/* Components Starts */}
+          <Background src={BackgroundImage} />
+          <NavBar isLight={isNavBarLight} />
+          <Hero />
+          <Encouragement />
+          <About/>
+          <Values />
+          <Tracks/>
+          <Statistics />
+          <FAQ/>
+          <Sponsors/>
+          <Footer />
+          {/* Components Ends */}
+        </div>
+      )}
     </div>
   )
 }
