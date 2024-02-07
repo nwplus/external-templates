@@ -2,7 +2,6 @@ import React, { useRef, useEffect, useState } from 'react'
 import styled from 'styled-components'
 // eslint-disable-next-line import/no-named-default
 import anime from 'animejs'
-import { Header3 } from '@components/Typography'
 
 const profiles = [
   {
@@ -347,22 +346,22 @@ const profiles = [
 //   }
 // `
 
-// const ProfileContent = styled.p`
-//   color: white;
-//   padding-top: 3rem;
-//   span {
-//     margin-right: 8px;
-//   }
-//   height: 1em;
-//   b {
-//     margin-right: 8px;
-//   }
+const ProfileContent = styled.p`
+  color: white;
+  padding-top: 3rem;
+  span {
+    margin-right: 8px;
+  }
+  height: 1em;
+  b {
+    margin-right: 8px;
+  }
 
-//   ${p => p.theme.mediaQueries.mobile} {
-//     font-size: 1rem;
-//     padding: 0.35rem 0 0.5rem 0;
-//   }
-// `
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: 1rem;
+    padding: 0.35rem 0 0.5rem 0;
+  }
+`
 
 const ProfileList = styled.div`
   padding-top: 3rem;
@@ -400,7 +399,7 @@ const MAX_SPEED = 2
 
 export default function Team() {
   const [animator, setAnimator] = useState()
-  // const [selectedProfile, setSelectedProfile] = useState(null)
+  const [selectedProfile, setSelectedProfile] = useState(null)
   const [accel, setAccel] = useState(1)
   const requestRef = useRef()
 
@@ -448,12 +447,12 @@ export default function Team() {
   return (
     <TeamContainer>
       {/* <StyledTitle>Made with 💖 by the nwPlus Team</StyledTitle> */}
-      {/* <ProfileContent>
+      <ProfileContent style={{ visibility: "hidden" }}>
         <span>
           <b>{selectedProfile?.name}</b> {selectedProfile?.emoji}
         </span>
         {selectedProfile?.title}
-      </ProfileContent> */}
+      </ProfileContent>
       <ProfileList
         onMouseEnter={() => {
           setAccel(-1)
