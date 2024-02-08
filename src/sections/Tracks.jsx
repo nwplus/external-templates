@@ -73,7 +73,7 @@ const EducationTrackIsland = styled.div`
 const HealthTrackCloud = styled.div`
   position: absolute;
   left: 0vh;
-  top: -18vh;
+  top: -19vh;
   width: 55.56vh;
   height: 27.33vh;
   z-index: -1;
