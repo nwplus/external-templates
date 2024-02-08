@@ -50,6 +50,12 @@ export const GlobalStyles = createGlobalStyle`
       opacity: 0;
     }
   }
+
+  @keyframes sealAnimation {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(5deg); }
+    75% { transform: rotate(-5deg); }
+  }
     
 `
 

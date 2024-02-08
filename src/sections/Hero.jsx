@@ -143,12 +143,16 @@ const SealTail = styled.img`
   top: 76.66vh;
   width: 3.72vh;
   height: 3.43vh;
+
+  &:hover {
+    animation: jiggleAnimation 0.5s ease-in-out forwards 3; 
+  }
 `
 
 const Hero = () => (<div id="hero">
     <Logo src={CmdFLogoImage}/>
     <MainTitle>Western Canada&apos;s largest hackathon <span style={{ color: '#B23C3C' }}>celebrating underrepresented genders in tech</span></MainTitle>
-    <InfoTitle>March 9-10, 2024 | In-person @ UBC SLC</InfoTitle>
+    <InfoTitle>March 9-10, 2024 | In-person @ UBC LSI</InfoTitle>
     <ApplyLabel>Apply to be a:</ApplyLabel>
     <ApplyButtonsContainer>
       <HackerButton href="https://nwplus.io" target="_blank">Hacker</HackerButton>
