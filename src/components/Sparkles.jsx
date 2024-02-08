@@ -298,7 +298,7 @@ const SparkleWrapper = ({ SparkleComponent, imageSrc, ...props }) => {
   useEffect(() => {
     const startAnimation = () => {
       setIsAnimating(true);
-      const duration = Math.random() * 100 + 500;
+      const duration = Math.random() * 100 + 150;
       setTimeout(() => setIsAnimating(false), duration);
     };
 
