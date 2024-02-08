@@ -28,7 +28,7 @@ const Title = styled.p`
 
 const MeetMindsLabel = styled.p`
   position: absolute;
-  left: 1468.33vh;
+  left: 1449.33vh;
   top: 74.01vh;
 
   color: #F6FEFF;
@@ -111,11 +111,11 @@ const TextContainer = styled.div`
 
 const SmallText = styled.div`
   position: absolute;
-  left: 1471.17vh;
+  left: 1466.17vh;
   top: 89vh;
 
   user-select: none;
-  padding-top: 2.5rem;
+  padding-top: 3.92vh;
   text-align: center;
   div {
     color: white;
