@@ -5,7 +5,10 @@ import styled from 'styled-components'
 // import Button from '../components/Button'
 // import { Header1, Header4 } from '../components/Typography'
 
+import Sparkles from '@components/Sparkles'
+
 import CmdFLogoImage from '../../public/assets/logos/cmd-f-logo.svg'
+import SealTailImage from '../../public/assets/misc/seal_tail.svg'
 
 const Logo = styled.img`
   position: absolute;
@@ -134,6 +137,14 @@ const VolunteerButton = styled.a`
   text-decoration: none;
 `
 
+const SealTail = styled.img`
+  position: absolute;
+  left: 114.49vh;
+  top: 76.66vh;
+  width: 3.72vh;
+  height: 3.43vh;
+`
+
 const Hero = () => (<div id="hero">
     <Logo src={CmdFLogoImage}/>
     <MainTitle>Western Canada&apos;s largest hackathon <span style={{ color: '#B23C3C' }}>celebrating underrepresented genders in tech</span></MainTitle>
@@ -144,6 +155,8 @@ const Hero = () => (<div id="hero">
       <MentorButton href="https://nwplus.io" target="_blank">Mentor</MentorButton>
       <VolunteerButton href="https://nwplus.io" target="_blank">Volunteer</VolunteerButton>
     </ApplyButtonsContainer>
+    <SealTail src={SealTailImage}/>
+    <Sparkles />
   </div>)
 
 export default Hero

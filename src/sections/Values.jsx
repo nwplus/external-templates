@@ -82,7 +82,7 @@ const Values = () => (
     <SectionTitle>Our Main Values</SectionTitle>
     <ConfidenceValueContainer>
       <ValueCircle>1</ValueCircle>
-      <ValueTitle>Confidence!</ValueTitle>
+      <ValueTitle>Build confidence</ValueTitle>
       <ValueDescription>Develop career-ready skills, fight imposter syndrome, and build an invaluable support network with friends, mentors, and sponsors. You are welcome! Regardless of your background, you bring a unique and important perspective to tech. Set sail to discover your place in tech – a space where everyone belongs.</ValueDescription>
     </ConfidenceValueContainer>
     <LearnValueContainer>
