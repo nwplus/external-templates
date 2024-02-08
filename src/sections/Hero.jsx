@@ -83,6 +83,7 @@ const HackerButton = styled.a`
   border: none;
   border-radius: 1.15vh;
   background: linear-gradient(90deg, #CC5A5A 15.65%, #DB7859 94.27%);
+  z-index: 900;
 
   color: #FFF;
   font-feature-settings: 'liga' off;
@@ -104,6 +105,7 @@ const MentorButton = styled.a`
   border: none;
   border-radius: 1.15vh;
   background: linear-gradient(90deg, #E48D4D 16.91%, #E9B145 100%);
+  z-index: 900;
 
   color: #FFF;
   font-feature-settings: 'liga' off;
@@ -125,6 +127,7 @@ const VolunteerButton = styled.a`
   border: none;
   border-radius: 1.15vh;
   background: linear-gradient(90deg, #49AAB3 9.37%, #67C2B7 100%);
+  z-index: 900;
 
   color: #FFF;
   font-feature-settings: 'liga' off;

@@ -31,6 +31,13 @@ import Smol7Image from '../../public/assets/sparkles/smol7.svg'
 import Smol8Image from '../../public/assets/sparkles/smol8.svg'
 import Smol9Image from '../../public/assets/sparkles/smol9.svg'
 import Smol10Image from '../../public/assets/sparkles/smol10.svg'
+import Smol11Image from '../../public/assets/sparkles/smol11.svg'
+import Smol12Image from '../../public/assets/sparkles/smol12.svg'
+import Smol13Image from '../../public/assets/sparkles/smol13.svg'
+import Smol14Image from '../../public/assets/sparkles/smol14.svg'
+import Smol15Image from '../../public/assets/sparkles/smol15.svg'
+import Smol16Image from '../../public/assets/sparkles/smol16.svg'
+
 
 const Sparkle = styled.img`
   position: absolute;
@@ -243,6 +250,48 @@ const Smol10 = styled(Sparkle)`
   height: 0.98vh;
 `
 
+const Smol11 = styled(Sparkle)`
+  left: 53vh;
+  top: 60.6vh;
+  width: 0.98vh;
+  height: 0.98vh;
+`
+
+const Smol12 = styled(Sparkle)`
+  left: 83.93vh;
+  top: 59.68vh;
+  width: 1.4vh;
+  height: 1.07vh;
+`
+
+const Smol13 = styled(Sparkle)`
+  left: 52.85vh;
+  top: 62.54vh;
+  width: 1.26vh;
+  height: 0.97vh;
+`
+
+const Smol14 = styled(Sparkle)`
+  left: 54.71vh;
+  top: 59.71vh;
+  width: 1.4vh;
+  height: 1.07vh;
+`
+
+const Smol15 = styled(Sparkle)`
+  left: 48.74vh;
+  top: 59.63vh;
+  width: 1.65vh;
+  height: 1.27vh;
+`
+
+const Smol16 = styled(Sparkle)`
+  left: 47.65vh;
+  top: 59.88vh;
+  width: 1.1vh;
+  height: 0.84vh;
+`
+
 const SparkleWrapper = ({ SparkleComponent, imageSrc, ...props }) => {
   const [isAnimating, setIsAnimating] = useState(false);
 
@@ -253,7 +302,7 @@ const SparkleWrapper = ({ SparkleComponent, imageSrc, ...props }) => {
       setTimeout(() => setIsAnimating(false), duration);
     };
 
-    const interval = setInterval(startAnimation, Math.random() * 500 + 200);
+    const interval = setInterval(startAnimation, Math.random() * 500 + 100);
 
     return () => clearInterval(interval);
   }, []);
@@ -262,33 +311,14 @@ const SparkleWrapper = ({ SparkleComponent, imageSrc, ...props }) => {
 };
 
 const Sparkles = () => {
-  const sparkles = [Big1, Big2, Big3, Mid1, Mid2, Mid3, Mid4, Mid5, Mid6, Mid7, Mid8, Mid9, Mid10, Mid11, Mid12, Mid13, Mid14, Mid15, Mid16, Smol1, Smol2, Smol3, Smol4, Smol5, Smol6, Smol7, Smol8, Smol9, Smol10];
-  const images = [Big1Image, Big2Image, Big3Image, Mid1Image, Mid2Image, Mid3Image, Mid4Image, Mid5Image, Mid6Image, Mid7Image, Mid8Image, Mid9Image, Mid10Image, Mid11Image, Mid12Image, Mid13Image, Mid14Image, Mid15Image, Mid16Image, Smol1Image, Smol2Image, Smol3Image, Smol4Image, Smol5Image, Smol6Image, Smol7Image, Smol8Image, Smol9Image, Smol10Image];
+  const sparkles = [Big1, Big2, Big3, Mid1, Mid2, Mid3, Mid4, Mid5, Mid6, Mid7, Mid8, Mid9, Mid10, Mid11, Mid12, Mid13, Mid14, Mid15, Mid16, Smol1, Smol2, Smol3, Smol4, Smol5, Smol6, Smol7, Smol8, Smol9, Smol10, Smol11, Smol12, Smol13, Smol14, Smol15, Smol16];
+  const images = [Big1Image, Big2Image, Big3Image, Mid1Image, Mid2Image, Mid3Image, Mid4Image, Mid5Image, Mid6Image, Mid7Image, Mid8Image, Mid9Image, Mid10Image, Mid11Image, Mid12Image, Mid13Image, Mid14Image, Mid15Image, Mid16Image, Smol1Image, Smol2Image, Smol3Image, Smol4Image, Smol5Image, Smol6Image, Smol7Image, Smol8Image, Smol9Image, Smol10Image, Smol11Image, Smol12Image, Smol13Image, Smol14Image, Smol15Image, Smol16Image];
 
   return (
     <>
       {sparkles.map((sparkle, i) => (
         <SparkleWrapper key={uuidv4()} SparkleComponent={sparkle} imageSrc={images[i]} />
       ))}
-      {/* <Big1 src={Big1Image} />
-      <Big2 src={Big2Image} />
-      <Big3 src={Big3Image} />
-      <Mid1 src={Mid1Image} />
-      <Mid2 src={Mid2Image} />
-      <Mid3 src={Mid3Image} />
-      <Mid4 src={Mid4Image} />
-      <Mid5 src={Mid5Image} />
-      <Mid6 src={Mid6Image} />
-      <Mid7 src={Mid7Image} />
-      <Mid8 src={Mid8Image} />
-      <Mid9 src={Mid9Image} />
-      <Mid10 src={Mid10Image} />
-      <Mid11 src={Mid11Image} />
-      <Mid12 src={Mid12Image} />
-      <Mid13 src={Mid13Image} />
-      <Mid14 src={Mid14Image} />
-      <Mid15 src={Mid15Image} />
-      <Mid16 src={Mid16Image} /> */}
     </>
   ) 
 }
