@@ -36,6 +36,21 @@ export const GlobalStyles = createGlobalStyle`
       @media (min-width: 1024px) {
       }
     }
+
+  @keyframes sparkle {
+    0% {
+      transform: scale(0);
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 0;
+    }
+  }
+    
 `
 
 export default GlobalStyles
