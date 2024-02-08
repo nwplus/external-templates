@@ -24,7 +24,7 @@ const Title = styled.p`
 const FaqContainer = styled.div`
   position: absolute;
   left: 1068vh;
-  top: 15vh;
+  top: 10vh;
   min-height: 50vh;
 
   ${p => p.theme.mediaQueries.mobile} {

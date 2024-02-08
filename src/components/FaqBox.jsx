@@ -48,14 +48,14 @@ const AnswerBox = styled.div`
   box-sizing:border-box;
   overflow:hidden;
   transition:0.2s max-height cubic-bezier(.6,0,.4,1);
-  border-radius: 0 0 5px 5px;
+  border-radius: 0 0 2px 2px;
   color: #FFF;
   font-family: "HK Grotesk";
   font-size: 1.37vh;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  ${p => p.isOpen ? 'max-height:500px; background-color: #323E52; border:1px solid white; padding: 1.5vh;' : 'max-height: 0;'}
+  ${p => p.isOpen ? 'max-height:500px; background-color: #323E52; border:1px solid clear; padding: 1.5vh;' : 'max-height: 0;'}
   ${p => p.theme.mediaQueries.mobile} {
     font-size: 0.9rem;
     font-weight: 500;
@@ -87,7 +87,7 @@ const FaqBox = ({ question, answer }) => {
         onClick={() => setIsExpanded(!isExpanded)}>
         {question}
         <TopExpand style={isExpanded ? { transform: 'rotate(0)' } : { transform: 'rotate(180deg)' }}>
-          <Arrow color={isExpanded ? '#FFFFFF' : '#2C2543'} />
+          <Arrow color='#2C2543' />
         </TopExpand>
       </Top>
       <AnswerBox isOpen={isExpanded}>
