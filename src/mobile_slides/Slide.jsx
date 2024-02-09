@@ -7,7 +7,7 @@ const Slide = styled.section`
   width: 100vw;
   min-width: 100vw;
   max-width: 100vw;
-  height: 100vh;
+  height: 100svh;
   background-color: clear;
   scroll-snap-align: center;
   border: 1px solid red;
