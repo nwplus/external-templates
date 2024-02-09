@@ -34,7 +34,6 @@ const SponsorTiers = styled.div`
 
 const SilverBoi = styled.img`
   width: 20vh;
-  height: 10vh;
 `
 
 const SponsorRow = styled.div`
