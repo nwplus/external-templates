@@ -9,6 +9,7 @@ import EduCloudImage from 'public/assets/clouds/edu_cloud.svg'
 import HelthCloudImage from 'public/assets/clouds/helth_cloud.svg'
 
 import MouseIconImage from 'public/assets/misc/mouse_icon.svg'
+import BridgeImage from 'public/assets/misc/bridge.svg'
 
 import Anchor from '@components/Anchor';
 
@@ -16,6 +17,15 @@ const IslandImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
+`
+
+const Bridge = styled.img`
+  position: absolute;
+  left: 714.41vh;
+  top: 60.49vh;
+  width: 20.98vh;
+  height: 4.5vh;
+  z-index: 1001;
 `
 
 const CommunityTrackCloud = styled.div`
@@ -320,6 +330,8 @@ const Tracks = () => (
         <IslandImage src={HelthIslandImage}/>
       </HealthTrackIsland>
       <HealthTrackTitle>HealthTech for All</HealthTrackTitle>
+
+      <Bridge src={BridgeImage}/>
     </>
 );
 
