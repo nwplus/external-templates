@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
+// import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
 import { scale } from '@utilities/format'
 import { BANNER_OFFSET } from '../constants/measurements'
-import MenuImg from '../../public/images/icons/menu.svg'
+// import MenuImg from '../../public/images/icons/menu.svg'
 
 
 const NavBarContainer = styled.nav`
@@ -94,13 +94,13 @@ const StyledLinkHeaders = styled.h3`
   text-align: center;
 `
 
-const HamburgerMenu = styled.img`
-  display: none;
-  ${p => p.theme.mediaQueries.mobile} {
-    display: block;
-    width: 30px;
-  }
-`
+// const HamburgerMenu = styled.img`
+//   display: none;
+//   ${p => p.theme.mediaQueries.mobile} {
+//     display: block;
+//     width: 30px;
+//   }
+// `
 
 // const DropDownContentContainer = styled.div`
 //   position: fixed;
@@ -324,7 +324,7 @@ const NavigationBar = ({ isLight, bannerExists }) => {
         {/* Make sure mobile (above) has the same portalOpen value */}
         <PortalButton portalOpen />
       </NavGroupContainer>
-      <HamburgerMenu src={MenuImg} alt="dropdown menu icon" onClick={() => setShowDropdown(true)} />
+      {/* <HamburgerMenu src={MenuImg} alt="dropdown menu icon" onClick={() => setShowDropdown(true)} /> */}
     </NavBarContainer>
   )
 }

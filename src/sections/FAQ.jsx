@@ -112,8 +112,6 @@ const FaqCollection = ({ category, faqs, expandedQuestion, setExpandedQuestion }
         question={q.question}
         answer={q.answer}
         onExpand={() => {
-          console.log("whatever!")
-          console.log('expanded question:', expandedQuestion, q.question)
           if (expandedQuestion === q.question) {
             setExpandedQuestion(null)
           } else {

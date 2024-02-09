@@ -12,7 +12,6 @@ import FAQ from 'src/sections/FAQ'
 import Footer from 'src/sections/Footer'
 import Tracks from 'src/sections/Tracks'
 
-import NavBar from 'src/components/NavBar'
 import NavigationBar from 'src/components/NavigationBar'
 import Hero from '../sections/Hero'
 import Encouragement from '../sections/Encouragement'
