@@ -1,19 +1,43 @@
 import styled from "styled-components";
+import Team from "@components/MobileTeam";
 import Slide from "./Slide";
 
-const DefaultLabel = styled.p`
-  margin-top: 100px;
-  margin-left: 30px;
-  margin-right: 30px;
+const MeetMindsLabel = styled.p`
+  margin-top: 67svh;
+  margin-left: 4rem;
+  margin-right: 4rem;
 
-  color: white;
-  font-weight: 600;
-  font-size: 40px;
+  color: #F6FEFF;
+  text-align: center;
+  font-family: "Yatra One";
+  font-size: 1.2rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  letter-spacing: 0.169px;
+`
+
+const SmallText = styled.div`
+  margin-top: 10vh;
+
+  user-select: none;
+  padding-top: 3.92vh;
+  text-align: center;
+  div {
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
+  }
 `
 
 const LastSlide = () => (
     <Slide alignItems="left">
-      <DefaultLabel>Last slide</DefaultLabel>
+      <Team />
+      <MeetMindsLabel>Meet the minds behind cmd-f</MeetMindsLabel>
+      <SmallText>
+        <div>Organized and held by nwPlus</div>
+        <div>Copyright &copy; cmd-f 2024</div>
+      </SmallText>
     </Slide>
   )
 
