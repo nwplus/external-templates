@@ -199,9 +199,9 @@ const Hero = () => (<div id="hero">
     <InfoTitle>March 9-10, 2024 | In-person @ UBC Life Sciences Institute</InfoTitle>
     <ApplyLabel>Apply to be a:</ApplyLabel>
     <ApplyButtonsContainer>
-      <HackerButton href="https://nwplus.io" target="_blank">Hacker</HackerButton>
-      <MentorButton href="https://nwplus.io" target="_blank">Mentor</MentorButton>
-      <VolunteerButton href="https://nwplus.io" target="_blank">Volunteer</VolunteerButton>
+      <HackerButton href="https://portal.nwplus.io" target="_blank">Hacker</HackerButton>
+      <MentorButton href="https://forms.gle/LiZjuFU8G8deVXzf9" target="_blank">Mentor</MentorButton>
+      <VolunteerButton href="https://forms.gle/X4dFhZ9wuYGzHpZK8" target="_blank">Volunteer</VolunteerButton>
     </ApplyButtonsContainer>
     <SealTail src={SealTailImage}/>
     <Sparkles />

@@ -189,9 +189,9 @@ Life Sciences Institute`
       <InfoLabel style={{ whiteSpace: 'pre-line' }}>{infoLabel}</InfoLabel>
       <ApplyLabel>Apply to be a:</ApplyLabel>
       <ApplyButtonsContainer>
-        <HackerButton href="https://nwplus.io" target="_blank">Hacker</HackerButton>
-        <MentorButton href="https://nwplus.io" target="_blank">Mentor</MentorButton>
-        <VolunteerButton href="https://nwplus.io" target="_blank">Volunteer</VolunteerButton>
+        <HackerButton href="https://portal.nwplus.io" target="_blank">Hacker</HackerButton>
+        <MentorButton href="https://forms.gle/LiZjuFU8G8deVXzf9" target="_blank">Mentor</MentorButton>
+        <VolunteerButton href="https://forms.gle/X4dFhZ9wuYGzHpZK8" target="_blank">Volunteer</VolunteerButton>
     </ApplyButtonsContainer>
     </Slide>
   )
