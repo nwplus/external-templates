@@ -1,144 +1,167 @@
-import React from 'react'
-import styled, { keyframes } from 'styled-components'
+import { React, useEffect, useState } from 'react'
+import styled  from 'styled-components'
 
-import AboutBackgroundDesktop from '../../public/images/backgrounds/About.svg'
-import AboutBackgroundMobile from '../../public/images/backgrounds/AboutMobile.svg'
-import OpenSign from '../../public/images/animated-graphics/OpenSign.svg'
+import Anchor from '@components/Anchor'
+import MapImage from '../../public/assets/map/horizontal_map.svg'
 
-const AboutContainer = styled.div`
-  position: relative;
-  z-index: 1;
-  // display: flex;
-  // align-items: center;
-  height: 1065px;
-
-  // Aspect ratio & height calculation should be the aspect ratio of the background image
-  width: 100%;
-  height: 100%;
-  aspect-ratio: 1440 / 1095;
-  // min-height: calc(calc(779 / 1440) * 100vw);
-
-  ${p => p.theme.mediaQueries.mobile} {
-    align-items: center;
-    aspect-ratio: 428 / 1263;
-    width: 100%;
-
-    // Aspect ratio & height calculation should be the aspect ratio of the background image
-    // min-height: calc(calc(1344 / 428) * 100vw);
-    // aspect-ratio: 428 / 1344;
-  }
-`
-
-const AboutBgDesktop = styled.img`
+const Map = styled.img`
   position: absolute;
-  top: 0;
-  width: 100%;
-  height: auto;
-  // Makes background non-selectable
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  user-select: none;
-  ${p => p.theme.mediaQueries.mobile} {
-    display: none;
-  }
+  left: 219.01vh;
+  top: 3.52vh;
+  height: 90.69vh;
+  width: 202.8vh;
 `
 
-const AboutBgMobile = styled.img`
+const Title = styled.p`
   position: absolute;
-  top: 0;
-  aspect-ratio: 428 / 1263;
-  width: 100%;
-  height: auto;
-  // Makes background non-selectable
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  user-select: none;
-  display: none;
-  ${p => p.theme.mediaQueries.mobile} {
-    display: block;
-  }
+  left: 228.72vh;
+  top: 15.98vh;
+  width: 55.29vh;
+
+  color: #08363C;
+  font-family: "Yatra One";
+  font-size: 5.49vh;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 5.49vh;
+  letter-spacing: 0.4px;
 `
 
-const AboutTitle = styled.h2`
-  font-family: 'HK Grotesk';
-  font-weight: bold;
+const Description = styled.p`
+  position: absolute;
+  left: 228.72vh;
+  top: 23.43vh;
+  width: 58.13vh;
+
+  color: #08363C;
+  font-family: "HK Grotesk Medium";
+  font-size: 1.96vh;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 110%;
+  letter-spacing: -0.1px;
+`
+
+const DaysLabel = styled.p`
+  position: absolute;
+  left: 310.72vh;
+  top: 30.29vh;
+  width: 16.17vh;
+
+  color: #594632;
   text-align: center;
-  color: #4d4b4f;
-  z-index: 1;
-  width: 100vw;
-  display: block;
-  position: relative;
-  top: 20%;
-  font-size: 3em;
-  width: 80%;
-  text-align: center;
-  ${p => p.theme.mediaQueries.mobile} {
-    width: 100%;
-    top: 100px;
-  }
+  font-family: "Yatra One";
+  font-size: 5.88vh;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 100%; /* 60px */
 `
 
-const AboutDescription = styled.p`
-  font-family: 'HK Grotesk';
-  font-size: 1.2vw;
-  color: #4d4b4f;
-  z-index: 1;
-  position: relative;
-  width: 50%;
-  left: 10%;
-  margin-top: 21%;
-  ${p => p.theme.mediaQueries.mobile} {
-    width: 75%;
-    margin: 0 auto;
-    left: 0;
-    top: 140px;
-    font-size: 1em;
-  }
-`
-
-const swingSign = keyframes`
- 0% { transform: rotateY(0deg) rotateX(-5deg); }
- 25% { transform: rotateY(15deg) rotateX(-2deg); }
- 50% { transform: rotateY(0deg) rotateX(-5deg); }
- 75% { transform: rotateY(20deg) rotateX(-15deg); }
- 100% { transform: rotateY(0deg) rotateX(-2deg); }
-`
-
-const OpenSignImage = styled.img`
+const HoursLabel = styled.p`
   position: absolute;
-  right: 6.5%;
-  top: 56vh;
-  animation-name: ${swingSign};
-  animation-duration: 4s;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-  // transform-origin: 0px 50%;
-  // transform-origin: 0% 50%;
-  // transform: rotate(3deg);
-  ${p => p.theme.mediaQueries.mobile} {
-    display: none;
-  }
+  left: 322.74vh;
+  top: 60.98vh;
+  width: 21.66vh;
+
+  color: #594632;
+  text-align: center;
+  font-family: "Yatra One";
+  font-size: 5.88vh;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 100%;
 `
 
-const About = () => (
-  <AboutContainer id="about">
-    <AboutBgDesktop src={AboutBackgroundDesktop} />
-    <AboutBgMobile src={AboutBackgroundMobile} />
+const MinutesLabel = styled.p`
+  position: absolute;
+  left: 369.80vh;
+  top: 35.09vh;
+  width: 11.27vh;
 
-    <AboutTitle>About cmd-f</AboutTitle>
-    <AboutDescription>
-      cmd-f is a hackathon focused on addressing gender inequality in technology. Our main purpose is to create a safe, dedicated space for people who face gender inequalities to hack together. We're trying to create access for people who have historically been excluded. We have encouraged participation from women, trans people, non-binary individuals, and other gender-diverse people. Thus, cmd-f is only open to individuals that identify as an underrepresented gender in technology.
-      <br /><br />
-      We're aware that gender is not the only inequality in technology. We appreciate allyship and recognize it is important in the community. We are asking our allies to show their support by not hacking but helping in other forms, such as volunteering or mentoring. Please make sure your participation for this event is aligned with the intentions of the event. We ask all participants who attend to trust that everyone else who is attending is meant to be here.
-      <br /><br />
-      For more information on who is an underrepresented gender in technology, please email us at{' '}
-      <a style={{ color: '#4D4B4F' }} href="mailto:cmd-f@nwplus.io">
-        cmd-f@nwplus.io
-      </a>.
-    </AboutDescription>
+  color: #594632;
+  text-align: center;
+  font-family: "Yatra One";
+  font-size: 5.88vh;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 100%;
+`
 
-    <OpenSignImage src={OpenSign} />
-  </AboutContainer>
-)
+const ApplicationsCloseInLabel = styled.p`
+  position: absolute;
+  left: 348.07vh;
+  top: 15.88vh;
+  width: 27.94vh;
+
+  color: #523A21;
+  font-family: "Yatra One";
+  font-size: 4.63vh;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 100%;
+`
+
+const ApplicationsCloseFullLabel = styled.p`
+  position: absolute;
+  left: 307.74vh;
+  top: 83.8vh;
+  width: 65.68vh;
+  text-align: center;
+
+  color: #594632;
+  font-family: "Yatra One";
+  font-size: 2.45vh;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 88%;
+  letter-spacing: -0.1px;
+`
+
+const getReturnValues = countDown => {
+  // calculate time left
+  const days = Math.floor(countDown / (1000 * 60 * 60 * 24))
+  const hours = Math.floor((countDown % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+  const minutes = Math.floor((countDown % (1000 * 60 * 60)) / (1000 * 60))
+  const seconds = Math.floor((countDown % (1000 * 60)) / 1000)
+
+  if (days < 0 || hours < 0 || seconds < 0) {
+    return [0, 0, 0, 0]
+  }
+
+  return [days, hours, minutes, seconds]
+}
+
+const useCountdown = targetDate => {
+  const countDownDate = new Date(targetDate).getTime()
+
+  const [countDown, setCountDown] = useState(countDownDate - new Date().getTime())
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCountDown(countDownDate - new Date().getTime())
+    }, 5000)
+
+    return () => clearInterval(interval)
+  }, [countDownDate])
+
+  return getReturnValues(countDown)
+}
+
+const About = () => {
+  const countDownDate = new Date('2024-02-22T23:59:59-08:00').getTime()
+  const countdown = useCountdown(countDownDate)
+
+  return (<div>
+    <Anchor id="about" x="177" />
+    <Map src={MapImage}/>
+    <Title>What is cmd-f?</Title>
+    <Description style={{ whiteSpace: 'pre-line' }}>cmd-f is a <span style={{fontFamily: "HK Grotesk", fontWeight: "700"}}>24-hour hackathon</span> focused on addressing gender inequality in technology. Our main purpose is to create a safe and dedicated space for historically excluded genders to hack together. We’re trying to create access for people who have faced systemic barriers to inclusion on the basis of gender. We encourage participation from women, trans, non-binary, Two-Spirit and gender diverse people. <span style={{fontFamily: "HK Grotesk", fontWeight: "700"}}>Thus, cmd-f is only open to individuals who identify as a member of an underrepresented gender in technology.</span><br/><br/>We’re aware that gender is not the only inequality in technology. We appreciate allyship and recognize it is important in the community. <span style={{ fontFamily: "HK Grotesk", fontWeight: "700"}}>We invite allies to show their support by not hacking and instead contributing in other forms, such as volunteering or mentoring.</span> Please make sure your participation in this event is aligned with the intentions of the event. We also ask all participants who attend to trust that everyone attending is meant to be here.<br/><br/><span style={{fontFamily: "HK Grotesk", fontWeight: "700"}}>For more information on who is an underrepresented gender in technology, please email us at <a href="mailto:cmd-f@nwplus.io" style={{textDecoration: "underline", color: "#08363C"}}>cmd-f@nwplus.io</a>.</span></Description>
+    <DaysLabel>{countdown[0]} DAYS</DaysLabel>
+    <HoursLabel>{countdown[1]} HOURS</HoursLabel>
+    <MinutesLabel>{countdown[2]} MIN</MinutesLabel>
+    <ApplicationsCloseInLabel>Applications close in:</ApplicationsCloseInLabel>
+    <ApplicationsCloseFullLabel>Applications close Friday, February 22 @ 11:59PM PST</ApplicationsCloseFullLabel>
+    </div>)
+}
 
 export default About

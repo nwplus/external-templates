@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
+// import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
 import { scale } from '@utilities/format'
 import { BANNER_OFFSET } from '../constants/measurements'
+// import MenuImg from '../../public/images/icons/menu.svg'
+
 
 const NavBarContainer = styled.nav`
-  position: fixed;
-  top: 0px;
+  position: ${p => (p.stayAtTop ? 'absolute' : 'fixed')};
+  top: ${p => (p.stayAtTop ? BANNER_OFFSET : '0')}px;
   z-index: 999;
   width: 100%;
   height: 100px;
@@ -55,13 +57,13 @@ const NwPlusLogo = styled.img`
   margin-right: 18px;
 
   ${p => p.theme.mediaQueries.mobile} {
-    width: 50px;
+    width: 30px;
     margin-right: 0;
   }
 `
 
 const LinkText = styled.a`
-  color: ${p => p.theme.colors.text};
+  color: ${p => (p.isLight ? p.theme.colors.text : "#264B65")};
   text-decoration: none;
 
   ::after {
@@ -70,11 +72,11 @@ const LinkText = styled.a`
     width: 0;
     height: 2px;
     transition: width 0.5s ease;
-    background: white;
+    background: ${p => (p.isLight ? p.theme.colors.text : "#264B65")};;
   }
 
   &:hover {
-    color: ${p => p.theme.colors.text};
+    color: ${p => (p.isLight ? p.theme.colors.text : "#264B65")};
     text-decoration: none;
 
     ::after {
@@ -92,26 +94,26 @@ const StyledLinkHeaders = styled.h3`
   text-align: center;
 `
 
-const HamburgerMenu = styled.img`
-  display: none;
-  ${p => p.theme.mediaQueries.mobile} {
-    display: block;
-    width: 30px;
-  }
-`
+// const HamburgerMenu = styled.img`
+//   display: none;
+//   ${p => p.theme.mediaQueries.mobile} {
+//     display: block;
+//     width: 30px;
+//   }
+// `
 
-const DropDownContentContainer = styled.div`
-  position: fixed;
-  top: 0px;
-  z-index: 998;
-  padding: 30px 40px 24px 40px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 24px;
-  width: 100%;
-  background: #959afb;
-`
+// const DropDownContentContainer = styled.div`
+//   position: fixed;
+//   top: 0;
+//   z-index: 998;
+//   padding: 30px 40px 24px 40px;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   gap: 24px;
+//   width: 100%;
+//   background: #AA4245;
+// `
 
 const PortalButtonContainer = styled.div`
   visibility: ${p => (p.portalOpen !== null ? 'visible' : 'hidden')};
@@ -132,9 +134,9 @@ const Button = styled.a`
   padding: 11px 21px;
   border-radius: 50px;
   font-weight: bold;
-  background: linear-gradient(to right, #0defe1, #78ff96);
-  color: #2c2543;
-  right: 120px;
+  background: #AA4245;
+  color: #F3F5F4;
+  right: 0px;
   ${p => p.theme.mediaQueries.mobile} {
     right: 0;
   }
@@ -144,7 +146,6 @@ const Button = styled.a`
     align-items: center;
     justify-content: center;
     content: 'Live Portal';
-    color: #2c2543;
 
     border-radius: 50px;
     position: absolute;
@@ -157,7 +158,7 @@ const Button = styled.a`
     transition: opacity 0.25s ease-in-out;
     opacity: 0;
 
-    background: linear-gradient(to right, #00dbce, #00d88a);
+    background: #8B2929;
   }
 
   &:hover::before {
@@ -184,22 +185,14 @@ const Button = styled.a`
   `}
 `
 
-const TrustBadgeLink = styled.a`
-  display: block;
-  max-width: 100px;
-  min-width: 60px;
-  position: fixed;
-  top: 0px;
-  right: 50px;
-  width: 5%;
-  z-index: 1000;
+// const DropDownFooter = styled.div`
+//     height: 20px;
+//     background: #152E3A;
+//     width: 100vw;
+//     margin-bottom: -25px;
+// `
 
-  ${p => p.theme.mediaQueries.mobile} {
-    left: 50px;
-  }
-`
-
-const MenuItem = ({ name, href, isAnchor, target, rel, isMobile, closeDropdown }) => {
+const MenuItem = ({ name, href, isLight, isAnchor, target, rel, isMobile, closeDropdown }) => {
   const [anchorTarget, setAnchorTarget] = useState(null)
 
   useEffect(() => {
@@ -219,7 +212,7 @@ const MenuItem = ({ name, href, isAnchor, target, rel, isMobile, closeDropdown }
   }
 
   return (
-    <LinkText href={href} onClick={handleClick} target={target} rel={rel}>
+    <LinkText href={href} onClick={handleClick} target={target} rel={rel} isLight={isLight}>
       <StyledLinkHeaders>{name}</StyledLinkHeaders>
     </LinkText>
   )
@@ -242,49 +235,26 @@ const PortalButton = ({ portalOpen }) => (
   </PortalButtonContainer>
 )
 
-const MenuList = ({ isMobile, closeDropdown }) => (
+const MenuList = ({ isLight, isMobile, closeDropdown }) => (
   <>
-    <MenuItem name="About" href="/#about" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
-    <MenuItem name='Hackathon' href='/#hackathon' isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
-    <MenuItem name="FAQ" href="/#faq" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
-    <MenuItem name="Sponsors" href="/#sponsors" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
-    {/* <MenuItem
-      name="2023"
-      href="https://cmd-f.nwplus.io/"
-      target="_blank"
-      rel="noopener"
-      isMobile={isMobile}
-      closeDropdown={closeDropdown}
-    /> */}
+    <MenuItem name="About" href="/#about" isLight={isLight} isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
+    <MenuItem name="Tracks" href="/#tracks"isLight={isLight} isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
+    <MenuItem name="FAQ" href="/#faq" isLight={isLight} isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
+    <MenuItem name="Sponsors" href="/#sponsors" isLight={isLight} isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
   </>
 )
 
-const TrustBadge = () => (
-  <TrustBadgeLink
-    id="mlh-trust-badge"
-    rel="noreferrer"
-    href="https://mlh.io/na?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2024-season&utm_content=white"
-    target="_blank"
-  >
-    <img
-      src="https://s3.amazonaws.com/logged-assets/trust-badge/2024/mlh-trust-badge-2024-white.svg"
-      alt="Major League Hacking 2024 Hackathon Season"
-      style={{ width: '100%' }}
-    />
-  </TrustBadgeLink>
-)
-
-const NavigationBar = ({ bannerExists }) => {
-  const [showDropdown, setShowDropdown] = useState(false)
+const NavigationBar = ({ isLight, bannerExists }) => {
+  // const [showDropdown, setShowDropdown] = useState(false)
   const [visibility, setVisibility] = useState('visible')
   const [opacity, setOpacity] = useState('1')
   const [stayAtTop, setStayAtTop] = useState(bannerExists && true)
 
-  const handleResize = () => {
-    if (window.innerWidth >= SCREEN_BREAKPOINTS.mobile) {
-      setShowDropdown(false)
-    }
-  }
+  // const handleResize = () => {
+  //   if (window.innerWidth >= SCREEN_BREAKPOINTS.mobile) {
+  //     setShowDropdown(false)
+  //   }
+  // }
 
   const handleScroll = () => {
     let lastScroll = 0
@@ -309,53 +279,52 @@ const NavigationBar = ({ bannerExists }) => {
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll())
-    window.addEventListener('resize', handleResize)
+    // window.addEventListener('resize', handleResize)
 
     return () => {
       window.removeEventListener('scroll', handleScroll)
-      window.removeEventListener('resize', handleResize)
+      // window.removeEventListener('resize', handleResize)
     }
   }, [])
 
-  const portalOpen = false
-
-  if (showDropdown) {
-    // Mobile version
-    return (
-      <>
-        <NavBarContainer mobileView>
-          <HamburgerMenu
-            src="/images/icons/cross.svg"
-            alt="dropdown menu icon"
-            onClick={() => setShowDropdown(false)}
-          />
-        </NavBarContainer>
-        <DropDownContentContainer>
-          <a href="/">
-            <NwPlusLogo src="/images/logos/nwplus-logo.svg" alt="nwPlus club logo in white" />
-          </a>
-          <MenuList isMobile={showDropdown} closeDropdown={setShowDropdown} />
-          <PortalButton portalOpen={portalOpen} />
-        </DropDownContentContainer>
-        <TrustBadge stayAtTop={stayAtTop} />
-      </>
-    )
-  }
+  // if (showDropdown) {
+  //   // Mobile version
+  //   return (
+  //     <>
+  //       <NavBarContainer mobileView>
+  //         <HamburgerMenu
+  //           src="/images/icons/cross.svg"
+  //           alt="dropdown menu icon"
+  //           onClick={() => setShowDropdown(false)}
+  //         />
+  //       </NavBarContainer>
+  //       <DropDownContentContainer>
+  //         <a href="/">
+  //           <NwPlusLogo src="/images/logos/nwplus-logo.svg" alt="nwPlus club logo in white" />
+  //         </a>
+  //         <MenuList isMobile={showDropdown} closeDropdown={setShowDropdown} />
+  //         {/* Make sure desktop (below) has the same portalOpen value */}
+  //         <PortalButton portalOpen />
+  //         <DropDownFooter />
+  //       </DropDownContentContainer>
+  //     </>
+  //   )
+  // }
 
   // Only for desktop version
   return (
     <NavBarContainer visibility={visibility} opacity={opacity} stayAtTop={stayAtTop}>
       <NavGroupContainer>
         <a href="/">
-          <NwPlusLogo src="/images/logos/nwplus-logo.svg" alt="nwPlus club logo in white" />
+          <NwPlusLogo src={isLight ? "/assets/logos/nwplus_logo_light.svg" : "/assets/logos/nwplus_logo.svg" } alt="nwPlus club logo in white" />
         </a>
         <NavTextContainer>
-          <MenuList />
+          <MenuList isLight={isLight}/>
         </NavTextContainer>
-        <PortalButton portalOpen={portalOpen} />
+        {/* Make sure mobile (above) has the same portalOpen value */}
+        <PortalButton portalOpen />
       </NavGroupContainer>
-      <HamburgerMenu src="/images/icons/menu.svg" alt="dropdown menu icon" onClick={() => setShowDropdown(true)} />
-      <TrustBadge />
+      {/* <HamburgerMenu src={MenuImg} alt="dropdown menu icon" onClick={() => setShowDropdown(true)} /> */}
     </NavBarContainer>
   )
 }

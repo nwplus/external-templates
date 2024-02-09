@@ -11,18 +11,51 @@ import {
 } from '@fortawesome/free-brands-svg-icons'
 import Team from '@components/Team'
 
-const FooterContainer = styled.div`
-  position: relative;
-  background: url('/assets/footer/desktop_background.svg'), linear-gradient(to bottom, #645F70, #545364);
-  min-height: calc(calc(2037 / 1436) * 100vw);
-  background-repeat: no-repeat;
-  background-size: cover;
+const Title = styled.p`
+  position: absolute;
+  left: 1463.13vh;
+  top: 12.35vh;
 
-  ${p => p.theme.mediaQueries.mobile} {
-    background: url('/assets/footer/mobile_background.svg'), linear-gradient(to bottom, #645F70, #545364);
-    min-height: calc(calc(1419 / 428) * 100vw);
-  }
+  color: #FFF;
+  text-align: center;
+  font-family: "Yatra One";
+  font-size: 5.49vh;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 100%;
+  letter-spacing: 0.4px;
 `
+
+const MeetMindsLabel = styled.p`
+  position: absolute;
+  left: 1449.33vh;
+  top: 69.5vh;
+
+  color: #F6FEFF;
+  font-feature-settings: 'liga' off;
+  font-family: "Yatra One";
+  font-size: 4.11vh;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+  letter-spacing: 0.38px;
+`
+
+// const FooterContainer = styled.div`
+//   position: absolute;
+//   left: 1300vh;
+//   top: 20vh;
+
+//   background: url('/assets/footer/desktop_background.svg'), linear-gradient(to bottom, #645F70, #545364);
+//   min-height: calc(calc(2037 / 1436) * 100vw);
+//   background-repeat: no-repeat;
+//   background-size: cover;
+
+//   ${p => p.theme.mediaQueries.mobile} {
+//     background: url('/assets/footer/mobile_background.svg'), linear-gradient(to bottom, #645F70, #545364);
+//     min-height: calc(calc(1419 / 428) * 100vw);
+//   }
+// `
 
 const SocialMediaIcons = styled.div`
   justify-content: center;
@@ -33,6 +66,9 @@ const SocialMediaIcons = styled.div`
     width: 50px;
     text-decoration: none;
     color: white;
+    &:hover {
+      color: #9DA9C8;
+    }
   }
 
   gap: 2rem;
@@ -48,10 +84,15 @@ const SocialMediaIcons = styled.div`
 const Links = styled.div`
   display: flex;
   gap: 2rem;
-  font-size: 1.5rem;
+  font-size: 2.35vh;
+  justify-content: center;
+  width: 100vh;
   a {
     font-weight: 600;
     color: white;
+    &:hover {
+      color: #9DA9C8;
+    }
   }
 
   ${p => p.theme.mediaQueries.mobile} {
@@ -75,44 +116,44 @@ const TextContainer = styled.div`
 `
 
 const SmallText = styled.div`
+  position: absolute;
+  left: 1466.17vh;
+  top: 89vh;
+
   user-select: none;
-  padding-top: 2.5rem;
+  padding-top: 3.92vh;
   text-align: center;
   div {
     color: white;
-    font-size: 1.2rem;
+    font-size: calc(0.5rem + 1vh);
     font-weight: 500;
   }
-  ${p => p.theme.mediaQueries.mobile} {
-    div {
-      font-size: 1rem;
-    }
-  }
 `
 
-const TeamContainer = styled.div`
-  position: absolute;
-  left: 0;
-  bottom: 1rem;
-  text-align: center;
-  width: 100%;
+// const TeamContainer = styled.div`
+//   position: absolute;
+//   left: 0;
+//   bottom: 1rem;
+//   text-align: center;
+//   width: 100%;
 
-  ${p => p.theme.mediaQueries.tabletLarge} {
-    width: 40vw;
-  }
-  ${p => p.theme.mediaQueries.mobile} {
-    width: 100%;
-    bottom: 1rem;
-  }
-`
+//   ${p => p.theme.mediaQueries.tabletLarge} {
+//     width: 40vw;
+//   }
+//   ${p => p.theme.mediaQueries.mobile} {
+//     width: 100%;
+//     bottom: 1rem;
+//   }
+// `
 
 const StaticContainer = styled.div`
+  position: absolute;
+  left: 1428vh;
+  top: 21vh;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  position: absolute;
-  width: 100%;
-  top: 6rem;
 
   ${p => p.theme.mediaQueries.mobile} {
     top: 3.5rem;
@@ -153,21 +194,19 @@ const SocialMediaContainer = () => (
           Code of Conduct
         </a>
       </Links>
-      <SmallText>
-        <div>Organized and held by nwPlus</div>
-        <div>Copyright &copy; cmd-f 2024</div>
-      </SmallText>
     </TextContainer>
   </StaticContainer>
 )
 
-const Footer = () => (
-  <FooterContainer>
+const Footer = () => (<>
+    <Title>Contact us!</Title>
     <SocialMediaContainer />
-    <TeamContainer>
-      <Team />
-    </TeamContainer>
-  </FooterContainer>
-)
+    <Team />
+    <SmallText>
+      <div>Organized and held by nwPlus</div>
+      <div>Copyright &copy; cmd-f 2024</div>
+    </SmallText>
+    <MeetMindsLabel>Meet the minds behind cmd-f</MeetMindsLabel>
+  </>)
 
 export default Footer
