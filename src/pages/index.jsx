@@ -17,7 +17,7 @@ import Hero from '../sections/Hero'
 import Encouragement from '../sections/Encouragement'
 
 import DesktopBackgroundImage from '../../public/assets/background/desktop_background.svg'
-
+import MobileBackgroundImage from '../../public/assets/background/mobile_background.svg'
 
 const Background = styled.img`
   top: 0;
@@ -69,29 +69,29 @@ export default function Index({ title }) {
 
   const isMobileFixed = true;
 
-  return isMobileFixed ? (
-      <div>Mobile here!</div>
+  return <div>
+    <GlobalStyles />
+    <Head>
+      <title>{title}</title>
+
+      <link rel="icon" href="/favicon.png" />
+      <link href="https://fonts.googleapis.com/css2?family=Yatra+One&display=swap" rel="stylesheet" />
+
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <meta
+        name="description"
+        content={`Western Canada's largest hackathon celebrating underrepresented genders in tech`}
+      />
+      <meta property="og:image" content="/og_preview.png" />
+    </Head>
+    {isMobileFixed ? (
+      <div className="mobile-root-container">
+        <div>Mobile not available!</div>
+      </div>
     ) : (
-      <div className="root-container" id="horizontal-scroll-container">
-        <GlobalStyles />
-        <Head>
-          <title>{title}</title>
-
-          <link rel="icon" href="/favicon.png" />
-          <link href="https://fonts.googleapis.com/css2?family=Yatra+One&display=swap" rel="stylesheet" />
-
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <meta
-            name="description"
-            content={`Western Canada's largest hackathon celebrating underrepresented genders in tech`}
-          />
-          <meta property="og:image" content="/og_preview.png" />
-        </Head>
-
-        {/* Components Starts */}
+      <div className="root-container">
         <Background src={DesktopBackgroundImage} />
         <NavigationBar isLight={isNavBarLight} />
-        {/* <NavBar isLight={isNavBarLight} /> */}
         <Hero />
         <Encouragement />
         <About/>
@@ -101,9 +101,9 @@ export default function Index({ title }) {
         <FAQ/>
         <Sponsors/>
         <Footer />
-        {/* Components Ends */}
       </div>
-    )
+    )}
+    </div>
 }
 
 export async function getStaticProps() {
