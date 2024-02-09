@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { useEffect, useState } from 'react'
 import fireDb from '@utilities/firebase';
 import Anchor from '@components/Anchor';
+import { v4 as uuidv4 } from 'uuid';
 
 const Title = styled.p`
   position: absolute;
@@ -74,7 +75,7 @@ const Sponsors = () => {
 
   const SponsorsRowComponent = ({ tier }) => (<SponsorRow>
     {categorizedSponsorMap.get(tier)?.map(({ imgURL, link }) => (
-      <SponsorsLink href={link} target="_blank" rel="noreferrer">
+      <SponsorsLink key={uuidv4()} href={link} target="_blank" rel="noreferrer">
         <SilverBoi src={imgURL} />
       </SponsorsLink>
     ))}

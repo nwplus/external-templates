@@ -95,28 +95,6 @@ export default function Index({ title }) {
     };
   }, []);
 
-  const theme = useTheme();
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    // Define a function to update our state
-    const checkMediaQuery = () => {
-      const { matches } = window.matchMedia(theme.mediaQueries.small);
-      setIsMobile(matches);
-    };
-
-    // Call it once to set the initial state
-    checkMediaQuery();
-
-    // Add the event listener for subsequent updates
-    window.addEventListener('resize', checkMediaQuery);
-
-    // Cleanup function to remove the event listener
-    return () => window.removeEventListener('resize', checkMediaQuery);
-  }, [theme]); // Dependencies array, re-run if theme changes
-
-  // const isMobileFixed = true;
-
   return <div>
     <GlobalStyles />
     <Head>

@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import fireDb from '@utilities/firebase';
 import Anchor from "@components/Anchor";
 import Slide from "./Slide";
+import { v4 as uuidv4 } from 'uuid';
 
 const SponsorTiers = styled.div`
   margin-top: 8rem;
@@ -58,8 +59,8 @@ const SmallSponsorsSlide = () => {
   }, [])
 
   const SponsorsColumnComponent = ({ tier }) => (<SponsorColumn>
-    {categorizedSponsorMap.get(tier)?.map(({ imgURL, link }) => (
-      <SponsorsLink href={link} target="_blank" rel="noreferrer">
+    {categorizedSponsorMap.get(tier)?.map(({ imgURL, link, name }) => (
+      <SponsorsLink key={uuidv4()}  href={link} target="_blank" rel="noreferrer">
         <SilverBoi src={imgURL} />
       </SponsorsLink>
     ))}
