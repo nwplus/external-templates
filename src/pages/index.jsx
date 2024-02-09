@@ -87,7 +87,7 @@ export default function Index({ title }) {
 
       {/* Components Starts */}
       <Background src={DesktopBackgroundImage} />
-      <NavigationBar />
+      <NavigationBar isLight={isNavBarLight} />
       {/* <NavBar isLight={isNavBarLight} /> */}
       <Hero />
       <Encouragement />

@@ -63,7 +63,7 @@ const NwPlusLogo = styled.img`
 `
 
 const LinkText = styled.a`
-  color: ${p => p.theme.colors.text};
+  color: ${p => (p.isLight ? p.theme.colors.text : "#264B65")};
   text-decoration: none;
 
   ::after {
@@ -72,11 +72,11 @@ const LinkText = styled.a`
     width: 0;
     height: 2px;
     transition: width 0.5s ease;
-    background: white;
+    background: ${p => (p.isLight ? p.theme.colors.text : "#264B65")};;
   }
 
   &:hover {
-    color: ${p => p.theme.colors.text};
+    color: ${p => (p.isLight ? p.theme.colors.text : "#264B65")};
     text-decoration: none;
 
     ::after {
@@ -192,7 +192,7 @@ const Button = styled.a`
 //     margin-bottom: -25px;
 // `
 
-const MenuItem = ({ name, href, isAnchor, target, rel, isMobile, closeDropdown }) => {
+const MenuItem = ({ name, href, isLight, isAnchor, target, rel, isMobile, closeDropdown }) => {
   const [anchorTarget, setAnchorTarget] = useState(null)
 
   useEffect(() => {
@@ -212,7 +212,7 @@ const MenuItem = ({ name, href, isAnchor, target, rel, isMobile, closeDropdown }
   }
 
   return (
-    <LinkText href={href} onClick={handleClick} target={target} rel={rel}>
+    <LinkText href={href} onClick={handleClick} target={target} rel={rel} isLight={isLight}>
       <StyledLinkHeaders>{name}</StyledLinkHeaders>
     </LinkText>
   )
@@ -235,16 +235,16 @@ const PortalButton = ({ portalOpen }) => (
   </PortalButtonContainer>
 )
 
-const MenuList = ({ isMobile, closeDropdown }) => (
+const MenuList = ({ isLight, isMobile, closeDropdown }) => (
   <>
-    <MenuItem name="About" href="/#about" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
-    <MenuItem name="Tracks" href="/#tracks" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
-    <MenuItem name="FAQ" href="/#faq" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
-    <MenuItem name="Sponsors" href="/#sponsors" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
+    <MenuItem name="About" href="/#about" isLight={isLight} isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
+    <MenuItem name="Tracks" href="/#tracks"isLight={isLight} isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
+    <MenuItem name="FAQ" href="/#faq" isLight={isLight} isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
+    <MenuItem name="Sponsors" href="/#sponsors" isLight={isLight} isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
   </>
 )
 
-const NavigationBar = ({ bannerExists }) => {
+const NavigationBar = ({ isLight, bannerExists }) => {
   // const [showDropdown, setShowDropdown] = useState(false)
   const [visibility, setVisibility] = useState('visible')
   const [opacity, setOpacity] = useState('1')
@@ -316,10 +316,10 @@ const NavigationBar = ({ bannerExists }) => {
     <NavBarContainer visibility={visibility} opacity={opacity} stayAtTop={stayAtTop}>
       <NavGroupContainer>
         <a href="/">
-          <NwPlusLogo src="/images/logos/nwplus-logo.svg" alt="nwPlus club logo in white" />
+          <NwPlusLogo src={isLight ? "/assets/logos/nwplus_logo_light.svg" : "/assets/logos/nwplus_logo.svg" } alt="nwPlus club logo in white" />
         </a>
         <NavTextContainer>
-          <MenuList />
+          <MenuList isLight={isLight}/>
         </NavTextContainer>
         {/* Make sure mobile (above) has the same portalOpen value */}
         <PortalButton portalOpen />
