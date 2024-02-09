@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Anchor from "@components/Anchor";
 import Slide from "./Slide";
 
 const SectionTitle = styled.p`
@@ -68,6 +69,7 @@ const ValueContainer = styled.div`
 
 const CommunitySlide = () => (
     <Slide alignItems="left">
+      <Anchor id="tracks" x="0" />
       <SectionTitle>Tracks</SectionTitle>
       <ValueContainer>
         <ValueCircle>1</ValueCircle>

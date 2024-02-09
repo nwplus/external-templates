@@ -1,5 +1,7 @@
 import styled from "styled-components";
+import Anchor from "@components/Anchor";
 import Slide from "./Slide";
+
 
 const DefaultLabel = styled.p`
   margin-top: 100px;
@@ -12,9 +14,10 @@ const DefaultLabel = styled.p`
 `
 
 const BigSponsorsSlide = () => (
-    <Slide alignItems="left">
-      <DefaultLabel>Big sponsors slide</DefaultLabel>
-    </Slide>
+      <Slide alignItems="left">
+        <Anchor id="sponsors" x="0" />
+        <DefaultLabel>Big sponsors slide</DefaultLabel>
+      </Slide>
   )
 
 export default BigSponsorsSlide;

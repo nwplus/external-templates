@@ -47,8 +47,8 @@ const SocialMediaIcons = styled.div`
 
 const Links = styled.div`
   margin-top: 1rem;
-  margin-left: 4rem;
-  margin-right: 4rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
 
   display: inline-flex;
   flex-wrap: wrap;

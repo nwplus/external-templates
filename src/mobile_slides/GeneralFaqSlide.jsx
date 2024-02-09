@@ -7,6 +7,8 @@ import React, { useState, useEffect } from 'react'
 import styled from "styled-components";
 import Slide from "./Slide";
 
+import Anchor from '@components/Anchor';
+
 const Title = styled.p`
   margin-top: 4rem;
   margin-left: 2rem;
@@ -110,6 +112,7 @@ const GeneralFaqSlide = () => {
   }, [])
 
   return (<Slide alignItems="left">
+    <Anchor id="faq" x="0"/>
     <Title>FAQ</Title>
     {faqData ? (<FaqGrid>
       <FaqColumn>

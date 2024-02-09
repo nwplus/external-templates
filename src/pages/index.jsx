@@ -115,6 +115,7 @@ export default function Index({ title }) {
     {isMobileFixed ? (
       <div className="mobile-root-container">
         <MobileBackground src={MobileBackgroundImage} />
+        <NavigationBar />
         <HeroSlide />
         <EncouragementSlide />
         <AboutSlide />

@@ -4,8 +4,8 @@ import Slide from "./Slide";
 
 const MeetMindsLabel = styled.p`
   margin-top: 67svh;
-  margin-left: 4rem;
-  margin-right: 4rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
 
   color: #F6FEFF;
   text-align: center;
