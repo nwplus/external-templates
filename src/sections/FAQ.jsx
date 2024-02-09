@@ -107,18 +107,20 @@ const FaqCollection = ({ category, faqs, expandedQuestion, setExpandedQuestion }
     <CollectionName>{category}</CollectionName>
 
     {faqs.map(q =>
-      <FaqBox
+  <FaqBox
         key={q.question}
         question={q.question}
         answer={q.answer}
-        isExpanded={expandedQuestion === q.question}
         onExpand={() => {
+          console.log("whatever!")
+          console.log('expanded question:', expandedQuestion, q.question)
           if (expandedQuestion === q.question) {
             setExpandedQuestion(null)
           } else {
             setExpandedQuestion(q.question)
           }
         }}
+        isExpanded={expandedQuestion === q.question}
       />
     )}
   </CollectionContainer>
