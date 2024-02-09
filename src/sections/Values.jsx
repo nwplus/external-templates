@@ -12,7 +12,7 @@ const SectionTitle = styled.p`
   font-size: 5.49vh;
   font-style: normal;
   font-weight: 400;
-  line-height: 5.49vh;
+  line-height: 100%;
   letter-spacing: 0.4px;
 `
 
@@ -39,7 +39,7 @@ const ValueTitle = styled.p`
 
   color: #08373D;
   font-feature-settings: 'liga' off;
-  font-size: 3.57vh;
+  font-size: calc(1rem + 1.5vh);
   font-style: normal;
   font-weight: 800;
   line-height: 140%;
@@ -52,10 +52,10 @@ const ValueDescription = styled.p`
 
   color: #08373D;
   font-family: "HK Grotesk Medium";
-  font-size: 1.83vh;
+  font-size: calc(0.5rem + 1.2vh);
   font-style: normal;
   font-weight: 500;
-  line-height: 2.244vh;
+  line-height: 122%;
   letter-spacing: -0.1px;
 `
 
