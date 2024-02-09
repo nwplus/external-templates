@@ -4,23 +4,26 @@ import Slide from "./Slide";
 
 import VerticalMapImage from '../../public/assets/map/vertical_map.svg'
 
+const MapContainer = styled.div`
+  position: relative;
+  margin-top: 10vw;
+  margin-left: 10vw;
+  margin-right: 10vw;
+`
+
 const MapImage = styled.img`
-  position: absolute;
-  top: 5rem;
-  left: 2rem;
-  right: 2rem;
 `
 
 const CloseInLabel = styled.p`
   position: absolute;
-  top: 10rem;
-  right: 4rem;
+  top: 13%;
+  right: 14%;
   text-align: right;
 
   color: #523A21;
   text-align: right;
   font-family: "Yatra One";
-  font-size: 30px;
+  font-size: 1.8rem;
   font-style: normal;
   font-weight: 400;
   line-height: 100%;
@@ -28,8 +31,8 @@ const CloseInLabel = styled.p`
 
 const DaysLabel = styled.p`
   position: absolute;
-  left: 13rem;
-  top: 17rem;
+  left: 48%;
+  top: 33%;
   width: 5rem;
 
   color: #594632;
@@ -43,8 +46,8 @@ const DaysLabel = styled.p`
 
 const HoursLabel = styled.p`
   position: absolute;
-  left: 7rem;
-  top: 27.4rem;
+  left: 22%;
+  top: 62%;
   width: 6rem;
 
   color: #594632;
@@ -58,8 +61,8 @@ const HoursLabel = styled.p`
 
 const MinutesLabel = styled.p`
   position: absolute;
-  left: 16.5rem;
-  top: 33rem;
+  left: 62%;
+  top: 78%;
   width: 4rem;
 
   color: #594632;
@@ -108,12 +111,15 @@ const MapSlide = () => {
 close in...`
 
 
-  return (<Slide alignItems="left">
-      <MapImage src={VerticalMapImage} />
-      <CloseInLabel style={{ whiteSpace: 'pre-line'}}>{appsCloseText}</CloseInLabel>
-      <DaysLabel>{countdown[0]} DAYS</DaysLabel>
-      <HoursLabel>{countdown[1]} HOURS</HoursLabel>
-      <MinutesLabel>{countdown[2]} MIN</MinutesLabel>
+  return (
+    <Slide alignItems="center">
+      <MapContainer>
+        <MapImage src={VerticalMapImage} />
+        <CloseInLabel style={{ whiteSpace: 'pre-line'}}>{appsCloseText}</CloseInLabel>
+        <DaysLabel>{countdown[0]} DAYS</DaysLabel>
+        <HoursLabel>{countdown[1]} HOURS</HoursLabel>
+        <MinutesLabel>{countdown[2]} MIN</MinutesLabel>
+      </MapContainer>
     </Slide>
   )
 }
