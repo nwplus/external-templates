@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { React, useEffect, useState } from 'react'
 import GlobalStyles from '@styles/global'
 
-import styled from 'styled-components'
+import styled, { useTheme } from 'styled-components'
 
 import Sponsors from 'src/sections/Sponsors'
 import About from 'src/sections/About'
@@ -95,7 +95,27 @@ export default function Index({ title }) {
     };
   }, []);
 
-  const isMobileFixed = true;
+  const theme = useTheme();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    // Define a function to update our state
+    const checkMediaQuery = () => {
+      const { matches } = window.matchMedia(theme.mediaQueries.small);
+      setIsMobile(matches);
+    };
+
+    // Call it once to set the initial state
+    checkMediaQuery();
+
+    // Add the event listener for subsequent updates
+    window.addEventListener('resize', checkMediaQuery);
+
+    // Cleanup function to remove the event listener
+    return () => window.removeEventListener('resize', checkMediaQuery);
+  }, [theme]); // Dependencies array, re-run if theme changes
+
+  // const isMobileFixed = true;
 
   return <div>
     <GlobalStyles />
@@ -112,46 +132,43 @@ export default function Index({ title }) {
       />
       <meta property="og:image" content="/og_preview.png" />
     </Head>
-    {isMobileFixed ? (
-      <div className="mobile-root-container">
-        <MobileBackground src={MobileBackgroundImage} />
-        <NavigationBar />
-        <HeroSlide />
-        <EncouragementSlide />
-        <AboutSlide />
-        <MapSlide />
-        <ConfidenceSlide />
-        <LearnSlide />
-        <ExploreSlide />
-        <CommunitySlide />
-        <EducationSlide />
-        <HealthSlide />
-        <LastYearSlide />
-        <StatisticsSlide />
-        <GeneralFaqSlide />
-        <TeamsFaqSlide />
-        <SponsoredBySlide />
-        <BigSponsorsSlide />
-        <SmallSponsorsSlide />
-        <ContactSlide />
-        <LastSlide />
-      </div>
-    ) : (
-      <div className="root-container">
-        <Background src={DesktopBackgroundImage} />
-        <NavigationBar isLight={isNavBarLight} />
-        <Hero />
-        <Encouragement />
-        <About/>
-        <Values />
-        <Tracks/>
-        <Statistics />
-        <FAQ/>
-        <Sponsors/>
-        <Footer />
-      </div>
-    )}
+    <div className="mobile-root-container">
+      <MobileBackground src={MobileBackgroundImage} />
+      <NavigationBar />
+      <HeroSlide />
+      <EncouragementSlide />
+      <AboutSlide />
+      <MapSlide />
+      <ConfidenceSlide />
+      <LearnSlide />
+      <ExploreSlide />
+      <CommunitySlide />
+      <EducationSlide />
+      <HealthSlide />
+      <LastYearSlide />
+      <StatisticsSlide />
+      <GeneralFaqSlide />
+      <TeamsFaqSlide />
+      <SponsoredBySlide />
+      <BigSponsorsSlide />
+      <SmallSponsorsSlide />
+      <ContactSlide />
+      <LastSlide />
     </div>
+    <div className="root-container">
+      <Background src={DesktopBackgroundImage} />
+      <NavigationBar isLight={isNavBarLight} />
+      <Hero />
+      <Encouragement />
+      <About/>
+      <Values />
+      <Tracks/>
+      <Statistics />
+      <FAQ/>
+      <Sponsors/>
+      <Footer />
+    </div>
+  </div>
 }
 
 export async function getStaticProps() {

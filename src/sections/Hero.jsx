@@ -204,7 +204,7 @@ const Hero = () => (<div id="hero">
       <VolunteerButton href="https://nwplus.io" target="_blank">Volunteer</VolunteerButton>
     </ApplyButtonsContainer>
     <SealTail src={SealTailImage}/>
-    <Sparkles />
+    {/* <Sparkles /> */}
   </div>)
 
 export default Hero

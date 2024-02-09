@@ -26,6 +26,10 @@ export const GlobalStyles = createGlobalStyle`
     overflow-x: scroll;
     overflow-y: hidden;
     scroll-snap-type: x mandatory;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
   }
 
   .mobile-root-container {
@@ -39,6 +43,10 @@ export const GlobalStyles = createGlobalStyle`
     scroll-snap-points-x: repeat(100vw);
     scroll-snap-type: x mandatory;
     overscroll-behavior-x: none;
+
+    @media (min-width: 768px) {
+      display: none;
+    }
   }
   
   :root {

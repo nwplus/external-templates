@@ -63,7 +63,7 @@ const NwPlusLogo = styled.img`
 `
 
 const LinkText = styled.a`
-  color: ${p => (p.isLight ? p.theme.colors.text : "#8B2929")};
+  color: ${p => (p.isLight ? p.theme.colors.text : "#264B65")};
   text-decoration: none;
 
   ::after {
@@ -72,11 +72,11 @@ const LinkText = styled.a`
     width: 0;
     height: 2px;
     transition: width 0.5s ease;
-    background: ${p => (p.isLight ? p.theme.colors.text : "#8B2929")};;
+    background: ${p => (p.isLight ? p.theme.colors.text : "#264B65")};;
   }
 
   &:hover {
-    color: ${p => (p.isLight ? p.theme.colors.text : "#8B2929")};
+    color: ${p => (p.isLight ? p.theme.colors.text : "#264B65")};
     text-decoration: none;
 
     ::after {

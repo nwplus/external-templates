@@ -139,15 +139,15 @@ const fadeOut = keyframes`
 const Tooltip = styled.div`
   position: absolute;
   top: 30svh;
-  width: 50vw;
-  height: 80vw;
+  width: 70vw;
+  height: 100vw;
   background: linear-gradient(146deg, rgba(219, 212, 203, 0.90) -3.75%, rgba(255, 250, 243, 0.90) -3.74%, rgba(255, 247, 242, 0.90) 103.97%, rgba(255, 241, 234, 0.90) 103.97%);
   border-radius: 1rem;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  animation: ${fadeOut} 2s ease-in-out 1s forwards;
+  animation: ${fadeOut} 2s ease-in-out 0.65s forwards;
 `
 
 const TooltipLabel = styled.p`
