@@ -27,6 +27,19 @@ export const GlobalStyles = createGlobalStyle`
     overflow-y: hidden;
     scroll-snap-type: x mandatory;
   }
+
+  .mobile-root-container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 100svh;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scroll-snap-points-x: repeat(100vw);
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: none;
+  }
   
   :root {
       font-family: 'HK Grotesk', sans-serif;

@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
 import styled from 'styled-components'
-// import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
+import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
 import { scale } from '@utilities/format'
 import { BANNER_OFFSET } from '../constants/measurements'
-// import MenuImg from '../../public/images/icons/menu.svg'
+import MenuImg from '../../public/images/icons/menu.svg'
 
 
 const NavBarContainer = styled.nav`
@@ -63,7 +63,7 @@ const NwPlusLogo = styled.img`
 `
 
 const LinkText = styled.a`
-  color: ${p => (p.isLight ? p.theme.colors.text : "#264B65")};
+  color: ${p => (p.isLight ? p.theme.colors.text : "#8B2929")};
   text-decoration: none;
 
   ::after {
@@ -72,15 +72,27 @@ const LinkText = styled.a`
     width: 0;
     height: 2px;
     transition: width 0.5s ease;
-    background: ${p => (p.isLight ? p.theme.colors.text : "#264B65")};;
+    background: ${p => (p.isLight ? p.theme.colors.text : "#8B2929")};;
   }
 
   &:hover {
-    color: ${p => (p.isLight ? p.theme.colors.text : "#264B65")};
+    color: ${p => (p.isLight ? p.theme.colors.text : "#8B2929")};
     text-decoration: none;
 
     ::after {
       width: 100%;
+    }
+  }
+
+  ${p => p.theme.mediaQueries.mobile} {
+    color: white;
+
+    ::after {
+      background: white;
+    }
+
+    &:hover {
+      color: white;
     }
   }
 `
@@ -94,26 +106,26 @@ const StyledLinkHeaders = styled.h3`
   text-align: center;
 `
 
-// const HamburgerMenu = styled.img`
-//   display: none;
-//   ${p => p.theme.mediaQueries.mobile} {
-//     display: block;
-//     width: 30px;
-//   }
-// `
+const HamburgerMenu = styled.img`
+  display: none;
+  ${p => p.theme.mediaQueries.mobile} {
+    display: block;
+    width: 30px;
+  }
+`
 
-// const DropDownContentContainer = styled.div`
-//   position: fixed;
-//   top: 0;
-//   z-index: 998;
-//   padding: 30px 40px 24px 40px;
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   gap: 24px;
-//   width: 100%;
-//   background: #AA4245;
-// `
+const DropDownContentContainer = styled.div`
+  position: fixed;
+  top: 0;
+  z-index: 998;
+  padding: 30px 40px 24px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  background: #15513F;
+`
 
 const PortalButtonContainer = styled.div`
   visibility: ${p => (p.portalOpen !== null ? 'visible' : 'hidden')};
@@ -185,12 +197,12 @@ const Button = styled.a`
   `}
 `
 
-// const DropDownFooter = styled.div`
-//     height: 20px;
-//     background: #152E3A;
-//     width: 100vw;
-//     margin-bottom: -25px;
-// `
+const DropDownFooter = styled.div`
+    height: 8px;
+    background: #2E2E2E;
+    width: 100vw;
+    margin-bottom: -25px;
+`
 
 const MenuItem = ({ name, href, isLight, isAnchor, target, rel, isMobile, closeDropdown }) => {
   const [anchorTarget, setAnchorTarget] = useState(null)
@@ -245,16 +257,16 @@ const MenuList = ({ isLight, isMobile, closeDropdown }) => (
 )
 
 const NavigationBar = ({ isLight, bannerExists }) => {
-  // const [showDropdown, setShowDropdown] = useState(false)
+  const [showDropdown, setShowDropdown] = useState(false)
   const [visibility, setVisibility] = useState('visible')
   const [opacity, setOpacity] = useState('1')
   const [stayAtTop, setStayAtTop] = useState(bannerExists && true)
 
-  // const handleResize = () => {
-  //   if (window.innerWidth >= SCREEN_BREAKPOINTS.mobile) {
-  //     setShowDropdown(false)
-  //   }
-  // }
+  const handleResize = () => {
+    if (window.innerWidth >= SCREEN_BREAKPOINTS.mobile) {
+      setShowDropdown(false)
+    }
+  }
 
   const handleScroll = () => {
     let lastScroll = 0
@@ -279,39 +291,38 @@ const NavigationBar = ({ isLight, bannerExists }) => {
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll())
-    // window.addEventListener('resize', handleResize)
+    window.addEventListener('resize', handleResize)
 
     return () => {
       window.removeEventListener('scroll', handleScroll)
-      // window.removeEventListener('resize', handleResize)
+      window.removeEventListener('resize', handleResize)
     }
   }, [])
 
-  // if (showDropdown) {
-  //   // Mobile version
-  //   return (
-  //     <>
-  //       <NavBarContainer mobileView>
-  //         <HamburgerMenu
-  //           src="/images/icons/cross.svg"
-  //           alt="dropdown menu icon"
-  //           onClick={() => setShowDropdown(false)}
-  //         />
-  //       </NavBarContainer>
-  //       <DropDownContentContainer>
-  //         <a href="/">
-  //           <NwPlusLogo src="/images/logos/nwplus-logo.svg" alt="nwPlus club logo in white" />
-  //         </a>
-  //         <MenuList isMobile={showDropdown} closeDropdown={setShowDropdown} />
-  //         {/* Make sure desktop (below) has the same portalOpen value */}
-  //         <PortalButton portalOpen />
-  //         <DropDownFooter />
-  //       </DropDownContentContainer>
-  //     </>
-  //   )
-  // }
+  if (showDropdown) {
+    // Mobile version
+    return (
+      <>
+        <NavBarContainer mobileView>
+          <HamburgerMenu
+            src="/images/icons/cross.svg"
+            alt="dropdown menu icon"
+            onClick={() => setShowDropdown(false)}
+          />
+        </NavBarContainer>
+        <DropDownContentContainer>
+          <a href="/">
+            <NwPlusLogo src="/images/logos/nwplus-logo.svg" alt="nwPlus club logo in white" />
+          </a>
+          <MenuList isMobile={showDropdown} closeDropdown={setShowDropdown} />
+          {/* Make sure desktop (below) has the same portalOpen value */}
+          <PortalButton portalOpen />
+          <DropDownFooter />
+        </DropDownContentContainer>
+      </>
+    )
+  }
 
-  // Only for desktop version
   return (
     <NavBarContainer visibility={visibility} opacity={opacity} stayAtTop={stayAtTop}>
       <NavGroupContainer>
@@ -324,7 +335,7 @@ const NavigationBar = ({ isLight, bannerExists }) => {
         {/* Make sure mobile (above) has the same portalOpen value */}
         <PortalButton portalOpen />
       </NavGroupContainer>
-      {/* <HamburgerMenu src={MenuImg} alt="dropdown menu icon" onClick={() => setShowDropdown(true)} /> */}
+      <HamburgerMenu src={MenuImg} alt="dropdown menu icon" onClick={() => setShowDropdown(true)} />
     </NavBarContainer>
   )
 }
