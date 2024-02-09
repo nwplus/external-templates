@@ -32,7 +32,6 @@ export const GlobalStyles = createGlobalStyle`
     position: relative;
     display: flex;
     flex-direction: row;
-    width: 876.29vh;
     width: 100vw;
     height: 100svh;
     overflow-x: scroll;
