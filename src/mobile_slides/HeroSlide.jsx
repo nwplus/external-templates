@@ -4,20 +4,21 @@ import Slide from "./Slide";
 import CmdFLogoImage from '../../public/assets/logos/cmd-f-logo.svg'
 
 const Logo = styled.img`
-  margin-top: 100px;
+  margin-top: 3rem;
   width: 93.5px;
   height: 77.8px;
 `
 
 const Title = styled.p`
   margin-top: 40px;
-  width: 285px;
+  margin-left: 2rem;
+  margin-right: 2rem;
 
   color: #2E2E2E;
   text-align: center;
   font-feature-settings: 'liga' off;
   font-family: "Yatra One";
-  font-size: 20px;
+  font-size: 1.5rem;
   font-style: normal;
   font-weight: 400;
   line-height: 120%; /* 24px */
@@ -25,8 +26,9 @@ const Title = styled.p`
 `
 
 const InfoLabel = styled.p`
-  margin-top: 50px;
-  width: 197px;
+  margin-top: 1.4rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
 
   color: #2E2E2E;
   text-align: center;
@@ -35,25 +37,25 @@ const InfoLabel = styled.p`
   font-size: 18px;
   font-style: normal;
   font-weight: 700;
-  line-height: 23px; /* 55.556% */
+  line-height: 130%;
   letter-spacing: -0.15px;
 `
 
 const ApplyLabel = styled.p`
-  margin-top: 50px;
+  margin-top: 1.4rem;
 
   color: #2E2E2E;
   font-feature-settings: 'liga' off;
   font-family: "HK Grotesk";
-  font-size: 18px;
+  font-size: 1.25rem;
   font-style: normal;
   font-weight: 700;
-  line-height: 18px;
+  line-height: 100%;
   letter-spacing: -0.15px;
 `
 
 const ApplyButtonsContainer = styled.div`
-  margin-top: 50px;
+  margin-top: 1.5rem;
 
   display: flex;
   flex-direction: column;
@@ -63,7 +65,7 @@ const ApplyButtonsContainer = styled.div`
 
 const HackerButton = styled.a`
   display: flex;
-  padding: 1.76vh 2.75vh;
+  padding: 0.93rem 1.45rem;
   justify-content: center;
   align-items: center;
   gap: 0.49vh;
@@ -74,7 +76,7 @@ const HackerButton = styled.a`
   color: #FFF;
   font-feature-settings: 'liga' off;
   font-family: "HK Grotesk";
-  font-size: 2.35vh;
+  font-size: 1.25rem;
   font-style: normal;
   font-weight: 700;
   line-height: 2.55vh;
@@ -84,7 +86,7 @@ const HackerButton = styled.a`
 
 const MentorButton = styled.a`
   display: flex;
-  padding: 1.76vh 2.89vh;
+  padding: 0.93rem 1.53rem;
   justify-content: center;
   align-items: center;
   gap: 0.49vh;
@@ -95,7 +97,7 @@ const MentorButton = styled.a`
   color: #FFF;
   font-feature-settings: 'liga' off;
   font-family: "HK Grotesk";
-  font-size: 2.35vh;
+  font-size: 1.25rem;
   font-style: normal;
   font-weight: 700;
   line-height: 2.55vh;
@@ -105,7 +107,7 @@ const MentorButton = styled.a`
 
 const VolunteerButton = styled.a`
   display: flex;
-  padding: 1.76vh 2.06vh;
+  padding: 0.93rem 1.09rem;
   justify-content: center;
   align-items: center;
   gap: 0.49vh;
@@ -116,7 +118,7 @@ const VolunteerButton = styled.a`
   color: #FFF;
   font-feature-settings: 'liga' off;
   font-family: "HK Grotesk";
-  font-size: 2.35vh;
+  font-size: 1.25rem;
   font-style: normal;
   font-weight: 700;
   line-height: 2.55vh;
@@ -125,11 +127,15 @@ const VolunteerButton = styled.a`
 `
 
 
-const HeroSlide = () => (
-    <Slide alignItems="center">
+const HeroSlide = () => {
+  const infoLabel = `March 9-10, 2024
+In-person @ UBC
+Life Sciences Institute`
+
+  return (<Slide alignItems="center">
       <Logo src={CmdFLogoImage}/>
       <Title>Western Canada&apos;s largest hackathon <span style={{ color: '#B23C3C' }}>celebrating underrepresented genders in tech</span></Title>
-      <InfoLabel>March 9-10, 2024 In-person @ UBC</InfoLabel>
+      <InfoLabel style={{ whiteSpace: 'pre-line' }}>{infoLabel}</InfoLabel>
       <ApplyLabel>Apply to be a:</ApplyLabel>
       <ApplyButtonsContainer>
         <HackerButton href="https://nwplus.io" target="_blank">Hacker</HackerButton>
@@ -138,5 +144,6 @@ const HeroSlide = () => (
     </ApplyButtonsContainer>
     </Slide>
   )
+}
 
 export default HeroSlide;
