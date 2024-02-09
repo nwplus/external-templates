@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Slide from "./Slide";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faFacebook,
@@ -9,6 +8,7 @@ import {
   faTwitter,
   faYoutube,
 } from '@fortawesome/free-brands-svg-icons'
+import Slide from "./Slide";
 
 const Title = styled.p`
   margin-top: 4rem;
