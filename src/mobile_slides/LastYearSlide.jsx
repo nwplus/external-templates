@@ -1,20 +1,28 @@
 import styled from "styled-components";
 import Slide from "./Slide";
 
-const DefaultLabel = styled.p`
-  margin-top: 100px;
-  margin-left: 30px;
-  margin-right: 30px;
+const Label = styled.h3`
+  margin-top: 42vh;
+  margin-left: 2rem;
+  margin-right: 4rem;
 
-  color: white;
-  font-weight: 600;
-  font-size: 40px;
-`
+  color: #08363C;
+  font-family: "Yatra One";
+  font-size: 2rem;
+  font-style: normal;
+  text-align: center;
+  font-weight: 400;
+  line-height: 100%;
+  letter-spacing: 0.4px;
+`;
 
-const LastYearSlide = () => (
-    <Slide alignItems="left">
-      <DefaultLabel>Last year slide</DefaultLabel>
+const LastYearSlide = () => {
+  const lastYearText = `Last year
+we had...`;
+   return (<Slide alignItems="center">
+      <Label style={{ whiteSpace: 'pre-line' }}>{lastYearText}</Label>
     </Slide>
   )
+}
 
 export default LastYearSlide;
