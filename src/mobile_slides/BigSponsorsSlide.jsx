@@ -2,8 +2,8 @@ import styled from "styled-components";
 import { useEffect, useState } from 'react'
 import fireDb from '@utilities/firebase';
 import Anchor from "@components/Anchor";
-import Slide from "./Slide";
 import { v4 as uuidv4 } from 'uuid';
+import Slide from "./Slide";
 
 const SponsorTiers = styled.div`
   margin-top: 8rem;
@@ -59,7 +59,7 @@ const BigSponsorsSlide = () => {
   }, [])
 
   const SponsorsColumnComponent = ({ tier }) => (<SponsorColumn>
-    {categorizedSponsorMap.get(tier)?.map(({ imgURL, link, name }) => (
+    {categorizedSponsorMap.get(tier)?.map(({ imgURL, link }) => (
       <SponsorsLink key={uuidv4()} href={link} target="_blank" rel="noreferrer">
         <SilverBoi src={imgURL} />
       </SponsorsLink>

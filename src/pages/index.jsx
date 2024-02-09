@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { React, useEffect, useState } from 'react'
 import GlobalStyles from '@styles/global'
 
-import styled, { useTheme } from 'styled-components'
+import styled from 'styled-components'
 
 import Sponsors from 'src/sections/Sponsors'
 import About from 'src/sections/About'
