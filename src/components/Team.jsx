@@ -396,6 +396,8 @@ const profiles = [
 const ProfileContent = styled.p`
   color: white;
   padding-top: 4.7vh;
+  font-size: calc(0.75rem + 0.75vh);
+  margin-right: auto;
   span {
     margin-right: 0.78vh;
   }
@@ -414,6 +416,8 @@ const ProfileList = styled.div`
   padding-top: 4.7vh;
   overflow-x: hidden;
   white-space: nowrap;
+  mask-image: linear-gradient(to right, transparent, black 30%, black 100%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 30%, black 100%, transparent);
 `
 
 const ProfileImage = styled.img`
@@ -436,8 +440,6 @@ const TeamContainer = styled.div`
   left: 1400vh;
   top: 70vh;
   width: 162.2vh;
-  mask-image: linear-gradient(to right, transparent, black 30%, black 100%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, black 30%, black 100%, transparent);
 `
 
 let lastTime = -1
@@ -494,7 +496,7 @@ export default function Team() {
   return (
     <TeamContainer>
       {/* <StyledTitle>Made with 💖 by the nwPlus Team</StyledTitle> */}
-      <ProfileContent style={{ visibility: "hidden" }}>
+      <ProfileContent>
         <span>
           <b>{selectedProfile?.name}</b> {selectedProfile?.emoji}
         </span>
@@ -514,26 +516,30 @@ export default function Team() {
         }
         <div style={{ willChange: 'transform' }} id="anim-profiles">
           {profiles.map(profile => (
-            <ProfileImage
-              key={profile.img}
-              src={profile.img}
-              alt={profile.name}
-              color={profile.color}
-              onClick={() => setSelectedProfile(profile)}
-              onMouseEnter={() => setSelectedProfile(profile)}
-              onMouseLeave={() => setSelectedProfile({})}
-            />
+            <a href={profile.social} key={`${profile.img}1`}>
+              <ProfileImage
+                key={profile.img}
+                src={profile.img}
+                alt={profile.name}
+                color={profile.color}
+                onClick={() => setSelectedProfile(profile)}
+                onMouseEnter={() => setSelectedProfile(profile)}
+                onMouseLeave={() => setSelectedProfile({})}
+              />
+            </a>
           ))}
           {profiles.map(profile => (
-            <ProfileImage
-              key={`${profile.img}2`}
-              src={profile.img}
-              alt={profile.name}
-              color={profile.color}
-              onClick={() => setSelectedProfile(profile)}
-              onMouseEnter={() => setSelectedProfile(profile)}
-              onMouseLeave={() => setSelectedProfile({})}
-            />
+            <a href={profile.social} key={`${profile.img}2`}>
+              <ProfileImage
+                key={`${profile.img}2`}
+                src={profile.img}
+                alt={profile.name}
+                color={profile.color}
+                onClick={() => setSelectedProfile(profile)}
+                onMouseEnter={() => setSelectedProfile(profile)}
+                onMouseLeave={() => setSelectedProfile({})}
+              />
+            </a>
           ))}
         </div>
       </ProfileList>
