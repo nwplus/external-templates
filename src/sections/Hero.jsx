@@ -75,7 +75,7 @@ const ApplyButtonsContainer = styled.div`
 `
 
 const HackerButton = styled.a`
-  display: flex;
+  display: inline-flex;
   padding: 1.76vh 2.75vh;
   justify-content: center;
   align-items: center;
@@ -84,7 +84,6 @@ const HackerButton = styled.a`
   border-radius: 1.15vh;
   background: linear-gradient(90deg, #CC5A5A 15.65%, #DB7859 94.27%);
   z-index: 900;
-
   color: #FFF;
   font-feature-settings: 'liga' off;
   font-family: "HK Grotesk";
@@ -94,7 +93,37 @@ const HackerButton = styled.a`
   line-height: 2.55vh;
   letter-spacing: -0.45px;
   text-decoration: none;
-`
+  position: relative;
+  transition: transform 0.3s ease, z-index 0s ease 0.3s;
+
+  // &:before {
+  //   content: '';
+  //   position: absolute;
+  //   top: 2px;
+  //   left: 2px;
+  //   right: -4px;
+  //   bottom: -4px;
+  //   // background: linear-gradient(90deg, #CC5A5A 35.65%, #DB7859 54.27%);
+  //   filter: blur(4px);
+  //   border-radius: 1.15vh;
+  //   z-index: -1;
+  //   transition: all 0.3s ease;
+  // }
+
+  &:hover {
+    transform: scale(1.05);
+    // z-index: 901;
+
+    // &:before {
+    //   top: 3px;
+    //   left: 3px;
+    //   right: -6px;
+    //   bottom: -6px;
+    //   filter: blur(5px);
+    // }
+  }
+`;
+
 
 const MentorButton = styled.a`
   display: flex;
@@ -116,6 +145,12 @@ const MentorButton = styled.a`
   line-height: 2.55vh;
   letter-spacing: -0.45px;
   text-decoration: none;
+
+  transition: transform 0.3s ease, z-index 0s ease 0.3s;
+
+  &:hover {
+    transform: scale(1.05);
+  }
 `
 
 const VolunteerButton = styled.a`
@@ -138,6 +173,12 @@ const VolunteerButton = styled.a`
   line-height: 2.55vh;
   letter-spacing: -0.45px;
   text-decoration: none;
+
+  transition: transform 0.3s ease, z-index 0s ease 0.3s;
+
+  &:hover {
+    transform: scale(1.05);
+  }
 `
 
 const SealTail = styled.img`

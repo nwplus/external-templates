@@ -66,6 +66,9 @@ const SocialMediaIcons = styled.div`
     width: 50px;
     text-decoration: none;
     color: white;
+    &:hover {
+      color: #528EBC;
+    }
   }
 
   gap: 2rem;
@@ -87,6 +90,9 @@ const Links = styled.div`
   a {
     font-weight: 600;
     color: white;
+    &:hover {
+      color: #528EBC;
+    }
   }
 
   ${p => p.theme.mediaQueries.mobile} {
