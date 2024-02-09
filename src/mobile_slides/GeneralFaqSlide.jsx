@@ -111,7 +111,7 @@ const GeneralFaqSlide = () => {
   }, [])
 
   return (<Slide alignItems="left">
-    <Anchor id="faq" x="0"/>
+    <Anchor id="faq-mobile" x="0"/>
     <Title>FAQ</Title>
     {faqData ? (<FaqGrid>
       <FaqColumn>

@@ -81,7 +81,7 @@ export default function Index({ title }) {
       
       // horizontalScrollContainer.scrollLeft += event.deltaY;
 
-      if (scrollOffset > 7.65 * window.innerHeight) {
+      if (scrollOffset > 7.55 * window.innerHeight) {
         setIsNavBarLight(true);
       } else {
         setIsNavBarLight(false);

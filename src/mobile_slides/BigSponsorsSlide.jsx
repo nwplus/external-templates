@@ -68,7 +68,7 @@ const BigSponsorsSlide = () => {
 
   return (
       <Slide alignItems="center">
-        <Anchor id="sponsors" x="0" />
+        <Anchor id="sponsors-mobile" x="0" />
         <SponsorTiers>
           <SponsorsColumnComponent tier='gold' />
           <SponsorsColumnComponent tier='silver' />

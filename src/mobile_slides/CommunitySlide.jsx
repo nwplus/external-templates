@@ -69,7 +69,7 @@ const ValueContainer = styled.div`
 
 const CommunitySlide = () => (
     <Slide alignItems="left">
-      <Anchor id="tracks" x="0" />
+      <Anchor id="tracks-mobile" x="0" />
       <SectionTitle>Tracks</SectionTitle>
       <ValueContainer>
         <ValueCircle>1</ValueCircle>

@@ -204,20 +204,20 @@ const DropDownFooter = styled.div`
     margin-bottom: -25px;
 `
 
-const MenuItem = ({ name, href, isLight, isAnchor, target, rel, isMobile, closeDropdown }) => {
-  const [anchorTarget, setAnchorTarget] = useState(null)
+const MenuItem = ({ name, href, isLight, target, rel, isMobile, closeDropdown }) => {
+  // const [anchorTarget, setAnchorTarget] = useState(null)
 
-  useEffect(() => {
-    if (isAnchor) {
-      setAnchorTarget(document.getElementById(href))
-    }
-  }, [href])
+  // useEffect(() => {
+  //   if (isAnchor) {
+  //     setAnchorTarget(document.getElementById(href))
+  //   }
+  // }, [href])
 
-  const handleClick = event => {
-    if (isAnchor && anchorTarget) {
-      event.preventDefault()
-      anchorTarget.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    }
+  const handleClick = () => {
+    // if (isAnchor && anchorTarget) {
+    //   event.preventDefault()
+    //   anchorTarget.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    // }
     if (isMobile) {
       closeDropdown(false)
     }
@@ -249,10 +249,10 @@ const PortalButton = ({ portalOpen }) => (
 
 const MenuList = ({ isLight, isMobile, closeDropdown }) => (
   <>
-    <MenuItem name="About" href="/#about" isLight={isLight} isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
-    <MenuItem name="Tracks" href="/#tracks"isLight={isLight} isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
-    <MenuItem name="FAQ" href="/#faq" isLight={isLight} isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
-    <MenuItem name="Sponsors" href="/#sponsors" isLight={isLight} isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
+    <MenuItem name="About" href={isMobile ? "#about-mobile" : "#about"} isLight={isLight} isMobile={isMobile} closeDropdown={closeDropdown} />
+    <MenuItem name="Tracks" href={isMobile ? "#tracks-mobile" : "#tracks"} isLight={isLight} isMobile={isMobile} closeDropdown={closeDropdown} />
+    <MenuItem name="FAQ" href={isMobile ? "#faq-mobile" : "#faq"} isLight={isLight} isMobile={isMobile} closeDropdown={closeDropdown} />
+    <MenuItem name="Sponsors" href={isMobile ? "#sponsors-mobile" : "#sponsors"} isLight={isLight} isMobile={isMobile} closeDropdown={closeDropdown} />
   </>
 )
 
@@ -312,7 +312,7 @@ const NavigationBar = ({ isLight, bannerExists }) => {
         </NavBarContainer>
         <DropDownContentContainer>
           <a href="/">
-            <NwPlusLogo src="/images/logos/nwplus-logo.svg" alt="nwPlus club logo in white" />
+            <NwPlusLogo src="/assets/logos/nwplus_logo_light.svg" alt="nwPlus club logo in white" />
           </a>
           <MenuList isMobile={showDropdown} closeDropdown={setShowDropdown} />
           {/* Make sure desktop (below) has the same portalOpen value */}

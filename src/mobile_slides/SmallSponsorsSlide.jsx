@@ -68,7 +68,6 @@ const SmallSponsorsSlide = () => {
 
   return (
       <Slide alignItems="center">
-        <Anchor id="sponsors" x="0" />
         <SponsorTiers>
           <SponsorsColumnComponent tier='bronze' />
         </SponsorTiers>
