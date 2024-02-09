@@ -67,7 +67,7 @@ const SocialMediaIcons = styled.div`
     text-decoration: none;
     color: white;
     &:hover {
-      color: #528EBC;
+      color: #9DA9C8;
     }
   }
 
@@ -91,7 +91,7 @@ const Links = styled.div`
     font-weight: 600;
     color: white;
     &:hover {
-      color: #528EBC;
+      color: #9DA9C8;
     }
   }
 
