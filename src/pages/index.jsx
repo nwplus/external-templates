@@ -19,16 +19,40 @@ import Encouragement from '../sections/Encouragement'
 import DesktopBackgroundImage from '../../public/assets/background/desktop_background.svg'
 import MobileBackgroundImage from '../../public/assets/background/mobile_background.svg'
 
+import HeroSlide from 'src/mobile_slides/HeroSlide'
+import EncouragementSlide from 'src/mobile_slides/EncouragementSlide'
+import AboutSlide from 'src/mobile_slides/AboutSlide'
+import ConfidenceSlide from 'src/mobile_slides/ConfidenceSlide'
+import CommunitySlide from 'src/mobile_slides/CommunitySlide'
+import EducationSlide from 'src/mobile_slides/EducationSlide'
+import HealthSlide from 'src/mobile_slides/HealthSlide'
+import SponsoredBySlide from 'src/mobile_slides/SponsoredBySlide'
+import BigSponsorsSlide from 'src/mobile_slides/BigSponsorsSlide'
+import SmallSponsorsSlide from 'src/mobile_slides/SmallSponsorsSlide'
+import ContactSlide from 'src/mobile_slides/ContactSlide'
+import LastSlide from 'src/mobile_slides/LastSlide'
+import GeneralFaqSlide from 'src/mobile_slides/GeneralFaqSlide'
+import TeamsFaqSlide from 'src/mobile_slides/TeamsFaqSlide'
+import LastYearSlide from 'src/mobile_slides/LastYearSlide'
+import StatisticsSlide from 'src/mobile_slides/StatisticsSlide'
+import MapSlide from 'src/mobile_slides/MapSlide'
+import ExploreSlide from 'src/mobile_slides/ExploreSlide'
+import LearnSlide from 'src/mobile_slides/LearnSlide'
+
 const Background = styled.img`
   top: 0;
   z-index: 0;
   position: absolute;
   user-select: none;
   height: 100%;
+`
 
-  ${p => p.theme.mediaQueries.mobile} {
-    display: none;
-  }
+const MobileBackground = styled.img`
+  position: absolute;
+  top: 0;
+  z-index: 0;
+  user-select: none;
+  height: 100%;
 `
 
 export default function Index({ title }) {
@@ -86,7 +110,26 @@ export default function Index({ title }) {
     </Head>
     {isMobileFixed ? (
       <div className="mobile-root-container">
-        <div>Mobile not available!</div>
+        <MobileBackground src={MobileBackgroundImage} />
+        <HeroSlide />
+        <EncouragementSlide />
+        <AboutSlide />
+        <MapSlide />
+        <ConfidenceSlide />
+        <LearnSlide />
+        <ExploreSlide />
+        <CommunitySlide />
+        <EducationSlide />
+        <HealthSlide />
+        <LastYearSlide />
+        <StatisticsSlide />
+        <GeneralFaqSlide />
+        <TeamsFaqSlide />
+        <SponsoredBySlide />
+        <BigSponsorsSlide />
+        <SmallSponsorsSlide />
+        <ContactSlide />
+        <LastSlide />
       </div>
     ) : (
       <div className="root-container">
