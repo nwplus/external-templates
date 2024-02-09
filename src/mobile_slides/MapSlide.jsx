@@ -1,20 +1,121 @@
 import styled from "styled-components";
 import Slide from "./Slide";
+import { useEffect, useState } from 'react'
 
-const DefaultLabel = styled.p`
-  margin-top: 100px;
-  margin-left: 30px;
-  margin-right: 30px;
+import VerticalMapImage from '../../public/assets/map/vertical_map.svg'
 
-  color: white;
-  font-weight: 600;
-  font-size: 40px;
+const MapImage = styled.img`
+  position: absolute;
+  top: 5rem;
+  left: 2rem;
+  right: 2rem;
 `
 
-const MapSlide = () => (
-    <Slide alignItems="left">
-      <DefaultLabel>Map slide</DefaultLabel>
+const CloseInLabel = styled.p`
+  position: absolute;
+  top: 10rem;
+  right: 4rem;
+  text-align: right;
+
+  color: #523A21;
+  text-align: right;
+  font-family: "Yatra One";
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 100%;
+`
+
+const DaysLabel = styled.p`
+  position: absolute;
+  left: 13rem;
+  top: 17rem;
+  width: 5rem;
+
+  color: #594632;
+  text-align: center;
+  font-family: "Yatra One";
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 100%;
+`
+
+const HoursLabel = styled.p`
+  position: absolute;
+  left: 7rem;
+  top: 27.4rem;
+  width: 6rem;
+
+  color: #594632;
+  text-align: center;
+  font-family: "Yatra One";
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 100%;
+`
+
+const MinutesLabel = styled.p`
+  position: absolute;
+  left: 16.5rem;
+  top: 33rem;
+  width: 4rem;
+
+  color: #594632;
+  text-align: center;
+  font-family: "Yatra One";
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 100%;
+`
+
+const getReturnValues = countDown => {
+  // calculate time left
+  const days = Math.floor(countDown / (1000 * 60 * 60 * 24))
+  const hours = Math.floor((countDown % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+  const minutes = Math.floor((countDown % (1000 * 60 * 60)) / (1000 * 60))
+  const seconds = Math.floor((countDown % (1000 * 60)) / 1000)
+
+  if (days < 0 || hours < 0 || seconds < 0) {
+    return [0, 0, 0, 0]
+  }
+
+  return [days, hours, minutes, seconds]
+}
+
+const useCountdown = targetDate => {
+  const countDownDate = new Date(targetDate).getTime()
+
+  const [countDown, setCountDown] = useState(countDownDate - new Date().getTime())
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCountDown(countDownDate - new Date().getTime())
+    }, 5000)
+
+    return () => clearInterval(interval)
+  }, [countDownDate])
+
+  return getReturnValues(countDown)
+}
+
+const MapSlide = () => {
+  const countDownDate = new Date('2024-02-22T23:59:59-08:00').getTime()
+  const countdown = useCountdown(countDownDate)
+  const appsCloseText = `Applications
+close in...`
+
+
+  return (<Slide alignItems="left">
+      <MapImage src={VerticalMapImage} />
+      <CloseInLabel style={{ whiteSpace: 'pre-line'}}>{appsCloseText}</CloseInLabel>
+      <DaysLabel>{countdown[0]} DAYS</DaysLabel>
+      <HoursLabel>{countdown[1]} HOURS</HoursLabel>
+      <MinutesLabel>{countdown[2]} MIN</MinutesLabel>
     </Slide>
   )
+}
 
 export default MapSlide;
