@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Slide from "./Slide";
 
 import CmdFLogoImage from '../../public/assets/logos/cmd-f-logo.svg'
+import TooltipImage from '../../public/assets/misc/scroll_tooltip.svg'
 
 const Logo = styled.img`
   margin-top: 3rem;
@@ -126,13 +127,53 @@ const VolunteerButton = styled.a`
   text-decoration: none;
 `
 
+const Tooltip = styled.div`
+  position: absolute;
+  top: 30svh;
+  width: 50vw;
+  height: 80vw;
+  background: linear-gradient(146deg, rgba(219, 212, 203, 0.90) -3.75%, rgba(255, 250, 243, 0.90) -3.74%, rgba(255, 247, 242, 0.90) 103.97%, rgba(255, 241, 234, 0.90) 103.97%);
+  border-radius: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+
+const TooltipLabel = styled.p`
+  margin-top: 6rem;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+
+  color: #2E2E2E;
+  text-align: center;
+  font-feature-settings: 'liga' off;
+  font-family: "HK Grotesk";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 23px; /* 115% */
+  letter-spacing: -0.15px;
+`
+
+const TooltipIcon = styled.img`
+  position: relative;
+  margin-top: 2rem;
+  width: 3rem;
+  height: 3rem;
+`
 
 const HeroSlide = () => {
   const infoLabel = `March 9-10, 2024
 In-person @ UBC
 Life Sciences Institute`
 
-  return (<Slide alignItems="center">
+  return (
+    <Slide alignItems="center">
+      <Tooltip>
+        <TooltipLabel>Scroll sideways to view pages!</TooltipLabel>
+        <TooltipIcon src={TooltipImage}/>
+      </Tooltip>
       <Logo src={CmdFLogoImage}/>
       <Title>Western Canada&apos;s largest hackathon <span style={{ color: '#B23C3C' }}>celebrating underrepresented genders in tech</span></Title>
       <InfoLabel style={{ whiteSpace: 'pre-line' }}>{infoLabel}</InfoLabel>
