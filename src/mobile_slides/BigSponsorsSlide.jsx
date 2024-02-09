@@ -18,7 +18,6 @@ const SponsorTiers = styled.div`
 
 const SilverBoi = styled.img`
   width: 50vw;
-  height: 20vw;
 `
 
 const SponsorColumn = styled.div`
@@ -70,6 +69,7 @@ const BigSponsorsSlide = () => {
       <Slide alignItems="center">
         <Anchor id="sponsors" x="0" />
         <SponsorTiers>
+          <SponsorsColumnComponent tier='gold' />
           <SponsorsColumnComponent tier='silver' />
         </SponsorTiers>
       </Slide>
