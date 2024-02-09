@@ -93,7 +93,7 @@ const CollectionContainer = styled.div`
 
 const CollectionName = styled(Header3)`
   color: #202020;
-  font-size: 4vh;
+  font-size: calc(1.5rem + 1.75vh);
   font-weight: 900;
   padding-bottom: 4.5vh;
 

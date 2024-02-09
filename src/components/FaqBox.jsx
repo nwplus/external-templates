@@ -21,7 +21,7 @@ const Top = styled.div`
   padding:1.5vh;
   color: #252525;
   font-family: "HK Grotesk";
-  font-size: 1.76vh;
+  font-size: calc(0.75rem + 0.75vh);
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -51,7 +51,7 @@ const AnswerBox = styled.div`
   border-radius: 0 0 2px 2px;
   color: #FFF;
   font-family: "HK Grotesk";
-  font-size: 1.37vh;
+  font-size: calc(0.6rem + 0.6vh);
   font-style: normal;
   font-weight: 400;
   line-height: normal;

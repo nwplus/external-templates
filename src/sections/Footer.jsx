@@ -29,7 +29,7 @@ const Title = styled.p`
 const MeetMindsLabel = styled.p`
   position: absolute;
   left: 1449.33vh;
-  top: 74.01vh;
+  top: 69.5vh;
 
   color: #F6FEFF;
   font-feature-settings: 'liga' off;
@@ -119,7 +119,7 @@ const SmallText = styled.div`
   text-align: center;
   div {
     color: white;
-    font-size: 1.88vh;
+    font-size: calc(0.5rem + 1vh);
     font-weight: 500;
   }
 `

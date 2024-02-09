@@ -21,7 +21,7 @@ const CommunityTrackCloud = styled.div`
   left: 5vh;
   top: -21vh;
   width: 54.54vh;
-  height: 27.15vh;
+  aspect-ratio: 2;
   z-index: -1;
 
   opacity: 0;
@@ -48,7 +48,7 @@ const EducationTrackCloud = styled.div`
   left: 0vh;
   top: -24vh;
   width: 53.03vh;
-  height: 27.33vh;
+  aspect-ratio: 1.93;
   z-index: -1;
 
   opacity: 0;
@@ -73,9 +73,9 @@ const EducationTrackIsland = styled.div`
 const HealthTrackCloud = styled.div`
   position: absolute;
   left: 0vh;
-  top: -19vh;
+  top: -20vh;
   width: 55.56vh;
-  height: 27.33vh;
+  aspect-ratio: 2.03;
   z-index: -1;
 
   opacity: 0;
@@ -105,8 +105,8 @@ const CloudImage = styled.img`
 
 const CommunityTrackCloudTitle = styled.p`
   position: absolute;
-  left: 9.24vh;
-  top: 6.06vh;
+  left: 7.24vh;
+  top: 5.06vh;
 
   color: #0A323B;
   font-feature-settings: 'liga' off;
@@ -120,14 +120,14 @@ const CommunityTrackCloudTitle = styled.p`
 
 const CommunityTrackCloudDescription = styled.p`
   position: absolute;
-  left: 9.73vh;
-  top: 9.69vh;
+  left: 7.73vh;
+  top: 8.69vh;
   right: 7.94vh;
   margin-top: 0.2vh;
 
   color: #0A323B;
   font-family: "HK Grotesk Medium";
-  font-size: 1.76vh;
+  font-size: calc(0.2rem + 1.5vh);
   font-style: normal;
   font-weight: 500;
   line-height: 122.222%;
@@ -136,8 +136,8 @@ const CommunityTrackCloudDescription = styled.p`
 
 const EducationTrackCloudTitle = styled.p`
   position: absolute;
-  left: 8.13vh;
-  top: 7.33vh;
+  left: 6.13vh;
+  top: 6.33vh;
 
   color: #0A323B;
   font-feature-settings: 'liga' off;
@@ -151,14 +151,14 @@ const EducationTrackCloudTitle = styled.p`
 
 const EducationTrackCloudDescription = styled.p`
   position: absolute;
-  left: 8.62vh;
-  top: 10.96vh;
+  left: 6.62vh;
+  top: 9.96vh;
   right: 6.47vh;
   margin-top: 0.2vh;
 
   color: #0A323B;
   font-family: "HK Grotesk Medium";
-  font-size: 1.76vh;
+  font-size: calc(0.2rem + 1.5vh);
   font-style: normal;
   font-weight: 500;
   line-height: 122.222%;
@@ -167,7 +167,7 @@ const EducationTrackCloudDescription = styled.p`
 
 const HealthTrackCloudTitle = styled.p`
   position: absolute;
-  left: 7.27vh;
+  left: 6.27vh;
   top: 6.27vh;
 
   color: #0A323B;
@@ -182,14 +182,14 @@ const HealthTrackCloudTitle = styled.p`
 
 const HealthTrackCloudDescription = styled.p`
   position: absolute;
-  left: 7.74vh;
+  left: 6.74vh;
   top: 9.9vh;
   right: 5.86vh;
   margin-top: 0.2vh;
 
   color: #0A323B;
   font-family: "HK Grotesk Medium";
-  font-size: 1.76vh;
+  font-size: calc(0.2rem + 1.5vh);
   font-style: normal;
   font-weight: 500;
   line-height: 122.222%;
