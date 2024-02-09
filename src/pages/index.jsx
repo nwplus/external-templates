@@ -49,10 +49,13 @@ const Background = styled.img`
 
 const MobileBackground = styled.img`
   position: absolute;
-  top: 0;
+  top: 0vh;
   z-index: 0;
   user-select: none;
-  height: 100%;
+  width: 1900vw;
+  min-width: 1900vw;
+  max-width: 1900vw;
+  text-align: center;
 `
 
 export default function Index({ title }) {
