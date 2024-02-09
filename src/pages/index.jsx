@@ -67,39 +67,43 @@ export default function Index({ title }) {
     };
   }, []);
 
-  return (
-    <div className="root-container" id="horizontal-scroll-container">
-      <GlobalStyles />
-      <Head>
-        <title>{title}</title>
+  const isMobileFixed = true;
 
-        <link rel="icon" href="/favicon.png" />
-        <link href="https://fonts.googleapis.com/css2?family=Yatra+One&display=swap" rel="stylesheet" />
+  return isMobileFixed ? (
+      <div>Mobile here!</div>
+    ) : (
+      <div className="root-container" id="horizontal-scroll-container">
+        <GlobalStyles />
+        <Head>
+          <title>{title}</title>
 
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta
-          name="description"
-          content={`Western Canada's largest hackathon celebrating underrepresented genders in tech`}
-        />
-        <meta property="og:image" content="/og_preview.png" />
-      </Head>
+          <link rel="icon" href="/favicon.png" />
+          <link href="https://fonts.googleapis.com/css2?family=Yatra+One&display=swap" rel="stylesheet" />
 
-      {/* Components Starts */}
-      <Background src={DesktopBackgroundImage} />
-      <NavigationBar isLight={isNavBarLight} />
-      {/* <NavBar isLight={isNavBarLight} /> */}
-      <Hero />
-      <Encouragement />
-      <About/>
-      <Values />
-      <Tracks/>
-      <Statistics />
-      <FAQ/>
-      <Sponsors/>
-      <Footer />
-      {/* Components Ends */}
-    </div>
-  )
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <meta
+            name="description"
+            content={`Western Canada's largest hackathon celebrating underrepresented genders in tech`}
+          />
+          <meta property="og:image" content="/og_preview.png" />
+        </Head>
+
+        {/* Components Starts */}
+        <Background src={DesktopBackgroundImage} />
+        <NavigationBar isLight={isNavBarLight} />
+        {/* <NavBar isLight={isNavBarLight} /> */}
+        <Hero />
+        <Encouragement />
+        <About/>
+        <Values />
+        <Tracks/>
+        <Statistics />
+        <FAQ/>
+        <Sponsors/>
+        <Footer />
+        {/* Components Ends */}
+      </div>
+    )
 }
 
 export async function getStaticProps() {
