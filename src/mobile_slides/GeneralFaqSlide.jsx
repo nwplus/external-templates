@@ -5,9 +5,8 @@ import fireDb from '@utilities/firebase'
 import React, { useState, useEffect } from 'react'
 
 import styled from "styled-components";
-import Slide from "./Slide";
-
 import Anchor from '@components/Anchor';
+import Slide from "./Slide";
 
 const Title = styled.p`
   margin-top: 4rem;
