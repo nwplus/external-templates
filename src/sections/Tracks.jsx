@@ -10,6 +10,8 @@ import HelthCloudImage from 'public/assets/clouds/helth_cloud.svg'
 
 import MouseIconImage from 'public/assets/misc/mouse_icon.svg'
 
+import Anchor from '@components/Anchor';
+
 const IslandImage = styled.img`
   width: 100%;
   height: 100%;
@@ -281,7 +283,8 @@ const MouseIcon = styled.img`
 
 const Tracks = () => (
     <>
-      <SectionTitle id="tracks">Tracks</SectionTitle>
+      <Anchor id="tracks" x="560" />
+      <SectionTitle>Tracks</SectionTitle>
       <ExplanationLabel>Hover over each island to learn more!</ExplanationLabel>
       <MouseIcon src={MouseIconImage}/>
 

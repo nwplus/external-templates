@@ -82,7 +82,7 @@ const Sponsors = () => {
 
   return (
     <>
-      <Anchor id="sponsors" x="1300"/>
+      <Anchor id="sponsors" x="1270"/>
       <Title>Sponsors</Title>
       <SponsorTiers>
         <SponsorsRowComponent tier='silver' />

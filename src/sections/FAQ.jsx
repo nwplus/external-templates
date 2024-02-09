@@ -152,7 +152,7 @@ const Faq = () => {
 
   return (
     <>
-      <Anchor id="faq" x="1000" />
+      <Anchor id="faq" x="1035" />
       <Title>FAQ</Title>
       <FaqContainer>
         <Wrapper>
