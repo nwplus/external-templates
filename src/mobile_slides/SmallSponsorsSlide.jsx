@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { useEffect, useState } from 'react'
 import fireDb from '@utilities/firebase';
-import Anchor from "@components/Anchor";
 import { v4 as uuidv4 } from 'uuid';
 import Slide from "./Slide";
 

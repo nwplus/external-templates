@@ -5,7 +5,6 @@ import fireDb from '@utilities/firebase'
 import React, { useState, useEffect } from 'react'
 
 import styled from "styled-components";
-import Anchor from '@components/Anchor';
 import Slide from "./Slide";
 
 const Title = styled.p`
