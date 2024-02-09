@@ -1,10 +1,13 @@
 import styled from "styled-components";
 import Slide from "./Slide";
 
-const Label = styled.h3`
-  margin-top: 42vh;
-  margin-left: 2rem;
-  margin-right: 4rem;
+import LastYearBanner from '../../public/assets/misc/last_year_banner.svg'
+
+const Label = styled.p`
+  position: absolute;
+  margin-top: 48vh;
+  margin-left: 10vw;
+  margin-right: 20vw;
 
   color: #08363C;
   font-family: "Yatra One";
@@ -16,10 +19,18 @@ const Label = styled.h3`
   letter-spacing: 0.4px;
 `;
 
+const Banner = styled.img`
+position: absolute;
+  margin-top: 42vh;
+  margin-left: 20vw;
+  margin-right: 10vw;
+`
+
 const LastYearSlide = () => {
   const lastYearText = `Last year
 we had...`;
    return (<Slide alignItems="center">
+      <Banner src={LastYearBanner}/>
       <Label style={{ whiteSpace: 'pre-line' }}>{lastYearText}</Label>
     </Slide>
   )
