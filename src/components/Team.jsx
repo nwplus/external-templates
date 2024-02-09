@@ -444,7 +444,7 @@ const TeamContainer = styled.div`
 
 let lastTime = -1
 let accumulateTime = -1
-const MAX_SPEED = 2
+const MAX_SPEED = 1
 
 export default function Team() {
   const [animator, setAnimator] = useState()
