@@ -5,7 +5,7 @@ import SponsoredByBanner from '../../public/assets/misc/sponsored_by_banner.svg'
 
 const Label = styled.h3`
   position: absolute;
-  margin-top: 46.5vh;
+  margin-top: 36.5vh;
   margin-left: 2rem;
   margin-right: 2rem;
 
@@ -21,7 +21,7 @@ const Label = styled.h3`
 
 const Banner = styled.img`
   position: absolute;
-  margin-top: 42vh;
+  margin-top: 32vh;
   margin-left: 10vw;
   margin-right: 10vw;
 `

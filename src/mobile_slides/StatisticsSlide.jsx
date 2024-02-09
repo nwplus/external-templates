@@ -38,7 +38,7 @@ const SmallLabel = styled.p`
 
 const StatisticsSlide = () => (
     <Slide alignItems="left">
-      <StatsLabel style={{ marginTop: "36vh" }}>189 hackers</StatsLabel>
+      <StatsLabel style={{ marginTop: "33vh" }}>189 hackers</StatsLabel>
       <StatsLabel style={{ marginTop: "1.5rem" }}>44 projects</StatsLabel>
       <StatsLabel style={{ marginTop: "1.5rem" }}>43 mentors</StatsLabel>
       <SmallLabel>at cmd-f 2023</SmallLabel>

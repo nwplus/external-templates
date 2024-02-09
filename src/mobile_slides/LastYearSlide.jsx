@@ -5,7 +5,7 @@ import LastYearBanner from '../../public/assets/misc/last_year_banner.svg'
 
 const Label = styled.p`
   position: absolute;
-  margin-top: 48vh;
+  margin-top: 38vh;
   margin-left: 10vw;
   margin-right: 20vw;
 
@@ -21,7 +21,7 @@ const Label = styled.p`
 
 const Banner = styled.img`
 position: absolute;
-  margin-top: 42vh;
+  margin-top: 32vh;
   margin-left: 20vw;
   margin-right: 10vw;
 `

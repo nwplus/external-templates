@@ -50,7 +50,7 @@ const Background = styled.img`
 
 const MobileBackground = styled.img`
   position: absolute;
-  top: 0vh;
+  top: -5vh;
   z-index: 0;
   user-select: none;
   width: 1900vw;
