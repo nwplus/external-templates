@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import Slide from "./Slide";
 
 import CmdFLogoImage from '../../public/assets/logos/cmd-f-logo.svg'
@@ -127,6 +127,15 @@ const VolunteerButton = styled.a`
   text-decoration: none;
 `
 
+const fadeOut = keyframes`
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+`;
+
 const Tooltip = styled.div`
   position: absolute;
   top: 30svh;
@@ -138,6 +147,7 @@ const Tooltip = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  animation: ${fadeOut} 2s ease-in-out 1s forwards;
 `
 
 const TooltipLabel = styled.p`
