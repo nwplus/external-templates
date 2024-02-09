@@ -1,11 +1,11 @@
-import styled from "styled-components";
-import Slide from "./Slide";
+import { Header3 } from '@components/Typography'
+import FaqBox from '@components/FaqBox'
+import fireDb from '@utilities/firebase'
 
 import React, { useState, useEffect } from 'react'
-import fireDb from '@utilities/firebase'
-import FaqBox from '@components/FaqBox'
-import { Header3 } from '@components/Typography'
-import Anchor from '@components/Anchor'
+
+import styled from "styled-components";
+import Slide from "./Slide";
 
 const Title = styled.p`
   margin-top: 4rem;
@@ -21,33 +21,6 @@ const Title = styled.p`
   line-height: 100%;
   letter-spacing: 0.4px;
 `
-
-const FaqContainer = styled.div`
-  position: absolute;
-  left: 1068vh;
-  top: 10vh;
-  min-height: 50vh;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    min-height: 0;
-  }
-`
-
-const Wrapper = styled.div`
-  grid-column: 3 / span 10;
-  margin: 0 auto;
-  width: 75vw;
-  min-width: 75vh;
-  max-width: 102vh;
-  z-index: 88;
-  position: relative;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    grid-column: 2 / span 12;
-    min-width: 0;
-  }
-`
-
 // faq grid
 const FaqGrid = styled.div`
   margin-top: 0rem;
@@ -127,7 +100,6 @@ const GeneralFaqSlide = () => {
       }
       categories[faq.category].push(faq)
     })
-    console.log('categories', categories)
     return categories
   }
 
@@ -141,8 +113,8 @@ const GeneralFaqSlide = () => {
     <Title>FAQ</Title>
     {faqData ? (<FaqGrid>
       <FaqColumn>
-        {faqData['General'] && 
-          <FaqCollection category="General" faqs={faqData['General']}
+        {faqData.General && 
+          <FaqCollection category="General" faqs={faqData.General }
             expandedQuestion={expandedQuestion}
             setExpandedQuestion={setExpandedQuestion} />
           }

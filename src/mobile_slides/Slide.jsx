@@ -10,7 +10,6 @@ const Slide = styled.section`
   height: 100svh;
   background-color: clear;
   scroll-snap-align: center;
-  border: 1px solid red;
   
   display: flex;
   flex-direction: column;

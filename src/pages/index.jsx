@@ -13,11 +13,7 @@ import Footer from 'src/sections/Footer'
 import Tracks from 'src/sections/Tracks'
 
 import NavigationBar from 'src/components/NavigationBar'
-import Hero from '../sections/Hero'
-import Encouragement from '../sections/Encouragement'
-
-import DesktopBackgroundImage from '../../public/assets/background/desktop_background.svg'
-import MobileBackgroundImage from '../../public/assets/background/mobile_background.svg'
+import LearnSlide from 'src/mobile_slides/LearnSlide'
 
 import HeroSlide from 'src/mobile_slides/HeroSlide'
 import EncouragementSlide from 'src/mobile_slides/EncouragementSlide'
@@ -37,7 +33,12 @@ import LastYearSlide from 'src/mobile_slides/LastYearSlide'
 import StatisticsSlide from 'src/mobile_slides/StatisticsSlide'
 import MapSlide from 'src/mobile_slides/MapSlide'
 import ExploreSlide from 'src/mobile_slides/ExploreSlide'
-import LearnSlide from 'src/mobile_slides/LearnSlide'
+
+import Hero from '../sections/Hero'
+import Encouragement from '../sections/Encouragement'
+
+import DesktopBackgroundImage from '../../public/assets/background/desktop_background.svg'
+import MobileBackgroundImage from '../../public/assets/background/mobile_background.svg'
 
 const Background = styled.img`
   top: 0;

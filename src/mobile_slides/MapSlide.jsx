@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import Slide from "./Slide";
 import { useEffect, useState } from 'react'
+import Slide from "./Slide";
 
 import VerticalMapImage from '../../public/assets/map/vertical_map.svg'
 
