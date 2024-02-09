@@ -52,7 +52,7 @@ const ValueDescription = styled.p`
 
   color: #08373D;
   font-family: "HK Grotesk Medium";
-  font-size: calc(0.5rem + 1.2vh);
+  font-size: 1.1rem;
   font-style: normal;
   font-weight: 500;
   line-height: 122%;

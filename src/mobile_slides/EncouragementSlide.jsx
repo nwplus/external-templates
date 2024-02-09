@@ -1,33 +1,34 @@
 import styled from "styled-components";
 import Slide from "./Slide";
 
-const Title = styled.p`
-  margin-top: 100px;
-  margin-left: 30px;
-  margin-right: 30px;
+const Title = styled.h3`
+  margin-top: 5rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
 
   color: #08363C;
   font-family: "Yatra One";
-  font-size: 30px;
+  font-size: 2rem;
+  // font-size: 3rem;
   font-style: normal;
   font-weight: 400;
-  line-height: 28.5px; /* 95% */
+  line-height: 100%;
   letter-spacing: 0.4px;
-`
+`;
 
 const Description = styled.p`
-  margin-top: 40px;
-  margin-left: 30px;
-  margin-right: 30px;
+  margin-top: 1rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
 
   color: #08363C;
-  font-family: "HK Grotesk";
-  font-size: 17px;
+  font-family: "HK Grotesk Medium";
+  font-size: 1.1rem;
   font-style: normal;
   font-weight: 500;
-  line-height: 22px; /* 129.412% */
-  letter-spacing: -0.15px;
-`
+  line-height: 120%;
+  letter-spacing: -0.1px;
+`;
 
 const EncouragementSlide = () => {
 
