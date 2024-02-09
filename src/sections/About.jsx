@@ -148,7 +148,7 @@ const useCountdown = targetDate => {
 }
 
 const About = () => {
-  const countDownDate = new Date('Feb 22, 2024 23:59:59').getTime()
+  const countDownDate = new Date('2024-02-22T23:59:59-08:00').getTime()
   const countdown = useCountdown(countDownDate)
 
   return (<div>
