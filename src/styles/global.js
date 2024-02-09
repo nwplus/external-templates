@@ -16,6 +16,7 @@ export const GlobalStyles = createGlobalStyle`
   body {
     position: relative;
     min-width: 1562.3vh; // probably temporary
+    overflow-y: hidden;
   }
 
   .root-container {
