@@ -13,10 +13,12 @@ import Footer from 'src/sections/Footer'
 import Tracks from 'src/sections/Tracks'
 
 import NavBar from 'src/components/NavBar'
+import NavigationBar from 'src/components/NavigationBar'
 import Hero from '../sections/Hero'
 import Encouragement from '../sections/Encouragement'
 
 import DesktopBackgroundImage from '../../public/assets/background/desktop_background.svg'
+
 
 const Background = styled.img`
   top: 0;
@@ -85,7 +87,8 @@ export default function Index({ title }) {
 
       {/* Components Starts */}
       <Background src={DesktopBackgroundImage} />
-      <NavBar isLight={isNavBarLight} />
+      <NavigationBar />
+      {/* <NavBar isLight={isNavBarLight} /> */}
       <Hero />
       <Encouragement />
       <About/>
