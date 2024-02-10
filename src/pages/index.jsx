@@ -23,8 +23,7 @@ import CommunitySlide from 'src/mobile_slides/CommunitySlide'
 import EducationSlide from 'src/mobile_slides/EducationSlide'
 import HealthSlide from 'src/mobile_slides/HealthSlide'
 import SponsoredBySlide from 'src/mobile_slides/SponsoredBySlide'
-import BigSponsorsSlide from 'src/mobile_slides/BigSponsorsSlide'
-import SmallSponsorsSlide from 'src/mobile_slides/SmallSponsorsSlide'
+import SponsorsSlide from 'src/mobile_slides/SponsorsSlide'
 import ContactSlide from 'src/mobile_slides/ContactSlide'
 import LastSlide from 'src/mobile_slides/LastSlide'
 import GeneralFaqSlide from 'src/mobile_slides/GeneralFaqSlide'
@@ -128,8 +127,8 @@ export default function Index({ title }) {
       <GeneralFaqSlide />
       <TeamsFaqSlide />
       <SponsoredBySlide />
-      <BigSponsorsSlide />
-      <SmallSponsorsSlide />
+      <SponsorsSlide tiers={["gold", "silver"]}/>
+      <SponsorsSlide tiers={["bronze", "inkind"]}/>
       <ContactSlide />
       <LastSlide />
     </div>
