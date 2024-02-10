@@ -60,36 +60,51 @@ const MobileBackground = styled.img`
 export default function Index({ title }) {
   const [isNavBarLight, setIsNavBarLight] = useState(false);
 
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     const scrollOffset = window.scrollX || document.documentElement.scrollX
+  //     if (scrollOffset > 7.55 * window.innerHeight) {
+  //       setIsNavBarLight(true);
+  //     } else {
+  //       setIsNavBarLight(false);
+  //     }
+  //   };
+
+  //   window.addEventListener("wheel", handleScroll);
+
+  //   return () => {
+  //     window.removeEventListener("wheel", handleScroll);
+  //   }
+  // }, []);
+
+  const scrollHorizontally = (e) => {
+    const scrollOffset = window.scrollX || document.documentElement.scrollX
+    if (scrollOffset > 7.55 * window.innerHeight) {
+      setIsNavBarLight(true);
+    } else {
+      setIsNavBarLight(false);
+    }
+
+    const event = window.event || e;
+
+    const deltaY = event.deltaY || event.wheelDeltaY || -event.detail;
+    const deltaX = event.deltaX || event.wheelDeltaX || 0;
+    const angle = Math.atan2(Math.abs(deltaY), Math.abs(deltaX)) * (180 / Math.PI);
+
+    const steepAngleThreshold = 45;
+    if (angle > steepAngleThreshold) {
+      const scrollSpeed = 40;
+      document.documentElement.scrollLeft += (Math.sign(deltaY) * scrollSpeed);
+      document.body.scrollLeft += (Math.sign(deltaY) * scrollSpeed);
+      e.preventDefault();
+    }
+  };
+
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollOffset = window.scrollX || document.documentElement.scrollX
-      // const horizontalScrollContainer = document.getElementById('horizontal-scroll-container');
-      // const scrollLeftTracker = document.getElementById('scroll-left-tracker');
-      // console.log('offfset left property:', horizontalScrollContainer.scrollLeft);
-      // const toLeft = event.deltaY < 0 && horizontalScrollContainer.scrollLeft > 0;
-      // const toRight = event.deltaY > 0 && horizontalScrollContainer.scrollLeft < horizontalScrollContainer.scrollWidth - window.innerWidth;
-
-      // if (toLeft || toRight) {
-      //     event.preventDefault();
-      //     horizontalScrollContainer.scrollLeft += event.deltaY;
-      // }
-
-      // event.preventDefault();
-      // const horizontalScrollContainer = document.getElementById('horizontal-scroll-container');
-      
-      // horizontalScrollContainer.scrollLeft += event.deltaY;
-
-      if (scrollOffset > 7.55 * window.innerHeight) {
-        setIsNavBarLight(true);
-      } else {
-        setIsNavBarLight(false);
-      }
-    };
-
-    window.addEventListener('wheel', handleScroll);
+    window.addEventListener('wheel', scrollHorizontally, { passive: false });
 
     return () => {
-        window.removeEventListener('wheel', handleScroll);
+      window.removeEventListener('wheel', scrollHorizontally, { passive: false });
     };
   }, []);
 
