@@ -60,51 +60,55 @@ const MobileBackground = styled.img`
 export default function Index({ title }) {
   const [isNavBarLight, setIsNavBarLight] = useState(false);
 
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     const scrollOffset = window.scrollX || document.documentElement.scrollX
-  //     if (scrollOffset > 7.55 * window.innerHeight) {
-  //       setIsNavBarLight(true);
-  //     } else {
-  //       setIsNavBarLight(false);
-  //     }
-  //   };
+  const handleScroll = (e) => {
+    const mobileRootContainer = document.getElementById("mobile-root-container");
+    const style = window.getComputedStyle(mobileRootContainer);
+    if (style.display === "none") {
+      // desktop
 
-  //   window.addEventListener("wheel", handleScroll);
+      // adjust nav bar color
+      const scrollOffset = window.scrollX || document.documentElement.scrollX
+      if (scrollOffset > 7.55 * window.innerHeight) {
+        setIsNavBarLight(true);
+      } else {
+        setIsNavBarLight(false);
+      }
 
-  //   return () => {
-  //     window.removeEventListener("wheel", handleScroll);
-  //   }
-  // }, []);
+      // cast vertical scroll to horizontal
+      const event = window.event || e;
 
-  const scrollHorizontally = (e) => {
-    const scrollOffset = window.scrollX || document.documentElement.scrollX
-    if (scrollOffset > 7.55 * window.innerHeight) {
-      setIsNavBarLight(true);
+      const deltaY = event.deltaY || event.wheelDeltaY || -event.detail;
+      const deltaX = event.deltaX || event.wheelDeltaX || 0;
+      const angle = Math.atan2(Math.abs(deltaY), Math.abs(deltaX)) * (180 / Math.PI);
+
+      const steepAngleThreshold = 45;
+      if (angle > steepAngleThreshold) {
+        const scrollSpeed = 40;
+        document.documentElement.scrollLeft += (Math.sign(deltaY) * scrollSpeed);
+        document.body.scrollLeft += (Math.sign(deltaY) * scrollSpeed);
+        e.preventDefault();
+      }
     } else {
-      setIsNavBarLight(false);
-    }
-
-    const event = window.event || e;
-
-    const deltaY = event.deltaY || event.wheelDeltaY || -event.detail;
-    const deltaX = event.deltaX || event.wheelDeltaX || 0;
-    const angle = Math.atan2(Math.abs(deltaY), Math.abs(deltaX)) * (180 / Math.PI);
-
-    const steepAngleThreshold = 45;
-    if (angle > steepAngleThreshold) {
-      const scrollSpeed = 40;
-      document.documentElement.scrollLeft += (Math.sign(deltaY) * scrollSpeed);
-      document.body.scrollLeft += (Math.sign(deltaY) * scrollSpeed);
-      e.preventDefault();
+      // mobile, adjust menu color
+      // const scrolledSlides = mobileRootContainer.scrollLeft / window.innerWidth;
+      // console.log(scrolledSlides)
+      // if (scrolledSlides > 9) {
+      //   setIsNavBarLight(true);
+      // } else {
+      //   setIsNavBarLight(false);
+      // }
     }
   };
 
   useEffect(() => {
-    window.addEventListener('wheel', scrollHorizontally, { passive: false });
+    window.addEventListener('wheel', handleScroll, { passive: false });
+    // window.addEventListener('scroll', handleScroll, { passive: false })
+    // window.addEventListener('touchmove', handleScroll, { passive: false })
 
     return () => {
-      window.removeEventListener('wheel', scrollHorizontally, { passive: false });
+      window.removeEventListener('wheel', handleScroll, { passive: false });
+      // window.addEventListener('scroll', handleScroll, { passive: false })
+      // window.addEventListener('touchmove', handleScroll, { passive: false })
     };
   }, []);
 
@@ -123,9 +127,9 @@ export default function Index({ title }) {
       />
       <meta property="og:image" content="/og_preview.png" />
     </Head>
-    <div className="mobile-root-container">
+    <div id="mobile-root-container" className="mobile-root-container">
       <MobileBackground src={MobileBackgroundImage} />
-      <NavigationBar />
+      <NavigationBar isLight={false} />
       <HeroSlide />
       <EncouragementSlide />
       <AboutSlide />

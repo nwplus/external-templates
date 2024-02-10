@@ -4,6 +4,7 @@ import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
 import { scale } from '@utilities/format'
 import { BANNER_OFFSET } from '../constants/measurements'
 import MenuImg from '../../public/images/icons/menu.svg'
+import WhiteMenuImg from '../../public/images/icons/menu_white.svg'
 
 // import MlhImage from '../../public/assets/misc/mlh_image.svg'
 
@@ -365,7 +366,7 @@ const NavigationBar = ({ isLight, bannerExists }) => {
         {/* Make sure mobile (above) has the same portalOpen value */}
         <PortalButton portalOpen />
       </NavGroupContainer>
-      <HamburgerMenu src={MenuImg} alt="dropdown menu icon" onClick={() => setShowDropdown(true)} />
+      <HamburgerMenu src={isLight ? WhiteMenuImg : MenuImg} alt="dropdown menu icon" onClick={() => setShowDropdown(true)} />
       {/* <TrustBadge stayAtTop={stayAtTop} /> */}
     </NavBarContainer>
   )
