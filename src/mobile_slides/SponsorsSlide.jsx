@@ -56,7 +56,7 @@ const SponsorsLink = styled.a`
   justify-content: center;
 `
 
-const BigSponsorsSlide = ({ tiers }) => {
+const BigSponsorsSlide = ({ tiers, isAnchor }) => {
   const [categorizedSponsorMap, setSponsorMap] = useState(new Map())
 
   const categorizeSponsor = sponsorList => {
@@ -91,7 +91,7 @@ const BigSponsorsSlide = ({ tiers }) => {
 
   return (
       <Slide alignItems="center">
-        <Anchor id="sponsors-mobile" x="0" />
+        {isAnchor && <Anchor id="sponsors-mobile" x="0" />}
         <SponsorsContainer>
           <SponsorTiers>
             {tiers.map (tier => <SponsorsColumnComponent tier={tier} />)}

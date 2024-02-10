@@ -127,7 +127,7 @@ export default function Index({ title }) {
       <GeneralFaqSlide />
       <TeamsFaqSlide />
       <SponsoredBySlide />
-      <SponsorsSlide tiers={["gold", "silver"]}/>
+      <SponsorsSlide tiers={["gold", "silver"]} isAnchor />
       <SponsorsSlide tiers={["bronze", "inkind"]}/>
       <ContactSlide />
       <LastSlide />
