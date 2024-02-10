@@ -40,7 +40,7 @@ const SmallLabel = styled.p`
 const StatisticsSlide = () => {
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const stats = window.document.querySelector('.stats')
+      const stats = window.document.querySelector('.stats-mobile')
       const renderCountAnimation = () => {
         const valueDisplays = window.document.querySelectorAll('.num')
         const interval = 2000
@@ -92,7 +92,7 @@ const StatisticsSlide = () => {
   });
 
   return (
-    <Slide className="stats" alignItems="left">
+    <Slide className="stats-mobile" alignItems="center">
       <StatsLabel className='num' style={{ marginTop: "33vh" }} data-val="189" id="hackers_count">0 hackers</StatsLabel>
       <StatsLabel className='num' style={{ marginTop: "1.5rem" }} data-val="44" id="hackers_count">0 projects</StatsLabel>
       <StatsLabel className='num' style={{ marginTop: "1.5rem" }} data-val="43" id="hackers_count">0 mentors</StatsLabel>
