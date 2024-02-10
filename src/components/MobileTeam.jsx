@@ -368,7 +368,7 @@ const profiles = [
     img: '/profiles/Yan_Sidyakin.png',
     name: 'Yan Sidyakin',
     emoji: '🌚',
-    color: '#FF7E4D',
+    color: '#b8c9d5',
     title: 'Development Coordinator',
     social: "https://linkedin.com/in/sidyakinian"
   },
@@ -437,7 +437,7 @@ const ProfileImage = styled.img`
 
 const TeamContainer = styled.div`
   position: absolute;
-  top: 66svh;
+  top: 63vh;
   width: 100vw;
 `
 

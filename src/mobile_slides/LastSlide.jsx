@@ -3,7 +3,7 @@ import Team from "@components/MobileTeam";
 import Slide from "./Slide";
 
 const MeetMindsLabel = styled.p`
-  margin-top: 67svh;
+  margin-top: 60vh;
   margin-left: 2rem;
   margin-right: 2rem;
 
@@ -18,7 +18,7 @@ const MeetMindsLabel = styled.p`
 `
 
 const SmallText = styled.div`
-  margin-top: 10vh;
+  margin-top: 13vh;
 
   user-select: none;
   padding-top: 3.92vh;
