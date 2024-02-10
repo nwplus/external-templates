@@ -25,11 +25,8 @@ const FaqContainer = styled.div`
   position: absolute;
   left: 1068vh;
   top: 10vh;
-  min-height: 50vh;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    min-height: 0;
-  }
+  height: 80vh;
+  width: 100vh;
 `
 
 const Wrapper = styled.div`
@@ -40,11 +37,6 @@ const Wrapper = styled.div`
   max-width: 102vh;
   z-index: 88;
   position: relative;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    grid-column: 2 / span 12;
-    min-width: 0;
-  }
 `
 
 // faq grid
@@ -55,19 +47,8 @@ const FaqGrid = styled.div`
   gap: 4vh;
   margin-top: 5vh;
 
-  ${p => p.theme.mediaQueries.mobile} {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    margin-top: 50px;
-    padding-bottom: 4rem;
-  }
-
   & > div:nth-child(3) {
-    grid-column: 2; // move the column to the right
-    ${p => p.theme.mediaQueries.mobile} {
-      grid-column: 1;
-    }
+    grid-column: 2;
   }
 `
 
@@ -76,11 +57,12 @@ const FaqColumn = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+
+  overflow-y: scroll;
+  max-height: 80vh;
+
   & > div:not(:first-child) {
     margin-top: 3vh;
-    ${p => p.theme.mediaQueries.mobile} {
-      margin-top: 24px;
-    }
   }
 `
 
@@ -95,11 +77,8 @@ const CollectionName = styled(Header3)`
   color: #202020;
   font-size: calc(1.5rem + 1.75vh);
   font-weight: 900;
-  padding-bottom: 4.5vh;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    font-size: 1.2rem;
-  }
+  padding-top: 1rem;
+  padding-bottom: 3vh;
 `
 
 const FaqCollection = ({ category, faqs, expandedQuestion, setExpandedQuestion }) => (
@@ -154,7 +133,7 @@ const Faq = () => {
     <>
       <Anchor id="faq" x="1035" />
       <Title>FAQ</Title>
-      <FaqContainer>
+      <FaqContainer id="faq_container">
         <Wrapper>
           {faqData ? (
             <FaqGrid>

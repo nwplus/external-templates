@@ -77,6 +77,12 @@ export default function Index({ title }) {
       // cast vertical scroll to horizontal
       const event = window.event || e;
 
+      // don't interfere with faq vertical scroll
+      const faqContainer = document.getElementById('faq_container');
+      if (faqContainer.contains(event.target)) {
+        return;
+      }
+
       const deltaY = event.deltaY || event.wheelDeltaY || -event.detail;
       const deltaX = event.deltaX || event.wheelDeltaX || 0;
       const angle = Math.atan2(Math.abs(deltaY), Math.abs(deltaX)) * (180 / Math.PI);

@@ -92,7 +92,7 @@ const Sponsors = ({ tiers }) => {
       <Anchor id="sponsors" x="1270"/>
       <Title>Sponsors</Title>
       <SponsorTiers>
-        {tiers.map (tier => <SponsorsRowComponent tier={tier} />)}
+        {tiers.map (tier => <SponsorsRowComponent key={uuidv4()} tier={tier} />)}
       </SponsorTiers>
     </>
   )
