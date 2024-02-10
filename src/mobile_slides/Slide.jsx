@@ -9,7 +9,7 @@ const Slide = styled.section`
   max-width: 100vw;
   height: 100svh;
   background-color: clear;
-  scroll-snap-align: center;
+  scroll-snap-align: start;
   
   display: flex;
   flex-direction: column;

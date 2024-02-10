@@ -8,7 +8,7 @@ import styled from "styled-components";
 import Slide from "./Slide";
 
 const Title = styled.p`
-  margin-top: 4rem;
+  margin-top: 2rem;
   margin-left: 2rem;
   margin-right: 2rem;
 
@@ -54,7 +54,7 @@ const CollectionContainer = styled.div`
 `
 
 const CollectionName = styled(Header3)`
-  margin-top: 1.5rem;
+  margin-top: 0.5rem;
   color: #202020;
   font-size: 2rem;
   font-weight: 900;

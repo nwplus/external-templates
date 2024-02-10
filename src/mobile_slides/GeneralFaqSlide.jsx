@@ -9,7 +9,7 @@ import Anchor from '@components/Anchor';
 import Slide from "./Slide";
 
 const Title = styled.p`
-  margin-top: 4rem;
+  margin-top: 2rem;
   margin-left: 2rem;
   margin-right: 2rem;
 
@@ -39,10 +39,11 @@ const FaqColumn = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  overflow-y: scroll;
   & > div:not(:first-child) {
-    margin-top: 3vh;
+    margin-top: 1rem;
     ${p => p.theme.mediaQueries.mobile} {
-      margin-top: 24px;
+      margin-top: 1rem;
     }
   }
 `
@@ -55,7 +56,7 @@ const CollectionContainer = styled.div`
 `
 
 const CollectionName = styled(Header3)`
-  margin-top: 1.5rem;
+  margin-top: 0.5rem;
   color: #202020;
   font-size: 2rem;
   font-weight: 900;
