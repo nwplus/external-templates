@@ -27,6 +27,7 @@ const FaqGrid = styled.div`
   margin-top: 0rem;
   margin-left: 2rem;
   margin-right: 2rem;
+  max-height: 90vh;
 
   display: flex;
   flex-direction: column;
