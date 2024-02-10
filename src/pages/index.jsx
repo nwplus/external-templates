@@ -26,8 +26,7 @@ import SponsoredBySlide from 'src/mobile_slides/SponsoredBySlide'
 import SponsorsSlide from 'src/mobile_slides/SponsorsSlide'
 import ContactSlide from 'src/mobile_slides/ContactSlide'
 import LastSlide from 'src/mobile_slides/LastSlide'
-import GeneralFaqSlide from 'src/mobile_slides/GeneralFaqSlide'
-import TeamsFaqSlide from 'src/mobile_slides/TeamsFaqSlide'
+import FaqSlide from 'src/mobile_slides/FaqSlide'
 import LastYearSlide from 'src/mobile_slides/LastYearSlide'
 import StatisticsSlide from 'src/mobile_slides/StatisticsSlide'
 import MapSlide from 'src/mobile_slides/MapSlide'
@@ -124,8 +123,8 @@ export default function Index({ title }) {
       <HealthSlide />
       <LastYearSlide />
       <StatisticsSlide />
-      <GeneralFaqSlide />
-      <TeamsFaqSlide />
+      <FaqSlide category="General" isAnchor />
+      <FaqSlide category="Teams & Projects"/>
       <SponsoredBySlide />
       <SponsorsSlide tiers={["gold", "silver"]} isAnchor />
       <SponsorsSlide tiers={["bronze", "inkind"]}/>
