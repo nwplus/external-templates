@@ -437,7 +437,7 @@ const ProfileImage = styled.img`
 
 const TeamContainer = styled.div`
   position: absolute;
-  top: 66svh;
+  top: 63vh;
   width: 100vw;
 `
 
