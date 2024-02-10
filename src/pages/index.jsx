@@ -142,7 +142,7 @@ export default function Index({ title }) {
       <Tracks/>
       <Statistics />
       <FAQ/>
-      <Sponsors/>
+      <Sponsors tiers={["gold", "silver", "bronze", "inkind"]}/>
       <Footer />
     </div>
   </div>
