@@ -148,7 +148,7 @@ const Tooltip = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  animation: ${fadeOut} 2s ease-in-out 0.65s forwards;
+  animation: ${fadeOut} 3.2s ease-in-out 0.65s forwards;
 `
 
 const TooltipLabel = styled.p`
