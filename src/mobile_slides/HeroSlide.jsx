@@ -1,4 +1,5 @@
 import styled, { keyframes } from "styled-components";
+import { useEffect, useRef, useState } from "react";
 import Slide from "./Slide";
 
 import CmdFLogoImage from '../../public/assets/logos/cmd-f-logo.svg'
@@ -178,12 +179,34 @@ const HeroSlide = () => {
 In-person @ UBC
 Life Sciences Institute`
 
+  const [showTooltip, setShowTooltip] = useState(true);
+  const tooltipRef = useRef(null);
+
+  useEffect(() => {
+    const handleAnimationEnd = () => {
+      setShowTooltip(false);
+    };
+
+    const tooltip = tooltipRef.current;
+    if (tooltip) {
+      tooltip.addEventListener('animationend', handleAnimationEnd);
+    }
+
+    return () => {
+      if (tooltip) {
+        tooltip.removeEventListener('animationend', handleAnimationEnd);
+      }
+    };
+  }, []); 
+
   return (
     <Slide alignItems="center">
-      <Tooltip>
-        <TooltipLabel>Scroll sideways to view pages!</TooltipLabel>
-        <TooltipIcon src={TooltipImage}/>
-      </Tooltip>
+      {showTooltip && (
+        <Tooltip ref={tooltipRef}>
+          <TooltipLabel>Scroll sideways to view pages!</TooltipLabel>
+          <TooltipIcon src={TooltipImage}/>
+        </Tooltip>
+      )}
       <Logo src={CmdFLogoImage}/>
       <Title>Western Canada&apos;s largest hackathon <span style={{ color: '#B23C3C' }}>celebrating underrepresented genders in tech</span></Title>
       <InfoLabel style={{ whiteSpace: 'pre-line' }}>{infoLabel}</InfoLabel>
