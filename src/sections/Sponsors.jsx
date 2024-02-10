@@ -21,25 +21,32 @@ const Title = styled.p`
 const SponsorTiers = styled.div`
   position: absolute;
   left: 1277.54vh;
-  top: 27vh;
-  width: 135.8vh;
-  height: 70vh;
+  top: 25vh;
+  width: 124vh;
   
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: top;
-  gap: 2vh;
+  gap: 4rem;
 `
 
-const SilverBoi = styled.img`
-  width: 20vh;
+const sizeFromTier = {
+  "gold": "12vh",
+  "silver": "8vh",
+  "bronze": "5vh",
+  "inkind": "3vh"
+}
+
+const SponsorImage = styled.img`
+  height: ${p => sizeFromTier[p.tier]};
 `
 
 const SponsorRow = styled.div`
   display: inline-flex;
+  align-items: center;
   justify-content: center;
-  gap: 5vh;
+  gap: 2rem;
 `
 
 const SponsorsLink = styled.a`
@@ -47,7 +54,7 @@ const SponsorsLink = styled.a`
   justify-content: center;
 `
 
-const Sponsors = () => {
+const Sponsors = ({ tiers }) => {
   const [categorizedSponsorMap, setSponsorMap] = useState(new Map())
 
   const categorizeSponsor = sponsorList => {
@@ -75,7 +82,7 @@ const Sponsors = () => {
   const SponsorsRowComponent = ({ tier }) => (<SponsorRow>
     {categorizedSponsorMap.get(tier)?.map(({ imgURL, link }) => (
       <SponsorsLink key={uuidv4()} href={link} target="_blank" rel="noreferrer">
-        <SilverBoi src={imgURL} />
+        <SponsorImage src={imgURL} tier={tier} />
       </SponsorsLink>
     ))}
     </SponsorRow>)
@@ -85,7 +92,7 @@ const Sponsors = () => {
       <Anchor id="sponsors" x="1270"/>
       <Title>Sponsors</Title>
       <SponsorTiers>
-        <SponsorsRowComponent tier='silver' />
+        {tiers.map (tier => <SponsorsRowComponent tier={tier} />)}
       </SponsorTiers>
     </>
   )

@@ -5,6 +5,7 @@ import fireDb from '@utilities/firebase'
 import React, { useState, useEffect } from 'react'
 
 import styled from "styled-components";
+import Anchor from '@components/Anchor';
 import Slide from "./Slide";
 
 const Title = styled.p`
@@ -21,12 +22,16 @@ const Title = styled.p`
   line-height: 100%;
   letter-spacing: 0.4px;
 `
-// faq grid
+
+const FaqContainer = styled.div`
+  max-height: 90vh;
+  overflow-y: scroll;
+`
+
 const FaqGrid = styled.div`
   margin-top: 0rem;
   margin-left: 2rem;
   margin-right: 2rem;
-  max-height: 90vh;
 
   display: flex;
   flex-direction: column;
@@ -39,12 +44,10 @@ const FaqColumn = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  overflow-y: scroll;
-
   & > div:not(:first-child) {
-    margin-top: 3vh;
+    margin-top: 1rem;
     ${p => p.theme.mediaQueries.mobile} {
-      margin-top: 24px;
+      margin-top: 1rem;
     }
   }
 `
@@ -86,7 +89,7 @@ const FaqCollection = ({ category, faqs, expandedQuestion, setExpandedQuestion }
   </CollectionContainer>
 )
 
-const GeneralFaqSlide = () => {
+const GeneralFaqSlide = ({ category }) => {
   const [faqData, setFaqData] = useState(null)
   const [expandedQuestion, setExpandedQuestion] = useState(null)
 
@@ -113,16 +116,19 @@ const GeneralFaqSlide = () => {
   }, [])
 
   return (<Slide alignItems="left">
-    <Title>FAQ</Title>
-    {faqData ? (<FaqGrid>
-      <FaqColumn>
-        {faqData['Teams & Projects'] && 
-          <FaqCollection category="Teams & Projects" faqs={faqData['Teams & Projects'] }
-            expandedQuestion={expandedQuestion}
-            setExpandedQuestion={setExpandedQuestion} />
-          }
-      </FaqColumn>
-    </FaqGrid>) : null}
+    <Anchor id="faq-mobile" x="0"/>
+    <FaqContainer>
+      <Title>FAQ</Title>
+      {faqData ? (<FaqGrid>
+        <FaqColumn>
+          {faqData[category] && 
+            <FaqCollection category={category} faqs={faqData[category] }
+              expandedQuestion={expandedQuestion}
+              setExpandedQuestion={setExpandedQuestion} />
+            }
+        </FaqColumn>
+      </FaqGrid>) : null}
+    </FaqContainer>
   </Slide>)
 }
 

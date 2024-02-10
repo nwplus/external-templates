@@ -23,12 +23,10 @@ import CommunitySlide from 'src/mobile_slides/CommunitySlide'
 import EducationSlide from 'src/mobile_slides/EducationSlide'
 import HealthSlide from 'src/mobile_slides/HealthSlide'
 import SponsoredBySlide from 'src/mobile_slides/SponsoredBySlide'
-import BigSponsorsSlide from 'src/mobile_slides/BigSponsorsSlide'
-import SmallSponsorsSlide from 'src/mobile_slides/SmallSponsorsSlide'
+import SponsorsSlide from 'src/mobile_slides/SponsorsSlide'
 import ContactSlide from 'src/mobile_slides/ContactSlide'
 import LastSlide from 'src/mobile_slides/LastSlide'
-import GeneralFaqSlide from 'src/mobile_slides/GeneralFaqSlide'
-import TeamsFaqSlide from 'src/mobile_slides/TeamsFaqSlide'
+import FaqSlide from 'src/mobile_slides/FaqSlide'
 import LastYearSlide from 'src/mobile_slides/LastYearSlide'
 import StatisticsSlide from 'src/mobile_slides/StatisticsSlide'
 import MapSlide from 'src/mobile_slides/MapSlide'
@@ -125,11 +123,11 @@ export default function Index({ title }) {
       <HealthSlide />
       <LastYearSlide />
       <StatisticsSlide />
-      <GeneralFaqSlide />
-      <TeamsFaqSlide />
+      <FaqSlide category="General" isAnchor />
+      <FaqSlide category="Teams & Projects"/>
       <SponsoredBySlide />
-      <BigSponsorsSlide />
-      <SmallSponsorsSlide />
+      <SponsorsSlide tiers={["gold", "silver"]} isAnchor />
+      <SponsorsSlide tiers={["bronze", "inkind"]}/>
       <ContactSlide />
       <LastSlide />
     </div>
@@ -143,7 +141,7 @@ export default function Index({ title }) {
       <Tracks/>
       <Statistics />
       <FAQ/>
-      <Sponsors/>
+      <Sponsors tiers={["gold", "silver", "bronze", "inkind"]}/>
       <Footer />
     </div>
   </div>

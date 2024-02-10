@@ -140,21 +140,22 @@ const fadeOut = keyframes`
 const Tooltip = styled.div`
   position: absolute;
   top: 30svh;
-  width: 70vw;
-  height: 100vw;
   background: linear-gradient(146deg, rgba(219, 212, 203, 0.90) -3.75%, rgba(255, 250, 243, 0.90) -3.74%, rgba(255, 247, 242, 0.90) 103.97%, rgba(255, 241, 234, 0.90) 103.97%);
   border-radius: 1rem;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  animation: ${fadeOut} 3.2s ease-in-out 0.65s forwards;
+  animation: ${fadeOut} 0.7s ease-in-out 3.2s forwards;
 `
 
 const TooltipLabel = styled.p`
-  margin-top: 6rem;
-  margin-left: 1.5rem;
-  margin-right: 1.5rem;
+  margin-top: 4rem;
+  margin-left: 2.5rem;
+  margin-right: 2.5rem;
+  width: 50vw;
 
   color: #2E2E2E;
   text-align: center;
@@ -170,8 +171,9 @@ const TooltipLabel = styled.p`
 const TooltipIcon = styled.img`
   position: relative;
   margin-top: 2rem;
-  width: 3rem;
-  height: 3rem;
+  width: 5rem;
+  height: 5rem;
+  margin-bottom: 4rem;
 `
 
 const HeroSlide = () => {
