@@ -63,7 +63,7 @@ const MinutesLabel = styled.p`
   position: absolute;
   left: 62%;
   top: 78%;
-  width: 4rem;
+  width: 3.5rem;
 
   color: #594632;
   text-align: center;
