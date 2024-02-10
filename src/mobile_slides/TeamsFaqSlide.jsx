@@ -26,6 +26,7 @@ const FaqGrid = styled.div`
   margin-top: 0rem;
   margin-left: 2rem;
   margin-right: 2rem;
+  max-height: 90vh;
 
   display: flex;
   flex-direction: column;
@@ -38,6 +39,8 @@ const FaqColumn = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  overflow-y: scroll;
+
   & > div:not(:first-child) {
     margin-top: 3vh;
     ${p => p.theme.mediaQueries.mobile} {
@@ -104,7 +107,7 @@ const GeneralFaqSlide = () => {
   }
 
   useEffect(async () => {
-    const data = await fireDb.getCollection('nwHacks2024', 'FAQ')
+    const data = await fireDb.getCollection('cmd-f2024', 'FAQ')
     const processedData = processData(data)
     setFaqData(processedData)
   }, [])
