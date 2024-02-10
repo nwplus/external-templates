@@ -15,7 +15,7 @@ export const GlobalStyles = createGlobalStyle`
   }
   body {
     position: relative;
-    min-width: 1562.3vh; // probably temporary
+    // min-width: 1562.3vh; // probably temporary
     overflow-y: hidden;
   }
 
