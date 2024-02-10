@@ -17,6 +17,7 @@ export const GlobalStyles = createGlobalStyle`
     position: relative;
     // min-width: 1562.3vh; // probably temporary
     overflow-y: hidden;
+    max-height: 100vh;
   }
 
   .root-container {
