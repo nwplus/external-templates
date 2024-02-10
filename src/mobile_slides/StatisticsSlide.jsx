@@ -94,8 +94,8 @@ const StatisticsSlide = () => {
   return (
     <Slide className="stats-mobile" alignItems="center">
       <StatsLabel className='num' style={{ marginTop: "33vh" }} data-val="189" id="hackers_count">0 hackers</StatsLabel>
-      <StatsLabel className='num' style={{ marginTop: "1.5rem" }} data-val="44" id="hackers_count">0 projects</StatsLabel>
-      <StatsLabel className='num' style={{ marginTop: "1.5rem" }} data-val="43" id="hackers_count">0 mentors</StatsLabel>
+      <StatsLabel className='num' style={{ marginTop: "1.5rem" }} data-val="44" id="projects_count">0 projects</StatsLabel>
+      <StatsLabel className='num' style={{ marginTop: "1.5rem" }} data-val="43" id="mentors_count">0 mentors</StatsLabel>
       <SmallLabel>at cmd-f 2023</SmallLabel>
     </Slide>
   )
