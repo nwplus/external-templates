@@ -37,7 +37,9 @@ export const GlobalStyles = createGlobalStyle`
     display: flex;
     flex-direction: row;
     width: 100vw;
+    min-height: 100svh;
     height: 100svh;
+    max-height: 100svh;
     overflow-x: scroll;
     overflow-y: hidden;
     scroll-snap-points-x: repeat(100vw);
