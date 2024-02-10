@@ -15,9 +15,12 @@ export const GlobalStyles = createGlobalStyle`
   }
   body {
     position: relative;
-    // min-width: 1562.3vh; // probably temporary
     overflow-y: hidden;
     max-height: 100vh;
+
+    @media (min-width: 768px) {
+      min-width: 1562.3vh; // probably temporary
+    }
   }
 
   .root-container {
