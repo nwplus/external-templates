@@ -58,8 +58,15 @@ const FaqColumn = styled.div`
   flex-direction: column;
   align-items: flex-end;
 
-  overflow-y: scroll;
+  // overflow-y: scroll;
   max-height: 80vh;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  overflow: auto;
 
   & > div:not(:first-child) {
     margin-top: 3vh;
