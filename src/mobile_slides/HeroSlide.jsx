@@ -4,11 +4,48 @@ import Slide from "./Slide";
 
 import CmdFLogoImage from '../../public/assets/logos/cmd-f-logo.svg'
 import TooltipImage from '../../public/assets/misc/scroll_tooltip.svg'
+import TechTogetherLogoImage from '../../public/assets/logos/tech_together_logo.png'
 
-const Logo = styled.img`
+const LogosContainer = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   margin-top: 3rem;
+  height: 77.8px;
+  width: 70vw;
+`
+
+const MainLogo = styled.img`
   width: 93.5px;
   height: 77.8px;
+`
+
+const PoweredByContainer = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-left: 0.5rem;
+  margin-top: 1rem;
+  height: 77.8px;
+`
+
+const PoweredByLabel = styled.p`
+  font-feature-settings: 'liga' off;
+  font-family: "HK Grotesk";
+  color: #282828;
+  font-size: 0.9rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 100%;
+  letter-spacing: -0.45px;
+  text-decoration: none;
+`
+
+const PlatinumSponsorLogo = styled.img`
+  height: 2rem;
+  margin-top: 0.2rem;
+  object-fit: contain;
 `
 
 const Title = styled.p`
@@ -209,7 +246,13 @@ Life Sciences Institute`
           <TooltipIcon src={TooltipImage}/>
         </Tooltip>
       )}
-      <Logo src={CmdFLogoImage}/>
+      <LogosContainer>
+        <MainLogo src={CmdFLogoImage}/>
+        <PoweredByContainer>
+          <PoweredByLabel>powered by</PoweredByLabel>
+          <PlatinumSponsorLogo src={TechTogetherLogoImage} />
+        </PoweredByContainer>
+      </LogosContainer>
       <Title>Western Canada&apos;s largest hackathon <span style={{ color: '#B23C3C' }}>celebrating underrepresented genders in tech</span></Title>
       <InfoLabel style={{ whiteSpace: 'pre-line' }}>{infoLabel}</InfoLabel>
       <ApplyLabel>Apply to be a:</ApplyLabel>

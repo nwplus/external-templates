@@ -9,13 +9,52 @@ import Sparkles from '@components/Sparkles'
 
 import CmdFLogoImage from '../../public/assets/logos/cmd-f-logo.svg'
 import SealTailImage from '../../public/assets/misc/seal_tail.svg'
+import TechTogetherLogoImage from '../../public/assets/logos/tech_together_logo.png'
 
-const Logo = styled.img`
-  position: absolute;
+const LogosContainer = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: row;
   top: 20.78vh;
   left: 45.78vh;
-  width: 16.37vh;
   height: 13.63vh;
+`
+
+const MainLogo = styled.img`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 16.37vh;
+`
+
+const PoweredByContainer = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-left: 1.5vh;
+  margin-top: 3vh;
+  margin-bottom: 1vh;
+  height: 11.63vh;
+`
+
+const PoweredByLabel = styled.p`
+  position: relative;
+  font-feature-settings: 'liga' off;
+  font-family: "HK Grotesk";
+  color: #282828;
+  font-size: 2vh;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 2.55vh;
+  letter-spacing: -0.45px;
+  text-decoration: none;
+`
+
+const PlatinumSponsorLogo = styled.img`
+  position: relative;
+  margin-top: 0.3vh;
+  height: 4.7vh;
+  object-fit: contain;
 `
 
 const MainTitle = styled.h1`
@@ -194,7 +233,13 @@ const SealTail = styled.img`
 `
 
 const Hero = () => (<div id="hero">
-    <Logo src={CmdFLogoImage}/>
+    <LogosContainer>
+      <MainLogo src={CmdFLogoImage}/>
+      <PoweredByContainer>
+        <PoweredByLabel>powered by</PoweredByLabel>
+        <PlatinumSponsorLogo src={TechTogetherLogoImage} />
+      </PoweredByContainer>
+    </LogosContainer>
     <MainTitle>Western Canada&apos;s largest hackathon <span style={{ color: '#B23C3C' }}>celebrating underrepresented genders in tech</span></MainTitle>
     <InfoTitle>March 9-10, 2024 | In-person @ UBC Life Sciences Institute</InfoTitle>
     <ApplyLabel>Apply to be a:</ApplyLabel>
