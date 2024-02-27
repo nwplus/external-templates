@@ -20,7 +20,7 @@ const Title = styled.p`
 
 const SponsorTiers = styled.div`
   position: absolute;
-  left: 1277.54vh;
+  left: 1282.54vh;
   top: 25vh;
   width: 124vh;
   
@@ -32,6 +32,7 @@ const SponsorTiers = styled.div`
 `
 
 const sizeFromTier = {
+  "platinum": "15vh",
   "gold": "12vh",
   "silver": "8vh",
   "bronze": "5vh",

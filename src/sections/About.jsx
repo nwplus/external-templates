@@ -148,7 +148,7 @@ const useCountdown = targetDate => {
 }
 
 const About = () => {
-  const countDownDate = new Date('2024-02-22T23:59:59-08:00').getTime()
+  const countDownDate = new Date('2024-03-01T23:59:59-08:00').getTime()
   const countdown = useCountdown(countDownDate)
 
   return (<div>
@@ -160,7 +160,7 @@ const About = () => {
     <HoursLabel>{countdown[1]} HOURS</HoursLabel>
     <MinutesLabel>{countdown[2]} MIN</MinutesLabel>
     <ApplicationsCloseInLabel>Applications close in:</ApplicationsCloseInLabel>
-    <ApplicationsCloseFullLabel>Applications close Friday, February 22 @ 11:59PM PST</ApplicationsCloseFullLabel>
+    <ApplicationsCloseFullLabel>Applications close Friday, March 1 @ 11:59PM PST</ApplicationsCloseFullLabel>
     </div>)
 }
 

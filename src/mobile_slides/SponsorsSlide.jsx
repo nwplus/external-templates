@@ -32,8 +32,9 @@ const SponsorTiers = styled.div`
 `
 
 const sizeFromTier = {
-  "gold": "70vw",
-  "silver": "50vw",
+  "platinum": "70vw",
+  "gold": "58vw",
+  "silver": "42vw",
   "bronze": "30vw",
   "inkind": "10vw"
 }
