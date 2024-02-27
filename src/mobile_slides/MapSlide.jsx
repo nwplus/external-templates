@@ -105,7 +105,7 @@ const useCountdown = targetDate => {
 }
 
 const MapSlide = () => {
-  const countDownDate = new Date('2024-02-22T23:59:59-08:00').getTime()
+  const countDownDate = new Date('2024-03-01T23:59:59-08:00').getTime()
   const countdown = useCountdown(countDownDate)
   const appsCloseText = `Applications
 close in...`
