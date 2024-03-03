@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Container = styled.div`
-  position: relative;
+  position: absolute;
   left: 154.7vh;
   top: 15.98vh;
 `
