@@ -215,23 +215,23 @@ const Hero = () => (
         </TitleContainer>
         <Subtitle>Western Canada’s Largest Hackathon</Subtitle>
         <DescriptionContainer>
-          <Description>January 20 - 21, 2024</Description>
+          <Description>Jan 18 - 19, 2025</Description>
           <HideMobile>&nbsp;|&nbsp;</HideMobile>
-          <Description>In-Person Event @ UBC</Description>
+          <Description>In-person @ UBC Life Science Institute</Description>
         </DescriptionContainer>
       </IntroContainer>
       <ActionsContainer>
         <ButtonsContainer>
-          <Button variant="solid" rel="noreferrer" href="https://portal.nwplus.io">
-            Apply Now!
+          <Button variant="solid" rel="noreferrer" href="">
+            Notify me when applications open!
           </Button>
-          <Button variant="outlined" rel="noreferrer" href="https://docs.google.com/forms/d/e/1FAIpQLSeN0gkZFW-gQm0fNMI_aZP22IXi7HpEU6JTc_XcFhHo1ufv3g/viewform">
+          {/* <Button variant="outlined" rel="noreferrer" href="https://docs.google.com/forms/d/e/1FAIpQLSeN0gkZFW-gQm0fNMI_aZP22IXi7HpEU6JTc_XcFhHo1ufv3g/viewform">
             Become a Mentor!
-          </Button>
+          </Button> */}
         </ButtonsContainer>
-        <VolunteerLink href="https://docs.google.com/forms/d/e/1FAIpQLSchia8WiuZT7r1bLIBVLlLUohHAtwzklzszf5Nul2Zf240Vig/viewform" target="_blank" rel="noreferrer">
+        {/* <VolunteerLink href="https://docs.google.com/forms/d/e/1FAIpQLSchia8WiuZT7r1bLIBVLlLUohHAtwzklzszf5Nul2Zf240Vig/viewform" target="_blank" rel="noreferrer">
           Apply to be a volunteer!
-        </VolunteerLink>
+        </VolunteerLink> */}
       </ActionsContainer>
     </OuterContainer>
   </HeroContainer>

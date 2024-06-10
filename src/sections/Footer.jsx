@@ -175,7 +175,7 @@ const Footer = () => (
         </Links>
         <SmallText>
           <div>Organized and held by nwPlus</div>
-          <div>Copyright &copy; nwHacks 2024</div>
+          <div>Copyright &copy; nwHacks 2025</div>
         </SmallText>
       </TextContainer>
       <TeamContainer>

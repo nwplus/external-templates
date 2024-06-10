@@ -174,7 +174,7 @@ const About = () => {
         <BlurbContainer bias="right">
           <BlurbHeader>Game on: Level up your tech journey at nwHacks!</BlurbHeader>
           <BlurbText>
-            Whether you’re a seasoned hacker or you’re just getting into tech, you’re welcome at nwHacks. Join us in-person on January 20-21, 2024, for a weekend of creativity, community, and innovation! All you need is an open mind and an insatiable desire to learn, and we’ll take care of the rest. Create a project, learn new skills, and bond with friends, old and new — all in 24 hours.
+            Whether you’re a seasoned hacker or you’re just getting into tech, you’re welcome at nwHacks. Join us in-person on January 18-19, 2025 for a weekend of creativity, community, and innovation! All you need is an open mind and an insatiable desire to learn, and we’ll take care of the rest. Create a project, learn new skills, and bond with friends, old and new — all in 24 hours.
           </BlurbText>
         </BlurbContainer>
       </AboutInner>
