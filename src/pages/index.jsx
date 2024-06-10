@@ -119,7 +119,7 @@ export default function Index({ title }) {
         <About />
         <Countdown />
         <Stats />
-        <Track />
+        {/* <Track /> */}
         <Faq />
         <Sponsors />
         <Footer />
@@ -132,7 +132,7 @@ export default function Index({ title }) {
 export async function getStaticProps() {
   return {
     props: {
-      title: 'nwHacks 2024',
+      title: 'nwHacks 2025',
     }, // will be passed to the page component as props
   }
 }
