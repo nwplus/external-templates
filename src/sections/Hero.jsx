@@ -9,7 +9,6 @@ import Sparkles from '@components/Sparkles'
 
 import CmdFLogoImage from '../../public/assets/logos/cmd-f-logo.svg'
 import SealTailImage from '../../public/assets/misc/seal_tail.svg'
-import TechTogetherLogoImage from '../../public/assets/logos/tech_together_logo.png'
 
 const LogosContainer = styled.div`
   position: relative;
@@ -25,36 +24,6 @@ const MainLogo = styled.img`
   display: flex;
   flex-direction: column;
   width: 16.37vh;
-`
-
-const PoweredByContainer = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  margin-left: 1.5vh;
-  margin-top: 3vh;
-  margin-bottom: 1vh;
-  height: 11.63vh;
-`
-
-const PoweredByLabel = styled.p`
-  position: relative;
-  font-feature-settings: 'liga' off;
-  font-family: "HK Grotesk";
-  color: #282828;
-  font-size: 2vh;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 2.55vh;
-  letter-spacing: -0.45px;
-  text-decoration: none;
-`
-
-const PlatinumSponsorLogo = styled.img`
-  position: relative;
-  margin-top: 0.3vh;
-  height: 4.7vh;
-  object-fit: contain;
 `
 
 const MainTitle = styled.h1`
@@ -84,21 +53,6 @@ const InfoTitle = styled.p`
   font-size: 3.1vh;
   font-style: normal;
   font-weight: 600;
-  line-height: 3.1vh;
-  letter-spacing: -0.26px;
-`
-
-const ApplyLabel = styled.p`
-  position: absolute;
-  left: 45.29vh;
-  top: 54.51vh;
-
-  color: #2E2E2E;
-  font-feature-settings: 'liga' off;
-  font-family: "HK Grotesk";
-  font-size: 3.1vh;
-  font-style: normal;
-  font-weight: 700;
   line-height: 3.1vh;
   letter-spacing: -0.26px;
 `
@@ -162,63 +116,6 @@ const HackerButton = styled.a`
     // }
   }
 `;
-
-
-const MentorButton = styled.a`
-  display: flex;
-  padding: 1.76vh 2.89vh;
-  justify-content: center;
-  align-items: center;
-  gap: 0.49vh;
-  border: none;
-  border-radius: 1.15vh;
-  background: linear-gradient(90deg, #E48D4D 16.91%, #E9B145 100%);
-  z-index: 900;
-
-  color: #FFF;
-  font-feature-settings: 'liga' off;
-  font-family: "HK Grotesk";
-  font-size: 2.35vh;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 2.55vh;
-  letter-spacing: -0.45px;
-  text-decoration: none;
-
-  transition: transform 0.3s ease, z-index 0s ease 0.3s;
-
-  &:hover {
-    transform: scale(1.05);
-  }
-`
-
-const VolunteerButton = styled.a`
-  display: flex;
-  padding: 1.76vh 2.06vh;
-  justify-content: center;
-  align-items: center;
-  gap: 0.49vh;
-  border: none;
-  border-radius: 1.15vh;
-  background: linear-gradient(90deg, #49AAB3 9.37%, #67C2B7 100%);
-  z-index: 900;
-
-  color: #FFF;
-  font-feature-settings: 'liga' off;
-  font-family: "HK Grotesk";
-  font-size: 2.35vh;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 2.55vh;
-  letter-spacing: -0.45px;
-  text-decoration: none;
-
-  transition: transform 0.3s ease, z-index 0s ease 0.3s;
-
-  &:hover {
-    transform: scale(1.05);
-  }
-`
 
 const SealTail = styled.img`
   position: absolute;

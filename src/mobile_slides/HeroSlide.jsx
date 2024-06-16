@@ -4,7 +4,6 @@ import Slide from "./Slide";
 
 import CmdFLogoImage from '../../public/assets/logos/cmd-f-logo.svg'
 import TooltipImage from '../../public/assets/misc/scroll_tooltip.svg'
-import TechTogetherLogoImage from '../../public/assets/logos/tech_together_logo.png'
 
 const LogosContainer = styled.div`
   position: relative;
@@ -19,33 +18,6 @@ const LogosContainer = styled.div`
 const MainLogo = styled.img`
   width: 93.5px;
   height: 77.8px;
-`
-
-const PoweredByContainer = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  margin-left: 0.5rem;
-  margin-top: 1rem;
-  height: 77.8px;
-`
-
-const PoweredByLabel = styled.p`
-  font-feature-settings: 'liga' off;
-  font-family: "HK Grotesk";
-  color: #282828;
-  font-size: 0.9rem;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 100%;
-  letter-spacing: -0.45px;
-  text-decoration: none;
-`
-
-const PlatinumSponsorLogo = styled.img`
-  height: 2rem;
-  margin-top: 0.2rem;
-  object-fit: contain;
 `
 
 const Title = styled.p`
@@ -80,19 +52,6 @@ const InfoLabel = styled.p`
   letter-spacing: -0.15px;
 `
 
-const ApplyLabel = styled.p`
-  margin-top: 1.4rem;
-
-  color: #2E2E2E;
-  font-feature-settings: 'liga' off;
-  font-family: "HK Grotesk";
-  font-size: 1.25rem;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 100%;
-  letter-spacing: -0.15px;
-`
-
 const ApplyButtonsContainer = styled.div`
   margin-top: 1.5rem;
 
@@ -111,48 +70,6 @@ const HackerButton = styled.a`
   border: none;
   border-radius: 1.15vh;
   background: linear-gradient(90deg, #CC5A5A 15.65%, #DB7859 94.27%);
-
-  color: #FFF;
-  font-feature-settings: 'liga' off;
-  font-family: "HK Grotesk";
-  font-size: 1.25rem;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 2.55vh;
-  letter-spacing: -0.45px;
-  text-decoration: none;
-`
-
-const MentorButton = styled.a`
-  display: flex;
-  padding: 0.93rem 1.53rem;
-  justify-content: center;
-  align-items: center;
-  gap: 0.49vh;
-  border: none;
-  border-radius: 1.15vh;
-  background: linear-gradient(90deg, #E48D4D 16.91%, #E9B145 100%);
-
-  color: #FFF;
-  font-feature-settings: 'liga' off;
-  font-family: "HK Grotesk";
-  font-size: 1.25rem;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 2.55vh;
-  letter-spacing: -0.45px;
-  text-decoration: none;
-`
-
-const VolunteerButton = styled.a`
-  display: flex;
-  padding: 0.93rem 1.09rem;
-  justify-content: center;
-  align-items: center;
-  gap: 0.49vh;
-  border: none;
-  border-radius: 1.15vh;
-  background: linear-gradient(90deg, #49AAB3 9.37%, #67C2B7 100%);
 
   color: #FFF;
   font-feature-settings: 'liga' off;
