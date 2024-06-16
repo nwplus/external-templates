@@ -1,4 +1,4 @@
-import { React, useEffect, useState } from 'react'
+import { React } from 'react'
 import styled  from 'styled-components'
 
 import Anchor from '@components/Anchor'
@@ -42,116 +42,40 @@ const Description = styled.p`
   letter-spacing: -0.1px;
 `
 
-const DaysLabel = styled.p`
-  position: absolute;
-  left: 310.72vh;
-  top: 30.29vh;
-  width: 16.17vh;
+// const getReturnValues = countDown => {
+//   // calculate time left
+//   const days = Math.floor(countDown / (1000 * 60 * 60 * 24))
+//   const hours = Math.floor((countDown % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+//   const minutes = Math.floor((countDown % (1000 * 60 * 60)) / (1000 * 60))
+//   const seconds = Math.floor((countDown % (1000 * 60)) / 1000)
 
-  color: #594632;
-  text-align: center;
-  font-family: "Yatra One";
-  font-size: 5.88vh;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 100%; /* 60px */
-`
+//   if (days < 0 || hours < 0 || seconds < 0) {
+//     return [0, 0, 0, 0]
+//   }
 
-const HoursLabel = styled.p`
-  position: absolute;
-  left: 322.74vh;
-  top: 60.98vh;
-  width: 21.66vh;
+//   return [days, hours, minutes, seconds]
+// }
 
-  color: #594632;
-  text-align: center;
-  font-family: "Yatra One";
-  font-size: 5.88vh;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 100%;
-`
+// const useCountdown = targetDate => {
+//   const countDownDate = new Date(targetDate).getTime()
 
-const MinutesLabel = styled.p`
-  position: absolute;
-  left: 369.80vh;
-  top: 35.09vh;
-  width: 11.27vh;
+//   const [countDown, setCountDown] = useState(countDownDate - new Date().getTime())
 
-  color: #594632;
-  text-align: center;
-  font-family: "Yatra One";
-  font-size: 5.88vh;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 100%;
-`
+//   useEffect(() => {
+//     const interval = setInterval(() => {
+//       setCountDown(countDownDate - new Date().getTime())
+//     }, 5000)
 
-const ApplicationsCloseInLabel = styled.p`
-  position: absolute;
-  left: 348.07vh;
-  top: 15.88vh;
-  width: 27.94vh;
+//     return () => clearInterval(interval)
+//   }, [countDownDate])
 
-  color: #523A21;
-  font-family: "Yatra One";
-  font-size: 4.63vh;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 100%;
-`
+//   return getReturnValues(countDown)
+// }
 
-const ApplicationsCloseFullLabel = styled.p`
-  position: absolute;
-  left: 307.74vh;
-  top: 83.8vh;
-  width: 65.68vh;
-  text-align: center;
+const About = () => 
+  // const countDownDate = new Date('2024-03-01T23:59:59-08:00').getTime()
 
-  color: #594632;
-  font-family: "Yatra One";
-  font-size: 2.45vh;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 88%;
-  letter-spacing: -0.1px;
-`
-
-const getReturnValues = countDown => {
-  // calculate time left
-  const days = Math.floor(countDown / (1000 * 60 * 60 * 24))
-  const hours = Math.floor((countDown % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
-  const minutes = Math.floor((countDown % (1000 * 60 * 60)) / (1000 * 60))
-  const seconds = Math.floor((countDown % (1000 * 60)) / 1000)
-
-  if (days < 0 || hours < 0 || seconds < 0) {
-    return [0, 0, 0, 0]
-  }
-
-  return [days, hours, minutes, seconds]
-}
-
-const useCountdown = targetDate => {
-  const countDownDate = new Date(targetDate).getTime()
-
-  const [countDown, setCountDown] = useState(countDownDate - new Date().getTime())
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCountDown(countDownDate - new Date().getTime())
-    }, 5000)
-
-    return () => clearInterval(interval)
-  }, [countDownDate])
-
-  return getReturnValues(countDown)
-}
-
-const About = () => {
-  const countDownDate = new Date('2024-03-01T23:59:59-08:00').getTime()
-  const countdown = useCountdown(countDownDate)
-
-  return (<div>
+   (<div>
     <Anchor id="about" x="220" />
     <Map src={MapImage}/>
     <Title>What is cmd-f?</Title>
@@ -162,6 +86,6 @@ const About = () => {
     <ApplicationsCloseInLabel>Applications close in:</ApplicationsCloseInLabel>
     <ApplicationsCloseFullLabel>Applications close Friday, March 1 @ 11:59PM PST</ApplicationsCloseFullLabel> */}
     </div>)
-}
+
 
 export default About
