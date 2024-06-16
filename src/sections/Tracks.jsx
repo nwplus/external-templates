@@ -294,42 +294,42 @@ const MouseIcon = styled.img`
 const Tracks = () => (
     <>
       <Anchor id="tracks" x="560" />
-      <SectionTitle>Tracks</SectionTitle>
-      <ExplanationLabel>Hover over each island to learn more!</ExplanationLabel>
-      <MouseIcon src={MouseIconImage}/>
+      <SectionTitle></SectionTitle>
+      <ExplanationLabel></ExplanationLabel>
+      {/* <MouseIcon src={MouseIconImage}/> */}
 
       {/* Community track */}
       <CommunityTrackIsland>
         <CommunityTrackCloud>
           <CloudImage src={CommyCloudImage}/>
-          <CommunityTrackCloudTitle>Connect, Belong, and Thrive!</CommunityTrackCloudTitle>
-          <CommunityTrackCloudDescription>Foster connections, promote belonging while prioritizing the safety and inclusion of marginalized groups. Your goal is to craft a space that empowers communities to connect, collaborate, and support each other.</CommunityTrackCloudDescription>
+          <CommunityTrackCloudTitle></CommunityTrackCloudTitle>
+          <CommunityTrackCloudDescription></CommunityTrackCloudDescription>
         </CommunityTrackCloud>
         <IslandImage src={CommyIslandImage}/>
       </CommunityTrackIsland>
-      <CommunityTrackTitle>Community Building</CommunityTrackTitle>
+      <CommunityTrackTitle></CommunityTrackTitle>
 
       {/* Education track */}
       <EducationTrackIsland>
         <EducationTrackCloud>
           <CloudImage src={EduCloudImage}/>
-          <EducationTrackCloudTitle>Empower Education for All!</EducationTrackCloudTitle>
-          <EducationTrackCloudDescription>Shape the future of education by creating inclusive and accessible learning solutions. Your goal is to minimize barriers to learning and empower learners by enhancing accessibility and inclusivity within the education system.</EducationTrackCloudDescription>
+          <EducationTrackCloudTitle></EducationTrackCloudTitle>
+          <EducationTrackCloudDescription></EducationTrackCloudDescription>
         </EducationTrackCloud>
         <IslandImage src={EduIslandImage}/>
       </EducationTrackIsland>
-      <EducationTrackTitle>Education Equity</EducationTrackTitle>
+      <EducationTrackTitle></EducationTrackTitle>
 
       {/* Health track */}
       <HealthTrackIsland>
         <HealthTrackCloud>
           <CloudImage src={HelthCloudImage}/>
-          <HealthTrackCloudTitle>Innovate for Inclusive Healthcare!</HealthTrackCloudTitle>
-          <HealthTrackCloudDescription>Leverage technology to address the persistent disparities in healthcare faced by minority groups. Your goal is to develop a solution that challenges biases, cultivates a sense of belonging, and constructs a more inclusive and equitable healthcare system.</HealthTrackCloudDescription>
+          <HealthTrackCloudTitle></HealthTrackCloudTitle>
+          <HealthTrackCloudDescription></HealthTrackCloudDescription>
         </HealthTrackCloud>
         <IslandImage src={HelthIslandImage}/>
       </HealthTrackIsland>
-      <HealthTrackTitle>HealthTech for All</HealthTrackTitle>
+      <HealthTrackTitle></HealthTrackTitle>
 
       <Bridge src={BridgeImage}/>
     </>

@@ -70,9 +70,9 @@ const HealthSlide = () => (
     <Slide alignItems="left">
       <SectionTitle />
       <ValueContainer>
-        <ValueCircle>3</ValueCircle>
-        <ValueTitle>HealthTech for All!</ValueTitle>
-        <ValueDescription>Innovate for Inclusive Healthcare!  Leverage technology to address the persistent disparities in healthcare faced by minority groups. Your goal is to develop a solution that challenges biases, cultivates a sense of belonging, and constructs a more inclusive and equitable healthcare system.</ValueDescription>
+        {/* <ValueCircle>3</ValueCircle> */}
+        <ValueTitle></ValueTitle>
+        <ValueDescription></ValueDescription>
       </ValueContainer>
     </Slide>
   )

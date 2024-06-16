@@ -96,7 +96,7 @@ const StatisticsSlide = () => {
       <StatsLabel className='num' style={{ marginTop: "33vh" }} data-val="189" id="hackers_count">0 hackers</StatsLabel>
       <StatsLabel className='num' style={{ marginTop: "1.5rem" }} data-val="44" id="projects_count">0 projects</StatsLabel>
       <StatsLabel className='num' style={{ marginTop: "1.5rem" }} data-val="43" id="mentors_count">0 mentors</StatsLabel>
-      <SmallLabel>at cmd-f 2023</SmallLabel>
+      <SmallLabel>at cmd-f 2024</SmallLabel>
     </Slide>
   )
 }

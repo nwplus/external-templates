@@ -115,10 +115,10 @@ close in...`
     <Slide alignItems="center">
       <MapContainer>
         <MapImage src={VerticalMapImage} />
-        <CloseInLabel style={{ whiteSpace: 'pre-line'}}>{appsCloseText}</CloseInLabel>
+        {/* <CloseInLabel style={{ whiteSpace: 'pre-line'}}>{appsCloseText}</CloseInLabel>
         <DaysLabel>{countdown[0]} DAYS</DaysLabel>
         <HoursLabel>{countdown[1]} HOURS</HoursLabel>
-        <MinutesLabel>{countdown[2]} MIN</MinutesLabel>
+        <MinutesLabel>{countdown[2]} MIN</MinutesLabel> */}
       </MapContainer>
     </Slide>
   )

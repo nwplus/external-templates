@@ -204,7 +204,7 @@ const Footer = () => (<>
     <Team />
     <SmallText>
       <div>Organized and held by nwPlus</div>
-      <div>Copyright &copy; cmd-f 2024</div>
+      <div>Copyright &copy; cmd-f 2025</div>
     </SmallText>
     <MeetMindsLabel>Meet the minds behind cmd-f</MeetMindsLabel>
   </>)

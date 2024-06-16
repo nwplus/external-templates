@@ -235,18 +235,18 @@ const SealTail = styled.img`
 const Hero = () => (<div id="hero">
     <LogosContainer>
       <MainLogo src={CmdFLogoImage}/>
-      <PoweredByContainer>
+      {/* <PoweredByContainer>
         <PoweredByLabel>powered by</PoweredByLabel>
         <PlatinumSponsorLogo src={TechTogetherLogoImage} />
-      </PoweredByContainer>
+      </PoweredByContainer> */}
     </LogosContainer>
     <MainTitle>Western Canada&apos;s largest hackathon <span style={{ color: '#B23C3C' }}>celebrating underrepresented genders in tech</span></MainTitle>
-    <InfoTitle>March 9-10, 2024 | In-person @ UBC Life Sciences Institute</InfoTitle>
-    <ApplyLabel>Apply to be a:</ApplyLabel>
+    <InfoTitle>March 8-9, 2025 | In-person (location TBD)</InfoTitle>
+    {/* <ApplyLabel>Apply to be a:</ApplyLabel> */}
     <ApplyButtonsContainer>
-      <HackerButton href="https://portal.nwplus.io" target="_blank">Hacker</HackerButton>
-      <MentorButton href="https://forms.gle/LiZjuFU8G8deVXzf9" target="_blank">Mentor</MentorButton>
-      <VolunteerButton href="https://forms.gle/X4dFhZ9wuYGzHpZK8" target="_blank">Volunteer</VolunteerButton>
+      <HackerButton href="https://docs.google.com/forms/d/e/1FAIpQLSeWhDhJ6nYOYG3QdDi1XfdDnthQt-yeXida08AKGXksYs4txw/viewform?pli=1" target="_blank">Notify me when Applications open!</HackerButton>
+      {/* <MentorButton href="https://forms.gle/LiZjuFU8G8deVXzf9" target="_blank">Mentor</MentorButton>
+      <VolunteerButton href="https://forms.gle/X4dFhZ9wuYGzHpZK8" target="_blank">Volunteer</VolunteerButton> */}
     </ApplyButtonsContainer>
     <SealTail src={SealTailImage}/>
     <Sparkles />

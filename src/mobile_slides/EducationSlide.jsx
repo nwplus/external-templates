@@ -70,9 +70,9 @@ const EducationSlide = () => (
     <Slide alignItems="left">
       <SectionTitle />
       <ValueContainer>
-        <ValueCircle>2</ValueCircle>
-        <ValueTitle>Education Equity</ValueTitle>
-        <ValueDescription>Empower education for all! Shape the future of education by creating inclusive and accessible learning solutions. Your goal is to minimize barriers to learning and empower learners by enhancing accessibility and inclusivity within the education system.</ValueDescription>
+        {/* <ValueCircle>2</ValueCircle> */}
+        <ValueTitle></ValueTitle>
+        <ValueDescription></ValueDescription>
       </ValueContainer>
     </Slide>
   )

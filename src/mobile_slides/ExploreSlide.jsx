@@ -72,7 +72,7 @@ const ExploreSlide = () => (
       <ValueContainer>
         <ValueCircle>3</ValueCircle>
         <ValueTitle>Explore in a safe space</ValueTitle>
-        <ValueDescription>Discover a community of like-minded, creative, and passionate individuals. Build lasting bonds, share experiences, and create memories. We’re all here unified under one cause – to strive for better representation in tech. </ValueDescription>
+        <ValueDescription>Discover a community of like-minded, creative, and passionate individuals. Build lasting bonds, share experiences, and create memories. We're all here unified under one cause – to strive for better representation in tech.</ValueDescription>
       </ValueContainer>
     </Slide>
   )

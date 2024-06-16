@@ -21,7 +21,7 @@ const StatsContainer = styled.div`
   position: absolute;
   top: 29.9vh;
   left: 907.55vh;
-  width: 48.23vh;
+  width: 54.23vh;
 `
 
 const SubTitle = styled.p`
@@ -59,23 +59,23 @@ const Statistics = () => {
             let unitsLabel = "";
             switch (id) {
               case "hackers_count":
-                unitsLabel = "hackers";
+                unitsLabel = " hackers";
                 break;
               case "projects_count":
-                unitsLabel = "projects";
+                unitsLabel = "% first-time hackers";
                 break;
               case "mentors_count":
-                unitsLabel = "mentors";
+                unitsLabel = " projects submitted";
                 break;
               default:
                 unitsLabel = "units";
                 break;
             }
             const displayedValue = valueDisplay
-            displayedValue.textContent = `${Math.round(startValue)} ${unitsLabel}`;
+            displayedValue.textContent = `${Math.round(startValue)}${unitsLabel}`;
             if (startValue >= endValue) {
               // ensure setting to end value
-              displayedValue.textContent = `${endValue} ${unitsLabel}`;
+              displayedValue.textContent = `${endValue}${unitsLabel}`;
               clearInterval(counter);
             }
           }, duration);
@@ -95,9 +95,9 @@ const Statistics = () => {
     <>
         <MainTitle>Last year we had...</MainTitle>
         <StatsContainer className='stats'>
-          <SubTitle className='num' data-val="189" id="hackers_count">0 hackers</SubTitle>
-          <SubTitle className='num' data-val="44" style={{ marginTop: '2.05vh' }} id="projects_count">0 projects</SubTitle>
-          <SubTitle className='num' data-val="43" style={{ marginTop: '1.37vh' }} id="mentors_count">0 mentors</SubTitle>
+          <SubTitle className='num' data-val="239" id="hackers_count">0 hackers</SubTitle>
+          <SubTitle className='num' data-val="44" style={{ marginTop: '2.05vh' }} id="projects_count">0% first-time hackers</SubTitle>
+          <SubTitle className='num' data-val="54" style={{ marginTop: '1.37vh' }} id="mentors_count">0 projects submitted</SubTitle>
         </StatsContainer>
     </>
   )

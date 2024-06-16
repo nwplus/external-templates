@@ -70,11 +70,11 @@ const ValueContainer = styled.div`
 const CommunitySlide = () => (
     <Slide alignItems="left">
       <Anchor id="tracks-mobile" x="0" />
-      <SectionTitle>Tracks</SectionTitle>
+      <SectionTitle></SectionTitle>
       <ValueContainer>
-        <ValueCircle>1</ValueCircle>
-        <ValueTitle>Community Building</ValueTitle>
-        <ValueDescription>Connect, Belong, and Thrive! Foster connections, promote belonging while prioritizing the safety and inclusion of marginalized groups. Your goal is to craft a space that empowers communities to connect, collaborate, and support each other.</ValueDescription>
+        {/* <ValueCircle></ValueCircle> */}
+        <ValueTitle></ValueTitle>
+        <ValueDescription></ValueDescription>
       </ValueContainer>
     </Slide>
   )

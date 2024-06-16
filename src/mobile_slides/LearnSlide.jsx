@@ -72,7 +72,7 @@ const LearnSlide = () => (
       <ValueContainer>
         <ValueCircle>2</ValueCircle>
         <ValueTitle>Learn together</ValueTitle>
-        <ValueDescription>Shape the future of education by creating inclusive and accessible learning solutions. Your goal is to minimize barriers to learning and empower learners by enhancing accessibility and inclusivity within the education system.</ValueDescription>
+        <ValueDescription>Whether you have never coded before, or you dream in assembly, challenge yourself to create something meaningful. Learn new skills at our workshops and apply them to innovative projects! Regardless of your project’s completion at the end of the weekend, take pride in the knowledge gained or the courage to try something new. Let’s celebrate our journeys together!</ValueDescription>
       </ValueContainer>
     </Slide>
   )

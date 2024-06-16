@@ -27,7 +27,7 @@ const Banner = styled.img`
 `
 
 const SponsoredBySlide = () => {
-    const sponsoredByText = `cmd-f 2024
+    const sponsoredByText = `cmd-f 2025
 is sponsored
 by...`;
     return (<Slide alignItems="center">

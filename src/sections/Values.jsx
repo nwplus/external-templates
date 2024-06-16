@@ -83,17 +83,17 @@ const Values = () => (
     <ConfidenceValueContainer>
       <ValueCircle>1</ValueCircle>
       <ValueTitle>Build confidence</ValueTitle>
-      <ValueDescription>Develop career-ready skills, fight imposter syndrome, and build an invaluable support network with friends, mentors, and sponsors. You are welcome! Regardless of your background, you bring a unique and important perspective to tech. Set sail to discover your place in tech – a space where everyone belongs.</ValueDescription>
+      <ValueDescription>Develop career-ready skills, fight impostor syndrome, and build an invaluable support network with friends, mentors, and sponsors. You are welcome! Regardless of your background, you bring a unique and important perspective to tech. Set sail to discover your place in tech—a space where everyone belongs.</ValueDescription>
     </ConfidenceValueContainer>
     <LearnValueContainer>
       <ValueCircle>2</ValueCircle>
       <ValueTitle>Learn together</ValueTitle>
-      <ValueDescription>Shape the future of education by creating inclusive and accessible learning solutions. Your goal is to minimize barriers to learning and empower learners by enhancing accessibility and inclusivity within the education system.</ValueDescription>
+      <ValueDescription>Whether you have never coded before, or you dream in assembly, challenge yourself to create something meaningful. Learn new skills at our workshops and apply them to innovative projects! Regardless of your project’s completion at the end of the weekend, take pride in the knowledge gained or the courage to try something new. Let’s celebrate our journeys together!</ValueDescription>
     </LearnValueContainer>
     <ExploreValueContainer>
       <ValueCircle>3</ValueCircle>
       <ValueTitle>Explore in a safe space</ValueTitle>
-      <ValueDescription>Discover a community of like-minded, creative, and passionate individuals. Build lasting bonds, share experiences, and create memories. We’re all here unified under one cause – to strive for better representation in tech.</ValueDescription>
+      <ValueDescription>Discover a community of like-minded, creative, and passionate individuals. Build lasting bonds, share experiences, and create memories. We're all here unified under one cause – to strive for better representation in tech.</ValueDescription>
     </ExploreValueContainer>
   </>
 )
