@@ -75,7 +75,7 @@ const SponsorsSlide = ({ tiers, isAnchor }) => {
   }
 
   useEffect(async () => {
-    const data = await fireDb.getCollection('cmd-f2024', 'Sponsors')
+    const data = await fireDb.getCollection('cmd-f2025', 'Sponsors')
     if (data) {
       const lowerCasedData = data.map(sponsor => ({...sponsor, tier: sponsor.tier.toLowerCase()}))
       categorizeSponsor(lowerCasedData)
