@@ -176,34 +176,34 @@ const ButtonsContainer = styled.div`
   }
 `
 
-const VolunteerLink = styled.a`
-  position: relative;
-  color: #F3F5F4;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 1.1rem;
-  letter-spacing: -0.2px;
-  transition: color 0.13s linear;
+// const VolunteerLink = styled.a`
+//   position: relative;
+//   color: #F3F5F4;
+//   text-decoration: none;
+//   font-weight: 600;
+//   font-size: 1.1rem;
+//   letter-spacing: -0.2px;
+//   transition: color 0.13s linear;
 
-  &:after {
-    content: ' ';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: #F3F5F4;
-    transition: background 0.13s linear;
-  }
+//   &:after {
+//     content: ' ';
+//     position: absolute;
+//     bottom: -2px;
+//     left: 0;
+//     width: 100%;
+//     height: 2px;
+//     background-color: #F3F5F4;
+//     transition: background 0.13s linear;
+//   }
 
-  &:hover {
-    color: #DCB551;
+//   &:hover {
+//     color: #DCB551;
 
-    &:after {
-      background-color: #DCB551;
-    }
-  }
-`
+//     &:after {
+//       background-color: #DCB551;
+//     }
+//   }
+// `
 
 const Hero = () => (
   <HeroContainer>
