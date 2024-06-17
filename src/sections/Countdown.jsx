@@ -124,7 +124,9 @@ const useCountdown = targetDate => {
 }
 
 const Countdown = () => {
-  const countDownDate = new Date('Nov 17, 2024 23:59:59').getTime()
+  // const countDownDate = new Date('Nov 17, 2024 23:59:59').getTime()
+  const countDownDate = new Date('Nov 17, 2023 23:59:59').getTime()
+
   const countdown = useCountdown(countDownDate)
 
   return (
