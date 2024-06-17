@@ -275,11 +275,11 @@ const TrustBadge = ({ stayAtTop }) => (
   <TrustBadgeLink
     id="mlh-trust-badge"
     rel="noreferrer"
-    href="https://mlh.io/na?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2023-season&utm_content=white"
+    href="https://mlh.io/na?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2025-season&utm_content=white"
     target="_blank"
     stayAtTop={stayAtTop}
   >
-    <img src={mlhImage} alt="Major League Hacking 2024 Hackathon Season" style={{ width: '100%' }} />
+    <img src={mlhImage} alt="Major League Hacking 2025 Hackathon Season" style={{ width: '100%' }} />
   </TrustBadgeLink>
 )
 

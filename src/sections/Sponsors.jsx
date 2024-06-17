@@ -82,7 +82,7 @@ const Sponsors = () => {
 
   useEffect(async () => {
     // use cmd-f2022 collection to test
-    const data = await fireDb.getCollection('nwHacks2024', 'Sponsors')
+    const data = await fireDb.getCollection('nwHacks2025', 'Sponsors')
     if (data) {
       setSponsors(data)
     }

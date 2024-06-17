@@ -9,8 +9,8 @@
         "root": [
           "dev-nwplus-root"
         ],
-        "nwhacks2024_dev": [
-          "dev-nwplus-nwhacks2024-v2"
+        "nwhacks2025_dev": [
+          "dev-nwplus-nwhacks2025-v2"
         ]
       }
     },
@@ -19,8 +19,8 @@
         "root": [
           "nwplus-root"
         ],
-        "nwhacks2024_main": [
-          "nwplus-nwhacks2024"
+        "nwhacks2025_main": [
+          "nwplus-nwhacks2025"
         ]
       }
     }

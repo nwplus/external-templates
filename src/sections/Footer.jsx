@@ -169,7 +169,7 @@ const Footer = () => (
           <a href="mailto:sponsorship@nwplus.io?subject=Sponsorship" target="_blank" rel="noreferrer">
             Become a Sponsor
           </a>
-          <a href="https://mlh.io/code-of-conduct" target="_blank" rel="noreferrer">
+          <a href="http://hackp.ac/coc" target="_blank" rel="noreferrer">
             Code of Conduct
           </a>
         </Links>

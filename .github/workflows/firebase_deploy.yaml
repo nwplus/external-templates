@@ -7,7 +7,7 @@ on:
         description: 'Targetted hackathon to build'
         required: true
   push:
-    branches: [nwhacks2024_dev, nwhacks2024_main]
+    branches: [nwhacks2025_dev, nwhacks2025_main]
 
 jobs:
   firebase_deploy:

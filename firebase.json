@@ -3,17 +3,29 @@
     {
       "target": "root",
       "public": "out",
-      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ]
     },
     {
-      "target": "nwhacks2024_dev",
+      "target": "nwhacks2025_dev",
       "public": "out",
-      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ]
     },
     {
-      "target": "nwhacks2024_main",
+      "target": "nwhacks2025_main",
       "public": "out",
-      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ]
     }
   ]
 }

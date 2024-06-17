@@ -222,7 +222,7 @@ const Hero = () => (
       </IntroContainer>
       <ActionsContainer>
         <ButtonsContainer>
-          <Button variant="solid" rel="noreferrer" href="">
+          <Button variant="solid" rel="noreferrer" href="https://docs.google.com/forms/d/e/1FAIpQLScyrH57AXLwd90aiEg99pWT3TqOuLdKXhOCXtVBwPd_JfCNew/viewform">
             Notify me when applications open!
           </Button>
           {/* <Button variant="outlined" rel="noreferrer" href="https://docs.google.com/forms/d/e/1FAIpQLSeN0gkZFW-gQm0fNMI_aZP22IXi7HpEU6JTc_XcFhHo1ufv3g/viewform">
