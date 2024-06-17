@@ -8,7 +8,7 @@ import Faq from 'src/sections/FAQ'
 import Footer from 'src/sections/Footer'
 import Countdown from 'src/sections/Countdown'
 import About from 'src/sections/About'
-import Track from 'src/sections/Tracks'
+// import Track from 'src/sections/Tracks'
 import Stats from 'src/sections/Stats'
 
 // import LoadingScreen from '../components/LoadingScreen'
