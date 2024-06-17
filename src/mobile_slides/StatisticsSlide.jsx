@@ -59,20 +59,20 @@ const StatisticsSlide = () => {
             let unitsLabel = "";
             switch (id) {
               case "hackers_count":
-                unitsLabel = "hackers";
+                unitsLabel = " hackers";
                 break;
               case "projects_count":
-                unitsLabel = "projects";
+                unitsLabel = "% first-time hackers";
                 break;
               case "mentors_count":
-                unitsLabel = "mentors";
+                unitsLabel = " projects submitted";
                 break;
               default:
                 unitsLabel = "units";
                 break;
             }
             const displayedValue = valueDisplay
-            displayedValue.textContent = `${Math.round(startValue)} ${unitsLabel}`;
+            displayedValue.textContent = `${Math.round(startValue)}${unitsLabel}`;
             if (startValue >= endValue) {
               // ensure setting to end value
               displayedValue.textContent = `${endValue} ${unitsLabel}`;
@@ -93,9 +93,9 @@ const StatisticsSlide = () => {
 
   return (
     <Slide className="stats-mobile" alignItems="center">
-      <StatsLabel className='num' style={{ marginTop: "33vh" }} data-val="189" id="hackers_count">0 hackers</StatsLabel>
-      <StatsLabel className='num' style={{ marginTop: "1.5rem" }} data-val="44" id="projects_count">0 projects</StatsLabel>
-      <StatsLabel className='num' style={{ marginTop: "1.5rem" }} data-val="43" id="mentors_count">0 mentors</StatsLabel>
+      <StatsLabel className='num' style={{ marginTop: "33vh" }} data-val="239" id="hackers_count">0 hackers</StatsLabel>
+      <StatsLabel className='num' style={{ marginTop: "1.5rem" }} data-val="36" id="projects_count">0% first-time hackers</StatsLabel>
+      <StatsLabel className='num' style={{ marginTop: "1.5rem" }} data-val="54" id="mentors_count">0 projects submitted</StatsLabel>
       <SmallLabel>at cmd-f 2024</SmallLabel>
     </Slide>
   )

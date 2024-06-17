@@ -96,7 +96,7 @@ const Statistics = () => {
         <MainTitle>Last year we had...</MainTitle>
         <StatsContainer className='stats'>
           <SubTitle className='num' data-val="239" id="hackers_count">0 hackers</SubTitle>
-          <SubTitle className='num' data-val="44" style={{ marginTop: '2.05vh' }} id="projects_count">0% first-time hackers</SubTitle>
+          <SubTitle className='num' data-val="36" style={{ marginTop: '2.05vh' }} id="projects_count">0% first-time hackers</SubTitle>
           <SubTitle className='num' data-val="54" style={{ marginTop: '1.37vh' }} id="mentors_count">0 projects submitted</SubTitle>
         </StatsContainer>
     </>
