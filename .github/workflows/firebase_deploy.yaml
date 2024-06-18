@@ -29,6 +29,11 @@ jobs:
         shell: bash
         run: echo "${{ secrets.FIREBASE_SERVICE_ACCOUNT_NWPLUS_UBC }}" | base64 --decode > "google-application-credentials.json"
 
+      - name: Prepare google app credentials (dev)
+        if: ${{ env.IS_PRODUCTION == 'false' }}
+        shell: bash
+        run: echo "${{ secrets.FIREBASE_SERVICE_ACCOUNT_NWPLUS_UBC_DEV }}" | base64 --decode > "google-application-credentials.json"
+
       - name: Set up firebase
         run: sudo npm install -g firebase-tools@12.9.1 --unsafe
 
