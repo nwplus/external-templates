@@ -24,15 +24,13 @@ jobs:
         with:
           node-version: '16.x'
 
-      - name: Prepare google app credentials (prod)
-        if: ${{ env.IS_PRODUCTION == 'true' }}
-        shell: bash
-        run: echo "${{ secrets.FIREBASE_SERVICE_ACCOUNT_NWPLUS_UBC }}" | base64 --decode > "google-application-credentials.json"
-
       - name: Prepare google app credentials (dev)
         if: ${{ env.IS_PRODUCTION == 'false' }}
-        shell: bash
         run: echo "${{ secrets.FIREBASE_SERVICE_ACCOUNT_NWPLUS_UBC_DEV_BASE_64 }}" | base64 --decode > "google-application-credentials.json"
+
+      - name: Prepare google app credentials (prod)
+        if: ${{ env.IS_PRODUCTION == 'true' }}
+        run: echo "${{ secrets.FIREBASE_SERVICE_ACCOUNT_NWPLUS_UBC }}" | base64 --decode > "google-application-credentials.json"
 
       - name: Set up firebase
         run: sudo npm install -g firebase-tools@12.9.1 --unsafe
