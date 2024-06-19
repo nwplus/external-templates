@@ -70,7 +70,7 @@ const CountdownGrid = styled.div`
     gap: 1rem;
     flex-grow: 0;
     padding-top: 30%;
-    left: 30%;
+    left: 27%;
   }
 `
 
@@ -124,8 +124,7 @@ const useCountdown = targetDate => {
 }
 
 const Countdown = () => {
-  // const countDownDate = new Date('Nov 17, 2024 23:59:59').getTime()
-  const countDownDate = new Date('Nov 17, 2023 23:59:59').getTime()
+  const countDownDate = new Date('Nov 17, 2024 23:59:59').getTime()
 
   const countdown = useCountdown(countDownDate)
 
