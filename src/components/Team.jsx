@@ -6,308 +6,340 @@ import { Header3 } from '@components/Typography'
 
 const profiles = [
   {
-    img: '/profiles/Anna_Kovtunenko.png',
-    name: 'Anna Kovtunenko',
-    emoji: '🌺',
-    color: '#01DACC',
-    title: '1st Year Rep',
-    social: "https://www.linkedin.com/in/anna-kovtunenko/"
-  },
-  {
     img: '/profiles/Alan_Wang.png',
     name: 'Alan Wang',
     emoji: '🪐',
     color: '#01DACC',
-    title: 'nwHacks Logistics Director',
-    social: "https://www.linkedin.com/in/alan-wang-a577b81b5/"
+    title: 'nwHacks Logistics Coordinator',
+    social: 'https://www.linkedin.com/in/alan-wang-a577b81b5/'
   },
   {
-    img: '/profiles/Alex_Hernandez.png',
-    name: 'Alex Hernandez',
-    emoji: '🦖',
-    color: '#A1C9BA',
-    title: 'nwHacks Logistics Coordinator',
-    social: "https://alexdshernandez.com/"
+    img: '/profiles/Alissa_Guo.png',
+    name: 'Alissa Guo',
+    emoji: '🥘',
+    color: '#FFC0CB',
+    title: 'Cmd-f logistics coordinator',
+    social: 'https://www.linkedin.com/in/alissa-guo/'
+  },
+  {
+    img: '/profiles/Allison_Chu.png',
+    name: 'Allison Chu',
+    emoji: '🚅',
+    color: '#01DACC',
+    title: '',
+    social: ''
   },
   {
     img: '/profiles/Alvin_Kam.png',
     name: 'Alvin Kam',
     emoji: '💀',
     color: '#01DACC',
-    title: 'Development Coordinator',
-    social: ""
+    title: 'nwHacks Logistics Coordinator',
+    social: ''
   },
   {
-    img: '/profiles/Alvin_Zhou.png',
-    name: 'Alvin Zhou',
-    emoji: '✨',
-    color: '#01DACC',
-    title: 'Sponsorship Coordinator',
-    social: ""
-  },
-  {
-    img: '/profiles/Angela_Zhou.png',
-    name: 'Angela Zhou',
-    emoji: '🐣',
-    color: '#FAF4EA',
-    title: 'cmd-f Logistics Director',
-    social: "https://www.linkedin.com/in/anggelazhou/"
+    img: '/profiles/Angela_Chiang.png',
+    name: 'Angela Chiang',
+    emoji: '🫡',
+    color: '#00A3FF',
+    title: 'Content Writer',
+    social: 'https://www.linkedin.com/in/angela-chiang-a12a02231/'
   },
   {
     img: '/profiles/Angelina_Hsu.png',
     name: 'Angelina Hsu',
     emoji: '🧃',
     color: '#90A58A',
-    title: 'Design Coordinator',
-    social: "https://www.linkedin.com/in/angelina-hsu-54035416a/"
+    title: 'Design Director',
+    social: 'https://www.linkedin.com/in/angelina-hsu-54035416a/'
   },
   {
-    img: '/profiles/Aurora_Cheng.png',
-    name: 'Aurora Cheng',
-    emoji: '🍡',
+    img: '/profiles/Anna_Kovtunenko.png',
+    name: 'Anna Kovtunenko',
+    emoji: '🌺',
     color: '#01DACC',
-    title: 'Marketing Coordinator',
-    social: "https://www.linkedin.com/in/aurora-cheng04/"
+    title: 'HackCamp Logistics Director',
+    social: 'https://www.linkedin.com/in/anna-kovtunenko/'
   },
   {
-    img: '/profiles/Bernice_Tang.png',
-    name: 'Bernice Tang',
-    emoji: '🦋',
-    color: '#B19BF0',
-    title: 'Engagement Coordinator',
-    social: ""
+    img: '/profiles/Ara_Kwon.png',
+    name: 'Ara Kwon',
+    emoji: '🪵',
+    color: '#01DACC',
+    title: 'HackCamp Logistics Coordinator',
+    social: ''
   },
   {
     img: '/profiles/Byron_Wang.png',
     name: 'Byron Wang',
     emoji: '😌',
-    color: '#D1FFDF',
-    title: 'HackCamp Logistics Director',
-    social: "https://www.byronwang.com/"
+    color: '#d1ffdf',
+    title: 'Dev Coordinator',
+    social: 'https://www.byronwang.com/'
+  },
+  {
+    img: '/profiles/Caitlyn_Chan.png',
+    name: 'Caitlyn Chan',
+    emoji: '🤠',
+    color: '#FFCADC',
+    title: 'Sponsorship Coordinator',
+    social: 'http://linkedin.com/in/cait-chan/'
   },
   {
     img: '/profiles/Charlene_Chiu.png',
     name: 'Charlene Chiu',
     emoji: '🌸',
     color: '#EBCEDF',
-    title: 'cmd-f Logistics Coordinator',
-    social: "https://www.linkedin.com/in/charlenechiu-chl/"
+    title: 'cmd-f Logistics Director',
+    social: 'www.linkedin.com/in/charlenechiu-chl/'
   },
   {
     img: '/profiles/Cristen_Lin.png',
     name: 'Cristen Lin',
     emoji: '🍪',
     color: '#59896C',
-    title: 'Marketing Coordinator',
-    social: "https://www.linkedin.com/in/cristen-lin"
+    title: 'Marketing Director',
+    social: 'https://www.linkedin.com/in/cristen-lin'
   },
   {
-    img: '/profiles/Daphne_Tian.png',
-    name: 'Daphne Tian',
-    emoji: '🐅',
-    color: '#BDB5D5',
-    title: 'Marketing Coordinator',
-    social: ""
+    img: '/profiles/Daisy_Han.png',
+    name: 'Daisy Han',
+    emoji: '🙆🏼‍♀️',
+    color: '#A7CCFF',
+    title: 'Design Coordinator',
+    social: 'https://www.linkedin.com/in/daiisyhan/'
+  },
+  {
+    img: '/profiles/Daniel_Pan.png',
+    name: 'Daniel Pan',
+    emoji: '🤠',
+    color: '#01DACC',
+    title: 'Dev Coordinator',
+    social: 'http://danielpanhead.com'
   },
   {
     img: '/profiles/Donald_Lee.png',
     name: 'Donald Lee',
     emoji: '😮',
     color: '#3988FF',
-    title: 'Development Coordinator',
-    social: "https://donaldlee.xyz/"
+    title: 'Dev Director',
+    social: 'https://donaldlee.xyz/'
   },
   {
-    img: '/profiles/Edward_Li.png',
-    name: 'Edward Li',
-    emoji: '🧙‍♂️',
-    color: '#66b900',
-    title: 'nwHacks Logistics Coordinator',
-    social: "http://www.edward-li.com/"
+    img: '/profiles/Erping_Sun.png',
+    name: 'Erping Sun',
+    emoji: '✈️',
+    color: '#669aed',
+    title: 'Dev Coordinator',
+    social: 'http://linkedin.com/in/erping-sun'
   },
   {
-    img: '/profiles/Gordon_Wu.png',
-    name: 'Gordon Wu',
-    emoji: '🤠',
-    color: '#5E6B62',
-    title: 'Design Coordinator',
-    social: "https://www.linkedin.com/in/gordonwu08/"
+    img: '/profiles/Fahim_Gbonjubola.png',
+    name: 'Fahim Gbonjubola',
+    emoji: '😋',
+    color: '#E4F6F8',
+    title: 'EDI Director',
+    social: 'http://fahimgbon.com'
   },
   {
-    img: '/profiles/Irene_Zhang.png',
-    name: 'Irene Zhang',
-    emoji: '🖌️',
-    color: '#AED5D9',
-    title: 'Engagement Coordinator',
-    social: "https://www.linkedin.com/in/izhang02/"
+    img: '/profiles/Grace_Co.png',
+    name: 'Grace Co',
+    emoji: '🦭',
+    color: '#00A86B',
+    title: 'Sponsorship Coordinator',
+    social: 'https://www.linkedin.com/in/grace--co/'
   },
   {
-    img: '/profiles/Isaac_Chung.png',
-    name: 'Isaac Chung',
-    emoji: '🙈',
-    color: '#113969',
-    title: 'Sponsorship Director',
-    social: "https://www.linkedin.com/in/isaackcchung/"
+    img: '/profiles/Indy_Sowy.png',
+    name: 'Indy Sowy',
+    emoji: '💌',
+    color: '#F5B8D0',
+    title: 'Dev Coordinator',
+    social: 'https://www.linkedin.com/in/indirasowy/'
   },
   {
     img: '/profiles/Jade_Permata.png',
     name: 'Jade Permata',
-    emoji: '✨',
+    emoji: '🌤️',
+    color: '#355834',
+    title: 'Marketing Coordinator',
+    social: 'www.linkedin.com/in/jadetjandra'
+  },
+  {
+    img: '/profiles/Jason_Kuo.png',
+    name: 'Jason Kuo',
+    emoji: '🦭',
     color: '#01DACC',
-    title: 'Design Coordinator',
-    social: "https://www.linkedin.com/in/jadetjandra"
+    title: 'Dev Coordinator',
+    social: 'https://www.linkedin.com/in/jasonwkuo/'
   },
   {
-    img: '/profiles/JaeWu_Chun.png',
-    name: 'Jae Wu Chun',
-    emoji: '🍗',
-    color: '#FFC6ED',
-    title: 'Treasurer',
-    social: "https://www.jaewuchun.com/"
-  },
-  {
-    img: '/profiles/Janaye_Cheong.png',
-    name: 'Janaye Cheong',
-    emoji: '🎐',
-    color: '#73b791',
-    title: 'Treasurer Coordinator',
-    social: "https://www.linkedin.com/in/janaye-cheong-105513/"
+    img: '/profiles/Jennifer_Kim.png',
+    name: 'Jennifer Kim',
+    emoji: '🌸',
+    color: '#01DACC',
+    title: 'Engagement Coordinator',
+    social: ''
   },
   {
     img: '/profiles/Jennifer_Nguyen.png',
     name: 'Jennifer Nguyen',
     emoji: '☆',
-    color: '#01DACC',
-    title: 'nwHacks Logistics Coordinator',
-    social: "www.linkedin.com/in/jennguyen-ubc"
+    color: '#FFFFE0',
+    title: 'nwHacks Logistics Director',
+    social: 'http://www.linkedin.com/in/jennguyen-ubc'
   },
   {
     img: '/profiles/Jennifer_Shui.png',
     name: 'Jennifer Shui',
     emoji: '🦜',
     color: '#ABCFFF',
-    title: 'Content Writer',
-    social: "https://www.linkedin.com/in/jennifershui/"
+    title: 'HackCamp Logistics Coordinator',
+    social: 'https://www.linkedin.com/in/jennifershui/'
   },
   {
     img: '/profiles/Jessica_Liu.png',
     name: 'Jessica Liu',
     emoji: '☕️',
     color: '#FFDDE6',
-    title: 'Engagement Coordinator',
-    social: "https://www.linkedin.com/in/jessicaziliu/"
+    title: 'HackCamp Logistics Coordinator',
+    social: 'https://www.linkedin.com/in/jessicaziliu/'
   },
   {
     img: '/profiles/Joanne_Lee.png',
     name: 'Joanne Lee',
-    emoji: '✨',
+    emoji: '✌️',
     color: '#7FBCF5',
-    title: 'Design Coordinator',
-    social: ""
+    title: 'PM',
+    social: 'https://www.linkedin.com/in/joannelex/'
   },
   {
     img: '/profiles/Kashish_Garg.png',
     name: 'Kashish Garg',
     emoji: '🐒',
     color: '#01DACC',
-    title: 'HackCamp Logistics Coordinator',
-    social: "https://www.linkedin.com/in/kashishgarg1/"
+    title: 'Dev Coordinator',
+    social: 'https://www.linkedin.com/in/kashishgarg1/'
+  },
+  {
+    img: '/profiles/Kelly_Hum.png',
+    name: 'Kelly Hum',
+    emoji: '🐳',
+    color: '#FFD1A0',
+    title: 'Engagement Coordinator',
+    social: 'https://www.linkedin.com/in/kellyhum'
   },
   {
     img: '/profiles/Kevin_Gu.png',
     name: 'Kevin Gu',
-    emoji: '🍏',
-    color: '#13B1C9',
-    title: 'Sponsorship Coordinator',
-    social: "https://www.linkedin.com/in/kevin-gu-/"
+    emoji: '🗿',
+    color: '#d1e1e6',
+    title: 'Sponsorship Director',
+    social: 'https://www.linkedin.com/in/kevin-gu-/'
+  },
+  {
+    img: '/profiles/Kezia_Rijadi.png',
+    name: 'Kezia Rijadi',
+    emoji: '🍊',
+    color: '#FFCC99',
+    title: 'Engagement Coordinator',
+    social: 'https://keziarijadi.vercel.app/'
+  },
+  {
+    img: '/profiles/Khoa_Bui.png',
+    name: 'Khoa Bui',
+    emoji: '🐧',
+    color: '#e46060',
+    title: 'Logistics Coordinator',
+    social: ''
   },
   {
     img: '/profiles/Kitty_Liu.png',
     name: 'Kitty Liu',
     emoji: '🐈',
-    color: '#FFE633',
-    title: 'Hackcamp Logistics Coordinator',
-    social: "https://www.linkedin.com/in/kittyliu3"
+    color: '#F1b5c2',
+    title: 'Design Coordinator',
+    social: 'linkedin.com/in/kittyliu3'
   },
   {
     img: '/profiles/Lincoln_Lee.png',
     name: 'Lincoln Lee',
     emoji: '🦝',
     color: '#2E2E54',
-    title: 'Development Coordinator',
-    social: ""
-  },
-  {
-    img: '/profiles/Linda_Ma.png',
-    name: 'Linda Ma',
-    emoji: '💫',
-    color: '#dcd0ff',
-    title: 'Engagement Director',
-    social: "https://www.linkedin.com/in/linda--ma"
+    title: 'Dev Coordinator',
+    social: ''
   },
   {
     img: '/profiles/Lucas_Gingera.png',
     name: 'Lucas Gingera',
     emoji: '😶',
     color: '#01DACC',
-    title: '1st Year Rep',
-    social: ""
+    title: 'Sponsorship Coordinator',
+    social: ''
+  },
+  {
+    img: '/profiles/Maiah_Lee.png',
+    name: 'Maiah Lee',
+    emoji: '🦦',
+    color: '#3f6645',
+    title: 'EDI Coordinator',
+    social: ''
   },
   {
     img: '/profiles/Martin_Cai.png',
     name: 'Martin Cai',
     emoji: '🍵',
-    color: '#FFF8DC',
-    title: 'Co-President',
-    social: "https://www.martincai.xyz"
+    color: '#fff8dc',
+    title: 'Dev Coordinator',
+    social: 'https://www.martincai.xyz'
   },
   {
     img: '/profiles/Maureen_Luo.png',
     name: 'Maureen Luo',
     emoji: '🫶🏻',
-    color: '#c4d6bf',
-    title: 'Design Director',
-    social: "https://www.maureenluo.com/"
+    color: '#2205a3',
+    title: 'Co-President',
+    social: 'https://www.maureenluo.com/'
   },
   {
     img: '/profiles/Melvin_Teo.png',
     name: 'Melvin Teo',
     emoji: '💡',
     color: '#003366',
-    title: 'Development Director',
-    social: "https://www.linkedin.com/in/melvinhteo/"
+    title: 'Co-President',
+    social: 'https://www.linkedin.com/in/melvinhteo/'
   },
   {
-    img: '/profiles/Michelle_Fung.png',
-    name: 'Michelle Fung',
-    emoji: '🤩',
-    color: '#D9E7E2',
-    title: 'Sponsorship Coordinator',
-    social: ""
-  },
-  {
-    img: '/profiles/Michelle_Kim.png',
-    name: 'Michelle Kim',
-    emoji: '🧸',
-    color: '#0DEFE1',
-    title: 'Project Manager',
-    social: "https://www.linkedin.com/in/michelle-yeojin-kim/"
+    img: '/profiles/Michelle_Wan.png',
+    name: 'Michelle Wan',
+    emoji: '🙆🏻‍♀️',
+    color: '#e8dcfc',
+    title: 'Sponsorships Coordinator',
+    social: 'https://mwchelle.me'
   },
   {
     img: '/profiles/Michelle_Wang.png',
     name: 'Michelle Wang',
     emoji: '❄️',
     color: '#9CDDFB',
-    title: 'Sponsorship Coordinator',
-    social: "https://www.linkedin.com/in/michelle-wang-mw/"
+    title: 'Tres',
+    social: 'https://www.linkedin.com/in/michelle-wang-mw/'
   },
   {
-    img: '/profiles/Nicholas_Wong.png',
-    name: 'Nicholas Wong',
-    emoji: '😎',
+    img: '/profiles/Nara_Iamsakun.png',
+    name: 'Nara Iamsakun',
+    emoji: '🧸',
+    color: '#0277a6',
+    title: 'nwHacks Logistics Coordinator',
+    social: 'https://www.linkedin.com/in/nara-iamsakun/'
+  },
+  {
+    img: '/profiles/Newgen_Bao.png',
+    name: 'Newgen Bao',
+    emoji: '🥐',
     color: '#01DACC',
-    title: 'HackCamp Logistics Coordinator',
-    social: ""
+    title: 'Engagement Director',
+    social: 'https://www.linkedin.com/in/newgen-bao/'
   },
   {
     img: '/profiles/Oliver_Luo.png',
@@ -315,71 +347,87 @@ const profiles = [
     emoji: '👴',
     color: '#FFA500',
     title: 'Sponsorship Coordinator',
-    social: ""
+    social: ''
   },
   {
-    img: '/profiles/Samantha_Tseng.png',
-    name: 'Samantha Tseng',
-    emoji: '🍁',
-    color: '#FF6666',
-    title: 'Development Coordinator',
-    social: ""
+    img: '/profiles/Paul_Tiberghien.png',
+    name: 'Paul Tiberghien',
+    emoji: '🤝',
+    color: '#003C62',
+    title: 'Media Specialist',
+    social: 'http://linkedin.com/in/paultibe'
+  },
+  {
+    img: '/profiles/Ridhwanlai_Badmos.png',
+    name: 'Ridhwanlai Badmos',
+    emoji: '🤩',
+    color: '#0B5221',
+    title: 'EDI Coordinator',
+    social: 'http://www.linkedin.com/in/ridhwanlai-badmos-05739a26b'
   },
   {
     img: '/profiles/Sami_Nourji.png',
     name: 'Sami Nourji',
     emoji: '🌊',
     color: '#EFC69A',
-    title: 'nwHacks Logistics Coordinator',
-    social: "www.linkedin.com/in/saminourji"
+    title: 'Marketing Coordinator',
+    social: 'www.linkedin.com/in/saminourji'
+  },
+  {
+    img: '/profiles/Shannon_Aurelia.png',
+    name: 'Shannon Aurelia',
+    emoji: '🩰',
+    color: '#01DACC',
+    title: 'cmd-f Logistics Coordinator',
+    social: 'https://www.linkedin.com/in/shannon-aurelia-s/'
   },
   {
     img: '/profiles/Sophia_Lee.png',
     name: 'Sophia Lee',
-    emoji: '🤡',
+    emoji: '🔫',
     color: '#be86f7',
     title: 'Sponsorship Coordinator',
-    social: "https://www.linkedin.com/in/iiaylee"
+    social: 'https://www.linkedin.com/in/iiaylee'
+  },
+  {
+    img: '/profiles/Stellar_Shar.png',
+    name: 'Stellar Shar',
+    emoji: '🪿',
+    color: '#FFC0CB',
+    title: 'Marketing Coordinator',
+    social: 'https://www.linkedin.com/in/stellar-shar-4005b219a/'
   },
   {
     img: '/profiles/Taryn_Wou.png',
     name: 'Taryn Wou',
     emoji: '🦦',
     color: '#ABF0E3',
-    title: 'Co-President',
-    social: "https://www.tarynwou.xyz/"
+    title: 'Design Coordinator',
+    social: 'https://www.tarynwou.xyz/'
+  },
+  {
+    img: '/profiles/Tracy_La.png',
+    name: 'Tracy La',
+    emoji: '🍞',
+    color: '#234036',
+    title: 'cmd-f Logistics Coordinator',
+    social: 'https://www.linkedin.com/in/tracy--la/'
   },
   {
     img: '/profiles/Trisha_Sia.png',
     name: 'Trisha Sia',
     emoji: '🌱',
     color: '#9fb9e7',
-    title: 'cmd-f Logistics Coordinator',
-    social: "https://www.linkedin.com/in/trisha-sia/"
-  },
-  {
-    img: '/profiles/Victoria_Lim.png',
-    name: 'Victoria Lim',
-    emoji: '✨',
-    color: '#BDE6EC',
-    title: 'Marketing Director',
-    social: "https://www.linkedin.com/in/lim-victoria/"
+    title: 'Dev Coordinator',
+    social: 'https://www.linkedin.com/in/trisha-sia/'
   },
   {
     img: '/profiles/Yan_Sidyakin.png',
     name: 'Yan Sidyakin',
     emoji: '🌚',
     color: '#FF7E4D',
-    title: 'Development Coordinator',
-    social: "https://linkedin.com/in/sidyakinian"
-  },
-  {
-    img: '/profiles/Yeojun_Han.png',
-    name: 'Yeojun Han',
-    emoji: '🧸',
-    color: '#B3CEE5',
-    title: 'cmd-f Logistics Coordinator',
-    social: "https://www.linkedin.com/in/yeojun/"
+    title: 'Design Coordinator',
+    social: 'https://linkedin.com/in/sidyakinian'
   }
 ];
 
