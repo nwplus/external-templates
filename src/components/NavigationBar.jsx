@@ -6,7 +6,7 @@ import { BANNER_OFFSET } from '../constants/measurements'
 import MenuImg from '../../public/images/icons/menu.svg'
 import WhiteMenuImg from '../../public/images/icons/menu_white.svg'
 
-// import MlhImage from '../../public/assets/misc/mlh_image.svg'
+import MlhImage from '../../public/assets/misc/mlh_image.svg'
 
 const NavBarContainer = styled.nav`
   position: ${p => (p.stayAtTop ? 'absolute' : 'fixed')};
@@ -135,6 +135,8 @@ const PortalButtonContainer = styled.div`
   transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
   justify-self: center;
   user-select: none;
+  right: 100px;
+  position: relative;
 `
 
 const StyledPortalText = styled.div`
@@ -206,32 +208,32 @@ const DropDownFooter = styled.div`
     margin-bottom: -25px;
 `
 
-// const TrustBadgeLink = styled.a`
-//   display: block;
-//   max-width: 100px;
-//   min-width: 60px;
-//   position: ${p => (p.stayAtTop ? 'absolute' : 'fixed')};
-//   top: 0px;
-//   right: 50px;
-//   width: 5%;
-//   z-index: 1000;
+const TrustBadgeLink = styled.a`
+  display: block;
+  max-width: 100px;
+  min-width: 60px;
+  position: ${p => (p.stayAtTop ? 'absolute' : 'fixed')};
+  top: 0px;
+  right: 50px;
+  width: 5%;
+  z-index: 1000;
 
-//   ${p => p.theme.mediaQueries.mobile} {
-//     left: 50px;
-//   }
-// `
+  ${p => p.theme.mediaQueries.mobile} {
+    left: 50px;
+  }
+`
 
-// const TrustBadge = ({ stayAtTop }) => (
-//   <TrustBadgeLink
-//     id="mlh-trust-badge"
-//     rel="noreferrer"
-//     href="https://mlh.io/na?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2023-season&utm_content=white"
-//     target="_blank"
-//     stayAtTop={stayAtTop}
-//   >
-//     <img src={MlhImage} alt="Major League Hacking 2024 Hackathon Season" style={{ width: '100%' }} />
-//   </TrustBadgeLink>
-// )
+const TrustBadge = ({ stayAtTop }) => (
+  <TrustBadgeLink
+    id="mlh-trust-badge"
+    rel="noreferrer"
+    href="https://mlh.io/na?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2023-season&utm_content=white"
+    target="_blank"
+    stayAtTop={stayAtTop}
+  >
+    <img src={MlhImage} alt="Major League Hacking 2024 Hackathon Season" style={{ width: '100%' }} />
+  </TrustBadgeLink>
+)
 
 
 const MenuItem = ({ name, href, isLight, target, rel, isMobile, closeDropdown }) => {
@@ -349,7 +351,8 @@ const NavigationBar = ({ isLight, bannerExists }) => {
           <PortalButton portalOpen />
           <DropDownFooter />
         </DropDownContentContainer>
-        {/* <TrustBadge stayAtTop={stayAtTop} /> */}
+
+        <TrustBadge stayAtTop={stayAtTop} />
       </>
     )
   }
@@ -367,7 +370,7 @@ const NavigationBar = ({ isLight, bannerExists }) => {
         <PortalButton portalOpen />
       </NavGroupContainer>
       <HamburgerMenu src={isLight ? WhiteMenuImg : MenuImg} alt="dropdown menu icon" onClick={() => setShowDropdown(true)} />
-      {/* <TrustBadge stayAtTop={stayAtTop} /> */}
+      <TrustBadge stayAtTop={stayAtTop} />
     </NavBarContainer>
   )
 }
