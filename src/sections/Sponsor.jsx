@@ -6,6 +6,15 @@ import React, { useEffect, useState } from 'react'
 import fireDb from '@utilities/firebase'
 import Button from '@components/Button'
 
+const sponsorTierOrder = {
+  platinum: 1,
+  gold: 2,
+  silver: 3,
+  bronze: 4,
+  inkind: 5,
+  startup: 6
+}
+
 const BgSectionContainer = styled(SectionContainer)`
   background: url('assets/background/sponsors/background.png'), #150C27;
   background-size: 100vw;
@@ -32,13 +41,11 @@ const StyledTitle = styled(Header2)`
   text-align: center;
   color: #fff;
   font-size: 3rem;
-  padding-top: 33rem;
   position: relative;
   z-index: 3;
 
   ${p => p.theme.mediaQueries.mobile} {
     font-size: 2em;
-    padding-top: 12rem;
   }
 `
 
@@ -90,15 +97,34 @@ ${(p) => p.theme.mediaQueries.mobile} {
 
 const Sponsors = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 2.5vw;
+  width: 50vw;
+  height: 30vw;
+  padding-top: 70vw;
   position: relative;
   z-index: 3;
+  margin: auto;
+`
+
+const SponsorTier = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  max-height: 15vw;
+  gap: 2.5vw;
+`
+
+const SponsorLink = styled.a`
+  display: flex;
+  align-items: center;
+  flex: 1 1 0px;
 `
 
 const SponsorLogo = styled.img`
-  width: 37.5vw;
+  max-width: 100%;
 `
 
 const PushinP = styled.p`
@@ -122,6 +148,7 @@ const ButtonContainer = styled.p`
   justify-content: center;
   position: relative;
   z-index: 3;
+  margin: 0;
 `
 
 const Skip = styled.div`
@@ -134,45 +161,58 @@ const Skip = styled.div`
 `
 
 export default function Sponsor () {
-  const [sponsors, setSponsors] = useState(null)
+  const [sponsors, setSponsors] = useState({})
 
   useEffect(async () => {
     const data = await fireDb.getCollection('HackCamp2023', 'Sponsors')
     if (data) {
-      setSponsors(data)
+      const organizedSponsors = {}
+      data.forEach((sponsor) => {
+        if (!organizedSponsors[sponsor.tier]) {
+          organizedSponsors[sponsor.tier] = []
+        }
+        organizedSponsors[sponsor.tier].push(sponsor)
+      })
+      setSponsors(organizedSponsors)
     }
   }, [])
 
-  return sponsors?.length > 0
+  return Object.keys(sponsors).length > 0
     ? (
     <BgSectionContainer id="sponsors">
       <UFO></UFO>
       <UFOLight/>
-      <StyledTitle>
-        Sponsors
-      </StyledTitle>
       <Sponsors>
-        {sponsors.map((sponsor) => (
-          <SponsorLogo src={sponsor.imgURL}/>
+        <StyledTitle>
+          Sponsors
+        </StyledTitle>
+        {Object.keys(sponsors).sort((a, b) => sponsorTierOrder[a] - sponsorTierOrder[b]).map((key) => (
+          <SponsorTier>
+            {sponsors[key].map((sponsor) => (
+              <SponsorLink href={sponsor.link} target="_blank" rel='noreferrer'>
+                <SponsorLogo src={sponsor.imgURL}/>
+              </SponsorLink>
+            ))}
+          </SponsorTier>
         ))}
+        <PushinP>
+        Sponsors make this event happen. If you are interested in working with us, joining us or speaking at one of our events, please reach out to us!
+        </PushinP>
+        <ButtonContainer>
+          <Button
+            target="_blank"
+            rel="noopener noreferrer"
+            href="mailto:sponsorship@nwplus.io?Subject=Sponsorship"
+            width='205px'
+            height='50px'
+            borderRadius='6px'
+            textColor='#FFFFFF'
+            backgroundColor='linear-gradient(to left, #959AFB, #9AD4DE)'
+            isHover>
+            Sponsor HackCamp!
+          </Button>
+        </ButtonContainer>
       </Sponsors>
-      <PushinP>
-      Sponsors make this event happen. If you are interested in working with us, joining us or speaking at one of our events, please reach out to us!
-      </PushinP>
-      <ButtonContainer>
-      <Button
-              target="_blank"
-              rel="noopener noreferrer"
-              href="mailto:sponsorship@nwplus.io?Subject=Sponsorship"
-              width='205px'
-              height='50px'
-              borderRadius='6px'
-              textColor='#FFFFFF'
-              backgroundColor='linear-gradient(to left, #959AFB, #9AD4DE)'
-              isHover>
-              Sponsor HackCamp!
-            </Button>
-            </ButtonContainer>
     </BgSectionContainer>
       )
     : <Skip />
