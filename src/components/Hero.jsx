@@ -225,9 +225,9 @@ const Hero = () => (
           <Button variant="solid" rel="noreferrer" href="https://docs.google.com/forms/d/e/1FAIpQLScyrH57AXLwd90aiEg99pWT3TqOuLdKXhOCXtVBwPd_JfCNew/viewform">
             Notify me when applications open!
           </Button>
-          {/* <Button variant="outlined" rel="noreferrer" href="https://docs.google.com/forms/d/e/1FAIpQLSeN0gkZFW-gQm0fNMI_aZP22IXi7HpEU6JTc_XcFhHo1ufv3g/viewform">
-            Become a Mentor!
-          </Button> */}
+          <Button variant="outlined" rel="noreferrer" href="mailto:sponsorship@nwplus.io?subject=Sponsorship">
+            Sponsor Us
+          </Button>
         </ButtonsContainer>
         {/* <VolunteerLink href="https://docs.google.com/forms/d/e/1FAIpQLSchia8WiuZT7r1bLIBVLlLUohHAtwzklzszf5Nul2Zf240Vig/viewform" target="_blank" rel="noreferrer">
           Apply to be a volunteer!
