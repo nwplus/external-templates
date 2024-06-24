@@ -212,7 +212,7 @@ export default function Register() {
           <BodyContainer>
             <HackCampSubheader>Canada’s largest beginner-friendly hackathon</HackCampSubheader>
             <HCSub>In-person event</HCSub>
-            <HackCampSubheader>November 18-19, 2023</HackCampSubheader>
+            <HackCampSubheader>November 9-10, 2024</HackCampSubheader>
           </BodyContainer>
           <ButtonContainer>
             {/* <Button
@@ -232,7 +232,7 @@ export default function Register() {
               isOutline
               target="_blank"
               rel="noopener noreferrer"
-              href="https://forms.gle/kqAwC6tzVwC4Te1j8"
+              href="mailto:sponsorship@nwplus.io?subject=Sponsorship"
               width='205px'
               height='50px'
               borderRadius='6px'
@@ -241,7 +241,7 @@ export default function Register() {
               backgroundColor="transparent"
               isHover
             >
-              Become a mentor
+              Sponsor Us
             </Button>
           </ButtonContainer>
         </MediaContainer>

@@ -14,7 +14,7 @@ import Learn from 'src/sections/Learn'
 import GlobalStyle from '../theme/GlobalStyle'
 import Faq from '../sections/Faq'
 
-export default function Index ({ title }) {
+export default function Index({ title }) {
   return (
     <>
       <GlobalStyle />
@@ -49,10 +49,10 @@ export default function Index ({ title }) {
   )
 }
 
-export async function getStaticProps () {
+export async function getStaticProps() {
   return {
     props: {
-      title: 'HackCamp 2023'
+      title: 'HackCamp 2024'
     } // will be passed to the page component as props
   }
 }

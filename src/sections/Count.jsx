@@ -245,7 +245,7 @@ const useCountdown = (targetDate) => {
 export { useCountdown }
 
 const Count = () => {
-  const countDownDate = new Date('Nov 18, 2023 09:00:00').getTime()
+  const countDownDate = new Date('Nov 9, 2024 09:00:00').getTime()
   const [days, hours, minutes] = useCountdown(countDownDate)
 
   const twoify = (num) => {
@@ -258,7 +258,7 @@ const Count = () => {
   }
 
   const count = {
-    days: twoify(days),
+    days: days.toString(),
     hours: twoify(hours),
     minutes: twoify(minutes)
   }
@@ -299,8 +299,8 @@ const Count = () => {
       <TextContainer>
         <StyledTitle>HackCamp starts in:</StyledTitle>
         <DaysTextContainer>
-          <ShadowText text={`${count.days[0]}${count.days[1]} Days`}>
-            {`${count.days[0]}${count.days[1]} Days`}
+          <ShadowText text={`${count.days} Days`}>
+            {`${count.days} Days`}
           </ShadowText>
         </DaysTextContainer>
         <HoursTextContainer>
@@ -315,9 +315,9 @@ const Count = () => {
         </MinutesTextContainer>
       </TextContainer>
       <Galaxy />
-      <Bear ref={bearParallax.ref}/>
-      <Deer ref={deerParallax.ref}/>
-      <Nugget ref={nuggetParallax.ref}/>
+      <Bear ref={bearParallax.ref} />
+      <Deer ref={deerParallax.ref} />
+      <Nugget ref={nuggetParallax.ref} />
     </InfoContainer>
   )
 }

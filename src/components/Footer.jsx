@@ -161,12 +161,12 @@ const TeamContainer = styled.div`
   width: 100%;
 `
 
-export default function Footer () {
+export default function Footer() {
   return (
     <>
       <CaveTop>
-          <Mushroom></Mushroom>
-          <Plant></Plant>
+        <Mushroom></Mushroom>
+        <Plant></Plant>
         <TextContainer>
           <SocialMediaIcons>
             <a
@@ -214,7 +214,7 @@ export default function Footer () {
           </Links>
           <SmallText>
             <div>Organized and held by nwPlus</div>
-            <div>Copyright &copy; HackCamp 2023</div>
+            <div>Copyright &copy; HackCamp 2024</div>
           </SmallText>
         </TextContainer>
         <TeamContainer>

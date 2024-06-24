@@ -160,11 +160,11 @@ const Skip = styled.div`
   }
 `
 
-export default function Sponsor () {
+export default function Sponsor() {
   const [sponsors, setSponsors] = useState({})
 
   useEffect(async () => {
-    const data = await fireDb.getCollection('HackCamp2023', 'Sponsors')
+    const data = await fireDb.getCollection('HackCamp2024', 'Sponsors')
     if (data) {
       const organizedSponsors = {}
       data.forEach((sponsor) => {
@@ -179,41 +179,41 @@ export default function Sponsor () {
 
   return Object.keys(sponsors).length > 0
     ? (
-    <BgSectionContainer id="sponsors">
-      <UFO></UFO>
-      <UFOLight/>
-      <Sponsors>
-        <StyledTitle>
-          Sponsors
-        </StyledTitle>
-        {Object.keys(sponsors).sort((a, b) => sponsorTierOrder[a] - sponsorTierOrder[b]).map((key) => (
-          <SponsorTier>
-            {sponsors[key].map((sponsor) => (
-              <SponsorLink href={sponsor.link} target="_blank" rel='noreferrer'>
-                <SponsorLogo src={sponsor.imgURL}/>
-              </SponsorLink>
-            ))}
-          </SponsorTier>
-        ))}
-        <PushinP>
-        Sponsors make this event happen. If you are interested in working with us, joining us or speaking at one of our events, please reach out to us!
-        </PushinP>
-        <ButtonContainer>
-          <Button
-            target="_blank"
-            rel="noopener noreferrer"
-            href="mailto:sponsorship@nwplus.io?Subject=Sponsorship"
-            width='205px'
-            height='50px'
-            borderRadius='6px'
-            textColor='#FFFFFF'
-            backgroundColor='linear-gradient(to left, #959AFB, #9AD4DE)'
-            isHover>
-            Sponsor HackCamp!
-          </Button>
-        </ButtonContainer>
-      </Sponsors>
-    </BgSectionContainer>
-      )
+      <BgSectionContainer id="sponsors">
+        <UFO></UFO>
+        <UFOLight />
+        <Sponsors>
+          <StyledTitle>
+            Sponsors
+          </StyledTitle>
+          {Object.keys(sponsors).sort((a, b) => sponsorTierOrder[a] - sponsorTierOrder[b]).map((key) => (
+            <SponsorTier>
+              {sponsors[key].map((sponsor) => (
+                <SponsorLink href={sponsor.link} target="_blank" rel='noreferrer'>
+                  <SponsorLogo src={sponsor.imgURL} />
+                </SponsorLink>
+              ))}
+            </SponsorTier>
+          ))}
+          <PushinP>
+            Sponsors make this event happen. If you are interested in working with us, joining us or speaking at one of our events, please reach out to us!
+          </PushinP>
+          <ButtonContainer>
+            <Button
+              target="_blank"
+              rel="noopener noreferrer"
+              href="mailto:sponsorship@nwplus.io?Subject=Sponsorship"
+              width='205px'
+              height='50px'
+              borderRadius='6px'
+              textColor='#FFFFFF'
+              backgroundColor='linear-gradient(to left, #959AFB, #9AD4DE)'
+              isHover>
+              Sponsor HackCamp!
+            </Button>
+          </ButtonContainer>
+        </Sponsors>
+      </BgSectionContainer>
+    )
     : <Skip />
 }

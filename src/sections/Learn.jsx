@@ -280,36 +280,36 @@ const Learn = () => {
   return (
     <InfoContainer id="events">
       <BgScroll>
-      <StyledTitle>
-        Our Events
-      </StyledTitle>
-      <StyledText>
-        <Event>
-          <EventTitle>
-            Learn Day
-          </EventTitle>
-          <Date>
-            Nov. 18, 2023
-          </Date>
-          <Description>
-            A day of workshops and skill building in preparation for Build Day. With topics ranging from web development, git, machine learning, and more, we make sure to have something for you!
-          </Description>
-        </Event>
-        <Event>
-          <EventTitle>
-            Build Day
-          </EventTitle>
-          <Date>
-            Nov. 19, 2023
-          </Date>
-          <Description>
-            A 12-hour hackathon focused around creating projects centered around inclusivity, diversity and accessibility. Each submission will donate $10 to a charity of your choice!
-          </Description>
-        </Event>
-      </StyledText>
-      <Jellyfish ref={jellyfishParallax.ref}></Jellyfish>
-      <Turtle ref={turtleParallax.ref}></Turtle>
-      <Bubbles></Bubbles>
+        <StyledTitle>
+          Our Events
+        </StyledTitle>
+        <StyledText>
+          <Event>
+            <EventTitle>
+              Learn Day
+            </EventTitle>
+            <Date>
+              Nov. 9, 2024
+            </Date>
+            <Description>
+              A day of workshops and skill building in preparation for Build Day. With topics ranging from web development, git, machine learning, and more, we make sure to have something for you!
+            </Description>
+          </Event>
+          <Event>
+            <EventTitle>
+              Build Day
+            </EventTitle>
+            <Date>
+              Nov. 10, 2024
+            </Date>
+            <Description>
+              A 12-hour hackathon focused around creating projects centered around inclusivity, diversity and accessibility. Each submission will donate $10 to a charity of your choice!
+            </Description>
+          </Event>
+        </StyledText>
+        <Jellyfish ref={jellyfishParallax.ref}></Jellyfish>
+        <Turtle ref={turtleParallax.ref}></Turtle>
+        <Bubbles></Bubbles>
       </BgScroll>
     </InfoContainer>
   )

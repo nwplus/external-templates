@@ -154,7 +154,7 @@ const Info = () => {
           of whether you have coding experience or not!
           <br />
           <br />
-          Over the past 6 years, HackCamp, or formerly UBC
+          Over the past 7 years, HackCamp, or formerly UBC
           Local Hack Day, has been focused on encouraging
           beginners and people who are curious about technology
           to work on a project that focuses on these three main pillars.

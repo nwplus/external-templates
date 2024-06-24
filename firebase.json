@@ -3,17 +3,29 @@
     {
       "target": "root",
       "public": "out",
-      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ]
     },
     {
-      "target": "hackcamp2023_dev",
+      "target": "hackcamp2024_dev",
       "public": "out",
-      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ]
     },
     {
-      "target": "hackcamp2023_main",
+      "target": "hackcamp2024_main",
       "public": "out",
-      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ]
     }
   ]
 }
