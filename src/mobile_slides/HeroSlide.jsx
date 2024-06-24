@@ -82,6 +82,27 @@ const HackerButton = styled.a`
   text-decoration: none;
 `
 
+const MentorButton = styled.a`
+  display: flex;
+  padding: 0.93rem 1.53rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.49vh;
+  border: none;
+  border-radius: 1.15vh;
+  background: linear-gradient(90deg, #E48D4D 16.91%, #E9B145 100%);
+
+  color: #FFF;
+  font-feature-settings: 'liga' off;
+  font-family: "HK Grotesk";
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 2.55vh;
+  letter-spacing: -0.45px;
+  text-decoration: none;
+`
+
 const fadeOut = keyframes`
   from {
     opacity: 1;
@@ -174,8 +195,8 @@ const HeroSlide = () => {
       {/* <ApplyLabel>Apply to be a:</ApplyLabel> */}
       <ApplyButtonsContainer>
         <HackerButton href="https://docs.google.com/forms/d/e/1FAIpQLSeWhDhJ6nYOYG3QdDi1XfdDnthQt-yeXida08AKGXksYs4txw/viewform?pli=1" target="_blank">Notify me when Applications open!</HackerButton>
-        {/* <MentorButton href="https://forms.gle/LiZjuFU8G8deVXzf9" target="_blank">Mentor</MentorButton>
-        <VolunteerButton href="https://forms.gle/X4dFhZ9wuYGzHpZK8" target="_blank">Volunteer</VolunteerButton> */}
+        <MentorButton href="mailto:sponsorship@nwplus.io?subject=Sponsorship" target="_blank">Sponsor Us</MentorButton>
+        {/* <VolunteerButton href="https://forms.gle/X4dFhZ9wuYGzHpZK8" target="_blank">Volunteer</VolunteerButton> */}
     </ApplyButtonsContainer>
     </Slide>
   )
