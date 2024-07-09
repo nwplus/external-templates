@@ -65,7 +65,7 @@ const NwPlusLogo = styled.img`
 `
 
 const LinkText = styled.a`
-  color: ${p => (p.isLight ? p.theme.colors.text : "#264B65")};
+  color: ${p => (p.isLight ? p.theme.colors.text : '#264B65')};
   text-decoration: none;
 
   ::after {
@@ -74,11 +74,11 @@ const LinkText = styled.a`
     width: 0;
     height: 2px;
     transition: width 0.5s ease;
-    background: ${p => (p.isLight ? p.theme.colors.text : "#264B65")};;
+    background: ${p => (p.isLight ? p.theme.colors.text : '#264B65')};;
   }
 
   &:hover {
-    color: ${p => (p.isLight ? p.theme.colors.text : "#264B65")};
+    color: ${p => (p.isLight ? p.theme.colors.text : '#264B65')};
     text-decoration: none;
 
     ::after {
@@ -235,7 +235,6 @@ const TrustBadge = ({ stayAtTop }) => (
   </TrustBadgeLink>
 )
 
-
 const MenuItem = ({ name, href, isLight, target, rel, isMobile, closeDropdown }) => {
   // const [anchorTarget, setAnchorTarget] = useState(null)
 
@@ -281,10 +280,10 @@ const PortalButton = ({ portalOpen }) => (
 
 const MenuList = ({ isLight, isMobile, closeDropdown }) => (
   <>
-    <MenuItem name="About" href={isMobile ? "#about-mobile" : "#about"} isLight={isLight} isMobile={isMobile} closeDropdown={closeDropdown} />
-    <MenuItem name="Tracks" href={isMobile ? "#tracks-mobile" : "#tracks"} isLight={isLight} isMobile={isMobile} closeDropdown={closeDropdown} />
-    <MenuItem name="FAQ" href={isMobile ? "#faq-mobile" : "#faq"} isLight={isLight} isMobile={isMobile} closeDropdown={closeDropdown} />
-    <MenuItem name="Sponsors" href={isMobile ? "#sponsors-mobile" : "#sponsors"} isLight={isLight} isMobile={isMobile} closeDropdown={closeDropdown} />
+    <MenuItem name="About" href={isMobile ? '#about-mobile' : '#about'} isLight={isLight} isMobile={isMobile} closeDropdown={closeDropdown} />
+    <MenuItem name="Tracks" href={isMobile ? '#tracks-mobile' : '#tracks'} isLight={isLight} isMobile={isMobile} closeDropdown={closeDropdown} />
+    <MenuItem name="FAQ" href={isMobile ? '#faq-mobile' : '#faq'} isLight={isLight} isMobile={isMobile} closeDropdown={closeDropdown} />
+    <MenuItem name="Sponsors" href={isMobile ? '#sponsors-mobile' : '#sponsors'} isLight={isLight} isMobile={isMobile} closeDropdown={closeDropdown} />
   </>
 )
 
@@ -361,7 +360,7 @@ const NavigationBar = ({ isLight, bannerExists }) => {
     <NavBarContainer visibility={visibility} opacity={opacity} stayAtTop={stayAtTop}>
       <NavGroupContainer>
         <a href="/">
-          <NwPlusLogo src={isLight ? "/assets/logos/nwplus_logo_light.svg" : "/assets/logos/nwplus_logo.svg"} alt="nwPlus club logo in white" />
+          <NwPlusLogo src={isLight ? '/assets/logos/nwplus_logo_light.svg' : '/assets/logos/nwplus_logo.svg'} alt="nwPlus club logo in white" />
         </a>
         <NavTextContainer>
           <MenuList isLight={isLight} />
