@@ -30,5 +30,6 @@ jobs:
           target: root
           projectId: nwplus-ubc-dev
           expires: 10d
+          firebaseToolsVersion: 12.9.1
         env:
           FIREBASE_CLI_PREVIEWS: hostingchannels

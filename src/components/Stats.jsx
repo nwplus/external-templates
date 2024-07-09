@@ -222,7 +222,7 @@ const GalleryImage = styled.img`
   margin: 10px 15px;
 `
 
-export default function Stats () {
+export default function Stats() {
   // const { ref: ref1 } = useParallax({
   //   speed: -20,
   // });
@@ -247,7 +247,14 @@ export default function Stats () {
           const duration = Math.floor(interval / endValue)
           const counter = setInterval(function () {
             startValue += 1
-            valueDisplay.textContent = `${startValue}${id === 'percent' ? '%' : ''}`
+            if (id === 'percent') {
+              valueDisplay.textContent = `${startValue}%`
+            } else if (id === 'moneysign') {
+              valueDisplay.textContent = `$${startValue}`
+            } else {
+              valueDisplay.textContent = `${startValue}`
+            }
+
             if (startValue === endValue) {
               clearInterval(counter)
             }
@@ -273,19 +280,19 @@ export default function Stats () {
           Last year we had:
           <StatsGrid className="stats">
             <StatTop>
-              <Number className="num" data-val="26">0</Number>
-              Projects Submitted
+              <Number className="num" data-val="57">0</Number>
+              Projects
             </StatTop>
             <StatTop>
-              <Number className="num" data-val="197">0</Number>
-              Hackers Registered
+              <Number className="num" data-val="250">0</Number>
+              Participants
             </StatTop>
             <StatBottom>
-              <Number className="num" data-val="40" id="percent">0</Number>
-              Gender Minority
+              <Number className="num" data-val="570" id="moneysign">0</Number>
+              rasied for charity
             </StatBottom>
             <StatBottom>
-              <Number className="num" data-val="76" id="percent">0</Number>
+              <Number className="num" data-val="100" id="percent">0</Number>
               First-Time Hackers
             </StatBottom>
           </StatsGrid>

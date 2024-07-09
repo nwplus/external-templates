@@ -429,7 +429,7 @@ const profiles = [
     title: 'Design Coordinator',
     social: 'https://linkedin.com/in/sidyakinian'
   }
-];
+]
 
 const StyledTitle = styled(Header3)`
   margin-top: 1em;
@@ -480,7 +480,7 @@ let lastTime = -1
 let accumulateTime = -1
 const MAX_SPEED = 2
 
-export default function Team() {
+export default function Team () {
   const [animator, setAnimator] = useState()
   const [selectedProfile, setSelectedProfile] = useState(null)
   const [accel, setAccel] = useState(1)

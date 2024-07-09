@@ -161,7 +161,7 @@ const TeamContainer = styled.div`
   width: 100%;
 `
 
-export default function Footer() {
+export default function Footer () {
   return (
     <>
       <CaveTop>

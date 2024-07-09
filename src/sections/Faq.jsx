@@ -240,7 +240,7 @@ const Faq = () => {
   // (@htdf processData)
   // (@signature (listof FAQ) -> Object)
   // produces a dict where key = category, value = array of questions from an array of FAQ objects
-  function processData(data) {
+  function processData (data) {
     // categorize questions
 
     const categories = {}
