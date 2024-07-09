@@ -249,8 +249,7 @@ export default function Stats() {
             startValue += 1
             if (id === 'percent') {
               valueDisplay.textContent = `${startValue}%`
-            }
-            else if (id === 'moneysign') {
+            } else if (id === 'moneysign') {
               valueDisplay.textContent = `$${startValue}`
             } else {
               valueDisplay.textContent = `${startValue}`
@@ -290,7 +289,7 @@ export default function Stats() {
             </StatTop>
             <StatBottom>
               <Number className="num" data-val="570" id="moneysign">0</Number>
-              rasied for charirty
+              rasied for charity
             </StatBottom>
             <StatBottom>
               <Number className="num" data-val="100" id="percent">0</Number>
