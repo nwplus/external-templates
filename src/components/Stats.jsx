@@ -11,11 +11,11 @@ const gallery = [
   '/assets/gallery/4.png',
   '/assets/gallery/5.png',
   '/assets/gallery/6.png',
-  '/assets/gallery/7.png'
+  '/assets/gallery/7.png',
 ]
 
 const BgSectionContainer = styled(SectionContainer)`
-  background: #150C27;
+  /* background: #150c27; */
   display: grid;
   align-items: center;
   width: 100%;
@@ -25,13 +25,13 @@ const BgSectionContainer = styled(SectionContainer)`
   z-index: 15;
   overflow: hidden;
 
-  ${p => p.theme.mediaQueries.mobile} {    
+  ${p => p.theme.mediaQueries.mobile} {
     aspect-ratio: 412/709;
   }
 `
 
 const BgScroll = styled(SectionContainer)`
-  background: url('assets/background/stats/background.png');
+  /* background: url('assets/background/stats/background.png'); */
   background-size: 100vw;
   background-repeat: no-repeat;
   background-position: center top;
@@ -43,8 +43,8 @@ const BgScroll = styled(SectionContainer)`
   height: 100%;
   z-index: 10;
 
-  ${(p) => p.theme.mediaQueries.mobile} {
-    background: url('assets/mobile/stats/background.png');
+  ${p => p.theme.mediaQueries.mobile} {
+    /* background: url('assets/mobile/stats/background.png'); */
     background-repeat: no-repeat;
     background-size: 100vw;
   }
@@ -61,31 +61,30 @@ const stemsGlow = keyframes`
 
 const Stems = styled(SectionContainer)`
   animation: ${stemsGlow} 2s infinite alternate;
-  background: url('assets/background/stats/stems.svg');
+  /* background: url('assets/background/stats/stems.svg'); */
   background-size: 100vw;
   transform: scale(1.205);
   background-repeat: no-repeat;
 
   position: absolute;
   top: 46.25vw;
-  left: -1.0vw;
+  left: -1vw;
   width: 100%;
   height: 100%;
   z-index: 12;
 
-  ${(p) => p.theme.mediaQueries.mobile} {
-    background: url('assets/mobile/stats/stems.svg');
+  ${p => p.theme.mediaQueries.mobile} {
+    /* background: url('assets/mobile/stats/stems.svg'); */
     background-repeat: no-repeat;
     background-size: 100vw;
     transform: scale(1.4);
     left: 5px;
     top: 67%;
   }
-
 `
 
 const FgScroll = styled(SectionContainer)`
-  background: url('assets/background/stats/foreground.png');
+  /* background: url('assets/background/stats/foreground.png'); */
   background-size: 100vw;
   background-repeat: no-repeat;
   background-position: center bottom;
@@ -96,8 +95,8 @@ const FgScroll = styled(SectionContainer)`
   z-index: 98;
   top: 1vw;
 
-  ${(p) => p.theme.mediaQueries.mobile} {
-    background: url('assets/mobile/stats/foreground.png');
+  ${p => p.theme.mediaQueries.mobile} {
+    /* background: url('assets/mobile/stats/foreground.png'); */
     background-repeat: no-repeat;
     background-size: 100vw;
     background-position: center bottom;
@@ -115,17 +114,17 @@ const ContentInner = styled.div`
   overflow-x: hidden;
   z-index: 99;
 
-  ${(p) => p.theme.mediaQueries.mobile} {
+  ${p => p.theme.mediaQueries.mobile} {
     padding-top: 2.5rem;
   }
 `
 
 const StyledTitle = styled(Header2)`
   text-align: center;
-  color: #FFFAFA;
+  color: #fffafa;
   font-size: 3.75vw;
 
-  ${(p) => p.theme.mediaQueries.mobile} {
+  ${p => p.theme.mediaQueries.mobile} {
     font-size: 1.5rem;
   }
 `
@@ -136,7 +135,7 @@ const StatsGrid = styled.div`
   margin: 4rem 40% 0;
   gap: 2rem;
 
-  ${(p) => p.theme.mediaQueries.mobile} {
+  ${p => p.theme.mediaQueries.mobile} {
     margin: 3.5rem 35% 0;
     gap: 2.5rem;
   }
@@ -145,14 +144,14 @@ const StatsGrid = styled.div`
 const StatTop = styled.div`
   display: flex;
   flex-direction: column;
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: 1.5vw;
   font-weight: 700;
   word-spacing: 200px;
   max-width: 200px;
   line-height: 33px;
 
-  ${(p) => p.theme.mediaQueries.mobile} {
+  ${p => p.theme.mediaQueries.mobile} {
     font-size: 0.55rem;
     line-height: 10px;
   }
@@ -161,14 +160,14 @@ const StatTop = styled.div`
 const StatBottom = styled.div`
   display: flex;
   flex-direction: column;
-  color: #FFD7D9;
+  color: #ffd7d9;
   font-size: 1.5vw;
   font-weight: 700;
   word-spacing: 200px;
   max-width: 200px;
   line-height: 33px;
 
-  ${(p) => p.theme.mediaQueries.mobile} {
+  ${p => p.theme.mediaQueries.mobile} {
     font-size: 0.55rem;
     line-height: 10px;
   }
@@ -179,7 +178,7 @@ const Number = styled.div`
   font-weight: 900;
   margin-bottom: 0.5rem;
 
-  ${(p) => p.theme.mediaQueries.mobile} {
+  ${p => p.theme.mediaQueries.mobile} {
     font-size: 1.5rem;
   }
 `
@@ -204,14 +203,14 @@ const mobileScroll = keyframes`
 // animation translation matches full width of images + gap
 
 const Gallery = styled.div`
-  background: #150C27;
+  background: #150c27;
   animation: ${scroll} 40s linear infinite;
   display: flex;
   position: absolute;
   top: 73.5%;
   z-index: 97;
 
-  ${(p) => p.theme.mediaQueries.mobile} {
+  ${p => p.theme.mediaQueries.mobile} {
     height: 20%;
     top: 80%;
     animation: ${mobileScroll} 40s linear infinite;
@@ -240,7 +239,7 @@ export default function Stats() {
       const renderCountAnimation = () => {
         const valueDisplays = window.document.querySelectorAll('.num')
         const interval = 500
-        valueDisplays.forEach((valueDisplay) => {
+        valueDisplays.forEach(valueDisplay => {
           let startValue = 0
           const endValue = parseInt(valueDisplay.getAttribute('data-val'))
           const id = valueDisplay.getAttribute('id')
@@ -280,36 +279,38 @@ export default function Stats() {
           Last year we had:
           <StatsGrid className="stats">
             <StatTop>
-              <Number className="num" data-val="57">0</Number>
+              <Number className="num" data-val="57">
+                0
+              </Number>
               Projects
             </StatTop>
             <StatTop>
-              <Number className="num" data-val="250">0</Number>
+              <Number className="num" data-val="250">
+                0
+              </Number>
               Participants
             </StatTop>
             <StatBottom>
-              <Number className="num" data-val="570" id="moneysign">0</Number>
+              <Number className="num" data-val="570" id="moneysign">
+                0
+              </Number>
               Raised for Charity
             </StatBottom>
             <StatBottom>
-              <Number className="num" data-val="100" id="percent">0</Number>
+              <Number className="num" data-val="100" id="percent">
+                0
+              </Number>
               First-Time Hackers
             </StatBottom>
           </StatsGrid>
         </StyledTitle>
       </ContentInner>
       <Gallery>
-        {gallery.map((img) => (
-          <GalleryImage
-            key={img}
-            src={img}
-          />
+        {gallery.map(img => (
+          <GalleryImage key={img} src={img} />
         ))}
-        {gallery.map((img) => (
-          <GalleryImage
-            key={`${img}2`}
-            src={img}
-          />
+        {gallery.map(img => (
+          <GalleryImage key={`${img}2`} src={img} />
         ))}
       </Gallery>
     </BgSectionContainer>

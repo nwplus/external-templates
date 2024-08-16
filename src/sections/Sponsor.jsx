@@ -12,11 +12,11 @@ const sponsorTierOrder = {
   silver: 3,
   bronze: 4,
   inkind: 5,
-  startup: 6
+  startup: 6,
 }
 
 const BgSectionContainer = styled(SectionContainer)`
-  background: url('assets/background/sponsors/background.png'), #150C27;
+  /* background: url('assets/background/sponsors/background.png'), #150C27; */
   background-size: 100vw;
   background-repeat: no-repeat;
   background-position: center top;
@@ -28,8 +28,8 @@ const BgSectionContainer = styled(SectionContainer)`
   overflow-y: visible;
   z-index: 99;
 
-  ${(p) => p.theme.mediaQueries.mobile} {
-    background: url('assets/mobile/sponsors/background.svg') #150C27;
+  ${p => p.theme.mediaQueries.mobile} {
+    /* background: url('assets/mobile/sponsors/background.svg') #150C27; */
     background-size: 100vw;
     background-repeat: no-repeat;
     background-position: center center;
@@ -68,31 +68,31 @@ const colorChange = keyframes`
 `
 
 const UFO = styled.div`
-background: url('assets/background/sponsors/ufo.png') no-repeat center;
-width: 100vw;
-height: 100vw;
-aspect-ratio: 1293/564.05;
-transform: translateY(-15vw);
-position: absolute;
-z-index:2;
+  /* background: url('assets/background/sponsors/ufo.png') no-repeat center; */
+  width: 100vw;
+  height: 100vw;
+  aspect-ratio: 1293/564.05;
+  transform: translateY(-15vw);
+  position: absolute;
+  z-index: 2;
 
-${(p) => p.theme.mediaQueries.mobile} {
-  display:none;
-}
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const UFOLight = styled.div`
-background: url('assets/background/sponsors/light.png') no-repeat center;
-width: 100vw;
-height: 100vw;
-aspect-ratio: 1/1.5;
-top: 15%;
-position: absolute;
-z-index:-1;
-animation: ${colorChange} 5s infinite; // apply the animation
-${(p) => p.theme.mediaQueries.mobile} {
-  display:none;
-}
+  /* background: url('assets/background/sponsors/light.png') no-repeat center; */
+  width: 100vw;
+  height: 100vw;
+  aspect-ratio: 1/1.5;
+  top: 15%;
+  position: absolute;
+  z-index: -1;
+  animation: ${colorChange} 5s infinite; // apply the animation
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const Sponsors = styled.div`
@@ -153,9 +153,9 @@ const ButtonContainer = styled.p`
 
 const Skip = styled.div`
   height: 10rem;
-  background: linear-gradient(to bottom, #8C5050, #220639);
-  
-  ${(p) => p.theme.mediaQueries.mobile} {
+  /* background: linear-gradient(to bottom, #8c5050, #220639); */
+
+  ${p => p.theme.mediaQueries.mobile} {
     display: none;
   }
 `
@@ -167,7 +167,7 @@ export default function Sponsor() {
     const data = await fireDb.getCollection('HackCamp2024', 'Sponsors')
     if (data) {
       const organizedSponsors = {}
-      data.forEach((sponsor) => {
+      data.forEach(sponsor => {
         if (!organizedSponsors[sponsor.tier]) {
           organizedSponsors[sponsor.tier] = []
         }
@@ -177,43 +177,45 @@ export default function Sponsor() {
     }
   }, [])
 
-  return Object.keys(sponsors).length > 0
-    ? (
-      <BgSectionContainer id="sponsors">
-        <UFO></UFO>
-        <UFOLight />
-        <Sponsors>
-          <StyledTitle>
-            Sponsors
-          </StyledTitle>
-          {Object.keys(sponsors).sort((a, b) => sponsorTierOrder[a] - sponsorTierOrder[b]).map((key) => (
+  return Object.keys(sponsors).length > 0 ? (
+    <BgSectionContainer id="sponsors">
+      <UFO></UFO>
+      <UFOLight />
+      <Sponsors>
+        <StyledTitle>Sponsors</StyledTitle>
+        {Object.keys(sponsors)
+          .sort((a, b) => sponsorTierOrder[a] - sponsorTierOrder[b])
+          .map(key => (
             <SponsorTier>
-              {sponsors[key].map((sponsor) => (
-                <SponsorLink href={sponsor.link} target="_blank" rel='noreferrer'>
+              {sponsors[key].map(sponsor => (
+                <SponsorLink href={sponsor.link} target="_blank" rel="noreferrer">
                   <SponsorLogo src={sponsor.imgURL} />
                 </SponsorLink>
               ))}
             </SponsorTier>
           ))}
-          <PushinP>
-            Sponsors make this event happen. If you are interested in working with us, joining us or speaking at one of our events, please reach out to us!
-          </PushinP>
-          <ButtonContainer>
-            <Button
-              target="_blank"
-              rel="noopener noreferrer"
-              href="mailto:sponsorship@nwplus.io?Subject=Sponsorship"
-              width='205px'
-              height='50px'
-              borderRadius='6px'
-              textColor='#FFFFFF'
-              backgroundColor='linear-gradient(to left, #959AFB, #9AD4DE)'
-              isHover>
-              Sponsor HackCamp!
-            </Button>
-          </ButtonContainer>
-        </Sponsors>
-      </BgSectionContainer>
-    )
-    : <Skip />
+        <PushinP>
+          Sponsors make this event happen. If you are interested in working with us, joining us or speaking at one of
+          our events, please reach out to us!
+        </PushinP>
+        <ButtonContainer>
+          <Button
+            target="_blank"
+            rel="noopener noreferrer"
+            href="mailto:sponsorship@nwplus.io?Subject=Sponsorship"
+            width="205px"
+            height="50px"
+            borderRadius="6px"
+            textColor="#FFFFFF"
+            backgroundColor="linear-gradient(to left, #959AFB, #9AD4DE)"
+            isHover
+          >
+            Sponsor HackCamp!
+          </Button>
+        </ButtonContainer>
+      </Sponsors>
+    </BgSectionContainer>
+  ) : (
+    <Skip />
+  )
 }

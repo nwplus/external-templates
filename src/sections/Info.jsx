@@ -4,25 +4,24 @@ import { SectionContainer } from '@lib/Containers'
 import styled, { keyframes } from 'styled-components'
 
 const InfoContainer = styled.div`
-  background: #150C27;
+  /* background: #150c27; */
   position: relative;
   height: auto;
 
   overflow: visible;
   z-index: 99;
-  
+
   width: 100%;
   aspect-ratio: 1440 / 1100;
-  
 
-  ${(p) => p.theme.mediaQueries.mobile} {
+  ${p => p.theme.mediaQueries.mobile} {
     background-repeat: no-repeat;
     aspect-ratio: 412/871;
   }
 `
 
 const BgScroll = styled(SectionContainer)`
-  background: url('assets/background/about/background.png');
+  /* background: url('assets/background/about/background.png'); */
   background-size: 100vw;
   background-repeat: no-repeat;
   background-position: center top;
@@ -32,10 +31,9 @@ const BgScroll = styled(SectionContainer)`
   left: 0;
   width: 100%;
   height: 100%;
-  
 
-  ${(p) => p.theme.mediaQueries.mobile} {
-    background: url('assets/mobile/about/background.png');
+  ${p => p.theme.mediaQueries.mobile} {
+    /* background: url('assets/mobile/about/background.png'); */
     background-repeat: no-repeat;
     background-size: 100vw;
   }
@@ -55,7 +53,7 @@ const TextContainer = styled.div`
   position: relative;
   z-index: 2;
 
-  ${(p) => p.theme.mediaQueries.mobile} {
+  ${p => p.theme.mediaQueries.mobile} {
     margin: 0 3.2em;
     padding: 0;
     height: 50%;
@@ -63,12 +61,12 @@ const TextContainer = styled.div`
 `
 
 const StyledTitle = styled(Header2)`
-  color: #F0EEF2;
+  color: #f0eef2;
   font-size: 3.75vw;
   padding-bottom: 1rem;
   line-height: 100%;
-  
-  ${(p) => p.theme.mediaQueries.mobile} {
+
+  ${p => p.theme.mediaQueries.mobile} {
     font-size: 1.75em;
     width: 100%;
     text-align: center;
@@ -76,10 +74,10 @@ const StyledTitle = styled(Header2)`
 `
 
 const PushinP = styled.p`
-  color: #F0EEF2;
+  color: #f0eef2;
   font-size: 1.45vw;
 
-  ${(p) => p.theme.mediaQueries.mobile} {
+  ${p => p.theme.mediaQueries.mobile} {
     font-size: 1rem;
   }
 `
@@ -96,7 +94,7 @@ const fishingBearBob = keyframes`
 
 const FishingBear = styled.div`
   animation: ${fishingBearBob} 4s linear infinite;
-  background: url('assets/background/about/fishing_bear.svg');
+  /* background: url('assets/background/about/fishing_bear.svg'); */
   background-size: 57.5vw;
   background-repeat: no-repeat;
   background-position: bottom left;
@@ -108,7 +106,7 @@ const FishingBear = styled.div`
   height: 100%;
   z-index: 99;
 
-  ${(p) => p.theme.mediaQueries.mobile} {
+  ${p => p.theme.mediaQueries.mobile} {
     background-size: 67.5vw;
     left: -30px;
     top: -25px;
@@ -116,7 +114,7 @@ const FishingBear = styled.div`
 `
 
 const Deer = styled.div`
-  background: url('assets/background/about/deer.svg');
+  /* background: url('assets/background/about/deer.svg'); */
   background-size: 37.5vw;
   background-repeat: no-repeat;
   background-position: bottom right;
@@ -148,16 +146,12 @@ const Info = () => {
       <TextContainer>
         <StyledTitle>Welcome to HackCamp</StyledTitle>
         <PushinP>
-          HackCamp revolves around inclusivity, diversity, and
-          accessibility &mdash; we want you to bring your unique
-          perspectives and experiences to the table, regardless
-          of whether you have coding experience or not!
+          HackCamp revolves around inclusivity, diversity, and accessibility &mdash; we want you to bring your unique
+          perspectives and experiences to the table, regardless of whether you have coding experience or not!
           <br />
           <br />
-          Over the past 7 years, HackCamp, or formerly UBC
-          Local Hack Day, has been focused on encouraging
-          beginners and people who are curious about technology
-          to work on a project that focuses on these three main pillars.
+          Over the past 7 years, HackCamp, or formerly UBC Local Hack Day, has been focused on encouraging beginners and
+          people who are curious about technology to work on a project that focuses on these three main pillars.
         </PushinP>
       </TextContainer>
       <FishingBear />

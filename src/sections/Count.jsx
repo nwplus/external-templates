@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
 const InfoContainer = styled.div`
-  background: #150C27;
+  /* background: #150c27; */
   position: relative;
   width: 100%;
   aspect-ratio: 1440/1000;
@@ -13,32 +13,31 @@ const InfoContainer = styled.div`
   z-index: 10;
   overflow: hidden;
 
-  ${(p) => p.theme.mediaQueries.mobile} {
+  ${p => p.theme.mediaQueries.mobile} {
     background-repeat: no-repeat;
     aspect-ratio: 412/724;
   }
-  
 `
 const BgScroll = styled(SectionContainer)`
-  background: url('assets/background/countdown/background.png');
+  /* background: url('assets/background/countdown/background.png'); */
   background-size: 100vw;
   background-repeat: no-repeat;
   background-position: center center;
-  
+
   position: absolute;
   top: 0;
   width: 100%;
   height: 100%;
 
-  ${(p) => p.theme.mediaQueries.mobile} {
-    background: url('assets/mobile/countdown/background.png');
+  ${p => p.theme.mediaQueries.mobile} {
+    /* background: url('assets/mobile/countdown/background.png'); */
     background-repeat: no-repeat;
     background-size: 100vw;
   }
 `
 
 const Galaxy = styled(SectionContainer)`
-  background: url('assets/background/countdown/galaxy.svg');
+  /* background: url('assets/background/countdown/galaxy.svg'); */
   background-size: 100vw;
   transform: scale(1.375);
   background-repeat: no-repeat;
@@ -50,7 +49,7 @@ const Galaxy = styled(SectionContainer)`
   width: 100%;
   height: 100%;
 
-  ${(p) => p.theme.mediaQueries.mobile} {
+  ${p => p.theme.mediaQueries.mobile} {
     background-size: 120vw;
     left: 10vw;
     top: 60vw;
@@ -58,7 +57,7 @@ const Galaxy = styled(SectionContainer)`
 `
 
 const Bear = styled(SectionContainer)`
-  background: url('assets/background/countdown/bear.svg');
+  /* background: url('assets/background/countdown/bear.svg'); */
   background-size: 10vw;
   background-repeat: no-repeat;
   background-position: center right;
@@ -70,13 +69,13 @@ const Bear = styled(SectionContainer)`
   height: 100%;
   opacity: 0.75;
 
-  ${(p) => p.theme.mediaQueries.mobile} {
+  ${p => p.theme.mediaQueries.mobile} {
     top: 60vw;
   }
 `
 
 const Deer = styled(SectionContainer)`
-  background: url('assets/background/countdown/deer.svg');
+  /* background: url('assets/background/countdown/deer.svg'); */
   background-size: 15vw;
   background-repeat: no-repeat;
   background-position: center center;
@@ -88,13 +87,13 @@ const Deer = styled(SectionContainer)`
   height: 100%;
   opacity: 0.75;
 
-  ${(p) => p.theme.mediaQueries.mobile} {
+  ${p => p.theme.mediaQueries.mobile} {
     top: 50vw;
   }
 `
 
 const Nugget = styled(SectionContainer)`
-  background: url('assets/background/countdown/nugget.svg');
+  /* background: url('assets/background/countdown/nugget.svg'); */
   background-size: 25vw;
   background-repeat: no-repeat;
   background-position: center left;
@@ -106,7 +105,7 @@ const Nugget = styled(SectionContainer)`
   height: 100%;
   opacity: 0.75;
 
-  ${(p) => p.theme.mediaQueries.mobile} {
+  ${p => p.theme.mediaQueries.mobile} {
     top: 45vw;
   }
 `
@@ -122,21 +121,21 @@ const TextContainer = styled.div`
   height: 100%;
   padding: 0em 50vw 47.5vw 7vw;
 
-  ${(p) => p.theme.mediaQueries.mobile} {
+  ${p => p.theme.mediaQueries.mobile} {
     padding: 0;
   }
 `
 
 const StyledTitle = styled(Header2)`
   text-align: left;
-  color: #F0EEF2;
+  color: #f0eef2;
   font-weight: 900;
   font-size: 3.5vw;
   letter-spacing: 0.7px;
   line-height: 56px;
   max-width: 20vw;
 
-  ${(p) => p.theme.mediaQueries.mobile} {
+  ${p => p.theme.mediaQueries.mobile} {
     font-size: 2em;
     padding-bottom: 3rem;
     line-height: 36px;
@@ -155,8 +154,8 @@ const DaysTextContainer = styled.div`
   top: 4%;
   left: 43%;
   transform: rotate(-10.92deg);
- 
-  ${(p) => p.theme.mediaQueries.mobile} {
+
+  ${p => p.theme.mediaQueries.mobile} {
     transform: rotate(15.53deg);
     top: 19%;
     left: 7.5%;
@@ -171,7 +170,7 @@ const HoursTextContainer = styled.div`
   left: 53.5%;
   transform: rotate(17.73deg);
 
-  ${(p) => p.theme.mediaQueries.mobile} {
+  ${p => p.theme.mediaQueries.mobile} {
     transform: rotate(21.61deg);
     top: 57.5%;
     left: 30%;
@@ -186,7 +185,7 @@ const MinutesTextContainer = styled.div`
   left: 83.5%;
   transform: rotate(-23.75deg);
 
-  ${(p) => p.theme.mediaQueries.mobile} {
+  ${p => p.theme.mediaQueries.mobile} {
     top: 30%;
     left: 52.5%;
   }
@@ -195,25 +194,23 @@ const MinutesTextContainer = styled.div`
 const ShadowText = styled.div`
   text-align: center;
   font-size: 3.2vw;
-  color: #FFFFFF;
+  color: #ffffff;
   text-shadow: 0px 1px 17px 0px rgba(255, 255, 255, 0.5);
   font-weight: 800;
 
   position: relative;
   letter-spacing: 1px;
-  
-  ${(p) => p.theme.mediaQueries.mobile} {
+
+  ${p => p.theme.mediaQueries.mobile} {
     font-size: 2rem;
   }
 `
 
 // blog.greenroots.info
-const getReturnValues = (countDown) => {
+const getReturnValues = countDown => {
   // calculate time left
   const days = Math.floor(countDown / (1000 * 60 * 60 * 24))
-  const hours = Math.floor(
-    (countDown % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-  )
+  const hours = Math.floor((countDown % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
   const minutes = Math.floor((countDown % (1000 * 60 * 60)) / (1000 * 60))
   const seconds = Math.floor((countDown % (1000 * 60)) / 1000)
 
@@ -224,12 +221,10 @@ const getReturnValues = (countDown) => {
   return [days, hours, minutes, seconds]
 }
 
-const useCountdown = (targetDate) => {
+const useCountdown = targetDate => {
   const countDownDate = new Date(targetDate).getTime()
 
-  const [countDown, setCountDown] = useState(
-    countDownDate - new Date().getTime()
-  )
+  const [countDown, setCountDown] = useState(countDownDate - new Date().getTime())
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -248,7 +243,7 @@ const Count = () => {
   const countDownDate = new Date('Nov 9, 2024 09:00:00').getTime()
   const [days, hours, minutes] = useCountdown(countDownDate)
 
-  const twoify = (num) => {
+  const twoify = num => {
     const str = num.toString()
     if (str.length === 1) {
       return `0${str}`
@@ -260,7 +255,7 @@ const Count = () => {
   const count = {
     days: days.toString(),
     hours: twoify(hours),
-    minutes: twoify(minutes)
+    minutes: twoify(minutes),
   }
 
   // const { ref: ref1 } = useParallax({
@@ -276,21 +271,21 @@ const Count = () => {
     translateX: ['-400vw', '0vw'],
     translateY: ['-35vw', '0vw'],
     scale: [6, 1],
-    opacity: [1, 0.75]
+    opacity: [1, 0.75],
   })
 
   const deerParallax = useParallax({
     easing: 'easeOutQuad',
     translateX: ['-400vw', '15vw'],
     translateY: ['-35vw', '0vw'],
-    scale: [6, 1]
+    scale: [6, 1],
   })
 
   const nuggetParallax = useParallax({
     easing: 'easeOutQuad',
     translateX: ['-400vw', '15vw'],
     translateY: ['-35vw', '0vw'],
-    scale: [6, 1]
+    scale: [6, 1],
   })
 
   return (
@@ -299,9 +294,7 @@ const Count = () => {
       <TextContainer>
         <StyledTitle>HackCamp starts in:</StyledTitle>
         <DaysTextContainer>
-          <ShadowText text={`${count.days} Days`}>
-            {`${count.days} Days`}
-          </ShadowText>
+          <ShadowText text={`${count.days} Days`}>{`${count.days} Days`}</ShadowText>
         </DaysTextContainer>
         <HoursTextContainer>
           <ShadowText text={`${count.hours[0]}${count.hours[1]} Hours`}>
