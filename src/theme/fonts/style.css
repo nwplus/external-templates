@@ -5,6 +5,13 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;700&family=Fira+Code:wght@700&display=swap');
 
 @font-face {
+  font-family: 'Carnivalee Freakshow Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Carnivalee Freakshow Regular'), url('Carnevalee-Freakshow.woff') format('woff');
+  }
+
+@font-face {
   font-family: 'HK Grotesk';
   font-style: normal;
   font-weight: normal;
