@@ -20,6 +20,7 @@ const base = {
   typography: {
     headerFont: 'HK Grotesk',
     bodyFont: 'HK Grotesk',
+    signFont: 'Carnivalee Freakshow Regular',
     header1: {
       fontWeight: 900,
       fontSize: '3.5rem',

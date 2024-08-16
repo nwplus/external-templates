@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useParallax } from 'react-scroll-parallax'
 import styled, { keyframes } from 'styled-components'
 import { SectionContainer } from '@lib/Containers'
 import { Header2 } from '@components/Typography'
 import Button from '@components/Button'
+import { scale } from '@utilities/format'
 
 const BgSectionContainer = styled(SectionContainer)`
   /* background: linear-gradient(to bottom, #81b4ff, #9ecbfd); */
@@ -173,7 +174,7 @@ const HCSub = styled.div`
 `
 const HackCampLogo = styled.div`
   background: url('assets/background/hero/logo.svg');
-  /* background-size: 100vw; */
+  background-size: 6vw;
   background-repeat: no-repeat;
   height: 5vw;
   width: 100%;
@@ -279,13 +280,257 @@ const ButtonText = styled.div`
   font-size: 1.3vw;
   color: white;
   font-weight: 500;
-  /* padding-top: 1rem; */
   ${p => p.theme.mediaQueries.mobile} {
     font-size: 0.8rem;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
   }
 `
+
+const CountdownText = styled.div`
+  font-size: 4.3vw;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 55vw;
+  color: #45171a;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+
+  span {
+    display: inline-block;
+  }
+
+  span:nth-child(1) {
+    transform: translateY(0.8vw) rotate(-11deg);
+  }
+
+  span:nth-child(2) {
+    transform: translateY(0.35vw) rotate(-10deg);
+  }
+
+  span:nth-child(3) {
+    transform: translateY(-0.2vw) rotate(-7deg);
+  }
+
+  span:nth-child(4) {
+    transform: translateY(-0.49vw) rotate(-7deg);
+  }
+
+  span:nth-child(5) {
+    transform: translateY(-0.7vw) rotate(-6deg);
+  }
+
+  span:nth-child(6) {
+    transform: translateY(-1vw) rotate(-6deg);
+  }
+
+  span:nth-child(7) {
+    transform: translateY(-1.25vw) rotate(-4deg);
+  }
+
+  span:nth-child(8) {
+    transform: translateY(-1.45vw) rotate(-3deg);
+  }
+
+  span:nth-child(9) {
+    transform: translateY(-1.55vw) rotate(-2deg);
+  }
+
+  span:nth-child(10) {
+    transform: translateY(-1.65vw) rotate(-1deg);
+  }
+
+  span:nth-child(11) {
+    transform: translateY(-1.7vw) rotate(0deg);
+  }
+
+  span:nth-child(12) {
+    transform: translateY(-1.7vw) rotate(2deg);
+  }
+
+  span:nth-child(13) {
+    transform: rotate(4deg);
+  }
+
+  span:nth-child(14) {
+    transform: translateY(-1.4vw) rotate(5deg);
+  }
+
+  span:nth-child(15) {
+    transform: translateY(-1.15vw) rotate(6deg);
+  }
+
+  span:nth-child(16) {
+    transform: translateY(-0.9vw) rotate(7deg);
+  }
+
+  span:nth-child(17) {
+    transform: translateY(-0.55vw) rotate(8deg);
+  }
+
+  span:nth-child(18) {
+    transform: translateY(-0.15vw) rotate(8deg);
+  }
+
+  span:nth-child(19) {
+    transform: translateY(-0.1vw) rotate(8deg);
+  }
+
+  span:nth-child(20) {
+    transform: translateY(0.3vw) rotate(10deg);
+  }
+
+  span:nth-child(21) {
+    transform: translateY(0.6vw) rotate(11deg);
+  }
+`
+
+const CountdownNumber = styled.div`
+  font-size: 5.2vw;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 3vw;
+  color: #45171a;
+  font-weight: 600;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+
+  span {
+    display: inline-block;
+  }
+
+  span:nth-child(1) {
+    transform: translateY(0.4vw) rotate(-5deg);
+  }
+
+  span:nth-child(2) {
+    transform: translateY(0.2vw) rotate(-4deg);
+  }
+
+  span:nth-child(3) {
+    transform: translateY(0vw) rotate(-2deg);
+  }
+
+  span:nth-child(4) {
+    transform: rotate(0deg);
+  }
+
+  span:nth-child(5) {
+    transform: rotate(0deg);
+  }
+
+  span:nth-child(6) {
+    transform: rotate(2deg);
+  }
+
+  span:nth-child(7) {
+    transform: translateY(0.2vw) rotate(3deg);
+  }
+
+  span:nth-child(8) {
+    transform: translateY(0.4vw) rotate(4deg);
+  }
+
+  span:nth-child(9) {
+    transform: translateY(0.4vw) rotate(5deg);
+  }
+`
+
+// signs
+const SignContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 72.5vw;
+  top: 13.4vw;
+`
+
+const SignButton = styled.button`
+  background: url(${props => props.imageUrl});
+  background-size: 19vw;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 25vw;
+  height: 6vw;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.5s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(1.1);
+  }
+
+  ${p => p.theme.mediaQueries.mobile} {
+    transform: scale(0.8);
+  }
+`
+
+const SignText = styled.h3`
+  font-family: Carnivalee Freakshow Regular;
+  /* font-size: ${() => scale(768, 1440, 16, 18)}; */
+  font-size: ${props => props.fontSize};
+  color: #a01b2a;
+  font-weight: 600;
+  line-height: 23px;
+  letter-spacing: 0px;
+  text-align: center;
+  transform: translateX(${props => props.translateX || 0}) translateY(${props => props.translateY || 0})
+    rotate(${props => props.rotate || 0}deg);
+`
+
+const CountdownTimer = ({ targetDate }) => {
+  const calculateTimeLeft = () => {
+    const now = new Date()
+    const difference = targetDate - now
+
+    let timeLeft = {}
+
+    if (difference > 0) {
+      timeLeft = {
+        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((difference / 1000 / 60) % 60),
+      }
+    } else {
+      timeLeft = { days: 0, hours: 0, minutes: 0 }
+    }
+
+    return timeLeft
+  }
+
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft())
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft(calculateTimeLeft())
+    }, 1000)
+
+    return () => clearInterval(timer)
+  }, [targetDate])
+
+  const formatTime = time => {
+    const timeString = `${String(time.days).padStart(2, '0')}:${String(time.hours).padStart(2, '0')}:${String(
+      time.minutes
+    ).padStart(2, '0')}`
+    return timeString.split('').map((char, index) => <span key={index}>{char}</span>)
+  }
+
+  return <CountdownNumber>{formatTime(timeLeft)}</CountdownNumber>
+}
 
 export default function Register() {
   // not using these hooks because they don't work on initial load -> better practice to pass an isMobile props from getServerSideProps after checking userAgent
@@ -308,6 +553,12 @@ export default function Register() {
   //   speed: -30
   // })
 
+  const CurvedText = ({ text }) => {
+    return text
+      .split('')
+      .map((char, index) => (char === ' ' ? <span key={index}>&nbsp;</span> : <span key={index}>{char}</span>))
+  }
+
   return (
     <BgSectionContainer>
       <BgScroll />
@@ -316,7 +567,6 @@ export default function Register() {
         <MediaContainer>
           <HackCampLogo />
           <HackCampTitle />
-          {/* <HackCampHeader>HackCamp</HackCampHeader> */}
           <BodyContainer>
             <HackCampSubheader>Canada’s largest beginner-only hackathon</HackCampSubheader>
             <HCSub>Nov 9-10, 2024 | In-person event</HCSub>
@@ -328,34 +578,44 @@ export default function Register() {
             <BecomeMentorButton>
               <ButtonText>Become a Mentor</ButtonText>
             </BecomeMentorButton>
-            {/* <Button
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://docs.google.com/forms/d/e/1FAIpQLSfs5nQk58vOudnXEra2Tb76bn6poFHrNpe-TZ7cvyyxmCFzZg/viewform?usp=sf_link"
-              width="205px"
-              height="50px"
-              borderRadius="6px"
-              textColor="white"
-              backgroundColor="#00DBCE"
-              isHover
-            >
-              Apply Now
-            </Button> */}
-            {/* <Button
-              isOutline
-              target="_blank"
-              rel="noopener noreferrer"
-              href="mailto:sponsorship@nwplus.io?subject=Sponsorship"
-              width="205px"
-              height="50px"
-              borderRadius="6px"
-              borderColor="#00DBCE"
-              textColor="white"
-              backgroundColor="transparent"
-              isHover
-            >
-              Sponsor Us
-            </Button> */}
+            <SignContainer>
+              <SignButton imageUrl="assets/background/hero/signs/sign1.svg">
+                <SignText fontSize="2.5vw" rotate={-2.74}>
+                  ABOUT
+                </SignText>
+              </SignButton>
+              <SignButton imageUrl="assets/background/hero/signs/sign2.svg">
+                <SignText fontSize="2.5vw">Our Events</SignText>
+              </SignButton>
+              <SignButton imageUrl="assets/background/hero/signs/sign3.svg">
+                <SignText fontSize="2.5vw" rotate={3.26}>
+                  STATS
+                </SignText>
+              </SignButton>
+              <SignButton imageUrl="assets/background/hero/signs/sign4.svg">
+                <SignText translateX="1.2vw" fontSize="2vw" rotate={-2.96}>
+                  TESTIMONIALS
+                </SignText>
+              </SignButton>
+              <SignButton imageUrl="assets/background/hero/signs/sign5.svg">
+                <SignText fontSize="3vw" rotate={-2.74}>
+                  FAQ
+                </SignText>
+              </SignButton>
+              <SignButton imageUrl="assets/background/hero/signs/sign6.svg">
+                <SignText fontSize="2.3vw">SPONSORS</SignText>
+              </SignButton>
+              <SignButton imageUrl="assets/background/hero/signs/sign7.svg">
+                <SignText fontSize="2.5vw" rotate={5.01}>
+                  Contact Us
+                </SignText>
+              </SignButton>
+            </SignContainer>
+            {/* October 1 9am PST */}
+            <CountdownText>
+              <CurvedText text="REGISTRATION OPENS IN" />
+              <CountdownTimer targetDate={new Date(Date.UTC(2024, 9, 1, 16, 0, 0))} />
+            </CountdownText>
           </ButtonContainer>
         </MediaContainer>
       </GridContainer>
