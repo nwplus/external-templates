@@ -45,10 +45,11 @@ const TextContainer = styled.div`
   justify-content: center;
   align-items: flex-start;
   height: 100%;
+  width: 60%;
 
-  padding-left: 50vw;
+  padding-left: 11vw;
   padding-right: 7.5vw;
-  padding-bottom: 20rem;
+  padding-bottom: 34.5rem;
 
   position: relative;
   z-index: 2;
@@ -61,8 +62,9 @@ const TextContainer = styled.div`
 `
 
 const StyledTitle = styled(Header2)`
-  color: #f0eef2;
-  font-size: 3.75vw;
+  color: #45171A;
+  font-size: 2.9vw;
+  font-weight: 700;
   padding-bottom: 1rem;
   line-height: 100%;
 
@@ -71,11 +73,92 @@ const StyledTitle = styled(Header2)`
     width: 100%;
     text-align: center;
   }
+
+
+span {
+  display: inline-block;
+}
+
+span:nth-child(1) {
+  transform: translateY(-0.1vw) rotate(-7deg);
+}
+
+span:nth-child(2) {
+  transform: translateY(-0.3vw) rotate(-3deg);
+}
+
+span:nth-child(3) {
+  transform: translateY(-0.3vw) rotate(-1deg);
+}
+
+span:nth-child(4) {
+  transform: translateY(-0.3vw) rotate(0deg);
+}
+
+span:nth-child(5) {
+  transform: translateY(-0.2vw) rotate(1deg);
+}
+
+span:nth-child(6) {
+  transform: translateY(-0.1vw) rotate(4deg);
+}
+
+span:nth-child(7) {
+  transform: translateY(0.1vw) rotate(4deg);
+}
+
+span:nth-child(8) {
+  transform: translateY(0.8vw) rotate(-11deg);
+}
+
+span:nth-child(9) {
+  transform: translateY(0.3vw) rotate(6deg);
+}
+
+span:nth-child(10) {
+  transform: translateY(0.5vw) rotate(4deg);
+}
+
+span:nth-child(11) {
+  transform: translateY(0.5vw) rotate(5deg);
+}
+
+span:nth-child(12) {
+  transform: translateY(0.7vw) rotate(5deg);
+}
+
+span:nth-child(13) {
+  transform: translateY(0.9vw) rotate(5deg);
+}
+
+span:nth-child(14) {
+  transform: translateY(1vw) rotate(1deg);
+}
+
+span:nth-child(15) {
+  transform: translateY(1vw) rotate(1deg);
+}
+
+span:nth-child(16) {
+  transform: translateY(1.1vw) rotate(0deg);
+}
+
+span:nth-child(17) {
+  transform: translateY(1vw) rotate(-3deg);
+}
+
+span:nth-child(18) {
+  transform: translateY(0.9vw) rotate(-3deg);
+}
+
+span:nth-child(19) {
+  transform: translateY(0.7vw) rotate(-5deg);
+}
 `
 
 const PushinP = styled.p`
-  color: #f0eef2;
-  font-size: 1.45vw;
+  color: #45171A;
+  font-size: 1.15vw;
 
   ${p => p.theme.mediaQueries.mobile} {
     font-size: 1rem;
@@ -140,18 +223,28 @@ const Info = () => {
   //   speed: -10
   // })
 
+  const CurvedText = ({ text }) => {
+    return text
+      .split('')
+      .map((char, index) => (char === ' ' ? <span key={index}>&nbsp;</span> : <span key={index}>{char}</span>))
+  }
+
   return (
     <InfoContainer id="about">
       <BgScroll />
       <TextContainer>
-        <StyledTitle>Welcome to HackCamp</StyledTitle>
+        <StyledTitle>
+        <CurvedText text="Welcome to HackCamp"/>
+        </StyledTitle>
         <PushinP>
-          HackCamp revolves around inclusivity, diversity, and accessibility &mdash; we want you to bring your unique
-          perspectives and experiences to the table, regardless of whether you have coding experience or not!
+        HackCamp provides a space for hundreds of first-time hackers curious about technology to explore the
+        field further through hands-on learning, regardless of whether you have coding experience or not!
           <br />
           <br />
-          Over the past 7 years, HackCamp, or formerly UBC Local Hack Day, has been focused on encouraging beginners and
-          people who are curious about technology to work on a project that focuses on these three main pillars.
+          Over the past 7 years, HackCamp, or formerly UBC Local Hack Day, has revolved around accessibility,
+          inclusivity, and diversity. We strive to help people break into hackathon spaces by providing
+          beginner-oriented workshops, industry connections, and ultimately, encouraging you to bring your
+          unique perspectives and experiences to work on a project focusing our three main pillars.
         </PushinP>
       </TextContainer>
       <FishingBear />

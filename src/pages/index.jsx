@@ -36,7 +36,6 @@ export default function Index({ title }) {
 
       {/* <NavBar /> */}
       <Register />
-      <Count />
       <Info />
       <Learn />
       <Stats />
