@@ -11,7 +11,7 @@ export const GlobalStyles = createGlobalStyle`
     overflow-x: hidden;
   }
   body {
-    position: relative
+    position: relative;
     background: none;
   }
   
