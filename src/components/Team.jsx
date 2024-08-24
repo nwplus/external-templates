@@ -432,9 +432,10 @@ const profiles = [
 ]
 
 const StyledTitle = styled(Header3)`
-  margin-top: 1em;
+  margin-top: 1vw;
   color: #f9c745;
   filter: drop-shadow(0 0 4px #f9c745);
+  font-size: 2.5vw;
 
   ${p => p.theme.mediaQueries.mobile} {
     font-size: 5.5vw;
@@ -442,7 +443,7 @@ const StyledTitle = styled(Header3)`
 `
 
 const StyledSecondaryTitle = styled(Header3)`
-  margin-top: 0.7em;
+  margin-top: 0.7vw;
   color: #f9c745;
   filter: drop-shadow(0 0 4px #f9c745);
   font-size: 1.5vw;
@@ -457,7 +458,7 @@ const ProfileContent = styled.p`
   span {
     margin-right: 8px;
   }
-  height: 1em;
+  height: 1vw;
   b {
     margin-right: 8px;
   }
