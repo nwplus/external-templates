@@ -5,13 +5,26 @@ import styled, { keyframes } from 'styled-components'
 import { Header2 } from './Typography'
 
 const gallery = [
-  '/assets/gallery/1.png',
-  '/assets/gallery/2.png',
-  '/assets/gallery/3.png',
-  '/assets/gallery/4.png',
-  '/assets/gallery/5.png',
-  '/assets/gallery/6.png',
-  '/assets/gallery/7.png',
+  '/assets/gallery/1.JPG',
+  '/assets/gallery/2.jpg',
+  '/assets/gallery/3.jpg',
+  '/assets/gallery/4.jpg',
+  '/assets/gallery/5.jpg',
+  '/assets/gallery/6.jpg',
+  '/assets/gallery/7.jpg',
+  '/assets/gallery/8.jpg',
+  '/assets/gallery/9.jpg',
+  '/assets/gallery/10.jpg',
+  '/assets/gallery/11.jpg',
+  '/assets/gallery/12.jpg',
+  '/assets/gallery/13.jpg',
+  '/assets/gallery/14.jpg',
+  '/assets/gallery/15.jpg',
+  '/assets/gallery/16.jpg',
+  '/assets/gallery/17.jpg',
+  '/assets/gallery/18.jpg',
+  '/assets/gallery/19.jpg',
+  '/assets/gallery/20.jpg',
 ]
 
 const BgSectionContainer = styled(SectionContainer)`
@@ -219,6 +232,9 @@ const Gallery = styled.div`
 
 const GalleryImage = styled.img`
   margin: 10px 15px;
+  width: 30vw;
+  height: 20vw;
+  object-fit: cover;
 `
 
 export default function Stats() {

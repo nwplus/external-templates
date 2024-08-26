@@ -7,12 +7,38 @@ import styled from 'styled-components'
 /* eslint react/jsx-filename-extension: 0 */
 
 const OuterContainer = styled(SectionContainer)`
+  /* background: url('assets/background/entire-site/entire-site.png');
+  width: 100vw;
+  height: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center top; */
+
+  aspect-ratio: 748 / 1400;
+
   background: url('assets/background/entire-site/entire-site.png');
-  /* width: 100%; */
-  background-size: 100vw;
+  width: 100vw;
+  height: auto;
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center top;
-  /* aspect-ratio: 1440/989; */
+
+  @media (max-width: 1300px) {
+    aspect-ratio: 752 / 1200;
+  }
+
+  @media (max-width: 992px) {
+    aspect-ratio: 710 / 1100;
+  }
+
+  @media (max-width: 768px) {
+    aspect-ratio: 700 / 1000;
+  }
+
+  @media (max-width: 576px) {
+    aspect-ratio: 600 / 900;
+  }
+
   /* z-index: -98; */
   /* overflow: hidden; */
 `
