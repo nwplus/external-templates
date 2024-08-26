@@ -1,7 +1,7 @@
 import { useParallax } from 'react-scroll-parallax'
 import { Header2 } from '@components/Typography'
 import { SectionContainer } from '@lib/Containers'
-import styled, { keyframes } from 'styled-components'
+import styled from 'styled-components'
 
 const InfoContainer = styled.div`
   /* background: linear-gradient(to bottom, #81b4ff, #9ecbfd); */
@@ -171,29 +171,24 @@ const PushinP = styled.p`
     font-size: 1rem;
   }
 `
+
 const Coaster = styled.div`
   background: url('assets/Info/coaster.svg');
   background-repeat: no-repeat;
-  background-size: 20vw;
+  background-size: 23vw;
   position: absolute;
-  top: -1vw;
-  left: 70vw;
+  top: -4vw;
+  left: 48.6vw;
   width: 30vw;
   height: 30vw;
 `
-
 const Info = () => {
-  // const { ref: ref1 } = useParallax({
-  //   speed: -30
-  // })
-
-  // const { ref: ref2 } = useParallax({
-  //   speed: -20
-  // })
-
-  // const { ref: ref3 } = useParallax({
-  //   speed: -10
-  // })
+  // Define the parallax effect for the coaster image
+  const coasterParallax = useParallax({
+    translateX: ['70', '0'],
+    translateY: ['0', '52'],
+    easing: 'easeInOut'
+  })
 
   const CurvedText = ({ text }) => {
     return text
@@ -219,7 +214,7 @@ const Info = () => {
           unique perspectives and experiences to work on a project focusing our three main pillars.
         </PushinP>
       </TextContainer>
-      <Coaster />
+      <Coaster ref={coasterParallax.ref}/>
     </InfoContainer>
   )
 }
