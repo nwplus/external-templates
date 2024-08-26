@@ -1,22 +1,25 @@
 import { useParallax } from 'react-scroll-parallax'
 import { Header2 } from '@components/Typography'
 import { SectionContainer } from '@lib/Containers'
-import styled, { keyframes } from 'styled-components'
+import styled from 'styled-components'
 
 const InfoContainer = styled.div`
-  /* background: #150c27; */
+  /* background: linear-gradient(to bottom, #81b4ff, #9ecbfd); */
+  background-size: 100vw;
+  background-repeat: no-repeat;
+  background-position: center top;
+
   position: relative;
-  height: auto;
-
-  overflow: visible;
-  z-index: 99;
-
   width: 100%;
-  aspect-ratio: 1440 / 1100;
+  aspect-ratio: 1440/1000;
+  z-index: 0;
+  overflow: visible;
 
   ${p => p.theme.mediaQueries.mobile} {
+    /* background: #150c27; */
     background-repeat: no-repeat;
-    aspect-ratio: 412/871;
+    text-align: center;
+    aspect-ratio: 412/843;
   }
 `
 
@@ -25,6 +28,7 @@ const BgScroll = styled(SectionContainer)`
   background-size: 100vw;
   background-repeat: no-repeat;
   background-position: center top;
+  z-index: 0;
 
   position: absolute;
   top: 0;
@@ -47,9 +51,9 @@ const TextContainer = styled.div`
   height: 100%;
   width: 60%;
 
-  padding-left: 11vw;
+  padding-left: 10.5vw;
   padding-right: 7.5vw;
-  padding-bottom: 34.5rem;
+  padding-bottom: 34.5vw;
 
   position: relative;
   z-index: 2;
@@ -65,8 +69,10 @@ const StyledTitle = styled(Header2)`
   color: #45171A;
   font-size: 2.9vw;
   font-weight: 700;
-  padding-bottom: 1rem;
+  padding-bottom: 2.5vw;
+  padding-left: 0.6vw;
   line-height: 100%;
+  z-index: 3;
 
   ${p => p.theme.mediaQueries.mobile} {
     font-size: 1.75em;
@@ -158,70 +164,31 @@ span:nth-child(19) {
 
 const PushinP = styled.p`
   color: #45171A;
-  font-size: 1.15vw;
+  font-size: 1.08vw;
+  z-index: 3;
 
   ${p => p.theme.mediaQueries.mobile} {
     font-size: 1rem;
   }
 `
 
-const fishingBearBob = keyframes`
-  0%, 100% {
-    transform: translateY(0, 2vw);
-  }
-
-  50% {
-    transform: translateY(1vw);
-  }
-`
-
-const FishingBear = styled.div`
-  animation: ${fishingBearBob} 4s linear infinite;
-  /* background: url('assets/background/about/fishing_bear.svg'); */
-  background-size: 57.5vw;
+const Coaster = styled.div`
+  background: url('assets/Info/coaster.svg');
   background-repeat: no-repeat;
-  background-position: bottom left;
-
+  background-size: 23vw;
   position: absolute;
-  top: 0vw;
-  left: 4vw;
-  width: 100%;
-  height: 100%;
-  z-index: 99;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    background-size: 67.5vw;
-    left: -30px;
-    top: -25px;
-  }
+  top: -4vw;
+  left: 48.6vw;
+  width: 30vw;
+  height: 30vw;
 `
-
-const Deer = styled.div`
-  /* background: url('assets/background/about/deer.svg'); */
-  background-size: 37.5vw;
-  background-repeat: no-repeat;
-  background-position: bottom right;
-
-  position: absolute;
-  top: 21.5vw;
-  left: 11vw;
-  width: 100%;
-  height: 100%;
-  z-index: 99;
-`
-
 const Info = () => {
-  // const { ref: ref1 } = useParallax({
-  //   speed: -30
-  // })
-
-  // const { ref: ref2 } = useParallax({
-  //   speed: -20
-  // })
-
-  // const { ref: ref3 } = useParallax({
-  //   speed: -10
-  // })
+  // Define the parallax effect for the coaster image
+  const coasterParallax = useParallax({
+    translateX: ['70', '0'],
+    translateY: ['0', '52'],
+    easing: 'easeInOut'
+  })
 
   const CurvedText = ({ text }) => {
     return text
@@ -247,8 +214,7 @@ const Info = () => {
           unique perspectives and experiences to work on a project focusing our three main pillars.
         </PushinP>
       </TextContainer>
-      <FishingBear />
-      <Deer />
+      <Coaster ref={coasterParallax.ref}/>
     </InfoContainer>
   )
 }

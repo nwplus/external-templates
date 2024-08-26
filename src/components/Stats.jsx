@@ -305,14 +305,14 @@ export default function Stats() {
           </StatsGrid>
         </StyledTitle>
       </ContentInner>
-      <Gallery>
+      {/* <Gallery>
         {gallery.map(img => (
           <GalleryImage key={img} src={img} />
         ))}
         {gallery.map(img => (
           <GalleryImage key={`${img}2`} src={img} />
         ))}
-      </Gallery>
+      </Gallery> */}
     </BgSectionContainer>
   )
 }
