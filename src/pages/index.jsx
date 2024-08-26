@@ -13,6 +13,7 @@ import Count from 'src/sections/Count'
 import Learn from 'src/sections/Learn'
 import GlobalStyle from '../theme/GlobalStyle'
 import Faq from '../sections/Faq'
+import Testimonials from 'src/sections/Testimonials'
 
 export default function Index({ title }) {
   return (
@@ -39,6 +40,7 @@ export default function Index({ title }) {
       <Info />
       <Learn />
       <Stats />
+      <Testimonials />
       <Faq />
       <Sponsor />
       <Footer />
