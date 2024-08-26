@@ -4,19 +4,22 @@ import { SectionContainer } from '@lib/Containers'
 import styled, { keyframes } from 'styled-components'
 
 const InfoContainer = styled.div`
-  /* background: #150c27; */
+  /* background: linear-gradient(to bottom, #81b4ff, #9ecbfd); */
+  background-size: 100vw;
+  background-repeat: no-repeat;
+  background-position: center top;
+
   position: relative;
-  height: auto;
-
-  overflow: visible;
-  z-index: 99;
-
   width: 100%;
-  aspect-ratio: 1440 / 1100;
+  aspect-ratio: 1440/1000;
+  z-index: 0;
+  overflow: visible;
 
   ${p => p.theme.mediaQueries.mobile} {
+    /* background: #150c27; */
     background-repeat: no-repeat;
-    aspect-ratio: 412/871;
+    text-align: center;
+    aspect-ratio: 412/843;
   }
 `
 
