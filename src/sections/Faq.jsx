@@ -50,24 +50,17 @@ const BgScroll = styled(SectionContainer)`
   }
 `
 
-const bobbing = keyframes`
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
-`
-
-const Nugget = styled.div`
-  /* background: url('assets/background/faq/nugget.png') no-repeat; */
-  width: 100vw;
-  height: 100vw;
-  z-index: 2;
+const FaqTitle = styled.div`
+  background: url('assets/background/faq/faq-title.svg') no-repeat right;
+  background-size: 36vw;
+  height: 12vw;
+  width: 35.9vw;
+  z-index: 1;
   position: absolute;
-  top: 70%;
-  animation: ${bobbing} 2s ease-in-out infinite;
-
+  top: 4vw;
+  right: 10vw;
+  left: 50%;
+  transform: translateX(-50%);
   ${p => p.theme.mediaQueries.mobile} {
     display: none;
   }
@@ -149,9 +142,10 @@ const CollectionContainer = styled.div`
 
 const CollectionName = styled.div`
   color: #f0eef2;
-  font-size: 1.75rem;
+  font-size: 2.8vw;
   font-weight: 900;
   padding-bottom: 1rem;
+  align-self: baseline;
 
   ${p => p.theme.mediaQueries.mobile} {
     font-size: 1.2rem;
@@ -169,69 +163,29 @@ const StyledTitle = styled(Header2)`
   }
 `
 
-const waving = keyframes`
-  0%, 100% {
-    transform: rotate(0deg);
-  }
-  50% {
-    transform: rotate(10deg);
-  }
-`
+const FaqCollection = ({ category, faqs, expandedQuestion, setExpandedQuestion }) => {
+  return (
+    <CollectionContainer>
+      <CollectionName>{category}</CollectionName>
 
-const DeerArm = styled.div`
-  /* background: url('assets/background/faq/deerarm.png') no-repeat; */
-  width: 3vw;
-  height: 3vw;
-  z-index: 5;
-  position: absolute;
-  animation: ${waving} 1s infinite;
-  background-position: center center;
-  transform-origin: bottom left;
-  top: 68.5%;
-  left: 42.5%;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    display: none;
-  }
-`
-const BearArm = styled.div`
-  /* background: url('assets/background/faq/beararm.png') no-repeat; */
-  width: 3vw;
-  height: 3vw;
-  z-index: 4;
-  left: 60%;
-  top: 73.5%;
-  position: absolute;
-  animation: ${waving} 1s infinite;
-  transform-origin: bottom left;
-  background-position: center center;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    display: none;
-  }
-`
-
-const FaqCollection = ({ category, faqs, expandedQuestion, setExpandedQuestion }) => (
-  <CollectionContainer>
-    <CollectionName>{category}</CollectionName>
-
-    {faqs.map(q => (
-      <FaqBox
-        key={q.question}
-        question={q.question}
-        answer={q.answer}
-        isExpanded={expandedQuestion === q.question}
-        onExpand={() => {
-          if (expandedQuestion === q.question) {
-            setExpandedQuestion(null)
-          } else {
-            setExpandedQuestion(q.question)
-          }
-        }}
-      />
-    ))}
-  </CollectionContainer>
-)
+      {faqs.map(q => (
+        <FaqBox
+          key={q.question}
+          question={q.question}
+          answer={q.answer}
+          isExpanded={expandedQuestion === q.question}
+          onExpand={() => {
+            if (expandedQuestion === q.question) {
+              setExpandedQuestion(null)
+            } else {
+              setExpandedQuestion(q.question)
+            }
+          }}
+        />
+      ))}
+    </CollectionContainer>
+  )
+}
 
 const Faq = () => {
   const [faqData, setFaqData] = useState(null)
@@ -261,12 +215,9 @@ const Faq = () => {
 
   return (
     <BgSectionContainer>
-      <Nugget></Nugget>
-      <BearArm />
-      <DeerArm></DeerArm>
       <BgScroll />
       <Wrapper id="faq">
-        <StyledTitle>FAQ</StyledTitle>
+        <FaqTitle />
 
         {faqData ? (
           <FaqGrid>

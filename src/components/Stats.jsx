@@ -1,17 +1,30 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useParallax } from 'react-scroll-parallax'
 import { SectionContainer } from '@lib/Containers'
 import styled, { keyframes } from 'styled-components'
 import { Header2 } from './Typography'
 
 const gallery = [
-  '/assets/gallery/1.png',
-  '/assets/gallery/2.png',
-  '/assets/gallery/3.png',
-  '/assets/gallery/4.png',
-  '/assets/gallery/5.png',
-  '/assets/gallery/6.png',
-  '/assets/gallery/7.png',
+  '/assets/gallery/1.JPG',
+  '/assets/gallery/2.jpg',
+  '/assets/gallery/3.jpg',
+  '/assets/gallery/4.jpg',
+  '/assets/gallery/5.jpg',
+  '/assets/gallery/6.jpg',
+  '/assets/gallery/7.jpg',
+  '/assets/gallery/8.jpg',
+  '/assets/gallery/9.jpg',
+  '/assets/gallery/10.jpg',
+  '/assets/gallery/11.jpg',
+  '/assets/gallery/12.jpg',
+  '/assets/gallery/13.jpg',
+  '/assets/gallery/14.jpg',
+  '/assets/gallery/15.jpg',
+  '/assets/gallery/16.jpg',
+  '/assets/gallery/17.jpg',
+  '/assets/gallery/18.jpg',
+  '/assets/gallery/19.jpg',
+  '/assets/gallery/20.jpg',
 ]
 
 const BgSectionContainer = styled(SectionContainer)`
@@ -197,18 +210,58 @@ const mobileScroll = keyframes`
     transform: translateX(0); 
   }
   100% { 
-    transform: translateX(-1120.92px); 
+    transform: translateX(-2568.38px); 
   }
 `
+const ticketScroll = shift => keyframes`
+  0% {
+    // here
+    transform: translateX(${shift}px);
+  }
+  100% {
+    transform: translateX(-2568.38px);
+  }
+`
+
+const ticketMobileScroll = shift => keyframes`
+  0% {
+    transform: translateX(${shift}px);
+  }
+  100% {
+    transform: translateX(-2568.38px);
+  }
+`
+const TicketBackgroundScroll = styled.div`
+  display: flex;
+  position: absolute;
+  top: -20px;
+  left: -520px;
+  width: 110%;
+  height: 120%;
+  animation: ${({ shift }) => ticketScroll(shift)} 9000s linear infinite;
+  z-index: -1;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    animation: ${({ shift }) => ticketMobileScroll(shift)} 9000s linear infinite;
+  }
+`
+
+// Styled component for each ticket background image
+const TicketBackgroundImage = styled.img`
+  width: 100%;
+  height: 100%;
+  /* object-fit: cover; */
+`
+
 // animation translation matches full width of images + gap
 
 const Gallery = styled.div`
-  background: #150c27;
   animation: ${scroll} 40s linear infinite;
   display: flex;
   position: absolute;
-  top: 73.5%;
+  top: 73%;
   z-index: 97;
+  gap: 69.5px;
 
   ${p => p.theme.mediaQueries.mobile} {
     height: 20%;
@@ -218,10 +271,25 @@ const Gallery = styled.div`
 `
 
 const GalleryImage = styled.img`
-  margin: 10px 15px;
+  margin: 20px 20px;
+  background-color: pink;
+  width: 429.5px;
+  height: 203px;
+  object-fit: cover;
+  border-radius: 15px;
+  border: 0.4vw solid white;
 `
 
 export default function Stats() {
+  const [shiftAmount, setShiftAmount] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setShiftAmount(prevShift => prevShift + 1)
+    }, 40000) // Match the duration of the animation (40s)
+
+    return () => clearInterval(interval) // Clean up on component unmount
+  }, [])
   // const { ref: ref1 } = useParallax({
   //   speed: -20,
   // });
@@ -305,14 +373,18 @@ export default function Stats() {
           </StatsGrid>
         </StyledTitle>
       </ContentInner>
-      {/* <Gallery>
+      <Gallery>
+        <TicketBackgroundScroll shift={shiftAmount}>
+          <TicketBackgroundImage src="assets/background/stats/tickets.svg" alt="ticket background" />
+          <TicketBackgroundImage src="assets/background/stats/tickets.svg" alt="ticket background" />
+        </TicketBackgroundScroll>
         {gallery.map(img => (
           <GalleryImage key={img} src={img} />
         ))}
         {gallery.map(img => (
           <GalleryImage key={`${img}2`} src={img} />
         ))}
-      </Gallery> */}
+      </Gallery>
     </BgSectionContainer>
   )
 }

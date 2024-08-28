@@ -2,76 +2,85 @@ import { useState } from 'react'
 import styled from 'styled-components'
 
 const Container = styled.div`
-  text-align:left;
+  text-align: left;
   background: white;
-  border:1.5px solid #FFF;
-  border-radius:5px;
-  box-sizing:border-box;
-  overflow:hidden;
+  border: 1.5px solid #fff;
+  border-radius: 5px;
+  box-sizing: border-box;
+  overflow: hidden;
 
-  ${p => p.expanded
-    ? `
-    border-color: #C4B2F0;
+  ${p =>
+    p.expanded
+      ? `
+    border-color: #752420;
   `
-    : `
-    border-color: #C4B2F0;
+      : `
+    border-color: #752420;
   `}
-  
+
   &:not(:last-child) {
     margin-bottom: 20px;
   }
 `
 
 const Top = styled.div`
-  color:#252525;
-  padding:1rem;
-  font-size:1.2rem;
-  display:flex;
-  justify-content:space-between;
+  color: #252525;
+  padding: 1.1vw;
+  font-size: 1.2vw;
+  display: flex;
+  justify-content: space-between;
 
-  border-bottom:solid;
-  margin-bottom:-1.2px;
-  border-width:1px;
+  border-bottom: solid;
+  margin-bottom: -1.2px;
+  border-width: 1px;
 
-  ${p => p.expanded && `
+  ${p =>
+    p.expanded &&
+    `
     color:#252525;
     background-color: #FFFFFF;
   `}
-  
+
   ${p => p.theme.mediaQueries.mobile} {
     font-size: 1rem;
     padding: 0.8rem;
   }
 
   &:hover {
-    cursor:pointer;
+    cursor: pointer;
   }
 `
 
 const AnswerBox = styled.div`
+  box-sizing: border-box;
+  overflow: hidden;
+  transition: 0.2s max-height cubic-bezier(0.6, 0, 0.4, 1);
+  font-size: 1.2vw;
 
-  box-sizing:border-box;
-  overflow:hidden;
-  transition:0.2s max-height cubic-bezier(.6,0,.4,1);
-
-  ${p => p.isOpen ? 'max-height:500px; background-color: #4A3488;' : 'max-height: 0;'}
+  ${p => (p.isOpen ? 'max-height:500px; background-color: #7C0F3B;' : 'max-height: 0;')}
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 0.9rem;
+    font-size: 0.9vw;
   }
 `
 
 const TopExpand = styled.div`
-  display:flex;
-  align-items:center;
-  transition:0.2s transform cubic-bezier(.6,0,.4,1);
+  display: flex;
+  align-items: center;
+  transition: 0.2s transform cubic-bezier(0.6, 0, 0.4, 1);
 `
 
 // style={{ transform: `rotate(${false ? '0deg' : ''});` }}
 
 const Arrow = ({ color }) => (
   <svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M17.3145 10L9.47162 2L1.62879 10" stroke={color} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+    <path
+      d="M17.3145 10L9.47162 2L1.62879 10"
+      stroke={color}
+      strokeWidth="3"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
 )
 
@@ -85,9 +94,7 @@ const FaqBox = ({ question, answer, isExpanded, onExpand }) => {
         </TopExpand>
       </Top>
       <AnswerBox isOpen={isExpanded}>
-        <div style={{ padding: '1rem' }}>
-          {answer}
-        </div>
+        <div style={{ padding: '1.1vw' }}>{answer}</div>
       </AnswerBox>
     </Container>
   )

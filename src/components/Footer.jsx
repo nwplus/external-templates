@@ -12,8 +12,9 @@ import {
 import Team from '@components/Team'
 
 const CaveTop = styled.div`
-  /* background: url('assets/background/footer/background.png') #150c27; */
-  background-size: 100%;
+  /* background: url('assets/background/footer/footer-background.png');
+  background-size: 100%; */
+  /* background-color: pink; */
   background-repeat: no-repeat;
   background-position: center top;
 
@@ -33,10 +34,10 @@ const CaveTop = styled.div`
 
   a {
     transition: ${p => p.theme.transition.small};
-    color: #5c1b59;
+    color: #c4b2f0;
     :hover {
       cursor: pointer;
-      color: #4a3488;
+      color: #f9c745;
     }
   }
 
@@ -47,6 +48,19 @@ const CaveTop = styled.div`
     background-position: center center;
     aspect-ratio: 412/506;
   }
+`
+
+const FooterBackground = styled.div`
+  background-position-y: bottom;
+  background: url('assets/background/footer/footer-background.png');
+  background-size: 250vw;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  bottom: -98vw;
+  background-repeat: no-repeat;
+  background-position: center top;
+  z-index: 3; /* Ensure it's beneath other content in CaveTop */
 `
 // const PlantsContainer = styled.div`
 //   position: absolute;
@@ -61,57 +75,23 @@ const CaveTop = styled.div`
 //   }
 // `
 
-const glow = keyframes`
-  0% {
-    filter: brightness(1);
-  }
-  50% {
-    filter: brightness(1.25);
-  }
-  100% {
-    filter: brightness(1);
-  }
-`
-
-const Mushroom = styled.div`
-  /* background: url('assets/background/footer/mushroom.png') no-repeat center; */
-  width: 100vw;
-  z-index: 1; // below the Plant
-  position: absolute;
-  transform: translateX(-45vw);
-  aspect-ratio: 1 / 1.5;
-  animation: ${glow} 3s infinite;
-  ${p => p.theme.mediaQueries.mobile} {
-    display: none;
-  }
-`
-
-const Plant = styled.div`
-  /* background: url('assets/background/footer/plants.png') no-repeat center; */
-  width: 100vw;
-  z-index: 2; // below the Plant
-  transform: translateX(-43vw) translateY(20vw);
-  position: absolute;
-  aspect-ratio: 1 / 1.5;
-  ${p => p.theme.mediaQueries.mobile} {
-    display: none;
-  }
-`
 const SocialMediaIcons = styled.div`
   justify-content: center;
   align-items: center;
   display: flex;
   position: relative;
   z-index: 3; // below the Plant
+  width: 10vw;
+  font-size: 4vw;
   a {
-    color: #e2d6ff;
+    color: #c4b2f0;
     width: 50px;
   }
   gap: 2rem;
 
   ${p => p.theme.mediaQueries.mobile} {
     a {
-      color: #e2d6ff;
+      color: #c4b2f0;
       width: 25px;
     }
     gap: 1rem;
@@ -123,11 +103,12 @@ const Links = styled.div`
   gap: 2rem;
   font-size: 1.5rem;
   a {
-    color: #e2d6ff;
+    color: #c4b2f0;
   }
 `
 
 const TextContainer = styled.div`
+  /* background-color: pink; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -137,7 +118,7 @@ const TextContainer = styled.div`
   color: #e2d6ff;
   position: absolute;
   z-index: 999;
-  bottom: 22.5vw;
+  bottom: 62.5vw;
 
   ${p => p.theme.mediaQueries.mobile} {
     bottom: 50vw;
@@ -155,17 +136,93 @@ const TeamContainer = styled.div`
   z-index: 4;
   position: absolute;
   left: 0;
-  bottom: 3vw;
+  bottom: 2vw;
   text-align: center;
   width: 100%;
+`
+
+const GreenFireWork = styled.div`
+  background: url('assets/background/footer/green-firework.png');
+  background-size: 21vw;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  bottom: -51vw;
+  left: -39vw;
+  background-repeat: no-repeat;
+  background-position: center top;
+  z-index: 2;
+  animation: fadeInOut 3s ease-in-out infinite;
+
+  @keyframes fadeInOut {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.3;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+`
+const YellowFireWork = styled.div`
+  background: url('assets/background/footer/yellow-firework.png');
+  background-size: 27vw;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  bottom: -80vw;
+  left: -35vw;
+  background-repeat: no-repeat;
+  background-position: center top;
+  z-index: 4;
+  animation: fadeInOut 4.4s ease-in-out infinite;
+  animation-delay: 0.2s;
+
+  @keyframes fadeInOut {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.3;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+`
+const RedFireWork = styled.div`
+  background: url('assets/background/footer/red-firework.png');
+  background-size: 28vw;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  bottom: -62vw;
+  left: 36vw;
+  background-repeat: no-repeat;
+  background-position: center top;
+  z-index: 4;
+  animation: fadeInOut 3.3s ease-in-out infinite;
+  animation-delay: 0.3s;
+
+  @keyframes fadeInOut {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.3;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 `
 
 export default function Footer() {
   return (
     <>
       <CaveTop>
-        <Mushroom></Mushroom>
-        <Plant></Plant>
         <TextContainer>
           <SocialMediaIcons>
             <a href="https://www.facebook.com/nwplusubc" target="_blank" rel="noreferrer">
@@ -194,12 +251,15 @@ export default function Footer() {
             <a href="mailto:sponsorship@nwplus.io?subject=Sponsorship" target="_blank" rel="noreferrer">
               Become a Sponsor
             </a>
+            <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf" target="_blank" rel="noreferrer">
+              Code of Conduct
+            </a>
           </Links>
-          <SmallText>
-            <div>Organized and held by nwPlus</div>
-            <div>Copyright &copy; HackCamp 2024</div>
-          </SmallText>
         </TextContainer>
+        <GreenFireWork />
+        <YellowFireWork />
+        <RedFireWork />
+        <FooterBackground />
         <TeamContainer>
           <Team />
         </TeamContainer>
