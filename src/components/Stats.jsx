@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useParallax } from 'react-scroll-parallax'
 import { SectionContainer } from '@lib/Containers'
 import styled, { keyframes } from 'styled-components'
@@ -210,18 +210,58 @@ const mobileScroll = keyframes`
     transform: translateX(0); 
   }
   100% { 
-    transform: translateX(-1120.92px); 
+    transform: translateX(-2568.38px); 
   }
 `
+const ticketScroll = shift => keyframes`
+  0% {
+    // here
+    transform: translateX(${shift}px);
+  }
+  100% {
+    transform: translateX(-2568.38px);
+  }
+`
+
+const ticketMobileScroll = shift => keyframes`
+  0% {
+    transform: translateX(${shift}px);
+  }
+  100% {
+    transform: translateX(-2568.38px);
+  }
+`
+const TicketBackgroundScroll = styled.div`
+  display: flex;
+  position: absolute;
+  top: -20px;
+  left: -520px;
+  width: 110%;
+  height: 120%;
+  animation: ${({ shift }) => ticketScroll(shift)} 10000s linear infinite;
+  z-index: -1;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    animation: ${({ shift }) => ticketMobileScroll(shift)} 10000s linear infinite;
+  }
+`
+
+// Styled component for each ticket background image
+const TicketBackgroundImage = styled.img`
+  width: 100%;
+  height: 100%;
+  /* object-fit: cover; */
+`
+
 // animation translation matches full width of images + gap
 
 const Gallery = styled.div`
-  background: #150c27;
   animation: ${scroll} 40s linear infinite;
   display: flex;
   position: absolute;
-  top: 73.5%;
+  top: 73%;
   z-index: 97;
+  gap: 69.5px;
 
   ${p => p.theme.mediaQueries.mobile} {
     height: 20%;
@@ -231,13 +271,31 @@ const Gallery = styled.div`
 `
 
 const GalleryImage = styled.img`
-  margin: 10px 15px;
-  width: 30vw;
-  height: 20vw;
+  margin: 20px 20px;
+  background-color: pink;
+  width: 429.5px;
+  height: 203px;
   object-fit: cover;
+  border-radius: 15px;
+  border: 0.4vw solid white;
 `
 
 export default function Stats() {
+  const [shiftAmount, setShiftAmount] = useState(0)
+
+  useEffect(() => {
+    console.log(shiftAmount, ' is shiftAmount')
+  }, [shiftAmount])
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (shiftAmount === 0) {
+        setShiftAmount(prevShift => prevShift + 5.5)
+      }
+    }, 40000) // Match the duration of the animation (40s)
+
+    return () => clearInterval(interval) // Clean up on component unmount
+  }, [])
   // const { ref: ref1 } = useParallax({
   //   speed: -20,
   // });
@@ -321,14 +379,18 @@ export default function Stats() {
           </StatsGrid>
         </StyledTitle>
       </ContentInner>
-      {/* <Gallery>
+      <Gallery>
+        <TicketBackgroundScroll shift={shiftAmount}>
+          <TicketBackgroundImage src="assets/background/stats/tickets.svg" alt="ticket background" />
+          <TicketBackgroundImage src="assets/background/stats/tickets.svg" alt="ticket background" />
+        </TicketBackgroundScroll>
         {gallery.map(img => (
           <GalleryImage key={img} src={img} />
         ))}
         {gallery.map(img => (
           <GalleryImage key={`${img}2`} src={img} />
         ))}
-      </Gallery> */}
+      </Gallery>
     </BgSectionContainer>
   )
 }
