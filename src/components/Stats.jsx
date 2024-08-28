@@ -238,11 +238,11 @@ const TicketBackgroundScroll = styled.div`
   left: -520px;
   width: 110%;
   height: 120%;
-  animation: ${({ shift }) => ticketScroll(shift)} 10000s linear infinite;
+  animation: ${({ shift }) => ticketScroll(shift)} 9000s linear infinite;
   z-index: -1;
 
   ${p => p.theme.mediaQueries.mobile} {
-    animation: ${({ shift }) => ticketMobileScroll(shift)} 10000s linear infinite;
+    animation: ${({ shift }) => ticketMobileScroll(shift)} 9000s linear infinite;
   }
 `
 
@@ -289,7 +289,7 @@ export default function Stats() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setShiftAmount(prevShift => prevShift + 3)
+      setShiftAmount(prevShift => prevShift + 2)
     }, 40000) // Match the duration of the animation (40s)
 
     return () => clearInterval(interval) // Clean up on component unmount
