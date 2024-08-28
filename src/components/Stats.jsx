@@ -289,7 +289,7 @@ export default function Stats() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setShiftAmount(prevShift => prevShift + 5)
+      setShiftAmount(prevShift => prevShift + 4)
     }, 40000) // Match the duration of the animation (40s)
 
     return () => clearInterval(interval) // Clean up on component unmount
