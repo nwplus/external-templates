@@ -175,19 +175,19 @@ const PushinP = styled.p`
 const Coaster = styled.div`
   background: url('assets/Info/coaster.svg');
   background-repeat: no-repeat;
-  background-size: 23vw;
+  background-size: 22.2vw;
   position: absolute;
   top: -4vw;
-  left: 48.6vw;
+  left: 55.2vw;
   width: 30vw;
   height: 30vw;
 `
 const Info = () => {
   // Define the parallax effect for the coaster image
   const coasterParallax = useParallax({
-    translateX: ['70', '0'],
-    translateY: ['0', '52'],
-    easing: 'easeInOut'
+    translateX: ['52.5', '0'],
+    translateY: ['0', '40.7'],
+    easing: 'easeOutQuad'
   })
 
   const CurvedText = ({ text }) => {
