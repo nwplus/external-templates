@@ -8,6 +8,7 @@ import styled, { keyframes } from 'styled-components'
 const InfoContainer = styled.div`
   /* background: #150c27; */
   position: relative;
+  top: -26vw;
   aspect-ratio: 1440/989;
   z-index: 4;
 
