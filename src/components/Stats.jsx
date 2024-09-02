@@ -177,6 +177,12 @@ const TicketBackgroundScroll = styled.div`
   ${p => p.theme.mediaQueries.mobile} {
     animation: ${({ shift }) => ticketMobileScroll(shift)} 9000s linear infinite;
   }
+
+  ${p => p.theme.mediaQueries.tabletLarger} {
+    left: -580px;
+    animation: ${({ shift }) => ticketMobileScroll(shift)} 9000s linear infinite;
+    top: 3px;
+  }
 `
 // Styled component for each ticket background image
 const TicketBackgroundImage = styled.img`
@@ -197,17 +203,28 @@ const Gallery = styled.div`
     top: 80%;
     animation: ${mobileScroll} 40s linear infinite;
   }
+
+  ${p => p.theme.mediaQueries.tabletLarger} {
+    gap: 47px;
+  }
+
+  ${p => p.theme.mediaQueries.tablet} {
+    top: -8vw;
+  }
 `
 const GalleryImage = styled.img`
   margin: 20px 20px;
-  background-color: pink;
-  /* width: 430.5px; */
-  /* height: 203px; */
   width: 280px;
   height: 160px;
   object-fit: cover;
   border-radius: 15px;
   border: 0.4vw solid white;
+
+  ${p => p.theme.mediaQueries.tabletLarger} {
+    margin: 14px 14px;
+    width: 200px;
+    height: 120px;
+  }
 `
 
 const ProjectTicketContainer = styled.div`
