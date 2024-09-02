@@ -123,6 +123,7 @@ const StyledTitle = styled(Header1)`
   position: relative;
   top: 4.2vw;
   left: 15.8vw;
+  z-index: 100;
 
   ${p => p.theme.mediaQueries.mobile} {
     font-size: 1.5rem;
