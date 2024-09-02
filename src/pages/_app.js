@@ -41,6 +41,17 @@ const OuterContainer = styled(SectionContainer)`
 
   /* z-index: -98; */
   /* overflow: hidden; */
+
+  ${p => p.theme.mediaQueries.mobile} {
+    background: url('assets/mobile/entire-site/entire-site.png');
+    width: 115.5vw;
+    margin-left: -7.7vw;
+    height: auto;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center top;
+  }
+
 `
 
 function App({ Component, pageProps }) {

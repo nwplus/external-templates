@@ -180,6 +180,15 @@ const Coaster = styled.div`
   left: 55.2vw;
   width: 30vw;
   height: 30vw;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    top: 93vw;
+    left: 55vw;
+    width: 40vw;
+    height: 40vw;
+    background-size: 39vw;
+  }
+  
 `
 const Info = () => {
   // Define the parallax effect for the coaster image

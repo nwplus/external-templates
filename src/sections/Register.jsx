@@ -22,11 +22,11 @@ const BgSectionContainer = styled(SectionContainer)`
     /* background: #150c27; */
     background-repeat: no-repeat;
     text-align: center;
+    align-items: center;
     aspect-ratio: 412/843;
   }
 `
 const BgScroll = styled(SectionContainer)`
-  background: url('assets/background/hero/background2.png');
   z-index: -3;
   background-size: 100vw;
   background-repeat: no-repeat;
@@ -96,8 +96,9 @@ const MediaContainer = styled.div`
     flex-direction: column;
     height: 100%;
     align-items: center;
+    text-align: center;
     justify-content: center;
-    transform: translateY(-8rem);
+    transform: translateY(-30vw) translateX(30vw);
     padding: 0;
   }
 `
@@ -129,6 +130,7 @@ const GridContainer = styled.div`
   ${p => p.theme.mediaQueries.mobile} {
     display: flex;
     align-items: center;
+    text-align: center;
   }
 `
 
@@ -181,7 +183,10 @@ const HackCampLogo = styled.div`
   z-index: 2;
 
   ${p => p.theme.mediaQueries.mobile} {
-    transform: scale(0.8);
+    position: relative;
+    margin: 0 auto;
+    align-items: center;
+    left: 5vw;
   }
 `
 
@@ -213,7 +218,7 @@ const Tent = styled.div`
   background-position: center top;
 
   ${p => p.theme.mediaQueries.mobile} {
-    transform: scale(0.8);
+    display: none;
   }
 `
 
@@ -388,6 +393,13 @@ const CountdownText = styled.div`
   span:nth-child(21) {
     transform: translateY(0.6vw) rotate(11deg);
   }
+
+  ${p => p.theme.mediaQueries.mobile} {
+    scale: 1.6;
+    top: 241.5vw;
+    left: 50%;
+  }
+  
 `
 
 const CountdownNumber = styled.div`
@@ -453,6 +465,11 @@ const SignContainer = styled.div`
   position: absolute;
   left: 72.5vw;
   top: 13.4vw;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
+
 `
 
 const SignButton = styled.button`
