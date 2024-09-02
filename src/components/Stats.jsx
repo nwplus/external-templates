@@ -1,7 +1,30 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { SectionContainer } from '@lib/Containers'
 import styled, { keyframes } from 'styled-components'
 import { Header1 } from './Typography'
+
+const gallery = [
+  '/assets/gallery/1.JPG',
+  '/assets/gallery/2.jpg',
+  '/assets/gallery/3.jpg',
+  '/assets/gallery/4.jpg',
+  '/assets/gallery/5.jpg',
+  '/assets/gallery/6.jpg',
+  '/assets/gallery/7.jpg',
+  '/assets/gallery/8.jpg',
+  '/assets/gallery/9.jpg',
+  '/assets/gallery/10.jpg',
+  '/assets/gallery/11.jpg',
+  '/assets/gallery/12.jpg',
+  '/assets/gallery/13.jpg',
+  '/assets/gallery/14.jpg',
+  '/assets/gallery/15.jpg',
+  '/assets/gallery/16.jpg',
+  '/assets/gallery/17.jpg',
+  '/assets/gallery/18.jpg',
+  '/assets/gallery/19.jpg',
+  '/assets/gallery/20.jpg',
+]
 
 const BgSectionContainer = styled(SectionContainer)`
   display: grid;
@@ -11,9 +34,9 @@ const BgSectionContainer = styled(SectionContainer)`
   aspect-ratio: 1440/1415;
   position: relative;
   z-index: 15;
-  overflow: hidden;
-  grid-template-columns: repeat(2, 1fr); 
-  grid-gap: 1vw; 
+  /* overflow: hidden; */
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1vw;
 
   ${p => p.theme.mediaQueries.mobile} {
     aspect-ratio: 412/709;
@@ -94,7 +117,7 @@ const FgScroll = styled(SectionContainer)`
 
 const StyledTitle = styled(Header1)`
   text-align: center;
-  color: #FFECC5;
+  color: #ffecc5;
   font-size: 3.95vw;
   transform: rotate(-1.8deg);
   position: relative;
@@ -106,10 +129,90 @@ const StyledTitle = styled(Header1)`
   }
 `
 
+const scroll = keyframes`
+  0% { 
+    transform: translateX(0); 
+  }
+  100% { 
+    transform: translateX(-2568.38px); 
+  }
+`
+const mobileScroll = keyframes`
+  0% { 
+    transform: translateX(0); 
+  }
+  100% { 
+    transform: translateX(-2568.38px); 
+  }
+`
+const ticketScroll = shift => keyframes`
+  0% {
+    // here
+    transform: translateX(${shift}px);
+  }
+  100% {
+    transform: translateX(-2568.38px);
+  }
+`
+const ticketMobileScroll = shift => keyframes`
+  0% {
+    transform: translateX(${shift}px);
+  }
+  100% {
+    transform: translateX(-2568.38px);
+  }
+`
+const TicketBackgroundScroll = styled.div`
+  display: flex;
+  position: absolute;
+  top: 6px;
+  left: -775px;
+  /* width: 108%; */
+  width: 100%;
+  /* height: 120%; */
+  height: 100%;
+  animation: ${({ shift }) => ticketScroll(shift)} 9000s linear infinite;
+  z-index: -1;
+  ${p => p.theme.mediaQueries.mobile} {
+    animation: ${({ shift }) => ticketMobileScroll(shift)} 9000s linear infinite;
+  }
+`
+// Styled component for each ticket background image
+const TicketBackgroundImage = styled.img`
+  width: 100%;
+  height: 100%;
+  /* object-fit: cover; */
+`
+// animation translation matches full width of images + gap
+const Gallery = styled.div`
+  animation: ${scroll} 40s linear infinite;
+  display: flex;
+  position: absolute;
+  top: -6vw;
+  z-index: 97;
+  gap: 51.3px;
+  ${p => p.theme.mediaQueries.mobile} {
+    height: 20%;
+    top: 80%;
+    animation: ${mobileScroll} 40s linear infinite;
+  }
+`
+const GalleryImage = styled.img`
+  margin: 20px 20px;
+  background-color: pink;
+  /* width: 430.5px; */
+  /* height: 203px; */
+  width: 280px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 15px;
+  border: 0.4vw solid white;
+`
+
 const ProjectTicketContainer = styled.div`
   width: 33.5vw;
   height: 15.6vw;
-  overflow: hidden; 
+  overflow: hidden;
   position: relative;
   left: -36vw;
   top: 20vw;
@@ -118,7 +221,7 @@ const ProjectTicketContainer = styled.div`
   z-index: 301;
 
   :hover {
-    transform: scale(1.1); 
+    transform: scale(1.1);
   }
 `
 
@@ -131,11 +234,11 @@ const ProjectTicket = styled.img`
 
 const ProjectText = styled.div`
   position: absolute;
-  top: 8vw;  
-  left: 21vw;  
-  transform: translate(-50%, -50%) rotate(-4.2deg); 
-  color: #CF0A1F;
-  text-align: center;  
+  top: 8vw;
+  left: 21vw;
+  transform: translate(-50%, -50%) rotate(-4.2deg);
+  color: #cf0a1f;
+  text-align: center;
   font-size: 3.75vw;
   font-weight: 900;
 
@@ -148,7 +251,7 @@ const ProjectAnimatedNumber = styled.div`
   font-size: 3.8vw;
   font-weight: 900;
   line-height: 1;
-  
+
   ${p => p.theme.mediaQueries.mobile} {
     font-size: 1.5rem;
   }
@@ -167,7 +270,7 @@ const ProjectLabel = styled.div`
 const ParticipantTicketContainer = styled.div`
   width: 33.5vw;
   height: 15.6vw;
-  overflow: hidden; 
+  overflow: hidden;
   position: relative;
   left: 50.6vw;
   top: -8.7vw;
@@ -181,19 +284,19 @@ const ParticipantTicketContainer = styled.div`
 `
 
 const ParticipantTicket = styled.img`
-  width: 100%; 
+  width: 100%;
   height: 100%;
-  object-fit: cover; 
+  object-fit: cover;
   transition: transform 0.3s ease;
 `
 
 const ParticipantText = styled.div`
   position: absolute;
-  top: 7.8vw;  
-  left: 19.5vw; 
-  transform: translate(-50%, -50%) rotate(8.2deg);  
-  color: #CF0A1F;
-  text-align: center;  
+  top: 7.8vw;
+  left: 19.5vw;
+  transform: translate(-50%, -50%) rotate(8.2deg);
+  color: #cf0a1f;
+  text-align: center;
   font-size: 3.75vw;
   font-weight: 900;
 
@@ -206,14 +309,14 @@ const ParticipantAnimatedNumber = styled.div`
   font-size: 3.8vw;
   font-weight: 900;
   line-height: 1;
-  
+
   ${p => p.theme.mediaQueries.mobile} {
     font-size: 1.5rem;
   }
 `
 
 const ParticipantLabel = styled.div`
-  font-size: 1.2vw; 
+  font-size: 1.2vw;
   font-weight: 700;
   line-height: 1;
 
@@ -225,7 +328,7 @@ const ParticipantLabel = styled.div`
 const HackersTicketContainer = styled.div`
   width: 33.5vw;
   height: 15.6vw;
-  overflow: hidden; 
+  overflow: hidden;
   position: relative;
   left: -29vw;
   top: 7vw;
@@ -234,23 +337,23 @@ const HackersTicketContainer = styled.div`
   z-index: 300;
 
   :hover {
-    transform: scale(1.1); 
+    transform: scale(1.1);
   }
 `
 
 const HackersTicket = styled.img`
-  width: 100%; 
+  width: 100%;
   height: 100%;
-  object-fit: cover; 
+  object-fit: cover;
   transition: transform 0.3s ease;
 `
 
 const HackersText = styled.div`
   position: absolute;
-  top: 7.9vw; 
-  left: 19.3vw;  
+  top: 7.9vw;
+  left: 19.3vw;
   transform: translate(-50%, -50%) rotate(7.1deg);
-  color: #0D5D7B;
+  color: #0d5d7b;
   text-align: center;
   font-size: 3.75vw;
   font-weight: 900;
@@ -264,7 +367,7 @@ const HackersAnimatedNumber = styled.div`
   font-size: 3.8vw;
   font-weight: 900;
   line-height: 1;
-  
+
   ${p => p.theme.mediaQueries.mobile} {
     font-size: 1.5rem;
   }
@@ -283,7 +386,7 @@ const HackersLabel = styled.div`
 const CharityTicketContainer = styled.div`
   width: 46vw;
   height: 21.42vw;
-  overflow: hidden; 
+  overflow: hidden;
   position: relative;
   left: 39.5vw;
   top: -26.5vw;
@@ -292,14 +395,14 @@ const CharityTicketContainer = styled.div`
   z-index: 301;
 
   :hover {
-    transform: scale(1.1); 
+    transform: scale(1.1);
   }
 `
 
 const CharityTicket = styled.img`
-  width: 100%; 
+  width: 100%;
   height: 100%;
-  object-fit: cover; 
+  object-fit: cover;
   transition: transform 0.3s ease;
 `
 
@@ -307,9 +410,9 @@ const CharityText = styled.div`
   position: absolute;
   top: 11.2vw;
   left: 20vw;
-  transform: translate(-50%, -50%) rotate(-7.9deg); 
-  color: #9C1F82;
-  text-align: center; 
+  transform: translate(-50%, -50%) rotate(-7.9deg);
+  color: #9c1f82;
+  text-align: center;
   font-size: 3.75vw;
   font-weight: 900;
 
@@ -322,14 +425,14 @@ const CharityAnimatedNumber = styled.div`
   font-size: 3.8vw;
   font-weight: 900;
   line-height: 1;
-  
+
   ${p => p.theme.mediaQueries.mobile} {
     font-size: 1.5rem;
   }
 `
 
 const CharityLabel = styled.div`
-  font-size: 1.2vw; 
+  font-size: 1.2vw;
   font-weight: 700;
   line-height: 1;
 
@@ -338,7 +441,8 @@ const CharityLabel = styled.div`
   }
 `
 
-export default function Stats () {
+export default function Stats() {
+  const [shiftAmount, setShiftAmount] = useState(0)
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -376,6 +480,14 @@ export default function Stats () {
     }
   })
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setShiftAmount(prevShift => prevShift + 0.2)
+    }, 40000) // Match the duration of the animation (40s)
+
+    return () => clearInterval(interval) // Clean up on component unmount
+  }, [])
+
   return (
     <BgSectionContainer id="statistics">
       <BgScroll />
@@ -383,33 +495,53 @@ export default function Stats () {
       <FgScroll />
       <StyledTitle>Last Year We Had...</StyledTitle>
       <ProjectTicketContainer className="stats">
-        <ProjectTicket src='assets/background/stats/projects-ticket.svg' alt='Projects Ticket' />
+        <ProjectTicket src="assets/background/stats/projects-ticket.svg" alt="Projects Ticket" />
         <ProjectText>
-            <ProjectAnimatedNumber className="num" data-val="57">0</ProjectAnimatedNumber>
-            <ProjectLabel>Projects</ProjectLabel>
+          <ProjectAnimatedNumber className="num" data-val="57">
+            0
+          </ProjectAnimatedNumber>
+          <ProjectLabel>Projects</ProjectLabel>
         </ProjectText>
       </ProjectTicketContainer>
       <ParticipantTicketContainer className="stats">
-        <ParticipantTicket src='assets/background/stats/participants-ticket.svg' alt='Participants Ticket' />
+        <ParticipantTicket src="assets/background/stats/participants-ticket.svg" alt="Participants Ticket" />
         <ParticipantText>
-            <ParticipantAnimatedNumber className="num" data-val="250">0</ParticipantAnimatedNumber>
-            <ParticipantLabel>Participants</ParticipantLabel>
+          <ParticipantAnimatedNumber className="num" data-val="250">
+            0
+          </ParticipantAnimatedNumber>
+          <ParticipantLabel>Participants</ParticipantLabel>
         </ParticipantText>
       </ParticipantTicketContainer>
       <HackersTicketContainer className="stats">
-        <HackersTicket src='assets/background/stats/hackers-ticket.svg' alt='Hackers Ticket' />
+        <HackersTicket src="assets/background/stats/hackers-ticket.svg" alt="Hackers Ticket" />
         <HackersText>
-            <HackersAnimatedNumber className="num" data-val="100" id="percent">0</HackersAnimatedNumber>
-            <HackersLabel>First-time Hackers</HackersLabel>
+          <HackersAnimatedNumber className="num" data-val="100" id="percent">
+            0
+          </HackersAnimatedNumber>
+          <HackersLabel>First-time Hackers</HackersLabel>
         </HackersText>
       </HackersTicketContainer>
       <CharityTicketContainer className="stats">
-        <CharityTicket src='assets/background/stats/charity-ticket.svg' alt='Charity Ticket' />
+        <CharityTicket src="assets/background/stats/charity-ticket.svg" alt="Charity Ticket" />
         <CharityText>
-            <CharityAnimatedNumber className="num" data-val="570" id="moneysign">0</CharityAnimatedNumber>
-            <CharityLabel>Raised for Charity</CharityLabel>
+          <CharityAnimatedNumber className="num" data-val="570" id="moneysign">
+            0
+          </CharityAnimatedNumber>
+          <CharityLabel>Raised for Charity</CharityLabel>
         </CharityText>
       </CharityTicketContainer>
+      <Gallery>
+        <TicketBackgroundScroll shift={shiftAmount}>
+          <TicketBackgroundImage src="assets/background/stats/tickets.svg" alt="ticket background" />
+          <TicketBackgroundImage src="assets/background/stats/tickets.svg" alt="ticket background" />
+        </TicketBackgroundScroll>
+        {gallery.map(img => (
+          <GalleryImage key={img} src={img} />
+        ))}
+        {gallery.map(img => (
+          <GalleryImage key={`${img}2`} src={img} />
+        ))}
+      </Gallery>
     </BgSectionContainer>
   )
 }
