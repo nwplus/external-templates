@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled, { keyframes } from 'styled-components'
+import axios from 'axios'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faFacebook,
@@ -10,6 +11,8 @@ import {
   faYoutube,
 } from '@fortawesome/free-brands-svg-icons'
 import Team from '@components/Team'
+import Button from '@lib/Button'
+import { LAPTOP } from '@constants/measurements'
 
 const CaveTop = styled.div`
   /* background: url('assets/background/footer/footer-background.png');
@@ -62,30 +65,19 @@ const FooterBackground = styled.div`
   background-position: center top;
   z-index: 3; /* Ensure it's beneath other content in CaveTop */
 `
-// const PlantsContainer = styled.div`
-//   position: absolute;
-//   left: 0;
-//   bottom: 0;
-//   display: flex;
-//   align-items: flex-end;
-//   background-size:cover;
-
-//   ${(p) => p.theme.mediaQueries.mobile} {
-//     display: none;
-//   }
-// `
 
 const SocialMediaIcons = styled.div`
   justify-content: center;
   align-items: center;
   display: flex;
   position: relative;
-  z-index: 3; // below the Plant
-  width: 10vw;
+  z-index: 5;
+  width: 36vw;
+  height: 6vw;
   font-size: 4vw;
   a {
     color: #c4b2f0;
-    width: 50px;
+    width: 500px;
   }
   gap: 2rem;
 
@@ -101,14 +93,13 @@ const SocialMediaIcons = styled.div`
 const Links = styled.div`
   display: flex;
   gap: 2rem;
-  font-size: 1.5rem;
+  font-size: 1.6vw;
   a {
     color: #c4b2f0;
   }
 `
 
 const TextContainer = styled.div`
-  /* background-color: pink; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -219,7 +210,115 @@ const RedFireWork = styled.div`
   }
 `
 
+const InputContainer = styled.div`
+  position: relative;
+  margin-top: 2vw;
+  width: 35vw;
+  ${p => p.theme.mediaQueries.mobile} {
+    width: 70vw;
+  }
+`
+
+const StyledInput = styled.input`
+  border-radius: 8px;
+  border: 0;
+  /* margin-top: 1vw; */
+  padding: 11px 14px;
+  background: white;
+  font-weight: 100;
+  font-size: 1.5vw;
+  width: 100%;
+  @media (max-width: ${LAPTOP}) {
+    font-size: 1.5vw;
+  }
+
+  ${p => p.theme.mediaQueries.mobile} {
+    padding: 4px 8px;
+    font-size: 1.5vw;
+    line-height: 2vw;
+  }
+`
+
+const ComboButton = styled(Button)`
+  position: absolute;
+  right: -0.5vw;
+  top: 0.35vw;
+  width: auto;
+  background-color: #8e7eb4 !important;
+  height: 80%;
+  border-radius: 8px;
+  padding: 0 20px !important;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  // Override the font-size media query
+  @media (max-width: ${LAPTOP}) {
+    font-size: 1.5vw;
+  }
+`
+
+const StyledMessage = styled.div`
+  font-size: 1.4vw;
+`
+
 export default function Footer() {
+  const [inputMessage, setInputMessage] = useState('')
+  const emailInput = React.createRef()
+
+  function addToMailingList() {
+    // Reset any error/info messages from before
+    setInputMessage('')
+
+    const email = emailInput.current.value
+    const validEmail = validateEmail(email)
+    if (validEmail) {
+      axios({
+        method: 'POST',
+        url: 'https://us-central1-nwplus-ubc.cloudfunctions.net/addToMailingList',
+        data: {
+          email,
+        },
+      })
+        .then(() => {
+          setInputMessage(`${email} is now subscribed!`)
+        })
+        .catch(err => {
+          // If the email is already subscribed we get a 409
+          if (err.response.status === 409) {
+            setInputMessage(`${email} is already subscribed!`)
+          } else {
+            setInputMessage('Something went wrong, please try again later.')
+          }
+        })
+    } else {
+      setInputMessage('Please enter a valid email.')
+    }
+  }
+
+  function validateEmail(email) {
+    if (!email.includes('@')) {
+      return false
+    }
+    const emailArray = email.split('@')
+    if (emailArray.length !== 2) {
+      return false
+    }
+    if (emailArray[0].length < 1) {
+      return false
+    }
+
+    const domain = emailArray[1]
+    if (!domain.includes('.')) {
+      return false
+    }
+    if (domain.split('.')[0].length < 1 || domain.split('.')[1].length < 1) {
+      return false
+    }
+
+    return true
+  }
   return (
     <>
       <CaveTop>
@@ -255,6 +354,11 @@ export default function Footer() {
               Code of Conduct
             </a>
           </Links>
+          <InputContainer>
+            <StyledInput ref={emailInput} name="email" type="email" placeholder="Sign up for our newsletter!" />
+            <ComboButton onClick={addToMailingList}>Submit</ComboButton>
+          </InputContainer>
+          {inputMessage && <StyledMessage>{inputMessage}</StyledMessage>}
         </TextContainer>
         <GreenFireWork />
         <YellowFireWork />
