@@ -32,7 +32,7 @@ const BgScroll = styled(SectionContainer)`
   ${p => p.theme.mediaQueries.mobile} {
     /* background: url('assets/mobile/countdown/background.png'); */
     background-repeat: no-repeat;
-    background-size: 100vw;
+    background-size: 116vw;
   }
 `
 

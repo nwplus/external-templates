@@ -27,7 +27,7 @@ const CaveTop = styled.div`
   overflow: hidden;
 
   position: relative;
-  top: 0;
+  top: -51vw;
   left: 0;
   z-index: 997;
 
@@ -322,7 +322,7 @@ export default function Footer() {
   return (
     <>
       <CaveTop>
-        <TextContainer>
+        <TextContainer id='contact'>
           <SocialMediaIcons>
             <a href="https://www.facebook.com/nwplusubc" target="_blank" rel="noreferrer">
               <FontAwesomeIcon icon={faFacebook} />

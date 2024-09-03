@@ -507,11 +507,11 @@ export default function Stats() {
   }, [])
 
   return (
-    <BgSectionContainer id="statistics">
+    <BgSectionContainer>
       <BgScroll />
       <Stems />
       <FgScroll />
-      <StyledTitle>Last Year We Had...</StyledTitle>
+      <StyledTitle id="statistics">Last Year We Had...</StyledTitle>
       <ProjectTicketContainer className="stats">
         <ProjectTicket src="assets/background/stats/projects-ticket.svg" alt="Projects Ticket" />
         <ProjectText>
