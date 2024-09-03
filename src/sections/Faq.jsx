@@ -13,6 +13,8 @@ const BgSectionContainer = styled(SectionContainer)`
   gap: 1.25rem;
   min-height: 100vh;
   position: relative;
+  top: -51vw;
+  
 
   width: 100%;
   aspect-ratio: 1440/1072;
@@ -52,9 +54,9 @@ const BgScroll = styled(SectionContainer)`
 
 const FaqTitle = styled.div`
   background: url('assets/background/faq/faq-title.svg') no-repeat right;
-  background-size: 36vw;
-  height: 12vw;
-  width: 35.9vw;
+  background-size: 42vw;
+  height: 17vw;
+  width: 42vw;
   z-index: 1;
   position: absolute;
   top: 4vw;

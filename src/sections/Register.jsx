@@ -482,6 +482,7 @@ const SignButton = styled.button`
   border: none;
   cursor: pointer;
   transition: transform 0.5s ease;
+  z-index: 500;
 
   &:hover {
     transform: scale(1.05);
@@ -596,37 +597,51 @@ export default function Register() {
               <ButtonText>Become a Mentor</ButtonText>
             </BecomeMentorButton>
             <SignContainer>
-              <SignButton imageUrl="assets/background/hero/signs/sign1.svg">
-                <SignText fontSize="2.5vw" rotate={-2.74}>
-                  ABOUT
-                </SignText>
-              </SignButton>
-              <SignButton imageUrl="assets/background/hero/signs/sign2.svg">
-                <SignText fontSize="2.5vw">Our Events</SignText>
-              </SignButton>
-              <SignButton imageUrl="assets/background/hero/signs/sign3.svg">
-                <SignText fontSize="2.5vw" rotate={3.26}>
-                  STATS
-                </SignText>
-              </SignButton>
-              <SignButton imageUrl="assets/background/hero/signs/sign4.svg">
-                <SignText translateX="1.2vw" fontSize="2vw" rotate={-2.96}>
-                  TESTIMONIALS
-                </SignText>
-              </SignButton>
-              <SignButton imageUrl="assets/background/hero/signs/sign5.svg">
-                <SignText fontSize="3vw" rotate={-2.74}>
-                  FAQ
-                </SignText>
-              </SignButton>
-              <SignButton imageUrl="assets/background/hero/signs/sign6.svg">
-                <SignText fontSize="2.3vw">SPONSORS</SignText>
-              </SignButton>
-              <SignButton imageUrl="assets/background/hero/signs/sign7.svg">
-                <SignText fontSize="2.5vw" rotate={5.01}>
-                  Contact Us
-                </SignText>
-              </SignButton>
+              <a href="#about">
+                <SignButton imageUrl="assets/background/hero/signs/sign1.svg">
+                  <SignText fontSize="2.5vw" rotate={-2.74}>
+                    ABOUT
+                  </SignText>
+                </SignButton>
+              </a>
+              <a href="#events">
+                <SignButton href="#events" imageUrl="assets/background/hero/signs/sign2.svg">
+                  <SignText fontSize="2.5vw">Our Events</SignText>
+                </SignButton>
+              </a>
+              <a href='#statistics'>
+                <SignButton imageUrl="assets/background/hero/signs/sign3.svg">
+                  <SignText fontSize="2.5vw" rotate={3.26}>
+                    STATS
+                  </SignText>
+                </SignButton>
+              </a>
+              <a href="#testimonials">
+                <SignButton imageUrl="assets/background/hero/signs/sign4.svg">
+                  <SignText translateX="1.2vw" fontSize="2vw" rotate={-2.96}>
+                    TESTIMONIALS
+                  </SignText>
+                </SignButton>
+              </a>
+              <a href="#faq">
+                <SignButton imageUrl="assets/background/hero/signs/sign5.svg">
+                  <SignText fontSize="3vw" rotate={-2.74}>
+                    FAQ
+                  </SignText>
+                </SignButton>
+              </a>
+              <a href="#sponsors">
+                <SignButton imageUrl="assets/background/hero/signs/sign6.svg">
+                  <SignText fontSize="2.3vw">SPONSORS</SignText>
+                </SignButton>
+              </a>
+              <a href="#contact">
+                <SignButton imageUrl="assets/background/hero/signs/sign7.svg">
+                  <SignText fontSize="2.5vw" rotate={5.01}>
+                    Contact Us
+                  </SignText>
+                </SignButton>
+              </a>
             </SignContainer>
             {/* October 1 9am PST */}
             <CountdownText>
