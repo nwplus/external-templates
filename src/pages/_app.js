@@ -14,16 +14,17 @@ const OuterContainer = styled(SectionContainer)`
   background-repeat: no-repeat;
   background-position: center top; */
 
-  aspect-ratio: 748 / 1400;
+  /* aspect-ratio: 748 / 1400; */
+  aspect-ratio: 748 / 4200;
 
   background: url('assets/background/entire-site/entire-site.png');
   width: 100vw;
-  height: auto;
+  /* height: calc(100vh - 40vw); */
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center top;
 
-  @media (max-width: 1300px) {
+  /* @media (max-width: 1300px) {
     aspect-ratio: 752 / 1200;
   }
 
@@ -37,10 +38,10 @@ const OuterContainer = styled(SectionContainer)`
 
   @media (max-width: 576px) {
     aspect-ratio: 600 / 900;
-  }
+  } */
 
   /* z-index: -98; */
-  /* overflow: hidden; */
+  overflow: hidden;
 
   ${p => p.theme.mediaQueries.mobile} {
     background: url('assets/mobile/entire-site/entire-site.png');
@@ -51,7 +52,6 @@ const OuterContainer = styled(SectionContainer)`
     background-repeat: no-repeat;
     background-position: center top;
   }
-
 `
 
 function App({ Component, pageProps }) {
