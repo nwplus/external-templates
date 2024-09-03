@@ -182,7 +182,7 @@ const RegisterNowButton = styled.button`
   border: none;
   cursor: pointer;
   margin-right: 20px;
-  padding: 20px;
+  padding: 10px;
 
   ${p => p.theme.mediaQueries.mobile} {
     transform: scale(0.8);
