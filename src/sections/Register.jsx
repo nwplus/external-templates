@@ -182,6 +182,7 @@ const RegisterNowButton = styled.button`
   border: none;
   cursor: pointer;
   margin-right: 20px;
+  padding: 10px;
 
   ${p => p.theme.mediaQueries.mobile} {
     transform: scale(0.8);
@@ -232,9 +233,10 @@ const BecomeMentorButton = styled.button`
 `
 
 const ButtonText = styled.div`
-  font-size: 1.3vw;
+  font-size: 1.1vw;
   color: white;
-  font-weight: 500;
+  font-weight: 600;
+  font-family: 'HK Grotesk';
   ${p => p.theme.mediaQueries.mobile} {
     font-size: 0.8rem;
     padding-top: 0.5rem;
@@ -349,7 +351,6 @@ const CountdownText = styled.div`
     top: 241.5vw;
     left: 50%;
   }
-  
 `
 
 const CountdownNumber = styled.div`
@@ -419,7 +420,6 @@ const SignContainer = styled.div`
   ${p => p.theme.mediaQueries.mobile} {
     display: none;
   }
-
 `
 
 const SignButton = styled.button`
@@ -542,7 +542,7 @@ export default function Register () {
           </BodyContainer>
           <ButtonContainer>
             <RegisterNowButton>
-              <ButtonText>Register Now</ButtonText>
+              <ButtonText>Registrations Opening Soon!</ButtonText>
             </RegisterNowButton>
             <BecomeMentorButton>
               <ButtonText>Become a Mentor</ButtonText>
@@ -560,7 +560,7 @@ export default function Register () {
                   <SignText fontSize="2.5vw">Our Events</SignText>
                 </SignButton>
               </a>
-              <a href='#statistics'>
+              <a href="#statistics">
                 <SignButton imageUrl="assets/background/hero/signs/sign3.svg">
                   <SignText fontSize="2.5vw" rotate={3.26}>
                     STATS
