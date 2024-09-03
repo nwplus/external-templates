@@ -2,20 +2,19 @@ import Head from 'next/head'
 import React from 'react'
 // import fireDb from '@utilities/firebase'
 // import { SectionContainer } from '@lib/Containers'
-import NavBar from '@components/Navbar'
 // import Stats from '@components/Stats'
 import Footer from '@components/Footer'
 import Stats from '@components/Stats'
 import Info from 'src/sections/Info'
 import Register from 'src/sections/Register'
 import Sponsor from 'src/sections/Sponsor'
-import Count from 'src/sections/Count'
 import Learn from 'src/sections/Learn'
 import GlobalStyle from '../theme/GlobalStyle'
 import Faq from '../sections/Faq'
 import Testimonials from 'src/sections/Testimonials'
 
-export default function Index({ title }) {
+// eslint-disable-next-line react/prop-types
+export default function Index ({ title }) {
   return (
     <>
       <GlobalStyle />
@@ -49,10 +48,10 @@ export default function Index({ title }) {
   )
 }
 
-export async function getStaticProps() {
+export async function getStaticProps () {
   return {
     props: {
-      title: 'HackCamp 2024',
-    }, // will be passed to the page component as props
+      title: 'HackCamp 2024'
+    } // will be passed to the page component as props
   }
 }

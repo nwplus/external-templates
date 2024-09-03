@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import styled from 'styled-components'
-import { keyframes } from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 const BgSectionContainer = styled.div`
   display: grid;
@@ -248,7 +247,7 @@ export default function Testimonials () {
   const handleNext = () => {
     setFadeType('fade-out')
     setTimeout(() => {
-      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length)
       setFadeType('fade-in')
     }, 500)
   }
@@ -256,7 +255,7 @@ export default function Testimonials () {
   const handlePrev = () => {
     setFadeType('fade-out')
     setTimeout(() => {
-      setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+      setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length)
       setFadeType('fade-in')
     }, 500)
   }

@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { ParallaxProvider } from 'react-scroll-parallax'
 import GlobalStyle from '../theme/GlobalStyle'
 import ThemeProvider from '../theme/ThemeProvider'
@@ -54,7 +55,8 @@ const OuterContainer = styled(SectionContainer)`
 
 `
 
-function App({ Component, pageProps }) {
+// eslint-disable-next-line react/prop-types
+function App ({ Component, pageProps }) {
   return (
     <ThemeProvider>
       <ParallaxProvider>

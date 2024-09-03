@@ -1,9 +1,8 @@
 /* eslint-disable react/react-in-jsx-scope */
-import { Header2 } from '@components/Typography'
 import { SectionContainer } from '@lib/Containers'
 import { useState } from 'react'
 import YouTube from 'react-youtube'
-import styled, { keyframes } from 'styled-components'
+import styled from 'styled-components'
 
 const InfoContainer = styled.div`
   /* background: #150c27; */
@@ -37,105 +36,6 @@ const BgScroll = styled(SectionContainer)`
   ${p => p.theme.mediaQueries.mobile} {
     background: none;
   }
-`
-
-const TextContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 0em 10em;
-  padding: 5em 0em;
-  position: relative;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    margin: 0em 3em;
-    padding: 5em 0em 0em;
-  }
-`
-
-const StyledTitle = styled(Header2)`
-  text-align: center;
-  color: #f0eef2;
-  font-size: 3rem;
-  padding-top: 1rem;
-  z-index: 5;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    font-size: 2.8em;
-  }
-`
-
-const PushinP = styled.p`
-  color: #002f4d;
-  text-align: center;
-  width: 50vw;
-  min-width: 500px;
-  max-width: 800px;
-  margin: 0 auto;
-  padding-top: 2rem;
-`
-
-const ContentInner = styled.div`
-  min-height: 100vh;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  width: 100%;
-  align-items: center;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    min-height: 0px;
-    display: none;
-  }
-`
-
-const CardContainer = styled.div`
-  width: 75vw;
-  min-width: 1000px;
-  max-width: 1100px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    flex-direction: column;
-  }
-`
-
-const Card = styled.div`
-  width: 497px;
-  height: 570px;
-  aspect-ratio: 497 / 570;
-
-  /* background: url('assets/largescroll_${p => p.type.toLowerCase()}.svg'); */
-  color: #482c16;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-sizing: border-box;
-  padding: 2rem 4rem;
-  transform: scale(0.9);
-`
-
-const CardTitle = styled.div`
-  font-size: 2rem;
-  font-weight: 900;
-  padding-top: 260px;
-`
-
-const CardDate = styled.div`
-  font-size: 1.35rem;
-  font-weight: 800;
-  padding-bottom: 2rem;
-`
-
-const CardContent = styled.p`
-  padding: 0;
-  margin: 0;
-  font-weight: 500;
-  line-height: 150%;
 `
 
 const LeftPanel = styled.div`
@@ -258,22 +158,6 @@ const ToggleText = styled.div`
   }
 `
 
-const StyledText = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 20vw;
-  margin-top: 24vw;
-  z-index: 4;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    flex-direction: column;
-    align-items: center;
-    margin-top: 55vw;
-    gap: 80vw;
-  }
-`
-
 const ToggleOpenIcon = styled.div`
   background: url('assets/background/learn/toggleOpen.png') no-repeat center;
   background-size: contain;
@@ -324,16 +208,6 @@ const YouTubeContainer = styled.div`
   }
 `
 
-const Event = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 22.5vw;
-  z-index: 4;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    width: 50vw;
-  }
-`
 const EventBox = styled.div`
   display: flex;
   flex-direction: column;
@@ -384,20 +258,6 @@ const Date = styled.div`
   }
 `
 
-const Description = styled.div`
-  color: #1e4a73;
-  font-size: 1.2vw;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 1.5vw;
-  letter-spacing: -0.1px;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    font-size: 3vw;
-    line-height: 3.5vw;
-  }
-`
-
 const Learn = () => {
   const [isLeftHovered, setIsLeftHovered] = useState(false)
   const [isRightHovered, setIsRightHovered] = useState(false)
@@ -433,7 +293,8 @@ const Learn = () => {
         <ToggleText onClick={() => setToggleOpen(!toggleOpen)} left="66.5vw" width="34.5vw" top="29vw" fontSize="1.2vw">
           {toggleOpen ? <ToggleOpenIcon /> : <ToggleClosedIcon />} What are the benefits of attending a hackathon?
         </ToggleText>
-        {toggleOpen ? (
+        {toggleOpen
+          ? (
           <div>
             <PositionedList>
               <li>
@@ -475,7 +336,8 @@ const Learn = () => {
               .{' '}
             </CustomText>
           </div>
-        ) : (
+            )
+          : (
           <div>
             <CustomText left="64.5vw" width="34.5vw" top="32vw" fontSize="1.1vw">
               To learn more about hackathons and what to expect, check out our article on{' '}
@@ -493,7 +355,7 @@ const Learn = () => {
               <YouTube
                 opts={{
                   height: '100%',
-                  width: '100%',
+                  width: '100%'
                 }}
                 videoId="CA5YRDdyu90"
               />
@@ -502,7 +364,7 @@ const Learn = () => {
               Check out our recap from HackCamp 2023!
             </CustomText>
           </div>
-        )}
+            )}
         <LeftPanel onMouseEnter={() => setIsLeftHovered(true)} onMouseLeave={() => setIsLeftHovered(false)} />
         <LeftPanelNoHover
           onMouseEnter={() => setIsLeftHovered(true)}
@@ -576,7 +438,7 @@ const Learn = () => {
                 rel="noopener noreferrer"
                 style={{ color: '#45171a', textDecoration: 'underline' }}
               >
-                Alzheimer's Society of Canada
+                Alzheimer&apos;s Society of Canada
               </a>
               .
             </CustomText>

@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { useParallax } from 'react-scroll-parallax'
-import styled, { keyframes } from 'styled-components'
+import styled from 'styled-components'
 import { SectionContainer } from '@lib/Containers'
-import { Header2 } from '@components/Typography'
-import Button from '@components/Button'
 import { scale } from '@utilities/format'
 
 const BgSectionContainer = styled(SectionContainer)`
@@ -43,38 +40,6 @@ const BgScroll = styled(SectionContainer)`
     background-repeat: no-repeat;
     background-size: 100vw;
     z-index: -1;
-  }
-`
-
-const portalBob = keyframes`
-  0%, 100% {
-    transform: translateY(0, -10px); 
-  }
-
-  50% {
-    transform: translateY(-5px);
-  }
-`
-
-const Portal = styled(SectionContainer)`
-  animation: ${portalBob} 2s linear infinite;
-  /* background: url('assets/background/hero/portal.svg'); */
-  background-size: 100vw;
-  background-repeat: no-repeat;
-  background-position: center right;
-  height: 100%;
-  width: 100%;
-
-  position: absolute;
-  top: 0;
-  left: 25vw;
-  z-index: 2;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    background-position: center center;
-    background-size: 150vw;
-    left: 0;
-    top: 175px;
   }
 `
 
@@ -131,21 +96,6 @@ const GridContainer = styled.div`
     display: flex;
     align-items: center;
     text-align: center;
-  }
-`
-
-const HackCampHeader = styled(Header2)`
-  font-size: 6vw;
-  letter-spacing: -0.5px;
-  font-weight: 900;
-  color: #f0eff2 !important;
-  padding-top: 3rem;
-  padding-bottom: 0.5vw;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    font-size: 3.5rem;
-    padding-top: 1.5rem;
-    padding-bottom: 0;
   }
 `
 
@@ -510,6 +460,7 @@ const SignText = styled.h3`
     rotate(${props => props.rotate || 0}deg);
 `
 
+// eslint-disable-next-line react/prop-types
 const CountdownTimer = ({ targetDate }) => {
   const calculateTimeLeft = () => {
     const now = new Date()
@@ -521,7 +472,7 @@ const CountdownTimer = ({ targetDate }) => {
       timeLeft = {
         days: Math.floor(difference / (1000 * 60 * 60 * 24)),
         hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((difference / 1000 / 60) % 60),
+        minutes: Math.floor((difference / 1000 / 60) % 60)
       }
     } else {
       timeLeft = { days: 0, hours: 0, minutes: 0 }
@@ -550,7 +501,7 @@ const CountdownTimer = ({ targetDate }) => {
   return <CountdownNumber>{formatTime(timeLeft)}</CountdownNumber>
 }
 
-export default function Register() {
+export default function Register () {
   // not using these hooks because they don't work on initial load -> better practice to pass an isMobile props from getServerSideProps after checking userAgent
   // const windowWidth = useWindowWidth();
   // const mobileBreakpoint = 768;

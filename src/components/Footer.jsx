@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import styled, { keyframes } from 'styled-components'
+import React, { useState } from 'react'
+import styled from 'styled-components'
 import axios from 'axios'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
@@ -8,7 +8,7 @@ import {
   faLinkedinIn,
   faMediumM,
   faTwitter,
-  faYoutube,
+  faYoutube
 } from '@fortawesome/free-brands-svg-icons'
 import Team from '@components/Team'
 import Button from '@lib/Button'
@@ -113,13 +113,6 @@ const TextContainer = styled.div`
 
   ${p => p.theme.mediaQueries.mobile} {
     bottom: 50vw;
-  }
-`
-
-const SmallText = styled.div`
-  div {
-    font-size: 0.85rem;
-    font-weight: 400;
   }
 `
 
@@ -263,11 +256,11 @@ const StyledMessage = styled.div`
   font-size: 1.4vw;
 `
 
-export default function Footer() {
+export default function Footer () {
   const [inputMessage, setInputMessage] = useState('')
   const emailInput = React.createRef()
 
-  function addToMailingList() {
+  function addToMailingList () {
     // Reset any error/info messages from before
     setInputMessage('')
 
@@ -278,8 +271,8 @@ export default function Footer() {
         method: 'POST',
         url: 'https://us-central1-nwplus-ubc.cloudfunctions.net/addToMailingList',
         data: {
-          email,
-        },
+          email
+        }
       })
         .then(() => {
           setInputMessage(`${email} is now subscribed!`)
@@ -297,7 +290,7 @@ export default function Footer() {
     }
   }
 
-  function validateEmail(email) {
+  function validateEmail (email) {
     if (!email.includes('@')) {
       return false
     }
