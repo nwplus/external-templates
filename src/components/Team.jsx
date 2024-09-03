@@ -432,11 +432,23 @@ const profiles = [
 ]
 
 const StyledTitle = styled(Header3)`
-  margin-top: 1em;
-  color: #E2D6FF;
-  filter: drop-shadow(0 0 4px #E2D6FF);
+  margin-top: 1vw;
+  color: #f9c745;
+  filter: drop-shadow(0 0 4px #f9c745);
+  font-size: 2.5vw;
 
-  ${(p) => p.theme.mediaQueries.mobile} {
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: 5.5vw;
+  }
+`
+
+const StyledSecondaryTitle = styled(Header3)`
+  margin-top: 0.7vw;
+  color: #f9c745;
+  filter: drop-shadow(0 0 4px #f9c745);
+  font-size: 1.5vw;
+
+  ${p => p.theme.mediaQueries.mobile} {
     font-size: 5.5vw;
   }
 `
@@ -446,7 +458,7 @@ const ProfileContent = styled.p`
   span {
     margin-right: 8px;
   }
-  height: 1em;
+  height: 1vw;
   b {
     margin-right: 8px;
   }
@@ -465,12 +477,12 @@ const ProfileImage = styled.img`
   width: 100px;
   height: 100px;
   border-radius: 10px;
-  background-color: ${(p) => p.color};
+  background-color: ${p => p.color};
   object-fit: cover;
   margin: 10px 15px;
   transition: all 100ms ease-in-out;
   opacity: 0.69;
-  ${(p) => p.theme.mediaQueries.mobile} {
+  ${p => p.theme.mediaQueries.mobile} {
     width: 50px;
     height: 50px;
   }
@@ -502,17 +514,13 @@ export default function Team () {
     }
     lastTime = t
     animator.tick(accumulateTime)
-    requestRef.current = window.requestAnimationFrame((tP) =>
-      animate(animatorP, accelP, vel || velocity, tP)
-    )
+    requestRef.current = window.requestAnimationFrame(tP => animate(animatorP, accelP, vel || velocity, tP))
   }
 
   useEffect(() => {
     if (animator) {
       const vel = accel === 1 ? 0 : MAX_SPEED
-      requestRef.current = window.requestAnimationFrame((t) =>
-        animate(animator, accel, vel, t)
-      )
+      requestRef.current = window.requestAnimationFrame(t => animate(animator, accel, vel, t))
     }
     // Cleanup animation frame listener
     return () => window.cancelAnimationFrame(requestRef.current)
@@ -552,8 +560,8 @@ export default function Team () {
           // will-change enables hardware acceleration for smoother animations
           // duplicate profile maps so that the carousel can loop infinitely
         }
-        <div style={{ willChange: 'transform' }} id='anim-profiles'>
-          {profiles.map((profile) => (
+        <div style={{ willChange: 'transform' }} id="anim-profiles">
+          {profiles.map(profile => (
             <a href={profile.social} key={profile.img}>
               <ProfileImage
                 src={profile.img}
@@ -564,7 +572,7 @@ export default function Team () {
               />
             </a>
           ))}
-          {profiles.map((profile) => (
+          {profiles.map(profile => (
             <a href={profile.social} key={`${profile.img}2`}>
               <ProfileImage
                 src={profile.img}
@@ -577,6 +585,7 @@ export default function Team () {
           ))}
         </div>
       </ProfileList>
+      <StyledSecondaryTitle>Copyright © HackCamp 2024</StyledSecondaryTitle>
     </>
   )
 }

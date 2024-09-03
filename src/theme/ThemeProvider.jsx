@@ -6,6 +6,7 @@ export const SCREEN_BREAKPOINTS = {
   mobile: 768,
   tablet: 992,
   tabletLarge: 1024,
+  tabletLarger: 1150,
   desktop: 1200
 }
 
@@ -20,6 +21,7 @@ const base = {
   typography: {
     headerFont: 'HK Grotesk',
     bodyFont: 'HK Grotesk',
+    signFont: 'Carnivalee Freakshow Regular',
     header1: {
       fontWeight: 900,
       fontSize: '3.5rem',
@@ -56,6 +58,7 @@ const base = {
     mobile: `@media only screen and (max-width: ${SCREEN_BREAKPOINTS.mobile}px)`,
     tablet: `@media only screen and (max-width: ${SCREEN_BREAKPOINTS.tablet}px)`,
     tabletLarge: `@media only screen and (max-width: ${SCREEN_BREAKPOINTS.tabletLarge}px)`,
+    tabletLarger: `@media only screen and (max-width: ${SCREEN_BREAKPOINTS.tabletLarger}px)`,
     desktop: `@media only screen and (max-width: ${SCREEN_BREAKPOINTS.desktop}px)`
   },
   transition: {
@@ -63,8 +66,7 @@ const base = {
   }
 }
 
-const CustomThemeProvider = ({ children }) => (
-  <ThemeProvider theme={base}>{children}</ThemeProvider>
-)
+// eslint-disable-next-line react/prop-types
+const CustomThemeProvider = ({ children }) => <ThemeProvider theme={base}>{children}</ThemeProvider>
 
 export default CustomThemeProvider

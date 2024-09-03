@@ -1,28 +1,30 @@
+/* eslint-disable react/react-in-jsx-scope */
+/* eslint-disable react/prop-types */
 // import { useParallax } from 'react-scroll-parallax';
-import styled, { keyframes } from 'styled-components'
+import styled from 'styled-components'
 import { useState, useEffect } from 'react'
 import { SectionContainer } from '@lib/Containers'
 import fireDb from '@utilities/firebase'
-import { Header2 } from '@components/Typography'
 import FaqBox from '../components/FaqBox'
-import { useParallax } from 'react-scroll-parallax'
 
 const BgSectionContainer = styled(SectionContainer)`
-  display:grid;
+  display: grid;
   grid-template-columns: repeat(14, 1fr);
   gap: 1.25rem;
   min-height: 100vh;
+  /* background-color: pink; */
   position: relative;
-  
+  top: -51vw;
+
   width: 100%;
   aspect-ratio: 1440/1072;
   z-index: 17;
   overflow: hidden;
 
-  background: #150C27;
-  
+  /* background: #150c27; */
+
   ${p => p.theme.mediaQueries.mobile} {
-    background: url('assets/mobile/faq/background.svg') #150C27;
+    /* background: url('assets/mobile/faq/background.svg') #150C27; */
     aspect-ratio: 412/1359;
     background-size: 100vw;
     background-repeat: no-repeat;
@@ -32,8 +34,8 @@ const BgSectionContainer = styled(SectionContainer)`
 
 const BgScroll = styled(SectionContainer)`
   grid-column: 1 / span 14;
-  background: url('assets/background/faq/background.png');
-  background-size: 100vw;
+  /* background: url('assets/background/faq/background.png'); */
+  /* background-size: 100vw; */
   background-repeat: no-repeat;
   background-position: center top;
 
@@ -43,66 +45,39 @@ const BgScroll = styled(SectionContainer)`
   width: 100%;
   height: 100%;
   aspect-ratio: 1440/1072;
-  
+
   ${p => p.theme.mediaQueries.mobile} {
     background: none;
     aspect-ratio: 412/1359;
   }
 `
 
-const bobbing = keyframes`
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
-`
-
-const Nugget = styled.div`
-  background: url('assets/background/faq/nugget.png') no-repeat;
-  width: 100vw;
-  height:100vw;
-  z-index: 2;
+const FaqTitle = styled.div`
+  background: url('assets/background/faq/faq-title.svg') no-repeat right;
+  background-size: 42vw;
+  height: 17vw;
+  width: 42vw;
+  z-index: 1;
   position: absolute;
-  top:70%;
-  animation: ${bobbing} 2s ease-in-out infinite;
-
-${p => p.theme.mediaQueries.mobile} {
-  display:none;
-}
-`
-
-const FgScroll = styled(SectionContainer)`
-  grid-column: 1 / span 14;
-  background: url('assets/background/faq/foreground.svg');
-  background-size: 100vw;
-  background-repeat: no-repeat;
-  background-position: center bottom;
-
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  aspect-ratio: 1440/1723;
-  height: 100%;
-
+  top: 4vw;
+  right: 10vw;
+  left: 50%;
+  transform: translateX(-50%);
   ${p => p.theme.mediaQueries.mobile} {
-    background: none;
-    aspect-ratio: 482/1344;
+    display: none;
   }
 `
 
 const Wrapper = styled.div`
   grid-column: 3 / span 10;
-  padding:10vw 0;
+  padding: 10vw 0;
   margin: 0 auto;
   width: 75vw;
   min-width: 900px;
   max-width: 1200px;
   z-index: 88;
   position: relative;
-  
+
   ${p => p.theme.mediaQueries.mobile} {
     grid-column: 2 / span 12;
     min-width: 0;
@@ -115,7 +90,7 @@ const FaqGrid = styled.div`
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
   gap: 50px;
-  margin-top: 8rem;
+  margin-top: 10rem;
 
   ${p => p.theme.mediaQueries.mobile} {
     display: flex;
@@ -142,96 +117,46 @@ const FaqColumn = styled.div`
 
 // Collection -> questions of specific category
 const CollectionContainer = styled.div`
-  text-align:center;
-  display:flex;
-  flex-direction:column;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
 `
 
 const CollectionName = styled.div`
-  color:#F0EEF2;
-  font-size:1.75rem;
+  color: #f0eef2;
+  font-size: 2.8vw;
   font-weight: 900;
-  padding-bottom:1rem;
-  
+  padding-bottom: 1rem;
+  align-self: baseline;
+
   ${p => p.theme.mediaQueries.mobile} {
     font-size: 1.2rem;
   }
 `
 
-const StyledTitle = styled(Header2)`
-  text-align: center;
-  color: #F0EEF2;
-  font-size: 3rem;
-  padding-top: 1rem;
+const FaqCollection = ({ category, faqs, expandedQuestion, setExpandedQuestion }) => {
+  return (
+    <CollectionContainer>
+      <CollectionName>{category}</CollectionName>
 
-  ${(p) => p.theme.mediaQueries.mobile} {
-    font-size: 3.8em;
-  }
-`
-
-const waving = keyframes`
-  0%, 100% {
-    transform: rotate(0deg);
-  }
-  50% {
-    transform: rotate(10deg);
-  }
-`
-
-const DeerArm = styled.div`
-background: url('assets/background/faq/deerarm.png') no-repeat;
-width: 3vw;
-height:3vw;
-z-index: 5;
-position: absolute;
-animation: ${waving} 1s infinite;
-background-position: center center;
-transform-origin: bottom left;
-top: 68.5%;
-left: 42.5%;
-
-${p => p.theme.mediaQueries.mobile} {
-display:none;
+      {faqs.map(q => (
+        <FaqBox
+          key={q.question}
+          question={q.question}
+          answer={q.answer}
+          isExpanded={expandedQuestion === q.question}
+          onExpand={() => {
+            if (expandedQuestion === q.question) {
+              setExpandedQuestion(null)
+            } else {
+              setExpandedQuestion(q.question)
+            }
+          }}
+        />
+      ))}
+    </CollectionContainer>
+  )
 }
-`
-const BearArm = styled.div`
-background: url('assets/background/faq/beararm.png') no-repeat;
-width: 3vw;
-height:3vw;
-z-index: 4;
-left: 60%;
-top: 73.5%;
-position: absolute;
-animation: ${waving} 1s infinite;
-transform-origin: bottom left;
-background-position: center center;
-
-${p => p.theme.mediaQueries.mobile} {
-display:none;
-}
-`
-
-const FaqCollection = ({ category, faqs, expandedQuestion, setExpandedQuestion }) => (
-  <CollectionContainer>
-    <CollectionName>{category}</CollectionName>
-
-    {faqs.map(q =>
-      <FaqBox
-        key={q.question}
-        question={q.question}
-        answer={q.answer}
-        isExpanded={expandedQuestion === q.question}
-        onExpand={() => {
-          if (expandedQuestion === q.question) {
-            setExpandedQuestion(null)
-          } else {
-            setExpandedQuestion(q.question)
-          }
-        }}
-      />
-    )}
-  </CollectionContainer>
-)
 
 const Faq = () => {
   const [faqData, setFaqData] = useState(null)
@@ -244,7 +169,7 @@ const Faq = () => {
     // categorize questions
 
     const categories = {}
-    data.forEach((faq) => {
+    data.forEach(faq => {
       if (!categories[faq.category]) {
         categories[faq.category] = []
       }
@@ -261,44 +186,47 @@ const Faq = () => {
 
   return (
     <BgSectionContainer>
-      <Nugget></Nugget>
-      <BearArm />
-      <DeerArm></DeerArm>
       <BgScroll />
       <Wrapper id="faq">
-        <StyledTitle>
-          FAQ
-        </StyledTitle>
+        <FaqTitle />
 
         {faqData
           ? (
-            <FaqGrid>
-              <FaqColumn>
-                {faqData.General &&
-                  <FaqCollection
-                    category="General"
-                    faqs={faqData.General}
-                    expandedQuestion={expandedQuestion}
-                    setExpandedQuestion={setExpandedQuestion}
-                  />
-                }
-              </FaqColumn>
+          <FaqGrid>
+            <FaqColumn>
+              {faqData.General && (
+                <FaqCollection
+                  category="General"
+                  faqs={faqData.General}
+                  expandedQuestion={expandedQuestion}
+                  setExpandedQuestion={setExpandedQuestion}
+                />
+              )}
+            </FaqColumn>
 
-              <FaqColumn>
-                {faqData['Teams & Projects'] &&
-                  <FaqCollection category="Projects" faqs={faqData['Teams & Projects']} expandedQuestion={expandedQuestion}
-                    setExpandedQuestion={setExpandedQuestion} />
-                }
-                {faqData.Logistics &&
-                  <FaqCollection category="Logistics" faqs={faqData.Logistics} expandedQuestion={expandedQuestion}
-                    setExpandedQuestion={setExpandedQuestion} />
-                }
-              </FaqColumn>
-
-            </FaqGrid>
+            <FaqColumn>
+              {faqData['Teams & Projects'] && (
+                <FaqCollection
+                  category="Projects"
+                  faqs={faqData['Teams & Projects']}
+                  expandedQuestion={expandedQuestion}
+                  setExpandedQuestion={setExpandedQuestion}
+                />
+              )}
+              {faqData.Logistics && (
+                <FaqCollection
+                  category="Logistics"
+                  faqs={faqData.Logistics}
+                  expandedQuestion={expandedQuestion}
+                  setExpandedQuestion={setExpandedQuestion}
+                />
+              )}
+            </FaqColumn>
+          </FaqGrid>
             )
-          : 'loading...'}
-
+          : (
+              'loading...'
+            )}
       </Wrapper>
     </BgSectionContainer>
   )

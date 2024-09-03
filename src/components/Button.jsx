@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react'
 import styled from 'styled-components'
 
@@ -37,7 +38,7 @@ const StyledButton = styled.a`
   }
 `
 
-export default function Button({
+export default function Button ({
   target,
   backgroundColor,
   textColor,
