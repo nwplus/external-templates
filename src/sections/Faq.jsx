@@ -12,9 +12,9 @@ const BgSectionContainer = styled(SectionContainer)`
   grid-template-columns: repeat(14, 1fr);
   gap: 1.25rem;
   min-height: 100vh;
+  /* background-color: pink; */
   position: relative;
   top: -51vw;
-  
 
   width: 100%;
   aspect-ratio: 1440/1072;
@@ -90,7 +90,7 @@ const FaqGrid = styled.div`
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
   gap: 50px;
-  margin-top: 8rem;
+  margin-top: 10rem;
 
   ${p => p.theme.mediaQueries.mobile} {
     display: flex;

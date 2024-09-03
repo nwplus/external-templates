@@ -19,6 +19,7 @@ const BgSectionContainer = styled(SectionContainer)`
   background-position: center top;
   position: relative;
   width: 100%;
+  top: -53vw;
   justify-content: center;
   align-items: center;
   aspect-ratio: 1440/1630;
@@ -35,8 +36,8 @@ const BgSectionContainer = styled(SectionContainer)`
 
 const StyledTitle = styled.div`
   background: url('assets/background/sponsors/sponsors-header.svg') no-repeat right;
-  background-size: 38vw;
-  width: 38vw;
+  background-size: 40vw;
+  width: 40vw;
   height: 10vw;
   /* font-size: 3rem; */
   position: absolute;

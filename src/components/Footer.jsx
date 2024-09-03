@@ -17,7 +17,6 @@ import { LAPTOP } from '@constants/measurements'
 const CaveTop = styled.div`
   /* background: url('assets/background/footer/footer-background.png');
   background-size: 100%; */
-  /* background-color: pink; */
   background-repeat: no-repeat;
   background-position: center top;
 
@@ -27,7 +26,7 @@ const CaveTop = styled.div`
   overflow: hidden;
 
   position: relative;
-  top: -51vw;
+  top: -151vw;
   left: 0;
   z-index: 997;
 
@@ -109,7 +108,7 @@ const TextContainer = styled.div`
   color: #e2d6ff;
   position: absolute;
   z-index: 999;
-  bottom: 62.5vw;
+  bottom: 463.5vw;
 
   ${p => p.theme.mediaQueries.mobile} {
     bottom: 50vw;
@@ -120,9 +119,10 @@ const TeamContainer = styled.div`
   z-index: 4;
   position: absolute;
   left: 0;
-  bottom: 2vw;
+  bottom: 398vw;
   text-align: center;
   width: 100%;
+  padding-bottom: 2vw;
 `
 
 const GreenFireWork = styled.div`
@@ -315,7 +315,7 @@ export default function Footer () {
   return (
     <>
       <CaveTop>
-        <TextContainer id='contact'>
+        <TextContainer id="contact">
           <SocialMediaIcons>
             <a href="https://www.facebook.com/nwplusubc" target="_blank" rel="noreferrer">
               <FontAwesomeIcon icon={faFacebook} />
