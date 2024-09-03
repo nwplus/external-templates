@@ -1,4 +1,5 @@
-import { useState } from 'react'
+/* eslint-disable react/prop-types */
+/* eslint-disable react/react-in-jsx-scope */
 import styled from 'styled-components'
 
 const Container = styled.div`

@@ -1,11 +1,11 @@
+/* eslint-disable react/react-in-jsx-scope */
+/* eslint-disable react/prop-types */
 // import { useParallax } from 'react-scroll-parallax';
-import styled, { keyframes } from 'styled-components'
+import styled from 'styled-components'
 import { useState, useEffect } from 'react'
 import { SectionContainer } from '@lib/Containers'
 import fireDb from '@utilities/firebase'
-import { Header2 } from '@components/Typography'
 import FaqBox from '../components/FaqBox'
-import { useParallax } from 'react-scroll-parallax'
 
 const BgSectionContainer = styled(SectionContainer)`
   display: grid;
@@ -65,26 +65,6 @@ const FaqTitle = styled.div`
   transform: translateX(-50%);
   ${p => p.theme.mediaQueries.mobile} {
     display: none;
-  }
-`
-
-const FgScroll = styled(SectionContainer)`
-  grid-column: 1 / span 14;
-  /* background: url('assets/background/faq/foreground.svg'); */
-  background-size: 100vw;
-  background-repeat: no-repeat;
-  background-position: center bottom;
-
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  aspect-ratio: 1440/1723;
-  height: 100%;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    background: none;
-    aspect-ratio: 482/1344;
   }
 `
 
@@ -154,17 +134,6 @@ const CollectionName = styled.div`
   }
 `
 
-const StyledTitle = styled(Header2)`
-  text-align: center;
-  color: #f0eef2;
-  font-size: 3rem;
-  padding-top: 1rem;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    font-size: 3.8em;
-  }
-`
-
 const FaqCollection = ({ category, faqs, expandedQuestion, setExpandedQuestion }) => {
   return (
     <CollectionContainer>
@@ -196,7 +165,7 @@ const Faq = () => {
   // (@htdf processData)
   // (@signature (listof FAQ) -> Object)
   // produces a dict where key = category, value = array of questions from an array of FAQ objects
-  function processData(data) {
+  function processData (data) {
     // categorize questions
 
     const categories = {}
@@ -221,7 +190,8 @@ const Faq = () => {
       <Wrapper id="faq">
         <FaqTitle />
 
-        {faqData ? (
+        {faqData
+          ? (
           <FaqGrid>
             <FaqColumn>
               {faqData.General && (
@@ -253,9 +223,10 @@ const Faq = () => {
               )}
             </FaqColumn>
           </FaqGrid>
-        ) : (
-          'loading...'
-        )}
+            )
+          : (
+              'loading...'
+            )}
       </Wrapper>
     </BgSectionContainer>
   )

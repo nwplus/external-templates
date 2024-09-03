@@ -1,10 +1,7 @@
-import styled, { keyframes } from 'styled-components'
+import styled from 'styled-components'
 import { SectionContainer } from '@lib/Containers'
-import SponsorContainer from '@components/SponsorContainer'
-import { Header2 } from '@components/Typography'
 import React, { useEffect, useState } from 'react'
 import fireDb from '@utilities/firebase'
-import Button from '@components/Button'
 
 const sponsorTierOrder = {
   platinum: 1,
@@ -12,7 +9,7 @@ const sponsorTierOrder = {
   silver: 3,
   bronze: 4,
   inkind: 5,
-  startup: 6,
+  startup: 6
 }
 
 const BgSectionContainer = styled(SectionContainer)`
@@ -50,24 +47,6 @@ const StyledTitle = styled.div`
   transform: translateX(-50%);
   ${p => p.theme.mediaQueries.mobile} {
     font-size: 2em;
-  }
-`
-
-const colorChange = keyframes`
-  0% {
-    filter: brightness(1) saturate(100%);
-  }
-  25% {
-    filter: brightness(1) saturate(150%);
-  }
-  50% {
-    filter: brightness(1.2) saturate(150%);
-  }
-  75% {
-    filter: brightness(1) saturate(150%);
-  }
-  100% {
-    filter: brightness(1) saturate(100%);
   }
 `
 
@@ -166,14 +145,6 @@ const PushinP = styled.p`
   }
 `
 
-const ButtonContainer = styled.p`
-  display: flex;
-  justify-content: center;
-  position: relative;
-  z-index: 3;
-  margin: 0;
-`
-
 const Skip = styled.div`
   height: 10rem;
   /* background: linear-gradient(to bottom, #8c5050, #220639); */
@@ -194,7 +165,7 @@ const EmailBlurb = styled.a`
   }
 `
 
-export default function Sponsor() {
+export default function Sponsor () {
   const [sponsors, setSponsors] = useState({})
 
   useEffect(async () => {
@@ -211,6 +182,7 @@ export default function Sponsor() {
     }
   }, [])
 
+  // eslint-disable-next-line multiline-ternary
   return Object.keys(sponsors).length > 0 ? (
     <BgSectionContainer id="sponsors">
       <StyledTitle />
@@ -251,10 +223,11 @@ export default function Sponsor() {
                     backgroundImage: `url(${ContainerSVG})`,
                     backgroundRepeat: 'no-repeat',
                     top: `${19 + row * 14}vw`,
-                    backgroundPosition: 'center',
+                    backgroundPosition: 'center'
                   }}
                 >
                   {sponsors[key].map(sponsor => (
+                    // eslint-disable-next-line react/jsx-key
                     <SponsorLink href={sponsor.link} target="_blank" rel="noreferrer">
                       <SponsorLogo src={sponsor.imgURL} />
                     </SponsorLink>
@@ -265,7 +238,8 @@ export default function Sponsor() {
           })}
       </Sponsors>
     </BgSectionContainer>
-  ) : (
-    <Skip />
   )
+    : (
+    <Skip />
+      )
 }

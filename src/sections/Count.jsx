@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { useParallax } from 'react-scroll-parallax'
 import { Header2 } from '@components/Typography'
 import { SectionContainer } from '@lib/Containers'
@@ -255,7 +256,7 @@ const Count = () => {
   const count = {
     days: days.toString(),
     hours: twoify(hours),
-    minutes: twoify(minutes),
+    minutes: twoify(minutes)
   }
 
   // const { ref: ref1 } = useParallax({
@@ -271,21 +272,21 @@ const Count = () => {
     translateX: ['-400vw', '0vw'],
     translateY: ['-35vw', '0vw'],
     scale: [6, 1],
-    opacity: [1, 0.75],
+    opacity: [1, 0.75]
   })
 
   const deerParallax = useParallax({
     easing: 'easeOutQuad',
     translateX: ['-400vw', '15vw'],
     translateY: ['-35vw', '0vw'],
-    scale: [6, 1],
+    scale: [6, 1]
   })
 
   const nuggetParallax = useParallax({
     easing: 'easeOutQuad',
     translateX: ['-400vw', '15vw'],
     translateY: ['-35vw', '0vw'],
-    scale: [6, 1],
+    scale: [6, 1]
   })
 
   return (

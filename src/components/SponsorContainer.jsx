@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react'
 import styled from 'styled-components'
 
@@ -62,6 +63,7 @@ const SponsorContainer = ({ sponsors }) => {
       <Grid>
         {sponsors?.length > 0
           ? sponsors.map(item => (
+            // eslint-disable-next-line react/jsx-key
             <Sponsor {...{
               key: item.name,
               link: item.link,

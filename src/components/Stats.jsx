@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { useEffect, useState } from 'react'
 import { SectionContainer } from '@lib/Containers'
 import styled, { keyframes } from 'styled-components'
@@ -23,7 +24,7 @@ const gallery = [
   '/assets/gallery/17.jpg',
   '/assets/gallery/18.jpg',
   '/assets/gallery/19.jpg',
-  '/assets/gallery/20.jpg',
+  '/assets/gallery/20.jpg'
 ]
 
 const BgSectionContainer = styled(SectionContainer)`
@@ -459,7 +460,7 @@ const CharityLabel = styled.div`
   }
 `
 
-export default function Stats() {
+export default function Stats () {
   const [shiftAmount, setShiftAmount] = useState(0)
 
   useEffect(() => {

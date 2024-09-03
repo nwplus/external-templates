@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { useParallax } from 'react-scroll-parallax'
 import { Header2 } from '@components/Typography'
 import { SectionContainer } from '@lib/Containers'
