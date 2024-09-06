@@ -28,11 +28,13 @@ const CaveTop = styled.div`
   position: relative;
   top: -151vw;
   left: 0;
-  z-index: 997;
+  /* z-index: 2; */
 
   width: 100%;
   aspect-ratio: 1440/934;
   height: 100%;
+  /* height: 200vw; */
+  /* background-color: pink; */
 
   a {
     transition: ${p => p.theme.transition.small};
@@ -70,7 +72,7 @@ const SocialMediaIcons = styled.div`
   align-items: center;
   display: flex;
   position: relative;
-  z-index: 5;
+  /* z-index: 20; */
   width: 36vw;
   height: 6vw;
   font-size: 4vw;
@@ -107,8 +109,9 @@ const TextContainer = styled.div`
   gap: 1rem;
   color: #e2d6ff;
   position: absolute;
-  z-index: 999;
+  z-index: 999 !important;
   bottom: 463.5vw;
+  z-index: 2000;
 
   ${p => p.theme.mediaQueries.mobile} {
     bottom: 50vw;
@@ -133,9 +136,9 @@ const GreenFireWork = styled.div`
   height: 100%;
   bottom: -51vw;
   left: -39vw;
+  z-index: -30;
   background-repeat: no-repeat;
   background-position: center top;
-  z-index: 2;
   animation: fadeInOut 3s ease-in-out infinite;
 
   @keyframes fadeInOut {
