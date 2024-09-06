@@ -148,7 +148,7 @@ const GreenFireWork = styled.div`
   width: 100%;
   height: 100%;
   bottom: -51vw;
-  left: -39vw;
+  left: -40vw;
   z-index: 4;
   background-repeat: no-repeat;
   background-position: center top;
