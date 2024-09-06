@@ -136,7 +136,7 @@ const GreenFireWork = styled.div`
   height: 100%;
   bottom: -51vw;
   left: -39vw;
-  z-index: -30;
+  z-index: 4;
   background-repeat: no-repeat;
   background-position: center top;
   animation: fadeInOut 3s ease-in-out infinite;
