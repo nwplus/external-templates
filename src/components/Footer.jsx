@@ -67,6 +67,19 @@ const FooterBackground = styled.div`
   z-index: 3; /* Ensure it's beneath other content in CaveTop */
 `
 
+const FooterSpotlights = styled.div`
+  background-position-y: bottom;
+  background: url('assets/background/footer/footer-spotlights.png');
+  background-size: 84vw;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  bottom: -72vw;
+  background-repeat: no-repeat;
+  background-position: center top;
+  z-index: 2;
+`
+
 const SocialMediaIcons = styled.div`
   justify-content: center;
   align-items: center;
@@ -360,6 +373,7 @@ export default function Footer () {
         <YellowFireWork />
         <RedFireWork />
         <FooterBackground />
+        <FooterSpotlights />
         <TeamContainer>
           <Team />
         </TeamContainer>
