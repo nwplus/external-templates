@@ -45,7 +45,7 @@ const OuterContainer = styled(SectionContainer)`
   overflow: hidden;
 
   ${p => p.theme.mediaQueries.mobile} {
-    background: url('assets/mobile/entire-site/entire-site.png');
+    background: url('assets/mobile/entire-site/entire-site-mobile.png') no-repeat;
     width: 115.5vw;
     margin-left: -7.7vw;
     height: auto;
