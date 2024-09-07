@@ -28,11 +28,13 @@ const CaveTop = styled.div`
   position: relative;
   top: -151vw;
   left: 0;
-  z-index: 997;
+  /* z-index: 2; */
 
   width: 100%;
   aspect-ratio: 1440/934;
   height: 100%;
+  /* height: 200vw; */
+  /* background-color: pink; */
 
   a {
     transition: ${p => p.theme.transition.small};
@@ -65,12 +67,25 @@ const FooterBackground = styled.div`
   z-index: 3; /* Ensure it's beneath other content in CaveTop */
 `
 
+const FooterSpotlights = styled.div`
+  background-position-y: bottom;
+  background: url('assets/background/footer/footer-spotlights.png');
+  background-size: 84vw;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  bottom: -72vw;
+  background-repeat: no-repeat;
+  background-position: center top;
+  z-index: 2;
+`
+
 const SocialMediaIcons = styled.div`
   justify-content: center;
   align-items: center;
   display: flex;
   position: relative;
-  z-index: 5;
+  /* z-index: 20; */
   width: 36vw;
   height: 6vw;
   font-size: 4vw;
@@ -107,8 +122,9 @@ const TextContainer = styled.div`
   gap: 1rem;
   color: #e2d6ff;
   position: absolute;
-  z-index: 999;
+  z-index: 999 !important;
   bottom: 463.5vw;
+  z-index: 2000;
 
   ${p => p.theme.mediaQueries.mobile} {
     bottom: 50vw;
@@ -132,10 +148,10 @@ const GreenFireWork = styled.div`
   width: 100%;
   height: 100%;
   bottom: -51vw;
-  left: -39vw;
+  left: -40vw;
+  z-index: 4;
   background-repeat: no-repeat;
   background-position: center top;
-  z-index: 2;
   animation: fadeInOut 3s ease-in-out infinite;
 
   @keyframes fadeInOut {
@@ -357,6 +373,7 @@ export default function Footer () {
         <YellowFireWork />
         <RedFireWork />
         <FooterBackground />
+        <FooterSpotlights />
         <TeamContainer>
           <Team />
         </TeamContainer>

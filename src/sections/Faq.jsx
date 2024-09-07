@@ -12,7 +12,7 @@ const BgSectionContainer = styled(SectionContainer)`
   grid-template-columns: repeat(14, 1fr);
   gap: 1.25rem;
   min-height: 100vh;
-  /* background-color: pink; */
+  height: fit-content;
   position: relative;
   top: -51vw;
 

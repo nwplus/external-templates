@@ -162,7 +162,6 @@ const Tent = styled.div`
 
   position: absolute;
   top: 0;
-  /* left: 10vw; */
   z-index: 1;
 
   background-position: center top;
@@ -172,8 +171,27 @@ const Tent = styled.div`
   }
 `
 
+const TentBackground = styled.div`
+  background: url('assets/background/hero/background2.png');
+  background-size: 100vw;
+  background-repeat: no-repeat;
+  height: 112%;
+  width: 100%;
+
+  position: absolute;
+  top: 0;
+  z-index: 0;
+
+  background-position: center top;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
+`
+
 const RegisterNowButton = styled.button`
-  background: url('assets/background/hero/register-now-button.svg');
+  background: url('assets/background/hero/register-now-button.svg'),
+    url('assets/background/hero/register-now-button-active.svg');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -189,14 +207,14 @@ const RegisterNowButton = styled.button`
   }
 
   &:hover {
-    background: url('assets/background/hero/register-now-button-active.svg');
+    background: url('assets/background/hero/register-now-button-active.svg'), transparent;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
   }
 
   &:active {
-    background: url('assets/background/hero/register-now-button-active.svg');
+    background: url('assets/background/hero/register-now-button-active.svg'), transparent;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -204,7 +222,7 @@ const RegisterNowButton = styled.button`
 `
 
 const BecomeMentorButton = styled.button`
-  background: url('assets/background/hero/mentor-button.svg');
+  background: url('assets/background/hero/mentor-button.svg'), url('assets/background/hero/mentor-button-active.svg');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -218,14 +236,15 @@ const BecomeMentorButton = styled.button`
   }
 
   &:hover {
-    background: url('assets/background/hero/mentor-button-active.svg');
+    background: url('assets/background/hero/mentor-button-active.svg'), transparent;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
   }
 
   &:active {
-    background: url('assets/background/hero/mentor-button-active.svg');
+    background: url('assets/background/hero/mentor-button-active.svg'), transparent;
+    background: transparent;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -532,6 +551,7 @@ export default function Register () {
     <BgSectionContainer>
       <BgScroll />
       <Tent />
+      <TentBackground />
       <GridContainer>
         <MediaContainer>
           <HackCampLogo />

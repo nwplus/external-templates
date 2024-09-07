@@ -95,6 +95,7 @@ const TitleSponsorLink = styled.a`
   position: absolute;
   top: 7vw;
   right: 33vw;
+  z-index: 1000;
 `
 
 const SponsorLink = styled.a`
@@ -238,8 +239,7 @@ export default function Sponsor () {
           })}
       </Sponsors>
     </BgSectionContainer>
-  )
-    : (
+  ) : (
     <Skip />
-      )
+  )
 }
