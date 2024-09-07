@@ -164,7 +164,7 @@ background: url(assets/background/faq/ferris-cart.png) no-repeat;
 background-size: 10vw;
 width: 10vw;
 height: 10vw;
-position: relative;
+position: absolute;
 transform-origin: top center;
 animation: ${({ reverse }) => (reverse ? 'reverseSwing' : 'swing')} 2.1s ease-in-out infinite;
 z-index: -50;
@@ -202,8 +202,8 @@ background: url(assets/background/faq/hot-air-balloons.png) no-repeat;
 background-size: 28vw;
 width: 28vw;
 height: 33vw;
-position: relative;
-top: -37vw;
+position: absolute;
+top: 12vw;
 left: 62vw;
 animation: float 12s ease-in-out infinite;
 z-index: -50;
@@ -225,9 +225,9 @@ const PurpleBanner = styled.div`
   background: url(assets/background/faq/purple-banner.png) no-repeat;
   background-size: 108vw;
   width: 108vw;
-  height: 108vw;
-  position: relative;
-  top: -86.3vw;
+  height: 6.5vw;
+  position: absolute;
+  top: -3.3vw;
   left: -16.5vw;
   z-index: 100;
 `
@@ -263,10 +263,10 @@ const Faq = () => {
       <BgScroll />
       <Wrapper id="faq">
         <FaqTitle />
-        <FerrisCart top="-5vw" left="-10.4vw" />
-        <FerrisCart top="-6.2vw" left="10.3vw" reverse />
-        <FerrisCart top="4.5vw" left="18.6vw" />
-        <FerrisCart top="15.3vw" left="10.3vw" reverse />
+        <FerrisCart top="5.9vw" left="-10.3vw" />
+        <FerrisCart top="14vw" left="10.3vw" reverse />
+        <FerrisCart top="34.5vw" left="18.6vw" />
+        <FerrisCart top="55vw" left="10.3vw" reverse />
         <HotAirBalloons />
         <PurpleBanner />
 
