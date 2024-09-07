@@ -1,7 +1,7 @@
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable react/prop-types */
 // import { useParallax } from 'react-scroll-parallax';
-import styled from 'styled-components'
+import styled, {keyframes} from 'styled-components'
 import { useState, useEffect } from 'react'
 import { SectionContainer } from '@lib/Containers'
 import fireDb from '@utilities/firebase'
@@ -158,6 +158,31 @@ const FaqCollection = ({ category, faqs, expandedQuestion, setExpandedQuestion }
   )
 }
 
+const FerrisCart = styled.div`
+background: url(assets/background/faq/ferris-cart.png);
+background-size: 10vw;
+width: 10vw;
+height: 10vw;
+position: relative;
+transform-origin: top center;
+animation: swing 2s ease-in-out infinite;
+
+top: ${({ top }) => top};
+left: ${({ left }) => left};
+
+@keyframes swing {
+  0% {
+    transform: rotate(-5deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+  100% {
+    transform: rotate(-5deg);
+  }
+}
+`
+
 const Faq = () => {
   const [faqData, setFaqData] = useState(null)
   const [expandedQuestion, setExpandedQuestion] = useState(null)
@@ -189,6 +214,10 @@ const Faq = () => {
       <BgScroll />
       <Wrapper id="faq">
         <FaqTitle />
+        <FerrisCart top="-5vw" left="-10.4vw" />
+        <FerrisCart top="-6.2vw" left="10.3vw" />
+        <FerrisCart top="4.5vw" left="18.6vw" />
+        <FerrisCart top="15.3vw" left="10.3vw" />
 
         {faqData
           ? (
