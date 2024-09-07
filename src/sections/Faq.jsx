@@ -1,7 +1,7 @@
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable react/prop-types */
 // import { useParallax } from 'react-scroll-parallax';
-import styled, {keyframes} from 'styled-components'
+import styled from 'styled-components'
 import { useState, useEffect } from 'react'
 import { SectionContainer } from '@lib/Containers'
 import fireDb from '@utilities/firebase'
@@ -14,7 +14,8 @@ const BgSectionContainer = styled(SectionContainer)`
   min-height: 100vh;
   /* background-color: pink; */
   position: relative;
-  top: -51vw;
+  top: -51.3vw;
+  
 
   width: 100%;
   aspect-ratio: 1440/1072;
@@ -159,13 +160,14 @@ const FaqCollection = ({ category, faqs, expandedQuestion, setExpandedQuestion }
 }
 
 const FerrisCart = styled.div`
-background: url(assets/background/faq/ferris-cart.png);
+background: url(assets/background/faq/ferris-cart.png) no-repeat;
 background-size: 10vw;
 width: 10vw;
 height: 10vw;
 position: relative;
 transform-origin: top center;
-animation: swing 2s ease-in-out infinite;
+animation: ${({ reverse }) => (reverse ? 'reverseSwing' : 'swing')} 2.1s ease-in-out infinite;
+z-index: -50;
 
 top: ${({ top }) => top};
 left: ${({ left }) => left};
@@ -181,6 +183,53 @@ left: ${({ left }) => left};
     transform: rotate(-5deg);
   }
 }
+
+@keyframes reverseSwing {
+    0% {
+      transform: rotate(5deg);
+    }
+    50% {
+      transform: rotate(-5deg);
+    }
+    100% {
+      transform: rotate(5deg);
+    }
+  }
+`
+
+const HotAirBalloons = styled.div`
+background: url(assets/background/faq/hot-air-balloons.png) no-repeat;
+background-size: 28vw;
+width: 28vw;
+height: 33vw;
+position: relative;
+top: -37vw;
+left: 62vw;
+animation: float 12s ease-in-out infinite;
+z-index: -50;
+
+@keyframes float {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-25vw);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+`
+
+const PurpleBanner = styled.div`
+  background: url(assets/background/faq/purple-banner.png) no-repeat;
+  background-size: 108vw;
+  width: 108vw;
+  height: 108vw;
+  position: relative;
+  top: -86.3vw;
+  left: -16.5vw;
+  z-index: 100;
 `
 
 const Faq = () => {
@@ -215,9 +264,11 @@ const Faq = () => {
       <Wrapper id="faq">
         <FaqTitle />
         <FerrisCart top="-5vw" left="-10.4vw" />
-        <FerrisCart top="-6.2vw" left="10.3vw" />
+        <FerrisCart top="-6.2vw" left="10.3vw" reverse />
         <FerrisCart top="4.5vw" left="18.6vw" />
-        <FerrisCart top="15.3vw" left="10.3vw" />
+        <FerrisCart top="15.3vw" left="10.3vw" reverse />
+        <HotAirBalloons />
+        <PurpleBanner />
 
         {faqData
           ? (
