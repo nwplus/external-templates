@@ -225,7 +225,7 @@ const PurpleBanner = styled.div`
   background: url(assets/background/faq/purple-banner.png) no-repeat;
   background-size: 108vw;
   width: 108vw;
-  height: 108vw;
+  height: 6.5vw;
   position: absolute;
   top: -3.3vw;
   left: -16.5vw;
