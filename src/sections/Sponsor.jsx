@@ -139,7 +139,7 @@ const PushinP = styled.p`
   padding-top: 1vw;
   position: relative;
   top: 10vw;
-  z-index: 3;
+  z-index: 30;
 
   ${p => p.theme.mediaQueries.mobile} {
     display: none;
