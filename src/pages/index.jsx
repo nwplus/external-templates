@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import React, { useState } from 'react'
+import NavBar from '@components/Navbar'
 // import fireDb from '@utilities/firebase'
 // import { SectionContainer } from '@lib/Containers'
 // import Stats from '@components/Stats'
@@ -14,7 +15,7 @@ import Faq from '../sections/Faq'
 import Testimonials from 'src/sections/Testimonials'
 
 // eslint-disable-next-line react/prop-types
-export default function Index ({ title }) {
+export default function Index({ title }) {
   const [bodyHeight, setBodyHeight] = useState('455.5vw')
 
   const updateBodyHeight = (newHeight) => {
@@ -40,7 +41,7 @@ export default function Index ({ title }) {
 
       {/* Components Starts */}
 
-      {/* <NavBar /> */}
+      <NavBar />
       <Register />
       <Info />
       <Learn />
@@ -54,7 +55,7 @@ export default function Index ({ title }) {
   )
 }
 
-export async function getStaticProps () {
+export async function getStaticProps() {
   return {
     props: {
       title: 'HackCamp 2024'
