@@ -8,22 +8,15 @@ import styled from 'styled-components'
 /* eslint react/jsx-filename-extension: 0 */
 
 const OuterContainer = styled(SectionContainer)`
-  /* background: url('assets/background/entire-site/entire-site.png');
-  width: 100vw;
-  height: 100%;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center top; */
-
-  /* aspect-ratio: 748 / 1400; */
   aspect-ratio: 748 / 4200;
 
   background: url('assets/background/entire-site/entire-site.png');
   width: 100vw;
-  /* height: calc(100vh - 40vw); */
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center top;
+  position: relative;
+  overflow: hidden;
 
   /* @media (max-width: 1300px) {
     aspect-ratio: 752 / 1200;
@@ -42,10 +35,9 @@ const OuterContainer = styled(SectionContainer)`
   } */
 
   /* z-index: -98; */
-  overflow: hidden;
 
   ${p => p.theme.mediaQueries.mobile} {
-    background: url('assets/mobile/entire-site/entire-site.png');
+    background: url('assets/mobile/entire-site/entire-site-mobile.png') no-repeat;
     width: 115.5vw;
     margin-left: -7.7vw;
     height: auto;
