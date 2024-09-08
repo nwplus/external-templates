@@ -594,7 +594,7 @@ export default function Register () {
           <ButtonContainer>
           <FillText>The website is still under construction, for the full experience please switch to desktop. :)</FillText>
             {/* <RegisterNowButton>
-              <ButtonText>Register Now</ButtonText>
+              <ButtonText>Registrations Opening Soon!</ButtonText>
             </RegisterNowButton>
             <BecomeMentorButton>
               <ButtonText>Become a Mentor</ButtonText>
