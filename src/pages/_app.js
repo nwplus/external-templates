@@ -37,7 +37,7 @@ const OuterContainer = styled(SectionContainer)`
   /* z-index: -98; */
 
   ${p => p.theme.mediaQueries.mobile} {
-    background: url('assets/mobile/entire-site/entire-site.png');
+    background: url('assets/mobile/entire-site/entire-site-mobile.png') no-repeat;
     width: 115.5vw;
     margin-left: -7.7vw;
     height: auto;
