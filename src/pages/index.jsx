@@ -1,9 +1,10 @@
 import Head from 'next/head'
 import React, { useState } from 'react'
-import NavBar from '@components/Navbar'
+// import NavBar from '@components/Navbar'
 // import fireDb from '@utilities/firebase'
 // import { SectionContainer } from '@lib/Containers'
 // import Stats from '@components/Stats'
+import styled from 'styled-components'
 import Footer from '@components/Footer'
 import Stats from '@components/Stats'
 import Info from 'src/sections/Info'
@@ -14,8 +15,14 @@ import GlobalStyle from '../theme/GlobalStyle'
 import Faq from '../sections/Faq'
 import Testimonials from 'src/sections/Testimonials'
 
+const PlaceHolder = styled.div`
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
+`
+
 // eslint-disable-next-line react/prop-types
-export default function Index({ title }) {
+export default function Index ({ title }) {
   const [bodyHeight, setBodyHeight] = useState('455.5vw')
 
   const updateBodyHeight = (newHeight) => {
@@ -39,23 +46,23 @@ export default function Index({ title }) {
         <meta property="og:image" content="/hackcamp2023meta.png" />
       </Head>
 
-      {/* Components Starts */}
-
-      <NavBar />
+      {/* <NavBar /> */}
       <Register />
       <Info />
-      <Learn />
-      <Stats />
-      <Testimonials />
-      <Faq />
-      <Sponsor updateBodyHeight={updateBodyHeight} />
-      <Footer />
+      <PlaceHolder>
+        <Learn />
+        <Stats />
+        <Testimonials />
+        <Faq />
+        <Sponsor updateBodyHeight={updateBodyHeight} />
+        <Footer />
+      </PlaceHolder>
       {/* Components Ends */}
     </>
   )
 }
 
-export async function getStaticProps() {
+export async function getStaticProps () {
   return {
     props: {
       title: 'HackCamp 2024'
