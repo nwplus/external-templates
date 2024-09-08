@@ -147,7 +147,7 @@ const PushinP = styled.p`
 `
 
 const Skip = styled.div`
-  height: 10vw;
+  height: 20vw;
   /* background: linear-gradient(to bottom, #8c5050, #220639); */
 
   ${p => p.theme.mediaQueries.mobile} {
@@ -190,15 +190,15 @@ export default function Sponsor ({ updateBodyHeight }) {
       // Calculate additional height based on the number of sponsors
       const sponsorMultiplier = Object.keys(organizedSponsors).reduce((acc, key) => {
         if (key === 'platinum') {
-          return acc + (organizedSponsors[key].length * 11)
+          return acc + (organizedSponsors[key].length * 10)
         } else {
-          return acc + (organizedSponsors[key].length * 8)
+          return acc + (organizedSponsors[key].length * 7)
         }
       }, 0)
 
       // Update the body height
       const additionalHeight = rows + sponsorMultiplier
-      updateBodyHeight(`${455.5 + additionalHeight}vw`)
+      updateBodyHeight(`${465.5 + additionalHeight}vw`)
     }
   }, [])
 
