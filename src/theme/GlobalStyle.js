@@ -18,6 +18,8 @@ export const GlobalStyles = createGlobalStyle`
     font-family: ${p => p.theme.typography.bodyFont};
     background: ${p => p.theme.colors.background};
     color: ${p => p.theme.colors.text};
+    height: ${p => p.bodyHeight};
+    overflow: hidden;
   }
 `
 

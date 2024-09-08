@@ -147,7 +147,7 @@ const PushinP = styled.p`
 `
 
 const Skip = styled.div`
-  height: 10rem;
+  height: 10vw;
   /* background: linear-gradient(to bottom, #8c5050, #220639); */
 
   ${p => p.theme.mediaQueries.mobile} {
@@ -166,11 +166,13 @@ const EmailBlurb = styled.a`
   }
 `
 
-export default function Sponsor () {
+// eslint-disable-next-line react/prop-types
+export default function Sponsor ({ updateBodyHeight }) {
   const [sponsors, setSponsors] = useState({})
 
   useEffect(async () => {
     const data = await fireDb.getCollection('HackCamp2024', 'Sponsors')
+    // const data = []
     if (data) {
       const organizedSponsors = {}
       data.forEach(sponsor => {
@@ -180,6 +182,23 @@ export default function Sponsor () {
         organizedSponsors[sponsor.tier].push(sponsor)
       })
       setSponsors(organizedSponsors)
+
+      // Calculate the number of rows
+      const uniqueTiers = Object.keys(organizedSponsors).length
+      const rows = uniqueTiers * 5
+
+      // Calculate additional height based on the number of sponsors
+      const sponsorMultiplier = Object.keys(organizedSponsors).reduce((acc, key) => {
+        if (key === 'platinum') {
+          return acc + (organizedSponsors[key].length * 11)
+        } else {
+          return acc + (organizedSponsors[key].length * 8)
+        }
+      }, 0)
+
+      // Update the body height
+      const additionalHeight = rows + sponsorMultiplier
+      updateBodyHeight(`${455.5 + additionalHeight}vw`)
     }
   }, [])
 
