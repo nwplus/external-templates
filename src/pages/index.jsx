@@ -4,7 +4,6 @@ import React, { useState } from 'react'
 // import fireDb from '@utilities/firebase'
 // import { SectionContainer } from '@lib/Containers'
 // import Stats from '@components/Stats'
-import styled from 'styled-components'
 import Footer from '@components/Footer'
 import Stats from '@components/Stats'
 import Info from 'src/sections/Info'
@@ -14,12 +13,6 @@ import Learn from 'src/sections/Learn'
 import GlobalStyle from '../theme/GlobalStyle'
 import Faq from '../sections/Faq'
 import Testimonials from 'src/sections/Testimonials'
-
-const PlaceHolder = styled.div`
-  ${p => p.theme.mediaQueries.mobile} {
-    display: none;
-  }
-`
 
 // eslint-disable-next-line react/prop-types
 export default function Index ({ title }) {
@@ -49,14 +42,12 @@ export default function Index ({ title }) {
       {/* <NavBar /> */}
       <Register />
       <Info />
-      <PlaceHolder>
-        <Learn />
-        <Stats />
-        <Testimonials />
-        <Faq />
-        <Sponsor updateBodyHeight={updateBodyHeight} />
-        <Footer />
-      </PlaceHolder>
+      <Learn />
+      <Stats />
+      <Testimonials />
+      <Faq />
+      <Sponsor updateBodyHeight={updateBodyHeight} />
+      <Footer />
       {/* Components Ends */}
     </>
   )
