@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import React, { useState } from 'react'
+// import NavBar from '@components/Navbar'
 // import fireDb from '@utilities/firebase'
 // import { SectionContainer } from '@lib/Containers'
 // import Stats from '@components/Stats'
@@ -37,8 +38,6 @@ export default function Index ({ title }) {
         />
         <meta property="og:image" content="/hackcamp2023meta.png" />
       </Head>
-
-      {/* Components Starts */}
 
       {/* <NavBar /> */}
       <Register />

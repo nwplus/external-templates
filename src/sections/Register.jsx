@@ -16,7 +16,6 @@ const BgSectionContainer = styled(SectionContainer)`
   overflow: visible;
 
   ${p => p.theme.mediaQueries.mobile} {
-    /* background: #150c27; */
     background-repeat: no-repeat;
     text-align: center;
     align-items: center;
@@ -59,11 +58,10 @@ const MediaContainer = styled.div`
   ${p => p.theme.mediaQueries.mobile} {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    margin-left: 0vw;
+    margin-top: -45vw;
     align-items: center;
     text-align: center;
-    justify-content: center;
-    transform: translateY(-30vw) translateX(30vw);
     padding: 0;
   }
 `
@@ -95,6 +93,7 @@ const GridContainer = styled.div`
   ${p => p.theme.mediaQueries.mobile} {
     display: flex;
     align-items: center;
+    justify-content: center;
     text-align: center;
   }
 `
@@ -107,9 +106,9 @@ const HackCampSubheader = styled.div`
   padding-top: 1rem;
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 1rem;
+    font-size: 3.4vw;
     padding-top: 0;
-    line-height: 1.5rem;
+    line-height: 1.7rem;
   }
 `
 
@@ -119,11 +118,31 @@ const HCSub = styled.div`
   font-weight: 700;
   padding-top: 1rem;
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 0.8rem;
+    font-size: 3.1vw;
+    font-weight: 400;
+    font: 'HK Grotesk';
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
   }
 `
+
+const FillText = styled.div`
+  font-size: 1.75vw;
+  display: none;
+  color: #45171a;
+  font-weight: 700;
+  padding-top: 1rem;
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: 3.1vw;
+    display: block;
+    font-weight: 400;
+    font: 'HK Grotesk';
+    padding-top: 1.5rem;
+    padding-bottom: 0.5rem;
+    width: 68vw;
+  }
+`
+
 const HackCampLogo = styled.div`
   background: url('assets/background/hero/logo.svg');
   background-size: 6vw;
@@ -133,10 +152,14 @@ const HackCampLogo = styled.div`
   z-index: 2;
 
   ${p => p.theme.mediaQueries.mobile} {
-    position: relative;
-    margin: 0 auto;
-    align-items: center;
-    left: 5vw;
+    /* position: relative; */
+    width: 19vw;
+    height: 16vw;
+    background-size: 19vw;
+    align-self: center;
+    /* margin: 0 auto; */
+    /* align-items: center; */
+    /* left: 5vw; */
   }
 `
 
@@ -150,6 +173,9 @@ const HackCampTitle = styled.div`
 
   ${p => p.theme.mediaQueries.mobile} {
     transform: scale(0.8);
+    background-size: 93vw;
+    height: 16.5vw;
+    width: 93vw;
   }
 `
 
@@ -189,79 +215,83 @@ const TentBackground = styled.div`
   }
 `
 
-const RegisterNowButton = styled.button`
-  background: url('assets/background/hero/register-now-button.svg'),
-    url('assets/background/hero/register-now-button-active.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 14vw;
-  height: 70px;
-  border: none;
-  cursor: pointer;
-  margin-right: 20px;
-  padding: 10px;
+// const RegisterNowButton = styled.button`
+//   background: url('assets/background/hero/register-now-button.svg'),
+//     url('assets/background/hero/register-now-button-active.svg');
+//   background-size: contain;
+//   background-repeat: no-repeat;
+//   background-position: center;
+//   width: 14vw;
+//   height: 70px;
+//   border: none;
+//   cursor: pointer;
+//   margin-right: 20px;
+//   padding: 0px;
 
-  ${p => p.theme.mediaQueries.mobile} {
-    transform: scale(0.8);
-  }
+//   ${p => p.theme.mediaQueries.mobile} {
+//     transform: scale(0.8);
+//     width: 60vw;
+//     height: 125px;
+//   }
 
-  &:hover {
-    background: url('assets/background/hero/register-now-button-active.svg'), transparent;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
+//   &:hover {
+//     background: url('assets/background/hero/register-now-button-active.svg'), transparent;
+//     background-size: contain;
+//     background-repeat: no-repeat;
+//     background-position: center;
+//   }
 
-  &:active {
-    background: url('assets/background/hero/register-now-button-active.svg'), transparent;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-`
+//   &:active {
+//     background: url('assets/background/hero/register-now-button-active.svg'), transparent;
+//     background-size: contain;
+//     background-repeat: no-repeat;
+//     background-position: center;
+//   }
+// `
 
-const BecomeMentorButton = styled.button`
-  background: url('assets/background/hero/mentor-button.svg'), url('assets/background/hero/mentor-button-active.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 14vw;
-  height: 70px;
-  border: none;
-  cursor: pointer;
+// const BecomeMentorButton = styled.button`
+//   background: url('assets/background/hero/mentor-button.svg'), url('assets/background/hero/mentor-button-active.svg');
+//   background-size: contain;
+//   background-repeat: no-repeat;
+//   background-position: center;
+//   width: 14vw;
+//   height: 70px;
+//   border: none;
+//   cursor: pointer;
 
-  ${p => p.theme.mediaQueries.mobile} {
-    transform: scale(0.8);
-  }
+//   ${p => p.theme.mediaQueries.mobile} {
+//     transform: scale(0.72);
+//     width: 60vw;
+//     height: 125px;
+//     top: -2.3vw;
+//     position: relative;
+//   }
 
-  &:hover {
-    background: url('assets/background/hero/mentor-button-active.svg'), transparent;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
+//   &:hover {
+//     background: url('assets/background/hero/mentor-button-active.svg'), transparent;
+//     background-size: contain;
+//     background-repeat: no-repeat;
+//     background-position: center;
+//   }
 
-  &:active {
-    background: url('assets/background/hero/mentor-button-active.svg'), transparent;
-    background: transparent;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-`
+//   &:active {
+//     background: url('assets/background/hero/mentor-button-active.svg'), transparent;
+//     background-size: contain;
+//     background-repeat: no-repeat;
+//     background-position: center;
+//   }
+// `
 
-const ButtonText = styled.div`
-  font-size: 1.1vw;
-  color: white;
-  font-weight: 600;
-  font-family: 'HK Grotesk';
-  ${p => p.theme.mediaQueries.mobile} {
-    font-size: 0.8rem;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-  }
-`
+// const ButtonText = styled.div`
+//   font-size: 1.3vw;
+//   color: white;
+//   font-weight: 500;
+//   ${p => p.theme.mediaQueries.mobile} {
+//     font-size: 5.3vw;
+//     padding-top: 0.5rem;
+//     padding-bottom: 0.5rem;
+//   }
+// `
 
 const CountdownText = styled.div`
   font-size: 4.3vw;
@@ -367,8 +397,9 @@ const CountdownText = styled.div`
 
   ${p => p.theme.mediaQueries.mobile} {
     scale: 1.6;
-    top: 241.5vw;
-    left: 50%;
+    top: 214.8vw;
+    /* left: 60%; */
+    left: 79vw;
   }
 `
 
@@ -561,12 +592,13 @@ export default function Register () {
             <HCSub>Nov 9-10, 2024 | In-person event</HCSub>
           </BodyContainer>
           <ButtonContainer>
-            <RegisterNowButton>
+          <FillText>The website is still under construction, for the full experience please switch to desktop. :)</FillText>
+            {/* <RegisterNowButton>
               <ButtonText>Registrations Opening Soon!</ButtonText>
             </RegisterNowButton>
             <BecomeMentorButton>
               <ButtonText>Become a Mentor</ButtonText>
-            </BecomeMentorButton>
+            </BecomeMentorButton> */}
             <SignContainer>
               <a href="#about">
                 <SignButton imageUrl="assets/background/hero/signs/sign1.svg">
