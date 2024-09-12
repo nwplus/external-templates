@@ -215,83 +215,83 @@ const TentBackground = styled.div`
   }
 `
 
-// const RegisterNowButton = styled.button`
-//   background: url('assets/background/hero/register-now-button.svg'),
-//     url('assets/background/hero/register-now-button-active.svg');
-//   background-size: contain;
-//   background-repeat: no-repeat;
-//   background-position: center;
-//   width: 14vw;
-//   height: 70px;
-//   border: none;
-//   cursor: pointer;
-//   margin-right: 20px;
-//   padding: 0px;
+const RegisterNowButton = styled.button`
+  background: url('assets/background/hero/register-now-button.svg'),
+    url('assets/background/hero/register-now-button-active.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 14vw;
+  height: 70px;
+  border: none;
+  cursor: pointer;
+  margin-right: 20px;
+  padding: 0px;
 
-//   ${p => p.theme.mediaQueries.mobile} {
-//     transform: scale(0.8);
-//     width: 60vw;
-//     height: 125px;
-//   }
+  ${p => p.theme.mediaQueries.mobile} {
+    transform: scale(0.8);
+    width: 60vw;
+    height: 125px;
+  }
 
-//   &:hover {
-//     background: url('assets/background/hero/register-now-button-active.svg'), transparent;
-//     background-size: contain;
-//     background-repeat: no-repeat;
-//     background-position: center;
-//   }
+  &:hover {
+    background: url('assets/background/hero/register-now-button-active.svg'), transparent;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
 
-//   &:active {
-//     background: url('assets/background/hero/register-now-button-active.svg'), transparent;
-//     background-size: contain;
-//     background-repeat: no-repeat;
-//     background-position: center;
-//   }
-// `
+  &:active {
+    background: url('assets/background/hero/register-now-button-active.svg'), transparent;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+`
 
-// const BecomeMentorButton = styled.button`
-//   background: url('assets/background/hero/mentor-button.svg'), url('assets/background/hero/mentor-button-active.svg');
-//   background-size: contain;
-//   background-repeat: no-repeat;
-//   background-position: center;
-//   width: 14vw;
-//   height: 70px;
-//   border: none;
-//   cursor: pointer;
+const BecomeMentorButton = styled.button`
+  background: url('assets/background/hero/mentor-button.svg'), url('assets/background/hero/mentor-button-active.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 14vw;
+  height: 70px;
+  border: none;
+  cursor: pointer;
 
-//   ${p => p.theme.mediaQueries.mobile} {
-//     transform: scale(0.72);
-//     width: 60vw;
-//     height: 125px;
-//     top: -2.3vw;
-//     position: relative;
-//   }
+  ${p => p.theme.mediaQueries.mobile} {
+    transform: scale(0.72);
+    width: 60vw;
+    height: 125px;
+    top: -2.3vw;
+    position: relative;
+  }
 
-//   &:hover {
-//     background: url('assets/background/hero/mentor-button-active.svg'), transparent;
-//     background-size: contain;
-//     background-repeat: no-repeat;
-//     background-position: center;
-//   }
+  &:hover {
+    background: url('assets/background/hero/mentor-button-active.svg'), transparent;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
 
-//   &:active {
-//     background: url('assets/background/hero/mentor-button-active.svg'), transparent;
-//     background-size: contain;
-//     background-repeat: no-repeat;
-//     background-position: center;
-//   }
-// `
+  &:active {
+    background: url('assets/background/hero/mentor-button-active.svg'), transparent;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+`
 
-// const ButtonText = styled.div`
-//   font-size: 1.3vw;
-//   color: white;
-//   font-weight: 500;
-//   ${p => p.theme.mediaQueries.mobile} {
-//     font-size: 5.3vw;
-//     padding-top: 0.5rem;
-//     padding-bottom: 0.5rem;
-//   }
-// `
+const ButtonText = styled.div`
+  font-size: 1.3vw;
+  color: white;
+  font-weight: 500;
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: 5.3vw;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+`
 
 const CountdownText = styled.div`
   font-size: 4.3vw;
@@ -592,13 +592,13 @@ export default function Register () {
             <HCSub>Nov 9-10, 2024 | In-person event</HCSub>
           </BodyContainer>
           <ButtonContainer>
-          <FillText>The website is still under construction, for the full experience please switch to desktop. :)</FillText>
-            {/* <RegisterNowButton>
+          {/* <FillText>The website is still under construction, for the full experience please switch to desktop. :)</FillText> */}
+            <RegisterNowButton>
               <ButtonText>Registrations Opening Soon!</ButtonText>
             </RegisterNowButton>
             <BecomeMentorButton>
               <ButtonText>Become a Mentor</ButtonText>
-            </BecomeMentorButton> */}
+            </BecomeMentorButton>
             <SignContainer>
               <a href="#about">
                 <SignButton imageUrl="assets/background/hero/signs/sign1.svg">

@@ -23,8 +23,8 @@ export const GlobalStyles = createGlobalStyle`
 
     ${p => p.theme.mediaQueries.mobile} {
       // uncomment this line when removing the placeholder for mobile
-      ${'' /* height: auto; */}
-      height: 170vw;
+      height: auto;
+      ${'' /* height: 170vw; */}
     }
   }
 `
