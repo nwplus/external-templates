@@ -48,6 +48,9 @@ const LeftPanel = styled.div`
   left: 7.1vw;
   position: absolute;
   z-index: 5;
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const LeftPanelNoHover = styled.div`
@@ -61,6 +64,9 @@ const LeftPanelNoHover = styled.div`
   opacity: ${props => (props.isHovered ? 1 : 0)};
   transition: opacity 0.8s ease-in-out;
   z-index: 6; /* Higher than LeftPanel to appear on top */
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const RightPanel = styled.div`
@@ -72,6 +78,9 @@ const RightPanel = styled.div`
   left: 31.38vw;
   position: absolute;
   z-index: 5;
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const RightPanelNoHover = styled.div`
@@ -85,6 +94,9 @@ const RightPanelNoHover = styled.div`
   opacity: ${props => (props.isHovered ? 1 : 0)};
   transition: opacity 0.8s ease-in-out;
   z-index: 6; /* Higher than LeftPanel to appear on top */
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const OurEventsTitle = styled.div`
@@ -99,7 +111,12 @@ const OurEventsTitle = styled.div`
   left: 7.2vw;
   /* aspect-ratio: 1 / 1.5; */
   ${p => p.theme.mediaQueries.mobile} {
-    display: none;
+    background-size: 70vw;
+    z-index: 100;
+    height: 20vw;
+    width: 70vw;
+    left: 19vw;
+    top: 40vw;
   }
 `
 
@@ -116,6 +133,23 @@ const CustomText = styled.div`
   ${props => props.top && `top: ${props.top};`}
   ${props => props.left && `left: ${props.left};`}
   ${props => props.right && `right: ${props.right};`}
+
+  ${p => p.theme.mediaQueries.mobile} {
+    ${props => props.mobileColor && `color: ${props.mobileColor};`}
+    ${props => props.mobileFontSize && `font-size: ${props.mobileFontSize};`}
+    ${props => props.mobileBottom && `bottom: ${props.mobileBottom};`}
+    ${props => props.mobileTop && `top: ${props.mobileTop};`}
+    ${props => props.mobileLeft && `left: ${props.mobileLeft};`}
+    ${props => props.mobileRight && `right: ${props.mobileRight};`}
+    ${props => props.mobileWidth && `width: ${props.mobileWidth};`}
+    ${props => props.mobileLineHeight && `line-height: ${props.mobileLineHeight};`}
+    ${props => props.isHidden && 'display: none;'}
+    ${props => props.thin && 'font-family: HK Grotesk; font-weight: medium;'}
+    ${props => props.bold && 'font-family: HK Grotesk; font-weight: bold;'}
+    a {
+      color: #3B1417 !important;
+    }
+  }
 `
 
 const PositionedList = styled.ul`
@@ -123,6 +157,10 @@ const PositionedList = styled.ul`
   top: 31.2vw;
   left: 68.5vw;
   width: 30vw;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const BulletText = styled.div`
@@ -152,6 +190,10 @@ const ToggleText = styled.div`
   ${props => props.top && `top: ${props.top};`}
   ${props => props.left && `left: ${props.left};`}
   ${props => props.right && `right: ${props.right};`}
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none !important;
+  }
 
   &:hover {
     cursor: pointer;
@@ -206,6 +248,10 @@ const YouTubeContainer = styled.div`
     width: 100%;
     height: 100%;
   }
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const EventBox = styled.div`
@@ -230,6 +276,10 @@ const FadeContent = styled.div`
   ${props => props.top && `top: ${props.top};`}
   ${props => props.left && `left: ${props.left};`}
   ${props => props.right && `right: ${props.right};`}
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const EventTitle = styled.h2`
@@ -239,7 +289,42 @@ const EventTitle = styled.h2`
   font-weight: 900;
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 6vw;
+    display: none;
+  }
+
+`
+
+const MobileEventInfo = styled.div`
+  display: none;
+  position: relative;
+  ${p => p.theme.mediaQueries.mobile} {
+    display: block;
+    /* left: 10vw; */
+    background-color: pink !important;
+    .learn {
+      ${props => props.mobileColor && `color: ${props.mobileColor};`}
+      ${props => props.mobileFontSize && `font-size: ${props.mobileFontSize};`}
+      ${props => props.mobileBottom && `bottom: ${props.mobileBottom};`}
+      ${props => props.mobileTop && `top: ${props.mobileTop};`}
+      ${props => props.mobileLeft && `left: ${props.mobileLeft};`}
+      ${props => props.mobileRight && `right: ${props.mobileRight};`}
+      ${props => props.mobileWidth && `width: ${props.mobileWidth};`}
+      ${props => props.mobileLineHeight && `line-height: ${props.mobileLineHeight};`}
+      ${props => props.thin && 'font-family: HK Grotesk; font-weight: medium;'}
+    }
+
+    .build {
+      ${props => props.mobileColor && `color: ${props.mobileColor};`}
+      ${props => props.mobileFontSize && `font-size: ${props.mobileFontSize};`}
+      ${props => props.mobileBottom && `bottom: ${props.mobileBottom};`}
+      ${props => props.mobileTop && `top: ${props.mobileTop};`}
+      ${props => props.mobileLeft && `left: ${props.mobileLeft};`}
+      ${props => props.mobileRight && `right: ${props.mobileRight};`}
+      ${props => props.mobileWidth && `width: ${props.mobileWidth};`}
+      ${props => props.mobileLineHeight && `line-height: ${props.mobileLineHeight};`}
+      ${props => props.isHidden && 'display: none;'}
+      ${props => props.thin && 'font-family: HK Grotesk; font-weight: medium;'}
+    }
   }
 `
 
@@ -255,6 +340,7 @@ const Date = styled.div`
     font-size: 4vw;
     margin-top: 0;
     margin-bottom: 12px;
+    display: none;
   }
 `
 
@@ -268,24 +354,24 @@ const Learn = () => {
       <BgScroll>
         {/* <StyledTitle>Our Events</StyledTitle> */}
         <OurEventsTitle />
-        <CustomText left="67vw" top="8vw" color="white" fontSize="3vw">
-          What is a Hackathon
+        <CustomText mobileTop="164vw" mobileFontSize="6.5vw" mobileLeft="21vw" left="67vw" top="8vw" color="white" fontSize="3vw">
+          What is a Hackathon?
         </CustomText>
-        <CustomText left="68.9vw" top="15.4vw" color="white" fontSize="1.3vw">
+        <CustomText isHidden left="68.9vw" top="15.4vw" color="white" fontSize="1.3vw">
           Team
         </CustomText>
-        <CustomText left="78.7vw" top="15.4vw" color="white" fontSize="1.3vw">
+        <CustomText isHidden left="78.7vw" top="15.4vw" color="white" fontSize="1.3vw">
           Team Formation
         </CustomText>
-        <CustomText left="94.4vw" top="15.4vw" color="white" fontSize="1.3vw">
+        <CustomText isHidden left="94.4vw" top="15.4vw" color="white" fontSize="1.3vw">
           Solo
         </CustomText>
-        <CustomText left="9.4vw" color="#45171A" top="15.7vw" width="42vw" fontSize="1.1vw">
+        <CustomText isHidden left="9.4vw" color="#45171A" top="15.7vw" width="42vw" fontSize="1.1vw">
           This year, we are bringing you a 2-day, in-person event where you’ll learn new skills, connect with
           like-minded enthusiasts, build solutions to tackle challenges together, and hopefully leave having developed a
           newfound passion for tech!
         </CustomText>
-        <CustomText left="64.5vw" width="34.5vw" top="20.5vw" fontSize="1.1vw">
+        <CustomText mobileLineHeight="4vw" mobileColor="#3B1417" mobileTop="185vw" mobileWidth="78vw" mobileFontSize="2.9vw" mobileLeft="10vw" left="64.5vw" width="34.5vw" top="20.5vw" fontSize="1.1vw">
           A hackathon is a collaborative, typically multi-day invention marathon where participants come together to
           ideate, design, and build projects in a limited time frame. It’s a space to learn, experiment, and bring your
           unique ideas to life, regardless of your experience level.
@@ -339,7 +425,19 @@ const Learn = () => {
             )
           : (
           <div>
-            <CustomText left="64.5vw" width="34.5vw" top="32vw" fontSize="1.1vw">
+            <CustomText
+              mobileTop="210vw"
+              mobileWidth="78vw"
+              mobileFontSize="2.9vw"
+              left="64.5vw"
+              mobileLeft="10vw"
+              width="34.5vw"
+              top="32vw"
+              fontSize="1.1vw"
+              mobileColor="#3B1417"
+              mobileLineHeight="4vw"
+              bold
+              >
               To learn more about hackathons and what to expect, check out our article on{' '}
               <a
                 href="https://medium.com/nwplusubc/nwchats-what-is-a-hackathon-7b5032011487"
@@ -360,7 +458,7 @@ const Learn = () => {
                 videoId="CA5YRDdyu90"
               />
             </YouTubeContainer>
-            <CustomText fontStyle="italic" left="70vw" width="34.5vw" top="52.5vw" fontSize="1.1vw">
+            <CustomText isHidden fontStyle="italic" left="70vw" width="34.5vw" top="52.5vw" fontSize="1.1vw">
               Check out our recap from HackCamp 2023!
             </CustomText>
           </div>
@@ -377,6 +475,66 @@ const Learn = () => {
           onMouseLeave={() => setIsRightHovered(false)}
           isHovered={!isRightHovered}
         />
+        <MobileEventInfo mobileLeft="200vw" mobileColor="black" mobileFontSize="4vw" className='learn'>
+          <CustomText
+            mobileLeft="13vw"
+            mobileTop="65vw"
+            mobileColor="#45171A"
+            mobileFontSize="5vw"
+            bold
+            >
+            Learn Day
+          </CustomText>
+          <CustomText
+            mobileLeft="13vw"
+            mobileTop="72vw"
+            mobileColor="#45171A"
+            mobileFontSize="3.4vw"
+            bold
+            >
+            Nov 18, 2024
+          </CustomText>
+          <CustomText
+            mobileLeft="13vw"
+            mobileTop="78vw"
+            mobileColor="#45171A"
+            mobileFontSize="3.1vw"
+            mobileWidth="79vw"
+            mobileLineHeight="4.5vw"
+            >
+            A day of workshops and skill building in preparation for Build Day. With topics ranging from web development, version control, design and more, we will have something for you!
+          </CustomText>
+        </MobileEventInfo>
+        <MobileEventInfo mobileFontSize="4vw" className='build'>
+          <CustomText
+            mobileLeft="13vw"
+            mobileTop="108vw"
+            mobileColor="#45171A"
+            mobileFontSize="5vw"
+            bold
+            >
+            Build Day
+          </CustomText>
+          <CustomText
+            mobileLeft="13vw"
+            mobileTop="115vw"
+            mobileColor="#45171A"
+            mobileFontSize="3.4vw"
+            bold
+            >
+            Nov 19, 2024
+          </CustomText>
+          <CustomText
+            mobileLeft="13vw"
+            mobileTop="121vw"
+            mobileColor="#45171A"
+            mobileFontSize="3.1vw"
+            mobileWidth="77.6vw"
+            mobileLineHeight="4.5vw"
+            >
+            A 12-hour hackathon focused around creating projects centred around accessibility, inclusivity, and diversity. For project submission, HackCamp will donate $5 to the BC Children’s Hospital, Nature Trust of British Columbia, or Alzheimer&apos;s Society of Canada.
+          </CustomText>
+        </MobileEventInfo>
         <EventBox
           onMouseEnter={() => setIsLeftHovered(true)}
           onMouseLeave={() => setIsLeftHovered(false)}
