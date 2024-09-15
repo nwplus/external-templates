@@ -354,7 +354,7 @@ const Learn = () => {
       <BgScroll>
         {/* <StyledTitle>Our Events</StyledTitle> */}
         <OurEventsTitle />
-        <CustomText mobileTop="164vw" mobileFontSize="6.5vw" mobileLeft="21vw" left="67vw" top="8vw" color="white" fontSize="3vw">
+        <CustomText bold mobileTop="164vw" mobileFontSize="6.5vw" mobileLeft="21vw" left="67vw" top="8vw" color="white" fontSize="3vw">
           What is a Hackathon?
         </CustomText>
         <CustomText isHidden left="68.9vw" top="15.4vw" color="white" fontSize="1.3vw">
