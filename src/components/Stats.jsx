@@ -169,9 +169,7 @@ const TicketBackgroundScroll = styled.div`
   position: absolute;
   top: 6px;
   left: -775px;
-  /* width: 108%; */
   width: 100%;
-  /* height: 120%; */
   height: 100%;
   animation: ${({ shift }) => ticketScroll(shift)} 9000s linear infinite;
   z-index: -1;
@@ -200,8 +198,7 @@ const Gallery = styled.div`
   z-index: 97;
   gap: 51.3px;
   ${p => p.theme.mediaQueries.mobile} {
-    height: 20%;
-    top: 80%;
+    top: -28vw !important;
     animation: ${mobileScroll} 40s linear infinite;
   }
 
