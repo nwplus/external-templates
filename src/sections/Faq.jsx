@@ -20,7 +20,6 @@ const BgSectionContainer = styled(SectionContainer)`
   width: 100%;
   aspect-ratio: 1440/1072;
   z-index: 17;
-  overflow: hidden;
 
   /* background: #150c27; */
 
@@ -239,7 +238,7 @@ const Faq = () => {
   // (@htdf processData)
   // (@signature (listof FAQ) -> Object)
   // produces a dict where key = category, value = array of questions from an array of FAQ objects
-  function processData (data) {
+  function processData(data) {
     // categorize questions
 
     const categories = {}
@@ -272,41 +271,41 @@ const Faq = () => {
 
         {faqData
           ? (
-          <FaqGrid>
-            <FaqColumn>
-              {faqData.General && (
-                <FaqCollection
-                  category="General"
-                  faqs={faqData.General}
-                  expandedQuestion={expandedQuestion}
-                  setExpandedQuestion={setExpandedQuestion}
-                />
-              )}
-            </FaqColumn>
+            <FaqGrid>
+              <FaqColumn>
+                {faqData.General && (
+                  <FaqCollection
+                    category="General"
+                    faqs={faqData.General}
+                    expandedQuestion={expandedQuestion}
+                    setExpandedQuestion={setExpandedQuestion}
+                  />
+                )}
+              </FaqColumn>
 
-            <FaqColumn>
-              {faqData['Teams & Projects'] && (
-                <FaqCollection
-                  category="Projects"
-                  faqs={faqData['Teams & Projects']}
-                  expandedQuestion={expandedQuestion}
-                  setExpandedQuestion={setExpandedQuestion}
-                />
-              )}
-              {faqData.Logistics && (
-                <FaqCollection
-                  category="Logistics"
-                  faqs={faqData.Logistics}
-                  expandedQuestion={expandedQuestion}
-                  setExpandedQuestion={setExpandedQuestion}
-                />
-              )}
-            </FaqColumn>
-          </FaqGrid>
-            )
+              <FaqColumn>
+                {faqData['Teams & Projects'] && (
+                  <FaqCollection
+                    category="Projects"
+                    faqs={faqData['Teams & Projects']}
+                    expandedQuestion={expandedQuestion}
+                    setExpandedQuestion={setExpandedQuestion}
+                  />
+                )}
+                {faqData.Logistics && (
+                  <FaqCollection
+                    category="Logistics"
+                    faqs={faqData.Logistics}
+                    expandedQuestion={expandedQuestion}
+                    setExpandedQuestion={setExpandedQuestion}
+                  />
+                )}
+              </FaqColumn>
+            </FaqGrid>
+          )
           : (
-              'loading...'
-            )}
+            'loading...'
+          )}
       </Wrapper>
     </BgSectionContainer>
   )

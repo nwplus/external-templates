@@ -8,7 +8,6 @@ const Container = styled.div`
   border: 1.5px solid #fff;
   border-radius: 5px;
   box-sizing: border-box;
-  overflow: hidden;
 
   ${p =>
     p.expanded
