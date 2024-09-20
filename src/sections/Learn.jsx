@@ -384,7 +384,7 @@ const Learn = () => {
           top="25vw"
         >
           <EventTitle>Learn Day</EventTitle>
-          <Date>Nov 18, 2024</Date>
+          <Date>Nov 9, 2024</Date>
           <FadeContent top="5.4vw" isHovered={!isLeftHovered}>
             <CustomText fontSize="1.1vw" color="#45171a" width="8vw">
               learn more <LearnMoreIcon />
@@ -404,7 +404,7 @@ const Learn = () => {
           top="25vw"
         >
           <EventTitle>Build Day</EventTitle>
-          <Date>Nov 19, 2024</Date>
+          <Date>Nov 10, 2024</Date>
           <FadeContent top="5.4vw" isHovered={!isRightHovered}>
             <CustomText fontSize="1.1vw" color="#45171a" width="8vw">
               learn more <LearnMoreIcon />
