@@ -167,7 +167,7 @@ const EmailBlurb = styled.a`
 `
 
 // eslint-disable-next-line react/prop-types
-export default function Sponsor() {
+export default function Sponsor () {
   const [sponsors, setSponsors] = useState({})
 
   useEffect(async () => {

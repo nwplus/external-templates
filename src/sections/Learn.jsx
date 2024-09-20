@@ -422,7 +422,7 @@ const Learn = () => {
                 .{' '}
               </CustomText>
             </div>
-          )
+            )
           : (
             <div>
               <CustomText
@@ -462,7 +462,7 @@ const Learn = () => {
                 Check out our recap from HackCamp 2023!
               </CustomText>
             </div>
-          )}
+            )}
         <LeftPanel onMouseEnter={() => setIsLeftHovered(true)} onMouseLeave={() => setIsLeftHovered(false)} />
         <LeftPanelNoHover
           onMouseEnter={() => setIsLeftHovered(true)}
