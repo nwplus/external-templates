@@ -457,7 +457,7 @@ const CharityLabel = styled.div`
   }
 `
 
-export default function Stats() {
+export default function Stats () {
   const [shiftAmount, setShiftAmount] = useState(0)
 
   useEffect(() => {

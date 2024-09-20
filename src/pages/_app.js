@@ -49,7 +49,7 @@ const OuterContainer = styled(SectionContainer)`
 `
 
 // eslint-disable-next-line react/prop-types
-function App({ Component, pageProps }) {
+function App ({ Component, pageProps }) {
   return (
     <ThemeProvider>
       <ParallaxProvider>

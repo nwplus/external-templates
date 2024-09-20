@@ -272,11 +272,11 @@ const StyledMessage = styled.div`
   font-size: 1.4vw;
 `
 
-export default function Footer() {
+export default function Footer () {
   const [inputMessage, setInputMessage] = useState('')
   const emailInput = React.createRef()
 
-  function addToMailingList() {
+  function addToMailingList () {
     // Reset any error/info messages from before
     setInputMessage('')
 
@@ -306,7 +306,7 @@ export default function Footer() {
     }
   }
 
-  function validateEmail(email) {
+  function validateEmail (email) {
     if (!email.includes('@')) {
       return false
     }
