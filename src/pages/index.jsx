@@ -15,16 +15,16 @@ import Faq from '../sections/Faq'
 import Testimonials from 'src/sections/Testimonials'
 
 // eslint-disable-next-line react/prop-types
-export default function Index ({ title }) {
-  const [bodyHeight, setBodyHeight] = useState('455.5vw')
+export default function Index({ title }) {
+  // const [bodyHeight, setBodyHeight] = useState('455.5vw')
 
-  const updateBodyHeight = (newHeight) => {
-    setBodyHeight(newHeight)
-  }
+  // const updateBodyHeight = (newHeight) => {
+  //   setBodyHeight(newHeight)
+  // }
 
   return (
     <>
-      <GlobalStyle bodyHeight={bodyHeight} />
+      <GlobalStyle />
       <Head>
         {/* Remove comment once title is set */}
         <title> {title} </title>
@@ -46,14 +46,14 @@ export default function Index ({ title }) {
       <Stats />
       <Testimonials />
       <Faq />
-      <Sponsor updateBodyHeight={updateBodyHeight} />
+      <Sponsor />
       <Footer />
       {/* Components Ends */}
     </>
   )
 }
 
-export async function getStaticProps () {
+export async function getStaticProps() {
   return {
     props: {
       title: 'HackCamp 2024'

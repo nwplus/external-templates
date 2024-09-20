@@ -16,7 +16,7 @@ const OuterContainer = styled(SectionContainer)`
   background-repeat: no-repeat;
   background-position: center top;
   position: relative;
-  overflow: hidden;
+  
 
   /* @media (max-width: 1300px) {
     aspect-ratio: 752 / 1200;
@@ -49,7 +49,7 @@ const OuterContainer = styled(SectionContainer)`
 `
 
 // eslint-disable-next-line react/prop-types
-function App ({ Component, pageProps }) {
+function App({ Component, pageProps }) {
   return (
     <ThemeProvider>
       <ParallaxProvider>

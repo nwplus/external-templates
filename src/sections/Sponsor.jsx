@@ -167,7 +167,7 @@ const EmailBlurb = styled.a`
 `
 
 // eslint-disable-next-line react/prop-types
-export default function Sponsor ({ updateBodyHeight }) {
+export default function Sponsor() {
   const [sponsors, setSponsors] = useState({})
 
   useEffect(async () => {
@@ -197,8 +197,8 @@ export default function Sponsor ({ updateBodyHeight }) {
       }, 0)
 
       // Update the body height
-      const additionalHeight = rows + sponsorMultiplier
-      updateBodyHeight(`${465.5 + additionalHeight}vw`)
+      // const additionalHeight = rows + sponsorMultiplier
+      // updateBodyHeight(`${465.5 + additionalHeight}vw`)
     }
   }, [])
 
