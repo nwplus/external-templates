@@ -35,7 +35,7 @@ const BgSectionContainer = styled(SectionContainer)`
   aspect-ratio: 1440/1415;
   position: relative;
   z-index: 15;
-  /* overflow: hidden; */
+  /*  */
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 1vw;
 
@@ -228,7 +228,7 @@ const GalleryImage = styled.img`
 const ProjectTicketContainer = styled.div`
   width: 33.5vw;
   height: 15.6vw;
-  overflow: hidden;
+  
   position: relative;
   left: -36vw;
   top: 20vw;
@@ -286,7 +286,7 @@ const ProjectLabel = styled.div`
 const ParticipantTicketContainer = styled.div`
   width: 33.5vw;
   height: 15.6vw;
-  overflow: hidden;
+  
   position: relative;
   left: 50.6vw;
   top: -8.7vw;
@@ -344,7 +344,7 @@ const ParticipantLabel = styled.div`
 const HackersTicketContainer = styled.div`
   width: 33.5vw;
   height: 15.6vw;
-  overflow: hidden;
+  
   position: relative;
   left: -29vw;
   top: 7vw;
@@ -402,7 +402,7 @@ const HackersLabel = styled.div`
 const CharityTicketContainer = styled.div`
   width: 46vw;
   height: 21.42vw;
-  overflow: hidden;
+  
   position: relative;
   left: 39.5vw;
   top: -26.5vw;
@@ -457,7 +457,7 @@ const CharityLabel = styled.div`
   }
 `
 
-export default function Stats () {
+export default function Stats() {
   const [shiftAmount, setShiftAmount] = useState(0)
 
   useEffect(() => {

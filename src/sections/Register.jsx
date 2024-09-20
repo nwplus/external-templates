@@ -466,7 +466,7 @@ const SignContainer = styled.div`
   position: absolute;
   left: 72.5vw;
   top: 13.4vw;
-
+  // for now
   ${p => p.theme.mediaQueries.mobile} {
     display: none;
   }
@@ -551,7 +551,7 @@ const CountdownTimer = ({ targetDate }) => {
   return <CountdownNumber>{formatTime(timeLeft)}</CountdownNumber>
 }
 
-export default function Register () {
+export default function Register() {
   // not using these hooks because they don't work on initial load -> better practice to pass an isMobile props from getServerSideProps after checking userAgent
   // const windowWidth = useWindowWidth();
   // const mobileBreakpoint = 768;
@@ -592,7 +592,7 @@ export default function Register () {
             <HCSub>Nov 9-10, 2024 | In-person event</HCSub>
           </BodyContainer>
           <ButtonContainer>
-          {/* <FillText>The website is still under construction, for the full experience please switch to desktop. :)</FillText> */}
+            {/* <FillText>The website is still under construction, for the full experience please switch to desktop. :)</FillText> */}
             <RegisterNowButton>
               <ButtonText>Registrations Opening Soon!</ButtonText>
             </RegisterNowButton>

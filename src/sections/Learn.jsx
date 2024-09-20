@@ -239,7 +239,7 @@ const YouTubeContainer = styled.div`
   width: 30vw;
   padding-bottom: 15.4vw;
   z-index: 10;
-  overflow: hidden;
+  
 
   iframe {
     position: absolute;
@@ -381,88 +381,88 @@ const Learn = () => {
         </ToggleText>
         {toggleOpen
           ? (
-          <div>
-            <PositionedList>
-              <li>
-                <BulletText color="white" width="30vw" fontSize="1.1vw">
-                  Learn new technologies with the help of workshops and mentors
-                </BulletText>
-              </li>
-              <li>
-                {' '}
-                <BulletText color="white" width="30vw" fontSize="1.1vw">
+            <div>
+              <PositionedList>
+                <li>
+                  <BulletText color="white" width="30vw" fontSize="1.1vw">
+                    Learn new technologies with the help of workshops and mentors
+                  </BulletText>
+                </li>
+                <li>
                   {' '}
-                  Network with like-minded peers and industry recruiters{' '}
-                </BulletText>
-              </li>
-              <li>
-                {' '}
-                <BulletText color="white" width="30vw" fontSize="1.1vw">
+                  <BulletText color="white" width="30vw" fontSize="1.1vw">
+                    {' '}
+                    Network with like-minded peers and industry recruiters{' '}
+                  </BulletText>
+                </li>
+                <li>
                   {' '}
-                  Collect swag, eat free food, engage in fun activities, and make memories to last a lifetime{' '}
-                </BulletText>
-              </li>
-              <li>
-                <BulletText color="white" width="30vw" fontSize="1.1vw">
-                  {' '}
-                  At the end of it all, have your own project to show off and add to your resume!{' '}
-                </BulletText>
-              </li>
-            </PositionedList>
-            <CustomText left="64.5vw" width="34.5vw" top="45vw" fontSize="1.1vw">
-              To learn more about hackathons and what to expect, check out our article on{' '}
-              <a
-                href="https://medium.com/nwplusubc/nwchats-what-is-a-hackathon-7b5032011487"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ color: 'white', textDecoration: 'underline' }}
-              >
-                Medium
-              </a>
-              .{' '}
-            </CustomText>
-          </div>
-            )
+                  <BulletText color="white" width="30vw" fontSize="1.1vw">
+                    {' '}
+                    Collect swag, eat free food, engage in fun activities, and make memories to last a lifetime{' '}
+                  </BulletText>
+                </li>
+                <li>
+                  <BulletText color="white" width="30vw" fontSize="1.1vw">
+                    {' '}
+                    At the end of it all, have your own project to show off and add to your resume!{' '}
+                  </BulletText>
+                </li>
+              </PositionedList>
+              <CustomText left="64.5vw" width="34.5vw" top="45vw" fontSize="1.1vw">
+                To learn more about hackathons and what to expect, check out our article on{' '}
+                <a
+                  href="https://medium.com/nwplusubc/nwchats-what-is-a-hackathon-7b5032011487"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: 'white', textDecoration: 'underline' }}
+                >
+                  Medium
+                </a>
+                .{' '}
+              </CustomText>
+            </div>
+          )
           : (
-          <div>
-            <CustomText
-              mobileTop="210vw"
-              mobileWidth="78vw"
-              mobileFontSize="2.9vw"
-              left="64.5vw"
-              mobileLeft="10vw"
-              width="34.5vw"
-              top="32vw"
-              fontSize="1.1vw"
-              mobileColor="#3B1417"
-              mobileLineHeight="4vw"
-              bold
+            <div>
+              <CustomText
+                mobileTop="210vw"
+                mobileWidth="78vw"
+                mobileFontSize="2.9vw"
+                left="64.5vw"
+                mobileLeft="10vw"
+                width="34.5vw"
+                top="32vw"
+                fontSize="1.1vw"
+                mobileColor="#3B1417"
+                mobileLineHeight="4vw"
+                bold
               >
-              To learn more about hackathons and what to expect, check out our article on{' '}
-              <a
-                href="https://medium.com/nwplusubc/nwchats-what-is-a-hackathon-7b5032011487"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ color: 'white', textDecoration: 'underline' }}
-              >
-                Medium
-              </a>
-              .{' '}
-            </CustomText>
-            <YouTubeContainer>
-              <YouTube
-                opts={{
-                  height: '100%',
-                  width: '100%'
-                }}
-                videoId="CA5YRDdyu90"
-              />
-            </YouTubeContainer>
-            <CustomText isHidden fontStyle="italic" left="70vw" width="34.5vw" top="52.5vw" fontSize="1.1vw">
-              Check out our recap from HackCamp 2023!
-            </CustomText>
-          </div>
-            )}
+                To learn more about hackathons and what to expect, check out our article on{' '}
+                <a
+                  href="https://medium.com/nwplusubc/nwchats-what-is-a-hackathon-7b5032011487"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: 'white', textDecoration: 'underline' }}
+                >
+                  Medium
+                </a>
+                .{' '}
+              </CustomText>
+              <YouTubeContainer>
+                <YouTube
+                  opts={{
+                    height: '100%',
+                    width: '100%'
+                  }}
+                  videoId="CA5YRDdyu90"
+                />
+              </YouTubeContainer>
+              <CustomText isHidden fontStyle="italic" left="70vw" width="34.5vw" top="52.5vw" fontSize="1.1vw">
+                Check out our recap from HackCamp 2023!
+              </CustomText>
+            </div>
+          )}
         <LeftPanel onMouseEnter={() => setIsLeftHovered(true)} onMouseLeave={() => setIsLeftHovered(false)} />
         <LeftPanelNoHover
           onMouseEnter={() => setIsLeftHovered(true)}
@@ -482,7 +482,7 @@ const Learn = () => {
             mobileColor="#45171A"
             mobileFontSize="5vw"
             bold
-            >
+          >
             Learn Day
           </CustomText>
           <CustomText
@@ -491,7 +491,7 @@ const Learn = () => {
             mobileColor="#45171A"
             mobileFontSize="3.4vw"
             bold
-            >
+          >
             Nov 18, 2024
           </CustomText>
           <CustomText
@@ -501,7 +501,7 @@ const Learn = () => {
             mobileFontSize="3.1vw"
             mobileWidth="79vw"
             mobileLineHeight="4.5vw"
-            >
+          >
             A day of workshops and skill building in preparation for Build Day. With topics ranging from web development, version control, design and more, we will have something for you!
           </CustomText>
         </MobileEventInfo>
@@ -512,7 +512,7 @@ const Learn = () => {
             mobileColor="#45171A"
             mobileFontSize="5vw"
             bold
-            >
+          >
             Build Day
           </CustomText>
           <CustomText
@@ -521,7 +521,7 @@ const Learn = () => {
             mobileColor="#45171A"
             mobileFontSize="3.4vw"
             bold
-            >
+          >
             Nov 19, 2024
           </CustomText>
           <CustomText
@@ -531,7 +531,7 @@ const Learn = () => {
             mobileFontSize="3.1vw"
             mobileWidth="77.6vw"
             mobileLineHeight="4.5vw"
-            >
+          >
             A 12-hour hackathon focused around creating projects centred around accessibility, inclusivity, and diversity. For project submission, HackCamp will donate $5 to the BC Children’s Hospital, Nature Trust of British Columbia, or Alzheimer&apos;s Society of Canada.
           </CustomText>
         </MobileEventInfo>
