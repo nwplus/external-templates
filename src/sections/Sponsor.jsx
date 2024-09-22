@@ -158,8 +158,8 @@ const SponsorLogo = styled.img`
   padding: 1vw;
   object-fit: contain;
   ${p => p.theme.mediaQueries.mobile} {
-    width: 18vw;
-    height: 9.3vw;
+    width: 21vw;
+    height: 10vw;
   }
 `
 
@@ -208,13 +208,20 @@ export default function Sponsor () {
   const [sponsors, setSponsors] = useState({})
 
   // used for calculating spacing of the sponsors
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768)
+  // + check if window is available before using it
+  const [isMobile, setIsMobile] = useState(
+    typeof window !== 'undefined' ? window.innerWidth <= 768 : false
+  )
+
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768)
+    if (typeof window !== 'undefined') {
+      const handleResize = () => {
+        setIsMobile(window.innerWidth <= 768)
+      }
+
+      window.addEventListener('resize', handleResize)
+      return () => window.removeEventListener('resize', handleResize)
     }
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
   }, [])
 
   useEffect(() => {
