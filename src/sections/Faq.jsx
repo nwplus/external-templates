@@ -29,7 +29,7 @@ const BgSectionContainer = styled(SectionContainer)`
     background-size: 100vw;
     background-repeat: no-repeat;
     background-position: center center;
-    top: 87.3vw;
+    top: 93.3vw;
   }
 `
 
@@ -64,6 +64,12 @@ const FaqTitle = styled.div`
   right: 10vw;
   left: 50%;
   transform: translateX(-50%);
+
+  ${p => p.theme.mediaQueries.mobile} {
+    background-size: 50vw;
+    top: 2vw;
+    width: 50vw;
+  }
 `
 
 const Wrapper = styled.div`
