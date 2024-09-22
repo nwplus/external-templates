@@ -57,10 +57,10 @@ const AnswerBox = styled.div`
   transition: 0.2s max-height cubic-bezier(0.6, 0, 0.4, 1);
   font-size: 1.2vw;
 
-  ${p => (p.isOpen ? 'max-height:500px; background-color: #7C0F3B;' : 'max-height: 0;')}
+  ${p => (p.isOpen ? 'max-height:300px; overflow-y: auto; background-color: #7C0F3B;' : 'max-height: 0;')}
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 0.9vw;
+    font-size: 2.4vw;
   }
 `
 

@@ -29,6 +29,7 @@ const BgSectionContainer = styled(SectionContainer)`
     background-size: 100vw;
     background-repeat: no-repeat;
     background-position: center center;
+    top: 87.3vw;
   }
 `
 
@@ -63,9 +64,6 @@ const FaqTitle = styled.div`
   right: 10vw;
   left: 50%;
   transform: translateX(-50%);
-  ${p => p.theme.mediaQueries.mobile} {
-    display: none;
-  }
 `
 
 const Wrapper = styled.div`
@@ -134,7 +132,9 @@ const CollectionName = styled.div`
   align-self: baseline;
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 1.2rem;
+    font-size: 5vw;
+    padding-top: 2vw;
+    align-self: auto;
   }
 `
 
@@ -233,6 +233,10 @@ const PurpleBanner = styled.div`
   top: -3.3vw;
   left: -16.5vw;
   z-index: 100;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const Faq = () => {
