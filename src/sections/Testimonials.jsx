@@ -233,7 +233,7 @@ const fadeIn = keyframes`
   }
 `
 
-export default function Testimonials() {
+export default function Testimonials () {
   const [currentTestimonial, setCurrentTestimonial] = useState(0)
   const [fadeType, setFadeType] = useState('fade-in')
 

@@ -126,22 +126,22 @@ const HCSub = styled.div`
   }
 `
 
-const FillText = styled.div`
-  font-size: 1.75vw;
-  display: none;
-  color: #45171a;
-  font-weight: 700;
-  padding-top: 1rem;
-  ${p => p.theme.mediaQueries.mobile} {
-    font-size: 3.1vw;
-    display: block;
-    font-weight: 400;
-    font: 'HK Grotesk';
-    padding-top: 1.5rem;
-    padding-bottom: 0.5rem;
-    width: 68vw;
-  }
-`
+// const FillText = styled.div`
+//   font-size: 1.75vw;
+//   display: none;
+//   color: #45171a;
+//   font-weight: 700;
+//   padding-top: 1rem;
+//   ${p => p.theme.mediaQueries.mobile} {
+//     font-size: 3.1vw;
+//     display: block;
+//     font-weight: 400;
+//     font: 'HK Grotesk';
+//     padding-top: 1.5rem;
+//     padding-bottom: 0.5rem;
+//     width: 68vw;
+//   }
+// `
 
 const HackCampLogo = styled.div`
   background: url('assets/background/hero/logo.svg');
@@ -551,7 +551,7 @@ const CountdownTimer = ({ targetDate }) => {
   return <CountdownNumber>{formatTime(timeLeft)}</CountdownNumber>
 }
 
-export default function Register() {
+export default function Register () {
   // not using these hooks because they don't work on initial load -> better practice to pass an isMobile props from getServerSideProps after checking userAgent
   // const windowWidth = useWindowWidth();
   // const mobileBreakpoint = 768;
