@@ -30,7 +30,7 @@ const BgSectionContainer = styled(SectionContainer)`
     background-size: 100vw;
     background-repeat: no-repeat;
     background-position: center center;
-    aspect-ratio: 412/632;
+    top: 0vw;
   }
 `
 
@@ -47,6 +47,9 @@ const StyledTitle = styled.div`
   transform: translateX(-50%);
   ${p => p.theme.mediaQueries.mobile} {
     font-size: 2em;
+    height: 11vw;
+    background-size: 68vw;
+    width: 68vw;
   }
 `
 
@@ -60,6 +63,12 @@ const TitleSponsorContainer = styled.div`
   left: 25vw;
   top: 12vw;
   transform: translateX(-50%);
+  ${p => p.theme.mediaQueries.mobile} {
+    top: 20vw;
+    background-size: 90vw;
+    width: 90vw;
+    height: 40vw;
+  }
 `
 
 const Sponsors = styled.div`
@@ -86,6 +95,12 @@ const SponsorTier = styled.div`
   height: 13vw;
   background-size: 100%;
   gap: 1.3vw;
+  ${p => p.theme.mediaQueries.mobile} {
+    /* height: 23vw; */
+    background-size: ${props => 130 - (props.count * 3)}%;
+    width: ${props => props.count * 23}vw;
+    height: 22vw;
+  }
 `
 
 const TitleSponsorLink = styled.a`
@@ -96,12 +111,17 @@ const TitleSponsorLink = styled.a`
   top: 7vw;
   right: 33vw;
   z-index: 1000;
+  ${p => p.theme.mediaQueries.mobile} {
+    top: 12vw;
+    right: 59vw;
+  }
 `
 
 const SponsorLink = styled.a`
   display: flex;
   align-items: center;
   flex: 1 1 0px;
+  justify-content: center;
 `
 
 const SponsorText = styled.h1`
@@ -113,11 +133,20 @@ const SponsorText = styled.h1`
   font-weight: lighter;
   right: 3.9vw;
   font-family: 'HK Grotesk';
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: 2.1vw;
+    width: 66vw;
+    right: 11.5vw;
+    top: 17vw;
+  }
 `
 
 const TitleSponsorLogo = styled.img`
   position: absolute;
   width: 17vw;
+  ${p => p.theme.mediaQueries.mobile} {
+    width: 24vw;
+  }
 `
 
 const SponsorLogo = styled.img`
@@ -128,6 +157,10 @@ const SponsorLogo = styled.img`
   width: 15vw;
   padding: 1vw;
   object-fit: contain;
+  ${p => p.theme.mediaQueries.mobile} {
+    width: 18vw;
+    height: 9.3vw;
+  }
 `
 
 const PushinP = styled.p`
@@ -142,7 +175,11 @@ const PushinP = styled.p`
   z-index: 30;
 
   ${p => p.theme.mediaQueries.mobile} {
-    display: none;
+    font-size: 2.9vw;
+    min-width: 0px;
+    width: 74vw;
+    top: 15vw;
+    text-align: center;
   }
 `
 
@@ -169,6 +206,26 @@ const EmailBlurb = styled.a`
 // eslint-disable-next-line react/prop-types
 export default function Sponsor () {
   const [sponsors, setSponsors] = useState({})
+
+  // used for calculating spacing of the sponsors
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768)
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768)
+    }
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  useEffect(() => {
+    console.log(isMobile, ' is the mobile')
+  }, [isMobile])
+
+  const addHttpsIfMissing = (link) => {
+    return link.startsWith('http://') || link.startsWith('https://')
+      ? link
+      : `https://${link}`
+  }
 
   useEffect(async () => {
     const data = await fireDb.getCollection('HackCamp2024', 'Sponsors')
@@ -223,7 +280,7 @@ export default function Sponsor () {
                 <TitleSponsorContainer key={key}>
                   {sponsors[key].map(sponsor => (
                     <>
-                      <TitleSponsorLink href={sponsor.link} target="_blank" rel="noreferrer">
+                      <TitleSponsorLink href={addHttpsIfMissing(sponsor.link)} target="_blank" rel="noreferrer">
                         <TitleSponsorLogo src={sponsor.imgURL} />
                       </TitleSponsorLink>
                       <SponsorText>{sponsor.blurb}</SponsorText>
@@ -239,16 +296,17 @@ export default function Sponsor () {
               return (
                 <SponsorTier
                   key={key}
+                  count={sponsorCount}
                   style={{
                     backgroundImage: `url(${ContainerSVG})`,
                     backgroundRepeat: 'no-repeat',
-                    top: `${19 + row * 14}vw`,
+                    top: `${isMobile ? 37 + row * 24 : 19 + row * 14}vw`,
                     backgroundPosition: 'center'
                   }}
                 >
                   {sponsors[key].map(sponsor => (
                     // eslint-disable-next-line react/jsx-key
-                    <SponsorLink href={sponsor.link} target="_blank" rel="noreferrer">
+                    <SponsorLink href={addHttpsIfMissing(sponsor.link)} target="_blank" rel="noreferrer">
                       <SponsorLogo src={sponsor.imgURL} />
                     </SponsorLink>
                   ))}
