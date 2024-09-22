@@ -73,10 +73,14 @@ const Wrapper = styled.div`
   padding: 10vw 0;
   margin: 0 auto;
   width: 75vw;
-  min-width: 900px;
+  min-width: 800px;
   max-width: 1200px;
   z-index: 88;
   position: relative;
+
+  ${p => p.theme.mediaQueries.tablet} {
+    min-width: 700px;
+  }
 
   ${p => p.theme.mediaQueries.mobile} {
     grid-column: 2 / span 12;
@@ -238,7 +242,7 @@ const Faq = () => {
   // (@htdf processData)
   // (@signature (listof FAQ) -> Object)
   // produces a dict where key = category, value = array of questions from an array of FAQ objects
-  function processData(data) {
+  function processData (data) {
     // categorize questions
 
     const categories = {}
@@ -302,10 +306,10 @@ const Faq = () => {
                 )}
               </FaqColumn>
             </FaqGrid>
-          )
+            )
           : (
-            'loading...'
-          )}
+              'loading...'
+            )}
       </Wrapper>
     </BgSectionContainer>
   )
