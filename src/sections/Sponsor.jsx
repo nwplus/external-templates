@@ -20,6 +20,7 @@ const BgSectionContainer = styled(SectionContainer)`
   position: relative;
   width: 100%;
   top: -53vw;
+  height: ${props => props.height - 10}vw;
   justify-content: center;
   align-items: center;
   aspect-ratio: 1440/1630;
@@ -28,6 +29,7 @@ const BgSectionContainer = styled(SectionContainer)`
 
   ${p => p.theme.mediaQueries.mobile} {
     background-size: 100vw;
+    height: ${props => props.height + 45}vw;
     background-repeat: no-repeat;
     background-position: center center;
     top: 0vw;
@@ -206,6 +208,7 @@ const EmailBlurb = styled.a`
 // eslint-disable-next-line react/prop-types
 export default function Sponsor () {
   const [sponsors, setSponsors] = useState({})
+  const [height, setHeight] = useState(60)
 
   // used for calculating spacing of the sponsors
   // + check if window is available before using it
@@ -223,10 +226,6 @@ export default function Sponsor () {
       return () => window.removeEventListener('resize', handleResize)
     }
   }, [])
-
-  useEffect(() => {
-    console.log(isMobile, ' is the mobile')
-  }, [isMobile])
 
   const addHttpsIfMissing = (link) => {
     return link.startsWith('http://') || link.startsWith('https://')
@@ -256,19 +255,20 @@ export default function Sponsor () {
         if (key === 'platinum') {
           return acc + (organizedSponsors[key].length * 10)
         } else {
-          return acc + (organizedSponsors[key].length * 7)
+          return acc + (organizedSponsors[key].length * 3)
         }
       }, 0)
 
       // Update the body height
-      // const additionalHeight = rows + sponsorMultiplier
+      const additionalHeight = rows + sponsorMultiplier
       // updateBodyHeight(`${465.5 + additionalHeight}vw`)
+      setHeight(60 + additionalHeight)
     }
   }, [])
 
   // eslint-disable-next-line multiline-ternary
   return Object.keys(sponsors).length > 0 ? (
-    <BgSectionContainer id="sponsors">
+    <BgSectionContainer height={height} id="sponsors">
       <StyledTitle />
       <PushinP>
         nwPlus is always looking for new ventures, opportunities, and connections. If you are interested in working with
