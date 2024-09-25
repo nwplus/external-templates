@@ -58,11 +58,13 @@ function App ({ Component, pageProps }) {
     const lockScroll = () => {
       document.body.style.overflow = 'hidden'
       document.body.style.position = 'fixed'
+      document.body.style.overflowX = 'hidden'
     }
 
     const unlockScroll = () => {
       document.body.style.overflow = 'auto'
       document.body.style.position = ''
+      document.body.style.overflowX = 'hidden'
     }
 
     if (loading) {
