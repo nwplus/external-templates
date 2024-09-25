@@ -127,7 +127,10 @@ const StyledTitle = styled(Header1)`
   z-index: 100;
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 1.5rem;
+    font-size: 7.7vw;
+    width: 80vw;
+    top: 0vw;
+    left: 10vw;
   }
 `
 
@@ -239,6 +242,13 @@ const ProjectTicketContainer = styled.div`
   :hover {
     transform: scale(1.1);
   }
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: 66.33vw;
+    height: 30.88vw;
+    left: -97vw;
+    top: 41vw;
+  }
 `
 
 const ProjectTicket = styled.img`
@@ -259,7 +269,9 @@ const ProjectText = styled.div`
   font-weight: 900;
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 1.5rem;
+    font-size: 1.5vw;
+    top: 15.8vw;
+    left: 41.5vw;
   }
 `
 
@@ -269,7 +281,7 @@ const ProjectAnimatedNumber = styled.div`
   line-height: 1;
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 1.5rem;
+    font-size: 8vw;
   }
 `
 
@@ -279,7 +291,7 @@ const ProjectLabel = styled.div`
   line-height: 1;
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 1rem;
+    font-size: 2.3vw;
   }
 `
 
@@ -296,6 +308,14 @@ const ParticipantTicketContainer = styled.div`
 
   :hover {
     transform: scale(1.1);
+  }
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: 66.33vw;
+    height: 30.88vw;
+    top: 24vw;
+    left: 37vw;
+    transform: rotate(-3deg);
   }
 `
 
@@ -317,7 +337,9 @@ const ParticipantText = styled.div`
   font-weight: 900;
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 1.5rem;
+    font-size: 1.5vw;
+    top: 15.4vw;
+    left: 38.5vw;
   }
 `
 
@@ -327,7 +349,7 @@ const ParticipantAnimatedNumber = styled.div`
   line-height: 1;
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 1.5rem;
+    font-size: 8vw;
   }
 `
 
@@ -337,7 +359,7 @@ const ParticipantLabel = styled.div`
   line-height: 1;
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 1rem;
+    font-size: 2.3vw;
   }
 `
 
@@ -354,6 +376,14 @@ const HackersTicketContainer = styled.div`
 
   :hover {
     transform: scale(1.1);
+  }
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: 66.33vw;
+    height: 30.88vw;
+    top: 107.5vw;
+    left: -69vw;
+    transform: rotate(-3deg);
   }
 `
 
@@ -375,7 +405,9 @@ const HackersText = styled.div`
   font-weight: 900;
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 1.5rem;
+    font-size: 1.5vw;
+    top: 15.4vw;
+    left: 38.4vw;
   }
 `
 
@@ -385,7 +417,7 @@ const HackersAnimatedNumber = styled.div`
   line-height: 1;
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 1.5rem;
+    font-size: 8vw;
   }
 `
 
@@ -395,7 +427,7 @@ const HackersLabel = styled.div`
   line-height: 1;
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 1rem;
+    font-size: 2.3vw;
   }
 `
 
@@ -412,6 +444,14 @@ const CharityTicketContainer = styled.div`
 
   :hover {
     transform: scale(1.1);
+  }
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: 91.08vw;
+    height: 42.38vw;
+    top: 5vw;
+    left: -10vw;
+    transform: rotate(2deg);
   }
 `
 
@@ -433,7 +473,9 @@ const CharityText = styled.div`
   font-weight: 900;
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 1.5rem;
+    font-size: 1.5vw;
+    top: 22vw;
+    left: 40vw;
   }
 `
 
@@ -443,7 +485,7 @@ const CharityAnimatedNumber = styled.div`
   line-height: 1;
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 1.5rem;
+    font-size: 8vw;
   }
 `
 
@@ -453,7 +495,7 @@ const CharityLabel = styled.div`
   line-height: 1;
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 1rem;
+    font-size: 2.3vw;
   }
 `
 
