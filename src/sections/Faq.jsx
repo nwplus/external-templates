@@ -15,6 +15,7 @@ const BgSectionContainer = styled(SectionContainer)`
   height: fit-content;
   position: relative;
   top: -51.3vw;
+  overflow: hidden;
   
 
   width: 100%;
