@@ -1,10 +1,12 @@
 /* eslint-disable react/react-in-jsx-scope */
+import { useEffect, useState } from 'react'
 import { ParallaxProvider } from 'react-scroll-parallax'
 import GlobalStyle from '../theme/GlobalStyle'
 import ThemeProvider from '../theme/ThemeProvider'
 import '../theme/fonts/style.css'
 import { SectionContainer } from '@lib/Containers'
 import styled from 'styled-components'
+import LoadingScreen from '@components/LoadingScreen' // Import your LoadingScreen component
 /* eslint react/jsx-filename-extension: 0 */
 
 const OuterContainer = styled(SectionContainer)`
@@ -50,12 +52,51 @@ const OuterContainer = styled(SectionContainer)`
 
 // eslint-disable-next-line react/prop-types
 function App ({ Component, pageProps }) {
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const lockScroll = () => {
+      document.body.style.overflow = 'hidden'
+      document.body.style.position = 'fixed'
+    }
+
+    const unlockScroll = () => {
+      document.body.style.overflow = 'auto'
+      document.body.style.position = ''
+    }
+
+    if (loading) {
+      lockScroll()
+      window.addEventListener('touchmove', preventScroll, { passive: false })
+    } else {
+      unlockScroll()
+      window.removeEventListener('touchmove', preventScroll)
+    }
+
+    return () => {
+      unlockScroll()
+      window.removeEventListener('touchmove', preventScroll)
+    }
+  }, [loading])
+
+  const preventScroll = (e) => {
+    e.preventDefault()
+  }
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false)
+    }, 2500) // set loading time to 2.5 seconds
+
+    return () => clearTimeout(timer)
+  }, [])
+
   return (
     <ThemeProvider>
       <ParallaxProvider>
         <OuterContainer>
           <GlobalStyle />
-          <Component {...pageProps} />
+          {loading ? (<LoadingScreen />) : (<Component {...pageProps} />)}
         </OuterContainer>
       </ParallaxProvider>
     </ThemeProvider>
