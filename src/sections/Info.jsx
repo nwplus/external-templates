@@ -60,7 +60,7 @@ const TextContainer = styled.div`
   z-index: 2;
 
   ${p => p.theme.mediaQueries.mobile} {
-    margin: 0 3.2em;
+    margin: 0 3vw;
     padding: 0;
     height: 50%;
   }
@@ -76,7 +76,10 @@ const StyledTitle = styled(Header2)`
   z-index: 3;
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 1.75em;
+    position: absolute;
+    left: 4vw;
+    top: 46.5vw;
+    font-size: 5.1vw;
     width: 100%;
     text-align: center;
   }
@@ -95,6 +98,9 @@ const StyledTitle = styled(Header2)`
 
   span:nth-child(3) {
     transform: translateY(-0.3vw) rotate(-1deg);
+    ${p => p.theme.mediaQueries.mobile} {
+    transform: translateY(-0.4vw) rotate(-1deg);
+    }
   }
 
   span:nth-child(4) {
@@ -107,10 +113,18 @@ const StyledTitle = styled(Header2)`
 
   span:nth-child(6) {
     transform: translateY(-0.1vw) rotate(4deg);
+
+    ${p => p.theme.mediaQueries.mobile} {
+    transform: translateY(0.1vw) rotate(4deg);
+    }
   }
 
   span:nth-child(7) {
     transform: translateY(0.1vw) rotate(4deg);
+
+    ${p => p.theme.mediaQueries.mobile} {
+    transform: translateY(0.4vw) rotate(4deg);
+    }
   }
 
   span:nth-child(8) {
@@ -119,10 +133,16 @@ const StyledTitle = styled(Header2)`
 
   span:nth-child(9) {
     transform: translateY(0.3vw) rotate(6deg);
+    ${p => p.theme.mediaQueries.mobile} {
+    transform: translateY(0.7vw) rotate(6deg);
+    }
   }
 
   span:nth-child(10) {
     transform: translateY(0.5vw) rotate(4deg);
+    ${p => p.theme.mediaQueries.mobile} {
+    transform: translateY(1.1vw) rotate(4deg);
+    }
   }
 
   span:nth-child(11) {
@@ -131,34 +151,58 @@ const StyledTitle = styled(Header2)`
 
   span:nth-child(12) {
     transform: translateY(0.7vw) rotate(5deg);
+    ${p => p.theme.mediaQueries.mobile} {
+    transform: translateY(1.5vw) rotate(5deg);
+    }
   }
 
   span:nth-child(13) {
     transform: translateY(0.9vw) rotate(5deg);
+    ${p => p.theme.mediaQueries.mobile} {
+    transform: translateY(1.7vw) rotate(5deg);
+    }
   }
 
   span:nth-child(14) {
     transform: translateY(1vw) rotate(1deg);
+    ${p => p.theme.mediaQueries.mobile} {
+    transform: translateY(1.9vw) rotate(1deg);
+    }
   }
 
   span:nth-child(15) {
     transform: translateY(1vw) rotate(1deg);
+    ${p => p.theme.mediaQueries.mobile} {
+    transform: translateY(1.9vw) rotate(1deg);
+    }
   }
 
   span:nth-child(16) {
     transform: translateY(1.1vw) rotate(0deg);
+    ${p => p.theme.mediaQueries.mobile} {
+    transform: translateY(2vw) rotate(0deg);
+    }
   }
 
   span:nth-child(17) {
     transform: translateY(1vw) rotate(-3deg);
+    ${p => p.theme.mediaQueries.mobile} {
+    transform: translateY(1.8vw) rotate(-3deg);
+    }
   }
 
   span:nth-child(18) {
     transform: translateY(0.9vw) rotate(-3deg);
+    ${p => p.theme.mediaQueries.mobile} {
+    transform: translateY(1.5vw) rotate(-4deg);
+    }
   }
 
   span:nth-child(19) {
     transform: translateY(0.7vw) rotate(-5deg);
+    ${p => p.theme.mediaQueries.mobile} {
+    transform: translateY(1.2vw) rotate(-5deg);
+    }
   }
 `
 
@@ -168,7 +212,14 @@ const PushinP = styled.p`
   z-index: 3;
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 1rem;
+    position: absolute;
+    width: 93vw;
+    text-align: left;
+    line-height: 1.7;
+    font-size: 3.2vw;
+    top: 58vw;
+    padding-right: 1.3vw;
+    padding-left: 2.5vw;
   }
 `
 
@@ -183,11 +234,11 @@ const Coaster = styled.div`
   height: 30vw;
 
   ${p => p.theme.mediaQueries.mobile} {
-    top: 93vw;
-    left: 55vw;
-    width: 40vw;
-    height: 40vw;
-    background-size: 39vw;
+    top: 116.5vw;
+    left: 44vw;
+    width: 47vw;
+    height: 47vw;
+    background-size: 45vw;
   }
   
 `
