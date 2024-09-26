@@ -215,18 +215,22 @@ const TentBackground = styled.div`
   }
 `
 
-const RegisterNowButton = styled.button`
+const RegisterNowButton = styled.a`
   background: url('assets/background/hero/register-now-button.svg'),
     url('assets/background/hero/register-now-button-active.svg');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  width: 14vw;
+  width: 17vw;
   height: 70px;
   border: none;
   cursor: pointer;
   margin-right: 20px;
   padding: 0px;
+  text-align: center;
+  text-decoration: none;
+  line-height: 70px;
+
 
   ${p => p.theme.mediaQueries.mobile} {
     transform: scale(0.8);
@@ -249,7 +253,7 @@ const RegisterNowButton = styled.button`
   }
 `
 
-const BecomeMentorButton = styled.button`
+const BecomeMentorButton = styled.a`
   background: url('assets/background/hero/mentor-button.svg'), url('assets/background/hero/mentor-button-active.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -258,6 +262,9 @@ const BecomeMentorButton = styled.button`
   height: 70px;
   border: none;
   cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  line-height: 70px;
 
   ${p => p.theme.mediaQueries.mobile} {
     transform: scale(0.72);
@@ -551,7 +558,7 @@ const CountdownTimer = ({ targetDate }) => {
   return <CountdownNumber>{formatTime(timeLeft)}</CountdownNumber>
 }
 
-export default function Register () {
+export default function Register() {
   // not using these hooks because they don't work on initial load -> better practice to pass an isMobile props from getServerSideProps after checking userAgent
   // const windowWidth = useWindowWidth();
   // const mobileBreakpoint = 768;
@@ -593,10 +600,10 @@ export default function Register () {
           </BodyContainer>
           <ButtonContainer>
             {/* <FillText>The website is still under construction, for the full experience please switch to desktop. :)</FillText> */}
-            <RegisterNowButton>
+            {/* <RegisterNowButton>
               <ButtonText>Registrations Opening Soon!</ButtonText>
-            </RegisterNowButton>
-            <BecomeMentorButton>
+            </RegisterNowButton> */}
+            <BecomeMentorButton href="https://docs.google.com/forms/d/e/1FAIpQLSfc-LD_TRR5T48Vcu5-4KEugVH1OgeWUX8m0461D2H6K3J7DA/viewform" target="_blank">
               <ButtonText>Become a Mentor</ButtonText>
             </BecomeMentorButton>
             <SignContainer>
