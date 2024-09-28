@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import React, { useState } from 'react'
+import React from 'react'
 // import NavBar from '@components/Navbar'
 // import fireDb from '@utilities/firebase'
 // import { SectionContainer } from '@lib/Containers'
@@ -16,15 +16,15 @@ import Testimonials from 'src/sections/Testimonials'
 
 // eslint-disable-next-line react/prop-types
 export default function Index ({ title }) {
-  const [bodyHeight, setBodyHeight] = useState('455.5vw')
+  // const [bodyHeight, setBodyHeight] = useState('455.5vw')
 
-  const updateBodyHeight = (newHeight) => {
-    setBodyHeight(newHeight)
-  }
+  // const updateBodyHeight = (newHeight) => {
+  //   setBodyHeight(newHeight)
+  // }
 
   return (
     <>
-      <GlobalStyle bodyHeight={bodyHeight} />
+      <GlobalStyle />
       <Head>
         {/* Remove comment once title is set */}
         <title> {title} </title>
@@ -46,7 +46,7 @@ export default function Index ({ title }) {
       <Stats />
       <Testimonials />
       <Faq />
-      <Sponsor updateBodyHeight={updateBodyHeight} />
+      <Sponsor />
       <Footer />
       {/* Components Ends */}
     </>

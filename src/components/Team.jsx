@@ -438,7 +438,7 @@ const StyledTitle = styled(Header3)`
   font-size: 2.5vw;
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 5.5vw;
+    font-size: 2.8vw;
   }
 `
 
@@ -449,14 +449,14 @@ const StyledSecondaryTitle = styled(Header3)`
   font-size: 1.5vw;
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 5.5vw;
+    font-size: 2.6vw;
   }
 `
 
 const ProfileContent = styled.p`
   color: white;
   span {
-    margin-right: 8px;
+    margin-right: 1vw;
   }
   height: 1vw;
   b {
@@ -474,17 +474,17 @@ const ProfileImage = styled.img`
     transform: scale(1.15);
     opacity: 1;
   }
-  width: 100px;
-  height: 100px;
-  border-radius: 10px;
+  width: 8vw;
+  height: 8vw;
+  border-radius: 1vw;
   background-color: ${p => p.color};
   object-fit: cover;
-  margin: 10px 15px;
+  margin: 1vw 2vw;
   transition: all 100ms ease-in-out;
   opacity: 0.69;
   ${p => p.theme.mediaQueries.mobile} {
-    width: 50px;
-    height: 50px;
+    width: 8vw;
+    height: 8vw;
   }
 `
 

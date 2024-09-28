@@ -35,7 +35,7 @@ const BgSectionContainer = styled(SectionContainer)`
   aspect-ratio: 1440/1415;
   position: relative;
   z-index: 15;
-  /* overflow: hidden; */
+  /*  */
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 1vw;
 
@@ -127,7 +127,10 @@ const StyledTitle = styled(Header1)`
   z-index: 100;
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 1.5rem;
+    font-size: 7.7vw;
+    width: 80vw;
+    top: 0vw;
+    left: 10vw;
   }
 `
 
@@ -169,9 +172,7 @@ const TicketBackgroundScroll = styled.div`
   position: absolute;
   top: 6px;
   left: -775px;
-  /* width: 108%; */
   width: 100%;
-  /* height: 120%; */
   height: 100%;
   animation: ${({ shift }) => ticketScroll(shift)} 9000s linear infinite;
   z-index: -1;
@@ -200,8 +201,7 @@ const Gallery = styled.div`
   z-index: 97;
   gap: 51.3px;
   ${p => p.theme.mediaQueries.mobile} {
-    height: 20%;
-    top: 80%;
+    top: -28vw !important;
     animation: ${mobileScroll} 40s linear infinite;
   }
 
@@ -231,7 +231,7 @@ const GalleryImage = styled.img`
 const ProjectTicketContainer = styled.div`
   width: 33.5vw;
   height: 15.6vw;
-  overflow: hidden;
+  
   position: relative;
   left: -36vw;
   top: 20vw;
@@ -241,6 +241,13 @@ const ProjectTicketContainer = styled.div`
 
   :hover {
     transform: scale(1.1);
+  }
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: 66.33vw;
+    height: 30.88vw;
+    left: -97vw;
+    top: 41vw;
   }
 `
 
@@ -262,7 +269,9 @@ const ProjectText = styled.div`
   font-weight: 900;
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 1.5rem;
+    font-size: 1.5vw;
+    top: 15.8vw;
+    left: 41.5vw;
   }
 `
 
@@ -272,7 +281,7 @@ const ProjectAnimatedNumber = styled.div`
   line-height: 1;
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 1.5rem;
+    font-size: 8vw;
   }
 `
 
@@ -282,14 +291,14 @@ const ProjectLabel = styled.div`
   line-height: 1;
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 1rem;
+    font-size: 2.3vw;
   }
 `
 
 const ParticipantTicketContainer = styled.div`
   width: 33.5vw;
   height: 15.6vw;
-  overflow: hidden;
+  
   position: relative;
   left: 50.6vw;
   top: -8.7vw;
@@ -299,6 +308,14 @@ const ParticipantTicketContainer = styled.div`
 
   :hover {
     transform: scale(1.1);
+  }
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: 66.33vw;
+    height: 30.88vw;
+    top: 24vw;
+    left: 37vw;
+    transform: rotate(-3deg);
   }
 `
 
@@ -320,7 +337,9 @@ const ParticipantText = styled.div`
   font-weight: 900;
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 1.5rem;
+    font-size: 1.5vw;
+    top: 15.4vw;
+    left: 38.5vw;
   }
 `
 
@@ -330,7 +349,7 @@ const ParticipantAnimatedNumber = styled.div`
   line-height: 1;
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 1.5rem;
+    font-size: 8vw;
   }
 `
 
@@ -340,14 +359,14 @@ const ParticipantLabel = styled.div`
   line-height: 1;
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 1rem;
+    font-size: 2.3vw;
   }
 `
 
 const HackersTicketContainer = styled.div`
   width: 33.5vw;
   height: 15.6vw;
-  overflow: hidden;
+  
   position: relative;
   left: -29vw;
   top: 7vw;
@@ -357,6 +376,14 @@ const HackersTicketContainer = styled.div`
 
   :hover {
     transform: scale(1.1);
+  }
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: 66.33vw;
+    height: 30.88vw;
+    top: 107.5vw;
+    left: -69vw;
+    transform: rotate(-3deg);
   }
 `
 
@@ -378,7 +405,9 @@ const HackersText = styled.div`
   font-weight: 900;
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 1.5rem;
+    font-size: 1.5vw;
+    top: 15.4vw;
+    left: 38.4vw;
   }
 `
 
@@ -388,7 +417,7 @@ const HackersAnimatedNumber = styled.div`
   line-height: 1;
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 1.5rem;
+    font-size: 8vw;
   }
 `
 
@@ -398,14 +427,14 @@ const HackersLabel = styled.div`
   line-height: 1;
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 1rem;
+    font-size: 2.3vw;
   }
 `
 
 const CharityTicketContainer = styled.div`
   width: 46vw;
   height: 21.42vw;
-  overflow: hidden;
+  
   position: relative;
   left: 39.5vw;
   top: -26.5vw;
@@ -415,6 +444,14 @@ const CharityTicketContainer = styled.div`
 
   :hover {
     transform: scale(1.1);
+  }
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: 91.08vw;
+    height: 42.38vw;
+    top: 5vw;
+    left: -10vw;
+    transform: rotate(2deg);
   }
 `
 
@@ -436,7 +473,9 @@ const CharityText = styled.div`
   font-weight: 900;
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 1.5rem;
+    font-size: 1.5vw;
+    top: 22vw;
+    left: 40vw;
   }
 `
 
@@ -446,7 +485,7 @@ const CharityAnimatedNumber = styled.div`
   line-height: 1;
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 1.5rem;
+    font-size: 8vw;
   }
 `
 
@@ -456,7 +495,7 @@ const CharityLabel = styled.div`
   line-height: 1;
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 1rem;
+    font-size: 2.3vw;
   }
 `
 

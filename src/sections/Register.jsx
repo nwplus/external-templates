@@ -215,18 +215,21 @@ const TentBackground = styled.div`
   }
 `
 
-// const RegisterNowButton = styled.button`
+// const RegisterNowButton = styled.a`
 //   background: url('assets/background/hero/register-now-button.svg'),
 //     url('assets/background/hero/register-now-button-active.svg');
 //   background-size: contain;
 //   background-repeat: no-repeat;
 //   background-position: center;
-//   width: 14vw;
+//   width: 17vw;
 //   height: 70px;
 //   border: none;
 //   cursor: pointer;
 //   margin-right: 20px;
 //   padding: 0px;
+//   text-align: center;
+//   text-decoration: none;
+//   line-height: 70px;
 
 //   ${p => p.theme.mediaQueries.mobile} {
 //     transform: scale(0.8);
@@ -249,49 +252,53 @@ const TentBackground = styled.div`
 //   }
 // `
 
-// const BecomeMentorButton = styled.button`
-//   background: url('assets/background/hero/mentor-button.svg'), url('assets/background/hero/mentor-button-active.svg');
-//   background-size: contain;
-//   background-repeat: no-repeat;
-//   background-position: center;
-//   width: 14vw;
-//   height: 70px;
-//   border: none;
-//   cursor: pointer;
+const BecomeMentorButton = styled.a`
+  background: url('assets/background/hero/mentor-button.svg'), url('assets/background/hero/mentor-button-active.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 14vw;
+  height: 70px;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  line-height: 70px;
 
-//   ${p => p.theme.mediaQueries.mobile} {
-//     transform: scale(0.72);
-//     width: 60vw;
-//     height: 125px;
-//     top: -2.3vw;
-//     position: relative;
-//   }
+  ${p => p.theme.mediaQueries.mobile} {
+    transform: scale(0.72);
+    width: 60vw;
+    height: 125px;
+    top: -2.3vw;
+    position: relative;
+    display: none;
+  }
 
-//   &:hover {
-//     background: url('assets/background/hero/mentor-button-active.svg'), transparent;
-//     background-size: contain;
-//     background-repeat: no-repeat;
-//     background-position: center;
-//   }
+  &:hover {
+    background: url('assets/background/hero/mentor-button-active.svg'), transparent;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
 
-//   &:active {
-//     background: url('assets/background/hero/mentor-button-active.svg'), transparent;
-//     background-size: contain;
-//     background-repeat: no-repeat;
-//     background-position: center;
-//   }
-// `
+  &:active {
+    background: url('assets/background/hero/mentor-button-active.svg'), transparent;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+`
 
-// const ButtonText = styled.div`
-//   font-size: 1.3vw;
-//   color: white;
-//   font-weight: 500;
-//   ${p => p.theme.mediaQueries.mobile} {
-//     font-size: 5.3vw;
-//     padding-top: 0.5rem;
-//     padding-bottom: 0.5rem;
-//   }
-// `
+const ButtonText = styled.div`
+  font-size: 1.3vw;
+  color: white;
+  font-weight: 500;
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: 5.3vw;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+`
 
 const CountdownText = styled.div`
   font-size: 4.3vw;
@@ -466,7 +473,7 @@ const SignContainer = styled.div`
   position: absolute;
   left: 72.5vw;
   top: 13.4vw;
-
+  // for now
   ${p => p.theme.mediaQueries.mobile} {
     display: none;
   }
@@ -578,6 +585,23 @@ export default function Register () {
       .map((char, index) => (char === ' ' ? <span key={index}>&nbsp;</span> : <span key={index}>{char}</span>))
   }
 
+  function scrollToSection (id) {
+    const element = document.getElementById(id)
+
+    if (!element) return
+
+    document.getElementById('outer').style.overflow = 'unset'
+
+    element.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    })
+
+    setTimeout(() => {
+      document.getElementById('outer').style.overflow = 'hidden'
+    }, 2800)
+  }
+
   return (
     <BgSectionContainer>
       <BgScroll />
@@ -592,54 +616,54 @@ export default function Register () {
             <HCSub>Nov 9-10, 2024 | In-person event</HCSub>
           </BodyContainer>
           <ButtonContainer>
-          <FillText>The website is still under construction, for the full experience please switch to desktop. :)</FillText>
+            <FillText>The website is still under construction, for the full experience please switch to desktop. :)</FillText>
             {/* <RegisterNowButton>
               <ButtonText>Registrations Opening Soon!</ButtonText>
-            </RegisterNowButton>
-            <BecomeMentorButton>
+            </RegisterNowButton> */}
+            <BecomeMentorButton href="https://docs.google.com/forms/d/e/1FAIpQLSfc-LD_TRR5T48Vcu5-4KEugVH1OgeWUX8m0461D2H6K3J7DA/viewform" target="_blank">
               <ButtonText>Become a Mentor</ButtonText>
-            </BecomeMentorButton> */}
+            </BecomeMentorButton>
             <SignContainer>
-              <a href="#about">
-                <SignButton imageUrl="assets/background/hero/signs/sign1.svg">
+              <a>
+                <SignButton onClick={() => scrollToSection('about')} imageUrl="assets/background/hero/signs/sign1.svg">
                   <SignText fontSize="2.5vw" rotate={-2.74}>
                     ABOUT
                   </SignText>
                 </SignButton>
               </a>
-              <a href="#events">
-                <SignButton href="#events" imageUrl="assets/background/hero/signs/sign2.svg">
+              <a>
+                <SignButton onClick={() => scrollToSection('events')} imageUrl="assets/background/hero/signs/sign2.svg">
                   <SignText fontSize="2.5vw">Our Events</SignText>
                 </SignButton>
               </a>
-              <a href="#statistics">
-                <SignButton imageUrl="assets/background/hero/signs/sign3.svg">
+              <a>
+                <SignButton onClick={() => scrollToSection('statistics')} imageUrl="assets/background/hero/signs/sign3.svg">
                   <SignText fontSize="2.5vw" rotate={3.26}>
                     STATS
                   </SignText>
                 </SignButton>
               </a>
-              <a href="#testimonials">
-                <SignButton imageUrl="assets/background/hero/signs/sign4.svg">
+              <a>
+                <SignButton onClick={() => scrollToSection('testimonials')} imageUrl="assets/background/hero/signs/sign4.svg">
                   <SignText translateX="1.2vw" fontSize="2vw" rotate={-2.96}>
                     TESTIMONIALS
                   </SignText>
                 </SignButton>
               </a>
-              <a href="#faq">
-                <SignButton imageUrl="assets/background/hero/signs/sign5.svg">
+              <a>
+                <SignButton onClick={() => scrollToSection('faq')} imageUrl="assets/background/hero/signs/sign5.svg">
                   <SignText fontSize="3vw" rotate={-2.74}>
                     FAQ
                   </SignText>
                 </SignButton>
               </a>
-              <a href="#sponsors">
-                <SignButton imageUrl="assets/background/hero/signs/sign6.svg">
+              <a>
+                <SignButton onClick={() => scrollToSection('sponsors')} imageUrl="assets/background/hero/signs/sign6.svg">
                   <SignText fontSize="2.3vw">SPONSORS</SignText>
                 </SignButton>
               </a>
-              <a href="#contact">
-                <SignButton imageUrl="assets/background/hero/signs/sign7.svg">
+              <a>
+                <SignButton onClick={() => scrollToSection('contact')} imageUrl="assets/background/hero/signs/sign7.svg">
                   <SignText fontSize="2.5vw" rotate={5.01}>
                     Contact Us
                   </SignText>

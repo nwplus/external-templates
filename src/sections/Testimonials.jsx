@@ -11,7 +11,7 @@ const BgSectionContainer = styled.div`
   height: 53.5vw;
   aspect-ratio: 1440/1072;
   z-index: 17;
-  overflow: hidden;
+  
 
   /* background: #150c27; */
 
@@ -264,7 +264,7 @@ export default function Testimonials () {
 
   return (
     <BgSectionContainer id="testimonials">
-      <TestimonialsTitle/>
+      <TestimonialsTitle />
       <LeftButton onClick={handlePrev} />
       <TestimonialContainer fadeType={fadeType}>
         <Headshot src={headshot} alt={`${name} headshot`} />

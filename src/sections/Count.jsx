@@ -12,7 +12,7 @@ const InfoContainer = styled.div`
   aspect-ratio: 1440/1000;
 
   z-index: 10;
-  overflow: hidden;
+  
 
   ${p => p.theme.mediaQueries.mobile} {
     background-repeat: no-repeat;

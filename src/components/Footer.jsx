@@ -19,14 +19,16 @@ const CaveTop = styled.div`
   background-size: 100%; */
   background-repeat: no-repeat;
   background-position: center top;
+  /* overflow: hidden; */
 
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
+  
 
   position: relative;
   top: -151vw;
+  /* top: -80vw; */
   left: 0;
   /* z-index: 2; */
 
@@ -35,6 +37,7 @@ const CaveTop = styled.div`
   height: 100%;
   /* height: 200vw; */
   /* background-color: pink; */
+  height: 100vw;
 
   a {
     transition: ${p => p.theme.transition.small};
@@ -47,24 +50,31 @@ const CaveTop = styled.div`
 
   ${p => p.theme.mediaQueries.mobile} {
     /* background: url('assets/mobile/footer/background.svg') #150c27; */
-    background-size: 100vw;
+    /* background-size: 100vw; */
+    height: 100vw;
     background-repeat: no-repeat;
     background-position: center center;
     aspect-ratio: 412/506;
+    top: 0vw;
+    /* overflow: hidden; */
   }
 `
 
 const FooterBackground = styled.div`
   background-position-y: bottom;
-  background: url('assets/background/footer/footer-background.png');
+  background: url('assets/background/footer/new-footer-background.png');
   background-size: 250vw;
   position: absolute;
   width: 100%;
   height: 100%;
-  bottom: -98vw;
+  bottom: -106.5vw;
   background-repeat: no-repeat;
   background-position: center top;
   z-index: 3; /* Ensure it's beneath other content in CaveTop */
+  ${p => p.theme.mediaQueries.mobile} {
+    bottom: 10vw;
+    height: 64vw;
+  }
 `
 
 const FooterSpotlights = styled.div`
@@ -78,6 +88,11 @@ const FooterSpotlights = styled.div`
   background-repeat: no-repeat;
   background-position: center top;
   z-index: 2;
+  ${p => p.theme.mediaQueries.mobile} {
+    /* bottom: 14vw;
+    background-size: 110vw; */
+    display: none;
+  }
 `
 
 const SocialMediaIcons = styled.div`
@@ -92,15 +107,24 @@ const SocialMediaIcons = styled.div`
   a {
     color: #c4b2f0;
     width: 500px;
+    display: flex; /* Add display flex to center icons */
+    justify-content: center;
+    align-items: center;
   }
   gap: 2rem;
 
   ${p => p.theme.mediaQueries.mobile} {
+    width: 60vw;
+    top: -2vw;
     a {
       color: #c4b2f0;
-      width: 25px;
+      width: 65px;
+      height: 65px;
+      display: flex; /* Add display flex to center icons */
+      justify-content: center;
+      align-items: center;
     }
-    gap: 1rem;
+    gap: 1.7rem;
   }
 `
 
@@ -110,6 +134,10 @@ const Links = styled.div`
   font-size: 1.6vw;
   a {
     color: #c4b2f0;
+  }
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: 3vw;
+    gap: 1rem;
   }
 `
 
@@ -123,11 +151,13 @@ const TextContainer = styled.div`
   color: #e2d6ff;
   position: absolute;
   z-index: 999 !important;
-  bottom: 463.5vw;
+  /* bottom: 463.5vw; */
+  top: 80vw;
   z-index: 2000;
 
   ${p => p.theme.mediaQueries.mobile} {
-    bottom: 50vw;
+    /* top: -700vw; */
+    top: 10vw;
   }
 `
 
@@ -135,10 +165,14 @@ const TeamContainer = styled.div`
   z-index: 4;
   position: absolute;
   left: 0;
-  bottom: 398vw;
+  top: 140vw;
   text-align: center;
   width: 100%;
   padding-bottom: 2vw;
+  ${p => p.theme.mediaQueries.mobile} {
+    /* display: none; */
+    top: 63vw;
+  }
 `
 
 const GreenFireWork = styled.div`
@@ -153,6 +187,11 @@ const GreenFireWork = styled.div`
   background-repeat: no-repeat;
   background-position: center top;
   animation: fadeInOut 3s ease-in-out infinite;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    bottom: 24vw;
+    background-size: 28vw;
+  }
 
   @keyframes fadeInOut {
     0% {
@@ -180,6 +219,10 @@ const YellowFireWork = styled.div`
   animation: fadeInOut 4.4s ease-in-out infinite;
   animation-delay: 0.2s;
 
+  ${p => p.theme.mediaQueries.mobile} {
+   bottom: -10vw; 
+  }
+
   @keyframes fadeInOut {
     0% {
       opacity: 1;
@@ -205,6 +248,11 @@ const RedFireWork = styled.div`
   z-index: 4;
   animation: fadeInOut 3.3s ease-in-out infinite;
   animation-delay: 0.3s;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    bottom: 10vw;
+    background-size: 32vw;
+  }
 
   @keyframes fadeInOut {
     0% {
@@ -243,8 +291,8 @@ const StyledInput = styled.input`
 
   ${p => p.theme.mediaQueries.mobile} {
     padding: 4px 8px;
-    font-size: 1.5vw;
-    line-height: 2vw;
+    font-size: 2.4vw;
+    line-height: 4vw;
   }
 `
 
@@ -257,14 +305,14 @@ const ComboButton = styled(Button)`
   height: 80%;
   border-radius: 8px;
   padding: 0 20px !important;
+  font-size: 1.7vw;
 
   &:hover {
     cursor: pointer;
   }
 
-  // Override the font-size media query
-  @media (max-width: ${LAPTOP}) {
-    font-size: 1.5vw;
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: 2.5vw;
   }
 `
 

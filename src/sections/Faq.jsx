@@ -15,12 +15,12 @@ const BgSectionContainer = styled(SectionContainer)`
   height: fit-content;
   position: relative;
   top: -51.3vw;
+  overflow: hidden;
   
 
   width: 100%;
   aspect-ratio: 1440/1072;
   z-index: 17;
-  overflow: hidden;
 
   /* background: #150c27; */
 
@@ -30,6 +30,7 @@ const BgSectionContainer = styled(SectionContainer)`
     background-size: 100vw;
     background-repeat: no-repeat;
     background-position: center center;
+    top: 93.3vw;
   }
 `
 
@@ -64,8 +65,11 @@ const FaqTitle = styled.div`
   right: 10vw;
   left: 50%;
   transform: translateX(-50%);
+
   ${p => p.theme.mediaQueries.mobile} {
-    display: none;
+    background-size: 50vw;
+    top: 2vw;
+    width: 50vw;
   }
 `
 
@@ -74,10 +78,14 @@ const Wrapper = styled.div`
   padding: 10vw 0;
   margin: 0 auto;
   width: 75vw;
-  min-width: 900px;
+  min-width: 800px;
   max-width: 1200px;
   z-index: 88;
   position: relative;
+
+  ${p => p.theme.mediaQueries.tablet} {
+    min-width: 700px;
+  }
 
   ${p => p.theme.mediaQueries.mobile} {
     grid-column: 2 / span 12;
@@ -131,7 +139,9 @@ const CollectionName = styled.div`
   align-self: baseline;
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 1.2rem;
+    font-size: 5vw;
+    padding-top: 2vw;
+    align-self: auto;
   }
 `
 
@@ -230,6 +240,10 @@ const PurpleBanner = styled.div`
   top: -3.3vw;
   left: -16.5vw;
   z-index: 100;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const Faq = () => {
@@ -272,37 +286,37 @@ const Faq = () => {
 
         {faqData
           ? (
-          <FaqGrid>
-            <FaqColumn>
-              {faqData.General && (
-                <FaqCollection
-                  category="General"
-                  faqs={faqData.General}
-                  expandedQuestion={expandedQuestion}
-                  setExpandedQuestion={setExpandedQuestion}
-                />
-              )}
-            </FaqColumn>
+            <FaqGrid>
+              <FaqColumn>
+                {faqData.General && (
+                  <FaqCollection
+                    category="General"
+                    faqs={faqData.General}
+                    expandedQuestion={expandedQuestion}
+                    setExpandedQuestion={setExpandedQuestion}
+                  />
+                )}
+              </FaqColumn>
 
-            <FaqColumn>
-              {faqData['Teams & Projects'] && (
-                <FaqCollection
-                  category="Projects"
-                  faqs={faqData['Teams & Projects']}
-                  expandedQuestion={expandedQuestion}
-                  setExpandedQuestion={setExpandedQuestion}
-                />
-              )}
-              {faqData.Logistics && (
-                <FaqCollection
-                  category="Logistics"
-                  faqs={faqData.Logistics}
-                  expandedQuestion={expandedQuestion}
-                  setExpandedQuestion={setExpandedQuestion}
-                />
-              )}
-            </FaqColumn>
-          </FaqGrid>
+              <FaqColumn>
+                {faqData['Teams & Projects'] && (
+                  <FaqCollection
+                    category="Projects"
+                    faqs={faqData['Teams & Projects']}
+                    expandedQuestion={expandedQuestion}
+                    setExpandedQuestion={setExpandedQuestion}
+                  />
+                )}
+                {faqData.Logistics && (
+                  <FaqCollection
+                    category="Logistics"
+                    faqs={faqData.Logistics}
+                    expandedQuestion={expandedQuestion}
+                    setExpandedQuestion={setExpandedQuestion}
+                  />
+                )}
+              </FaqColumn>
+            </FaqGrid>
             )
           : (
               'loading...'
