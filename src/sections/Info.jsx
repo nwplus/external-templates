@@ -9,7 +9,6 @@ const InfoContainer = styled.div`
   background-size: 100vw;
   background-repeat: no-repeat;
   background-position: center top;
-
   position: relative;
   width: 100%;
   aspect-ratio: 1440/1000;

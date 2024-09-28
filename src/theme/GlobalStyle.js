@@ -18,9 +18,6 @@ export const GlobalStyles = createGlobalStyle`
     font-family: ${p => p.theme.typography.bodyFont};
     background: ${p => p.theme.colors.background};
     color: ${p => p.theme.colors.text};
-    height: ${p => p.bodyHeight};
-    
-
     ${p => p.theme.mediaQueries.mobile} {
       // uncomment this line when removing the placeholder for mobile
       height: auto;

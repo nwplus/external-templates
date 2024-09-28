@@ -6,37 +6,23 @@ import ThemeProvider from '../theme/ThemeProvider'
 import '../theme/fonts/style.css'
 import { SectionContainer } from '@lib/Containers'
 import styled from 'styled-components'
-import LoadingScreen from '@components/LoadingScreen' // Import your LoadingScreen component
+import LoadingScreen from '@components/LoadingScreen'
+
 /* eslint react/jsx-filename-extension: 0 */
 
 const OuterContainer = styled(SectionContainer)`
   aspect-ratio: 748 / 4200;
-
   background: url('assets/background/entire-site/entire-site.png');
   width: 100vw;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center top;
   position: relative;
-  
-
-  /* @media (max-width: 1300px) {
-    aspect-ratio: 752 / 1200;
-  }
-
-  @media (max-width: 992px) {
-    aspect-ratio: 710 / 1100;
-  }
-
-  @media (max-width: 768px) {
-    aspect-ratio: 700 / 1000;
-  }
-
-  @media (max-width: 576px) {
-    aspect-ratio: 600 / 900;
-  } */
-
-  /* z-index: -98; */
+  /* mask-image: linear-gradient(to bottom, black 100%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 100%, transparent 100%); */
+  /* height: 0; */
+  overflow: hidden;
+  /* padding-bottom: 50%; */
 
   ${p => p.theme.mediaQueries.mobile} {
     background: url('assets/mobile/entire-site/entire-site-mobile.png') no-repeat;
@@ -96,9 +82,9 @@ function App ({ Component, pageProps }) {
   return (
     <ThemeProvider>
       <ParallaxProvider>
-        <OuterContainer>
+        <OuterContainer id="outer">
           <GlobalStyle />
-          {loading ? (<LoadingScreen />) : (<Component {...pageProps} />)}
+          {loading ? <LoadingScreen /> : <Component {...pageProps} />}
         </OuterContainer>
       </ParallaxProvider>
     </ThemeProvider>

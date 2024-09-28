@@ -558,7 +558,7 @@ const CountdownTimer = ({ targetDate }) => {
   return <CountdownNumber>{formatTime(timeLeft)}</CountdownNumber>
 }
 
-export default function Register() {
+export default function Register () {
   // not using these hooks because they don't work on initial load -> better practice to pass an isMobile props from getServerSideProps after checking userAgent
   // const windowWidth = useWindowWidth();
   // const mobileBreakpoint = 768;
@@ -585,6 +585,23 @@ export default function Register() {
       .map((char, index) => (char === ' ' ? <span key={index}>&nbsp;</span> : <span key={index}>{char}</span>))
   }
 
+  function scrollToSection (id) {
+    const element = document.getElementById(id)
+
+    if (!element) return
+
+    document.getElementById('outer').style.overflow = 'unset'
+
+    element.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    })
+
+    setTimeout(() => {
+      document.getElementById('outer').style.overflow = 'hidden'
+    }, 2800)
+  }
+
   return (
     <BgSectionContainer>
       <BgScroll />
@@ -607,46 +624,46 @@ export default function Register() {
               <ButtonText>Become a Mentor</ButtonText>
             </BecomeMentorButton>
             <SignContainer>
-              <a href="#about">
-                <SignButton imageUrl="assets/background/hero/signs/sign1.svg">
+              <a>
+                <SignButton onClick={() => scrollToSection('about')} imageUrl="assets/background/hero/signs/sign1.svg">
                   <SignText fontSize="2.5vw" rotate={-2.74}>
                     ABOUT
                   </SignText>
                 </SignButton>
               </a>
-              <a href="#events">
-                <SignButton href="#events" imageUrl="assets/background/hero/signs/sign2.svg">
+              <a>
+                <SignButton onClick={() => scrollToSection('events')} imageUrl="assets/background/hero/signs/sign2.svg">
                   <SignText fontSize="2.5vw">Our Events</SignText>
                 </SignButton>
               </a>
-              <a href="#statistics">
-                <SignButton imageUrl="assets/background/hero/signs/sign3.svg">
+              <a>
+                <SignButton onClick={() => scrollToSection('statistics')} imageUrl="assets/background/hero/signs/sign3.svg">
                   <SignText fontSize="2.5vw" rotate={3.26}>
                     STATS
                   </SignText>
                 </SignButton>
               </a>
-              <a href="#testimonials">
-                <SignButton imageUrl="assets/background/hero/signs/sign4.svg">
+              <a>
+                <SignButton onClick={() => scrollToSection('testimonials')} imageUrl="assets/background/hero/signs/sign4.svg">
                   <SignText translateX="1.2vw" fontSize="2vw" rotate={-2.96}>
                     TESTIMONIALS
                   </SignText>
                 </SignButton>
               </a>
-              <a href="#faq">
-                <SignButton imageUrl="assets/background/hero/signs/sign5.svg">
+              <a>
+                <SignButton onClick={() => scrollToSection('faq')} imageUrl="assets/background/hero/signs/sign5.svg">
                   <SignText fontSize="3vw" rotate={-2.74}>
                     FAQ
                   </SignText>
                 </SignButton>
               </a>
-              <a href="#sponsors">
-                <SignButton imageUrl="assets/background/hero/signs/sign6.svg">
+              <a>
+                <SignButton onClick={() => scrollToSection('sponsors')} imageUrl="assets/background/hero/signs/sign6.svg">
                   <SignText fontSize="2.3vw">SPONSORS</SignText>
                 </SignButton>
               </a>
-              <a href="#contact">
-                <SignButton imageUrl="assets/background/hero/signs/sign7.svg">
+              <a>
+                <SignButton onClick={() => scrollToSection('contact')} imageUrl="assets/background/hero/signs/sign7.svg">
                   <SignText fontSize="2.5vw" rotate={5.01}>
                     Contact Us
                   </SignText>

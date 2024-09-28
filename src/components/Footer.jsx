@@ -67,7 +67,7 @@ const FooterBackground = styled.div`
   position: absolute;
   width: 100%;
   height: 100%;
-  bottom: -98vw;
+  bottom: -106.5vw;
   background-repeat: no-repeat;
   background-position: center top;
   z-index: 3; /* Ensure it's beneath other content in CaveTop */
@@ -89,8 +89,9 @@ const FooterSpotlights = styled.div`
   background-position: center top;
   z-index: 2;
   ${p => p.theme.mediaQueries.mobile} {
-    bottom: 14vw;
-    background-size: 110vw;
+    /* bottom: 14vw;
+    background-size: 110vw; */
+    display: none;
   }
 `
 
