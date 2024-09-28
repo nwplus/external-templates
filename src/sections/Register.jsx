@@ -126,22 +126,22 @@ const HCSub = styled.div`
   }
 `
 
-// const FillText = styled.div`
-//   font-size: 1.75vw;
-//   display: none;
-//   color: #45171a;
-//   font-weight: 700;
-//   padding-top: 1rem;
-//   ${p => p.theme.mediaQueries.mobile} {
-//     font-size: 3.1vw;
-//     display: block;
-//     font-weight: 400;
-//     font: 'HK Grotesk';
-//     padding-top: 1.5rem;
-//     padding-bottom: 0.5rem;
-//     width: 68vw;
-//   }
-// `
+const FillText = styled.div`
+  font-size: 1.75vw;
+  display: none;
+  color: #45171a;
+  font-weight: 700;
+  padding-top: 1rem;
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: 3.1vw;
+    display: block;
+    font-weight: 400;
+    font: 'HK Grotesk';
+    padding-top: 1.5rem;
+    padding-bottom: 0.5rem;
+    width: 68vw;
+  }
+`
 
 const HackCampLogo = styled.div`
   background: url('assets/background/hero/logo.svg');
@@ -215,43 +215,42 @@ const TentBackground = styled.div`
   }
 `
 
-const RegisterNowButton = styled.a`
-  background: url('assets/background/hero/register-now-button.svg'),
-    url('assets/background/hero/register-now-button-active.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 17vw;
-  height: 70px;
-  border: none;
-  cursor: pointer;
-  margin-right: 20px;
-  padding: 0px;
-  text-align: center;
-  text-decoration: none;
-  line-height: 70px;
+// const RegisterNowButton = styled.a`
+//   background: url('assets/background/hero/register-now-button.svg'),
+//     url('assets/background/hero/register-now-button-active.svg');
+//   background-size: contain;
+//   background-repeat: no-repeat;
+//   background-position: center;
+//   width: 17vw;
+//   height: 70px;
+//   border: none;
+//   cursor: pointer;
+//   margin-right: 20px;
+//   padding: 0px;
+//   text-align: center;
+//   text-decoration: none;
+//   line-height: 70px;
 
+//   ${p => p.theme.mediaQueries.mobile} {
+//     transform: scale(0.8);
+//     width: 60vw;
+//     height: 125px;
+//   }
 
-  ${p => p.theme.mediaQueries.mobile} {
-    transform: scale(0.8);
-    width: 60vw;
-    height: 125px;
-  }
+//   &:hover {
+//     background: url('assets/background/hero/register-now-button-active.svg'), transparent;
+//     background-size: contain;
+//     background-repeat: no-repeat;
+//     background-position: center;
+//   }
 
-  &:hover {
-    background: url('assets/background/hero/register-now-button-active.svg'), transparent;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-
-  &:active {
-    background: url('assets/background/hero/register-now-button-active.svg'), transparent;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-`
+//   &:active {
+//     background: url('assets/background/hero/register-now-button-active.svg'), transparent;
+//     background-size: contain;
+//     background-repeat: no-repeat;
+//     background-position: center;
+//   }
+// `
 
 const BecomeMentorButton = styled.a`
   background: url('assets/background/hero/mentor-button.svg'), url('assets/background/hero/mentor-button-active.svg');
@@ -272,6 +271,7 @@ const BecomeMentorButton = styled.a`
     height: 125px;
     top: -2.3vw;
     position: relative;
+    display: none;
   }
 
   &:hover {
@@ -616,7 +616,7 @@ export default function Register () {
             <HCSub>Nov 9-10, 2024 | In-person event</HCSub>
           </BodyContainer>
           <ButtonContainer>
-            {/* <FillText>The website is still under construction, for the full experience please switch to desktop. :)</FillText> */}
+            <FillText>The website is still under construction, for the full experience please switch to desktop. :)</FillText>
             {/* <RegisterNowButton>
               <ButtonText>Registrations Opening Soon!</ButtonText>
             </RegisterNowButton> */}
