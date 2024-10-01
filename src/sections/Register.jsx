@@ -228,8 +228,8 @@ const RegisterNowButton = styled.a`
   margin-right: 20px;
   padding: 0px;
   text-align: center;
+  align-content: center;
   text-decoration: none;
-  line-height: 70px;
 
   ${p => p.theme.mediaQueries.mobile} {
     transform: scale(0.8);
