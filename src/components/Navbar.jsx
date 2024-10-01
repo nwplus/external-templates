@@ -18,8 +18,11 @@ const NavBarContainer = styled.nav`
   transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
   padding: 1.7rem 4rem 0;
   background: linear-gradient(180deg, rgba(0, 47, 77, 0.4) 0%, rgba(0, 47, 77, 0) 100%);
+  display: none;
 
   ${(p) => p.theme.mediaQueries.mobile} {
+    display: block;
+    text-align: -webkit-right;
     background-color: ${p => p.theme.colors.navbar};
     padding: 24px 40px 0;
     z-index:999;
@@ -84,6 +87,7 @@ const LinkText = styled.a`
   &:hover {
     color: ${(p) => p.theme.colors.text};
     text-decoration: none;
+    cursor: pointer;
     
     ::after {
       width: 100%;
@@ -98,9 +102,10 @@ const StyledLinkHeaders = styled.h3`
 
 const HamburgerMenu = styled.img`
   display: none;
+  cursor: pointer;
   ${(p) => p.theme.mediaQueries.mobile} {
     display: block;
-    width: 30px;
+    width: 40px;
   }
 `
 
@@ -114,7 +119,7 @@ const DropDownContentContainer = styled.div`
   align-items: center;
   gap: 24px;
   width: 100%;
-  background: #150C27;
+  background: #97C1FF;
 `
 
 const PortalButtonContainer = styled.div`
@@ -180,8 +185,27 @@ const Button = styled.a`
   `}
 `
 
-const MenuItem = ({ name, href, isAnchor, target, rel, isMobile, closeDropdown }) => {
+const MenuItem = ({ onClick, name, href, isAnchor, target, rel, isMobile, closeDropdown }) => {
   const [anchorTarget, setAnchorTarget] = useState(null)
+
+  function scrollToSection (id) {
+    const element = document.getElementById(id)
+
+    if (!element) return
+
+    document.getElementById('outer').style.overflow = 'unset'
+
+    element.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    })
+
+    closeDropdown(false)
+
+    setTimeout(() => {
+      document.getElementById('outer').style.overflow = 'hidden'
+    }, 2800)
+  }
 
   useEffect(() => {
     if (isAnchor) {
@@ -192,7 +216,7 @@ const MenuItem = ({ name, href, isAnchor, target, rel, isMobile, closeDropdown }
   const handleClick = (event) => {
     if (isAnchor && anchorTarget) {
       event.preventDefault()
-      anchorTarget.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      scrollToSection()
     }
     if (isMobile) {
       closeDropdown(false)
@@ -200,7 +224,7 @@ const MenuItem = ({ name, href, isAnchor, target, rel, isMobile, closeDropdown }
   }
 
   return (
-    <LinkText href={href} onClick={handleClick} target={target} rel={rel}>
+    <LinkText onClick={onClick} target={target} rel={rel}>
       <StyledLinkHeaders>{name}</StyledLinkHeaders>
     </LinkText>
   )
@@ -225,15 +249,34 @@ const PortalButton = ({ portalOpen }) => (
   </PortalButtonContainer>
 )
 
-const MenuList = ({ isMobile, closeDropdown }) => (
-  <>
-    <MenuItem name='About' href='/#about' isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
-    <MenuItem name='Events' href='/#events' isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
-    <MenuItem name='FAQ' href='/#faq' isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
-    <MenuItem name='Sponsors' href='/#sponsors' isMobile={isMobile} closeDropdown={closeDropdown} />
-    <MenuItem name='2023' href='https://hackcamp2023.nwplus.io/' target='_blank' isMobile={isMobile} closeDropdown={closeDropdown} />
+const MenuList = ({ isMobile, closeDropdown }) => {
+  function scrollToSection (id) {
+    const element = document.getElementById(id)
+
+    if (!element) return
+
+    document.getElementById('outer').style.overflow = 'unset'
+
+    element.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    })
+
+    closeDropdown(false)
+
+    setTimeout(() => {
+      document.getElementById('outer').style.overflow = 'hidden'
+    }, 2800)
+  }
+
+  return <>
+    <MenuItem name='About' onClick={() => scrollToSection('about')} isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
+    <MenuItem name='Events' onClick={() => scrollToSection('events')} isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
+    <MenuItem name='FAQ' onClick={() => scrollToSection('faq')} isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
+    <MenuItem name='Sponsors' onClick={() => scrollToSection('sponsors')} isMobile={isMobile} closeDropdown={closeDropdown} />
+    <MenuItem name='2024' href='https://hackcamp.nwplus.io/' target='_blank' isMobile={isMobile} closeDropdown={closeDropdown} />
   </>
-)
+}
 
 const NavBar = () => {
   const [showDropdown, setShowDropdown] = useState(false)
