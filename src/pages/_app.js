@@ -12,7 +12,7 @@ import LoadingScreen from '@components/LoadingScreen'
 
 const OuterContainer = styled(SectionContainer)`
   aspect-ratio: 748 / 4200;
-  background: url('assets/background/entire-site/entire-site.png');
+  background: url('assets/background/entire-site/entire-site2.png');
   width: 100vw;
   background-size: contain;
   background-repeat: no-repeat;

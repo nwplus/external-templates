@@ -285,10 +285,10 @@ const Faq = () => {
       <BgScroll />
       <Wrapper id="faq">
         <FaqTitle />
-        <FerrisCart top="5.9vw" left="-10.3vw" />
+        {/* <FerrisCart top="5.9vw" left="-10.3vw" />
         <FerrisCart top="14vw" left="10.3vw" reverse />
         <FerrisCart top="34.5vw" left="18.6vw" />
-        <FerrisCart top="55vw" left="10.3vw" reverse />
+        <FerrisCart top="55vw" left="10.3vw" reverse /> */}
         <HotAirBalloons />
         <PurpleBanner />
 

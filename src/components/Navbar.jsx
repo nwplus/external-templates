@@ -213,16 +213,6 @@ const MenuItem = ({ onClick, name, href, isAnchor, target, rel, isMobile, closeD
     }
   }, [href])
 
-  const handleClick = (event) => {
-    if (isAnchor && anchorTarget) {
-      event.preventDefault()
-      scrollToSection()
-    }
-    if (isMobile) {
-      closeDropdown(false)
-    }
-  }
-
   return (
     <LinkText onClick={onClick} target={target} rel={rel}>
       <StyledLinkHeaders>{name}</StyledLinkHeaders>
