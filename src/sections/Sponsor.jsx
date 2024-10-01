@@ -37,9 +37,9 @@ const BgSectionContainer = styled(SectionContainer)`
     top: 0vw;
   }
 
-  ${p => p.theme.mediaQueries.xs} {
+  /* ${p => p.theme.mediaQueries.xs} {
     top: 40vw;
-  }
+  } */
 `
 
 const StyledTitle = styled.div`
@@ -313,7 +313,7 @@ export default function Sponsor () {
                   style={{
                     backgroundImage: `url(${ContainerSVG})`,
                     backgroundRepeat: 'no-repeat',
-                    top: `${isMobile ? 2 + row * 24 : row * 14}vw`,
+                    top: `${isMobile ? 37 + row * 24 : 17 + row * 14}vw`,
                     backgroundPosition: 'center'
                   }}
                 >
