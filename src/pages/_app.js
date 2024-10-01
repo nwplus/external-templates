@@ -12,7 +12,7 @@ import LoadingScreen from '@components/LoadingScreen'
 
 const OuterContainer = styled(SectionContainer)`
   aspect-ratio: 748 / 4200;
-  background: url('assets/background/entire-site/entire-site.png');
+  background: url('assets/background/entire-site/entire-site2.png');
   width: 100vw;
   background-size: contain;
   background-repeat: no-repeat;
@@ -28,8 +28,8 @@ const OuterContainer = styled(SectionContainer)`
     background: url('assets/mobile/entire-site/entire-site-mobile.png') no-repeat;
     width: 100%;
     background-color: #01064E;
-    aspect-ratio: 748/12000;
-    height: 170vw;
+    aspect-ratio: 748/11190;
+    /* height: 170vw; */
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center top;

@@ -89,9 +89,9 @@ const FooterSpotlights = styled.div`
   background-position: center top;
   z-index: 2;
   ${p => p.theme.mediaQueries.mobile} {
-    /* bottom: 14vw;
-    background-size: 110vw; */
-    display: none;
+    bottom: 14vw;
+    background-size: 100vw;
+    /* display: none; */
   }
 `
 
@@ -169,9 +169,20 @@ const TeamContainer = styled.div`
   text-align: center;
   width: 100%;
   padding-bottom: 2vw;
+  ${p => p.theme.mediaQueries.tablet} {
+    top: 134vw;
+  }
+
+  ${p => p.theme.mediaQueries.tabletSmall} {
+    top: 127vw;
+  }
+
   ${p => p.theme.mediaQueries.mobile} {
-    /* display: none; */
-    top: 63vw;
+    top: 57vw;
+  }
+
+  ${p => p.theme.mediaQueries.xs} {
+    top: 50vw;
   }
 `
 

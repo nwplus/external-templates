@@ -13,6 +13,7 @@ import Learn from 'src/sections/Learn'
 import GlobalStyle from '../theme/GlobalStyle'
 import Faq from '../sections/Faq'
 import Testimonials from 'src/sections/Testimonials'
+import NavBar from '@components/Navbar'
 
 // eslint-disable-next-line react/prop-types
 export default function Index ({ title }) {
@@ -39,7 +40,7 @@ export default function Index ({ title }) {
         <meta property="og:image" content="/hackcamp2023meta.png" />
       </Head>
 
-      {/* <NavBar /> */}
+      <NavBar />
       <Register />
       <Info />
       <Learn />

@@ -126,22 +126,22 @@ const HCSub = styled.div`
   }
 `
 
-const FillText = styled.div`
-  font-size: 1.75vw;
-  display: none;
-  color: #45171a;
-  font-weight: 700;
-  padding-top: 1rem;
-  ${p => p.theme.mediaQueries.mobile} {
-    font-size: 3.1vw;
-    display: block;
-    font-weight: 400;
-    font: 'HK Grotesk';
-    padding-top: 1.5rem;
-    padding-bottom: 0.5rem;
-    width: 68vw;
-  }
-`
+// const FillText = styled.div`
+//   font-size: 1.75vw;
+//   display: none;
+//   color: #45171a;
+//   font-weight: 700;
+//   padding-top: 1rem;
+//   ${p => p.theme.mediaQueries.mobile} {
+//     font-size: 3.1vw;
+//     display: block;
+//     font-weight: 400;
+//     font: 'HK Grotesk';
+//     padding-top: 1.5rem;
+//     padding-bottom: 0.5rem;
+//     width: 68vw;
+//   }
+// `
 
 const HackCampLogo = styled.div`
   background: url('assets/background/hero/logo.svg');
@@ -215,42 +215,42 @@ const TentBackground = styled.div`
   }
 `
 
-// const RegisterNowButton = styled.a`
-//   background: url('assets/background/hero/register-now-button.svg'),
-//     url('assets/background/hero/register-now-button-active.svg');
-//   background-size: contain;
-//   background-repeat: no-repeat;
-//   background-position: center;
-//   width: 17vw;
-//   height: 70px;
-//   border: none;
-//   cursor: pointer;
-//   margin-right: 20px;
-//   padding: 0px;
-//   text-align: center;
-//   text-decoration: none;
-//   line-height: 70px;
+const RegisterNowButton = styled.a`
+  background: url('assets/background/hero/register-now-button.svg'),
+    url('assets/background/hero/register-now-button-active.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 17vw;
+  height: 70px;
+  border: none;
+  cursor: pointer;
+  margin-right: 20px;
+  padding: 0px;
+  text-align: center;
+  align-content: center;
+  text-decoration: none;
 
-//   ${p => p.theme.mediaQueries.mobile} {
-//     transform: scale(0.8);
-//     width: 60vw;
-//     height: 125px;
-//   }
+  ${p => p.theme.mediaQueries.mobile} {
+    transform: scale(0.8);
+    width: 60vw;
+    height: 125px;
+  }
 
-//   &:hover {
-//     background: url('assets/background/hero/register-now-button-active.svg'), transparent;
-//     background-size: contain;
-//     background-repeat: no-repeat;
-//     background-position: center;
-//   }
+  &:hover {
+    background: url('assets/background/hero/register-now-button-active.svg'), transparent;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
 
-//   &:active {
-//     background: url('assets/background/hero/register-now-button-active.svg'), transparent;
-//     background-size: contain;
-//     background-repeat: no-repeat;
-//     background-position: center;
-//   }
-// `
+  &:active {
+    background: url('assets/background/hero/register-now-button-active.svg'), transparent;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+`
 
 const BecomeMentorButton = styled.a`
   background: url('assets/background/hero/mentor-button.svg'), url('assets/background/hero/mentor-button-active.svg');
@@ -294,7 +294,8 @@ const ButtonText = styled.div`
   color: white;
   font-weight: 500;
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 5.3vw;
+    font-size: 4.6vw;
+    line-height: 6vw;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
   }
@@ -410,15 +411,70 @@ const CountdownText = styled.div`
   }
 `
 
+// const CountdownNumber = styled.div`
+//   font-size: 3.8vw;
+//   position: absolute;
+//   left: 50%;
+//   transform: translateX(-50%);
+//   top: 3vw;
+//   color: #45171a;
+//   font-weight: 600;
+
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   width: 100%;
+//   text-align: center;
+
+//   span {
+//     display: inline-block;
+//   }
+
+//   span:nth-child(1) {
+//     /* transform: translateY(0.4vw) rotate(-2deg); */
+//   }
+
+//   span:nth-child(2) {
+//     /* transform: translateY(0.2vw) rotate(-4deg); */
+//   }
+
+//   span:nth-child(3) {
+//     /* transform: translateY(0vw) rotate(-2deg); */
+//   }
+
+//   span:nth-child(4) {
+//     /* transform: rotate(0deg); */
+//   }
+
+//   span:nth-child(5) {
+//     /* transform: rotate(0deg); */
+//   }
+
+//   span:nth-child(6) {
+//     /* transform: rotate(2deg); */
+//   }
+
+//   span:nth-child(7) {
+//     /* transform: translateY(0.2vw) rotate(3deg); */
+//   }
+
+//   span:nth-child(8) {
+//     /* transform: translateY(0.4vw) rotate(4deg); */
+//   }
+
+//   span:nth-child(9) {
+//     /* transform: translateY(0.4vw) rotate(5deg); */
+//   }
+// `
+
 const CountdownNumber = styled.div`
-  font-size: 5.2vw;
+  font-size: 3.8vw;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  top: 3vw;
+  top: 60vw;
   color: #45171a;
   font-weight: 600;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -429,40 +485,143 @@ const CountdownNumber = styled.div`
     display: inline-block;
   }
 
+  .comma {
+    margin-right: 0.7vw;
+  }
+
   span:nth-child(1) {
-    transform: translateY(0.4vw) rotate(-5deg);
+    /* Add custom styles for the first character */
+    transform: translateY(0.7vw) rotate(-11deg);
   }
 
   span:nth-child(2) {
-    transform: translateY(0.2vw) rotate(-4deg);
+    /* Add custom styles for the second character */
+    transform: translateY(0.4vw) rotate(-9deg);
   }
 
   span:nth-child(3) {
-    transform: translateY(0vw) rotate(-2deg);
+    /* Add custom styles for the third character */
+    transform: translateY(0.3vw) rotate(-9deg);
   }
 
   span:nth-child(4) {
-    transform: rotate(0deg);
+    /* Add custom styles for the fourth character */
+    transform: translateY(-0.1vw) rotate(-7deg);
   }
 
   span:nth-child(5) {
-    transform: rotate(0deg);
+    /* Add custom styles for the fifth character */
+    transform: translateY(-0.4vw) rotate(-7deg);
   }
 
   span:nth-child(6) {
-    transform: rotate(2deg);
+    /* Add custom styles for the sixth character */
+    transform: translateY(-0.7vw) rotate(-6deg);
   }
 
   span:nth-child(7) {
-    transform: translateY(0.2vw) rotate(3deg);
+    /* Add custom styles for the seventh character */
+    transform: translateY(-0.9vw) rotate(-2deg);
   }
 
   span:nth-child(8) {
-    transform: translateY(0.4vw) rotate(4deg);
+    /* Add custom styles for the eighth character */
+    transform: translateY(-0.8vw) rotate(-2deg);
   }
 
   span:nth-child(9) {
-    transform: translateY(0.4vw) rotate(5deg);
+    /* Add custom styles for the ninth character */
+    transform: translateY(-0.95vw) rotate(-2deg);
+  }
+
+  span:nth-child(10) {
+    /* Add custom styles for the tenth character */
+    transform: translateY(-1vw) rotate(-2deg);
+  }
+
+  span:nth-child(11) {
+    /* Add custom styles for the eleventh character */
+    transform: translateY(-1.1vw) rotate(-1deg);
+  }
+
+  span:nth-child(12) {
+    /* Add custom styles for the twelfth character */
+    transform: translateY(-1.1vw) rotate(0deg);
+  }
+
+  span:nth-child(13) {
+    /* Add custom styles for the thirteenth character */
+    transform: translateY(-1.1vw) rotate(0deg);
+  }
+
+  span:nth-child(14) {
+    /* Add custom styles for the fourteenth character */
+    transform: translateY(-1.1vw) rotate(1deg);
+  }
+
+  span:nth-child(15) {
+    /* Add custom styles for the fifteenth character */
+    transform: translateY(-0.9vw) rotate(3deg);
+  }
+
+  span:nth-child(16) {
+    /* Add custom styles for the sixteenth character */
+    transform: translateY(-0.8vw) rotate(5deg);
+  }
+
+  span:nth-child(17) {
+    /* Add custom styles for the seventeenth character */
+    transform: translateY(-0.8vw) rotate(6deg);
+  }
+
+  span:nth-child(18) {
+    /* Add custom styles for the eighteenth character */
+    transform: translateY(-0.6vw) rotate(5deg);
+  }
+
+  span:nth-child(19) {
+    /* Add custom styles for the nineteenth character */
+    transform: translateY(-0.4vw) rotate(5deg);
+  }
+
+  span:nth-child(20) {
+    /* Add custom styles for the twentieth character */
+    transform: translateY(-0.6vw) rotate(6deg);
+  }
+
+  span:nth-child(21) {
+    /* Add custom styles for the twenty-first character */
+    transform: translateY(-0.1vw) rotate(6deg);
+  }
+
+  span:nth-child(22) {
+    /* Add custom styles for the twenty-first character */
+    transform: translateY(0.2vw) rotate(7deg);
+  }
+
+  span:nth-child(23) {
+    /* Add custom styles for the twenty-first character */
+    transform: translateY(0.4vw) rotate(7deg);
+  }
+
+  span:nth-child(24) {
+    /* Add custom styles for the twenty-first character */
+    transform: translateY(0.7vw) rotate(9deg);
+  }
+
+  span:nth-child(25) {
+    /* Add custom styles for the twenty-first character */
+    transform: translateY(0.8vw) rotate(9deg);
+  }
+
+  span:nth-child(26) {
+    /* Add custom styles for the twenty-first character */
+    transform: translateY(0.8vw) rotate(11deg);
+  }
+
+  ${p => p.theme.mediaQueries.mobile} {
+    top: 221vw;
+    font-size: 5vw;
   }
 `
 
@@ -548,11 +707,27 @@ const CountdownTimer = ({ targetDate }) => {
     return () => clearInterval(timer)
   }, [targetDate])
 
+  // const formatTime = time => {
+  //   return `${time.days} DAYS, ${time.hours} HOURS, ${time.minutes} MINS`
+  // }
+  // const formatTime = time => {
+  //   const formattedString = `${String(time.days).padStart(2, '0')} DAYS, ${String(time.hours).padStart(2, '0')} HOURS, ${String(
+  //     time.minutes
+  //   ).padStart(2, '0')} MINS`
+
+  //   // Map each character into a span similar to CurvedText
+  //   return formattedString.split('').map((char, index) => (
+  //     <span key={index}>{char}</span>
+  //   ))
+  // }
   const formatTime = time => {
-    const timeString = `${String(time.days).padStart(2, '0')}:${String(time.hours).padStart(2, '0')}:${String(
-      time.minutes
-    ).padStart(2, '0')}`
-    return timeString.split('').map((char, index) => <span key={index}>{char}</span>)
+    const formattedString = `${String(time.days)} DAYS, ${String(time.hours)} HOURS, ${String(time.minutes)} MINS`
+
+    return formattedString.split('').map((char, index) => (
+      <span key={index} className={char === ',' ? 'comma' : ''}>
+        {char}
+      </span>
+    ))
   }
 
   return <CountdownNumber>{formatTime(timeLeft)}</CountdownNumber>
@@ -616,10 +791,10 @@ export default function Register () {
             <HCSub>Nov 9-10, 2024 | In-person event</HCSub>
           </BodyContainer>
           <ButtonContainer>
-            <FillText>The website is still under construction, for the full experience please switch to desktop. :)</FillText>
-            {/* <RegisterNowButton>
+            {/* <FillText>The website is still under construction, for the full experience please switch to desktop. :)</FillText> */}
+            <RegisterNowButton>
               <ButtonText>Registrations Opening Soon!</ButtonText>
-            </RegisterNowButton> */}
+            </RegisterNowButton>
             <BecomeMentorButton href="https://docs.google.com/forms/d/e/1FAIpQLSfc-LD_TRR5T48Vcu5-4KEugVH1OgeWUX8m0461D2H6K3J7DA/viewform" target="_blank">
               <ButtonText>Become a Mentor</ButtonText>
             </BecomeMentorButton>
@@ -673,8 +848,11 @@ export default function Register () {
             {/* October 1 9am PST */}
             <CountdownText>
               <CurvedText text="REGISTRATION OPENS IN" />
-              <CountdownTimer targetDate={new Date(Date.UTC(2024, 9, 1, 16, 0, 0))} />
+              {/* <CountdownTimer targetDate={new Date(Date.UTC(2024, 9, 1, 16, 0, 0))} /> */}
             </CountdownText>
+            <div>
+              <CountdownTimer targetDate={new Date(Date.UTC(2024, 9, 1, 16, 0, 0))} />
+            </div>
           </ButtonContainer>
         </MediaContainer>
       </GridContainer>

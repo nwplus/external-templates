@@ -20,7 +20,8 @@ const BgSectionContainer = styled(SectionContainer)`
   position: relative;
   width: 100%;
   top: -53vw;
-  height: ${props => props.height - 10}vw;
+  /* height: ${props => props.height - 10}vw; */
+  height: 110vw;
   justify-content: center;
   align-items: center;
   aspect-ratio: 1440/1630;
@@ -272,7 +273,7 @@ export default function Sponsor () {
       <StyledTitle />
       <PushinP>
         nwPlus is always looking for new ventures, opportunities, and connections. If you are interested in working with
-        us, joining us or speaking at one of our events, feel free to reach out to use at{' '}
+        us, joining us or speaking at one of our events, feel free to reach out to us at{' '}
         <EmailBlurb href="mailto:sponsorship@nwplus.io" target="_blank" rel="noopener noreferrer">
           sponsorship@nwplus.io
         </EmailBlurb>
