@@ -324,6 +324,8 @@ const ComboButton = styled(Button)`
 
   ${p => p.theme.mediaQueries.mobile} {
     font-size: 2.5vw;
+    top: 1.1vw;
+    height: 70%;
   }
 `
 
