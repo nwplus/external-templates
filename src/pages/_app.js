@@ -29,7 +29,7 @@ const OuterContainer = styled(SectionContainer)`
     width: 100%;
     background-color: #01064E;
     aspect-ratio: 748/12000;
-    height: 170vw;
+    /* height: 170vw; */
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center top;
