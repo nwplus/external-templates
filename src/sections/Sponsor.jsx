@@ -7,9 +7,9 @@ const sponsorTierOrder = {
   platinum: 1,
   gold: 2,
   silver: 3,
-  bronze: 4,
-  inkind: 5,
-  startup: 6
+  startup: 4,
+  bronze: 5,
+  inkind: 6
 }
 
 const BgSectionContainer = styled(SectionContainer)`
@@ -30,7 +30,8 @@ const BgSectionContainer = styled(SectionContainer)`
 
   ${p => p.theme.mediaQueries.mobile} {
     background-size: 100vw;
-    height: ${props => props.height + 45}vw;
+    /* height: ${props => props.height + 45}vw; */
+    height: 162vw;
     background-repeat: no-repeat;
     background-position: center center;
     top: 0vw;
