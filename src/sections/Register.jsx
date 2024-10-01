@@ -592,7 +592,7 @@ const CountdownNumber = styled.div`
 
   span:nth-child(21) {
     /* Add custom styles for the twenty-first character: Second minute number */
-    transform: translateY(-0.7vw) rotate(6deg);
+    transform: translateY(-0.8vw) rotate(6deg);
   }
 
   span:nth-child(22) {
@@ -602,22 +602,22 @@ const CountdownNumber = styled.div`
 
   span:nth-child(23) {
     /* Add custom styles for the twenty-first character: M */
-    transform: translateY(-0.4vw) rotate(7deg);
+    transform: translateY(-0.5vw) rotate(7deg);
   }
 
   span:nth-child(24) {
     /* Add custom styles for the twenty-first character: I */
-    transform: translateY(-0.1vw) rotate(8deg);
+    transform: translateY(-0.2vw) rotate(8deg);
   }
 
   span:nth-child(25) {
     /* Add custom styles for the twenty-first character: N */
-    transform: translateY(0.2vw) rotate(9deg);
+    transform: translateY(0.1vw) rotate(9deg);
   }
 
   span:nth-child(26) {
     /* Add custom styles for the twenty-first character: S */
-    transform: translateY(0.6vw) rotate(11deg);
+    transform: translateY(0.5vw) rotate(11deg);
   }
 
   ${p => p.theme.mediaQueries.mobile} {
