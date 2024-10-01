@@ -205,6 +205,10 @@ left: ${({ left }) => left};
       transform: rotate(5deg);
     }
   }
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const HotAirBalloons = styled.div`
@@ -228,6 +232,10 @@ z-index: -50;
     100% {
       transform: translateY(0);
     }
+  }
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
   }
 `
 

@@ -28,7 +28,7 @@ const OuterContainer = styled(SectionContainer)`
     background: url('assets/mobile/entire-site/entire-site-mobile.png') no-repeat;
     width: 100%;
     background-color: #01064E;
-    aspect-ratio: 748/12000;
+    aspect-ratio: 748/11190;
     /* height: 170vw; */
     background-size: cover;
     background-repeat: no-repeat;
