@@ -544,8 +544,8 @@ const Learn = () => {
           <EventTitle>Learn Day</EventTitle>
           <Date>Nov 9, 2024</Date>
           <FadeContent top="5.4vw" isHovered={!isLeftHovered}>
-            <CustomText fontSize="1.1vw" color="#45171a" width="8vw">
-              learn more <LearnMoreIcon />
+            <CustomText fontSize="1.1vw" color="#45171a" width="12vw">
+              hover to learn more <LearnMoreIcon />
             </CustomText>
           </FadeContent>
           <FadeContent top="6.5vw" isHovered={isLeftHovered}>
@@ -565,7 +565,7 @@ const Learn = () => {
           <Date>Nov 10, 2024</Date>
           <FadeContent top="5.4vw" isHovered={!isRightHovered}>
             <CustomText fontSize="1.1vw" color="#45171a" width="8vw">
-              learn more <LearnMoreIcon />
+              hover to learn more <LearnMoreIcon />
             </CustomText>
           </FadeContent>
           <FadeContent top="6.5vw" isHovered={isRightHovered}>

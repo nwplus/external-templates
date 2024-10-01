@@ -166,8 +166,9 @@ const LinksContainer = React.memo(styled.div`
 
   ${p => p.theme.mediaQueries.mobile} {
     position: absolute;
+    font-size: 3.2vw;
     top: 71vw;
-    left: -7.9vw;
+    left: -11vw;
   }
 
 `)
@@ -183,7 +184,7 @@ const LinkButton = styled.a`
   }
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 2.5vw;
+    font-size: 3.3vw;
   }
 `
 

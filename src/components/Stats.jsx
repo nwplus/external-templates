@@ -129,7 +129,7 @@ const StyledTitle = styled(Header1)`
   ${p => p.theme.mediaQueries.mobile} {
     font-size: 7.7vw;
     width: 80vw;
-    top: 0vw;
+    top: 1.5vw;
     left: 10vw;
   }
 `
