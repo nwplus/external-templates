@@ -262,6 +262,7 @@ const BecomeMentorButton = styled.a`
   border: none;
   cursor: pointer;
   text-align: center;
+  align-content: center;
   text-decoration: none;
   line-height: 70px;
 
@@ -271,7 +272,7 @@ const BecomeMentorButton = styled.a`
     height: 125px;
     top: -2.3vw;
     position: relative;
-    display: none;
+
   }
 
   &:hover {
