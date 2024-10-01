@@ -21,6 +21,7 @@ const BgSectionContainer = styled.div`
     background-size: 100vw;
     background-repeat: no-repeat;
     background-position: center center;
+    top: 60vw;
   }
 `
 
@@ -37,7 +38,9 @@ const TestimonialsTitle = styled.div`
   transform: translateX(-50%);
 
   ${p => p.theme.mediaQueries.mobile} {
-    transform: scale(0.8);
+    background-size: 80vw;
+    width: 80vw;
+    top: -33.5vw;
   }
 `
 
@@ -60,6 +63,13 @@ const TestimonialContainer = React.memo(styled.div`
   animation: ${props => (props.fadeType === 'fade-out' ? fadeOut : fadeIn)} 0.3s ease-in-out;
   opacity: ${props => (props.fadeType === 'fade-out' ? 0 : 1)};
   transition: opacity 0.3s ease-in-out;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    top: -15vw;
+    left: 5vw;
+    width: 90vw;
+    height: 92vw;
+  }
 `)
 
 const Headshot = React.memo(styled.img`
@@ -70,6 +80,12 @@ const Headshot = React.memo(styled.img`
   top: 3.2vw;
   left: 5vw;
   margin-bottom: 1.5vw;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    left: 0vw;
+    width: 32.4vw;
+    height: 33.4vw;
+  }
 `)
 
 const TextContainer = React.memo(styled.div`
@@ -81,11 +97,25 @@ const TextContainer = React.memo(styled.div`
   left: 5vw;
   top: 7vw;
   color: #45171A;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: 50%;
+    top: 7vw;
+    left: 2vw;
+  }
 `)
 
 const Name = React.memo(styled.h2`
   font-size: 2.73vw;
   font-weight: bold;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: 4.6vw;
+    line-height: 1.5;
+    width: 44vw;
+    padding-bottom: 1vw;
+    text-align: center;
+  }
 `)
 
 const Position = React.memo(styled.h3`
@@ -94,6 +124,12 @@ const Position = React.memo(styled.h3`
   font-family: 'HK Grotesk';
   text-align: left;
   padding-bottom: 0.5vw;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: 3.5vw;
+    text-align: center;
+    padding-top: 1vw;
+  }
 `)
 
 const Quote = React.memo(styled.p`
@@ -103,6 +139,17 @@ const Quote = React.memo(styled.p`
   margin: 0.5vw 0;
   padding-bottom: 0.5vw;
   line-height: 1.5vw;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    position: relative;
+    text-align: center;
+    width: 75vw;
+    height: 40vw;
+    top: 7vw;
+    left: -34.5vw;
+    font-size: 3.3vw;
+    line-height: 1.4;
+  }
 `)
 
 const LinksContainer = React.memo(styled.div`
@@ -112,6 +159,12 @@ const LinksContainer = React.memo(styled.div`
   gap: 0.5vw; 
   font-family: 'HK Grotesk';
   font-weight: 500;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    position: absolute;
+    top: 69vw;
+    left: -7.9vw;
+  }
 
 `)
 
@@ -123,6 +176,10 @@ const LinkButton = styled.a`
 
   &:hover {
     scale: 1.1
+  }
+
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: 2.5vw;
   }
 `
 
@@ -147,6 +204,12 @@ const Button = styled.button`
     opacity: 0.5;
     cursor: not-allowed;
   }
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
+
+
 `
 
 const LeftButton = styled(Button)`
@@ -183,6 +246,13 @@ const Dot = styled.div`
   border-radius: 50%;
   background-color: ${({ active }) => (active ? 'rgba(110, 14, 92, 1)' : 'rgba(110, 14, 92, 0.4)')};
   margin: 0 0.5vw;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: 1.5vw;
+    height: 1.5vw;
+    left: -2.7vw;
+    top: 70vw;
+  }
 `
 
 const testimonials = [
@@ -236,6 +306,7 @@ const fadeIn = keyframes`
 export default function Testimonials () {
   const [currentTestimonial, setCurrentTestimonial] = useState(0)
   const [fadeType, setFadeType] = useState('fade-in')
+  const [startX, setStartX] = useState(0)
 
   useEffect(() => {
     testimonials.forEach((testimonial) => {
@@ -260,10 +331,28 @@ export default function Testimonials () {
     }, 500)
   }
 
+  // Add touch event handlers
+  const handleTouchStart = (e) => {
+    setStartX(e.touches[0].clientX)
+  }
+
+  const handleTouchEnd = (e) => {
+    const endX = e.changedTouches[0].clientX
+    const diffX = startX - endX
+
+    if (diffX > 50) {
+      // Swipe left - show next testimonial
+      handleNext()
+    } else if (diffX < -50) {
+      // Swipe right - show previous testimonial
+      handlePrev()
+    }
+  }
+
   const { headshot, name, position, text, links } = testimonials[currentTestimonial]
 
   return (
-    <BgSectionContainer id="testimonials">
+    <BgSectionContainer id="testimonials" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
       <TestimonialsTitle />
       <LeftButton onClick={handlePrev} />
       <TestimonialContainer fadeType={fadeType}>
