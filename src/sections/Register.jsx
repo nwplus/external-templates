@@ -491,12 +491,12 @@ const CountdownNumber = styled.div`
   }
 
   span:nth-child(1) {
-    /* Add custom styles for the first character */
+    /* Add custom styles for the first character: Fist day number */
     transform: translateY(0.7vw) rotate(-11deg);
   }
 
   span:nth-child(2) {
-    /* Add custom styles for the second character */
+    /* Add custom styles for the second character: Second day number */
     transform: translateY(0.4vw) rotate(-9deg);
   }
 
@@ -506,27 +506,27 @@ const CountdownNumber = styled.div`
   }
 
   span:nth-child(4) {
-    /* Add custom styles for the fourth character */
-    transform: translateY(-0.1vw) rotate(-7deg);
+    /* Add custom styles for the fourth character: D */
+    transform: translateY(0vw) rotate(-7deg);
   }
 
   span:nth-child(5) {
-    /* Add custom styles for the fifth character */
+    /* Add custom styles for the fifth character: A */
     transform: translateY(-0.4vw) rotate(-7deg);
   }
 
   span:nth-child(6) {
-    /* Add custom styles for the sixth character */
+    /* Add custom styles for the sixth character: Y */
     transform: translateY(-0.7vw) rotate(-6deg);
   }
 
   span:nth-child(7) {
-    /* Add custom styles for the seventh character */
+    /* Add custom styles for the seventh character: S */
     transform: translateY(-0.9vw) rotate(-2deg);
   }
 
   span:nth-child(8) {
-    /* Add custom styles for the eighth character */
+    /* Add custom styles for the eighth character: First comma */
     transform: translateY(-0.8vw) rotate(-2deg);
   }
 
@@ -536,13 +536,13 @@ const CountdownNumber = styled.div`
   }
 
   span:nth-child(10) {
-    /* Add custom styles for the tenth character */
-    transform: translateY(-1vw) rotate(-2deg);
+    /* Add custom styles for the tenth character: First hour number */
+    transform: translateY(-1.2vw) rotate(-3deg);
   }
 
   span:nth-child(11) {
-    /* Add custom styles for the eleventh character */
-    transform: translateY(-1.1vw) rotate(-1deg);
+    /* Add custom styles for the eleventh character: Second hour number */
+    transform: translateY(-1.3vw) rotate(-2deg);
   }
 
   span:nth-child(12) {
@@ -551,33 +551,33 @@ const CountdownNumber = styled.div`
   }
 
   span:nth-child(13) {
-    /* Add custom styles for the thirteenth character */
-    transform: translateY(-1.1vw) rotate(0deg);
+    /* Add custom styles for the thirteenth character: H */
+    transform: translateY(-1.4vw) rotate(-1deg);
   }
 
   span:nth-child(14) {
-    /* Add custom styles for the fourteenth character */
-    transform: translateY(-1.1vw) rotate(1deg);
+    /* Add custom styles for the fourteenth character: O */
+    transform: translateY(-1.4vw) rotate(-1deg);
   }
 
   span:nth-child(15) {
-    /* Add custom styles for the fifteenth character */
-    transform: translateY(-0.9vw) rotate(3deg);
+    /* Add custom styles for the fifteenth character: U */
+    transform: translateY(-1.4vw) rotate(1deg);
   }
 
   span:nth-child(16) {
-    /* Add custom styles for the sixteenth character */
-    transform: translateY(-0.8vw) rotate(5deg);
+    /* Add custom styles for the sixteenth character: R */
+    transform: translateY(-1.4vw) rotate(2deg);
   }
 
   span:nth-child(17) {
-    /* Add custom styles for the seventeenth character */
-    transform: translateY(-0.8vw) rotate(6deg);
+    /* Add custom styles for the seventeenth character: S */
+    transform: translateY(-1.2vw) rotate(4deg);
   }
 
   span:nth-child(18) {
-    /* Add custom styles for the eighteenth character */
-    transform: translateY(-0.6vw) rotate(5deg);
+    /* Add custom styles for the eighteenth character: Second comma */
+    transform: translateY(-0.8vw) rotate(5deg);
   }
 
   span:nth-child(19) {
@@ -586,43 +586,78 @@ const CountdownNumber = styled.div`
   }
 
   span:nth-child(20) {
-    /* Add custom styles for the twentieth character */
-    transform: translateY(-0.6vw) rotate(6deg);
+    /* Add custom styles for the twentieth character: First minute number */
+    transform: translateY(-1vw) rotate(6deg);
   }
 
   span:nth-child(21) {
-    /* Add custom styles for the twenty-first character */
-    transform: translateY(-0.1vw) rotate(6deg);
+    /* Add custom styles for the twenty-first character: Second minute number */
+    transform: translateY(-0.7vw) rotate(6deg);
   }
 
   span:nth-child(22) {
     /* Add custom styles for the twenty-first character */
-    transform: translateY(0.2vw) rotate(7deg);
+    transform: translateY(-0.6vw) rotate(7deg);
   }
 
   span:nth-child(23) {
-    /* Add custom styles for the twenty-first character */
-    transform: translateY(0.4vw) rotate(7deg);
+    /* Add custom styles for the twenty-first character: M */
+    transform: translateY(-0.4vw) rotate(7deg);
   }
 
   span:nth-child(24) {
-    /* Add custom styles for the twenty-first character */
-    transform: translateY(0.7vw) rotate(9deg);
+    /* Add custom styles for the twenty-first character: I */
+    transform: translateY(-0.1vw) rotate(8deg);
   }
 
   span:nth-child(25) {
-    /* Add custom styles for the twenty-first character */
-    transform: translateY(0.8vw) rotate(9deg);
+    /* Add custom styles for the twenty-first character: N */
+    transform: translateY(0.2vw) rotate(9deg);
   }
 
   span:nth-child(26) {
-    /* Add custom styles for the twenty-first character */
-    transform: translateY(0.8vw) rotate(11deg);
+    /* Add custom styles for the twenty-first character: S */
+    transform: translateY(0.6vw) rotate(11deg);
   }
 
   ${p => p.theme.mediaQueries.mobile} {
     top: 221vw;
     font-size: 5vw;
+
+    span:nth-child(1) {
+    /* Add custom styles for the first character: Fist day number */
+    transform: translateY(0.8vw) rotate(-11deg);
+    }
+
+    span:nth-child(6) {
+    /* Add custom styles for the sixth character: Y */
+    transform: translateY(-0.8vw) rotate(-6deg);
+    }
+    
+    span:nth-child(7) {
+    /* Add custom styles for the seventh character: S */
+    transform: translateY(-1vw) rotate(-2deg);
+    }
+
+    span:nth-child(20) {
+    /* Add custom styles for the twentieth character: First minute number */
+    transform: translateY(-1.1vw) rotate(6deg);
+    }
+
+    span:nth-child(21) {
+    /* Add custom styles for the twenty-first character: Second minute number */
+    transform: translateY(-0.8vw) rotate(6deg);
+    }
+
+    span:nth-child(25) {
+    /* Add custom styles for the twenty-first character: N */
+    transform: translateY(0.3vw) rotate(9deg);
+    }
+
+    span:nth-child(26) {
+    /* Add custom styles for the twenty-first character: S */
+    transform: translateY(0.9vw) rotate(11deg);
+    }
   }
 `
 
@@ -721,8 +756,17 @@ const CountdownTimer = ({ targetDate }) => {
   //     <span key={index}>{char}</span>
   //   ))
   // }
+  // const formatTime = time => {
+  //   const formattedString = `${String(time.days)} DAYS, ${String(time.hours)} HOURS, ${String(time.minutes)} MINS`
+
+  //   return formattedString.split('').map((char, index) => (
+  //     <span key={index} className={char === ',' ? 'comma' : ''}>
+  //       {char}
+  //     </span>
+  //   ))
+  // }
   const formatTime = time => {
-    const formattedString = `${String(time.days)} DAYS, ${String(time.hours)} HOURS, ${String(time.minutes)} MINS`
+    const formattedString = `${String(time.days).padStart(2, '0')} DAYS, ${String(time.hours).padStart(2, '0')} HOURS, ${String(time.minutes).padStart(2, '0')} MINS`
 
     return formattedString.split('').map((char, index) => (
       <span key={index} className={char === ',' ? 'comma' : ''}>
