@@ -412,13 +412,13 @@ const CountdownText = styled.div`
 `
 
 const CountdownNumber = styled.div`
-  font-size: 5.2vw;
+  font-size: 3.7vw;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
   top: 3vw;
   color: #45171a;
-  font-weight: 600;
+  font-weight: 500;
 
   display: flex;
   justify-content: center;
@@ -431,7 +431,7 @@ const CountdownNumber = styled.div`
   }
 
   span:nth-child(1) {
-    transform: translateY(0.4vw) rotate(-5deg);
+    transform: translateY(0.4vw) rotate(-2deg);
   }
 
   span:nth-child(2) {
@@ -550,10 +550,7 @@ const CountdownTimer = ({ targetDate }) => {
   }, [targetDate])
 
   const formatTime = time => {
-    const timeString = `${String(time.days).padStart(2, '0')}:${String(time.hours).padStart(2, '0')}:${String(
-      time.minutes
-    ).padStart(2, '0')}`
-    return timeString.split('').map((char, index) => <span key={index}>{char}</span>)
+    return `${time.days} DAYS, ${time.hours} HOURS, ${time.minutes} MINS`
   }
 
   return <CountdownNumber>{formatTime(timeLeft)}</CountdownNumber>
