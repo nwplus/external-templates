@@ -649,6 +649,16 @@ const CountdownNumber = styled.div`
     transform: translateY(-0.8vw) rotate(6deg);
     }
 
+    span:nth-child(23) {
+    /* Add custom styles for the twenty-first character: M */
+    transform: translateY(-0.4vw) rotate(7deg);
+    }
+
+  span:nth-child(24) {
+    /* Add custom styles for the twenty-first character: I */
+    transform: translateY(0vw) rotate(8deg);
+    }
+
     span:nth-child(25) {
     /* Add custom styles for the twenty-first character: N */
     transform: translateY(0.3vw) rotate(9deg);
