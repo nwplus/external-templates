@@ -169,47 +169,47 @@ const FaqCollection = ({ category, faqs, expandedQuestion, setExpandedQuestion }
   )
 }
 
-const FerrisCart = styled.div`
-background: url(assets/background/faq/ferris-cart.png) no-repeat;
-background-size: 10vw;
-width: 10vw;
-height: 10vw;
-position: absolute;
-transform-origin: top center;
-animation: ${({ reverse }) => (reverse ? 'reverseSwing' : 'swing')} 2.1s ease-in-out infinite;
-z-index: -50;
+// const FerrisCart = styled.div`
+// background: url(assets/background/faq/ferris-cart.png) no-repeat;
+// background-size: 10vw;
+// width: 10vw;
+// height: 10vw;
+// position: absolute;
+// transform-origin: top center;
+// animation: ${({ reverse }) => (reverse ? 'reverseSwing' : 'swing')} 2.1s ease-in-out infinite;
+// z-index: -50;
 
-top: ${({ top }) => top};
-left: ${({ left }) => left};
+// top: ${({ top }) => top};
+// left: ${({ left }) => left};
 
-@keyframes swing {
-  0% {
-    transform: rotate(-5deg);
-  }
-  50% {
-    transform: rotate(5deg);
-  }
-  100% {
-    transform: rotate(-5deg);
-  }
-}
+// @keyframes swing {
+//   0% {
+//     transform: rotate(-5deg);
+//   }
+//   50% {
+//     transform: rotate(5deg);
+//   }
+//   100% {
+//     transform: rotate(-5deg);
+//   }
+// }
 
-@keyframes reverseSwing {
-    0% {
-      transform: rotate(5deg);
-    }
-    50% {
-      transform: rotate(-5deg);
-    }
-    100% {
-      transform: rotate(5deg);
-    }
-  }
+// @keyframes reverseSwing {
+//     0% {
+//       transform: rotate(5deg);
+//     }
+//     50% {
+//       transform: rotate(-5deg);
+//     }
+//     100% {
+//       transform: rotate(5deg);
+//     }
+//   }
 
-  ${p => p.theme.mediaQueries.mobile} {
-    display: none;
-  }
-`
+//   ${p => p.theme.mediaQueries.mobile} {
+//     display: none;
+//   }
+// `
 
 const HotAirBalloons = styled.div`
 background: url(assets/background/faq/hot-air-balloons.png) no-repeat;

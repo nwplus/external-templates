@@ -186,32 +186,32 @@ const Button = styled.a`
 `
 
 const MenuItem = ({ onClick, name, href, isAnchor, target, rel, isMobile, closeDropdown }) => {
-  const [anchorTarget, setAnchorTarget] = useState(null)
+  // const [anchorTarget, setAnchorTarget] = useState(null)
 
-  function scrollToSection (id) {
-    const element = document.getElementById(id)
+  // function scrollToSection(id) {
+  //   const element = document.getElementById(id)
 
-    if (!element) return
+  //   if (!element) return
 
-    document.getElementById('outer').style.overflow = 'unset'
+  //   document.getElementById('outer').style.overflow = 'unset'
 
-    element.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start'
-    })
+  //   element.scrollIntoView({
+  //     behavior: 'smooth',
+  //     block: 'start'
+  //   })
 
-    closeDropdown(false)
+  //   closeDropdown(false)
 
-    setTimeout(() => {
-      document.getElementById('outer').style.overflow = 'hidden'
-    }, 2800)
-  }
+  //   setTimeout(() => {
+  //     document.getElementById('outer').style.overflow = 'hidden'
+  //   }, 2800)
+  // }
 
-  useEffect(() => {
-    if (isAnchor) {
-      setAnchorTarget(document.getElementById(href))
-    }
-  }, [href])
+  // useEffect(() => {
+  //     if (isAnchor) {
+  //       setAnchorTarget(document.getElementById(href))
+  //     }
+  //   }, [href])
 
   return (
     <LinkText onClick={onClick} target={target} rel={rel}>

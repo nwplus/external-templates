@@ -793,8 +793,8 @@ export default function Register () {
           </BodyContainer>
           <ButtonContainer>
             {/* <FillText>The website is still under construction, for the full experience please switch to desktop. :)</FillText> */}
-            <RegisterNowButton>
-              <ButtonText>Registrations Opening Soon!</ButtonText>
+            <RegisterNowButton href="https://portal.nwplus.io/" target="_blank">
+              <ButtonText>Register Now</ButtonText>
             </RegisterNowButton>
             <BecomeMentorButton href="https://docs.google.com/forms/d/e/1FAIpQLSfc-LD_TRR5T48Vcu5-4KEugVH1OgeWUX8m0461D2H6K3J7DA/viewform" target="_blank">
               <ButtonText>Become a Mentor</ButtonText>
@@ -848,11 +848,11 @@ export default function Register () {
             </SignContainer>
             {/* October 1 9am PST */}
             <CountdownText>
-              <CurvedText text="REGISTRATION OPENS IN" />
+              <CurvedText text="APPLICATIONS CLOSE IN" />
               {/* <CountdownTimer targetDate={new Date(Date.UTC(2024, 9, 1, 16, 0, 0))} /> */}
             </CountdownText>
             <div>
-              <CountdownTimer targetDate={new Date(Date.UTC(2024, 9, 1, 16, 0, 0))} />
+              <CountdownTimer targetDate={new Date(Date.UTC(2024, 9, 19, 6, 59, 0))} />
             </div>
           </ButtonContainer>
         </MediaContainer>
