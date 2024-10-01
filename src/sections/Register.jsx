@@ -734,7 +734,7 @@ const CountdownTimer = ({ targetDate }) => {
   return <CountdownNumber>{formatTime(timeLeft)}</CountdownNumber>
 }
 
-export default function Register () {
+export default function Register() {
   // not using these hooks because they don't work on initial load -> better practice to pass an isMobile props from getServerSideProps after checking userAgent
   // const windowWidth = useWindowWidth();
   // const mobileBreakpoint = 768;
@@ -761,7 +761,7 @@ export default function Register () {
       .map((char, index) => (char === ' ' ? <span key={index}>&nbsp;</span> : <span key={index}>{char}</span>))
   }
 
-  function scrollToSection (id) {
+  function scrollToSection(id) {
     const element = document.getElementById(id)
 
     if (!element) return
@@ -793,8 +793,8 @@ export default function Register () {
           </BodyContainer>
           <ButtonContainer>
             {/* <FillText>The website is still under construction, for the full experience please switch to desktop. :)</FillText> */}
-            <RegisterNowButton>
-              <ButtonText>Registrations Opening Soon!</ButtonText>
+            <RegisterNowButton href="https://portal.nwplus.io/" target="_blank">
+              <ButtonText>Register Now</ButtonText>
             </RegisterNowButton>
             <BecomeMentorButton href="https://docs.google.com/forms/d/e/1FAIpQLSfc-LD_TRR5T48Vcu5-4KEugVH1OgeWUX8m0461D2H6K3J7DA/viewform" target="_blank">
               <ButtonText>Become a Mentor</ButtonText>
@@ -848,11 +848,11 @@ export default function Register () {
             </SignContainer>
             {/* October 1 9am PST */}
             <CountdownText>
-              <CurvedText text="REGISTRATION OPENS IN" />
+              <CurvedText text="APPLICATIONS CLOSE IN" />
               {/* <CountdownTimer targetDate={new Date(Date.UTC(2024, 9, 1, 16, 0, 0))} /> */}
             </CountdownText>
             <div>
-              <CountdownTimer targetDate={new Date(Date.UTC(2024, 9, 1, 16, 0, 0))} />
+              <CountdownTimer targetDate={new Date(Date.UTC(2024, 9, 16, 6, 59, 0))} />
             </div>
           </ButtonContainer>
         </MediaContainer>
