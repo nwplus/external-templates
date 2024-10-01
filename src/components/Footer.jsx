@@ -89,9 +89,9 @@ const FooterSpotlights = styled.div`
   background-position: center top;
   z-index: 2;
   ${p => p.theme.mediaQueries.mobile} {
-    /* bottom: 14vw;
-    background-size: 110vw; */
-    display: none;
+    bottom: 14vw;
+    background-size: 100vw;
+    /* display: none; */
   }
 `
 
