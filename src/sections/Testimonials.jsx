@@ -144,11 +144,15 @@ const Quote = React.memo(styled.p`
     position: relative;
     text-align: center;
     width: 75vw;
-    height: 40vw;
+    height: 38vw;
     top: 7vw;
     left: -34.5vw;
     font-size: 3.3vw;
     line-height: 1.4;
+
+    ${p => p.currentTestimonial === 1 && `
+      padding-top: 2vw;
+    `}
   }
 `)
 
@@ -162,7 +166,7 @@ const LinksContainer = React.memo(styled.div`
 
   ${p => p.theme.mediaQueries.mobile} {
     position: absolute;
-    top: 69vw;
+    top: 71vw;
     left: -7.9vw;
   }
 
@@ -360,7 +364,7 @@ export default function Testimonials () {
         <TextContainer>
           <Name>{name}</Name>
           <Position>{position}</Position>
-          <Quote>{text}</Quote>
+          <Quote currentTestimonial={currentTestimonial}>{text}</Quote>
           {links.length > 0 && (
             <LinksContainer>
               {links.map((link, index) => (
