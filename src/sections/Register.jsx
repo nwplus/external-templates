@@ -852,7 +852,7 @@ export default function Register() {
               {/* <CountdownTimer targetDate={new Date(Date.UTC(2024, 9, 1, 16, 0, 0))} /> */}
             </CountdownText>
             <div>
-              <CountdownTimer targetDate={new Date(Date.UTC(2024, 9, 16, 6, 59, 0))} />
+              <CountdownTimer targetDate={new Date(Date.UTC(2024, 9, 19, 6, 59, 0))} />
             </div>
           </ButtonContainer>
         </MediaContainer>
