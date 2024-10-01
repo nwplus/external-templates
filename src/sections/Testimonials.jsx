@@ -311,6 +311,9 @@ export default function Testimonials () {
   const [currentTestimonial, setCurrentTestimonial] = useState(0)
   const [fadeType, setFadeType] = useState('fade-in')
   const [startX, setStartX] = useState(0)
+  const [isMouseDown, setIsMouseDown] = useState(false)
+
+  const isMobile = window.innerWidth < 770
 
   useEffect(() => {
     testimonials.forEach((testimonial) => {
@@ -353,10 +356,33 @@ export default function Testimonials () {
     }
   }
 
+  // Add mouse event handlers
+  const handleMouseDown = (e) => {
+    if (!isMobile) return // If not in mobile view, do nothing
+    setStartX(e.clientX)
+    setIsMouseDown(true)
+  }
+
+  const handleMouseUp = (e) => {
+    if (!isMouseDown) return // If mouse is not down, do nothing
+    if (!isMobile) return // If not in mobile view, do nothing
+    const endX = e.clientX
+    const diffX = startX - endX
+
+    if (diffX > 50) {
+      // Swipe left - show next testimonial
+      handleNext()
+    } else if (diffX < -50) {
+      // Swipe right - show previous testimonial
+      handlePrev()
+    }
+    setIsMouseDown(false) // Reset mouse down state
+  }
+
   const { headshot, name, position, text, links } = testimonials[currentTestimonial]
 
   return (
-    <BgSectionContainer id="testimonials" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
+    <BgSectionContainer id="testimonials" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd} onMouseDown={handleMouseDown} onMouseUp={handleMouseUp}>
       <TestimonialsTitle />
       <LeftButton onClick={handlePrev} />
       <TestimonialContainer fadeType={fadeType}>
