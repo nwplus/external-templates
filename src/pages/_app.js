@@ -1,5 +1,5 @@
 /* eslint-disable react/react-in-jsx-scope */
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { ParallaxProvider } from 'react-scroll-parallax'
 import GlobalStyle from '../theme/GlobalStyle'
 import ThemeProvider from '../theme/ThemeProvider'
@@ -27,7 +27,7 @@ const OuterContainer = styled(SectionContainer)`
   ${p => p.theme.mediaQueries.mobile} {
     background: url('assets/mobile/entire-site/entire-site-mobile.png') no-repeat;
     width: 100%;
-    background-color: #01064E;
+    background-color: #01064e;
     aspect-ratio: 748/11190;
     /* height: 170vw; */
     background-size: cover;
@@ -37,10 +37,24 @@ const OuterContainer = styled(SectionContainer)`
 `
 
 // eslint-disable-next-line react/prop-types
-function App ({ Component, pageProps }) {
+function App({ Component, pageProps }) {
   const [loading, setLoading] = useState(true)
 
+  const checkReadyState = useCallback(() => {
+    if (document.readyState === 'complete') {
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setLoading(false)
+        })
+      })
+    } else {
+      requestAnimationFrame(checkReadyState)
+    }
+  }, [])
+
   useEffect(() => {
+    checkReadyState()
+
     const lockScroll = () => {
       document.body.style.overflow = 'hidden'
       document.body.style.position = 'fixed'
@@ -65,19 +79,11 @@ function App ({ Component, pageProps }) {
       unlockScroll()
       window.removeEventListener('touchmove', preventScroll)
     }
-  }, [loading])
+  }, [checkReadyState])
 
-  const preventScroll = (e) => {
+  const preventScroll = e => {
     e.preventDefault()
   }
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false)
-    }, 2500) // set loading time to 2.5 seconds
-
-    return () => clearTimeout(timer)
-  }, [])
 
   return (
     <ThemeProvider>
