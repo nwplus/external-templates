@@ -34,7 +34,47 @@ const BgSectionContainer = styled(SectionContainer)`
     height: 162vw;
     background-repeat: no-repeat;
     background-position: center center;
-    top: 0vw;
+    top: 47vw;
+  }
+
+  @media (min-width: 390px) and (max-width: 410px) {
+    top: 37vw;
+  }
+
+  @media (min-width: 411px) and (max-width: 429px) {
+    top: 26vw;
+  }
+
+  @media (min-width: 430px) and (max-width: 449px) {
+    top: 20vw;
+  }
+
+  @media (min-width: 450px) and (max-width: 479px) {
+    top: 15vw;
+  }
+
+  @media (min-width: 480px) and (max-width: 510px) {
+    top: 6vw;
+  }
+
+  @media (min-width: 511px) and (max-width: 540px) {
+    top: -6vw;
+  }
+
+  @media (min-width: 541px) and (max-width: 570px) {
+    top: -16vw;
+  }
+
+  @media (min-width: 571px) and (max-width: 600px) {
+    top: -21vw;
+  }
+
+  @media (min-width: 601px) and (max-width: 630px) {
+    top: -28vw;
+  }
+
+  @media (min-width: 631px) and (max-width: 700px) {
+    top: -38vw;
   }
 
   /* ${p => p.theme.mediaQueries.xs} {
@@ -56,8 +96,9 @@ const StyledTitle = styled.div`
   ${p => p.theme.mediaQueries.mobile} {
     font-size: 2em;
     height: 11vw;
-    background-size: 68vw;
-    width: 68vw;
+    top: 20vw;
+    background-size: 58vw;
+    width: 58vw;
   }
 `
 
@@ -183,10 +224,10 @@ const PushinP = styled.p`
   z-index: 30;
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 2.9vw;
+    font-size: 2.5vw;
     min-width: 0px;
     width: 74vw;
-    top: 15vw;
+    top: 32vw;
     text-align: center;
   }
 `
