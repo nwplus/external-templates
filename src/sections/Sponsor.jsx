@@ -37,44 +37,48 @@ const BgSectionContainer = styled(SectionContainer)`
     top: 47vw;
   }
 
+  @media (min-width: 370px) and (max-width: 378px) {
+    top: 49vw;
+  }
+
   @media (min-width: 390px) and (max-width: 410px) {
-    top: 37vw;
+    top: 41vw;
   }
 
   @media (min-width: 411px) and (max-width: 429px) {
-    top: 26vw;
+    top: 30vw;
   }
 
   @media (min-width: 430px) and (max-width: 449px) {
-    top: 20vw;
+    top: 24vw;
   }
 
   @media (min-width: 450px) and (max-width: 479px) {
-    top: 15vw;
+    top: 19vw;
   }
 
   @media (min-width: 480px) and (max-width: 510px) {
-    top: 6vw;
+    top: 10vw;
   }
 
   @media (min-width: 511px) and (max-width: 540px) {
-    top: -6vw;
+    top: -2vw;
   }
 
   @media (min-width: 541px) and (max-width: 570px) {
-    top: -16vw;
+    top: -12vw;
   }
 
   @media (min-width: 571px) and (max-width: 600px) {
-    top: -21vw;
+    top: -17vw;
   }
 
   @media (min-width: 601px) and (max-width: 630px) {
-    top: -28vw;
+    top: -24vw;
   }
 
   @media (min-width: 631px) and (max-width: 700px) {
-    top: -38vw;
+    top: -34vw;
   }
 
   /* ${p => p.theme.mediaQueries.xs} {
