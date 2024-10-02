@@ -1,5 +1,5 @@
 /* eslint-disable react/react-in-jsx-scope */
-import { useEffect, useState, useCallback } from 'react'
+import { useEffect, useState } from 'react'
 import { ParallaxProvider } from 'react-scroll-parallax'
 import GlobalStyle from '../theme/GlobalStyle'
 import ThemeProvider from '../theme/ThemeProvider'
@@ -37,22 +37,22 @@ const OuterContainer = styled(SectionContainer)`
 `
 
 // eslint-disable-next-line react/prop-types
-function App({ Component, pageProps }) {
+function App ({ Component, pageProps }) {
   const [loading, setLoading] = useState(true)
 
-  const checkReadyState = useCallback(() => {
-    if (document.readyState === 'complete') {
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          setLoading(false)
-        })
-      })
-    } else {
-      requestAnimationFrame(checkReadyState)
-    }
-  }, [])
-
   useEffect(() => {
+    const checkReadyState = () => {
+      if (typeof window !== 'undefined' && document.readyState === 'complete') {
+        setTimeout(() => {
+          setTimeout(() => {
+            setLoading(false)
+          }, 0)
+        }, 0)
+      } else {
+        setTimeout(checkReadyState, 0)
+      }
+    }
+
     checkReadyState()
 
     const lockScroll = () => {
@@ -79,7 +79,7 @@ function App({ Component, pageProps }) {
       unlockScroll()
       window.removeEventListener('touchmove', preventScroll)
     }
-  }, [checkReadyState])
+  }, [])
 
   const preventScroll = e => {
     e.preventDefault()
