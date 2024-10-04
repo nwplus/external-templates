@@ -269,7 +269,7 @@ const EventBox = styled.div`
 
 const FadeContent = styled.div`
   opacity: ${props => (props.isHovered ? 1 : 0)};
-  transition: opacity 0.8s ease-in-out;
+  transition: opacity 0.4s ease-in-out;
   position: absolute;
 
   ${props => props.bottom && `bottom: ${props.bottom};`}
