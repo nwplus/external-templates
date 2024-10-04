@@ -119,7 +119,6 @@ const HCSub = styled.div`
   padding-top: 1rem;
   ${p => p.theme.mediaQueries.mobile} {
     font-size: 3.5vw;
-    font-weight: 400;
     font: 'HK Grotesk';
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
