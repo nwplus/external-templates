@@ -106,7 +106,7 @@ const HackCampSubheader = styled.div`
   padding-top: 1rem;
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 3.4vw;
+    font-size: 3.6vw;
     padding-top: 0;
     line-height: 1.7rem;
   }
@@ -118,7 +118,7 @@ const HCSub = styled.div`
   font-weight: 700;
   padding-top: 1rem;
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 3.1vw;
+    font-size: 3.5vw;
     font-weight: 400;
     font: 'HK Grotesk';
     padding-top: 0.5rem;
