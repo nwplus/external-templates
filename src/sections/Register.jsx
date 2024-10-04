@@ -275,6 +275,35 @@ const BecomeMentorButton = styled.a`
 
   }
 
+  @media (min-width: 350px) and (max-width: 380px) {
+    top: -16vw;
+    left: -3.5vw;
+  }
+
+  @media (min-width: 381px) and (max-width: 410px) {
+    top: -13vw;
+    left: -3.5vw;
+  }
+
+  @media (min-width: 411px) and (max-width: 440px) {
+    top: -10vw;
+    left: -3.5vw;
+  }
+
+  @media (min-width: 441px) and (max-width: 470px) {
+    top: -7vw;
+    left: -3vw;
+  }
+
+  @media (min-width: 471px) and (max-width: 520px) {
+    top: -3vw;
+    left: -3vw;
+  }
+
+  @media (min-width: 521px) and (max-width: 700px) {
+    left: -3vw;
+  }
+
   &:hover {
     background: url('assets/background/hero/mentor-button-active.svg'), transparent;
     background-size: contain;
@@ -537,12 +566,12 @@ const CountdownNumber = styled.div`
 
   span:nth-child(10) {
     /* Add custom styles for the tenth character: First hour number */
-    transform: translateY(-1.2vw) rotate(-3deg);
+    transform: translateY(-1.4vw) rotate(-3deg);
   }
 
   span:nth-child(11) {
     /* Add custom styles for the eleventh character: Second hour number */
-    transform: translateY(-1.3vw) rotate(-2deg);
+    transform: translateY(-1.5vw) rotate(-2deg);
   }
 
   span:nth-child(12) {
@@ -552,27 +581,27 @@ const CountdownNumber = styled.div`
 
   span:nth-child(13) {
     /* Add custom styles for the thirteenth character: H */
-    transform: translateY(-1.4vw) rotate(-1deg);
+    transform: translateY(-1.6vw) rotate(-1deg);
   }
 
   span:nth-child(14) {
     /* Add custom styles for the fourteenth character: O */
-    transform: translateY(-1.4vw) rotate(-1deg);
+    transform: translateY(-1.6vw) rotate(-1deg);
   }
 
   span:nth-child(15) {
     /* Add custom styles for the fifteenth character: U */
-    transform: translateY(-1.4vw) rotate(1deg);
+    transform: translateY(-1.6vw) rotate(1deg);
   }
 
   span:nth-child(16) {
     /* Add custom styles for the sixteenth character: R */
-    transform: translateY(-1.4vw) rotate(2deg);
+    transform: translateY(-1.6vw) rotate(2deg);
   }
 
   span:nth-child(17) {
     /* Add custom styles for the seventeenth character: S */
-    transform: translateY(-1.2vw) rotate(4deg);
+    transform: translateY(-1.4vw) rotate(4deg);
   }
 
   span:nth-child(18) {
