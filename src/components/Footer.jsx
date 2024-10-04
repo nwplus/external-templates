@@ -115,7 +115,8 @@ const SocialMediaIcons = styled.div`
 
   ${p => p.theme.mediaQueries.mobile} {
     width: 60vw;
-    top: -2vw;
+    top: 0vw;
+    font-size: 6vw;
     a {
       color: #c4b2f0;
       width: 65px;
@@ -124,7 +125,7 @@ const SocialMediaIcons = styled.div`
       justify-content: center;
       align-items: center;
     }
-    gap: 1.7rem;
+    gap: 1.6rem;
   }
 `
 
