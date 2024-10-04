@@ -207,11 +207,12 @@ const SponsorLogo = styled.img`
   background-color: white;
   border-radius: 8px;
   height: 6vw;
-  width: 15vw;
+  width: 100%;
   padding: 1vw;
   object-fit: contain;
   ${p => p.theme.mediaQueries.mobile} {
-    width: 21vw;
+    /* width: 21vw; */
+    width: 100%;
     height: 10vw;
   }
 `
@@ -239,7 +240,6 @@ const PushinP = styled.p`
 const Skip = styled.div`
   height: 20vw;
   /* background: linear-gradient(to bottom, #8c5050, #220639); */
-
   ${p => p.theme.mediaQueries.mobile} {
     display: none;
   }
@@ -349,7 +349,7 @@ export default function Sponsor () {
             } else {
               const sponsorCount = sponsors[key].length
 
-              const ContainerSVG = `assets/background/sponsors/${sponsorCount}-sponsors.svg`
+              const ContainerSVG = 'assets/background/sponsors/3-sponsors.svg'
 
               return (
                 <SponsorTier
@@ -357,8 +357,12 @@ export default function Sponsor () {
                   count={sponsorCount}
                   style={{
                     backgroundImage: `url(${ContainerSVG})`,
+                    width: '62vw',
+                    height: `${isMobile ? 21 : 16}vw`,
+                    // backgroundImage: 'url(assets/background/sponsors/sponsor-film-roll.svg)',
+                    // background: `url('assets/background/sponsors/sponsor-film-roll.svg')`,
                     backgroundRepeat: 'no-repeat',
-                    top: `${isMobile ? 37 + row * 24 : 17 + row * 14}vw`,
+                    top: `${isMobile ? 37 + row * 24 : 17 + row * 17}vw`,
                     backgroundPosition: 'center'
                   }}
                 >
