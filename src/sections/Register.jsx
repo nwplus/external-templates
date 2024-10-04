@@ -225,7 +225,8 @@ const RegisterNowButton = styled.a`
   height: 70px;
   border: none;
   cursor: pointer;
-  margin-right: 20px;
+  margin-right: 8px;
+  margin-left: -8px;
   padding: 0px;
   text-align: center;
   align-content: center;
