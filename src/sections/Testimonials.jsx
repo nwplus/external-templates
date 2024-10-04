@@ -136,6 +136,7 @@ const Quote = React.memo(styled.p`
   font-size: 1.12vw;
   font-family: 'HK Grotesk';
   text-align: left;
+  font-weight: 400;
   margin: 0.5vw 0;
   padding-bottom: 0.5vw;
   line-height: 1.5vw;

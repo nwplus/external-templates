@@ -228,7 +228,7 @@ const PushinP = styled.p`
   z-index: 30;
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 2.5vw;
+    font-size: 2.9vw;
     min-width: 0px;
     width: 74vw;
     top: 32vw;

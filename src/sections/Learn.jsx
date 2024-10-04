@@ -269,7 +269,7 @@ const EventBox = styled.div`
 
 const FadeContent = styled.div`
   opacity: ${props => (props.isHovered ? 1 : 0)};
-  transition: opacity 0.8s ease-in-out;
+  transition: opacity 0.4s ease-in-out;
   position: absolute;
 
   ${props => props.bottom && `bottom: ${props.bottom};`}
@@ -371,7 +371,7 @@ const Learn = () => {
           like-minded enthusiasts, build solutions to tackle challenges together, and hopefully leave having developed a
           newfound passion for tech!
         </CustomText>
-        <CustomText mobileLineHeight="4vw" mobileColor="#3B1417" mobileTop="185vw" mobileWidth="78vw" mobileFontSize="2.9vw" mobileLeft="10vw" left="64.5vw" width="34.5vw" top="20.5vw" fontSize="1.1vw">
+        <CustomText mobileLineHeight="4vw" mobileColor="#3B1417" mobileTop="185vw" mobileWidth="78vw" mobileFontSize="3.3vw" mobileLeft="10vw" left="64.5vw" width="34.5vw" top="20.5vw" fontSize="1.1vw">
           A hackathon is a collaborative, typically multi-day invention marathon where participants come together to
           ideate, design, and build projects in a limited time frame. It’s a space to learn, experiment, and bring your
           unique ideas to life, regardless of your experience level.
@@ -426,9 +426,9 @@ const Learn = () => {
           : (
             <div>
               <CustomText
-                mobileTop="210vw"
+                mobileTop="213vw"
                 mobileWidth="78vw"
-                mobileFontSize="2.9vw"
+                mobileFontSize="3.3vw"
                 left="64.5vw"
                 mobileLeft="10vw"
                 width="34.5vw"
@@ -498,7 +498,7 @@ const Learn = () => {
             mobileLeft="13vw"
             mobileTop="78vw"
             mobileColor="#45171A"
-            mobileFontSize="3.1vw"
+            mobileFontSize="3.3vw"
             mobileWidth="79vw"
             mobileLineHeight="4.5vw"
           >
@@ -528,7 +528,7 @@ const Learn = () => {
             mobileLeft="13vw"
             mobileTop="121vw"
             mobileColor="#45171A"
-            mobileFontSize="3.1vw"
+            mobileFontSize="3.3vw"
             mobileWidth="77.6vw"
             mobileLineHeight="4.5vw"
           >

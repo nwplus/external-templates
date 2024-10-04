@@ -53,6 +53,10 @@ function App ({ Component, pageProps }) {
       document.body.style.overflowX = 'hidden'
     }
 
+    const preventScroll = (e) => {
+      e.preventDefault()
+    }
+
     if (loading) {
       lockScroll()
       window.addEventListener('touchmove', preventScroll, { passive: false })
@@ -67,16 +71,24 @@ function App ({ Component, pageProps }) {
     }
   }, [loading])
 
-  const preventScroll = (e) => {
-    e.preventDefault()
-  }
-
   useEffect(() => {
+    // Set loading to false once the window has fully loaded or 3 seconds has passed
+    const handlePageLoad = () => {
+      setLoading(false)
+    }
+
+    // Listen for the window's load event (which fires once everything has finished loading)
+    window.addEventListener('load', handlePageLoad)
+
+    // Set a timer to switch loading to false after 3 seconds
     const timer = setTimeout(() => {
       setLoading(false)
-    }, 2500) // set loading time to 2.5 seconds
+    }, 3000) // 3 seconds
 
-    return () => clearTimeout(timer)
+    return () => {
+      window.removeEventListener('load', handlePageLoad)
+      clearTimeout(timer)
+    }
   }, [])
 
   return (

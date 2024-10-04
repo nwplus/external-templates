@@ -106,7 +106,7 @@ const HackCampSubheader = styled.div`
   padding-top: 1rem;
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 3.4vw;
+    font-size: 3.6vw;
     padding-top: 0;
     line-height: 1.7rem;
   }
@@ -118,8 +118,7 @@ const HCSub = styled.div`
   font-weight: 700;
   padding-top: 1rem;
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 3.1vw;
-    font-weight: 400;
+    font-size: 3.5vw;
     font: 'HK Grotesk';
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
@@ -225,7 +224,8 @@ const RegisterNowButton = styled.a`
   height: 70px;
   border: none;
   cursor: pointer;
-  margin-right: 20px;
+  margin-right: 8px;
+  margin-left: -8px;
   padding: 0px;
   text-align: center;
   align-content: center;
