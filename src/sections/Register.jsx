@@ -78,7 +78,7 @@ const BodyContainer = styled.div`
 const ButtonContainer = styled.div`
   display: flex;
   margin-top: 1vw;
-  gap: 16px;
+  gap: 8px;
   ${p => p.theme.mediaQueries.mobile} {
     flex-direction: column;
     margin-top: 5px;
@@ -226,8 +226,8 @@ const RegisterNowButton = styled.a`
   height: 70px;
   border: none;
   cursor: pointer;
-  margin-right: auto;
-  margin-left: auto;
+  margin-right: 1px;
+  margin-left: -19px;
   padding: 0px;
   text-align: center;
   align-content: center;
@@ -237,6 +237,8 @@ const RegisterNowButton = styled.a`
     transform: scale(0.8);
     width: 60vw;
     height: 125px;
+    margin-right: auto;
+    margin-left: auto;
   }
 
   &:hover {
