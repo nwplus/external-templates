@@ -72,6 +72,22 @@ const TestimonialContainer = React.memo(styled.div`
   }
 `)
 
+const ToolTipOverlay = styled.img`
+  position: absolute;
+  top: -12vw;
+  left: 15vw;
+  width: 70%;
+  height: auto;
+  object-fit: contain;
+  z-index: 3;
+  border-radius: 10%;
+  background-color: rgba(0, 0, 0, 0.7);
+  object-fit: cover;
+  opacity: ${props => (props.show ? 1 : 0)};
+  transition: opacity 0.5s ease-in-out;
+  pointer-events: none;
+`
+
 const Headshot = React.memo(styled.img`
   width: 27.4vw;
   height: 28.4vw;
@@ -314,6 +330,8 @@ export default function Testimonials () {
   const [fadeType, setFadeType] = useState('fade-in')
   const [startX, setStartX] = useState(0)
   const [isMouseDown, setIsMouseDown] = useState(false)
+  const [showOverlay, setShowOverlay] = useState(false)
+  const [overlayShown, setOverlayShown] = useState(false)
 
   const isMobile = window.innerWidth < 770
 
@@ -323,6 +341,31 @@ export default function Testimonials () {
       img.src = testimonial.headshot
     })
   }, [])
+
+  useEffect(() => {
+    // Add scroll event listener to trigger the overlay
+    const handleScroll = () => {
+      const testimonialsSection = document.getElementById('testimonials')
+      const sectionTop = testimonialsSection.getBoundingClientRect().top
+      const viewportHeight = window.innerHeight
+
+      // Check if the testimonials section is in view and if it's mobile
+      if (sectionTop < viewportHeight && !overlayShown && isMobile) {
+        setShowOverlay(true)
+        setOverlayShown(true) // Ensure the overlay is shown only once
+
+        // Hide overlay after 3 seconds
+        setTimeout(() => {
+          setShowOverlay(false)
+        }, 3000)
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [overlayShown, isMobile])
 
   const handleNext = () => {
     if (!isMobile) setFadeType('fade-out') // Apply fade on desktop only
@@ -385,6 +428,10 @@ export default function Testimonials () {
 
   return (
     <BgSectionContainer id="testimonials" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd} onMouseDown={handleMouseDown} onMouseUp={handleMouseUp}>
+      <ToolTipOverlay
+        src="assets/background/testimonials/testimonial-swipe.png"
+        show={showOverlay}
+      />
       <TestimonialsTitle />
       <LeftButton onClick={handlePrev} />
       <TestimonialContainer fadeType={fadeType} isMobile={isMobile}>
