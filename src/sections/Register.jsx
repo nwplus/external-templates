@@ -78,9 +78,11 @@ const BodyContainer = styled.div`
 const ButtonContainer = styled.div`
   display: flex;
   margin-top: 1vw;
+  gap: 16px;
   ${p => p.theme.mediaQueries.mobile} {
     flex-direction: column;
     margin-top: 5px;
+    gap: 0;
   }
 `
 
@@ -224,8 +226,8 @@ const RegisterNowButton = styled.a`
   height: 70px;
   border: none;
   cursor: pointer;
-  margin-right: 1px;
-  margin-left: -19px;
+  margin-right: auto;
+  margin-left: auto;
   padding: 0px;
   text-align: center;
   align-content: center;
@@ -277,31 +279,22 @@ const BecomeMentorButton = styled.a`
 
   @media (min-width: 350px) and (max-width: 380px) {
     top: -16vw;
-    left: -3.4vw;
   }
 
   @media (min-width: 381px) and (max-width: 410px) {
     top: -13vw;
-    left: -3.4vw;
   }
 
   @media (min-width: 411px) and (max-width: 440px) {
     top: -10vw;
-    left: -3.4vw;
   }
 
   @media (min-width: 441px) and (max-width: 470px) {
     top: -7vw;
-    left: -2.9vw;
   }
 
   @media (min-width: 471px) and (max-width: 520px) {
     top: -3vw;
-    left: -2.9vw;
-  }
-
-  @media (min-width: 521px) and (max-width: 700px) {
-    left: -2.9vw;
   }
 
   &:hover {
