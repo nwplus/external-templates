@@ -224,8 +224,8 @@ const RegisterNowButton = styled.a`
   height: 70px;
   border: none;
   cursor: pointer;
-  margin-right: 4px;
-  margin-left: -12px;
+  margin-right: 1px;
+  margin-left: -16px;
   padding: 0px;
   text-align: center;
   align-content: center;
@@ -277,31 +277,31 @@ const BecomeMentorButton = styled.a`
 
   @media (min-width: 350px) and (max-width: 380px) {
     top: -16vw;
-    left: -3.5vw;
+    left: -3vw;
   }
 
   @media (min-width: 381px) and (max-width: 410px) {
     top: -13vw;
-    left: -3.5vw;
+    left: -3vw;
   }
 
   @media (min-width: 411px) and (max-width: 440px) {
     top: -10vw;
-    left: -3.5vw;
+    left: -3vw;
   }
 
   @media (min-width: 441px) and (max-width: 470px) {
     top: -7vw;
-    left: -3vw;
+    left: -2.5vw;
   }
 
   @media (min-width: 471px) and (max-width: 520px) {
     top: -3vw;
-    left: -3vw;
+    left: -2.5vw;
   }
 
   @media (min-width: 521px) and (max-width: 700px) {
-    left: -3vw;
+    left: -2.5vw;
   }
 
   &:hover {

@@ -62,7 +62,7 @@ const TestimonialContainer = React.memo(styled.div`
   z-index: 2;
   animation: ${props => (props.fadeType === 'fade-out' ? fadeOut : fadeIn)} 0.3s ease-in-out;
   opacity: ${props => (props.fadeType === 'fade-out' ? 0 : 1)};
-  transition: opacity 0.3s ease-in-out;
+  transition: ${props => (props.isMobile ? 'none' : 'opacity 0.3s ease-in-out')};
 
   ${p => p.theme.mediaQueries.mobile} {
     top: -15vw;
@@ -325,19 +325,19 @@ export default function Testimonials () {
   }, [])
 
   const handleNext = () => {
-    setFadeType('fade-out')
+    if (!isMobile) setFadeType('fade-out') // Apply fade on desktop only
     setTimeout(() => {
       setCurrentTestimonial((prev) => (prev + 1) % testimonials.length)
-      setFadeType('fade-in')
-    }, 500)
+      if (!isMobile) setFadeType('fade-in') // Apply fade on desktop only
+    }, isMobile ? 0 : 500)
   }
 
   const handlePrev = () => {
-    setFadeType('fade-out')
+    if (!isMobile) setFadeType('fade-out') // Apply fade on desktop only
     setTimeout(() => {
       setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length)
-      setFadeType('fade-in')
-    }, 500)
+      if (!isMobile) setFadeType('fade-in') // Apply fade on desktop only
+    }, isMobile ? 0 : 500)
   }
 
   // Add touch event handlers
@@ -387,7 +387,7 @@ export default function Testimonials () {
     <BgSectionContainer id="testimonials" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd} onMouseDown={handleMouseDown} onMouseUp={handleMouseUp}>
       <TestimonialsTitle />
       <LeftButton onClick={handlePrev} />
-      <TestimonialContainer fadeType={fadeType}>
+      <TestimonialContainer fadeType={fadeType} isMobile={isMobile}>
         <Headshot src={headshot} alt={`${name} headshot`} />
         <TextContainer>
           <Name>{name}</Name>
