@@ -15,16 +15,16 @@ import Stats from 'src/sections/Stats'
 import NavigationBar from '../components/NavigationBar'
 import Hero from '../components/Hero'
 
-import MainGraphics from '../assets/images/MainBackground.svg'
+import MainGraphics from '../assets/images/BackgroundWithoutHero.svg'
 import MainGraphicsMobile from '../assets/images/mobile/MainBackground.svg'
 
 import SusNuggetGif from '../assets/images/animations/nugget-sus.gif'
 import RedVanImg from '../assets/images/red_van.svg'
 
 const HalfContainer = styled.div`
-  min-height: calc(calc(9229 / 1440) * 100vw);
+  min-height: calc(calc(10525 / 1280) * 100vw);
   position: relative;
-  aspect-ratio: 1440 / 9229px;
+  aspect-ratio: 1440 / 10525px;
   width: 100%;
 
   ${p => p.theme.mediaQueries.mobile} {
@@ -38,11 +38,11 @@ const HalfContainer = styled.div`
   }
 `
 const BackgroundImage = styled.img`
-  top: 0;
+  top: calc(calc(785 / 1280) * 100vw);
   z-index: 0;
   position: absolute;
   user-select: none;
-  min-height: calc(calc(9229 / 1440) * 100vw);
+  min-height: calc(calc(9740 / 1280) * 100vw);
   object-fit: cover;
   width: 100%;
 
@@ -111,11 +111,12 @@ export default function Index({ title }) {
 
       <HalfContainer>
         {/* add if statement, show mobile background if mobile */}
-        <BackgroundImage src={MainGraphics} alt="Background image" />
         <SusNuggetContainer src={SusNuggetGif} alt="Nugget with eyes looking around" />
         <RedVanContainer src={RedVanImg} ref={redVan.ref} />
 
         <Hero />
+        <BackgroundImage src={MainGraphics} alt="Background image" />
+
         <About />
         <Countdown />
         <Stats />

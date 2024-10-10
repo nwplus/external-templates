@@ -8,7 +8,7 @@ import Carousel from '../components/Carousel'
 
 const SponsorsContainer = styled.div`
   position: relative;
-  min-height: calc(calc(2050 / 1440) * 100vw);
+  min-height: calc(calc(2050 / 1280) * 100vw);
   margin-top: -20rem;
 
   ${p => p.theme.mediaQueries.mobile} {
@@ -20,7 +20,7 @@ const SponsorsContainer = styled.div`
 const StaticContainer = styled.div`
   top: 0;
   width: 100%;
-  padding-top: calc(calc(750 / 1440) * 100vw);
+  padding-top: calc(calc(750 / 1280) * 100vw);
   display: flex;
   flex-direction: column;
   align-items: center;

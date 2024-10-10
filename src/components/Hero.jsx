@@ -2,13 +2,19 @@ import React from 'react'
 import styled from 'styled-components'
 import { LAPTOP, TABLET } from '@constants/measurements'
 import Button from './Button'
-import { BANNER_OFFSET_PX } from '../constants/measurements'
+// import { BANNER_OFFSET_PX } from '../constants/measurements'
+import HeroGraphic from '../assets/images/Hero.svg'
 
 const HeroContainer = styled.div`
   position: relative;
-  min-height: calc(calc(800 / 1440) * 100vw);
-  margin-top: 0rem;
-  top: ${BANNER_OFFSET_PX};
+  top: 0rem;
+  // top: ${BANNER_OFFSET_PX};
+  background: url(${HeroGraphic});
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
+  min-height: calc(calc(785 / 1280) * 100vw);
+  min-width: 100%;
 
   ${p => p.theme.mediaQueries.mobile} {
     min-height: calc(calc(1000 / 882) * 100vw);
@@ -19,7 +25,7 @@ const HeroContainer = styled.div`
 const OuterContainer = styled.div`
   position: absolute;
   width: 100%;
-  top: calc(calc(75 / 1440) * 100vw);
+  top: calc(calc(75 / 1280) * 100vw);
   margin-top 5%;
 
   ${p => p.theme.mediaQueries.mobile} {
@@ -205,7 +211,7 @@ const ButtonsContainer = styled.div`
 //   }
 // `
 
-const Hero = () => (
+const Hero = ({ HeroGraphic }) => (
   <HeroContainer>
     <OuterContainer>
       <IntroContainer>

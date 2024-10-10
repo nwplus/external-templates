@@ -6,7 +6,7 @@ import MobileClockSVG from "../assets/images/mobile/clock.svg"
 import NuggetWaving from "../assets/images/animations/nugget-waving.gif"
 
 const CountdownContainer = styled.div`
-  min-height: calc(calc(1027 / 1440) * 100vw);
+  min-height: calc(calc(1027 / 1280) * 100vw);
   position: relative;
   z-index: 1;
 

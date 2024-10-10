@@ -11,7 +11,7 @@ import blueDice from "../assets/images/blueDice.svg"
 import smallBlueDice from "../assets/images/mobile/diceBlueSmall.svg"
 
 const AboutContainer = styled.div`
-  min-height: calc(calc(779 / 1440) * 100vw);
+  min-height: calc(calc(779 / 1280) * 100vw);
   position: relative;
   z-index: 1;
   display: flex;

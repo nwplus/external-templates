@@ -10,7 +10,7 @@ import StatsPart2 from "../assets/images/StatsPart2.svg"
 import StatsPart3 from "../assets/images/StatsPart3.svg"
 
 const StatsContainer = styled.div`
-  min-height: calc(calc(900 / 1440) * 100vw);
+  min-height: calc(calc(900 / 1280) * 100vw);
   width: 100vw;
   height: auto;
   position: relative;
