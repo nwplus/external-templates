@@ -62,7 +62,7 @@ const TestimonialContainer = React.memo(styled.div`
   z-index: 2;
   animation: ${props => (props.fadeType === 'fade-out' ? fadeOut : fadeIn)} 0.3s ease-in-out;
   opacity: ${props => (props.fadeType === 'fade-out' ? 0 : 1)};
-  transition: opacity 0.3s ease-in-out;
+  transition: ${props => (props.isMobile ? 'none' : 'opacity 0.3s ease-in-out')};
 
   ${p => p.theme.mediaQueries.mobile} {
     top: -15vw;
@@ -71,6 +71,22 @@ const TestimonialContainer = React.memo(styled.div`
     height: 92vw;
   }
 `)
+
+const ToolTipOverlay = styled.img`
+  position: absolute;
+  top: -12vw;
+  left: 15vw;
+  width: 70%;
+  height: auto;
+  object-fit: contain;
+  z-index: 3;
+  border-radius: 10%;
+  background-color: rgba(0, 0, 0, 0.7);
+  object-fit: cover;
+  opacity: ${props => (props.show ? 1 : 0)};
+  transition: opacity 0.5s ease-in-out;
+  pointer-events: none;
+`
 
 const Headshot = React.memo(styled.img`
   width: 27.4vw;
@@ -136,6 +152,7 @@ const Quote = React.memo(styled.p`
   font-size: 1.12vw;
   font-family: 'HK Grotesk';
   text-align: left;
+  font-weight: 400;
   margin: 0.5vw 0;
   padding-bottom: 0.5vw;
   line-height: 1.5vw;
@@ -166,8 +183,9 @@ const LinksContainer = React.memo(styled.div`
 
   ${p => p.theme.mediaQueries.mobile} {
     position: absolute;
+    font-size: 3.2vw;
     top: 71vw;
-    left: -7.9vw;
+    left: -11vw;
   }
 
 `)
@@ -183,7 +201,7 @@ const LinkButton = styled.a`
   }
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 2.5vw;
+    font-size: 3.3vw;
   }
 `
 
@@ -312,6 +330,8 @@ export default function Testimonials () {
   const [fadeType, setFadeType] = useState('fade-in')
   const [startX, setStartX] = useState(0)
   const [isMouseDown, setIsMouseDown] = useState(false)
+  const [showOverlay, setShowOverlay] = useState(false)
+  const [overlayShown, setOverlayShown] = useState(false)
 
   const isMobile = window.innerWidth < 770
 
@@ -322,20 +342,45 @@ export default function Testimonials () {
     })
   }, [])
 
+  useEffect(() => {
+    // Add scroll event listener to trigger the overlay
+    const handleScroll = () => {
+      const testimonialsSection = document.getElementById('testimonials')
+      const sectionTop = testimonialsSection.getBoundingClientRect().top
+      const viewportHeight = window.innerHeight
+
+      // Check if the testimonials section is in view and if it's mobile
+      if (sectionTop < viewportHeight && !overlayShown && isMobile) {
+        setShowOverlay(true)
+        setOverlayShown(true) // Ensure the overlay is shown only once
+
+        // Hide overlay after 3 seconds
+        setTimeout(() => {
+          setShowOverlay(false)
+        }, 3000)
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [overlayShown, isMobile])
+
   const handleNext = () => {
-    setFadeType('fade-out')
+    if (!isMobile) setFadeType('fade-out') // Apply fade on desktop only
     setTimeout(() => {
       setCurrentTestimonial((prev) => (prev + 1) % testimonials.length)
-      setFadeType('fade-in')
-    }, 500)
+      if (!isMobile) setFadeType('fade-in') // Apply fade on desktop only
+    }, isMobile ? 0 : 500)
   }
 
   const handlePrev = () => {
-    setFadeType('fade-out')
+    if (!isMobile) setFadeType('fade-out') // Apply fade on desktop only
     setTimeout(() => {
       setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length)
-      setFadeType('fade-in')
-    }, 500)
+      if (!isMobile) setFadeType('fade-in') // Apply fade on desktop only
+    }, isMobile ? 0 : 500)
   }
 
   // Add touch event handlers
@@ -383,9 +428,13 @@ export default function Testimonials () {
 
   return (
     <BgSectionContainer id="testimonials" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd} onMouseDown={handleMouseDown} onMouseUp={handleMouseUp}>
+      <ToolTipOverlay
+        src="assets/background/testimonials/testimonial-swipe.png"
+        show={showOverlay}
+      />
       <TestimonialsTitle />
       <LeftButton onClick={handlePrev} />
-      <TestimonialContainer fadeType={fadeType}>
+      <TestimonialContainer fadeType={fadeType} isMobile={isMobile}>
         <Headshot src={headshot} alt={`${name} headshot`} />
         <TextContainer>
           <Name>{name}</Name>
