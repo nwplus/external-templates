@@ -12,7 +12,7 @@ import LoadingScreen from '@components/LoadingScreen'
 
 const OuterContainer = styled(SectionContainer)`
   aspect-ratio: 748 / 4200;
-  background: url('assets/background/entire-site/entire-site2.png');
+  background: url('assets/background/entire-site/entire-site3.png');
   width: 100vw;
   background-size: contain;
   background-repeat: no-repeat;
@@ -25,7 +25,7 @@ const OuterContainer = styled(SectionContainer)`
   /* padding-bottom: 50%; */
 
   ${p => p.theme.mediaQueries.mobile} {
-    background: url('assets/mobile/entire-site/entire-site-mobile.png') no-repeat;
+    background: url('assets/mobile/entire-site/alt-entire-site-mobile.png') no-repeat;
     width: 100%;
     background-color: #01064E;
     aspect-ratio: 748/11190;
@@ -53,6 +53,10 @@ function App ({ Component, pageProps }) {
       document.body.style.overflowX = 'hidden'
     }
 
+    const preventScroll = (e) => {
+      e.preventDefault()
+    }
+
     if (loading) {
       lockScroll()
       window.addEventListener('touchmove', preventScroll, { passive: false })
@@ -67,16 +71,24 @@ function App ({ Component, pageProps }) {
     }
   }, [loading])
 
-  const preventScroll = (e) => {
-    e.preventDefault()
-  }
-
   useEffect(() => {
+    // Set loading to false once the window has fully loaded or 3 seconds has passed
+    const handlePageLoad = () => {
+      setLoading(false)
+    }
+
+    // Listen for the window's load event (which fires once everything has finished loading)
+    window.addEventListener('load', handlePageLoad)
+
+    // Set a timer to switch loading to false after 3 seconds
     const timer = setTimeout(() => {
       setLoading(false)
-    }, 2500) // set loading time to 2.5 seconds
+    }, 3000) // 3 seconds
 
-    return () => clearTimeout(timer)
+    return () => {
+      window.removeEventListener('load', handlePageLoad)
+      clearTimeout(timer)
+    }
   }, [])
 
   return (

@@ -87,3 +87,46 @@
   font-weight: 900;
   src: local('HK Grotesk Black'), url('HKGrotesk-Black.woff') format('woff');
 }
+
+@font-face {
+  font-family: 'HK Grotesk';
+  font-style: normal;
+  font-weight: 100;
+  src: local('HK Grotesk Thin'), url('HKGrotesk-Thin.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'HK Grotesk';
+  font-style: normal;
+  font-weight: 200;
+  src: local('HK Grotesk Extra Light'), url('HKGrotesk-ExtraLight.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'HK Grotesk';
+  font-style: normal;
+  font-weight: 300;
+  src: local('HK Grotesk Light'), url('HKGrotesk-Light.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'HK Grotesk';
+  font-style: normal;
+  font-weight: 400;
+  src: local('HK Grotesk Regular'), url('HKGrotesk-Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'HK Grotesk';
+  font-style: normal;
+  font-weight: 500;
+  src: local('HK Grotesk Medium'), url('HKGrotesk-Medium.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'HK Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  src: local('HK Grotesk SemiBold'), url('HKGrotesk-SemiBold.woff') format('woff');
+}
+

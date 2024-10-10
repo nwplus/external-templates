@@ -112,7 +112,7 @@ const FaqGrid = styled.div`
     display: flex;
     flex-direction: column;
     gap: 24px;
-    margin-top: 100px;
+    margin-top: 60px;
     padding-bottom: 4rem;
   }
 `

@@ -33,7 +33,51 @@ const BgSectionContainer = styled(SectionContainer)`
     height: 162vw;
     background-repeat: no-repeat;
     background-position: center center;
-    top: 0vw;
+    top: 47vw;
+  }
+
+  @media (min-width: 370px) and (max-width: 378px) {
+    top: 49vw;
+  }
+
+  @media (min-width: 390px) and (max-width: 410px) {
+    top: 41vw;
+  }
+
+  @media (min-width: 411px) and (max-width: 429px) {
+    top: 30vw;
+  }
+
+  @media (min-width: 430px) and (max-width: 449px) {
+    top: 24vw;
+  }
+
+  @media (min-width: 450px) and (max-width: 479px) {
+    top: 19vw;
+  }
+
+  @media (min-width: 480px) and (max-width: 510px) {
+    top: 10vw;
+  }
+
+  @media (min-width: 511px) and (max-width: 540px) {
+    top: -2vw;
+  }
+
+  @media (min-width: 541px) and (max-width: 570px) {
+    top: -12vw;
+  }
+
+  @media (min-width: 571px) and (max-width: 600px) {
+    top: -17vw;
+  }
+
+  @media (min-width: 601px) and (max-width: 630px) {
+    top: -24vw;
+  }
+
+  @media (min-width: 631px) and (max-width: 700px) {
+    top: -34vw;
   }
 
   /* ${p => p.theme.mediaQueries.xs} {
