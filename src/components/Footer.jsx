@@ -71,6 +71,27 @@ const FooterBackground = styled.div`
   background-repeat: no-repeat;
   background-position: center top;
   z-index: 3; /* Ensure it's beneath other content in CaveTop */
+
+  ${p => p.theme.mediaQueries.desktop} {
+    bottom: -92.5vw;
+  }
+
+  ${p => p.theme.mediaQueries.tabletLarger} {
+    bottom: -88.5vw;
+  }
+  
+  ${p => p.theme.mediaQueries.tabletLarge} {
+    bottom: -84.5vw;
+  }
+
+  ${p => p.theme.mediaQueries.tablet} {
+    bottom: -70.5vw;
+  }
+
+  ${p => p.theme.mediaQueries.tabletSmall} {
+    bottom: -68.5vw;
+  }
+
   ${p => p.theme.mediaQueries.mobile} {
     bottom: 10vw;
     height: 64vw;
@@ -88,6 +109,19 @@ const FooterSpotlights = styled.div`
   background-repeat: no-repeat;
   background-position: center top;
   z-index: 2;
+
+  ${p => p.theme.mediaQueries.tabletLarger} {
+    bottom: -68vw;
+  }
+  
+  ${p => p.theme.mediaQueries.tablet} {
+    bottom: -70vw;
+  }
+
+  ${p => p.theme.mediaQueries.tabletSmall} {
+    bottom: -48vw;
+  }
+
   ${p => p.theme.mediaQueries.mobile} {
     bottom: 14vw;
     background-size: 100vw;
@@ -107,7 +141,7 @@ const SocialMediaIcons = styled.div`
   a {
     color: #c4b2f0;
     width: 500px;
-    display: flex; /* Add display flex to center icons */
+    display: flex;
     justify-content: center;
     align-items: center;
   }
@@ -156,6 +190,11 @@ const TextContainer = styled.div`
   top: 80vw;
   z-index: 2000;
 
+  ${p => p.theme.mediaQueries.tablet} {
+    /* top: -700vw; */
+    top: 68vw;
+  }
+
   ${p => p.theme.mediaQueries.mobile} {
     /* top: -700vw; */
     top: 10vw;
@@ -166,16 +205,32 @@ const TeamContainer = styled.div`
   z-index: 4;
   position: absolute;
   left: 0;
-  top: 140vw;
+  top: 138vw;
   text-align: center;
   width: 100%;
   padding-bottom: 2vw;
+  ${p => p.theme.mediaQueries.desktop} {
+    top: 132vw;
+  }
+
+  ${p => p.theme.mediaQueries.tabletLarger} {
+    top: 118vw;
+  }
+
+  ${p => p.theme.mediaQueries.tabletLarge} {
+    top: 119vw;
+  }
+
+  ${p => p.theme.mediaQueries.tabletMd} {
+    top: 115vw;
+  }
+  
   ${p => p.theme.mediaQueries.tablet} {
-    top: 134vw;
+    top: 108vw;
   }
 
   ${p => p.theme.mediaQueries.tabletSmall} {
-    top: 127vw;
+    top: 100vw;
   }
 
   ${p => p.theme.mediaQueries.mobile} {
