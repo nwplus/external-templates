@@ -24,7 +24,6 @@ const BgSectionContainer = styled(SectionContainer)`
   height: 110vw;
   justify-content: center;
   align-items: center;
-  aspect-ratio: 1440/1630;
   overflow-y: visible;
   z-index: 99;
 
@@ -51,13 +50,14 @@ const StyledTitle = styled.div`
   position: absolute;
   z-index: 10;
   left: 50vw;
-  top: 1vw;
+  top: 4vw;
   transform: translateX(-50%);
   ${p => p.theme.mediaQueries.mobile} {
     font-size: 2em;
     height: 11vw;
     background-size: 68vw;
     width: 68vw;
+    top: 10vw;
   }
 `
 
@@ -174,20 +174,21 @@ const SponsorLogo = styled.img`
 
 const PushinP = styled.p`
   color: #fff;
-  text-align: left;
+  font-size: 1.6vw;
+  text-align: center;
   width: 39vw;
   min-width: 500px;
   margin: 0 auto;
   padding-top: 1vw;
   position: relative;
-  top: 10vw;
+  top: 13vw;
   z-index: 30;
 
   ${p => p.theme.mediaQueries.mobile} {
     font-size: 2.9vw;
     min-width: 0px;
     width: 74vw;
-    top: 15vw;
+    top: 28vw;
     text-align: center;
   }
 `

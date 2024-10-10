@@ -71,6 +71,19 @@ const FooterBackground = styled.div`
   background-repeat: no-repeat;
   background-position: center top;
   z-index: 3; /* Ensure it's beneath other content in CaveTop */
+
+  ${p => p.theme.mediaQueries.tabletLarger} {
+    bottom: -99.5vw;
+  }
+  
+  ${p => p.theme.mediaQueries.tablet} {
+    bottom: -90.5vw;
+  }
+
+  ${p => p.theme.mediaQueries.tabletSmall} {
+    bottom: -85.5vw;
+  }
+
   ${p => p.theme.mediaQueries.mobile} {
     bottom: 10vw;
     height: 64vw;
@@ -88,6 +101,19 @@ const FooterSpotlights = styled.div`
   background-repeat: no-repeat;
   background-position: center top;
   z-index: 2;
+
+  ${p => p.theme.mediaQueries.tabletLarger} {
+    bottom: -68vw;
+  }
+  
+  ${p => p.theme.mediaQueries.tablet} {
+    bottom: -63vw;
+  }
+
+  ${p => p.theme.mediaQueries.tabletSmall} {
+    bottom: -55vw;
+  }
+
   ${p => p.theme.mediaQueries.mobile} {
     bottom: 14vw;
     background-size: 100vw;
@@ -107,7 +133,7 @@ const SocialMediaIcons = styled.div`
   a {
     color: #c4b2f0;
     width: 500px;
-    display: flex; /* Add display flex to center icons */
+    display: flex;
     justify-content: center;
     align-items: center;
   }
@@ -169,12 +195,16 @@ const TeamContainer = styled.div`
   text-align: center;
   width: 100%;
   padding-bottom: 2vw;
+  ${p => p.theme.mediaQueries.tabletLarger} {
+    top: 128vw;
+  }
+  
   ${p => p.theme.mediaQueries.tablet} {
-    top: 134vw;
+    top: 120vw;
   }
 
   ${p => p.theme.mediaQueries.tabletSmall} {
-    top: 127vw;
+    top: 110vw;
   }
 
   ${p => p.theme.mediaQueries.mobile} {

@@ -19,7 +19,7 @@ const Container = styled.div`
   `}
 
   &:not(:last-child) {
-    margin-bottom: 20px;
+    margin-bottom: 2vw;
   }
 `
 
@@ -42,7 +42,8 @@ const Top = styled.div`
   `}
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 1rem;
+    /* font-size: 1rem; */
+    font-size: 2vw;
     padding: 0.8rem;
   }
 
@@ -60,7 +61,7 @@ const AnswerBox = styled.div`
   ${p => (p.isOpen ? 'max-height:300px; overflow-y: auto; background-color: #7C0F3B;' : 'max-height: 0;')}
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 2.4vw;
+    font-size: 2vw;
   }
 `
 

@@ -11,7 +11,7 @@ const BgSectionContainer = styled(SectionContainer)`
   display: grid;
   grid-template-columns: repeat(14, 1fr);
   gap: 1.25rem;
-  min-height: 100vh;
+  min-height: 141vh;
   height: fit-content;
   position: relative;
   top: -51.3vw;
@@ -21,16 +21,23 @@ const BgSectionContainer = styled(SectionContainer)`
   width: 100%;
   aspect-ratio: 1440/1072;
   z-index: 17;
-
   /* background: #150c27; */
+  ${p => p.theme.mediaQueries.tabletLarge} {
+    min-height: 127vh;
+  }
 
   ${p => p.theme.mediaQueries.mobile} {
     /* background: url('assets/mobile/faq/background.svg') #150C27; */
-    aspect-ratio: 412/1359;
+    /* aspect-ratio: 412/1359; */
     background-size: 100vw;
+    min-height: 330vw;
     background-repeat: no-repeat;
     background-position: center center;
     top: 93.3vw;
+  }
+
+  ${p => p.theme.mediaQueries.xs} {
+    min-height: 329vw;
   }
 `
 
