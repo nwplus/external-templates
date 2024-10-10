@@ -72,16 +72,24 @@ const FooterBackground = styled.div`
   background-position: center top;
   z-index: 3; /* Ensure it's beneath other content in CaveTop */
 
+  ${p => p.theme.mediaQueries.desktop} {
+    bottom: -92.5vw;
+  }
+
   ${p => p.theme.mediaQueries.tabletLarger} {
-    bottom: -99.5vw;
+    bottom: -88.5vw;
   }
   
+  ${p => p.theme.mediaQueries.tabletLarge} {
+    bottom: -84.5vw;
+  }
+
   ${p => p.theme.mediaQueries.tablet} {
-    bottom: -90.5vw;
+    bottom: -70.5vw;
   }
 
   ${p => p.theme.mediaQueries.tabletSmall} {
-    bottom: -85.5vw;
+    bottom: -68.5vw;
   }
 
   ${p => p.theme.mediaQueries.mobile} {
@@ -107,11 +115,11 @@ const FooterSpotlights = styled.div`
   }
   
   ${p => p.theme.mediaQueries.tablet} {
-    bottom: -63vw;
+    bottom: -70vw;
   }
 
   ${p => p.theme.mediaQueries.tabletSmall} {
-    bottom: -55vw;
+    bottom: -48vw;
   }
 
   ${p => p.theme.mediaQueries.mobile} {
@@ -181,6 +189,11 @@ const TextContainer = styled.div`
   top: 80vw;
   z-index: 2000;
 
+  ${p => p.theme.mediaQueries.tablet} {
+    /* top: -700vw; */
+    top: 68vw;
+  }
+
   ${p => p.theme.mediaQueries.mobile} {
     /* top: -700vw; */
     top: 10vw;
@@ -191,20 +204,32 @@ const TeamContainer = styled.div`
   z-index: 4;
   position: absolute;
   left: 0;
-  top: 140vw;
+  top: 138vw;
   text-align: center;
   width: 100%;
   padding-bottom: 2vw;
+  ${p => p.theme.mediaQueries.desktop} {
+    top: 132vw;
+  }
+
   ${p => p.theme.mediaQueries.tabletLarger} {
-    top: 128vw;
+    top: 118vw;
+  }
+
+  ${p => p.theme.mediaQueries.tabletLarge} {
+    top: 119vw;
+  }
+
+  ${p => p.theme.mediaQueries.tabletMd} {
+    top: 115vw;
   }
   
   ${p => p.theme.mediaQueries.tablet} {
-    top: 120vw;
+    top: 108vw;
   }
 
   ${p => p.theme.mediaQueries.tabletSmall} {
-    top: 110vw;
+    top: 100vw;
   }
 
   ${p => p.theme.mediaQueries.mobile} {
