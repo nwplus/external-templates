@@ -1,14 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
 import { LAPTOP, TABLET } from '@constants/measurements'
+import HeroGraphic from '@assets/images/Hero.svg'
 import Button from './Button'
 // import { BANNER_OFFSET_PX } from '../constants/measurements'
-import HeroGraphic from '@assets/images/Hero.svg'
 
 const HeroContainer = styled.div`
   position: relative;
   top: 0rem;
-  // top: ${BANNER_OFFSET_PX};
   background: url(${HeroGraphic});
   background-repeat: no-repeat;
   background-position: top center;
@@ -53,7 +52,7 @@ const Opening = styled.p`
   position: relative;
   top: 25px;
   font-family: HK Grotesk;
-  color: #DCB551;
+  color: #dcb551;
   font-size: 24px;
   font-weight: 600;
   line-height: 26px;
@@ -76,7 +75,7 @@ const Title = styled.p`
   font-weight: 900;
   line-height: 100px;
   letter-spacing: 0em;
-  color: #F3F5F4;
+  color: #f3f5f4;
   @media (max-width: ${LAPTOP}) {
     font-size: 80px;
     line-height: 80px;
@@ -96,7 +95,7 @@ const Subtitle = styled.p`
   padding-bottom: 0.2rem;
   line-height: 32px;
   letter-spacing: -0.25999999046325684px;
-  color: #F3F5F4;
+  color: #f3f5f4;
   @media (max-width: ${LAPTOP}) {
     font-size: 23px;
   }
@@ -113,7 +112,7 @@ const DescriptionContainer = styled.div`
   font-family: HK Grotesk;
   font-size: 20px;
   font-weight: 500;
-  color: #F3F5F4;
+  color: #f3f5f4;
 
   ${p => p.theme.mediaQueries.mobile} {
     flex-direction: column;
@@ -211,7 +210,7 @@ const ButtonsContainer = styled.div`
 //   }
 // `
 
-const Hero = ({ HeroGraphic }) => (
+const Hero = () => (
   <HeroContainer>
     <OuterContainer>
       <IntroContainer>
@@ -228,7 +227,11 @@ const Hero = ({ HeroGraphic }) => (
       </IntroContainer>
       <ActionsContainer>
         <ButtonsContainer>
-          <Button variant="solid" rel="noreferrer" href="https://docs.google.com/forms/d/e/1FAIpQLScyrH57AXLwd90aiEg99pWT3TqOuLdKXhOCXtVBwPd_JfCNew/viewform">
+          <Button
+            variant="solid"
+            rel="noreferrer"
+            href="https://docs.google.com/forms/d/e/1FAIpQLScyrH57AXLwd90aiEg99pWT3TqOuLdKXhOCXtVBwPd_JfCNew/viewform"
+          >
             Notify me when applications open!
           </Button>
           <Button variant="outlined" rel="noreferrer" href="mailto:sponsorship@nwplus.io?subject=Sponsorship">

@@ -12,14 +12,14 @@ import About from 'src/sections/About'
 import Stats from 'src/sections/Stats'
 
 // import LoadingScreen from '../components/LoadingScreen'
-import NavigationBar from '../components/NavigationBar'
-import Hero from '../components/Hero'
 
 import MainGraphics from '@assets/images/BackgroundWithoutHero.svg'
 import MainGraphicsMobile from '@assets/images/mobile/MainBackground.svg'
 
 import SusNuggetGif from '@assets/images/animations/nugget-sus.gif'
 import RedVanImg from '@assets/images/red_van.svg'
+import Hero from '../components/Hero'
+import NavigationBar from '../components/NavigationBar'
   
 const HalfContainer = styled.div`
   min-height: calc(calc(10525 / 1280) * 100vw);
