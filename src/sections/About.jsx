@@ -5,10 +5,10 @@ import { useParallax } from 'react-scroll-parallax'
 
 // Dices for About section
 // import { TABLET } from '@constants/measurements'
-import redDice from "../assets/images/redDice.svg"
-import yellowDice from "../assets/images/yellowDice.svg"
-import blueDice from "../assets/images/blueDice.svg"
-import smallBlueDice from "../assets/images/mobile/diceBlueSmall.svg"
+import redDice from "@assets/images/redDice.svg"
+import yellowDice from "@assets/images/yellowDice.svg"
+import blueDice from "@assets/images/blueDice.svg"
+import smallBlueDice from "@assets/images/mobile/diceBlueSmall.svg"
 
 const AboutContainer = styled.div`
   min-height: calc(calc(779 / 1280) * 100vw);

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { LAPTOP, TABLET } from '@constants/measurements'
 import Button from './Button'
 // import { BANNER_OFFSET_PX } from '../constants/measurements'
-import HeroGraphic from '../assets/images/Hero.svg'
+import HeroGraphic from '@assets/images/Hero.svg'
 
 const HeroContainer = styled.div`
   position: relative;
