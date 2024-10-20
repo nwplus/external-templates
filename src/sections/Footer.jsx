@@ -13,8 +13,8 @@ import Team from '@components/Team'
 
 const FooterContainer = styled.div`
   position: relative;
-  min-height: calc(calc(722 / 1440) * 100vw);
-  margin-top: calc(calc(922 / 1440) * 100vw);
+  min-height: calc(calc(722 / 1280) * 100vw);
+  margin-top: calc(calc(922 / 1280) * 100vw);
 
   ${p => p.theme.mediaQueries.mobile} {
     min-height: calc(calc(800 / 428) * 100vw);

@@ -5,7 +5,7 @@ import { useParallax } from 'react-scroll-parallax'
 import FaqBox from '@components/FaqBox'
 import { Header2, Header3 } from '@components/Typography'
 
-import flyingCardsImg from '../assets/images/flyingCards.svg'
+import flyingCardsImg from "@assets/images/flyingCards.svg"
 
 const FaqContainer = styled.div`
   position: relative;

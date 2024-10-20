@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
-import ClockSVG from "../assets/images/countdown.svg"
-import MobileClockSVG from "../assets/images/mobile/clock.svg"
-import NuggetWaving from "../assets/images/animations/nugget-waving.gif"
+import ClockSVG from "@assets/images/countdown.svg"
+import MobileClockSVG from "@assets/images/mobile/clock.svg"
+import NuggetWaving from "@assets/images/animations/nugget-waving.gif"
 
 const CountdownContainer = styled.div`
-  min-height: calc(calc(1027 / 1440) * 100vw);
+  min-height: calc(calc(1027 / 1280) * 100vw);
   position: relative;
   z-index: 1;
 
