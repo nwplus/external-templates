@@ -115,12 +115,14 @@ const SponsorButton = styled.a`
 const Hero = () => {
   const heroRef = useRef(null)
   const [shouldAnimate, setShouldAnimate] = useState(true)
+  const [screenWidth, setScreenWidth] = useState(0)
   const tlRef = useRef(null)
 
   useEffect(() => {
     const checkScreenSize = () => {
       const width = window.innerWidth
       setShouldAnimate(width >= SCREEN_BREAKPOINTS.desktop)
+      setScreenWidth(width)
     }
 
     checkScreenSize()
@@ -128,6 +130,10 @@ const Hero = () => {
 
     return () => window.removeEventListener('resize', checkScreenSize)
   }, [])
+
+  useEffect(() => {
+    console.log(screenWidth)
+  }, [screenWidth])
 
   useEffect(() => {
     const hero = heroRef.current
@@ -151,6 +157,8 @@ const Hero = () => {
       const transformOriginX = (doorCenterX / svgWidth) * 100
       const transformOriginY = (doorCenterY / svgHeight) * 100
 
+      const scrollDistance = screenWidth < 1500 ? 115 : 120
+
       gsap.set(hero, {
         transformOrigin: `${transformOriginX}% ${transformOriginY}%`,
       })
@@ -159,7 +167,7 @@ const Hero = () => {
         scrollTrigger: {
           trigger: hero,
           start: 'top top',
-          end: '+=120%',
+          end: `+=${scrollDistance}%`,
           pin: true,
           scrub: 0.25,
           onLeave: () => {
