@@ -2,7 +2,7 @@ import firebase from 'firebase/app'
 import 'firebase/firestore'
 import 'firebase/storage'
 import 'firebase/analytics'
-import { HACKATHONS, INTERNAL_WEBSITES, CMS } from '@constants/firebase'
+import { HACKATHONS, INTERNAL_WEBSITES, CMS, PORTAL } from '@constants/firebase'
 import buildConfig from '../../buildconfig'
 
 if (!firebase.apps.length) {
@@ -62,6 +62,12 @@ const fireDb = {
   updateConfig: async hackathon => {
     const ref = db.collection(HACKATHONS).doc(hackathon)
     await ref.update(buildConfig)
+  },
+  getApplicationDate: async () => {
+    const ref = db.collection(INTERNAL_WEBSITES).doc(PORTAL)
+    const data = await ref.get()
+    const applicationDeadline = data.data().applicationDeadline
+    return applicationDeadline ? applicationDeadline['nwhacks'] : null
   },
 }
 

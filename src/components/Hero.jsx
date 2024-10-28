@@ -1,249 +1,207 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
-import { LAPTOP, TABLET } from '@constants/measurements'
-import HeroGraphic from '@assets/images/Hero.svg'
-import Button from './Button'
-// import { BANNER_OFFSET_PX } from '../constants/measurements'
+import HeroBackground from './HeroBackground'
+import RegistrationCountdown from './RegistrationCountdown'
+import MuseumButton from './MuseumButton'
+import { gsap } from 'gsap'
+import ScrollTrigger from 'gsap/dist/ScrollTrigger'
+import { SCREEN_BREAKPOINTS } from '../theme/ThemeProvider'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const HeroContainer = styled.div`
-  position: relative;
-  top: 0rem;
-  background: url(${HeroGraphic});
-  background-repeat: no-repeat;
-  background-position: top center;
-  background-size: cover;
-  min-height: calc(calc(785 / 1280) * 100vw);
-  min-width: 100%;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    min-height: calc(calc(1000 / 882) * 100vw);
-    margin-top: 0rem;
-  }
-`
-
-const OuterContainer = styled.div`
   position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  top: calc(calc(75 / 1280) * 100vw);
-  margin-top 5%;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    bottom: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-  }
+  aspect-ratio: 1280/901;
+  z-index: 10;
 `
 
-const IntroContainer = styled.div`
-  margin-left: 10vw;
-  text-align: left;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    margin: 0;
-    padding: 0 6vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+const DummySpacerDiv = styled.div`
+  aspect-ratio: 1280/909;
+  width: 100%;
+  z-index: -10;
 `
 
-const Opening = styled.p`
-  position: relative;
-  top: 25px;
-  font-family: HK Grotesk;
-  color: #dcb551;
-  font-size: 24px;
-  font-weight: 600;
-  line-height: 26px;
-  letter-spacing: -0.44999998807907104px;
-  @media (max-width: ${LAPTOP}) {
-    font-size: 20px;
-  }
-
-  ${p => p.theme.mediaQueries.mobile} {
-    width: 100%;
-    top: 0px;
-    text-align: center;
-  }
+const MuseumHeader = styled.div`
+  position: absolute;
+  left: 50%;
+  top: calc(100vw * (185 / 1280));
+  transform: translate(-50%, -50%) perspective(1000px) rotateX(8deg);
+  text-align: center;
+  font-family: 'LT Museum';
+  color: #1f1f1f;
 `
 
 const Title = styled.p`
-  position: relative;
-  font-family: HK Grotesk;
-  font-size: 100px;
   font-weight: 900;
-  line-height: 100px;
-  letter-spacing: 0em;
-  color: #f3f5f4;
-  @media (max-width: ${LAPTOP}) {
-    font-size: 80px;
-    line-height: 80px;
-  }
-  @media (max-width: ${TABLET}) {
-    font-size: 75px;
-    line-height: 65px;
-  }
+  font-size: calc(100vw * (48 / 1280));
 `
 
-const Subtitle = styled.p`
-  position: relative;
-  font-family: HK Grotesk;
-  font-size: 32px;
-  font-weight: 600;
-  padding-top: 0.5rem;
-  padding-bottom: 0.2rem;
-  line-height: 32px;
-  letter-spacing: -0.25999999046325684px;
-  color: #f3f5f4;
-  @media (max-width: ${LAPTOP}) {
-    font-size: 23px;
-  }
-  @media (max-width: ${TABLET}) {
-    font-size: 23px;
-  }
-  ${p => p.theme.mediaQueries.mobile} {
-    font-size: 1.1rem;
-  }
-`
-
-const DescriptionContainer = styled.div`
-  display: flex;
-  font-family: HK Grotesk;
-  font-size: 20px;
-  font-weight: 500;
-  color: #f3f5f4;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    flex-direction: column;
-    align-items: center;
-    font-size: 1rem;
-  }
-`
-
-const HideMobile = styled.div`
-  ${p => p.theme.mediaQueries.mobile} {
-    display: none;
-  }
+const TitleSponsor = styled.p`
+  font-weight: 700;
+  font-size: calc(100vw * (16 / 1280));
 `
 
 const Description = styled.p`
-  position: relative;
-  line-height: 28px;
-  letter-spacing: 0em;
+  font-weight: 700;
+  font-size: calc(100vw * (16 / 1280));
 `
 
-const ActionsContainer = styled.div`
-  margin-left: 10vw;
-  position: relative;
-  padding-top: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  align-items: flex-start;
-
-  @media (max-width: ${TABLET}) {
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-    padding-top: 20px;
-    width: 50%;
-    align-items: center;
-  }
-
-  ${p => p.theme.mediaQueries.mobile} {
-    padding-top: 0.5rem;
-    margin-top: 0;
-    font-size: 10px;
-    margin-bottom: 0;
-    gap: 1rem;
-  }
+const Date = styled.p`
+  margin-top: calc(100vw * (16 / 1280));
+  font-family: 'LT Museum';
+  font-weight: 500;
+  font-size: calc(100vw * (16 / 1280));
 `
 
-const TitleContainer = styled.div`
-  display: flex;
-  align-items: flex-end;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    flex-direction: column;
-    align-items: center;
-  }
+const LeftPillar = styled.div`
+  position: absolute;
+  left: calc(100vw * (202 / 1280));
+  top: calc(100vw * (280 / 1280));
+  transform: perspective(1000px) rotateX(8deg) skewX(-6deg);
 `
 
-const ButtonsContainer = styled.div`
-  display: flex;
-  gap: 1rem;
-  align-items: center;
+const Hero = () => {
+  const heroRef = useRef(null)
+  const [shouldAnimate, setShouldAnimate] = useState(true)
+  const tlRef = useRef(null) // Reference to store the timeline
 
-  ${p => p.theme.mediaQueries.mobile} {
-    flex-direction: column;
-    gap: 0rem;
-  }
-`
+  useEffect(() => {
+    const checkScreenSize = () => {
+      const width = window.innerWidth
+      setShouldAnimate(width >= SCREEN_BREAKPOINTS.desktop)
+    }
 
-// const VolunteerLink = styled.a`
-//   position: relative;
-//   color: #F3F5F4;
-//   text-decoration: none;
-//   font-weight: 600;
-//   font-size: 1.1rem;
-//   letter-spacing: -0.2px;
-//   transition: color 0.13s linear;
+    checkScreenSize()
+    window.addEventListener('resize', checkScreenSize)
 
-//   &:after {
-//     content: ' ';
-//     position: absolute;
-//     bottom: -2px;
-//     left: 0;
-//     width: 100%;
-//     height: 2px;
-//     background-color: #F3F5F4;
-//     transition: background 0.13s linear;
-//   }
+    return () => window.removeEventListener('resize', checkScreenSize)
+  }, [])
 
-//   &:hover {
-//     color: #DCB551;
+  useEffect(() => {
+    const hero = heroRef.current
+    if (!hero) return
 
-//     &:after {
-//       background-color: #DCB551;
-//     }
-//   }
-// `
+    const initScrollTrigger = () => {
+      const svg = hero.querySelector('svg')
+      const door = hero.querySelector('#door')
 
-const Hero = () => (
-  <HeroContainer>
-    <OuterContainer>
-      <IntroContainer>
-        <Opening>Welcome to</Opening>
-        <TitleContainer>
+      if (!door || !svg) return
+
+      const svgWidth = 1280
+      const svgHeight = 901
+
+      // Get door's position within SVG coordinate space
+      const doorBBox = door.getBBox()
+      const doorCenterX = doorBBox.x + doorBBox.width / 2
+      const doorCenterY = doorBBox.y + doorBBox.height / 2
+
+      // Calculate the transform origin based on door position
+      const transformOriginX = (doorCenterX / svgWidth) * 100
+      const transformOriginY = (doorCenterY / svgHeight) * 100
+
+      gsap.set(hero, {
+        transformOrigin: `${transformOriginX}% ${transformOriginY}%`,
+      })
+
+      tlRef.current = gsap.timeline({
+        scrollTrigger: {
+          trigger: hero,
+          start: 'top top',
+          end: '+=120%',
+          pin: true,
+          scrub: 0.25,
+          onLeave: () => {
+            gsap.set(hero, { autoAlpha: 0 })
+          },
+          onEnterBack: () => {
+            gsap.to(hero, {
+              autoAlpha: 1,
+              duration: 0.25,
+              overwrite: 'auto',
+            })
+          },
+          fastScrollEnd: true,
+        },
+      })
+
+      tlRef.current.to(
+        hero.querySelector(MuseumHeader), // Ensure the selector matches the DOM
+        {
+          opacity: 0,
+          duration: 0.3,
+          ease: 'power2.inOut',
+        },
+        0
+      )
+
+      tlRef.current.to(
+        hero,
+        {
+          scale: 15,
+          duration: 1,
+          ease: 'power2.inOut',
+        },
+        0
+      )
+
+      tlRef.current.to(
+        hero,
+        {
+          opacity: 0,
+          duration: 0.3,
+          ease: 'power2.inOut',
+        },
+        '>-0.3'
+      )
+    }
+
+    if (shouldAnimate) {
+      initScrollTrigger()
+    } else {
+      if (tlRef.current) {
+        tlRef.current.kill()
+        tlRef.current = null
+      }
+      ScrollTrigger.refresh()
+      gsap.set(hero, { clearProps: 'all' })
+    }
+
+    return () => {
+      if (tlRef.current) {
+        tlRef.current.kill()
+        tlRef.current = null
+      }
+    }
+  }, [shouldAnimate])
+
+  return (
+    <>
+        <HeroContainer ref={heroRef}>
+        <HeroBackground />
+        <MuseumHeader>
           <Title>nwHacks</Title>
-        </TitleContainer>
-        <Subtitle>Western Canada’s Largest Hackathon</Subtitle>
-        <DescriptionContainer>
-          <Description>Jan 18 - 19, 2025</Description>
-          <HideMobile>&nbsp;|&nbsp;</HideMobile>
-          <Description>In-person @ UBC Life Science Institute</Description>
-        </DescriptionContainer>
-      </IntroContainer>
-      <ActionsContainer>
-        <ButtonsContainer>
-          <Button
-            variant="solid"
-            rel="noreferrer"
-            href="https://docs.google.com/forms/d/e/1FAIpQLScyrH57AXLwd90aiEg99pWT3TqOuLdKXhOCXtVBwPd_JfCNew/viewform"
-          >
-            Notify me when applications open!
-          </Button>
-          <Button variant="outlined" rel="noreferrer" href="mailto:sponsorship@nwplus.io?subject=Sponsorship">
-            Sponsor Us
-          </Button>
-        </ButtonsContainer>
-        {/* <VolunteerLink href="https://docs.google.com/forms/d/e/1FAIpQLSchia8WiuZT7r1bLIBVLlLUohHAtwzklzszf5Nul2Zf240Vig/viewform" target="_blank" rel="noreferrer">
-          Apply to be a volunteer!
-        </VolunteerLink> */}
-      </ActionsContainer>
-    </OuterContainer>
-  </HeroContainer>
-)
+          <TitleSponsor>powered by Aquareum</TitleSponsor>
+          <Description>Western Canada's largest hackathon</Description>
+          <Date>Jan 13-15, 2025 | UBC Life Science Institute</Date>
+        </MuseumHeader>
+        <LeftPillar>
+          <RegistrationCountdown />
+        </LeftPillar>
+        {/* <RightPillar>
+          <SponsorText>Sponsored by</SponsorText>
+          <SponsorButton> Sponsor Us </SponsorButton>
+        </RightPillar> */}
+
+        <MuseumButton top={455} left={435} topText="Become a" bottomText="Mentor" href="" />
+        <MuseumButton top={430} topText="Apply as a" bottomText="Hacker" href="https://portal.nwplus.io" />
+        <MuseumButton top={455} left={700} topText="Become a" bottomText="Volunteer" href="" />
+      </HeroContainer>
+      <DummySpacerDiv />
+    </>
+  )
+}
 
 export default Hero
