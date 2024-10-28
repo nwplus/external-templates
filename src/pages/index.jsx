@@ -15,8 +15,6 @@ import Stats from 'src/sections/Stats'
 import MainGraphics from '@assets/images/BackgroundWithoutHero.svg'
 import MainGraphicsMobile from '@assets/images/mobile/MainBackground.svg'
 
-import SusNuggetGif from '@assets/images/animations/nugget-sus.gif'
-import RedVanImg from '@assets/images/red_van.svg'
 import Hero from '../components/Hero'
 import NavigationBar from '../components/NavigationBar'
 
@@ -47,32 +45,6 @@ const BackgroundImage = styled.img`
 
   ${p => p.theme.mediaQueries.mobile} {
     display: none;
-  }
-`
-
-const SusNuggetContainer = styled.img`
-  position: absolute;
-  bottom: 1650px;
-  width: 15%;
-  height: auto;
-  left: 37.5%;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    bottom: 5.8%;
-    left: 45%;
-    width: 18%;
-  }
-`
-
-const RedVanContainer = styled.img`
-  position: absolute;
-  bottom: 1300px;
-  width: 12%;
-  height: auto;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    bottom: 360px;
-    width: 12%;
   }
 `
 

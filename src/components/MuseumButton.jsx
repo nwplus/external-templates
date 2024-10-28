@@ -3,29 +3,23 @@ import styled, { keyframes } from 'styled-components'
 
 const shimmer = keyframes`
   0% {
-    background-position: 200% 0;
+    background-position: 125% 0;
+    opacity: 1;
   }
   50% {
-    background-position: -200% 0;
-  }
-  50.01%, 100% {
-    background-position: -1000% 0;
+    background-position: -125% 0;
+    opacity: 0;
   }
 `
 
-const ButtonContainer = styled.a`
-  position: absolute;
-  ${props => (props.left ? `left: calc(100vw * (${props.left} / 1280));` : `left: 50%; transform: translateX(-50%);`)}
-  top: calc(100vw * (${props => props.top} / 1280));
-  width: ${props => (props.variant === 'sponsor' ? 'calc(100vw * (100 / 1280))' : `calc(100vw * (140 / 1280))`)};
-  cursor: pointer;
-  text-decoration: none;
+const ButtonContainer = styled.div`
+  width: ${props => (props.variant === 'sponsor' ? 'calc(100vw * (134 / 1280))' : `calc(100vw * (134 / 1280))`)};
 `
 
 const ButtonInnerContainer = styled.div`
   position: relative;
   width: 100%;
-  aspect-ratio: ${props => (props.variant === 'sponsor' ? '100/30' : '134/68')};
+  aspect-ratio: ${props => (props.variant === 'sponsor' ? '134/50' : '134/68')};
 
   &::before {
     content: '';
@@ -35,8 +29,8 @@ const ButtonInnerContainer = styled.div`
     width: 100%;
     height: 100%;
     background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.7) 50%, transparent 100%);
-    background-size: 200% 100%;
-    animation: ${shimmer} 10s linear infinite;
+    background-size: 300% 100%;
+    animation: ${shimmer} 6s linear infinite;
     mask-image: url('./assets/images/museum_button.svg');
     mask-size: 100% 100%;
     -webkit-mask-image: url('./assets/images/museum_button.svg');
@@ -79,18 +73,18 @@ const ButtonBottomText = styled.p`
 
 const SponsorText = styled.p`
   font-weight: 600;
-  font-size: calc(100vw * (20 / 1280));
+  font-size: calc(100vw * (12 / 1280));
 `
 
 const MuseumButton = props => {
-  const { top, left, topText, bottomText, href, variant } = props
+  const { top, left, topText, bottomText, variant } = props
   return (
-    <ButtonContainer top={top} left={left} href={href} target="_blank" rel="noopener noreferrer" variant={variant}>
+    <ButtonContainer top={top} left={left} variant={variant}>
       <ButtonInnerContainer variant={variant}>
         <ButtonBackground src="./assets/images/museum_button.svg" />
         <ButtonTextContainer>
           {variant === 'sponsor' ? (
-            <SponsorText>Sponsored by</SponsorText>
+            <SponsorText>Sponsor us</SponsorText>
           ) : (
             <>
               <ButtonTopText>{topText}</ButtonTopText>

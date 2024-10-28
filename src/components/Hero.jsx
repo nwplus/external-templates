@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
+import { gsap } from 'gsap'
+import ScrollTrigger from 'gsap/dist/ScrollTrigger'
 import HeroBackground from './HeroBackground'
 import RegistrationCountdown from './RegistrationCountdown'
 import MuseumButton from './MuseumButton'
-import { gsap } from 'gsap'
-import ScrollTrigger from 'gsap/dist/ScrollTrigger'
 import { SCREEN_BREAKPOINTS } from '../theme/ThemeProvider'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -60,13 +60,62 @@ const LeftPillar = styled.div`
   position: absolute;
   left: calc(100vw * (202 / 1280));
   top: calc(100vw * (280 / 1280));
-  transform: perspective(1000px) rotateX(8deg) skewX(-6deg);
+  transform: perspective(2000px) rotateX(8.5deg) skewX(-8deg);
+`
+
+const MentorButton = styled.a`
+  position: absolute;
+  left: calc(100vw * (435 / 1280));
+  top: calc(100vw * (455 / 1280));
+
+  cursor: pointer;
+  text-decoration: none;
+`
+
+const HackerButton = styled.a`
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: calc(100vw * (430 / 1280));
+
+  cursor: pointer;
+  text-decoration: none;
+`
+
+const VolunteerButton = styled.a`
+  position: absolute;
+  left: calc(100vw * (700 / 1280));
+  top: calc(100vw * (455 / 1280));
+
+  cursor: pointer;
+  text-decoration: none;
+`
+
+const RightPillar = styled.div`
+  position: absolute;
+  left: calc(100vw * (942 / 1280));
+  top: calc(100vw * (280 / 1280));
+  transform: perspective(2000px) rotateX(-8.5deg) skewX(7deg);
+`
+
+const SponsorText = styled.p`
+  font-weight: 600;
+  font-size: calc(100vw * (20 / 1280));
+  color: #51483e;
+`
+
+const SponsorButton = styled.a`
+  position: absolute;
+  top: calc(100vw * (205 / 1280));
+
+  cursor: pointer;
+  text-decoration: none;
 `
 
 const Hero = () => {
   const heroRef = useRef(null)
   const [shouldAnimate, setShouldAnimate] = useState(true)
-  const tlRef = useRef(null) // Reference to store the timeline
+  const tlRef = useRef(null)
 
   useEffect(() => {
     const checkScreenSize = () => {
@@ -93,12 +142,12 @@ const Hero = () => {
       const svgWidth = 1280
       const svgHeight = 901
 
-      // Get door's position within SVG coordinate space
+      // get door's position within SVG coordinate space
       const doorBBox = door.getBBox()
       const doorCenterX = doorBBox.x + doorBBox.width / 2
       const doorCenterY = doorBBox.y + doorBBox.height / 2
 
-      // Calculate the transform origin based on door position
+      // calculate the transform origin based on door position
       const transformOriginX = (doorCenterX / svgWidth) * 100
       const transformOriginY = (doorCenterY / svgHeight) * 100
 
@@ -128,7 +177,7 @@ const Hero = () => {
       })
 
       tlRef.current.to(
-        hero.querySelector(MuseumHeader), // Ensure the selector matches the DOM
+        hero.querySelector('.museum-header'),
         {
           opacity: 0,
           duration: 0.3,
@@ -169,6 +218,7 @@ const Hero = () => {
       gsap.set(hero, { clearProps: 'all' })
     }
 
+    // eslint-disable-next-line consistent-return
     return () => {
       if (tlRef.current) {
         tlRef.current.kill()
@@ -179,25 +229,34 @@ const Hero = () => {
 
   return (
     <>
-        <HeroContainer ref={heroRef}>
+      <HeroContainer ref={heroRef}>
         <HeroBackground />
-        <MuseumHeader>
+        <MuseumHeader className="museum-header">
           <Title>nwHacks</Title>
-          <TitleSponsor>powered by Aquareum</TitleSponsor>
-          <Description>Western Canada's largest hackathon</Description>
+          <TitleSponsor>powered by Aquareum.tv</TitleSponsor>
+          <Description>Western Canada&apos;s largest hackathon</Description>
           <Date>Jan 13-15, 2025 | UBC Life Science Institute</Date>
         </MuseumHeader>
         <LeftPillar>
           <RegistrationCountdown />
         </LeftPillar>
-        {/* <RightPillar>
-          <SponsorText>Sponsored by</SponsorText>
-          <SponsorButton> Sponsor Us </SponsorButton>
-        </RightPillar> */}
 
-        <MuseumButton top={455} left={435} topText="Become a" bottomText="Mentor" href="" />
-        <MuseumButton top={430} topText="Apply as a" bottomText="Hacker" href="https://portal.nwplus.io" />
-        <MuseumButton top={455} left={700} topText="Become a" bottomText="Volunteer" href="" />
+        <MentorButton href="" target="_blank" rel="noopener noreferrer">
+          <MuseumButton topText="Become a" bottomText="Mentor" />
+        </MentorButton>
+        <HackerButton href="https://portal.nwplus.io" target="_blank" rel="noopener noreferrer">
+          <MuseumButton topText="Apply as a" bottomText="Hacker" />
+        </HackerButton>
+        <VolunteerButton href="" target="_blank" rel="noopener noreferrer">
+          <MuseumButton topText="Become a" bottomText="Volunteer" />
+        </VolunteerButton>
+
+        <RightPillar>
+          <SponsorText>Sponsored by</SponsorText>
+          <SponsorButton href="" target="_blank" rel="noopener noreferrer">
+            <MuseumButton topText="Sponsor Us" variant="sponsor" />
+          </SponsorButton>
+        </RightPillar>
       </HeroContainer>
       <DummySpacerDiv />
     </>

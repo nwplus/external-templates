@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import fireDb from '../utilities/firebase'
 import styled from 'styled-components'
+import fireDb from '../utilities/firebase'
 
 const RegistrationContainer = styled.div`
   display: flex;
@@ -36,6 +36,32 @@ function RegistrationCountdown() {
   const [timeLeft, setTimeLeft] = useState({})
   const [loading, setLoading] = useState(true)
 
+  function parseDate(dateString) {
+    const [datePart, timePart] = dateString.split(' at ')
+    const [month, day, year] = datePart.replace(/(\d+)(st|nd|rd|th)/, '$1').split(' ')
+    const [time, period] = timePart.split(' ')
+    const [hours, minutes] = time.split(':')
+
+    const date = new Date(`${month} ${day}, ${year} ${hours}:${minutes} ${period} PST`)
+    return date
+  }
+
+  function calculateTimeLeft(targetDate) {
+    const difference = +new Date(targetDate) - +new Date()
+    let remainingTime = {}
+
+    if (difference > 0) {
+      remainingTime = {
+        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((difference / 1000 / 60) % 60),
+        targetDate,
+      }
+    }
+
+    return remainingTime
+  }
+
   useEffect(() => {
     async function fetchDeadline() {
       try {
@@ -59,34 +85,8 @@ function RegistrationCountdown() {
     return () => clearInterval(timer)
   }, [])
 
-  function parseDate(dateString) {
-    const [datePart, timePart] = dateString.split(' at ')
-    const [month, day, year] = datePart.replace(/(\d+)(st|nd|rd|th)/, '$1').split(' ')
-    const [time, period] = timePart.split(' ')
-    const [hours, minutes] = time.split(':')
-
-    const date = new Date(`${month} ${day}, ${year} ${hours}:${minutes} ${period} PST`)
-    return date
-  }
-
-  function calculateTimeLeft(targetDate) {
-    const difference = +new Date(targetDate) - +new Date()
-    let timeLeft = {}
-
-    if (difference > 0) {
-      timeLeft = {
-        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((difference / 1000 / 60) % 60),
-        targetDate: targetDate,
-      }
-    }
-
-    return timeLeft
-  }
-
   if (loading) {
-    return <div>Loading...</div>
+    return null
   }
 
   return (

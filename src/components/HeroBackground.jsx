@@ -1,5 +1,4 @@
-const HeroBackground = () => {
-  return (
+const HeroBackground = () => (
     <svg viewBox="0 0 1280 901" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path fill="url(#paint0_linear_3026_15693)" d="M0 0h1283v327H0z" />
       <path
@@ -3368,6 +3367,5 @@ const HeroBackground = () => {
       </defs>
     </svg>
   )
-}
 
 export default HeroBackground

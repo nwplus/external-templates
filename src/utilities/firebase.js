@@ -66,8 +66,8 @@ const fireDb = {
   getApplicationDate: async () => {
     const ref = db.collection(INTERNAL_WEBSITES).doc(PORTAL)
     const data = await ref.get()
-    const applicationDeadline = data.data().applicationDeadline
-    return applicationDeadline ? applicationDeadline['nwhacks'] : null
+    const { applicationDeadline } = data.data()
+    return applicationDeadline ? applicationDeadline.nwhacks : null
   },
 }
 
