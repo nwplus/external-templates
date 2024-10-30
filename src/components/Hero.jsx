@@ -5,6 +5,7 @@ import ScrollTrigger from 'gsap/dist/ScrollTrigger'
 import HeroBackground from './HeroBackground'
 import RegistrationCountdown from './RegistrationCountdown'
 import MuseumButton from './MuseumButton'
+import HeroSponsors from './HeroSponsors'
 import { SCREEN_BREAKPOINTS } from '../theme/ThemeProvider'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -31,7 +32,7 @@ const MuseumHeader = styled.div`
   transform: translate(-50%, -50%) perspective(1000px) rotateX(8deg);
   text-align: center;
   font-family: 'LT Museum';
-  color: #1f1f1f;
+  color: #3a2e21;
 `
 
 const Title = styled.p`
@@ -93,21 +94,28 @@ const VolunteerButton = styled.a`
 
 const RightPillar = styled.div`
   position: absolute;
-  left: calc(100vw * (942 / 1280));
+  left: calc(100vw * (952 / 1280));
   top: calc(100vw * (280 / 1280));
-  transform: perspective(2000px) rotateX(-8.5deg) skewX(7deg);
+  transform: perspective(2000px) rotateX(-8.5deg) skewX(8deg);
+`
+
+const RightPillarInnerContainer = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: calc(100vw * (134 / 1280));
+  height: calc(100vw * (250 / 1280));
 `
 
 const SponsorText = styled.p`
+  text-align: center;
   font-weight: 600;
   font-size: calc(100vw * (20 / 1280));
   color: #51483e;
 `
 
 const SponsorButton = styled.a`
-  position: absolute;
-  top: calc(100vw * (205 / 1280));
-
   cursor: pointer;
   text-decoration: none;
 `
@@ -115,14 +123,12 @@ const SponsorButton = styled.a`
 const Hero = () => {
   const heroRef = useRef(null)
   const [shouldAnimate, setShouldAnimate] = useState(true)
-  const [screenWidth, setScreenWidth] = useState(0)
   const tlRef = useRef(null)
 
   useEffect(() => {
     const checkScreenSize = () => {
       const width = window.innerWidth
       setShouldAnimate(width >= SCREEN_BREAKPOINTS.desktop)
-      setScreenWidth(width)
     }
 
     checkScreenSize()
@@ -130,10 +136,6 @@ const Hero = () => {
 
     return () => window.removeEventListener('resize', checkScreenSize)
   }, [])
-
-  useEffect(() => {
-    console.log(screenWidth)
-  }, [screenWidth])
 
   useEffect(() => {
     const hero = heroRef.current
@@ -157,7 +159,12 @@ const Hero = () => {
       const transformOriginX = (doorCenterX / svgWidth) * 100
       const transformOriginY = (doorCenterY / svgHeight) * 100
 
-      const scrollDistance = screenWidth < 1500 ? 115 : 120
+      let scrollDistance = 120
+      if (window.innerWidth < 1300) {
+        scrollDistance = 105
+      } else if (window.innerWidth < 1500) {
+        scrollDistance = 110
+      }
 
       gsap.set(hero, {
         transformOrigin: `${transformOriginX}% ${transformOriginY}%`,
@@ -260,10 +267,13 @@ const Hero = () => {
         </VolunteerButton>
 
         <RightPillar>
-          <SponsorText>Sponsored by</SponsorText>
-          <SponsorButton href="" target="_blank" rel="noopener noreferrer">
-            <MuseumButton topText="Sponsor Us" variant="sponsor" />
-          </SponsorButton>
+          <RightPillarInnerContainer>
+            <SponsorText>Sponsored by</SponsorText>
+            <HeroSponsors />
+            <SponsorButton href="" target="_blank" rel="noopener noreferrer">
+              <MuseumButton topText="Sponsor Us" variant="sponsor" />
+            </SponsorButton>
+          </RightPillarInnerContainer>
         </RightPillar>
       </HeroContainer>
       <DummySpacerDiv />
