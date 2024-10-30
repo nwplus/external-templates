@@ -61,7 +61,7 @@ const LeftPillar = styled.div`
   position: absolute;
   left: calc(100vw * (202 / 1280));
   top: calc(100vw * (280 / 1280));
-  transform: perspective(2000px) rotateX(8.5deg) skewX(-8deg);
+  transform: perspective(2000px) rotateX(8.5deg) skewX(-7.5deg);
 `
 
 const MentorButton = styled.a`
@@ -124,6 +124,8 @@ const Hero = () => {
   const heroRef = useRef(null)
   const [shouldAnimate, setShouldAnimate] = useState(true)
   const tlRef = useRef(null)
+  const svgWidth = 1280
+  const svgHeight = 901
 
   useEffect(() => {
     const checkScreenSize = () => {
@@ -147,9 +149,6 @@ const Hero = () => {
 
       if (!door || !svg) return
 
-      const svgWidth = 1280
-      const svgHeight = 901
-
       // get door's position within SVG coordinate space
       const doorBBox = door.getBBox()
       const doorCenterX = doorBBox.x + doorBBox.width / 2
@@ -160,9 +159,10 @@ const Hero = () => {
       const transformOriginY = (doorCenterY / svgHeight) * 100
 
       let scrollDistance = 120
-      if (window.innerWidth < 1300) {
+      const aspectRatio = window.innerWidth / window.innerHeight
+      if (aspectRatio <= 14 / 9) {
         scrollDistance = 105
-      } else if (window.innerWidth < 1500) {
+      } else if (aspectRatio <= 16 / 9) {
         scrollDistance = 110
       }
 
@@ -250,7 +250,7 @@ const Hero = () => {
           <Title>nwHacks</Title>
           <TitleSponsor>powered by Aquareum.tv</TitleSponsor>
           <Description>Western Canada&apos;s largest hackathon</Description>
-          <Date>Jan 13-15, 2025 | UBC Life Science Institute</Date>
+          <Date>Jan 18-19, 2025 | UBC Life Science Institute</Date>
         </MuseumHeader>
         <LeftPillar>
           <RegistrationCountdown />
