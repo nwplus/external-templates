@@ -19,7 +19,7 @@ const BgSectionContainer = styled(SectionContainer)`
   background-position: center top;
   position: relative;
   width: 100%;
-  top: -53vw;
+  top: -60vw;
   /* height: ${props => props.height - 10}vw; */
   height: 110vw;
   justify-content: center;
@@ -50,19 +50,19 @@ const BgSectionContainer = styled(SectionContainer)`
   }
 
   @media (min-width: 411px) and (max-width: 429px) {
-    top: 30vw;
+    top: 10vw;
   }
 
   @media (min-width: 430px) and (max-width: 449px) {
-    top: 24vw;
+    top: 10vw;
   }
 
   @media (min-width: 450px) and (max-width: 479px) {
-    top: 19vw;
+    top: 1vw;
   }
 
   @media (min-width: 480px) and (max-width: 510px) {
-    top: 10vw;
+    top: -1vw;
   }
 
   @media (min-width: 511px) and (max-width: 540px) {
@@ -84,6 +84,14 @@ const BgSectionContainer = styled(SectionContainer)`
   @media (min-width: 631px) and (max-width: 700px) {
     top: -34vw;
   } */
+
+  @media (min-width: 701px) and (max-width: 769px) {
+    top: -34vw;
+  }
+
+  @media (min-width: 770px) and (max-width: 888px) {
+    top: -80vw;
+  }
 
   /* ${p => p.theme.mediaQueries.xs} {
     top: 40vw;
