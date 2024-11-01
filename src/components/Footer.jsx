@@ -186,17 +186,18 @@ const TextContainer = styled.div`
   color: #e2d6ff;
   position: absolute;
   z-index: 999 !important;
-  /* bottom: 463.5vw; */
-  top: 80vw;
+  top: 88vw;
   z-index: 2000;
 
+  ${p => p.theme.mediaQueries.tabletLarger} {
+    top: 82vw;
+  }
+
   ${p => p.theme.mediaQueries.tablet} {
-    /* top: -700vw; */
-    top: 68vw;
+    top: 82vw;
   }
 
   ${p => p.theme.mediaQueries.mobile} {
-    /* top: -700vw; */
     top: 10vw;
   }
 `
@@ -230,7 +231,7 @@ const TeamContainer = styled.div`
   }
 
   ${p => p.theme.mediaQueries.tabletSmall} {
-    top: 100vw;
+    top: 106vw;
   }
 
   ${p => p.theme.mediaQueries.mobile} {
@@ -445,6 +446,7 @@ export default function Footer () {
 
     return true
   }
+
   return (
     <>
       <CaveTop>

@@ -16,8 +16,6 @@ const BgSectionContainer = styled(SectionContainer)`
   position: relative;
   top: -51.3vw;
   overflow: hidden;
-  
-
   width: 100%;
   aspect-ratio: 1440/1072;
   z-index: 17;
