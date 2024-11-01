@@ -33,7 +33,7 @@ const BgSectionContainer = styled(SectionContainer)`
     height: 162vw;
     background-repeat: no-repeat;
     background-position: center center;
-    top: 47vw;
+    top: -42vw;
   }
 
   @media (min-width: 370px) and (max-width: 378px) {
@@ -107,18 +107,18 @@ const StyledTitle = styled.div`
 
 const TitleSponsorContainer = styled.div`
   background: url('assets/background/sponsors/title-sponsor-container.svg') no-repeat right;
-  background-size: 48vw;
-  width: 48vw;
-  height: 20vw;
+  background-size: 62vw;
+  width: 62vw;
+  height: 29vw;
   position: absolute;
   z-index: 10;
   left: 25vw;
-  top: 12vw;
+  top: 8vw;
   transform: translateX(-50%);
   ${p => p.theme.mediaQueries.mobile} {
-    top: 20vw;
-    background-size: 90vw;
-    width: 90vw;
+    top: 22vw;
+    width: 62vw;
+    width: 62vw;
     height: 40vw;
   }
 `
@@ -149,6 +149,7 @@ const SponsorTier = styled.div`
   gap: 1.3vw;
   ${p => p.theme.mediaQueries.mobile} {
     /* height: 23vw; */
+    padding: 8px 5px;
     background-size: ${props => 130 - (props.count * 3)}%;
     width: ${props => props.count * 23}vw;
     height: 22vw;
@@ -160,12 +161,12 @@ const TitleSponsorLink = styled.a`
   align-items: center;
   flex: 1 1 0px;
   position: absolute;
-  top: 7vw;
-  right: 33vw;
+  top: 9vw;
+  right: 39vw;
   z-index: 1000;
   ${p => p.theme.mediaQueries.mobile} {
-    top: 12vw;
-    right: 59vw;
+    top: 15vw;
+    right: 43.5vw;
   }
 `
 
@@ -178,31 +179,34 @@ const SponsorLink = styled.a`
 
 const SponsorText = styled.h1`
   font-size: 1vw;
-  width: 40vw;
+  width: 53.6vw;
   color: black;
+  max-height: 15vh;
+  overflow-y: auto;
+  font-weight: 400;
   position: absolute;
-  top: 10.7vw;
-  font-weight: lighter;
+  top: 13.7vw;
   right: 3.9vw;
   font-family: 'HK Grotesk';
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 2.1vw;
-    width: 66vw;
-    right: 11.5vw;
-    top: 17vw;
+    font-size: 1.05vw;
+    width: 53.6vw;
+    max-height: 11vh;
+    /* width: 66vw; */
+    right: 3.9vw;
+    top: 19vw;
   }
 `
 
 const TitleSponsorLogo = styled.img`
   position: absolute;
-  width: 17vw;
+  width: 15vw;
   ${p => p.theme.mediaQueries.mobile} {
     width: 24vw;
   }
 `
 
 const SponsorLogo = styled.img`
-  /* max-width: 100%; */
   background-color: white;
   border-radius: 8px;
   height: 6vw;
@@ -217,11 +221,12 @@ const SponsorLogo = styled.img`
 `
 
 const PushinP = styled.p`
+  padding-bottom: 4vw;
   color: #fff;
-  font-size: 1.6vw;
+  font-size: 1.4vw;
   text-align: center;
-  width: 39vw;
-  min-width: 500px;
+  width: 44vw;
+  /* min-width: 500px; */
   margin: 0 auto;
   padding-top: 1vw;
   position: relative;
@@ -312,7 +317,6 @@ export default function Sponsor () {
 
       // Update the body height
       const additionalHeight = rows + sponsorMultiplier
-      // updateBodyHeight(`${465.5 + additionalHeight}vw`)
       setHeight(60 + additionalHeight)
     }
   }, [])
@@ -358,11 +362,11 @@ export default function Sponsor () {
                   style={{
                     backgroundImage: `url(${ContainerSVG})`,
                     width: '62vw',
-                    height: `${isMobile ? 21 : 16}vw`,
+                    height: `${isMobile ? 18 : 14}vw`,
                     // backgroundImage: 'url(assets/background/sponsors/sponsor-film-roll.svg)',
                     // background: `url('assets/background/sponsors/sponsor-film-roll.svg')`,
                     backgroundRepeat: 'no-repeat',
-                    top: `${isMobile ? 37 + row * 24 : 17 + row * 17}vw`,
+                    top: `${isMobile ? 37 + row * 19 : 21 + row * 15}vw`,
                     backgroundPosition: 'center'
                   }}
                 >
