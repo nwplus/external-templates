@@ -33,13 +33,18 @@ const BgSectionContainer = styled(SectionContainer)`
     height: 162vw;
     background-repeat: no-repeat;
     background-position: center center;
-    top: -42vw;
+    top: -37vw;
   }
 
-  @media (min-width: 370px) and (max-width: 378px) {
-    top: 49vw;
+  @media (min-width: 300px) and (max-width: 378px) {
+    top: -1vw;
   }
 
+  @media (min-width: 379px) and (max-width: 500px) {
+    top: -18vw;
+  }
+
+  /*
   @media (min-width: 390px) and (max-width: 410px) {
     top: 41vw;
   }
@@ -78,7 +83,7 @@ const BgSectionContainer = styled(SectionContainer)`
 
   @media (min-width: 631px) and (max-width: 700px) {
     top: -34vw;
-  }
+  } */
 
   /* ${p => p.theme.mediaQueries.xs} {
     top: 40vw;
