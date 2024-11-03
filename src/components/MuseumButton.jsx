@@ -37,6 +37,14 @@ const ButtonInnerContainer = styled.div`
     -webkit-mask-size: 100% 100%;
     z-index: 2;
   }
+
+  &:hover {
+    transform: scale(1.07);
+    transform-origin: center;
+    filter: brightness(0.95);
+  }
+
+  transition: transform 0.3s ease;
 `
 
 const ButtonBackground = styled.img`
