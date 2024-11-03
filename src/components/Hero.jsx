@@ -188,6 +188,7 @@ const Hero = () => {
             })
           },
           fastScrollEnd: true,
+          pinSpacing: false,
         },
       })
 

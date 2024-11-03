@@ -9,48 +9,40 @@ import Countdown from 'src/sections/Countdown'
 import About from 'src/sections/About'
 // import Track from 'src/sections/Tracks'
 import Stats from 'src/sections/Stats'
+import SeparatorImage from '@assets/images/separator.png'
 
 // import LoadingScreen from '../components/LoadingScreen'
 
-import MainGraphics from '@assets/images/BackgroundWithoutHero.svg'
-import MainGraphicsMobile from '@assets/images/mobile/MainBackground.svg'
+// import MainGraphics from '@assets/images/BackgroundWithoutHero.svg'
+// import MainGraphicsMobile from '@assets/images/mobile/MainBackground.svg'
 
 import Hero from '../components/Hero'
 import NavigationBar from '../components/NavigationBar'
 
 const HalfContainer = styled.div`
   background-color: #2a2218;
-  min-height: calc(calc(10525 / 1280) * 100vw);
   position: relative;
-  aspect-ratio: 1440 / 10525px;
   width: 100%;
 
-  ${p => p.theme.mediaQueries.mobile} {
-    background: url(${MainGraphicsMobile});
-    background-repeat: no-repeat;
-    background-position: top center;
-    background-size: cover;
-    min-height: calc(calc(8363 / 414) * 100vw);
-    aspect-ratio: 414/8363;
-    min-width: 100%;
-  }
+  // ${p => p.theme.mediaQueries.mobile} {
+  //   background: url(${MainGraphicsMobile});
+  //   background-repeat: no-repeat;
+  //   background-position: top center;
+  //   background-size: cover;
+  //   min-height: calc(calc(8363 / 414) * 100vw);
+  //   aspect-ratio: 414/8363;
+  //   min-width: 100%;
+  // }
 `
-const BackgroundImage = styled.img`
-  top: calc(calc(785 / 1280) * 100vw);
-  z-index: 0;
-  user-select: none;
-  min-height: calc(calc(9740 / 1280) * 100vw);
-  object-fit: cover;
-  width: 100%;
 
-  ${p => p.theme.mediaQueries.mobile} {
-    display: none;
-  }
+const Separator = styled.div`
+  width: 100%;
+  background-image: url(${SeparatorImage});
+  height: 50px;
 `
 
 const ContentContainer = styled.div`
   top: 150vh;
-  z-index: 1;
 `
 
 export default function Index({ title }) {
@@ -78,9 +70,8 @@ export default function Index({ title }) {
         <Hero />
 
         <ContentContainer>
-          <BackgroundImage src={MainGraphics} alt="Background image" />
-
           <About />
+          <Separator />
           <Countdown />
           <Stats />
           {/* <Track /> */}
