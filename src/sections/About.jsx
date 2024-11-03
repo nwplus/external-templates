@@ -1,8 +1,4 @@
-import React from 'react'
 import styled from 'styled-components'
-import { Body, Header2 } from '@components/Typography'
-// import AboutBackground from '@assets/images/about_background.png'
-
 // import { TABLET } from '@constants/measurements'
 
 const AboutBackground = styled.div`
@@ -66,8 +62,7 @@ const Description = styled.p`
   line-height: 1.5;
 `
 
-const About = () => {
-  return (
+const About = () => (
     <AboutContainer id="about">
       <AboutBackground />
       <TextContainer>
@@ -75,13 +70,12 @@ const About = () => {
         <Description>
           Celebrate the 10th anniversary of nwHacks with us! Everyone is welcome at nwHacks, whether you are just
           getting into tech or are a seasoned hacker. Join us in-person on January 18-19, 2025 for a weekend of
-          creativity, community, and innovation. All you need is an open mind and an insatiable desire to learn - we'll
+          creativity, community, and innovation. All you need is an open mind and an insatiable desire to learn - we&apos;ll
           take care of the rest. Create a project, learn new skills, and bond with friends, all in 24 hours! This one
           will go down in history.
         </Description>
       </TextContainer>
     </AboutContainer>
   )
-}
 
 export default About

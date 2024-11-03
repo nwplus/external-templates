@@ -14,7 +14,7 @@ import SeparatorImage from '@assets/images/separator.png'
 // import LoadingScreen from '../components/LoadingScreen'
 
 // import MainGraphics from '@assets/images/BackgroundWithoutHero.svg'
-// import MainGraphicsMobile from '@assets/images/mobile/MainBackground.svg'
+import MainGraphicsMobile from '@assets/images/mobile/MainBackground.svg'
 
 import Hero from '../components/Hero'
 import NavigationBar from '../components/NavigationBar'
