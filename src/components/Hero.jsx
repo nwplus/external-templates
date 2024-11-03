@@ -160,10 +160,9 @@ const Hero = () => {
 
       let scrollDistance = 120
       const aspectRatio = window.innerWidth / window.innerHeight
-      if (aspectRatio <= 14 / 9) {
-        scrollDistance = 105
-      } else if (aspectRatio <= 16 / 9) {
-        scrollDistance = 110
+
+      if (aspectRatio <= 16 / 9) {
+        scrollDistance = 95 + (25 * Math.min(aspectRatio - 11 / 9, 5 / 9)) / (5 / 9)
       }
 
       gsap.set(hero, {
