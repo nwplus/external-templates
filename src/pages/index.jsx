@@ -5,11 +5,9 @@ import styled from 'styled-components'
 import Sponsors from 'src/sections/Sponsors'
 import Faq from 'src/sections/FAQ'
 import Footer from 'src/sections/Footer'
-import Countdown from 'src/sections/Countdown'
 import About from 'src/sections/About'
 // import Track from 'src/sections/Tracks'
 import Stats from 'src/sections/Stats'
-import SeparatorImage from '@assets/images/separator.png'
 
 // import LoadingScreen from '../components/LoadingScreen'
 
@@ -37,12 +35,25 @@ const HalfContainer = styled.div`
 
 const Separator = styled.div`
   width: 100%;
-  background-image: url(${SeparatorImage});
+  background-image: url(/assets/images/separator.png);
   height: 50px;
 `
 
 const ContentContainer = styled.div`
   top: 150vh;
+`
+
+const MiddleSections = styled.div`
+  background-image: url(/assets/images/middle_background.jpg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  object-fit: cover;
+
+  min-height: calc(2419 / 1280 * 100vw);
+  width: 100%;
+  height: 100%;
+  z-index: -1;
 `
 
 export default function Index({ title }) {
@@ -72,8 +83,11 @@ export default function Index({ title }) {
         <ContentContainer>
           <About />
           <Separator />
-          <Countdown />
-          <Stats />
+
+          <MiddleSections>
+            <Stats />
+          </MiddleSections>
+          <Separator />
           {/* <Track /> */}
           <Faq />
           <Sponsors />
