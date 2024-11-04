@@ -50,7 +50,7 @@ const MiddleSections = styled.div`
   background-position: center;
   object-fit: cover;
 
-  min-height: calc(2419 / 1280 * 100vw);
+  min-height: calc(2303 / 1280 * 100vw);
   width: 100%;
   height: 100%;
   z-index: -1;
