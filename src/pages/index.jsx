@@ -7,8 +7,10 @@ import Faq from 'src/sections/FAQ'
 import Footer from 'src/sections/Footer'
 import About from 'src/sections/About'
 // import Track from 'src/sections/Tracks'
-import Stats from 'src/sections/Stats'
-
+// import Stats from 'src/sections/Stats'
+import Projects from 'src/sections/Projects'
+import Separator from 'src/components/Separator'
+import Testimonials from 'src/sections/Testimonials'
 // import LoadingScreen from '../components/LoadingScreen'
 
 // import MainGraphics from '@assets/images/BackgroundWithoutHero.svg'
@@ -33,24 +35,31 @@ const HalfContainer = styled.div`
   // }
 `
 
-const Separator = styled.div`
-  width: 100%;
-  background-image: url(/assets/images/separator.png);
-  height: 50px;
-`
-
 const ContentContainer = styled.div`
   top: 150vh;
 `
 
-const MiddleSections = styled.div`
+const MiddleSectionsContainer = styled.div`
   background-image: url(/assets/images/middle_background.jpg);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   object-fit: cover;
 
-  min-height: calc(2303 / 1280 * 100vw);
+  min-height: calc(2290 / 1280 * 100vw);
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+`
+
+const FaqSponsorsContainer = styled.div`
+  background-image: url(/assets/images/faq_sponsors_background.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  object-fit: cover;
+
+  min-height: calc(3700 / 1280 * 100vw);
   width: 100%;
   height: 100%;
   z-index: -1;
@@ -84,13 +93,18 @@ export default function Index({ title }) {
           <About />
           <Separator />
 
-          <MiddleSections>
-            <Stats />
-          </MiddleSections>
+          <MiddleSectionsContainer>{/* <Stats /> */}</MiddleSectionsContainer>
+          <Separator />
+          <Projects />
+          <Separator />
+          <Testimonials />
           <Separator />
           {/* <Track /> */}
-          <Faq />
-          <Sponsors />
+          <FaqSponsorsContainer>
+            <Faq />
+            <Sponsors />
+          </FaqSponsorsContainer>
+          <Separator />
           <Footer />
         </ContentContainer>
       </HalfContainer>

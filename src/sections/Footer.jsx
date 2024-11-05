@@ -13,15 +13,22 @@ import Team from '@components/Team'
 
 const FooterContainer = styled.div`
   position: relative;
-  min-height: calc(calc(722 / 1280) * 100vw);
-  margin-top: calc(calc(922 / 1280) * 100vw);
+  min-height: calc(1140 / 1280 * 100vw);
+  width: 100%;
+`
 
-  ${p => p.theme.mediaQueries.mobile} {
-    min-height: calc(calc(800 / 428) * 100vw);
+const FooterBackground = styled.div`
+  background-image: url('./assets/images/footer_background.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  object-fit: cover;
 
-    width: 100%;
-    aspect-ratio: 428/800;
-  }
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 `
 
 const SocialMediaIcons = styled.div`
@@ -32,10 +39,10 @@ const SocialMediaIcons = styled.div`
   a {
     width: 50px;
     text-decoration: none;
-    color: #EAC669;
+    color: #eac669;
 
     &:hover {
-      color: #AED1E1;
+      color: #aed1e1;
     }
   }
 
@@ -56,10 +63,10 @@ const Links = styled.div`
 
   a {
     font-weight: 600;
-    color: #EAC669;
+    color: #eac669;
 
     &:hover {
-      color: #AED1E1;
+      color: #aed1e1;
     }
   }
 
@@ -95,7 +102,7 @@ const SmallText = styled.div`
   text-align: center;
 
   div {
-    color: #AED1E1;
+    color: #aed1e1;
     font-size: 1.2rem;
     font-weight: 500;
   }
@@ -140,6 +147,7 @@ const StaticContainer = styled.div`
 
 const Footer = () => (
   <FooterContainer>
+    <FooterBackground />
     <StaticContainer>
       <TextContainer>
         <SocialMediaIcons>
