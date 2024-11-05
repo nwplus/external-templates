@@ -29,7 +29,6 @@ const HalfContainer = styled.div`
   //   background-repeat: no-repeat;
   //   background-position: top center;
   //   background-size: cover;
-  //   min-height: calc(calc(8363 / 414) * 100vw);
   //   aspect-ratio: 414/8363;
   //   min-width: 100%;
   // }
@@ -46,7 +45,7 @@ const MiddleSectionsContainer = styled.div`
   background-position: center;
   object-fit: cover;
 
-  min-height: calc(2290 / 1280 * 100vw);
+  aspect-ratio: 1280/2303;
   width: 100%;
   height: 100%;
   z-index: -1;
@@ -59,7 +58,7 @@ const FaqSponsorsContainer = styled.div`
   background-position: center;
   object-fit: cover;
 
-  min-height: calc(3700 / 1280 * 100vw);
+  aspect-ratio: 1280/3734;
   width: 100%;
   height: 100%;
   z-index: -1;

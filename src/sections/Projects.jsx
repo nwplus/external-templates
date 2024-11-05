@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const ProjectsContainer = styled.div`
-  min-height: calc(812 / 1280 * 100vw);
+  aspect-ratio: 1280/812;
   height: 100%;
   position: relative;
   z-index: 1;

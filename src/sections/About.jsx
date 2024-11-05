@@ -17,7 +17,7 @@ const AboutBackground = styled.div`
 `
 
 const AboutContainer = styled.div`
-  min-height: calc(calc(849 / 1280) * 100vw);
+  aspect-ratio: 1280/849;
   height: 100%;
   position: relative;
   z-index: 1;
@@ -27,7 +27,6 @@ const AboutContainer = styled.div`
 
   ${p => p.theme.mediaQueries.mobile} {
     // margin-top: 10rem;
-    // min-height: calc(calc(700 / 428) * 100vw);
     // aspect-ratio: 428 / 700;
     // align-items: center;
     // margin-bottom: 16rem;

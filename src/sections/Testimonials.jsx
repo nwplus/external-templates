@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const TestimonialsContainer = styled.div`
-  min-height: calc(830 / 1280 * 100vw);
+  aspect-ratio: 1280/832;
   height: 100%;
   position: relative;
   z-index: 1;

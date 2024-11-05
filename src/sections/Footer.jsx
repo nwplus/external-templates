@@ -13,7 +13,7 @@ import Team from '@components/Team'
 
 const FooterContainer = styled.div`
   position: relative;
-  min-height: calc(1140 / 1280 * 100vw);
+  aspect-ratio: 1280/1150;
   width: 100%;
 `
 
