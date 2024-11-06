@@ -274,10 +274,62 @@ const EmailBlurb = styled.a`
   }
 `
 
+const Button = styled.button`
+  background-size: cover;
+  border: none;
+  border-radius: 50%;
+  width: 3vw;
+  height: 3vw;
+  position: relative;
+  left: 5.5vw;
+  top: 15vw;
+  font-size: 1.5vw;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  /* ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  } */
+
+
+`
+
+const LeftButton = styled(Button)`
+  background: url('assets/background/sponsors/sponsor-blurb-left.svg') no-repeat center center;
+  background-size: cover;
+  z-index: 2000;
+  left: -4vw;
+  top: 13vw;
+  ${p => p.theme.mediaQueries.mobile} {
+    top: 18vw;
+  }
+`
+
+const RightButton = styled(Button)`
+  background: url('assets/background/sponsors/sponsor-blurb-right.svg') no-repeat center center;
+  background-size: cover;
+  left: 60vw;
+  top: 13vw;
+  ${p => p.theme.mediaQueries.mobile} {
+    top: 18vw;
+  }
+`
+
 // eslint-disable-next-line react/prop-types
 export default function Sponsor () {
   const [sponsors, setSponsors] = useState({})
   const [height, setHeight] = useState(60)
+
+  const [currSponsorBlurb, setCurrSponsorBlurb] = useState(0)
 
   // used for calculating spacing of the sponsors
   // + check if window is available before using it
@@ -334,6 +386,14 @@ export default function Sponsor () {
     }
   }, [])
 
+  const handleNext = (maxBlurbs) => {
+    setCurrSponsorBlurb((prev) => (prev + 1) % maxBlurbs)
+  }
+
+  const handlePrev = (maxBlurbs) => {
+    setCurrSponsorBlurb((prev) => (prev - 1 + maxBlurbs) % maxBlurbs)
+  }
+
   // eslint-disable-next-line multiline-ternary
   return Object.keys(sponsors).length > 0 ? (
     <BgSectionContainer height={height} id="sponsors">
@@ -358,9 +418,11 @@ export default function Sponsor () {
                       <TitleSponsorLink href={addHttpsIfMissing(sponsor.link)} target="_blank" rel="noreferrer">
                         <TitleSponsorLogo src={sponsor.imgURL} />
                       </TitleSponsorLink>
-                      <SponsorText>{sponsor.blurb}</SponsorText>
+                      <SponsorText>{sponsor.blurb[currSponsorBlurb]}</SponsorText>
                     </>
                   ))}
+                  <LeftButton onClick={() => handlePrev(sponsors[key][0].blurb.length)} />
+                  <RightButton onClick={() => handleNext(sponsors[key][0].blurb.length)} />
                 </TitleSponsorContainer>
               )
             } else {
