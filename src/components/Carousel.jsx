@@ -3,23 +3,26 @@ import styled from 'styled-components'
 import ChevronLeft from '@assets/images/chevron_left.svg'
 
 // const PAGE_FRAC_MOBILE = 90 // width: ?vw for the carousel component on mobile
-const PAGE_FRAC_DESKTOP = 60 // width: ?vw for the carousel component on desktop
+const PAGE_FRAC_DESKTOP = 80 // width: ?% for the carousel component on desktop
 
 const CarouselContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  gap: calc(${PAGE_FRAC_DESKTOP}vw * (20 / 889));
+  max-width: 1600px;
+  gap: 2%;
+
+  z-index: 2;
 `
 
 const ContentContainer = styled.div`
-  width: ${PAGE_FRAC_DESKTOP}vw;
+  width: ${PAGE_FRAC_DESKTOP}%;
   aspect-ratio: 889 / 431;
   position: relative;
 
   display: flex;
-  padding: calc(${PAGE_FRAC_DESKTOP}vw * (15 / 889));
+  padding: 1.171875%; // the tv's border
 
   background-image: url('/assets/images/sponsor_tv.svg');
   background-size: 100% 100%;
@@ -114,18 +117,24 @@ const Logo = styled.img`
 `
 
 const SponsoredByText = styled.div`
-  font-size: calc(100vw * (20 / 1280));
+  font-size: 2rem;
   font-weight: 600;
   color: white;
   text-align: center;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: 1rem;
+  }
 `
 
 const Blurb = styled.div`
-  font-size: calc(100vw * (16 / 1280));
+  font-size: 1.25rem;
   font-family: 'HK Grotesk Medium';
   font-weight: 500;
   max-height: 70%;
   overflow-y: auto;
+  word-wrap: break-word;
+  width: 100%;
 
   ::-webkit-scrollbar {
     width: 0.5rem;
@@ -140,16 +149,24 @@ const Blurb = styled.div`
 
   scrollbar-width: thin;
   scrollbar-color: rgba(0, 0, 0, 0.5) transparent;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: 0.75rem;
+  }
 `
 
 const LearnMoreButton = styled.a`
-  font-size: calc(100vw * (12 / 1280));
+  font-size: 1rem;
   font-weight: 600;
   background: #883030;
   color: white;
   text-decoration: none;
   padding: calc(100vw * (10 / 1280)) calc(100vw * (15 / 1280));
   border-radius: calc(100vw * (8 / 1280));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: 0.75rem;
+  }
 `
 
 const Carousel = ({ sponsors }) => {

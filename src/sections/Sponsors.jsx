@@ -19,7 +19,7 @@ const SponsorsContainer = styled.div`
 const Title = styled(Header2)`
   text-align: center;
   color: #fff;
-  font-size: calc(100vw * (56 / 1280));
+  font-size: calc(100vw * (48 / 1280));
 `
 
 const Spotlight = styled.div`
