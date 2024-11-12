@@ -149,9 +149,8 @@ const Workshops = () => {
           <br/><br/> For more resources, check out our self-learning wiki.</Description>
         </Text>
         <Squares>
-        {items.map((item, index) => (
+        {items.map(item => (
             <Square
-              key={index}
               src={item.defaultSrc}
               onMouseOver={(e) => handleMouseOver(item, e)}
               onMouseLeave={(e) => handleMouseLeave(item, e)}
