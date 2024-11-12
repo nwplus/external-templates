@@ -62,8 +62,8 @@ const Row = styled.div`
   margin-bottom: calc(100vw * (25 / 1280));
 
   ${p => p.theme.mediaQueries.mobile} {
-    flex-direction: column;
-    width: 100%;
+    // flex-direction: column;
+    // width: 100%;
   }
 `
 
@@ -159,7 +159,7 @@ const SponsorsGrid = ({ sponsors }) => {
 
   useEffect(() => {
     const calculateRows = () => {
-      const containerWidth = containerRef.current ? containerRef.current.offsetWidth : window.innerWidth
+      const containerWidth = 0.95 * (containerRef.current ? containerRef.current.offsetWidth : window.innerWidth)
       const newRows = calculateSponsorRows(tierList, containerWidth)
       setRows(newRows)
     }
