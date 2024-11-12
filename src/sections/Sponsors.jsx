@@ -2,130 +2,62 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { Header2 } from '@components/Typography'
 import SponsorsGrid from '@components/SponsorsGrid'
-import Button from '@components/Button'
 import fireDb from '@utilities/firebase'
 import Carousel from '../components/Carousel'
 
 const SponsorsContainer = styled.div`
   position: relative;
-  min-height: calc(calc(2050 / 1280) * 100vw);
-  margin-top: -20rem;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    min-height: calc(calc(488 / 428) * 100vw);
-    margin-top: 8rem;
-  }
-`
-
-const StaticContainer = styled.div`
   top: 0;
   width: 100%;
-  padding-top: calc(calc(750 / 1280) * 100vw);
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    position: relative;
-    padding-top: calc(calc(488 / 428) * 100vw);
-  }
+  justify-content: center;
+  gap: calc(100vw * (100 / 1280));
 `
 
-const StyledTitle = styled(Header2)`
+const Title = styled(Header2)`
   text-align: center;
   color: #fff;
-  font-size: 3rem;
-  padding-top: 18rem;
-  ${p => p.theme.mediaQueries.mobile} {
-    font-size: 3em;
-    padding-top: 0;
-  }
+  font-size: calc(100vw * (56 / 1280));
 `
 
-const PushinP = styled.p`
-  color: #fff;
-  text-align: center;
-  font-weight: 550;
-  font-size: 1.1rem;
-  width: 50vw;
-  min-width: 500px;
-  margin: 0 auto;
-  padding-top: 2rem;
-  max-width: 800px;
-  padding-bottom: 2rem;
+const Spotlight = styled.div`
+  position: absolute;
+  top: 0;
+  left: ${props => (props.direction === 'left' ? '0' : 'none')};
+  right: ${props => (props.direction === 'right' ? '0' : 'none')};
+  width: 100%;
+  aspect-ratio: 808 / 600;
+  background-image: url('/assets/images/sponsor_spotlight.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 1;
 
-  ${p => p.theme.mediaQueries.mobile} {
-    min-width: 0;
-    width: 100%;
-    padding: 20px 6rem;
-  }
-`
-const CarouselImg = styled.img`
-  height: 100px;
-  width: auto;
-  display: block;
-  margin: 0 auto;
-  margin-bottom: 20px;
-  ${p => p.theme.mediaQueries.mobile} {
-    height: 40px;
-    width: auto;
-  }
-`
-const CarouseBlurb = styled.p`
-  color: #d9d9d9;
-  font-size: 1em;
+  transform: ${props => (props.direction === 'left' ? 'scaleX(-1)' : 'none')};
 `
 
 const Sponsors = () => {
   const [sponsors, setSponsors] = useState([])
-  const carouselSponsors = sponsors.filter(child => child !== '')
+  const [carouselSponsors, setCarouselSponsors] = useState([])
 
   useEffect(async () => {
-    // use cmd-f2022 collection to test
     const data = await fireDb.getCollection('nwHacks2025', 'Sponsors')
     if (data) {
       setSponsors(data)
+      setCarouselSponsors(data.filter(child => child.blurb !== undefined && child.blurb !== ''))
     }
   }, [])
 
   return (
     <SponsorsContainer>
-      <StaticContainer>
-        <StyledTitle id="sponsors">Sponsors</StyledTitle>
-        <PushinP>
-          Sponsors make this event happen.
-          <br />
-          <br />
-          If you are interested in working with us, joining us or speaking at one of our events, please reach out to us
-          below!
-        </PushinP>
-        <Button variant="solidRed" href="mailto:sponsorship@nwplus.io">
-          Sponsor nwHacks!
-        </Button>
+      <Spotlight direction="left" />
+      <Spotlight direction="right" />
+      <Title id="sponsors">SPONSORS</Title>
+      {carouselSponsors.length > 0 && <Carousel sponsors={carouselSponsors} />}
 
-        {/* each child in carousel is a sponsor */}
-
-        {carouselSponsors && (
-          <Carousel>
-            {carouselSponsors
-              .map(
-                item =>
-                  item.blurb && (
-                    <>
-                      <CarouselImg src={item.imgURL} />
-
-                      <CarouseBlurb>
-                        {window.innerWidth <= 425 ? `${item.blurb.substring(0, 440)}...` : item.blurb}
-                      </CarouseBlurb>
-                    </>
-                  )
-              )
-              .filter(e => e !== '')}
-          </Carousel>
-        )}
-
-        <SponsorsGrid sponsors={sponsors} />
-      </StaticContainer>
+      <SponsorsGrid sponsors={sponsors} />
     </SponsorsContainer>
   )
 }
