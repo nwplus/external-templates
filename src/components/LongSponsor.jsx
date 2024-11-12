@@ -1,7 +1,7 @@
 // used for inkind and startup tiers since they're both displayed in a single card
-import { Floor } from './SponsorsGrid'
 import { memo } from 'react'
 import styled from 'styled-components'
+import Floor from './Floor'
 
 const LongSponsorLevelContainer = styled.div`
   position: relative;
@@ -54,22 +54,20 @@ const LongSponsorImg = styled.img`
   object-fit: contain;
 `
 
-const LongSponsorList = memo(({ sponsors }) => {
-  return (
-    <>
-      <LongSponsorLevelContainer>
-        <Floor />
-        <LongSponsorCard>
-          <FlexContainer>
-            {sponsors.map(sponsor => (
-              <LongSponsor key={sponsor.name} link={sponsor.link} url={sponsor.imgURL} />
-            ))}
-          </FlexContainer>
-        </LongSponsorCard>
-      </LongSponsorLevelContainer>
-    </>
-  )
-})
+const LongSponsorList = memo(({ sponsors }) => (
+  <>
+    <LongSponsorLevelContainer>
+      <Floor />
+      <LongSponsorCard>
+        <FlexContainer>
+          {sponsors.map(sponsor => (
+            <LongSponsor key={sponsor.name} link={sponsor.link} url={sponsor.imgURL} />
+          ))}
+        </FlexContainer>
+      </LongSponsorCard>
+    </LongSponsorLevelContainer>
+  </>
+))
 
 const LongSponsor = ({ link, url }) => (
   <LongSponsorLink href={link} target="_blank" rel="noreferrer">

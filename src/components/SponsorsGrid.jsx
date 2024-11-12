@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef, memo } from 'react'
 import styled from 'styled-components'
 import LongSponsorList from './LongSponsor'
+import Floor from './Floor'
 
 const SPONSOR_WIDTH = { title: 70, platinum: 40, gold: 35, silver: 30, bronze: 25 }
 
@@ -79,7 +80,7 @@ const SponsorContainer = styled.div`
   justify-content: center;
 `
 
-export const SponsorLink = styled.a`
+const SponsorLink = styled.a`
   height: 60%;
   width: auto;
   max-width: 90%;
@@ -94,22 +95,6 @@ const SponsorImg = styled.img`
   max-width: 70%;
   border: none;
   object-fit: contain;
-`
-
-export const Floor = styled.div`
-  position: absolute;
-  z-index: 1;
-  width: 100vw;
-  margin: 0 auto;
-
-  background-image: url(/assets/images/floor.svg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  object-fit: cover;
-
-  aspect-ratio: 1280 / 156;
-  bottom: calc(100vw * (-20 / 1280));
 `
 
 const Nugget = styled.div`
@@ -138,8 +123,8 @@ const ListByTier = memo(({ listOfRows, tierSize, tier }) => {
 
   return (
     <>
-      {listOfRows.map((row, index) => (
-        <SponsorLevelContainer key={index}>
+      {listOfRows.map(row => (
+        <SponsorLevelContainer key={`${tier}-${row.length}`}>
           <Floor />
           {tier === 'title' && <Nugget />}
           <Row>
@@ -187,10 +172,10 @@ const SponsorsGrid = ({ sponsors }) => {
   return (
     <Container ref={containerRef}>
       <ListByTier listOfRows={rows.title} tierSize={SPONSOR_WIDTH.title} tier="title" />
-      <ListByTier listOfRows={rows.platinum} tierSize={SPONSOR_WIDTH.platinum} />
-      <ListByTier listOfRows={rows.gold} tierSize={SPONSOR_WIDTH.gold} />
-      <ListByTier listOfRows={rows.silver} tierSize={SPONSOR_WIDTH.silver} />
-      <ListByTier listOfRows={rows.bronze} tierSize={SPONSOR_WIDTH.bronze} />
+      <ListByTier listOfRows={rows.platinum} tierSize={SPONSOR_WIDTH.platinum} tier="platinum" />
+      <ListByTier listOfRows={rows.gold} tierSize={SPONSOR_WIDTH.gold} tier="gold" />
+      <ListByTier listOfRows={rows.silver} tierSize={SPONSOR_WIDTH.silver} tier="silver" />
+      <ListByTier listOfRows={rows.bronze} tierSize={SPONSOR_WIDTH.bronze} tier="bronze" />
 
       {tierList.startup.length > 0 && <LongSponsorList sponsors={tierList.startup} />}
       {tierList.inkind.length > 0 && <LongSponsorList sponsors={tierList.inkind} />}
