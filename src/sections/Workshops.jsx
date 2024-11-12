@@ -51,7 +51,7 @@ const Schedule = styled.div`
 const Grid = styled.div`
   display: grid;
   grid-template-columns: 28% 37% 37%;
-  gap: 50px;
+  gap:  calc(100vw * (50 / 1280));
 `
 
 const Text = styled.div`
@@ -129,12 +129,12 @@ const Workshops = () => {
 
   const items = [
     { name: "Hackathons 101", dateAndTime: "Tuesday, Jan 14 | 5:00 PM", description: "First-time hacker? Mosey on down to Hackathons 101! In this workshop, we’ll cover the basics of hackathons, including building your team, kickstarting your project, and making the most of your time. We will also cover key HackCamp information to ensure you’re prepped for the weekend!", defaultSrc: hackathons2, hoverSrc: hackathons1 },
-    { name: "Intro to Figma", defaultSrc: figma2, hoverSrc: figma1 },
-    { name: "Intro to Version Control", defaultSrc: version2, hoverSrc: version1 },
-    { name: "Intro to Web Dev", defaultSrc: webdev2, hoverSrc: webdev1 },
-    { name: "Intro to React", defaultSrc: react2, hoverSrc: react1 },
-    { name: "Intro to APIs", defaultSrc: apis2, hoverSrc: apis1 },
-    { name: "Internships 101", defaultSrc: internships2, hoverSrc: internships1 },
+    { name: "Intro to Figma", dateAndTime: "Tuesday, Jan 14 | 6:00 PM", description: "Want to learn the fundamentals of the UI/UX industry’s leading design platform? Come join our Intro to Figma workshop! We will explore the fundamental tools of Figma, explore basic prototyping and take you through our design process to transform low-fidelity sketches into high-fidelity designs.", defaultSrc: figma2, hoverSrc: figma1 },
+    { name: "Intro to Version Control", dateAndTime: "Tuesday, Jan 14 | 7:30 PM ", description: "Learn everything you need to know about git and version control in order to collaborate with your teammates and build awesome hackathon projects. Come to Intro to Version Control to learn how to fix your (git) commitment issues! We’ll be covering the basics of Git and version control including branches, pull requests, best practices and more!", defaultSrc: version2, hoverSrc: version1 },
+    { name: "Intro to Web Dev", dateAndTime: "Wednesday, Jan 15 | 5:00 PM", description: "Ever wanted to learn how to code and host your very own website? Come join us and learn how to code a website using HTML, CSS and JavaScript! We’ll explore how to make interactive web pages, style them, create animations, make websites mobile friendly, and more through hands on activities!", defaultSrc: webdev2, hoverSrc: webdev1 },
+    { name: "Intro to APIs", dateAndTime: "Wednesday, Jan 15 | 6:00 PM", description: "Join us as we demystify how your favorite software applications interact with each other. We will cover API structure, common use cases, and hands-on exercises to help you build your first API.", defaultSrc: apis2, hoverSrc: apis1 },
+    { name: "Intro to React", dateAndTime: "Wednesday, Jan 15 | 7:30 PM", description: "Join us to learn the basics of React from components to hooks, and build a small web app from scratch! If you are looking to put your JavaScript, HTML and CSS knowledge into action and dive into the world of dynamic web applications, this workshop is for you. No prior experience with React.js is required! We'll guide you through the fundamentals, so you can hit the ground running.", defaultSrc: react2, hoverSrc: react1 },
+    { name: "Internships 101", dateAndTime: "Thursday, Jan 16 | 5:00 PM", description: "Are you ready to break into big tech? Get your TLDR on recruiting for the most difficult part of Product, SWE and Design internships—landing the interview.", defaultSrc: internships2, hoverSrc: internships1 },
     { name: "Tech Career Exploration", defaultSrc: careers2, hoverSrc: careers1 },
     { name: "Pitching 101", defaultSrc: pitching2, hoverSrc: pitching1 },
   ];
