@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import ChevronLeft from '@assets/images/chevron_left.svg'
 
-const PAGE_FRAC_MOBILE = 90 // width: ?vw for the carousel component on mobile
+// const PAGE_FRAC_MOBILE = 90 // width: ?vw for the carousel component on mobile
 const PAGE_FRAC_DESKTOP = 60 // width: ?vw for the carousel component on desktop
 
 const CarouselContainer = styled.div`
@@ -180,8 +180,8 @@ const Carousel = ({ sponsors }) => {
           </LeftInnerContainer>
           {sponsors.length >= 1 && (
             <Dots>
-              {sponsors.map((_, i) => (
-                <Dot key={i} viewing={i === viewing} onClick={() => setViewing(i)} />
+              {sponsors.map((sponsor, i) => (
+                <Dot key={sponsor.name} viewing={i === viewing} onClick={() => setViewing(i)} />
               ))}
             </Dots>
           )}
