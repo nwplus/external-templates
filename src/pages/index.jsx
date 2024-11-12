@@ -53,15 +53,18 @@ const MiddleSectionsContainer = styled.div`
 
 const FaqSponsorsContainer = styled.div`
   background-image: url(/assets/images/faq_sponsors_background.svg);
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   object-fit: cover;
 
-  aspect-ratio: 1280/3734;
   width: 100%;
-  height: 100%;
   z-index: -1;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10rem;
+  height: auto;
 `
 
 export default function Index({ title }) {
