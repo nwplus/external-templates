@@ -1,5 +1,5 @@
-import React from 'react'
-import styled from 'styled-components'
+import React, { useEffect, useState, useRef } from 'react'
+import styled, { keyframes } from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faFacebook,
@@ -10,6 +10,7 @@ import {
   faYoutube,
 } from '@fortawesome/free-brands-svg-icons'
 import Team from '@components/Team'
+import confetti from '../../public/assets/images/confetti.svg'
 
 const FooterContainer = styled.div`
   position: relative;
@@ -145,52 +146,116 @@ const StaticContainer = styled.div`
   }
 `
 
-const Footer = () => (
-  <FooterContainer>
-    <FooterBackground />
-    <StaticContainer>
-      <TextContainer>
-        <SocialMediaIcons>
-          <a href="https://www.facebook.com/nwplusubc" target="_blank" rel="noreferrer">
-            <FontAwesomeIcon icon={faFacebook} />
-          </a>
-          <a href="https://www.instagram.com/nwplusubc" target="_blank" rel="noreferrer">
-            <FontAwesomeIcon icon={faInstagram} />
-          </a>
-          <a href="https://twitter.com/nwplusubc" target="_blank" rel="noreferrer">
-            <FontAwesomeIcon icon={faTwitter} />
-          </a>
-          <a href="https://www.linkedin.com/company/nwplus" target="_blank" rel="noreferrer">
-            <FontAwesomeIcon icon={faLinkedinIn} />
-          </a>
-          <a href="https://www.youtube.com/c/nwPlusUBC" target="_blank" rel="noreferrer">
-            <FontAwesomeIcon icon={faYoutube} />
-          </a>
-          <a href="https://medium.com/nwplusubc" target="_blank" rel="noreferrer">
-            <FontAwesomeIcon icon={faMediumM} />
-          </a>
-        </SocialMediaIcons>
-        <Links>
-          <a href="mailto:info@nwplus.io" target="_blank" rel="noreferrer">
-            Email Us
-          </a>
-          <a href="mailto:sponsorship@nwplus.io?subject=Sponsorship" target="_blank" rel="noreferrer">
-            Become a Sponsor
-          </a>
-          <a href="http://hackp.ac/coc" target="_blank" rel="noreferrer">
-            Code of Conduct
-          </a>
-        </Links>
-        <SmallText>
-          <div>Organized and held by nwPlus</div>
-          <div>Copyright &copy; nwHacks 2025</div>
-        </SmallText>
-      </TextContainer>
-      <TeamContainer>
-        <Team />
-      </TeamContainer>
-    </StaticContainer>
-  </FooterContainer>
-)
+const confettiFall = keyframes`
+  0% {
+    transform: translate(-50%, -100%);
+  }
+  100% {
+    transform: translate(-50%, 100%);
+  }
+`;
+
+const ConfettiImage = styled.img`
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  width: 100%;
+  height: auto;
+  animation: ${confettiFall} 5s forwards ease-in-out;
+  z-index: 9999;
+  pointer-events: none;
+`;
+
+const Footer = () => {
+  const [showConfetti, setShowConfetti] = useState(false);
+  const footerRef = useRef(null);
+
+  useEffect(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1,
+    };
+
+    const observerCallback = (entries) => {
+      const [entry] = entries;
+      if (entry.isIntersecting) {
+        setShowConfetti(true);
+      }
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    if (footerRef.current) {
+      observer.observe(footerRef.current);
+    }
+
+    return () => {
+      if (footerRef.current) {
+        observer.unobserve(footerRef.current);
+      }
+    };
+  }, []);
+
+  const handleAnimationEnd = () => {
+    setShowConfetti(false);
+  };
+
+  return (
+    <FooterContainer ref={footerRef}>
+      <FooterBackground />
+      {showConfetti && (
+        <ConfettiImage
+          src={confetti}
+          alt="Confetti"
+          onAnimationEnd={handleAnimationEnd}
+        />
+      )}
+      <StaticContainer>
+        <TextContainer>
+          <SocialMediaIcons>
+            <a href="https://www.facebook.com/nwplusubc" target="_blank" rel="noreferrer">
+              <FontAwesomeIcon icon={faFacebook} />
+            </a>
+            <a href="https://www.instagram.com/nwplusubc" target="_blank" rel="noreferrer">
+              <FontAwesomeIcon icon={faInstagram} />
+            </a>
+            <a href="https://twitter.com/nwplusubc" target="_blank" rel="noreferrer">
+              <FontAwesomeIcon icon={faTwitter} />
+            </a>
+            <a href="https://www.linkedin.com/company/nwplus" target="_blank" rel="noreferrer">
+              <FontAwesomeIcon icon={faLinkedinIn} />
+            </a>
+            <a href="https://www.youtube.com/c/nwPlusUBC" target="_blank" rel="noreferrer">
+              <FontAwesomeIcon icon={faYoutube} />
+            </a>
+            <a href="https://medium.com/nwplusubc" target="_blank" rel="noreferrer">
+              <FontAwesomeIcon icon={faMediumM} />
+            </a>
+          </SocialMediaIcons>
+          <Links>
+            <a href="mailto:info@nwplus.io" target="_blank" rel="noreferrer">
+              Email Us
+            </a>
+            <a href="mailto:sponsorship@nwplus.io?subject=Sponsorship" target="_blank" rel="noreferrer">
+              Become a Sponsor
+            </a>
+            <a href="http://hackp.ac/coc" target="_blank" rel="noreferrer">
+              Code of Conduct
+            </a>
+          </Links>
+          <SmallText>
+            <div>Organized and held by nwPlus</div>
+            <div>Copyright &copy; nwHacks 2025</div>
+          </SmallText>
+        </TextContainer>
+        <TeamContainer>
+          <Team />
+        </TeamContainer>
+      </StaticContainer>
+    </FooterContainer>
+  )
+};
 
 export default Footer
