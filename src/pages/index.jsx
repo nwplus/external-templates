@@ -96,9 +96,10 @@ export default function Index({ title }) {
           <About />
           <Separator />
 
-          <MiddleSectionsContainer>{/* <Stats /> */}</MiddleSectionsContainer>
-          <Separator />
-          <Workshops />
+          <MiddleSectionsContainer>
+            {/* <Stats /> */}
+            <Workshops />
+          </MiddleSectionsContainer>
           <Separator />
           <Projects />
           <Separator />
