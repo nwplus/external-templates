@@ -2,215 +2,226 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import ChevronLeft from '@assets/images/chevron_left.svg'
 
-const PAGE_HEIGHT = 400
-const PAGE_FRAC_MOBILE = 90 // width: ?vw for the carousel component on mobile
-const PAGE_FRAC_DESKTOP = 50 // width: ?vw for the carousel component on desktop
+// const PAGE_FRAC_MOBILE = 90 // width: ?vw for the carousel component on mobile
+const PAGE_FRAC_DESKTOP = 80 // width: ?% for the carousel component on desktop
 
 const CarouselContainer = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 100%;
-  margin-top: 5rem;
-  margin-bottom: 5rem;
+  max-width: 1600px;
+  gap: 2%;
+
+  z-index: 2;
 `
 
 const ContentContainer = styled.div`
-  width: ${PAGE_FRAC_DESKTOP}vw;
-  height: fit-content;
+  width: ${PAGE_FRAC_DESKTOP}%;
+  aspect-ratio: 889 / 431;
+  position: relative;
+
+  display: flex;
+  padding: 1.171875%; // the tv's border
+
+  background-image: url('/assets/images/sponsor_tv.svg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  ${p => p.theme.mediaQueries.mobile} {
+  }
+`
+
+const LeftContainer = styled.div`
+  flex: 285;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
 `
 
-const TopContainer = styled.div`
+const LeftInnerContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(100vw * (10 / 1280));
+  width: 80%;
+`
+
+const RightContainer = styled.div`
+  flex: 574;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
+
+const RightInnerContainer = styled.div`
+  display: flex;
+  width: 90%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 5%;
+`
+
+const ActiveButton = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(100vw * (40 / 1280));
+  height: calc(100vw * (40 / 1280));
+
+  border-radius: 50%;
+  background-color: ${props => (props.visible ? 'rgba(255, 255, 255, 0.2)' : 'transparent')};
+  cursor: ${props => (props.visible ? 'pointer' : 'default')};
+  transition: 200ms ease-in-out;
+  visibility: ${props => (props.visible ? 'visible' : 'hidden')};
+
+  &:hover {
+    background-color: ${props => (props.visible ? 'rgba(255, 255, 255, 0.4)' : 'transparent')};
+  }
+`
+
+const ChevronImg = styled.img`
+  width: calc(100vw * (20 / 1280));
+  height: calc(100vw * (20 / 1280));
+  transform: ${props => (props.flip ? 'scaleX(-1)' : 'none')};
+`
+
+const Dots = styled.div`
+  position: absolute;
+  bottom: calc(100vw * (30 / 1280));
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: calc(100vw * (10 / 1280));
+`
+
+const Dot = styled.div`
+  width: calc(100vw * (10 / 1280));
+  height: calc(100vw * (10 / 1280));
+  border-radius: 50%;
+  background-color: white;
+  transition: 300ms;
+  cursor: pointer;
+  opacity: ${props => (props.viewing ? 1 : 0.2)};
+`
+
+const Logo = styled.img`
   width: 100%;
-  display: flex;
-  flex-grow: 1;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
+`
+
+const SponsoredByText = styled.div`
+  font-size: 2rem;
+  font-weight: 600;
+  color: white;
+  text-align: center;
 
   ${p => p.theme.mediaQueries.mobile} {
-    width: ${PAGE_FRAC_MOBILE}vw;
+    font-size: 1rem;
   }
 `
 
-const PagesContainer = styled.div`
-  flex-grow: 1;
-  min-height: ${PAGE_HEIGHT}px;
-  position: relative;
-  background-color: rgba(255, 255, 255, 0.2);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 3rem;
-  overflow: hidden;
-  border-radius: 10px;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    height: 550px;
-  }
-`
-
-const PagesArrayD = styled.div`
-  position: absolute;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  height: 100%;
-  width: fit-content;
-  gap: 3rem;
-  transition: 500ms;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    display: none;
-  }
-`
-
-const PagesArrayM = styled.div`
-  position: absolute;
-  display: none;
-  flex-direction: row;
-  align-items: center;
-  height: 100%;
-  width: fit-content;
-  gap: 3rem;
-  transition: 500ms;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    display: flex;
-  }
-`
-
-const Page = styled.div`
-  width: calc(${PAGE_FRAC_DESKTOP}vw - 6rem);
-  height: 100%;
-  padding: 2rem;
+const Blurb = styled.div`
+  font-size: 1.25rem;
+  font-family: 'HK Grotesk Medium';
+  font-weight: 500;
+  max-height: 70%;
   overflow-y: auto;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    width: calc(${PAGE_FRAC_MOBILE}vw - 6rem);
-  }
+  word-wrap: break-word;
+  width: 100%;
 
   ::-webkit-scrollbar {
     width: 0.5rem;
   }
   ::-webkit-scrollbar-thumb {
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(0, 0, 0, 0.5);
     border-radius: 1rem;
   }
   ::-webkit-scrollbar-track {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 6px;
+    background-color: transparent;
   }
 
-  /* For Firefox */
   scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.3) rgba(255, 255, 255, 0.1);
-`
+  scrollbar-color: rgba(0, 0, 0, 0.5) transparent;
 
-const ActiveButton = styled.div`
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.2);
-  width: 2rem;
-  height: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: 200ms;
-
-  &:hover {
-    background-color: rgba(255, 255, 255, 0.4);
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: 0.75rem;
   }
 `
 
-const BrickedButton = styled.div`
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.2);
-  width: 2rem;
-  height: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0.4;
+const LearnMoreButton = styled.a`
+  font-size: 1rem;
+  font-weight: 600;
+  background: #883030;
+  color: white;
+  text-decoration: none;
+  padding: calc(100vw * (10 / 1280)) calc(100vw * (15 / 1280));
+  border-radius: calc(100vw * (8 / 1280));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: 0.75rem;
+  }
 `
 
-const ChevronImg = styled.img`
-  width: 0.5rem;
-  height: 0.9rem;
-`
-
-const Dots = styled.div`
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
-  align-items: center;
-`
-const Dot = styled.div`
-  width: 0.7rem;
-  height: 0.7rem;
-  border-radius: 50%;
-  background-color: white;
-  transition: 300ms;
-  cursor: pointer;
-`
-
-const Carousel = ({ children }) => {
+const Carousel = ({ sponsors }) => {
   const [viewing, setViewing] = useState(0)
-  const LeftButton = viewing === 0 ? BrickedButton : ActiveButton
-  const RightButton = viewing === children.length - 1 ? BrickedButton : ActiveButton
+  const showLeftButton = viewing > 0
+  const showRightButton = viewing < sponsors.length - 1
 
   return (
     <CarouselContainer>
+      <ActiveButton
+        visible={showLeftButton}
+        onClick={() => {
+          if (showLeftButton) {
+            setViewing(prev => Math.max(0, prev - 1))
+          }
+        }}
+      >
+        <ChevronImg src={ChevronLeft} />
+      </ActiveButton>
+
       <ContentContainer>
-        <TopContainer>
-          <LeftButton
-            onClick={() => {
-              setViewing(prev => Math.max(0, prev - 1))
-            }}
-          >
-            <ChevronImg src={ChevronLeft} />
-          </LeftButton>
-
-          <PagesContainer>
-            <PagesArrayD style={{ left: `calc(calc(calc(${PAGE_FRAC_DESKTOP}vw - 3rem) * -1) * ${viewing})` }}>
-              {children.map(c => (
-                <Page>{c}</Page>
+        <LeftContainer>
+          <LeftInnerContainer>
+            <SponsoredByText>
+              PROUDLY <br /> SPONSORED BY
+            </SponsoredByText>
+            <Logo src={sponsors[viewing]?.imgURL} />
+          </LeftInnerContainer>
+          {sponsors.length >= 1 && (
+            <Dots>
+              {sponsors.map((sponsor, i) => (
+                <Dot key={sponsor.name} viewing={i === viewing} onClick={() => setViewing(i)} />
               ))}
-            </PagesArrayD>
-            <PagesArrayM style={{ left: `calc(calc(calc(${PAGE_FRAC_MOBILE}vw - 3rem) * -1) * ${viewing})` }}>
-              {children.map(c => (
-                <Page>{c}</Page>
-              ))}
-            </PagesArrayM>
-          </PagesContainer>
+            </Dots>
+          )}
+        </LeftContainer>
 
-          <RightButton
-            onClick={() => {
-              setViewing(prev => Math.min(children.length - 1, prev + 1))
-            }}
-          >
-            <ChevronImg src={ChevronLeft} style={{ transform: 'scaleX(-1)' }} />
-          </RightButton>
-        </TopContainer>
-
-        <Dots>
-          {Array(children.length)
-            .fill(null)
-            .map((_, i) => (
-              <Dot
-                onClick={() => {
-                  setViewing(i)
-                }}
-                style={{ opacity: i === viewing ? 1 : 0.2 }}
-              />
-            ))}
-        </Dots>
+        <RightContainer>
+          <RightInnerContainer>
+            <Blurb>{sponsors[viewing]?.blurb}</Blurb>
+            <LearnMoreButton href={sponsors[viewing]?.link}>Learn More</LearnMoreButton>
+          </RightInnerContainer>
+        </RightContainer>
       </ContentContainer>
+
+      <ActiveButton
+        visible={showRightButton}
+        onClick={() => {
+          if (showRightButton) {
+            setViewing(prev => Math.min(sponsors.length - 1, prev + 1))
+          }
+        }}
+      >
+        <ChevronImg src={ChevronLeft} flip />
+      </ActiveButton>
     </CarouselContainer>
   )
 }
