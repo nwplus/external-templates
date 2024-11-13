@@ -7,7 +7,7 @@ import Faq from 'src/sections/FAQ'
 import Footer from 'src/sections/Footer'
 import About from 'src/sections/About'
 // import Track from 'src/sections/Tracks'
-// import Stats from 'src/sections/Stats'
+import Stats from 'src/sections/Stats'
 import Projects from 'src/sections/Projects'
 import Separator from 'src/components/Separator'
 import Testimonials from 'src/sections/Testimonials'
@@ -18,6 +18,7 @@ import MainGraphicsMobile from '@assets/images/mobile/MainBackground.svg'
 
 import Hero from '../components/Hero'
 import NavigationBar from '../components/NavigationBar'
+import Gallery from 'src/sections/Gallery'
 
 const HalfContainer = styled.div`
   background-color: #2a2218;
@@ -92,7 +93,11 @@ export default function Index({ title }) {
           <About />
           <Separator />
 
-          <MiddleSectionsContainer>{/* <Stats /> */}</MiddleSectionsContainer>
+          <MiddleSectionsContainer>
+            <Stats />
+            <Gallery />
+          </MiddleSectionsContainer>
+
           <Separator />
           <Projects />
           <Separator />
