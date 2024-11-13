@@ -21,9 +21,10 @@ import pitching1 from '../../public/assets/images/pitching1.svg'
 import pitching2 from '../../public/assets/images/pitching2.svg'
 
 const WorkshopsContainer = styled.div`
-  position: relative;
-  min-height: calc(100vw * (2050 / 1280));
-  top: calc(100vw * (-630 / 1280));
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: calc(100vw * (550 / 1280));
 `
 
 const Nugget = styled.img`
