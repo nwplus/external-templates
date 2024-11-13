@@ -256,13 +256,13 @@ const Hero = () => {
           <RegistrationCountdown />
         </LeftPillar>
 
-        <MentorButton href="" target="_blank" rel="noopener noreferrer">
+        <MentorButton href="https://docs.google.com/forms/d/e/1FAIpQLSe-KggS1ekHPklwNTMdc4xQyVAPwLjC4oLWg4EWvn2BEx5jQw/viewform?usp=sf_link" target="_blank" rel="noopener noreferrer">
           <MuseumButton topText="Become a" bottomText="Mentor" />
         </MentorButton>
         <HackerButton href="https://portal.nwplus.io" target="_blank" rel="noopener noreferrer">
           <MuseumButton topText="Apply as a" bottomText="Hacker" />
         </HackerButton>
-        <VolunteerButton href="" target="_blank" rel="noopener noreferrer">
+        <VolunteerButton href="https://docs.google.com/forms/d/e/1FAIpQLSevOUAxpWWvyaL4w6Jq9VIqpfZA3y-Lmk_RcAQ68ifCqH7ztg/viewform?usp=sf_link" target="_blank" rel="noopener noreferrer">
           <MuseumButton topText="Become a" bottomText="Volunteer" />
         </VolunteerButton>
 
