@@ -535,7 +535,7 @@ export default function Team () {
         easing: 'linear',
         loop: true,
         translateX: [-(150 * profiles.length), 0],
-        duration: 3000 * profiles.length,
+        duration: 3500 * profiles.length,
         autoplay: false
       })
     )
