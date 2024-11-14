@@ -7,7 +7,7 @@ import Faq from 'src/sections/FAQ'
 import Footer from 'src/sections/Footer'
 import About from 'src/sections/About'
 // import Track from 'src/sections/Tracks'
-// import Stats from 'src/sections/Stats'
+import Stats from 'src/sections/Stats'
 import Projects from 'src/sections/Projects'
 import Separator from 'src/components/Separator'
 import Testimonials from 'src/sections/Testimonials'
@@ -95,7 +95,10 @@ export default function Index({ title }) {
           <About />
           <Separator />
 
-          <MiddleSectionsContainer>{/* <Stats /> */}</MiddleSectionsContainer>
+          <MiddleSectionsContainer>
+            <Stats />
+          </MiddleSectionsContainer>
+
           <Separator />
           <Projects />
           <Separator />
