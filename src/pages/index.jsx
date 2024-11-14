@@ -9,6 +9,7 @@ import About from 'src/sections/About'
 // import Track from 'src/sections/Tracks'
 import Workshops from 'src/sections/Workshops'
 import Stats from 'src/sections/Stats'
+// import Gallery from 'src/sections/Gallery'
 import Projects from 'src/sections/Projects'
 import Separator from 'src/components/Separator'
 import Testimonials from 'src/sections/Testimonials'
@@ -19,7 +20,6 @@ import MainGraphicsMobile from '@assets/images/mobile/MainBackground.svg'
 
 import Hero from '../components/Hero'
 import NavigationBar from '../components/NavigationBar'
-import Gallery from 'src/sections/Gallery'
 
 const HalfContainer = styled.div`
   background-color: #2a2218;

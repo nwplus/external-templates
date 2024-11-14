@@ -2,12 +2,8 @@ import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
 import { useParallax } from 'react-scroll-parallax';
 
-// import StatsSVG from "../assets/images/stats.svg"
-import MobileStatsSVG from "@assets/images/mobile/stats.svg";
-
 import lightStatsImage from "@assets/images/LightStats.svg";
 import unlightStatsImage from "@assets/images/UnlightStats.svg";
-// import StatsPart3 from "@assets/images/StatsPart3.svg"
 
 const StatsContainer = styled.div`
   min-height: calc(calc(900 / 1280) * 100vw);
@@ -27,17 +23,17 @@ const StatsImg = styled.img`
   transition: opacity 0.5s ease;
 `;
 
-const MobileStatsContainer = styled.img`
-  min-height: calc(calc(439 / 414) * 100vw);
-  width: 100vw;
-  height: auto;
-  position: relative;
-  top: -60px;
-  display: none;
-  ${p => p.theme.mediaQueries.mobile} {
-    display: block;
-  }
-`;
+// const MobileStatsContainer = styled.img`
+//   min-height: calc(calc(439 / 414) * 100vw);
+//   width: 100vw;
+//   height: auto;
+//   position: relative;
+//   top: -60px;
+//   display: none;
+//   ${p => p.theme.mediaQueries.mobile} {
+//     display: block;
+//   }
+// `;
 
 const HiddenTitle = styled.p`
   font-family: 'LT Museum';
@@ -50,10 +46,6 @@ const HiddenTitle = styled.p`
   z-index: 1;
   opacity: 0;
 `;
-
-const GalleryContainer = styled.div`
-
-`
 
 const Stats = () => {
   const [isUnlightHidden, setIsUnlightHidden] = useState(false);
