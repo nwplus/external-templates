@@ -98,7 +98,7 @@ export default function Index({ title }) {
 
           <MiddleSectionsContainer>
             <Stats />
-            <Gallery />
+            {/* <Gallery /> */}
           </MiddleSectionsContainer>
 
           <Separator />
