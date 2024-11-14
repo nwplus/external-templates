@@ -7,7 +7,7 @@ import Faq from 'src/sections/FAQ'
 import Footer from 'src/sections/Footer'
 import About from 'src/sections/About'
 // import Track from 'src/sections/Tracks'
-import Stats from 'src/sections/Stats'
+// import Stats from 'src/sections/Stats'
 import Projects from 'src/sections/Projects'
 import Separator from 'src/components/Separator'
 import Testimonials from 'src/sections/Testimonials'
@@ -40,16 +40,15 @@ const ContentContainer = styled.div`
 `
 
 const MiddleSectionsContainer = styled.div`
-  background-image: url(/assets/images/middle_background.jpg);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  object-fit: cover;
-
-  aspect-ratio: 1280/2303;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
+	position: relative;
+	background-image: url(/assets/images/middle_background.jpg);
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	object-fit: cover;
+		
+	width: 100%;
+	aspect-ratio: 1280/2303;
 `
 
 const FaqSponsorsContainer = styled.div`
@@ -96,11 +95,7 @@ export default function Index({ title }) {
           <About />
           <Separator />
 
-          <MiddleSectionsContainer>
-            <Stats />
-            {/* <Gallery /> */}
-          </MiddleSectionsContainer>
-
+          <MiddleSectionsContainer>{/* <Stats /> */}</MiddleSectionsContainer>
           <Separator />
           <Projects />
           <Separator />
