@@ -18,11 +18,11 @@ const NavBarContainer = styled.nav`
   visibility: ${p => p.visibility};
   opacity: ${p => p.opacity};
   transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
-  padding: 0.6rem 4rem 0;
+  padding: 0 64px;
 
   ${p => p.theme.mediaQueries.mobile} {
     background: none;
-    padding: 24px 40px 0;
+    padding: 4px 40px 0;
     z-index: 999;
     justify-content: flex-end;
   }
@@ -42,7 +42,7 @@ const NavGroupContainer = styled.div`
 
 const NavTextContainer = styled.div`
   display: flex;
-  gap: 4%;
+  gap: 3%;
   align-items: center;
   width: 100%;
   justify-content: center;
@@ -53,7 +53,7 @@ const NavTextContainer = styled.div`
 `
 
 const NwPlusLogo = styled.img`
-  max-height: 50px;
+  max-height: 40px;
 
   ${p => p.theme.mediaQueries.mobile} {
     width: 30px;
@@ -86,11 +86,15 @@ const LinkText = styled.a`
 
 const StyledLinkHeaders = styled.h3`
   font-family: HK Grotesk;
-  font-size: ${() => scale(768, 1440, 16, 18)};
+  font-size: ${() => scale(1024, 1440, 12, 18)};
   font-weight: 600;
   line-height: 23px;
   letter-spacing: 0px;
   text-align: center;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: 16px;
+  }
 `
 
 const HamburgerMenu = styled.img`
@@ -131,10 +135,11 @@ const Button = styled.a`
   display: table;
   text-decoration: none;
   position: relative;
-  padding: 11px 21px;
+  padding: 8px 16px;
   border-radius: 50px;
   font-weight: bold;
-  background: #aa4245;
+  background: linear-gradient(36deg, #d69a0e 23.92%, #f0bb3e 68.82%);
+  font-size: ${() => scale(1024, 1440, 12, 18)};
   color: #f3f5f4;
   ${p => p.theme.mediaQueries.mobile} {
     right: 0;
@@ -145,7 +150,7 @@ const Button = styled.a`
     align-items: center;
     justify-content: center;
     content: 'Live Portal';
-    color: #244556;
+    color: #f3f5f4;
 
     border-radius: 50px;
     position: absolute;
@@ -158,7 +163,7 @@ const Button = styled.a`
     transition: opacity 0.25s ease-in-out;
     opacity: 0;
 
-    background: #dcb551;
+    background: linear-gradient(36deg, #b88a0d 23.92%, #d69a0e 68.82%);
   }
 
   &:hover::before {
@@ -291,7 +296,8 @@ const NavigationBar = ({ bannerExists }) => {
   }, [])
 
   const handleScroll = useCallback(() => {
-    const scroll = window.pageYOffset || document.documentElement.scrollTop
+    const scroll = window.scrollY || document.documentElement.scrollTop
+    const scrollThreshold = 25
 
     if (scroll <= BANNER_OFFSET) {
       setStayAtTop(bannerExists)
@@ -301,7 +307,8 @@ const NavigationBar = ({ bannerExists }) => {
       setStayAtTop(false)
       setVisibility('hidden')
       setOpacity('0')
-    } else if (scroll < lastScrollRef.current) {
+    } else if (lastScrollRef.current - scroll > scrollThreshold) {
+      // only show nav after scrolling up by threshold
       setVisibility('visible')
       setOpacity('1')
       setStayAtTop(false)
