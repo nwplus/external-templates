@@ -281,7 +281,7 @@ const NavigationBar = ({ bannerExists }) => {
   const [showDropdown, setShowDropdown] = useState(false)
   const [visibility, setVisibility] = useState('visible')
   const [opacity, setOpacity] = useState('1')
-  const [stayAtTop, setStayAtTop] = useState(bannerExists && true)
+  const [stayAtTop, setStayAtTop] = useState(bannerExists)
   const lastScrollRef = useRef(0)
 
   const handleResize = useCallback(() => {
@@ -294,19 +294,17 @@ const NavigationBar = ({ bannerExists }) => {
     const scroll = window.pageYOffset || document.documentElement.scrollTop
 
     if (scroll <= BANNER_OFFSET) {
-      setStayAtTop(bannerExists && true)
+      setStayAtTop(bannerExists)
       setVisibility('visible')
       setOpacity('1')
-    } else {
-      if (scroll > lastScrollRef.current) {
-        setStayAtTop(false)
-        setVisibility('hidden')
-        setOpacity('0')
-      } else if (scroll < lastScrollRef.current) {
-        setVisibility('visible')
-        setOpacity('1')
-        setStayAtTop(false)
-      }
+    } else if (scroll > lastScrollRef.current) {
+      setStayAtTop(false)
+      setVisibility('hidden')
+      setOpacity('0')
+    } else if (scroll < lastScrollRef.current) {
+      setVisibility('visible')
+      setOpacity('1')
+      setStayAtTop(false)
     }
 
     lastScrollRef.current = scroll
