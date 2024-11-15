@@ -18,7 +18,7 @@ const profiles = [
     name: 'Alissa Guo',
     emoji: '🥘',
     color: '#FFC0CB',
-    title: 'Cmd-f logistics coordinator',
+    title: 'cmd-f logistics coordinator',
     social: 'https://www.linkedin.com/in/alissa-guo/'
   },
   {
@@ -26,7 +26,7 @@ const profiles = [
     name: 'Allison Chu',
     emoji: '🚅',
     color: '#01DACC',
-    title: '',
+    title: 'Design Coordinator',
     social: ''
   },
   {
@@ -250,7 +250,7 @@ const profiles = [
     name: 'Khoa Bui',
     emoji: '🐧',
     color: '#e46060',
-    title: 'Logistics Coordinator',
+    title: 'nwHacks Logistics Coordinator',
     social: ''
   },
   {
@@ -258,7 +258,7 @@ const profiles = [
     name: 'Kitty Liu',
     emoji: '🐈',
     color: '#F1b5c2',
-    title: 'Design Coordinator',
+    title: 'Marketing Coordinator',
     social: 'linkedin.com/in/kittyliu3'
   },
   {
@@ -443,6 +443,8 @@ const StyledTitle = styled(Header3)`
 `
 
 const StyledSecondaryTitle = styled(Header3)`
+  position: relative;
+  top: -1vw;
   margin-top: 0.7vw;
   color: #f9c745;
   filter: drop-shadow(0 0 4px #f9c745);
@@ -474,8 +476,8 @@ const ProfileImage = styled.img`
     transform: scale(1.15);
     opacity: 1;
   }
-  width: 8vw;
-  height: 8vw;
+  width: 7vw;
+  height: 7vw;
   border-radius: 1vw;
   background-color: ${p => p.color};
   object-fit: cover;
@@ -532,8 +534,8 @@ export default function Team () {
         targets: ['#anim-profiles'],
         easing: 'linear',
         loop: true,
-        translateX: [-(90 * profiles.length), 0],
-        duration: 3000 * profiles.length,
+        translateX: [-(150 * profiles.length), 0],
+        duration: 3500 * profiles.length,
         autoplay: false
       })
     )

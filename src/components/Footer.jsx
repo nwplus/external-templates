@@ -27,7 +27,7 @@ const CaveTop = styled.div`
   
 
   position: relative;
-  top: -151vw;
+  top: -155.5vw;
   /* top: -80vw; */
   left: 0;
   /* z-index: 2; */
@@ -206,7 +206,7 @@ const TeamContainer = styled.div`
   z-index: 4;
   position: absolute;
   left: 0;
-  top: 138vw;
+  top: 152.5vw;
   text-align: center;
   width: 100%;
   padding-bottom: 2vw;
