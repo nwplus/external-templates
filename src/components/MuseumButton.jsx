@@ -65,7 +65,7 @@ const ButtonTextContainer = styled.div`
 
   display: flex;
   flex-direction: column;
-  gap: calc(100vw * (6 / 1280));
+  gap: max(calc(100vw * (6 / 1280)), 8px);
 `
 
 const ButtonTopText = styled.p`
