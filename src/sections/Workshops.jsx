@@ -141,7 +141,7 @@ const Workshops = () => {
   ];
 
   return (
-    <WorkshopsContainer>
+    <WorkshopsContainer id="workshops">
       <Grid>
         <Text>
           <Title>Discover New Skills</Title>
