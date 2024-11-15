@@ -97,17 +97,13 @@ const SponsorImg = styled.img`
   object-fit: contain;
 `
 
-const Nugget = styled.div`
+const Nugget = styled.img`
   position: absolute;
-  width: 10%;
-  aspect-ratio: 0.76;
-  background-image: url(./assets/images/nugget.svg);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+  width: calc(100vw * (200 / 1280));
+  height: auto;
   z-index: 3;
-  bottom: 0;
-  left: calc(100vw * (450 / 1280));
+  left: calc(100vw * (475 / 1280));
+  top: calc(100vw * (280 / 1280));
 `
 
 const Sponsor = memo(({ link, url, size }) => (
@@ -126,7 +122,7 @@ const ListByTier = memo(({ listOfRows, tierSize, tier }) => {
       {listOfRows.map(row => (
         <SponsorLevelContainer key={`${tier}-${row.length}`}>
           <Floor />
-          {tier === 'title' && <Nugget />}
+          {tier === 'title' && <Nugget src="./assets/images/nugget.svg" />}
           <Row>
             {row.map(item => (
               <Sponsor key={item.name} link={item.link} url={item.imgURL} size={tierSize} />

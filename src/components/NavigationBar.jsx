@@ -1,11 +1,10 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import styled from 'styled-components'
 import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
 import { scale } from '@utilities/format'
 import mlhImage from '@assets/images/mlhTrustBadgeWhite.svg'
 import { BANNER_OFFSET } from '../constants/measurements'
 import MenuImg from '../../public/images/icons/menu.svg'
-
 
 const NavBarContainer = styled.nav`
   position: ${p => (p.stayAtTop ? 'absolute' : 'fixed')};
@@ -20,7 +19,6 @@ const NavBarContainer = styled.nav`
   opacity: ${p => p.opacity};
   transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
   padding: 0.6rem 4rem 0;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 49.73%, rgba(89, 88, 90, 0) 100%);
 
   ${p => p.theme.mediaQueries.mobile} {
     background: none;
@@ -46,7 +44,8 @@ const NavTextContainer = styled.div`
   display: flex;
   gap: 4%;
   align-items: center;
-  flex-grow: 2;
+  width: 100%;
+  justify-content: center;
 
   ${p => p.theme.mediaQueries.mobile} {
     display: none;
@@ -55,7 +54,6 @@ const NavTextContainer = styled.div`
 
 const NwPlusLogo = styled.img`
   max-height: 50px;
-  margin-right: 18px;
 
   ${p => p.theme.mediaQueries.mobile} {
     width: 30px;
@@ -113,7 +111,7 @@ const DropDownContentContainer = styled.div`
   align-items: center;
   gap: 24px;
   width: 100%;
-  background: #AA4245;
+  background: #aa4245;
 `
 
 const PortalButtonContainer = styled.div`
@@ -122,6 +120,7 @@ const PortalButtonContainer = styled.div`
   transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
   justify-self: center;
   user-select: none;
+  position: absolute;
 `
 
 const StyledPortalText = styled.div`
@@ -135,9 +134,8 @@ const Button = styled.a`
   padding: 11px 21px;
   border-radius: 50px;
   font-weight: bold;
-  background: #AA4245;
-  color: #F3F5F4;
-  right: 120px;
+  background: #aa4245;
+  color: #f3f5f4;
   ${p => p.theme.mediaQueries.mobile} {
     right: 0;
   }
@@ -160,7 +158,7 @@ const Button = styled.a`
     transition: opacity 0.25s ease-in-out;
     opacity: 0;
 
-    background: #DCB551;
+    background: #dcb551;
   }
 
   &:hover::before {
@@ -188,10 +186,10 @@ const Button = styled.a`
 `
 
 const DropDownFooter = styled.div`
-    height: 20px;
-    background: #152E3A;
-    width: 100vw;
-    margin-bottom: -25px;
+  height: 20px;
+  background: #152e3a;
+  width: 100vw;
+  margin-bottom: -25px;
 `
 
 const TrustBadgeLink = styled.a`
@@ -254,20 +252,16 @@ const PortalButton = ({ portalOpen }) => (
 
 const MenuList = ({ isMobile, closeDropdown }) => (
   <>
+    {isMobile && <NwPlusLogo src="/images/logos/nwplus-logo.svg" alt="nwPlus club logo in white" />}
     <MenuItem name="About" href="/#about" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
-    {/* <MenuItem name='Statistics' href='/#statistics' isAnchor isMobile={isMobile} closeDropdown={closeDropdown} /> */}
-    <MenuItem name="Tracks" href="/#tracks" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
+    <MenuItem name="Recap" href="/#recap" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
+    <MenuItem name="Workshops" href="/#workshops" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
+    <MenuItem name="Past Projects" href="/#past-projects" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
+    {!isMobile && <NwPlusLogo src="/images/logos/nwplus-logo.svg" alt="nwPlus club logo in white" />}
+    <MenuItem name="Testimonials" href="/#testimonials" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
     <MenuItem name="FAQ" href="/#faq" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
     <MenuItem name="Sponsors" href="/#sponsors" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
-
-    <MenuItem
-      name="2024"
-      href="https://2024.nwhacks.io"
-      target="_blank"
-      rel="noopener"
-      isMobile={isMobile}
-      closeDropdown={closeDropdown}
-    />
+    <MenuItem name="Contact us" href="/#contact" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
   </>
 )
 
@@ -287,44 +281,44 @@ const NavigationBar = ({ bannerExists }) => {
   const [showDropdown, setShowDropdown] = useState(false)
   const [visibility, setVisibility] = useState('visible')
   const [opacity, setOpacity] = useState('1')
-  const [stayAtTop, setStayAtTop] = useState(bannerExists && true)
+  const [stayAtTop, setStayAtTop] = useState(bannerExists)
+  const lastScrollRef = useRef(0)
 
-  const handleResize = () => {
+  const handleResize = useCallback(() => {
     if (window.innerWidth >= SCREEN_BREAKPOINTS.mobile) {
       setShowDropdown(false)
     }
-  }
+  }, [])
 
-  const handleScroll = () => {
-    let lastScroll = 0
-    return () => {
-      const scroll = window.pageYOffset || document.documentElement.scrollTop
-      if (scroll <= BANNER_OFFSET) {
-        setStayAtTop(bannerExists && true)
-        setVisibility('visible')
-        setOpacity('1')
-      } else if (scroll > lastScroll) {
-        setStayAtTop(false)
-        setVisibility('hidden')
-        setOpacity('0')
-        setStayAtTop(0)
-      } else {
-        setVisibility('visible')
-        setOpacity('1')
-      }
-      lastScroll = scroll
+  const handleScroll = useCallback(() => {
+    const scroll = window.pageYOffset || document.documentElement.scrollTop
+
+    if (scroll <= BANNER_OFFSET) {
+      setStayAtTop(bannerExists)
+      setVisibility('visible')
+      setOpacity('1')
+    } else if (scroll > lastScrollRef.current) {
+      setStayAtTop(false)
+      setVisibility('hidden')
+      setOpacity('0')
+    } else if (scroll < lastScrollRef.current) {
+      setVisibility('visible')
+      setOpacity('1')
+      setStayAtTop(false)
     }
-  }
+
+    lastScrollRef.current = scroll
+  }, [bannerExists])
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll())
+    window.addEventListener('scroll', handleScroll)
     window.addEventListener('resize', handleResize)
 
     return () => {
       window.removeEventListener('scroll', handleScroll)
       window.removeEventListener('resize', handleResize)
     }
-  }, [])
+  }, [handleScroll, handleResize])
 
   if (showDropdown) {
     // Mobile version
@@ -338,12 +332,8 @@ const NavigationBar = ({ bannerExists }) => {
           />
         </NavBarContainer>
         <DropDownContentContainer>
-          <a href="/">
-            <NwPlusLogo src="/images/logos/nwplus-logo.svg" alt="nwPlus club logo in white" />
-          </a>
           <MenuList isMobile={showDropdown} closeDropdown={setShowDropdown} />
           {/* Make sure desktop (below) has the same portalOpen value */}
-          <PortalButton portalOpen />
           <DropDownFooter />
         </DropDownContentContainer>
         <TrustBadge stayAtTop={stayAtTop} />
@@ -355,17 +345,14 @@ const NavigationBar = ({ bannerExists }) => {
   return (
     <NavBarContainer visibility={visibility} opacity={opacity} stayAtTop={stayAtTop}>
       <NavGroupContainer>
-        <a href="/">
-          <NwPlusLogo src="/images/logos/nwplus-logo.svg" alt="nwPlus club logo in white" />
-        </a>
+        <PortalButton portalOpen />
         <NavTextContainer>
-          <MenuList />
+          <MenuList isMobile={false} />
         </NavTextContainer>
         {/* Make sure mobile (above) has the same portalOpen value */}
-        <PortalButton portalOpen />
+        <TrustBadge stayAtTop={stayAtTop} />
       </NavGroupContainer>
       <HamburgerMenu src={MenuImg} alt="dropdown menu icon" onClick={() => setShowDropdown(true)} />
-      <TrustBadge stayAtTop={stayAtTop} />
     </NavBarContainer>
   )
 }
