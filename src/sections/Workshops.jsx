@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components'
-import nugget from '../../public/assets/images/nugget.svg'
+import nugget from '../../public/assets/images/nugget_workshop.png'
 import apis1 from '../../public/assets/images/apis1.svg'
 import apis2 from '../../public/assets/images/apis2.svg'
 import hackathons1 from '../../public/assets/images/hackathons1.svg'
