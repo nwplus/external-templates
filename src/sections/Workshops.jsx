@@ -152,6 +152,7 @@ const Workshops = () => {
         <Squares>
         {items.map(item => (
             <Square
+              key={item.name}
               src={item.defaultSrc}
               onMouseOver={(e) => handleMouseOver(item, e)}
               onMouseLeave={(e) => handleMouseLeave(item, e)}

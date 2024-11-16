@@ -120,7 +120,7 @@ const ListByTier = memo(({ listOfRows, tierSize, tier }) => {
   return (
     <>
       {listOfRows.map(row => (
-        <SponsorLevelContainer key={`${tier}-${row.length}`}>
+        <SponsorLevelContainer key={`${tier}-${row[0].name}`}>
           <Floor />
           {tier === 'title' && <Nugget src="./assets/images/nugget_sponsor.png" />}
           <Row>
