@@ -22,9 +22,10 @@ const NavBarContainer = styled.nav`
 
   ${p => p.theme.mediaQueries.mobile} {
     background: none;
-    padding: 4px 40px 0;
+    padding: 20px 24px 0 0;
     z-index: 999;
     justify-content: flex-end;
+    align-items: flex-start;
   }
 `
 
@@ -52,12 +53,13 @@ const NavTextContainer = styled.div`
   }
 `
 
-const NwPlusLogo = styled.img`
-  max-height: 40px;
+const NwPlusLogoContainer = styled.div`
+  svg {
+    max-height: 40px;
 
-  ${p => p.theme.mediaQueries.mobile} {
-    width: 30px;
-    margin-right: 0;
+    ${p => p.theme.mediaQueries.mobile} {
+      width: 30px;
+    }
   }
 `
 
@@ -93,6 +95,7 @@ const StyledLinkHeaders = styled.h3`
   text-align: center;
 
   ${p => p.theme.mediaQueries.mobile} {
+    color: #3a2f21;
     font-size: 16px;
   }
 `
@@ -109,13 +112,13 @@ const DropDownContentContainer = styled.div`
   position: fixed;
   top: 0;
   z-index: 998;
-  padding: 30px 40px 24px 40px;
+  padding: 20px 40px 24px 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 24px;
   width: 100%;
-  background: #aa4245;
+  background: #eddecc;
 `
 
 const PortalButtonContainer = styled.div`
@@ -255,14 +258,57 @@ const PortalButton = ({ portalOpen }) => (
   </PortalButtonContainer>
 )
 
+const NwPlusLogo = ({ fill }) => (
+  <NwPlusLogoContainer>
+    <svg width="44" height="50" viewBox="0 0 44 50" fill={fill} xmlns="http://www.w3.org/2000/svg">
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M32.3923 5.81787L43.7849 5.81787V9.069L32.3923 9.069V5.81787Z"
+        fill={fill}
+      />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M39.8683 0L39.8683 11.8067L36.3081 15.229L36.3081 3.59335L39.8683 0Z"
+        fill={fill}
+      />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M34.5292 20.1916L41.6721 13.3472L41.6721 42.2151L34.5292 38.6218L34.5292 20.1916Z"
+        fill={fill}
+      />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M0.35144 9.58227V0L41.6496 39.698V49.2802L0.35144 9.58227Z"
+        fill={fill}
+      />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M0.35144 0L7.47181 6.84448L7.47181 42.4358L0.35144 49.2802L0.35144 0Z"
+        fill={fill}
+      />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M0.351534 49.2798L17.7964 32.8531L12.8122 28.0619L0.462376 39.2835L0.351534 49.2798Z"
+        fill={fill}
+      />
+    </svg>
+  </NwPlusLogoContainer>
+)
+
 const MenuList = ({ isMobile, closeDropdown }) => (
   <>
-    {isMobile && <NwPlusLogo src="/images/logos/nwplus-logo.svg" alt="nwPlus club logo in white" />}
+    {isMobile && <NwPlusLogo fill="#3A2F21" />}
     <MenuItem name="About" href="/#about" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
     <MenuItem name="Recap" href="/#recap" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
     <MenuItem name="Workshops" href="/#workshops" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
     <MenuItem name="Past Projects" href="/#past-projects" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
-    {!isMobile && <NwPlusLogo src="/images/logos/nwplus-logo.svg" alt="nwPlus club logo in white" />}
+    {!isMobile && <NwPlusLogo fill="white" />}
     <MenuItem name="Testimonials" href="/#testimonials" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
     <MenuItem name="FAQ" href="/#faq" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
     <MenuItem name="Sponsors" href="/#sponsors" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
