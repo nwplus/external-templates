@@ -145,7 +145,7 @@ const Workshops = () => {
       <Grid>
         <Text>
           <Title>Discover New Skills</Title>
-          <Description>Not sure where to start? Don’t worry, hackathons are a great place to learn new skills! Before the hackathon, nwHacks will host a series of workshops to help hackers gear up for the weekend. Everyone is invited to attend our workshops, regardless of skill level! 
+          <Description>Not sure where to start? Don&apos;t worry, hackathons are a great place to learn new skills! Before the hackathon, nwHacks will host a series of workshops to help hackers gear up for the weekend. Everyone is invited to attend our workshops, regardless of skill level! 
           <br/><br/> Throughout the hackathon, there will also be opportunities for hackers to attend sponsor-led workshops.
           <br/><br/> For more resources, check out our self-learning wiki.</Description>
         </Text>
