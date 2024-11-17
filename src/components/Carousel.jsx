@@ -71,6 +71,7 @@ const RightContainer = styled.div`
 
   ${p => p.theme.mediaQueries.mobile} {
     width: calc(100vw * (160 / 487));
+    max-height: 100%;
   }
 `
 
