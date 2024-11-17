@@ -25,7 +25,7 @@ const MobileTabletStatsContainer = styled.div`
   height: auto;
   position: relative;
 
-  ${p => p.theme.mediaQueries.mobile}, ${p => p.theme.mediaQueries.tablet} {
+  ${p => p.theme.mediaQueries.mobile}, ${p => p.theme.mediaQueries.tabletLarge} {
     display: block;
   }
 `;

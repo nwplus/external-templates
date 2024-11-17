@@ -9,7 +9,7 @@ import About from 'src/sections/About'
 // import Track from 'src/sections/Tracks'
 import Workshops from 'src/sections/Workshops'
 import Stats from 'src/sections/Stats'
-// import Gallery from 'src/sections/Gallery'
+import Gallery from 'src/sections/Gallery'
 import Projects from 'src/sections/Projects'
 import Separator from 'src/components/Separator'
 import Testimonials from 'src/sections/Testimonials'
@@ -98,7 +98,7 @@ export default function Index({ title }) {
 
           <MiddleSectionsContainer>
             <Stats />
-            {/* <Gallery /> */}
+            <Gallery />
             <Workshops />
           </MiddleSectionsContainer>
 
