@@ -194,13 +194,6 @@ const Button = styled.a`
   `}
 `
 
-const DropDownFooter = styled.div`
-  height: 20px;
-  background: #152e3a;
-  width: 100vw;
-  margin-bottom: -25px;
-`
-
 const TrustBadgeLink = styled.a`
   display: block;
   max-width: 100px;
@@ -212,7 +205,7 @@ const TrustBadgeLink = styled.a`
   z-index: 1000;
 
   ${p => p.theme.mediaQueries.mobile} {
-    left: 50px;
+    left: 25px;
   }
 `
 
@@ -353,7 +346,6 @@ const NavigationBar = ({ bannerExists }) => {
         <DropDownContentContainer>
           <MenuList isMobile={showDropdown} closeDropdown={setShowDropdown} />
           {/* Make sure desktop (below) has the same portalOpen value */}
-          <DropDownFooter />
         </DropDownContentContainer>
         <TrustBadge stayAtTop={stayAtTop} />
       </>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import fireDb from '../utilities/firebase'
+// import fireDb from '../utilities/firebase'
 
 const RegistrationContainer = styled.div`
   display: flex;
@@ -92,7 +92,8 @@ function RegistrationCountdown() {
   useEffect(() => {
     async function fetchDeadline() {
       try {
-        const deadlineString = await fireDb.getApplicationDate()
+        // const deadlineString = await fireDb.getApplicationDate()
+        const deadlineString = 'December 20th, 2024 at 11:59 PM (Pacific Time)'
         if (deadlineString) {
           const deadline = parseDate(deadlineString)
           setTimeLeft(calculateTimeLeft(deadline))
