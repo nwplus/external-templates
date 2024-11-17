@@ -152,6 +152,19 @@ const StaticContainer = styled.div`
   }
 `
 
+const ConfettiContainer = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3840px;
+  height: 2160px;
+
+  canvas {
+    width: 100% !important;
+    height: 100% !important;
+  }
+`
+
 const Footer = () => {
   const [isMobile, setIsMobile] = useState(false)
 
@@ -160,14 +173,16 @@ const Footer = () => {
   }, [])
 
   return (
-    <FooterContainer>
+    <FooterContainer id="footer">
       <FooterBackground />
       {!isMobile && (
-        <Confetti
-          mode="fall"
-          shapeSize={20}
-          colors={['#E261BB', '#61B5E2', '#E26161', '#E28A61', '#ED9823', '#FDC699']}
-        />
+        <ConfettiContainer>
+          <Confetti
+            mode="fall"
+            shapeSize={40}
+            colors={['#E261BB', '#61B5E2', '#E26161', '#E28A61', '#ED9823', '#FDC699']}
+          />
+        </ConfettiContainer>
       )}
 
       <StaticContainer>

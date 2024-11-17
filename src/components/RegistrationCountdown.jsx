@@ -65,7 +65,10 @@ function RegistrationCountdown() {
 
   function parseDate(dateString) {
     const [datePart, timePart] = dateString.split(' at ')
-    const [month, day, year] = datePart.replace(/(\d+)(st|nd|rd|th)/, '$1').split(' ')
+    const [month, day, year] = datePart
+      .replace(/(\d+)(st|nd|rd|th)/, '$1')
+      .replace(',', '')
+      .split(' ')
     const [time, period] = timePart.split(' ')
     const [hours, minutes] = time.split(':')
 

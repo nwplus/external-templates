@@ -81,8 +81,8 @@ const Stats = () => {
 
   console.log(isMobile, isTablet)
   return (
-    <>
-      {!isMobile && !isTablet && (
+    <StatsContainer id="stats">
+      {!isMobileOrTablet && (
         <StatsContainer ref={statsContainerRef}>
           <HiddenTitle>Last year we had...</HiddenTitle>
           <StatsImg src={unlightStatsImage} ref={unlight.ref} isHidden={false} />
@@ -95,8 +95,8 @@ const Stats = () => {
           <MobileTabletImg src={isMobile ? mobileStatsImage : tabletStatsImage} alt="Mobile or Tablet Stats" />
         </MobileTabletStatsContainer>
       )}
-    </>
-  )
-}
+    </StatsContainer>
+  );
+};
 
 export default Stats
