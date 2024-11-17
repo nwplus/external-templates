@@ -108,8 +108,7 @@ const ActiveButton = styled.div`
 `
 
 const ChevronImg = styled.img`
-  width: calc(100vw * (20 / 1280));
-  height: calc(100vw * (20 / 1280));
+  height: 1.5625vw;
   transform: ${props => (props.flip ? 'scaleX(-1)' : 'none')};
 `
 
@@ -164,12 +163,13 @@ const Blurb = styled.div`
   font-family: 'HK Grotesk Medium';
   font-weight: 500;
   max-height: 70%;
-  overflow-y: auto;
+  overflow-y: scroll;
   word-wrap: break-word;
   width: 100%;
 
   ::-webkit-scrollbar {
     width: 0.5rem;
+    -webkit-appearance: none;
   }
   ::-webkit-scrollbar-thumb {
     background-color: rgba(0, 0, 0, 0.5);
@@ -181,6 +181,7 @@ const Blurb = styled.div`
 
   scrollbar-width: thin;
   scrollbar-color: rgba(0, 0, 0, 0.5) transparent;
+  -webkit-overflow-scrolling: touch;
 
   ${p => p.theme.mediaQueries.mobile} {
     font-size: 0.75rem;
