@@ -32,20 +32,20 @@ const ContentContainer = styled.div`
   ${p => p.theme.mediaQueries.mobile} {
     width: 95%;
     background-image: url('/assets/images/sponsor_tv_mobile.svg');
-    aspect-ratio: 441 / 283;
     padding: calc(100vw * (9.8 / 487)) calc(100vw * (7.43 / 487));
+    aspect-ratio: 441 / 283;
   }
 `
 
 const LeftContainer = styled.div`
-  flex: 285;
+  width: calc(100vw * (285 / 1280));
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
   ${p => p.theme.mediaQueries.mobile} {
-    width: calc(100vw * (141.23 / 487));
+    width: calc(100vw * (150 / 487));
   }
 `
 
@@ -63,14 +63,16 @@ const LeftInnerContainer = styled.div`
 `
 
 const RightContainer = styled.div`
-  flex: 574;
+  width: calc(100vw * (574 / 1280));
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  max-height: 95%;
 
   ${p => p.theme.mediaQueries.mobile} {
-    width: calc(100vw * (160 / 487));
+    width: calc(100vw * (295 / 487));
+    height: 95%;
     max-height: 100%;
   }
 `
@@ -83,6 +85,7 @@ const RightInnerContainer = styled.div`
   justify-content: center;
   align-items: flex-start;
   gap: 5%;
+  padding-top: 2%;
 `
 
 const ActiveButton = styled.div`
@@ -108,8 +111,7 @@ const ActiveButton = styled.div`
 `
 
 const ChevronImg = styled.img`
-  width: calc(100vw * (20 / 1280));
-  height: calc(100vw * (20 / 1280));
+  height: 1.5625vw;
   transform: ${props => (props.flip ? 'scaleX(-1)' : 'none')};
 `
 
@@ -163,7 +165,7 @@ const Blurb = styled.div`
   font-size: 1.25rem;
   font-family: 'HK Grotesk Medium';
   font-weight: 500;
-  max-height: 70%;
+  max-height: 75%;
   overflow-y: auto;
   word-wrap: break-word;
   width: 100%;
