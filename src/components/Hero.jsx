@@ -50,6 +50,19 @@ const HeroBackgroundMobile = styled.div`
   }
 `
 
+const Nugget = styled.img`
+  display: none;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: block;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100vw * (95 / 487));
+    top: calc(100vw * (755 / 487));
+  }
+`
+
 const LogoContainer = styled.div`
   display: none;
 
@@ -357,6 +370,8 @@ const Hero = () => {
           <HeroBackground />
         </HeroBackgroundContainer>
         <HeroBackgroundMobile />
+
+        <Nugget src="./assets/images/nugget_hero.png" />
 
         <LogoContainer>
           <NwPlusLogo fill="#3A2E21" />
