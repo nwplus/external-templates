@@ -172,6 +172,7 @@ const Blurb = styled.div`
 
   ::-webkit-scrollbar {
     width: 0.5rem;
+    -webkit-appearance: none;
   }
   ::-webkit-scrollbar-thumb {
     background-color: rgba(0, 0, 0, 0.5);
@@ -183,6 +184,7 @@ const Blurb = styled.div`
 
   scrollbar-width: thin;
   scrollbar-color: rgba(0, 0, 0, 0.5) transparent;
+  -webkit-overflow-scrolling: touch;
 
   ${p => p.theme.mediaQueries.mobile} {
     font-size: 0.75rem;
