@@ -1,17 +1,32 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { useParallax } from 'react-scroll-parallax';
 
 import lightStatsImage from "@assets/images/LightStats.svg";
 import unlightStatsImage from "@assets/images/UnlightStats.svg";
+import tabletStatsImage from "@assets/images/tabletStats.png";
+import mobileStatsImage from "@assets/images/mobileStats.png";
 
+// Styled components
 const StatsContainer = styled.div`
   min-height: calc(calc(900 / 1280) * 100vw);
   width: 100vw;
   height: auto;
   position: relative;
+
   ${p => p.theme.mediaQueries.mobile} {
     display: none;
+  }
+`;
+
+const MobileTabletStatsContainer = styled.div`
+  display: none;
+  width: 100%;
+  height: auto;
+  position: relative;
+
+  ${p => p.theme.mediaQueries.mobile}, ${p => p.theme.mediaQueries.tabletLarge} {
+    display: block;
   }
 `;
 
@@ -23,17 +38,10 @@ const StatsImg = styled.img`
   transition: opacity 0.5s ease;
 `;
 
-// const MobileStatsContainer = styled.img`
-//   min-height: calc(calc(439 / 414) * 100vw);
-//   width: 100vw;
-//   height: auto;
-//   position: relative;
-//   top: -60px;
-//   display: none;
-//   ${p => p.theme.mediaQueries.mobile} {
-//     display: block;
-//   }
-// `;
+const MobileTabletImg = styled.img`
+  width: 100%;
+  height: auto;
+`;
 
 const HiddenTitle = styled.p`
   font-family: 'LT Museum';
@@ -47,26 +55,22 @@ const HiddenTitle = styled.p`
   opacity: 0;
 `;
 
+// Stats component
 const Stats = () => {
-  const [isUnlightHidden, setIsUnlightHidden] = useState(false);
+  const [isMobileOrTablet, setIsMobileOrTablet] = useState(false);
   const statsContainerRef = useRef(null);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsUnlightHidden(!entry.isIntersecting);
-      },
-      { threshold: 0.5 }
-    );
+    const updateDeviceType = () => {
+      // Update state based on window width
+      setIsMobileOrTablet(window.innerWidth <= 768);
+    };
 
-    if (statsContainerRef.current) {
-      observer.observe(statsContainerRef.current);
-    }
+    updateDeviceType(); // Initial check
+    window.addEventListener('resize', updateDeviceType);
 
     return () => {
-      if (statsContainerRef.current) {
-        observer.unobserve(statsContainerRef.current);
-      }
+      window.removeEventListener('resize', updateDeviceType);
     };
   }, []);
 
@@ -75,13 +79,22 @@ const Stats = () => {
 
   return (
     <>
-      <StatsContainer ref={statsContainerRef}>
-        <HiddenTitle>Last year we had...</HiddenTitle>
-        <StatsImg src={unlightStatsImage} ref={unlight.ref} isHidden={isUnlightHidden} />
-        <StatsImg src={lightStatsImage} ref={light.ref} isHidden={!isUnlightHidden} />
-      </StatsContainer>
+      {!isMobileOrTablet && (
+        <StatsContainer ref={statsContainerRef}>
+          <HiddenTitle>Last year we had...</HiddenTitle>
+          <StatsImg src={unlightStatsImage} ref={unlight.ref} isHidden={false} />
+          <StatsImg src={lightStatsImage} ref={light.ref} isHidden />
+        </StatsContainer>
+      )}
 
-      {/* <MobileStatsContainer src={MobileStatsSVG} /> */}
+      {isMobileOrTablet && (
+        <MobileTabletStatsContainer>
+          <MobileTabletImg
+            src={isMobileOrTablet ? mobileStatsImage : tabletStatsImage}
+            alt="Mobile or Tablet Stats"
+          />
+        </MobileTabletStatsContainer>
+      )}
     </>
   );
 };

@@ -1,72 +1,125 @@
-// import React, { useEffect, useState, useRef } from 'react';
-// import styled from 'styled-components';
-// import { useParallax } from 'react-scroll-parallax';
+import React from 'react';
+import styled from 'styled-components';
 
-// const GalleryContainer = styled.div`
-//   min-height: calc(calc(900 / 1280) * 100vw);
-//   width: 100vw;
-//   height: auto;
-//   position: relative;
-//   ${p => p.theme.mediaQueries.mobile} {
-//     display: none;
-//   }
-// `;
+// Import gallery images
+import desktopGalleryImage from '@assets/images/desktopGallery.svg';
+import tabletGalleryImage from '@assets/images/tabletGallery.png';
+import mobileGalleryImage from '@assets/images/mobileGallery.png';
 
-// const Title = styled.p`
-//   font-family: 'LT Museum';
-//   color: black;
-//   font-size: calc(100vw * (50 / 1280));
-//   font-weight: 700;
-//   position: relative;
-//   top: 120px;
-//   left: 10%;
-//   z-index: 1;
-// `;
+// Styled Components
+const GalleryContainer = styled.div`
+  min-height: calc((900 / 1280) * 100vw);
+  width: 100vw;
+  height: auto;
+  position: relative;
+`;
 
-// const VideoContainer = styled.div`
-//   width: 580px;
-//   height: 335px;
-//   border: 10px solid #151515;
-//   display: block;
-//   margin: 0 auto;
-//   background: #151515;
-// `
-// const VideoFooter = styled.div`
-//   position: relative;
-//   top: -14px;
-//   z-index: 1;
-//   float: right;
-//   gap:10px;
-// `
-// const Dot = styled.div`
-//   width: 4px;
-//   height: 4px;
-//   background: ${props => (props.red ? "#F20F0F" : "#737373")};
-//   border-radius: 50%;
-//   display: inline-block;
-//   margin-left: 5px;
-// `
+const DesktopImage = styled.img`
+  width: 100vw;
+  height: auto;
+  position: absolute;
+  top: -290px;
+  display: block; /* Default is visible */
 
-// const Gallery = () => {
-//   return (
-//     <>
-//       <GalleryContainer>
-//         <Title>Gallery</Title>
+  ${p => p.theme.mediaQueries.tablet} {
+    display: none; /* Hide on tablet */
+  }
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none; /* Hide on mobile */
+  }
+`;
 
-//         <VideoContainer>
-//           <iframe width="560" height="315" src="https://www.youtube.com/embed/C_1ygFqM_oo?si=4HRmb4xcuXGdeZkp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+const TabletImage = styled.img`
+  width: 100vw;
+  height: auto;
+  position: absolute;
+  top: -290px;
+  display: none; /* Default hidden */
 
-//           <VideoFooter>
-//             <Dot></Dot>
-//             <Dot></Dot>
-//             <Dot red={true}></Dot>
-//           </VideoFooter>
-//         </VideoContainer>
-//       </GalleryContainer>
+  ${p => p.theme.mediaQueries.tablet} {
+    display: block; /* Show on tablet */
+  }
+  ${p => p.theme.mediaQueries.desktop} {
+    display: none; /* Hide on desktop */
+  }
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none; /* Hide on mobile */
+  }
+`;
 
-//       {/* <MobileGalleryContainer src={MobileGallerySVG} /> */}
-//     </>
-//   );
-// };
+const MobileImage = styled.img`
+  width: 100vw;
+  height: auto;
+  position: absolute;
+  top: -290px;
+  display: none; /* Default hidden */
 
-// export default Gallery;
+  ${p => p.theme.mediaQueries.mobile} {
+    display: block; /* Show on mobile */
+  }
+  ${p => p.theme.mediaQueries.tablet} {
+    display: none; /* Hide on tablet */
+  }
+  ${p => p.theme.mediaQueries.desktop} {
+    display: none; /* Hide on desktop */
+  }
+`;
+
+const VideoContainer = styled.div`
+  width: 580px;
+  height: 335px;
+  border: 10px solid #151515;
+  display: block;
+  margin: 0 auto;
+  background: #151515;
+  position: relative;
+  top: 20vh;
+`;
+
+const VideoFooter = styled.div`
+  position: relative;
+  top: -14px;
+  z-index: 1;
+  float: right;
+  gap: 10px;
+`;
+
+const Dot = styled.div`
+  width: 4px;
+  height: 4px;
+  background: ${props => (props.red ? '#F20F0F' : '#737373')};
+  border-radius: 50%;
+  display: inline-block;
+  margin-left: 5px;
+`;
+
+// Component
+const Gallery = () => (
+    <GalleryContainer>
+      {/* Images for different screen sizes */}
+      <DesktopImage src={desktopGalleryImage} alt="Desktop Gallery" />
+      <TabletImage src={tabletGalleryImage} alt="Tablet Gallery" />
+      <MobileImage src={mobileGalleryImage} alt="Mobile Gallery" />
+
+      {/* Video Container */}
+      <VideoContainer>
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/C_1ygFqM_oo?si=4HRmb4xcuXGdeZkp"
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
+         />
+        <VideoFooter>
+          <Dot />
+          <Dot />
+          <Dot red />
+        </VideoFooter>
+      </VideoContainer>
+    </GalleryContainer>
+  );
+
+export default Gallery;

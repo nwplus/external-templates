@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import fireDb from '@utilities/firebase'
-import { useParallax } from 'react-scroll-parallax'
 import FaqBox from '@components/FaqBox'
-import { Header2, Header3 } from '@components/Typography'
-
-import flyingCardsImg from "@assets/images/flyingCards.svg"
+import { Header3 } from '@components/Typography'
 
 const FaqContainer = styled.div`
   position: relative;
@@ -85,22 +82,6 @@ const CollectionName = styled(Header3)`
   }
 `
 
-const StyledTitle = styled(Header2)`
-  font-size: 3rem;
-  text-align: center;
-  ${p => p.theme.mediaQueries.mobile} {
-    font-size: 3em;
-  }
-`
-
-const FlyingCardsImgContainer = styled.img`
-  position: absolute;  
-  width: 100%;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    display: none;
-  }
-`
 
 const FaqCollection = ({ category, faqs, expandedQuestion, setExpandedQuestion }) => (
   <CollectionContainer>
@@ -150,21 +131,9 @@ const Faq = () => {
     setFaqData(processedData)
   }, [])
 
-
-  const flyingCards = useParallax({
-    speed: 1,
-    translateY: ['-40px', '40px']
-  });
-
   return (
     <FaqContainer>
-
-      <FlyingCardsImgContainer src={flyingCardsImg} ref={flyingCards.ref} />
-
       <Wrapper id="faq">
-        <StyledTitle color="#F0EEF2" fontSize="5rem">
-          FAQ
-        </StyledTitle>
 
         {faqData ? (
           <FaqGrid>
