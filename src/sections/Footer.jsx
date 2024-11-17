@@ -1,4 +1,3 @@
-import React, { useEffect, useState, useRef } from 'react'
 import styled, { keyframes } from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
@@ -12,6 +11,9 @@ import {
 import Team from '@components/Team'
 import Newsletter from '@components/Newsletter'
 import confetti from '../../public/assets/images/confetti.svg'
+import Confetti from 'react-confetti-boom'
+import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
+import { useState, useEffect } from 'react'
 
 const FooterContainer = styled.div`
   position: relative;
@@ -177,44 +179,22 @@ const ConfettiImage = styled.img`
 `
 
 const Footer = () => {
-  const [showConfetti, setShowConfetti] = useState(false)
-  const footerRef = useRef(null)
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
-    const observerOptions = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.1,
-    }
-
-    const observerCallback = entries => {
-      const [entry] = entries
-      if (entry.isIntersecting) {
-        setShowConfetti(true)
-      }
-    }
-
-    const observer = new IntersectionObserver(observerCallback, observerOptions)
-
-    if (footerRef.current) {
-      observer.observe(footerRef.current)
-    }
-
-    return () => {
-      if (footerRef.current) {
-        observer.unobserve(footerRef.current)
-      }
-    }
+    setIsMobile(window.innerWidth <= SCREEN_BREAKPOINTS.mobile)
   }, [])
 
-  const handleAnimationEnd = () => {
-    setShowConfetti(false)
-  }
-
   return (
-    <FooterContainer ref={footerRef}>
+    <FooterContainer>
       <FooterBackground />
-      {showConfetti && <ConfettiImage src={confetti} alt="Confetti" onAnimationEnd={handleAnimationEnd} />}
+      {!isMobile && (
+        <Confetti
+          mode="fall"
+          shapeSize={20}
+          colors={['#E261BB', '#61B5E2', '#E26161', '#E28A61', '#ED9823', '#FDC699']}
+        />
+      )}
 
       <StaticContainer>
         <TextContainer>

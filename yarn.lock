@@ -6360,6 +6360,11 @@ rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
+react-confetti-boom@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-confetti-boom/-/react-confetti-boom-1.0.0.tgz#90f9a5194abe182aa1b31629114599a9d1b0031b"
+  integrity sha512-JPCs1tx36xduFdMORaRLLvFJABAQUgjEqKvqZiBZr8bUkHsCzbHeesnfQwZU1LExmGiYVFGIJS/tiR4OUTktww==
+
 react-dom@17.0.1:
   version "17.0.1"
   resolved "https://registry.npmjs.org/react-dom/-/react-dom-17.0.1.tgz"
