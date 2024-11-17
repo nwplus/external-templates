@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import nugget from '../../public/assets/images/nugget_workshop.png'
 import apis1 from '../../public/assets/images/apis1.svg'
@@ -52,7 +52,7 @@ const Schedule = styled.div`
 const Grid = styled.div`
   display: grid;
   grid-template-columns: 28% 37% 37%;
-  gap:  calc(100vw * (50 / 1280));
+  gap: calc(100vw * (50 / 1280));
 `
 
 const Text = styled.div`
@@ -62,7 +62,7 @@ const Text = styled.div`
 const Title = styled.h1`
   font-weight: 700;
   font-size: calc(100vw * (30 / 1280));
-  color: #51483E;
+  color: #51483e;
   margin-top: calc(100vw * (25.6 / 1280));
   white-space: nowrap;
 `
@@ -98,8 +98,9 @@ const ParagraphSmall = styled.p`
 
 const Description = styled.p`
   font-weight: 500;
+  font-family: 'HK Grotesk Medium';
   font-size: calc(100vw * (16 / 1280));
-  color: #51483E;
+  color: #51483e;
 `
 
 const Squares = styled.div`
@@ -116,29 +117,92 @@ const Square = styled.img`
 `
 
 const Workshops = () => {
-  const [hoveredItem, setHoveredItem] = useState(null);
+  const [hoveredItem, setHoveredItem] = useState(null)
 
   const handleMouseOver = (item, e) => {
-    setHoveredItem(item);
-    e.currentTarget.src = item.hoverSrc;
-  };
+    setHoveredItem(item)
+    e.currentTarget.src = item.hoverSrc
+  }
 
   const handleMouseLeave = (item, e) => {
-    setHoveredItem(null);
-    e.currentTarget.src = item.defaultSrc;
-  };
+    setHoveredItem(null)
+    e.currentTarget.src = item.defaultSrc
+  }
 
   const items = [
-    { name: "Hackathons 101", dateAndTime: "Tuesday, Jan 14 | 5:00 PM", description: "First-time hacker? Mosey on down to Hackathons 101! In this workshop, we’ll cover the basics of hackathons, including building your team, kickstarting your project, and making the most of your time. We will also cover key nwHacks information to ensure you’re prepped for the weekend!", defaultSrc: hackathons2, hoverSrc: hackathons1 },
-    { name: "Intro to Figma", dateAndTime: "Tuesday, Jan 14 | 6:00 PM", description: "Want to learn the fundamentals of the UI/UX industry’s leading design platform? Come join our Intro to Figma workshop! We will explore the fundamental tools of Figma, explore basic prototyping and take you through our design process to transform low-fidelity sketches into high-fidelity designs.", defaultSrc: figma2, hoverSrc: figma1 },
-    { name: "Intro to Version Control", dateAndTime: "Tuesday, Jan 14 | 7:30 PM ", description: "Learn everything you need to know about git and version control in order to collaborate with your teammates and build awesome hackathon projects. Come to Intro to Version Control to learn how to fix your (git) commitment issues! We’ll be covering the basics of Git and version control including branches, pull requests, best practices and more!", defaultSrc: version2, hoverSrc: version1 },
-    { name: "Intro to Web Dev", dateAndTime: "Wednesday, Jan 15 | 5:00 PM", description: "Ever wanted to learn how to code and host your very own website? Come join us and learn how to code a website using HTML, CSS and JavaScript! We’ll explore how to make interactive web pages, style them, create animations, make websites mobile friendly, and more through hands on activities!", defaultSrc: webdev2, hoverSrc: webdev1 },
-    { name: "Intro to APIs", dateAndTime: "Wednesday, Jan 15 | 6:00 PM", description: "Join us as we demystify how your favorite software applications interact with each other. We will cover API structure, common use cases, and hands-on exercises to help you build your first API.", defaultSrc: apis2, hoverSrc: apis1 },
-    { name: "Intro to React", dateAndTime: "Wednesday, Jan 15 | 7:30 PM", description: "Join us to learn the basics of React from components to hooks, and build a small web app from scratch! If you are looking to put your JavaScript, HTML and CSS knowledge into action and dive into the world of dynamic web applications, this workshop is for you. No prior experience with React.js is required! We'll guide you through the fundamentals, so you can hit the ground running.", defaultSrc: react2, hoverSrc: react1 },
-    { name: "Internships 101", dateAndTime: "Thursday, Jan 16 | 5:00 PM", description: "Are you ready to break into big tech? Get your TLDR on recruiting for the most difficult part of Product, SWE and Design internships—landing the interview.", defaultSrc: internships2, hoverSrc: internships1 },
-    { name: "Tech Career Exploration", dateAndTime: "Thursday, Jan 16 | 6:00 PM", description: "Ever wonder what tech careers exist outside of the typical software engineering roles? This panel brings together industry experts from fields like blockchain, research, and biotech. Learn about the day-to-day realities of working in these unconventional tech sectors and get tips on how to break into these exciting fields.", defaultSrc: careers2, hoverSrc: careers1 },
-    { name: "Pitching 101", dateAndTime: "Thursday, Jan 16 | 7:30 PM", description: "Got a great idea for a product but not sure how to pitch it? Learn from successful startup founders on how to sell your vision like a pro. This workshop will provide you with insights into what it takes to craft the perfect pitch, drawing on real-world experiences from some of Canada's top startup minds.", defaultSrc: pitching2, hoverSrc: pitching1 },
-  ];
+    {
+      name: 'Hackathons 101',
+      dateAndTime: 'Tuesday, Jan 14 | 5:00 PM',
+      description:
+        "First-time hacker? Mosey on down to Hackathons 101! In this workshop, we'll cover the basics of hackathons, including building your team, kickstarting your project, and making the most of your time. We will also cover key nwHacks information to ensure you're prepped for the weekend!",
+      defaultSrc: hackathons2,
+      hoverSrc: hackathons1,
+    },
+    {
+      name: 'Intro to Figma',
+      dateAndTime: 'Tuesday, Jan 14 | 6:00 PM',
+      description:
+        "Want to learn the fundamentals of the UI/UX industry's leading design platform? Come join our Intro to Figma workshop! We will explore the fundamental tools of Figma, explore basic prototyping and take you through our design process to transform low-fidelity sketches into high-fidelity designs.",
+      defaultSrc: figma2,
+      hoverSrc: figma1,
+    },
+    {
+      name: 'Intro to Version Control',
+      dateAndTime: 'Tuesday, Jan 14 | 7:30 PM ',
+      description:
+        "Learn everything you need to know about git and version control in order to collaborate with your teammates and build awesome hackathon projects. Come to Intro to Version Control to learn how to fix your (git) commitment issues! We'll be covering the basics of Git and version control including branches, pull requests, best practices and more!",
+      defaultSrc: version2,
+      hoverSrc: version1,
+    },
+    {
+      name: 'Intro to Web Dev',
+      dateAndTime: 'Wednesday, Jan 15 | 5:00 PM',
+      description:
+        "Ever wanted to learn how to code and host your very own website? Come join us and learn how to code a website using HTML, CSS and JavaScript! We'll explore how to make interactive web pages, style them, create animations, make websites mobile friendly, and more through hands on activities!",
+      defaultSrc: webdev2,
+      hoverSrc: webdev1,
+    },
+    {
+      name: 'Intro to APIs',
+      dateAndTime: 'Wednesday, Jan 15 | 6:00 PM',
+      description:
+        'Join us as we demystify how your favorite software applications interact with each other. We will cover API structure, common use cases, and hands-on exercises to help you build your first API.',
+      defaultSrc: apis2,
+      hoverSrc: apis1,
+    },
+    {
+      name: 'Intro to React',
+      dateAndTime: 'Wednesday, Jan 15 | 7:30 PM',
+      description:
+        "Join us to learn the basics of React from components to hooks, and build a small web app from scratch! If you are looking to put your JavaScript, HTML and CSS knowledge into action and dive into the world of dynamic web applications, this workshop is for you. No prior experience with React.js is required! We'll guide you through the fundamentals, so you can hit the ground running.",
+      defaultSrc: react2,
+      hoverSrc: react1,
+    },
+    {
+      name: 'Internships 101',
+      dateAndTime: 'Thursday, Jan 16 | 5:00 PM',
+      description:
+        'Are you ready to break into big tech? Get your TLDR on recruiting for the most difficult part of Product, SWE and Design internships—landing the interview.',
+      defaultSrc: internships2,
+      hoverSrc: internships1,
+    },
+    {
+      name: 'Tech Career Exploration',
+      dateAndTime: 'Thursday, Jan 16 | 6:00 PM',
+      description:
+        'Ever wonder what tech careers exist outside of the typical software engineering roles? This panel brings together industry experts from fields like blockchain, research, and biotech. Learn about the day-to-day realities of working in these unconventional tech sectors and get tips on how to break into these exciting fields.',
+      defaultSrc: careers2,
+      hoverSrc: careers1,
+    },
+    {
+      name: 'Pitching 101',
+      dateAndTime: 'Thursday, Jan 16 | 7:30 PM',
+      description:
+        "Got a great idea for a product but not sure how to pitch it? Learn from successful startup founders on how to sell your vision like a pro. This workshop will provide you with insights into what it takes to craft the perfect pitch, drawing on real-world experiences from some of Canada's top startup minds.",
+      defaultSrc: pitching2,
+      hoverSrc: pitching1,
+    },
+  ]
 
   return (
     <WorkshopsContainer id="workshops">
@@ -150,39 +214,57 @@ const Workshops = () => {
           <br/><br/> For more resources, check out our self-learning wiki.</Description>
         </Text>
         <Squares>
-        {items.map(item => (
+          {items.map(item => (
             <Square
               key={item.name}
               src={item.defaultSrc}
-              onMouseOver={(e) => handleMouseOver(item, e)}
-              onMouseLeave={(e) => handleMouseLeave(item, e)}
+              onMouseOver={e => handleMouseOver(item, e)}
+              onMouseLeave={e => handleMouseLeave(item, e)}
             />
           ))}
         </Squares>
         <div>
-            {hoveredItem ? (
-              <Schedule>
-                <SubTitle>{hoveredItem.name}</SubTitle>
-                <Paragraph>{hoveredItem.dateAndTime}</Paragraph>
-                <Paragraph>{hoveredItem.description}</Paragraph>
-              </Schedule>
-            ) : (
-              <Schedule>
-                <SubTitle>Workshop Schedule</SubTitle>
-                <Paragraph>Tuesday, Jan 14</Paragraph>
-                <ParagraphSmall><b>5:00PM</b> &nbsp; &nbsp; Hackathons 101</ParagraphSmall>
-                <ParagraphSmall><b>6:00PM</b> &nbsp; &nbsp; Intro to Figma</ParagraphSmall>
-                <ParagraphSmall><b>7:30PM</b> &nbsp; &nbsp; Intro to Version Control</ParagraphSmall>
-                <Paragraph>Wednesday, Jan 15</Paragraph>
-                <ParagraphSmall><b>5:00PM</b> &nbsp; &nbsp; Intro to Web Dev</ParagraphSmall>
-                <ParagraphSmall><b>6:00PM</b> &nbsp; &nbsp; Intro to APIs</ParagraphSmall>
-                <ParagraphSmall><b>7:30PM</b> &nbsp; &nbsp; Intro to React</ParagraphSmall>
-                <Paragraph>Thursday, Jan 16</Paragraph>
-                <ParagraphSmall><b>5:00PM</b> &nbsp; &nbsp; Internships 101</ParagraphSmall>
-                <ParagraphSmall><b>6:00PM</b> &nbsp; &nbsp; Tech Career Exploration</ParagraphSmall>
-                <ParagraphSmall><b>7:30PM</b> &nbsp; &nbsp; Pitching 101</ParagraphSmall>
-              </Schedule>
-            )}
+          {hoveredItem ? (
+            <Schedule>
+              <SubTitle>{hoveredItem.name}</SubTitle>
+              <Paragraph>{hoveredItem.dateAndTime}</Paragraph>
+              <Paragraph>{hoveredItem.description}</Paragraph>
+            </Schedule>
+          ) : (
+            <Schedule>
+              <SubTitle>Workshop Schedule</SubTitle>
+              <Paragraph>Tuesday, Jan 14</Paragraph>
+              <ParagraphSmall>
+                <b>5:00PM</b> &nbsp; &nbsp; Hackathons 101
+              </ParagraphSmall>
+              <ParagraphSmall>
+                <b>6:00PM</b> &nbsp; &nbsp; Intro to Figma
+              </ParagraphSmall>
+              <ParagraphSmall>
+                <b>7:30PM</b> &nbsp; &nbsp; Intro to Version Control
+              </ParagraphSmall>
+              <Paragraph>Wednesday, Jan 15</Paragraph>
+              <ParagraphSmall>
+                <b>5:00PM</b> &nbsp; &nbsp; Intro to Web Dev
+              </ParagraphSmall>
+              <ParagraphSmall>
+                <b>6:00PM</b> &nbsp; &nbsp; Intro to APIs
+              </ParagraphSmall>
+              <ParagraphSmall>
+                <b>7:30PM</b> &nbsp; &nbsp; Intro to React
+              </ParagraphSmall>
+              <Paragraph>Thursday, Jan 16</Paragraph>
+              <ParagraphSmall>
+                <b>5:00PM</b> &nbsp; &nbsp; Internships 101
+              </ParagraphSmall>
+              <ParagraphSmall>
+                <b>6:00PM</b> &nbsp; &nbsp; Tech Career Exploration
+              </ParagraphSmall>
+              <ParagraphSmall>
+                <b>7:30PM</b> &nbsp; &nbsp; Pitching 101
+              </ParagraphSmall>
+            </Schedule>
+          )}
         </div>
       </Grid>
       <Nugget src={nugget} />
