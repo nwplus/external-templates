@@ -1,4 +1,5 @@
 import * as React from 'react'
+
 const StatsBoxes = () => (
   <svg viewBox="0 0 1247 1280" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
     <path d="M896 -31V270" stroke="#B4B3B2" strokeOpacity={0.35} strokeWidth={2} />
@@ -456,7 +457,7 @@ const StatsBoxes = () => (
       <path
         d="M231.928 538.046L157.717 530.466L37 1229.05L382 1246.11L231.928 538.046Z"
         fill="url(#paint40_linear_3026_16887)"
-        fill-opacity="0.78"
+        fillOpacity="0.78"
       />
     </g>
     <g filter="url(#filter33_f_3026_16887)" className="light">

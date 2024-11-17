@@ -89,7 +89,8 @@ const Stats = () => {
         entries.forEach(entry => {
           const lightElements = document.getElementsByClassName('light')
           Array.from(lightElements).forEach(element => {
-            element.style.opacity = entry.isIntersecting ? '1' : '0'
+            const newOpacity = entry.isIntersecting ? '1' : '0'
+            element.setAttribute('style', `opacity: ${newOpacity}`)
           })
           setTitleGlow(entry.isIntersecting)
         })
@@ -115,7 +116,7 @@ const Stats = () => {
 
       {(isMobile || isTablet) && (
         <MobileTabletStatsContainer>
-          <Title isGlowing={true}>Last year we had...</Title>
+          <Title isGlowing>Last year we had...</Title>
           <MobileTabletImg src={isMobile ? mobileStatsImage : tabletStatsImage} alt="Mobile or Tablet Stats" />
         </MobileTabletStatsContainer>
       )}
