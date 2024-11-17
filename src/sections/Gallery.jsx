@@ -94,8 +94,7 @@ const Dot = styled.div`
 `;
 
 // Component
-const Gallery = () => {
-  return (
+const Gallery = () => (
     <GalleryContainer>
       {/* Images for different screen sizes */}
       <DesktopImage src={desktopGalleryImage} alt="Desktop Gallery" />
@@ -113,15 +112,14 @@ const Gallery = () => {
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
           referrerPolicy="strict-origin-when-cross-origin"
           allowFullScreen
-        ></iframe>
+         />
         <VideoFooter>
-          <Dot></Dot>
-          <Dot></Dot>
-          <Dot red={true}></Dot>
+          <Dot />
+          <Dot />
+          <Dot red />
         </VideoFooter>
       </VideoContainer>
     </GalleryContainer>
   );
-};
 
 export default Gallery;

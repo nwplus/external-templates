@@ -229,8 +229,8 @@ const Testimonials = () => {
           <HackerName>{selectedHacker.name} ({selectedHacker.pronouns})</HackerName>
           <HackerHeading>{selectedHacker.heading}</HackerHeading>
           <HackerDescription>{selectedHacker.description}</HackerDescription>
-          {selectedHacker.links.map((link, index) => (
-            <ProfileURL key={index} href={link.URL} target="_blank">{link.Label}</ProfileURL>
+          {selectedHacker.links.map((link) => (
+            <ProfileURL href={link.URL} target="_blank">{link.Label}</ProfileURL>
           ))}
         </HackerInfo>
       </TestimonialRight>

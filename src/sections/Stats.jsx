@@ -83,7 +83,7 @@ const Stats = () => {
         <StatsContainer ref={statsContainerRef}>
           <HiddenTitle>Last year we had...</HiddenTitle>
           <StatsImg src={unlightStatsImage} ref={unlight.ref} isHidden={false} />
-          <StatsImg src={lightStatsImage} ref={light.ref} isHidden={true} />
+          <StatsImg src={lightStatsImage} ref={light.ref} isHidden />
         </StatsContainer>
       )}
 
