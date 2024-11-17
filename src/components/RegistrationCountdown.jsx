@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-// import fireDb from '../utilities/firebase'
+import fireDb from '../utilities/firebase'
 
 const RegistrationContainer = styled.div`
   display: flex;
@@ -65,7 +65,10 @@ function RegistrationCountdown() {
 
   function parseDate(dateString) {
     const [datePart, timePart] = dateString.split(' at ')
-    const [month, day, year] = datePart.replace(/(\d+)(st|nd|rd|th)/, '$1').split(' ')
+    const [month, day, year] = datePart
+      .replace(/(\d+)(st|nd|rd|th)/, '$1')
+      .replace(',', '')
+      .split(' ')
     const [time, period] = timePart.split(' ')
     const [hours, minutes] = time.split(':')
 
@@ -92,8 +95,7 @@ function RegistrationCountdown() {
   useEffect(() => {
     async function fetchDeadline() {
       try {
-        // const deadlineString = await fireDb.getApplicationDate()
-        const deadlineString = 'December 20th, 2024 at 11:59 PM (Pacific Time)'
+        const deadlineString = await fireDb.getApplicationDate()
         if (deadlineString) {
           const deadline = parseDate(deadlineString)
           setTimeLeft(calculateTimeLeft(deadline))
