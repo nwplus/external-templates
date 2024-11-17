@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import styled from 'styled-components'
 import ChevronLeft from '@assets/images/chevron_left.svg'
 
@@ -30,6 +30,10 @@ const ContentContainer = styled.div`
   background-position: center;
 
   ${p => p.theme.mediaQueries.mobile} {
+    width: 95%;
+    background-image: url('/assets/images/sponsor_tv_mobile.svg');
+    aspect-ratio: 441 / 283;
+    padding: calc(100vw * (9.8 / 487)) calc(100vw * (7.43 / 487));
   }
 `
 
@@ -39,6 +43,10 @@ const LeftContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (141.23 / 487));
+  }
 `
 
 const LeftInnerContainer = styled.div`
@@ -47,6 +55,11 @@ const LeftInnerContainer = styled.div`
   align-items: center;
   gap: calc(100vw * (10 / 1280));
   width: 80%;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    gap: calc(100vw * (20 / 487));
+    width: 90%;
+  }
 `
 
 const RightContainer = styled.div`
@@ -55,6 +68,11 @@ const RightContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (160 / 487));
+    max-height: 100%;
+  }
 `
 
 const RightInnerContainer = styled.div`
@@ -83,6 +101,10 @@ const ActiveButton = styled.div`
   &:hover {
     background-color: ${props => (props.visible ? 'rgba(255, 255, 255, 0.4)' : 'transparent')};
   }
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const ChevronImg = styled.img`
@@ -100,6 +122,11 @@ const Dots = styled.div`
   align-items: center;
   flex-wrap: wrap;
   gap: calc(100vw * (10 / 1280));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    bottom: calc(100vw * (30 / 487));
+    gap: calc(100vw * (10 / 487));
+  }
 `
 
 const Dot = styled.div`
@@ -110,6 +137,11 @@ const Dot = styled.div`
   transition: 300ms;
   cursor: pointer;
   opacity: ${props => (props.viewing ? 1 : 0.2)};
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (10 / 487));
+    height: calc(100vw * (10 / 487));
+  }
 `
 
 const Logo = styled.img`
@@ -123,7 +155,7 @@ const SponsoredByText = styled.div`
   text-align: center;
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 1rem;
+    font-size: 13px;
   }
 `
 
@@ -152,6 +184,7 @@ const Blurb = styled.div`
 
   ${p => p.theme.mediaQueries.mobile} {
     font-size: 0.75rem;
+    padding-right: calc(100vw * (10 / 487));
   }
 `
 
@@ -166,6 +199,8 @@ const LearnMoreButton = styled.a`
 
   ${p => p.theme.mediaQueries.mobile} {
     font-size: 0.75rem;
+    padding: calc(100vw * (8 / 487)) calc(100vw * (15 / 487));
+    border-radius: calc(100vw * (8 / 487));
   }
 `
 
@@ -174,56 +209,101 @@ const Carousel = ({ sponsors }) => {
   const showLeftButton = viewing > 0
   const showRightButton = viewing < sponsors.length - 1
 
+  const touchStartX = useRef(null)
+  const touchStartY = useRef(null)
+  const touchEndX = useRef(null)
+  const touchEndY = useRef(null)
+
+  const minSwipeDistance = 50
+
+  const handleTouchStart = e => {
+    touchEndX.current = null
+    touchEndY.current = null
+    touchStartX.current = e.targetTouches[0].clientX
+    touchStartY.current = e.targetTouches[0].clientY
+  }
+
+  const handleTouchMove = e => {
+    touchEndX.current = e.targetTouches[0].clientX
+    touchEndY.current = e.targetTouches[0].clientY
+  }
+
+  const handleTouchEnd = () => {
+    if (!touchStartX.current || !touchEndX.current) return
+
+    const deltaX = touchStartX.current - touchEndX.current
+    const deltaY = touchStartY.current - touchEndY.current
+
+    if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > minSwipeDistance) {
+      if (deltaX > 0 && showRightButton) {
+        setViewing(prev => Math.min(sponsors.length - 1, prev + 1))
+      } else if (deltaX < 0 && showLeftButton) {
+        setViewing(prev => Math.max(0, prev - 1))
+      }
+    }
+  }
+
   return (
-    <CarouselContainer>
-      <ActiveButton
-        visible={showLeftButton}
-        onClick={() => {
-          if (showLeftButton) {
-            setViewing(prev => Math.max(0, prev - 1))
-          }
-        }}
-      >
-        <ChevronImg src={ChevronLeft} />
-      </ActiveButton>
+    <CarouselWrapper onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} onTouchEnd={handleTouchEnd}>
+      <CarouselContainer>
+        <ActiveButton
+          visible={showLeftButton}
+          onClick={() => {
+            if (showLeftButton) {
+              setViewing(prev => Math.max(0, prev - 1))
+            }
+          }}
+        >
+          <ChevronImg src={ChevronLeft} />
+        </ActiveButton>
 
-      <ContentContainer>
-        <LeftContainer>
-          <LeftInnerContainer>
-            <SponsoredByText>
-              PROUDLY <br /> SPONSORED BY
-            </SponsoredByText>
-            <Logo src={sponsors[viewing]?.imgURL} />
-          </LeftInnerContainer>
-          {sponsors.length >= 1 && (
-            <Dots>
-              {sponsors.map((sponsor, i) => (
-                <Dot key={sponsor.name} viewing={i === viewing} onClick={() => setViewing(i)} />
-              ))}
-            </Dots>
-          )}
-        </LeftContainer>
+        <ContentContainer>
+          <LeftContainer>
+            <LeftInnerContainer>
+              <SponsoredByText>
+                PROUDLY <br /> SPONSORED BY
+              </SponsoredByText>
+              <Logo src={sponsors[viewing]?.imgURL} />
+            </LeftInnerContainer>
+            {sponsors.length >= 1 && (
+              <Dots>
+                {sponsors.map((sponsor, i) => (
+                  <Dot key={sponsor.name} viewing={i === viewing} onClick={() => setViewing(i)} />
+                ))}
+              </Dots>
+            )}
+          </LeftContainer>
 
-        <RightContainer>
-          <RightInnerContainer>
-            <Blurb>{sponsors[viewing]?.blurb}</Blurb>
-            <LearnMoreButton href={sponsors[viewing]?.link}>Learn More</LearnMoreButton>
-          </RightInnerContainer>
-        </RightContainer>
-      </ContentContainer>
+          <RightContainer>
+            <RightInnerContainer>
+              <Blurb>{sponsors[viewing]?.blurb}</Blurb>
+              <LearnMoreButton href={sponsors[viewing]?.link}>Learn More</LearnMoreButton>
+            </RightInnerContainer>
+          </RightContainer>
+        </ContentContainer>
 
-      <ActiveButton
-        visible={showRightButton}
-        onClick={() => {
-          if (showRightButton) {
-            setViewing(prev => Math.min(sponsors.length - 1, prev + 1))
-          }
-        }}
-      >
-        <ChevronImg src={ChevronLeft} flip />
-      </ActiveButton>
-    </CarouselContainer>
+        <ActiveButton
+          visible={showRightButton}
+          onClick={() => {
+            if (showRightButton) {
+              setViewing(prev => Math.min(sponsors.length - 1, prev + 1))
+            }
+          }}
+        >
+          <ChevronImg src={ChevronLeft} flip />
+        </ActiveButton>
+      </CarouselContainer>
+    </CarouselWrapper>
   )
 }
+
+const CarouselWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  touch-action: pan-y; /* Allows vertical scrolling while handling horizontal swipes */
+`
 
 export default Carousel

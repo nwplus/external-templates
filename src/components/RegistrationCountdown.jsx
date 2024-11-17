@@ -9,27 +9,54 @@ const RegistrationContainer = styled.div`
   gap: calc(100vw * (16 / 1280));
 
   color: #51483e;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    justify-content: center;
+    align-items: center;
+    color: #3a2f21;
+    gap: calc(100vw * (18 / 487));
+  }
 `
 
 const RegistrationText = styled.p`
   font-weight: 600;
   font-size: calc(100vw * (20 / 1280));
+  width: 60%;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: 100%;
+    text-align: center;
+    font-size: calc(100vw * (24 / 487));
+  }
 `
 
 const RegistrationDateContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: calc(100vw * (8 / 1280));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    flex-direction: row;
+    gap: calc(100vw * (10 / 487));
+  }
 `
 
 const RegistrationDate = styled.p`
   font-weight: 600;
   font-size: calc(100vw * (20 / 1280));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: calc(100vw * (18 / 487));
+  }
 `
 
 const TimeNumber = styled.span`
   font-weight: 700;
   font-size: calc(100vw * (36 / 1280));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: calc(100vw * (32 / 487));
+  }
 `
 
 function RegistrationCountdown() {
@@ -91,9 +118,7 @@ function RegistrationCountdown() {
 
   return (
     <RegistrationContainer>
-      <RegistrationText>
-        Registrations <br /> close in...
-      </RegistrationText>
+      <RegistrationText>Registrations close in...</RegistrationText>
       <RegistrationDateContainer>
         <RegistrationDate>
           <TimeNumber>{timeLeft.days}</TimeNumber> days

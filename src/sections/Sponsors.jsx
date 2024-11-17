@@ -20,6 +20,21 @@ const Title = styled(Header2)`
   text-align: center;
   color: #fff;
   font-size: calc(100vw * (48 / 1280));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: calc(100vw * (56 / 487));
+  }
+`
+
+const SwipeDescription = styled.p`
+  display: none;
+  ${p => p.theme.mediaQueries.mobile} {
+    display: block;
+    color: white;
+    font-weight: 600;
+    font-size: calc(100vw * (16 / 487));
+    margin-bottom: calc(100vw * (-20 / 487));
+  }
 `
 
 const Spotlight = styled.div`
@@ -36,6 +51,10 @@ const Spotlight = styled.div`
   z-index: 1;
 
   transform: ${props => (props.direction === 'left' ? 'scaleX(-1)' : 'none')};
+
+  ${p => p.theme.mediaQueries.mobile} {
+    top: calc(100vw * (250 / 487));
+  }
 `
 
 const Sponsors = () => {
@@ -55,6 +74,7 @@ const Sponsors = () => {
       <Spotlight direction="left" />
       <Spotlight direction="right" />
       <Title id="sponsors">SPONSORS</Title>
+      <SwipeDescription>Swipe on the TV screen to read about our sponsors</SwipeDescription>
       {carouselSponsors.length > 0 && <Carousel sponsors={carouselSponsors} />}
 
       <SponsorsGrid sponsors={sponsors} />

@@ -14,9 +14,6 @@ import Separator from 'src/components/Separator'
 import Testimonials from 'src/sections/Testimonials'
 // import LoadingScreen from '../components/LoadingScreen'
 
-// import MainGraphics from '@assets/images/BackgroundWithoutHero.svg'
-import MainGraphicsMobile from '@assets/images/mobile/MainBackground.svg'
-
 import Hero from '../components/Hero'
 import NavigationBar from '../components/NavigationBar'
 
@@ -24,19 +21,15 @@ const HalfContainer = styled.div`
   background-color: #2a2218;
   position: relative;
   width: 100%;
-
-  // ${p => p.theme.mediaQueries.mobile} {
-  //   background: url(${MainGraphicsMobile});
-  //   background-repeat: no-repeat;
-  //   background-position: top center;
-  //   background-size: cover;
-  //   aspect-ratio: 414/8363;
-  //   min-width: 100%;
-  // }
 `
 
 const ContentContainer = styled.div`
   top: 150vh;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    top: 0;
+    min-height: 200vh;
+  }
 `
 
 const MiddleSectionsContainer = styled.div`
@@ -80,7 +73,6 @@ export default function Index({ title }) {
         <meta name="description" content="Western Canada's largest (in-person) hackathon" />
         <meta property="og:image" content="/og_preview.png" />
       </Head>
-      {/* Components Starts */}
       {/* <Banner buttonLink="info.html" /> */}
       {/* <NavigationBar bannerExists /> */}
 
@@ -113,7 +105,6 @@ export default function Index({ title }) {
           <Footer />
         </ContentContainer>
       </HalfContainer>
-      {/* Components Ends */}
     </>
   )
 }

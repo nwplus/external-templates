@@ -14,6 +14,10 @@ const shimmer = keyframes`
 
 const ButtonContainer = styled.div`
   width: ${props => (props.variant === 'sponsor' ? 'calc(100vw * (134 / 1280))' : `calc(100vw * (134 / 1280))`)};
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: ${props => (props.variant === 'sponsor' ? 'calc(100vw * (160 / 487))' : `calc(100vw * (138 / 487))`)};
+  }
 `
 
 const ButtonInnerContainer = styled.div`
@@ -45,12 +49,32 @@ const ButtonInnerContainer = styled.div`
   }
 
   transition: transform 0.3s ease;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    ${p =>
+      p.variant === 'sponsor' &&
+      `
+    aspect-ratio: 160/35;
+    &::before {
+      mask-image: url('./assets/images/sponsor_button_mobile.svg');
+    }
+  `}
+  }
 `
 
 const ButtonBackground = styled.img`
   width: 100%;
   height: 100%;
   object-fit: contain;
+  content: url('./assets/images/museum_button.svg');
+
+  ${p => p.theme.mediaQueries.mobile} {
+    ${p =>
+      p.variant === 'sponsor' &&
+      `
+    content: url('./assets/images/sponsor_button_mobile.svg');
+  `}
+  }
 `
 
 const ButtonTextContainer = styled.div`
@@ -66,33 +90,48 @@ const ButtonTextContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: max(calc(100vw * (6 / 1280)), 8px);
+
+  width: 100%;
 `
 
 const ButtonTopText = styled.p`
   font-weight: 600;
   font-size: calc(100vw * (12 / 1280));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: calc(100vw * (13 / 487));
+  }
 `
 
 const ButtonBottomText = styled.p`
   font-weight: 700;
   margin-top: -10px;
   font-size: calc(100vw * (18 / 1280));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: calc(100vw * (20 / 487));
+  }
 `
 
 const SponsorText = styled.p`
   font-weight: 600;
   font-size: calc(100vw * (12 / 1280));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: calc(100vw * (14 / 487));
+  }
 `
 
 const MuseumButton = props => {
   const { top, left, topText, bottomText, variant } = props
+
   return (
     <ButtonContainer top={top} left={left} variant={variant}>
       <ButtonInnerContainer variant={variant}>
-        <ButtonBackground src="./assets/images/museum_button.svg" />
+        <ButtonBackground variant={variant} />
         <ButtonTextContainer>
           {variant === 'sponsor' ? (
-            <SponsorText>Sponsor us</SponsorText>
+            <SponsorText>{topText}</SponsorText>
           ) : (
             <>
               <ButtonTopText>{topText}</ButtonTopText>
