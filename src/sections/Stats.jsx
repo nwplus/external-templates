@@ -1,23 +1,23 @@
-import React, { useState, useEffect, useRef } from 'react';
-import styled from 'styled-components';
-import { useParallax } from 'react-scroll-parallax';
+import React, { useState, useEffect, useRef } from 'react'
+import styled from 'styled-components'
+import { useParallax } from 'react-scroll-parallax'
 
-import lightStatsImage from "@assets/images/LightStats.svg";
-import unlightStatsImage from "@assets/images/UnlightStats.svg";
-import tabletStatsImage from "@assets/images/tabletStats.png";
-import mobileStatsImage from "@assets/images/mobileStats.png";
+import lightStatsImage from '@assets/images/LightStats.svg'
+import unlightStatsImage from '@assets/images/UnlightStats.svg'
+import tabletStatsImage from '@assets/images/tabletStats.png'
+import mobileStatsImage from '@assets/images/mobileStats.png'
+import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
 
-// Styled components
 const StatsContainer = styled.div`
-  min-height: calc(calc(900 / 1280) * 100vw);
   width: 100vw;
+  aspect-ratio: 1280/1280;
   height: auto;
   position: relative;
 
-  ${p => p.theme.mediaQueries.mobile} {
+  ${p => p.theme.mediaQueries.tablet} {
     display: none;
   }
-`;
+`
 
 const MobileTabletStatsContainer = styled.div`
   display: none;
@@ -25,23 +25,23 @@ const MobileTabletStatsContainer = styled.div`
   height: auto;
   position: relative;
 
-  ${p => p.theme.mediaQueries.mobile}, ${p => p.theme.mediaQueries.tabletLarge} {
+  ${p => p.theme.mediaQueries.tablet} {
     display: block;
   }
-`;
+`
 
 const StatsImg = styled.img`
   position: absolute;
   width: 100%;
   height: auto;
-  opacity: ${props => (props.isHidden ? 1 : 0)};
+  opacity: ${p => (p.isHidden ? 1 : 0)};
   transition: opacity 0.5s ease;
-`;
+`
 
 const MobileTabletImg = styled.img`
   width: 100%;
   height: auto;
-`;
+`
 
 const HiddenTitle = styled.p`
   font-family: 'LT Museum';
@@ -49,37 +49,40 @@ const HiddenTitle = styled.p`
   font-size: calc(100vw * (50 / 1280));
   font-weight: 700;
   position: absolute;
-  top: 120px;
+  top: calc(100vw * (120 / 1280));
   left: 10%;
   z-index: 1;
   opacity: 0;
-`;
+`
 
 // Stats component
 const Stats = () => {
-  const [isMobileOrTablet, setIsMobileOrTablet] = useState(false);
-  const statsContainerRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false)
+  const [isTablet, setIsTablet] = useState(false)
+  const statsContainerRef = useRef(null)
 
   useEffect(() => {
     const updateDeviceType = () => {
       // Update state based on window width
-      setIsMobileOrTablet(window.innerWidth <= 768);
-    };
+      setIsMobile(window.innerWidth <= SCREEN_BREAKPOINTS.mobile)
+      setIsTablet(window.innerWidth <= SCREEN_BREAKPOINTS.tablet)
+    }
 
-    updateDeviceType(); // Initial check
-    window.addEventListener('resize', updateDeviceType);
+    updateDeviceType() // Initial check
+    window.addEventListener('resize', updateDeviceType)
 
     return () => {
-      window.removeEventListener('resize', updateDeviceType);
-    };
-  }, []);
+      window.removeEventListener('resize', updateDeviceType)
+    }
+  }, [])
 
-  const unlight = useParallax({});
-  const light = useParallax({});
+  const unlight = useParallax({})
+  const light = useParallax({})
 
+  console.log(isMobile, isTablet)
   return (
     <>
-      {!isMobileOrTablet && (
+      {!isMobile && !isTablet && (
         <StatsContainer ref={statsContainerRef}>
           <HiddenTitle>Last year we had...</HiddenTitle>
           <StatsImg src={unlightStatsImage} ref={unlight.ref} isHidden={false} />
@@ -87,16 +90,13 @@ const Stats = () => {
         </StatsContainer>
       )}
 
-      {isMobileOrTablet && (
+      {(isMobile || isTablet) && (
         <MobileTabletStatsContainer>
-          <MobileTabletImg
-            src={isMobileOrTablet ? mobileStatsImage : tabletStatsImage}
-            alt="Mobile or Tablet Stats"
-          />
+          <MobileTabletImg src={isMobile ? mobileStatsImage : tabletStatsImage} alt="Mobile or Tablet Stats" />
         </MobileTabletStatsContainer>
       )}
     </>
-  );
-};
+  )
+}
 
-export default Stats;
+export default Stats

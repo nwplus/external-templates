@@ -1,125 +1,161 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 
 // Import gallery images
-import desktopGalleryImage from '@assets/images/desktopGallery.svg';
-import tabletGalleryImage from '@assets/images/tabletGallery.png';
-import mobileGalleryImage from '@assets/images/mobileGallery.png';
+// import desktopGalleryImage from '@assets/images/desktopGallery.svg';
+import desktopGalleryImage from '@assets/images/desktopGallery.png'
+import tabletGalleryImage from '@assets/images/tabletGallery.png'
+import mobileGalleryImage from '@assets/images/mobileGallery.png'
 
 // Styled Components
 const GalleryContainer = styled.div`
-  min-height: calc((900 / 1280) * 100vw);
   width: 100vw;
-  height: auto;
+  aspect-ratio: 1280 / 870;
   position: relative;
-`;
+  top: calc(100vw * (-525 / 1280));
+
+  ${p => p.theme.mediaQueries.tablet} {
+    aspect-ratio: 834 / 893;
+    top: calc(100vw * (-300 / 834));
+  }
+
+  ${p => p.theme.mediaQueries.mobile} {
+    aspect-ratio: 487 / 1086;
+    top: calc(100vw * (-400 / 487));
+  }
+`
 
 const DesktopImage = styled.img`
-  width: 100vw;
+  width: 100%;
   height: auto;
   position: absolute;
-  top: -290px;
-  display: block; /* Default is visible */
 
   ${p => p.theme.mediaQueries.tablet} {
-    display: none; /* Hide on tablet */
+    display: none;
   }
   ${p => p.theme.mediaQueries.mobile} {
-    display: none; /* Hide on mobile */
+    display: none;
   }
-`;
+`
 
 const TabletImage = styled.img`
-  width: 100vw;
-  height: auto;
-  position: absolute;
-  top: -290px;
-  display: none; /* Default hidden */
-
+  display: none;
   ${p => p.theme.mediaQueries.tablet} {
-    display: block; /* Show on tablet */
-  }
-  ${p => p.theme.mediaQueries.desktop} {
-    display: none; /* Hide on desktop */
+    display: block;
+    width: 100%;
+    height: auto;
+    position: absolute;
   }
   ${p => p.theme.mediaQueries.mobile} {
-    display: none; /* Hide on mobile */
+    display: none;
   }
-`;
+`
 
 const MobileImage = styled.img`
-  width: 100vw;
-  height: auto;
-  position: absolute;
-  top: -290px;
-  display: none; /* Default hidden */
+  display: none;
 
   ${p => p.theme.mediaQueries.mobile} {
-    display: block; /* Show on mobile */
+    display: block;
+    width: 100%;
+    height: auto;
+    position: absolute;
   }
-  ${p => p.theme.mediaQueries.tablet} {
-    display: none; /* Hide on tablet */
-  }
-  ${p => p.theme.mediaQueries.desktop} {
-    display: none; /* Hide on desktop */
-  }
-`;
+`
 
 const VideoContainer = styled.div`
-  width: 580px;
-  height: 335px;
-  border: 10px solid #151515;
+  width: calc(100vw * (460 / 1280));
+  height: calc(100vw * (293 / 1280));
+  border: calc(100vw * (10 / 1280)) solid #151515;
+  padding: calc(100vw * (12 / 1280));
   display: block;
   margin: 0 auto;
   background: #151515;
   position: relative;
-  top: 20vh;
-`;
+  top: calc(100vw * (310 / 1280));
+  overflow: visible;
+
+  ${p => p.theme.mediaQueries.tablet} {
+    top: calc(100vw * (350 / 893));
+    width: calc(100vw * (446 / 893));
+    height: calc(100vw * (296 / 893));
+    border: calc(100vw * (10 / 893)) solid #151515;
+  }
+
+  ${p => p.theme.mediaQueries.mobile} {
+    top: calc(100vw * (500 / 487));
+    width: calc(100vw * (446 / 487));
+    height: calc(100vw * (296 / 487));
+    border: calc(100vw * (10 / 487)) solid #151515;
+  }
+`
 
 const VideoFooter = styled.div`
-  position: relative;
-  top: -14px;
-  z-index: 1;
+  position: absolute;
+  bottom: calc(100vw * (-11 / 1280));
+  right: calc(100vw * (5 / 1280));
+  z-index: 2;
   float: right;
-  gap: 10px;
-`;
+  gap: calc(100vw * (10 / 1280));
+
+  ${p => p.theme.mediaQueries.tablet} {
+    bottom: calc(100vw * (-12 / 893));
+    right: calc(100vw * (2 / 893));
+  }
+
+  ${p => p.theme.mediaQueries.mobile} {
+    bottom: calc(100vw * (-12 / 487));
+    right: calc(100vw * (5 / 487));
+  }
+`
 
 const Dot = styled.div`
-  width: 4px;
-  height: 4px;
+  width: calc(100vw * (4 / 1280));
+  height: calc(100vw * (4 / 1280));
   background: ${props => (props.red ? '#F20F0F' : '#737373')};
   border-radius: 50%;
   display: inline-block;
-  margin-left: 5px;
-`;
+  margin-left: calc(100vw * (5 / 1280));
+
+  ${p => p.theme.mediaQueries.tablet} {
+    width: calc(100vw * (4 / 893));
+    height: calc(100vw * (4 / 893));
+  } 
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (4 / 487));
+    height: calc(100vw * (4 / 487));
+    margin-left: calc(100vw * (5 / 487));
+  }
+`
 
 // Component
 const Gallery = () => (
-    <GalleryContainer>
-      {/* Images for different screen sizes */}
-      <DesktopImage src={desktopGalleryImage} alt="Desktop Gallery" />
-      <TabletImage src={tabletGalleryImage} alt="Tablet Gallery" />
-      <MobileImage src={mobileGalleryImage} alt="Mobile Gallery" />
+  <GalleryContainer>
+    {/* Images for different screen sizes */}
+    <DesktopImage src={desktopGalleryImage} alt="Desktop Gallery" />
+    <TabletImage src={tabletGalleryImage} alt="Tablet Gallery" />
+    <MobileImage src={mobileGalleryImage} alt="Mobile Gallery" />
 
-      {/* Video Container */}
-      <VideoContainer>
-        <iframe
-          width="560"
-          height="315"
-          src="https://www.youtube.com/embed/C_1ygFqM_oo?si=4HRmb4xcuXGdeZkp"
-          title="YouTube video player"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-          referrerPolicy="strict-origin-when-cross-origin"
-          allowFullScreen
-         />
-        <VideoFooter>
-          <Dot />
-          <Dot />
-          <Dot red />
-        </VideoFooter>
-      </VideoContainer>
-    </GalleryContainer>
-  );
+    {/* Video Container */}
+    <VideoContainer>
+      <iframe
+        width="100%"
+        height="100%"
+        src="https://www.youtube.com/embed/C_1ygFqM_oo?si=4HRmb4xcuXGdeZkp"
+        title="YouTube video player"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+        referrerPolicy="strict-origin-when-cross-origin"
+        allowFullScreen
+        style={{ position: 'absolute', top: 0, left: 0 }}
+      />
+      <VideoFooter>
+        <Dot />
+        <Dot />
+        <Dot red />
+      </VideoFooter>
+    </VideoContainer>
+  </GalleryContainer>
+)
 
-export default Gallery;
+export default Gallery
