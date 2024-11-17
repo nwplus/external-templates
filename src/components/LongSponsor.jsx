@@ -8,7 +8,7 @@ const LongSponsorLevelContainer = styled.div`
   margin: 0 auto;
   display: flex;
   justify-content: center;
-  width: 90vw;
+  width: 95vw;
   margin-bottom: calc(100vw * (25 / 1280));
 `
 
