@@ -43,6 +43,16 @@ const MiddleSectionsContainer = styled.div`
 
   width: 100%;
   aspect-ratio: 1280/2303;
+
+  ${p => p.theme.mediaQueries.tablet} {
+    background-image: url(/assets/images/middle_background_tablet.jpg);
+    aspect-ratio: 834/2870;
+  }
+
+  ${p => p.theme.mediaQueries.mobile} {
+    background-image: url(/assets/images/middle_background_mobile.jpg);
+    aspect-ratio: 487/3470;
+  }
 `
 
 const FaqSponsorsContainer = styled.div`

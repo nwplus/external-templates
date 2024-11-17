@@ -1,102 +1,127 @@
-import React, { useState, useEffect, useRef } from 'react';
-import styled from 'styled-components';
-import { useParallax } from 'react-scroll-parallax';
+import React, { useState, useEffect, useRef } from 'react'
+import styled from 'styled-components'
+import tabletStatsImage from '@assets/images/tabletStats.png'
+import mobileStatsImage from '@assets/images/mobileStats.png'
+import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
+import StatsBoxes from '@components/StatsBoxes'
 
-import lightStatsImage from "@assets/images/LightStats.svg";
-import unlightStatsImage from "@assets/images/UnlightStats.svg";
-import tabletStatsImage from "@assets/images/tabletStats.png";
-import mobileStatsImage from "@assets/images/mobileStats.png";
+const OuterContainer = styled.div`
+  position: relative;
+`
 
-// Styled components
 const StatsContainer = styled.div`
-  min-height: calc(calc(900 / 1280) * 100vw);
+  width: 100vw;
+  aspect-ratio: 1280/1280;
+  height: auto;
+  position: relative;
+  z-index: 2;
+
+  ${p => p.theme.mediaQueries.tablet} {
+    display: none;
+  }
+`
+
+const MobileTabletStatsContainer = styled.div`
+  display: none;
   width: 100vw;
   height: auto;
   position: relative;
 
-  ${p => p.theme.mediaQueries.mobile} {
-    display: none;
-  }
-`;
-
-const MobileTabletStatsContainer = styled.div`
-  display: none;
-  width: 100%;
-  height: auto;
-  position: relative;
-
-  ${p => p.theme.mediaQueries.mobile}, ${p => p.theme.mediaQueries.tabletLarge} {
+  ${p => p.theme.mediaQueries.tablet} {
     display: block;
+    aspect-ratio: 1280/1280;
   }
-`;
-
-const StatsImg = styled.img`
-  position: absolute;
-  width: 100%;
-  height: auto;
-  opacity: ${props => (props.isHidden ? 1 : 0)};
-  transition: opacity 0.5s ease;
-`;
+`
 
 const MobileTabletImg = styled.img`
   width: 100%;
   height: auto;
-`;
+`
 
-const HiddenTitle = styled.p`
-  font-family: 'LT Museum';
-  color: white;
-  font-size: calc(100vw * (50 / 1280));
-  font-weight: 700;
+const Title = styled.p`
+  color: ${p => (p.isGlowing ? 'white' : '#B4B4B4')};
+  text-shadow: ${p => (p.isGlowing ? '0 0 32px rgba(255, 255, 255, 0.5)' : 'none')};
+  font-weight: 900;
+
   position: absolute;
-  top: 120px;
-  left: 10%;
-  z-index: 1;
-  opacity: 0;
-`;
+  top: calc(100vw * (100 / 1280));
+  font-size: calc(100vw * (56 / 1280));
+  left: calc(100vw * (100 / 1280));
 
-// Stats component
+  ${p => p.theme.mediaQueries.tablet} {
+    width: 100%;
+    font-size: calc(100vw * (56 / 834));
+    font-weight: 700;
+    top: calc(100vw * (40 / 834));
+    left: 0;
+    z-index: 1;
+    text-align: center;
+  }
+
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: calc(100vw * (42 / 487));
+  }
+`
+
 const Stats = () => {
-  const [isMobileOrTablet, setIsMobileOrTablet] = useState(false);
-  const statsContainerRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false)
+  const [isTablet, setIsTablet] = useState(false)
+  const [titleGlow, setTitleGlow] = useState(false)
+  const statsContainerRef = useRef(null)
 
   useEffect(() => {
     const updateDeviceType = () => {
-      // Update state based on window width
-      setIsMobileOrTablet(window.innerWidth <= 768);
-    };
+      setIsMobile(window.innerWidth <= SCREEN_BREAKPOINTS.mobile)
+      setIsTablet(window.innerWidth <= SCREEN_BREAKPOINTS.tablet)
+    }
 
-    updateDeviceType(); // Initial check
-    window.addEventListener('resize', updateDeviceType);
+    updateDeviceType()
+    window.addEventListener('resize', updateDeviceType)
 
     return () => {
-      window.removeEventListener('resize', updateDeviceType);
-    };
-  }, []);
+      window.removeEventListener('resize', updateDeviceType)
+    }
+  }, [])
 
-  const unlight = useParallax({});
-  const light = useParallax({});
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          const lightElements = document.getElementsByClassName('light')
+          Array.from(lightElements).forEach(element => {
+            const newOpacity = entry.isIntersecting ? '1' : '0'
+            element.setAttribute('style', `opacity: ${newOpacity}`)
+          })
+          setTitleGlow(entry.isIntersecting)
+        })
+      },
+      { threshold: 0.4 }
+    )
+
+    if (statsContainerRef.current) {
+      observer.observe(statsContainerRef.current)
+    }
+
+    return () => observer.disconnect()
+  }, [])
 
   return (
-    <StatsContainer id="stats">
-      {!isMobileOrTablet && (
+    <OuterContainer id="stats">
+      {!isMobile && !isTablet && (
         <StatsContainer ref={statsContainerRef}>
-          <HiddenTitle>Last year we had...</HiddenTitle>
-          <StatsImg src={unlightStatsImage} ref={unlight.ref} isHidden={false} />
-          <StatsImg src={lightStatsImage} ref={light.ref} isHidden />
+          <StatsBoxes />
+          <Title isGlowing={titleGlow}>Last year we had...</Title>
         </StatsContainer>
       )}
 
-      {isMobileOrTablet && (
+      {(isMobile || isTablet) && (
         <MobileTabletStatsContainer>
-          <MobileTabletImg
-            src={isMobileOrTablet ? mobileStatsImage : tabletStatsImage}
-            alt="Mobile or Tablet Stats"
-          />
+          <Title isGlowing>Last year we had...</Title>
+          <MobileTabletImg src={isMobile ? mobileStatsImage : tabletStatsImage} alt="Mobile or Tablet Stats" />
         </MobileTabletStatsContainer>
       )}
-    </StatsContainer>
-  );
-};
+    </OuterContainer>
+  )
+}
 
-export default Stats;
+export default Stats
