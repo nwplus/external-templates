@@ -73,6 +73,7 @@ const VideoContainer = styled.div`
   position: relative;
   top: calc(100vw * (310 / 1280));
   overflow: visible;
+  z-index: 2;
 
   ${p => p.theme.mediaQueries.tablet} {
     top: calc(100vw * (350 / 893));
