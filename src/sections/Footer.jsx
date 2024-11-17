@@ -1,4 +1,5 @@
-import styled, { keyframes } from 'styled-components'
+import { useState, useEffect } from 'react'
+import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faFacebook,
@@ -10,10 +11,8 @@ import {
 } from '@fortawesome/free-brands-svg-icons'
 import Team from '@components/Team'
 import Newsletter from '@components/Newsletter'
-import confetti from '../../public/assets/images/confetti.svg'
 import Confetti from 'react-confetti-boom'
 import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
-import { useState, useEffect } from 'react'
 
 const FooterContainer = styled.div`
   position: relative;
@@ -150,31 +149,6 @@ const StaticContainer = styled.div`
   ${p => p.theme.mediaQueries.mobile} {
     width: 100%;
     padding: 0 6vw;
-  }
-`
-
-const confettiFall = keyframes`
-  0% {
-    transform: translate(-50%, -100%);
-  }
-  100% {
-    transform: translate(-50%, 130%);
-  }
-`
-
-const ConfettiImage = styled.img`
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translate(-50%, -100%);
-  width: 100%;
-  height: auto;
-  animation: ${confettiFall} 4s forwards ease-in-out;
-  z-index: 9999;
-  pointer-events: none;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    display: none;
   }
 `
 
