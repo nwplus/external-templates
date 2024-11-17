@@ -1,8 +1,8 @@
 import { useEffect, useState, useRef, memo } from 'react'
+import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
 import styled from 'styled-components'
 import LongSponsorList from './LongSponsor'
 import Floor from './Floor'
-import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
 
 const SPONSOR_WIDTH = { title: 70, platinum: 40, gold: 35, silver: 30, bronze: 25 }
 const MOBILE_SPONSOR_WIDTH = { title: 95, platinum: 80, gold: 50, silver: 30, bronze: 25 }
