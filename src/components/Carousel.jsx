@@ -38,7 +38,7 @@ const ContentContainer = styled.div`
 `
 
 const LeftContainer = styled.div`
-  width: calc(100vw * (285 / 1280));
+  width: 33.178%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -63,7 +63,7 @@ const LeftInnerContainer = styled.div`
 `
 
 const RightContainer = styled.div`
-  width: calc(100vw * (574 / 1280));
+  width: 66.822%;
   display: flex;
   flex-direction: column;
   justify-content: center;
