@@ -63,12 +63,11 @@ const Stats = () => {
 
   useEffect(() => {
     const updateDeviceType = () => {
-      // Update state based on window width
       setIsMobile(window.innerWidth <= SCREEN_BREAKPOINTS.mobile)
       setIsTablet(window.innerWidth <= SCREEN_BREAKPOINTS.tablet)
     }
 
-    updateDeviceType() // Initial check
+    updateDeviceType()
     window.addEventListener('resize', updateDeviceType)
 
     return () => {
@@ -79,10 +78,9 @@ const Stats = () => {
   const unlight = useParallax({})
   const light = useParallax({})
 
-  console.log(isMobile, isTablet)
   return (
     <StatsContainer id="stats">
-      {!isMobileOrTablet && (
+      {!isMobile && !isTablet && (
         <StatsContainer ref={statsContainerRef}>
           <HiddenTitle>Last year we had...</HiddenTitle>
           <StatsImg src={unlightStatsImage} ref={unlight.ref} isHidden={false} />
@@ -96,7 +94,7 @@ const Stats = () => {
         </MobileTabletStatsContainer>
       )}
     </StatsContainer>
-  );
-};
+  )
+}
 
 export default Stats
