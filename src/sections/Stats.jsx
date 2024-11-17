@@ -78,7 +78,7 @@ const Stats = () => {
   const light = useParallax({});
 
   return (
-    <>
+    <StatsContainer id="stats">
       {!isMobileOrTablet && (
         <StatsContainer ref={statsContainerRef}>
           <HiddenTitle>Last year we had...</HiddenTitle>
@@ -95,7 +95,7 @@ const Stats = () => {
           />
         </MobileTabletStatsContainer>
       )}
-    </>
+    </StatsContainer>
   );
 };
 

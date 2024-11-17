@@ -160,12 +160,12 @@ const Footer = () => {
   }, [])
 
   return (
-    <FooterContainer>
+    <FooterContainer id="footer">
       <FooterBackground />
       {!isMobile && (
         <Confetti
           mode="fall"
-          shapeSize={20}
+          shapeSize={40}
           colors={['#E261BB', '#61B5E2', '#E26161', '#E28A61', '#ED9823', '#FDC699']}
         />
       )}

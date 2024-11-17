@@ -260,7 +260,7 @@ const MenuList = ({ isMobile, closeDropdown }) => (
       </NwPlusLogoContainer>
     )}
     <MenuItem name="About" href="/#about" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
-    <MenuItem name="Recap" href="/#recap" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
+    <MenuItem name="Recap" href="/#stats" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
     <MenuItem name="Workshops" href="/#workshops" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
     <MenuItem name="Past Projects" href="/#past-projects" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
     {!isMobile && (
@@ -271,7 +271,7 @@ const MenuList = ({ isMobile, closeDropdown }) => (
     <MenuItem name="Testimonials" href="/#testimonials" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
     <MenuItem name="FAQ" href="/#faq" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
     <MenuItem name="Sponsors" href="/#sponsors" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
-    <MenuItem name="Contact us" href="/#contact" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
+    <MenuItem name="Contact us" href="/#footer" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
   </>
 )
 
