@@ -598,7 +598,7 @@ const Projects = () => {
           <img src={leftArrow} alt="Carousel Left Arrow" />
         </LeftButton>
         <RightButton onClick={handleRightClick}>
-          <img src={rightArrow} alt="Carousel Right Arrow" />
+          <img src={rightArrow} alt="Carousel Left Arrow" />
         </RightButton>
         <DotsContainer>
           {projects.map((_, index) => (
