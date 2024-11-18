@@ -1,25 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react'
 import styled from 'styled-components';
 
 import noodleDoodleHolder from '@assets/images/projects/NoodleDoodleHolder.svg';
 import reworkdAIHolder from '@assets/images/projects/ReworkdAIHolder.svg';
 import bowls from '@assets/images/projects/bowls.svg';
 import litbowls from '@assets/images/projects/litbowls.svg';
+import mobileBowls from '@assets/images/projects/mobileBowls.svg';
 import TV from '@assets/images/projects/TV.svg';
 import OnTV from '@assets/images/projects/onTV.svg';
 import reworkdAI from '@assets/images/projects/sculptures.svg';
 import litReworkdAI from '@assets/images/projects/litSculptures.svg';
+import mobileReworkdAI from '@assets/images/projects/mobileSculptures.svg';
 import duoASLCard from '@assets/images/projects/duoASLCard.svg';
 import duoASLHand from '@assets/images/projects/handSculptures.svg';
 import litDuoASLHand from '@assets/images/projects/litHandSculptures.svg';
+import mobileDuoASLHand from '@assets/images/projects/mobileHandSculptures.svg';
 import yapYapCard from '@assets/images/projects/yapYapCard.svg';
 import yapYapAccessories from '@assets/images/projects/yapYapAccessories.svg';
 import litYapYapAccessories from '@assets/images/projects/litYapYapAccessories.svg';
+import mobileYapYapAccessories from '@assets/images/projects/mobileYapYapAccessories.svg';
 import pitchAICard from '@assets/images/projects/pitchAICard.svg';
 import pitchAIModel from '@assets/images/projects/pitchAIModel.svg';
 import litPitchAIModel from '@assets/images/projects/litPitchAIModel.svg';
+import mobilePitchAIModel from '@assets/images/projects/mobilePitchAIModel.svg';
 import nuggetImg from '@assets/images/projects/nugget.svg';
 import nuggetArm from '@assets/images/projects/nuggetArm.svg';
+
+import leftArrow from '@assets/images/carouselLeft.svg'
+import rightArrow from '@assets/images/carouselRight.svg'
 
 const ProjectsContainer = styled.div`
   aspect-ratio: 1280/812;
@@ -35,6 +43,9 @@ const ProjectsContainer = styled.div`
 
   ${p => p.theme.mediaQueries.mobile} {
     aspect-ratio: 487 / 1006;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
   }
 `;
 
@@ -69,6 +80,15 @@ const Title = styled.p`
   top: 120px;
   text-align: center;
   z-index: 1;
+
+  ${p => p.theme.mediaQueries.tablet} {
+    font-size: calc(100vw * (40 / 1280));
+  }
+
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: calc(100vw * (140 / 1280));
+    top: 20px;
+  }
 `;
 
 const Description = styled.p`
@@ -79,7 +99,32 @@ const Description = styled.p`
   top: 140px;
   text-align: center;
   z-index: 1;
+
+  ${p => p.theme.mediaQueries.tablet} {
+    font-size: calc(100vw * (40 / 1280));
+  }
+
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: calc(100vw * (60 / 1280));
+    top: 30px;
+  }
 `;
+
+const DesktopTabletProjects = styled.div`
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
+`
+
+const MobileProjects = styled.div`
+  display: none;
+  ${p => p.theme.mediaQueries.mobile} {
+    display: block;
+    margin: 0 auto;
+    width: 100vw;
+    height: 60vh;
+  }
+`
 
 const ProjectItems = styled.div`
   display: grid;
@@ -104,8 +149,11 @@ const ProjectImageBase = styled.img`
   display: block;
   margin: 0 auto;
   transition: opacity 0.3s ease;
-  // z-index: 1;
   width: 100%;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    position: absolute;
+  }
 `;
 
 const ProjectImageCard = styled.img`
@@ -116,6 +164,11 @@ const ProjectImageCard = styled.img`
 `;
 
 const NoodleDoodleImage = styled(ProjectImageBase)`
+  ${p => p.theme.mediaQueries.mobile} {
+    width: 60%;
+    height: auto;
+    top: calc(100vh * (680 / 1280));
+  }
 `;
 
 const NoodleDoodleCard = styled(ProjectImageCard)`
@@ -126,6 +179,11 @@ const NoodleDoodleCard = styled(ProjectImageCard)`
 
 
 const ReworkdAIImage = styled(ProjectImageBase)`
+  ${p => p.theme.mediaQueries.mobile} {
+    width: 50%;
+    height: auto;
+    top: calc(100vh * (680 / 1280));
+  }
 `;
 
 const ReworkdAICard = styled(ProjectImageCard)`
@@ -138,6 +196,11 @@ const ReworkdAICard = styled(ProjectImageCard)`
 const DuoASLImage = styled(ProjectImageBase)`
   top: -300px;
   z-index: 4;
+  ${p => p.theme.mediaQueries.mobile} {
+    width: 60%;
+    height: auto;
+    top: calc(100vh * (680 / 1280));
+  }
 `;
 
 const DuoASLCard = styled(ProjectImageCard)`
@@ -150,17 +213,27 @@ const DuoASLCard = styled(ProjectImageCard)`
 const YapYapImage = styled(ProjectImageBase)`
   top: -300px;
   z-index: 3;
+  ${p => p.theme.mediaQueries.mobile} {
+    width: 60%;
+    height: auto;
+    top: calc(100vh * (680 / 1280));
+  }
 `;
 
 const YapYapCard = styled(ProjectImageCard)`
   width: 140.52px;
   height: auto;
-  top: -340px;
+  top: -400px;
 `;
 
 const PitchAIImage = styled(ProjectImageBase)`
   top: -300px;
   z-index: 3;
+  ${p => p.theme.mediaQueries.mobile} {
+    width: 50%;
+    height: auto;
+    top: calc(100vh * (680 / 1280));\
+  }
 `;
 
 const PitchAICard = styled(ProjectImageCard)`
@@ -199,10 +272,18 @@ const TVText = styled.p`
   margin-top: -60%;
   margin-bottom: 20px;
   color: black;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: block;
+    margin: 0 auto;
+    width: 280px;
+    margin-top: 50%;
+    margin-bottom: 40px;
+  }
 `;
 
 const TVButton = styled.a`
-  display: inline-block;
+  display: block;
   background-color: #F0D798;
   color: black;
   font-family: 'LT Museum';
@@ -211,9 +292,16 @@ const TVButton = styled.a`
   text-decoration: none;
   border-radius: 8px;
   transition: background-color 0.3s ease;
+  margin: 0 auto;
+  text-align: center;
+  width: 80%;
 
   &:hover {
     background-color: #FFC633;
+  }
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: 200px;
   }
 `;
 
@@ -228,16 +316,75 @@ const NuggetArmImage = styled.img`
   top: 200px;
 `
 
+const Carousel = styled.div`
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  transform: translateX(${({ currentIndex }) => `-${currentIndex * 100}%`});
+`;
+
+const ProjectSlide = styled.div`
+  width: 100vw;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+`;
+
+const NavigationButton = styled.button`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 2;
+
+  &:hover {
+    color: #ffc633;
+  }
+`;
+
+const LeftButton = styled(NavigationButton)`
+  position: absolute;
+  left: 20px;
+  margin-top: calc(100vh * (400 / 1280));
+`;
+
+const RightButton = styled(NavigationButton)`
+  position: absolute;
+  right: 20px;
+  margin-top: calc(100vh * (400 / 1280));
+`;
+
+const DotsContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: calc(100vh * (130 / 1280));
+`;
+
+const Dot = styled.button`
+  width: 10px;
+  height: 10px;
+  margin: 0 5px;
+  background-color: ${({ isActive }) => (isActive ? '#fff' : 'e7dad0')};
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #fff;
+  }
+`;
+
 const Projects = () => {
   const [hoveredProject, setHoveredProject] = useState(null);
   const [tvLit, setTvLit] = useState(false);
-
-  const handleHover = (project) => {
-    setHoveredProject(project);
-    setTvLit(true);
-    setTimeout(() => setTvLit(false), 10000);
-    setTimeout(() => setHoveredProject(null), 10000);
-  };
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const projects = [
     {
@@ -246,6 +393,7 @@ const Projects = () => {
       normalImage: bowls,
       litImage: litbowls,
       holderImage: noodleDoodleHolder,
+      mobileImage: mobileBowls,
       Component: NoodleDoodleImage,
       Card: NoodleDoodleCard,
       description:
@@ -258,6 +406,7 @@ const Projects = () => {
       normalImage: reworkdAI,
       litImage: litReworkdAI,
       holderImage: reworkdAIHolder,
+      mobileImage: mobileReworkdAI,
       Component: ReworkdAIImage,
       Card: ReworkdAICard,
       description:
@@ -270,6 +419,7 @@ const Projects = () => {
       normalImage: duoASLHand,
       litImage: litDuoASLHand,
       holderImage: duoASLCard,
+      mobileImage: mobileDuoASLHand,
       Component: DuoASLImage,
       Card: DuoASLCard,
       description:
@@ -282,6 +432,7 @@ const Projects = () => {
       normalImage: yapYapAccessories,
       litImage: litYapYapAccessories,
       holderImage: yapYapCard,
+      mobileImage: mobileYapYapAccessories,
       Component: YapYapImage,
       Card: YapYapCard,
       description:
@@ -294,6 +445,7 @@ const Projects = () => {
       normalImage: pitchAIModel,
       litImage: litPitchAIModel,
       holderImage: pitchAICard,
+      mobileImage: mobilePitchAIModel,
       Component: PitchAIImage,
       Card: PitchAICard,
       description:
@@ -302,39 +454,115 @@ const Projects = () => {
     },
   ];
 
+  const handleHover = (project) => {
+    setHoveredProject(project);
+    setTvLit(true);
+    setTimeout(() => setTvLit(false), 10000);
+    setTimeout(() => setHoveredProject(null), 10000);
+  };
+
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
+
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    const swipeDistance = touchEndX.current - touchStartX.current;
+    if (swipeDistance > 50) {
+      // Swipe right
+      setCurrentIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : prevIndex));
+    } else if (swipeDistance < -50) {
+      // Swipe left
+      setCurrentIndex((prevIndex) =>
+        prevIndex < projects.length - 1 ? prevIndex + 1 : prevIndex
+      );
+    }
+  };
+
+  const handleLeftClick = () => {
+    setCurrentIndex((prev) =>
+      prev === 0 ? projects.length - 1 : prev - 1
+    );
+  };
+
+  const handleRightClick = () => {
+    setCurrentIndex((prev) =>
+      prev === projects.length - 1 ? 0 : prev + 1
+    );
+  };
+  const handleDotClick = (index) => {
+    setCurrentIndex(index);
+  };
+
   return (
     <ProjectsContainer id="past-projects">
       <ProjectsBackground />
       <Title>PAST PROJECTS</Title>
       <Description>Take a tour of some amazing projects from the nwHacks archive!</Description>
 
-      <ProjectItems>
-        {projects.map((project) => (
-          <ProjectContainer
-            key={project.id}
-            onMouseEnter={() => handleHover(project)}
-          >
-            <project.Component
-              src={hoveredProject?.id === project.id ? project.litImage : project.normalImage}
-            />
-            <project.Card src={project.holderImage} />
-          </ProjectContainer>
-        ))}
+      <DesktopTabletProjects>
+        <ProjectItems>
+          {projects.map((project) => (
+            <ProjectContainer
+              key={project.id}
+              onMouseEnter={() => handleHover(project)}
+            >
+              <project.Component
+                src={hoveredProject?.id === project.id ? project.litImage : project.normalImage}
+              />
+              <project.Card src={project.holderImage} />
+            </ProjectContainer>
+          ))}
 
-        <TVContainer>
-          <TVImage src={tvLit ? OnTV : TV} />
-          <NuggetImage src={nuggetImg} />
-          <NuggetArmImage src={nuggetArm} />
-          {tvLit && hoveredProject && (
-            <TVOverlay>
-              <TVText>{hoveredProject.description}</TVText>
-              <TVButton href={hoveredProject.link} target="_blank" rel="noopener noreferrer">
+          <TVContainer>
+            <TVImage src={tvLit ? OnTV : TV} />
+            <NuggetImage src={nuggetImg} />
+            <NuggetArmImage src={nuggetArm} />
+            {tvLit && hoveredProject && (
+              <TVOverlay>
+                <TVText>{hoveredProject.description}</TVText>
+                <TVButton href={hoveredProject.link} target="_blank" rel="noopener noreferrer">
+                  Check it out!
+                </TVButton>
+              </TVOverlay>
+            )}
+          </TVContainer>
+        </ProjectItems>
+      </DesktopTabletProjects>
+
+      <MobileProjects>
+        <Carousel currentIndex={currentIndex} onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} onTouchEnd={handleTouchEnd}>
+          {projects.map((project) => (
+            <ProjectSlide key={project.id}>
+              <TVText>{project.description}</TVText>
+              <TVButton href={project.link} target="_blank" rel="noopener noreferrer">
                 Check it out!
               </TVButton>
-            </TVOverlay>
-          )}
-        </TVContainer>
-      </ProjectItems>
+              <project.Component src={project.mobileImage} alt={project.name} />
+            </ProjectSlide>
+          ))}
+        </Carousel>
+        <LeftButton onClick={handleLeftClick}>
+          <img src={leftArrow} alt="Carousel Left Arrow" />
+        </LeftButton>
+        <RightButton onClick={handleRightClick}>
+          <img src={rightArrow} alt="Carousel Right Arrow" />
+        </RightButton>
+        <DotsContainer>
+          {projects.map((_, index) => (
+            <Dot
+              isActive={index === currentIndex}
+              onClick={() => handleDotClick(index)}
+            />
+          ))}
+        </DotsContainer>
+      </MobileProjects>
     </ProjectsContainer>
   );
 };
