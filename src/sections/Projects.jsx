@@ -125,13 +125,6 @@ const MobileProjects = styled.div`
     height: 60vh;
   }
 `
-const MobileProjectInfo = styled.div`
-  position: relative;
-  top: 360px;
-  width: 80%;
-  display: block;
-  margin: 0 auto;
-`
 
 const ProjectItems = styled.div`
   display: grid;
@@ -230,7 +223,7 @@ const YapYapImage = styled(ProjectImageBase)`
 const YapYapCard = styled(ProjectImageCard)`
   width: 140.52px;
   height: auto;
-  top: -340px;
+  top: -400px;
 `;
 
 const PitchAIImage = styled(ProjectImageBase)`
@@ -384,7 +377,7 @@ const Dot = styled.button`
   cursor: pointer;
 
   &:hover {
-    background-color: #ffc633;
+    background-color: #fff;
   }
 `;
 
@@ -392,42 +385,6 @@ const Projects = () => {
   const [hoveredProject, setHoveredProject] = useState(null);
   const [tvLit, setTvLit] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
-
-  const touchStartX = useRef(0);
-  const touchEndX = useRef(0);
-
-  const handleTouchStart = (e) => {
-    touchStartX.current = e.touches[0].clientX;
-  };
-
-  const handleTouchMove = (e) => {
-    touchEndX.current = e.touches[0].clientX;
-  };
-
-  const handleTouchEnd = () => {
-    const swipeDistance = touchEndX.current - touchStartX.current;
-    if (swipeDistance > 50) {
-      // Swipe right
-      setCurrentIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : prevIndex));
-    } else if (swipeDistance < -50) {
-      // Swipe left
-      setCurrentIndex((prevIndex) =>
-        prevIndex < projects.length - 1 ? prevIndex + 1 : prevIndex
-      );
-    }
-  };
-
-  const handleLeftClick = () => {
-    setCurrentIndex((prev) =>
-      prev === 0 ? projects.length - 1 : prev - 1
-    );
-  };
-
-  const handleRightClick = () => {
-    setCurrentIndex((prev) =>
-      prev === projects.length - 1 ? 0 : prev + 1
-    );
-  };
 
   const projects = [
     {
@@ -497,6 +454,52 @@ const Projects = () => {
     },
   ];
 
+  const handleHover = (project) => {
+    setHoveredProject(project);
+    setTvLit(true);
+    setTimeout(() => setTvLit(false), 10000);
+    setTimeout(() => setHoveredProject(null), 10000);
+  };
+
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
+
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    const swipeDistance = touchEndX.current - touchStartX.current;
+    if (swipeDistance > 50) {
+      // Swipe right
+      setCurrentIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : prevIndex));
+    } else if (swipeDistance < -50) {
+      // Swipe left
+      setCurrentIndex((prevIndex) =>
+        prevIndex < projects.length - 1 ? prevIndex + 1 : prevIndex
+      );
+    }
+  };
+
+  const handleLeftClick = () => {
+    setCurrentIndex((prev) =>
+      prev === 0 ? projects.length - 1 : prev - 1
+    );
+  };
+
+  const handleRightClick = () => {
+    setCurrentIndex((prev) =>
+      prev === projects.length - 1 ? 0 : prev + 1
+    );
+  };
+  const handleDotClick = (index) => {
+    setCurrentIndex(index);
+  };
+
   return (
     <ProjectsContainer id="past-projects">
       <ProjectsBackground />
@@ -546,22 +549,20 @@ const Projects = () => {
           ))}
         </Carousel>
         <LeftButton onClick={handleLeftClick}>
-          <img src={leftArrow} />
+          <img src={leftArrow} alt="Carousel Left Arrow" />
         </LeftButton>
         <RightButton onClick={handleRightClick}>
-          <img src={rightArrow} />
+          <img src={rightArrow} alt="Carousel Right Arrow" />
         </RightButton>
         <DotsContainer>
           {projects.map((_, index) => (
             <Dot
-              key={index}
               isActive={index === currentIndex}
               onClick={() => handleDotClick(index)}
             />
           ))}
         </DotsContainer>
       </MobileProjects>
-
     </ProjectsContainer>
   );
 };
