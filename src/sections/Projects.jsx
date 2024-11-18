@@ -27,6 +27,15 @@ const ProjectsContainer = styled.div`
   position: relative;
   z-index: 1;
   width: 100%;
+
+  ${p => p.theme.mediaQueries.tablet} {
+    position: relative;
+    aspect-ratio: 834 / 1150;
+  }
+
+  ${p => p.theme.mediaQueries.mobile} {
+    aspect-ratio: 487 / 1006;
+  }
 `;
 
 const ProjectsBackground = styled.div`
@@ -41,6 +50,14 @@ const ProjectsBackground = styled.div`
   width: 100%;
   height: 100%;
   z-index: -1;
+
+  ${p => p.theme.mediaQueries.tablet} {
+    background-image: url('./assets/images/tabletProjectsBackground.svg');
+  }
+
+  ${p => p.theme.mediaQueries.mobile} {
+    background-image: url('./assets/images/mobileProjectsBackground.svg');
+  }
 `;
 
 const Title = styled.p`

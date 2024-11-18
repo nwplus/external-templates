@@ -13,6 +13,15 @@ const TestimonialsContainer = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
+
+  ${p => p.theme.mediaQueries.tablet} {
+    position: relative;
+    aspect-ratio: 834 / 1149;
+  }
+
+  ${p => p.theme.mediaQueries.mobile} {
+    aspect-ratio: 487 / 1085;
+  }
 `;
 
 const TestimonialsBackground = styled.div`
@@ -28,6 +37,14 @@ const TestimonialsBackground = styled.div`
   width: 100%;
   height: 100%;
   z-index: -1;
+
+  ${p => p.theme.mediaQueries.tablet} {
+    background-image: url('./assets/images/tabletTestimonialsBackground.svg');
+  }
+
+  ${p => p.theme.mediaQueries.mobile} {
+    background-image: url('./assets/images/mobileTestimonialsBackground.svg');
+  }
 `;
 
 const TestimonialLeft = styled.div`
