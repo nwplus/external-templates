@@ -1,30 +1,36 @@
 import React, { useState, useRef } from 'react'
-import styled from 'styled-components';
+import styled from 'styled-components'
 
-import noodleDoodleHolder from '@assets/images/projects/NoodleDoodleHolder.svg';
-import reworkdAIHolder from '@assets/images/projects/ReworkdAIHolder.svg';
-import bowls from '@assets/images/projects/bowls.svg';
-import litbowls from '@assets/images/projects/litbowls.svg';
-import mobileBowls from '@assets/images/projects/mobileBowls.svg';
-import TV from '@assets/images/projects/TV.svg';
-import OnTV from '@assets/images/projects/onTV.svg';
-import reworkdAI from '@assets/images/projects/sculptures.svg';
-import litReworkdAI from '@assets/images/projects/litSculptures.svg';
-import mobileReworkdAI from '@assets/images/projects/mobileSculptures.svg';
-import duoASLCard from '@assets/images/projects/duoASLCard.svg';
-import duoASLHand from '@assets/images/projects/handSculptures.svg';
-import litDuoASLHand from '@assets/images/projects/litHandSculptures.svg';
-import mobileDuoASLHand from '@assets/images/projects/mobileHandSculptures.svg';
-import yapYapCard from '@assets/images/projects/yapYapCard.svg';
-import yapYapAccessories from '@assets/images/projects/yapYapAccessories.svg';
-import litYapYapAccessories from '@assets/images/projects/litYapYapAccessories.svg';
-import mobileYapYapAccessories from '@assets/images/projects/mobileYapYapAccessories.svg';
-import pitchAICard from '@assets/images/projects/pitchAICard.svg';
-import pitchAIModel from '@assets/images/projects/pitchAIModel.svg';
-import litPitchAIModel from '@assets/images/projects/litPitchAIModel.svg';
-import mobilePitchAIModel from '@assets/images/projects/mobilePitchAIModel.svg';
-import nuggetImg from '@assets/images/projects/nugget.svg';
-import nuggetArm from '@assets/images/projects/nuggetArm.svg';
+import noodleDoodleHolder from '@assets/images/projects/NoodleDoodleHolder.svg'
+import reworkdAIHolder from '@assets/images/projects/ReworkdAIHolder.svg'
+
+import bowls from '@assets/images/projects/bowls.png'
+import litbowls from '@assets/images/projects/litBowls.png'
+import mobileBowls from '@assets/images/projects/mobileBowls.svg'
+import TV from '@assets/images/projects/TV.svg'
+import OnTV from '@assets/images/projects/onTV.svg'
+
+import reworkdAI from '@assets/images/projects/sculptures.png'
+import litReworkdAI from '@assets/images/projects/litSculptures.png'
+import mobileReworkdAI from '@assets/images/projects/mobileSculptures.svg'
+
+import duoASLCard from '@assets/images/projects/duoASLCard.svg'
+import duoASLHand from '@assets/images/projects/handSculptures.png'
+import litDuoASLHand from '@assets/images/projects/litHandSculptures.png'
+import mobileDuoASLHand from '@assets/images/projects/mobileHandSculptures.svg'
+
+import yapYapCard from '@assets/images/projects/yapYapCard.svg'
+import yapYapAccessories from '@assets/images/projects/yapYapAccessories.png'
+import litYapYapAccessories from '@assets/images/projects/litYapYapAccessories.png'
+import mobileYapYapAccessories from '@assets/images/projects/mobileYapYapAccessories.svg'
+
+import pitchAICard from '@assets/images/projects/pitchAICard.svg'
+import pitchAIModel from '@assets/images/projects/pitchAIModel.png'
+import litPitchAIModel from '@assets/images/projects/litPitchAIModel.png'
+
+import mobilePitchAIModel from '@assets/images/projects/mobilePitchAIModel.svg'
+import nuggetImg from '@assets/images/projects/nugget.svg'
+import nuggetArm from '@assets/images/projects/nuggetArm.svg'
 
 import leftArrow from '@assets/images/carouselLeft.svg'
 import rightArrow from '@assets/images/carouselRight.svg'
@@ -47,7 +53,7 @@ const ProjectsContainer = styled.div`
     width: 100%;
     overflow: hidden;
   }
-`;
+`
 
 const ProjectsBackground = styled.div`
   background-image: url('./assets/images/projects_background.jpg');
@@ -69,14 +75,14 @@ const ProjectsBackground = styled.div`
   ${p => p.theme.mediaQueries.mobile} {
     background-image: url('./assets/images/mobileProjectsBackground.svg');
   }
-`;
+`
 
 const Title = styled.p`
   color: white;
   font-size: calc(100vw * (56 / 1280));
   font-weight: 700;
   position: relative;
-  top: 120px;
+  top: calc(100vw * (20 / 1280));
   text-align: center;
   z-index: 1;
 
@@ -88,13 +94,15 @@ const Title = styled.p`
     font-size: calc(100vw * (56 / 487));
     top: 20px;
   }
-`;
+`
 
 const Description = styled.p`
   color: white;
   font-size: calc(100vw * (20 / 1280));
+  font-family: 'HK Grotesk Medium';
+  font-weight: 500;
   position: relative;
-  top: 140px;
+  top: calc(100vw * (40 / 1280));
   text-align: center;
   z-index: 1;
 
@@ -106,7 +114,7 @@ const Description = styled.p`
     font-size: calc(100vw * (20 / 487));
     top: 30px;
   }
-`;
+`
 
 const DesktopTabletProjects = styled.div`
   ${p => p.theme.mediaQueries.mobile} {
@@ -127,12 +135,12 @@ const MobileProjects = styled.div`
 const ProjectItems = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  gap: 20px;
+  grid-template-rows: calc(100vw * (350 / 1280)) calc(100vw * (500 / 1280));
+
   position: relative;
   padding: 20px;
-  margin-top: calc(100vh * (380 / 1280));
-`;
+  margin-top: calc(100vw * (200 / 1280));
+`
 
 const ProjectContainer = styled.div`
   position: relative;
@@ -140,7 +148,7 @@ const ProjectContainer = styled.div`
   display: block;
   margin: 0 auto;
   cursor: pointer;
-`;
+`
 
 const ProjectImageBase = styled.img`
   position: relative;
@@ -152,93 +160,109 @@ const ProjectImageBase = styled.img`
   ${p => p.theme.mediaQueries.mobile} {
     position: absolute;
   }
-`;
+`
 
 const ProjectImageCard = styled.img`
   position: relative;
   display: block;
   margin: 0 auto;
   // z-index: 2;
-`;
+`
 
 const NoodleDoodleImage = styled(ProjectImageBase)`
+  width: calc(100vw * (230 / 1280));
+  top: calc(100vw * (-80 / 1280));
+
   ${p => p.theme.mediaQueries.mobile} {
-    width: 60%;
-    height: auto;
-    top: calc(100vh * (680 / 1280));
+    height: calc(100vw * (200 / 487));
+    width: auto;
+    top: calc(100vh * (280 / 487));
   }
-`;
+`
 
 const NoodleDoodleCard = styled(ProjectImageCard)`
-  width: 267.95px;
+  width: calc(100vw * (220 / 1280));
   height: auto;
-  top: -140px;
-`;
-
+  top: calc(100vw * (-160 / 1280));
+`
 
 const ReworkdAIImage = styled(ProjectImageBase)`
+  width: calc(100vw * (320 / 1280));
+  height: auto;
+  top: calc(100vw * (-110 / 1280));
   ${p => p.theme.mediaQueries.mobile} {
-    width: 50%;
-    height: auto;
-    top: calc(100vh * (680 / 1280));
+    height: calc(100vw * (220 / 487));
+    width: auto;
+    top: calc(100vh * (280 / 487));
   }
-`;
+`
 
 const ReworkdAICard = styled(ProjectImageCard)`
-  width: 267.95px;
+  width: calc(100vw * (220 / 1280));
   height: auto;
-  top: -140px;
-`;
-
+  top: calc(100vw * (-190 / 1280));
+`
 
 const DuoASLImage = styled(ProjectImageBase)`
-  top: -300px;
-  z-index: 4;
+  width: calc(100vw * (320 / 1280));
+  height: auto;
+  top: calc(100vw * (-150 / 1280));
+  left: calc(100vw * (20 / 1280));
+  z-index: 2;
+
   ${p => p.theme.mediaQueries.mobile} {
-    width: 60%;
-    height: auto;
-    top: calc(100vh * (680 / 1280));
+    left: auto;
+    height: calc(100vw * (240 / 487));
+    width: auto;
+    top: calc(100vh * (270 / 487));
   }
-`;
+`
 
 const DuoASLCard = styled(ProjectImageCard)`
-  width: 140.52px;
+  width: calc(100vw * (130 / 1280));
   height: auto;
-  top: -300px;
-`;
-
+  top: calc(100vw * (-160 / 1280));
+  // right: calc(100vw * (20 / 1280));
+`
 
 const YapYapImage = styled(ProjectImageBase)`
-  top: -300px;
+  width: calc(100vw * (550 / 1280));
+  left: calc(100vw * (20 / 1280));
+  height: auto;
+  top: calc(100vw * (-280 / 1280));
   z-index: 3;
   ${p => p.theme.mediaQueries.mobile} {
-    width: 60%;
-    height: auto;
-    top: calc(100vh * (680 / 1280));
+    left: auto;
+    margin-left: calc(100vw * (20 / 487));
+    height: calc(100vw * (240 / 487));
+    width: auto;
+    top: calc(100vh * (270 / 487));
   }
-`;
+`
 
 const YapYapCard = styled(ProjectImageCard)`
-  width: 140.52px;
+  width: calc(100vw * (120 / 1280));
   height: auto;
-  top: -400px;
-`;
+  top: calc(100vw * (-400 / 1280));
+`
 
 const PitchAIImage = styled(ProjectImageBase)`
-  top: -300px;
+  width: calc(100vw * (280 / 1280));
+  height: auto;
+  top: calc(100vw * (-170 / 1280));
   z-index: 3;
   ${p => p.theme.mediaQueries.mobile} {
-    width: 50%;
-    height: auto;
-    top: calc(100vh * (680 / 1280));\
+    height: calc(100vw * (230 / 487));
+    width: auto;
+    top: calc(100vh * (275 / 487));
   }
-`;
+`
 
 const PitchAICard = styled(ProjectImageCard)`
-  width: 140.52px;
+  width: calc(100vw * (120 / 1280));
   height: auto;
-  top: -300px;
-`;
+  top: calc(100vw * (-210 / 1280));
+`
 
 const TVContainer = styled.div`
   grid-row: 1;
@@ -246,79 +270,97 @@ const TVContainer = styled.div`
   position: relative;
   width: fit-content;
   margin: 0 auto;
-`;
+  top: calc(100vw * (-130 / 1280));
+`
 
 const TVImage = styled.img`
-  width: 475px;
+  width: calc(100vw * (475 / 1280));
   height: auto;
   z-index: 1;
-`;
+`
 
 const TVOverlay = styled.div`
   position: absolute;
-  top: 50%;
+  top: calc(100vw * (195 / 1280));
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
   color: white;
-`;
+
+  width: calc(100vw * (300 / 1280));
+  height: calc(100vw * (265 / 1280));
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: calc(100vw * (20 / 1280));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: 80%;
+  }
+`
 
 const TVText = styled.p`
-  font-family: 'LT Museum';
+  font-family: 'Courier';
   position: relative;
-  font-size: 1em;
-  margin-top: -60%;
-  margin-bottom: 20px;
+  font-size: calc(100vw * (16 / 1280));
   color: black;
+  text-align: left;
 
   ${p => p.theme.mediaQueries.mobile} {
     display: block;
     margin: 0 auto;
-    width: 280px;
-    margin-top: 50%;
-    margin-bottom: 40px;
+    width: 60%;
+    font-size: calc(100vw * (17 / 487));
+    margin-top: calc(100vw * (210 / 487));
+    margin-bottom: calc(100vw * (20 / 487));
   }
-`;
+`
 
 const TVButton = styled.a`
   display: block;
-  background-color: #F0D798;
+  background-color: #f0d798;
   color: black;
-  font-family: 'LT Museum';
-  font-size: 1em;
-  padding: 10px 20px;
+  font-weight: 700;
+  font-size: calc(100vw * (16 / 1280));
+  padding: calc(100vw * (10 / 1280)) calc(100vw * (20 / 1280));
   text-decoration: none;
-  border-radius: 8px;
+  border-radius: calc(100vw * (8 / 1280));
   transition: background-color 0.3s ease;
   margin: 0 auto;
   text-align: center;
-  width: 80%;
 
   &:hover {
-    background-color: #FFC633;
+    background-color: #ffc633;
   }
 
   ${p => p.theme.mediaQueries.mobile} {
-    width: 200px;
+    padding: calc(100vw * (10 / 487)) calc(100vw * (20 / 487));
+    font-size: calc(100vw * (18 / 487));
   }
-`;
+`
 
 const NuggetImage = styled.img`
   position: absolute;
-  left: 50%;
+  width: calc(100vw * (378 / 1280));
+  top: calc(100vw * (43 / 1280));
+  left: calc(100vw * (250 / 1280));
   z-index: -1;
 `
+
 const NuggetArmImage = styled.img`
   position: absolute;
-  left: 90%;
-  top: 200px;
+  width: calc(100vw * (88 / 1280));
+  top: calc(100vw * (260 / 1280));
+  left: calc(100vw * (450 / 1280));
 `
 
 const Carousel = styled.div`
   display: flex;
   transition: transform 0.5s ease-in-out;
   transform: translateX(${({ currentIndex }) => `-${currentIndex * 100}%`});
-`;
+`
 
 const ProjectSlide = styled.div`
   width: 100vw;
@@ -329,7 +371,7 @@ const ProjectSlide = styled.div`
   justify-content: center;
   text-align: center;
   overflow: hidden;
-`;
+`
 
 const NavigationButton = styled.button`
   position: absolute;
@@ -345,25 +387,25 @@ const NavigationButton = styled.button`
   &:hover {
     color: #ffc633;
   }
-`;
+`
 
 const LeftButton = styled(NavigationButton)`
   position: absolute;
   left: 20px;
   margin-top: calc(100vh * (400 / 1280));
-`;
+`
 
 const RightButton = styled(NavigationButton)`
   position: absolute;
   right: 20px;
   margin-top: calc(100vh * (400 / 1280));
-`;
+`
 
 const DotsContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: calc(100vh * (130 / 1280));
-`;
+  margin-top: calc(100vh * (150 / 1280));
+`
 
 const Dot = styled.button`
   width: 10px;
@@ -377,12 +419,12 @@ const Dot = styled.button`
   &:hover {
     background-color: #fff;
   }
-`;
+`
 
 const Projects = () => {
-  const [hoveredProject, setHoveredProject] = useState(null);
-  const [tvLit, setTvLit] = useState(false);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [hoveredProject, setHoveredProject] = useState(null)
+  const [tvLit, setTvLit] = useState(false)
+  const [currentIndex, setCurrentIndex] = useState(0)
 
   const projects = [
     {
@@ -420,8 +462,7 @@ const Projects = () => {
       mobileImage: mobileDuoASLHand,
       Component: DuoASLImage,
       Card: DuoASLCard,
-      description:
-        'DuoASL helps you learn ASL (American Sign Language) using gamification and neural networks.',
+      description: 'DuoASL helps you learn ASL (American Sign Language) using gamification and neural networks.',
       link: 'https://devpost.com/software/duoasl',
     },
     {
@@ -450,53 +491,47 @@ const Projects = () => {
         'Pitch AI uses artificial intelligence to help improve your pitching technique by analyzing motion capture data in real-time.',
       link: 'https://devpost.com/software/pitch-ai',
     },
-  ];
+  ]
 
-  const handleHover = (project) => {
-    setHoveredProject(project);
-    setTvLit(true);
-    setTimeout(() => setTvLit(false), 10000);
-    setTimeout(() => setHoveredProject(null), 10000);
-  };
+  const handleHover = project => {
+    setHoveredProject(project)
+    setTvLit(true)
+    setTimeout(() => setTvLit(false), 10000)
+    setTimeout(() => setHoveredProject(null), 10000)
+  }
 
-  const touchStartX = useRef(0);
-  const touchEndX = useRef(0);
+  const touchStartX = useRef(0)
+  const touchEndX = useRef(0)
 
-  const handleTouchStart = (e) => {
-    touchStartX.current = e.touches[0].clientX;
-  };
+  const handleTouchStart = e => {
+    touchStartX.current = e.touches[0].clientX
+  }
 
-  const handleTouchMove = (e) => {
-    touchEndX.current = e.touches[0].clientX;
-  };
+  const handleTouchMove = e => {
+    touchEndX.current = e.touches[0].clientX
+  }
 
   const handleTouchEnd = () => {
-    const swipeDistance = touchEndX.current - touchStartX.current;
+    const swipeDistance = touchEndX.current - touchStartX.current
     if (swipeDistance > 50) {
       // Swipe right
-      setCurrentIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : prevIndex));
+      setCurrentIndex(prevIndex => (prevIndex > 0 ? prevIndex - 1 : prevIndex))
     } else if (swipeDistance < -50) {
       // Swipe left
-      setCurrentIndex((prevIndex) =>
-        prevIndex < projects.length - 1 ? prevIndex + 1 : prevIndex
-      );
+      setCurrentIndex(prevIndex => (prevIndex < projects.length - 1 ? prevIndex + 1 : prevIndex))
     }
-  };
+  }
 
   const handleLeftClick = () => {
-    setCurrentIndex((prev) =>
-      prev === 0 ? projects.length - 1 : prev - 1
-    );
-  };
+    setCurrentIndex(prev => (prev === 0 ? projects.length - 1 : prev - 1))
+  }
 
   const handleRightClick = () => {
-    setCurrentIndex((prev) =>
-      prev === projects.length - 1 ? 0 : prev + 1
-    );
-  };
-  const handleDotClick = (index) => {
-    setCurrentIndex(index);
-  };
+    setCurrentIndex(prev => (prev === projects.length - 1 ? 0 : prev + 1))
+  }
+  const handleDotClick = index => {
+    setCurrentIndex(index)
+  }
 
   return (
     <ProjectsContainer id="past-projects">
@@ -506,14 +541,9 @@ const Projects = () => {
 
       <DesktopTabletProjects>
         <ProjectItems>
-          {projects.map((project) => (
-            <ProjectContainer
-              key={project.id}
-              onMouseEnter={() => handleHover(project)}
-            >
-              <project.Component
-                src={hoveredProject?.id === project.id ? project.litImage : project.normalImage}
-              />
+          {projects.map(project => (
+            <ProjectContainer key={project.id} onMouseEnter={() => handleHover(project)}>
+              <project.Component src={hoveredProject?.id === project.id ? project.litImage : project.normalImage} />
               <project.Card src={project.holderImage} />
             </ProjectContainer>
           ))}
@@ -535,8 +565,13 @@ const Projects = () => {
       </DesktopTabletProjects>
 
       <MobileProjects>
-        <Carousel currentIndex={currentIndex} onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} onTouchEnd={handleTouchEnd}>
-          {projects.map((project) => (
+        <Carousel
+          currentIndex={currentIndex}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
+          {projects.map(project => (
             <ProjectSlide key={project.id}>
               <TVText>{project.description}</TVText>
               <TVButton href={project.link} target="_blank" rel="noopener noreferrer">
@@ -554,15 +589,12 @@ const Projects = () => {
         </RightButton>
         <DotsContainer>
           {projects.map((_, index) => (
-            <Dot
-              isActive={index === currentIndex}
-              onClick={() => handleDotClick(index)}
-            />
+            <Dot isActive={index === currentIndex} onClick={() => handleDotClick(index)} />
           ))}
         </DotsContainer>
       </MobileProjects>
     </ProjectsContainer>
-  );
-};
+  )
+}
 
-export default Projects;
+export default Projects
