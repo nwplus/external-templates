@@ -39,7 +39,7 @@ const SwipeDescription = styled.p`
 
 const Spotlight = styled.div`
   position: absolute;
-  top: 0;
+  top: calc(100vw * (100 / 1280));
   left: ${props => (props.direction === 'left' ? '0' : 'none')};
   right: ${props => (props.direction === 'right' ? '0' : 'none')};
   width: 100%;

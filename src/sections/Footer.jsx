@@ -156,8 +156,8 @@ const ConfettiContainer = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  width: 3840px;
-  height: 2160px;
+  width: 200vw;
+  height: 200vh;
 
   canvas {
     width: 100% !important;
@@ -179,7 +179,7 @@ const Footer = () => {
         <ConfettiContainer>
           <Confetti
             mode="fall"
-            shapeSize={40}
+            shapeSize={20}
             colors={['#E261BB', '#61B5E2', '#E26161', '#E28A61', '#ED9823', '#FDC699']}
           />
         </ConfettiContainer>
