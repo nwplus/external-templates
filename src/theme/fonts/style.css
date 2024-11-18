@@ -76,3 +76,31 @@
   font-weight: 900;
   src: local('HK Grotesk Black'), url('HKGrotesk-Black.woff') format('woff');
 }
+
+@font-face {
+  font-family: 'LT Museum';
+  font-style: normal;
+  font-weight: 400;
+  src: local('LT Museum Light'), url('LTMuseum-Light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'LT Museum';
+  font-style: normal;
+  font-weight: 500;
+  src: local('LT Museum Medium'), url('LTMuseum-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'LT Museum';
+  font-style: normal;
+  font-weight: 700;
+  src: local('LT Museum Bold'), url('LTMuseum-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'LT Museum';
+  font-style: normal;
+  font-weight: 900;
+  src: local('LT Museum Black'), url('LTMuseum-Black.ttf') format('truetype');
+}

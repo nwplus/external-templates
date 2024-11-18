@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import fireDb from '@utilities/firebase'
-import { useParallax } from 'react-scroll-parallax'
 import FaqBox from '@components/FaqBox'
-import { Header2, Header3 } from '@components/Typography'
-
-import flyingCardsImg from '../assets/images/flyingCards.svg'
+import { Header3 } from '@components/Typography'
 
 const FaqContainer = styled.div`
   position: relative;
@@ -75,30 +72,37 @@ const CollectionContainer = styled.div`
 `
 
 const CollectionName = styled(Header3)`
-  color: #F0EEF2;
-  font-size: 1.75rem;
-  font-weight: 900;
-  padding-bottom: 1rem;
+  color: white;
+  font-size: calc(100vw * (35 / 1280));
+  font-weight: 700;
+  padding-bottom: calc(100vw * (20 / 1280));
+
+  ${p => p.theme.mediaQueries.tablet} {
+    font-size: calc(100vw * (35 / 834));
+    padding-bottom: calc(100vw * (20 / 834));
+  }
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 1.2rem;
+    font-size: calc(100vw * (35 / 487));
+    padding-bottom: calc(100vw * (20 / 487));
   }
 `
 
-const StyledTitle = styled(Header2)`
-  font-size: 3rem;
-  text-align: center;
-  ${p => p.theme.mediaQueries.mobile} {
-    font-size: 3em;
+const StyledTitle = styled.p`
+  display: none;
+
+  ${p => p.theme.mediaQueries.tablet} {
+    display: block;
+    color: white;
+    margin-top: calc(100vw * (50 / 834));
+    font-size: calc(100vw * (56 / 834));
+    font-weight: 900;
+    text-align: center;
   }
-`
-
-const FlyingCardsImgContainer = styled.img`
-  position: absolute;  
-  width: 100%;
 
   ${p => p.theme.mediaQueries.mobile} {
-    display: none;
+    font-size: calc(100vw * (56 / 487));
+    margin-top: calc(100vw * (50 / 487));
   }
 `
 
@@ -106,7 +110,7 @@ const FaqCollection = ({ category, faqs, expandedQuestion, setExpandedQuestion }
   <CollectionContainer>
     <CollectionName>{category}</CollectionName>
 
-    {faqs.map(q =>
+    {faqs.map(q => (
       <FaqBox
         key={q.question}
         question={q.question}
@@ -120,7 +124,7 @@ const FaqCollection = ({ category, faqs, expandedQuestion, setExpandedQuestion }
           }
         }}
       />
-    )}
+    ))}
   </CollectionContainer>
 )
 
@@ -150,39 +154,44 @@ const Faq = () => {
     setFaqData(processedData)
   }, [])
 
-
-  const flyingCards = useParallax({
-    speed: 1,
-    translateY: ['-40px', '40px']
-  });
-
   return (
     <FaqContainer>
-
-      <FlyingCardsImgContainer src={flyingCardsImg} ref={flyingCards.ref} />
-
       <Wrapper id="faq">
-        <StyledTitle color="#F0EEF2" fontSize="5rem">
-          FAQ
-        </StyledTitle>
+        <StyledTitle>FAQ</StyledTitle>
 
         {faqData ? (
           <FaqGrid>
-            <FaqColumn>{faqData.General && <FaqCollection category="General" faqs={faqData.General} expandedQuestion={expandedQuestion} setExpandedQuestion={setExpandedQuestion} />}</FaqColumn>
-
             <FaqColumn>
-              {faqData['Teams & Projects'] && (
-                <FaqCollection category="Teams & Projects" faqs={faqData['Teams & Projects']}
+              {faqData.General && (
+                <FaqCollection
+                  category="General"
+                  faqs={faqData.General}
                   expandedQuestion={expandedQuestion}
-                  setExpandedQuestion={setExpandedQuestion} />
+                  setExpandedQuestion={setExpandedQuestion}
+                />
               )}
             </FaqColumn>
 
             <FaqColumn>
-              {faqData.Logistics && <FaqCollection category="Logistics" faqs={faqData.Logistics}
-                expandedQuestion={expandedQuestion}
-                setExpandedQuestion={setExpandedQuestion}
-              />}
+              {faqData['Teams & Projects'] && (
+                <FaqCollection
+                  category="Teams & Projects"
+                  faqs={faqData['Teams & Projects']}
+                  expandedQuestion={expandedQuestion}
+                  setExpandedQuestion={setExpandedQuestion}
+                />
+              )}
+            </FaqColumn>
+
+            <FaqColumn>
+              {faqData.Logistics && (
+                <FaqCollection
+                  category="Logistics"
+                  faqs={faqData.Logistics}
+                  expandedQuestion={expandedQuestion}
+                  setExpandedQuestion={setExpandedQuestion}
+                />
+              )}
             </FaqColumn>
           </FaqGrid>
         ) : (

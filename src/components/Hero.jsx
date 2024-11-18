@@ -1,240 +1,432 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components'
-import { LAPTOP, TABLET } from '@constants/measurements'
-import Button from './Button'
-import { BANNER_OFFSET_PX } from '../constants/measurements'
+import { gsap } from 'gsap'
+import ScrollTrigger from 'gsap/dist/ScrollTrigger'
+import HeroBackground from './HeroBackground'
+import RegistrationCountdown from './RegistrationCountdown'
+import MuseumButton from './MuseumButton'
+import HeroSponsors from './HeroSponsors'
+import NwPlusLogo from './NwPlusLogo'
+import { SCREEN_BREAKPOINTS } from '../theme/ThemeProvider'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const HeroContainer = styled.div`
-  position: relative;
-  min-height: calc(calc(800 / 1440) * 100vw);
-  margin-top: 0rem;
-  top: ${BANNER_OFFSET_PX};
-
-  ${p => p.theme.mediaQueries.mobile} {
-    min-height: calc(calc(1000 / 882) * 100vw);
-    margin-top: 0rem;
-  }
-`
-
-const OuterContainer = styled.div`
   position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  top: calc(calc(75 / 1440) * 100vw);
-  margin-top 5%;
+  aspect-ratio: 1280/901;
+  z-index: 10;
 
   ${p => p.theme.mediaQueries.mobile} {
-    bottom: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+    position: relative;
+    aspect-ratio: 487/935;
+    min-height: calc(100vw * (935 / 487));
   }
 `
 
-const IntroContainer = styled.div`
-  margin-left: 10vw;
-  text-align: left;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    margin: 0;
-    padding: 0 6vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-`
-
-const Opening = styled.p`
-  position: relative;
-  top: 25px;
-  font-family: HK Grotesk;
-  color: #DCB551;
-  font-size: 24px;
-  font-weight: 600;
-  line-height: 26px;
-  letter-spacing: -0.44999998807907104px;
-  @media (max-width: ${LAPTOP}) {
-    font-size: 20px;
-  }
-
-  ${p => p.theme.mediaQueries.mobile} {
-    width: 100%;
-    top: 0px;
-    text-align: center;
-  }
-`
-
-const Title = styled.p`
-  position: relative;
-  font-family: HK Grotesk;
-  font-size: 100px;
-  font-weight: 900;
-  line-height: 100px;
-  letter-spacing: 0em;
-  color: #F3F5F4;
-  @media (max-width: ${LAPTOP}) {
-    font-size: 80px;
-    line-height: 80px;
-  }
-  @media (max-width: ${TABLET}) {
-    font-size: 75px;
-    line-height: 65px;
-  }
-`
-
-const Subtitle = styled.p`
-  position: relative;
-  font-family: HK Grotesk;
-  font-size: 32px;
-  font-weight: 600;
-  padding-top: 0.5rem;
-  padding-bottom: 0.2rem;
-  line-height: 32px;
-  letter-spacing: -0.25999999046325684px;
-  color: #F3F5F4;
-  @media (max-width: ${LAPTOP}) {
-    font-size: 23px;
-  }
-  @media (max-width: ${TABLET}) {
-    font-size: 23px;
-  }
-  ${p => p.theme.mediaQueries.mobile} {
-    font-size: 1.1rem;
-  }
-`
-
-const DescriptionContainer = styled.div`
-  display: flex;
-  font-family: HK Grotesk;
-  font-size: 20px;
-  font-weight: 500;
-  color: #F3F5F4;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    flex-direction: column;
-    align-items: center;
-    font-size: 1rem;
-  }
-`
-
-const HideMobile = styled.div`
+const HeroBackgroundContainer = styled.div`
   ${p => p.theme.mediaQueries.mobile} {
     display: none;
   }
 `
 
-const Description = styled.p`
-  position: relative;
-  line-height: 28px;
-  letter-spacing: 0em;
+const HeroBackgroundMobile = styled.div`
+  display: none;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background-image: url(./assets/images/mobile_hero_background.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
 `
 
-const ActionsContainer = styled.div`
-  margin-left: 10vw;
+const Nugget = styled.img`
+  display: none;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: block;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100vw * (95 / 487));
+    top: calc(100vw * (755 / 487));
+  }
+`
+
+const LogoContainer = styled.div`
+  display: none;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: calc(100vw * (210 / 1280));
+    transform: translate(-50%, -50%);
+    width: calc(100vw * (60 / 487));
+    aspect-ratio: 44/50;
+  }
+`
+
+const DummySpacerDiv = styled.div`
+  aspect-ratio: 1280/909;
+  width: 100%;
+  z-index: -10;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
+`
+
+const MuseumHeader = styled.div`
+  text-align: center;
+  font-family: 'LT Museum';
+  color: #3a2e21;
+
+  position: absolute;
+  left: 50%;
+  top: calc(100vw * (185 / 1280));
+  transform: translate(-50%, -50%) perspective(1000px) rotateX(8deg);
+  width: 100%;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    top: calc(100vw * (190 / 487));
+    transform: translate(-50%, -50%);
+  }
+`
+
+const Title = styled.p`
+  font-weight: 900;
+  font-size: calc(100vw * (48 / 1280));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: calc(100vw * (66 / 487));
+  }
+`
+
+const TitleSponsor = styled.p`
+  font-weight: 700;
+  font-size: calc(100vw * (16 / 1280));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: calc(100vw * (20 / 487));
+  }
+`
+
+const Description = styled.p`
+  font-weight: 700;
+  font-size: calc(100vw * (16 / 1280));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    margin-top: calc(100vw * (10 / 487));
+    font-size: calc(100vw * (20 / 487));
+    font-weight: 500;
+  }
+`
+
+const Date = styled.p`
+  font-family: 'LT Museum';
+  font-weight: 500;
+  margin-top: calc(100vw * (16 / 1280));
+  font-size: calc(100vw * (16 / 1280));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    margin-top: calc(100vw * (4 / 487));
+    font-size: calc(100vw * (20 / 487));
+  }
+`
+
+const MobileRegistrationCountdownContainer = styled.div`
+  display: none;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: block;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: calc(100vw * (332 / 487));
+    width: 100%;
+  }
+`
+
+const LeftPillar = styled.div`
+  position: absolute;
+  left: calc(100vw * (202 / 1280));
+  top: calc(100vw * (280 / 1280));
+  transform: perspective(2000px) rotateX(8.5deg) skewX(-7.5deg);
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
+`
+
+const MentorButton = styled.a`
+  position: absolute;
+  left: calc(100vw * (435 / 1280));
+  top: calc(100vw * (455 / 1280));
+
+  cursor: pointer;
+  text-decoration: none;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    left: calc(100vw * (56 / 487));
+    top: calc(100vw * (588 / 487));
+    transform: perspective(2000px) rotateX(0deg) skewX(-4deg);
+  }
+`
+
+const HackerButton = styled.a`
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: calc(100vw * (430 / 1280));
+
+  cursor: pointer;
+  text-decoration: none;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    top: calc(100vw * (530 / 487));
+  }
+`
+
+const VolunteerButton = styled.a`
+  position: absolute;
+  left: calc(100vw * (700 / 1280));
+  top: calc(100vw * (455 / 1280));
+
+  cursor: pointer;
+  text-decoration: none;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    left: calc(100vw * (283 / 487));
+    top: calc(100vw * (588 / 487));
+    transform: perspective(2000px) rotateX(0deg) skewX(4deg);
+  }
+`
+
+const RightPillar = styled.div`
+  position: absolute;
+  left: calc(100vw * (947 / 1280));
+  top: calc(100vw * (280 / 1280));
+  transform: perspective(2000px) rotateX(-8.5deg) skewX(8.5deg);
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
+`
+
+const RightPillarInnerContainer = styled.div`
   position: relative;
-  padding-top: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  align-items: flex-start;
+  justify-content: space-between;
+  width: calc(100vw * (134 / 1280));
+  height: calc(100vw * (250 / 1280));
+`
 
-  @media (max-width: ${TABLET}) {
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-    padding-top: 20px;
-    width: 50%;
-    align-items: center;
-  }
+const SponsorText = styled.p`
+  text-align: center;
+  font-weight: 600;
+  font-size: calc(100vw * (20 / 1280));
+  color: #51483e;
+`
+
+const SponsorButton = styled.a`
+  cursor: pointer;
+  text-decoration: none;
+`
+
+const MobileSponsorButton = styled(SponsorButton)`
+  display: none;
 
   ${p => p.theme.mediaQueries.mobile} {
-    padding-top: 0.5rem;
-    margin-top: 0;
-    font-size: 10px;
-    margin-bottom: 0;
-    gap: 1rem;
+    display: block;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: calc(100vw * (891 / 487));
   }
 `
 
-const TitleContainer = styled.div`
-  display: flex;
-  align-items: flex-end;
+const Hero = () => {
+  const heroRef = useRef(null)
+  const tlRef = useRef(null)
+  const svgWidth = 1280
+  const svgHeight = 901
 
-  ${p => p.theme.mediaQueries.mobile} {
-    flex-direction: column;
-    align-items: center;
-  }
-`
+  useEffect(() => {
+    const mm = gsap.matchMedia()
 
-const ButtonsContainer = styled.div`
-  display: flex;
-  gap: 1rem;
-  align-items: center;
+    mm.add(`(min-width: ${SCREEN_BREAKPOINTS.desktop}px)`, () => {
+      const hero = heroRef.current
+      if (!hero) return
 
-  ${p => p.theme.mediaQueries.mobile} {
-    flex-direction: column;
-    gap: 0rem;
-  }
-`
+      const initScrollTrigger = () => {
+        const svg = hero.querySelector('svg')
+        const door = hero.querySelector('#door')
 
-// const VolunteerLink = styled.a`
-//   position: relative;
-//   color: #F3F5F4;
-//   text-decoration: none;
-//   font-weight: 600;
-//   font-size: 1.1rem;
-//   letter-spacing: -0.2px;
-//   transition: color 0.13s linear;
+        if (!door || !svg) return
 
-//   &:after {
-//     content: ' ';
-//     position: absolute;
-//     bottom: -2px;
-//     left: 0;
-//     width: 100%;
-//     height: 2px;
-//     background-color: #F3F5F4;
-//     transition: background 0.13s linear;
-//   }
+        const doorBBox = door.getBBox()
+        const doorCenterX = doorBBox.x + doorBBox.width / 2
+        const doorCenterY = doorBBox.y + doorBBox.height / 2
 
-//   &:hover {
-//     color: #DCB551;
+        const transformOriginX = (doorCenterX / svgWidth) * 100
+        const transformOriginY = (doorCenterY / svgHeight) * 100
 
-//     &:after {
-//       background-color: #DCB551;
-//     }
-//   }
-// `
+        let scrollDistance = 120
+        const aspectRatio = window.innerWidth / window.innerHeight
 
-const Hero = () => (
-  <HeroContainer>
-    <OuterContainer>
-      <IntroContainer>
-        <Opening>Welcome to</Opening>
-        <TitleContainer>
+        if (aspectRatio <= 16 / 9) {
+          scrollDistance = 95 + (25 * Math.min(aspectRatio - 11 / 9, 5 / 9)) / (5 / 9)
+        }
+
+        gsap.set(hero, {
+          transformOrigin: `${transformOriginX}% ${transformOriginY}%`,
+        })
+
+        tlRef.current = gsap.timeline({
+          scrollTrigger: {
+            trigger: hero,
+            start: 'top top',
+            end: `+=${scrollDistance}%`,
+            pin: true,
+            scrub: 0.25,
+            onLeave: () => {
+              gsap.set(hero, { autoAlpha: 0 })
+            },
+            onEnterBack: () => {
+              gsap.to(hero, {
+                autoAlpha: 1,
+                duration: 0.25,
+                overwrite: 'auto',
+              })
+            },
+            fastScrollEnd: true,
+            pinSpacing: false,
+          },
+        })
+
+        tlRef.current.to(
+          hero.querySelector('.museum-header'),
+          {
+            opacity: 0,
+            duration: 0.3,
+            ease: 'power2.inOut',
+          },
+          0
+        )
+
+        tlRef.current.to(
+          hero,
+          {
+            scale: 15,
+            duration: 1,
+            ease: 'power2.inOut',
+          },
+          0
+        )
+
+        tlRef.current.to(
+          hero,
+          {
+            opacity: 0,
+            duration: 0.3,
+            ease: 'power2.inOut',
+          },
+          '>-0.3'
+        )
+      }
+
+      initScrollTrigger()
+
+      // eslint-disable-next-line consistent-return
+      return () => {
+        if (tlRef.current) {
+          tlRef.current.kill()
+          tlRef.current = null
+        }
+        ScrollTrigger.getAll().forEach(trigger => trigger.kill())
+        ScrollTrigger.refresh()
+      }
+    })
+
+    return () => mm.revert()
+  }, [])
+
+  return (
+    <>
+      <HeroContainer ref={heroRef}>
+        <HeroBackgroundContainer>
+          <HeroBackground />
+        </HeroBackgroundContainer>
+        <HeroBackgroundMobile />
+
+        <Nugget src="./assets/images/nugget_hero.png" />
+
+        <LogoContainer>
+          <NwPlusLogo fill="#3A2E21" />
+        </LogoContainer>
+
+        <MuseumHeader className="museum-header">
           <Title>nwHacks</Title>
-        </TitleContainer>
-        <Subtitle>Western Canada’s Largest Hackathon</Subtitle>
-        <DescriptionContainer>
-          <Description>Jan 18 - 19, 2025</Description>
-          <HideMobile>&nbsp;|&nbsp;</HideMobile>
-          <Description>In-person @ UBC Life Science Institute</Description>
-        </DescriptionContainer>
-      </IntroContainer>
-      <ActionsContainer>
-        <ButtonsContainer>
-          <Button variant="solid" rel="noreferrer" href="https://docs.google.com/forms/d/e/1FAIpQLScyrH57AXLwd90aiEg99pWT3TqOuLdKXhOCXtVBwPd_JfCNew/viewform">
-            Notify me when applications open!
-          </Button>
-          <Button variant="outlined" rel="noreferrer" href="mailto:sponsorship@nwplus.io?subject=Sponsorship">
-            Sponsor Us
-          </Button>
-        </ButtonsContainer>
-        {/* <VolunteerLink href="https://docs.google.com/forms/d/e/1FAIpQLSchia8WiuZT7r1bLIBVLlLUohHAtwzklzszf5Nul2Zf240Vig/viewform" target="_blank" rel="noreferrer">
-          Apply to be a volunteer!
-        </VolunteerLink> */}
-      </ActionsContainer>
-    </OuterContainer>
-  </HeroContainer>
-)
+          <TitleSponsor>powered by Aquareum.tv</TitleSponsor>
+          <Description>Western Canada&apos;s largest hackathon</Description>
+          <Date>Jan 18-19, 2025 | UBC Life Science Institute</Date>
+        </MuseumHeader>
+
+        <MobileRegistrationCountdownContainer>
+          <RegistrationCountdown />
+        </MobileRegistrationCountdownContainer>
+
+        <LeftPillar>
+          <RegistrationCountdown />
+        </LeftPillar>
+
+        <MentorButton
+          href="https://docs.google.com/forms/d/e/1FAIpQLSe-KggS1ekHPklwNTMdc4xQyVAPwLjC4oLWg4EWvn2BEx5jQw/viewform?usp=sf_link"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <MuseumButton topText="Become a" bottomText="Mentor" />
+        </MentorButton>
+        <HackerButton href="https://portal.nwplus.io" target="_blank" rel="noopener noreferrer">
+          <MuseumButton topText="Apply as a" bottomText="Hacker" />
+        </HackerButton>
+        <VolunteerButton
+          href="https://docs.google.com/forms/d/e/1FAIpQLSevOUAxpWWvyaL4w6Jq9VIqpfZA3y-Lmk_RcAQ68ifCqH7ztg/viewform?usp=sf_link"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <MuseumButton topText="Become a" bottomText="Volunteer" />
+        </VolunteerButton>
+
+        <RightPillar>
+          <RightPillarInnerContainer>
+            <SponsorText>Sponsored by</SponsorText>
+            <HeroSponsors />
+            <SponsorButton href="mailto:sponsorship@nwplus.io" target="_blank" rel="noopener noreferrer">
+              <MuseumButton topText="Sponsor Us" variant="sponsor" />
+            </SponsorButton>
+          </RightPillarInnerContainer>
+        </RightPillar>
+
+        <MobileSponsorButton href="mailto:sponsorship@nwplus.io" target="_blank" rel="noopener noreferrer">
+          <MuseumButton topText="Become a Sponsor" variant="sponsor" />
+        </MobileSponsorButton>
+      </HeroContainer>
+      <DummySpacerDiv />
+    </>
+  )
+}
 
 export default Hero
