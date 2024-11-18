@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react'
 import styled from 'styled-components';
 
 import noodleDoodleHolder from '@assets/images/projects/NoodleDoodleHolder.svg';
@@ -35,6 +35,9 @@ const ProjectsContainer = styled.div`
 
   ${p => p.theme.mediaQueries.mobile} {
     aspect-ratio: 487 / 1006;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
   }
 `;
 
@@ -210,43 +213,12 @@ const PitchAICard = styled(ProjectImageCard)`
   height: auto;
   top: -300px;
 `;
-
-
-const NavigationButton = styled.button`
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 2rem;
-  background: transparent;
-  border: none;
-  color: white;
-  cursor: pointer;
-  z-index: 2;
-
-  &:hover {
-    color: #ffc633;
-  }
-`;
-
-const LeftButton = styled(NavigationButton)`
-  left: 10px;
-`;
-
-const RightButton = styled(NavigationButton)`
-  right: 10px;
-`;
-
 const ProjectsInCarousel = styled.div`
   position: relative;
   top: 65vh;
   width: auto;
   height: calc(100vh * (380 / 1280));
 `
-
-const ProjectImage = styled.img`
-  width: 80%;
-  margin: 0 auto;
-`;
 
 const TVContainer = styled.div`
   grid-row: 1;
@@ -310,16 +282,126 @@ const NuggetArmImage = styled.img`
   top: 200px;
 `
 
+const Carousel = styled.div`
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  transform: translateX(${({ currentIndex }) => `-${currentIndex * 100}%`});
+`;
+
+const ProjectSlide = styled.div`
+  min-width: 100%;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+`;
+
+const ProjectImage = styled.img`
+  width: 70%;
+  height: auto;
+  margin-bottom: 20px;
+`;
+
+const ProjectTitle = styled.h2`
+  color: white;
+  font-family: 'LT Museum';
+  font-size: 1.5rem;
+  margin: 10px 0;
+`;
+
+const ProjectDescription = styled.p`
+  color: white;
+  font-family: 'LT Museum';
+  font-size: 1rem;
+  margin: 10px 0;
+`;
+
+const NavigationButton = styled.button`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 2;
+
+  &:hover {
+    color: #ffc633;
+  }
+`;
+
+const LeftButton = styled(NavigationButton)`
+  left: 10px;
+`;
+
+const RightButton = styled(NavigationButton)`
+  right: 10px;
+`;
+
+const DotsContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+`;
+
+const Dot = styled.button`
+  width: 10px;
+  height: 10px;
+  margin: 0 5px;
+  background-color: ${({ isActive }) => (isActive ? '#ffc633' : 'white')};
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #ffc633;
+  }
+`;
+
 const Projects = () => {
   const [hoveredProject, setHoveredProject] = useState(null);
   const [tvLit, setTvLit] = useState(false);
-  const [selectedProject, setSelectedProject] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-  const handleHover = (project) => {
-    setHoveredProject(project);
-    setTvLit(true);
-    setTimeout(() => setTvLit(false), 10000);
-    setTimeout(() => setHoveredProject(null), 10000);
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
+
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    const swipeDistance = touchEndX.current - touchStartX.current;
+    if (swipeDistance > 50) {
+      // Swipe right
+      setCurrentIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : prevIndex));
+    } else if (swipeDistance < -50) {
+      // Swipe left
+      setCurrentIndex((prevIndex) =>
+        prevIndex < projects.length - 1 ? prevIndex + 1 : prevIndex
+      );
+    }
+  };
+
+  const handleLeftClick = () => {
+    setCurrentIndex((prev) =>
+      prev === 0 ? projects.length - 1 : prev - 1
+    );
+  };
+
+  const handleRightClick = () => {
+    setCurrentIndex((prev) =>
+      prev === projects.length - 1 ? 0 : prev + 1
+    );
   };
 
   const projects = [
@@ -385,18 +467,6 @@ const Projects = () => {
     },
   ];
 
-  const handleLeftClick = () => {
-    setSelectedProject((prev) =>
-      prev === 0 ? projects.length - 1 : prev - 1
-    );
-  };
-
-  const handleRightClick = () => {
-    setSelectedProject((prev) =>
-      prev === projects.length - 1 ? 0 : prev + 1
-    );
-  };
-
   return (
     <ProjectsContainer id="past-projects">
       <ProjectsBackground />
@@ -434,21 +504,26 @@ const Projects = () => {
       </DesktopTabletProjects>
 
       <MobileProjects>
-        {projects[selectedProject] && (
-          <MobileProjectInfo>
-            <TVText>{projects[selectedProject].description}</TVText>
-            <TVButton href={projects[selectedProject].link} target="_blank" rel="noopener noreferrer">
-              Check it out!
-            </TVButton>
-          </MobileProjectInfo>
-        )}
-        <LeftButton onClick={handleLeftClick}>&lt;</LeftButton>
-        <ProjectsInCarousel>
-          {projects[selectedProject] && (
-            <ProjectImage src={projects[selectedProject].normalImage} />
-          )}
-        </ProjectsInCarousel>
-        <RightButton onClick={handleRightClick}>&gt;</RightButton>
+        <Carousel currentIndex={currentIndex} onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} onTouchEnd={handleTouchEnd}>
+          {projects.map((project) => (
+            <ProjectSlide key={project.id}>
+              <ProjectImage src={project.normalImage} alt={project.name} />
+              <ProjectTitle>{project.name}</ProjectTitle>
+              <ProjectDescription>{project.description}</ProjectDescription>
+            </ProjectSlide>
+          ))}
+        </Carousel>
+        <LeftButton onClick={handleLeftClick}>❮</LeftButton>
+        <RightButton onClick={handleRightClick}>❯</RightButton>
+        <DotsContainer>
+          {projects.map((_, index) => (
+            <Dot
+              key={index}
+              isActive={index === currentIndex}
+              onClick={() => handleDotClick(index)}
+            />
+          ))}
+        </DotsContainer>
       </MobileProjects>
 
     </ProjectsContainer>
