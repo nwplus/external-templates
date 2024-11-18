@@ -12,7 +12,7 @@ const GalleryContainer = styled.div`
   width: 100vw;
   aspect-ratio: 1280 / 870;
   position: relative;
-  top: calc(100vw * (-525 / 1280));
+  top: calc(100vw * (-600 / 1280));
 
   ${p => p.theme.mediaQueries.tablet} {
     aspect-ratio: 834 / 893;
@@ -21,7 +21,7 @@ const GalleryContainer = styled.div`
 
   ${p => p.theme.mediaQueries.mobile} {
     aspect-ratio: 487 / 1086;
-    top: calc(100vw * (-400 / 487));
+    top: calc(100vw * (-450 / 487));
   }
 `
 
