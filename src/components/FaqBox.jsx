@@ -11,10 +11,10 @@ const Container = styled.div`
   overflow:hidden;
   ${p => p.expanded
     ? `
-    border-color: #809CAA;
+    border-color: #4B1B1B;
   `
     : `
-    border-color: #809CAA;
+    border-color: #4B1B1B;
   `}
   
   &:not(:last-child) {
@@ -53,7 +53,7 @@ const AnswerBox = styled.div`
   overflow:hidden;
   transition:0.2s max-height cubic-bezier(.6,0,.4,1);
   border-radius: 0 0 5px 5px;
-  ${p => p.isOpen ? 'max-height:500px; background-color: #142E3D;' : 'max-height: 0;'}
+  ${p => p.isOpen ? 'max-height:500px; background-color: #883030;' : 'max-height: 0;'}
   ${p => p.theme.mediaQueries.mobile} {
     font-size: 0.9rem;
   }

@@ -7,6 +7,9 @@ import { Header3 } from '@components/Typography'
 const FaqContainer = styled.div`
   position: relative;
   min-height: 50vh;
+  background-image: url('./assets/images/faq.svg');
+  background-repeat: no-repeat;
+  background-position: 0px -48px;
 
   ${p => p.theme.mediaQueries.mobile} {
     min-height: 0;
@@ -44,7 +47,6 @@ const FaqGrid = styled.div`
   }
 
   & > div:nth-child(3) {
-    grid-column: 2; // move the column to the right
     ${p => p.theme.mediaQueries.mobile} {
       grid-column: 1;
     }
@@ -175,7 +177,7 @@ const Faq = () => {
             <FaqColumn>
               {faqData['Teams & Projects'] && (
                 <FaqCollection
-                  category="Teams & Projects"
+                  category="Projects"
                   faqs={faqData['Teams & Projects']}
                   expandedQuestion={expandedQuestion}
                   setExpandedQuestion={setExpandedQuestion}
