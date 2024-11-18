@@ -69,6 +69,15 @@ const Title = styled.p`
   top: 120px;
   text-align: center;
   z-index: 1;
+
+  ${p => p.theme.mediaQueries.tablet} {
+    font-size: calc(100vw * (40 / 1280));
+  }
+
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: calc(100vw * (140 / 1280));
+    top: 20px;
+  }
 `;
 
 const Description = styled.p`
@@ -79,7 +88,40 @@ const Description = styled.p`
   top: 140px;
   text-align: center;
   z-index: 1;
+
+  ${p => p.theme.mediaQueries.tablet} {
+    font-size: calc(100vw * (40 / 1280));
+  }
+
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: calc(100vw * (60 / 1280));
+    top: 30px;
+  }
 `;
+
+const DesktopTabletProjects = styled.div`
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
+`
+
+const MobileProjects = styled.div`
+  display: none;
+  ${p => p.theme.mediaQueries.mobile} {
+    display: block;
+    margin: 0 auto;
+    width: 90vw;
+    height: 60vh;
+    padding: 20px;
+  }
+`
+const MobileProjectInfo = styled.div`
+  position: relative;
+  top: 360px;
+  width: 80%;
+  display: block;
+  margin: 0 auto;
+`
 
 const ProjectItems = styled.div`
   display: grid;
@@ -169,6 +211,43 @@ const PitchAICard = styled(ProjectImageCard)`
   top: -300px;
 `;
 
+
+const NavigationButton = styled.button`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  z-index: 2;
+
+  &:hover {
+    color: #ffc633;
+  }
+`;
+
+const LeftButton = styled(NavigationButton)`
+  left: 10px;
+`;
+
+const RightButton = styled(NavigationButton)`
+  right: 10px;
+`;
+
+const ProjectsInCarousel = styled.div`
+  position: relative;
+  top: 65vh;
+  width: auto;
+  height: calc(100vh * (380 / 1280));
+`
+
+const ProjectImage = styled.img`
+  width: 80%;
+  margin: 0 auto;
+`;
+
 const TVContainer = styled.div`
   grid-row: 1;
   grid-column: 2;
@@ -202,7 +281,7 @@ const TVText = styled.p`
 `;
 
 const TVButton = styled.a`
-  display: inline-block;
+  display: block;
   background-color: #F0D798;
   color: black;
   font-family: 'LT Museum';
@@ -211,6 +290,9 @@ const TVButton = styled.a`
   text-decoration: none;
   border-radius: 8px;
   transition: background-color 0.3s ease;
+  margin: 0 auto;
+  text-align: center;
+  width: 80%;
 
   &:hover {
     background-color: #FFC633;
@@ -231,6 +313,7 @@ const NuggetArmImage = styled.img`
 const Projects = () => {
   const [hoveredProject, setHoveredProject] = useState(null);
   const [tvLit, setTvLit] = useState(false);
+  const [selectedProject, setSelectedProject] = useState(0);
 
   const handleHover = (project) => {
     setHoveredProject(project);
@@ -302,39 +385,72 @@ const Projects = () => {
     },
   ];
 
+  const handleLeftClick = () => {
+    setSelectedProject((prev) =>
+      prev === 0 ? projects.length - 1 : prev - 1
+    );
+  };
+
+  const handleRightClick = () => {
+    setSelectedProject((prev) =>
+      prev === projects.length - 1 ? 0 : prev + 1
+    );
+  };
+
   return (
     <ProjectsContainer id="past-projects">
       <ProjectsBackground />
       <Title>PAST PROJECTS</Title>
       <Description>Take a tour of some amazing projects from the nwHacks archive!</Description>
 
-      <ProjectItems>
-        {projects.map((project) => (
-          <ProjectContainer
-            key={project.id}
-            onMouseEnter={() => handleHover(project)}
-          >
-            <project.Component
-              src={hoveredProject?.id === project.id ? project.litImage : project.normalImage}
-            />
-            <project.Card src={project.holderImage} />
-          </ProjectContainer>
-        ))}
+      <DesktopTabletProjects>
+        <ProjectItems>
+          {projects.map((project) => (
+            <ProjectContainer
+              key={project.id}
+              onMouseEnter={() => handleHover(project)}
+            >
+              <project.Component
+                src={hoveredProject?.id === project.id ? project.litImage : project.normalImage}
+              />
+              <project.Card src={project.holderImage} />
+            </ProjectContainer>
+          ))}
 
-        <TVContainer>
-          <TVImage src={tvLit ? OnTV : TV} />
-          <NuggetImage src={nuggetImg} />
-          <NuggetArmImage src={nuggetArm} />
-          {tvLit && hoveredProject && (
-            <TVOverlay>
-              <TVText>{hoveredProject.description}</TVText>
-              <TVButton href={hoveredProject.link} target="_blank" rel="noopener noreferrer">
-                Check it out!
-              </TVButton>
-            </TVOverlay>
+          <TVContainer>
+            <TVImage src={tvLit ? OnTV : TV} />
+            <NuggetImage src={nuggetImg} />
+            <NuggetArmImage src={nuggetArm} />
+            {tvLit && hoveredProject && (
+              <TVOverlay>
+                <TVText>{hoveredProject.description}</TVText>
+                <TVButton href={hoveredProject.link} target="_blank" rel="noopener noreferrer">
+                  Check it out!
+                </TVButton>
+              </TVOverlay>
+            )}
+          </TVContainer>
+        </ProjectItems>
+      </DesktopTabletProjects>
+
+      <MobileProjects>
+        {projects[selectedProject] && (
+          <MobileProjectInfo>
+            <TVText>{projects[selectedProject].description}</TVText>
+            <TVButton href={projects[selectedProject].link} target="_blank" rel="noopener noreferrer">
+              Check it out!
+            </TVButton>
+          </MobileProjectInfo>
+        )}
+        <LeftButton onClick={handleLeftClick}>&lt;</LeftButton>
+        <ProjectsInCarousel>
+          {projects[selectedProject] && (
+            <ProjectImage src={projects[selectedProject].normalImage} />
           )}
-        </TVContainer>
-      </ProjectItems>
+        </ProjectsInCarousel>
+        <RightButton onClick={handleRightClick}>&gt;</RightButton>
+      </MobileProjects>
+
     </ProjectsContainer>
   );
 };
