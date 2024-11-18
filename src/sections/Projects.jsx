@@ -5,21 +5,29 @@ import noodleDoodleHolder from '@assets/images/projects/NoodleDoodleHolder.svg';
 import reworkdAIHolder from '@assets/images/projects/ReworkdAIHolder.svg';
 import bowls from '@assets/images/projects/bowls.svg';
 import litbowls from '@assets/images/projects/litbowls.svg';
+import mobileBowls from '@assets/images/projects/mobileBowls.svg';
 import TV from '@assets/images/projects/TV.svg';
 import OnTV from '@assets/images/projects/onTV.svg';
 import reworkdAI from '@assets/images/projects/sculptures.svg';
 import litReworkdAI from '@assets/images/projects/litSculptures.svg';
+import mobileReworkdAI from '@assets/images/projects/mobileSculptures.svg';
 import duoASLCard from '@assets/images/projects/duoASLCard.svg';
 import duoASLHand from '@assets/images/projects/handSculptures.svg';
 import litDuoASLHand from '@assets/images/projects/litHandSculptures.svg';
+import mobileDuoASLHand from '@assets/images/projects/mobileHandSculptures.svg';
 import yapYapCard from '@assets/images/projects/yapYapCard.svg';
 import yapYapAccessories from '@assets/images/projects/yapYapAccessories.svg';
 import litYapYapAccessories from '@assets/images/projects/litYapYapAccessories.svg';
+import mobileYapYapAccessories from '@assets/images/projects/mobileYapYapAccessories.svg';
 import pitchAICard from '@assets/images/projects/pitchAICard.svg';
 import pitchAIModel from '@assets/images/projects/pitchAIModel.svg';
 import litPitchAIModel from '@assets/images/projects/litPitchAIModel.svg';
+import mobilePitchAIModel from '@assets/images/projects/mobilePitchAIModel.svg';
 import nuggetImg from '@assets/images/projects/nugget.svg';
 import nuggetArm from '@assets/images/projects/nuggetArm.svg';
+
+import leftArrow from '@assets/images/carouselLeft.svg'
+import rightArrow from '@assets/images/carouselRight.svg'
 
 const ProjectsContainer = styled.div`
   aspect-ratio: 1280/812;
@@ -113,9 +121,8 @@ const MobileProjects = styled.div`
   ${p => p.theme.mediaQueries.mobile} {
     display: block;
     margin: 0 auto;
-    width: 90vw;
+    width: 100vw;
     height: 60vh;
-    padding: 20px;
   }
 `
 const MobileProjectInfo = styled.div`
@@ -149,8 +156,11 @@ const ProjectImageBase = styled.img`
   display: block;
   margin: 0 auto;
   transition: opacity 0.3s ease;
-  // z-index: 1;
   width: 100%;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    position: absolute;
+  }
 `;
 
 const ProjectImageCard = styled.img`
@@ -161,6 +171,11 @@ const ProjectImageCard = styled.img`
 `;
 
 const NoodleDoodleImage = styled(ProjectImageBase)`
+  ${p => p.theme.mediaQueries.mobile} {
+    width: 60%;
+    height: auto;
+    top: calc(100vh * (680 / 1280));
+  }
 `;
 
 const NoodleDoodleCard = styled(ProjectImageCard)`
@@ -171,6 +186,11 @@ const NoodleDoodleCard = styled(ProjectImageCard)`
 
 
 const ReworkdAIImage = styled(ProjectImageBase)`
+  ${p => p.theme.mediaQueries.mobile} {
+    width: 50%;
+    height: auto;
+    top: calc(100vh * (680 / 1280));
+  }
 `;
 
 const ReworkdAICard = styled(ProjectImageCard)`
@@ -183,6 +203,11 @@ const ReworkdAICard = styled(ProjectImageCard)`
 const DuoASLImage = styled(ProjectImageBase)`
   top: -300px;
   z-index: 4;
+  ${p => p.theme.mediaQueries.mobile} {
+    width: 60%;
+    height: auto;
+    top: calc(100vh * (680 / 1280));
+  }
 `;
 
 const DuoASLCard = styled(ProjectImageCard)`
@@ -195,6 +220,11 @@ const DuoASLCard = styled(ProjectImageCard)`
 const YapYapImage = styled(ProjectImageBase)`
   top: -300px;
   z-index: 3;
+  ${p => p.theme.mediaQueries.mobile} {
+    width: 60%;
+    height: auto;
+    top: calc(100vh * (680 / 1280));
+  }
 `;
 
 const YapYapCard = styled(ProjectImageCard)`
@@ -206,6 +236,11 @@ const YapYapCard = styled(ProjectImageCard)`
 const PitchAIImage = styled(ProjectImageBase)`
   top: -300px;
   z-index: 3;
+  ${p => p.theme.mediaQueries.mobile} {
+    width: 50%;
+    height: auto;
+    top: calc(100vh * (680 / 1280));\
+  }
 `;
 
 const PitchAICard = styled(ProjectImageCard)`
@@ -213,12 +248,6 @@ const PitchAICard = styled(ProjectImageCard)`
   height: auto;
   top: -300px;
 `;
-const ProjectsInCarousel = styled.div`
-  position: relative;
-  top: 65vh;
-  width: auto;
-  height: calc(100vh * (380 / 1280));
-`
 
 const TVContainer = styled.div`
   grid-row: 1;
@@ -250,6 +279,14 @@ const TVText = styled.p`
   margin-top: -60%;
   margin-bottom: 20px;
   color: black;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: block;
+    margin: 0 auto;
+    width: 280px;
+    margin-top: 50%;
+    margin-bottom: 40px;
+  }
 `;
 
 const TVButton = styled.a`
@@ -268,6 +305,10 @@ const TVButton = styled.a`
 
   &:hover {
     background-color: #FFC633;
+  }
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: 200px;
   }
 `;
 
@@ -289,34 +330,14 @@ const Carousel = styled.div`
 `;
 
 const ProjectSlide = styled.div`
-  min-width: 100%;
+  width: 100vw;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 20px;
-`;
-
-const ProjectImage = styled.img`
-  width: 70%;
-  height: auto;
-  margin-bottom: 20px;
-`;
-
-const ProjectTitle = styled.h2`
-  color: white;
-  font-family: 'LT Museum';
-  font-size: 1.5rem;
-  margin: 10px 0;
-`;
-
-const ProjectDescription = styled.p`
-  color: white;
-  font-family: 'LT Museum';
-  font-size: 1rem;
-  margin: 10px 0;
+  overflow: hidden;
 `;
 
 const NavigationButton = styled.button`
@@ -336,24 +357,28 @@ const NavigationButton = styled.button`
 `;
 
 const LeftButton = styled(NavigationButton)`
-  left: 10px;
+  position: absolute;
+  left: 20px;
+  margin-top: calc(100vh * (400 / 1280));
 `;
 
 const RightButton = styled(NavigationButton)`
-  right: 10px;
+  position: absolute;
+  right: 20px;
+  margin-top: calc(100vh * (400 / 1280));
 `;
 
 const DotsContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: calc(100vh * (130 / 1280));
 `;
 
 const Dot = styled.button`
   width: 10px;
   height: 10px;
   margin: 0 5px;
-  background-color: ${({ isActive }) => (isActive ? '#ffc633' : 'white')};
+  background-color: ${({ isActive }) => (isActive ? '#fff' : 'e7dad0')};
   border: none;
   border-radius: 50%;
   cursor: pointer;
@@ -411,6 +436,7 @@ const Projects = () => {
       normalImage: bowls,
       litImage: litbowls,
       holderImage: noodleDoodleHolder,
+      mobileImage: mobileBowls,
       Component: NoodleDoodleImage,
       Card: NoodleDoodleCard,
       description:
@@ -423,6 +449,7 @@ const Projects = () => {
       normalImage: reworkdAI,
       litImage: litReworkdAI,
       holderImage: reworkdAIHolder,
+      mobileImage: mobileReworkdAI,
       Component: ReworkdAIImage,
       Card: ReworkdAICard,
       description:
@@ -435,6 +462,7 @@ const Projects = () => {
       normalImage: duoASLHand,
       litImage: litDuoASLHand,
       holderImage: duoASLCard,
+      mobileImage: mobileDuoASLHand,
       Component: DuoASLImage,
       Card: DuoASLCard,
       description:
@@ -447,6 +475,7 @@ const Projects = () => {
       normalImage: yapYapAccessories,
       litImage: litYapYapAccessories,
       holderImage: yapYapCard,
+      mobileImage: mobileYapYapAccessories,
       Component: YapYapImage,
       Card: YapYapCard,
       description:
@@ -459,6 +488,7 @@ const Projects = () => {
       normalImage: pitchAIModel,
       litImage: litPitchAIModel,
       holderImage: pitchAICard,
+      mobileImage: mobilePitchAIModel,
       Component: PitchAIImage,
       Card: PitchAICard,
       description:
@@ -507,14 +537,20 @@ const Projects = () => {
         <Carousel currentIndex={currentIndex} onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} onTouchEnd={handleTouchEnd}>
           {projects.map((project) => (
             <ProjectSlide key={project.id}>
-              <ProjectImage src={project.normalImage} alt={project.name} />
-              <ProjectTitle>{project.name}</ProjectTitle>
-              <ProjectDescription>{project.description}</ProjectDescription>
+              <TVText>{project.description}</TVText>
+              <TVButton href={project.link} target="_blank" rel="noopener noreferrer">
+                Check it out!
+              </TVButton>
+              <project.Component src={project.mobileImage} alt={project.name} />
             </ProjectSlide>
           ))}
         </Carousel>
-        <LeftButton onClick={handleLeftClick}>❮</LeftButton>
-        <RightButton onClick={handleRightClick}>❯</RightButton>
+        <LeftButton onClick={handleLeftClick}>
+          <img src={leftArrow} />
+        </LeftButton>
+        <RightButton onClick={handleRightClick}>
+          <img src={rightArrow} />
+        </RightButton>
         <DotsContainer>
           {projects.map((_, index) => (
             <Dot
