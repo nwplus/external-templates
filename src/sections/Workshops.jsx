@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
+import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
 import nugget from '../../public/assets/images/nugget_workshop.png'
 import apis1 from '../../public/assets/images/apis1.svg'
 import apis2 from '../../public/assets/images/apis2.svg'
@@ -24,7 +25,7 @@ const WorkshopsContainer = styled.div`
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: calc(100vw * (550 / 1280));
+  height: calc(100vw * (650 / 1280));
 
   ${p => p.theme.mediaQueries.tablet} {
     position: relative;
@@ -33,6 +34,7 @@ const WorkshopsContainer = styled.div`
 
   ${p => p.theme.mediaQueries.mobile} {
     aspect-ratio: 487 / 1658;
+    top: calc(100vw * (-470 / 487));
   }
 `
 
@@ -42,6 +44,13 @@ const Nugget = styled.img`
   margin-top: calc(100vw * (-72 / 1280));
   width: calc(100vw * (164 / 1280));
   height: calc(100vw * (180 / 1280));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    margin-left: calc(100vw * (32 / 487));
+    margin-top: calc(100vw * (12 / 487));
+    width: calc(100vw * (164 / 487));
+    height: calc(100vw * (180 / 487));
+  }
 `
 
 const Schedule = styled.div`
@@ -56,16 +65,51 @@ const Schedule = styled.div`
   object-fit: cover;
   aspect-ratio: 349/513;
   width: calc(100vw * (310 / 1280));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    position: relative;
+    margin-top: calc(100vw * (0 / 487));
+    margin-right: calc(100vw * (0 / 487));
+    background-image: url('./assets/images/schedule_mobile.svg');
+    aspect-ratio: 393/600;
+    width: calc(100vw * (410 / 487));
+    padding-top: calc(100vw * (2 / 487));
+  }
 `
 
 const Grid = styled.div`
   display: grid;
   grid-template-columns: 28% 37% 37%;
   gap: calc(100vw * (50 / 1280));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+`
+
+const Header = styled.h1`
+  font-weight: 900;
+  font-size: calc(100vw * (56 / 1280));
+  text-align: center;
+  color: #51483e;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: calc(100vw * (42 / 487));
+  }
 `
 
 const Text = styled.div`
   margin-left: calc(100vw * (84 / 1280));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    margin-left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 `
 
 const Title = styled.h1`
@@ -74,6 +118,10 @@ const Title = styled.h1`
   color: #51483e;
   margin-top: calc(100vw * (25.6 / 1280));
   white-space: nowrap;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const SubTitle = styled.p`
@@ -83,6 +131,11 @@ const SubTitle = styled.p`
   color: white;
   text-align: center;
   margin-top: calc(100vw * (32 / 1280));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: calc(100vw * (28 / 487));
+    margin-top: calc(100vw * (32 / 487));
+  }
 `
 
 const Paragraph = styled.p`
@@ -93,6 +146,12 @@ const Paragraph = styled.p`
   align-self: center;
   width: 74%;
   margin-top: calc(100vw * (12 / 1280));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: calc(100vw * (24 / 487));
+    width: 84%;
+    margin-top: calc(100vw * (25.6 / 487));
+  }
 `
 
 const ParagraphSmall = styled.p`
@@ -103,6 +162,12 @@ const ParagraphSmall = styled.p`
   align-self: center;
   width: 74%;
   margin-top: calc(100vw * (6.4 / 1280));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: calc(100vw * (22 / 487));
+    width: 84%;
+    margin-top: calc(100vw * (8 / 487));
+  }
 `
 
 const Description = styled.p`
@@ -110,12 +175,31 @@ const Description = styled.p`
   font-family: 'HK Grotesk Medium';
   font-size: calc(100vw * (16 / 1280));
   color: #51483e;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    margin-top: calc(100vw * (12 / 487));
+    font-size: calc(100vw * (18 / 487));
+    width: 84%;
+  }
+`
+
+const SubDescription = styled.p`
+  font-weight: 600;
+  font-family: 'HK Grotesk Medium';
+  font-size: calc(100vw * (20 / 487));
+  text-align: center;
+  color: #51483e;
+  margin-top: calc(100vw * (22 / 487));
 `
 
 const Squares = styled.div`
   margin-top: calc(100vw * (32 / 1280));
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    margin-top: calc(100vw * (-8 / 487));
+  }
 `
 
 const Square = styled.img`
@@ -123,18 +207,38 @@ const Square = styled.img`
   margin-bottom: calc(100vw * (14 / 1280));
   width: calc(100vw * (145 / 1280));
   height: calc(100vw * (124 / 1280));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    margin-right: calc(100vw * (7 / 487));
+    margin-bottom: calc(100vw * (-10 / 487));
+    width: calc(100vw * (135 / 487));
+    height: calc(100vw * (134 / 487));
+  }
 `
 
 const Workshops = () => {
   const [hoveredItem, setHoveredItem] = useState(null)
+  const [isMobile, setIsMobile] = useState(false)
 
-  const handleMouseOver = (item, e) => {
-    setHoveredItem(item)
+    useEffect(() => {
+      setIsMobile(window.innerWidth <= SCREEN_BREAKPOINTS.mobile)
+    }, [])
+
+  const handleInteraction = (item, e) => {
+    if (hoveredItem?.name === item.name) {
+      setHoveredItem(null)
+    } else {
+      setHoveredItem(item)
+    }
+    
     e.currentTarget.src = item.hoverSrc
   }
 
-  const handleMouseLeave = (item, e) => {
-    setHoveredItem(null)
+  const handleReset = (item, e) => {
+    if (hoveredItem?.name === item.name) {
+      setHoveredItem(null)
+    }
+
     e.currentTarget.src = item.defaultSrc
   }
 
@@ -215,6 +319,7 @@ const Workshops = () => {
 
   return (
     <WorkshopsContainer id="workshops">
+      <Header>WORKSHOPS</Header>
       <Grid>
         <Text>
           <Title>Discover New Skills</Title>
@@ -222,59 +327,110 @@ const Workshops = () => {
             <br /><br /> Throughout the hackathon, there will also be opportunities for hackers to attend sponsor-led workshops.
             <br /><br /> For more resources, check out our self-learning wiki.</Description>
         </Text>
+        {isMobile && (
+            <div>
+            {hoveredItem ? (
+              <Schedule>
+                <SubTitle>{hoveredItem.name}</SubTitle>
+                <Paragraph>{hoveredItem.dateAndTime}</Paragraph>
+                <Paragraph>{hoveredItem.description}</Paragraph>
+              </Schedule>
+            ) : (
+              <Schedule>
+                <SubTitle>Workshop Schedule</SubTitle>
+                <Paragraph>Tuesday, Jan 14</Paragraph>
+                <ParagraphSmall>
+                  <b>5:00PM</b> &nbsp; &nbsp; Hackathons 101
+                </ParagraphSmall>
+                <ParagraphSmall>
+                  <b>6:00PM</b> &nbsp; &nbsp; Intro to Figma
+                </ParagraphSmall>
+                <ParagraphSmall>
+                  <b>7:30PM</b> &nbsp; &nbsp; Intro to Version Control
+                </ParagraphSmall>
+                <Paragraph>Wednesday, Jan 15</Paragraph>
+                <ParagraphSmall>
+                  <b>5:00PM</b> &nbsp; &nbsp; Intro to Web Dev
+                </ParagraphSmall>
+                <ParagraphSmall>
+                  <b>6:00PM</b> &nbsp; &nbsp; Intro to APIs
+                </ParagraphSmall>
+                <ParagraphSmall>
+                  <b>7:30PM</b> &nbsp; &nbsp; Intro to React
+                </ParagraphSmall>
+                <Paragraph>Thursday, Jan 16</Paragraph>
+                <ParagraphSmall>
+                  <b>5:00PM</b> &nbsp; &nbsp; Internships 101
+                </ParagraphSmall>
+                <ParagraphSmall>
+                  <b>6:00PM</b> &nbsp; &nbsp; Tech Career Exploration
+                </ParagraphSmall>
+                <ParagraphSmall>
+                  <b>7:30PM</b> &nbsp; &nbsp; Pitching 101
+                </ParagraphSmall>
+              </Schedule>
+            )}
+            <SubDescription>Tap a workshop tile to learn more!</SubDescription>
+          </div>
+        )}
         <Squares>
           {items.map(item => (
             <Square
               key={item.name}
-              src={item.defaultSrc}
-              onMouseOver={e => handleMouseOver(item, e)}
-              onMouseLeave={e => handleMouseLeave(item, e)}
+              src={hoveredItem?.name === item.name ? item.hoverSrc : item.defaultSrc}
+              onMouseOver={e => !isMobile && handleInteraction(item, e)}
+              onMouseLeave={e => !isMobile && handleReset(item, e)}
+              onClick={e => isMobile && handleInteraction(item, e)}
             />
           ))}
         </Squares>
-        <div>
-          {hoveredItem ? (
+        {!isMobile && (
+          <div>
             <Schedule>
-              <SubTitle>{hoveredItem.name}</SubTitle>
-              <Paragraph>{hoveredItem.dateAndTime}</Paragraph>
-              <Paragraph>{hoveredItem.description}</Paragraph>
+              {hoveredItem ? (
+                <>
+                  <SubTitle>{hoveredItem.name}</SubTitle>
+                  <Paragraph>{hoveredItem.dateAndTime}</Paragraph>
+                  <Paragraph>{hoveredItem.description}</Paragraph>
+                </>
+              ) : (
+                <>
+                  <SubTitle>Workshop Schedule</SubTitle>
+                  <Paragraph>Tuesday, Jan 14</Paragraph>
+                  <ParagraphSmall>
+                    <b>5:00PM</b> &nbsp; &nbsp; Hackathons 101
+                  </ParagraphSmall>
+                  <ParagraphSmall>
+                    <b>6:00PM</b> &nbsp; &nbsp; Intro to Figma
+                  </ParagraphSmall>
+                  <ParagraphSmall>
+                    <b>7:30PM</b> &nbsp; &nbsp; Intro to Version Control
+                  </ParagraphSmall>
+                  <Paragraph>Wednesday, Jan 15</Paragraph>
+                  <ParagraphSmall>
+                    <b>5:00PM</b> &nbsp; &nbsp; Intro to Web Dev
+                  </ParagraphSmall>
+                  <ParagraphSmall>
+                    <b>6:00PM</b> &nbsp; &nbsp; Intro to APIs
+                  </ParagraphSmall>
+                  <ParagraphSmall>
+                    <b>7:30PM</b> &nbsp; &nbsp; Intro to React
+                  </ParagraphSmall>
+                  <Paragraph>Thursday, Jan 16</Paragraph>
+                  <ParagraphSmall>
+                    <b>5:00PM</b> &nbsp; &nbsp; Internships 101
+                  </ParagraphSmall>
+                  <ParagraphSmall>
+                    <b>6:00PM</b> &nbsp; &nbsp; Tech Career Exploration
+                  </ParagraphSmall>
+                  <ParagraphSmall>
+                    <b>7:30PM</b> &nbsp; &nbsp; Pitching 101
+                  </ParagraphSmall>
+                </>
+              )}
             </Schedule>
-          ) : (
-            <Schedule>
-              <SubTitle>Workshop Schedule</SubTitle>
-              <Paragraph>Tuesday, Jan 14</Paragraph>
-              <ParagraphSmall>
-                <b>5:00PM</b> &nbsp; &nbsp; Hackathons 101
-              </ParagraphSmall>
-              <ParagraphSmall>
-                <b>6:00PM</b> &nbsp; &nbsp; Intro to Figma
-              </ParagraphSmall>
-              <ParagraphSmall>
-                <b>7:30PM</b> &nbsp; &nbsp; Intro to Version Control
-              </ParagraphSmall>
-              <Paragraph>Wednesday, Jan 15</Paragraph>
-              <ParagraphSmall>
-                <b>5:00PM</b> &nbsp; &nbsp; Intro to Web Dev
-              </ParagraphSmall>
-              <ParagraphSmall>
-                <b>6:00PM</b> &nbsp; &nbsp; Intro to APIs
-              </ParagraphSmall>
-              <ParagraphSmall>
-                <b>7:30PM</b> &nbsp; &nbsp; Intro to React
-              </ParagraphSmall>
-              <Paragraph>Thursday, Jan 16</Paragraph>
-              <ParagraphSmall>
-                <b>5:00PM</b> &nbsp; &nbsp; Internships 101
-              </ParagraphSmall>
-              <ParagraphSmall>
-                <b>6:00PM</b> &nbsp; &nbsp; Tech Career Exploration
-              </ParagraphSmall>
-              <ParagraphSmall>
-                <b>7:30PM</b> &nbsp; &nbsp; Pitching 101
-              </ParagraphSmall>
-            </Schedule>
-          )}
-        </div>
+          </div>
+        )}
       </Grid>
       <Nugget src={nugget} />
     </WorkshopsContainer>
