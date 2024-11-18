@@ -176,7 +176,7 @@ const NoodleDoodleImage = styled(ProjectImageBase)`
   ${p => p.theme.mediaQueries.mobile} {
     height: calc(100vw * (200 / 487));
     width: auto;
-    top: calc(100vh * (280 / 487));
+    top: calc(100vw * (580 / 487));
   }
 `
 
@@ -193,7 +193,7 @@ const ReworkdAIImage = styled(ProjectImageBase)`
   ${p => p.theme.mediaQueries.mobile} {
     height: calc(100vw * (220 / 487));
     width: auto;
-    top: calc(100vh * (280 / 487));
+    top: calc(100vw * (580 / 487));
   }
 `
 
@@ -214,7 +214,7 @@ const DuoASLImage = styled(ProjectImageBase)`
     left: auto;
     height: calc(100vw * (240 / 487));
     width: auto;
-    top: calc(100vh * (270 / 487));
+    top: calc(100vw * (580 / 487));
   }
 `
 
@@ -236,7 +236,7 @@ const YapYapImage = styled(ProjectImageBase)`
     margin-left: calc(100vw * (20 / 487));
     height: calc(100vw * (240 / 487));
     width: auto;
-    top: calc(100vh * (270 / 487));
+    top: calc(100vw * (580 / 487));
   }
 `
 
@@ -254,7 +254,7 @@ const PitchAIImage = styled(ProjectImageBase)`
   ${p => p.theme.mediaQueries.mobile} {
     height: calc(100vw * (230 / 487));
     width: auto;
-    top: calc(100vh * (275 / 487));
+    top: calc(100vw * (580 / 487));
   }
 `
 
@@ -312,9 +312,9 @@ const TVText = styled.p`
     display: block;
     margin: 0 auto;
     width: 60%;
-    font-size: calc(100vw * (17 / 487));
+    font-size: calc(100vw * (16 / 487));
     margin-top: calc(100vw * (210 / 487));
-    margin-bottom: calc(100vw * (20 / 487));
+    margin-bottom: calc(100vw * (16 / 487));
   }
 `
 
@@ -337,7 +337,7 @@ const TVButton = styled.a`
 
   ${p => p.theme.mediaQueries.mobile} {
     padding: calc(100vw * (10 / 487)) calc(100vw * (20 / 487));
-    font-size: calc(100vw * (18 / 487));
+    font-size: calc(100vw * (16 / 487));
   }
 `
 
@@ -391,25 +391,25 @@ const NavigationButton = styled.button`
 
 const LeftButton = styled(NavigationButton)`
   position: absolute;
-  left: 20px;
-  margin-top: calc(100vh * (400 / 1280));
+  left: calc(100vw * (20 / 487));
+  margin-top: calc(100vw * (300 / 487));
 `
 
 const RightButton = styled(NavigationButton)`
   position: absolute;
-  right: 20px;
-  margin-top: calc(100vh * (400 / 1280));
+  right: calc(100vw * (20 / 487));
+  margin-top: calc(100vw * (300 / 487));
 `
 
 const DotsContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: calc(100vh * (150 / 1280));
+  margin-top: calc(100vw * (120 / 487));
 `
 
 const Dot = styled.button`
-  width: 10px;
-  height: 10px;
+  width: calc(100vw * (10 / 487));
+  height: calc(100vw * (10 / 487));
   margin: 0 5px;
   background-color: ${({ isActive }) => (isActive ? '#fff' : 'e7dad0')};
   border: none;
