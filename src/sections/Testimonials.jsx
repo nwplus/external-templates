@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react'
 import styled from 'styled-components';
 
 import QaziImage from '@assets/images/testimonials/qazi.png';
 import VaibhavImage from '@assets/images/testimonials/vaibhav.png';
 import PascaleImage from '@assets/images/testimonials/pascale.png';
+
+import leftArrow from '@assets/images/carouselLeft.svg'
+import rightArrow from '@assets/images/carouselRight.svg'
 
 const TestimonialsContainer = styled.div`
   aspect-ratio: 1280/832;
@@ -17,6 +20,7 @@ const TestimonialsContainer = styled.div`
   ${p => p.theme.mediaQueries.tablet} {
     position: relative;
     aspect-ratio: 834 / 1149;
+    display: block;
   }
 
   ${p => p.theme.mediaQueries.mobile} {
@@ -51,6 +55,12 @@ const TestimonialLeft = styled.div`
   width: 27.5%;
   padding: 40px;
   height: 100%;
+  ${p => p.theme.mediaQueries.tablet} {
+    display: block;
+    width: 100%;
+    height: 30%;
+    padding: 40px 0;
+  }
 `;
 
 const TestimonialRight = styled.div`
@@ -61,17 +71,31 @@ const TestimonialRight = styled.div`
   justify-content: space-between;
   align-items: center;
   height: 80%;
+  ${p => p.theme.mediaQueries.tablet} {
+    display: block;
+    width: 100%;
+    height: 70%;
+  }
 `;
 
 const Title = styled.h1`
   font-size: calc(100vw * (40 / 1280));
   font-weight: bold;
   color: white;
+  ${p => p.theme.mediaQueries.tablet} {
+    font-size: calc(100vw * (100 / 1280));
+    text-align: center;
+    margin-top: 20px;
+  }
 `;
 
 const Description = styled.p`
   font-size: 1.2rem;
   color: white;
+  ${p => p.theme.mediaQueries.tablet} {
+    font-size: 14px;
+    text-align: center;
+  }
 `;
 
 const HackerList = styled.ul`
@@ -80,6 +104,10 @@ const HackerList = styled.ul`
   margin-top: 75%;
   width: 95%;
   margin-left: 5px;
+
+  ${p => p.theme.mediaQueries.tablet} {
+    display: none;
+  }
 `;
 
 const Hacker = styled.li`
@@ -99,17 +127,29 @@ const Number = styled.span`
   font-size: 2.2em;
   margin-right: 20px;
   color: white;
+  ${p => p.theme.mediaQueries.tablet} {
+    position: absolute;
+  } 
 `;
 
 const Name = styled.span`
   font-size: 1.5rem;
   color: white;
+  ${p => p.theme.mediaQueries.tablet} {
+    text-align: left;
+    font-size: 1.3rem;
+    margin-left: 40px;
+  }
 `;
 
 const Role = styled.span`
   font-size: 1rem;
   color: white;
   display: block;
+  ${p => p.theme.mediaQueries.tablet} {
+    text-align: left;
+    margin-left: 40px;
+  }
 `;
 
 const HackerImageContainer = styled.div`
@@ -117,6 +157,10 @@ const HackerImageContainer = styled.div`
   height: 200px;
   top: -110px;
   position: relative;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `;
 
 const HackerImage = styled.img`
@@ -125,6 +169,22 @@ const HackerImage = styled.img`
   margin: 0 auto;
   display: block;
   position: relative;
+`;
+const MobileImageContainer = styled.div`
+  display: none;
+  ${p => p.theme.mediaQueries.mobile} {
+    display: block;
+    margin: 0 auto;
+    position: absolute;
+    left: 0;
+    width: 100vw;
+    height: 200px;
+    top: calc(100vh * (860 / 1280));
+  }
+`;
+const MobileHackerImage = styled.img`
+    width: auto;
+    height: 125px;
 `;
 
 const HackerInfo = styled.div`
@@ -137,22 +197,46 @@ const HackerInfo = styled.div`
   justify-content: flex-start;
   align-items: flex-start;
   color: #FFECD6;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: 100%;
+    padding: 0px 0%;
+    padding-left: 0%;
+    padding-right: 0%;
+    text-align: center;
+  }
 `;
 
 const HackerName = styled.h2`
   font-size: 1.8rem;
   font-weight: bold;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: 1.2rem;
+    text-align: center;
+    width: 100%;
+  }
 `;
 
 const HackerHeading = styled.h3`
   font-size: 1.2rem;
   margin-bottom: 40px;
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: 14px;
+    width: 100%;
+  }
 `;
 
 const HackerDescription = styled.p`
   font-size: 1.1rem;
   display: block;
   margin-bottom: 40px;
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: 14px;
+    width: 100%;
+    height: 220px;
+    overflow-y: scroll;
+  }
 `;
 
 const ProfileURL = styled.a`
@@ -169,6 +253,72 @@ const FAQTitle = styled.p`
   font-weight: bold;
   color: white;
   top: 25%;
+
+  ${p => p.theme.mediaQueries.tablet} {
+    display: none;
+ }
+`;
+
+const Carousel = styled.div`
+  display: none;
+
+  ${p => p.theme.mediaQueries.tablet} {
+    display: flex;
+    width: 100vw;
+    transition: transform 0.5s ease-in-out;
+    transform: translateX(${({ currentIndex }) => `-${currentIndex * 100}%`});
+  }
+`;
+
+const HackerCarousel = styled.div`
+  width: 100vw;
+  position: relative;
+  left: 0;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+`;
+const HackerInfoMobile = styled.div`
+  display: flex;
+  width: 75%;
+  padding: 30px 0%;
+  padding-left: 10%;
+  padding-right: 10%;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  color: #FFECD6;
+`;
+const NavigationButton = styled.button`
+  display: none;
+  position: absolute;
+  top: calc(100vh * (200 / 1280));
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: white;
+  transform: scale(0.75);
+  cursor: pointer;
+  z-index: 2;
+
+  &:hover {
+    color: #ffc633;
+  }
+  ${p => p.theme.mediaQueries.tablet} {
+    display: block;
+  }
+`;
+
+const LeftButton = styled(NavigationButton)`
+  left: 20px;
+`;
+
+const RightButton = styled(NavigationButton)`
+  right: 20px;
 `;
 
 const hackerData = [
@@ -213,6 +363,52 @@ const hackerData = [
 
 const Testimonials = () => {
   const [selectedHacker, setSelectedHacker] = useState(hackerData[0]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
+
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    const swipeDistance = touchEndX.current - touchStartX.current;
+
+    if (swipeDistance > 50) {
+      setCurrentIndex((prevIndex) => {
+        const newIndex = prevIndex > 0 ? prevIndex - 1 : hackerData.length - 1;
+        setSelectedHacker(hackerData[newIndex]);
+        return newIndex;
+      });
+    } else if (swipeDistance < -50) {
+      setCurrentIndex((prevIndex) => {
+        const newIndex = prevIndex < hackerData.length - 1 ? prevIndex + 1 : 0;
+        setSelectedHacker(hackerData[newIndex]);
+        return newIndex;
+      });
+    }
+  };
+
+  const handleLeftClick = () => {
+    setCurrentIndex((prev) => {
+      const newIndex = prev > 0 ? prev - 1 : hackerData.length - 1;
+      setSelectedHacker(hackerData[newIndex]); // Ensure `selectedHacker` updates synchronously with `currentIndex`
+      return newIndex;
+    });
+  };
+
+  const handleRightClick = () => {
+    setCurrentIndex((prev) => {
+      const newIndex = prev < hackerData.length - 1 ? prev + 1 : 0;
+      setSelectedHacker(hackerData[newIndex]); // Ensure `selectedHacker` updates synchronously with `currentIndex`
+      return newIndex;
+    });
+  };
 
   const handleHackerClick = (hacker) => {
     setSelectedHacker(hacker);
@@ -234,6 +430,24 @@ const Testimonials = () => {
           ))}
         </HackerList>
 
+        <Carousel currentIndex={currentIndex} onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} onTouchEnd={handleTouchEnd}>
+          {hackerData.map((hacker) => (
+            <HackerCarousel key={hacker.id} selected={selectedHacker.id === hacker.id}>
+              <HackerInfoMobile>
+                <Number>{hacker.id}</Number>
+                <Name>{hacker.name}</Name>
+                <Role>{hacker.role}</Role>
+              </HackerInfoMobile>
+            </HackerCarousel>
+          ))}
+        </Carousel>
+        <LeftButton onClick={handleLeftClick}>
+          <img src={leftArrow} alt="Carousel Left Arrow" />
+        </LeftButton>
+        <RightButton onClick={handleRightClick}>
+          <img src={rightArrow} alt="Carousel Right Arrow" />
+        </RightButton>
+
         <FAQTitle>FAQ</FAQTitle>
       </TestimonialLeft>
       <TestimonialRight>
@@ -245,10 +459,15 @@ const Testimonials = () => {
         <HackerInfo>
           <HackerName>{selectedHacker.name} ({selectedHacker.pronouns})</HackerName>
           <HackerHeading>{selectedHacker.heading}</HackerHeading>
-          <HackerDescription>{selectedHacker.description}</HackerDescription>
-          {selectedHacker.links.map((link) => (
-            <ProfileURL href={link.URL} target="_blank">{link.Label}</ProfileURL>
-          ))}
+          <HackerDescription>{selectedHacker.description}<br /><br />
+            {selectedHacker.links.map((link) => (
+              <ProfileURL href={link.URL} target="_blank">{link.Label}</ProfileURL>
+            ))}
+          </HackerDescription>
+
+          <MobileImageContainer>
+            <MobileHackerImage src={selectedHacker.imageUrl} alt={selectedHacker.name} />
+          </MobileImageContainer>
         </HackerInfo>
       </TestimonialRight>
     </TestimonialsContainer>
