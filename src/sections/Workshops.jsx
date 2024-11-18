@@ -25,6 +25,15 @@ const WorkshopsContainer = styled.div`
   bottom: 0;
   width: 100%;
   height: calc(100vw * (550 / 1280));
+
+  ${p => p.theme.mediaQueries.tablet} {
+    position: relative;
+    aspect-ratio: 834 / 955;
+  }
+
+  ${p => p.theme.mediaQueries.mobile} {
+    aspect-ratio: 487 / 1658;
+  }
 `
 
 const Nugget = styled.img`
@@ -209,9 +218,9 @@ const Workshops = () => {
       <Grid>
         <Text>
           <Title>Discover New Skills</Title>
-          <Description>Not sure where to start? Don&apos;t worry, hackathons are a great place to learn new skills! Before the hackathon, nwHacks will host a series of workshops to help hackers gear up for the weekend. Everyone is invited to attend our workshops, regardless of skill level! 
-          <br/><br/> Throughout the hackathon, there will also be opportunities for hackers to attend sponsor-led workshops.
-          <br/><br/> For more resources, check out our self-learning wiki.</Description>
+          <Description>Not sure where to start? Don&apos;t worry, hackathons are a great place to learn new skills! Before the hackathon, nwHacks will host a series of workshops to help hackers gear up for the weekend. Everyone is invited to attend our workshops, regardless of skill level!
+            <br /><br /> Throughout the hackathon, there will also be opportunities for hackers to attend sponsor-led workshops.
+            <br /><br /> For more resources, check out our self-learning wiki.</Description>
         </Text>
         <Squares>
           {items.map(item => (
