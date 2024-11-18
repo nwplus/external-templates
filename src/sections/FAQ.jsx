@@ -13,6 +13,8 @@ const FaqContainer = styled.div`
 
   ${p => p.theme.mediaQueries.mobile} {
     min-height: 0;
+    background-image: url('./assets/images/faq_mobile.svg');
+    background-position: -100px -36px;
   }
 `
 
