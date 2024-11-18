@@ -73,7 +73,7 @@ const Schedule = styled.div`
     background-image: url('./assets/images/schedule_mobile.svg');
     aspect-ratio: 393/600;
     width: calc(100vw * (410 / 487));
-    padding-top: calc(100vw * (2 / 487));
+    padding: calc(100vw * (10.66 / 487)) calc(100vw * (30 / 487));
   }
 `
 
@@ -148,7 +148,7 @@ const Paragraph = styled.p`
   margin-top: calc(100vw * (12 / 1280));
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: calc(100vw * (24 / 487));
+    font-size: calc(100vw * (20 / 487));
     width: 84%;
     margin-top: calc(100vw * (25.6 / 487));
   }
@@ -165,7 +165,7 @@ const ParagraphSmall = styled.p`
 
   ${p => p.theme.mediaQueries.mobile} {
     font-size: calc(100vw * (22 / 487));
-    width: 84%;
+    width: 100%;
     margin-top: calc(100vw * (8 / 487));
   }
 `
