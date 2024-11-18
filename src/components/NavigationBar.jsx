@@ -256,7 +256,9 @@ const MenuList = ({ isMobile, closeDropdown }) => (
   <>
     {isMobile && (
       <NwPlusLogoContainer>
-        <NwPlusLogo fill="#3A2F21" />
+        <a href="/#home">
+          <NwPlusLogo fill="#3A2F21" />
+        </a>
       </NwPlusLogoContainer>
     )}
     <MenuItem name="About" href="/#about" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
@@ -265,7 +267,9 @@ const MenuList = ({ isMobile, closeDropdown }) => (
     <MenuItem name="Past Projects" href="/#past-projects" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
     {!isMobile && (
       <NwPlusLogoContainer>
-        <NwPlusLogo fill="white" />
+        <a href="/#home">
+          <NwPlusLogo fill="white" />
+        </a>
       </NwPlusLogoContainer>
     )}
     <MenuItem name="Testimonials" href="/#testimonials" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />

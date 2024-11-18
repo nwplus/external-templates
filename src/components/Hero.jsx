@@ -364,7 +364,7 @@ const Hero = () => {
   }, [])
 
   return (
-    <>
+    <div id="home">
       <HeroContainer ref={heroRef}>
         <HeroBackgroundContainer>
           <HeroBackground />
@@ -425,7 +425,7 @@ const Hero = () => {
         </MobileSponsorButton>
       </HeroContainer>
       <DummySpacerDiv />
-    </>
+    </div>
   )
 }
 
