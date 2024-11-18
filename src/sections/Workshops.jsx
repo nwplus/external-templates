@@ -25,7 +25,7 @@ const WorkshopsContainer = styled.div`
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: calc(100vw * (650 / 1280));
+  height: calc(100vw * (670 / 1280));
 
   ${p => p.theme.mediaQueries.tablet} {
     position: relative;
@@ -55,7 +55,7 @@ const Nugget = styled.img`
 
 const Schedule = styled.div`
   position: absolute;
-  margin-top: calc(100vw * (32 / 1280));
+  margin-top: calc(100vw * (24 / 1280));
   margin-right: calc(100vw * (128 / 1280));
   z-index: 1;
   background-image: url('./assets/images/schedule.svg');
@@ -186,14 +186,18 @@ const Description = styled.p`
 const SubDescription = styled.p`
   font-weight: 600;
   font-family: 'HK Grotesk Medium';
-  font-size: calc(100vw * (20 / 487));
+  font-size: calc(100vw * (18 / 1280));
   text-align: center;
   color: #51483e;
-  margin-top: calc(100vw * (22 / 487));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: calc(100vw * (20 / 487));
+    margin-top: calc(100vw * (22 / 487));
+  }
 `
 
 const Squares = styled.div`
-  margin-top: calc(100vw * (32 / 1280));
+  margin-top: calc(100vw * (24 / 1280));
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 
@@ -320,6 +324,7 @@ const Workshops = () => {
   return (
     <WorkshopsContainer id="workshops">
       <Header>WORKSHOPS</Header>
+      {!isMobile && (<SubDescription>Hover on a workshop tile to learn more!</SubDescription>)}
       <Grid>
         <Text>
           <Title>Discover New Skills</Title>
