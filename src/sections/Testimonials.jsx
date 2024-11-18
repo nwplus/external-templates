@@ -420,7 +420,7 @@ const Testimonials = () => {
       <TestimonialLeft>
         <Title>Testimonials&nbsp;&nbsp;
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M17.1548 3.62016L17.8456 17.396M17.8456 17.396L4.05247 17.3799M17.8456 17.396L1.55119 1.88007" stroke="white" stroke-width="4" />
+            <path d="M17.1548 3.62016L17.8456 17.396M17.8456 17.396L4.05247 17.3799M17.8456 17.396L1.55119 1.88007" stroke="white" strokeWidth="4" />
           </svg>
         </Title>
         <Description>Here’s what previous nwHacks attendees have to say!</Description>
@@ -454,7 +454,7 @@ const Testimonials = () => {
 
         <FAQTitle>FAQ&nbsp;&nbsp;
           <svg width="23" height="26" viewBox="0 0 23 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M21.2244 12.75L11.7244 22.75M11.7244 22.75L2.22437 12.75M11.7244 22.75L11.7244 0.25" stroke="white" stroke-width="4" />
+            <path d="M21.2244 12.75L11.7244 22.75M11.7244 22.75L2.22437 12.75M11.7244 22.75L11.7244 0.25" stroke="white" strokeWidth="4" />
           </svg>
         </FAQTitle>
       </TestimonialLeft>
