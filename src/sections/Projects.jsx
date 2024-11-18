@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import styled from 'styled-components'
 
 import noodleDoodleHolder from '@assets/images/projects/NoodleDoodleHolder.svg'
@@ -226,10 +226,10 @@ const DuoASLCard = styled(ProjectImageCard)`
 `
 
 const YapYapImage = styled(ProjectImageBase)`
-  width: calc(100vw * (550 / 1280));
+  width: calc(100vw * (380 / 1280));
   left: calc(100vw * (20 / 1280));
   height: auto;
-  top: calc(100vw * (-280 / 1280));
+  top: calc(100vw * (-210 / 1280));
   z-index: 3;
   ${p => p.theme.mediaQueries.mobile} {
     left: auto;
@@ -243,7 +243,7 @@ const YapYapImage = styled(ProjectImageBase)`
 const YapYapCard = styled(ProjectImageCard)`
   width: calc(100vw * (120 / 1280));
   height: auto;
-  top: calc(100vw * (-400 / 1280));
+  top: calc(100vw * (-250 / 1280));
 `
 
 const PitchAIImage = styled(ProjectImageBase)`
@@ -425,7 +425,7 @@ const Projects = () => {
   const [hoveredProject, setHoveredProject] = useState(null)
   const [tvLit, setTvLit] = useState(false)
   const [currentIndex, setCurrentIndex] = useState(0)
-
+  const timeoutRef = useRef(null)
   const projects = [
     {
       id: 1,
@@ -494,11 +494,24 @@ const Projects = () => {
   ]
 
   const handleHover = project => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current)
+    }
+
     setHoveredProject(project)
     setTvLit(true)
-    setTimeout(() => setTvLit(false), 10000)
-    setTimeout(() => setHoveredProject(null), 10000)
+
+    timeoutRef.current = setTimeout(() => {
+      setTvLit(false)
+      setHoveredProject(null)
+    }, 10000)
   }
+
+  useEffect(() => () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current)
+    }
+  }, [])
 
   const touchStartX = useRef(0)
   const touchEndX = useRef(0)
