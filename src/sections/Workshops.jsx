@@ -25,6 +25,7 @@ const WorkshopsContainer = styled.div`
   bottom: 0;
   width: 100%;
   height: calc(100vw * (550 / 1280));
+  background: red;
 
   ${p => p.theme.mediaQueries.tablet} {
     position: relative;
