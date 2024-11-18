@@ -152,6 +152,10 @@ const FAQTitle = styled.p`
   font-weight: bold;
   color: white;
   top: 25%;
+
+  ${p => p.theme.mediaQueries.tablet} {
+    display: none;
+  }
 `;
 
 const hackerData = [

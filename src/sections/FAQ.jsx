@@ -72,22 +72,45 @@ const CollectionContainer = styled.div`
 `
 
 const CollectionName = styled(Header3)`
-  color: #F0EEF2;
-  font-size: 1.75rem;
-  font-weight: 900;
-  padding-bottom: 1rem;
+  color: white;
+  font-size: calc(100vw * (35 / 1280));
+  font-weight: 700;
+  padding-bottom: calc(100vw * (20 / 1280));
+
+  ${p => p.theme.mediaQueries.tablet} {
+    font-size: calc(100vw * (35 / 834));
+    padding-bottom: calc(100vw * (20 / 834));
+  }
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 1.2rem;
+    font-size: calc(100vw * (35 / 487));
+    padding-bottom: calc(100vw * (20 / 487));
   }
 `
 
+const StyledTitle = styled.p`
+  display: none;
+
+  ${p => p.theme.mediaQueries.tablet} {
+    display: block;
+    color: white;
+    margin-top: calc(100vw * (50 / 834));
+    font-size: calc(100vw * (56 / 834));
+    font-weight: 900;
+    text-align: center;
+  }
+
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: calc(100vw * (56 / 487));
+    margin-top: calc(100vw * (50 / 487));
+  }
+`
 
 const FaqCollection = ({ category, faqs, expandedQuestion, setExpandedQuestion }) => (
   <CollectionContainer>
     <CollectionName>{category}</CollectionName>
 
-    {faqs.map(q =>
+    {faqs.map(q => (
       <FaqBox
         key={q.question}
         question={q.question}
@@ -101,7 +124,7 @@ const FaqCollection = ({ category, faqs, expandedQuestion, setExpandedQuestion }
           }
         }}
       />
-    )}
+    ))}
   </CollectionContainer>
 )
 
@@ -134,24 +157,41 @@ const Faq = () => {
   return (
     <FaqContainer>
       <Wrapper id="faq">
+        <StyledTitle>FAQ</StyledTitle>
 
         {faqData ? (
           <FaqGrid>
-            <FaqColumn>{faqData.General && <FaqCollection category="General" faqs={faqData.General} expandedQuestion={expandedQuestion} setExpandedQuestion={setExpandedQuestion} />}</FaqColumn>
-
             <FaqColumn>
-              {faqData['Teams & Projects'] && (
-                <FaqCollection category="Teams & Projects" faqs={faqData['Teams & Projects']}
+              {faqData.General && (
+                <FaqCollection
+                  category="General"
+                  faqs={faqData.General}
                   expandedQuestion={expandedQuestion}
-                  setExpandedQuestion={setExpandedQuestion} />
+                  setExpandedQuestion={setExpandedQuestion}
+                />
               )}
             </FaqColumn>
 
             <FaqColumn>
-              {faqData.Logistics && <FaqCollection category="Logistics" faqs={faqData.Logistics}
-                expandedQuestion={expandedQuestion}
-                setExpandedQuestion={setExpandedQuestion}
-              />}
+              {faqData['Teams & Projects'] && (
+                <FaqCollection
+                  category="Teams & Projects"
+                  faqs={faqData['Teams & Projects']}
+                  expandedQuestion={expandedQuestion}
+                  setExpandedQuestion={setExpandedQuestion}
+                />
+              )}
+            </FaqColumn>
+
+            <FaqColumn>
+              {faqData.Logistics && (
+                <FaqCollection
+                  category="Logistics"
+                  faqs={faqData.Logistics}
+                  expandedQuestion={expandedQuestion}
+                  setExpandedQuestion={setExpandedQuestion}
+                />
+              )}
             </FaqColumn>
           </FaqGrid>
         ) : (
