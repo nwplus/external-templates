@@ -72,9 +72,8 @@ const ProjectsBackground = styled.div`
 `;
 
 const Title = styled.p`
-  font-family: 'LT Museum';
   color: white;
-  font-size: calc(100vw * (40 / 1280));
+  font-size: calc(100vw * (56 / 1280));
   font-weight: 700;
   position: relative;
   top: 120px;
@@ -82,30 +81,29 @@ const Title = styled.p`
   z-index: 1;
 
   ${p => p.theme.mediaQueries.tablet} {
-    font-size: calc(100vw * (40 / 1280));
+    font-size: calc(100vw * (56 / 834));
   }
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: calc(100vw * (140 / 1280));
+    font-size: calc(100vw * (56 / 487));
     top: 20px;
   }
 `;
 
 const Description = styled.p`
-  font-family: 'LT Museum';
   color: white;
-  font-size: 1.2em;
+  font-size: calc(100vw * (20 / 1280));
   position: relative;
   top: 140px;
   text-align: center;
   z-index: 1;
 
   ${p => p.theme.mediaQueries.tablet} {
-    font-size: calc(100vw * (40 / 1280));
+    font-size: calc(100vw * (20 / 834));
   }
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: calc(100vw * (60 / 1280));
+    font-size: calc(100vw * (20 / 487));
     top: 30px;
   }
 `;
