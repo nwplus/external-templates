@@ -225,12 +225,20 @@ const Workshops = () => {
     }, [])
 
   const handleInteraction = (item, e) => {
-    setHoveredItem(item)
+    if (hoveredItem?.name === item.name) {
+      setHoveredItem(null)
+    } else {
+      setHoveredItem(item)
+    }
+    
     e.currentTarget.src = item.hoverSrc
   }
 
   const handleReset = (item, e) => {
-    setHoveredItem(null)
+    if (hoveredItem?.name === item.name) {
+      setHoveredItem(null)
+    }
+
     e.currentTarget.src = item.defaultSrc
   }
 
@@ -369,10 +377,10 @@ const Workshops = () => {
           {items.map(item => (
             <Square
               key={item.name}
-              src={item.defaultSrc}
+              src={hoveredItem?.name === item.name ? item.hoverSrc : item.defaultSrc}
               onMouseOver={e => !isMobile && handleInteraction(item, e)}
               onMouseLeave={e => !isMobile && handleReset(item, e)}
-              onClick={e => isMobile && (hoveredItem ? handleReset(item, e) : handleInteraction(item, e))}
+              onClick={(e) => isMobile && handleInteraction(item, e)}
             />
           ))}
         </Squares>
