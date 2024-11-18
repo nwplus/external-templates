@@ -380,7 +380,7 @@ const Workshops = () => {
               src={hoveredItem?.name === item.name ? item.hoverSrc : item.defaultSrc}
               onMouseOver={e => !isMobile && handleInteraction(item, e)}
               onMouseLeave={e => !isMobile && handleReset(item, e)}
-              onClick={(e) => isMobile && handleInteraction(item, e)}
+              onClick={e => isMobile && handleInteraction(item, e)}
             />
           ))}
         </Squares>
