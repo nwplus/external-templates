@@ -6,10 +6,33 @@ import { Header3 } from '@components/Typography'
 
 const FaqContainer = styled.div`
   position: relative;
-  min-height: 50vh;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    aspect-ratio: 1280 / 886;
+    background-image: url('./assets/images/faq.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: top;
+    z-index: 0;
+  }
+
+  ${p => p.theme.mediaQueries.tablet} {
+    &::before {
+      background-image: url('./assets/images/faq_tablet.svg');
+      aspect-ratio: 834 / 1049;
+    }
+  }
 
   ${p => p.theme.mediaQueries.mobile} {
-    min-height: 0;
+    &::before {
+      aspect-ratio: 487 / 1060;
+      background-image: url('./assets/images/faq_mobile.svg');
+    }
   }
 `
 
@@ -22,7 +45,7 @@ const Wrapper = styled.div`
   z-index: 88;
   position: relative;
 
-  ${p => p.theme.mediaQueries.mobile} {
+  ${p => p.theme.mediaQueries.tablet} {
     grid-column: 2 / span 12;
     min-width: 0;
   }
@@ -30,24 +53,22 @@ const Wrapper = styled.div`
 
 // faq grid
 const FaqGrid = styled.div`
+  padding-top: calc(100vw * (50 / 1280));
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
   gap: 50px;
-  margin-top: 4rem;
-  ${p => p.theme.mediaQueries.mobile} {
+
+  ${p => p.theme.mediaQueries.tablet} {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: calc(100vw * (80 / 834));
     margin-top: 50px;
     padding-bottom: 4rem;
   }
 
-  & > div:nth-child(3) {
-    grid-column: 2; // move the column to the right
-    ${p => p.theme.mediaQueries.mobile} {
-      grid-column: 1;
-    }
+  ${p => p.theme.mediaQueries.mobile} {
+    gap: calc(100vw * (40 / 487));
   }
 `
 
@@ -76,6 +97,7 @@ const CollectionName = styled(Header3)`
   font-size: calc(100vw * (35 / 1280));
   font-weight: 700;
   padding-bottom: calc(100vw * (20 / 1280));
+  text-align: left;
 
   ${p => p.theme.mediaQueries.tablet} {
     font-size: calc(100vw * (35 / 834));
@@ -83,7 +105,7 @@ const CollectionName = styled(Header3)`
   }
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: calc(100vw * (35 / 487));
+    font-size: calc(100vw * (24 / 487));
     padding-bottom: calc(100vw * (20 / 487));
   }
 `
@@ -175,7 +197,7 @@ const Faq = () => {
             <FaqColumn>
               {faqData['Teams & Projects'] && (
                 <FaqCollection
-                  category="Teams & Projects"
+                  category="Projects"
                   faqs={faqData['Teams & Projects']}
                   expandedQuestion={expandedQuestion}
                   setExpandedQuestion={setExpandedQuestion}
