@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
+import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
 import nugget from '../../public/assets/images/nugget_workshop.png'
 import apis1 from '../../public/assets/images/apis1.svg'
 import apis2 from '../../public/assets/images/apis2.svg'
@@ -19,7 +20,6 @@ import careers1 from '../../public/assets/images/careers1.svg'
 import careers2 from '../../public/assets/images/careers2.svg'
 import pitching1 from '../../public/assets/images/pitching1.svg'
 import pitching2 from '../../public/assets/images/pitching2.svg'
-import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
 
 const WorkshopsContainer = styled.div`
   position: absolute;
