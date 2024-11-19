@@ -133,7 +133,7 @@ const SubTitle = styled.p`
   margin-top: calc(100vw * (32 / 1280));
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: calc(100vw * (28 / 487));
+    font-size: calc(100vw * (30 / 487));
     margin-top: calc(100vw * (32 / 487));
   }
 `
@@ -148,9 +148,25 @@ const Paragraph = styled.p`
   margin-top: calc(100vw * (12 / 1280));
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: calc(100vw * (20 / 487));
-    width: 84%;
-    margin-top: calc(100vw * (25.6 / 487));
+    font-size: calc(100vw * (22 / 487));
+    width: 100%;
+    margin-top: calc(100vw * (22 / 487));
+  }
+`
+
+const ParagraphHeader = styled.p`
+  font-weight: 500;
+  font-size: calc(100vw * (16 / 1280));
+  color: white;
+  justify-self: center;
+  align-self: center;
+  width: 74%;
+  margin-top: calc(100vw * (12 / 1280));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: calc(100vw * (24 / 487));
+    width: 100%;
+    margin-top: calc(100vw * (22 / 487));
   }
 `
 
@@ -343,7 +359,7 @@ const Workshops = () => {
             ) : (
               <Schedule>
                 <SubTitle>Workshop Schedule</SubTitle>
-                <Paragraph>Tuesday, Jan 14</Paragraph>
+                <ParagraphHeader>Tuesday, Jan 14</ParagraphHeader>
                 <ParagraphSmall>
                   <b>5:00PM</b> &nbsp; &nbsp; Hackathons 101
                 </ParagraphSmall>
@@ -353,7 +369,7 @@ const Workshops = () => {
                 <ParagraphSmall>
                   <b>7:30PM</b> &nbsp; &nbsp; Intro to Version Control
                 </ParagraphSmall>
-                <Paragraph>Wednesday, Jan 15</Paragraph>
+                <ParagraphHeader>Wednesday, Jan 15</ParagraphHeader>
                 <ParagraphSmall>
                   <b>5:00PM</b> &nbsp; &nbsp; Intro to Web Dev
                 </ParagraphSmall>
@@ -363,7 +379,7 @@ const Workshops = () => {
                 <ParagraphSmall>
                   <b>7:30PM</b> &nbsp; &nbsp; Intro to React
                 </ParagraphSmall>
-                <Paragraph>Thursday, Jan 16</Paragraph>
+                <ParagraphHeader>Thursday, Jan 16</ParagraphHeader>
                 <ParagraphSmall>
                   <b>5:00PM</b> &nbsp; &nbsp; Internships 101
                 </ParagraphSmall>
