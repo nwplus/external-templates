@@ -138,6 +138,10 @@ const SubTitle = styled.p`
   }
 `
 
+const Link = styled.a`
+  color: #51483e;
+`
+
 const Paragraph = styled.p`
   font-weight: 500;
   font-size: calc(100vw * (16 / 1280));
@@ -346,7 +350,8 @@ const Workshops = () => {
           <Title>Discover New Skills</Title>
           <Description>Not sure where to start? Don&apos;t worry, hackathons are a great place to learn new skills! Before the hackathon, nwHacks will host a series of workshops to help hackers gear up for the weekend. Everyone is invited to attend our workshops, regardless of skill level!
             <br /><br /> Throughout the hackathon, there will also be opportunities for hackers to attend sponsor-led workshops.
-            <br /><br /> For more resources, check out our self-learning wiki.</Description>
+            <br /><br /> For more resources, check out our <Link href="https://resources.nwplus.io/" target="_blank" rel="noreferrer">self-learning wiki</Link>.
+          </Description>
         </Text>
         {isMobile && (
             <div>
