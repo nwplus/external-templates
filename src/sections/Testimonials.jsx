@@ -298,7 +298,7 @@ const HackerInfoMobile = styled.div`
 const NavigationButton = styled.button`
   display: none;
   position: absolute;
-  top: calc(100vw * (165 / 487));
+  top: calc(100vw * (185 / 487));
   transform: translateY(-50%);
   background: transparent;
   border: none;
