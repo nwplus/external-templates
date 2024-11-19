@@ -156,8 +156,8 @@ const ConfettiContainer = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  width: 200vw;
-  height: 200vh;
+  width: 100vw;
+  height: 80vh;
 
   canvas {
     width: 100% !important;
