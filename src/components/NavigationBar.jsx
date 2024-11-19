@@ -1,32 +1,31 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import styled from 'styled-components'
 import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
 import { scale } from '@utilities/format'
 import mlhImage from '@assets/images/mlhTrustBadgeWhite.svg'
 import { BANNER_OFFSET } from '../constants/measurements'
 import MenuImg from '../../public/images/icons/menu.svg'
-
+import NwPlusLogo from './NwPlusLogo'
 
 const NavBarContainer = styled.nav`
   position: ${p => (p.stayAtTop ? 'absolute' : 'fixed')};
   top: ${p => (p.stayAtTop ? BANNER_OFFSET : '0')}px;
   z-index: 999;
   width: 100%;
-  height: 100px;
   display: flex;
   align-items: center;
   justify-content: stretch;
   visibility: ${p => p.visibility};
   opacity: ${p => p.opacity};
   transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
-  padding: 0.6rem 4rem 0;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 49.73%, rgba(89, 88, 90, 0) 100%);
+  padding: calc(100vw * (20 / 1280)) 64px;
 
   ${p => p.theme.mediaQueries.mobile} {
     background: none;
-    padding: 24px 40px 0;
+    padding: 20px 24px 0 0;
     z-index: 999;
     justify-content: flex-end;
+    align-items: flex-start;
   }
 `
 
@@ -44,22 +43,24 @@ const NavGroupContainer = styled.div`
 
 const NavTextContainer = styled.div`
   display: flex;
-  gap: 4%;
+  gap: 3%;
   align-items: center;
-  flex-grow: 2;
+  width: 100%;
+  justify-content: center;
 
   ${p => p.theme.mediaQueries.mobile} {
     display: none;
   }
 `
 
-const NwPlusLogo = styled.img`
-  max-height: 50px;
-  margin-right: 18px;
+const NwPlusLogoContainer = styled.div`
+  svg {
+    max-height: 40px;
+    height: 400px;
 
-  ${p => p.theme.mediaQueries.mobile} {
-    width: 30px;
-    margin-right: 0;
+    ${p => p.theme.mediaQueries.mobile} {
+      width: 30px;
+    }
   }
 `
 
@@ -88,11 +89,16 @@ const LinkText = styled.a`
 
 const StyledLinkHeaders = styled.h3`
   font-family: HK Grotesk;
-  font-size: ${() => scale(768, 1440, 16, 18)};
+  font-size: ${() => scale(1024, 1440, 12, 16)};
   font-weight: 600;
   line-height: 23px;
   letter-spacing: 0px;
   text-align: center;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    color: #3a2f21;
+    font-size: 16px;
+  }
 `
 
 const HamburgerMenu = styled.img`
@@ -107,13 +113,13 @@ const DropDownContentContainer = styled.div`
   position: fixed;
   top: 0;
   z-index: 998;
-  padding: 30px 40px 24px 40px;
+  padding: 20px 40px 24px 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 24px;
   width: 100%;
-  background: #AA4245;
+  background: #eddecc;
 `
 
 const PortalButtonContainer = styled.div`
@@ -122,6 +128,7 @@ const PortalButtonContainer = styled.div`
   transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
   justify-self: center;
   user-select: none;
+  position: absolute;
 `
 
 const StyledPortalText = styled.div`
@@ -135,9 +142,9 @@ const Button = styled.a`
   padding: 11px 21px;
   border-radius: 50px;
   font-weight: bold;
-  background: #AA4245;
-  color: #F3F5F4;
-  right: 120px;
+  background: linear-gradient(36deg, #d69a0e 23.92%, #f0bb3e 68.82%);
+  font-size: ${() => scale(1024, 1440, 12, 16)};
+  color: #f3f5f4;
   ${p => p.theme.mediaQueries.mobile} {
     right: 0;
   }
@@ -147,7 +154,7 @@ const Button = styled.a`
     align-items: center;
     justify-content: center;
     content: 'Live Portal';
-    color: #244556;
+    color: #f3f5f4;
 
     border-radius: 50px;
     position: absolute;
@@ -160,7 +167,7 @@ const Button = styled.a`
     transition: opacity 0.25s ease-in-out;
     opacity: 0;
 
-    background: #DCB551;
+    background: linear-gradient(36deg, #b88a0d 23.92%, #d69a0e 68.82%);
   }
 
   &:hover::before {
@@ -187,13 +194,6 @@ const Button = styled.a`
   `}
 `
 
-const DropDownFooter = styled.div`
-    height: 20px;
-    background: #152E3A;
-    width: 100vw;
-    margin-bottom: -25px;
-`
-
 const TrustBadgeLink = styled.a`
   display: block;
   max-width: 100px;
@@ -205,7 +205,7 @@ const TrustBadgeLink = styled.a`
   z-index: 1000;
 
   ${p => p.theme.mediaQueries.mobile} {
-    left: 50px;
+    left: 25px;
   }
 `
 
@@ -254,20 +254,28 @@ const PortalButton = ({ portalOpen }) => (
 
 const MenuList = ({ isMobile, closeDropdown }) => (
   <>
+    {isMobile && (
+      <NwPlusLogoContainer>
+        <a href="/#home">
+          <NwPlusLogo fill="#3A2F21" />
+        </a>
+      </NwPlusLogoContainer>
+    )}
     <MenuItem name="About" href="/#about" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
-    {/* <MenuItem name='Statistics' href='/#statistics' isAnchor isMobile={isMobile} closeDropdown={closeDropdown} /> */}
-    <MenuItem name="Tracks" href="/#tracks" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
+    <MenuItem name="Recap" href="/#stats" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
+    <MenuItem name="Workshops" href="/#workshops" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
+    <MenuItem name="Past Projects" href="/#past-projects" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
+    {!isMobile && (
+      <NwPlusLogoContainer>
+        <a href="/#home">
+          <NwPlusLogo fill="white" />
+        </a>
+      </NwPlusLogoContainer>
+    )}
+    <MenuItem name="Testimonials" href="/#testimonials" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
     <MenuItem name="FAQ" href="/#faq" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
     <MenuItem name="Sponsors" href="/#sponsors" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
-
-    <MenuItem
-      name="2024"
-      href="https://2024.nwhacks.io"
-      target="_blank"
-      rel="noopener"
-      isMobile={isMobile}
-      closeDropdown={closeDropdown}
-    />
+    <MenuItem name="Contact us" href="/#footer" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
   </>
 )
 
@@ -287,44 +295,46 @@ const NavigationBar = ({ bannerExists }) => {
   const [showDropdown, setShowDropdown] = useState(false)
   const [visibility, setVisibility] = useState('visible')
   const [opacity, setOpacity] = useState('1')
-  const [stayAtTop, setStayAtTop] = useState(bannerExists && true)
+  const [stayAtTop, setStayAtTop] = useState(bannerExists)
+  const lastScrollRef = useRef(0)
 
-  const handleResize = () => {
+  const handleResize = useCallback(() => {
     if (window.innerWidth >= SCREEN_BREAKPOINTS.mobile) {
       setShowDropdown(false)
     }
-  }
+  }, [])
 
-  const handleScroll = () => {
-    let lastScroll = 0
-    return () => {
-      const scroll = window.pageYOffset || document.documentElement.scrollTop
-      if (scroll <= BANNER_OFFSET) {
-        setStayAtTop(bannerExists && true)
-        setVisibility('visible')
-        setOpacity('1')
-      } else if (scroll > lastScroll) {
-        setStayAtTop(false)
-        setVisibility('hidden')
-        setOpacity('0')
-        setStayAtTop(0)
-      } else {
-        setVisibility('visible')
-        setOpacity('1')
-      }
-      lastScroll = scroll
+  const handleScroll = useCallback(() => {
+    const scroll = window.scrollY || document.documentElement.scrollTop
+    const scrollThreshold = 25
+
+    if (scroll <= BANNER_OFFSET) {
+      setStayAtTop(bannerExists)
+      setVisibility('visible')
+      setOpacity('1')
+    } else if (scroll > lastScrollRef.current) {
+      setStayAtTop(false)
+      setVisibility('hidden')
+      setOpacity('0')
+    } else if (lastScrollRef.current - scroll > scrollThreshold) {
+      // only show nav after scrolling up by threshold
+      setVisibility('visible')
+      setOpacity('1')
+      setStayAtTop(false)
     }
-  }
+
+    lastScrollRef.current = scroll
+  }, [bannerExists])
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll())
+    window.addEventListener('scroll', handleScroll)
     window.addEventListener('resize', handleResize)
 
     return () => {
       window.removeEventListener('scroll', handleScroll)
       window.removeEventListener('resize', handleResize)
     }
-  }, [])
+  }, [handleScroll, handleResize])
 
   if (showDropdown) {
     // Mobile version
@@ -338,13 +348,8 @@ const NavigationBar = ({ bannerExists }) => {
           />
         </NavBarContainer>
         <DropDownContentContainer>
-          <a href="/">
-            <NwPlusLogo src="/images/logos/nwplus-logo.svg" alt="nwPlus club logo in white" />
-          </a>
           <MenuList isMobile={showDropdown} closeDropdown={setShowDropdown} />
           {/* Make sure desktop (below) has the same portalOpen value */}
-          <PortalButton portalOpen />
-          <DropDownFooter />
         </DropDownContentContainer>
         <TrustBadge stayAtTop={stayAtTop} />
       </>
@@ -355,17 +360,14 @@ const NavigationBar = ({ bannerExists }) => {
   return (
     <NavBarContainer visibility={visibility} opacity={opacity} stayAtTop={stayAtTop}>
       <NavGroupContainer>
-        <a href="/">
-          <NwPlusLogo src="/images/logos/nwplus-logo.svg" alt="nwPlus club logo in white" />
-        </a>
+        <PortalButton portalOpen />
         <NavTextContainer>
-          <MenuList />
+          <MenuList isMobile={false} />
         </NavTextContainer>
         {/* Make sure mobile (above) has the same portalOpen value */}
-        <PortalButton portalOpen />
+        <TrustBadge stayAtTop={stayAtTop} />
       </NavGroupContainer>
       <HamburgerMenu src={MenuImg} alt="dropdown menu icon" onClick={() => setShowDropdown(true)} />
-      <TrustBadge stayAtTop={stayAtTop} />
     </NavBarContainer>
   )
 }

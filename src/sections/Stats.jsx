@@ -1,84 +1,126 @@
-import React from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import styled from 'styled-components'
-import { useParallax } from 'react-scroll-parallax'
+import tabletStatsImage from '@assets/images/tabletStats.png'
+import mobileStatsImage from '@assets/images/mobileStats.png'
+import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
+import StatsBoxes from '@components/StatsBoxes'
 
-// import StatsSVG from "../assets/images/stats.svg"
-import MobileStatsSVG from "../assets/images/mobile/stats.svg"
-
-import StatsPart1 from "../assets/images/StatsPart1.svg"
-import StatsPart2 from "../assets/images/StatsPart2.svg"
-import StatsPart3 from "../assets/images/StatsPart3.svg"
+const OuterContainer = styled.div`
+  position: relative;
+`
 
 const StatsContainer = styled.div`
-  min-height: calc(calc(900 / 1440) * 100vw);
   width: 100vw;
+  aspect-ratio: 1280/1280;
   height: auto;
   position: relative;
-  top: -60px;
-  ${p => p.theme.mediaQueries.mobile} {
+  z-index: 2;
+
+  ${p => p.theme.mediaQueries.tablet} {
     display: none;
   }
 `
 
-const StatsImg = styled.img`
-  position: absolute;
-  width: 100%;
-  height: 100%;
-`
-
-const MobileStatsContainer = styled.img`
-  min-height: calc(calc(439 / 414) * 100vw);
+const MobileTabletStatsContainer = styled.div`
+  display: none;
   width: 100vw;
   height: auto;
   position: relative;
-  top: -60px;
-  display: none;
-  ${p => p.theme.mediaQueries.mobile} {
+
+  ${p => p.theme.mediaQueries.tablet} {
     display: block;
+    aspect-ratio: 1280/1280;
+  }
+`
+
+const MobileTabletImg = styled.img`
+  width: 100%;
+  height: auto;
+`
+
+const Title = styled.p`
+  color: ${p => (p.isGlowing ? 'white' : '#B4B4B4')};
+  text-shadow: ${p => (p.isGlowing ? '0 0 32px rgba(255, 255, 255, 0.5)' : 'none')};
+  font-weight: 900;
+
+  position: absolute;
+  top: calc(100vw * (100 / 1280));
+  font-size: calc(100vw * (56 / 1280));
+  left: calc(100vw * (100 / 1280));
+
+  ${p => p.theme.mediaQueries.tablet} {
+    width: 100%;
+    font-size: calc(100vw * (56 / 834));
+    font-weight: 700;
+    top: calc(100vw * (40 / 834));
+    left: 0;
+    z-index: 1;
+    text-align: center;
+  }
+
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: calc(100vw * (42 / 487));
   }
 `
 
 const Stats = () => {
-  // const statsPart1 = useParallax({
-  //   speed: -10,
-  //   translateX: ['-100%', '120%']
-  // });
+  const [isMobile, setIsMobile] = useState(false)
+  const [isTablet, setIsTablet] = useState(false)
+  const [titleGlow, setTitleGlow] = useState(false)
+  const statsContainerRef = useRef(null)
 
-  // const statsPart2 = useParallax({
-  //   speed: -10,
-  //   translateX: ['-115%', '105%']
-  // });
+  useEffect(() => {
+    const updateDeviceType = () => {
+      setIsMobile(window.innerWidth <= SCREEN_BREAKPOINTS.mobile)
+      setIsTablet(window.innerWidth <= SCREEN_BREAKPOINTS.tablet)
+    }
 
-  // const statsPart3 = useParallax({
-  //   speed: -10,
-  //   translateX: ['135%', '-85%']
-  // });
+    updateDeviceType()
+    window.addEventListener('resize', updateDeviceType)
 
-  const statsPart1 = useParallax({
-    speed: -10,
-    translateX: ['-20%', '10%']
-  });
+    return () => {
+      window.removeEventListener('resize', updateDeviceType)
+    }
+  }, [])
 
-  const statsPart2 = useParallax({
-    speed: -10,
-    translateX: ['-35%', '-10%']
-  });
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          const lightElements = document.getElementsByClassName('light')
+          Array.from(lightElements).forEach(element => {
+            const newOpacity = entry.isIntersecting ? '1' : '0'
+            element.setAttribute('style', `opacity: ${newOpacity}`)
+          })
+          setTitleGlow(entry.isIntersecting)
+        })
+      },
+      { threshold: 0.4 }
+    )
 
-  const statsPart3 = useParallax({
-    speed: -10,
-    translateX: ['45%', '0%']
-  });
+    if (statsContainerRef.current) {
+      observer.observe(statsContainerRef.current)
+    }
+
+    return () => observer.disconnect()
+  }, [])
 
   return (
-    <>
-      <StatsContainer>
-        <StatsImg src={StatsPart1} ref={statsPart1.ref} />
-        <StatsImg src={StatsPart3} ref={statsPart3.ref} />
-        <StatsImg src={StatsPart2} ref={statsPart2.ref} />
-      </StatsContainer>
+    <OuterContainer id="stats">
+      {!isMobile && !isTablet && (
+        <StatsContainer ref={statsContainerRef}>
+          <StatsBoxes />
+          <Title isGlowing={titleGlow}>Last year we had...</Title>
+        </StatsContainer>
+      )}
 
-      <MobileStatsContainer src={MobileStatsSVG} />
-    </>
+      {(isMobile || isTablet) && (
+        <MobileTabletStatsContainer>
+          <Title isGlowing>Last year we had...</Title>
+          <MobileTabletImg src={isMobile ? mobileStatsImage : tabletStatsImage} alt="Mobile or Tablet Stats" />
+        </MobileTabletStatsContainer>
+      )}
+    </OuterContainer>
   )
 }
 
