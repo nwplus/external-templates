@@ -150,16 +150,16 @@ const Logo = styled.img`
   width: 100%;
 `
 
-const SponsoredByText = styled.div`
-  font-size: 2rem;
-  font-weight: 600;
-  color: white;
-  text-align: center;
+// const SponsoredByText = styled.div`
+//   font-size: 2rem;
+//   font-weight: 600;
+//   color: white;
+//   text-align: center;
 
-  ${p => p.theme.mediaQueries.mobile} {
-    font-size: 13px;
-  }
-`
+//   ${p => p.theme.mediaQueries.mobile} {
+//     font-size: 13px;
+//   }
+// `
 
 const Blurb = styled.div`
   font-size: 1.25rem;
@@ -264,9 +264,9 @@ const Carousel = ({ sponsors }) => {
         <ContentContainer>
           <LeftContainer>
             <LeftInnerContainer>
-              <SponsoredByText>
+              {/* <SponsoredByText>
                 PROUDLY <br /> SPONSORED BY
-              </SponsoredByText>
+              </SponsoredByText> */}
               <Logo src={sponsors[viewing]?.imgURL} />
             </LeftInnerContainer>
             {sponsors.length >= 1 && (
