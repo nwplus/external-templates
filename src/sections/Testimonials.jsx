@@ -52,8 +52,8 @@ const TestimonialsBackground = styled.div`
 `
 
 const TestimonialLeft = styled.div`
-  width: 27.5%;
-  padding: 40px;
+  width: calc(100vw * (340 / 1280));
+  padding: calc(100vw * (30 / 1280));
   height: 100%;
   ${p => p.theme.mediaQueries.tablet} {
     display: block;
@@ -64,8 +64,8 @@ const TestimonialLeft = styled.div`
 `
 
 const TestimonialRight = styled.div`
-  width: 72.5%;
-  padding: 40px;
+  width: calc(100vw * (940 / 1280));
+  padding: calc(100vw * (40 / 1280));
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -90,10 +90,10 @@ const Title = styled.h1`
 `
 
 const Description = styled.p`
-  font-size: 1.2rem;
+  font-size: calc(100vw * (20 / 1280));
   color: white;
   ${p => p.theme.mediaQueries.tablet} {
-    font-size: 14px;
+    font-size: calc(100vw * (16 / 487));
     text-align: center;
   }
 `
@@ -102,7 +102,7 @@ const HackerList = styled.ul`
   list-style: none;
   padding: 0;
   margin-top: calc(100vw * (175 / 1280));
-  width: calc(100vw * (270 / 1280));
+  width: calc(100vw * (272 / 1280));
   margin-left: calc(100vw * (5 / 1280));
 
   ${p => p.theme.mediaQueries.tablet} {
@@ -115,7 +115,8 @@ const Hacker = styled.li`
   cursor: pointer;
   transition: background-color 0.2s;
   background-color: ${props => (props.selected ? '#7E7976' : 'transparent')};
-
+  display: flex;
+  align-items: center;
   &:hover {
     background-color: ${props => (props.selected ? '#7E7976' : '#7E7976')};
   }
@@ -124,119 +125,123 @@ const Hacker = styled.li`
 const Number = styled.span`
   font-weight: bold;
   float: left;
-  font-size: 2.2em;
-  margin-right: 20px;
+  font-size: calc(100vw * (42 / 1280));
+  margin-right: calc(100vw * (15 / 1280));
   color: white;
   ${p => p.theme.mediaQueries.tablet} {
-    position: absolute;
+    font-size: calc(100vw * (42 / 487));
   }
 `
 
 const Name = styled.span`
   font-size: calc(100vw * (20 / 1280));
   color: white;
+  font-weight: 700;
   ${p => p.theme.mediaQueries.tablet} {
     text-align: left;
-    font-size: 1.3rem;
-    margin-left: 40px;
+    font-size: calc(100vw * (30 / 487));
   }
 `
 
 const Role = styled.span`
-  font-size: 1rem;
+  font-size: calc(100vw * (16 / 1280));
   color: white;
   display: block;
   ${p => p.theme.mediaQueries.tablet} {
     text-align: left;
-    margin-left: 40px;
+    font-size: calc(100vw * (20 / 487));
   }
 `
 
 const HackerImageContainer = styled.div`
-  width: 25%;
-  height: 200px;
-  top: -110px;
-  position: relative;
+  width: calc(100vw * (215 / 1280));
+  height: calc(100vw * (200 / 1280));
+  left: calc(100vw * (385 / 1280));
+  top: calc(100vw * (204 / 1280));
+
+  position: absolute;
+  overflow: hidden;
+  background-image: url(${props => props.imageUrl});
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom;
 
   ${p => p.theme.mediaQueries.mobile} {
     display: none;
   }
 `
 
-const HackerImage = styled.img`
-  width: auto;
-  height: 100%;
-  margin: 0 auto;
-  display: block;
-  position: relative;
-`
 const MobileImageContainer = styled.div`
   display: none;
   ${p => p.theme.mediaQueries.mobile} {
     display: block;
-    margin: 0 auto;
     position: absolute;
-    left: 0;
-    width: 100vw;
-    height: 200px;
-    top: calc(100vw * (702 / 487));
+    width: calc(100vw * (250 / 487));
+    height: calc(100vw * (200 / 487));
+    top: calc(100vw * (335 / 487));
+    left: calc(100vw * (57 / 487));
+    background-image: url(${props => props.imageUrl});
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
   }
-`
-const MobileHackerImage = styled.img`
-  height: calc(100vw * (175 / 487));
-  width: auto;
-  margin-right: calc(100vw * (20 / 487));
 `
 
 const HackerInfo = styled.div`
+  position: absolute;
   display: flex;
-  width: 75%;
-  padding: 30px 0%;
-  padding-left: 5%;
-  padding-right: 20%;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: flex-start;
+
+  width: calc(100vw * (440 / 1280));
+  top: calc(100vw * (225 / 1280));
+  left: calc(100vw * (625 / 1280));
+  height: calc(100vw * (370 / 1280));
   color: #ffecd6;
 
   ${p => p.theme.mediaQueries.mobile} {
-    width: 100%;
-    padding: 0px 0%;
-    padding-left: 0%;
-    padding-right: 0%;
+    position: absolute;
+    top: calc(100vw * (345 / 487));
+    width: calc(100vw * (400 / 487));
+    height: calc(100vw * (345 / 487));
     text-align: center;
+    left: 50%;
+    transform: translateX(-50%);
   }
 `
 
 const HackerName = styled.h2`
-  font-size: 1.8rem;
-  font-weight: bold;
+  font-size: calc(100vw * (32 / 1280));
+  font-weight: 700;
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: calc(100vw * (25 / 487));
+    font-size: calc(100vw * (30 / 487));
     text-align: center;
     width: 100%;
   }
 `
 
 const HackerHeading = styled.h3`
-  font-size: 1.2rem;
-  margin-bottom: 40px;
+  font-size: calc(100vw * (18 / 1280));
+  font-weight: 500;
+  font-family: 'HK Grotesk Medium';
+  margin-bottom: calc(100vw * (40 / 1280));
   ${p => p.theme.mediaQueries.mobile} {
     margin-bottom: calc(100vw * (30 / 487));
-    font-size: calc(100vw * (16 / 487));
+    font-size: calc(100vw * (20 / 487));
     width: 100%;
   }
 `
 
 const HackerDescription = styled.p`
-  font-size: 1.1rem;
+  font-size: calc(100vw * (16 / 1280));
   display: block;
-  margin-bottom: 40px;
+  margin-bottom: calc(100vw * (40 / 1280));
   ${p => p.theme.mediaQueries.mobile} {
     font-size: calc(100vw * (16 / 487));
     width: 100%;
-    height: calc(100vw * (215 / 487));
+    height: calc(100vw * (220 / 487));
     overflow-y: scroll;
   }
 `
@@ -286,13 +291,13 @@ const HackerCarousel = styled.div`
 `
 const HackerInfoMobile = styled.div`
   display: flex;
-  width: 75%;
-  padding: 30px 0%;
-  padding-left: 10%;
-  padding-right: 10%;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: calc(100vw * (20 / 487));
+  margin-top: calc(100vw * (27 / 487));
+  width: calc(100vw * (320 / 487));
+  height: calc(100vw * (100 / 487));
   color: #ffecd6;
 `
 const NavigationButton = styled.button`
@@ -316,11 +321,11 @@ const NavigationButton = styled.button`
 `
 
 const LeftButton = styled(NavigationButton)`
-  left: 20px;
+  left: calc(100vw * (20 / 487));
 `
 
 const RightButton = styled(NavigationButton)`
-  right: 20px;
+  right: calc(100vw * (20 / 487));
 `
 
 const hackerData = [
@@ -331,7 +336,7 @@ const hackerData = [
     imageUrl: QaziImage,
     description:
       'For the first hour, I did feel very overwhelmed because it’s such a big hackathon, and there’s people from outside of Canada too — I met people from Michigan, Washington, and all parts of North America. But I would say that it was very engaging. The organizers are really friendly, there’s a lot of resources, and it’s very accessible.\n\nEven if you don’t win, I feel like you do learn a lot.',
-    pronouns: 'he/him/his',
+    pronouns: 'he/him',
     heading: '2nd year, Computer Science Major, Developer',
     links: [
       { Label: 'DevPost', URL: 'https://devpost.com/software/nature-s-choice' },
@@ -438,8 +443,10 @@ const Testimonials = () => {
               selected={selectedHacker.id === hacker.id}
             >
               <Number>{hacker.id}</Number>
-              <Name>{hacker.name}</Name>
-              <Role>{hacker.role}</Role>
+              <div>
+                <Name>{hacker.name}</Name>
+                <Role>{hacker.role}</Role>
+              </div>
             </Hacker>
           ))}
         </HackerList>
@@ -454,8 +461,10 @@ const Testimonials = () => {
             <HackerCarousel key={hacker.id} selected={selectedHacker.id === hacker.id}>
               <HackerInfoMobile>
                 <Number>{hacker.id}</Number>
-                <Name>{hacker.name}</Name>
-                <Role>{hacker.role}</Role>
+                <div>
+                  <Name>{hacker.name}</Name>
+                  <Role>{hacker.role}</Role>
+                </div>
               </HackerInfoMobile>
             </HackerCarousel>
           ))}
@@ -479,11 +488,7 @@ const Testimonials = () => {
         </FAQTitle>
       </TestimonialLeft>
       <TestimonialRight>
-        {/* Left - Hacker Image */}
-        <HackerImageContainer>
-          <HackerImage src={selectedHacker.imageUrl} alt={selectedHacker.name} />
-        </HackerImageContainer>
-        {/* Right - Hacker Info */}
+        <HackerImageContainer imageUrl={selectedHacker.imageUrl} />
         <HackerInfo>
           <HackerName>
             {selectedHacker.name} ({selectedHacker.pronouns})
@@ -500,9 +505,7 @@ const Testimonials = () => {
             ))}
           </HackerDescription>
 
-          <MobileImageContainer>
-            <MobileHackerImage src={selectedHacker.imageUrl} alt={selectedHacker.name} />
-          </MobileImageContainer>
+          <MobileImageContainer imageUrl={selectedHacker.imageUrl} />
         </HackerInfo>
       </TestimonialRight>
     </TestimonialsContainer>
