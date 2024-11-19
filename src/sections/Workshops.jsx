@@ -150,7 +150,7 @@ const Paragraph = styled.p`
   ${p => p.theme.mediaQueries.mobile} {
     font-size: calc(100vw * (22 / 487));
     width: 100%;
-    margin-top: calc(100vw * (25.6 / 487));
+    margin-top: calc(100vw * (22 / 487));
   }
 `
 
@@ -166,7 +166,7 @@ const ParagraphHeader = styled.p`
   ${p => p.theme.mediaQueries.mobile} {
     font-size: calc(100vw * (24 / 487));
     width: 100%;
-    margin-top: calc(100vw * (25.6 / 487));
+    margin-top: calc(100vw * (22 / 487));
   }
 `
 
