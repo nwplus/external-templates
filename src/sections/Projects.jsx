@@ -176,7 +176,7 @@ const NoodleDoodleImage = styled(ProjectImageBase)`
   ${p => p.theme.mediaQueries.mobile} {
     height: calc(100vw * (200 / 487));
     width: auto;
-    top: calc(100vw * (580 / 487));
+    top: calc(100vw * (600 / 487));
   }
 `
 
@@ -193,7 +193,7 @@ const ReworkdAIImage = styled(ProjectImageBase)`
   ${p => p.theme.mediaQueries.mobile} {
     height: calc(100vw * (220 / 487));
     width: auto;
-    top: calc(100vw * (580 / 487));
+    top: calc(100vw * (600 / 487));
   }
 `
 
@@ -214,7 +214,7 @@ const DuoASLImage = styled(ProjectImageBase)`
     left: auto;
     height: calc(100vw * (240 / 487));
     width: auto;
-    top: calc(100vw * (580 / 487));
+    top: calc(100vw * (600 / 487));
   }
 `
 
@@ -236,7 +236,7 @@ const YapYapImage = styled(ProjectImageBase)`
     margin-left: calc(100vw * (20 / 487));
     height: calc(100vw * (240 / 487));
     width: auto;
-    top: calc(100vw * (580 / 487));
+    top: calc(100vw * (600 / 487));
   }
 `
 
@@ -254,7 +254,7 @@ const PitchAIImage = styled(ProjectImageBase)`
   ${p => p.theme.mediaQueries.mobile} {
     height: calc(100vw * (230 / 487));
     width: auto;
-    top: calc(100vw * (580 / 487));
+    top: calc(100vw * (600 / 487));
   }
 `
 
@@ -392,19 +392,22 @@ const NavigationButton = styled.button`
 const LeftButton = styled(NavigationButton)`
   position: absolute;
   left: calc(100vw * (20 / 487));
-  margin-top: calc(100vw * (300 / 487));
+  margin-top: calc(100vw * (310 / 487));
 `
 
 const RightButton = styled(NavigationButton)`
   position: absolute;
   right: calc(100vw * (20 / 487));
-  margin-top: calc(100vw * (300 / 487));
+  margin-top: calc(100vw * (310 / 487));
 `
 
 const DotsContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: calc(100vw * (120 / 487));
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: calc(100vw * (675 / 487));
 `
 
 const Dot = styled.button`
