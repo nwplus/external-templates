@@ -306,8 +306,11 @@ const CarouselWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  user-select: none;
-  touch-action: pan-y; /* Allows vertical scrolling while handling horizontal swipes */
+  touch-action: pan-y;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    user-select: none;
+  }
 `
 
 export default Carousel
