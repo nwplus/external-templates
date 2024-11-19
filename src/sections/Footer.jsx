@@ -128,10 +128,6 @@ const TeamContainer = styled.div`
   text-align: center;
   width: 100%;
 
-  ${p => p.theme.mediaQueries.tabletLarge} {
-    width: 40vw;
-  }
-
   ${p => p.theme.mediaQueries.mobile} {
     width: 100%;
     bottom: 1rem;
