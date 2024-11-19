@@ -102,8 +102,8 @@ const HackerList = styled.ul`
   list-style: none;
   padding: 0;
   margin-top: calc(100vw * (175 / 1280));
-  width: calc(100vw * (265 / 1280));
-  margin-left: calc(100vw * (0 / 1280));
+  width: calc(100vw * (270 / 1280));
+  margin-left: calc(100vw * (5 / 1280));
 
   ${p => p.theme.mediaQueries.tablet} {
     display: none;
