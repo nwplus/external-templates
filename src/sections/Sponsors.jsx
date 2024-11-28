@@ -65,7 +65,12 @@ const Sponsors = () => {
     const data = await fireDb.getCollection('nwHacks2025', 'Sponsors')
     if (data) {
       setSponsors(data)
-      setCarouselSponsors(data.filter(child => child.blurb !== undefined && child.blurb !== ''))
+      const filteredCarouselSponsors = data.filter(child => child.blurb !== undefined && child.blurb !== '')
+      const tierOrder = ['title', 'platinum', 'gold', 'silver', 'bronze', 'startup', 'inkind']
+      const sortedCarouselSponsors = filteredCarouselSponsors.sort((a, b) => {
+        return tierOrder.indexOf(a.tier) - tierOrder.indexOf(b.tier)
+      })
+      setCarouselSponsors(sortedCarouselSponsors)
     }
   }, [])
 
