@@ -1,20 +1,16 @@
 import { useEffect, useState, useRef, memo } from 'react'
 import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
 import styled from 'styled-components'
-import LongSponsorList from './LongSponsor'
 import Floor from './Floor'
 
-const SPONSOR_WIDTH = { title: 70, platinum: 40, gold: 35, silver: 30, bronze: 25 }
-const MOBILE_SPONSOR_WIDTH = { title: 95, platinum: 80, gold: 50, silver: 30, bronze: 25 }
+const SPONSOR_WIDTH = { title: 70, platinum: 45, gold: 40, silver: 35, bronze: 30, startup: 25, inkind: 20 }
+const MOBILE_SPONSOR_WIDTH = { title: 95, platinum: 80, gold: 45, silver: 35, bronze: 30, startup: 25, inkind: 20 }
 
 const calculateSponsorRows = (tierList, containerWidth, isMobile) => {
   const newRows = {}
   const widthConfig = isMobile ? MOBILE_SPONSOR_WIDTH : SPONSOR_WIDTH
 
   Object.entries(tierList).forEach(([tier, sponsors]) => {
-    // skip startup and inkind tiers since they're displayed with a long card
-    if (['startup', 'inkind'].includes(tier)) return
-
     if (sponsors.length === 0) {
       newRows[tier] = []
       return
@@ -178,7 +174,7 @@ const SponsorsGrid = ({ sponsors }) => {
 
   useEffect(() => {
     const calculateRows = () => {
-      const containerWidth = 0.95 * (containerRef.current ? containerRef.current.offsetWidth : window.innerWidth)
+      const containerWidth = window.innerWidth * 0.95
       const newRows = calculateSponsorRows(tierList, containerWidth, isMobile)
       setRows(newRows)
     }
@@ -215,9 +211,16 @@ const SponsorsGrid = ({ sponsors }) => {
         tierSize={isMobile ? MOBILE_SPONSOR_WIDTH.bronze : SPONSOR_WIDTH.bronze}
         tier="bronze"
       />
-
-      {tierList.startup.length > 0 && <LongSponsorList sponsors={tierList.startup} />}
-      {tierList.inkind.length > 0 && <LongSponsorList sponsors={tierList.inkind} />}
+      <ListByTier
+        listOfRows={rows.startup}
+        tierSize={isMobile ? MOBILE_SPONSOR_WIDTH.startup : SPONSOR_WIDTH.startup}
+        tier="startup"
+      />
+      <ListByTier
+        listOfRows={rows.inkind}
+        tierSize={isMobile ? MOBILE_SPONSOR_WIDTH.inkind : SPONSOR_WIDTH.inkind}
+        tier="inkind"
+      />
     </Container>
   )
 }

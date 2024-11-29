@@ -70,6 +70,14 @@ const profiles = [
     social: '',
   },
   {
+    img: '/profiles/Ben_Beckford.png',
+    name: 'Ben Beckford',
+    emoji: '🫧',
+    color: '#CF9FFF',
+    title: 'EDI Coordinator',
+    social: 'https://www.linkedin.com/in/benbeckford',
+  },
+  {
     img: '/profiles/Byron_Wang.png',
     name: 'Byron Wang',
     emoji: '😌',
@@ -108,6 +116,14 @@ const profiles = [
     color: '#A7CCFF',
     title: 'Design Coordinator',
     social: 'https://www.linkedin.com/in/daiisyhan/',
+  },
+  {
+    img: '/profiles/Daksh_Shahani.png',
+    name: 'Daksh Shahani',
+    emoji: '👾',
+    color: '#008581',
+    title: 'Dev Coordinator',
+    social: 'https://www.linkedin.com/in/dakshit-shahani/',
   },
   {
     img: '/profiles/Daniel_Pan.png',
@@ -262,6 +278,14 @@ const profiles = [
     social: 'linkedin.com/in/kittyliu3',
   },
   {
+    img: '/profiles/Lilit_Vanyan.png',
+    name: 'Lilit Vanyan',
+    emoji: '💋',
+    color: '#F2ACB9',
+    title: 'cmd-f Logistics Coordinator',
+    social: 'https://www.linkedin.com/in/lilit-vanyan-5626a2240/',
+  },
+  {
     img: '/profiles/Lincoln_Lee.png',
     name: 'Lincoln Lee',
     emoji: '🦝',
@@ -366,14 +390,6 @@ const profiles = [
     social: 'http://www.linkedin.com/in/ridhwanlai-badmos-05739a26b',
   },
   {
-    img: '/profiles/Sami_Nourji.png',
-    name: 'Sami Nourji',
-    emoji: '🌊',
-    color: '#EFC69A',
-    title: 'Marketing Coordinator',
-    social: 'www.linkedin.com/in/saminourji',
-  },
-  {
     img: '/profiles/Shannon_Aurelia.png',
     name: 'Shannon Aurelia',
     emoji: '🩰',
@@ -428,6 +444,14 @@ const profiles = [
     color: '#FF7E4D',
     title: 'Design Coordinator',
     social: 'https://linkedin.com/in/sidyakinian',
+  },
+  {
+    img: '/profiles/Zahra_Fiandika.png',
+    name: 'Zahra Fiandika',
+    emoji: '',
+    color: '#ffffff',
+    title: 'Design Coordinator',
+    social: '',
   },
 ]
 
@@ -528,7 +552,7 @@ export default function Team() {
         targets: ['#anim-profiles'],
         easing: 'linear',
         loop: true,
-        translateX: [-(90 * profiles.length), 0],
+        translateX: [0, -(90 * profiles.length)],
         duration: 3000 * profiles.length,
         autoplay: false,
       })
