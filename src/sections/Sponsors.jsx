@@ -64,13 +64,21 @@ const Sponsors = () => {
   useEffect(async () => {
     const data = await fireDb.getCollection('nwHacks2025', 'Sponsors')
     if (data) {
-      setSponsors(data)
       const filteredCarouselSponsors = data.filter(child => child.blurb !== undefined && child.blurb !== '')
       const tierOrder = ['title', 'platinum', 'gold', 'silver', 'bronze', 'startup', 'inkind']
-      const sortedCarouselSponsors = filteredCarouselSponsors.sort((a, b) => 
-        tierOrder.indexOf(a.tier) - tierOrder.indexOf(b.tier)
+      const sortedCarouselSponsors = filteredCarouselSponsors.sort(
+        (a, b) => tierOrder.indexOf(a.tier) - tierOrder.indexOf(b.tier)
       )
       setCarouselSponsors(sortedCarouselSponsors)
+
+      // create a deep copy of the data so we can modify TELUS' logo for the 
+      // sponsors grid without affecting how it appears in the carousel
+      const deepCopyData = JSON.parse(JSON.stringify(data))
+      const telusSponsor = deepCopyData.find(sponsor => sponsor.name === 'TELUS')
+      if (telusSponsor) {
+        telusSponsor.imgURL = '/assets/images/telus.png'
+      }
+      setSponsors(deepCopyData)
     }
   }, [])
 
@@ -81,7 +89,6 @@ const Sponsors = () => {
       <Title id="sponsors">SPONSORS</Title>
       <SwipeDescription>Swipe on the TV screen to read about our sponsors</SwipeDescription>
       {carouselSponsors.length > 0 && <Carousel sponsors={carouselSponsors} />}
-
       <SponsorsGrid sponsors={sponsors} />
     </SponsorsContainer>
   )
