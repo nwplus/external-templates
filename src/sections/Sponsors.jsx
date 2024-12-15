@@ -57,6 +57,11 @@ const Spotlight = styled.div`
   }
 `
 
+const SPONSOR_IMAGE_OVERRIDES = {
+  TELUS: '/assets/images/telus.png',
+  CSE: '/assets/images/cse.png',
+}
+
 const Sponsors = () => {
   const [sponsors, setSponsors] = useState([])
   const [carouselSponsors, setCarouselSponsors] = useState([])
@@ -71,13 +76,14 @@ const Sponsors = () => {
       )
       setCarouselSponsors(sortedCarouselSponsors)
 
-      // create a deep copy of the data so we can modify TELUS' logo for the 
+      // create a deep copy of the data so we can modify TELUS' logo for the
       // sponsors grid without affecting how it appears in the carousel
       const deepCopyData = JSON.parse(JSON.stringify(data))
-      const telusSponsor = deepCopyData.find(sponsor => sponsor.name === 'TELUS')
-      if (telusSponsor) {
-        telusSponsor.imgURL = '/assets/images/telus.png'
-      }
+      deepCopyData.forEach(sponsor => {
+        if (SPONSOR_IMAGE_OVERRIDES[sponsor.name]) {
+          sponsor.imgURL = SPONSOR_IMAGE_OVERRIDES[sponsor.name]
+        }
+      })
       setSponsors(deepCopyData)
     }
   }, [])
