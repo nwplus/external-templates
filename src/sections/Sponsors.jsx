@@ -79,12 +79,11 @@ const Sponsors = () => {
       // create a deep copy of the data so we can modify TELUS' logo for the
       // sponsors grid without affecting how it appears in the carousel
       const deepCopyData = JSON.parse(JSON.stringify(data))
-      deepCopyData.forEach(sponsor => {
-        if (SPONSOR_IMAGE_OVERRIDES[sponsor.name]) {
-          sponsor.imgURL = SPONSOR_IMAGE_OVERRIDES[sponsor.name]
-        }
-      })
-      setSponsors(deepCopyData)
+      const modifiedSponsors = deepCopyData.map(sponsor => ({
+        ...sponsor,
+        imgURL: SPONSOR_IMAGE_OVERRIDES[sponsor.name] || sponsor.imgURL,
+      }))
+      setSponsors(modifiedSponsors)
     }
   }, [])
 

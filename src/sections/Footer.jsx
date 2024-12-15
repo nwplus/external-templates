@@ -242,10 +242,10 @@ const Footer = () => {
         <TeamContainer>
           <LandAcknowledgementText>
             nwHacks 2025 will be taking place on xʷməθkʷəy̓əm (Musqueam) and səlilwətaɬ (Tsleil-Waututh) territory. As we
-            build tomorrow's tech community, we recognize our responsibility to understand and respect Indigenous
+            build tomorrow&apos;s tech community, we recognize our responsibility to understand and respect Indigenous
             histories. To learn more, visit{' '}
             <a href="https://guides.library.ubc.ca/xwi7xwaresearchguide" target="_blank" rel="noreferrer">
-              xwi7xwa's Research Guide
+              xwi7xwa&apos;s Research Guide
             </a>
             .
           </LandAcknowledgementText>
