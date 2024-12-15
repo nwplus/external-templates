@@ -16,12 +16,12 @@ import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
 
 const FooterContainer = styled.div`
   position: relative;
-  aspect-ratio: 1280/1150;
+  aspect-ratio: 1280/1334;
   width: 100%;
   overflow: hidden;
 
   ${p => p.theme.mediaQueries.mobile} {
-    aspect-ratio: 487/820;
+    aspect-ratio: 487/950;
   }
 `
 
@@ -124,7 +124,7 @@ const SmallText = styled.div`
 const TeamContainer = styled.div`
   position: absolute;
   left: 0;
-  bottom: 0%;
+  bottom: calc(100vw * (25 / 1280));
   text-align: center;
   width: 100%;
 
@@ -158,6 +158,29 @@ const ConfettiContainer = styled.div`
   canvas {
     width: 100% !important;
     height: 100% !important;
+  }
+`
+
+const LandAcknowledgementText = styled.div`
+  padding: 0 5%;
+  text-align: center;
+  margin-bottom: calc(100vw * (40 / 1280));
+  color: #f9c745;
+  font-size: calc(100vw * (16 / 1280));
+  font-weight: 500;
+  font-family: 'HK Grotesk Medium';
+
+  a {
+    color: #f9c745;
+    text-decoration: underline;
+    &:hover {
+      color: #ffe08a;
+    }
+  }
+
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: calc(100vw * (12 / 487));
+    margin-bottom: calc(100vw * (16 / 487));
   }
 `
 
@@ -217,6 +240,15 @@ const Footer = () => {
           <Newsletter />
         </TextContainer>
         <TeamContainer>
+          <LandAcknowledgementText>
+            nwHacks 2025 will be taking place on xʷməθkʷəy̓əm (Musqueam) and səlilwətaɬ (Tsleil-Waututh) territory. As we
+            build tomorrow&apos;s tech community, we recognize our responsibility to understand and respect Indigenous
+            histories. To learn more, visit{' '}
+            <a href="https://guides.library.ubc.ca/xwi7xwaresearchguide" target="_blank" rel="noreferrer">
+              xwi7xwa&apos;s Research Guide
+            </a>
+            .
+          </LandAcknowledgementText>
           <Team />
           <SmallText>Copyright &copy; nwHacks 2025</SmallText>
         </TeamContainer>
