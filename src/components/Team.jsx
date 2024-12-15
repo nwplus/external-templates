@@ -457,7 +457,9 @@ const profiles = [
 
 const StyledTitle = styled(Header3)`
   color: #f9c745;
-  font-size: calc(100vw * (30 / 1280));
+  font-size: calc(100vw * (40 / 1280));
+  font-weight: 700;
+  margin-bottom: calc(100vw * (5 / 1280));
   ${p => p.theme.mediaQueries.mobile} {
     font-size: 1.1rem;
   }
@@ -465,7 +467,7 @@ const StyledTitle = styled(Header3)`
 
 const ProfileContent = styled.p`
   color: white;
-  padding: 1rem 0;
+  padding: calc(100vw * (10 / 1280)) 0;
   span {
     margin-right: 8px;
   }
@@ -494,9 +496,9 @@ const ProfileImage = styled.img`
     transform: scale(1.15);
     opacity: 1;
   }
-  width: 100px;
-  height: 100px;
-  border-radius: 13px;
+  width: calc(100vw * (75 / 1280));
+  height: calc(100vw * (75 / 1280));
+  border-radius: calc(100vw * (10 / 1280));
   background-color: ${p => p.color};
   object-fit: cover;
   margin: 10px 15px;
