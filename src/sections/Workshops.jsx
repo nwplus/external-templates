@@ -130,11 +130,11 @@ const SubTitle = styled.p`
   font-size: calc(100vw * (22 / 1280));
   color: white;
   text-align: center;
-  margin-top: calc(100vw * (32 / 1280));
+  margin-top: calc(100vw * (28 / 1280));
 
   ${p => p.theme.mediaQueries.mobile} {
     font-size: calc(100vw * (30 / 487));
-    margin-top: calc(100vw * (32 / 487));
+    margin-top: calc(100vw * (28 / 487));
   }
 `
 
@@ -160,17 +160,17 @@ const Paragraph = styled.p`
 
 const ParagraphHeader = styled.p`
   font-weight: 500;
-  font-size: calc(100vw * (16 / 1280));
+  font-size: calc(100vw * (15 / 1280));
   color: white;
   justify-self: center;
   align-self: center;
   width: 74%;
-  margin-top: calc(100vw * (12 / 1280));
+  margin-top: calc(100vw * (10 / 1280));
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: calc(100vw * (24 / 487));
+    font-size: calc(100vw * (22 / 487));
     width: 100%;
-    margin-top: calc(100vw * (22 / 487));
+    margin-top: calc(100vw * (18 / 487));
   }
 `
 
@@ -269,7 +269,7 @@ const Workshops = () => {
   const items = [
     {
       name: 'Hackathons 101',
-      dateAndTime: 'Tuesday, Jan 14 | 5:00 PM',
+      dateAndTime: 'Monday, Jan 13 | 5:00 PM',
       description:
         "First-time hacker? Mosey on down to Hackathons 101! In this workshop, we'll cover the basics of hackathons, including building your team, kickstarting your project, and making the most of your time. We will also cover key nwHacks information to ensure you're prepped for the weekend!",
       defaultSrc: hackathons2,
@@ -277,7 +277,7 @@ const Workshops = () => {
     },
     {
       name: 'Intro to Figma',
-      dateAndTime: 'Tuesday, Jan 14 | 6:00 PM',
+      dateAndTime: 'Monday, Jan 13 | 5:40 PM',
       description:
         "Want to learn the fundamentals of the UI/UX industry's leading design platform? Come join our Intro to Figma workshop! We will explore the fundamental tools of Figma, explore basic prototyping and take you through our design process to transform low-fidelity sketches into high-fidelity designs.",
       defaultSrc: figma2,
@@ -285,7 +285,7 @@ const Workshops = () => {
     },
     {
       name: 'Intro to Version Control',
-      dateAndTime: 'Tuesday, Jan 14 | 7:30 PM ',
+      dateAndTime: 'Monday, Jan 13 | 6:50 PM ',
       description:
         "Learn everything you need to know about git and version control in order to collaborate with your teammates and build awesome hackathon projects. Come to Intro to Version Control to learn how to fix your (git) commitment issues! We'll be covering the basics of Git and version control including branches, pull requests, best practices and more!",
       defaultSrc: version2,
@@ -293,15 +293,23 @@ const Workshops = () => {
     },
     {
       name: 'Intro to Web Dev',
-      dateAndTime: 'Wednesday, Jan 15 | 5:00 PM',
+      dateAndTime: 'Tuesday, Jan 14 | 5:00 PM',
       description:
         "Ever wanted to learn how to code and host your very own website? Come join us and learn how to code a website using HTML, CSS and JavaScript! We'll explore how to make interactive web pages, style them, create animations, make websites mobile friendly, and more through hands on activities!",
       defaultSrc: webdev2,
       hoverSrc: webdev1,
     },
     {
+      name: 'Tech Career Exploration',
+      dateAndTime: 'Tuesday, Jan 14 | 6:40 PM',
+      description:
+        'Ever wonder what tech careers exist outside of the typical software engineering roles? This panel brings together industry experts from fields like blockchain, research, and biotech. Learn about the day-to-day realities of working in these unconventional tech sectors and get tips on how to break into these exciting fields.',
+      defaultSrc: careers2,
+      hoverSrc: careers1,
+    },
+    {
       name: 'Intro to APIs',
-      dateAndTime: 'Wednesday, Jan 15 | 6:00 PM',
+      dateAndTime: 'Wednesday, Jan 15 | 5:00 PM',
       description:
         'Join us as we demystify how your favorite software applications interact with each other. We will cover API structure, common use cases, and hands-on exercises to help you build your first API.',
       defaultSrc: apis2,
@@ -309,35 +317,27 @@ const Workshops = () => {
     },
     {
       name: 'Intro to React',
-      dateAndTime: 'Wednesday, Jan 15 | 7:30 PM',
+      dateAndTime: 'Wednesday, Jan 15 | 6:10 PM',
       description:
         "Join us to learn the basics of React from components to hooks, and build a small web app from scratch! If you are looking to put your JavaScript, HTML and CSS knowledge into action and dive into the world of dynamic web applications, this workshop is for you. No prior experience with React.js is required! We'll guide you through the fundamentals, so you can hit the ground running.",
       defaultSrc: react2,
       hoverSrc: react1,
     },
     {
-      name: 'Internships 101',
-      dateAndTime: 'Thursday, Jan 16 | 5:00 PM',
-      description:
-        'Are you ready to break into big tech? Get your TLDR on recruiting for the most difficult part of Product, SWE and Design internships—landing the interview.',
-      defaultSrc: internships2,
-      hoverSrc: internships1,
-    },
-    {
-      name: 'Tech Career Exploration',
-      dateAndTime: 'Thursday, Jan 16 | 6:00 PM',
-      description:
-        'Ever wonder what tech careers exist outside of the typical software engineering roles? This panel brings together industry experts from fields like blockchain, research, and biotech. Learn about the day-to-day realities of working in these unconventional tech sectors and get tips on how to break into these exciting fields.',
-      defaultSrc: careers2,
-      hoverSrc: careers1,
-    },
-    {
       name: 'Pitching 101',
-      dateAndTime: 'Thursday, Jan 16 | 7:30 PM',
+      dateAndTime: 'Thursday, Jan 16 | 5:00 PM',
       description:
         "Got a great idea for a product but not sure how to pitch it? Learn from successful startup founders on how to sell your vision like a pro. This workshop will provide you with insights into what it takes to craft the perfect pitch, drawing on real-world experiences from some of Canada's top startup minds.",
       defaultSrc: pitching2,
       hoverSrc: pitching1,
+    },
+    {
+      name: 'Internships 101',
+      dateAndTime: 'Thursday, Jan 16 | 5:40 PM',
+      description:
+      'Are you ready to break into big tech? Get your TLDR on recruiting for the most difficult part of Product, SWE and Design internships—landing the interview.',
+      defaultSrc: internships2,
+      hoverSrc: internships1,
     },
   ]
 
@@ -364,35 +364,36 @@ const Workshops = () => {
             ) : (
               <Schedule>
                 <SubTitle>Workshop Schedule</SubTitle>
-                <ParagraphHeader>Tuesday, Jan 14</ParagraphHeader>
+                <ParagraphHeader>Monday, Jan 13</ParagraphHeader>
                 <ParagraphSmall>
                   <b>5:00PM</b> &nbsp; &nbsp; Hackathons 101
                 </ParagraphSmall>
                 <ParagraphSmall>
-                  <b>6:00PM</b> &nbsp; &nbsp; Intro to Figma
+                  <b>5:40PM</b> &nbsp; &nbsp; Intro to Figma
                 </ParagraphSmall>
                 <ParagraphSmall>
-                  <b>7:30PM</b> &nbsp; &nbsp; Intro to Version Control
+                  <b>6:50PM</b> &nbsp; &nbsp; Intro to Version Control
                 </ParagraphSmall>
-                <ParagraphHeader>Wednesday, Jan 15</ParagraphHeader>
+                <ParagraphHeader>Tuesday, Jan 14</ParagraphHeader>
                 <ParagraphSmall>
                   <b>5:00PM</b> &nbsp; &nbsp; Intro to Web Dev
                 </ParagraphSmall>
                 <ParagraphSmall>
-                  <b>6:00PM</b> &nbsp; &nbsp; Intro to APIs
+                  <b>6:40PM</b> &nbsp; &nbsp; Tech Career Exploration
+                </ParagraphSmall>
+                <ParagraphHeader>Wednesday, Jan 15</ParagraphHeader>
+                <ParagraphSmall>
+                  <b>5:00PM</b> &nbsp; &nbsp; Intro to APIs
                 </ParagraphSmall>
                 <ParagraphSmall>
-                  <b>7:30PM</b> &nbsp; &nbsp; Intro to React
+                  <b>6:10PM</b> &nbsp; &nbsp; Intro to React
                 </ParagraphSmall>
                 <ParagraphHeader>Thursday, Jan 16</ParagraphHeader>
                 <ParagraphSmall>
-                  <b>5:00PM</b> &nbsp; &nbsp; Internships 101
+                  <b>5:00PM</b> &nbsp; &nbsp; Pitching 101
                 </ParagraphSmall>
                 <ParagraphSmall>
-                  <b>6:00PM</b> &nbsp; &nbsp; Tech Career Exploration
-                </ParagraphSmall>
-                <ParagraphSmall>
-                  <b>7:30PM</b> &nbsp; &nbsp; Pitching 101
+                  <b>5:40PM</b> &nbsp; &nbsp; Internships 101
                 </ParagraphSmall>
               </Schedule>
             )}
@@ -422,35 +423,36 @@ const Workshops = () => {
               ) : (
                 <>
                   <SubTitle>Workshop Schedule</SubTitle>
-                  <Paragraph>Tuesday, Jan 14</Paragraph>
+                  <ParagraphHeader>Monday, Jan 13</ParagraphHeader>
                   <ParagraphSmall>
                     <b>5:00PM</b> &nbsp; &nbsp; Hackathons 101
                   </ParagraphSmall>
                   <ParagraphSmall>
-                    <b>6:00PM</b> &nbsp; &nbsp; Intro to Figma
+                    <b>5:40PM</b> &nbsp; &nbsp; Intro to Figma
                   </ParagraphSmall>
                   <ParagraphSmall>
-                    <b>7:30PM</b> &nbsp; &nbsp; Intro to Version Control
+                    <b>6:50PM</b> &nbsp; &nbsp; Intro to Version Control
                   </ParagraphSmall>
-                  <Paragraph>Wednesday, Jan 15</Paragraph>
+                  <ParagraphHeader>Tuesday, Jan 14</ParagraphHeader>
                   <ParagraphSmall>
                     <b>5:00PM</b> &nbsp; &nbsp; Intro to Web Dev
                   </ParagraphSmall>
                   <ParagraphSmall>
-                    <b>6:00PM</b> &nbsp; &nbsp; Intro to APIs
+                    <b>6:40PM</b> &nbsp; &nbsp; Tech Career Exploration
+                  </ParagraphSmall>
+                  <ParagraphHeader>Wednesday, Jan 15</ParagraphHeader>
+                  <ParagraphSmall>
+                    <b>5:00PM</b> &nbsp; &nbsp; Intro to APIs
                   </ParagraphSmall>
                   <ParagraphSmall>
-                    <b>7:30PM</b> &nbsp; &nbsp; Intro to React
+                    <b>6:10PM</b> &nbsp; &nbsp; Intro to React
                   </ParagraphSmall>
-                  <Paragraph>Thursday, Jan 16</Paragraph>
+                  <ParagraphHeader>Thursday, Jan 16</ParagraphHeader>
                   <ParagraphSmall>
-                    <b>5:00PM</b> &nbsp; &nbsp; Internships 101
-                  </ParagraphSmall>
-                  <ParagraphSmall>
-                    <b>6:00PM</b> &nbsp; &nbsp; Tech Career Exploration
+                    <b>5:00PM</b> &nbsp; &nbsp; Pitching 101
                   </ParagraphSmall>
                   <ParagraphSmall>
-                    <b>7:30PM</b> &nbsp; &nbsp; Pitching 101
+                    <b>5:40PM</b> &nbsp; &nbsp; Internships 101
                   </ParagraphSmall>
                 </>
               )}
