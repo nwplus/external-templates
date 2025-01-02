@@ -60,6 +60,8 @@ const Spotlight = styled.div`
 const SPONSOR_IMAGE_OVERRIDES = {
   TELUS: '/assets/images/telus.png',
   CSE: '/assets/images/cse.png',
+  Deloitte: '/assets/images/deloitte.png',
+  Warp: '/assets/images/warp.png',
 }
 
 const Sponsors = () => {
