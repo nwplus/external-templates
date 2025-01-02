@@ -190,6 +190,15 @@ const Blurb = styled.div`
     font-size: 0.75rem;
     padding-right: calc(100vw * (10 / 487));
   }
+
+  a {
+    color: inherit;
+    text-decoration: underline;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
 `
 
 const LearnMoreButton = styled.a`
@@ -207,6 +216,9 @@ const LearnMoreButton = styled.a`
     border-radius: calc(100vw * (8 / 487));
   }
 `
+
+const sanitizeBlurb = blurb =>
+  blurb.replace(/<a\s+(?:[^>]*?)href=/g, '<a target="_blank" rel="noopener noreferrer" href=')
 
 const Carousel = ({ sponsors }) => {
   const [viewing, setViewing] = useState(0)
@@ -280,7 +292,7 @@ const Carousel = ({ sponsors }) => {
 
           <RightContainer>
             <RightInnerContainer>
-              <Blurb>{sponsors[viewing]?.blurb}</Blurb>
+              <Blurb dangerouslySetInnerHTML={{ __html: sanitizeBlurb(sponsors[viewing]?.blurb) }} />
               <LearnMoreButton href={sponsors[viewing]?.link}>Learn More</LearnMoreButton>
             </RightInnerContainer>
           </RightContainer>
