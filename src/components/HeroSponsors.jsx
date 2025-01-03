@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const SponsorsContainer = styled.div`
-  height: 80%;
+  height: 65%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,6 +12,7 @@ const SponsorsContainer = styled.div`
 const Sponsor = styled.img`
   max-width: 80%;
   height: auto;
+  max-height: 22%;
   object-fit: contain;
 `
 
@@ -23,13 +24,13 @@ const MoreBelow = styled.p`
 `
 
 const HeroSponsors = () => {
-  const sponsors = ['telus', 'cse']
+  const sponsors = ['telus.png', 'cse.png', 'rcaf.svg']
 
   return (
     <>
       <SponsorsContainer>
         {sponsors.map(sponsor => (
-          <Sponsor src={`./assets/images/${sponsor}.png`} alt={sponsor} key={sponsor} />
+          <Sponsor src={`./assets/images/${sponsor}`} alt={sponsor} key={sponsor} />
         ))}
         <MoreBelow>and more!</MoreBelow>
       </SponsorsContainer>
