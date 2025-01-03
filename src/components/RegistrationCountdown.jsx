@@ -78,18 +78,22 @@ function RegistrationCountdown() {
 
   function calculateTimeLeft(targetDate) {
     const difference = +new Date(targetDate) - +new Date()
-    let remainingTime = {}
 
-    if (difference > 0) {
-      remainingTime = {
-        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((difference / 1000 / 60) % 60),
+    if (difference <= 0) {
+      return {
+        days: 0,
+        hours: 0,
+        minutes: 0,
         targetDate,
       }
     }
 
-    return remainingTime
+    return {
+      days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+      hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+      minutes: Math.floor((difference / 1000 / 60) % 60),
+      targetDate,
+    }
   }
 
   useEffect(() => {
