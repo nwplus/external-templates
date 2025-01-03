@@ -230,7 +230,7 @@ const RightPillarInnerContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   width: calc(100vw * (134 / 1280));
-  height: calc(100vw * (250 / 1280));
+  height: calc(100vw * (240 / 1280));
 `
 
 const SponsorText = styled.p`
