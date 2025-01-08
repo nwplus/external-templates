@@ -62,11 +62,11 @@ const CaveTop = styled.div`
 
 const FooterBackground = styled.div`
   background-position-y: bottom;
-  background: url('assets/background/footer/new-footer-background.png');
+  background: url('assets/background/footer/footer-background-2.png');
   background-size: 250vw;
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: 105%;
   bottom: -106.5vw;
   background-repeat: no-repeat;
   background-position: center top;
@@ -89,12 +89,15 @@ const FooterBackground = styled.div`
   }
 
   ${p => p.theme.mediaQueries.tabletSmall} {
-    bottom: -68.5vw;
+    bottom: -50vw;
+    background-size: 260vw;
+    height: 100vw;
   }
 
   ${p => p.theme.mediaQueries.mobile} {
     bottom: 10vw;
-    height: 64vw;
+    background-size: 260vw;
+    height: 74vw;
   }
 `
 
@@ -103,6 +106,7 @@ const FooterSpotlights = styled.div`
   background: url('assets/background/footer/footer-spotlights.png');
   background-size: 84vw;
   position: absolute;
+  top: 70vw;
   width: 100%;
   height: 100%;
   bottom: -72vw;
@@ -149,7 +153,7 @@ const SocialMediaIcons = styled.div`
 
   ${p => p.theme.mediaQueries.mobile} {
     width: 60vw;
-    top: 0vw;
+    top: -15vw;
     font-size: 6vw;
     a {
       color: #c4b2f0;
@@ -173,6 +177,8 @@ const Links = styled.div`
   ${p => p.theme.mediaQueries.mobile} {
     font-size: 3vw;
     gap: 1rem;
+    position: relative;
+    top: -15vw;
   }
 `
 
@@ -206,7 +212,7 @@ const TeamContainer = styled.div`
   z-index: 4;
   position: absolute;
   left: 0;
-  top: 152.5vw;
+  top: 153.5vw;
   text-align: center;
   width: 100%;
   padding-bottom: 2vw;
@@ -341,6 +347,8 @@ const InputContainer = styled.div`
   width: 35vw;
   ${p => p.theme.mediaQueries.mobile} {
     width: 70vw;
+    position: relative;
+    top: -15vw;
   }
 `
 
@@ -388,6 +396,24 @@ const ComboButton = styled(Button)`
 
 const StyledMessage = styled.div`
   font-size: 1.4vw;
+`
+const LandAcknowledgement = styled.p`
+  color: #F6C349;
+  width: 69%;
+  margin: 0 auto;
+  padding-top: 15px;
+  padding-bottom: 30px;
+  z-index: 100;
+  position: relative;
+  top: 105vw;
+  left: 1vw;
+  a {
+    color: ${(p) => p.theme.colors.primary};
+    text-decoration: underline;
+    &:hover {
+      text-decoration: none;
+    }
+  }
 `
 
 export default function Footer () {
@@ -493,6 +519,11 @@ export default function Footer () {
         <RedFireWork />
         <FooterBackground />
         <FooterSpotlights />
+        <LandAcknowledgement>
+          HackCamp 2024 will be taking place on xʷməθkʷəy̓əm (Musqueam) and səlilwətaɬ (Tsleil-Waututh) territory.
+          As we build tomorrow&apos;s tech community, we recognize our responsibility to understand and respect Indigenous histories.
+          To learn more, visit <a href="https://guides.library.ubc.ca/xwi7xwaresearchguide" target="_blank" rel="noreferrer">xwi7xwa&apos;s Research Guide</a>.
+        </LandAcknowledgement>
         <TeamContainer>
           <Team />
         </TeamContainer>
