@@ -122,7 +122,7 @@ const profiles = [
     name: 'Daksh Shahani',
     emoji: '👾',
     color: '#008581',
-    title: 'Dev Coordinator',
+    title: 'Media Specialist',
     social: 'https://www.linkedin.com/in/dakshit-shahani/',
   },
   {
