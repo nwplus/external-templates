@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
-import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
+import WorkshopCard from '@components/WorkshopCard'
 import w1 from '../../public/assets/images/workshops/step1.svg'
 import w2 from '../../public/assets/images/workshops/step2.svg'
 import w3 from '../../public/assets/images/workshops/step3.svg'
@@ -9,7 +9,6 @@ import w5 from '../../public/assets/images/workshops/step5.svg'
 import w6 from '../../public/assets/images/workshops/step6.svg'
 import w7 from '../../public/assets/images/workshops/step7.svg'
 import w8 from '../../public/assets/images/workshops/step8.svg'
-import WorkshopCard from '@components/WorkshopCard'
 
 const WorkshopsContainer = styled.div`
   position: relative;
@@ -105,11 +104,6 @@ const WorkshopContent = styled.div`
 
 const Workshops = () => {
   const [selectedTab, setSelectedTab] = useState('one')
-  const [isMobile, setIsMobile] = useState(false)
-
-  useEffect(() => {
-    setIsMobile(window.innerWidth <= SCREEN_BREAKPOINTS.mobile)
-  }, [])
 
   const items = {
     one: [
@@ -215,8 +209,8 @@ const Workshops = () => {
         </TabButton>
       </TabButtons>
       <WorkshopContent>
-        {items[selectedTab].map((w, index) => (
-          <WorkshopCard key={index} info={w} />
+        {items[selectedTab].map(w => (
+          <WorkshopCard key={w.id} info={w} />
         ))}
       </WorkshopContent>
     </WorkshopsContainer>
