@@ -11,7 +11,7 @@ export const GlobalStyles = createGlobalStyle`
   }
   html, body {
     overflow-x: hidden;
-    background: linear-gradient(355deg, rgba(58,175,215,1) 0%, rgba(159,223,232,1) 100%);
+    background: #F0E9D7;
   }
   body {
     position: relative;
