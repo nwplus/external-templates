@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react'
+// import React, { useState, useEffect, useRef } from 'react'
 import styled from 'styled-components'
-import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
+// import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
 import expandedCake from '@assets/images/expanded_cake.svg'
 
 const OuterContainer = styled.div`
@@ -50,16 +50,16 @@ const ColumnContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  ${p => p.theme.mediaQueries.tablet} {
-    align-items: flex-start;
-  }
 `
 
 const ExpandedCakeImage = styled.img`
   width: calc(100vw * (340 / 1280));
   height: auto;
   margin-top: -40px;
+  @media (max-width: 768px) {
+    margin-top: 8px;
+    margin-bottom: -48px;
+  }
 `
 
 const ValuesList = styled.div`
@@ -84,6 +84,10 @@ const DotLineContainer = styled.div`
   margin-top: 6px; 
   margin-right: calc(100vw * (80 / 1280));
 
+  @media (max-width: 768px) {
+    display: none;
+  }
+
 `
 
 const Dot = styled.div`
@@ -91,13 +95,6 @@ const Dot = styled.div`
   height: calc(100vw * (16 / 1280));
   background-color: #A6321E;
   border-radius: 50%;
-`
-const Dot2 = styled.div`
-  width: calc(100vw * (16 / 1280));
-  height: calc(100vw * (16 / 1280));
-  background-color: #A6321E;
-  border-radius: 50%;
-  margin-top: -16px;
 `
 
 const Line1 = styled.div`
@@ -120,6 +117,10 @@ const ValueContent = styled.div`
   display: flex;
   flex-direction: column;
   max-width: calc(100vw * (400 / 1280));
+
+  @media (max-width: 768px) {
+    max-width: calc(100vw * (880 / 1280));
+  }
 `
 
 const ValueTitle = styled.p`
@@ -128,6 +129,10 @@ const ValueTitle = styled.p`
   font-weight: bold;
   font-family: 'HappyTime', normal;
   margin-bottom: 0.5rem;
+
+  @media (max-width: 768px) {
+    font-size: calc(100vw * (32 / 1280));
+  }
 `
 
 const ValueDescription = styled.p`
@@ -135,93 +140,89 @@ const ValueDescription = styled.p`
   color: #4F2F22;
   font-family: 'Poppins', sans-serif;
   line-height: 1.6;
+
+  @media (max-width: 768px) {
+    font-size: calc(100vw * (24 / 1280));
+  }
 `
 
-const Values = () => {
-  const [isMobile, setIsMobile] = useState(false)
-  const [isTablet, setIsTablet] = useState(false)
-
-  useEffect(() => {
-    const updateDeviceType = () => {
-      setIsMobile(window.innerWidth <= SCREEN_BREAKPOINTS.mobile)
-      setIsTablet(window.innerWidth <= SCREEN_BREAKPOINTS.tablet)
-    }
-
-    updateDeviceType()
-    window.addEventListener('resize', updateDeviceType)
-
-    return () => {
-      window.removeEventListener('resize', updateDeviceType)
-    }
-  }, [])
-
-  return (
-    <OuterContainer>
-      <Title>Our Values</Title>
-      {/* {!isMobile && !isTablet && ( */}
-      <ValuesContainer>
-        <ColumnContainer>
-          <ExpandedCakeImage src={expandedCake} alt="Expanded Cake" />
-        </ColumnContainer>
-        <ColumnContainer>
-          <ValuesList>
-            <ValueItem>
-              <DotLineContainer>
-                <Dot />
-                <Line1 />
-              </DotLineContainer>
-              <ValueContent>
-                <ValueTitle>Build Confidence</ValueTitle>
-                <ValueDescription>
-                  Develop career-ready skills, fight impostor syndrome, and create an invaluable support
-                  network with friends, mentors, and sponsors. Regardless of your background, you bring a
-                  unique and important perspective to tech. Like how there is always a treat for everyone,
-                  there is always a place for you in tech—a space where everyone belongs.
-                </ValueDescription>
-              </ValueContent>
-            </ValueItem>
-
-            <ValueItem>
-              <DotLineContainer>
-                <Dot />
-                <Line2 />
-              </DotLineContainer>
-              <ValueContent>
-                <ValueTitle>Learn Together</ValueTitle>
-                <ValueDescription>
-                  Whether you have never coded before, or you dream in assembly, challenge yourself to create
-                  something meaningful! Learn new skills at our workshops and apply them to fresh and creative
-                  projects! Regardless of your project’s completion at the end of the weekend, take pride in the
-                  knowledge gained or the courage to try something new. It’s time to rise to the occasion because
-                  it’s always sweet to learn more!
-                </ValueDescription>
-              </ValueContent>
-            </ValueItem>
-
-            <ValueItem>
-              <DotLineContainer>
-                <Dot />
-              </DotLineContainer>
-              <ValueContent>
-                <ValueTitle>Explore in a Safe Space</ValueTitle>
-                <ValueDescription>
-                  Discover a community of like-minded, creative, and passionate individuals. Form lasting bonds,
-                  share experiences, and create memories in an environment free from judgment, where all gender
-                  identities and expressions are respected. We're all here unified under one cause—to strive for
-                  better representation in tech!
-                </ValueDescription>
-              </ValueContent>
-            </ValueItem>
-          </ValuesList>
-        </ColumnContainer>
-      </ValuesContainer>
-      {/* )} */}
-
-      {isMobile || isTablet && (
+const Values = () => (
+  <OuterContainer>
+    <Title>Our Values</Title>
+    <ValuesContainer>
+      <ColumnContainer>
         <ExpandedCakeImage src={expandedCake} alt="Expanded Cake" />
-      )}
-    </OuterContainer>
-  )
-}
+      </ColumnContainer>
+      <ColumnContainer>
+        <ValuesList>
+          <ValueItem>
+            <DotLineContainer>
+              <Dot />
+              <Line1 />
+            </DotLineContainer>
+            <ValueContent>
+              <ValueTitle>Build Confidence</ValueTitle>
+              <ValueDescription>
+                Develop career-ready skills, fight impostor syndrome, and create an invaluable support
+                network with friends, mentors, and sponsors. Regardless of your background, you bring a
+                unique and important perspective to tech. Like how there is always a treat for everyone,
+                there is always a place for you in tech—a space where everyone belongs.
+              </ValueDescription>
+            </ValueContent>
+          </ValueItem>
+
+          <ValueItem>
+            <DotLineContainer>
+              <Dot />
+              <Line2 />
+            </DotLineContainer>
+            <ValueContent>
+              <ValueTitle>Learn Together</ValueTitle>
+              <ValueDescription>
+                Whether you have never coded before, or you dream in assembly, challenge yourself to create
+                something meaningful! Learn new skills at our workshops and apply them to fresh and creative
+                projects! Regardless of your project&apos;s completion at the end of the weekend, take pride in the
+                knowledge gained or the courage to try something new. It&apos;s time to rise to the occasion because
+                it&apos;s always sweet to learn more!
+              </ValueDescription>
+            </ValueContent>
+          </ValueItem>
+
+          <ValueItem>
+            <DotLineContainer>
+              <Dot />
+            </DotLineContainer>
+            <ValueContent>
+              <ValueTitle>Explore in a Safe Space</ValueTitle>
+              <ValueDescription>
+                Discover a community of like-minded, creative, and passionate individuals. Form lasting bonds,
+                share experiences, and create memories in an environment free from judgment, where all gender
+                identities and expressions are respected. We&apos;re all here unified under one cause—to strive for
+                better representation in tech!
+              </ValueDescription>
+            </ValueContent>
+          </ValueItem>
+        </ValuesList>
+      </ColumnContainer>
+    </ValuesContainer>
+  </OuterContainer>
+)
 
 export default Values;
+
+// const [isMobile, setIsMobile] = useState(false)
+// const [isTablet, setIsTablet] = useState(false)
+
+// useEffect(() => {
+//   const updateDeviceType = () => {
+//     setIsMobile(window.innerWidth <= SCREEN_BREAKPOINTS.mobile)
+//     setIsTablet(window.innerWidth <= SCREEN_BREAKPOINTS.tablet)
+//   }
+
+//   updateDeviceType()
+//   window.addEventListener('resize', updateDeviceType)
+
+//   return () => {
+//     window.removeEventListener('resize', updateDeviceType)
+//   }
+// }, [])
