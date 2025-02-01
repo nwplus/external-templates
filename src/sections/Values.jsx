@@ -181,9 +181,9 @@ const Values = () => (
               <ValueDescription>
                 Whether you have never coded before, or you dream in assembly, challenge yourself to create
                 something meaningful! Learn new skills at our workshops and apply them to fresh and creative
-                projects! Regardless of your project’s completion at the end of the weekend, take pride in the
-                knowledge gained or the courage to try something new. It’s time to rise to the occasion because
-                it’s always sweet to learn more!
+                projects! Regardless of your project&apos;s completion at the end of the weekend, take pride in the
+                knowledge gained or the courage to try something new. It&apos;s time to rise to the occasion because
+                it&apos;s always sweet to learn more!
               </ValueDescription>
             </ValueContent>
           </ValueItem>
@@ -197,7 +197,7 @@ const Values = () => (
               <ValueDescription>
                 Discover a community of like-minded, creative, and passionate individuals. Form lasting bonds,
                 share experiences, and create memories in an environment free from judgment, where all gender
-                identities and expressions are respected. We're all here unified under one cause—to strive for
+                identities and expressions are respected. We&apos;re all here unified under one cause—to strive for
                 better representation in tech!
               </ValueDescription>
             </ValueContent>
