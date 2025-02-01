@@ -18,7 +18,7 @@ export const GlobalStyles = createGlobalStyle`
   }
   
   :root {
-      font-family: 'HK Grotesk', sans-serif;
+      font-family: 'Poppins', sans-serif;
 
       @media (min-width: 768px) {
       }
