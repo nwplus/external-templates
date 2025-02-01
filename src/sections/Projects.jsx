@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react'
 import styled from 'styled-components'
 
+import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
 import rizzsumo from '@assets/images/projects/rizzsumo.png'
 import dinoaura from '@assets/images/projects/dinoaura.png'
 import lovealarm from '@assets/images/projects/lovealarm.png'
@@ -17,6 +18,9 @@ import dinocard from '@assets/images/projects/dinoaura_card.svg'
 import breadbasket from '@assets/images/projects/breadbasket.svg'
 import lovecard from '@assets/images/projects/lovealarm_card.svg'
 import bread2 from '@assets/images/projects/bread2.svg'
+import lovealarm_mob from '@assets/images/projects/lovealarm_mobile.svg'
+import dinomob from '@assets/images/projects/dinoaura_mobile.svg'
+import chowmob from '@assets/images/projects/chownow_mobile.svg'
 
 const ProjectsContainer = styled.div`
   display: grid;
@@ -26,74 +30,89 @@ const ProjectsContainer = styled.div`
   position: relative;
   aspect-ratio: 1280/812;
   padding: 0 calc(100vw * (73 / 1683));
-  // height: 100%;
-  // position: relative;
-  // z-index: 1;
-  // width: 100%;
-  // background: #f0e9d7;
-
-  // ${p => p.theme.mediaQueries.tablet} {
-  //   position: relative;
-  //   aspect-ratio: 834 / 1150;
-  // }
-
-  // ${p => p.theme.mediaQueries.mobile} {
-  //   aspect-ratio: 487 / 1006;
-  //   position: relative;
-  //   width: 100%;
-  //   overflow: hidden;
-  // }
-`
-
-const Description = styled.p`
-  color: white;
-  font-size: calc(100vw * (20 / 1280));
-  font-family: 'HK Grotesk Medium';
-  font-weight: 500;
-  position: relative;
-  top: calc(100vw * (40 / 1280));
-  text-align: center;
-  z-index: 1;
-
-  ${p => p.theme.mediaQueries.tablet} {
-    font-size: calc(100vw * (20 / 834));
-  }
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: calc(100vw * (20 / 487));
-    top: 30px;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    padding: 0;
   }
 `
 
-const DesktopTabletProjects = styled.div`
+const CardContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw);
+  }
+`
+
+const MainCardContainer = styled(CardContainer)`
+  grid-column: 2;
+  grid-row: 3 / span 2;
+
   ${p => p.theme.mediaQueries.mobile} {
     display: none;
   }
 `
 
-const MobileProjects = styled.div`
-  display: none;
+const RizzsumoCardContainer = styled(CardContainer)`
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  transform: translate(10%, 37%);
+
   ${p => p.theme.mediaQueries.mobile} {
-    display: block;
-    margin: 0 auto;
-    width: 100vw;
-    height: 60vh;
+    transform: none;
+    grid-row: 2 / span 2;
   }
 `
 
-const MainCardContainer = styled.div`
+const ChownowCardContainer = styled(CardContainer)`
   grid-column: 2;
-  grid-row: 3 / span 2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
+  grid-row: 5 / span 2;
+  transform: translate(5%, -11%);
+
+  ${p => p.theme.mediaQueries.mobile} {
+    transform: none;
+    grid-column: 1;
+    grid-row: 7 / span 2;
+  }
+`
+
+const DinoauraCardContainer = styled(CardContainer)`
+  grid-column: 3;
+  grid-row: 1 / span 3;
+  flex-direction: column;
+  transform: translate(-10%, 23%);
+
+  ${p => p.theme.mediaQueries.mobile} {
+    transform: none;
+    grid-column: 1;
+    grid-row: 4 / span 3;
+  }
+`
+
+const LovealarmCardContainer = styled(CardContainer)`
+  grid-column: 3;
+  grid-row: 4 / span 3;
+  transform: translate(-15%, -3%);
+
+  ${p => p.theme.mediaQueries.mobile} {
+    transform: none;
+    grid-column: 1;
+    grid-row: 9 / span 3;
+  }
 `
 
 const MainCardImage = styled.img`
   width: calc(100vw * (497 / 1920));
   height: auto;
   z-index: 1;
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const MainText = styled.p`
@@ -106,6 +125,25 @@ const MainText = styled.p`
   z-index: 10;
   width: calc(100vw * (497 / 1920));
   padding: calc(100vw * (40 / 1920));
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
+`
+
+const MobileHeader = styled.h1`
+  display: none;
+  font-family: 'Gloock Regular';
+  font-weight: 600;
+  font-size: calc(100vw * (35 / 393));
+  color: #a6321e;
+  text-align: left;
+  margin: calc(100vw * (40 / 393));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: block;
+    grid-column: 1;
+    grid-row: 1 / span 1;
+  }
 `
 
 const TapeImage = styled.img`
@@ -115,32 +153,29 @@ const TapeImage = styled.img`
   left: 50%;
   transform: translateX(-50%);
   z-index: 5;
-`
 
-const RizzsumoCardContainer = styled.div`
-  grid-column: 1;
-  grid-row: 1 / span 2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  transform: translate(10%, 37%);
-`
+  ${MainCardContainer} & {
+    ${p => p.theme.mediaQueries.mobile} {
+      display: none;
+    }
+  }
 
-const ChownowCardContainer = styled.div`
-  grid-column: 2;
-  grid-row: 5 / span 2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  transform: translate(5%, -11%);
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (106 / 393));
+    top: -3%;
+    left: 35%;
+    transform: translate(0%, 0%);
+  }
 `
 
 const Project1Image = styled.img`
   width: calc(100vw * (497 / 1920));
   height: auto;
   z-index: 1;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (317 / 393));
+  }
 `
 
 const Project1Title = styled.p`
@@ -149,12 +184,20 @@ const Project1Title = styled.p`
   font-size: calc(100vw * (40 / 1920));
   font-style: italic;
   color: #a6321e;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: calc(100vw * (20 / 393));
+  }
 `
 
 const Project1Description = styled.p`
   font-weight: 400;
   font-size: calc(100vw * (18 / 1920));
   padding: calc(100vw * (20 / 1920)) 0px;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: calc(100vw * (15 / 393));
+  }
 `
 
 const ProjectButton = styled.button`
@@ -168,6 +211,13 @@ const ProjectButton = styled.button`
   border-radius: calc(100vw * (5 / 1920));
   border: none;
   margin-top: auto;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (112 / 393));
+    height: calc(100vw * (24 / 393));
+    font-size: calc(100vw * (10 / 393));
+    border-radius: calc(100vw * (5 / 393));
+  }
 `
 
 const ProjectText = styled.div`
@@ -180,6 +230,14 @@ const ProjectText = styled.div`
   flex-direction: column;
   justify-content: space-between;
   z-index: 5;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    transform: none;
+    top: 13%;
+    left: 18%;
+    width: calc(100vw * (260 / 393));
+    height: 70%;
+  }
 `
 
 const ChococakeCardContainer = styled.div`
@@ -190,12 +248,20 @@ const ChococakeCardContainer = styled.div`
   align-items: center;
   position: relative;
   transform: translate(7%, 30%);
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const ChococakeCardImage = styled.img`
   width: calc(100vw * (422 / 1920));
   height: auto;
   z-index: 1;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const DessertCardsContainer = styled.div`
@@ -205,6 +271,10 @@ const DessertCardsContainer = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const BrownieCardImage = styled.img`
@@ -215,6 +285,10 @@ const BrownieCardImage = styled.img`
   top: 35%;
   left: 43%;
   transform: translate(-50%, -50%);
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const BlueberryCardImage = styled.img`
@@ -225,6 +299,10 @@ const BlueberryCardImage = styled.img`
   top: 61%;
   left: 80%;
   transform: translate(-50%, -46%);
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const BreadImage = styled.img`
@@ -233,6 +311,12 @@ const BreadImage = styled.img`
   z-index: 3;
   position: absolute;
   transform: translateX(140%);
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (86 / 393));
+    z-index: 15;
+    transform: translate(170%, 150%);
+  }
 `
 
 const CroissantImage = styled.img`
@@ -241,17 +325,12 @@ const CroissantImage = styled.img`
   z-index: 3;
   position: absolute;
   transform: translate(55%, -40%);
-`
 
-const DinoauraCardContainer = styled.div`
-  grid-column: 3;
-  grid-row: 1 / span 3;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  transform: translate(-10%, 23%);
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (203 / 393));
+    z-index: 15;
+    transform: translate(-65%, 65%);
+  }
 `
 
 const DinoauraCardImage = styled.img`
@@ -259,6 +338,11 @@ const DinoauraCardImage = styled.img`
   height: auto;
   z-index: 1;
   transform: translateY(-5%);
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (317 / 393));
+    transform: none;
+  }
 `
 
 const DinoauraText = styled.p`
@@ -271,6 +355,14 @@ const DinoauraText = styled.p`
   transform: translate(-50%, -55%);
   z-index: 5;
   height: 50%;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    transform: none;
+    top: 9%;
+    left: 18%;
+    width: calc(100vw * (260 / 393));
+    height: 75%;
+  }
 `
 
 const BreadBasketImage = styled.img`
@@ -279,22 +371,20 @@ const BreadBasketImage = styled.img`
   z-index: 3;
   position: absolute;
   transform: translate(90%, 53%);
-`
 
-const LovealarmCardContainer = styled.div`
-  grid-column: 3;
-  grid-row: 4 / span 3;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  transform: translate(-15%, -3%);
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const LovealarmCardImage = styled.img`
   width: calc(100vw * (352 / 1920));
   height: auto;
   z-index: 1;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (317 / 393));
+  }
 `
 
 const LovealarmText = styled.p`
@@ -307,6 +397,13 @@ const LovealarmText = styled.p`
   transform: translate(-50%, -51%);
   height: 50%;
   z-index: 5;
+  ${p => p.theme.mediaQueries.mobile} {
+    transform: none;
+    top: 18%;
+    left: 18%;
+    width: calc(100vw * (260 / 393));
+    height: 60%;
+  }
 `
 
 const Bread2Image = styled.img`
@@ -315,40 +412,34 @@ const Bread2Image = styled.img`
   z-index: 3;
   position: absolute;
   transform: translate(0%, -210%);
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const Projects = () => {
   const [hoveredProject, setHoveredProject] = useState(null)
-  const [tvLit, setTvLit] = useState(false)
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const timeoutRef = useRef(null)
+  const [isMobile, setIsMobile] = useState(false)
   const projects = { rizzsumo: rizzsumo, chownow: chownow, dinoaura: dinoaura, lovealarm: lovealarm }
 
-  const handleHover = project => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current)
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= SCREEN_BREAKPOINTS.mobile)
     }
 
-    setHoveredProject(project)
-    setTvLit(true)
-
-    timeoutRef.current = setTimeout(() => {
-      setTvLit(false)
-      setHoveredProject(null)
-    }, 10000)
-  }
-
-  useEffect(
-    () => () => {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current)
+    if (typeof window !== 'undefined') {
+      handleResize() // Set initial state
+      window.addEventListener('resize', handleResize)
+      return () => {
+        window.removeEventListener('resize', handleResize)
       }
-    },
-    []
-  )
+    }
+  }, [])
 
   return (
     <ProjectsContainer id="past-projects">
+      <MobileHeader>Check out these inspiring projects from past years!</MobileHeader>
       <MainCardContainer>
         <TapeImage src={tape} />
         <MainCardImage src={hoveredProject ? projects[hoveredProject] : maincard} />
@@ -376,7 +467,7 @@ const Projects = () => {
         onMouseLeave={() => setHoveredProject(null)}
       >
         <TapeImage src={tape} />
-        <Project1Image src={project1} />
+        <Project1Image src={isMobile ? chowmob : project1} />
         <ProjectText>
           <Project1Title>Chow-now</Project1Title>
           <Project1Description>
@@ -403,7 +494,7 @@ const Projects = () => {
         onMouseLeave={() => setHoveredProject(null)}
       >
         <TapeImage src={tape} />
-        <DinoauraCardImage src={dinocard} />
+        <DinoauraCardImage src={isMobile ? dinomob : dinocard} />
         <DinoauraText>
           <Project1Title>Dinoaura</Project1Title>
           <Project1Description>
@@ -422,7 +513,8 @@ const Projects = () => {
         onMouseLeave={() => setHoveredProject(null)}
       >
         <Bread2Image src={bread2} />
-        <LovealarmCardImage src={lovecard} />
+        {isMobile && <TapeImage src={tape} />}
+        <LovealarmCardImage src={isMobile ? lovealarm_mob : lovecard} />
         <LovealarmText>
           <Project1Title>Love Alarm</Project1Title>
           <Project1Description>
@@ -433,61 +525,6 @@ const Projects = () => {
           </ProjectButton>
         </LovealarmText>
       </LovealarmCardContainer>
-
-      {/* <DesktopTabletProjects>
-        <ProjectItems>
-          {projects.map(project => (
-            <ProjectContainer key={project.id} onMouseEnter={() => handleHover(project)}>
-              <project.Component src={hoveredProject?.id === project.id ? project.litImage : project.normalImage} />
-              <project.Card src={project.holderImage} />
-            </ProjectContainer>
-          ))}
-
-          <TVContainer>
-            <TVImage src={tvLit ? OnTV : TV} />
-            <NuggetImage src={nuggetImg} />
-            <NuggetArmImage src={nuggetArm} />
-            {tvLit && hoveredProject && (
-              <TVOverlay>
-                <TVText>{hoveredProject.description}</TVText>
-                <TVButton href={hoveredProject.link} target="_blank" rel="noopener noreferrer">
-                  Check it out!
-                </TVButton>
-              </TVOverlay>
-            )}
-          </TVContainer>
-        </ProjectItems>
-      </DesktopTabletProjects> */}
-
-      {/* <MobileProjects>
-        <Carousel
-          currentIndex={currentIndex}
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={handleTouchEnd}
-        >
-          {projects.map(project => (
-            <ProjectSlide key={project.id}>
-              <TVText>{project.description}</TVText>
-              <TVButton href={project.link} target="_blank" rel="noopener noreferrer">
-                Check it out!
-              </TVButton>
-              <project.Component src={project.mobileImage} alt={project.name} />
-            </ProjectSlide>
-          ))}
-        </Carousel>
-        <LeftButton onClick={handleLeftClick}>
-          <img src={leftArrow} alt="Carousel Left Arrow" />
-        </LeftButton>
-        <RightButton onClick={handleRightClick}>
-          <img src={rightArrow} alt="Carousel Left Arrow" />
-        </RightButton>
-        <DotsContainer>
-          {projects.map((_, index) => (
-            <Dot isActive={index === currentIndex} onClick={() => handleDotClick(index)} />
-          ))}
-        </DotsContainer>
-      </MobileProjects> */}
     </ProjectsContainer>
   )
 }
