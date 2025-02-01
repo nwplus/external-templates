@@ -58,7 +58,6 @@ const Title = styled.p`
 const Values = () => {
   const [isMobile, setIsMobile] = useState(false)
   const [isTablet, setIsTablet] = useState(false)
-  const [titleGlow, setTitleGlow] = useState(false)
   const valueContainerRef = useRef(null)
 
   useEffect(() => {
@@ -89,6 +88,7 @@ const Values = () => {
 
       {(isMobile || isTablet) && (
         <MobileTabletStatsContainer>
+          <Title>Mobile placeholder</Title>
         </MobileTabletStatsContainer>
       )}
     </OuterContainer>
