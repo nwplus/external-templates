@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react'
+// import React, { useState, useEffect, useRef } from 'react'
 import styled from 'styled-components'
-import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
+// import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
 import expandedCake from '@assets/images/expanded_cake.svg'
 
 const OuterContainer = styled.div`
@@ -147,23 +147,6 @@ const ValueDescription = styled.p`
 `
 
 const Values = () => {
-  // const [isMobile, setIsMobile] = useState(false)
-  // const [isTablet, setIsTablet] = useState(false)
-
-  // useEffect(() => {
-  //   const updateDeviceType = () => {
-  //     setIsMobile(window.innerWidth <= SCREEN_BREAKPOINTS.mobile)
-  //     setIsTablet(window.innerWidth <= SCREEN_BREAKPOINTS.tablet)
-  //   }
-
-  //   updateDeviceType()
-  //   window.addEventListener('resize', updateDeviceType)
-
-  //   return () => {
-  //     window.removeEventListener('resize', updateDeviceType)
-  //   }
-  // }, [])
-
   return (
     <OuterContainer>
       <Title>Our Values</Title>
@@ -228,3 +211,20 @@ const Values = () => {
 }
 
 export default Values;
+
+// const [isMobile, setIsMobile] = useState(false)
+// const [isTablet, setIsTablet] = useState(false)
+
+// useEffect(() => {
+//   const updateDeviceType = () => {
+//     setIsMobile(window.innerWidth <= SCREEN_BREAKPOINTS.mobile)
+//     setIsTablet(window.innerWidth <= SCREEN_BREAKPOINTS.tablet)
+//   }
+
+//   updateDeviceType()
+//   window.addEventListener('resize', updateDeviceType)
+
+//   return () => {
+//     window.removeEventListener('resize', updateDeviceType)
+//   }
+// }, [])
