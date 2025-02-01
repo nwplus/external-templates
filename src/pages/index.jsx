@@ -12,6 +12,7 @@ import Stats from 'src/sections/Stats'
 import Gallery from 'src/sections/Gallery'
 import Projects from 'src/sections/Projects'
 import Separator from 'src/components/Separator'
+import Values from 'src/sections/Values'
 // import LoadingScreen from '../components/LoadingScreen'
 
 import Hero from '../components/Hero'
@@ -91,6 +92,7 @@ export default function Index({ title }) {
       <NavigationBar />
       <Hero />
       <About />
+      <Values />
       <Track />
       <Stats />
       <Workshops />

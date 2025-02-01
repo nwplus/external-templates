@@ -83,3 +83,9 @@
   font-weight: 900;
   src: local('Poppins Black'), url('Poppins-Black.ttf') format('truetype');
 }
+
+@font-face {
+  font-family: 'HappyTime';
+  font-style: italic;
+  src: url('HappyTimeTwo.otf') format('opentype');
+}
