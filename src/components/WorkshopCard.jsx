@@ -11,7 +11,7 @@ const WorkshopCardContainer = styled.div`
 `
 
 const WorkshopTitle = styled.p`
-  font-family: 'Gloock Regular';
+  font-family: 'Happy Time';
   font-weight: 400;
   font-style: italic;
   font-size: calc(100vw * (34 / 1920));
