@@ -1,11 +1,11 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 
 import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
-import rizzsumo from '@assets/images/projects/rizzsumo.png'
-import dinoaura from '@assets/images/projects/dinoaura.png'
-import lovealarm from '@assets/images/projects/lovealarm.png'
-import chownow from '@assets/images/projects/chow-now.png'
+import rizzsumoImg from '@assets/images/projects/rizzsumo.png'
+import dinoauraImg from '@assets/images/projects/dinoaura.png'
+import lovealarmImg from '@assets/images/projects/lovealarm.png'
+import chownowImg from '@assets/images/projects/chow-now.png'
 import maincard from '@assets/images/projects/maincard.svg'
 import tape from '@assets/images/projects/tape.png'
 import project1 from '@assets/images/projects/project1.svg'
@@ -18,7 +18,7 @@ import dinocard from '@assets/images/projects/dinoaura_card.svg'
 import breadbasket from '@assets/images/projects/breadbasket.svg'
 import lovecard from '@assets/images/projects/lovealarm_card.svg'
 import bread2 from '@assets/images/projects/bread2.svg'
-import lovealarm_mob from '@assets/images/projects/lovealarm_mobile.svg'
+import lovealarmmob from '@assets/images/projects/lovealarm_mobile.svg'
 import dinomob from '@assets/images/projects/dinoaura_mobile.svg'
 import chowmob from '@assets/images/projects/chownow_mobile.svg'
 
@@ -421,7 +421,7 @@ const Bread2Image = styled.img`
 const Projects = () => {
   const [hoveredProject, setHoveredProject] = useState(null)
   const [isMobile, setIsMobile] = useState(false)
-  const projects = { rizzsumo: rizzsumo, chownow: chownow, dinoaura: dinoaura, lovealarm: lovealarm }
+  const projects = { rizzsumo: rizzsumoImg, chownow: chownowImg, dinoaura: dinoauraImg, lovealarm: lovealarmImg }
 
   useEffect(() => {
     const handleResize = () => {
@@ -431,7 +431,10 @@ const Projects = () => {
     if (typeof window !== 'undefined') {
       handleResize() // Set initial state
       window.addEventListener('resize', handleResize)
-      return () => {
+    }
+
+    return () => {
+      if (typeof window !== 'undefined') {
         window.removeEventListener('resize', handleResize)
       }
     }
@@ -514,7 +517,7 @@ const Projects = () => {
       >
         <Bread2Image src={bread2} />
         {isMobile && <TapeImage src={tape} />}
-        <LovealarmCardImage src={isMobile ? lovealarm_mob : lovecard} />
+        <LovealarmCardImage src={isMobile ? lovealarmmob : lovecard} />
         <LovealarmText>
           <Project1Title>Love Alarm</Project1Title>
           <Project1Description>
