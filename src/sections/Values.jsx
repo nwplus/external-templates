@@ -146,69 +146,67 @@ const ValueDescription = styled.p`
   }
 `
 
-const Values = () => {
-  return (
-    <OuterContainer>
-      <Title>Our Values</Title>
-      <ValuesContainer>
-        <ColumnContainer>
-          <ExpandedCakeImage src={expandedCake} alt="Expanded Cake" />
-        </ColumnContainer>
-        <ColumnContainer>
-          <ValuesList>
-            <ValueItem>
-              <DotLineContainer>
-                <Dot />
-                <Line1 />
-              </DotLineContainer>
-              <ValueContent>
-                <ValueTitle>Build Confidence</ValueTitle>
-                <ValueDescription>
-                  Develop career-ready skills, fight impostor syndrome, and create an invaluable support
-                  network with friends, mentors, and sponsors. Regardless of your background, you bring a
-                  unique and important perspective to tech. Like how there is always a treat for everyone,
-                  there is always a place for you in tech—a space where everyone belongs.
-                </ValueDescription>
-              </ValueContent>
-            </ValueItem>
+const Values = () => (
+  <OuterContainer>
+    <Title>Our Values</Title>
+    <ValuesContainer>
+      <ColumnContainer>
+        <ExpandedCakeImage src={expandedCake} alt="Expanded Cake" />
+      </ColumnContainer>
+      <ColumnContainer>
+        <ValuesList>
+          <ValueItem>
+            <DotLineContainer>
+              <Dot />
+              <Line1 />
+            </DotLineContainer>
+            <ValueContent>
+              <ValueTitle>Build Confidence</ValueTitle>
+              <ValueDescription>
+                Develop career-ready skills, fight impostor syndrome, and create an invaluable support
+                network with friends, mentors, and sponsors. Regardless of your background, you bring a
+                unique and important perspective to tech. Like how there is always a treat for everyone,
+                there is always a place for you in tech—a space where everyone belongs.
+              </ValueDescription>
+            </ValueContent>
+          </ValueItem>
 
-            <ValueItem>
-              <DotLineContainer>
-                <Dot />
-                <Line2 />
-              </DotLineContainer>
-              <ValueContent>
-                <ValueTitle>Learn Together</ValueTitle>
-                <ValueDescription>
-                  Whether you have never coded before, or you dream in assembly, challenge yourself to create
-                  something meaningful! Learn new skills at our workshops and apply them to fresh and creative
-                  projects! Regardless of your project’s completion at the end of the weekend, take pride in the
-                  knowledge gained or the courage to try something new. It’s time to rise to the occasion because
-                  it’s always sweet to learn more!
-                </ValueDescription>
-              </ValueContent>
-            </ValueItem>
+          <ValueItem>
+            <DotLineContainer>
+              <Dot />
+              <Line2 />
+            </DotLineContainer>
+            <ValueContent>
+              <ValueTitle>Learn Together</ValueTitle>
+              <ValueDescription>
+                Whether you have never coded before, or you dream in assembly, challenge yourself to create
+                something meaningful! Learn new skills at our workshops and apply them to fresh and creative
+                projects! Regardless of your project’s completion at the end of the weekend, take pride in the
+                knowledge gained or the courage to try something new. It’s time to rise to the occasion because
+                it’s always sweet to learn more!
+              </ValueDescription>
+            </ValueContent>
+          </ValueItem>
 
-            <ValueItem>
-              <DotLineContainer>
-                <Dot />
-              </DotLineContainer>
-              <ValueContent>
-                <ValueTitle>Explore in a Safe Space</ValueTitle>
-                <ValueDescription>
-                  Discover a community of like-minded, creative, and passionate individuals. Form lasting bonds,
-                  share experiences, and create memories in an environment free from judgment, where all gender
-                  identities and expressions are respected. We're all here unified under one cause—to strive for
-                  better representation in tech!
-                </ValueDescription>
-              </ValueContent>
-            </ValueItem>
-          </ValuesList>
-        </ColumnContainer>
-      </ValuesContainer>
-    </OuterContainer>
-  )
-}
+          <ValueItem>
+            <DotLineContainer>
+              <Dot />
+            </DotLineContainer>
+            <ValueContent>
+              <ValueTitle>Explore in a Safe Space</ValueTitle>
+              <ValueDescription>
+                Discover a community of like-minded, creative, and passionate individuals. Form lasting bonds,
+                share experiences, and create memories in an environment free from judgment, where all gender
+                identities and expressions are respected. We're all here unified under one cause—to strive for
+                better representation in tech!
+              </ValueDescription>
+            </ValueContent>
+          </ValueItem>
+        </ValuesList>
+      </ColumnContainer>
+    </ValuesContainer>
+  </OuterContainer>
+)
 
 export default Values;
 
