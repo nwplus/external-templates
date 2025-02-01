@@ -105,7 +105,7 @@ const Line1 = styled.div`
   background-color: #A6321E;
   margin-top: 8px;
   margin-bottom: -56px;
-  height: ${props => (props.lineHeight1 ? `${props.lineHeight1}px` : 'calc(100vw * (188 / 1280))')}
+  height: calc(100vw * (168 / 1280))
 `
 
 const Line2 = styled.div`
@@ -113,7 +113,7 @@ const Line2 = styled.div`
   background-color: #A6321E;
   margin-top: 8px;
   margin-bottom: -56px;
-  height: ${props => (props.lineHeight2 ? `${props.lineHeight2}px` : 'calc(100vw * (188 / 1280))')}
+  height: calc(100vw * (188 / 1280))
 `
 
 const ValueContent = styled.div`
@@ -126,7 +126,7 @@ const ValueTitle = styled.p`
   font-size: calc(100vw * (20 / 1280));
   color: #A6321E;
   font-weight: bold;
-  font-family: 'Gloock Regular', normal;
+  font-family: 'HappyTime', normal;
   margin-bottom: 0.5rem;
 `
 
@@ -140,10 +140,6 @@ const ValueDescription = styled.p`
 const Values = () => {
   const [isMobile, setIsMobile] = useState(false)
   const [isTablet, setIsTablet] = useState(false)
-  const [textHeight1, setTextHeight1] = useState(0)
-  const textRef1 = useRef(null)
-  const [textHeight2, setTextHeight2] = useState(0)
-  const textRef2 = useRef(null)
 
   useEffect(() => {
     const updateDeviceType = () => {
@@ -159,78 +155,70 @@ const Values = () => {
     }
   }, [])
 
-  useEffect(() => {
-    if (textRef1.current) {
-      setTextHeight1(textRef1.current.offsetHeight + (textRef1.current.offsetHeight / 6))
-    }
-  }, [textRef1.current?.offsetHeight])
-
-  useEffect(() => {
-    if (textRef2.current) {
-      setTextHeight2(textRef2.current.offsetHeight + 30)
-    }
-  }, [textRef2.current?.offsetHeight])
-
   return (
     <OuterContainer>
       <Title>Our Values</Title>
-      {!isMobile && !isTablet && (
-        <ValuesContainer>
-          <ColumnContainer>
-            <ExpandedCakeImage src={expandedCake} alt="Expanded Cake" />
-          </ColumnContainer>
-          <ColumnContainer>
-            <ValuesList>
-              <ValueItem>
-                <DotLineContainer>
-                  <Dot />
-                  <Line1 lineHeight1={textHeight1} />
-                </DotLineContainer>
-                <ValueContent ref={textRef1}>
-                  <ValueTitle>Build Confidence</ValueTitle>
-                  <ValueDescription>
-                    Develop career-ready skills, fight impostor syndrome, and create an invaluable support
-                    network with friends, mentors, and sponsors. Regardless of your background, you bring a
-                    unique and important perspective to tech. Like how there is always a treat for everyone,
-                    there is always a place for you in tech—a space where everyone belongs.
-                  </ValueDescription>
-                </ValueContent>
-              </ValueItem>
+      {/* {!isMobile && !isTablet && ( */}
+      <ValuesContainer>
+        <ColumnContainer>
+          <ExpandedCakeImage src={expandedCake} alt="Expanded Cake" />
+        </ColumnContainer>
+        <ColumnContainer>
+          <ValuesList>
+            <ValueItem>
+              <DotLineContainer>
+                <Dot />
+                <Line1 />
+              </DotLineContainer>
+              <ValueContent>
+                <ValueTitle>Build Confidence</ValueTitle>
+                <ValueDescription>
+                  Develop career-ready skills, fight impostor syndrome, and create an invaluable support
+                  network with friends, mentors, and sponsors. Regardless of your background, you bring a
+                  unique and important perspective to tech. Like how there is always a treat for everyone,
+                  there is always a place for you in tech—a space where everyone belongs.
+                </ValueDescription>
+              </ValueContent>
+            </ValueItem>
 
-              <ValueItem>
-                <DotLineContainer>
-                  <Dot />
-                  <Line2 lineHeight2={textHeight2} />
-                </DotLineContainer>
-                <ValueContent ref={textRef2}>
-                  <ValueTitle>Learn Together</ValueTitle>
-                  <ValueDescription>
-                    Whether you have never coded before, or you dream in assembly, challenge yourself to create
-                    something meaningful! Learn new skills at our workshops and apply them to fresh and creative
-                    projects! Regardless of your project’s completion at the end of the weekend, take pride in the
-                    knowledge gained or the courage to try something new. It’s time to rise to the occasion because
-                    it’s always sweet to learn more!
-                  </ValueDescription>
-                </ValueContent>
-              </ValueItem>
+            <ValueItem>
+              <DotLineContainer>
+                <Dot />
+                <Line2 />
+              </DotLineContainer>
+              <ValueContent>
+                <ValueTitle>Learn Together</ValueTitle>
+                <ValueDescription>
+                  Whether you have never coded before, or you dream in assembly, challenge yourself to create
+                  something meaningful! Learn new skills at our workshops and apply them to fresh and creative
+                  projects! Regardless of your project’s completion at the end of the weekend, take pride in the
+                  knowledge gained or the courage to try something new. It’s time to rise to the occasion because
+                  it’s always sweet to learn more!
+                </ValueDescription>
+              </ValueContent>
+            </ValueItem>
 
-              <ValueItem>
-                <DotLineContainer>
-                  <Dot />
-                </DotLineContainer>
-                <ValueContent>
-                  <ValueTitle>Explore in a Safe Space</ValueTitle>
-                  <ValueDescription>
-                    Discover a community of like-minded, creative, and passionate individuals. Form lasting bonds,
-                    share experiences, and create memories in an environment free from judgment, where all gender
-                    identities and expressions are respected. We're all here unified under one cause—to strive for
-                    better representation in tech!
-                  </ValueDescription>
-                </ValueContent>
-              </ValueItem>
-            </ValuesList>
-          </ColumnContainer>
-        </ValuesContainer>
+            <ValueItem>
+              <DotLineContainer>
+                <Dot />
+              </DotLineContainer>
+              <ValueContent>
+                <ValueTitle>Explore in a Safe Space</ValueTitle>
+                <ValueDescription>
+                  Discover a community of like-minded, creative, and passionate individuals. Form lasting bonds,
+                  share experiences, and create memories in an environment free from judgment, where all gender
+                  identities and expressions are respected. We're all here unified under one cause—to strive for
+                  better representation in tech!
+                </ValueDescription>
+              </ValueContent>
+            </ValueItem>
+          </ValuesList>
+        </ColumnContainer>
+      </ValuesContainer>
+      {/* )} */}
+
+      {isMobile || isTablet && (
+        <ExpandedCakeImage src={expandedCake} alt="Expanded Cake" />
       )}
     </OuterContainer>
   )
