@@ -1,9 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import styled from 'styled-components'
-import topCake from '@assets/images/tabletStats.png'
-import mobileStatsImage from '@assets/images/mobileStats.png'
-import { SCREEN_BREAKPOINTS, base } from 'src/theme/ThemeProvider'
-import StatsBoxes from '@components/StatsBoxes'
+import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
 
 const OuterContainer = styled.div`
   position: relative;
