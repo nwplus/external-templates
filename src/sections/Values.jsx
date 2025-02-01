@@ -1,61 +1,43 @@
 import React, { useState, useEffect, useRef } from 'react'
 import styled from 'styled-components'
-import tabletStatsImage from '@assets/images/tabletStats.png'
-import mobileStatsImage from '@assets/images/mobileStats.png'
 import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
-import StatsBoxes from '@components/StatsBoxes'
+import expandedCake from '@assets/images/expanded_cake.svg'
 
 const OuterContainer = styled.div`
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  margin-right: 20px;
+  margin-left: 20px;
 `
 
-const StatsContainer = styled.div`
-  width: 100vw;
-  aspect-ratio: 1280/1280;
-  height: auto;
-  position: relative;
-  z-index: 2;
-
-  ${p => p.theme.mediaQueries.tablet} {
-    display: none;
-  }
-`
-
-const MobileTabletStatsContainer = styled.div`
-  display: none;
-  width: 100vw;
-  height: auto;
-  position: relative;
-
-  ${p => p.theme.mediaQueries.tablet} {
-    display: block;
-    aspect-ratio: 1280/1280;
-  }
-`
-
-const MobileTabletImg = styled.img`
+const ValuesContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  height: auto;
+  gap: 6rem;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 8rem;
+  }
 `
 
 const Title = styled.p`
-  color: ${p => (p.isGlowing ? 'white' : '#B4B4B4')};
-  text-shadow: ${p => (p.isGlowing ? '0 0 32px rgba(255, 255, 255, 0.5)' : 'none')};
-  font-weight: 900;
-
-  position: absolute;
-  top: calc(100vw * (100 / 1280));
-  font-size: calc(100vw * (56 / 1280));
-  left: calc(100vw * (100 / 1280));
+  color: #A6321E;
+  font-family: 'Gloock Regular', normal;
+  text-align: center;
+  font-size: calc(100vw * (52 / 1280));
+  margin-bottom: calc(100vw * (40 / 1280));
 
   ${p => p.theme.mediaQueries.tablet} {
-    width: 100%;
-    font-size: calc(100vw * (56 / 834));
+    font-size: calc(100vw * (40 / 834));
     font-weight: 700;
-    top: calc(100vw * (40 / 834));
-    left: 0;
-    z-index: 1;
-    text-align: center;
   }
 
   ${p => p.theme.mediaQueries.mobile} {
@@ -63,11 +45,105 @@ const Title = styled.p`
   }
 `
 
+const ColumnContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  ${p => p.theme.mediaQueries.tablet} {
+    align-items: flex-start;
+  }
+`
+
+const ExpandedCakeImage = styled.img`
+  width: calc(100vw * (340 / 1280));
+  height: auto;
+  margin-top: -40px;
+`
+
+const ValuesList = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4rem;
+  margin-top: 16px;
+`
+
+const ValueItem = styled.div`
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  gap: 1.5rem; /* Space between dot/line and text */
+`
+
+const DotLineContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 6px; 
+  margin-right: calc(100vw * (80 / 1280));
+
+`
+
+const Dot = styled.div`
+  width: calc(100vw * (16 / 1280));
+  height: calc(100vw * (16 / 1280));
+  background-color: #A6321E;
+  border-radius: 50%;
+`
+const Dot2 = styled.div`
+  width: calc(100vw * (16 / 1280));
+  height: calc(100vw * (16 / 1280));
+  background-color: #A6321E;
+  border-radius: 50%;
+  margin-top: -16px;
+`
+
+const Line1 = styled.div`
+  width: 3px;
+  background-color: #A6321E;
+  margin-top: 8px;
+  margin-bottom: -56px;
+  height: ${props => (props.lineHeight1 ? `${props.lineHeight1}px` : 'calc(100vw * (188 / 1280))')}
+`
+
+const Line2 = styled.div`
+  width: 3px;
+  background-color: #A6321E;
+  margin-top: 8px;
+  margin-bottom: -56px;
+  height: ${props => (props.lineHeight2 ? `${props.lineHeight2}px` : 'calc(100vw * (188 / 1280))')}
+`
+
+const ValueContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  max-width: calc(100vw * (400 / 1280));
+`
+
+const ValueTitle = styled.p`
+  font-size: calc(100vw * (20 / 1280));
+  color: #A6321E;
+  font-weight: bold;
+  font-family: 'Gloock Regular', normal;
+  margin-bottom: 0.5rem;
+`
+
+const ValueDescription = styled.p`
+  font-size: calc(100vw * (12 / 1280));
+  color: #4F2F22;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+`
+
 const Values = () => {
   const [isMobile, setIsMobile] = useState(false)
   const [isTablet, setIsTablet] = useState(false)
-  const [titleGlow, setTitleGlow] = useState(false)
-  const statsContainerRef = useRef(null)
+  const [textHeight1, setTextHeight1] = useState(0)
+  const textRef1 = useRef(null)
+  const [textHeight2, setTextHeight2] = useState(0)
+  const textRef2 = useRef(null)
 
   useEffect(() => {
     const updateDeviceType = () => {
@@ -83,21 +159,81 @@ const Values = () => {
     }
   }, [])
 
-  return (
-    <OuterContainer id="stats">
-      {!isMobile && !isTablet && (
-        <StatsContainer ref={statsContainerRef}>
-          <Title isGlowing={titleGlow}>Values</Title>
-        </StatsContainer>
-      )}
+  useEffect(() => {
+    if (textRef1.current) {
+      setTextHeight1(textRef1.current.offsetHeight + (textRef1.current.offsetHeight / 6))
+    }
+  }, [textRef1.current?.offsetHeight])
 
-      {(isMobile || isTablet) && (
-        <MobileTabletStatsContainer>
-          <Title isGlowing>Values</Title>
-        </MobileTabletStatsContainer>
+  useEffect(() => {
+    if (textRef2.current) {
+      setTextHeight2(textRef2.current.offsetHeight + 30)
+    }
+  }, [textRef2.current?.offsetHeight])
+
+  return (
+    <OuterContainer>
+      <Title>Our Values</Title>
+      {!isMobile && !isTablet && (
+        <ValuesContainer>
+          <ColumnContainer>
+            <ExpandedCakeImage src={expandedCake} alt="Expanded Cake" />
+          </ColumnContainer>
+          <ColumnContainer>
+            <ValuesList>
+              <ValueItem>
+                <DotLineContainer>
+                  <Dot />
+                  <Line1 lineHeight1={textHeight1} />
+                </DotLineContainer>
+                <ValueContent ref={textRef1}>
+                  <ValueTitle>Build Confidence</ValueTitle>
+                  <ValueDescription>
+                    Develop career-ready skills, fight impostor syndrome, and create an invaluable support
+                    network with friends, mentors, and sponsors. Regardless of your background, you bring a
+                    unique and important perspective to tech. Like how there is always a treat for everyone,
+                    there is always a place for you in tech—a space where everyone belongs.
+                  </ValueDescription>
+                </ValueContent>
+              </ValueItem>
+
+              <ValueItem>
+                <DotLineContainer>
+                  <Dot />
+                  <Line2 lineHeight2={textHeight2} />
+                </DotLineContainer>
+                <ValueContent ref={textRef2}>
+                  <ValueTitle>Learn Together</ValueTitle>
+                  <ValueDescription>
+                    Whether you have never coded before, or you dream in assembly, challenge yourself to create
+                    something meaningful! Learn new skills at our workshops and apply them to fresh and creative
+                    projects! Regardless of your project’s completion at the end of the weekend, take pride in the
+                    knowledge gained or the courage to try something new. It’s time to rise to the occasion because
+                    it’s always sweet to learn more!
+                  </ValueDescription>
+                </ValueContent>
+              </ValueItem>
+
+              <ValueItem>
+                <DotLineContainer>
+                  <Dot />
+                </DotLineContainer>
+                <ValueContent>
+                  <ValueTitle>Explore in a Safe Space</ValueTitle>
+                  <ValueDescription>
+                    Discover a community of like-minded, creative, and passionate individuals. Form lasting bonds,
+                    share experiences, and create memories in an environment free from judgment, where all gender
+                    identities and expressions are respected. We're all here unified under one cause—to strive for
+                    better representation in tech!
+                  </ValueDescription>
+                </ValueContent>
+              </ValueItem>
+            </ValuesList>
+          </ColumnContainer>
+        </ValuesContainer>
       )}
     </OuterContainer>
   )
 }
 
-export default Values
+export default Values;
