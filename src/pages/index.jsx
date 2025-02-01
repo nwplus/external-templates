@@ -6,13 +6,12 @@ import Sponsors from 'src/sections/Sponsors'
 import Faq from 'src/sections/FAQ'
 import Footer from 'src/sections/Footer'
 import About from 'src/sections/About'
-// import Track from 'src/sections/Tracks'
+import Track from 'src/sections/Tracks'
 import Workshops from 'src/sections/Workshops'
 import Stats from 'src/sections/Stats'
 import Gallery from 'src/sections/Gallery'
 import Projects from 'src/sections/Projects'
 import Separator from 'src/components/Separator'
-import Testimonials from 'src/sections/Testimonials'
 // import LoadingScreen from '../components/LoadingScreen'
 
 import Hero from '../components/Hero'
@@ -90,34 +89,16 @@ export default function Index({ title }) {
       {/* <LoadingScreen /> */}
 
       <NavigationBar />
-
-      <HalfContainer>
-        <Hero />
-
-        <ContentContainer>
-          <About />
-          <Separator />
-
-          <MiddleSectionsContainer>
-            <Stats />
-            <Gallery />
-            <Workshops />
-          </MiddleSectionsContainer>
-
-          <Separator />
-          <Projects />
-          <Separator />
-          <Testimonials />
-          <Separator />
-          {/* <Track /> */}
-          <FaqSponsorsContainer>
-            <Faq />
-            <Sponsors />
-          </FaqSponsorsContainer>
-          <Separator />
-          <Footer />
-        </ContentContainer>
-      </HalfContainer>
+      <Hero />
+      <About />
+      <Track />
+      <Stats />
+      <Workshops />
+      <Projects />
+      <Gallery />
+      <Faq />
+      <Sponsors />
+      <Footer />
     </>
   )
 }
