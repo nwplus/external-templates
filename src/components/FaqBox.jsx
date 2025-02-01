@@ -12,10 +12,10 @@ const Container = styled.div`
   ${p =>
     p.expanded
       ? `
-    border-color: #4B1B1B;
+    border-color: #809CAA;
   `
       : `
-    border-color: #4B1B1B;
+    border-color: #809CAA;
   `}
 
   &:not(:last-child) {
@@ -25,13 +25,13 @@ const Container = styled.div`
 
 const Top = styled.div`
   color: #252525;
-  padding: 1rem;
-  font-size: 1.2rem;
+  padding: 0.9rem;
+  font-size: 1rem;
   display: flex;
   justify-content: space-between;
   border-bottom: solid;
   margin-bottom: -1.2px;
-  font-weight: 700;
+  font-weight: 600;
   border-width: 1px;
   border-radius: 5px 5px 0 0;
   ${p =>

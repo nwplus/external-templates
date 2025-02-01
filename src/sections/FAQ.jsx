@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import fireDb from '@utilities/firebase'
 import FaqBox from '@components/FaqBox'
-import { Header3 } from '@components/Typography'
 
 const FaqContainer = styled.div`
   position: relative;
@@ -14,25 +13,18 @@ const FaqContainer = styled.div`
     left: 0;
     right: 0;
     aspect-ratio: 1280 / 886;
-    background-image: url('./assets/images/faq.svg');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: top;
     z-index: 0;
   }
 
   ${p => p.theme.mediaQueries.tablet} {
     &::before {
-      background-image: url('./assets/images/faq_tablet.svg');
       aspect-ratio: 834 / 1049;
     }
   }
 
   ${p => p.theme.mediaQueries.mobile} {
     &::before {
-      aspect-ratio: 487 / 1060;
-      background-image: url('./assets/images/faq_mobile.svg');
-    }
+      aspect-ratio: 487 / 1060;    }
   }
 `
 
@@ -92,12 +84,13 @@ const CollectionContainer = styled.div`
   flex-direction: column;
 `
 
-const CollectionName = styled(Header3)`
-  color: white;
-  font-size: calc(100vw * (35 / 1280));
-  font-weight: 700;
-  padding-bottom: calc(100vw * (20 / 1280));
-  text-align: left;
+const CollectionName = styled.div`
+  font-size: calc(100vw * (50 / 1920));
+  font-family: 'HappyTime';
+  font-weight: 500;
+  padding-bottom: calc(100vw * (60 / 1920));
+  text-align: center;
+  color: #A6321E;
 
   ${p => p.theme.mediaQueries.tablet} {
     font-size: calc(100vw * (35 / 834));
@@ -111,14 +104,15 @@ const CollectionName = styled(Header3)`
 `
 
 const StyledTitle = styled.p`
-  display: none;
+  font-family: 'Gloock';
+  font-size: calc(100vw * (80 / 1920));
+  color: #A6321E;
+  text-align: center;
 
   ${p => p.theme.mediaQueries.tablet} {
     display: block;
-    color: white;
     margin-top: calc(100vw * (50 / 834));
     font-size: calc(100vw * (56 / 834));
-    font-weight: 900;
     text-align: center;
   }
 
@@ -171,7 +165,7 @@ const Faq = () => {
   }
 
   useEffect(async () => {
-    const data = await fireDb.getCollection('nwHacks2025', 'FAQ')
+    const data = await fireDb.getCollection('cmd-f2023', 'FAQ')
     const processedData = processData(data)
     setFaqData(processedData)
   }, [])
@@ -197,7 +191,7 @@ const Faq = () => {
             <FaqColumn>
               {faqData['Teams & Projects'] && (
                 <FaqCollection
-                  category="Projects"
+                  category="Teams & Projects"
                   faqs={faqData['Teams & Projects']}
                   expandedQuestion={expandedQuestion}
                   setExpandedQuestion={setExpandedQuestion}
