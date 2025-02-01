@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react'
 import styled from 'styled-components'
-import tabletStatsImage from '@assets/images/tabletStats.png'
+import topCake from '@assets/images/tabletStats.png'
 import mobileStatsImage from '@assets/images/mobileStats.png'
-import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
+import { SCREEN_BREAKPOINTS, base } from 'src/theme/ThemeProvider'
 import StatsBoxes from '@components/StatsBoxes'
 
 const OuterContainer = styled.div`
   position: relative;
 `
 
-const StatsContainer = styled.div`
+const ValuesContainer = styled.div`
   width: 100vw;
   aspect-ratio: 1280/1280;
   height: auto;
@@ -33,20 +33,15 @@ const MobileTabletStatsContainer = styled.div`
   }
 `
 
-const MobileTabletImg = styled.img`
-  width: 100%;
-  height: auto;
-`
-
 const Title = styled.p`
-  color: ${p => (p.isGlowing ? 'white' : '#B4B4B4')};
-  text-shadow: ${p => (p.isGlowing ? '0 0 32px rgba(255, 255, 255, 0.5)' : 'none')};
-  font-weight: 900;
+  color: #A6321E;
+  font-weight: 400;
+  font-family:'Gloock Regular', normal;
+  text-align: center;
 
-  position: absolute;
+  position: relative;
   top: calc(100vw * (100 / 1280));
   font-size: calc(100vw * (56 / 1280));
-  left: calc(100vw * (100 / 1280));
 
   ${p => p.theme.mediaQueries.tablet} {
     width: 100%;
@@ -67,7 +62,7 @@ const Values = () => {
   const [isMobile, setIsMobile] = useState(false)
   const [isTablet, setIsTablet] = useState(false)
   const [titleGlow, setTitleGlow] = useState(false)
-  const statsContainerRef = useRef(null)
+  const valueContainerRef = useRef(null)
 
   useEffect(() => {
     const updateDeviceType = () => {
@@ -85,15 +80,18 @@ const Values = () => {
 
   return (
     <OuterContainer id="stats">
+      <Title>Our Values</Title>
       {!isMobile && !isTablet && (
-        <StatsContainer ref={statsContainerRef}>
-          <Title isGlowing={titleGlow}>Values</Title>
-        </StatsContainer>
+        <ValuesContainer ref={valueContainerRef}>
+          <p>Cake Place Holder</p>
+          <p>Line+Dots Place Holder</p>
+          <p>Text Place Holder</p>
+
+        </ValuesContainer>
       )}
 
       {(isMobile || isTablet) && (
         <MobileTabletStatsContainer>
-          <Title isGlowing>Values</Title>
         </MobileTabletStatsContainer>
       )}
     </OuterContainer>

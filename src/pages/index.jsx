@@ -108,7 +108,7 @@ export default function Index({ title }) {
 export async function getStaticProps() {
   return {
     props: {
-      title: 'nwHacks 2025',
+      title: 'cmd-f 2025',
     }, // will be passed to the page component as props
   }
 }
