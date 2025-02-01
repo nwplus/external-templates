@@ -1,106 +1,85 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;700&family=Fira+Code:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gloock&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 @font-face {
-  font-family: 'HK Grotesk';
+  font-family: 'Gloock';
   font-style: normal;
   font-weight: normal;
-  src: local('HK Grotesk Regular'), url('HKGrotesk-Regular.woff') format('woff');
+  src: local('Gloock Regular'), url('Gloock-Regular.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: 'HK Grotesk';
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Poppins Regular'), url('Poppins-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Poppins';
   font-style: italic;
   font-weight: normal;
-  src: local('HK Grotesk Italic'), url('HKGrotesk-Italic.woff') format('woff');
+  src: local('Poppins Italic'), url('Poppins-Italic.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: 'HK Grotesk';
+  font-family: 'Poppins';
   font-style: normal;
   font-weight: lighter;
-  src: local('HK Grotesk Light'), url('HKGrotesk-Light.woff') format('woff');
+  src: local('Poppins Light'), url('Poppins-Light.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: 'HK Grotesk';
+  font-family: 'Poppins';
   font-style: italic;
   font-weight: lighter;
-  src: local('HK Grotesk Light Italic'), url('HKGrotesk-LightItalic.woff') format('woff');
+  src: local('Poppins Light Italic'), url('Poppins-LightItalic.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: 'HK Grotesk Medium';
+  font-family: 'Poppins';
   font-style: normal;
   font-weight: 500;
-  src: local('HK Grotesk Medium'), url('HKGrotesk-Medium.woff') format('woff');
+  src: local('Poppins Medium'), url('Poppins-Medium.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: 'HK Grotesk';
+  font-family: 'Poppins';
   font-style: italic;
   font-weight: 500;
-  src: local('HK Grotesk Medium Italic'), url('HKGrotesk-MediumItalic.woff') format('woff');
+  src: local('Poppins Medium Italic'), url('Poppins-MediumItalic.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: 'HK Grotesk';
+  font-family: 'Poppins';
   font-style: normal;
   font-weight: 600;
-  src: local('HK Grotesk SemiBold'), url('HKGrotesk-SemiBold.woff') format('woff');
+  src: local('Poppins SemiBold'), url('Poppins-SemiBold.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: 'HK Grotesk';
+  font-family: 'Poppins';
   font-style: italic;
   font-weight: 600;
-  src: local('HK Grotesk SemiBold Italic'), url('HKGrotesk-SemiBoldItalic.woff') format('woff');
+  src: local('Poppins SemiBold Italic'), url('Poppins-SemiBoldItalic.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: 'HK Grotesk';
+  font-family: 'Poppins';
   font-style: normal;
   font-weight: 700;
-  src: local('HK Grotesk Bold'), url('HKGrotesk-Bold.woff') format('woff');
+  src: local('Poppins Bold'), url('Poppins-Bold.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: 'HK Grotesk';
+  font-family: 'Poppins';
   font-style: italic;
   font-weight: 700;
-  src: local('HK Grotesk Bold Italic'), url('HKGrotesk-BoldItalic.woff') format('woff');
+  src: local('Poppins Bold Italic'), url('Poppins-BoldItalic.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: 'HK Grotesk';
+  font-family: 'Poppins';
   font-style: normal;
   font-weight: 900;
-  src: local('HK Grotesk Black'), url('HKGrotesk-Black.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'LT Museum';
-  font-style: normal;
-  font-weight: 400;
-  src: local('LT Museum Light'), url('LTMuseum-Light.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'LT Museum';
-  font-style: normal;
-  font-weight: 500;
-  src: local('LT Museum Medium'), url('LTMuseum-Medium.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'LT Museum';
-  font-style: normal;
-  font-weight: 700;
-  src: local('LT Museum Bold'), url('LTMuseum-Bold.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'LT Museum';
-  font-style: normal;
-  font-weight: 900;
-  src: local('LT Museum Black'), url('LTMuseum-Black.ttf') format('truetype');
+  src: local('Poppins Black'), url('Poppins-Black.ttf') format('truetype');
 }
