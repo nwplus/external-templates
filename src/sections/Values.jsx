@@ -1,7 +1,11 @@
 // import React, { useState, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 // import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
-import expandedCake from '@assets/images/expanded_cake.svg'
+import cakeTop from '@assets/images/cake_top.svg'
+import cakeMid from '@assets/images/cake_mid.svg'
+import cakeBottom from '@assets/images/cake_bottom.svg'
+import { useParallax } from 'react-scroll-parallax'
+
 
 const OuterContainer = styled.div`
   display: flex;
@@ -9,8 +13,7 @@ const OuterContainer = styled.div`
   align-items: center;
   justify-content: center;
   padding: 4rem 2rem;
-  margin-right: 20px;
-  margin-left: 20px;
+  margin: 20px;
 `
 
 const ValuesContainer = styled.div`
@@ -32,16 +35,11 @@ const Title = styled.p`
   color: #A6321E;
   font-family: 'Gloock Regular', normal;
   text-align: center;
-  font-size: calc(100vw * (52 / 1280));
+  font-size: calc(100vw * (64 / 1920));
   margin-bottom: calc(100vw * (40 / 1280));
 
-  ${p => p.theme.mediaQueries.tablet} {
-    font-size: calc(100vw * (40 / 834));
-    font-weight: 700;
-  }
-
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: calc(100vw * (42 / 487));
+    font-size: calc(100vw * (30 / 393));
   }
 `
 
@@ -53,11 +51,14 @@ const ColumnContainer = styled.div`
 `
 
 const ExpandedCakeImage = styled.img`
-  width: calc(100vw * (340 / 1280));
+  width: calc(100vw * (280 / 1200));
   height: auto;
-  margin-top: -40px;
+  margin-top: calc(100vw * -1 * (48 / 1200));
+  transition: transform 0.8s ease-in-out;
+
   @media (max-width: 768px) {
-    margin-top: 8px;
+    width: calc(100vw * (140 / 393));
+    margin-top: 0px;
     margin-bottom: -48px;
   }
 `
@@ -66,8 +67,12 @@ const ValuesList = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 4rem;
+  gap: 2rem;
   margin-top: 16px;
+
+  @media (max-width: 768px) {
+    margin-top: 0px;
+  }
 `
 
 const ValueItem = styled.div`
@@ -82,7 +87,7 @@ const DotLineContainer = styled.div`
   flex-direction: column;
   align-items: center;
   margin-top: 6px; 
-  margin-right: calc(100vw * (80 / 1280));
+  margin-right: calc(100vw * (100 / 1920));
 
   @media (max-width: 768px) {
     display: none;
@@ -91,8 +96,8 @@ const DotLineContainer = styled.div`
 `
 
 const Dot = styled.div`
-  width: calc(100vw * (16 / 1280));
-  height: calc(100vw * (16 / 1280));
+  width: calc(100vw * (16 / 1920));
+  height: calc(100vw * (16 / 1920));
   background-color: #A6321E;
   border-radius: 50%;
 `
@@ -102,111 +107,127 @@ const Line1 = styled.div`
   background-color: #A6321E;
   margin-top: 8px;
   margin-bottom: -56px;
-  height: calc(100vw * (168 / 1280))
+  height: calc(100vw * (192 / 1920));
 `
-
 const Line2 = styled.div`
   width: 3px;
   background-color: #A6321E;
   margin-top: 8px;
   margin-bottom: -56px;
-  height: calc(100vw * (188 / 1280))
+  height: calc(100vw * (220 / 1920));
 `
-
 const ValueContent = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: calc(100vw * (400 / 1280));
+  max-width: calc(100vw * (640 / 1920));
 
   @media (max-width: 768px) {
-    max-width: calc(100vw * (880 / 1280));
+    max-width: calc(100vw * (600 / 768));
   }
 `
 
 const ValueTitle = styled.p`
-  font-size: calc(100vw * (20 / 1280));
+  font-size: calc(100vw * (32 / 1920));
   color: #A6321E;
-  font-weight: bold;
   font-family: 'HappyTime', normal;
   margin-bottom: 0.5rem;
 
   @media (max-width: 768px) {
-    font-size: calc(100vw * (32 / 1280));
+    font-size: calc(100vw * (20 / 393));
   }
 `
 
 const ValueDescription = styled.p`
-  font-size: calc(100vw * (12 / 1280));
+  font-size: calc(100vw * (18 / 1920));
   color: #4F2F22;
   font-family: 'Poppins', sans-serif;
   line-height: 1.6;
 
   @media (max-width: 768px) {
-    font-size: calc(100vw * (24 / 1280));
+    font-size: calc(100vw * (15 / 393));
   }
 `
 
-const Values = () => (
-  <OuterContainer>
-    <Title>Our Values</Title>
-    <ValuesContainer>
-      <ColumnContainer>
-        <ExpandedCakeImage src={expandedCake} alt="Expanded Cake" />
-      </ColumnContainer>
-      <ColumnContainer>
-        <ValuesList>
-          <ValueItem>
-            <DotLineContainer>
-              <Dot />
-              <Line1 />
-            </DotLineContainer>
-            <ValueContent>
-              <ValueTitle>Build Confidence</ValueTitle>
-              <ValueDescription>
-                Develop career-ready skills, fight impostor syndrome, and create an invaluable support
-                network with friends, mentors, and sponsors. Regardless of your background, you bring a
-                unique and important perspective to tech. Like how there is always a treat for everyone,
-                there is always a place for you in tech—a space where everyone belongs.
-              </ValueDescription>
-            </ValueContent>
-          </ValueItem>
+const Values = () => {
+  const cakeTopEase = useParallax({
+    easing: 'easeOutQuad',
+    translateY: [12, -16],
+  });
 
-          <ValueItem>
-            <DotLineContainer>
-              <Dot />
-              <Line2 />
-            </DotLineContainer>
-            <ValueContent>
-              <ValueTitle>Learn Together</ValueTitle>
-              <ValueDescription>
-                Whether you have never coded before, or you dream in assembly, challenge yourself to create
-                something meaningful! Learn new skills at our workshops and apply them to fresh and creative
-                projects! Regardless of your project&apos;s completion at the end of the weekend, take pride in the
-                knowledge gained or the courage to try something new. It&apos;s time to rise to the occasion because
-                it&apos;s always sweet to learn more!
-              </ValueDescription>
-            </ValueContent>
-          </ValueItem>
+  const cakeMidEase = useParallax({
+    easing: 'easeOutQuad',
+    translateY: [-36, -12],
+  });
 
-          <ValueItem>
-            <DotLineContainer>
-              <Dot />
-            </DotLineContainer>
-            <ValueContent>
-              <ValueTitle>Explore in a Safe Space</ValueTitle>
-              <ValueDescription>
-                Discover a community of like-minded, creative, and passionate individuals. Form lasting bonds,
-                share experiences, and create memories in an environment free from judgment, where all gender
-                identities and expressions are respected. We&apos;re all here unified under one cause—to strive for
-                better representation in tech!
-              </ValueDescription>
-            </ValueContent>
-          </ValueItem>
-        </ValuesList>
-      </ColumnContainer>
-    </ValuesContainer>
-  </OuterContainer>
-)
+  const cakeBotEase = useParallax({
+    easing: 'easeOutQuad',
+    translateY: [-68, 0],
+  });
+
+  return (
+    <OuterContainer>
+      <Title>Our Values</Title>
+      <ValuesContainer>
+        <ColumnContainer>
+          <ExpandedCakeImage ref={cakeTopEase.ref} src={cakeTop} alt="Cake Top Layer" style={{ zIndex: 3 }} />
+          <ExpandedCakeImage ref={cakeMidEase.ref} src={cakeMid} alt="Cake Middle Layer" style={{ zIndex: 2 }} />
+          <ExpandedCakeImage ref={cakeBotEase.ref} src={cakeBottom} alt="Cake Bottom Layer" style={{ zIndex: 1 }} />
+        </ColumnContainer>
+        <ColumnContainer>
+          <ValuesList>
+            <ValueItem>
+              <DotLineContainer>
+                <Dot />
+                <Line1 />
+              </DotLineContainer>
+              <ValueContent>
+                <ValueTitle>Build Confidence</ValueTitle>
+                <ValueDescription>
+                  Develop career-ready skills, fight impostor syndrome, and create an invaluable support
+                  network with friends, mentors, and sponsors. Regardless of your background, you bring a
+                  unique and important perspective to tech. Like how there is always a treat for everyone,
+                  there is always a place for you in tech—a space where everyone belongs.
+                </ValueDescription>
+              </ValueContent>
+            </ValueItem>
+
+            <ValueItem>
+              <DotLineContainer>
+                <Dot />
+                <Line2 />
+              </DotLineContainer>
+              <ValueContent>
+                <ValueTitle>Learn Together</ValueTitle>
+                <ValueDescription>
+                  Whether you have never coded before, or you dream in assembly, challenge yourself to create
+                  something meaningful! Learn new skills at our workshops and apply them to fresh and creative
+                  projects! Regardless of your project&apos;s completion at the end of the weekend, take pride in the
+                  knowledge gained or the courage to try something new. It&apos;s time to rise to the occasion because
+                  it&apos;s always sweet to learn more!
+                </ValueDescription>
+              </ValueContent>
+            </ValueItem>
+
+            <ValueItem>
+              <DotLineContainer>
+                <Dot />
+              </DotLineContainer>
+              <ValueContent>
+                <ValueTitle>Explore in a Safe Space</ValueTitle>
+                <ValueDescription>
+                  Discover a community of like-minded, creative, and passionate individuals. Form lasting bonds,
+                  share experiences, and create memories in an environment free from judgment, where all gender
+                  identities and expressions are respected. We&apos;re all here unified under one cause—to strive for
+                  better representation in tech!
+                </ValueDescription>
+              </ValueContent>
+            </ValueItem>
+          </ValuesList>
+        </ColumnContainer>
+      </ValuesContainer>
+    </OuterContainer>
+  )
+}
 
 export default Values;
 
