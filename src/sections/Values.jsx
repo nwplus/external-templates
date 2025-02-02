@@ -13,7 +13,7 @@ const OuterContainer = styled.div`
   align-items: center;
   justify-content: center;
   padding: 4rem 2rem;
-  margin: 20px;
+  margin: 40px 20px 20px 20px;
 `
 
 const ValuesContainer = styled.div`
