@@ -96,7 +96,7 @@ export default function Index({ title }) {
       <Stats />
       <Workshops />
       <Projects />
-      {/* <Gallery /> */}
+      <Gallery />
       <Faq />
       <Sponsors />
       <Footer />
