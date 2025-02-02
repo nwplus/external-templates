@@ -60,32 +60,32 @@ const SponsorButton = styled.button`
   }
 `
 
-const Spotlight = styled.div`
-  position: absolute;
-  top: calc(100vw * (100 / 1280));
-  left: ${props => (props.direction === 'left' ? '0' : 'none')};
-  right: ${props => (props.direction === 'right' ? '0' : 'none')};
-  width: 100%;
-  aspect-ratio: 808 / 600;
-  background-image: url('/assets/images/sponsor_spotlight.svg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  z-index: 1;
+// const Spotlight = styled.div`
+//   position: absolute;
+//   top: calc(100vw * (100 / 1280));
+//   left: ${props => (props.direction === 'left' ? '0' : 'none')};
+//   right: ${props => (props.direction === 'right' ? '0' : 'none')};
+//   width: 100%;
+//   aspect-ratio: 808 / 600;
+//   background-image: url('/assets/images/sponsor_spotlight.svg');
+//   background-size: cover;
+//   background-repeat: no-repeat;
+//   background-position: center;
+//   z-index: 1;
 
-  transform: ${props => (props.direction === 'left' ? 'scaleX(-1)' : 'none')};
+//   transform: ${props => (props.direction === 'left' ? 'scaleX(-1)' : 'none')};
 
-  ${p => p.theme.mediaQueries.mobile} {
-    top: calc(100vw * (250 / 487));
-  }
-`
+//   ${p => p.theme.mediaQueries.mobile} {
+//     top: calc(100vw * (250 / 487));
+//   }
+// `
 
-const SPONSOR_IMAGE_OVERRIDES = {
-  TELUS: '/assets/images/telus.png',
-  CSE: '/assets/images/cse.png',
-  Deloitte: '/assets/images/deloitte.png',
-  Warp: '/assets/images/warp.png',
-}
+// const SPONSOR_IMAGE_OVERRIDES = {
+//   TELUS: '/assets/images/telus.png',
+//   CSE: '/assets/images/cse.png',
+//   Deloitte: '/assets/images/deloitte.png',
+//   Warp: '/assets/images/warp.png',
+// }
 
 const Sponsors = () => {
   const [sponsors, setSponsors] = useState([])
@@ -106,7 +106,8 @@ const Sponsors = () => {
       const deepCopyData = JSON.parse(JSON.stringify(data))
       const modifiedSponsors = deepCopyData.map(sponsor => ({
         ...sponsor,
-        imgURL: SPONSOR_IMAGE_OVERRIDES[sponsor.name] || sponsor.imgURL,
+        // imgURL: SPONSOR_IMAGE_OVERRIDES[sponsor.name] || sponsor.imgURL,
+        imgURL: sponsor.imgURL,
       }))
       setSponsors(modifiedSponsors)
     }
@@ -114,14 +115,20 @@ const Sponsors = () => {
 
   return (
     <SponsorsContainer>
-      <Spotlight direction="left" />
-      <Spotlight direction="right" />
+      {/* <Spotlight direction="left" />
+      <Spotlight direction="right" /> */}
       <Title id="sponsors">Sponsors</Title>
       <Description>
         nwPlus is always looking for new ventures, opportunities, and connections. If you are interested in sponsoring
         us, working with us, or speaking at one of our events, shoot us an email at sponsorship@nwplus.io.
       </Description>
-      <SponsorButton>Sponsor cmd-f</SponsorButton>
+      <SponsorButton
+        onClick={() => {
+          window.location.href = 'mailto:sponsorship@nwplus.io'
+        }}
+      >
+        Sponsor cmd-f
+      </SponsorButton>
       {/* <SwipeDescription>Swipe on the TV screen to read about our sponsors</SwipeDescription> */}
       {carouselSponsors.length > 0 && <Carousel sponsors={carouselSponsors} />}
       <SponsorsGrid sponsors={sponsors} />
