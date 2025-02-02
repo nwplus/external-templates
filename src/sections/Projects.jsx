@@ -115,9 +115,9 @@ const MainCardImage = styled.img`
   }
 `
 
-const MainText = styled.p`
-  font-family: 'Gloock Regular';
-  font-weight: 600;
+const MainText = styled.h1`
+  font-family: Gloock;
+  font-weight: 400;
   font-size: calc(100vw * (48 / 1920));
   color: #a6321e;
   position: absolute;
@@ -130,10 +130,10 @@ const MainText = styled.p`
   }
 `
 
-const MobileHeader = styled.h1`
+const MobileHeader = styled.p`
   display: none;
-  font-family: 'Gloock Regular';
-  font-weight: 600;
+  font-family: Gloock;
+  font-weight: 400;
   font-size: calc(100vw * (35 / 393));
   color: #a6321e;
   text-align: left;

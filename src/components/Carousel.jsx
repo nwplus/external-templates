@@ -2,9 +2,6 @@ import React, { useState, useRef } from 'react'
 import styled from 'styled-components'
 import ChevronLeft from '@assets/images/chevron_left.svg'
 
-// const PAGE_FRAC_MOBILE = 90 // width: ?vw for the carousel component on mobile
-const PAGE_FRAC_DESKTOP = 80 // width: ?% for the carousel component on desktop
-
 const CarouselContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -17,158 +14,106 @@ const CarouselContainer = styled.div`
 `
 
 const ContentContainer = styled.div`
-  width: ${PAGE_FRAC_DESKTOP}%;
-  aspect-ratio: 889 / 431;
+  width: calc(100vw * (872 / 1920));
+  height: calc(100vw * (450 / 1920));
   position: relative;
+  background-color: #fffdfa;
 
   display: flex;
-  padding: 1.171875%; // the tv's border
+  flex-direction: column;
+  align-items: center;
+  padding: calc(100vw * (60 / 1920)) 0;
 
-  background-image: url('/assets/images/sponsor_tv.svg');
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: center;
+  gap: calc(100vw * (60 / 1920));
 
   ${p => p.theme.mediaQueries.mobile} {
-    width: 95%;
-    background-image: url('/assets/images/sponsor_tv_mobile.svg');
+    width: calc(100vw * (340 / 393));
+    height: calc(100vw * (360 / 393));
     padding: calc(100vw * (9.8 / 487)) calc(100vw * (7.43 / 487));
     aspect-ratio: 441 / 283;
   }
 `
 
-const LeftContainer = styled.div`
-  width: 33.178%;
+const TopContainer = styled.div`
+  width: calc(100vw * (676.889 / 1920));
+  height: calc(100vw * (120 / 1920));
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
   ${p => p.theme.mediaQueries.mobile} {
-    width: calc(100vw * (150 / 487));
-  }
-`
-
-const LeftInnerContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: calc(100vw * (10 / 1280));
-  width: 80%;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    gap: calc(100vw * (20 / 487));
-    width: 90%;
+    width: calc(100vw * (250 / 393));
+    height: calc(100vw * (120 / 393));
+    padding-top: calc(100vw * (30 / 393));
   }
 `
 
 const RightContainer = styled.div`
-  width: 66.822%;
+  width: calc(100vw * (793 / 1920));
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-height: 95%;
+  height: 95%;
 
   ${p => p.theme.mediaQueries.mobile} {
-    width: calc(100vw * (295 / 487));
+    width: calc(100vw * (283 / 393));
     height: 95%;
-    max-height: 100%;
   }
-`
-
-const RightInnerContainer = styled.div`
-  display: flex;
-  width: 90%;
-  height: 100%;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 5%;
-  padding-top: 2%;
 `
 
 const ActiveButton = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: calc(100vw * (40 / 1280));
-  height: calc(100vw * (40 / 1280));
+  width: calc(100vw * (40 / 1920));
+  height: calc(100vw * (40 / 1920));
 
   border-radius: 50%;
-  background-color: ${props => (props.visible ? 'rgba(255, 255, 255, 0.2)' : 'transparent')};
+  background-color: ${props => (props.visible ? 'rgba(69, 103, 116, 0.4)' : 'transparent')};
   cursor: ${props => (props.visible ? 'pointer' : 'default')};
   transition: 200ms ease-in-out;
   visibility: ${props => (props.visible ? 'visible' : 'hidden')};
 
-  &:hover {
-    background-color: ${props => (props.visible ? 'rgba(255, 255, 255, 0.4)' : 'transparent')};
-  }
-
   ${p => p.theme.mediaQueries.mobile} {
-    display: none;
+    position: absolute;
+    width: calc(100vw * (40 / 393));
+    height: calc(100vw * (40 / 393));
+    z-index: 10;
+    ${props => (props.flip ? 'right: 3%;' : 'left: 3%;')};
   }
 `
 
 const ChevronImg = styled.img`
-  height: 1.5625vw;
+  height: calc(100vw * (19 / 1920));
   transform: ${props => (props.flip ? 'scaleX(-1)' : 'none')};
-`
-
-const Dots = styled.div`
-  position: absolute;
-  bottom: calc(100vw * (30 / 1280));
-
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: calc(100vw * (10 / 1280));
-
   ${p => p.theme.mediaQueries.mobile} {
-    bottom: calc(100vw * (30 / 487));
-    gap: calc(100vw * (10 / 487));
-  }
-`
-
-const Dot = styled.div`
-  width: calc(100vw * (10 / 1280));
-  height: calc(100vw * (10 / 1280));
-  border-radius: 50%;
-  background-color: white;
-  transition: 300ms;
-  cursor: pointer;
-  opacity: ${props => (props.viewing ? 1 : 0.2)};
-
-  ${p => p.theme.mediaQueries.mobile} {
-    width: calc(100vw * (10 / 487));
-    height: calc(100vw * (10 / 487));
+    height: calc(100vw * (19 / 393));
   }
 `
 
 const Logo = styled.img`
-  width: 100%;
+  max-width: calc(100vw * (676.889 / 1920));
+  max-height: calc(100vw * (150 / 1920));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    max-width: calc(100vw * (254 / 393));
+    max-height: calc(100vw * (120 / 393));
+  }
 `
 
-// const SponsoredByText = styled.div`
-//   font-size: 2rem;
-//   font-weight: 600;
-//   color: white;
-//   text-align: center;
-
-//   ${p => p.theme.mediaQueries.mobile} {
-//     font-size: 13px;
-//   }
-// `
-
 const Blurb = styled.div`
-  font-size: 1.25rem;
-  font-family: 'HK Grotesk Medium';
-  font-weight: 500;
-  max-height: 75%;
+  font-size: calc(100vw * (16 / 1920));
+  font-family: Poppins;
+  font-weight: 400;
+  height: calc(100vw * (150 / 1920));
   overflow-y: auto;
   word-wrap: break-word;
-  width: 100%;
+  width: calc(100vw * (793 / 1920));
 
   ::-webkit-scrollbar {
     width: 0.5rem;
@@ -187,33 +132,9 @@ const Blurb = styled.div`
   -webkit-overflow-scrolling: touch;
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 0.75rem;
-    padding-right: calc(100vw * (10 / 487));
-  }
-
-  a {
-    color: inherit;
-    text-decoration: underline;
-
-    &:hover {
-      opacity: 0.8;
-    }
-  }
-`
-
-const LearnMoreButton = styled.a`
-  font-size: 1rem;
-  font-weight: 600;
-  background: #883030;
-  color: white;
-  text-decoration: none;
-  padding: calc(100vw * (10 / 1280)) calc(100vw * (15 / 1280));
-  border-radius: calc(100vw * (8 / 1280));
-
-  ${p => p.theme.mediaQueries.mobile} {
-    font-size: 0.75rem;
-    padding: calc(100vw * (8 / 487)) calc(100vw * (15 / 487));
-    border-radius: calc(100vw * (8 / 487));
+    width: calc(100vw * (283 / 393));
+    font-size: calc(100vw * (15 / 393));
+    height: calc(100vw * (150 / 393));
   }
 `
 
@@ -274,27 +195,12 @@ const Carousel = ({ sponsors }) => {
         </ActiveButton>
 
         <ContentContainer>
-          <LeftContainer>
-            <LeftInnerContainer>
-              {/* <SponsoredByText>
-                PROUDLY <br /> SPONSORED BY
-              </SponsoredByText> */}
-              <Logo src={sponsors[viewing]?.imgURL} />
-            </LeftInnerContainer>
-            {sponsors.length >= 1 && (
-              <Dots>
-                {sponsors.map((sponsor, i) => (
-                  <Dot key={sponsor.name} viewing={i === viewing} onClick={() => setViewing(i)} />
-                ))}
-              </Dots>
-            )}
-          </LeftContainer>
+          <TopContainer>
+            <Logo src={sponsors[viewing]?.imgURL} />
+          </TopContainer>
 
           <RightContainer>
-            <RightInnerContainer>
-              <Blurb dangerouslySetInnerHTML={{ __html: sanitizeBlurb(sponsors[viewing]?.blurb) }} />
-              <LearnMoreButton href={sponsors[viewing]?.link}>Learn More</LearnMoreButton>
-            </RightInnerContainer>
+            <Blurb dangerouslySetInnerHTML={{ __html: sanitizeBlurb(sponsors[viewing]?.blurb) }} />
           </RightContainer>
         </ContentContainer>
 
@@ -305,6 +211,7 @@ const Carousel = ({ sponsors }) => {
               setViewing(prev => Math.min(sponsors.length - 1, prev + 1))
             }
           }}
+          flip
         >
           <ChevronImg src={ChevronLeft} flip />
         </ActiveButton>
