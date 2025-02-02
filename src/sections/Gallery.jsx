@@ -2,6 +2,160 @@ import React from 'react'
 import styled from 'styled-components'
 import Draggable from 'react-draggable';
 
+const noDragCSS = `
+  user-select: none;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+`
+
+const absolutePositionCSS = `
+  position: absolute;
+  height: auto;
+`
+
+const DraggableImage = styled.img`
+  ${absolutePositionCSS}
+  ${noDragCSS}
+  cursor: grab;
+`
+
+const PolaroidBase = styled(DraggableImage)`
+  z-index: 5;
+  width: calc(100vw * (375 / 1920));
+`
+
+const BreadBase = styled(DraggableImage)`
+  width: calc(100vw * (155 / 1920));
+  z-index: 4;
+`
+
+// Refactored components
+const BreadOne = styled(BreadBase)`
+  top: calc(100vw * (60 / 1920));
+  left: calc(100vw * (505 / 1920));
+`
+
+const BreadTwo = styled(BreadBase)`
+  width: calc(100vw * (100 / 1920));
+  top: calc(100vw * (600 / 1920));
+  left: calc(100vw * (925 / 1920));
+  z-index: 13;
+`
+
+const BreadThree = styled(BreadBase)`
+  width: calc(100vw * (105 / 1920));
+  top: calc(100vw * (200 / 1920));
+  left: calc(100vw * (1130 / 1920));
+  z-index: 15;
+`
+
+const Croissant = styled(DraggableImage)`
+  width: calc(100vw * (280 / 1920));
+  top: calc(100vw * (470 / 1920));
+  left: calc(100vw * (1330 / 1920));
+  z-index: 12;
+`
+
+const PolaroidSelfie = styled(PolaroidBase)`
+  top: calc(100vw * (450 / 1920));
+  left: calc(100vw * (80 / 1920));
+`
+
+const PolaroidCeremony = styled(PolaroidBase)`
+  top: calc(100vw * (580 / 1920));
+  left: calc(100vw * (720 / 1920));
+  z-index: 6;
+`
+
+const PolaroidPanel = styled(PolaroidBase)`
+  width: calc(100vw * (400 / 1920));
+  top: calc(100vw * (200 / 1920));
+  left: calc(100vw * (930 / 1920));
+  z-index: 14;
+`
+
+const PolaroidHeart = styled(PolaroidBase)`
+  width: calc(100vw * (320 / 1920));
+  top: calc(100vw * (500 / 1920));
+  left: calc(100vw * (1040 / 1920));
+  z-index: 7;
+`
+
+const PolaroidWinners = styled(PolaroidBase)`
+  width: calc(100vw * (360 / 1920));
+  top: calc(100vw * (50 / 1920));
+  left: calc(100vw * (1240 / 1920));
+  z-index: 8;
+`
+
+const PolaroidMerch = styled(PolaroidBase)`
+  width: calc(100vw * (350 / 1920));
+  top: calc(100vw * (320 / 1920));
+  left: calc(100vw * (1450 / 1920));
+  z-index: 9;
+`
+
+const PolaroidAtrium = styled(PolaroidBase)`
+  width: calc(100vw * (400 / 1920));
+  top: calc(100vw * (600 / 1920));
+  left: calc(100vw * (1280 / 1920));
+  z-index: 10;
+`
+
+const Nugget = styled(DraggableImage)`
+  width: calc(100vw * (300 / 1920));
+  top: calc(100vw * (720 / 1920));
+  left: calc(100vw * (1600 / 1920));
+  z-index: 11;
+`
+
+const VideoComponent = styled.div`
+  ${absolutePositionCSS}
+  ${noDragCSS}
+  width: calc(100vw * (830 / 1920));
+  cursor: grab;
+  z-index: 2;
+  top: calc(100vw * (100 / 1920));
+  left: calc(100vw * (180 / 1920));
+
+  .polaroid {
+    width: 100%;
+    ${absolutePositionCSS}
+    ${noDragCSS}
+    top: 0;
+    left: 0;
+  }
+
+  .video-container {
+    ${noDragCSS}
+    width: calc(100vw * (760 / 1920));
+    height: calc(100vw * (446 / 1920));
+    padding: calc(100vw * (12 / 1920));
+    transform: rotate(-2.303deg);
+    background: #151515;
+    position: absolute;
+    top: calc(100vw * (40 / 1920));
+    left: calc(100vw * (35 / 1920));
+    overflow: visible;
+
+    ${p => p.theme.mediaQueries.tablet} {
+      top: calc(100vw * (350 / 893));
+      width: calc(100vw * (446 / 893));
+      height: calc(100vw * (296 / 893));
+      border: calc(100vw * (10 / 893)) solid #151515;
+    }
+
+    ${p => p.theme.mediaQueries.mobile} {
+      top: calc(100vw * (500 / 487));
+      width: calc(100vw * (446 / 487));
+      height: calc(100vw * (296 / 487));
+      border: calc(100vw * (10 / 487)) solid #151515;
+    }
+  }
+`
+
 // Styled Components
 const GalleryContainer = styled.div`
   background-color: #FEF9F3;
@@ -79,51 +233,6 @@ const VideoWrapper = styled.div`
   left: 0;
 `
 
-const VideoComponent = styled.div`
-  position: relative;
-  width: calc(100vw * (830 / 1920));
-  height: auto;
-  cursor: grab;
-  z-index: 2;
-  position: absolute;
-  top: calc(100vw * (100 / 1920));
-  left: calc(100vw * (180 / 1920));
-
-  .polaroid {
-    width: 100%;
-    height: auto;
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-
-  .video-container {
-    width: calc(100vw * (760 / 1920));
-    height: calc(100vw * (446 / 1920));
-    padding: calc(100vw * (12 / 1920));
-    transform: rotate(-2.303deg);
-    background: #151515;
-    position: absolute;
-    top: calc(100vw * (40 / 1920));
-    left: calc(100vw * (35 / 1920));
-    overflow: visible;
-
-    ${p => p.theme.mediaQueries.tablet} {
-      top: calc(100vw * (350 / 893));
-      width: calc(100vw * (446 / 893));
-      height: calc(100vw * (296 / 893));
-      border: calc(100vw * (10 / 893)) solid #151515;
-    }
-
-    ${p => p.theme.mediaQueries.mobile} {
-      top: calc(100vw * (500 / 487));
-      width: calc(100vw * (446 / 487));
-      height: calc(100vw * (296 / 487));
-      border: calc(100vw * (10 / 487)) solid #151515;
-    }
-  }
-`
-
 const TooltipText = styled.div`
   color: #FFF;
   text-align: center;
@@ -145,126 +254,6 @@ const TooltipImg = styled.img`
   width: calc(100vw * (40 / 1920));
   top: calc(100vw * (983 / 1920));
   left: calc(100vw * (65 / 1920)); 
-`
-
-const BreadOne = styled.img`
-  position: absolute;
-  height: auto;
-  width: calc(100vw * (155 / 1920));
-  top: calc(100vw * (60 / 1920));
-  left: calc(100vw * (505 / 1920)); 
-  z-index: 4;
-  cursor: grab;
-`
-
-const BreadTwo = styled.img`
-  position: absolute;
-  height: auto;
-  width: calc(100vw * (100 / 1920));
-  top: calc(100vw * (600 / 1920));
-  left: calc(100vw * (925 / 1920)); 
-  z-index: 13;
-  cursor: grab;
-`
-
-const BreadThree = styled.img`
-  position: absolute;
-  height: auto;
-  width: calc(100vw * (105 / 1920));
-  top: calc(100vw * (200 / 1920));
-  left: calc(100vw * (1130 / 1920)); 
-  z-index: 15;
-  cursor: grab;
-`
-
-const Croissant = styled.img`
-  position: absolute;
-  height: auto;
-  width: calc(100vw * (280 / 1920));
-  top: calc(100vw * (470 / 1920));
-  left: calc(100vw * (1330 / 1920));
-  z-index: 12;
-  cursor: grab;
-`
-
-const PolaroidSelfie = styled.img`
-  position: absolute;
-  height: auto;
-  width: calc(100vw * (375 / 1920));
-  top: calc(100vw * (450 / 1920));
-  left: calc(100vw * (80 / 1920)); 
-  z-index: 5;
-  cursor: grab;
-`
-
-const PolaroidCeremony = styled.img`
-  position: absolute;
-  height: auto;
-  width: calc(100vw * (375 / 1920));
-  top: calc(100vw * (580 / 1920));
-  left: calc(100vw * (720 / 1920)); 
-  z-index: 6;
-  cursor: grab;
-`
-
-const PolaroidPanel = styled.img`
-  position: absolute;
-  height: auto;
-  width: calc(100vw * (400 / 1920));
-  top: calc(100vw * (200 / 1920));
-  left: calc(100vw * (930 / 1920)); 
-  z-index: 14;
-  cursor: grab;
-`
-
-const PolaroidHeart = styled.img`
-  position: absolute;
-  height: auto;
-  width: calc(100vw * (320 / 1920));
-  top: calc(100vw * (500 / 1920));
-  left: calc(100vw * (1040 / 1920)); 
-  z-index: 7;
-  cursor: grab;
-`
-
-const PolaroidWinners = styled.img`
-  position: absolute;
-  height: auto;
-  width: calc(100vw * (360 / 1920));
-  top: calc(100vw * (50 / 1920));
-  left: calc(100vw * (1240 / 1920)); 
-  z-index: 8;
-  cursor: grab;
-`
-
-const PolaroidMerch = styled.img`
-  position: absolute;
-  height: auto;
-  width: calc(100vw * (350 / 1920));
-  top: calc(100vw * (320 / 1920));
-  left: calc(100vw * (1450 / 1920)); 
-  z-index: 9;
-  cursor: grab;
-`
-
-const PolaroidAtrium = styled.img`
-  position: absolute;
-  height: auto;
-  width: calc(100vw * (400 / 1920));
-  top: calc(100vw * (600 / 1920));
-  left: calc(100vw * (1280 / 1920)); 
-  z-index: 10;
-  cursor: grab;
-`
-
-const Nugget = styled.img`
-  position: absolute;
-  height: auto;
-  width: calc(100vw * (300 / 1920));
-  top: calc(100vw * (720 / 1920));
-  left: calc(100vw * (1600 / 1920));
-  z-index: 11;
-  cursor: grab;
 `
 
 // Component
