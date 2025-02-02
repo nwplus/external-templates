@@ -1,10 +1,14 @@
-// import React, { useState, useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
 // import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
 import cakeTop from '@assets/images/cake_top.svg'
 import cakeMid from '@assets/images/cake_mid.svg'
 import cakeBottom from '@assets/images/cake_bottom.svg'
 import { useParallax } from 'react-scroll-parallax'
+import { gsap } from 'gsap'
+import ScrollTrigger from 'gsap/dist/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger);
 
 
 const OuterContainer = styled.div`
@@ -14,7 +18,7 @@ const OuterContainer = styled.div`
   justify-content: center;
   padding: 4rem 2rem;
   margin: 40px 20px 20px 20px;
-  
+
   ${p => p.theme.mediaQueries.mobile} {
     margin-top: 0px;
   }
@@ -41,6 +45,7 @@ const Title = styled.p`
   text-align: center;
   font-size: calc(100vw * (64 / 1920));
   margin-bottom: calc(100vw * (40 / 1280));
+  padding-top: calc(100vw * (40 / 1920));
 
   ${p => p.theme.mediaQueries.mobile} {
     font-size: calc(100vw * (30 / 393));
@@ -58,7 +63,6 @@ const ExpandedCakeImage = styled.img`
   width: calc(100vw * (280 / 1200));
   height: auto;
   margin-top: calc(100vw * -1 * (48 / 1200));
-  transition: transform 0.75s ease-in-out;
 
   @media (max-width: 768px) {
     width: calc(100vw * (140 / 393));
@@ -153,23 +157,50 @@ const ValueDescription = styled.p`
 `
 
 const Values = () => {
-  const cakeTopEase = useParallax({
-    easing: 'easeOutQuad',
-    translateY: [12, -16],
-  });
+  const valuesRef = useRef(null);
+  const [parallaxEnabled, setParallaxEnabled] = useState(false);
 
-  const cakeMidEase = useParallax({
-    easing: 'easeOutQuad',
-    translateY: [-36, -12],
-  });
+  const cakeTopEase = useParallax(
+    parallaxEnabled ?
+      { easing: 'easeOutQuad', speed: 0.5, translateY: [12, -16], } :
+      { easing: 'easeOutQuad', speed: 0, translateY: [12, 12], }
+  );
 
-  const cakeBotEase = useParallax({
-    easing: 'easeOutQuad',
-    translateY: [-68, 0],
-  });
+  const cakeMidEase = useParallax(
+    parallaxEnabled ?
+      { easing: 'easeOutQuad', speed: 0.5, translateY: [-32, -12], } :
+      { easing: 'easeOutQuad', speed: 0, translateY: [-32, -32], }
+  );
+
+  const cakeBotEase = useParallax(
+    parallaxEnabled ?
+      { easing: 'easeOutQuad', speed: 0.5, translateY: [-68, 0], } :
+      { easing: 'easeOutQuad', speed: 0, translateY: [-68, -68], }
+  );
+
+  useEffect(() => {
+    const values = valuesRef.current;
+
+    gsap.timeline({
+      scrollTrigger: {
+        trigger: values,
+        start: 'top top',
+        end: '+=100%',
+        scrub: true,
+        pin: true,
+        anticipatePin: 1,
+        fastScrollEnd: true,
+        onEnter: () => {
+          setTimeout(() => {
+            setParallaxEnabled(true);
+          }, 140); // Adjust delay time here
+        }
+      },
+    });
+  }, []);
 
   return (
-    <OuterContainer>
+    <OuterContainer ref={valuesRef}>
       <Title>Our Values</Title>
       <ValuesContainer>
         <ColumnContainer>
@@ -177,6 +208,7 @@ const Values = () => {
           <ExpandedCakeImage ref={cakeMidEase.ref} src={cakeMid} alt="Cake Middle Layer" style={{ zIndex: 2 }} />
           <ExpandedCakeImage ref={cakeBotEase.ref} src={cakeBottom} alt="Cake Bottom Layer" style={{ zIndex: 1 }} />
         </ColumnContainer>
+
         <ColumnContainer>
           <ValuesList>
             <ValueItem>
