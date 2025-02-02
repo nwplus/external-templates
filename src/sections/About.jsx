@@ -12,7 +12,6 @@ const AboutContainer = styled.div`
   width: 100%;
 
   ${p => p.theme.mediaQueries.mobile} {
-    background-color: gray;
     aspect-ratio: 393 / 958;
   }
 `
@@ -49,7 +48,6 @@ const TextContainer = styled.div`
   ${p => p.theme.mediaQueries.mobile} {
     left: 50%;
     transform: translateX(-50%);
-    top: calc(100vw * (485 / 393));
     width: calc(100vw * (335 / 393));
     gap: calc(100vw * (20 / 393));
   }
@@ -75,7 +73,7 @@ const Description = styled.p`
   color: #4F2F22;
   
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: calc(100vw * (18 / 393));
+    font-size: calc(100vw * (15 / 393));
   }
 `
 

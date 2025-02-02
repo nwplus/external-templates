@@ -14,6 +14,10 @@ const OuterContainer = styled.div`
   justify-content: center;
   padding: 4rem 2rem;
   margin: 40px 20px 20px 20px;
+  
+  ${p => p.theme.mediaQueries.mobile} {
+    margin-top: 0px;
+  }
 `
 
 const ValuesContainer = styled.div`
