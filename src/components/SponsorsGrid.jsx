@@ -76,6 +76,7 @@ const Row = styled.div`
       case 'bronze':
         return props.isMobile ? 'translate(6%, -50%)' : 'translate(8%, -45%)'
       case 'startup':
+      default:
         return props.isMobile ? 'translate(12%, -45%)' : 'translate(22%, -40%)'
     }
   }};
@@ -93,6 +94,7 @@ const Row = styled.div`
       case 'bronze':
         return props.isMobile ? 0 : 'calc(100vw * (5/1920))'
       case 'startup':
+      default:
         return 'calc(100vw * (10/1920))'
     }
   }};
@@ -108,9 +110,7 @@ const SponsorContainer = styled.div`
   justify-content: center;
   margin-top: 5%;
   z-index: 100;
-  transform: ${props => {
-    const index = props.index
-    const total = props.total
+  transform: ${({ index, total }) => {
     const middle = (total - 1) / 2
     const offset = Math.abs(index - middle)
     const yOffset = (middle - offset) * 10 // Adjust this value to control the height difference
@@ -140,14 +140,12 @@ const SponsorImg = styled.img`
   object-fit: contain;
   z-index: 2;
   top: 50%;
-  transform: ${props => {
-    const index = props.index
-    const total = props.total
+  transform: ${({ index, total, tier }) => {
     const middle = (total - 1) / 2
     const offset = Math.abs(index - middle)
     const yOffset = (middle - offset) * 10 // Adjust this value to control the height difference
     let tierOffset = 0
-    switch (props.tier) {
+    switch (tier) {
       case 'platinum':
         tierOffset = 0
         break
@@ -187,17 +185,15 @@ const StandImage = styled.img`
   width: ${props => {
     if (props.isMobile) {
       return props.isFirstRow ? 'calc(100vw * (19/ 393))' : 'calc(100vw * (9/ 393))'
-    } else {
-      return props.isFirstRow ? 'calc(100vw * (67/ 1920))' : 'calc(100vw * (28 / 1920))'
     }
+    return props.isFirstRow ? 'calc(100vw * (67/ 1920))' : 'calc(100vw * (28 / 1920))'
   }};
   height: auto;
   bottom: ${props => {
     if (props.isMobile) {
       return props.isFirstRow ? '-30%' : props.adjustment
-    } else {
-      return props.isFirstRow ? '-60%' : props.adjustment
     }
+    return props.isFirstRow ? '-60%' : props.adjustment
   }};
   left: 50%;
   transform: translate(-50%, -50%);
