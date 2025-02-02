@@ -60,17 +60,6 @@ const SponsorButton = styled.button`
   }
 `
 
-const SwipeDescription = styled.p`
-  display: none;
-  ${p => p.theme.mediaQueries.mobile} {
-    display: block;
-    color: white;
-    font-weight: 600;
-    font-size: calc(100vw * (16 / 487));
-    margin-bottom: calc(100vw * (-20 / 487));
-  }
-`
-
 const Spotlight = styled.div`
   position: absolute;
   top: calc(100vw * (100 / 1280));
