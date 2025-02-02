@@ -392,14 +392,14 @@ const LovealarmText = styled.p`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  top: 53%;
-  left: 50%;
+  top: 52%;
+  left: 52%;
   transform: translate(-50%, -51%);
   height: 50%;
   z-index: 5;
   ${p => p.theme.mediaQueries.mobile} {
     transform: none;
-    top: 18%;
+    top: 20%;
     left: 18%;
     width: calc(100vw * (260 / 393));
     height: 60%;

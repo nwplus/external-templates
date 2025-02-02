@@ -81,8 +81,8 @@ const WorkshopCard = ({ info }) => {
       </WorkshopNumber>
       <WorkshopTitle>{name}</WorkshopTitle>
       <WorkshopTime>{dateAndTime}</WorkshopTime>
-      <WorkshopImg >
-        <img src={imgSrc} alt='workshop graphic' />
+      <WorkshopImg>
+        <img src={imgSrc} alt="workshop graphic" />
       </WorkshopImg>
       <WorkshopDescription>{description}</WorkshopDescription>
     </WorkshopCardContainer>
