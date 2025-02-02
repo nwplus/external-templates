@@ -54,7 +54,7 @@ const ExpandedCakeImage = styled.img`
   width: calc(100vw * (280 / 1200));
   height: auto;
   margin-top: calc(100vw * -1 * (48 / 1200));
-  transition: transform 0.8s ease-in-out;
+  transition: transform 0.75s ease-in-out;
 
   @media (max-width: 768px) {
     width: calc(100vw * (140 / 393));
