@@ -51,6 +51,10 @@ const Container = styled.div`
   justify-content: center;
   gap: calc(100vw * (80 / 1920));
   margin-top: calc(100vw * (150 / 1920));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    gap: calc(100vw * (25 / 393));
+  }
 `
 
 const SponsorLevelContainer = styled.div`
@@ -64,15 +68,15 @@ const Row = styled.div`
   transform: ${props => {
     switch (props.tier) {
       case 'platinum':
-        return 'translate(20%, -75%)'
+        return props.isMobile ? 'translate(16%, -75%)' : 'translate(20%, -75%)'
       case 'gold':
-        return 'translate(12%, -60%)'
+        return props.isMobile ? 'translate(9%, -60%)' : 'translate(12%, -60%)'
       case 'silver':
-        return 'translate(13%, -55%)'
+        return props.isMobile ? 'translate(9%, -60%)' : 'translate(13%, -55%)'
       case 'bronze':
-        return 'translate(8%, -45%)'
+        return props.isMobile ? 'translate(6%, -50%)' : 'translate(8%, -45%)'
       case 'startup':
-        return 'translate(22%, -40%)'
+        return props.isMobile ? 'translate(12%, -45%)' : 'translate(22%, -40%)'
     }
   }};
   z-index: 150;
@@ -81,21 +85,17 @@ const Row = styled.div`
   gap: ${props => {
     switch (props.tier) {
       case 'platinum':
-        return 'calc(100vw * (20/1920))'
+        return props.isMobile ? 'calc(100vw * (15/393))' : 'calc(100vw * (20/1920))'
       case 'gold':
         return 'calc(100vw * (10/1920))'
       case 'silver':
         return 'calc(100vw * (10/1920))'
       case 'bronze':
-        return 'calc(100vw * (5/1920))'
+        return props.isMobile ? 0 : 'calc(100vw * (5/1920))'
       case 'startup':
         return 'calc(100vw * (10/1920))'
     }
   }};
-
-  ${p => p.theme.mediaQueries.mobile} {
-    gap: calc(100vw * (5 / 487));
-  }
 `
 
 const SponsorContainer = styled.div`
@@ -184,9 +184,21 @@ const PlateImage = styled.img`
 
 const StandImage = styled.img`
   position: absolute;
-  width: ${props => (props.isFirstRow ? 'calc(100vw * (67/ 1920))' : 'calc(100vw * (28 / 1920))')};
+  width: ${props => {
+    if (props.isMobile) {
+      return props.isFirstRow ? 'calc(100vw * (19/ 393))' : 'calc(100vw * (9/ 393))'
+    } else {
+      return props.isFirstRow ? 'calc(100vw * (67/ 1920))' : 'calc(100vw * (28 / 1920))'
+    }
+  }};
   height: auto;
-  bottom: ${props => (props.isFirstRow ? '-60%' : props.adjustment)};
+  bottom: ${props => {
+    if (props.isMobile) {
+      return props.isFirstRow ? '-30%' : props.adjustment
+    } else {
+      return props.isFirstRow ? '-60%' : props.adjustment
+    }
+  }};
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 5;
@@ -197,96 +209,99 @@ const PlateStandContainer = styled.div`
   z-index: ${props => props.zIndex};
 `
 
-const Cupcake = memo(({ tier }) => {
+const Cupcake = memo(({ tier, isMobile }) => {
   let svgSrc = null
   let length = 0
   switch (tier) {
     case 'platinum':
       svgSrc = platpastry
-      length = 'calc(100vw * (174 / 1920))'
+      length = isMobile ? 'calc(100vw * (60 / 393))' : 'calc(100vw * (174 / 1920))'
       break
     case 'gold':
       svgSrc = goldpastry
-      length = 'calc(100vw * (200 / 1920))'
+      length = isMobile ? 'calc(100vw * (67 / 393))' : 'calc(100vw * (200 / 1920))'
       break
     case 'silver':
       svgSrc = silverpastry
-      length = 'calc(100vw * (178 / 1920))'
+      length = isMobile ? 'calc(100vw * (62 / 393))' : 'calc(100vw * (178 / 1920))'
       break
     case 'bronze':
       svgSrc = bronzepastry
-      length = 'calc(100vw * (204 / 1920))'
+      length = isMobile ? 'calc(100vw * (63 / 393))' : 'calc(100vw * (204 / 1920))'
       break
     case 'startup':
-      svgSrc = startuppastry
-      length = 'calc(100vw * (170 / 1920))'
-      break
     default:
       svgSrc = startuppastry
-      length = 'calc(100vw * (170 / 1920))'
+      length = isMobile ? 'calc(100vw * (57 / 393))' : 'calc(100vw * (170 / 1920))'
+      break
   }
   return <PastryImage src={svgSrc} length={length} />
 })
 
-const PlateStand = memo(({ tier, zIndex, isFirstRow }) => {
+const PlateStand = memo(({ tier, zIndex, isFirstRow, isMobile }) => {
   let svgSrc = null
   let length = 0
   let adjustment = '0%'
   switch (tier) {
     case 'platinum':
       svgSrc = platplate
-      length = 'calc(100vw * (510 / 1920))'
+      length = isMobile ? 'calc(100vw * (176 / 393))' : 'calc(100vw * (510 / 1920))'
       adjustment = '-40%'
       break
     case 'gold':
       svgSrc = goldplate
-      length = 'calc(100vw * (769 / 1920))'
+      length = isMobile ? 'calc(100vw * (236 / 393))' : 'calc(100vw * (769 / 1920))'
       adjustment = '10%'
       break
     case 'silver':
       svgSrc = silverplate
-      length = 'calc(100vw * (926 / 1920))'
+      length = isMobile ? 'calc(100vw * (295 / 393))' : 'calc(100vw * (926 / 1920))'
       adjustment = '25%'
       break
     case 'bronze':
       svgSrc = bronzeplate
-      length = 'calc(100vw * (1220 / 1920))'
+      length = isMobile ? 'calc(100vw * (351 / 393))' : 'calc(100vw * (1220 / 1920))'
       adjustment = '40%'
       break
     case 'startup':
     default:
       svgSrc = startupplate
-      length = 'calc(100vw * (1529 / 1920))'
+      length = isMobile ? 'calc(100vw * (426 / 393))' : 'calc(100vw * (1529 / 1920))'
       adjustment = '45%'
       break
   }
   const standSrc = isFirstRow ? startingstand : normalstand
   return (
     <PlateStandContainer zIndex={zIndex}>
-      <StandImage src={standSrc} adjustment={adjustment} isFirstRow={isFirstRow} />
+      <StandImage src={standSrc} adjustment={adjustment} isFirstRow={isFirstRow} isMobile={isMobile} />
       <PlateImage src={svgSrc} length={length} />
     </PlateStandContainer>
   )
 })
 
-const Sponsor = memo(({ link, url, size, tier, isPlaceholder, index, total }) => (
+const Sponsor = memo(({ link, url, size, tier, isPlaceholder, index, total, isMobile }) => (
   <SponsorContainer size={size} tier={tier} index={index} total={total}>
     <SponsorLink href={link} target="_blank" rel="noreferrer">
-      <Cupcake tier={tier} />
+      <Cupcake tier={tier} isMobile={isMobile} />
       {!isPlaceholder && <SponsorImg src={url} alt="Sponsor Logo" index={index} total={total} tier={tier} />}
     </SponsorLink>
   </SponsorContainer>
 ))
 
-const ListByTier = memo(({ listOfRows, tierSize, tier, startIndex }) => {
+const ListByTier = memo(({ listOfRows, tierSize, tier, startIndex, isMobile }) => {
   if (!listOfRows || listOfRows.length === 0) return null
 
   return (
     <>
       {listOfRows.map((row, index) => (
         <SponsorLevelContainer key={`${tier}-${row[0].name}`}>
-          <PlateStand tier={tier} zIndex={100 - startIndex - index} isFirstRow={startIndex + index === 5} />
-          <Row tier={tier}>
+          <PlateStand
+            tier={tier}
+            zIndex={100 - startIndex - index}
+            isFirstRow={startIndex + index === 5}
+            isMobile={isMobile}
+          />
+          <Row tier={tier} isMobile={isMobile}>
             {row.map((item, i) => (
               <Sponsor
                 key={item.name}
@@ -297,6 +312,7 @@ const ListByTier = memo(({ listOfRows, tierSize, tier, startIndex }) => {
                 isPlaceholder={item.isPlaceholder}
                 index={i}
                 total={row.length}
+                isMobile={isMobile}
               />
             ))}
           </Row>
@@ -365,36 +381,42 @@ const SponsorsGrid = ({ sponsors }) => {
         tierSize={isMobile ? MOBILE_SPONSOR_WIDTH.platinum : SPONSOR_WIDTH.platinum}
         tier="platinum"
         startIndex={startIndexPlatinum}
+        isMobile={isMobile}
       />
       <ListByTier
         listOfRows={rows.gold}
         tierSize={isMobile ? MOBILE_SPONSOR_WIDTH.gold : SPONSOR_WIDTH.gold}
         tier="gold"
         startIndex={startIndexGold}
+        isMobile={isMobile}
       />
       <ListByTier
         listOfRows={rows.silver}
         tierSize={isMobile ? MOBILE_SPONSOR_WIDTH.silver : SPONSOR_WIDTH.silver}
         tier="silver"
         startIndex={startIndexSilver}
+        isMobile={isMobile}
       />
       <ListByTier
         listOfRows={rows.bronze}
         tierSize={isMobile ? MOBILE_SPONSOR_WIDTH.bronze : SPONSOR_WIDTH.bronze}
         tier="bronze"
         startIndex={startIndexBronze}
+        isMobile={isMobile}
       />
       <ListByTier
         listOfRows={rows.startup}
         tierSize={isMobile ? MOBILE_SPONSOR_WIDTH.startup : SPONSOR_WIDTH.startup}
         tier="startup"
         startIndex={startIndexStartup}
+        isMobile={isMobile}
       />
       <ListByTier
         listOfRows={rows.inkind}
         tierSize={isMobile ? MOBILE_SPONSOR_WIDTH.inkind : SPONSOR_WIDTH.inkind}
         tier="inkind"
         startIndex={startIndexInkind}
+        isMobile={isMobile}
       />
     </Container>
   )
