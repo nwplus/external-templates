@@ -144,11 +144,11 @@ const Stats = () => {
       {!isMobile && !isTablet && (
         <StatsContainer ref={statsContainerRef}>
           <Title>Last year we had...</Title>
-          <Bowl src='assets/images/about/bowl.svg'/>
-          <StatImage src="assets/images/about/egg_stat.svg" width={370} top={300} left={190} scrollOffset={scrollOffset} />
-          <StatImage src="assets/images/about/bottle_stat.svg" width={310} top={230} left={660} scrollOffset={scrollOffset} />
-          <StatImage src="assets/images/about/flour_bag.svg" width={400} top={400} left={1000} scrollOffset={scrollOffset} />
-          <StatImage src="assets/images/about/butter_stat.svg" width={520} top={750} left={840} scrollOffset={scrollOffset} />
+          <Bowl src='assets/images/stats/bowl.svg'/>
+          <StatImage src="assets/images/stats/egg_stat.svg" width={370} top={300} left={190} scrollOffset={scrollOffset} />
+          <StatImage src="assets/images/stats/bottle_stat.svg" width={310} top={230} left={660} scrollOffset={scrollOffset} />
+          <StatImage src="assets/images/stats/flour_bag_stat.svg" width={400} top={400} left={1000} scrollOffset={scrollOffset} />
+          <StatImage src="assets/images/stats/butter_stat.svg" width={520} top={750} left={840} scrollOffset={scrollOffset} />
         </StatsContainer>
       )}
 
