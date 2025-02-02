@@ -17,33 +17,29 @@ import startuppastry from '@assets/images/sponsors/startuppastry.svg'
 const SPONSOR_WIDTH = { title: 70, platinum: 45, gold: 40, silver: 35, bronze: 30, startup: 25, inkind: 20 }
 const MOBILE_SPONSOR_WIDTH = { title: 95, platinum: 80, gold: 45, silver: 35, bronze: 30, startup: 25, inkind: 20 }
 
-const calculateSponsorRows = (tierList, containerWidth, isMobile) => {
+const calculateSponsorRows = tierList => {
   const newRows = {}
-  const widthConfig = isMobile ? MOBILE_SPONSOR_WIDTH : SPONSOR_WIDTH
 
-  Object.entries(tierList).forEach(([tier, sponsors]) => {
-    if (sponsors.length === 0) {
-      newRows[tier] = []
-      return
-    }
-
-    const tierSize = widthConfig[tier]
-    const sponsorWidth = (tierSize / 100) * containerWidth
-
-    let sponsorsPerRow = Math.floor(containerWidth / sponsorWidth) || 1
-    if (sponsors.length >= 2) {
-      if (sponsors.length < sponsorsPerRow) {
-        sponsorsPerRow = sponsors.length
-      } else {
-        const numRows = Math.ceil(sponsors.length / sponsorsPerRow)
-        sponsorsPerRow = Math.ceil(sponsors.length / numRows)
+  const groupSponsors = (sponsors, groupSize, tier) => {
+    const rows = []
+    for (let i = 0; i < sponsors.length; i += groupSize) {
+      const row = sponsors.slice(i, i + groupSize)
+      while (row.length < groupSize) {
+        row.push({ name: `empty-${tier}-${row.length}`, isPlaceholder: true })
       }
+      rows.push(row)
     }
+    return rows
+  }
 
-    newRows[tier] = Array.from({ length: Math.ceil(sponsors.length / sponsorsPerRow) }, (_, i) =>
-      sponsors.slice(i * sponsorsPerRow, (i + 1) * sponsorsPerRow)
-    )
-  })
+  newRows.platinum = groupSponsors(tierList.platinum, 2)
+  newRows.gold = groupSponsors(tierList.gold, 3)
+  newRows.silver = groupSponsors(tierList.silver, 4)
+  newRows.bronze = groupSponsors(tierList.bronze, 5)
+
+  // Combine startup and inkind sponsors
+  const combinedStartupInkind = [...tierList.startup, ...tierList.inkind]
+  newRows.startup = groupSponsors(combinedStartupInkind, 6)
 
   return newRows
 }
@@ -59,38 +55,51 @@ const Container = styled.div`
 
 const SponsorLevelContainer = styled.div`
   position: relative;
-  // margin: 0 auto;
-  // display: flex;
 `
 
 const Row = styled.div`
   position: absolute;
   top: 0;
   left: 0;
+  transform: ${props => {
+    switch (props.tier) {
+      case 'platinum':
+        return 'translate(20%, -75%)'
+      case 'gold':
+        return 'translate(12%, -60%)'
+      case 'silver':
+        return 'translate(13%, -55%)'
+      case 'bronze':
+        return 'translate(8%, -45%)'
+      case 'startup':
+        return 'translate(22%, -40%)'
+    }
+  }};
+  z-index: 150;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 2rem;
-  width: 95vw;
-  margin-bottom: calc(100vw * (25 / 1280));
+  gap: ${props => {
+    switch (props.tier) {
+      case 'platinum':
+        return 'calc(100vw * (20/1920))'
+      case 'gold':
+        return 'calc(100vw * (10/1920))'
+      case 'silver':
+        return 'calc(100vw * (10/1920))'
+      case 'bronze':
+        return 'calc(100vw * (5/1920))'
+      case 'startup':
+        return 'calc(100vw * (10/1920))'
+    }
+  }};
 
   ${p => p.theme.mediaQueries.mobile} {
-    // flex-direction: column;
-    // width: 100%;
     gap: calc(100vw * (5 / 487));
   }
 `
 
 const SponsorContainer = styled.div`
   width: ${p => p.size}%;
-  // aspect-ratio: 769 / 384;
-  // background-size: contain;
-  // background-repeat: no-repeat;
-  // background-position: center;
-  // z-index: 2;
-  // display: flex;
-  // justify-content: center;
-
   position: relative;
   width: auto;
   max-width: 90%;
@@ -98,6 +107,15 @@ const SponsorContainer = styled.div`
   align-items: center;
   justify-content: center;
   margin-top: 5%;
+  z-index: 100;
+  transform: ${props => {
+    const index = props.index
+    const total = props.total
+    const middle = (total - 1) / 2
+    const offset = Math.abs(index - middle)
+    const yOffset = (middle - offset) * 10 // Adjust this value to control the height difference
+    return `translateY(${yOffset}%)`
+  }};
 
   ${p => p.theme.mediaQueries.mobile} {
     width: ${p => MOBILE_SPONSOR_WIDTH[p.tier]}%;
@@ -116,12 +134,40 @@ const SponsorLink = styled.a`
 
 const SponsorImg = styled.img`
   position: absolute;
-  height: 100%;
+  max-height: 30%;
   max-width: 70%;
   border: none;
   object-fit: contain;
   z-index: 2;
-  top: 10%;
+  top: 50%;
+  transform: ${props => {
+    const index = props.index
+    const total = props.total
+    const middle = (total - 1) / 2
+    const offset = Math.abs(index - middle)
+    const yOffset = (middle - offset) * 10 // Adjust this value to control the height difference
+    let tierOffset = 0
+    switch (props.tier) {
+      case 'platinum':
+        tierOffset = 0
+        break
+      case 'gold':
+        tierOffset = -8
+        break
+      case 'silver':
+        tierOffset = 0
+        break
+      case 'bronze':
+        tierOffset = -80
+        break
+      case 'startup':
+      default:
+        tierOffset = -20
+        break
+    }
+
+    return `translateY(${yOffset + tierOffset}%)`
+  }};
 `
 
 const PastryImage = styled.img`
@@ -223,11 +269,11 @@ const PlateStand = memo(({ tier, zIndex, isFirstRow }) => {
   )
 })
 
-const Sponsor = memo(({ link, url, size, tier }) => (
-  <SponsorContainer size={size} tier={tier}>
+const Sponsor = memo(({ link, url, size, tier, isPlaceholder, index, total }) => (
+  <SponsorContainer size={size} tier={tier} index={index} total={total}>
     <SponsorLink href={link} target="_blank" rel="noreferrer">
       <Cupcake tier={tier} />
-      <SponsorImg src={url} alt="Sponsor Logo" />
+      {!isPlaceholder && <SponsorImg src={url} alt="Sponsor Logo" index={index} total={total} tier={tier} />}
     </SponsorLink>
   </SponsorContainer>
 ))
@@ -240,9 +286,18 @@ const ListByTier = memo(({ listOfRows, tierSize, tier, startIndex }) => {
       {listOfRows.map((row, index) => (
         <SponsorLevelContainer key={`${tier}-${row[0].name}`}>
           <PlateStand tier={tier} zIndex={100 - startIndex - index} isFirstRow={startIndex + index === 5} />
-          <Row>
-            {row.map(item => (
-              <Sponsor key={item.name} link={item.link} url={item.imgURL} size={tierSize} tier={tier} />
+          <Row tier={tier}>
+            {row.map((item, i) => (
+              <Sponsor
+                key={item.name}
+                link={item.link}
+                url={item.imgURL}
+                size={tierSize}
+                tier={tier}
+                isPlaceholder={item.isPlaceholder}
+                index={i}
+                total={row.length}
+              />
             ))}
           </Row>
         </SponsorLevelContainer>
@@ -282,8 +337,7 @@ const SponsorsGrid = ({ sponsors }) => {
 
   useEffect(() => {
     const calculateRows = () => {
-      const containerWidth = window.innerWidth * 0.95
-      const newRows = calculateSponsorRows(tierList, containerWidth, isMobile)
+      const newRows = calculateSponsorRows(tierList)
       setRows(newRows)
     }
 
