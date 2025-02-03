@@ -204,7 +204,7 @@ const Values = () => {
   }, [])
 
   const getEaseParallaxParams = (startY, dur, ease, cond) => {
-    if (valuesEnabled && !isMobile && !isTablet) {
+    if (cond && !isMobile && !isTablet) {
       return { duration: isAnimating ? dur : 0.6, easing: ease, translateY: [startY, 0] };
     }
     if (isMobile || isTablet) {
