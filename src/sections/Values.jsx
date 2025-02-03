@@ -220,9 +220,9 @@ const Values = () => {
     return { easing: ease, speed: 0, translateY: [startY, startY] };
   }
 
-  const getLineParallaxParams = (cond) => cond
-    ? { scaleY: [0, 1], duration: 0.5, opacity: [0, 1] }
-    : { scaleY: [0, 0], duration: 0.5, opacity: [0, 0] };
+  const getLineParallaxParams = (cond, start) => cond
+    ? { scaleY: [0, 1], duration: 2, opacity: [0, 1], translateY: [start, 0] }
+    : { scaleY: [0, 0], duration: 2, opacity: [0, 0] };
 
 
   const fade = Array(3).fill(null).map(() => {
@@ -249,8 +249,8 @@ const Values = () => {
   const dot1Ease = useParallax(getEaseParallaxParams(dot1StartY, 1, 'easeInOutQuart', valuesEnabled));
   const dot3Ease = useParallax(getEaseParallaxParams(dot3StartY, 1.5, 'easeInOutQuart', valuesEnabled));
 
-  const line1Scale = useParallax(getLineParallaxParams(delayedValuesEnabled));
-  const line2Scale = useParallax(getLineParallaxParams(delayedValuesEnabled));
+  const line1Scale = useParallax(getLineParallaxParams(delayedValuesEnabled, 56));
+  const line2Scale = useParallax(getLineParallaxParams(delayedValuesEnabled, -52));
 
 
   useEffect(() => {
@@ -277,7 +277,7 @@ const Values = () => {
           }, 500);
           setTimeout(() => {
             setDelayedValuesEnabled(true);
-          }, 168);
+          }, 172);
           setTimeout(() => {
             setValuesEnabled(true);
           }, 40);
