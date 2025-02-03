@@ -46,6 +46,7 @@ const TextContainer = styled.div`
   z-index: 11;
 
   ${p => p.theme.mediaQueries.mobile} {
+    top: calc(calc(650 / 1920) * 100vw);
     left: 50%;
     transform: translateX(-50%);
     width: calc(100vw * (335 / 393));
@@ -86,21 +87,146 @@ const AboutImage = styled.img`
   transition: top 0.75s ease-out;
 
   ${p => p.theme.mediaQueries.mobile} {
-    top: ${({ top }) => `calc(${top} / 1920 * 100vw)`};
+    width: ${({ mobileWidth }) => `calc(100vw * (${mobileWidth} / 393))`};
+    top: ${({ mobileTop }) => `calc(calc(${mobileTop} / 393) * 100vw)`};
+    left: ${({ mobileLeft }) => `calc(calc(${mobileLeft} / 393) * 100vw)`};
+    transition: none;
   }
 `;
 
 const images = [
-  { src: 'piping_bag.svg', alt: 'Piping Bag', width: 160, top: -10, left: 800 },
-  { src: 'measuring_glass.svg', alt: 'Measuring Glass', width: 220, top: 0, left: 1200 },
-  { src: 'flour_sifter.svg', alt: 'Flour Sifter', width: 160, top: 130, left: 1650 },
-  { src: 'spatula.svg', alt: 'Spatula', width: 150, top: 380, left: 1450 },
-  { src: 'oven_mitts.svg', alt: 'Oven Mitts', width: 330, top: 700, left: 1400 },
-  { src: 'measuring_cup.svg', alt: 'Measuring Cup', width: 120, top: 860, left: 900 },
-  { src: 'rolling_pin.svg', alt: 'Rolling Pin', width: 300, top: 730, left: 320 },
-  { src: 'cookie_cutter.svg', alt: 'Cookie Cutter', width: 100, top: 830, left: 100 },
-  { src: 'mixing_bowl.svg', alt: 'Mixing Bowl', width: 240, top: 380, left: 150 },
-  { src: 'hand_mixer.svg', alt: 'Hand Mixer', width: 320, top: 5, left: 235 }
+  { 
+    src: 'piping_bag.svg', 
+    alt: 'Piping Bag', 
+    width: 160, 
+    top: 20, 
+    left: 800,
+    mobileWidth: 0,
+  },
+  { 
+    src: 'measuring_glass.svg', 
+    alt: 'Measuring Glass', 
+    width: 220, 
+    top: 30, 
+    left: 1200,
+    mobileWidth: 0,
+  },
+  { 
+    src: 'flour_sifter.svg', 
+    alt: 'Flour Sifter', 
+    width: 160, 
+    top: 160, 
+    left: 1650,
+    mobileWidth: 0,
+  },
+  { 
+    src: 'spatula.svg', 
+    alt: 'Spatula', 
+    width: 150, 
+    top: 410, 
+    left: 1450,
+    mobileWidth: 0,
+  },
+  { 
+    src: 'oven_mitts.svg', 
+    alt: 'Oven Mitts', 
+    width: 330, 
+    top: 730, 
+    left: 1400,
+    mobileWidth: 0,
+  },
+  { 
+    src: 'measuring_cup.svg', 
+    alt: 'Measuring Cup', 
+    width: 120, 
+    top: 890, 
+    left: 900,
+    mobileWidth: 0,
+  },
+  { 
+    src: 'rolling_pin.svg', 
+    alt: 'Rolling Pin', 
+    width: 300, 
+    top: 760, 
+    left: 320,
+    mobileWidth: 0,
+  },
+  { 
+    src: 'cookie_cutter.svg', 
+    alt: 'Cookie Cutter', 
+    width: 100, 
+    top: 860, 
+    left: 100,
+    mobileWidth: 0,
+  },
+  { 
+    src: 'mixing_bowl.svg', 
+    alt: 'Mixing Bowl', 
+    width: 240, 
+    top: 410, 
+    left: 150,
+    mobileWidth: 0,
+  },
+  { 
+    src: 'hand_mixer.svg', 
+    alt: 'Hand Mixer', 
+    width: 320, 
+    top: 35, 
+    left: 235,
+    mobileWidth: 0,
+  }
+];
+
+const mobileImages = [
+  { 
+    src: 'hand_mixer_mobile.svg', 
+    alt: 'Hand Mixer', 
+    width: 100,
+    top: 5,
+    left: 296
+  },
+  { 
+    src: 'piping_bag_mobile.svg', 
+    alt: 'Piping Bag', 
+    width: 80,
+    top: 77,
+    left: -5
+  },
+  { 
+    src: 'measuring_glass_mobile.svg', 
+    alt: 'Measuring Glass', 
+    width: 55,
+    top: 247,
+    left: 343
+  },
+  { 
+    src: 'rolling_pin_mobile.svg', 
+    alt: 'Rolling Pin', 
+    width: 27,
+    top: 355,
+    left: 0
+  },
+  { 
+    src: 'cookie_cutter_mobile.svg', 
+    alt: 'Cookie Cutter', 
+    width: 43,
+    top: 470,
+    left: 351
+  },
+  { 
+    src: 'spatula_mobile.svg', 
+    alt: 'Spatula', 
+    width: 90,
+    top: 770,
+    left: 300
+  },
+  { 
+    src: 'oven_mitts_mobile.svg', 
+    alt: 'Oven Mitts', 
+    width: 100,
+    top: 820,
+    left: 0
+  },
 ];
 
 const About = () => {
@@ -115,14 +241,31 @@ const About = () => {
   return (
     <AboutContainer id="about">
       <AboutBackground />
-      {images.map(({ src, alt, width, top, left }) => (
+      {/* Desktop Images */}
+      {images.map(({ src, alt, width, top, left, mobileWidth }) => (
         <AboutImage
-          key={src}
+          key={`desktop-${src}`}
           src={`assets/images/about/${src}`}
           alt={alt}
           width={width}
           top={top}
           left={left}
+          mobileWidth={mobileWidth}
+          scroll={scrollY}
+        />
+      ))}
+      {/* Mobile Images */}
+      {mobileImages.map(({ src, alt, width, top, left }) => (
+        <AboutImage
+          key={`mobile-${src}`}
+          src={`assets/images/about/mobile/${src}`}
+          alt={alt}
+          mobileWidth={width}
+          mobileTop={top}
+          mobileLeft={left}
+          width={0}
+          top={0}
+          left={0}
           scroll={scrollY}
         />
       ))}
