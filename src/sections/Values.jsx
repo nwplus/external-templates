@@ -221,8 +221,8 @@ const Values = () => {
   }
 
   const getLineParallaxParams = (cond) => cond
-    ? { scaleY: [0, 1], duration: 0.8, opacity: [0, 1] }
-    : { scaleY: [0, 0], duration: 0.8, opacity: [0, 0] };
+    ? { scaleY: [0, 1], duration: 0.5, opacity: [0, 1] }
+    : { scaleY: [0, 0], duration: 0.5, opacity: [0, 0] };
 
 
   const fade = Array(3).fill(null).map(() => {
@@ -244,13 +244,13 @@ const Values = () => {
   const cakeBotEase = useParallax(getCakeEaseParallaxParams('easeInOutQuad', -35, 5));
 
   const title1Ease = useParallax(getEaseParallaxParams(title1StartY, 1, 'easeInOutCubic', valuesEnabled));
-  const title3Ease = useParallax(getEaseParallaxParams(title3StartY, 2, 'easeInOutCubic', valuesEnabled));
+  const title3Ease = useParallax(getEaseParallaxParams(title3StartY, 1.5, 'easeInOutCubic', valuesEnabled));
 
   const dot1Ease = useParallax(getEaseParallaxParams(dot1StartY, 1, 'easeInOutQuart', valuesEnabled));
-  const dot3Ease = useParallax(getEaseParallaxParams(dot3StartY, 2, 'easeInOutQuart', valuesEnabled));
+  const dot3Ease = useParallax(getEaseParallaxParams(dot3StartY, 1.5, 'easeInOutQuart', valuesEnabled));
 
   const line1Scale = useParallax(getLineParallaxParams(delayedValuesEnabled));
-  const line2Scale = useParallax(getLineParallaxParams(valuesEnabled));
+  const line2Scale = useParallax(getLineParallaxParams(delayedValuesEnabled));
 
 
   useEffect(() => {
