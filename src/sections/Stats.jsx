@@ -161,7 +161,7 @@ const Stats = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const {scrollY} = window;
+      const { scrollY } = window;
       setScrollOffset(scrollY * 0.05);
     };
 
@@ -174,7 +174,7 @@ const Stats = () => {
       {!isMobile && !isTablet ? (
         <StatsContainer ref={statsContainerRef}>
           <Title>Last year we had...</Title>
-          <Bowl src='assets/images/stats/bowl.svg'/>
+          <Bowl src='assets/images/stats/bowl.svg' />
           <StatImage src="assets/images/stats/egg_stat.svg" width={370} top={300} left={390} scrollOffset={scrollOffset} />
           <StatImage src="assets/images/stats/bottle_stat.svg" width={310} top={230} left={860} scrollOffset={scrollOffset} />
           <StatImage src="assets/images/stats/flour_bag_stat.svg" width={400} top={400} left={1200} scrollOffset={scrollOffset} />
@@ -183,7 +183,7 @@ const Stats = () => {
       ) : (
         <StatsContainer ref={statsContainerRef}>
           <Title>Last Year We Had...</Title>
-          <Bowl src='assets/images/stats/mobile/bowl_mobile.svg'/>
+          <Bowl src='assets/images/stats/mobile/bowl_mobile.svg' />
           <MobileEggStat src="assets/images/stats/mobile/egg_stat_mobile.svg" scrollOffset={scrollOffset} />
           <MobileBottleStat src="assets/images/stats/mobile/bottle_stat_mobile.svg" scrollOffset={scrollOffset} />
           <MobileFlourStat src="assets/images/stats/mobile/flour_bag_stat_mobile.svg" scrollOffset={scrollOffset} />

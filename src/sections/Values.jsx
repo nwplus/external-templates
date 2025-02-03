@@ -231,7 +231,7 @@ const Values = () => {
         onEnter: () => {
           setTimeout(() => {
             setCakeEaseEnabled(true);
-          }, 340); // Adjust delay time here
+          }, 400); // Adjust delay time here
 
           setTimeout(() => {
             setDescValuesEnabled(true);
@@ -241,10 +241,18 @@ const Values = () => {
           //   setValuesEnabled(true);
           // }, 10); // Adjust delay time here
 
-        }
+        },
+        onLeaveBack: () => {
+          setCakeEaseEnabled(false);
+          setDescValuesEnabled(false);
+          // setValuesEnabled(false);},
 
-      },
+        }
+      }
     });
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill())
+    }
   }, []);
 
   return (
