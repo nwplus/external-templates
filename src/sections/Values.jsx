@@ -263,13 +263,13 @@ const Values = () => {
 
   const line1Scale = useParallax(
     delayedValuesEnabled ?
-      { scale: [0, 1], duration: 0.01 } :
+      { scale: [0, 1], duration: 0.005, opacity: [0.5, 1], } :
       { scale: [0, 0] }
   );
 
   const line2Scale = useParallax(
     valuesEnabled ?
-      { scale: [0, 1], duration: 0.01 } :
+      { scale: [0, 1], duration: 0.005, opacity: [0.5, 1], } :
       { scale: [0, 0] }
   );
 
