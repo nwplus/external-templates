@@ -193,7 +193,7 @@ const Values = () => {
 
   const cakeBotEase = useParallax(
     cakeEaseEnabled ?
-      { easing: 'easeOutQuad', speed: 0.1, translateY: [-35, 5], } :
+      { easing: 'easeOutQuad', speed: 0.05, translateY: [-35, 5], } :
       { easing: 'easeOutQuad', speed: 0, translateY: [-35, -35], }
   );
 
