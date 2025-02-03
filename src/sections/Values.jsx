@@ -7,6 +7,7 @@ import cakeBottom from '@assets/images/cake_bottom.svg'
 import { useParallax } from 'react-scroll-parallax'
 import { gsap } from 'gsap'
 import ScrollTrigger from 'gsap/dist/ScrollTrigger'
+import { scale } from '@utilities/format'
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -220,7 +221,11 @@ const Values = () => {
     return { easing: ease, speed: 0, translateY: [startY, startY] };
   }
 
-  const getLineParallaxParams = (cond) => cond ? { scale: [0, 1], duration: 0.005, opacity: [0, 1], } : { scale: [0, 0] };
+  const getLineParallaxParams = (cond) => ({
+    scale: cond ? [0, 1] : [0, 0],
+    duration: 0.005,
+    opacity: cond ? [0, 1] : [0, 0],
+  })
 
   const fade = Array(3).fill(null).map(() => {
     let opacitySettings;
