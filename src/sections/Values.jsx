@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
-// import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
+import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
 import cakeTop from '@assets/images/cake_top.svg'
 import cakeMid from '@assets/images/cake_mid.svg'
 import cakeBottom from '@assets/images/cake_bottom.svg'
@@ -158,25 +158,98 @@ const ValueDescription = styled.p`
 
 const Values = () => {
   const valuesRef = useRef(null);
-  const [parallaxEnabled, setParallaxEnabled] = useState(false);
+  const [cakeEaseEnabled, setCakeEaseEnabled] = useState(false);
+  const [descValuesEnabled, setDescValuesEnabled] = useState(false);
+  const [title1StartY, setTitle1StartY] = useState(100)
+  const [title3StartY, setTitle3StartY] = useState(-100)
+  const [dot1StartY, setDot1StartY] = useState(100)
+  const [dot3StartY, setDot3StartY] = useState(-100)
+  const [valuesEnabled, setValuesEnabled] = useState(false);
+  const [delayedValuesEnabled, setDelayedValuesEnabled] = useState(false);
+  const [isMobile, setIsMobile] = useState(false)
+  const [isAnimating, setIsAnimating] = useState(false);
 
-  const cakeTopEase = useParallax(
-    parallaxEnabled ?
-      { easing: 'easeOutQuad', speed: 0.5, translateY: [12, -16], } :
-      { easing: 'easeOutQuad', speed: 0, translateY: [12, 12], }
-  );
+  useEffect(() => {
+    const updateY = () => {
+      const screenWidth = window.innerWidth;
+      const screenHeight = window.innerHeight;
+      const valY = Math.min(screenWidth * 0.2, screenHeight * 0.35)
+      setTitle1StartY(valY)
+      setTitle3StartY(-1.2 * valY)
+      setDot1StartY(valY * 3)
+      setDot3StartY(-3.2 * valY)
+    }
 
-  const cakeMidEase = useParallax(
-    parallaxEnabled ?
-      { easing: 'easeOutQuad', speed: 0.5, translateY: [-32, -12], } :
-      { easing: 'easeOutQuad', speed: 0, translateY: [-32, -32], }
-  );
+    updateY()
+    window.addEventListener('resize', updateY)
 
-  const cakeBotEase = useParallax(
-    parallaxEnabled ?
-      { easing: 'easeOutQuad', speed: 0.5, translateY: [-68, 0], } :
-      { easing: 'easeOutQuad', speed: 0, translateY: [-68, -68], }
-  );
+    return () => {
+      window.removeEventListener('resize', updateY)
+    }
+  }, [])
+
+  useEffect(() => {
+    const updateDeviceType = () => {
+      setIsMobile(window.innerWidth <= SCREEN_BREAKPOINTS.mobile)
+    }
+
+    updateDeviceType()
+    window.addEventListener('resize', updateDeviceType)
+
+    return () => {
+      window.removeEventListener('resize', updateDeviceType)
+    }
+  }, [])
+
+  const getEaseParallaxParams = (startY, dur, ease, cond) => {
+    if (cond && !isMobile) {
+      return { duration: isAnimating ? dur : 0.6, easing: ease, translateY: [startY, 0] };
+    }
+    if (isMobile) {
+      return { speed: 0, translateY: [0, 0] };
+    }
+    return { speed: 0, translateY: [startY, startY] };
+  };
+
+  const getCakeEaseParallaxParams = (ease, startY, endY) => {
+    if (cakeEaseEnabled) {
+      return { duration: isAnimating ? 1 : 0.6, easing: ease, translateY: [startY, endY] };
+    }
+    return { easing: ease, speed: 0, translateY: [startY, startY] };
+  }
+
+  const getLineParallaxParams = (cond, start) => cond
+    ? { scaleY: [0, 1], duration: 2, opacity: [0, 1], translateY: [start, 0] }
+    : { scaleY: [0, 0], duration: 2, opacity: [0, 0] };
+
+
+  const fade = Array(3).fill(null).map(() => {
+    let opacitySettings;
+
+    if (descValuesEnabled && !isMobile) {
+      opacitySettings = { opacity: [0, 1], duration: 0.005, easing: 'easeInOutQuad' };
+    } else if (isMobile) {
+      opacitySettings = { opacity: [1, 1] };
+    } else {
+      opacitySettings = { opacity: [0, 0] };
+    }
+
+    return useParallax(opacitySettings);
+  });
+
+  const cakeTopEase = useParallax(getCakeEaseParallaxParams('easeInOutQuad', 35, -5));
+  const cakeMidEase = useParallax(getCakeEaseParallaxParams('easeInOutQuad', 0, 0));
+  const cakeBotEase = useParallax(getCakeEaseParallaxParams('easeInOutQuad', -35, 5));
+
+  const title1Ease = useParallax(getEaseParallaxParams(title1StartY, 1, 'easeInOutCubic', valuesEnabled));
+  const title3Ease = useParallax(getEaseParallaxParams(title3StartY, 1.5, 'easeInOutCubic', valuesEnabled));
+
+  const dot1Ease = useParallax(getEaseParallaxParams(dot1StartY, 1, 'easeInOutQuart', valuesEnabled));
+  const dot3Ease = useParallax(getEaseParallaxParams(dot3StartY, 1.5, 'easeInOutQuart', valuesEnabled));
+
+  const line1Scale = useParallax(getLineParallaxParams(delayedValuesEnabled, 60));
+  const line2Scale = useParallax(getLineParallaxParams(delayedValuesEnabled, -52));
+
 
   useEffect(() => {
     const values = valuesRef.current;
@@ -185,18 +258,43 @@ const Values = () => {
       scrollTrigger: {
         trigger: values,
         start: 'top top',
-        end: '+=100%',
+        end: '+=120%',
         scrub: true,
         pin: true,
         anticipatePin: 1,
         fastScrollEnd: true,
         onEnter: () => {
+          setIsAnimating(true);
+
           setTimeout(() => {
-            setParallaxEnabled(true);
-          }, 140); // Adjust delay time here
-        }
-      },
-    });
+            setCakeEaseEnabled(true);
+          }, 400); // Adjust delay time here
+
+          setTimeout(() => {
+            setDescValuesEnabled(true);
+          }, 500);
+          setTimeout(() => {
+            setDelayedValuesEnabled(true);
+          }, 172);
+          setTimeout(() => {
+            setValuesEnabled(true);
+          }, 40);
+
+        },
+        onLeaveBack: () => {
+          setIsAnimating(false);
+          setCakeEaseEnabled(false);
+          setDescValuesEnabled(false);
+          setValuesEnabled(false);
+          setDelayedValuesEnabled(false);
+        },
+
+      }
+    }
+    );
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill())
+    }
   }, []);
 
   return (
@@ -213,12 +311,12 @@ const Values = () => {
           <ValuesList>
             <ValueItem>
               <DotLineContainer>
-                <Dot />
-                <Line1 />
+                <Dot ref={dot1Ease.ref} />
+                <Line1 ref={line1Scale.ref} />
               </DotLineContainer>
               <ValueContent>
-                <ValueTitle>Build Confidence</ValueTitle>
-                <ValueDescription>
+                <ValueTitle ref={title1Ease.ref}>Build Confidence</ValueTitle>
+                <ValueDescription ref={fade[0].ref}>
                   Develop career-ready skills, fight impostor syndrome, and create an invaluable support
                   network with friends, mentors, and sponsors. Regardless of your background, you bring a
                   unique and important perspective to tech. Like how there is always a treat for everyone,
@@ -230,11 +328,11 @@ const Values = () => {
             <ValueItem>
               <DotLineContainer>
                 <Dot />
-                <Line2 />
+                <Line2 ref={line2Scale.ref} />
               </DotLineContainer>
               <ValueContent>
                 <ValueTitle>Learn Together</ValueTitle>
-                <ValueDescription>
+                <ValueDescription ref={fade[1].ref}>
                   Whether you have never coded before, or you dream in assembly, challenge yourself to create
                   something meaningful! Learn new skills at our workshops and apply them to fresh and creative
                   projects! Regardless of your project&apos;s completion at the end of the weekend, take pride in the
@@ -246,11 +344,11 @@ const Values = () => {
 
             <ValueItem>
               <DotLineContainer>
-                <Dot />
+                <Dot ref={dot3Ease.ref} />
               </DotLineContainer>
               <ValueContent>
-                <ValueTitle>Explore in a Safe Space</ValueTitle>
-                <ValueDescription>
+                <ValueTitle ref={title3Ease.ref}>Explore in a Safe Space</ValueTitle>
+                <ValueDescription ref={fade[2].ref}>
                   Discover a community of like-minded, creative, and passionate individuals. Form lasting bonds,
                   share experiences, and create memories in an environment free from judgment, where all gender
                   identities and expressions are respected. We&apos;re all here unified under one cause—to strive for
@@ -266,20 +364,3 @@ const Values = () => {
 }
 
 export default Values;
-
-// const [isMobile, setIsMobile] = useState(false)
-// const [isTablet, setIsTablet] = useState(false)
-
-// useEffect(() => {
-//   const updateDeviceType = () => {
-//     setIsMobile(window.innerWidth <= SCREEN_BREAKPOINTS.mobile)
-//     setIsTablet(window.innerWidth <= SCREEN_BREAKPOINTS.tablet)
-//   }
-
-//   updateDeviceType()
-//   window.addEventListener('resize', updateDeviceType)
-
-//   return () => {
-//     window.removeEventListener('resize', updateDeviceType)
-//   }
-// }, [])
