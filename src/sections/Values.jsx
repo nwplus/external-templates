@@ -168,6 +168,7 @@ const Values = () => {
   const [delayedValuesEnabled, setDelayedValuesEnabled] = useState(false);
   const [isMobile, setIsMobile] = useState(false)
   const [isTablet, setIsTablet] = useState(false)
+  const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
     const updateY = () => {
@@ -202,33 +203,26 @@ const Values = () => {
     }
   }, [])
 
-  const cakeTopEase = useParallax(
-    cakeEaseEnabled ?
-      { easing: 'easeOutQuad', speed: 0.1, translateY: [35, -5], } :
-      { easing: 'easeOutQuad', speed: 0, translateY: [35, 35], }
-  );
-
-  const cakeMidEase = useParallax(
-    cakeEaseEnabled ?
-      { easing: 'easeOutQuad', speed: 0.1, translateY: [0, 0], } :
-      { easing: 'easeOutQuad', speed: 0, translateY: [0, 0], }
-  );
-
-  const cakeBotEase = useParallax(
-    cakeEaseEnabled ?
-      { easing: 'easeOutQuad', speed: 0.1, translateY: [-35, 5], } :
-      { easing: 'easeOutQuad', speed: 0, translateY: [-35, -35], }
-  );
-
-  const getEaseParallaxParams = (startY, ease) => {
+  const getEaseParallaxParams = (startY, dur, ease) => {
     if (valuesEnabled && !isMobile && !isTablet) {
-      return { duration: 1, easing: ease, speed: 0.1, translateY: [startY, 0] };
+      return { duration: isAnimating ? dur : 0.6, easing: ease, translateY: [startY, 0] };
     }
     if (isMobile || isTablet) {
       return { speed: 0, translateY: [0, 0] };
     }
     return { speed: 0, translateY: [startY, startY] };
   };
+
+  const getCakeEaseParallaxParams = (ease, startY, endY) => {
+    if (cakeEaseEnabled) {
+      return { duration: isAnimating ? 1 : 0.6, easing: ease, translateY: [startY, endY] };
+    }
+    return { easing: ease, speed: 0, translateY: [startY, startY] };
+  }
+
+  const getLineParallaxParams = (cond) => {
+    return cond ? { scale: [0, 1], duration: 0.005, opacity: [0, 1], } : { scale: [0, 0] };
+  }
 
   const fade = Array(3).fill(null).map(() => {
     let opacitySettings;
@@ -244,25 +238,18 @@ const Values = () => {
     return useParallax(opacitySettings);
   });
 
-  const title1Ease = useParallax(getEaseParallaxParams(title1StartY, 'easeOutCubic'));
+  const cakeTopEase = useParallax(getCakeEaseParallaxParams('easeInOutQuad', 35, -5));
+  const cakeMidEase = useParallax(getCakeEaseParallaxParams('easeInOutQuad', 0, 0));
+  const cakeBotEase = useParallax(getCakeEaseParallaxParams('easeInOutQuad', -35, 5));
 
-  const title3Ease = useParallax(getEaseParallaxParams(title3StartY, 'easeOutCubic'));
+  const title1Ease = useParallax(getEaseParallaxParams(title1StartY, 1, 'easeInOutCubic'));
+  const title3Ease = useParallax(getEaseParallaxParams(title3StartY, 2, 'easeInOutCubic'));
 
-  const dot1Ease = useParallax(getEaseParallaxParams(dot1StartY, 'easeOutQuart'));
+  const dot1Ease = useParallax(getEaseParallaxParams(dot1StartY, 1, 'easeInOutQuart'));
+  const dot3Ease = useParallax(getEaseParallaxParams(dot3StartY, 2, 'easeInOutQuart'));
 
-  const dot3Ease = useParallax(getEaseParallaxParams(dot3StartY, 'easeOutQuart'));
-
-  const line1Scale = useParallax(
-    delayedValuesEnabled ?
-      { scale: [0, 1], duration: 0.005, opacity: [0.5, 1], } :
-      { scale: [0, 0] }
-  );
-
-  const line2Scale = useParallax(
-    valuesEnabled ?
-      { scale: [0, 1], duration: 0.005, opacity: [0.5, 1], } :
-      { scale: [0, 0] }
-  );
+  const line1Scale = useParallax(getLineParallaxParams(delayedValuesEnabled));
+  const line2Scale = useParallax(getLineParallaxParams(delayedValuesEnabled));
 
 
   useEffect(() => {
@@ -278,6 +265,8 @@ const Values = () => {
         anticipatePin: 1,
         fastScrollEnd: true,
         onEnter: () => {
+          setIsAnimating(true);
+
           setTimeout(() => {
             setCakeEaseEnabled(true);
           }, 400); // Adjust delay time here
@@ -287,13 +276,14 @@ const Values = () => {
           }, 400);
           setTimeout(() => {
             setDelayedValuesEnabled(true);
-          }, 64);
+          }, 88);
           setTimeout(() => {
             setValuesEnabled(true);
           }, 40);
 
         },
         onLeaveBack: () => {
+          setIsAnimating(false);
           setCakeEaseEnabled(false);
           setDescValuesEnabled(false);
           setValuesEnabled(false);
