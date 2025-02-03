@@ -167,7 +167,6 @@ const Values = () => {
   const [valuesEnabled, setValuesEnabled] = useState(false);
   const [delayedValuesEnabled, setDelayedValuesEnabled] = useState(false);
   const [isMobile, setIsMobile] = useState(false)
-  const [isTablet, setIsTablet] = useState(false)
   const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
@@ -192,7 +191,6 @@ const Values = () => {
   useEffect(() => {
     const updateDeviceType = () => {
       setIsMobile(window.innerWidth <= SCREEN_BREAKPOINTS.mobile)
-      setIsTablet(window.innerWidth <= SCREEN_BREAKPOINTS.tablet)
     }
 
     updateDeviceType()
