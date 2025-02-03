@@ -221,11 +221,11 @@ const Values = () => {
     return { easing: ease, speed: 0, translateY: [startY, startY] };
   }
 
-  const getLineParallaxParams = (cond) => ({
-    scale: cond ? [0, 1] : [0, 0],
-    duration: 0.005,
-    opacity: cond ? [0, 1] : [0, 0],
-  })
+  const getLineParallaxParams = (cond) => {
+    return cond
+      ? { scale: [0, 1], duration: 0.005, opacity: [0, 1] }
+      : { scale: [0, 0], duration: 0.005, opacity: [0, 0] };
+  };
 
   const fade = Array(3).fill(null).map(() => {
     let opacitySettings;
