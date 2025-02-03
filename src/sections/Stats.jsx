@@ -82,7 +82,7 @@ const MobileEggStat = styled.img`
   left: calc(100vw * (-175 / 393));
   z-index: 3;
   transform: translateX(${({ scrollOffset }) => scrollOffset}px);
-  transition: transform 0.1s linear;
+  transition: transform 0.3s ease-out;
 `;
 
 const MobileBottleStat = styled.img`
@@ -93,7 +93,7 @@ const MobileBottleStat = styled.img`
   left: calc(100vw * (-305 / 393));
   z-index: 3;
   transform: translateX(${({ scrollOffset }) => scrollOffset}px);
-  transition: transform 0.1s linear;
+  transition: transform 0.3s ease-out;
 `;
 
 const MobileFlourStat = styled.img`
@@ -104,7 +104,7 @@ const MobileFlourStat = styled.img`
   left: calc(100vw * (-140 / 393));
   z-index: 3;
   transform: translateX(${({ scrollOffset }) => scrollOffset}px);
-  transition: transform 0.1s linear;
+  transition: transform 0.3s ease-out;
 `;
 
 const MobileButterStat = styled.img`
@@ -115,7 +115,7 @@ const MobileButterStat = styled.img`
   left: calc(100vw * (-295 / 393));
   z-index: 3;
   transform: translateX(${({ scrollOffset }) => scrollOffset}px);
-  transition: transform 0.1s linear;
+  transition: transform 0.3s ease-out;
 `;
 
 const Stats = () => {
