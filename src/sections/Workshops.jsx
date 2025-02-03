@@ -24,8 +24,8 @@ const WorkshopsContainer = styled.div`
   }
 
   ${p => p.theme.mediaQueries.mobile} {
-    aspect-ratio: 487 / 1658;
-    top: calc(100vw * (-470 / 487));
+    aspect-ratio: 393 / 1871;
+    top: calc(100vw * (0 / 487));
   }
 `
 
