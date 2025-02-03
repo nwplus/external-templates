@@ -220,46 +220,37 @@ const Values = () => {
       { easing: 'easeOutQuad', speed: 0, translateY: [-35, -35], }
   );
 
-  const fade = Array(3).fill(null).map(() =>
-    useParallax(descValuesEnabled && !isMobile && !isTablet ?
-      { opacity: [0, 1], duration: 0.01 } :
-      isMobile || isTablet ?
-        { opacity: [1, 1] } :
-        { opacity: [0, 0] }
-    )
-  );
+  const getEaseParallaxParams = (startY, ease) => {
+    if (valuesEnabled && !isMobile && !isTablet) {
+      return { duration: 1, easing: ease, speed: 0.1, translateY: [startY, 0] };
+    }
+    if (isMobile || isTablet) {
+      return { speed: 0, translateY: [0, 0] };
+    }
+    return { speed: 0, translateY: [startY, startY] };
+  };
 
-  const title1Ease = useParallax(
-    valuesEnabled && !isMobile && !isTablet ?
-      { duration: 1, easing: 'easeOutQuad', speed: 0.1, translateY: [title1StartY, 0], } :
-      isMobile || isTablet ?
-        { speed: 0, translateY: [0, 0], } :
-        { speed: 0, translateY: [title1StartY, title1StartY], }
-  );
+  const fade = Array(3).fill(null).map(() => {
+    let opacitySettings;
 
-  const title3Ease = useParallax(
-    valuesEnabled && !isMobile && !isTablet ?
-      { duration: 1, easing: 'easeOutQuad', speed: 0.08, translateY: [title3StartY, 0], } :
-      isMobile || isTablet ?
-        { speed: 0, translateY: [0, 0], } :
-        { speed: 0, translateY: [title3StartY, title3StartY], }
-  );
+    if (descValuesEnabled && !isMobile && !isTablet) {
+      opacitySettings = { opacity: [0, 1], duration: 0.01, easing: 'easeInOutQuad' };
+    } else if (isMobile || isTablet) {
+      opacitySettings = { opacity: [1, 1] };
+    } else {
+      opacitySettings = { opacity: [0, 0] };
+    }
 
-  const dot1Ease = useParallax(
-    valuesEnabled && !isMobile && !isTablet ?
-      { duration: 1, easing: 'easeOutQuad', speed: 0.1, translateY: [dot1StartY, 0], } :
-      isMobile || isTablet ?
-        { speed: 0, translateY: [0, 0], } :
-        { speed: 0, translateY: [dot1StartY, dot1StartY], }
-  );
+    return useParallax(opacitySettings);
+  });
 
-  const dot3Ease = useParallax(
-    valuesEnabled && !isMobile && !isTablet ?
-      { duration: 1, easing: 'easeOutQuad', speed: 0.1, translateY: [dot3StartY, 0], } :
-      isMobile || isTablet ?
-        { speed: 0, translateY: [0, 0], } :
-        { speed: 0, translateY: [dot3StartY, dot3StartY], }
-  );
+  const title1Ease = useParallax(getEaseParallaxParams(title1StartY, 'easeOutCubic'));
+
+  const title3Ease = useParallax(getEaseParallaxParams(title3StartY, 'easeOutCubic'));
+
+  const dot1Ease = useParallax(getEaseParallaxParams(dot1StartY, 'easeOutQuart'));
+
+  const dot3Ease = useParallax(getEaseParallaxParams(dot3StartY, 'easeOutQuart'));
 
   const line1Scale = useParallax(
     delayedValuesEnabled ?
