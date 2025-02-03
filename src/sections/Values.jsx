@@ -204,10 +204,10 @@ const Values = () => {
   }, [])
 
   const getEaseParallaxParams = (startY, dur, ease, cond) => {
-    if (cond && !isMobile && !isTablet) {
+    if (cond && !isMobile) {
       return { duration: isAnimating ? dur : 0.6, easing: ease, translateY: [startY, 0] };
     }
-    if (isMobile || isTablet) {
+    if (isMobile) {
       return { speed: 0, translateY: [0, 0] };
     }
     return { speed: 0, translateY: [startY, startY] };
@@ -228,9 +228,9 @@ const Values = () => {
   const fade = Array(3).fill(null).map(() => {
     let opacitySettings;
 
-    if (descValuesEnabled && !isMobile && !isTablet) {
-      opacitySettings = { opacity: [0, 1], duration: 0.01, easing: 'easeInOutQuad' };
-    } else if (isMobile || isTablet) {
+    if (descValuesEnabled && !isMobile) {
+      opacitySettings = { opacity: [0, 1], duration: 0.005, easing: 'easeInOutQuad' };
+    } else if (isMobile) {
       opacitySettings = { opacity: [1, 1] };
     } else {
       opacitySettings = { opacity: [0, 0] };
