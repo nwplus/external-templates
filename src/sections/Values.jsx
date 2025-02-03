@@ -249,7 +249,7 @@ const Values = () => {
   const dot1Ease = useParallax(getEaseParallaxParams(dot1StartY, 1, 'easeInOutQuart', valuesEnabled));
   const dot3Ease = useParallax(getEaseParallaxParams(dot3StartY, 1.5, 'easeInOutQuart', valuesEnabled));
 
-  const line1Scale = useParallax(getLineParallaxParams(delayedValuesEnabled, 56));
+  const line1Scale = useParallax(getLineParallaxParams(delayedValuesEnabled, 60));
   const line2Scale = useParallax(getLineParallaxParams(delayedValuesEnabled, -52));
 
 
