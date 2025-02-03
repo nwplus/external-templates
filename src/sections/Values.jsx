@@ -220,7 +220,7 @@ const Values = () => {
 
   const getLineParallaxParams = (cond, start) => cond
     ? { scaleY: [0, 1], duration: 2, opacity: [0, 1], translateY: [start, 0] }
-    : { scaleY: [0, 0], duration: 2, opacity: [0, 0] };
+    : { scaleY: [0, 0], duration: 0.1, opacity: [0, 0] };
 
 
   const fade = Array(3).fill(null).map(() => {
@@ -258,7 +258,7 @@ const Values = () => {
       scrollTrigger: {
         trigger: values,
         start: 'top top',
-        end: '+=120%',
+        end: '+=115%',
         scrub: true,
         pin: true,
         anticipatePin: 1,
