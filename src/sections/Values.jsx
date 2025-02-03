@@ -203,7 +203,7 @@ const Values = () => {
     }
   }, [])
 
-  const getEaseParallaxParams = (startY, dur, ease) => {
+  const getEaseParallaxParams = (startY, dur, ease, cond) => {
     if (valuesEnabled && !isMobile && !isTablet) {
       return { duration: isAnimating ? dur : 0.6, easing: ease, translateY: [startY, 0] };
     }
@@ -220,9 +220,7 @@ const Values = () => {
     return { easing: ease, speed: 0, translateY: [startY, startY] };
   }
 
-  const getLineParallaxParams = (cond) => {
-    return cond ? { scale: [0, 1], duration: 0.005, opacity: [0, 1], } : { scale: [0, 0] };
-  }
+  const getLineParallaxParams = (cond) => cond ? { scale: [0, 1], duration: 0.005, opacity: [0, 1], } : { scale: [0, 0] };
 
   const fade = Array(3).fill(null).map(() => {
     let opacitySettings;
@@ -242,14 +240,14 @@ const Values = () => {
   const cakeMidEase = useParallax(getCakeEaseParallaxParams('easeInOutQuad', 0, 0));
   const cakeBotEase = useParallax(getCakeEaseParallaxParams('easeInOutQuad', -35, 5));
 
-  const title1Ease = useParallax(getEaseParallaxParams(title1StartY, 1, 'easeInOutCubic'));
-  const title3Ease = useParallax(getEaseParallaxParams(title3StartY, 2, 'easeInOutCubic'));
+  const title1Ease = useParallax(getEaseParallaxParams(title1StartY, 1, 'easeInOutCubic', valuesEnabled));
+  const title3Ease = useParallax(getEaseParallaxParams(title3StartY, 2, 'easeInOutCubic', delayedValuesEnabled));
 
-  const dot1Ease = useParallax(getEaseParallaxParams(dot1StartY, 1, 'easeInOutQuart'));
-  const dot3Ease = useParallax(getEaseParallaxParams(dot3StartY, 2, 'easeInOutQuart'));
+  const dot1Ease = useParallax(getEaseParallaxParams(dot1StartY, 1, 'easeInOutQuart', valuesEnabled));
+  const dot3Ease = useParallax(getEaseParallaxParams(dot3StartY, 2, 'easeInOutQuart', delayedValuesEnabled));
 
   const line1Scale = useParallax(getLineParallaxParams(delayedValuesEnabled));
-  const line2Scale = useParallax(getLineParallaxParams(delayedValuesEnabled));
+  const line2Scale = useParallax(getLineParallaxParams(valuesEnabled));
 
 
   useEffect(() => {
@@ -273,10 +271,10 @@ const Values = () => {
 
           setTimeout(() => {
             setDescValuesEnabled(true);
-          }, 400);
+          }, 500);
           setTimeout(() => {
             setDelayedValuesEnabled(true);
-          }, 88);
+          }, 160);
           setTimeout(() => {
             setValuesEnabled(true);
           }, 40);
