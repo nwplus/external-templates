@@ -193,7 +193,7 @@ const Values = () => {
 
   const cakeBotEase = useParallax(
     cakeEaseEnabled ?
-      { easing: 'easeOutQuad', speed: 0.05, translateY: [-35, 5], } :
+      { easing: 'easeOutQuad', speed: 0.1, translateY: [-35, 5], } :
       { easing: 'easeOutQuad', speed: 0, translateY: [-35, -35], }
   );
 
@@ -224,18 +224,18 @@ const Values = () => {
         trigger: values,
         start: 'top top',
         end: '+=110%',
-        scrub: 0.25,
+        scrub: true,
         pin: true,
         anticipatePin: 1,
         fastScrollEnd: true,
         onEnter: () => {
           setTimeout(() => {
             setCakeEaseEnabled(true);
-          }, 400); // Adjust delay time here
+          }, 340); // Adjust delay time here
 
           setTimeout(() => {
             setDescValuesEnabled(true);
-          }, 40); // Adjust delay time here
+          }, 20); // Adjust delay time here
 
           // setTimeout(() => {
           //   setValuesEnabled(true);
