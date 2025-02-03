@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
-// import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
+import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
 import cakeTop from '@assets/images/cake_top.svg'
 import cakeMid from '@assets/images/cake_mid.svg'
 import cakeBottom from '@assets/images/cake_bottom.svg'
@@ -158,25 +158,63 @@ const ValueDescription = styled.p`
 
 const Values = () => {
   const valuesRef = useRef(null);
-  const [parallaxEnabled, setParallaxEnabled] = useState(false);
+  const [cakeEaseEnabled, setCakeEaseEnabled] = useState(false);
+  const [descValuesEnabled, setDescValuesEnabled] = useState(false);
+  // const [valuesEnabled, setValuesEnabled] = useState(false);
+
+  const [isMobile, setIsMobile] = useState(false)
+  const [isTablet, setIsTablet] = useState(false)
+
+  useEffect(() => {
+    const updateDeviceType = () => {
+      setIsMobile(window.innerWidth <= SCREEN_BREAKPOINTS.mobile)
+      setIsTablet(window.innerWidth <= SCREEN_BREAKPOINTS.tablet)
+    }
+
+    updateDeviceType()
+    window.addEventListener('resize', updateDeviceType)
+
+    return () => {
+      window.removeEventListener('resize', updateDeviceType)
+    }
+  }, [])
 
   const cakeTopEase = useParallax(
-    parallaxEnabled ?
-      { easing: 'easeOutQuad', speed: 0.5, translateY: [12, -16], } :
-      { easing: 'easeOutQuad', speed: 0, translateY: [12, 12], }
+    cakeEaseEnabled ?
+      { easing: 'easeOutQuad', speed: 0.1, translateY: [35, -5], } :
+      { easing: 'easeOutQuad', speed: 0, translateY: [35, 35], }
   );
 
   const cakeMidEase = useParallax(
-    parallaxEnabled ?
-      { easing: 'easeOutQuad', speed: 0.5, translateY: [-32, -12], } :
-      { easing: 'easeOutQuad', speed: 0, translateY: [-32, -32], }
+    cakeEaseEnabled ?
+      { easing: 'easeOutQuad', speed: 0.1, translateY: [0, 0], } :
+      { easing: 'easeOutQuad', speed: 0, translateY: [0, 0], }
   );
 
   const cakeBotEase = useParallax(
-    parallaxEnabled ?
-      { easing: 'easeOutQuad', speed: 0.5, translateY: [-68, 0], } :
-      { easing: 'easeOutQuad', speed: 0, translateY: [-68, -68], }
+    cakeEaseEnabled ?
+      { easing: 'easeOutQuad', speed: 0.1, translateY: [-35, 5], } :
+      { easing: 'easeOutQuad', speed: 0, translateY: [-35, -35], }
   );
+
+  const descFade = Array(3).fill(null).map(() =>
+    useParallax(descValuesEnabled && !isMobile && !isTablet ?
+      { opacity: [0, 1], duration: 0.001 } :
+      isMobile || isTablet ?
+        { opacity: [1, 1] } :
+        { opacity: [0, 0] }
+    )
+  );
+
+  // const easeUp = Array(2).fill(null).map(() =>
+  //   useParallax(valuesEnabled && !isMobile && !isTablet ?
+  //     { duration: 1, translateY: [400, 0], } :
+  //     isMobile || isTablet ?
+  //       { speed: 0, translateY: [0, 0], } :
+  //       { speed: 0, translateY: [400, 400], }
+  //   )
+  // );
+
 
   useEffect(() => {
     const values = valuesRef.current;
@@ -185,16 +223,26 @@ const Values = () => {
       scrollTrigger: {
         trigger: values,
         start: 'top top',
-        end: '+=100%',
-        scrub: true,
+        end: '+=110%',
+        scrub: 0.25,
         pin: true,
         anticipatePin: 1,
         fastScrollEnd: true,
         onEnter: () => {
           setTimeout(() => {
-            setParallaxEnabled(true);
-          }, 140); // Adjust delay time here
+            setCakeEaseEnabled(true);
+          }, 400); // Adjust delay time here
+
+          setTimeout(() => {
+            setDescValuesEnabled(true);
+          }, 40); // Adjust delay time here
+
+          // setTimeout(() => {
+          //   setValuesEnabled(true);
+          // }, 10); // Adjust delay time here
+
         }
+
       },
     });
   }, []);
@@ -218,7 +266,7 @@ const Values = () => {
               </DotLineContainer>
               <ValueContent>
                 <ValueTitle>Build Confidence</ValueTitle>
-                <ValueDescription>
+                <ValueDescription ref={descFade[0].ref}>
                   Develop career-ready skills, fight impostor syndrome, and create an invaluable support
                   network with friends, mentors, and sponsors. Regardless of your background, you bring a
                   unique and important perspective to tech. Like how there is always a treat for everyone,
@@ -234,7 +282,7 @@ const Values = () => {
               </DotLineContainer>
               <ValueContent>
                 <ValueTitle>Learn Together</ValueTitle>
-                <ValueDescription>
+                <ValueDescription ref={descFade[1].ref}>
                   Whether you have never coded before, or you dream in assembly, challenge yourself to create
                   something meaningful! Learn new skills at our workshops and apply them to fresh and creative
                   projects! Regardless of your project&apos;s completion at the end of the weekend, take pride in the
@@ -250,7 +298,7 @@ const Values = () => {
               </DotLineContainer>
               <ValueContent>
                 <ValueTitle>Explore in a Safe Space</ValueTitle>
-                <ValueDescription>
+                <ValueDescription ref={descFade[2].ref}>
                   Discover a community of like-minded, creative, and passionate individuals. Form lasting bonds,
                   share experiences, and create memories in an environment free from judgment, where all gender
                   identities and expressions are respected. We&apos;re all here unified under one cause—to strive for
@@ -266,20 +314,3 @@ const Values = () => {
 }
 
 export default Values;
-
-// const [isMobile, setIsMobile] = useState(false)
-// const [isTablet, setIsTablet] = useState(false)
-
-// useEffect(() => {
-//   const updateDeviceType = () => {
-//     setIsMobile(window.innerWidth <= SCREEN_BREAKPOINTS.mobile)
-//     setIsTablet(window.innerWidth <= SCREEN_BREAKPOINTS.tablet)
-//   }
-
-//   updateDeviceType()
-//   window.addEventListener('resize', updateDeviceType)
-
-//   return () => {
-//     window.removeEventListener('resize', updateDeviceType)
-//   }
-// }, [])
