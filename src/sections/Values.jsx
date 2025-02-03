@@ -235,7 +235,7 @@ const Values = () => {
 
           setTimeout(() => {
             setDescValuesEnabled(true);
-          }, 20); // Adjust delay time here
+          }, 48); // Adjust delay time here
 
           // setTimeout(() => {
           //   setValuesEnabled(true);
