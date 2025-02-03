@@ -160,10 +160,33 @@ const Values = () => {
   const valuesRef = useRef(null);
   const [cakeEaseEnabled, setCakeEaseEnabled] = useState(false);
   const [descValuesEnabled, setDescValuesEnabled] = useState(false);
-  // const [valuesEnabled, setValuesEnabled] = useState(false);
-
+  const [title1StartY, setTitle1StartY] = useState(100)
+  const [title3StartY, setTitle3StartY] = useState(-100)
+  const [dot1StartY, setDot1StartY] = useState(100)
+  const [dot3StartY, setDot3StartY] = useState(-100)
+  const [valuesEnabled, setValuesEnabled] = useState(false);
+  const [delayedValuesEnabled, setDelayedValuesEnabled] = useState(false);
   const [isMobile, setIsMobile] = useState(false)
   const [isTablet, setIsTablet] = useState(false)
+
+  useEffect(() => {
+    const updateY = () => {
+      const screenWidth = window.innerWidth;
+      const screenHeight = window.innerHeight;
+      const valY = Math.min(screenWidth * 0.2, screenHeight * 0.35)
+      setTitle1StartY(valY)
+      setTitle3StartY(-1.2 * valY)
+      setDot1StartY(valY * 3)
+      setDot3StartY(-3.2 * valY)
+    }
+
+    updateY()
+    window.addEventListener('resize', updateY)
+
+    return () => {
+      window.removeEventListener('resize', updateY)
+    }
+  }, [])
 
   useEffect(() => {
     const updateDeviceType = () => {
@@ -197,23 +220,58 @@ const Values = () => {
       { easing: 'easeOutQuad', speed: 0, translateY: [-35, -35], }
   );
 
-  const descFade = Array(3).fill(null).map(() =>
+  const fade = Array(3).fill(null).map(() =>
     useParallax(descValuesEnabled && !isMobile && !isTablet ?
-      { opacity: [0, 1], duration: 0.001 } :
+      { opacity: [0, 1], duration: 0.01 } :
       isMobile || isTablet ?
         { opacity: [1, 1] } :
         { opacity: [0, 0] }
     )
   );
 
-  // const easeUp = Array(2).fill(null).map(() =>
-  //   useParallax(valuesEnabled && !isMobile && !isTablet ?
-  //     { duration: 1, translateY: [400, 0], } :
-  //     isMobile || isTablet ?
-  //       { speed: 0, translateY: [0, 0], } :
-  //       { speed: 0, translateY: [400, 400], }
-  //   )
-  // );
+  const title1Ease = useParallax(
+    valuesEnabled && !isMobile && !isTablet ?
+      { duration: 1, easing: 'easeOutQuad', speed: 0.1, translateY: [title1StartY, 0], } :
+      isMobile || isTablet ?
+        { speed: 0, translateY: [0, 0], } :
+        { speed: 0, translateY: [title1StartY, title1StartY], }
+  );
+
+  const title3Ease = useParallax(
+    valuesEnabled && !isMobile && !isTablet ?
+      { duration: 1, easing: 'easeOutQuad', speed: 0.1, translateY: [title3StartY, 0], } :
+      isMobile || isTablet ?
+        { speed: 0, translateY: [0, 0], } :
+        { speed: 0, translateY: [title3StartY, title3StartY], }
+  );
+
+  const dot1Ease = useParallax(
+    valuesEnabled && !isMobile && !isTablet ?
+      { duration: 1, easing: 'easeOutQuad', speed: 0.1, translateY: [dot1StartY, 0], } :
+      isMobile || isTablet ?
+        { speed: 0, translateY: [0, 0], } :
+        { speed: 0, translateY: [dot1StartY, dot1StartY], }
+  );
+
+  const dot3Ease = useParallax(
+    valuesEnabled && !isMobile && !isTablet ?
+      { duration: 1, easing: 'easeOutQuad', speed: 0.1, translateY: [dot3StartY, 0], } :
+      isMobile || isTablet ?
+        { speed: 0, translateY: [0, 0], } :
+        { speed: 0, translateY: [dot3StartY, dot3StartY], }
+  );
+
+  const line1Scale = useParallax(
+    delayedValuesEnabled ?
+      { scale: [0, 1], duration: 0.01 } :
+      { scale: [0, 0] }
+  );
+
+  const line2Scale = useParallax(
+    valuesEnabled ?
+      { scale: [0, 1], duration: 0.01 } :
+      { scale: [0, 0] }
+  );
 
 
   useEffect(() => {
@@ -223,7 +281,7 @@ const Values = () => {
       scrollTrigger: {
         trigger: values,
         start: 'top top',
-        end: '+=110%',
+        end: '+=120%',
         scrub: true,
         pin: true,
         anticipatePin: 1,
@@ -235,21 +293,25 @@ const Values = () => {
 
           setTimeout(() => {
             setDescValuesEnabled(true);
-          }, 100); // Adjust delay time here
-
-          // setTimeout(() => {
-          //   setValuesEnabled(true);
-          // }, 10); // Adjust delay time here
+          }, 340);
+          setTimeout(() => {
+            setDelayedValuesEnabled(true);
+          }, 52);
+          setTimeout(() => {
+            setValuesEnabled(true);
+          }, 40);
 
         },
         onLeaveBack: () => {
           setCakeEaseEnabled(false);
           setDescValuesEnabled(false);
-          // setValuesEnabled(false);},
+          setValuesEnabled(false);
+          setDelayedValuesEnabled(false);
+        },
 
-        }
       }
-    });
+    }
+    );
     return () => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill())
     }
@@ -269,12 +331,12 @@ const Values = () => {
           <ValuesList>
             <ValueItem>
               <DotLineContainer>
-                <Dot />
-                <Line1 />
+                <Dot ref={dot1Ease.ref} />
+                <Line1 ref={line1Scale.ref} />
               </DotLineContainer>
               <ValueContent>
-                <ValueTitle>Build Confidence</ValueTitle>
-                <ValueDescription ref={descFade[0].ref}>
+                <ValueTitle ref={title1Ease.ref}>Build Confidence</ValueTitle>
+                <ValueDescription ref={fade[0].ref}>
                   Develop career-ready skills, fight impostor syndrome, and create an invaluable support
                   network with friends, mentors, and sponsors. Regardless of your background, you bring a
                   unique and important perspective to tech. Like how there is always a treat for everyone,
@@ -286,11 +348,11 @@ const Values = () => {
             <ValueItem>
               <DotLineContainer>
                 <Dot />
-                <Line2 />
+                <Line2 ref={line2Scale.ref} />
               </DotLineContainer>
               <ValueContent>
                 <ValueTitle>Learn Together</ValueTitle>
-                <ValueDescription ref={descFade[1].ref}>
+                <ValueDescription ref={fade[1].ref}>
                   Whether you have never coded before, or you dream in assembly, challenge yourself to create
                   something meaningful! Learn new skills at our workshops and apply them to fresh and creative
                   projects! Regardless of your project&apos;s completion at the end of the weekend, take pride in the
@@ -302,11 +364,11 @@ const Values = () => {
 
             <ValueItem>
               <DotLineContainer>
-                <Dot />
+                <Dot ref={dot3Ease.ref} />
               </DotLineContainer>
               <ValueContent>
-                <ValueTitle>Explore in a Safe Space</ValueTitle>
-                <ValueDescription ref={descFade[2].ref}>
+                <ValueTitle ref={title3Ease.ref}>Explore in a Safe Space</ValueTitle>
+                <ValueDescription ref={fade[2].ref}>
                   Discover a community of like-minded, creative, and passionate individuals. Form lasting bonds,
                   share experiences, and create memories in an environment free from judgment, where all gender
                   identities and expressions are respected. We&apos;re all here unified under one cause—to strive for
