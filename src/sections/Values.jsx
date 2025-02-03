@@ -239,7 +239,7 @@ const Values = () => {
 
   const title3Ease = useParallax(
     valuesEnabled && !isMobile && !isTablet ?
-      { duration: 1, easing: 'easeOutQuad', speed: 0.1, translateY: [title3StartY, 0], } :
+      { duration: 1, easing: 'easeOutQuad', speed: 0.08, translateY: [title3StartY, 0], } :
       isMobile || isTablet ?
         { speed: 0, translateY: [0, 0], } :
         { speed: 0, translateY: [title3StartY, title3StartY], }
@@ -293,10 +293,10 @@ const Values = () => {
 
           setTimeout(() => {
             setDescValuesEnabled(true);
-          }, 340);
+          }, 400);
           setTimeout(() => {
             setDelayedValuesEnabled(true);
-          }, 52);
+          }, 64);
           setTimeout(() => {
             setValuesEnabled(true);
           }, 40);
