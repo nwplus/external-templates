@@ -5,6 +5,11 @@ import FaqBox from '@components/FaqBox'
 
 const FaqContainer = styled.div`
   position: relative;
+  margin-top: 0;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    margin-top: calc(100vw * (180 / 393));
+  }
 
   &::before {
     content: '';
@@ -24,7 +29,7 @@ const FaqContainer = styled.div`
 
   ${p => p.theme.mediaQueries.mobile} {
     &::before {
-      aspect-ratio: 487 / 1060;    }
+      aspect-ratio: 393 / 1112;    }
   }
 `
 
