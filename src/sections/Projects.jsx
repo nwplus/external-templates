@@ -32,6 +32,7 @@ const ProjectsContainer = styled.div`
   padding: 0 calc(100vw * (73 / 1683));
 
   ${p => p.theme.mediaQueries.mobile} {
+    aspect-ratio: 393 / 1271;
     grid-template-columns: 1fr;
     grid-template-rows: auto;
     padding: 0;
