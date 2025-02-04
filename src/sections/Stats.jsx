@@ -79,7 +79,7 @@ const MobileEggStat = styled.img`
   height: auto;
   width: calc(100vw * (252 / 393));
   top: calc(100vw * (327 / 393));
-  left: calc(100vw * (-150 / 393));
+  left: calc(100vw * (-170 / 393));
   z-index: 3;
   transform: translateX(${({ scrollOffset }) => scrollOffset}px);
   transition: transform 0.3s ease-out;
@@ -90,7 +90,7 @@ const MobileBottleStat = styled.img`
   height: auto;
   width: calc(100vw * (195 / 393));
   top: calc(100vw * (470 / 393));
-  left: calc(100vw * (-290 / 393));
+  left: calc(100vw * (-310 / 393));
   z-index: 3;
   transform: translateX(${({ scrollOffset }) => scrollOffset}px);
   transition: transform 0.3s ease-out;
@@ -101,7 +101,7 @@ const MobileFlourStat = styled.img`
   height: auto;
   width: calc(100vw * (210 / 393));
   top: calc(100vw * (575 / 393));
-  left: calc(100vw * (-130 / 393));
+  left: calc(100vw * (-150 / 393));
   z-index: 3;
   transform: translateX(${({ scrollOffset }) => scrollOffset}px);
   transition: transform 0.3s ease-out;
@@ -112,7 +112,7 @@ const MobileButterStat = styled.img`
   height: auto;
   width: calc(100vw * (210 / 393));
   top: calc(100vw * (750 / 393));
-  left: calc(100vw * (-285 / 393));
+  left: calc(100vw * (-305 / 393));
   z-index: 3;
   transform: translateX(${({ scrollOffset }) => scrollOffset}px);
   transition: transform 0.3s ease-out;
@@ -120,14 +120,12 @@ const MobileButterStat = styled.img`
 
 const Stats = () => {
   const [isMobile, setIsMobile] = useState(false)
-  const [isTablet, setIsTablet] = useState(false)
   const [scrollOffset, setScrollOffset] = useState(0);
   const statsContainerRef = useRef(null)
 
   useEffect(() => {
     const updateDeviceType = () => {
       setIsMobile(window.innerWidth <= SCREEN_BREAKPOINTS.mobile)
-      setIsTablet(window.innerWidth <= SCREEN_BREAKPOINTS.tablet)
     }
 
     updateDeviceType()
@@ -171,7 +169,7 @@ const Stats = () => {
 
   return (
     <OuterContainer id="stats">
-      {!isMobile && !isTablet ? (
+      {!isMobile ? (
         <StatsContainer ref={statsContainerRef}>
           <Title>Last year we had...</Title>
           <Bowl src='assets/images/stats/bowl.svg' />

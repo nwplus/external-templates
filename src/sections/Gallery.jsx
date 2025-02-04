@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import Draggable from 'react-draggable';
 
@@ -31,10 +31,15 @@ const BreadBase = styled(DraggableImage)`
   z-index: 4;
 `
 
-// Refactored components
 const BreadOne = styled(BreadBase)`
   top: calc(100vw * (60 / 1920));
   left: calc(100vw * (505 / 1920));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (80 / 393));    
+    top: calc(100vw * (200 / 1286));     
+    left: calc(100vw * (135 / 393));      
+  }
 `
 
 const BreadTwo = styled(BreadBase)`
@@ -42,6 +47,12 @@ const BreadTwo = styled(BreadBase)`
   top: calc(100vw * (600 / 1920));
   left: calc(100vw * (925 / 1920));
   z-index: 13;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (80 / 393));
+    top: calc(100vw * (580 / 393));
+    left: calc(100vw * (290 / 393));
+  }
 `
 
 const BreadThree = styled(BreadBase)`
@@ -49,6 +60,12 @@ const BreadThree = styled(BreadBase)`
   top: calc(100vw * (200 / 1920));
   left: calc(100vw * (1130 / 1920));
   z-index: 15;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (65 / 393));
+    top: calc(100vw * (560 / 393));
+    left: calc(100vw * (60 / 393));
+  }
 `
 
 const Croissant = styled(DraggableImage)`
@@ -56,17 +73,36 @@ const Croissant = styled(DraggableImage)`
   top: calc(100vw * (470 / 1920));
   left: calc(100vw * (1330 / 1920));
   z-index: 12;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (130 / 393));
+    top: calc(100vw * (795 / 393));
+    left: calc(100vw * (80 / 393));
+    z-index: 15;
+  }
 `
 
 const PolaroidSelfie = styled(PolaroidBase)`
   top: calc(100vw * (450 / 1920));
   left: calc(100vw * (80 / 1920));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (240 / 393));   
+    top: calc(100vw * (980 / 1286));     
+    left: calc(100vw * (0 / 393));     
+  }
 `
 
 const PolaroidCeremony = styled(PolaroidBase)`
   top: calc(100vw * (580 / 1920));
   left: calc(100vw * (720 / 1920));
   z-index: 6;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (220 / 393));
+    top: calc(100vw * (350 / 393));  
+    left: calc(100vw * (170 / 393));   
+  }
 `
 
 const PolaroidPanel = styled(PolaroidBase)`
@@ -74,6 +110,12 @@ const PolaroidPanel = styled(PolaroidBase)`
   top: calc(100vw * (200 / 1920));
   left: calc(100vw * (930 / 1920));
   z-index: 14;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (270 / 393));
+    top: calc(100vw * (830 / 393));
+    left: calc(100vw * (-20 / 393));
+  }
 `
 
 const PolaroidHeart = styled(PolaroidBase)`
@@ -81,6 +123,12 @@ const PolaroidHeart = styled(PolaroidBase)`
   top: calc(100vw * (500 / 1920));
   left: calc(100vw * (1040 / 1920));
   z-index: 7;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (215 / 393));
+    top: calc(100vw * (570 / 393));
+    left: calc(100vw * (-28 / 393));
+  }
 `
 
 const PolaroidWinners = styled(PolaroidBase)`
@@ -88,6 +136,13 @@ const PolaroidWinners = styled(PolaroidBase)`
   top: calc(100vw * (50 / 1920));
   left: calc(100vw * (1240 / 1920));
   z-index: 8;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (240 / 393));
+    top: calc(100vw * (800 / 393));
+    left: calc(100vw * (200 / 393));
+    z-index: 11;
+  }
 `
 
 const PolaroidMerch = styled(PolaroidBase)`
@@ -95,6 +150,14 @@ const PolaroidMerch = styled(PolaroidBase)`
   top: calc(100vw * (320 / 1920));
   left: calc(100vw * (1450 / 1920));
   z-index: 9;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (220 / 393));
+    top: calc(100vw * (985 / 393));
+    left: calc(100vw * (-5 / 393));
+    z-index: 14;
+    rotate: -28deg;
+  }
 `
 
 const PolaroidAtrium = styled(PolaroidBase)`
@@ -102,6 +165,12 @@ const PolaroidAtrium = styled(PolaroidBase)`
   top: calc(100vw * (600 / 1920));
   left: calc(100vw * (1280 / 1920));
   z-index: 10;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (280 / 393));
+    top: calc(100vw * (605 / 393));
+    left: calc(100vw * (150 / 393));
+  }
 `
 
 const Nugget = styled(DraggableImage)`
@@ -109,6 +178,12 @@ const Nugget = styled(DraggableImage)`
   top: calc(100vw * (720 / 1920));
   left: calc(100vw * (1600 / 1920));
   z-index: 11;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (180 / 393));
+    top: calc(100vw * (1050 / 393));
+    left: calc(100vw * (210 / 393));
+  }
 `
 
 const VideoComponent = styled.div`
@@ -120,12 +195,22 @@ const VideoComponent = styled.div`
   top: calc(100vw * (100 / 1920));
   left: calc(100vw * (180 / 1920));
 
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (350 / 393));
+    top: calc(100vw * (100 / 393));
+    left: calc(100vw * (20 / 393));
+  }
+
   .polaroid {
     width: 100%;
     ${absolutePositionCSS}
     ${noDragCSS}
     top: 0;
     left: 0;
+
+    ${p => p.theme.mediaQueries.mobile} {
+      width: 100%;
+    }
   }
 
   .video-container {
@@ -140,18 +225,12 @@ const VideoComponent = styled.div`
     left: calc(100vw * (35 / 1920));
     overflow: visible;
 
-    ${p => p.theme.mediaQueries.tablet} {
-      top: calc(100vw * (350 / 893));
-      width: calc(100vw * (446 / 893));
-      height: calc(100vw * (296 / 893));
-      border: calc(100vw * (10 / 893)) solid #151515;
-    }
-
     ${p => p.theme.mediaQueries.mobile} {
-      top: calc(100vw * (500 / 487));
-      width: calc(100vw * (446 / 487));
-      height: calc(100vw * (296 / 487));
-      border: calc(100vw * (10 / 487)) solid #151515;
+      width: calc(100vw * (315 / 393));
+      height: calc(100vw * (180 / 393));
+      top: calc(100vw * (18 / 393));
+      left: calc(100vw * (17 / 393));
+      padding: calc(100vw * (8 / 393));
     }
   }
 `
@@ -164,14 +243,9 @@ const GalleryContainer = styled.div`
   height: auto;
   position: relative;
 
-  ${p => p.theme.mediaQueries.tablet} {
-    aspect-ratio: 834 / 893;
-    top: calc(100vw * (-300 / 834));
-  }
-
   ${p => p.theme.mediaQueries.mobile} {
-    aspect-ratio: 487 / 1086;
-    top: calc(100vw * (-450 / 487));
+    aspect-ratio: 393 / 1286;
+    top: 0;
   }
 `
 
@@ -180,7 +254,14 @@ const InfiniteScrollWrapper = styled.div`
   overflow: hidden;
   white-space: nowrap;
   position: relative;
-`;
+  z-index: 20;
+  background-color: #FEF9F3;
+  padding: calc(100vw * (5 / 1920)) 0;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    padding: calc(100vw * (8 / 393)) 0;
+  }
+`
 
 const InfiniteScrollText = styled.div`
   display: inline-block;
@@ -194,8 +275,12 @@ const InfiniteScrollText = styled.div`
   white-space: nowrap;
   animation: scrollText 70s linear infinite;
   position: relative;
-  top: calc(100vw * (5 / 1142));
+  top: 0;
   
+  ${p => p.theme.mediaQueries.mobile} {
+    top: calc(100vw * (0 / 393));
+  }
+
   @keyframes scrollText {
     from {
       transform: translateX(0);
@@ -214,14 +299,9 @@ const RecapContainer = styled.div`
   position: absolute;
   bottom: 0;
 
-  ${p => p.theme.mediaQueries.tablet} {
-    aspect-ratio: 834 / 893;
-    top: calc(100vw * (-300 / 834));
-  }
-
   ${p => p.theme.mediaQueries.mobile} {
-    aspect-ratio: 487 / 1086;
-    top: calc(100vw * (-450 / 487));
+    aspect-ratio: 393 / 1286;
+    top: calc(100vw * (50 / 487));
   }
 `
 
@@ -257,75 +337,136 @@ const TooltipImg = styled.img`
 `
 
 // Component
-const Gallery = () => (
-  <GalleryContainer>
-    <InfiniteScrollWrapper>
-      <InfiniteScrollText>
-        2024 Unfolded 2024 Unfolded 2024 Unfolded 2024 Unfolded 2024 Unfolded 2024 Unfolded 2024 Unfolded 2024 Unfolded 2024 Unfolded 2024 Unfolded
-        2024 Unfolded 2024 Unfolded 2024 Unfolded 2024 Unfolded 2024 Unfolded 2024 Unfolded 2024 Unfolded 2024 Unfolded 2024 Unfolded 2024 Unfolded 2024 Unfolded 2024 Unfolded
-        2024 Unfolded 2024 Unfolded 2024 Unfolded 2024 Unfolded 2024 Unfolded 2024 Unfolded 2024 Unfolded 2024 Unfolded 2024 Unfolded 2024 Unfolded 2024 Unfolded 2024 Unfolded
-        2024 Unfolded 2024 Unfolded 2024 Unfolded 2024 Unfolded 2024 Unfolded 2024 Unfolded 2024 Unfolded 2024 Unfolded 2024 Unfolded 2024 Unfolded 2024 Unfolded 2024 Unfolded
-      </InfiniteScrollText>
-    </InfiniteScrollWrapper>
-    <RecapContainer>
-        <Draggable bounds="parent">
-          <BreadOne src="assets/images/gallery/bread_one.svg" />
-        </Draggable>
-        <Draggable bounds="parent">
-          <BreadTwo src="assets/images/gallery/bread_two.svg" />
-        </Draggable>
-        <Draggable bounds="parent">
-          <BreadThree src="assets/images/gallery/bread_three.svg" />
-        </Draggable>
-        <Draggable bounds="parent">
-          <Croissant src="assets/images/gallery/croissant.svg" />
-        </Draggable>
-        <Draggable bounds="parent">
-          <PolaroidSelfie src="assets/images/gallery/polaroid_selfie.png" />
-        </Draggable>
-        <Draggable bounds="parent">
-          <PolaroidCeremony src="assets/images/gallery/polaroid_ceremony.png" />
-        </Draggable>
-        <Draggable bounds="parent">
-          <PolaroidPanel src="assets/images/gallery/polaroid_panel.png" />
-        </Draggable>
-        <Draggable bounds="parent">
-          <PolaroidHeart src="assets/images/gallery/polaroid_heart.png" />
-        </Draggable>
-        <Draggable bounds="parent">
-          <PolaroidWinners src="assets/images/gallery/polaroid_winners.png" />
-        </Draggable>
-        <Draggable bounds="parent">
-          <PolaroidMerch src="assets/images/gallery/polaroid_merch.png" />
-        </Draggable>
-        <Draggable bounds="parent">
-          <PolaroidAtrium src="assets/images/gallery/polaroid_atrium.png" />
-        </Draggable>
-        <Draggable bounds="parent">
-          <Nugget src="assets/images/gallery/nugget.svg" />
-        </Draggable>
-        <VideoWrapper>
-          <Draggable bounds="parent">
-            <VideoComponent>
-              <img className="polaroid" src="assets/images/gallery/video_polaroid.svg" alt="video polaroid" />
-              <div className="video-container">
-                <iframe
-                  width="100%"
-                  height="100%"
-                  src="https://www.youtube.com/embed/-N_ds4fcVL4?si=-4UJKRL8_e2l3u-P"
-                  title="YouTube video player"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                  allowFullScreen
-                  style={{ position: 'absolute', top: 0, left: 0 }} />
-              </div>
-            </VideoComponent>
-          </Draggable>
-        </VideoWrapper>
-        <TooltipImg src="assets/images/gallery/tooltip.svg" />
-        <TooltipText>Drag the polaroids and magnets as you like.</TooltipText>
-    </RecapContainer>
-  </GalleryContainer>
-)
+const Gallery = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 487); // Using the mobile breakpoint from theme
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  return (
+    <GalleryContainer>
+      {isMobile ? (
+        // Mobile view
+        <>
+          <InfiniteScrollWrapper>
+            <InfiniteScrollText>
+              2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap
+              2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap
+              2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap
+              2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap
+            </InfiniteScrollText>
+          </InfiniteScrollWrapper>
+          <RecapContainer>
+            <BreadOne src="assets/images/gallery/bread_one.svg" />
+            <BreadTwo src="assets/images/gallery/bread_two.svg" />
+            <BreadThree src="assets/images/gallery/bread_three.svg" />
+            <Croissant src="assets/images/gallery/croissant.svg" />
+            <PolaroidSelfie src="assets/images/gallery/polaroid_selfie.png" />
+            <PolaroidCeremony src="assets/images/gallery/polaroid_ceremony.png" />
+            <PolaroidPanel src="assets/images/gallery/polaroid_panel.png" />
+            <PolaroidHeart src="assets/images/gallery/polaroid_heart.png" />
+            <PolaroidWinners src="assets/images/gallery/polaroid_winners.png" />
+            <PolaroidMerch src="assets/images/gallery/polaroid_merch.png" />
+            <PolaroidAtrium src="assets/images/gallery/polaroid_atrium.png" />
+            <Nugget src="assets/images/gallery/nugget.svg" />
+            <VideoWrapper>
+              <VideoComponent>
+                <img className="polaroid" src="assets/images/gallery/video_polaroid.svg" alt="video polaroid" />
+                <div className="video-container">
+                  <iframe
+                    width="100%"
+                    height="100%"
+                    src="https://www.youtube.com/embed/-N_ds4fcVL4?si=-4UJKRL8_e2l3u-P"
+                    title="YouTube video player"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
+                    style={{ position: 'absolute', top: 0, left: 0 }} />
+                </div>
+              </VideoComponent>
+            </VideoWrapper>
+          </RecapContainer>
+        </>
+      ) : (
+        // Desktop view
+        <>
+          <InfiniteScrollWrapper>
+            <InfiniteScrollText>
+              2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap
+              2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap
+              2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap
+              2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap
+            </InfiniteScrollText>
+          </InfiniteScrollWrapper>
+          <RecapContainer>
+            <Draggable bounds="parent">
+              <BreadOne src="assets/images/gallery/bread_one.svg" />
+            </Draggable>
+            <Draggable bounds="parent">
+              <BreadTwo src="assets/images/gallery/bread_two.svg" />
+            </Draggable>
+            <Draggable bounds="parent">
+              <BreadThree src="assets/images/gallery/bread_three.svg" />
+            </Draggable>
+            <Draggable bounds="parent">
+              <Croissant src="assets/images/gallery/croissant.svg" />
+            </Draggable>
+            <Draggable bounds="parent">
+              <PolaroidSelfie src="assets/images/gallery/polaroid_selfie.png" />
+            </Draggable>
+            <Draggable bounds="parent">
+              <PolaroidCeremony src="assets/images/gallery/polaroid_ceremony.png" />
+            </Draggable>
+            <Draggable bounds="parent">
+              <PolaroidPanel src="assets/images/gallery/polaroid_panel.png" />
+            </Draggable>
+            <Draggable bounds="parent">
+              <PolaroidHeart src="assets/images/gallery/polaroid_heart.png" />
+            </Draggable>
+            <Draggable bounds="parent">
+              <PolaroidWinners src="assets/images/gallery/polaroid_winners.png" />
+            </Draggable>
+            <Draggable bounds="parent">
+              <PolaroidMerch src="assets/images/gallery/polaroid_merch.png" />
+            </Draggable>
+            <Draggable bounds="parent">
+              <PolaroidAtrium src="assets/images/gallery/polaroid_atrium.png" />
+            </Draggable>
+            <Draggable bounds="parent">
+              <Nugget src="assets/images/gallery/nugget.svg" />
+            </Draggable>
+            <VideoWrapper>
+              <Draggable bounds="parent">
+                <VideoComponent>
+                  <img className="polaroid" src="assets/images/gallery/video_polaroid.svg" alt="video polaroid" />
+                  <div className="video-container">
+                    <iframe
+                      width="100%"
+                      height="100%"
+                      src="https://www.youtube.com/embed/-N_ds4fcVL4?si=-4UJKRL8_e2l3u-P"
+                      title="YouTube video player"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                      referrerPolicy="strict-origin-when-cross-origin"
+                      allowFullScreen
+                      style={{ position: 'absolute', top: 0, left: 0 }} />
+                  </div>
+                </VideoComponent>
+              </Draggable>
+            </VideoWrapper>
+            <TooltipImg src="assets/images/gallery/tooltip.svg" />
+            <TooltipText>Drag the polaroids and magnets as you like.</TooltipText>
+          </RecapContainer>
+        </>
+      )}
+    </GalleryContainer>
+  );
+};
 
 export default Gallery
