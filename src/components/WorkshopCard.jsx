@@ -82,7 +82,7 @@ const WorkshopCard = ({ info }) => {
       <WorkshopTitle>{name}</WorkshopTitle>
       <WorkshopTime>{dateAndTime}</WorkshopTime>
       <WorkshopImg>
-        <img src={imgSrc} />
+        <img src={imgSrc} alt="workshop graphic" />
       </WorkshopImg>
       <WorkshopDescription>{description}</WorkshopDescription>
     </WorkshopCardContainer>

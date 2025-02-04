@@ -24,7 +24,7 @@ const FaqContainer = styled.div`
 
   ${p => p.theme.mediaQueries.mobile} {
     &::before {
-      aspect-ratio: 487 / 1060;    }
+      aspect-ratio: 393 / 1112;    }
   }
 `
 

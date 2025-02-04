@@ -1,78 +1,196 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
-import tabletStatsImage from '@assets/images/tabletStats.png'
-import mobileStatsImage from '@assets/images/mobileStats.png'
 import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
-import StatsBoxes from '@components/StatsBoxes'
+import cakeTop from '@assets/images/cake_top.svg'
+import cakeMid from '@assets/images/cake_mid.svg'
+import cakeBottom from '@assets/images/cake_bottom.svg'
+import { useParallax } from 'react-scroll-parallax'
+import { gsap } from 'gsap'
+import ScrollTrigger from 'gsap/dist/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger);
+
 
 const OuterContainer = styled.div`
-  position: relative;
-`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  margin: 40px 20px 20px 20px;
 
-const StatsContainer = styled.div`
-  width: 100vw;
-  aspect-ratio: 1280/1280;
-  height: auto;
-  position: relative;
-  z-index: 2;
-
-  ${p => p.theme.mediaQueries.tablet} {
-    display: none;
+  ${p => p.theme.mediaQueries.mobile} {
+    margin-top: 0px;
   }
 `
 
-const MobileTabletStatsContainer = styled.div`
-  display: none;
-  width: 100vw;
-  height: auto;
-  position: relative;
-
-  ${p => p.theme.mediaQueries.tablet} {
-    display: block;
-    aspect-ratio: 1280/1280;
-  }
-`
-
-const MobileTabletImg = styled.img`
+const ValuesContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  height: auto;
+  gap: 6rem;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 8rem;
+  }
 `
 
 const Title = styled.p`
-  color: ${p => (p.isGlowing ? 'white' : '#B4B4B4')};
-  text-shadow: ${p => (p.isGlowing ? '0 0 32px rgba(255, 255, 255, 0.5)' : 'none')};
-  font-weight: 900;
-
-  position: absolute;
-  top: calc(100vw * (100 / 1280));
-  font-size: calc(100vw * (56 / 1280));
-  left: calc(100vw * (100 / 1280));
-
-  ${p => p.theme.mediaQueries.tablet} {
-    width: 100%;
-    font-size: calc(100vw * (56 / 834));
-    font-weight: 700;
-    top: calc(100vw * (40 / 834));
-    left: 0;
-    z-index: 1;
-    text-align: center;
-  }
+  color: #A6321E;
+  font-family: 'Gloock Regular', normal;
+  text-align: center;
+  font-size: calc(100vw * (64 / 1920));
+  margin-bottom: calc(100vw * (40 / 1280));
+  padding-top: calc(100vw * (40 / 1920));
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: calc(100vw * (42 / 487));
+    font-size: calc(100vw * (30 / 393));
+  }
+`
+
+const ColumnContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
+
+const ExpandedCakeImage = styled.img`
+  width: calc(100vw * (280 / 1200));
+  height: auto;
+  margin-top: calc(100vw * -1 * (48 / 1200));
+
+  @media (max-width: 768px) {
+    width: calc(100vw * (140 / 393));
+    margin-top: 0px;
+    margin-bottom: -48px;
+  }
+`
+
+const ValuesList = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2rem;
+  margin-top: 16px;
+
+  @media (max-width: 768px) {
+    margin-top: 0px;
+  }
+`
+
+const ValueItem = styled.div`
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  gap: 1.5rem; /* Space between dot/line and text */
+`
+
+const DotLineContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 6px; 
+  margin-right: calc(100vw * (100 / 1920));
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+
+`
+
+const Dot = styled.div`
+  width: calc(100vw * (16 / 1920));
+  height: calc(100vw * (16 / 1920));
+  background-color: #A6321E;
+  border-radius: 50%;
+`
+
+const Line1 = styled.div`
+  width: 3px;
+  background-color: #A6321E;
+  margin-top: 8px;
+  margin-bottom: -56px;
+  height: calc(100vw * (192 / 1920));
+`
+const Line2 = styled.div`
+  width: 3px;
+  background-color: #A6321E;
+  margin-top: 8px;
+  margin-bottom: -56px;
+  height: calc(100vw * (220 / 1920));
+`
+const ValueContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  max-width: calc(100vw * (640 / 1920));
+
+  @media (max-width: 768px) {
+    max-width: calc(100vw * (600 / 768));
+  }
+`
+
+const ValueTitle = styled.p`
+  font-size: calc(100vw * (32 / 1920));
+  color: #A6321E;
+  font-family: 'HappyTime', normal;
+  margin-bottom: 0.5rem;
+
+  @media (max-width: 768px) {
+    font-size: calc(100vw * (20 / 393));
+  }
+`
+
+const ValueDescription = styled.p`
+  font-size: calc(100vw * (18 / 1920));
+  color: #4F2F22;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+
+  @media (max-width: 768px) {
+    font-size: calc(100vw * (15 / 393));
   }
 `
 
 const Values = () => {
+  const valuesRef = useRef(null);
+  const [cakeEaseEnabled, setCakeEaseEnabled] = useState(false);
+  const [descValuesEnabled, setDescValuesEnabled] = useState(false);
+  const [title1StartY, setTitle1StartY] = useState(100)
+  const [title3StartY, setTitle3StartY] = useState(-100)
+  const [dot1StartY, setDot1StartY] = useState(100)
+  const [dot3StartY, setDot3StartY] = useState(-100)
+  const [valuesEnabled, setValuesEnabled] = useState(false);
+  const [delayedValuesEnabled, setDelayedValuesEnabled] = useState(false);
   const [isMobile, setIsMobile] = useState(false)
-  const [isTablet, setIsTablet] = useState(false)
-  const [titleGlow, setTitleGlow] = useState(false)
-  const statsContainerRef = useRef(null)
+  const [isAnimating, setIsAnimating] = useState(false);
+
+  useEffect(() => {
+    const updateY = () => {
+      const screenWidth = window.innerWidth;
+      const screenHeight = window.innerHeight;
+      const valY = Math.min(screenWidth * 0.2, screenHeight * 0.35)
+      setTitle1StartY(valY)
+      setTitle3StartY(-1.2 * valY)
+      setDot1StartY(valY * 3)
+      setDot3StartY(-3.2 * valY)
+    }
+
+    updateY()
+    window.addEventListener('resize', updateY)
+
+    return () => {
+      window.removeEventListener('resize', updateY)
+    }
+  }, [])
 
   useEffect(() => {
     const updateDeviceType = () => {
       setIsMobile(window.innerWidth <= SCREEN_BREAKPOINTS.mobile)
-      setIsTablet(window.innerWidth <= SCREEN_BREAKPOINTS.tablet)
     }
 
     updateDeviceType()
@@ -83,21 +201,166 @@ const Values = () => {
     }
   }, [])
 
-  return (
-    <OuterContainer id="stats">
-      {!isMobile && !isTablet && (
-        <StatsContainer ref={statsContainerRef}>
-          <Title isGlowing={titleGlow}>Values</Title>
-        </StatsContainer>
-      )}
+  const getEaseParallaxParams = (startY, dur, ease, cond) => {
+    if (cond && !isMobile) {
+      return { duration: isAnimating ? dur : 0.6, easing: ease, translateY: [startY, 0] };
+    }
+    if (isMobile) {
+      return { speed: 0, translateY: [0, 0] };
+    }
+    return { speed: 0, translateY: [startY, startY] };
+  };
 
-      {(isMobile || isTablet) && (
-        <MobileTabletStatsContainer>
-          <Title isGlowing>Values</Title>
-        </MobileTabletStatsContainer>
-      )}
+  const getCakeEaseParallaxParams = (ease, startY, endY) => {
+    if (cakeEaseEnabled) {
+      return { duration: isAnimating ? 1 : 0.6, easing: ease, translateY: [startY, endY] };
+    }
+    return { easing: ease, speed: 0, translateY: [startY, startY] };
+  }
+
+  const getLineParallaxParams = (cond, start) => cond
+    ? { scaleY: [0, 1], duration: 2, opacity: [0, 1], translateY: [start, 0] }
+    : { scaleY: [0, 0], duration: 2, opacity: [0, 0] };
+
+
+  const fade = Array(3).fill(null).map(() => {
+    let opacitySettings;
+
+    if (descValuesEnabled && !isMobile) {
+      opacitySettings = { opacity: [0, 1], duration: 0.005, easing: 'easeInOutQuad' };
+    } else if (isMobile) {
+      opacitySettings = { opacity: [1, 1] };
+    } else {
+      opacitySettings = { opacity: [0, 0] };
+    }
+
+    return useParallax(opacitySettings);
+  });
+
+  const cakeTopEase = useParallax(getCakeEaseParallaxParams('easeInOutQuad', 35, -5));
+  const cakeMidEase = useParallax(getCakeEaseParallaxParams('easeInOutQuad', 0, 0));
+  const cakeBotEase = useParallax(getCakeEaseParallaxParams('easeInOutQuad', -35, 5));
+
+  const title1Ease = useParallax(getEaseParallaxParams(title1StartY, 1, 'easeInOutCubic', valuesEnabled));
+  const title3Ease = useParallax(getEaseParallaxParams(title3StartY, 1.5, 'easeInOutCubic', valuesEnabled));
+
+  const dot1Ease = useParallax(getEaseParallaxParams(dot1StartY, 1, 'easeInOutQuart', valuesEnabled));
+  const dot3Ease = useParallax(getEaseParallaxParams(dot3StartY, 1.5, 'easeInOutQuart', valuesEnabled));
+
+  const line1Scale = useParallax(getLineParallaxParams(delayedValuesEnabled, 60));
+  const line2Scale = useParallax(getLineParallaxParams(delayedValuesEnabled, -52));
+
+
+  useEffect(() => {
+    const values = valuesRef.current;
+
+    gsap.timeline({
+      scrollTrigger: {
+        trigger: values,
+        start: 'top top',
+        end: '+=120%',
+        scrub: true,
+        pin: true,
+        anticipatePin: 1,
+        fastScrollEnd: true,
+        onEnter: () => {
+          setIsAnimating(true);
+
+          setTimeout(() => {
+            setCakeEaseEnabled(true);
+          }, 400); // Adjust delay time here
+
+          setTimeout(() => {
+            setDescValuesEnabled(true);
+          }, 500);
+          setTimeout(() => {
+            setDelayedValuesEnabled(true);
+          }, 172);
+          setTimeout(() => {
+            setValuesEnabled(true);
+          }, 40);
+
+        },
+        onLeaveBack: () => {
+          setIsAnimating(false);
+          setCakeEaseEnabled(false);
+          setDescValuesEnabled(false);
+          setValuesEnabled(false);
+          setDelayedValuesEnabled(false);
+        },
+
+      }
+    }
+    );
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill())
+    }
+  }, []);
+
+  return (
+    <OuterContainer ref={valuesRef}>
+      <Title>Our Values</Title>
+      <ValuesContainer>
+        <ColumnContainer>
+          <ExpandedCakeImage ref={cakeTopEase.ref} src={cakeTop} alt="Cake Top Layer" style={{ zIndex: 3 }} />
+          <ExpandedCakeImage ref={cakeMidEase.ref} src={cakeMid} alt="Cake Middle Layer" style={{ zIndex: 2 }} />
+          <ExpandedCakeImage ref={cakeBotEase.ref} src={cakeBottom} alt="Cake Bottom Layer" style={{ zIndex: 1 }} />
+        </ColumnContainer>
+
+        <ColumnContainer>
+          <ValuesList>
+            <ValueItem>
+              <DotLineContainer>
+                <Dot ref={dot1Ease.ref} />
+                <Line1 ref={line1Scale.ref} />
+              </DotLineContainer>
+              <ValueContent>
+                <ValueTitle ref={title1Ease.ref}>Build Confidence</ValueTitle>
+                <ValueDescription ref={fade[0].ref}>
+                  Develop career-ready skills, fight impostor syndrome, and create an invaluable support
+                  network with friends, mentors, and sponsors. Regardless of your background, you bring a
+                  unique and important perspective to tech. Like how there is always a treat for everyone,
+                  there is always a place for you in tech—a space where everyone belongs.
+                </ValueDescription>
+              </ValueContent>
+            </ValueItem>
+
+            <ValueItem>
+              <DotLineContainer>
+                <Dot />
+                <Line2 ref={line2Scale.ref} />
+              </DotLineContainer>
+              <ValueContent>
+                <ValueTitle>Learn Together</ValueTitle>
+                <ValueDescription ref={fade[1].ref}>
+                  Whether you have never coded before, or you dream in assembly, challenge yourself to create
+                  something meaningful! Learn new skills at our workshops and apply them to fresh and creative
+                  projects! Regardless of your project&apos;s completion at the end of the weekend, take pride in the
+                  knowledge gained or the courage to try something new. It&apos;s time to rise to the occasion because
+                  it&apos;s always sweet to learn more!
+                </ValueDescription>
+              </ValueContent>
+            </ValueItem>
+
+            <ValueItem>
+              <DotLineContainer>
+                <Dot ref={dot3Ease.ref} />
+              </DotLineContainer>
+              <ValueContent>
+                <ValueTitle ref={title3Ease.ref}>Explore in a Safe Space</ValueTitle>
+                <ValueDescription ref={fade[2].ref}>
+                  Discover a community of like-minded, creative, and passionate individuals. Form lasting bonds,
+                  share experiences, and create memories in an environment free from judgment, where all gender
+                  identities and expressions are respected. We&apos;re all here unified under one cause—to strive for
+                  better representation in tech!
+                </ValueDescription>
+              </ValueContent>
+            </ValueItem>
+          </ValuesList>
+        </ColumnContainer>
+      </ValuesContainer>
     </OuterContainer>
   )
 }
 
-export default Values
+export default Values;

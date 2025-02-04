@@ -1,78 +1,131 @@
 import React, { useState, useEffect, useRef } from 'react'
 import styled from 'styled-components'
-import tabletStatsImage from '@assets/images/tabletStats.png'
-import mobileStatsImage from '@assets/images/mobileStats.png'
 import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
-import StatsBoxes from '@components/StatsBoxes'
 
 const OuterContainer = styled.div`
   position: relative;
 `
 
 const StatsContainer = styled.div`
-  width: 100vw;
-  aspect-ratio: 1280/1280;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1920/1248;
   height: auto;
+  display: flex;
   position: relative;
   z-index: 2;
 
-  ${p => p.theme.mediaQueries.tablet} {
-    display: none;
+  ${p => p.theme.mediaQueries.mobile} {
+    aspect-ratio: 393/905;
   }
-`
-
-const MobileTabletStatsContainer = styled.div`
-  display: none;
-  width: 100vw;
-  height: auto;
-  position: relative;
-
-  ${p => p.theme.mediaQueries.tablet} {
-    display: block;
-    aspect-ratio: 1280/1280;
-  }
-`
-
-const MobileTabletImg = styled.img`
-  width: 100%;
-  height: auto;
 `
 
 const Title = styled.p`
-  color: ${p => (p.isGlowing ? 'white' : '#B4B4B4')};
-  text-shadow: ${p => (p.isGlowing ? '0 0 32px rgba(255, 255, 255, 0.5)' : 'none')};
-  font-weight: 900;
-
+  color: #A6321E;
+  font-family: Gloock;
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
   position: absolute;
-  top: calc(100vw * (100 / 1280));
-  font-size: calc(100vw * (56 / 1280));
-  left: calc(100vw * (100 / 1280));
-
-  ${p => p.theme.mediaQueries.tablet} {
-    width: 100%;
-    font-size: calc(100vw * (56 / 834));
-    font-weight: 700;
-    top: calc(100vw * (40 / 834));
-    left: 0;
-    z-index: 1;
-    text-align: center;
-  }
+  top: calc(100vw * (100 / 1920));
+  font-size: calc(100vw * (56 / 1920));
+  left: calc(100vw * (415 / 1920));
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: calc(100vw * (42 / 487));
+    font-size: calc(100vw * (30 / 393));
+    color: #A6321E;
+    text-align: center;
+    width: 100%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: calc(100vw * (80 / 393));
   }
 `
 
+const Bowl = styled.img`
+  position: absolute;
+  height: auto;
+  width: calc(100vw * (1275 / 1920));
+  top: calc(100vw * (100 / 1920));
+  left: calc(100vw * (0 / 1920));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (350 / 393));
+    top: calc(100vw * (100 / 393));
+    left: calc(100vw * (10 / 393));
+  }
+`
+
+const StatImage = styled.img`
+  position: absolute;
+  height: auto;
+  width: ${({ width }) => `calc(100vw * (${width} / 1920))`};
+  top: ${({ top }) => `calc(100vw * (${top} / 1920))`};
+  left: ${({ left, scrollOffset }) => `calc(100vw * (${left} / 1920) + ${scrollOffset}px)`};
+  transition: left 0.1s linear;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: ${({ width }) => `calc(100vw * (${width} / 393))`};
+    top: ${({ top }) => `calc(100vw * (${top} / 393))`};
+    left: ${({ left, scrollOffset }) => `calc(100vw * (${left} / 393) + ${scrollOffset}px)`};
+    z-index: 10;
+  }
+`;
+
+const MobileEggStat = styled.img`
+  position: absolute;
+  height: auto;
+  width: calc(100vw * (252 / 393));
+  top: calc(100vw * (327 / 393));
+  left: calc(100vw * (-170 / 393));
+  z-index: 3;
+  transform: translateX(${({ scrollOffset }) => scrollOffset}px);
+  transition: transform 0.3s ease-out;
+`;
+
+const MobileBottleStat = styled.img`
+  position: absolute;
+  height: auto;
+  width: calc(100vw * (195 / 393));
+  top: calc(100vw * (470 / 393));
+  left: calc(100vw * (-310 / 393));
+  z-index: 3;
+  transform: translateX(${({ scrollOffset }) => scrollOffset}px);
+  transition: transform 0.3s ease-out;
+`;
+
+const MobileFlourStat = styled.img`
+  position: absolute;
+  height: auto;
+  width: calc(100vw * (210 / 393));
+  top: calc(100vw * (575 / 393));
+  left: calc(100vw * (-150 / 393));
+  z-index: 3;
+  transform: translateX(${({ scrollOffset }) => scrollOffset}px);
+  transition: transform 0.3s ease-out;
+`;
+
+const MobileButterStat = styled.img`
+  position: absolute;
+  height: auto;
+  width: calc(100vw * (210 / 393));
+  top: calc(100vw * (750 / 393));
+  left: calc(100vw * (-305 / 393));
+  z-index: 3;
+  transform: translateX(${({ scrollOffset }) => scrollOffset}px);
+  transition: transform 0.3s ease-out;
+`;
+
 const Stats = () => {
   const [isMobile, setIsMobile] = useState(false)
-  const [isTablet, setIsTablet] = useState(false)
-  const [titleGlow, setTitleGlow] = useState(false)
+  const [scrollOffset, setScrollOffset] = useState(0);
   const statsContainerRef = useRef(null)
 
   useEffect(() => {
     const updateDeviceType = () => {
       setIsMobile(window.innerWidth <= SCREEN_BREAKPOINTS.mobile)
-      setIsTablet(window.innerWidth <= SCREEN_BREAKPOINTS.tablet)
     }
 
     updateDeviceType()
@@ -92,7 +145,6 @@ const Stats = () => {
             const newOpacity = entry.isIntersecting ? '1' : '0'
             element.setAttribute('style', `opacity: ${newOpacity}`)
           })
-          setTitleGlow(entry.isIntersecting)
         })
       },
       { threshold: 0.4 }
@@ -105,20 +157,36 @@ const Stats = () => {
     return () => observer.disconnect()
   }, [])
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const { scrollY } = window;
+      setScrollOffset(scrollY * 0.05);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <OuterContainer id="stats">
-      {!isMobile && !isTablet && (
+      {!isMobile ? (
         <StatsContainer ref={statsContainerRef}>
-          <StatsBoxes />
-          <Title isGlowing={titleGlow}>Last year we had...</Title>
+          <Title>Last year we had...</Title>
+          <Bowl src='assets/images/stats/bowl.svg' />
+          <StatImage src="assets/images/stats/egg_stat.svg" width={370} top={300} left={390} scrollOffset={scrollOffset} />
+          <StatImage src="assets/images/stats/bottle_stat.svg" width={310} top={230} left={860} scrollOffset={scrollOffset} />
+          <StatImage src="assets/images/stats/flour_bag_stat.svg" width={400} top={400} left={1200} scrollOffset={scrollOffset} />
+          <StatImage src="assets/images/stats/butter_stat.svg" width={520} top={750} left={1040} scrollOffset={scrollOffset} />
         </StatsContainer>
-      )}
-
-      {(isMobile || isTablet) && (
-        <MobileTabletStatsContainer>
-          <Title isGlowing>Last year we had...</Title>
-          <MobileTabletImg src={isMobile ? mobileStatsImage : tabletStatsImage} alt="Mobile or Tablet Stats" />
-        </MobileTabletStatsContainer>
+      ) : (
+        <StatsContainer ref={statsContainerRef}>
+          <Title>Last Year We Had...</Title>
+          <Bowl src='assets/images/stats/mobile/bowl_mobile.svg' />
+          <MobileEggStat src="assets/images/stats/mobile/egg_stat_mobile.svg" scrollOffset={scrollOffset} />
+          <MobileBottleStat src="assets/images/stats/mobile/bottle_stat_mobile.svg" scrollOffset={scrollOffset} />
+          <MobileFlourStat src="assets/images/stats/mobile/flour_bag_stat_mobile.svg" scrollOffset={scrollOffset} />
+          <MobileButterStat src="assets/images/stats/mobile/butter_stat_mobile.svg" scrollOffset={scrollOffset} />
+        </StatsContainer>
       )}
     </OuterContainer>
   )
