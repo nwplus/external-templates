@@ -5,11 +5,6 @@ import FaqBox from '@components/FaqBox'
 
 const FaqContainer = styled.div`
   position: relative;
-  margin-top: 0;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    margin-top: calc(100vw * (180 / 393));
-  }
 
   &::before {
     content: '';

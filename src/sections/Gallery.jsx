@@ -300,7 +300,7 @@ const RecapContainer = styled.div`
   bottom: 0;
 
   ${p => p.theme.mediaQueries.mobile} {
-    aspect-ratio: 393 / 1486;
+    aspect-ratio: 393 / 1286;
     top: calc(100vw * (50 / 487));
   }
 `
