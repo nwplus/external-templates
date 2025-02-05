@@ -3,11 +3,16 @@ import styled from 'styled-components'
 import axios from 'axios'
 
 const Container = styled.div`
-  position: relative;
-  width: calc(100vw * (518 / 1280));
-  height: calc(100vw * (36 / 1280));
-  margin-top: calc(100vw * (16 / 1280));
-
+  //position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(100vw * (600 / 1920));
+  height: calc(100vw * (50 / 1920));
+  margin-top: calc(100vw * (25 / 1280));
+  margin-left: calc(100vw * (70 / 1280));
+  transform: rotate(-4deg);
+  
   ${p => p.theme.mediaQueries.mobile} {
     width: calc(100vw * (369 / 487));
     height: calc(100vw * (30 / 487));
@@ -41,7 +46,7 @@ const Button = styled.button`
   height: 80%;
   transform: translateY(-50%);
   padding: calc(100vw * (3 / 1280)) calc(100vw * (8 / 1280));
-  background-color: #8d603f;
+  background-color: #2f1713;
   color: white;
   border-radius: calc(100vw * (6 / 1280));
   border: none;
@@ -51,7 +56,7 @@ const Button = styled.button`
   font-size: calc(100vw * (13 / 1280));
 
   &:hover {
-    background-color: #6d4d2f;
+    background-color: #612c25;
   }
 
   ${p => p.theme.mediaQueries.mobile} {
