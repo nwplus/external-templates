@@ -79,7 +79,7 @@ const MobileEggStat = styled.img`
   height: auto;
   width: calc(100vw * (252 / 393));
   top: calc(100vw * (327 / 393));
-  left: calc(100vw * (-155 / 393));
+  left: calc(100vw * (-145 / 393));
   z-index: 3;
   transform: translateX(${({ scrollOffset }) => scrollOffset}px);
   transition: transform 0.3s ease-out;
@@ -90,7 +90,7 @@ const MobileBottleStat = styled.img`
   height: auto;
   width: calc(100vw * (195 / 393));
   top: calc(100vw * (470 / 393));
-  left: calc(100vw * (-295 / 393));
+  left: calc(100vw * (-285 / 393));
   z-index: 3;
   transform: translateX(${({ scrollOffset }) => scrollOffset}px);
   transition: transform 0.3s ease-out;
@@ -101,7 +101,7 @@ const MobileFlourStat = styled.img`
   height: auto;
   width: calc(100vw * (210 / 393));
   top: calc(100vw * (575 / 393));
-  left: calc(100vw * (-135 / 393));
+  left: calc(100vw * (-125 / 393));
   z-index: 3;
   transform: translateX(${({ scrollOffset }) => scrollOffset}px);
   transition: transform 0.3s ease-out;
@@ -112,7 +112,7 @@ const MobileButterStat = styled.img`
   height: auto;
   width: calc(100vw * (210 / 393));
   top: calc(100vw * (750 / 393));
-  left: calc(100vw * (-290 / 393));
+  left: calc(100vw * (-280 / 393));
   z-index: 3;
   transform: translateX(${({ scrollOffset }) => scrollOffset}px);
   transition: transform 0.3s ease-out;
