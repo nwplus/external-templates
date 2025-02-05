@@ -24,7 +24,8 @@ const FaqContainer = styled.div`
 
   ${p => p.theme.mediaQueries.mobile} {
     &::before {
-      aspect-ratio: 393 / 1112;    }
+      aspect-ratio: 393 / 1112;
+    }
   }
 `
 
@@ -90,7 +91,7 @@ const CollectionName = styled.div`
   font-weight: 500;
   padding-bottom: calc(100vw * (60 / 1920));
   text-align: center;
-  color: #A6321E;
+  color: #a6321e;
 
   ${p => p.theme.mediaQueries.tablet} {
     font-size: calc(100vw * (35 / 834));
@@ -106,7 +107,7 @@ const CollectionName = styled.div`
 const StyledTitle = styled.p`
   font-family: 'Gloock';
   font-size: calc(100vw * (80 / 1920));
-  color: #A6321E;
+  color: #a6321e;
   text-align: center;
 
   ${p => p.theme.mediaQueries.tablet} {
@@ -119,6 +120,36 @@ const StyledTitle = styled.p`
   ${p => p.theme.mediaQueries.mobile} {
     font-size: calc(100vw * (56 / 487));
     margin-top: calc(100vw * (50 / 487));
+  }
+`
+
+const FaqDecorations = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 85%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 0;
+
+  ${p => p.theme.mediaQueries.tablet} {
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+
+  img {
+    width: calc(100% / 6 - 20px);
+    height: auto;
+    object-fit: contain;
+
+    ${p => p.theme.mediaQueries.tablet} {
+      width: calc(100% / 3 - 20px);
+    }
+
+    ${p => p.theme.mediaQueries.mobile} {
+      width: calc(100% / 2 - 20px);
+    }
   }
 `
 
@@ -171,50 +202,80 @@ const Faq = () => {
   }, [])
 
   return (
-    <FaqContainer>
-      <Wrapper id="faq">
-        <StyledTitle>FAQ</StyledTitle>
+    <div>
+      <FaqDecorations>
+        <img src="/assets/images/faq/headphones.svg" alt="Headphones decoration" style={{ height: '320px' }} />
+        <img
+          src="/assets/images/faq/croissant.svg"
+          alt="Croissant decoration"
+          style={{ position: 'relative', top: '130px' }}
+        />
+        <img
+          src="/assets/images/faq/donut.svg"
+          alt="Donut decoration"
+          style={{ width: '270px', marginRight: '-30px' }}
+        />
+        <img
+          src="/assets/images/faq/swinging-animation.gif"
+          alt="Swinging cookie decoration"
+          style={{ width: '270px' }}
+        />
+        <img
+          src="/assets/images/faq/laptop.svg"
+          alt="Laptop decoration"
+          style={{ width: '210px', position: 'relative', top: '-30px' }}
+        />
+        <img
+          src="/assets/images/faq/mochiDonut.svg"
+          alt="Mochi Donut decoration"
+          style={{ position: 'relative', top: '120px' }}
+        />
+      </FaqDecorations>
+      <FaqContainer>
+        <Wrapper id="faq">
+          <StyledTitle>FAQ</StyledTitle>
 
-        {faqData ? (
-          <FaqGrid>
-            <FaqColumn>
-              {faqData.General && (
-                <FaqCollection
-                  category="General"
-                  faqs={faqData.General}
-                  expandedQuestion={expandedQuestion}
-                  setExpandedQuestion={setExpandedQuestion}
-                />
-              )}
-            </FaqColumn>
+          {faqData ? (
+            <FaqGrid>
+              <FaqColumn>
+                {faqData.General && (
+                  <FaqCollection
+                    category="General"
+                    faqs={faqData.General}
+                    expandedQuestion={expandedQuestion}
+                    setExpandedQuestion={setExpandedQuestion}
+                  />
+                )}
+              </FaqColumn>
 
-            <FaqColumn>
-              {faqData['Teams & Projects'] && (
-                <FaqCollection
-                  category="Teams & Projects"
-                  faqs={faqData['Teams & Projects']}
-                  expandedQuestion={expandedQuestion}
-                  setExpandedQuestion={setExpandedQuestion}
-                />
-              )}
-            </FaqColumn>
+              <FaqColumn>
+                {faqData['Teams & Projects'] && (
+                  <FaqCollection
+                    category="Teams & Projects"
+                    faqs={faqData['Teams & Projects']}
+                    expandedQuestion={expandedQuestion}
+                    setExpandedQuestion={setExpandedQuestion}
+                  />
+                )}
+              </FaqColumn>
 
-            <FaqColumn>
-              {faqData.Logistics && (
-                <FaqCollection
-                  category="Logistics"
-                  faqs={faqData.Logistics}
-                  expandedQuestion={expandedQuestion}
-                  setExpandedQuestion={setExpandedQuestion}
-                />
-              )}
-            </FaqColumn>
-          </FaqGrid>
-        ) : (
-          ''
-        )}
-      </Wrapper>
-    </FaqContainer>
+              <FaqColumn>
+                {faqData.Logistics && (
+                  <FaqCollection
+                    category="Logistics"
+                    faqs={faqData.Logistics}
+                    expandedQuestion={expandedQuestion}
+                    setExpandedQuestion={setExpandedQuestion}
+                  />
+                )}
+              </FaqColumn>
+            </FaqGrid>
+          ) : (
+            ''
+          )}
+        </Wrapper>
+      </FaqContainer>
+    </div>
   )
 }
 
