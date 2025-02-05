@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
@@ -11,14 +10,13 @@ import {
 } from '@fortawesome/free-brands-svg-icons'
 import Team from '@components/Team'
 import Newsletter from '@components/Newsletter'
-import Confetti from 'react-confetti-boom'
-import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
+import FooterDecor from '@assets/images/footer_objects.svg'
 
 const FooterContainer = styled.div`
+  background: linear-gradient(#612c25, #2f1713);
   position: relative;
-  aspect-ratio: 1280/1334;
-  width: 100%;
-  overflow: hidden;
+  aspect-ratio: 1800/1800;
+  margin-top: -250px;
 
   ${p => p.theme.mediaQueries.mobile} {
     aspect-ratio: 487/950;
@@ -26,13 +24,6 @@ const FooterContainer = styled.div`
 `
 
 const FooterBackground = styled.div`
-  background-image: url('./assets/images/footer_background.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  object-fit: cover;
-
-  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -43,19 +34,37 @@ const FooterBackground = styled.div`
   }
 `
 
-const SocialMediaIcons = styled.div`
+const FooterDecorOverlay = styled.img`
+  position: absolute;
+  width: 100%;
+  transform: translateY(calc(100vw * (-550 / 1920)));
+  z-index: 1000;
+`
+
+const ClosingCard = styled.div`
+  z-index: 2000;
+  position: relative;
+  top: calc(100vw * (840 / 1920));
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+`
+
+const SocialMediaIcons = styled.div`
   display: flex;
-  gap: calc(100vw * (40 / 1280));
+  justify-content: center;
+  align-items: center;
+  gap: calc(100vw * (60 / 1920));
+  transform: rotate(-4deg);
 
   a {
-    width: calc(100vw * (53 / 1280));
+    width: calc(100vw * (60 / 1920));
     text-decoration: none;
-    color: #f0d4a1;
+    color: #2f1713;
 
     &:hover {
-      color: #eac669;
+      color: #612c25;
     }
   }
 
@@ -70,15 +79,19 @@ const SocialMediaIcons = styled.div`
 
 const Links = styled.div`
   display: flex;
+  justify-content: center;
+  align-items: center;
   gap: calc(100vw * (20 / 1280));
-  font-size: calc(100vw * (27 / 1280));
+  font-size: calc(100vw * (27 / 1920));
+  cursor: pointer;
+  transform: rotate(-4deg);
 
   a {
     font-weight: 600;
-    color: #f0d4a1;
+    color: #2f1713;
 
     &:hover {
-      color: #eac669;
+      color: #612c25;
     }
   }
 
@@ -93,38 +106,10 @@ const Links = styled.div`
   }
 `
 
-const TextContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 100%;
-  align-items: center;
-  padding-top: calc(100vw * (40 / 1280));
-  gap: calc(100vw * (16 / 1280));
-
-  ${p => p.theme.mediaQueries.mobile} {
-    padding-top: calc(100vw * (90 / 487));
-  }
-`
-
-const SmallText = styled.div`
-  user-select: none;
-  padding-top: calc(100vw * (15 / 1280));
-  text-align: center;
-
-  color: #f9c745;
-  font-size: calc(100vw * (14 / 1280));
-  font-weight: 600;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    font-size: calc(100vw * (12 / 487));
-  }
-`
-
 const TeamContainer = styled.div`
   position: absolute;
   left: 0;
-  bottom: calc(100vw * (25 / 1280));
+  bottom: calc(100vw * (200 / 1920));
   text-align: center;
   width: 100%;
 
@@ -134,47 +119,21 @@ const TeamContainer = styled.div`
   }
 `
 
-const StaticContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    width: 100%;
-    padding: 0 6vw;
-  }
-`
-
-const ConfettiContainer = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 200vw;
-  height: 200vh;
-
-  canvas {
-    width: 100% !important;
-    height: 100% !important;
-  }
-`
-
 const LandAcknowledgementText = styled.div`
+  font-family: 'Poppins';
+  font-weight: 400;
   padding: 0 5%;
   text-align: center;
-  margin-bottom: calc(100vw * (40 / 1280));
-  color: #f9c745;
-  font-size: calc(100vw * (16 / 1280));
-  font-weight: 500;
-  font-family: 'HK Grotesk Medium';
+  position: relative;
+  bottom: calc(100vw * (-1050 / 1920));
+  color: #ffffff;
+  font-size: calc(100vw * (25 / 1920));
 
   a {
-    color: #f9c745;
+    color: #ffffff;
     text-decoration: underline;
     &:hover {
-      color: #ffe08a;
+      color: #ffffff;
     }
   }
 
@@ -184,28 +143,22 @@ const LandAcknowledgementText = styled.div`
   }
 `
 
-const Footer = () => {
-  const [isMobile, setIsMobile] = useState(false)
+const CopyRight = styled.div`
+  font-family: 'Poppins';
+  font-weight: 600;
+  text-align: center;
+  position: relative;
+  bottom: calc(100vw * (-1540 / 1920));
+  color: #ffffff;
+  font-size: calc(100vw * (25 / 1920));
+`
 
-  useEffect(() => {
-    setIsMobile(window.innerWidth <= SCREEN_BREAKPOINTS.mobile)
-  }, [])
-
-  return (
-    <FooterContainer id="footer">
-      <FooterBackground />
-      {!isMobile && (
-        <ConfettiContainer>
-          <Confetti
-            mode="fall"
-            shapeSize={20}
-            colors={['#E261BB', '#61B5E2', '#E26161', '#E28A61', '#ED9823', '#FDC699']}
-          />
-        </ConfettiContainer>
-      )}
-
-      <StaticContainer>
-        <TextContainer>
+const Footer = () => (
+  <div>
+    <FooterContainer>
+      <FooterBackground>
+        <FooterDecorOverlay src={FooterDecor} alt="Decorative cake illustrations" />
+        <ClosingCard>
           <SocialMediaIcons>
             <a href="https://www.facebook.com/nwplusubc" target="_blank" rel="noreferrer">
               <FontAwesomeIcon icon={faFacebook} />
@@ -238,23 +191,22 @@ const Footer = () => {
             </a>
           </Links>
           <Newsletter />
-        </TextContainer>
+        </ClosingCard>
+        <LandAcknowledgementText>
+          cmd-f 2025 will be taking place on xʷməθkʷəy̓əm (Musqueam) and səlilwətaɬ (Tsleil-Waututh) territory. As we
+          build tomorrow&apos;s tech community, we recognize our responsibility to understand and respect Indigenous
+          histories. To learn more, visit{' '}
+          <a href="https://guides.library.ubc.ca/xwi7xwaresearchguide" target="_blank" rel="noreferrer">
+            xwi7xwa&apos;s Research Guide.
+          </a>
+        </LandAcknowledgementText>
         <TeamContainer>
-          <LandAcknowledgementText>
-            nwHacks 2025 will be taking place on xʷməθkʷəy̓əm (Musqueam) and səlilwətaɬ (Tsleil-Waututh) territory. As we
-            build tomorrow&apos;s tech community, we recognize our responsibility to understand and respect Indigenous
-            histories. To learn more, visit{' '}
-            <a href="https://guides.library.ubc.ca/xwi7xwaresearchguide" target="_blank" rel="noreferrer">
-              xwi7xwa&apos;s Research Guide
-            </a>
-            .
-          </LandAcknowledgementText>
           <Team />
-          <SmallText>Copyright &copy; nwHacks 2025</SmallText>
         </TeamContainer>
-      </StaticContainer>
+        <CopyRight>Copyright &copy; cmd-f 2025</CopyRight>
+      </FooterBackground>
     </FooterContainer>
-  )
-}
+  </div>
+)
 
 export default Footer

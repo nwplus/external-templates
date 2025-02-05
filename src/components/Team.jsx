@@ -456,9 +456,10 @@ const profiles = [
 ]
 
 const StyledTitle = styled(Header3)`
-  color: #f9c745;
-  font-size: calc(100vw * (40 / 1280));
-  font-weight: 700;
+  font-family: 'Poppins';
+  color: #ffffff;
+  font-size: calc(100vw * (40 / 1920));
+  font-weight: 600;
   margin-bottom: calc(100vw * (5 / 1280));
   ${p => p.theme.mediaQueries.mobile} {
     font-size: 1.1rem;
@@ -563,7 +564,7 @@ export default function Team() {
 
   return (
     <>
-      <StyledTitle>Meet the minds behind nwHacks</StyledTitle>
+      <StyledTitle>Meet the minds behind cmd-f</StyledTitle>
       <ProfileContent>
         <span>
           <b>{selectedProfile?.name}</b> {selectedProfile?.emoji}
