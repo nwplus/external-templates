@@ -85,59 +85,17 @@ const Instruction = styled.h3`
   }
 `
 
-const AccessibilityCardImg = styled.img`
+const TrackCard = styled.img`
   position: absolute;
-  width: calc(100vw * (390 / 1920));
-  top: calc(100vw * (125 / 1000));
-  left: calc(100vw * (50 / 1920));
+  width: calc(100vw * (${props => props.width || '390'} / 1920));
+  top: calc(100vw * (${props => props.top} / 1000));
+  left: calc(100vw * (${props => props.left} / 1920));
 
   ${p => p.theme.mediaQueries.mobile} {
-    width: calc(100vw * (800 / 1000));
-    top: calc(100vw * (290 / 1000));
-    left: calc(100vw * (100 / 1920));
-    z-index: 1;
-  }
-`
-
-const WellnessCardImg = styled.img`
-  position: absolute;
-  width: calc(100vw * (390 / 1920));
-  top: calc(100vw * (40 / 1000));
-  left: calc(100vw * (525 / 1920));
-
-  ${p => p.theme.mediaQueries.mobile} {
-    width: calc(100vw * (800 / 1000));
-    top: calc(100vw * (1220 / 1000));
-    left: calc(100vw * (280 / 1920));
-    z-index: 2;
-  }
-`
-
-const SocialCardImg = styled.img`
-  position: absolute;
-  width: calc(100vw * (420 / 1920));
-  top: calc(100vw * (192 / 1000));
-  left: calc(100vw * (970 / 1920));
-
-  ${p => p.theme.mediaQueries.mobile} {
-    width: calc(100vw * (850 / 1000));
-    top: calc(100vw * (2230 / 1000));
-    left: calc(100vw * (100 / 1920));
-    z-index: 3;
-  }
-`
-
-const WildcardCardImg = styled.img`
-  position: absolute;
-  width: calc(100vw * (390 / 1920));
-  top: calc(100vw * (65 / 1000));
-  left: calc(100vw * (1450 / 1920));
-
-  ${p => p.theme.mediaQueries.mobile} {
-    width: calc(100vw * (800 / 1000));
-    top: calc(100vw * (3150 / 1000));
-    left: calc(100vw * (220 / 1920));
-    z-index: 4;
+    width: calc(100vw * (${props => props.mobileWidth || '800'} / 1000));
+    top: calc(100vw * (${props => props.mobileTop} / 1000));
+    left: calc(100vw * (${props => props.mobileLeft || '100'} / 1920));
+    z-index: ${props => props.mobileZIndex};
   }
 `
 
@@ -177,31 +135,70 @@ const DesktopContent = styled.div`
   }
 `
 
+const TRACK_CARDS = [
+  {
+    src: Accessibility,
+    alt: "Accessibility",
+    width: "390",
+    top: "125",
+    left: "50",
+    mobileTop: "290",
+    mobileZIndex: 1
+  },
+  {
+    src: Wellness,
+    alt: "Wellness",
+    width: "390",
+    top: "40",
+    left: "525",
+    mobileTop: "1220",
+    mobileLeft: "280",
+    mobileZIndex: 2
+  },
+  {
+    src: Social,
+    alt: "Social",
+    width: "420",
+    top: "192",
+    left: "970",
+    mobileTop: "2230",
+    mobileWidth: "850",
+    mobileZIndex: 3
+  },
+  {
+    src: Wildcard,
+    alt: "Wildcard",
+    width: "390",
+    top: "65",
+    left: "1450",
+    mobileTop: "3150",
+    mobileLeft: "220",
+    mobileZIndex: 4
+  }
+];
+
 const Track = () => (
+  <TrackContainer id="tracks">
+    <TrackInner>
+      <MobileContent>
+        <Header>Tracks</Header>
+        <Instruction>Click to learn more!</Instruction>
+        {TRACK_CARDS.map((card) => (
+          <TrackCard key={card.alt} {...card} />
+        ))}
+      </MobileContent>
 
-    <TrackContainer id="tracks">
-      <TrackInner>
-        <MobileContent>
-          <Header>Tracks</Header>
-          <Instruction>Click to learn more!</Instruction>
-          <AccessibilityCardImg src={Accessibility} alt="Accessibility" />
-          <WellnessCardImg src={Wellness} alt="Wellness" />
-          <SocialCardImg src={Social} alt="Social" />
-          <WildcardCardImg src={Wildcard} alt="Wildcard" />
-        </MobileContent>
-
-        <DesktopContent>
-          <Header>Tracks</Header>
-          <Instruction>Click to learn more!</Instruction>
-          <ArrowImg src={Arrow} alt="Arrow" />
-          <AccessibilityCardImg src={Accessibility} alt="Accessibility" />
-          <WellnessCardImg src={Wellness} alt="Wellness" />
-          <SocialCardImg src={Social} alt="Social" />
-          <WildcardCardImg src={Wildcard} alt="Wildcard" />
-        </DesktopContent>
-      </TrackInner>
-    </TrackContainer>
-  )
+      <DesktopContent>
+        <Header>Tracks</Header>
+        <Instruction>Click to learn more!</Instruction>
+        <ArrowImg src={Arrow} alt="Arrow" />
+        {TRACK_CARDS.map((card) => (
+          <TrackCard key={card.alt} {...card} />
+        ))}
+      </DesktopContent>
+    </TrackInner>
+  </TrackContainer>
+);
 
 export default Track
 
