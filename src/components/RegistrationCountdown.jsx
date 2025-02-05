@@ -19,35 +19,6 @@ const RegistrationContainer = styled.div`
   }
 `
 
-const RegistrationDateContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  gap: calc(100vw * (8 / 1280));
-
-  ${p => p.theme.mediaQueries.mobile} {
-    flex-direction: row;
-    gap: calc(100vw * (10 / 487));
-  }
-`
-
-const RegistrationDate = styled.p`
-  font-weight: 600;
-  font-size: calc(100vw * (20 / 1280));
-
-  ${p => p.theme.mediaQueries.mobile} {
-    font-size: calc(100vw * (18 / 487));
-  }
-`
-
-const TimeNumber = styled.span`
-  font-weight: 700;
-  font-size: calc(100vw * (36 / 1280));
-
-  ${p => p.theme.mediaQueries.mobile} {
-    font-size: calc(100vw * (32 / 487));
-  }
-`
-
 function RegistrationCountdown() {
   const [timeLeft, setTimeLeft] = useState({})
   const [loading, setLoading] = useState(true)
