@@ -212,6 +212,7 @@ const Track = () => {
         <Instruction>Click to learn more!</Instruction>
         {cards.map((card) => (
           <TrackCard
+            style={{ cursor: 'pointer' }}
             key={card.id}
             src={card.isDesc ? card.descSrc : card.originalSrc}
             {...card}
@@ -226,6 +227,7 @@ const Track = () => {
         <ArrowImg src={Arrow} alt="Arrow" />
         {cards.map((card) => (
           <TrackCard
+            style={{ cursor: 'pointer' }}
             key={card.id}
             src={card.isDesc ? card.descSrc : card.originalSrc}
             {...card}
