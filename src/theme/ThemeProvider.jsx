@@ -12,7 +12,7 @@ export const SCREEN_BREAKPOINTS = {
 const base = {
   colors: {
     background: '#3B7580',
-    text: '#FFFFFF',
+    text: '#4F2F22',
     primary: '#1D4CBD',
     light: '#D0FFFF',
     mobileBackground: 'linear-gradient(to bottom, rgba(81, 152, 158, 1), rgba(5, 20, 57, 1))',

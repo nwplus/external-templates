@@ -1,432 +1,195 @@
-import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import { gsap } from 'gsap'
 import ScrollTrigger from 'gsap/dist/ScrollTrigger'
-import HeroBackground from './HeroBackground'
 import RegistrationCountdown from './RegistrationCountdown'
-import MuseumButton from './MuseumButton'
-import HeroSponsors from './HeroSponsors'
-import NwPlusLogo from './NwPlusLogo'
 import { SCREEN_BREAKPOINTS } from '../theme/ThemeProvider'
 
 gsap.registerPlugin(ScrollTrigger)
 
 const HeroContainer = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  aspect-ratio: 1280/901;
-  z-index: 10;
+  min-height: 100vh;
+  padding: calc(100vw * (150 / 1920));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
 
-  ${p => p.theme.mediaQueries.mobile} {
-    position: relative;
-    aspect-ratio: 487/935;
-    min-height: calc(100vw * (935 / 487));
+  @media (max-width: ${SCREEN_BREAKPOINTS.md}) {
+    flex-direction: column;
+    padding: 2rem;
+    text-align: center;
   }
 `
 
-const HeroBackgroundContainer = styled.div`
+const HeroContent = styled.div`
+  flex: 2;
+  max-width: 800px;
+`
+
+const HeroTitle = styled.h1`
+  font-family: 'Gloock';
+  font-size: calc(100vw * (64 / 1920));
+  font-weight: 400;
+  color: #a6321e;
+  margin: 16px 0;
+  width: calc(100vw * (1000 / 1920));
+
   ${p => p.theme.mediaQueries.mobile} {
-    display: none;
+    font-size: calc(100vw * (20 / 487));
   }
 `
 
-const HeroBackgroundMobile = styled.div`
-  display: none;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-
-    background-image: url(./assets/images/mobile_hero_background.svg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
+const HeroDescription = styled.p`
+  font-family: 'Happy Time';
+  font-style: italic;
+  font-size: calc(40vw * (80 / 1920));
+  color: #751c0d;
+  margin-bottom: 2rem;
 `
 
-const Nugget = styled.img`
-  display: none;
+const ButtonContainer = styled.div`
+  display: flex;
+  gap: 1.5rem;
 
-  ${p => p.theme.mediaQueries.mobile} {
-    display: block;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: calc(100vw * (95 / 487));
-    top: calc(100vw * (755 / 487));
+  @media (max-width: ${SCREEN_BREAKPOINTS.md}) {
+    justify-content: center;
   }
 `
 
 const LogoContainer = styled.div`
-  display: none;
+  margin-bottom: 2rem;
+  width: calc(100vw * (143 / 1920));
+  max-width: 143px;
+  height: auto;
 
-  ${p => p.theme.mediaQueries.mobile} {
-    display: block;
-    position: absolute;
-    left: 50%;
-    top: calc(100vw * (210 / 1280));
-    transform: translate(-50%, -50%);
-    width: calc(100vw * (60 / 487));
-    aspect-ratio: 44/50;
+  @media (max-width: ${SCREEN_BREAKPOINTS.md}) {
+    margin: 0 auto 2rem;
+    width: calc(100vw * (143 / 487));
   }
 `
-
-const DummySpacerDiv = styled.div`
-  aspect-ratio: 1280/909;
-  width: 100%;
-  z-index: -10;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    display: none;
-  }
-`
-
-const MuseumHeader = styled.div`
-  text-align: center;
-  font-family: 'LT Museum';
-  color: #3a2e21;
-
-  position: absolute;
-  left: 50%;
-  top: calc(100vw * (185 / 1280));
-  transform: translate(-50%, -50%) perspective(1000px) rotateX(8deg);
-  width: 100%;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    top: calc(100vw * (190 / 487));
-    transform: translate(-50%, -50%);
-  }
-`
-
-const Title = styled.p`
-  font-weight: 900;
-  font-size: calc(100vw * (48 / 1280));
-
-  ${p => p.theme.mediaQueries.mobile} {
-    font-size: calc(100vw * (66 / 487));
-  }
-`
-
-const TitleSponsor = styled.p`
-  font-weight: 700;
-  font-size: calc(100vw * (16 / 1280));
-
-  ${p => p.theme.mediaQueries.mobile} {
-    font-size: calc(100vw * (20 / 487));
-  }
-`
-
-const Description = styled.p`
-  font-weight: 700;
-  font-size: calc(100vw * (16 / 1280));
-
-  ${p => p.theme.mediaQueries.mobile} {
-    margin-top: calc(100vw * (10 / 487));
-    font-size: calc(100vw * (20 / 487));
-    font-weight: 500;
-  }
-`
-
-const Date = styled.p`
-  font-family: 'LT Museum';
-  font-weight: 500;
-  margin-top: calc(100vw * (16 / 1280));
-  font-size: calc(100vw * (16 / 1280));
-
-  ${p => p.theme.mediaQueries.mobile} {
-    margin-top: calc(100vw * (4 / 487));
-    font-size: calc(100vw * (20 / 487));
-  }
-`
-
-const MobileRegistrationCountdownContainer = styled.div`
-  display: none;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    display: block;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: calc(100vw * (332 / 487));
-    width: 100%;
-  }
-`
-
-const LeftPillar = styled.div`
-  position: absolute;
-  left: calc(100vw * (202 / 1280));
-  top: calc(100vw * (280 / 1280));
-  transform: perspective(2000px) rotateX(8.5deg) skewX(-7.5deg);
-
-  ${p => p.theme.mediaQueries.mobile} {
-    display: none;
-  }
-`
-
-const MentorButton = styled.a`
-  position: absolute;
-  left: calc(100vw * (435 / 1280));
-  top: calc(100vw * (455 / 1280));
-
-  cursor: pointer;
-  text-decoration: none;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    left: calc(100vw * (56 / 487));
-    top: calc(100vw * (588 / 487));
-    transform: perspective(2000px) rotateX(0deg) skewX(-4deg);
-  }
-`
-
-const HackerButton = styled.a`
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  top: calc(100vw * (430 / 1280));
-
-  cursor: pointer;
-  text-decoration: none;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    top: calc(100vw * (530 / 487));
-  }
-`
-
-const VolunteerButton = styled.a`
-  position: absolute;
-  left: calc(100vw * (700 / 1280));
-  top: calc(100vw * (455 / 1280));
-
-  cursor: pointer;
-  text-decoration: none;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    left: calc(100vw * (283 / 487));
-    top: calc(100vw * (588 / 487));
-    transform: perspective(2000px) rotateX(0deg) skewX(4deg);
-  }
-`
-
-const RightPillar = styled.div`
-  position: absolute;
-  left: calc(100vw * (947 / 1280));
-  top: calc(100vw * (280 / 1280));
-  transform: perspective(2000px) rotateX(-8.5deg) skewX(8.5deg);
-
-  ${p => p.theme.mediaQueries.mobile} {
-    display: none;
-  }
-`
-
-const RightPillarInnerContainer = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: calc(100vw * (134 / 1280));
-  height: calc(100vw * (240 / 1280));
-`
-
 const SponsorText = styled.p`
-  text-align: center;
-  font-weight: 600;
-  font-size: calc(100vw * (20 / 1280));
-  color: #51483e;
-`
+  margin-top: 1.5rem;
+  font-family: 'Happy Time';
+  font-style: italic;
+  font-size: calc(100vw * (23 / 1920));
+  color: #751c0d;
 
-const SponsorButton = styled.a`
-  cursor: pointer;
-  text-decoration: none;
-`
-
-const MobileSponsorButton = styled(SponsorButton)`
-  display: none;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    display: block;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: calc(100vw * (891 / 487));
+  @media (max-width: ${SCREEN_BREAKPOINTS.md}) {
+    font-size: calc(100vw * (18 / 487));
   }
 `
 
-const Hero = () => {
-  const heroRef = useRef(null)
-  const tlRef = useRef(null)
-  const svgWidth = 1280
-  const svgHeight = 901
+const TextLink = styled.a`
+  color: #751c0d;
+  text-decoration: underline;
+  cursor: pointer;
 
-  useEffect(() => {
-    const mm = gsap.matchMedia()
+  &:hover {
+    color: #456774;
+  }
+`
 
-    mm.add(`(min-width: ${SCREEN_BREAKPOINTS.desktop}px)`, () => {
-      const hero = heroRef.current
-      if (!hero) return
+const Button = styled.a`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  padding: 11px 21px;
+  white-space: nowrap;
 
-      const initScrollTrigger = () => {
-        const svg = hero.querySelector('svg')
-        const door = hero.querySelector('#door')
+  font-family: 'Poppins';
+  font-size: calc(100vw * (23 / 1920));
+  border-radius: 15px;
+  height: calc(100vw * (64 / 1920));
+  width: calc(100vw * (280 / 1920));
+  font-weight: 600;
+  cursor: pointer;
 
-        if (!door || !svg) return
+  transition: all 0.3s ease;
+  &.primary {
+    background-color: #a6321e;
+    color: #f0e9d7;
+    border: none;
 
-        const doorBBox = door.getBBox()
-        const doorCenterX = doorBBox.x + doorBBox.width / 2
-        const doorCenterY = doorBBox.y + doorBBox.height / 2
+    &:hover {
+      background-color: #456774;
+    }
+  }
 
-        const transformOriginX = (doorCenterX / svgWidth) * 100
-        const transformOriginY = (doorCenterY / svgHeight) * 100
+  &.secondary {
+    background-color: transparent;
+    color: #a6321e;
+    border: 2px solid #a6321e;
 
-        let scrollDistance = 120
-        const aspectRatio = window.innerWidth / window.innerHeight
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+`
 
-        if (aspectRatio <= 16 / 9) {
-          scrollDistance = 95 + (25 * Math.min(aspectRatio - 11 / 9, 5 / 9)) / (5 / 9)
-        }
+const HeroImageContainer = styled.div`
+  flex: 1;
+  position: relative;
+  max-width: 400px;
+  margin-top: -100px;
 
-        gsap.set(hero, {
-          transformOrigin: `${transformOriginX}% ${transformOriginY}%`,
-        })
+  @media (max-width: ${SCREEN_BREAKPOINTS.md}) {
+    max-width: 100%;
+    margin-top: 0;
+  }
+`
 
-        tlRef.current = gsap.timeline({
-          scrollTrigger: {
-            trigger: hero,
-            start: 'top top',
-            end: `+=${scrollDistance}%`,
-            pin: true,
-            scrub: 0.25,
-            onLeave: () => {
-              gsap.set(hero, { autoAlpha: 0 })
-            },
-            onEnterBack: () => {
-              gsap.to(hero, {
-                autoAlpha: 1,
-                duration: 0.25,
-                overwrite: 'auto',
-              })
-            },
-            fastScrollEnd: true,
-            pinSpacing: false,
-          },
-        })
+const HeroImage = styled.img`
+  width: calc(100vw * (530 / 1920));
+  height: auto;
+  object-fit: cover;
+`
 
-        tlRef.current.to(
-          hero.querySelector('.museum-header'),
-          {
-            opacity: 0,
-            duration: 0.3,
-            ease: 'power2.inOut',
-          },
-          0
-        )
+const RegistrationCard = styled.img`
+  position: absolute;
+  bottom: calc(100vw * (-60 / 1920));
+  left: calc(100vw * (-150 / 1920));
+  width: calc(100vw * (500 / 1920));
+  height: auto;
+  z-index: 1;
+`
 
-        tlRef.current.to(
-          hero,
-          {
-            scale: 15,
-            duration: 1,
-            ease: 'power2.inOut',
-          },
-          0
-        )
-
-        tlRef.current.to(
-          hero,
-          {
-            opacity: 0,
-            duration: 0.3,
-            ease: 'power2.inOut',
-          },
-          '>-0.3'
-        )
-      }
-
-      initScrollTrigger()
-
-      // eslint-disable-next-line consistent-return
-      return () => {
-        if (tlRef.current) {
-          tlRef.current.kill()
-          tlRef.current = null
-        }
-        ScrollTrigger.getAll().forEach(trigger => trigger.kill())
-        ScrollTrigger.refresh()
-      }
-    })
-
-    return () => mm.revert()
-  }, [])
-
-  return (
-    <div id="home">
-      <HeroContainer ref={heroRef}>
-        <HeroBackgroundContainer>
-          <HeroBackground />
-        </HeroBackgroundContainer>
-        <HeroBackgroundMobile />
-
-        <Nugget src="./assets/images/nugget_hero.png" />
-
+const Hero = () => (
+  <div id="home">
+    <HeroContainer>
+      <HeroContent>
         <LogoContainer>
-          <NwPlusLogo fill="#3A2E21" />
+          <img src="/assets/images/cmdfLogo.svg" alt="cmd-f Logo" width="100%" height="100%" />
         </LogoContainer>
-
-        <MuseumHeader className="museum-header">
-          <Title>nwHacks</Title>
-          <TitleSponsor>powered by Aquareum.tv</TitleSponsor>
-          <Description>Western Canada&apos;s largest hackathon</Description>
-          <Date>Jan 18-19, 2025 | UBC Life Science Institute</Date>
-        </MuseumHeader>
-
-        <MobileRegistrationCountdownContainer>
-          <RegistrationCountdown />
-        </MobileRegistrationCountdownContainer>
-
-        <LeftPillar>
-          <RegistrationCountdown />
-        </LeftPillar>
-
-        <MentorButton
-          href="https://docs.google.com/forms/d/e/1FAIpQLSe-KggS1ekHPklwNTMdc4xQyVAPwLjC4oLWg4EWvn2BEx5jQw/viewform?usp=sf_link"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <MuseumButton topText="Become a" bottomText="Mentor" />
-        </MentorButton>
-        <HackerButton href="https://portal.nwplus.io" target="_blank" rel="noopener noreferrer">
-          <MuseumButton topText="Apply as a" bottomText="Hacker" />
-        </HackerButton>
-        <VolunteerButton
-          href="https://docs.google.com/forms/d/e/1FAIpQLSevOUAxpWWvyaL4w6Jq9VIqpfZA3y-Lmk_RcAQ68ifCqH7ztg/viewform?usp=sf_link"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <MuseumButton topText="Become a" bottomText="Volunteer" />
-        </VolunteerButton>
-
-        <RightPillar>
-          <RightPillarInnerContainer>
-            <SponsorText>Sponsored by</SponsorText>
-            <HeroSponsors />
-            <SponsorButton href="mailto:sponsorship@nwplus.io" target="_blank" rel="noopener noreferrer">
-              <MuseumButton topText="Sponsor Us" variant="sponsor" />
-            </SponsorButton>
-          </RightPillarInnerContainer>
-        </RightPillar>
-
-        <MobileSponsorButton href="mailto:sponsorship@nwplus.io" target="_blank" rel="noopener noreferrer">
-          <MuseumButton topText="Become a Sponsor" variant="sponsor" />
-        </MobileSponsorButton>
-      </HeroContainer>
-      <DummySpacerDiv />
-    </div>
-  )
-}
+        <HeroTitle>Western Canada&apos;s largest hackathon celebrating underrepresented genders in tech.</HeroTitle>
+        <HeroDescription>March 8-9, 2025 | In-person at Life Sciences Institute</HeroDescription>
+        <ButtonContainer>
+          <Button className="primary" href="https://portal.nwplus.io" target="_blank">
+            Apply Now!
+          </Button>
+          <Button className="secondary" href="https://forms.gle/LayNGN53S5Mdtin16">
+            Become a mentor
+          </Button>
+        </ButtonContainer>
+        <SponsorText>
+          Become a{' '}
+          <TextLink href="mailto:sponsorship@nwplus.io" target="_blank" rel="noopener noreferrer">
+            sponsor
+          </TextLink>{' '}
+          or{' '}
+          <TextLink href="https://forms.gle/ZxcXa5RrbZXPZPAE7" target="_blank" rel="noopener noreferrer">
+            volunteer
+          </TextLink>
+          .
+        </SponsorText>
+      </HeroContent>
+      <HeroImageContainer>
+        <HeroImage src="/assets/images/animations/hero-pancake.gif" alt="Hero pancakes gif" />
+        <RegistrationCard src="/assets/images/regClosesCard.svg" alt="Registration open card" />
+        <RegistrationCountdown />
+      </HeroImageContainer>
+    </HeroContainer>
+  </div>
+)
 
 export default Hero
