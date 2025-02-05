@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Header2 } from '@components/Typography'
 import Accessibility from '@assets/images/tracks/accessibility_track.png'
@@ -6,6 +6,10 @@ import Wellness from '@assets/images/tracks/wellness_track.png'
 import Social from '@assets/images/tracks/social_track.png'
 import Wildcard from '@assets/images/tracks/wildcard_track.png'
 import Arrow from '@assets/images/tracks/arrow.svg'
+import AccessibilityDesc from '@assets/images/tracks/accessibility_track_desc.svg'
+import WellnessDesc from '@assets/images/tracks/wellness_track_desc.svg'
+import SocialDesc from '@assets/images/tracks/social_track_desc.svg'
+import WildcardDesc from '@assets/images/tracks/wildcard_track_desc.svg'
 
 const TrackContainer = styled.div`
   position: relative;
@@ -137,54 +141,82 @@ const DesktopContent = styled.div`
 
 const TRACK_CARDS = [
   {
-    src: Accessibility,
+    id: 1,
+    originalSrc: Accessibility,
     alt: "Accessibility",
     width: "390",
     top: "125",
     left: "50",
     mobileTop: "290",
-    mobileZIndex: 1
+    mobileZIndex: 1,
+    descSrc: AccessibilityDesc
   },
   {
-    src: Wellness,
+    id: 2,
+    originalSrc: Wellness,
     alt: "Wellness",
     width: "390",
     top: "40",
     left: "525",
     mobileTop: "1220",
     mobileLeft: "280",
-    mobileZIndex: 2
+    mobileZIndex: 2,
+    descSrc: WellnessDesc
   },
   {
-    src: Social,
+    id: 3,
+    originalSrc: Social,
     alt: "Social",
     width: "420",
     top: "192",
     left: "970",
     mobileTop: "2230",
     mobileWidth: "850",
-    mobileZIndex: 3
+    mobileZIndex: 3,
+    descSrc: SocialDesc
   },
   {
-    src: Wildcard,
+    id: 4,
+    originalSrc: Wildcard,
     alt: "Wildcard",
     width: "390",
     top: "65",
     left: "1450",
     mobileTop: "3150",
     mobileLeft: "220",
-    mobileZIndex: 4
+    mobileZIndex: 4,
+    descSrc: WildcardDesc
   }
 ];
 
-const Track = () => (
+const Track = () => {
+  const [cards, setCards] = useState(
+    TRACK_CARDS.map(card => ({ ...card, isDesc: false }))
+  );
+
+  const handleCardClick = (clickedId) => {
+    setCards((prevCards) =>
+      prevCards.map(card =>
+        card.id === clickedId
+          ? { ...card, isDesc: !card.isDesc }
+          : card
+      )
+    );
+  };
+
+  return (
   <TrackContainer id="tracks">
     <TrackInner>
       <MobileContent>
         <Header>Tracks</Header>
         <Instruction>Click to learn more!</Instruction>
-        {TRACK_CARDS.map((card) => (
-          <TrackCard key={card.alt} {...card} />
+        {cards.map((card) => (
+          <TrackCard
+            key={card.id}
+            src={card.isDesc ? card.descSrc : card.originalSrc}
+            {...card}
+            onClick={() => handleCardClick(card.id)}
+          />
         ))}
       </MobileContent>
 
@@ -192,13 +224,19 @@ const Track = () => (
         <Header>Tracks</Header>
         <Instruction>Click to learn more!</Instruction>
         <ArrowImg src={Arrow} alt="Arrow" />
-        {TRACK_CARDS.map((card) => (
-          <TrackCard key={card.alt} {...card} />
+        {cards.map((card) => (
+          <TrackCard
+            key={card.id}
+            src={card.isDesc ? card.descSrc : card.originalSrc}
+            {...card}
+            onClick={() => handleCardClick(card.id)}
+          />
         ))}
       </DesktopContent>
     </TrackInner>
   </TrackContainer>
-);
+  );
+};
 
 export default Track
 
