@@ -224,7 +224,7 @@ const mobileImages = [
     src: 'oven_mitts_mobile.svg', 
     alt: 'Oven Mitts', 
     width: 100,
-    top: 830,
+    top: 840,
     left: 0
   },
 ];
