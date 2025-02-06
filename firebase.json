@@ -6,12 +6,12 @@
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
     },
     {
-      "target": "nwhacks2025_dev",
+      "target": "cmd-f2025_dev",
       "public": "out",
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
     },
     {
-      "target": "nwhacks2025_main",
+      "target": "cmd-f2025_main",
       "public": "out",
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
     }
