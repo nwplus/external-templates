@@ -12,11 +12,9 @@ const Container = styled.div`
   margin-top: calc(100vw * (25 / 1280));
   margin-left: calc(100vw * (70 / 1280));
   transform: rotate(-4deg);
-  
+
   ${p => p.theme.mediaQueries.mobile} {
-    width: calc(100vw * (369 / 487));
-    height: calc(100vw * (30 / 487));
-    margin-top: calc(100vw * (10 / 487));
+    width: calc(100vw * (130 / 393));
   }
 `
 
@@ -33,7 +31,7 @@ const Input = styled.input`
   ${p => p.theme.mediaQueries.mobile} {
     padding: calc(100vw * (6 / 487)) calc(100vw * (16 / 487));
     border-radius: calc(100vw * (7 / 487));
-    font-size: calc(100vw * (12 / 487));
+    font-size: calc(100vw * (5 / 393));
   }
 `
 
@@ -60,14 +58,14 @@ const Button = styled.button`
   }
 
   ${p => p.theme.mediaQueries.mobile} {
-    right: calc(100vw * (5 / 487));
+    right: calc(100vw * (-1 / 393));
 
-    width: calc(100vw * (51.4 / 487));
-    height: calc(100vw * (20 / 487));
+    width: calc(100vw * (30 / 393));
+    height: calc(100vw * (10 / 393));
     padding: calc(100vw * (2.14 / 487)) calc(100vw * (5.71 / 487));
     border-radius: calc(100vw * (5 / 487));
 
-    font-size: calc(100vw * (10 / 487));
+    font-size: calc(100vw * (5 / 393));
   }
 `
 
