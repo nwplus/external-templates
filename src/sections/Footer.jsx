@@ -96,7 +96,6 @@ const Links = styled.div`
 
  bottom: calc(100vw * (-500 / 393));
     width: 40%;
-    font-size: calc(100vw * (20 / 487));
     justify-content: space-evenly;
 
     a {
@@ -153,7 +152,7 @@ const CopyRight = styled.div`
   font-weight: 600;
   text-align: center;
   position: relative;
-  bottom: calc(100vw * (-1540 / 1920));
+  bottom: calc(100vw * (-1520 / 1920));
   color: #ffffff;
   font-size: calc(100vw * (25 / 1920));
 
