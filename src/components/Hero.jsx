@@ -154,7 +154,7 @@ const HeroImageContainer = styled.div`
 
   ${p => p.theme.mediaQueries.mobile} {
     //max-width: 100%;
-    margin-top: -50px;
+    margin-top: -30px;
   }
 `
 
@@ -163,7 +163,8 @@ const HeroImage = styled.img`
   height: auto;
   object-fit: cover;
   ${p => p.theme.mediaQueries.mobile} {
-    width: calc(100vw * (250 / 393));
+    width: calc(100vw * (240 / 393));
+    height: calc(100vw * (300 / 393));
   }
 `
 
