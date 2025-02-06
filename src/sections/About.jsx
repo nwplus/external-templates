@@ -68,8 +68,9 @@ const Title = styled.p`
 
 const Description = styled.p`
   font-family: 'Poppins';
-  font-size: calc(100vw * (19 / 1920));
-  font-weight: 400;
+  font-size: calc(100vw * (20 / 1920));
+  font-weight: 500;
+  line-height: 1.5;
   font-style: normal;
   color: #4F2F22;
   
@@ -99,7 +100,7 @@ const images = [
     src: 'piping_bag.svg', 
     alt: 'Piping Bag', 
     width: 160, 
-    top: 70, 
+    top: 100, 
     left: 800,
     mobileWidth: 0,
   },
@@ -107,7 +108,7 @@ const images = [
     src: 'measuring_glass.svg', 
     alt: 'Measuring Glass', 
     width: 220, 
-    top: 80, 
+    top: 110, 
     left: 1200,
     mobileWidth: 0,
   },
@@ -139,7 +140,7 @@ const images = [
     src: 'measuring_cup.svg', 
     alt: 'Measuring Cup', 
     width: 120, 
-    top: 970, 
+    top: 1010, 
     left: 900,
     mobileWidth: 0,
   },
