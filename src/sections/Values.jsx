@@ -4,7 +4,6 @@ import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
 import cakeTop from '@assets/images/cake_top.svg'
 import cakeMid from '@assets/images/cake_mid.svg'
 import cakeBottom from '@assets/images/cake_bottom.svg'
-import { useParallax } from 'react-scroll-parallax'
 import { gsap } from 'gsap'
 import ScrollTrigger from 'gsap/dist/ScrollTrigger'
 
@@ -43,7 +42,7 @@ const Title = styled.p`
   color: #A6321E;
   font-family: 'Gloock Regular', normal;
   text-align: center;
-  font-size: calc(100vw * (64 / 1920));
+  font-size: calc(100vw * (64 / 1600));
   margin-bottom: calc(100vw * (40 / 1280));
   padding-top: calc(100vw * (40 / 1920));
 
@@ -60,7 +59,7 @@ const ColumnContainer = styled.div`
 `
 
 const ExpandedCakeImage = styled.img`
-  width: calc(100vw * (280 / 1200));
+  width: calc(100vw * (280 / 1100));
   height: auto;
   margin-top: calc(100vw * -1 * (48 / 1200));
 
@@ -87,7 +86,7 @@ const ValueItem = styled.div`
   display: flex;
   align-items: flex-start;
   width: 100%;
-  gap: 1.5rem; /* Space between dot/line and text */
+  gap: 1rem; /* Space between dot/line and text */
 `
 
 const DotLineContainer = styled.div`
@@ -115,19 +114,19 @@ const Line1 = styled.div`
   background-color: #A6321E;
   margin-top: 8px;
   margin-bottom: -56px;
-  height: calc(100vw * (192 / 1920));
+  height: calc(100vw * (192 / 1600));
 `
 const Line2 = styled.div`
   width: 3px;
   background-color: #A6321E;
   margin-top: 8px;
   margin-bottom: -56px;
-  height: calc(100vw * (220 / 1920));
+  height: calc(100vw * (220 / 1600));
 `
 const ValueContent = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: calc(100vw * (640 / 1920));
+  max-width: calc(100vw * (640 / 1600));
 
   @media (max-width: 768px) {
     max-width: calc(100vw * (600 / 768));
@@ -135,7 +134,7 @@ const ValueContent = styled.div`
 `
 
 const ValueTitle = styled.p`
-  font-size: calc(100vw * (32 / 1920));
+  font-size: calc(100vw * (32 / 1600));
   color: #A6321E;
   font-family: 'HappyTime', normal;
   margin-bottom: 0.5rem;
@@ -146,7 +145,7 @@ const ValueTitle = styled.p`
 `
 
 const ValueDescription = styled.p`
-  font-size: calc(100vw * (18 / 1920));
+  font-size: calc(100vw * (18 / 1600));
   color: #4F2F22;
   font-family: 'Poppins', sans-serif;
   line-height: 1.6;
@@ -158,26 +157,37 @@ const ValueDescription = styled.p`
 
 const Values = () => {
   const valuesRef = useRef(null);
-  const [cakeEaseEnabled, setCakeEaseEnabled] = useState(false);
-  const [descValuesEnabled, setDescValuesEnabled] = useState(false);
+  const cakeTopRef = useRef(null);
+  const cakeMidRef = useRef(null);
+  const cakeBotRef = useRef(null);
+  const title1Ref = useRef(null);
+  const title3Ref = useRef(null);
+  const dot1Ref = useRef(null);
+  const dot3Ref = useRef(null);
+  const line1Ref = useRef(null);
+  const line2Ref = useRef(null);
   const [title1StartY, setTitle1StartY] = useState(100)
   const [title3StartY, setTitle3StartY] = useState(-100)
   const [dot1StartY, setDot1StartY] = useState(100)
   const [dot3StartY, setDot3StartY] = useState(-100)
-  const [valuesEnabled, setValuesEnabled] = useState(false);
-  const [delayedValuesEnabled, setDelayedValuesEnabled] = useState(false);
+  const [cakeTopStartY, setCakeTopStartY] = useState(100)
+  const [cakeBotStartY, setCakeBotStartY] = useState(-100)
   const [isMobile, setIsMobile] = useState(false)
-  const [isAnimating, setIsAnimating] = useState(false);
+
+
+  const fadeDescRefs = [useRef(null), useRef(null), useRef(null)];
 
   useEffect(() => {
     const updateY = () => {
       const screenWidth = window.innerWidth;
       const screenHeight = window.innerHeight;
-      const valY = Math.min(screenWidth * 0.2, screenHeight * 0.35)
+      const valY = Math.min(screenWidth * 0.1, screenHeight * 0.15)
       setTitle1StartY(valY)
       setTitle3StartY(-1.2 * valY)
-      setDot1StartY(valY * 3)
-      setDot3StartY(-3.2 * valY)
+      setDot1StartY(valY)
+      setDot3StartY(-1.2 * valY)
+      setCakeTopStartY(valY - 12)
+      setCakeBotStartY((valY * -1) + 12)
     }
 
     updateY()
@@ -201,122 +211,131 @@ const Values = () => {
     }
   }, [])
 
-  const getEaseParallaxParams = (startY, dur, ease, cond) => {
-    if (cond && !isMobile) {
-      return { duration: isAnimating ? dur : 0.6, easing: ease, translateY: [startY, 0] };
-    }
-    if (isMobile) {
-      return { speed: 0, translateY: [0, 0] };
-    }
-    return { speed: 0, translateY: [startY, startY] };
-  };
-
-  const getCakeEaseParallaxParams = (ease, startY, endY) => {
-    if (cakeEaseEnabled) {
-      return { duration: isAnimating ? 1 : 0.6, easing: ease, translateY: [startY, endY] };
-    }
-    return { easing: ease, speed: 0, translateY: [startY, startY] };
-  }
-
-  const getLineParallaxParams = (cond, start) => cond
-    ? { scaleY: [0, 1], duration: 2, opacity: [0, 1], translateY: [start, 0] }
-    : { scaleY: [0, 0], duration: 2, opacity: [0, 0] };
-
-
-  const fade = Array(3).fill(null).map(() => {
-    let opacitySettings;
-
-    if (descValuesEnabled && !isMobile) {
-      opacitySettings = { opacity: [0, 1], duration: 0.005, easing: 'easeInOutQuad' };
-    } else if (isMobile) {
-      opacitySettings = { opacity: [1, 1] };
-    } else {
-      opacitySettings = { opacity: [0, 0] };
-    }
-
-    return useParallax(opacitySettings);
-  });
-
-  const cakeTopEase = useParallax(getCakeEaseParallaxParams('easeInOutQuad', 35, -5));
-  const cakeMidEase = useParallax(getCakeEaseParallaxParams('easeInOutQuad', 0, 0));
-  const cakeBotEase = useParallax(getCakeEaseParallaxParams('easeInOutQuad', -35, 5));
-
-  const title1Ease = useParallax(getEaseParallaxParams(title1StartY, 1, 'easeInOutCubic', valuesEnabled));
-  const title3Ease = useParallax(getEaseParallaxParams(title3StartY, 1.5, 'easeInOutCubic', valuesEnabled));
-
-  const dot1Ease = useParallax(getEaseParallaxParams(dot1StartY, 1, 'easeInOutQuart', valuesEnabled));
-  const dot3Ease = useParallax(getEaseParallaxParams(dot3StartY, 1.5, 'easeInOutQuart', valuesEnabled));
-
-  const line1Scale = useParallax(getLineParallaxParams(delayedValuesEnabled, 60));
-  const line2Scale = useParallax(getLineParallaxParams(delayedValuesEnabled, -52));
-
-
   useEffect(() => {
-    const values = valuesRef.current;
+    // Set initial positions so that all elements start offset
+    gsap.set(cakeTopRef.current, { y: cakeTopStartY });
+    gsap.set(cakeMidRef.current, { y: 0 });
+    gsap.set(cakeBotRef.current, { y: cakeBotStartY });
+    gsap.set(title1Ref.current, isMobile ? { y: 0 } : { y: title1StartY });
+    gsap.set(title3Ref.current, isMobile ? { y: 0 } : { y: title3StartY });
+    gsap.set(dot1Ref.current, isMobile ? { y: 0 } : { y: dot1StartY });
+    gsap.set(dot3Ref.current, isMobile ? { y: 0 } : { y: dot3StartY });
+    fadeDescRefs.forEach(ref => gsap.set(ref.current, isMobile ? { opacity: 1 } : { opacity: 0 }));
+    gsap.set(line1Ref.current, { scaleY: 0, opacity: 0, y: 100 });
+    gsap.set(line2Ref.current, { scaleY: 0, opacity: 0, y: -100 });
 
-    gsap.timeline({
+    const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: values,
+        trigger: valuesRef.current,
         start: 'top top',
         end: '+=120%',
-        scrub: true,
+        scrub: 1,
         pin: true,
         anticipatePin: 1,
         fastScrollEnd: true,
-        onEnter: () => {
-          setIsAnimating(true);
-
-          setTimeout(() => {
-            setCakeEaseEnabled(true);
-          }, 400); // Adjust delay time here
-
-          setTimeout(() => {
-            setDescValuesEnabled(true);
-          }, 500);
-          setTimeout(() => {
-            setDelayedValuesEnabled(true);
-          }, 172);
-          setTimeout(() => {
-            setValuesEnabled(true);
-          }, 40);
-
-        },
-        onLeaveBack: () => {
-          setIsAnimating(false);
-          setCakeEaseEnabled(false);
-          setDescValuesEnabled(false);
-          setValuesEnabled(false);
-          setDelayedValuesEnabled(false);
-        },
-
       }
-    }
-    );
+    });
+
+    tl.to(cakeTopRef.current, {
+      y: -5,
+      ease: 'easeInOutQuad',
+      duration: 0.8,
+    }, 0);
+
+    tl.to(cakeBotRef.current, {
+      y: 5,
+      ease: 'easeInOutQuad',
+      duration: 0.8,
+    }, 0);
+
+    tl.to(title1Ref.current, {
+      y: 0,
+      ease: 'easeInOutCubic',
+      duration: 0.8,
+    }, 0);
+
+    tl.to(title3Ref.current, {
+      y: 0,
+      ease: 'easeInOutCubic',
+      duration: 0.8,
+    }, 0);
+
+    tl.to(dot1Ref.current, {
+      y: 0,
+      ease: 'easeInOutQuart',
+      duration: 0.8,
+    }, 0);
+
+    tl.to(dot3Ref.current, {
+      y: 0,
+      ease: 'easeInOutQuart',
+      duration: 0.8,
+    }, 0);
+
+    tl.to(line1Ref.current, {
+      y: 0,
+      scaleY: isMobile ? 0 : 1,
+      opacity: isMobile ? 0 : 1,
+      ease: 'easeInOutQuad',
+      duration: 0.8,
+    }, 0);
+
+    tl.to(line2Ref.current, {
+      y: 0,
+      scaleY: isMobile ? 0 : 1,
+      opacity: isMobile ? 0 : 1,
+      ease: 'easeInOutQuad',
+      duration: 0.8,
+    }, 0);
+
+    fadeDescRefs.forEach(ref => {
+      tl.to(ref.current, {
+        opacity: 1,
+        ease: 'easeInOutQuad',
+        duration: 0.6,
+      }, 1);
+    });
+
+    // Cleanup on unmount
     return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill())
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     }
-  }, []);
+  }, [fadeDescRefs]);
 
   return (
     <OuterContainer id="values" ref={valuesRef}>
       <Title>Our Values</Title>
       <ValuesContainer>
         <ColumnContainer>
-          <ExpandedCakeImage ref={cakeTopEase.ref} src={cakeTop} alt="Cake Top Layer" style={{ zIndex: 3 }} />
-          <ExpandedCakeImage ref={cakeMidEase.ref} src={cakeMid} alt="Cake Middle Layer" style={{ zIndex: 2 }} />
-          <ExpandedCakeImage ref={cakeBotEase.ref} src={cakeBottom} alt="Cake Bottom Layer" style={{ zIndex: 1 }} />
+          <ExpandedCakeImage
+            ref={cakeTopRef}
+            src={cakeTop}
+            alt="Cake Top Layer"
+            style={{ zIndex: 3 }}
+          />
+          <ExpandedCakeImage
+            ref={cakeMidRef}
+            src={cakeMid}
+            alt="Cake Middle Layer"
+            style={{ zIndex: 2 }}
+          />
+          <ExpandedCakeImage
+            ref={cakeBotRef}
+            src={cakeBottom}
+            alt="Cake Bottom Layer"
+            style={{ zIndex: 1 }}
+          />
         </ColumnContainer>
-
         <ColumnContainer>
           <ValuesList>
             <ValueItem>
               <DotLineContainer>
-                <Dot ref={dot1Ease.ref} />
-                <Line1 ref={line1Scale.ref} />
+                <Dot ref={dot1Ref} />
+                <Line1 ref={line1Ref} />
               </DotLineContainer>
               <ValueContent>
-                <ValueTitle ref={title1Ease.ref}>Build Confidence</ValueTitle>
-                <ValueDescription ref={fade[0].ref}>
+                <ValueTitle ref={title1Ref}>Build Confidence</ValueTitle>
+                <ValueDescription ref={fadeDescRefs[0]}>
                   Develop career-ready skills, fight impostor syndrome, and create an invaluable support
                   network with friends, mentors, and sponsors. Regardless of your background, you bring a
                   unique and important perspective to tech. Like how there is always a treat for everyone,
@@ -324,15 +343,14 @@ const Values = () => {
                 </ValueDescription>
               </ValueContent>
             </ValueItem>
-
             <ValueItem>
               <DotLineContainer>
                 <Dot />
-                <Line2 ref={line2Scale.ref} />
+                <Line2 ref={line2Ref} />
               </DotLineContainer>
               <ValueContent>
                 <ValueTitle>Learn Together</ValueTitle>
-                <ValueDescription ref={fade[1].ref}>
+                <ValueDescription ref={fadeDescRefs[1]}>
                   Whether you have never coded before, or you dream in assembly, challenge yourself to create
                   something meaningful! Learn new skills at our workshops and apply them to fresh and creative
                   projects! Regardless of your project&apos;s completion at the end of the weekend, take pride in the
@@ -341,14 +359,13 @@ const Values = () => {
                 </ValueDescription>
               </ValueContent>
             </ValueItem>
-
             <ValueItem>
               <DotLineContainer>
-                <Dot ref={dot3Ease.ref} />
+                <Dot ref={dot3Ref} />
               </DotLineContainer>
               <ValueContent>
-                <ValueTitle ref={title3Ease.ref}>Explore in a Safe Space</ValueTitle>
-                <ValueDescription ref={fade[2].ref}>
+                <ValueTitle ref={title3Ref}>Explore in a Safe Space</ValueTitle>
+                <ValueDescription ref={fadeDescRefs[2]}>
                   Discover a community of like-minded, creative, and passionate individuals. Form lasting bonds,
                   share experiences, and create memories in an environment free from judgment, where all gender
                   identities and expressions are respected. We&apos;re all here unified under one cause—to strive for
@@ -360,7 +377,7 @@ const Values = () => {
         </ColumnContainer>
       </ValuesContainer>
     </OuterContainer>
-  )
-}
+  );
+};
 
 export default Values;
