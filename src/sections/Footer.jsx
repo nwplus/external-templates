@@ -155,7 +155,7 @@ const CopyRight = styled.div`
 
 const Footer = () => (
   <div>
-    <FooterContainer>
+    <FooterContainer id="footer">
       <FooterBackground>
         <FooterDecorOverlay src={FooterDecor} alt="Decorative cake illustrations" />
         <ClosingCard>
