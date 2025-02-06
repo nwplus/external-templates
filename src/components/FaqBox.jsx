@@ -74,7 +74,7 @@ const Answer = styled.div`
 const TopExpand = styled.div`
   display: flex;
   align-items: center;
-  transition: 0.2s transform cubic-bezier(0.6, 0, 0.4, 1);
+  transition: 0.4s transform cubic-bezier(0.6, 0, 0.4, 1);
 `
 
 // style={{ transform: `rotate(${false ? '0deg' : ''});` }}
@@ -95,7 +95,7 @@ const FaqBox = ({ question, answer, isExpanded, onExpand }) => (
   <Container expanded={isExpanded}>
     <Top expanded={isExpanded} onClick={onExpand}>
       {question}
-      <TopExpand style={isExpanded ? { transform: 'rotate(180deg)' } : { transform: 'rotate(270deg)' }}>
+      <TopExpand style={isExpanded ? { transform: 'rotate(360deg)' } : { transform: 'rotate(180deg)' }}>
         <Arrow color={isExpanded ? '#252525' : '#2C2543'} />
       </TopExpand>
     </Top>
