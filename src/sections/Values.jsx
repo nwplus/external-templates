@@ -40,7 +40,8 @@ const ValuesContainer = styled.div`
 
 const Title = styled.p`
   color: #A6321E;
-  font-family: 'Gloock Regular', normal;
+  font-family: 'Gloock';
+  font-weight: 400;
   text-align: center;
   font-size: calc(100vw * (64 / 1600));
   margin-bottom: calc(100vw * (40 / 1280));
@@ -228,7 +229,7 @@ const Values = () => {
       scrollTrigger: {
         trigger: valuesRef.current,
         start: 'top top',
-        end: '+=120%',
+        end: isMobile ? '+=75%' : '+=120%',
         scrub: 1,
         pin: true,
         anticipatePin: 1,
