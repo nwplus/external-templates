@@ -2,7 +2,6 @@ import styled from 'styled-components'
 import { gsap } from 'gsap'
 import ScrollTrigger from 'gsap/dist/ScrollTrigger'
 import RegistrationCountdown from './RegistrationCountdown'
-import { SCREEN_BREAKPOINTS } from '../theme/ThemeProvider'
 
 gsap.registerPlugin(ScrollTrigger)
 

@@ -132,23 +132,56 @@ const FaqDecorations = styled.div`
   margin: 0 auto;
   padding: 40px 0;
 
-  ${p => p.theme.mediaQueries.tablet} {
-    flex-wrap: wrap;
-    gap: 20px;
+  ${p => p.theme.mediaQueries.mobile} {
     justify-content: center;
+    padding: 0;
   }
 
   img {
     width: calc(100% / 6 - 20px);
-    height: auto;
-    object-fit: contain;
+  }
 
-    ${p => p.theme.mediaQueries.tablet} {
-      width: calc(100% / 3 - 20px);
-    }
-
+  img:nth-child(1) {
+    height: 320px;
     ${p => p.theme.mediaQueries.mobile} {
-      width: calc(100% / 2 - 20px);
+      display: none;
+    }
+  }
+  img:nth-child(2) {
+    position: relative;
+    top: 130px;
+    ${p => p.theme.mediaQueries.mobile} {
+      width: 100px;
+      top: 70px;
+    }
+  }
+  img:nth-child(3) {
+    width: 270px;
+    margin-right: -30px;
+    ${p => p.theme.mediaQueries.mobile} {
+      width: 130px;
+    }
+  }
+  img:nth-child(4) {
+    width: 270px;
+    ${p => p.theme.mediaQueries.mobile} {
+      width: 150px;
+    }
+  }
+  img:nth-child(5) {
+    width: 210px;
+    position: relative;
+    top: -30px;
+    ${p => p.theme.mediaQueries.mobile} {
+      width: 100px;
+      top: 50px;
+    }
+  }
+  img:nth-child(6) {
+    position: relative;
+    top: 120px;
+    ${p => p.theme.mediaQueries.mobile} {
+      display: none;
     }
   }
 `
@@ -196,7 +229,7 @@ const Faq = () => {
   }
 
   useEffect(async () => {
-    const data = await fireDb.getCollection('cmd-f2023', 'FAQ')
+    const data = await fireDb.getCollection('cmd-f2023', 'FAQ') // TODO: change to 2025
     const processedData = processData(data)
     setFaqData(processedData)
   }, [])
@@ -204,32 +237,12 @@ const Faq = () => {
   return (
     <div>
       <FaqDecorations>
-        <img src="/assets/images/faq/headphones.svg" alt="Headphones decoration" style={{ height: '320px' }} />
-        <img
-          src="/assets/images/faq/croissant.svg"
-          alt="Croissant decoration"
-          style={{ position: 'relative', top: '130px' }}
-        />
-        <img
-          src="/assets/images/faq/donut.svg"
-          alt="Donut decoration"
-          style={{ width: '270px', marginRight: '-30px' }}
-        />
-        <img
-          src="/assets/images/faq/swinging-animation.gif"
-          alt="Swinging cookie decoration"
-          style={{ width: '270px' }}
-        />
-        <img
-          src="/assets/images/faq/laptop.svg"
-          alt="Laptop decoration"
-          style={{ width: '210px', position: 'relative', top: '-30px' }}
-        />
-        <img
-          src="/assets/images/faq/mochiDonut.svg"
-          alt="Mochi Donut decoration"
-          style={{ position: 'relative', top: '120px' }}
-        />
+        <img src="/assets/images/faq/headphones.svg" alt="Headphones decoration" />
+        <img src="/assets/images/faq/croissant.svg" alt="Croissant decoration" />
+        <img src="/assets/images/faq/donut.svg" alt="Donut decoration" />
+        <img src="/assets/images/faq/swinging-animation.gif" alt="Swinging cookie decoration" />
+        <img src="/assets/images/faq/laptop.svg" alt="Laptop decoration" />
+        <img src="/assets/images/faq/mochiDonut.svg" alt="Mochi Donut decoration" />
       </FaqDecorations>
       <FaqContainer>
         <Wrapper id="faq">
