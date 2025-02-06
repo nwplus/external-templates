@@ -51,6 +51,7 @@ const SponsorButton = styled.button`
   height: calc(100vw * (67 / 1920));
   border: none;
   margin-bottom: calc(100vw * 40 / 1920);
+
   ${p => p.theme.mediaQueries.mobile} {
     font-size: calc(100vw * (15 / 393));
     width: calc(100vw * (200 / 393));
