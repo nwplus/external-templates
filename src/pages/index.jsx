@@ -80,7 +80,7 @@ export default function Index({ title }) {
         <link rel="icon" href="/favicon.png" />
 
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="Join us in making history at nwHacks 2025!" />
+        <meta name="description" content="Western Canada's largest hackathon celebrating underrepresented genders in tech." />
         <meta property="og:image" content="/og_preview.png" />
       </Head>
       {/* <Banner buttonLink="info.html" /> */}
