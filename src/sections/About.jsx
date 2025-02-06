@@ -68,7 +68,7 @@ const Title = styled.p`
 
 const Description = styled.p`
   font-family: 'Poppins';
-  font-size: calc(100vw * (18 / 1920));
+  font-size: calc(100vw * (19 / 1920));
   font-weight: 400;
   font-style: normal;
   color: #4F2F22;
