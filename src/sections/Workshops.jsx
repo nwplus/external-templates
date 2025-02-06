@@ -162,7 +162,7 @@ const Workshops = () => {
       {
         number: 7,
         name: 'Intro to Machine Learning (Python)',
-        dateAndTime: 'Thursday, March 7 at 5 PM',
+        dateAndTime: 'Thursday, March 6 at 5 PM',
         description:
           "Join our workshop to whip up the basics of machine learning using Python! Perfect for beginners, you'll learn to mix data and algorithms to bake your own models. With hands-on exercises, you'll discover how to create and serve up data-driven solutions.",
         imgSrc: w7,
@@ -170,7 +170,7 @@ const Workshops = () => {
       {
         number: 8,
         name: 'Internships + Networking 101',
-        dateAndTime: 'Thursday, March 7 at 6:30 PM',
+        dateAndTime: 'Thursday, March 6 at 6:30 PM',
         description:
           "Ready to rise in the tech world? In this workshop, we'll mix the perfect ingredients for landing your first internship and building a network that sticks. You’ll learn about the job search process, gain resume tips, prep for interviews, and network with experienced panelists from diverse backgrounds.",
         imgSrc: w8,
