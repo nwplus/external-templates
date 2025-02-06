@@ -14,9 +14,8 @@ const HeroContainer = styled.div`
   justify-content: space-between;
   gap: 2rem;
 
-  @media (max-width: ${SCREEN_BREAKPOINTS.md}) {
+  ${p => p.theme.mediaQueries.mobile} {
     flex-direction: column;
-    padding: 2rem;
     text-align: center;
   }
 `
@@ -24,6 +23,14 @@ const HeroContainer = styled.div`
 const HeroContent = styled.div`
   flex: 2;
   max-width: 800px;
+  ${p => p.theme.mediaQueries.mobile} {
+    //position: absolute;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: calc(100vw * (300 / 393));
+  }
 `
 
 const HeroTitle = styled.h1`
@@ -35,7 +42,8 @@ const HeroTitle = styled.h1`
   width: calc(100vw * (1000 / 1920));
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: calc(100vw * (20 / 487));
+    font-size: calc(100vw * (30 / 393));
+    width: calc(100vw * (300 / 393));
   }
 `
 
@@ -45,14 +53,19 @@ const HeroDescription = styled.p`
   font-size: calc(40vw * (80 / 1920));
   color: #751c0d;
   margin-bottom: 2rem;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: calc(100vw * (14 / 393));
+  }
 `
 
 const ButtonContainer = styled.div`
   display: flex;
   gap: 1.5rem;
 
-  @media (max-width: ${SCREEN_BREAKPOINTS.md}) {
-    justify-content: center;
+  ${p => p.theme.mediaQueries.mobile} {
+    flex-direction: column;
+    gap: 0.5em;
   }
 `
 
@@ -62,9 +75,10 @@ const LogoContainer = styled.div`
   max-width: 143px;
   height: auto;
 
-  @media (max-width: ${SCREEN_BREAKPOINTS.md}) {
-    margin: 0 auto 2rem;
-    width: calc(100vw * (143 / 487));
+  ${p => p.theme.mediaQueries.mobile} {
+    margin-top: calc(100vw * (50 / 393));
+    margin-bottom: 1em;
+    width: calc(100vw * (80 / 393));
   }
 `
 const SponsorText = styled.p`
@@ -74,8 +88,8 @@ const SponsorText = styled.p`
   font-size: calc(100vw * (23 / 1920));
   color: #751c0d;
 
-  @media (max-width: ${SCREEN_BREAKPOINTS.md}) {
-    font-size: calc(100vw * (18 / 487));
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: calc(100vw * (14 / 393));
   }
 `
 
@@ -125,6 +139,12 @@ const Button = styled.a`
       text-decoration: underline;
     }
   }
+
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: calc(100vw * (12 / 393));
+    height: calc(100vw * (40 / 393));
+    width: calc(100vw * (150 / 393));
+  }
 `
 
 const HeroImageContainer = styled.div`
@@ -133,9 +153,9 @@ const HeroImageContainer = styled.div`
   max-width: 400px;
   margin-top: -100px;
 
-  @media (max-width: ${SCREEN_BREAKPOINTS.md}) {
-    max-width: 100%;
-    margin-top: 0;
+  ${p => p.theme.mediaQueries.mobile} {
+    //max-width: 100%;
+    margin-top: -50px;
   }
 `
 
@@ -143,6 +163,9 @@ const HeroImage = styled.img`
   width: calc(100vw * (530 / 1920));
   height: auto;
   object-fit: cover;
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (250 / 393));
+  }
 `
 
 const RegistrationCard = styled.img`
@@ -152,6 +175,9 @@ const RegistrationCard = styled.img`
   width: calc(100vw * (500 / 1920));
   height: auto;
   z-index: 1;
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (200 / 393));
+  }
 `
 
 const Hero = () => (
