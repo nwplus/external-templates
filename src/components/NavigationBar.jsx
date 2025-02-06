@@ -4,6 +4,7 @@ import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
 import { scale } from '@utilities/format'
 import { BANNER_OFFSET } from '../constants/measurements'
 import MenuImg from '../../public/images/icons/menu.svg'
+import DropdownImg from '../../public/assets/images/dropdown.svg'
 
 const NavBarContainer = styled.nav`
   position: ${p => (p.stayAtTop ? 'absolute' : 'fixed')};
@@ -41,7 +42,7 @@ const NavGroupContainer = styled.div`
 
 const NavTextContainer = styled.div`
   display: flex;
-  gap: 5%;
+  gap: 4%;
   align-items: center;
   width: 100%;
   justify-content: left;
@@ -153,6 +154,85 @@ const Button = styled.a`
   `}
 `
 
+const DropdownContainer = styled.div`
+  position: relative;
+  display: inline-block;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: block;
+  }
+`
+
+const DropdownContent = styled.div`
+  display: none;
+  position: absolute;
+  background: rgba(237, 222, 204, 0.6);
+  min-width: 160px;
+  border-radius: 8px;
+  padding: 8px 0;
+  z-index: 1000;
+  left: 50%;
+  transform: translateX(-50%);
+
+  ${DropdownContainer}:hover & {
+    display: block;
+  }
+
+  ${p => p.theme.mediaQueries.mobile} {
+    position: static;
+    display: block;
+    transform: none;
+    background: transparent;
+    padding: 16px 0 0 16px;
+  }
+`
+
+const DropdownItem = styled(LinkText)`
+  padding: 8px 16px;
+  display: block;
+  white-space: nowrap;
+
+  &:hover {
+    background: rgba(79, 47, 34, 0.1);
+  }
+`
+
+const DropdownLabel = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 4px;
+`
+
+const DropdownIcon = styled.img`
+  width: 18px;
+  height: 18px;
+`
+
+const Dropdown = ({ label, items, isMobile, closeDropdown }) => (
+  <DropdownContainer>
+    <LinkText href="#" onClick={e => e.preventDefault()}>
+      <DropdownLabel>
+        <StyledLinkHeaders>{label}</StyledLinkHeaders>
+        <DropdownIcon src={DropdownImg} alt="dropdown arrow" />
+      </DropdownLabel>
+    </LinkText>
+    <DropdownContent>
+      {items.map(({ name, href }) => (
+        <DropdownItem 
+          key={name}
+          href={href} 
+          onClick={(e) => {
+            e.preventDefault()
+            document.getElementById(href.replace('/#', '')).scrollIntoView({ behavior: 'smooth', block: 'start' })
+            if (isMobile) closeDropdown(false)
+          }}>
+          <StyledLinkHeaders>{name}</StyledLinkHeaders>
+        </DropdownItem>
+      ))}
+    </DropdownContent>
+  </DropdownContainer>
+)
+
 const MenuItem = ({ name, href, isAnchor, target, rel, isMobile, closeDropdown }) => {
   const [anchorTarget, setAnchorTarget] = useState(null)
 
@@ -189,10 +269,27 @@ const PortalButton = ({ portalOpen }) => (
 
 const MenuList = ({ isMobile, closeDropdown }) => (
   <>
-    <MenuItem name="About" href="/#about" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
+    <Dropdown 
+      label="About"
+      items={[
+        { name: "What is cmd-f?", href: "/#about" },
+        { name: "Values", href: "/#values" }
+      ]}
+      isMobile={isMobile}
+      closeDropdown={closeDropdown}
+    />
     <MenuItem name="Tracks" href="/#tracks" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
+    <MenuItem name="Stats" href="/#stats" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
     <MenuItem name="Workshops" href="/#workshops" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
-    <MenuItem name="Past Projects" href="/#past-projects" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
+    <Dropdown 
+      label="History"
+      items={[
+        { name: "Past Projects", href: "/#past-projects" },
+        { name: "Recap", href: "/#gallery" }
+      ]}
+      isMobile={isMobile}
+      closeDropdown={closeDropdown}
+    />
     <MenuItem name="FAQ" href="/#faq" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
     <MenuItem name="Sponsors" href="/#sponsors" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
     <MenuItem name="Contact" href="/#footer" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />

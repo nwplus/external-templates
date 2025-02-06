@@ -351,7 +351,7 @@ const Gallery = () => {
   }, []);
 
   return (
-    <GalleryContainer>
+    <GalleryContainer id="gallery">
       {isMobile ? (
         // Mobile view
         <>
