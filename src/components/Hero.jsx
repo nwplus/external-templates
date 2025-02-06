@@ -193,7 +193,7 @@ const Hero = () => (
           <Button className="primary" href="https://portal.nwplus.io" target="_blank">
             Apply Now!
           </Button>
-          <Button className="secondary" href="https://forms.gle/LayNGN53S5Mdtin16">
+          <Button className="secondary" href="https://forms.gle/LayNGN53S5Mdtin16" target="_blank">
             Become a mentor
           </Button>
         </ButtonContainer>
