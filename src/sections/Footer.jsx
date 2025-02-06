@@ -19,7 +19,8 @@ const FooterContainer = styled.div`
   margin-top: -250px;
 
   ${p => p.theme.mediaQueries.mobile} {
-    aspect-ratio: 487/950;
+    aspect-ratio: 200/393;
+    margin-top: -150px;
   }
 `
 
@@ -28,10 +29,6 @@ const FooterBackground = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    background-image: url('./assets/images/footer_background_mobile.png');
-  }
 `
 
 const FooterDecorOverlay = styled.img`
@@ -39,6 +36,10 @@ const FooterDecorOverlay = styled.img`
   width: 100%;
   transform: translateY(calc(100vw * (-550 / 1920)));
   z-index: 1000;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    aspect-ratio: 310/393;
+  }
 `
 
 const ClosingCard = styled.div`
@@ -49,6 +50,9 @@ const ClosingCard = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  ${p => p.theme.mediaQueries.mobile} {
+    top: calc(100vw * (240 / 393));
+  }
 `
 
 const SocialMediaIcons = styled.div`
@@ -69,11 +73,6 @@ const SocialMediaIcons = styled.div`
   }
 
   ${p => p.theme.mediaQueries.mobile} {
-    width: 100%;
-    a {
-      width: calc(100vw * (40 / 487));
-    }
-    justify-content: space-evenly;
   }
 `
 
@@ -95,8 +94,8 @@ const Links = styled.div`
     }
   }
 
-  ${p => p.theme.mediaQueries.mobile} {
-    width: 100%;
+ bottom: calc(100vw * (-500 / 393));
+    width: 40%;
     font-size: calc(100vw * (20 / 487));
     justify-content: space-evenly;
 
@@ -104,6 +103,12 @@ const Links = styled.div`
       white-space: nowrap;
     }
   }
+  ${p => p.theme.mediaQueries.mobile} {
+    gap: calc(100vw * (-50 / 393));
+    font-size: calc(100vw * (5 / 393));
+    bottom: calc(100vw * (-300 / 393));
+  }
+}
 `
 
 const TeamContainer = styled.div`
@@ -114,8 +119,7 @@ const TeamContainer = styled.div`
   width: 100%;
 
   ${p => p.theme.mediaQueries.mobile} {
-    width: 100%;
-    bottom: 1rem;
+    bottom: calc(100vw * (70 / 393));
   }
 `
 
@@ -138,8 +142,9 @@ const LandAcknowledgementText = styled.div`
   }
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: calc(100vw * (12 / 487));
-    margin-bottom: calc(100vw * (16 / 487));
+    padding: 4% 10%;
+    font-size: calc(100vw * (18 / 487));
+    bottom: calc(100vw * (-300 / 393));
   }
 `
 
@@ -151,6 +156,11 @@ const CopyRight = styled.div`
   bottom: calc(100vw * (-1540 / 1920));
   color: #ffffff;
   font-size: calc(100vw * (25 / 1920));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: calc(100vw * (15 / 393));
+    bottom: calc(100vw * (-500 / 393));
+  }
 `
 
 const Footer = () => (
