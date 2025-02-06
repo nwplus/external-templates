@@ -28,7 +28,7 @@ const PolaroidBase = styled(DraggableImage)`
 
 const BreadBase = styled(DraggableImage)`
   width: calc(100vw * (155 / 1920));
-  z-index: 4;
+  z-index: 15;
 `
 
 const BreadOne = styled(BreadBase)`
@@ -46,7 +46,7 @@ const BreadTwo = styled(BreadBase)`
   width: calc(100vw * (100 / 1920));
   top: calc(100vw * (600 / 1920));
   left: calc(100vw * (925 / 1920));
-  z-index: 13;
+  z-index: 15;
 
   ${p => p.theme.mediaQueries.mobile} {
     width: calc(100vw * (80 / 393));
@@ -72,7 +72,7 @@ const Croissant = styled(DraggableImage)`
   width: calc(100vw * (280 / 1920));
   top: calc(100vw * (470 / 1920));
   left: calc(100vw * (1330 / 1920));
-  z-index: 12;
+  z-index: 15;
 
   ${p => p.theme.mediaQueries.mobile} {
     width: calc(100vw * (130 / 393));
@@ -177,7 +177,7 @@ const Nugget = styled(DraggableImage)`
   width: calc(100vw * (300 / 1920));
   top: calc(100vw * (720 / 1920));
   left: calc(100vw * (1600 / 1920));
-  z-index: 11;
+  z-index: 15;
 
   ${p => p.theme.mediaQueries.mobile} {
     width: calc(100vw * (180 / 393));
