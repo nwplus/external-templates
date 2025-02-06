@@ -1,13 +1,6 @@
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {
-  faFacebook,
-  faInstagram,
-  faLinkedinIn,
-  faMediumM,
-  faTwitter,
-  faYoutube,
-} from '@fortawesome/free-brands-svg-icons'
+import { faFacebook, faInstagram, faLinkedinIn, faMediumM, faYoutube } from '@fortawesome/free-brands-svg-icons'
 import Team from '@components/Team'
 import Newsletter from '@components/Newsletter'
 import FooterDecor from '@assets/images/footer_objects.svg'
@@ -174,9 +167,6 @@ const Footer = () => (
             </a>
             <a href="https://www.instagram.com/nwplusubc" target="_blank" rel="noreferrer">
               <FontAwesomeIcon icon={faInstagram} />
-            </a>
-            <a href="https://twitter.com/nwplusubc" target="_blank" rel="noreferrer">
-              <FontAwesomeIcon icon={faTwitter} />
             </a>
             <a href="https://www.linkedin.com/company/nwplus" target="_blank" rel="noreferrer">
               <FontAwesomeIcon icon={faLinkedinIn} />
