@@ -51,13 +51,6 @@ const SponsorButton = styled.button`
   height: calc(100vw * (67 / 1920));
   border: none;
   margin-bottom: calc(100vw * 40 / 1920);
-  transition: all 0.3s ease;
-
-   &:hover {
-    background-color: #456774;
-    transform: scale(1.05);
-    cursor: pointer;
-  }
 
   ${p => p.theme.mediaQueries.mobile} {
     font-size: calc(100vw * (15 / 393));
