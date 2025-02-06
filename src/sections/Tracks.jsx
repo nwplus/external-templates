@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Header2 } from '@components/Typography'
-import Accessibility from '@assets/images/tracks/accessibility_track.png'
-import Wellness from '@assets/images/tracks/wellness_track.png'
-import Social from '@assets/images/tracks/social_track.png'
-import Wildcard from '@assets/images/tracks/wildcard_track.png'
+import Accessibility from '@assets/images/tracks/accessibility_track.svg'
+import Wellness from '@assets/images/tracks/wellness_track.svg'
+import Social from '@assets/images/tracks/social_track.svg'
+import Wildcard from '@assets/images/tracks/wildcard_track.svg'
 import Arrow from '@assets/images/tracks/arrow.svg'
 import AccessibilityDesc from '@assets/images/tracks/accessibility_track_desc.svg'
 import WellnessDesc from '@assets/images/tracks/wellness_track_desc.svg'
@@ -168,7 +168,7 @@ const TRACK_CARDS = [
     id: 3,
     originalSrc: Social,
     alt: 'Social',
-    width: '420',
+    width: '390',
     top: '192',
     left: '970',
     mobileTop: '2230',
@@ -198,39 +198,39 @@ const Track = () => {
   }
 
   return (
-  <TrackContainer id="tracks">
-    <TrackInner>
-      <MobileContent>
-        <Header>Tracks</Header>
-        <Instruction>Click to learn more!</Instruction>
-        {cards.map((card) => (
-          <TrackCard
-            style={{ cursor: 'pointer' }}
-            key={card.id}
-            src={card.isDesc ? card.descSrc : card.originalSrc}
-            {...card}
-            onClick={() => handleCardClick(card.id)}
-          />
-        ))}
-      </MobileContent>
+    <TrackContainer id="tracks">
+      <TrackInner>
+        <MobileContent>
+          <Header>Tracks</Header>
+          <Instruction>Click to learn more!</Instruction>
+          {cards.map(card => (
+            <TrackCard
+              style={{ cursor: 'pointer' }}
+              key={card.id}
+              src={card.isDesc ? card.descSrc : card.originalSrc}
+              {...card}
+              onClick={() => handleCardClick(card.id)}
+            />
+          ))}
+        </MobileContent>
 
-      <DesktopContent>
-        <Header>Tracks</Header>
-        <Instruction>Click to learn more!</Instruction>
-        <ArrowImg src={Arrow} alt="Arrow" />
-        {cards.map((card) => (
-          <TrackCard
-            style={{ cursor: 'pointer' }}
-            key={card.id}
-            src={card.isDesc ? card.descSrc : card.originalSrc}
-            {...card}
-            onClick={() => handleCardClick(card.id)}
-          />
-        ))}
-      </DesktopContent>
-    </TrackInner>
-  </TrackContainer>
-  );
-};
+        <DesktopContent>
+          <Header>Tracks</Header>
+          <Instruction>Click to learn more!</Instruction>
+          <ArrowImg src={Arrow} alt="Arrow" />
+          {cards.map(card => (
+            <TrackCard
+              style={{ cursor: 'pointer' }}
+              key={card.id}
+              src={card.isDesc ? card.descSrc : card.originalSrc}
+              {...card}
+              onClick={() => handleCardClick(card.id)}
+            />
+          ))}
+        </DesktopContent>
+      </TrackInner>
+    </TrackContainer>
+  )
+}
 
 export default Track
