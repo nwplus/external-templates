@@ -218,15 +218,14 @@ const Dropdown = ({ label, items, isMobile, closeDropdown }) => (
     </LinkText>
     <DropdownContent>
       {items.map(({ name, href }) => (
-        <DropdownItem
+        <DropdownItem 
           key={name}
-          href={href}
-          onClick={e => {
+          href={href} 
+          onClick={(e) => {
             e.preventDefault()
             document.getElementById(href.replace('/#', '')).scrollIntoView({ behavior: 'smooth', block: 'start' })
             if (isMobile) closeDropdown(false)
-          }}
-        >
+          }}>
           <StyledLinkHeaders>{name}</StyledLinkHeaders>
         </DropdownItem>
       ))}
@@ -270,11 +269,11 @@ const PortalButton = ({ portalOpen }) => (
 
 const MenuList = ({ isMobile, closeDropdown }) => (
   <>
-    <Dropdown
+    <Dropdown 
       label="About"
       items={[
-        { name: 'What is cmd-f?', href: '/#about' },
-        { name: 'Values', href: '/#values' },
+        { name: "What is cmd-f?", href: "/#about" },
+        { name: "Values", href: "/#values" }
       ]}
       isMobile={isMobile}
       closeDropdown={closeDropdown}
@@ -282,11 +281,11 @@ const MenuList = ({ isMobile, closeDropdown }) => (
     <MenuItem name="Tracks" href="/#tracks" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
     <MenuItem name="Stats" href="/#stats" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
     <MenuItem name="Workshops" href="/#workshops" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
-    <Dropdown
+    <Dropdown 
       label="History"
       items={[
-        { name: 'Past Projects', href: '/#past-projects' },
-        { name: 'Recap', href: '/#gallery' },
+        { name: "Past Projects", href: "/#past-projects" },
+        { name: "Recap", href: "/#gallery" }
       ]}
       isMobile={isMobile}
       closeDropdown={closeDropdown}

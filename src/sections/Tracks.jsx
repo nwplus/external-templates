@@ -198,39 +198,39 @@ const Track = () => {
   }
 
   return (
-    <TrackContainer id="tracks">
-      <TrackInner>
-        <MobileContent>
-          <Header>Tracks</Header>
-          <Instruction>Click to learn more!</Instruction>
-          {cards.map(card => (
-            <TrackCard
-              style={{ cursor: 'pointer' }}
-              key={card.id}
-              src={card.isDesc ? card.descSrc : card.originalSrc}
-              {...card}
-              onClick={() => handleCardClick(card.id)}
-            />
-          ))}
-        </MobileContent>
+  <TrackContainer id="tracks">
+    <TrackInner>
+      <MobileContent>
+        <Header>Tracks</Header>
+        <Instruction>Click to learn more!</Instruction>
+        {cards.map((card) => (
+          <TrackCard
+            style={{ cursor: 'pointer' }}
+            key={card.id}
+            src={card.isDesc ? card.descSrc : card.originalSrc}
+            {...card}
+            onClick={() => handleCardClick(card.id)}
+          />
+        ))}
+      </MobileContent>
 
-        <DesktopContent>
-          <Header>Tracks</Header>
-          <Instruction>Click to learn more!</Instruction>
-          <ArrowImg src={Arrow} alt="Arrow" />
-          {cards.map(card => (
-            <TrackCard
-              style={{ cursor: 'pointer' }}
-              key={card.id}
-              src={card.isDesc ? card.descSrc : card.originalSrc}
-              {...card}
-              onClick={() => handleCardClick(card.id)}
-            />
-          ))}
-        </DesktopContent>
-      </TrackInner>
-    </TrackContainer>
-  )
-}
+      <DesktopContent>
+        <Header>Tracks</Header>
+        <Instruction>Click to learn more!</Instruction>
+        <ArrowImg src={Arrow} alt="Arrow" />
+        {cards.map((card) => (
+          <TrackCard
+            style={{ cursor: 'pointer' }}
+            key={card.id}
+            src={card.isDesc ? card.descSrc : card.originalSrc}
+            {...card}
+            onClick={() => handleCardClick(card.id)}
+          />
+        ))}
+      </DesktopContent>
+    </TrackInner>
+  </TrackContainer>
+  );
+};
 
 export default Track
