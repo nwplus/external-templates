@@ -298,7 +298,7 @@ const Values = () => {
   }, []);
 
   return (
-    <OuterContainer ref={valuesRef}>
+    <OuterContainer id="values" ref={valuesRef}>
       <Title>Our Values</Title>
       <ValuesContainer>
         <ColumnContainer>
