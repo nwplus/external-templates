@@ -21,7 +21,7 @@ const StatsContainer = styled.div`
 `
 
 const Title = styled.p`
-  color: #A6321E;
+  color: #a6321e;
   font-family: Gloock;
   font-size: 64px;
   font-style: normal;
@@ -34,7 +34,7 @@ const Title = styled.p`
 
   ${p => p.theme.mediaQueries.mobile} {
     font-size: calc(100vw * (30 / 393));
-    color: #A6321E;
+    color: #a6321e;
     text-align: center;
     width: 100%;
     left: 0;
@@ -72,7 +72,7 @@ const StatImage = styled.img`
     left: ${({ left, scrollOffset }) => `calc(100vw * (${left} / 393) + ${scrollOffset}px)`};
     z-index: 10;
   }
-`;
+`
 
 const MobileEggStat = styled.img`
   position: absolute;
@@ -83,7 +83,7 @@ const MobileEggStat = styled.img`
   z-index: 3;
   transform: translateX(${({ scrollOffset }) => scrollOffset}px);
   transition: transform 0.3s ease-out;
-`;
+`
 
 const MobileBottleStat = styled.img`
   position: absolute;
@@ -94,7 +94,7 @@ const MobileBottleStat = styled.img`
   z-index: 3;
   transform: translateX(${({ scrollOffset }) => scrollOffset}px);
   transition: transform 0.3s ease-out;
-`;
+`
 
 const MobileFlourStat = styled.img`
   position: absolute;
@@ -105,7 +105,7 @@ const MobileFlourStat = styled.img`
   z-index: 3;
   transform: translateX(${({ scrollOffset }) => scrollOffset}px);
   transition: transform 0.3s ease-out;
-`;
+`
 
 const MobileButterStat = styled.img`
   position: absolute;
@@ -116,11 +116,11 @@ const MobileButterStat = styled.img`
   z-index: 3;
   transform: translateX(${({ scrollOffset }) => scrollOffset}px);
   transition: transform 0.3s ease-out;
-`;
+`
 
 const Stats = () => {
   const [isMobile, setIsMobile] = useState(false)
-  const [scrollOffset, setScrollOffset] = useState(0);
+  const [scrollOffset, setScrollOffset] = useState(0)
   const statsContainerRef = useRef(null)
 
   useEffect(() => {
@@ -159,29 +159,53 @@ const Stats = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const { scrollY } = window;
-      setScrollOffset(scrollY * 0.05);
-    };
+      const { scrollY } = window
+      setScrollOffset(scrollY * 0.05)
+    }
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   return (
     <OuterContainer id="stats">
       {!isMobile ? (
         <StatsContainer ref={statsContainerRef}>
           <Title>Last year we had...</Title>
-          <Bowl src='assets/images/stats/bowl.svg' />
-          <StatImage src="assets/images/stats/egg_stat.svg" width={370} top={300} left={390} scrollOffset={scrollOffset} />
-          <StatImage src="assets/images/stats/bottle_stat.svg" width={310} top={230} left={860} scrollOffset={scrollOffset} />
-          <StatImage src="assets/images/stats/flour_bag_stat.svg" width={400} top={400} left={1200} scrollOffset={scrollOffset} />
-          <StatImage src="assets/images/stats/butter_stat.svg" width={520} top={750} left={1040} scrollOffset={scrollOffset} />
+          <Bowl src="assets/images/stats/bowl.svg" />
+          <StatImage
+            src="assets/images/stats/egg_stat.svg"
+            width={370}
+            top={300}
+            left={390}
+            scrollOffset={scrollOffset}
+          />
+          <StatImage
+            src="assets/images/stats/bottle_stat.svg"
+            width={310}
+            top={230}
+            left={860}
+            scrollOffset={scrollOffset}
+          />
+          <StatImage
+            src="assets/images/stats/flour_bag_stat.svg"
+            width={400}
+            top={400}
+            left={1200}
+            scrollOffset={scrollOffset}
+          />
+          <StatImage
+            src="assets/images/stats/butter_stat.svg"
+            width={520}
+            top={750}
+            left={1040}
+            scrollOffset={scrollOffset}
+          />
         </StatsContainer>
       ) : (
         <StatsContainer ref={statsContainerRef}>
           <Title>Last Year We Had...</Title>
-          <Bowl src='assets/images/stats/mobile/bowl_mobile.svg' />
+          <Bowl src="assets/images/stats/mobile/bowl_mobile.svg" />
           <MobileEggStat src="assets/images/stats/mobile/egg_stat_mobile.svg" scrollOffset={scrollOffset} />
           <MobileBottleStat src="assets/images/stats/mobile/bottle_stat_mobile.svg" scrollOffset={scrollOffset} />
           <MobileFlourStat src="assets/images/stats/mobile/flour_bag_stat_mobile.svg" scrollOffset={scrollOffset} />

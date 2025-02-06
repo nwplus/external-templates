@@ -47,7 +47,7 @@ const Header = styled(Header2)`
   top: calc(100vw * (150 / 1000));
   left: calc(100vw * (1050 / 1920));
   transform: rotate(-7.243deg);
-  color: #A6321E;
+  color: #a6321e;
   text-align: center;
   font-family: Gloock;
   font-size: calc(100vw * (54 / 1920));
@@ -57,7 +57,7 @@ const Header = styled(Header2)`
 
   ${p => p.theme.mediaQueries.mobile} {
     font-size: calc(100vw * (30 / 393));
-    color: #A6321E;
+    color: #a6321e;
     left: calc(100vw * (0 / 393));
     right: calc(100vw * (0 / 393));
     margin: calc(100vw * (0 / 393)) auto;
@@ -115,7 +115,8 @@ const ArrowImg = styled.img`
   }
 `
 
-const MobileContent = styled.div`  width: 100%;
+const MobileContent = styled.div`
+  width: 100%;
   height: 100%;
   flex-direction: column;
   gap: 5rem;
@@ -143,66 +144,58 @@ const TRACK_CARDS = [
   {
     id: 1,
     originalSrc: Accessibility,
-    alt: "Accessibility",
-    width: "390",
-    top: "125",
-    left: "50",
-    mobileTop: "290",
+    alt: 'Accessibility',
+    width: '390',
+    top: '125',
+    left: '50',
+    mobileTop: '290',
     mobileZIndex: 1,
-    descSrc: AccessibilityDesc
+    descSrc: AccessibilityDesc,
   },
   {
     id: 2,
     originalSrc: Wellness,
-    alt: "Wellness",
-    width: "390",
-    top: "40",
-    left: "525",
-    mobileTop: "1220",
-    mobileLeft: "280",
+    alt: 'Wellness',
+    width: '390',
+    top: '40',
+    left: '525',
+    mobileTop: '1220',
+    mobileLeft: '280',
     mobileZIndex: 2,
-    descSrc: WellnessDesc
+    descSrc: WellnessDesc,
   },
   {
     id: 3,
     originalSrc: Social,
-    alt: "Social",
-    width: "420",
-    top: "192",
-    left: "970",
-    mobileTop: "2230",
-    mobileWidth: "850",
+    alt: 'Social',
+    width: '420',
+    top: '192',
+    left: '970',
+    mobileTop: '2230',
+    mobileWidth: '850',
     mobileZIndex: 3,
-    descSrc: SocialDesc
+    descSrc: SocialDesc,
   },
   {
     id: 4,
     originalSrc: Wildcard,
-    alt: "Wildcard",
-    width: "390",
-    top: "65",
-    left: "1450",
-    mobileTop: "3150",
-    mobileLeft: "220",
+    alt: 'Wildcard',
+    width: '390',
+    top: '65',
+    left: '1450',
+    mobileTop: '3150',
+    mobileLeft: '220',
     mobileZIndex: 4,
-    descSrc: WildcardDesc
-  }
-];
+    descSrc: WildcardDesc,
+  },
+]
 
 const Track = () => {
-  const [cards, setCards] = useState(
-    TRACK_CARDS.map(card => ({ ...card, isDesc: false }))
-  );
+  const [cards, setCards] = useState(TRACK_CARDS.map(card => ({ ...card, isDesc: false })))
 
-  const handleCardClick = (clickedId) => {
-    setCards((prevCards) =>
-      prevCards.map(card =>
-        card.id === clickedId
-          ? { ...card, isDesc: !card.isDesc }
-          : card
-      )
-    );
-  };
+  const handleCardClick = clickedId => {
+    setCards(prevCards => prevCards.map(card => (card.id === clickedId ? { ...card, isDesc: !card.isDesc } : card)))
+  }
 
   return (
   <TrackContainer id="tracks">
@@ -241,4 +234,3 @@ const Track = () => {
 };
 
 export default Track
-

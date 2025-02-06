@@ -13,9 +13,10 @@ const RegistrationContainer = styled.div`
   transform: rotate(2.5deg);
 
   ${p => p.theme.mediaQueries.mobile} {
-    justify-content: center;
-    align-items: center;
+    font-size: calc(100vw * (25 / 393));
     color: #4f2f22;
+    bottom: calc(100vw * (2 / 393));
+    left: calc(100vw * (10 / 393));
   }
 `
 
