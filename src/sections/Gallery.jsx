@@ -133,7 +133,7 @@ const PolaroidHeart = styled(PolaroidBase)`
 
 const PolaroidWinners = styled(PolaroidBase)`
   width: calc(100vw * (360 / 1920));
-  top: calc(100vw * (50 / 1920));
+  top: calc(100vw * (80 / 1920));
   left: calc(100vw * (1240 / 1920));
   z-index: 8;
 
@@ -324,16 +324,16 @@ const TooltipText = styled.div`
   line-height: 23px;
   letter-spacing: -0.15px;
   position: absolute;
-  top: calc(100vw * (1000 / 1920));
-  left: calc(100vw * (130 / 1920));
+  top: calc(100vw * (30 / 1920));
+  left: calc(100vw * (1200 / 1920));
 `
 
 const TooltipImg = styled.img`
   position: absolute;
   height: auto;
   width: calc(100vw * (40 / 1920));
-  top: calc(100vw * (983 / 1920));
-  left: calc(100vw * (65 / 1920)); 
+  top: calc(100vw * (20 / 1920));
+  left: calc(100vw * (1135 / 1920)); 
 `
 
 // Component
