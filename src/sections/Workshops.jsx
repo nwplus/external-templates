@@ -8,7 +8,6 @@ import w4 from '../../public/assets/images/workshops/step4.svg'
 import w5 from '../../public/assets/images/workshops/step5.svg'
 import w6 from '../../public/assets/images/workshops/step6.svg'
 import w7 from '../../public/assets/images/workshops/step7.svg'
-import w8 from '../../public/assets/images/workshops/step8.svg'
 
 const WorkshopsContainer = styled.div`
   position: relative;
@@ -135,45 +134,37 @@ const Workshops = () => {
     two: [
       {
         number: 4,
-        name: 'Intro to Web Development',
+        name: 'Intro to Web Development + Basic Javascript',
         dateAndTime: 'Wednesday, March 5 at 5 PM',
         description:
-          'Want to learn how to build your first website? Come to our workshop to explore the basics of Web Development, and learn how to build a simple webpage using HTML and CSS! This is perfect for any personal projects or designing your own personal portfolio.',
+          'Want to learn how to build your first website? Come to our workshop to explore the basics of Web Development, and learn how to build a simple webpage using HTML and CSS! Make your website deliciously dynamic with JavaScript, perfect for any personal projects or designing your own personal portfolio.',
         imgSrc: w4,
       },
       {
         number: 5,
-        name: 'Intro to JavaScript',
-        dateAndTime: 'Wednesday, March 5 at 6 PM',
-        description:
-          "Ready to Level Up Your JavaScript Skills? Join our 80-min workshop for a deep dive into JavaScript essentials! From basic types to native functions, event handling, and DOM manipulation, you'll learn ways to make your amazing websites deliciously dynamic and functional with JavaScript.",
-        imgSrc: w5,
-      },
-      {
-        number: 6,
         name: 'Intro to React',
-        dateAndTime: 'Wednesday, March 5 at 7:30 PM',
+        dateAndTime: 'Wednesday, March 5 at 6:40 PM',
         description:
           'Take your web dev skills to the next level with React.js! React is one of the most popular front-end JavaScript libraries in the industry. Learn how to build your very first interactive user interface. If you are looking to put your JavaScript, HTML and CSS knowledge into action and dive into the world of dynamic web applications, this workshop is for you.',
-        imgSrc: w6,
+        imgSrc: w5,
       },
     ],
     three: [
       {
-        number: 7,
-        name: 'Intro to Machine Learning (Python)',
+        number: 6,
+        name: 'Intro to APIs',
         dateAndTime: 'Thursday, March 6 at 5 PM',
         description:
-          "Join our workshop to whip up the basics of machine learning using Python! Perfect for beginners, you'll learn to mix data and algorithms to bake your own models. With hands-on exercises, you'll discover how to create and serve up data-driven solutions.",
-        imgSrc: w7,
+          "Ever wondered how apps talk to each other? Come join us for an Intro to APIs workshop! We'll break down what APIs are, how they work, and why they're so powerful. With hands-on activities, you'll learn how to make API calls, fetch data, and even use APIs to build cool projects. No prior experience needed!",
+        imgSrc: w6,
       },
       {
-        number: 8,
+        number: 7,
         name: 'Internships + Networking 101',
-        dateAndTime: 'Thursday, March 6 at 6:30 PM',
+        dateAndTime: 'Thursday, March 6 at 6 PM',
         description:
           "Ready to rise in the tech world? In this workshop, we'll mix the perfect ingredients for landing your first internship and building a network that sticks. You’ll learn about the job search process, gain resume tips, prep for interviews, and network with experienced panelists from diverse backgrounds.",
-        imgSrc: w8,
+        imgSrc: w7,
       },
     ],
   }
