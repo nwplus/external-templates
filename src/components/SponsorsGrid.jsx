@@ -9,10 +9,10 @@ import silverplate from '@assets/images/sponsors/silverplate.svg'
 import bronzeplate from '@assets/images/sponsors/bronzeplate.svg'
 import startupplate from '@assets/images/sponsors/startupplate.svg'
 import platpastry from '@assets/images/sponsors/platpastry.svg'
-import goldpastry from '@assets/images/sponsors/goldpastry.svg'
+import goldpastry from '@assets/images/sponsors/goldpastry.png'
 import silverpastry from '@assets/images/sponsors/silverpastry.svg'
 import bronzepastry from '@assets/images/sponsors/bronzepastry.svg'
-import startuppastry from '@assets/images/sponsors/startuppastry.svg'
+import startuppastry from '@assets/images/sponsors/startuppastry.png'
 
 const SPONSOR_WIDTH = { title: 70, platinum: 45, gold: 40, silver: 35, bronze: 30, startup: 25, inkind: 20 }
 const MOBILE_SPONSOR_WIDTH = { title: 95, platinum: 80, gold: 45, silver: 35, bronze: 30, startup: 25, inkind: 20 }

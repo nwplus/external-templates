@@ -180,7 +180,7 @@ const images = [
 
 const mobileImages = [
   {
-    src: 'hand_mixer_mobile.svg',
+    src: 'hand_mixer_mobile.png',
     alt: 'Hand Mixer',
     width: 100,
     top: 5,
@@ -201,7 +201,7 @@ const mobileImages = [
     left: 343
   },
   {
-    src: 'rolling_pin_mobile.svg',
+    src: 'rolling_pin_mobile.png',
     alt: 'Rolling Pin',
     width: 27,
     top: 355,

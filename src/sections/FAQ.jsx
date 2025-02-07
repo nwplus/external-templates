@@ -240,10 +240,10 @@ const Faq = () => {
     <div>
       <FaqDecorations>
         <img src="/assets/images/faq/headphones.svg" alt="Headphones decoration" />
-        <img src="/assets/images/faq/croissant.svg" alt="Croissant decoration" />
-        <img src="/assets/images/faq/donut.svg" alt="Donut decoration" />
+        <img src="/assets/images/faq/croissant.png" alt="Croissant decoration" />
+        <img src="/assets/images/faq/donut.png" alt="Donut decoration" />
         <img src="/assets/images/faq/swinging-animation.gif" alt="Swinging cookie decoration" />
-        <img src="/assets/images/faq/laptop.svg" alt="Laptop decoration" />
+        <img src="/assets/images/faq/laptop.png" alt="Laptop decoration" />
         <img src="/assets/images/faq/mochiDonut.svg" alt="Mochi Donut decoration" />
       </FaqDecorations>
       <FaqContainer>

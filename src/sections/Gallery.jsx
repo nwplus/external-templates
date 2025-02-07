@@ -364,10 +364,10 @@ const Gallery = () => {
             </InfiniteScrollText>
           </InfiniteScrollWrapper>
           <RecapContainer>
-            <BreadOne src="assets/images/gallery/bread_one.svg" />
-            <BreadTwo src="assets/images/gallery/bread_two.svg" />
-            <BreadThree src="assets/images/gallery/bread_three.svg" />
-            <Croissant src="assets/images/gallery/croissant.svg" />
+            <BreadOne src="assets/images/gallery/bread_one.png" />
+            <BreadTwo src="assets/images/gallery/bread_two.png" />
+            <BreadThree src="assets/images/gallery/bread_three.png" />
+            <Croissant src="assets/images/gallery/croissant.png" />
             <PolaroidSelfie src="assets/images/gallery/polaroid_selfie.png" />
             <PolaroidCeremony src="assets/images/gallery/polaroid_ceremony.png" />
             <PolaroidPanel src="assets/images/gallery/polaroid_panel.png" />
@@ -375,7 +375,7 @@ const Gallery = () => {
             <PolaroidWinners src="assets/images/gallery/polaroid_winners.png" />
             <PolaroidMerch src="assets/images/gallery/polaroid_merch.png" />
             <PolaroidAtrium src="assets/images/gallery/polaroid_atrium.png" />
-            <Nugget src="assets/images/gallery/nugget.svg" />
+            <Nugget src="assets/images/gallery/nugget.png" />
             <VideoWrapper>
               <VideoComponent>
                 <img className="polaroid" src="assets/images/gallery/video_polaroid.svg" alt="video polaroid" />
