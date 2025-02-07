@@ -212,7 +212,7 @@ const Hero = () => (
       </HeroContent>
       <HeroImageContainer>
         <HeroImage src="/assets/images/animations/hero-pancake.gif" alt="Hero pancakes gif" />
-        <RegistrationCard src="/assets/images/regClosesCard.svg" alt="Registration open card" />
+        <RegistrationCard src="/assets/images/regClosesCard.png" alt="Registration open card" />
         <RegistrationCountdown />
       </HeroImageContainer>
     </HeroContainer>
