@@ -22,7 +22,7 @@ const WorkshopTitle = styled.p`
 `
 
 const WorkshopTime = styled.p`
-  font-weight: 400;
+  font-weight: 500;
   font-size: calc(100vw * (20 / 1920));
   color: #000000;
   margin: calc(100vw * (10 / 1920)) 0px calc(100vw * (40 / 1920)) 0px;
