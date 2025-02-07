@@ -67,7 +67,7 @@ const fireDb = {
     const ref = db.collection(INTERNAL_WEBSITES).doc(PORTAL)
     const data = await ref.get()
     const { applicationDeadline } = data.data()
-    return applicationDeadline ? applicationDeadline.nwhacks : null
+    return applicationDeadline ? applicationDeadline['cmd-f'] : null
   },
 }
 
