@@ -204,7 +204,7 @@ const Stats = () => {
         </StatsContainer>
       ) : (
         <StatsContainer ref={statsContainerRef}>
-          <Title>Last Year We Had...</Title>
+          <Title>Last year we had...</Title>
           <Bowl src="assets/images/stats/mobile/bowl_mobile.svg" />
           <MobileEggStat src="assets/images/stats/mobile/egg_stat_mobile.svg" scrollOffset={scrollOffset} />
           <MobileBottleStat src="assets/images/stats/mobile/bottle_stat_mobile.svg" scrollOffset={scrollOffset} />
