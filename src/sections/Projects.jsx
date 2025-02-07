@@ -205,6 +205,7 @@ const ProjectButton = styled.button`
   background: #a6321e;
   width: calc(100vw * (170 / 1920));
   height: calc(100vw * (37 / 1920));
+  min-height: calc(100vw * (37 / 1920));
   color: #fff;
   font-size: calc(100vw * (16 / 1920));
   font-weight: 600;
@@ -213,9 +214,16 @@ const ProjectButton = styled.button`
   border: none;
   margin-top: auto;
 
+  cursor: pointer;
+  transition: all 0.3s ease;
+  &:hover {
+    background-color: #456774;
+  }
+
   ${p => p.theme.mediaQueries.mobile} {
     width: calc(100vw * (112 / 393));
     height: calc(100vw * (24 / 393));
+    min-height: calc(100vw * (24 / 393));
     font-size: calc(100vw * (10 / 393));
     border-radius: calc(100vw * (5 / 393));
   }

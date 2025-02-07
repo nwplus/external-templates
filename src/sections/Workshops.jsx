@@ -50,6 +50,14 @@ const TabButton = styled.button`
   background: ${({ selected }) => (selected ? '#a6321e' : 'none')}; // change background color when selected
   color: ${({ selected }) => (selected ? '#f0e9d7' : '#a6321e')};
 
+  cursor: pointer;
+  transition: all 0.3s ease;
+  &:hover {
+    background-color:${({ selected }) => (selected ? '#456774' : 'none')};
+    border: solid #456774;
+    color: ${({ selected }) => (selected ? '#f0e9d7' : '#456774')};
+  }
+
   ${p => p.theme.mediaQueries.mobile} {
     width: calc(100vw * (90 / 393));
     border-radius: 6.7px;
@@ -98,6 +106,15 @@ const WorkshopContent = styled.div`
   ${p => p.theme.mediaQueries.mobile} {
     flex-direction: column;
     gap: calc(100vw * (50 / 393));
+  }
+`
+const TextLink = styled.a`
+  color: #751c0d;
+  text-decoration: underline;
+  cursor: pointer;
+
+  &:hover {
+    color: #456774;
   }
 `
 
@@ -179,13 +196,13 @@ const Workshops = () => {
       </Description>
       <Description>
         For more resources, check out our{' '}
-        <Link href="https://www.nwplus.io/" target="_blank" rel="noreferrer">
+        <TextLink href="https://www.nwplus.io/" target="_blank" rel="noreferrer">
           website
-        </Link>{' '}
+        </TextLink>{' '}
         and{' '}
-        <Link href="https://resources.nwplus.io/" target="_blank" rel="noreferrer">
+        <TextLink href="https://resources.nwplus.io/" target="_blank" rel="noreferrer">
           self-learning wiki
-        </Link>
+        </TextLink>
         .
       </Description>
       <TabButtons>
