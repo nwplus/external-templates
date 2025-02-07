@@ -332,7 +332,7 @@ const TooltipImg = styled.img`
   position: absolute;
   height: auto;
   width: calc(100vw * (40 / 1920));
-  top: calc(100vw * (40 / 1920));
+  top: calc(100vw * (30 / 1920));
   left: calc(100vw * (1135 / 1920)); 
 `
 
