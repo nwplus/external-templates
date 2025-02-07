@@ -111,7 +111,7 @@ const Blurb = styled.div`
   font-family: Poppins;
   font-weight: 400;
   height: calc(100vw * (150 / 1920));
-  overflow-y: auto;
+  overflow-y: scroll;
   word-wrap: break-word;
   text-overflow: ellipsis;
   width: calc(100vw * (793 / 1920));

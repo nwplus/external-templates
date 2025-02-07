@@ -17,7 +17,7 @@ import startuppastry from '@assets/images/sponsors/startuppastry.svg'
 const SPONSOR_WIDTH = { title: 70, platinum: 45, gold: 40, silver: 35, bronze: 30, startup: 25, inkind: 20 }
 const MOBILE_SPONSOR_WIDTH = { title: 95, platinum: 80, gold: 45, silver: 35, bronze: 30, startup: 25, inkind: 20 }
 
-const calculateSponsorRows = tierList => {
+const calculateSponsorRows = (tierList, isMobile) => {
   const newRows = {}
 
   const groupSponsors = (sponsors, groupSize, tier) => {
@@ -34,12 +34,12 @@ const calculateSponsorRows = tierList => {
 
   newRows.platinum = groupSponsors(tierList.platinum, 2)
   newRows.gold = groupSponsors(tierList.gold, 3)
-  newRows.silver = groupSponsors(tierList.silver, 4)
-  newRows.bronze = groupSponsors(tierList.bronze, 5)
+  newRows.silver = groupSponsors(tierList.silver, isMobile ? 3 : 4)
+  newRows.bronze = groupSponsors(tierList.bronze, isMobile ? 3 : 5)
 
   // Combine startup and inkind sponsors
   const combinedStartupInkind = [...tierList.startup, ...tierList.inkind]
-  newRows.startup = groupSponsors(combinedStartupInkind, 6)
+  newRows.startup = groupSponsors(combinedStartupInkind, isMobile ? 4 : 6)
 
   return newRows
 }
@@ -53,7 +53,8 @@ const Container = styled.div`
   margin-top: calc(100vw * (150 / 1920));
 
   ${p => p.theme.mediaQueries.mobile} {
-    gap: calc(100vw * (25 / 393));
+    gap: calc(100vw * (40 / 393));
+    margin-top: calc(100vw * (80 / 393));
   }
 `
 
@@ -68,16 +69,16 @@ const Row = styled.div`
   transform: ${props => {
     switch (props.tier) {
       case 'platinum':
-        return props.isMobile ? 'translate(16%, -75%)' : 'translate(20%, -75%)'
+        return props.isMobile ? 'translate(27%, -75%)' : 'translate(20%, -75%)'
       case 'gold':
-        return props.isMobile ? 'translate(9%, -60%)' : 'translate(12%, -60%)'
+        return props.isMobile ? 'translate(6%, -63%)' : 'translate(12%, -60%)'
       case 'silver':
-        return props.isMobile ? 'translate(9%, -60%)' : 'translate(13%, -55%)'
+        return props.isMobile ? 'translate(15%, -58%)' : 'translate(13%, -55%)'
       case 'bronze':
-        return props.isMobile ? 'translate(6%, -50%)' : 'translate(8%, -45%)'
+        return props.isMobile ? 'translate(12%, -60%)' : 'translate(8%, -45%)'
       case 'startup':
       default:
-        return props.isMobile ? 'translate(12%, -45%)' : 'translate(22%, -40%)'
+        return props.isMobile ? 'translate(8%, -55%)' : 'translate(22%, -40%)'
     }
   }};
   z-index: 150;
@@ -88,11 +89,11 @@ const Row = styled.div`
       case 'platinum':
         return props.isMobile ? 'calc(100vw * (15/393))' : 'calc(100vw * (20/1920))'
       case 'gold':
-        return 'calc(100vw * (10/1920))'
+        return props.isMobile ? 0 : 'calc(100vw * (10/1920))'
       case 'silver':
-        return 'calc(100vw * (10/1920))'
+        return props.isMobile ? 'calc(100vw * (10/393))' : 'calc(100vw * (10/1920))'
       case 'bronze':
-        return props.isMobile ? 0 : 'calc(100vw * (5/1920))'
+        return props.isMobile ? 'calc(100vw * (10/393))' : 'calc(100vw * (5/1920))'
       case 'startup':
       default:
         return 'calc(100vw * (10/1920))'
@@ -184,14 +185,14 @@ const StandImage = styled.img`
   position: absolute;
   width: ${props => {
     if (props.isMobile) {
-      return props.isFirstRow ? 'calc(100vw * (19/ 393))' : 'calc(100vw * (9/ 393))'
+      return props.isFirstRow ? 'calc(100vw * (38/ 393))' : 'calc(100vw * (18/ 393))'
     }
     return props.isFirstRow ? 'calc(100vw * (67/ 1920))' : 'calc(100vw * (28 / 1920))'
   }};
   height: auto;
   bottom: ${props => {
     if (props.isMobile) {
-      return props.isFirstRow ? '-30%' : props.adjustment
+      return props.isFirstRow ? '-60%' : '-20%'
     }
     return props.isFirstRow ? '-60%' : props.adjustment
   }};
@@ -211,24 +212,24 @@ const Cupcake = memo(({ tier, isMobile }) => {
   switch (tier) {
     case 'platinum':
       svgSrc = platpastry
-      length = isMobile ? 'calc(100vw * (60 / 393))' : 'calc(100vw * (174 / 1920))'
+      length = isMobile ? 'calc(100vw * (90 / 393))' : 'calc(100vw * (174 / 1920))'
       break
     case 'gold':
       svgSrc = goldpastry
-      length = isMobile ? 'calc(100vw * (67 / 393))' : 'calc(100vw * (200 / 1920))'
+      length = isMobile ? 'calc(100vw * (100 / 393))' : 'calc(100vw * (200 / 1920))'
       break
     case 'silver':
       svgSrc = silverpastry
-      length = isMobile ? 'calc(100vw * (62 / 393))' : 'calc(100vw * (178 / 1920))'
+      length = isMobile ? 'calc(100vw * (85 / 393))' : 'calc(100vw * (178 / 1920))'
       break
     case 'bronze':
       svgSrc = bronzepastry
-      length = isMobile ? 'calc(100vw * (63 / 393))' : 'calc(100vw * (204 / 1920))'
+      length = isMobile ? 'calc(100vw * (100 / 393))' : 'calc(100vw * (204 / 1920))'
       break
     case 'startup':
     default:
       svgSrc = startuppastry
-      length = isMobile ? 'calc(100vw * (57 / 393))' : 'calc(100vw * (170 / 1920))'
+      length = isMobile ? 'calc(100vw * (90 / 393))' : 'calc(100vw * (170 / 1920))'
       break
   }
   return <PastryImage src={svgSrc} length={length} />
@@ -241,22 +242,22 @@ const PlateStand = memo(({ tier, zIndex, isFirstRow, isMobile }) => {
   switch (tier) {
     case 'platinum':
       svgSrc = platplate
-      length = isMobile ? 'calc(100vw * (176 / 393))' : 'calc(100vw * (510 / 1920))'
+      length = isMobile ? 'calc(100vw * (300 / 393))' : 'calc(100vw * (510 / 1920))'
       adjustment = '-40%'
       break
     case 'gold':
       svgSrc = goldplate
-      length = isMobile ? 'calc(100vw * (236 / 393))' : 'calc(100vw * (769 / 1920))'
+      length = isMobile ? 'calc(100vw * (330 / 393))' : 'calc(100vw * (769 / 1920))'
       adjustment = '10%'
       break
     case 'silver':
       svgSrc = silverplate
-      length = isMobile ? 'calc(100vw * (295 / 393))' : 'calc(100vw * (926 / 1920))'
+      length = isMobile ? 'calc(100vw * (360 / 393))' : 'calc(100vw * (926 / 1920))'
       adjustment = '25%'
       break
     case 'bronze':
       svgSrc = bronzeplate
-      length = isMobile ? 'calc(100vw * (351 / 393))' : 'calc(100vw * (1220 / 1920))'
+      length = isMobile ? 'calc(100vw * (390 / 393))' : 'calc(100vw * (1220 / 1920))'
       adjustment = '40%'
       break
     case 'startup':
@@ -349,7 +350,7 @@ const SponsorsGrid = ({ sponsors }) => {
 
   useEffect(() => {
     const calculateRows = () => {
-      const newRows = calculateSponsorRows(tierList)
+      const newRows = calculateSponsorRows(tierList, isMobile)
       setRows(newRows)
     }
 
