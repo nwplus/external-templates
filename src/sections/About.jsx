@@ -96,134 +96,134 @@ const AboutImage = styled.img`
 `;
 
 const images = [
-  { 
-    src: 'piping_bag.svg', 
-    alt: 'Piping Bag', 
-    width: 160, 
-    top: 100, 
+  {
+    src: 'piping_bag.svg',
+    alt: 'Piping Bag',
+    width: 160,
+    top: 100,
     left: 800,
     mobileWidth: 0,
   },
-  { 
-    src: 'measuring_glass.svg', 
-    alt: 'Measuring Glass', 
-    width: 220, 
-    top: 110, 
+  {
+    src: 'measuring_glass.svg',
+    alt: 'Measuring Glass',
+    width: 220,
+    top: 110,
     left: 1200,
     mobileWidth: 0,
   },
-  { 
-    src: 'flour_sifter.svg', 
-    alt: 'Flour Sifter', 
-    width: 160, 
-    top: 240, 
+  {
+    src: 'flour_sifter.svg',
+    alt: 'Flour Sifter',
+    width: 160,
+    top: 240,
     left: 1650,
     mobileWidth: 0,
   },
-  { 
-    src: 'spatula.svg', 
-    alt: 'Spatula', 
-    width: 150, 
-    top: 490, 
+  {
+    src: 'spatula.svg',
+    alt: 'Spatula',
+    width: 150,
+    top: 490,
     left: 1450,
     mobileWidth: 0,
   },
-  { 
-    src: 'oven_mitts.svg', 
-    alt: 'Oven Mitts', 
-    width: 330, 
-    top: 810, 
+  {
+    src: 'oven_mitts.svg',
+    alt: 'Oven Mitts',
+    width: 330,
+    top: 810,
     left: 1400,
     mobileWidth: 0,
   },
-  { 
-    src: 'measuring_cup.svg', 
-    alt: 'Measuring Cup', 
-    width: 120, 
-    top: 1010, 
+  {
+    src: 'measuring_cup.svg',
+    alt: 'Measuring Cup',
+    width: 120,
+    top: 1010,
     left: 900,
     mobileWidth: 0,
   },
-  { 
-    src: 'rolling_pin.svg', 
-    alt: 'Rolling Pin', 
-    width: 300, 
-    top: 840, 
+  {
+    src: 'rolling_pin.svg',
+    alt: 'Rolling Pin',
+    width: 300,
+    top: 840,
     left: 320,
     mobileWidth: 0,
   },
-  { 
-    src: 'cookie_cutter.svg', 
-    alt: 'Cookie Cutter', 
-    width: 100, 
-    top: 940, 
+  {
+    src: 'cookie_cutter.svg',
+    alt: 'Cookie Cutter',
+    width: 100,
+    top: 940,
     left: 100,
     mobileWidth: 0,
   },
-  { 
-    src: 'mixing_bowl.svg', 
-    alt: 'Mixing Bowl', 
-    width: 240, 
-    top: 490, 
+  {
+    src: 'mixing_bowl.svg',
+    alt: 'Mixing Bowl',
+    width: 240,
+    top: 490,
     left: 150,
     mobileWidth: 0,
   },
-  { 
-    src: 'hand_mixer.svg', 
-    alt: 'Hand Mixer', 
-    width: 320, 
-    top: 115, 
+  {
+    src: 'hand_mixer.svg',
+    alt: 'Hand Mixer',
+    width: 320,
+    top: 115,
     left: 235,
     mobileWidth: 0,
   }
 ];
 
 const mobileImages = [
-  { 
-    src: 'hand_mixer_mobile.svg', 
-    alt: 'Hand Mixer', 
+  {
+    src: 'hand_mixer_mobile.svg',
+    alt: 'Hand Mixer',
     width: 100,
     top: 5,
     left: 296
   },
-  { 
-    src: 'piping_bag_mobile.svg', 
-    alt: 'Piping Bag', 
+  {
+    src: 'piping_bag_mobile.svg',
+    alt: 'Piping Bag',
     width: 80,
     top: 77,
     left: -5
   },
-  { 
-    src: 'measuring_glass_mobile.svg', 
-    alt: 'Measuring Glass', 
+  {
+    src: 'measuring_glass_mobile.svg',
+    alt: 'Measuring Glass',
     width: 55,
     top: 250,
     left: 343
   },
-  { 
-    src: 'rolling_pin_mobile.svg', 
-    alt: 'Rolling Pin', 
+  {
+    src: 'rolling_pin_mobile.svg',
+    alt: 'Rolling Pin',
     width: 27,
     top: 355,
     left: 0
   },
-  { 
-    src: 'cookie_cutter_mobile.svg', 
-    alt: 'Cookie Cutter', 
+  {
+    src: 'cookie_cutter_mobile.svg',
+    alt: 'Cookie Cutter',
     width: 43,
     top: 470,
     left: 351
   },
-  { 
-    src: 'spatula_mobile.svg', 
-    alt: 'Spatula', 
+  {
+    src: 'spatula_mobile.svg',
+    alt: 'Spatula',
     width: 90,
     top: 770,
     left: 300
   },
-  { 
-    src: 'oven_mitts_mobile.svg', 
-    alt: 'Oven Mitts', 
+  {
+    src: 'oven_mitts_mobile.svg',
+    alt: 'Oven Mitts',
     width: 100,
     top: 840,
     left: 0

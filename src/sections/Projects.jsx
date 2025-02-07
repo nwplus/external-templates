@@ -192,7 +192,7 @@ const Project1Title = styled.p`
 `
 
 const Project1Description = styled.p`
-  font-weight: 500;
+  font-weight: 400;
   font-size: calc(100vw * (18 / 1920));
   padding: calc(100vw * (20 / 1920)) 0px;
 

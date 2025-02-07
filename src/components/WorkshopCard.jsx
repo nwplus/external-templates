@@ -12,7 +12,7 @@ const WorkshopCardContainer = styled.div`
 
 const WorkshopTitle = styled.p`
   font-family: 'Happy Time';
-  font-weight: 400;
+  font-weight: 500;
   font-style: italic;
   font-size: calc(100vw * (34 / 1920));
   color: #a6321e;
@@ -22,7 +22,7 @@ const WorkshopTitle = styled.p`
 `
 
 const WorkshopTime = styled.p`
-  font-weight: 500;
+  font-weight: 400;
   font-size: calc(100vw * (20 / 1920));
   color: #000000;
   margin: calc(100vw * (10 / 1920)) 0px calc(100vw * (40 / 1920)) 0px;
@@ -32,7 +32,7 @@ const WorkshopTime = styled.p`
 `
 
 const WorkshopDescription = styled.p`
-  font-weight: 500;
+  font-weight: 400;
   font-size: calc(100vw * (18 / 1920));
   color: #000000;
   margin: calc(100vw * (10 / 1920)) 0px;

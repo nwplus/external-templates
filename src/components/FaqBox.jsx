@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 const Container = styled.div`
   font-family: Poppins;
-  font-weight: 500;
+  font-weight: 400;
   text-align: left;
   background: white;
   border: 1.5px solid #fff;

@@ -149,8 +149,8 @@ const ValueTitle = styled.p`
 const ValueDescription = styled.p`
   font-size: calc(100vw * (18 / 1920));
   color: #4F2F22;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 500;
+  font-family: 'Poppins';
+  font-weight: 400;
   line-height: 1.6;
 
   @media (max-width: 768px) {
