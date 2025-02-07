@@ -14,7 +14,7 @@ const CarouselContainer = styled.div`
 `
 
 const ContentContainer = styled.div`
-  width: calc(100vw * (872 / 1920));
+  width: calc(100vw * (960 / 1920));
   height: calc(100vw * (450 / 1920));
   position: relative;
   background-color: #fffdfa;
@@ -107,14 +107,16 @@ const Logo = styled.img`
 `
 
 const Blurb = styled.div`
-  font-size: calc(100vw * (16 / 1920));
+  font-size: calc(100vw * (18 / 1920));
   font-family: Poppins;
   font-weight: 400;
-  height: calc(100vw * (150 / 1920));
+  height: calc(100vw * (180 / 1920));
   overflow-y: scroll;
   word-wrap: break-word;
   text-overflow: ellipsis;
-  width: calc(100vw * (793 / 1920));
+  width: calc(100vw * (860 / 1920));
+  color: #4F2F22;
+
 
   ::-webkit-scrollbar {
     width: 0.5rem;
