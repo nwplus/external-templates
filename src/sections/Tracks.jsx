@@ -76,7 +76,7 @@ const Instruction = styled.h3`
   font-family: Poppins;
   font-size: calc(100vw * (25 / 1920));
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   line-height: normal;
 
   ${p => p.theme.mediaQueries.mobile} {

@@ -74,7 +74,7 @@ const Link = styled.a`
 `
 
 const Description = styled.p`
-  font-weight: 400;
+  font-weight: 500;
   font-family: 'Poppins';
   font-size: calc(100vw * (20 / 1920));
   color: #4f2f22;
