@@ -197,7 +197,7 @@ const mobileImages = [
     src: 'measuring_glass_mobile.svg',
     alt: 'Measuring Glass',
     width: 55,
-    top: 250,
+    top: 247,
     left: 343
   },
   {
@@ -222,10 +222,10 @@ const mobileImages = [
     left: 300
   },
   {
-    src: 'oven_mitts_mobile.svg',
+    src: 'oven_mitts_mobile.png',
     alt: 'Oven Mitts',
     width: 100,
-    top: 840,
+    top: 825,
     left: 0
   },
 ];
