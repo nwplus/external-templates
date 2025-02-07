@@ -337,7 +337,6 @@ const CroissantImage = styled.img`
 
   ${p => p.theme.mediaQueries.mobile} {
     width: calc(100vw * (203 / 393));
-    z-index: 15;
     transform: translate(-65%, 65%);
   }
 `
