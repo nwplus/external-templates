@@ -101,7 +101,7 @@ const DropDownContentContainer = styled.div`
   position: fixed;
   top: 0;
   z-index: 998;
-  padding: 20px 40px 24px 40px;
+  padding: 50px 40px 24px 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -180,7 +180,7 @@ const DropdownContent = styled.div`
 
   ${p => p.theme.mediaQueries.mobile} {
     position: static;
-    display: block;
+    display: ${p => p.isOpen ? 'block' : 'none'};
     transform: none;
     background: transparent;
     padding: 16px 0 0 16px;
@@ -208,30 +208,43 @@ const DropdownIcon = styled.img`
   height: 18px;
 `
 
-const Dropdown = ({ label, items, isMobile, closeDropdown }) => (
-  <DropdownContainer>
-    <LinkText href="#" onClick={e => e.preventDefault()}>
-      <DropdownLabel>
-        <StyledLinkHeaders>{label}</StyledLinkHeaders>
-        <DropdownIcon src={DropdownImg} alt="dropdown arrow" />
-      </DropdownLabel>
-    </LinkText>
-    <DropdownContent>
-      {items.map(({ name, href }) => (
-        <DropdownItem 
-          key={name}
-          href={href} 
-          onClick={(e) => {
-            e.preventDefault()
-            document.getElementById(href.replace('/#', '')).scrollIntoView({ behavior: 'smooth', block: 'start' })
-            if (isMobile) closeDropdown(false)
-          }}>
-          <StyledLinkHeaders>{name}</StyledLinkHeaders>
-        </DropdownItem>
-      ))}
-    </DropdownContent>
-  </DropdownContainer>
-)
+const Dropdown = ({ label, items, isMobile, closeDropdown }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleClick = (e) => {
+    if (isMobile) {
+      e.preventDefault();
+      setIsOpen(!isOpen);
+    }
+  };
+
+  return (
+    <DropdownContainer>
+      <LinkText href="#" onClick={handleClick}>
+        <DropdownLabel>
+          <StyledLinkHeaders>{label}</StyledLinkHeaders>
+          <DropdownIcon src={DropdownImg} alt="dropdown arrow" />
+        </DropdownLabel>
+      </LinkText>
+      <DropdownContent isOpen={isMobile ? isOpen : undefined}>
+        {items.map(({ name, href }) => (
+          <DropdownItem 
+            key={name}
+            href={href} 
+            onClick={(e) => {
+              e.preventDefault();
+              document.getElementById(href.replace('/#', '')).scrollIntoView({ behavior: 'smooth', block: 'start' });
+              if (isMobile) {
+                closeDropdown(false);
+              }
+            }}>
+            <StyledLinkHeaders>{name}</StyledLinkHeaders>
+          </DropdownItem>
+        ))}
+      </DropdownContent>
+    </DropdownContainer>
+  );
+};
 
 const MenuItem = ({ name, href, isAnchor, target, rel, isMobile, closeDropdown }) => {
   const [anchorTarget, setAnchorTarget] = useState(null)
