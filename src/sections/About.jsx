@@ -215,7 +215,7 @@ const mobileImages = [
     left: 351
   },
   {
-    src: 'spatula_mobile.svg',
+    src: 'spatula_mobile.png',
     alt: 'Spatula',
     width: 90,
     top: 770,
