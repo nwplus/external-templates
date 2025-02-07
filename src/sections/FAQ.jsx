@@ -135,7 +135,8 @@ const FaqDecorations = styled.div`
 
   ${p => p.theme.mediaQueries.mobile} {
     justify-content: center;
-    margin-top: calc(100vw * (20 / 487));
+    padding: 0;
+    margin-top: calc(100vw * (20 / 393));
   }
 
   img {
