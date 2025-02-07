@@ -137,7 +137,8 @@ const ValueContent = styled.div`
 const ValueTitle = styled.p`
   font-size: calc(100vw * (32 / 1920));
   color: #A6321E;
-  font-family: 'HappyTime';
+  font-family: 'Happy Time';
+  font-style: italic;
   font-weight: 500;
   margin-bottom: 0.5rem;
 

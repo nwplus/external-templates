@@ -6,7 +6,8 @@ const RegistrationContainer = styled.div`
   position: absolute;
   z-index: 2;
   font-size: calc(100vw * (60 / 1920));
-  font-family: HappyTime;
+  font-family: Happy Time;
+  font-style: italic;
   bottom: calc(100vw * (-23 / 1920));
   left: calc(100vw * (-35 / 1920));
   color: #4f2f22;
