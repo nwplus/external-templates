@@ -20,7 +20,7 @@ const TrackContainer = styled.div`
   width: 100%;
   ${p => p.theme.mediaQueries.mobile} {
     aspect-ratio: 393 / 1690;
-    margin-top: 3rem;
+    margin-top: calc(100vw * (90 / 393));
   }
 `
 
