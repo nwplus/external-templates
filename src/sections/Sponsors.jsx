@@ -31,8 +31,8 @@ const Title = styled(Header2)`
 
 const Description = styled.p`
   font-family: Poppins;
-  font-size: calc(100vw * (18 / 1920));
-  width: calc(100vw * (698 / 1920));
+  font-size: calc(100vw * (20 / 1920));
+  width: calc(100vw * (850 / 1920));
   ${p => p.theme.mediaQueries.mobile} {
     font-size: calc(100vw * (15 / 393));
     width: calc(100vw * (319 / 393));
