@@ -87,7 +87,8 @@ const CollectionContainer = styled.div`
 
 const CollectionName = styled.div`
   font-size: calc(100vw * (50 / 1920));
-  font-family: 'HappyTime';
+  font-family: 'Happy Time';
+  font-style: italic;
   font-weight: 500;
   padding-bottom: calc(100vw * (60 / 1920));
   text-align: center;
