@@ -135,7 +135,8 @@ const Button = styled.a`
     border: 2px solid #a6321e;
 
     &:hover {
-      text-decoration: underline;
+      color: #456774;
+      border: 2px solid #456774;
     }
   }
 
