@@ -23,7 +23,7 @@ const Input = styled.input`
   height: 100%;
   padding: calc(100vw * (4 / 1280)) calc(100vw * (16 / 1280));
   border-radius: calc(100vw * (10 / 1280));
-  border: none;
+  border: 1px solid #d4ccc3;
   outline: none;
   font-size: calc(100vw * (14 / 1280));
   color: #8d603f;
@@ -51,7 +51,7 @@ const Button = styled.button`
   cursor: pointer;
   transition: background-color 0.2s ease;
 
-  font-size: calc(100vw * (13 / 1280));
+  font-size: calc(100vw * (11 / 1280));
 
   &:hover {
     background-color: #612c25;
