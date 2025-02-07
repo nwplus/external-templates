@@ -117,7 +117,7 @@ const TeamContainer = styled.div`
 
 const LandAcknowledgementText = styled.div`
   font-family: 'Poppins';
-  font-weight: 400;
+  font-weight: 500;
   padding: 0 5%;
   text-align: center;
   position: relative;
