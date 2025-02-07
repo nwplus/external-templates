@@ -113,6 +113,7 @@ const Blurb = styled.div`
   height: calc(100vw * (150 / 1920));
   overflow-y: auto;
   word-wrap: break-word;
+  text-overflow: ellipsis;
   width: calc(100vw * (793 / 1920));
 
   ::-webkit-scrollbar {
