@@ -317,10 +317,10 @@ const TooltipText = styled.div`
   color: #FFF;
   text-align: center;
   font-feature-settings: 'liga' off;
-  font-family: "HK Grotesk";
+  font-family: "Poppins";
   font-size: 24px;
   font-style: normal;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 23px;
   letter-spacing: -0.15px;
   position: absolute;
