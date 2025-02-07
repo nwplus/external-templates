@@ -318,22 +318,22 @@ const TooltipText = styled.div`
   text-align: center;
   font-feature-settings: 'liga' off;
   font-family: "Poppins";
-  font-size: calc(100vw * (30 / 1920));;
+  font-size: calc(100vw * (24 / 1920));;
   font-style: normal;
   font-weight: 600;
   line-height: 23px;
   letter-spacing: -0.15px;
   position: absolute;
   top: calc(100vw * (40 / 1920));
-  left: calc(100vw * (1200 / 1920));
+  left: calc(100vw * (1350 / 1920));
 `
 
 const TooltipImg = styled.img`
   position: absolute;
   height: auto;
-  width: calc(100vw * (40 / 1920));
+  width: calc(100vw * (30 / 1920));
   top: calc(100vw * (30 / 1920));
-  left: calc(100vw * (1135 / 1920)); 
+  left: calc(100vw * (1295 / 1920)); 
 `
 
 // Component
