@@ -109,7 +109,7 @@ const Logo = styled.img`
 const Blurb = styled.div`
   font-size: calc(100vw * (16 / 1920));
   font-family: Poppins;
-  font-weight: 400;
+  font-weight: 500;
   height: calc(100vw * (150 / 1920));
   overflow-y: auto;
   word-wrap: break-word;
