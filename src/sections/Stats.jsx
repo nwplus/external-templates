@@ -80,7 +80,7 @@ const MobileEggStat = styled.img`
   height: auto;
   width: calc(100vw * (252 / 393));
   top: calc(100vw * (327 / 393));
-  left: calc(100vw * (-145 / 393));
+  left: calc(100vw * (140 / 393));
   z-index: 3;
   transform: translateX(${({ scrollOffset }) => scrollOffset}px);
   transition: transform 0.3s ease-out;
@@ -91,7 +91,7 @@ const MobileBottleStat = styled.img`
   height: auto;
   width: calc(100vw * (195 / 393));
   top: calc(100vw * (470 / 393));
-  left: calc(100vw * (-285 / 393));
+  left: calc(100vw * (10 / 393));
   z-index: 3;
   transform: translateX(${({ scrollOffset }) => scrollOffset}px);
   transition: transform 0.3s ease-out;
@@ -102,7 +102,7 @@ const MobileFlourStat = styled.img`
   height: auto;
   width: calc(100vw * (210 / 393));
   top: calc(100vw * (575 / 393));
-  left: calc(100vw * (-125 / 393));
+  left: calc(100vw * (180 / 393));
   z-index: 3;
   transform: translateX(${({ scrollOffset }) => scrollOffset}px);
   transition: transform 0.3s ease-out;
@@ -113,7 +113,7 @@ const MobileButterStat = styled.img`
   height: auto;
   width: calc(100vw * (210 / 393));
   top: calc(100vw * (750 / 393));
-  left: calc(100vw * (-280 / 393));
+  left: calc(100vw * (30 / 393));
   z-index: 3;
   transform: translateX(${({ scrollOffset }) => scrollOffset}px);
   transition: transform 0.3s ease-out;
@@ -207,10 +207,10 @@ const Stats = () => {
         <StatsContainer ref={statsContainerRef}>
           <Title>Last year we had...</Title>
           <Bowl src="assets/images/stats/mobile/bowl_mobile.svg" />
-          <MobileEggStat src="assets/images/stats/mobile/egg_stat_mobile.svg" scrollOffset={scrollOffset} />
-          <MobileBottleStat src="assets/images/stats/mobile/bottle_stat_mobile.svg" scrollOffset={scrollOffset} />
-          <MobileFlourStat src="assets/images/stats/mobile/flour_bag_stat_mobile.svg" scrollOffset={scrollOffset} />
-          <MobileButterStat src="assets/images/stats/mobile/butter_stat_mobile.svg" scrollOffset={scrollOffset} />
+          <MobileEggStat src="assets/images/stats/mobile/egg_stat_mobile.svg" />
+          <MobileBottleStat src="assets/images/stats/mobile/bottle_stat_mobile.svg" />
+          <MobileFlourStat src="assets/images/stats/mobile/flour_bag_stat_mobile.svg" />
+          <MobileButterStat src="assets/images/stats/mobile/butter_stat_mobile.svg" />
         </StatsContainer>
       )}
     </OuterContainer>
