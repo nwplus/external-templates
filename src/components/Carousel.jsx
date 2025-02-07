@@ -117,18 +117,18 @@ const Blurb = styled.div`
 
   ::-webkit-scrollbar {
     width: 0.5rem;
-    -webkit-appearance: none;
+    background-color: rgba(0, 0, 0, 0.1);
   }
   ::-webkit-scrollbar-thumb {
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 1rem;
   }
   ::-webkit-scrollbar-track {
-    background-color: transparent;
+    background-color: rgba(0, 0, 0, 0.2);
   }
 
   scrollbar-width: thin;
-  scrollbar-color: rgba(0, 0, 0, 0.5) transparent;
+  scrollbar-color: rgba(0, 0, 0, 0.5) rgba(0, 0, 0, 0.2);
   -webkit-overflow-scrolling: touch;
 
   ${p => p.theme.mediaQueries.mobile} {
