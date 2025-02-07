@@ -34,6 +34,8 @@ const Description = styled.p`
   font-weight: 400;
   font-size: calc(100vw * (20 / 1920));
   width: calc(100vw * (850 / 1920));
+  color: #4F2F22;
+
   ${p => p.theme.mediaQueries.mobile} {
     font-size: calc(100vw * (15 / 393));
     width: calc(100vw * (319 / 393));
