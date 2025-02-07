@@ -43,7 +43,7 @@ const Title = styled.p`
   font-family: 'Gloock';
   font-weight: 400;
   text-align: center;
-  font-size: calc(100vw * (64 / 1600));
+  font-size: calc(100vw * (64 / 1920));
   margin-bottom: calc(100vw * (40 / 1280));
   padding-top: calc(100vw * (40 / 1920));
 
@@ -115,19 +115,19 @@ const Line1 = styled.div`
   background-color: #A6321E;
   margin-top: 8px;
   margin-bottom: -56px;
-  height: calc(100vw * (192 / 1600));
+  height: calc(100vw * (192 / 1920));
 `
 const Line2 = styled.div`
   width: 3px;
   background-color: #A6321E;
   margin-top: 8px;
   margin-bottom: -56px;
-  height: calc(100vw * (220 / 1600));
+  height: calc(100vw * (220 / 1920));
 `
 const ValueContent = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: calc(100vw * (640 / 1600));
+  max-width: calc(100vw * (640 / 1920));
 
   @media (max-width: 768px) {
     max-width: calc(100vw * (600 / 768));
@@ -135,9 +135,10 @@ const ValueContent = styled.div`
 `
 
 const ValueTitle = styled.p`
-  font-size: calc(100vw * (32 / 1600));
+  font-size: calc(100vw * (32 / 1920));
   color: #A6321E;
-  font-family: 'HappyTime', normal;
+  font-family: 'HappyTime';
+  font-weight: 500;
   margin-bottom: 0.5rem;
 
   @media (max-width: 768px) {
@@ -146,9 +147,10 @@ const ValueTitle = styled.p`
 `
 
 const ValueDescription = styled.p`
-  font-size: calc(100vw * (18 / 1600));
+  font-size: calc(100vw * (18 / 1920));
   color: #4F2F22;
   font-family: 'Poppins', sans-serif;
+  font-weight: 500;
   line-height: 1.6;
 
   @media (max-width: 768px) {
