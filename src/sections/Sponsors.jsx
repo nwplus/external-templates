@@ -34,7 +34,7 @@ const Description = styled.p`
   font-weight: 400;
   font-size: calc(100vw * (20 / 1920));
   width: calc(100vw * (850 / 1920));
-  color: #4F2F22;
+  color: #4f2f22;
 
   ${p => p.theme.mediaQueries.mobile} {
     font-size: calc(100vw * (15 / 393));
@@ -102,7 +102,7 @@ const Sponsors = () => {
   const [carouselSponsors, setCarouselSponsors] = useState([])
 
   useEffect(async () => {
-    const data = await fireDb.getCollection('nwHacks2025', 'Sponsors') // TODO: CHANGE TO CMD-F2025
+    const data = await fireDb.getCollection('cmd-f2025', 'Sponsors')
     if (data) {
       const filteredCarouselSponsors = data.filter(child => child.blurb !== undefined && child.blurb !== '')
       const tierOrder = ['title', 'platinum', 'gold', 'silver', 'bronze', 'startup', 'inkind']

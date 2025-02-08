@@ -231,7 +231,7 @@ const Faq = () => {
   }
 
   useEffect(async () => {
-    const data = await fireDb.getCollection('cmd-f2023', 'FAQ') // TODO: change to 2025
+    const data = await fireDb.getCollection('cmd-f2025', 'FAQ') // TODO: change to 2025
     const processedData = processData(data)
     setFaqData(processedData)
   }, [])
