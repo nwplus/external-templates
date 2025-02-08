@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 import styled from 'styled-components'
 import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
 import { scale } from '@utilities/format'
+import mlhImage from '@assets/images/mlhTrustBadgeWhite.svg'
 import { BANNER_OFFSET } from '../constants/measurements'
 import MenuImg from '../../public/images/icons/menu.svg'
 import DropdownImg from '../../public/assets/images/dropdown.svg'
@@ -180,7 +181,7 @@ const DropdownContent = styled.div`
 
   ${p => p.theme.mediaQueries.mobile} {
     position: static;
-    display: ${p => p.isOpen ? 'block' : 'none'};
+    display: ${p => (p.isOpen ? 'block' : 'none')};
     transform: none;
     background: transparent;
     padding: 16px 0 0 16px;
@@ -208,15 +209,42 @@ const DropdownIcon = styled.img`
   height: 18px;
 `
 
-const Dropdown = ({ label, items, isMobile, closeDropdown }) => {
-  const [isOpen, setIsOpen] = useState(false);
+const TrustBadgeLink = styled.a`
+  display: block;
+  max-width: 100px;
+  min-width: 60px;
+  position: ${p => (p.stayAtTop ? 'absolute' : 'fixed')};
+  top: 0px;
+  right: 30px;
+  width: 5%;
+  z-index: 1000;
 
-  const handleClick = (e) => {
+  ${p => p.theme.mediaQueries.mobile} {
+    left: 30px;
+  }
+`
+
+const TrustBadge = ({ stayAtTop }) => (
+  <TrustBadgeLink
+    id="mlh-trust-badge"
+    rel="noreferrer"
+    href="https://mlh.io/na?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2025-season&utm_content=white"
+    target="_blank"
+    stayAtTop={stayAtTop}
+  >
+    <img src={mlhImage} alt="Major League Hacking 2025 Hackathon Season" style={{ width: '100%' }} />
+  </TrustBadgeLink>
+)
+
+const Dropdown = ({ label, items, isMobile, closeDropdown }) => {
+  const [isOpen, setIsOpen] = useState(false)
+
+  const handleClick = e => {
     if (isMobile) {
-      e.preventDefault();
-      setIsOpen(!isOpen);
+      e.preventDefault()
+      setIsOpen(!isOpen)
     }
-  };
+  }
 
   return (
     <DropdownContainer>
@@ -228,23 +256,24 @@ const Dropdown = ({ label, items, isMobile, closeDropdown }) => {
       </LinkText>
       <DropdownContent isOpen={isMobile ? isOpen : undefined}>
         {items.map(({ name, href }) => (
-          <DropdownItem 
+          <DropdownItem
             key={name}
-            href={href} 
-            onClick={(e) => {
-              e.preventDefault();
-              document.getElementById(href.replace('/#', '')).scrollIntoView({ behavior: 'smooth', block: 'start' });
+            href={href}
+            onClick={e => {
+              e.preventDefault()
+              document.getElementById(href.replace('/#', '')).scrollIntoView({ behavior: 'smooth', block: 'start' })
               if (isMobile) {
-                closeDropdown(false);
+                closeDropdown(false)
               }
-            }}>
+            }}
+          >
             <StyledLinkHeaders>{name}</StyledLinkHeaders>
           </DropdownItem>
         ))}
       </DropdownContent>
     </DropdownContainer>
-  );
-};
+  )
+}
 
 const MenuItem = ({ name, href, isAnchor, target, rel, isMobile, closeDropdown }) => {
   const [anchorTarget, setAnchorTarget] = useState(null)
@@ -282,11 +311,11 @@ const PortalButton = ({ portalOpen }) => (
 
 const MenuList = ({ isMobile, closeDropdown }) => (
   <>
-    <Dropdown 
+    <Dropdown
       label="About"
       items={[
-        { name: "What is cmd-f?", href: "/#about" },
-        { name: "Values", href: "/#values" }
+        { name: 'What is cmd-f?', href: '/#about' },
+        { name: 'Values', href: '/#values' },
       ]}
       isMobile={isMobile}
       closeDropdown={closeDropdown}
@@ -294,11 +323,11 @@ const MenuList = ({ isMobile, closeDropdown }) => (
     <MenuItem name="Tracks" href="/#tracks" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
     <MenuItem name="Stats" href="/#stats" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
     <MenuItem name="Workshops" href="/#workshops" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
-    <Dropdown 
+    <Dropdown
       label="History"
       items={[
-        { name: "Past Projects", href: "/#past-projects" },
-        { name: "Recap", href: "/#gallery" }
+        { name: 'Past Projects', href: '/#past-projects' },
+        { name: 'Recap', href: '/#gallery' },
       ]}
       isMobile={isMobile}
       closeDropdown={closeDropdown}
@@ -364,6 +393,7 @@ const NavigationBar = ({ bannerExists }) => {
             alt="dropdown menu icon"
             onClick={() => setShowDropdown(false)}
           />
+          <TrustBadge stayAtTop={stayAtTop} />
         </NavBarContainer>
         <DropDownContentContainer>
           <MenuList isMobile={showDropdown} closeDropdown={setShowDropdown} />
@@ -381,6 +411,7 @@ const NavigationBar = ({ bannerExists }) => {
           <MenuList isMobile={false} />
         </NavTextContainer>
         {/* Make sure mobile (above) has the same portalOpen value */}
+        <TrustBadge stayAtTop={stayAtTop} />
       </NavGroupContainer>
       <PortalButton portalOpen />
       <HamburgerMenu src={MenuImg} alt="dropdown menu icon" onClick={() => setShowDropdown(true)} />
