@@ -44,7 +44,7 @@ const ClosingCard = styled.div`
   justify-content: center;
   align-items: center;
   ${p => p.theme.mediaQueries.mobile} {
-    top: calc(100vw * (240 / 393));
+    top: calc(100vw * (290 / 393));
   }
 `
 
@@ -136,7 +136,7 @@ const LandAcknowledgementText = styled.div`
   ${p => p.theme.mediaQueries.mobile} {
     padding: 4% 10%;
     font-size: calc(100vw * (18 / 487));
-    bottom: calc(100vw * (-300 / 393));
+    bottom: calc(100vw * (-350 / 393));
   }
 `
 
