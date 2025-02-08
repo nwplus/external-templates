@@ -16,7 +16,6 @@ if (!firebase.apps.length) {
     appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
   }
   firebase.initializeApp(config)
-  firebase.analytics()
 }
 
 const db = firebase.firestore()
