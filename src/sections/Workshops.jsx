@@ -77,10 +77,6 @@ const Header = styled.h1`
   }
 `
 
-const Link = styled.a`
-  color: #51483e;
-`
-
 const Description = styled.p`
   font-weight: 400;
   font-family: 'Poppins';

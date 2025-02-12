@@ -28,7 +28,7 @@ const FooterDecorOverlay = styled.img`
   position: absolute;
   width: 100%;
   transform: translateY(calc(100vw * (-550 / 1920)));
-  z-index: 1000;
+  z-index: 140;
 
   ${p => p.theme.mediaQueries.mobile} {
     aspect-ratio: 310/393;
