@@ -434,7 +434,7 @@ const profiles = [
 const StyledTitle = styled(Header3)`
   margin-top: 1vw;
   position: relative;
-  top: 3vw;
+  top: 0.5vw;
   left: 1vw;
   color: #f9c745;
   filter: drop-shadow(0 0 4px #f9c745);
