@@ -405,7 +405,7 @@ const LandAcknowledgement = styled.p`
   padding-bottom: 30px;
   z-index: 100;
   position: relative;
-  top: 105vw;
+  top: 103vw;
   left: 1vw;
   a {
     color: ${(p) => p.theme.colors.primary};
