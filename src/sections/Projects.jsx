@@ -1,40 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import styled from 'styled-components'
 
-import noodleDoodleHolder from '@assets/images/projects/NoodleDoodleHolder.svg'
-import reworkdAIHolder from '@assets/images/projects/ReworkdAIHolder.svg'
-
-import bowls from '@assets/images/projects/bowls.png'
-import litbowls from '@assets/images/projects/litBowls.png'
-import mobileBowls from '@assets/images/projects/mobileBowls.svg'
-import TV from '@assets/images/projects/TV.svg'
-import OnTV from '@assets/images/projects/onTV.svg'
-
-import reworkdAI from '@assets/images/projects/sculptures.png'
-import litReworkdAI from '@assets/images/projects/litSculptures.png'
-import mobileReworkdAI from '@assets/images/projects/mobileSculptures.svg'
-
-import duoASLCard from '@assets/images/projects/duoASLCard.svg'
-import duoASLHand from '@assets/images/projects/handSculptures.png'
-import litDuoASLHand from '@assets/images/projects/litHandSculptures.png'
-import mobileDuoASLHand from '@assets/images/projects/mobileHandSculptures.svg'
-
-import yapYapCard from '@assets/images/projects/yapYapCard.svg'
-import yapYapAccessories from '@assets/images/projects/yapYapAccessories.png'
-import litYapYapAccessories from '@assets/images/projects/litYapYapAccessories.png'
-import mobileYapYapAccessories from '@assets/images/projects/mobileYapYapAccessories.svg'
-
-import pitchAICard from '@assets/images/projects/pitchAICard.svg'
-import pitchAIModel from '@assets/images/projects/pitchAIModel.png'
-import litPitchAIModel from '@assets/images/projects/litPitchAIModel.png'
-
-import mobilePitchAIModel from '@assets/images/projects/mobilePitchAIModel.svg'
-import nuggetImg from '@assets/images/projects/nugget.svg'
-import nuggetArm from '@assets/images/projects/nuggetArm.svg'
-
-import leftArrow from '@assets/images/carouselLeft.svg'
-import rightArrow from '@assets/images/carouselRight.svg'
-
 const ProjectsContainer = styled.div`
   aspect-ratio: 1280/812;
   height: 100%;
@@ -433,10 +399,10 @@ const Projects = () => {
     {
       id: 1,
       name: 'Noodle Doodle',
-      normalImage: bowls,
-      litImage: litbowls,
-      holderImage: noodleDoodleHolder,
-      mobileImage: mobileBowls,
+      normalImage: '/assets/images/projects/bowls.png',
+      litImage: '/assets/images/projects/litBowls.png',
+      holderImage: '/assets/images/projects/NoodleDoodleHolder.svg',
+      mobileImage: '/assets/images/projects/mobileBowls.svg',
       Component: NoodleDoodleImage,
       Card: NoodleDoodleCard,
       description:
@@ -446,10 +412,10 @@ const Projects = () => {
     {
       id: 2,
       name: 'Reworkd AI',
-      normalImage: reworkdAI,
-      litImage: litReworkdAI,
-      holderImage: reworkdAIHolder,
-      mobileImage: mobileReworkdAI,
+      normalImage: '/assets/images/projects/sculptures.png',
+      litImage: '/assets/images/projects/litSculptures.png',
+      holderImage: '/assets/images/projects/ReworkdAIHolder.svg',
+      mobileImage: '/assets/images/projects/mobileSculptures.svg',
       Component: ReworkdAIImage,
       Card: ReworkdAICard,
       description:
@@ -459,10 +425,10 @@ const Projects = () => {
     {
       id: 3,
       name: 'Duo ASL',
-      normalImage: duoASLHand,
-      litImage: litDuoASLHand,
-      holderImage: duoASLCard,
-      mobileImage: mobileDuoASLHand,
+      normalImage: '/assets/images/projects/handSculptures.png',
+      litImage: '/assets/images/projects/litHandSculptures.png',
+      holderImage: '/assets/images/projects/duoASLCard.svg',
+      mobileImage: '/assets/images/projects/mobileHandSculptures.svg',
       Component: DuoASLImage,
       Card: DuoASLCard,
       description: 'DuoASL helps you learn ASL (American Sign Language) using gamification and neural networks.',
@@ -471,10 +437,10 @@ const Projects = () => {
     {
       id: 4,
       name: 'Yap Yap',
-      normalImage: yapYapAccessories,
-      litImage: litYapYapAccessories,
-      holderImage: yapYapCard,
-      mobileImage: mobileYapYapAccessories,
+      normalImage: '/assets/images/projects/yapYapAccessories.png',
+      litImage: '/assets/images/projects/litYapYapAccessories.png',
+      holderImage: '/assets/images/projects/yapYapCard.svg',
+      mobileImage: '/assets/images/projects/mobileYapYapAccessories.svg',
       Component: YapYapImage,
       Card: YapYapCard,
       description:
@@ -484,10 +450,10 @@ const Projects = () => {
     {
       id: 5,
       name: 'Pitch AI',
-      normalImage: pitchAIModel,
-      litImage: litPitchAIModel,
-      holderImage: pitchAICard,
-      mobileImage: mobilePitchAIModel,
+      normalImage: '/assets/images/projects/pitchAIModel.png',
+      litImage: '/assets/images/projects/litPitchAIModel.png',
+      holderImage: '/assets/images/projects/pitchAICard.svg',
+      mobileImage: '/assets/images/projects/mobilePitchAIModel.svg',
       Component: PitchAIImage,
       Card: PitchAICard,
       description:
@@ -565,9 +531,9 @@ const Projects = () => {
           ))}
 
           <TVContainer>
-            <TVImage src={tvLit ? OnTV : TV} />
-            <NuggetImage src={nuggetImg} />
-            <NuggetArmImage src={nuggetArm} />
+            <TVImage src={tvLit ? '/assets/images/projects/onTV.svg' : '/assets/images/projects/TV.svg'} />
+            <NuggetImage src={'/assets/images/projects/nugget.svg'} />
+            <NuggetArmImage src={'/assets/images/projects/nuggetArm.svg'} />
             {tvLit && hoveredProject && (
               <TVOverlay>
                 <TVText>{hoveredProject.description}</TVText>
@@ -598,10 +564,10 @@ const Projects = () => {
           ))}
         </Carousel>
         <LeftButton onClick={handleLeftClick}>
-          <img src={leftArrow} alt="Carousel Left Arrow" />
+          <img src={'/assets/images/carouselLeft.svg'} alt="Carousel Left Arrow" />
         </LeftButton>
         <RightButton onClick={handleRightClick}>
-          <img src={rightArrow} alt="Carousel Left Arrow" />
+          <img src={'/assets/images/carouselRight.svg'} alt="Carousel Right Arrow" />
         </RightButton>
         <DotsContainer>
           {projects.map((_, index) => (

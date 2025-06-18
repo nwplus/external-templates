@@ -1,12 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 
-// Import gallery images
-// import desktopGalleryImage from '@assets/images/desktopGallery.svg';
-import desktopGalleryImage from '@assets/images/desktopGallery.png'
-import tabletGalleryImage from '@assets/images/tabletGallery.png'
-import mobileGalleryImage from '@assets/images/mobileGallery.png'
-
 // Styled Components
 const GalleryContainer = styled.div`
   width: 100vw;
@@ -133,16 +127,16 @@ const Dot = styled.div`
 const Gallery = () => (
   <GalleryContainer>
     {/* Images for different screen sizes */}
-    <DesktopImage src={desktopGalleryImage} alt="Desktop Gallery" />
-    <TabletImage src={tabletGalleryImage} alt="Tablet Gallery" />
-    <MobileImage src={mobileGalleryImage} alt="Mobile Gallery" />
+    <DesktopImage src={'/assets/images/desktopGallery.png'} alt="Desktop Gallery" />
+    <TabletImage src={'/assets/images/tabletGallery.png'} alt="Tablet Gallery" />
+    <MobileImage src={'/assets/images/mobileGallery.png'} alt="Mobile Gallery" />
 
     {/* Video Container */}
     <VideoContainer>
       <iframe
         width="100%"
         height="100%"
-        src="https://www.youtube.com/embed/C_1ygFqM_oo?si=4HRmb4xcuXGdeZkp"
+        src="https://www.youtube.com/embed/TtYBTPVJCwo?si=37fxyriIzo2NfKqj"
         title="YouTube video player"
         frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"

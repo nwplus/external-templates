@@ -2,7 +2,6 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 import styled from 'styled-components'
 import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
 import { scale } from '@utilities/format'
-import mlhImage from '@assets/images/mlhTrustBadgeWhite.svg'
 import { BANNER_OFFSET } from '../constants/measurements'
 import MenuImg from '../../public/images/icons/menu.svg'
 import NwPlusLogo from './NwPlusLogo'
@@ -276,7 +275,7 @@ const MenuList = ({ isMobile, closeDropdown }) => (
     <MenuItem name="FAQ" href="/#faq" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
     <MenuItem name="Sponsors" href="/#sponsors" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
     <MenuItem name="Contact us" href="/#footer" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
-    <MenuItem name="2024" href="https://2024.nwhacks.io/" target="_blank" rel="noreferrer" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
+    <MenuItem name="2025" href="https://2025.nwhacks.io/" target="_blank" rel="noreferrer" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
   </>
 )
 
@@ -288,7 +287,7 @@ const TrustBadge = ({ stayAtTop }) => (
     target="_blank"
     stayAtTop={stayAtTop}
   >
-    <img src={mlhImage} alt="Major League Hacking 2025 Hackathon Season" style={{ width: '100%' }} />
+    <img src={'/assets/images/mlhTrustBadgeWhite.svg'} alt="Major League Hacking 2025 Hackathon Season" style={{ width: '100%' }} />
   </TrustBadgeLink>
 )
 

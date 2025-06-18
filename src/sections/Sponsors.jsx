@@ -93,7 +93,15 @@ const Sponsors = () => {
     <SponsorsContainer>
       <Spotlight direction="left" />
       <Spotlight direction="right" />
-      <Title id="sponsors">SPONSORS</Title>
+      <Title id="sponsors">Our 2025 Sponsors</Title>
+      <div style={{
+        margin: "0 auto",
+        width: "70%",
+        textAlign: 'center',
+        color: 'white',
+        lineHeight: '200%',
+        fontSize: 20
+      }}>nwHacks is more than just a hackathon; it's a place that supports and fosters a community for the next generation of tech leaders. If you're interested in collaborating with us or speaking at one of our events, please reach out at sponsorship@nwplus.io. </div>
       <SwipeDescription>Swipe on the TV screen to read about our sponsors</SwipeDescription>
       {carouselSponsors.length > 0 && <Carousel sponsors={carouselSponsors} />}
       <SponsorsGrid sponsors={sponsors} />

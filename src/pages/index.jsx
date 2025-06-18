@@ -6,14 +6,12 @@ import Sponsors from 'src/sections/Sponsors'
 import Faq from 'src/sections/FAQ'
 import Footer from 'src/sections/Footer'
 import About from 'src/sections/About'
-// import Track from 'src/sections/Tracks'
 import Workshops from 'src/sections/Workshops'
 import Stats from 'src/sections/Stats'
 import Gallery from 'src/sections/Gallery'
 import Projects from 'src/sections/Projects'
 import Separator from 'src/components/Separator'
 import Testimonials from 'src/sections/Testimonials'
-// import LoadingScreen from '../components/LoadingScreen'
 
 import Hero from '../components/Hero'
 import NavigationBar from '../components/NavigationBar'
@@ -81,13 +79,9 @@ export default function Index({ title }) {
         <link rel="icon" href="/favicon.png" />
 
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="Join us in making history at nwHacks 2025!" />
+        <meta name="description" content="Join us at nwHacks 2026!" />
         <meta property="og:image" content="/og_preview.png" />
       </Head>
-      {/* <Banner buttonLink="info.html" /> */}
-      {/* <NavigationBar bannerExists /> */}
-
-      {/* <LoadingScreen /> */}
 
       <NavigationBar />
 
@@ -125,7 +119,7 @@ export default function Index({ title }) {
 export async function getStaticProps() {
   return {
     props: {
-      title: 'nwHacks 2025',
-    }, // will be passed to the page component as props
+      title: 'nwHacks 2026',
+    }, 
   }
 }

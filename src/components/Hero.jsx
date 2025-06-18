@@ -379,38 +379,38 @@ const Hero = () => {
 
         <MuseumHeader className="museum-header">
           <Title>nwHacks</Title>
-          <TitleSponsor>powered by Aquareum.tv</TitleSponsor>
+          <TitleSponsor>&nbsp;</TitleSponsor>
           <Description>Western Canada&apos;s largest hackathon</Description>
-          <Date>Jan 18-19, 2025 | UBC Life Science Institute</Date>
+          <Date>Jan 17-18, 2026 | Location TBA</Date>
         </MuseumHeader>
 
-        <MobileRegistrationCountdownContainer>
+        {/* <MobileRegistrationCountdownContainer>
           <RegistrationCountdown />
         </MobileRegistrationCountdownContainer>
 
         <LeftPillar>
           <RegistrationCountdown />
-        </LeftPillar>
+        </LeftPillar> */}
 
-        <MentorButton
+        {/* <MentorButton
           href="https://docs.google.com/forms/d/e/1FAIpQLSe-KggS1ekHPklwNTMdc4xQyVAPwLjC4oLWg4EWvn2BEx5jQw/viewform?usp=sf_link"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <MuseumButton topText="Become a" bottomText="Mentor" />
-        </MentorButton>
-        <HackerButton href="https://portal.nwplus.io" target="_blank" rel="noopener noreferrer">
-          <MuseumButton topText="Apply as a" bottomText="Hacker" />
+          <MuseumButton topText="Become a" bottomText="Mentor" /> 
+        </MentorButton> */}
+        <HackerButton href="https://forms.gle/6HXfTLoPFXnoio8S8" target="_blank" rel="noopener noreferrer">
+          <MuseumButton topText="Want to be a" bottomText="Hacker?" />
         </HackerButton>
-        <VolunteerButton
+        {/* <VolunteerButton
           href="https://docs.google.com/forms/d/e/1FAIpQLSevOUAxpWWvyaL4w6Jq9VIqpfZA3y-Lmk_RcAQ68ifCqH7ztg/viewform?usp=sf_link"
           target="_blank"
           rel="noopener noreferrer"
         >
           <MuseumButton topText="Become a" bottomText="Volunteer" />
-        </VolunteerButton>
+        </VolunteerButton> */}
 
-        <RightPillar>
+        {/* <RightPillar>
           <RightPillarInnerContainer>
             <SponsorText>Sponsored by</SponsorText>
             <HeroSponsors />
@@ -418,7 +418,7 @@ const Hero = () => {
               <MuseumButton topText="Sponsor Us" variant="sponsor" />
             </SponsorButton>
           </RightPillarInnerContainer>
-        </RightPillar>
+        </RightPillar> */}
 
         <MobileSponsorButton href="mailto:sponsorship@nwplus.io" target="_blank" rel="noopener noreferrer">
           <MuseumButton topText="Become a Sponsor" variant="sponsor" />

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
-import nugget from '../../public/assets/images/nugget_workshop.png'
 import apis1 from '../../public/assets/images/apis1.svg'
 import apis2 from '../../public/assets/images/apis2.svg'
 import hackathons1 from '../../public/assets/images/hackathons1.svg'
@@ -40,16 +39,12 @@ const WorkshopsContainer = styled.div`
 
 const Nugget = styled.img`
   position: absolute;
-  margin-left: calc(100vw * (190 / 1280));
-  margin-top: calc(100vw * (-72 / 1280));
+  right: calc(100vw * (190 / 1280));
   width: calc(100vw * (164 / 1280));
   height: calc(100vw * (180 / 1280));
 
   ${p => p.theme.mediaQueries.mobile} {
-    margin-left: calc(100vw * (32 / 487));
-    margin-top: calc(100vw * (12 / 487));
-    width: calc(100vw * (164 / 487));
-    height: calc(100vw * (180 / 487));
+    display: none;
   }
 `
 
@@ -79,7 +74,7 @@ const Schedule = styled.div`
 
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: 28% 37% 37%;
+  grid-template-columns: 63% 37%;
   gap: calc(100vw * (50 / 1280));
 
   ${p => p.theme.mediaQueries.mobile} {
@@ -124,70 +119,8 @@ const Title = styled.h1`
   }
 `
 
-const SubTitle = styled.p`
-  position: relative;
-  font-weight: 600;
-  font-size: calc(100vw * (22 / 1280));
-  color: white;
-  text-align: center;
-  margin-top: calc(100vw * (28 / 1280));
-
-  ${p => p.theme.mediaQueries.mobile} {
-    font-size: calc(100vw * (30 / 487));
-    margin-top: calc(100vw * (28 / 487));
-  }
-`
-
 const Link = styled.a`
   color: #51483e;
-`
-
-const Paragraph = styled.p`
-  font-weight: 500;
-  font-size: calc(100vw * (16 / 1280));
-  color: white;
-  justify-self: center;
-  align-self: center;
-  width: 74%;
-  margin-top: calc(100vw * (12 / 1280));
-
-  ${p => p.theme.mediaQueries.mobile} {
-    font-size: calc(100vw * (22 / 487));
-    width: 100%;
-    margin-top: calc(100vw * (22 / 487));
-  }
-`
-
-const ParagraphHeader = styled.p`
-  font-weight: 500;
-  font-size: calc(100vw * (15 / 1280));
-  color: white;
-  justify-self: center;
-  align-self: center;
-  width: 74%;
-  margin-top: calc(100vw * (10 / 1280));
-
-  ${p => p.theme.mediaQueries.mobile} {
-    font-size: calc(100vw * (22 / 487));
-    width: 100%;
-    margin-top: calc(100vw * (18 / 487));
-  }
-`
-
-const ParagraphSmall = styled.p`
-  font-weight: 500;
-  font-size: calc(100vw * (14 / 1280));
-  color: white;
-  justify-self: center;
-  align-self: center;
-  width: 74%;
-  margin-top: calc(100vw * (6.4 / 1280));
-
-  ${p => p.theme.mediaQueries.mobile} {
-    font-size: calc(100vw * (22 / 487));
-    width: 100%;
-    margin-top: calc(100vw * (8 / 487));
-  }
 `
 
 const Description = styled.p`
@@ -344,7 +277,6 @@ const Workshops = () => {
   return (
     <WorkshopsContainer id="workshops">
       <Header>WORKSHOPS</Header>
-      {!isMobile && (<SubDescription>Hover on a workshop tile to learn more!</SubDescription>)}
       <Grid>
         <Text>
           <Title>Discover New Skills</Title>
@@ -353,114 +285,8 @@ const Workshops = () => {
             <br /><br /> For more resources, check out our <Link href="https://resources.nwplus.io/" target="_blank" rel="noreferrer">self-learning wiki</Link>.
           </Description>
         </Text>
-        {isMobile && (
-            <div>
-            {hoveredItem ? (
-              <Schedule>
-                <SubTitle>{hoveredItem.name}</SubTitle>
-                <Paragraph>{hoveredItem.dateAndTime}</Paragraph>
-                <Paragraph>{hoveredItem.description}</Paragraph>
-              </Schedule>
-            ) : (
-              <Schedule>
-                <SubTitle>Workshop Schedule</SubTitle>
-                <ParagraphHeader>Monday, Jan 13</ParagraphHeader>
-                <ParagraphSmall>
-                  <b>5:00PM</b> &nbsp; &nbsp; Hackathons 101
-                </ParagraphSmall>
-                <ParagraphSmall>
-                  <b>5:40PM</b> &nbsp; &nbsp; Intro to Figma
-                </ParagraphSmall>
-                <ParagraphSmall>
-                  <b>6:50PM</b> &nbsp; &nbsp; Intro to Version Control
-                </ParagraphSmall>
-                <ParagraphHeader>Tuesday, Jan 14</ParagraphHeader>
-                <ParagraphSmall>
-                  <b>5:00PM</b> &nbsp; &nbsp; Intro to Web Dev
-                </ParagraphSmall>
-                <ParagraphSmall>
-                  <b>6:40PM</b> &nbsp; &nbsp; Tech Career Exploration
-                </ParagraphSmall>
-                <ParagraphHeader>Wednesday, Jan 15</ParagraphHeader>
-                <ParagraphSmall>
-                  <b>5:00PM</b> &nbsp; &nbsp; Intro to APIs
-                </ParagraphSmall>
-                <ParagraphSmall>
-                  <b>6:10PM</b> &nbsp; &nbsp; Intro to React
-                </ParagraphSmall>
-                <ParagraphHeader>Thursday, Jan 16</ParagraphHeader>
-                <ParagraphSmall>
-                  <b>5:00PM</b> &nbsp; &nbsp; Pitching 101
-                </ParagraphSmall>
-                <ParagraphSmall>
-                  <b>5:40PM</b> &nbsp; &nbsp; Internships 101
-                </ParagraphSmall>
-              </Schedule>
-            )}
-            <SubDescription>Tap a workshop tile to learn more!</SubDescription>
-          </div>
-        )}
-        <Squares>
-          {items.map(item => (
-            <Square
-              key={item.name}
-              src={hoveredItem?.name === item.name ? item.hoverSrc : item.defaultSrc}
-              onMouseOver={e => !isMobile && handleInteraction(item, e)}
-              onMouseLeave={e => !isMobile && handleReset(item, e)}
-              onClick={e => isMobile && handleInteraction(item, e)}
-            />
-          ))}
-        </Squares>
-        {!isMobile && (
-          <div>
-            <Schedule>
-              {hoveredItem ? (
-                <>
-                  <SubTitle>{hoveredItem.name}</SubTitle>
-                  <Paragraph>{hoveredItem.dateAndTime}</Paragraph>
-                  <Paragraph>{hoveredItem.description}</Paragraph>
-                </>
-              ) : (
-                <>
-                  <SubTitle>Workshop Schedule</SubTitle>
-                  <ParagraphHeader>Monday, Jan 13</ParagraphHeader>
-                  <ParagraphSmall>
-                    <b>5:00PM</b> &nbsp; &nbsp; Hackathons 101
-                  </ParagraphSmall>
-                  <ParagraphSmall>
-                    <b>5:40PM</b> &nbsp; &nbsp; Intro to Figma
-                  </ParagraphSmall>
-                  <ParagraphSmall>
-                    <b>6:50PM</b> &nbsp; &nbsp; Intro to Version Control
-                  </ParagraphSmall>
-                  <ParagraphHeader>Tuesday, Jan 14</ParagraphHeader>
-                  <ParagraphSmall>
-                    <b>5:00PM</b> &nbsp; &nbsp; Intro to Web Dev
-                  </ParagraphSmall>
-                  <ParagraphSmall>
-                    <b>6:40PM</b> &nbsp; &nbsp; Tech Career Exploration
-                  </ParagraphSmall>
-                  <ParagraphHeader>Wednesday, Jan 15</ParagraphHeader>
-                  <ParagraphSmall>
-                    <b>5:00PM</b> &nbsp; &nbsp; Intro to APIs
-                  </ParagraphSmall>
-                  <ParagraphSmall>
-                    <b>6:10PM</b> &nbsp; &nbsp; Intro to React
-                  </ParagraphSmall>
-                  <ParagraphHeader>Thursday, Jan 16</ParagraphHeader>
-                  <ParagraphSmall>
-                    <b>5:00PM</b> &nbsp; &nbsp; Pitching 101
-                  </ParagraphSmall>
-                  <ParagraphSmall>
-                    <b>5:40PM</b> &nbsp; &nbsp; Internships 101
-                  </ParagraphSmall>
-                </>
-              )}
-            </Schedule>
-          </div>
-        )}
       </Grid>
-      <Nugget src={nugget} />
+      <Nugget src={'/assets/images/nugget_workshop.png'} />
     </WorkshopsContainer>
   )
 }

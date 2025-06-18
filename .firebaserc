@@ -21,8 +21,12 @@
         ],
         "nwhacks2025_main": [
           "nwplus-nwhacks2025"
+        ],
+        "nwhacks2026_placeholder": [
+          "nwplus-nwhacks2026-placeholder"
         ]
       }
     }
-  }
+  },
+  "etags": {}
 }
