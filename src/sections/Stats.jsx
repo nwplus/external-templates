@@ -15,6 +15,7 @@ const StatsContainer = styled.div`
   height: auto;
   position: relative;
   z-index: 2;
+  overflow: hidden;
 
   ${p => p.theme.mediaQueries.tablet} {
     display: none;
