@@ -127,7 +127,7 @@ const Sponsors = () => {
     <SponsorsContainer>
       {/* <Spotlight direction="left" />
       <Spotlight direction="right" /> */}
-      <Title id="sponsors">Sponsors</Title>
+      <Title id="sponsors">Our 2025 Sponsors</Title>
       <Description>
         nwPlus is always looking for new ventures, opportunities, and connections. If you are interested in sponsoring
         us, working with us, or speaking at one of our events, shoot us an email at sponsorship@nwplus.io.

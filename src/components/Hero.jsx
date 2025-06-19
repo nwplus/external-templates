@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 import { gsap } from 'gsap'
 import ScrollTrigger from 'gsap/dist/ScrollTrigger'
-import RegistrationCountdown from './RegistrationCountdown'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -169,18 +168,6 @@ const HeroImage = styled.img`
   }
 `
 
-const RegistrationCard = styled.img`
-  position: absolute;
-  bottom: calc(100vw * (-60 / 1920));
-  left: calc(100vw * (-150 / 1920));
-  width: calc(100vw * (500 / 1920));
-  height: auto;
-  z-index: 1;
-  ${p => p.theme.mediaQueries.mobile} {
-    width: calc(100vw * (200 / 393));
-  }
-`
-
 const Hero = () => (
   <div id="home">
     <HeroContainer>
@@ -189,31 +176,24 @@ const Hero = () => (
           <img src="/assets/images/cmdfLogo.svg" alt="cmd-f Logo" width="100%" height="100%" />
         </LogoContainer>
         <HeroTitle>Western Canada&apos;s largest hackathon celebrating underrepresented genders in tech.</HeroTitle>
-        <HeroDescription>March 8-9, 2025 | In-person at Life Sciences Institute</HeroDescription>
+        <HeroDescription>
+          March 7-8, 2026 (Event dates are subject to change) | In-person (Location TBD)
+        </HeroDescription>
         <ButtonContainer>
-          <Button className="primary" href="https://portal.nwplus.io" target="_blank">
-            Apply Now!
-          </Button>
-          <Button className="secondary" href="https://forms.gle/LayNGN53S5Mdtin16" target="_blank">
-            Become a mentor
+          <Button className="primary" href="https://forms.gle/ad67KnGec2yxvZwh9" target="_blank">
+            Hacker Interest Form
           </Button>
         </ButtonContainer>
         <SponsorText>
           Become a{' '}
           <TextLink href="mailto:sponsorship@nwplus.io" target="_blank" rel="noopener noreferrer">
             sponsor
-          </TextLink>{' '}
-          or{' '}
-          <TextLink href="https://forms.gle/ZxcXa5RrbZXPZPAE7" target="_blank" rel="noopener noreferrer">
-            volunteer
           </TextLink>
-          .
+          !
         </SponsorText>
       </HeroContent>
       <HeroImageContainer>
         <HeroImage src="/assets/images/animations/hero-pancake.gif" alt="Hero pancakes gif" />
-        <RegistrationCard src="/assets/images/regClosesCard.png" alt="Registration open card" />
-        <RegistrationCountdown />
       </HeroImageContainer>
     </HeroContainer>
   </div>

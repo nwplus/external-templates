@@ -1,11 +1,11 @@
-import firebase from 'firebase/app'
-import 'firebase/firestore'
-import 'firebase/storage'
-import 'firebase/analytics'
-import { HACKATHONS, INTERNAL_WEBSITES, CMS, PORTAL } from '@constants/firebase'
-import buildConfig from '../../buildconfig'
+const firebase = require('firebase/app')
+require('firebase/firestore')
+require('firebase/storage')
+require('firebase/analytics')
+const { HACKATHONS, INTERNAL_WEBSITES, CMS, PORTAL } = require('@constants/firebase')
+const buildConfig = require('../../buildconfig')
 
-if (!firebase.apps.length) {
+if (!firebase.apps || !firebase.apps.length) {
   const config = {
     apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
     authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
@@ -15,10 +15,10 @@ if (!firebase.apps.length) {
     messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
     appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
   }
-  firebase.initializeApp(config)
+  firebase.default.initializeApp(config)
 }
 
-const db = firebase.firestore()
+const db = firebase.default.firestore()
 
 const fireDb = {
   subscribeToCollection: (hackathon, collection, callback) => {
@@ -70,5 +70,4 @@ const fireDb = {
     return applicationDeadline ? applicationDeadline['cmd-f'] : null
   },
 }
-
-export default fireDb
+module.exports = fireDb
