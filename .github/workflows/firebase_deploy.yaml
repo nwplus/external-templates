@@ -64,7 +64,7 @@ jobs:
 
       - name: Check for targeted hackathon
         if: ${{ !github.event.inputs.targetedHackathon }}
-        run: firebase deploy --only hosting:${GITHUB_REF#refs/*/} --non-interactive && echo ${GITHUB_REF#refs/*/}
+        run: firebase deploy --only hosting:${GITHUB_REF#refs/*/} --non-interactive; echo ${GITHUB_REF#refs/*/}
 
       - name: Deploy to site associated with branch name
         if: ${{ github.event.inputs.targetedHackathon }}
