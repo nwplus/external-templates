@@ -1,16 +1,6 @@
 import { useEffect, useState, useRef, memo } from 'react'
 import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
 import styled from 'styled-components'
-import startingstand from '@assets/images/sponsors/startingstand.svg'
-import normalstand from '@assets/images/sponsors/normalstand.svg'
-import platplate from '@assets/images/sponsors/platplate.svg'
-import goldplate from '@assets/images/sponsors/goldplate.svg'
-import silverplate from '@assets/images/sponsors/silverplate.svg'
-import bronzeplate from '@assets/images/sponsors/bronzeplate.svg'
-import startupplate from '@assets/images/sponsors/startupplate.svg'
-import platpastry from '@assets/images/sponsors/platpastry.svg'
-import silverpastry from '@assets/images/sponsors/silverpastry.svg'
-import bronzepastry from '@assets/images/sponsors/bronzepastry.svg'
 
 const SPONSOR_WIDTH = { title: 70, platinum: 45, gold: 40, silver: 35, bronze: 30, startup: 25, inkind: 20 }
 const MOBILE_SPONSOR_WIDTH = { title: 95, platinum: 80, gold: 45, silver: 35, bronze: 30, startup: 25, inkind: 20 }
@@ -209,7 +199,7 @@ const Cupcake = memo(({ tier, isMobile }) => {
   let length = 0
   switch (tier) {
     case 'platinum':
-      svgSrc = platpastry
+      svgSrc = '/assets/images/sponsors/platpastry.svg'
       length = isMobile ? 'calc(100vw * (90 / 393))' : 'calc(100vw * (174 / 1920))'
       break
     case 'gold':
@@ -217,11 +207,11 @@ const Cupcake = memo(({ tier, isMobile }) => {
       length = isMobile ? 'calc(100vw * (100 / 393))' : 'calc(100vw * (200 / 1920))'
       break
     case 'silver':
-      svgSrc = silverpastry
+      svgSrc = '/assets/images/sponsors/silverpastry.svg'
       length = isMobile ? 'calc(100vw * (85 / 393))' : 'calc(100vw * (178 / 1920))'
       break
     case 'bronze':
-      svgSrc = bronzepastry
+      svgSrc = '/assets/images/sponsors/bronzepastry.svg'
       length = isMobile ? 'calc(100vw * (100 / 393))' : 'calc(100vw * (204 / 1920))'
       break
     case 'startup':
@@ -239,33 +229,33 @@ const PlateStand = memo(({ tier, zIndex, isFirstRow, isMobile }) => {
   let adjustment = '0%'
   switch (tier) {
     case 'platinum':
-      svgSrc = platplate
+      svgSrc = '/assets/images/sponsors/platplate.svg'
       length = isMobile ? 'calc(100vw * (300 / 393))' : 'calc(100vw * (510 / 1920))'
       adjustment = '-40%'
       break
     case 'gold':
-      svgSrc = goldplate
+      svgSrc = '/assets/images/sponsors/goldplate.svg'
       length = isMobile ? 'calc(100vw * (330 / 393))' : 'calc(100vw * (769 / 1920))'
       adjustment = '10%'
       break
     case 'silver':
-      svgSrc = silverplate
+      svgSrc = '/assets/images/sponsors/silverplate.svg'
       length = isMobile ? 'calc(100vw * (360 / 393))' : 'calc(100vw * (926 / 1920))'
       adjustment = '25%'
       break
     case 'bronze':
-      svgSrc = bronzeplate
+      svgSrc = '/assets/images/sponsors/bronzeplate.svg'
       length = isMobile ? 'calc(100vw * (390 / 393))' : 'calc(100vw * (1220 / 1920))'
       adjustment = '40%'
       break
     case 'startup':
     default:
-      svgSrc = startupplate
+      svgSrc = '/assets/images/sponsors/startupplate.svg'
       length = isMobile ? 'calc(100vw * (426 / 393))' : 'calc(100vw * (1529 / 1920))'
       adjustment = '45%'
       break
   }
-  const standSrc = isFirstRow ? startingstand : normalstand
+  const standSrc = isFirstRow ? '/assets/images/sponsors/startingstand.svg' : '/assets/images/sponsors/normalstand.svg'
   return (
     <PlateStandContainer zIndex={zIndex}>
       <StandImage src={standSrc} adjustment={adjustment} isFirstRow={isFirstRow} isMobile={isMobile} />
