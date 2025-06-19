@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import Draggable from 'react-draggable';
+import Draggable from 'react-draggable'
 
 const noDragCSS = `
   user-select: none;
@@ -36,9 +36,9 @@ const BreadOne = styled(BreadBase)`
   left: calc(100vw * (505 / 1920));
 
   ${p => p.theme.mediaQueries.mobile} {
-    width: calc(100vw * (80 / 393));    
-    top: calc(100vw * (200 / 1286));     
-    left: calc(100vw * (135 / 393));      
+    width: calc(100vw * (80 / 393));
+    top: calc(100vw * (200 / 1286));
+    left: calc(100vw * (135 / 393));
   }
 `
 
@@ -87,9 +87,9 @@ const PolaroidSelfie = styled(PolaroidBase)`
   left: calc(100vw * (80 / 1920));
 
   ${p => p.theme.mediaQueries.mobile} {
-    width: calc(100vw * (240 / 393));   
-    top: calc(100vw * (980 / 1286));     
-    left: calc(100vw * (0 / 393));     
+    width: calc(100vw * (240 / 393));
+    top: calc(100vw * (980 / 1286));
+    left: calc(100vw * (0 / 393));
   }
 `
 
@@ -100,8 +100,8 @@ const PolaroidCeremony = styled(PolaroidBase)`
 
   ${p => p.theme.mediaQueries.mobile} {
     width: calc(100vw * (220 / 393));
-    top: calc(100vw * (350 / 393));  
-    left: calc(100vw * (170 / 393));   
+    top: calc(100vw * (350 / 393));
+    left: calc(100vw * (170 / 393));
   }
 `
 
@@ -237,7 +237,7 @@ const VideoComponent = styled.div`
 
 // Styled Components
 const GalleryContainer = styled.div`
-  background-color: #FEF9F3;
+  background-color: #fef9f3;
   width: 100vw;
   aspect-ratio: 1920 / 1142;
   height: auto;
@@ -255,7 +255,7 @@ const InfiniteScrollWrapper = styled.div`
   white-space: nowrap;
   position: relative;
   z-index: 20;
-  background-color: #FEF9F3;
+  background-color: #fef9f3;
   padding: calc(100vw * (5 / 1920)) 0;
 
   ${p => p.theme.mediaQueries.mobile} {
@@ -266,7 +266,7 @@ const InfiniteScrollWrapper = styled.div`
 const InfiniteScrollText = styled.div`
   display: inline-block;
   gap: 2rem;
-  color: #98BCEC;
+  color: #98bcec;
   font-family: Gloock;
   font-size: 48px;
   font-style: normal;
@@ -276,7 +276,7 @@ const InfiniteScrollText = styled.div`
   animation: scrollText 70s linear infinite;
   position: relative;
   top: 0;
-  
+
   ${p => p.theme.mediaQueries.mobile} {
     top: calc(100vw * (0 / 393));
   }
@@ -292,7 +292,7 @@ const InfiniteScrollText = styled.div`
 `
 
 const RecapContainer = styled.div`
-  background-color: #B8D2F3;
+  background-color: #b8d2f3;
   width: 100vw;
   aspect-ratio: 1920 / 1054;
   height: auto;
@@ -314,11 +314,11 @@ const VideoWrapper = styled.div`
 `
 
 const TooltipText = styled.div`
-  color: #FFF;
+  color: #fff;
   text-align: center;
   font-feature-settings: 'liga' off;
-  font-family: "Poppins";
-  font-size: calc(100vw * (24 / 1920));;
+  font-family: 'Poppins';
+  font-size: calc(100vw * (24 / 1920));
   font-style: normal;
   font-weight: 600;
   line-height: 23px;
@@ -333,22 +333,22 @@ const TooltipImg = styled.img`
   height: auto;
   width: calc(100vw * (30 / 1920));
   top: calc(100vw * (30 / 1920));
-  left: calc(100vw * (1295 / 1920)); 
+  left: calc(100vw * (1295 / 1920));
 `
 
 // Component
 const Gallery = () => {
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 487); // Using the mobile breakpoint from theme
-    };
+      setIsMobile(window.innerWidth <= 487) // Using the mobile breakpoint from theme
+    }
 
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   return (
     <GalleryContainer id="gallery">
@@ -357,10 +357,13 @@ const Gallery = () => {
         <>
           <InfiniteScrollWrapper>
             <InfiniteScrollText>
-              2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap
-              2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap
-              2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap
-              2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap
+              2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025
+              Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded
+              2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025
+              Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded
+              2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025
+              Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded
+              2025 Unfolded 2025 Unfolded 2025 Unfolded
             </InfiniteScrollText>
           </InfiniteScrollWrapper>
           <RecapContainer>
@@ -388,7 +391,8 @@ const Gallery = () => {
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
                     referrerPolicy="strict-origin-when-cross-origin"
                     allowFullScreen
-                    style={{ position: 'absolute', top: 0, left: 0 }} />
+                    style={{ position: 'absolute', top: 0, left: 0 }}
+                  />
                 </div>
               </VideoComponent>
             </VideoWrapper>
@@ -399,10 +403,13 @@ const Gallery = () => {
         <>
           <InfiniteScrollWrapper>
             <InfiniteScrollText>
-              2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap
-              2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap
-              2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap
-              2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap 2024 Recap
+              2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025
+              Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded
+              2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025
+              Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded
+              2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025
+              Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded
+              2025 Unfolded 2025 Unfolded 2025 Unfolded
             </InfiniteScrollText>
           </InfiniteScrollWrapper>
           <RecapContainer>
@@ -450,12 +457,13 @@ const Gallery = () => {
                     <iframe
                       width="100%"
                       height="100%"
-                      src="https://www.youtube.com/embed/-N_ds4fcVL4?si=-4UJKRL8_e2l3u-P"
+                      src="https://www.youtube.com/embed/BxPQXbN2VCM?si=ykZ_PHVmU85np54n"
                       title="YouTube video player"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
                       referrerPolicy="strict-origin-when-cross-origin"
                       allowFullScreen
-                      style={{ position: 'absolute', top: 0, left: 0 }} />
+                      style={{ position: 'absolute', top: 0, left: 0 }}
+                    />
                   </div>
                 </VideoComponent>
               </Draggable>
@@ -466,7 +474,7 @@ const Gallery = () => {
         </>
       )}
     </GalleryContainer>
-  );
-};
+  )
+}
 
 export default Gallery

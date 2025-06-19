@@ -192,7 +192,7 @@ const Footer = () => (
           <Newsletter />
         </ClosingCard>
         <LandAcknowledgementText>
-          cmd-f 2025 will be taking place on xʷməθkʷəy̓əm (Musqueam) and səlilwətaɬ (Tsleil-Waututh) territory. As we
+          cmd-f 2026 will be taking place on xʷməθkʷəy̓əm (Musqueam) and səlilwətaɬ (Tsleil-Waututh) territory. As we
           build tomorrow&apos;s tech community, we recognize our responsibility to understand and respect Indigenous
           histories. To learn more, visit{' '}
           <a href="https://guides.library.ubc.ca/xwi7xwaresearchguide" target="_blank" rel="noreferrer">
@@ -202,7 +202,7 @@ const Footer = () => (
         <TeamContainer>
           <Team />
         </TeamContainer>
-        <CopyRight>Copyright &copy; cmd-f 2025</CopyRight>
+        <CopyRight>Copyright &copy; cmd-f 2026</CopyRight>
       </FooterBackground>
     </FooterContainer>
   </div>

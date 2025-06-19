@@ -2,18 +2,11 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 
 import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
-import rizzsumoImg from '@assets/images/projects/rizzsumo.png'
-import dinoauraImg from '@assets/images/projects/dinoaura.png'
-import lovealarmImg from '@assets/images/projects/lovealarm.png'
-import chownowImg from '@assets/images/projects/chow-now.png'
 import maincard from '@assets/images/projects/maincard.svg'
-import tape from '@assets/images/projects/tape.png'
 import project1 from '@assets/images/projects/project1.svg'
 import chococake from '@assets/images/projects/chococake.svg'
 import blueberry from '@assets/images/projects/blueberry.svg'
 import brownies from '@assets/images/projects/brownies.svg'
-import bread from '@assets/images/projects/Bread.png'
-import croissant from '@assets/images/projects/Croissant.png'
 import dinocard from '@assets/images/projects/dinoaura_card.svg'
 import breadbasket from '@assets/images/projects/breadbasket.svg'
 import lovecard from '@assets/images/projects/lovealarm_card.svg'
@@ -429,7 +422,12 @@ const Bread2Image = styled.img`
 const Projects = () => {
   const [hoveredProject, setHoveredProject] = useState(null)
   const [isMobile, setIsMobile] = useState(false)
-  const projects = { rizzsumo: rizzsumoImg, chownow: chownowImg, dinoaura: dinoauraImg, lovealarm: lovealarmImg }
+  const projects = {
+    rizzsumo: '/assets/images/projects/rizzsumo.png',
+    chownow: '/assets/images/projects/chow-now.png',
+    dinoaura: '/assets/images/projects/dinoaura.png',
+    lovealarm: '/assets/images/projects/lovealarm.png',
+  }
 
   useEffect(() => {
     const handleResize = () => {
@@ -452,7 +450,7 @@ const Projects = () => {
     <ProjectsContainer id="past-projects">
       <MobileHeader>Check out these inspiring projects from past years!</MobileHeader>
       <MainCardContainer>
-        <TapeImage src={tape} />
+        <TapeImage src="/assets/images/projects/tape.png" />
         <MainCardImage src={hoveredProject ? projects[hoveredProject] : maincard} />
         {!hoveredProject && <MainText>Check out these inspiring projects from past years!</MainText>}
       </MainCardContainer>
@@ -461,7 +459,7 @@ const Projects = () => {
         onMouseEnter={() => setHoveredProject('rizzsumo')}
         onMouseLeave={() => setHoveredProject(null)}
       >
-        <TapeImage src={tape} />
+        <TapeImage src="/assets/images/projects/tape.png" />
         <Project1Image src={project1} />
         <ProjectText>
           <Project1Title>Rizzsumo</Project1Title>
@@ -470,14 +468,14 @@ const Projects = () => {
             Check it out now!
           </ProjectButton>
         </ProjectText>
-        <BreadImage src={bread} />
+        <BreadImage src="/assets/images/projects/Bread.png" />
       </RizzsumoCardContainer>
 
       <ChownowCardContainer
         onMouseEnter={() => setHoveredProject('chownow')}
         onMouseLeave={() => setHoveredProject(null)}
       >
-        <TapeImage src={tape} />
+        <TapeImage src="/assets/images/projects/tape.png" />
         <Project1Image src={isMobile ? chowmob : project1} />
         <ProjectText>
           <Project1Title>Chow-now</Project1Title>
@@ -488,7 +486,7 @@ const Projects = () => {
             Check it out now!
           </ProjectButton>
         </ProjectText>
-        <CroissantImage src={croissant} />
+        <CroissantImage src="/assets/images/projects/Croissant.png" />
       </ChownowCardContainer>
 
       <ChococakeCardContainer>
@@ -504,7 +502,7 @@ const Projects = () => {
         onMouseEnter={() => setHoveredProject('dinoaura')}
         onMouseLeave={() => setHoveredProject(null)}
       >
-        <TapeImage src={tape} />
+        <TapeImage src="/assets/images/projects/tape.png" />
         <DinoauraCardImage src={isMobile ? dinomob : dinocard} />
         <DinoauraText>
           <Project1Title>Dinoaura</Project1Title>
@@ -524,7 +522,7 @@ const Projects = () => {
         onMouseLeave={() => setHoveredProject(null)}
       >
         <Bread2Image src={bread2} />
-        {isMobile && <TapeImage src={tape} />}
+        {isMobile && <TapeImage src="/assets/images/projects/tape.png" />}
         <LovealarmCardImage src={isMobile ? lovealarmmob : lovecard} />
         <LovealarmText>
           <Project1Title>Love Alarm</Project1Title>

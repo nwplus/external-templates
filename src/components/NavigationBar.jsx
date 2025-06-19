@@ -228,11 +228,15 @@ const TrustBadge = ({ stayAtTop }) => (
   <TrustBadgeLink
     id="mlh-trust-badge"
     rel="noreferrer"
-    href="https://mlh.io/na?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2025-season&utm_content=white"
+    href="https://mlh.io/na?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2026-season&utm_content=white"
     target="_blank"
     stayAtTop={stayAtTop}
   >
-    <img src={mlhImage} alt="Major League Hacking 2025 Hackathon Season" style={{ width: '100%' }} />
+    <img
+      src="https://s3.amazonaws.com/logged-assets/trust-badge/2026/mlh-trust-badge-2026-white.svg"
+      alt="Major League Hacking 2026 Hackathon Season"
+      style={{ width: '100%' }}
+    />
   </TrustBadgeLink>
 )
 
@@ -320,9 +324,7 @@ const MenuList = ({ isMobile, closeDropdown }) => (
       isMobile={isMobile}
       closeDropdown={closeDropdown}
     />
-    <MenuItem name="Tracks" href="/#tracks" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
     <MenuItem name="Stats" href="/#stats" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
-    <MenuItem name="Workshops" href="/#workshops" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
     <Dropdown
       label="History"
       items={[
@@ -335,7 +337,13 @@ const MenuList = ({ isMobile, closeDropdown }) => (
     <MenuItem name="FAQ" href="/#faq" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
     <MenuItem name="Sponsors" href="/#sponsors" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
     <MenuItem name="Contact" href="/#footer" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
-    <MenuItem name="2024" href="https://cmd-f2024.nwplus.io/" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
+    <MenuItem
+      name="2025"
+      href="https://cmd-f2025.nwplus.io/"
+      isAnchor
+      isMobile={isMobile}
+      closeDropdown={closeDropdown}
+    />
   </>
 )
 

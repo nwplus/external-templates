@@ -9,10 +9,8 @@ import silverplate from '@assets/images/sponsors/silverplate.svg'
 import bronzeplate from '@assets/images/sponsors/bronzeplate.svg'
 import startupplate from '@assets/images/sponsors/startupplate.svg'
 import platpastry from '@assets/images/sponsors/platpastry.svg'
-import goldpastry from '@assets/images/sponsors/goldpastry.png'
 import silverpastry from '@assets/images/sponsors/silverpastry.svg'
 import bronzepastry from '@assets/images/sponsors/bronzepastry.svg'
-import startuppastry from '@assets/images/sponsors/startuppastry.png'
 
 const SPONSOR_WIDTH = { title: 70, platinum: 45, gold: 40, silver: 35, bronze: 30, startup: 25, inkind: 20 }
 const MOBILE_SPONSOR_WIDTH = { title: 95, platinum: 80, gold: 45, silver: 35, bronze: 30, startup: 25, inkind: 20 }
@@ -215,7 +213,7 @@ const Cupcake = memo(({ tier, isMobile }) => {
       length = isMobile ? 'calc(100vw * (90 / 393))' : 'calc(100vw * (174 / 1920))'
       break
     case 'gold':
-      svgSrc = goldpastry
+      svgSrc = '/assets/images/sponsors/goldpastry.png'
       length = isMobile ? 'calc(100vw * (100 / 393))' : 'calc(100vw * (200 / 1920))'
       break
     case 'silver':
@@ -228,7 +226,7 @@ const Cupcake = memo(({ tier, isMobile }) => {
       break
     case 'startup':
     default:
-      svgSrc = startuppastry
+      svgSrc = '/assets/images/sponsors/startuppastry.png'
       length = isMobile ? 'calc(100vw * (90 / 393))' : 'calc(100vw * (170 / 1920))'
       break
   }

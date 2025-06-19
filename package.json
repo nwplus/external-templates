@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "sendit": "yarn build:prod && firebase deploy --only hosting:nwhacks2026_placeholder",
     "dev": "cross-env NODE_OPTIONS='--inspect' next dev",
     "build": "next build && next export",
     "build:staging": "cross-env DEPLOY_ENV=STAGING next build && next export",
@@ -18,19 +19,17 @@
     "axios": "^1.7.9",
     "eslint-plugin-import": "^2.22.1",
     "firebase": "^8.2.1",
+    "firebase-tools": "^14.7.0",
     "gsap": "^3.12.5",
-    "imagemin-optipng": "^8.0.0",
-    "imagemin-svgo": "^8.0.0",
     "lottie-react": "^2.1.0",
-    "next": "10.0.3",
+    "next": "12",
     "next-optimized-images": "^2.6.2",
     "react": "17.0.1",
     "react-confetti-boom": "^1.0.0",
     "react-dom": "17.0.1",
     "react-draggable": "^4.4.6",
     "react-scroll-parallax": "^3.4.5",
-    "styled-components": "^5.2.1",
-    "webp-loader": "^0.6.0"
+    "styled-components": "^5.2.1"
   },
   "devDependencies": {
     "babel-plugin-styled-components": "^1.12.0",

@@ -6,8 +6,6 @@ import Sponsors from 'src/sections/Sponsors'
 import Faq from 'src/sections/FAQ'
 import Footer from 'src/sections/Footer'
 import About from 'src/sections/About'
-import Track from 'src/sections/Tracks'
-import Workshops from 'src/sections/Workshops'
 import Stats from 'src/sections/Stats'
 import Gallery from 'src/sections/Gallery'
 import Projects from 'src/sections/Projects'
@@ -80,7 +78,10 @@ export default function Index({ title }) {
         <link rel="icon" href="/favicon.png" />
 
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="Western Canada's largest hackathon celebrating underrepresented genders in tech." />
+        <meta
+          name="description"
+          content="Western Canada's largest hackathon celebrating underrepresented genders in tech."
+        />
         <meta property="og:image" content="/og_preview.png" />
       </Head>
       {/* <Banner buttonLink="info.html" /> */}
@@ -92,9 +93,7 @@ export default function Index({ title }) {
       <Hero />
       <About />
       <Values />
-      <Track />
       <Stats />
-      <Workshops />
       <Projects />
       <Gallery />
       <Faq />
@@ -107,7 +106,7 @@ export default function Index({ title }) {
 export async function getStaticProps() {
   return {
     props: {
-      title: 'cmd-f 2025',
+      title: 'cmd-f 2026',
     }, // will be passed to the page component as props
   }
 }
