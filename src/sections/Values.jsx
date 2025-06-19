@@ -1,14 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
 import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
-import cakeTop from '@assets/images/cake_top.svg'
-import cakeMid from '@assets/images/cake_mid.svg'
-import cakeBottom from '@assets/images/cake_bottom.svg'
 import { gsap } from 'gsap'
 import ScrollTrigger from 'gsap/dist/ScrollTrigger'
 
-gsap.registerPlugin(ScrollTrigger);
-
+gsap.registerPlugin(ScrollTrigger)
 
 const OuterContainer = styled.div`
   display: flex;
@@ -39,7 +35,7 @@ const ValuesContainer = styled.div`
 `
 
 const Title = styled.p`
-  color: #A6321E;
+  color: #a6321e;
   font-family: 'Gloock';
   font-weight: 400;
   text-align: center;
@@ -94,32 +90,31 @@ const DotLineContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 6px; 
+  margin-top: 6px;
   margin-right: calc(100vw * (100 / 1920));
 
   @media (max-width: 768px) {
     display: none;
   }
-
 `
 
 const Dot = styled.div`
   width: calc(100vw * (16 / 1920));
   height: calc(100vw * (16 / 1920));
-  background-color: #A6321E;
+  background-color: #a6321e;
   border-radius: 50%;
 `
 
 const Line1 = styled.div`
   width: 3px;
-  background-color: #A6321E;
+  background-color: #a6321e;
   margin-top: 8px;
   margin-bottom: -56px;
   height: calc(100vw * (192 / 1920));
 `
 const Line2 = styled.div`
   width: 3px;
-  background-color: #A6321E;
+  background-color: #a6321e;
   margin-top: 8px;
   margin-bottom: -56px;
   height: calc(100vw * (220 / 1920));
@@ -136,7 +131,7 @@ const ValueContent = styled.div`
 
 const ValueTitle = styled.p`
   font-size: calc(100vw * (32 / 1920));
-  color: #A6321E;
+  color: #a6321e;
   font-family: 'Happy Time';
   font-style: italic;
   font-weight: 500;
@@ -149,7 +144,7 @@ const ValueTitle = styled.p`
 
 const ValueDescription = styled.p`
   font-size: calc(100vw * (18 / 1920));
-  color: #4F2F22;
+  color: #4f2f22;
   font-family: 'Poppins';
   font-weight: 400;
   line-height: 1.6;
@@ -160,16 +155,16 @@ const ValueDescription = styled.p`
 `
 
 const Values = () => {
-  const valuesRef = useRef(null);
-  const cakeTopRef = useRef(null);
-  const cakeMidRef = useRef(null);
-  const cakeBotRef = useRef(null);
-  const title1Ref = useRef(null);
-  const title3Ref = useRef(null);
-  const dot1Ref = useRef(null);
-  const dot3Ref = useRef(null);
-  const line1Ref = useRef(null);
-  const line2Ref = useRef(null);
+  const valuesRef = useRef(null)
+  const cakeTopRef = useRef(null)
+  const cakeMidRef = useRef(null)
+  const cakeBotRef = useRef(null)
+  const title1Ref = useRef(null)
+  const title3Ref = useRef(null)
+  const dot1Ref = useRef(null)
+  const dot3Ref = useRef(null)
+  const line1Ref = useRef(null)
+  const line2Ref = useRef(null)
   const [title1StartY, setTitle1StartY] = useState(100)
   const [title3StartY, setTitle3StartY] = useState(-100)
   const [dot1StartY, setDot1StartY] = useState(100)
@@ -178,20 +173,19 @@ const Values = () => {
   const [cakeBotStartY, setCakeBotStartY] = useState(-100)
   const [isMobile, setIsMobile] = useState(false)
 
-
-  const fadeDescRefs = [useRef(null), useRef(null), useRef(null)];
+  const fadeDescRefs = [useRef(null), useRef(null), useRef(null)]
 
   useEffect(() => {
     const updateY = () => {
-      const screenWidth = window.innerWidth;
-      const screenHeight = window.innerHeight;
+      const screenWidth = window.innerWidth
+      const screenHeight = window.innerHeight
       const valY = Math.min(screenWidth * 0.1, screenHeight * 0.15)
       setTitle1StartY(valY)
       setTitle3StartY(-1.2 * valY)
       setDot1StartY(valY)
       setDot3StartY(-1.2 * valY)
       setCakeTopStartY(valY - 12)
-      setCakeBotStartY((valY * -1) + 12)
+      setCakeBotStartY(valY * -1 + 12)
     }
 
     updateY()
@@ -217,16 +211,16 @@ const Values = () => {
 
   useEffect(() => {
     // Set initial positions so that all elements start offset
-    gsap.set(cakeTopRef.current, { y: cakeTopStartY });
-    gsap.set(cakeMidRef.current, { y: 0 });
-    gsap.set(cakeBotRef.current, { y: cakeBotStartY });
-    gsap.set(title1Ref.current, isMobile ? { y: 0 } : { y: title1StartY });
-    gsap.set(title3Ref.current, isMobile ? { y: 0 } : { y: title3StartY });
-    gsap.set(dot1Ref.current, isMobile ? { y: 0 } : { y: dot1StartY });
-    gsap.set(dot3Ref.current, isMobile ? { y: 0 } : { y: dot3StartY });
-    fadeDescRefs.forEach(ref => gsap.set(ref.current, isMobile ? { opacity: 1 } : { opacity: 0 }));
-    gsap.set(line1Ref.current, { scaleY: 0, opacity: 0, y: 100 });
-    gsap.set(line2Ref.current, { scaleY: 0, opacity: 0, y: -100 });
+    gsap.set(cakeTopRef.current, { y: cakeTopStartY })
+    gsap.set(cakeMidRef.current, { y: 0 })
+    gsap.set(cakeBotRef.current, { y: cakeBotStartY })
+    gsap.set(title1Ref.current, isMobile ? { y: 0 } : { y: title1StartY })
+    gsap.set(title3Ref.current, isMobile ? { y: 0 } : { y: title3StartY })
+    gsap.set(dot1Ref.current, isMobile ? { y: 0 } : { y: dot1StartY })
+    gsap.set(dot3Ref.current, isMobile ? { y: 0 } : { y: dot3StartY })
+    fadeDescRefs.forEach(ref => gsap.set(ref.current, isMobile ? { opacity: 1 } : { opacity: 0 }))
+    gsap.set(line1Ref.current, { scaleY: 0, opacity: 0, y: 100 })
+    gsap.set(line2Ref.current, { scaleY: 0, opacity: 0, y: -100 })
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -237,74 +231,110 @@ const Values = () => {
         pin: true,
         anticipatePin: 1,
         fastScrollEnd: true,
-      }
-    });
+      },
+    })
 
-    tl.to(cakeTopRef.current, {
-      y: -5,
-      ease: 'easeInOutQuad',
-      duration: 0.8,
-    }, 0);
+    tl.to(
+      cakeTopRef.current,
+      {
+        y: -5,
+        ease: 'easeInOutQuad',
+        duration: 0.8,
+      },
+      0
+    )
 
-    tl.to(cakeBotRef.current, {
-      y: 5,
-      ease: 'easeInOutQuad',
-      duration: 0.8,
-    }, 0);
+    tl.to(
+      cakeBotRef.current,
+      {
+        y: 5,
+        ease: 'easeInOutQuad',
+        duration: 0.8,
+      },
+      0
+    )
 
-    tl.to(title1Ref.current, {
-      y: 0,
-      ease: 'easeInOutCubic',
-      duration: 0.8,
-    }, 0);
+    tl.to(
+      title1Ref.current,
+      {
+        y: 0,
+        ease: 'easeInOutCubic',
+        duration: 0.8,
+      },
+      0
+    )
 
-    tl.to(title3Ref.current, {
-      y: 0,
-      ease: 'easeInOutCubic',
-      duration: 0.8,
-    }, 0);
+    tl.to(
+      title3Ref.current,
+      {
+        y: 0,
+        ease: 'easeInOutCubic',
+        duration: 0.8,
+      },
+      0
+    )
 
-    tl.to(dot1Ref.current, {
-      y: 0,
-      ease: 'easeInOutQuart',
-      duration: 0.8,
-    }, 0);
+    tl.to(
+      dot1Ref.current,
+      {
+        y: 0,
+        ease: 'easeInOutQuart',
+        duration: 0.8,
+      },
+      0
+    )
 
-    tl.to(dot3Ref.current, {
-      y: 0,
-      ease: 'easeInOutQuart',
-      duration: 0.8,
-    }, 0);
+    tl.to(
+      dot3Ref.current,
+      {
+        y: 0,
+        ease: 'easeInOutQuart',
+        duration: 0.8,
+      },
+      0
+    )
 
-    tl.to(line1Ref.current, {
-      y: 0,
-      scaleY: isMobile ? 0 : 1,
-      opacity: isMobile ? 0 : 1,
-      ease: 'easeInOutQuad',
-      duration: 0.8,
-    }, 0);
+    tl.to(
+      line1Ref.current,
+      {
+        y: 0,
+        scaleY: isMobile ? 0 : 1,
+        opacity: isMobile ? 0 : 1,
+        ease: 'easeInOutQuad',
+        duration: 0.8,
+      },
+      0
+    )
 
-    tl.to(line2Ref.current, {
-      y: 0,
-      scaleY: isMobile ? 0 : 1,
-      opacity: isMobile ? 0 : 1,
-      ease: 'easeInOutQuad',
-      duration: 0.8,
-    }, 0);
+    tl.to(
+      line2Ref.current,
+      {
+        y: 0,
+        scaleY: isMobile ? 0 : 1,
+        opacity: isMobile ? 0 : 1,
+        ease: 'easeInOutQuad',
+        duration: 0.8,
+      },
+      0
+    )
 
     fadeDescRefs.forEach(ref => {
-      tl.to(ref.current, {
-        opacity: 1,
-        ease: 'easeInOutQuad',
-        duration: 0.6,
-      }, 1);
-    });
+      tl.to(
+        ref.current,
+        {
+          opacity: 1,
+          ease: 'easeInOutQuad',
+          duration: 0.6,
+        },
+        1
+      )
+    })
 
     // Cleanup on unmount
     return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill())
     }
-  }, [fadeDescRefs]);
+  }, [fadeDescRefs])
 
   return (
     <OuterContainer id="values" ref={valuesRef}>
@@ -313,19 +343,19 @@ const Values = () => {
         <ColumnContainer>
           <ExpandedCakeImage
             ref={cakeTopRef}
-            src={cakeTop}
+            src="/assets/images/cake_top.svg"
             alt="Cake Top Layer"
             style={{ zIndex: 3 }}
           />
           <ExpandedCakeImage
             ref={cakeMidRef}
-            src={cakeMid}
+            src="/assets/images/cake_mid.svg"
             alt="Cake Middle Layer"
             style={{ zIndex: 2 }}
           />
           <ExpandedCakeImage
             ref={cakeBotRef}
-            src={cakeBottom}
+            src="/assets/images/cake_bottom.svg"
             alt="Cake Bottom Layer"
             style={{ zIndex: 1 }}
           />
@@ -340,10 +370,10 @@ const Values = () => {
               <ValueContent>
                 <ValueTitle ref={title1Ref}>Build Confidence</ValueTitle>
                 <ValueDescription ref={fadeDescRefs[0]}>
-                  Develop career-ready skills, fight impostor syndrome, and create an invaluable support
-                  network with friends, mentors, and sponsors. Regardless of your background, you bring a
-                  unique and important perspective to tech. Like how there is always a treat for everyone,
-                  there is always a place for you in tech—a space where everyone belongs.
+                  Develop career-ready skills, fight impostor syndrome, and create an invaluable support network with
+                  friends, mentors, and sponsors. Regardless of your background, you bring a unique and important
+                  perspective to tech. Like how there is always a treat for everyone, there is always a place for you in
+                  tech—a space where everyone belongs.
                 </ValueDescription>
               </ValueContent>
             </ValueItem>
@@ -355,11 +385,11 @@ const Values = () => {
               <ValueContent>
                 <ValueTitle>Learn Together</ValueTitle>
                 <ValueDescription ref={fadeDescRefs[1]}>
-                  Whether you have never coded before, or you dream in assembly, challenge yourself to create
-                  something meaningful! Learn new skills at our workshops and apply them to fresh and creative
-                  projects! Regardless of your project&apos;s completion at the end of the weekend, take pride in the
-                  knowledge gained or the courage to try something new. It&apos;s time to rise to the occasion because
-                  it&apos;s always sweet to learn more!
+                  Whether you have never coded before, or you dream in assembly, challenge yourself to create something
+                  meaningful! Learn new skills at our workshops and apply them to fresh and creative projects!
+                  Regardless of your project&apos;s completion at the end of the weekend, take pride in the knowledge
+                  gained or the courage to try something new. It&apos;s time to rise to the occasion because it&apos;s
+                  always sweet to learn more!
                 </ValueDescription>
               </ValueContent>
             </ValueItem>
@@ -370,10 +400,10 @@ const Values = () => {
               <ValueContent>
                 <ValueTitle ref={title3Ref}>Explore in a Safe Space</ValueTitle>
                 <ValueDescription ref={fadeDescRefs[2]}>
-                  Discover a community of like-minded, creative, and passionate individuals. Form lasting bonds,
-                  share experiences, and create memories in an environment free from judgment, where all gender
-                  identities and expressions are respected. We&apos;re all here unified under one cause—to strive for
-                  better representation in tech!
+                  Discover a community of like-minded, creative, and passionate individuals. Form lasting bonds, share
+                  experiences, and create memories in an environment free from judgment, where all gender identities and
+                  expressions are respected. We&apos;re all here unified under one cause—to strive for better
+                  representation in tech!
                 </ValueDescription>
               </ValueContent>
             </ValueItem>
@@ -381,7 +411,7 @@ const Values = () => {
         </ColumnContainer>
       </ValuesContainer>
     </OuterContainer>
-  );
-};
+  )
+}
 
-export default Values;
+export default Values

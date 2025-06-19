@@ -3,8 +3,6 @@ import styled from 'styled-components'
 import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
 import { scale } from '@utilities/format'
 import { BANNER_OFFSET } from '../constants/measurements'
-import MenuImg from '../../public/images/icons/menu.svg'
-import DropdownImg from '../../public/assets/images/dropdown.svg'
 
 const NavBarContainer = styled.nav`
   position: ${p => (p.stayAtTop ? 'absolute' : 'fixed')};
@@ -254,7 +252,7 @@ const Dropdown = ({ label, items, isMobile, closeDropdown }) => {
       <LinkText href="#" onClick={handleClick}>
         <DropdownLabel>
           <StyledLinkHeaders>{label}</StyledLinkHeaders>
-          <DropdownIcon src={DropdownImg} alt="dropdown arrow" />
+          <DropdownIcon src="/assets/images/dropdown.svg" alt="dropdown arrow" />
         </DropdownLabel>
       </LinkText>
       <DropdownContent isOpen={isMobile ? isOpen : undefined}>
@@ -422,7 +420,7 @@ const NavigationBar = ({ bannerExists }) => {
         <TrustBadge stayAtTop={stayAtTop} />
       </NavGroupContainer>
       <PortalButton portalOpen />
-      <HamburgerMenu src={MenuImg} alt="dropdown menu icon" onClick={() => setShowDropdown(true)} />
+      <HamburgerMenu src="/images/icons/menu.svg" alt="dropdown menu icon" onClick={() => setShowDropdown(true)} />
     </NavBarContainer>
   )
 }

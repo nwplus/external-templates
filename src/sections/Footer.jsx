@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebook, faInstagram, faLinkedinIn, faMediumM, faYoutube } from '@fortawesome/free-brands-svg-icons'
 import Team from '@components/Team'
 import Newsletter from '@components/Newsletter'
-import FooterDecor from '@assets/images/footer_objects.svg'
 
 const FooterContainer = styled.div`
   background: linear-gradient(#612c25, #2f1713);
@@ -159,7 +158,7 @@ const Footer = () => (
   <div>
     <FooterContainer id="footer">
       <FooterBackground>
-        <FooterDecorOverlay src={FooterDecor} alt="Decorative cake illustrations" />
+        <FooterDecorOverlay src="/assets/images/footer_objects.svg" alt="Decorative cake illustrations" />
         <ClosingCard>
           <SocialMediaIcons>
             <a href="https://www.facebook.com/nwplusubc" target="_blank" rel="noreferrer">

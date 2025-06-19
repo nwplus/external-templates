@@ -1,6 +1,5 @@
 import React, { useState, useRef } from 'react'
 import styled from 'styled-components'
-import ChevronLeft from '@assets/images/chevron_left.svg'
 
 const CarouselContainer = styled.div`
   display: flex;
@@ -115,8 +114,7 @@ const Blurb = styled.div`
   word-wrap: break-word;
   text-overflow: ellipsis;
   width: calc(100vw * (860 / 1920));
-  color: #4F2F22;
-
+  color: #4f2f22;
 
   ::-webkit-scrollbar {
     width: 0.5rem;
@@ -194,7 +192,7 @@ const Carousel = ({ sponsors }) => {
             }
           }}
         >
-          <ChevronImg src={ChevronLeft} />
+          <ChevronImg src="/assets/images/chevron_left.svg" />
         </ActiveButton>
 
         <ContentContainer>
@@ -216,7 +214,7 @@ const Carousel = ({ sponsors }) => {
           }}
           flip
         >
-          <ChevronImg src={ChevronLeft} flip />
+          <ChevronImg src="/assets/images/chevron_left.svg" flip />
         </ActiveButton>
       </CarouselContainer>
     </CarouselWrapper>

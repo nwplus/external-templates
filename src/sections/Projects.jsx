@@ -2,18 +2,6 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 
 import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
-import maincard from '@assets/images/projects/maincard.svg'
-import project1 from '@assets/images/projects/project1.svg'
-import chococake from '@assets/images/projects/chococake.svg'
-import blueberry from '@assets/images/projects/blueberry.svg'
-import brownies from '@assets/images/projects/brownies.svg'
-import dinocard from '@assets/images/projects/dinoaura_card.svg'
-import breadbasket from '@assets/images/projects/breadbasket.svg'
-import lovecard from '@assets/images/projects/lovealarm_card.svg'
-import bread2 from '@assets/images/projects/bread2.svg'
-import lovealarmmob from '@assets/images/projects/lovealarm_mobile.svg'
-import dinomob from '@assets/images/projects/dinoaura_mobile.svg'
-import chowmob from '@assets/images/projects/chownow_mobile.svg'
 
 const ProjectsContainer = styled.div`
   display: grid;
@@ -451,7 +439,7 @@ const Projects = () => {
       <MobileHeader>Check out these inspiring projects from past years!</MobileHeader>
       <MainCardContainer>
         <TapeImage src="/assets/images/projects/tape.png" />
-        <MainCardImage src={hoveredProject ? projects[hoveredProject] : maincard} />
+        <MainCardImage src={hoveredProject ? projects[hoveredProject] : '/assets/images/projects/maincard.svg'} />
         {!hoveredProject && <MainText>Check out these inspiring projects from past years!</MainText>}
       </MainCardContainer>
 
@@ -460,7 +448,7 @@ const Projects = () => {
         onMouseLeave={() => setHoveredProject(null)}
       >
         <TapeImage src="/assets/images/projects/tape.png" />
-        <Project1Image src={project1} />
+        <Project1Image src="/assets/images/projects/project1.svg" />
         <ProjectText>
           <Project1Title>Rizzsumo</Project1Title>
           <Project1Description>Bringing a world of interests, and friendships in front of you.</Project1Description>
@@ -476,7 +464,9 @@ const Projects = () => {
         onMouseLeave={() => setHoveredProject(null)}
       >
         <TapeImage src="/assets/images/projects/tape.png" />
-        <Project1Image src={isMobile ? chowmob : project1} />
+        <Project1Image
+          src={isMobile ? '/assets/images/projects/chownow_mobile.svg' : '/assets/images/projects/project1.svg'}
+        />
         <ProjectText>
           <Project1Title>Chow-now</Project1Title>
           <Project1Description>
@@ -490,12 +480,12 @@ const Projects = () => {
       </ChownowCardContainer>
 
       <ChococakeCardContainer>
-        <ChococakeCardImage src={chococake} />
+        <ChococakeCardImage src="/assets/images/projects/chococake.svg" />
       </ChococakeCardContainer>
 
       <DessertCardsContainer>
-        <BrownieCardImage src={brownies} />
-        <BlueberryCardImage src={blueberry} />
+        <BrownieCardImage src="/assets/images/projects/brownies.svg" />
+        <BlueberryCardImage src="/assets/images/projects/blueberry.svg" />
       </DessertCardsContainer>
 
       <DinoauraCardContainer
@@ -503,7 +493,9 @@ const Projects = () => {
         onMouseLeave={() => setHoveredProject(null)}
       >
         <TapeImage src="/assets/images/projects/tape.png" />
-        <DinoauraCardImage src={isMobile ? dinomob : dinocard} />
+        <DinoauraCardImage
+          src={isMobile ? '/assets/images/projects/dinoaura_mobile.svg' : '/assets/images/projects/dinoaura_card.svg'}
+        />
         <DinoauraText>
           <Project1Title>Dinoaura</Project1Title>
           <Project1Description>
@@ -514,16 +506,18 @@ const Projects = () => {
             Check it out now!
           </ProjectButton>
         </DinoauraText>
-        <BreadBasketImage src={breadbasket} />
+        <BreadBasketImage src="/assets/images/projects/breadbasket.svg" />
       </DinoauraCardContainer>
 
       <LovealarmCardContainer
         onMouseEnter={() => setHoveredProject('lovealarm')}
         onMouseLeave={() => setHoveredProject(null)}
       >
-        <Bread2Image src={bread2} />
+        <Bread2Image src="/assets/images/projects/bread2.svg" />
         {isMobile && <TapeImage src="/assets/images/projects/tape.png" />}
-        <LovealarmCardImage src={isMobile ? lovealarmmob : lovecard} />
+        <LovealarmCardImage
+          src={isMobile ? '/assets/images/projects/lovealarm_mobile.svg' : '/assets/images/projects/lovealarm_card.svg'}
+        />
         <LovealarmText>
           <Project1Title>Love Alarm</Project1Title>
           <Project1Description>
