@@ -6,7 +6,6 @@ import {
   faInstagram,
   faLinkedinIn,
   faMediumM,
-  faTwitter,
   faYoutube,
 } from '@fortawesome/free-brands-svg-icons'
 import Team from '@components/Team'
@@ -212,9 +211,6 @@ const Footer = () => {
             </a>
             <a href="https://www.instagram.com/nwplusubc" target="_blank" rel="noreferrer">
               <FontAwesomeIcon icon={faInstagram} />
-            </a>
-            <a href="https://twitter.com/nwplusubc" target="_blank" rel="noreferrer">
-              <FontAwesomeIcon icon={faTwitter} />
             </a>
             <a href="https://www.linkedin.com/company/nwplus" target="_blank" rel="noreferrer">
               <FontAwesomeIcon icon={faLinkedinIn} />
