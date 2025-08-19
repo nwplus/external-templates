@@ -10,7 +10,7 @@
       ]
     },
     {
-      "target": "hackcamp2024_dev",
+      "target": "hackcamp2025_dev",
       "public": "out",
       "ignore": [
         "firebase.json",
@@ -19,7 +19,7 @@
       ]
     },
     {
-      "target": "hackcamp2024_main",
+      "target": "hackcamp2025_main",
       "public": "out",
       "ignore": [
         "firebase.json",
