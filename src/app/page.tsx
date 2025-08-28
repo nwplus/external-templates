@@ -1,8 +1,9 @@
+import Faq from "@/sections/faq";
+
 export default function Home() {
   return (
     <div>
-      <h1 className="text-4xl font-title">Title</h1>
-      Home
+      <Faq />
     </div>
   );
 }
