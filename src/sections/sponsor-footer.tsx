@@ -1,4 +1,5 @@
 import Contact from "@/components/social/contact";
+import TeamGallery from "@/components/team-gallery";
 
 import Image from "next/image";
 
@@ -32,6 +33,9 @@ const SponsorFooter = () => {
         </div>
         <div className="h-[34rem]"></div>
         <Contact />
+        <div className="h-[30rem]"></div>
+        <TeamGallery />
+        <p className="font-bold my-4">Copyright © HackCamp 2025</p>
       </div>
     </div>
   );

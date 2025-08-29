@@ -129,9 +129,9 @@ body {
   }
 }
 
-@layer components {
+@layer utilities {
   .bg-footer-radial {
-    background: radial-gradient(
+    background-image: radial-gradient(
       180% 95% at 50% 100%,
       #9f2b2b 20%,
       #1b3b6b 40%,
