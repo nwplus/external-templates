@@ -130,6 +130,15 @@ body {
 }
 
 @layer utilities {
+  .bg-faq-radial {
+    background: radial-gradient(
+      40% 60% at 50% 50%,
+      #0c182b 15%,
+      #0b1526 50%,
+      #0b101c 90%
+    );
+  }
+
   .bg-footer-radial {
     background-image: radial-gradient(
       180% 95% at 50% 100%,
