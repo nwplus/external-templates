@@ -1,13 +1,9 @@
-"use client";
-
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-
-import { Minus, Plus } from "lucide-react";
 
 interface FaqItem {
   question: string;

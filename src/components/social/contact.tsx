@@ -1,3 +1,8 @@
+"use client";
+
+import { useState } from "react";
+
+import { Button } from "../ui/button";
 import Facebook from "./facebook";
 import Instagram from "./instagram";
 import Linkedin from "./linkedin";
@@ -5,6 +10,32 @@ import Medium from "./medium";
 import Youtube from "./youtube";
 
 const Contact = () => {
+  const [inputMessage, setInputMessage] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const email = e.currentTarget.email.value;
+    setInputMessage("");
+    const response = await fetch(
+      "https://us-central1-nwplus-ubc.cloudfunctions.net/addToMailingList",
+      {
+        method: "POST",
+        body: JSON.stringify({ email }),
+      }
+    );
+    if (response.ok) {
+      setInputMessage(`${email} is now subscribed!`);
+      e.currentTarget.reset();
+    } else {
+      // If the email is already subscribed we get a 409
+      if (response.status === 409) {
+        setInputMessage(`${email} is already subscribed!`);
+      } else {
+        setInputMessage("Something went wrong, please try again later.");
+      }
+    }
+  };
   return (
     <div className="flex flex-col items-center gap-8">
       <div className="flex gap-8">
@@ -69,16 +100,25 @@ const Contact = () => {
           Code of Conduct
         </a>
       </div>
-      <div className="relative flex items-center text-sm">
+      <form
+        className="relative flex items-center text-sm"
+        onSubmit={handleSubmit}
+      >
         <input
           type="text"
           placeholder="Sign up for our newsletter!"
           className="py-2 px-4 pr-20 rounded-lg text-black bg-white w-xl"
+          name="email"
         />
-        <button className="font-semibold absolute right-2 bg-[#350001] text-white py-1.5 px-6 rounded-md text-xs">
+        <Button
+          className="absolute right-2 bg-[#350001]"
+          type="submit"
+          size="sm"
+        >
           Submit
-        </button>
-      </div>
+        </Button>
+      </form>
+      {inputMessage && <p className="text-sm text-slate-300">{inputMessage}</p>}
     </div>
   );
 };
