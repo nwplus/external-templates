@@ -5,6 +5,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
 
+import ImageCarousel from "./image-carousel";
+
+/**
+ * Ten Years page
+ */
 export default function TenYears() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -95,39 +100,39 @@ export default function TenYears() {
 
                   <div className="lg:col-span-2 space-y-8">
                     <div>
-                    <div className="relative">
-                      <Image
-                        src="/ten-years/10-years-title.svg"
-                        alt="10 Years of HackCamp!"
-                        width={410}
-                        height={90}
-                        className="w-full max-w-md"
-                      />
-                    </div>
-
-                    <div className="space-y-6">
-                      <div className="relative w-full max-w-md">
+                      <div className="relative">
                         <Image
-                          src="/ten-years/image-background.svg"
-                          alt="Image background"
-                          width={400}
-                          height={300}
-                          className="w-full h-auto"
+                          src="/ten-years/10-years-title.svg"
+                          alt="10 Years of HackCamp!"
+                          width={410}
+                          height={90}
+                          className="w-full max-w-md"
                         />
-                        <div className="absolute inset-0 p-3 flex items-center justify-center">
-                          <div className="relative w-full h-full">
-                            <Image
-                              src="/assets/10-years-1.png"
-                              alt="HackCamp participants"
-                              fill
-                              className="object-cover rounded-md"
-                              sizes="(max-width: 768px) 100vw, 50vw"
-                            />
+                      </div>
+
+                      <div className="space-y-6">
+                        <div className="relative w-full max-w-md">
+                          <Image
+                            src="/ten-years/image-background.svg"
+                            alt="Image background"
+                            width={400}
+                            height={300}
+                            className="w-full h-auto"
+                          />
+                          <div className="absolute inset-0 p-3 flex items-center justify-center">
+                            <div className="relative w-full h-full">
+                              <Image
+                                src="/assets/10-years-1.png"
+                                alt="HackCamp participants"
+                                fill
+                                className="object-cover rounded-md"
+                                sizes="(max-width: 768px) 100vw, 50vw"
+                              />
+                            </div>
                           </div>
                         </div>
-                        </div>
                       </div>
-                    </div>  
+                    </div>
 
                     <div className="space-y-4 max-w-2xl text-white">
                       <h2 className="text-4xl font-title">
@@ -172,12 +177,13 @@ export default function TenYears() {
                         />
                         <div className="absolute inset-0 p-3 flex items-center justify-center">
                           <div className="relative w-full h-full">
-                            <Image
-                              src="/assets/10-years-2-1.png"
+                            <ImageCarousel
+                              images={[
+                                "/assets/10-years-2-1.png",
+                                "/assets/10-years-2-2.svg",
+                                "/assets/10-years-2-3.svg",
+                              ]}
                               alt="HackCamp event photo"
-                              fill
-                              className="object-cover rounded-md"
-                              sizes="(max-width: 768px) 100vw, 50vw"
                             />
                           </div>
                         </div>
@@ -240,12 +246,13 @@ export default function TenYears() {
                         />
                         <div className="absolute inset-0 p-3 flex items-center justify-center">
                           <div className="relative w-full h-full">
-                            <Image
-                              src="/assets/10-years-3-3.png"
-                              alt="HackCamp 2024"
-                              fill
-                              className="object-cover rounded-md"
-                              sizes="(max-width: 768px) 100vw, 50vw"
+                            <ImageCarousel
+                              images={[
+                                "/assets/10-years-3-1.svg",
+                                "/assets/10-years-3-2.svg",
+                                "/assets/10-years-3-3.png",
+                              ]}
+                              alt="HackCamp anniversary image"
                             />
                           </div>
                         </div>

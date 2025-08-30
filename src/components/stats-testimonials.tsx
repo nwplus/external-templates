@@ -50,6 +50,9 @@ const testimonials: Testimonial[] = [
   },
 ];
 
+/**
+ * Stats and testimonials page
+ */
 export default function StatsTestimonials() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);

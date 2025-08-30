@@ -9,6 +9,12 @@ interface CarouselControlsProps {
   className?: string;
 }
 
+/**
+ * Carousel controls; currently only used for testimonials
+ * @param totalSlides - total number of slides
+ * @param currentSlide - current slide index
+ * @param onSlideChange - function to handle slide change
+ */
 export default function CarouselControls({
   totalSlides,
   currentSlide,
