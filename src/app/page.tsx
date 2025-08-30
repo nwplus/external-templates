@@ -58,9 +58,6 @@ export default function Home() {
             height={1000}
           /> */}
         </div>
-        <div className="relative w-full h-full flex items-center justify-center bg-green-500">
-          <h2 className="text-6xl font-bold text-white">NEXT SECTION</h2>
-        </div>
       </HorizontalScrollSection>
       <StatsTestimonials />
       <TenYears />
