@@ -1,5 +1,7 @@
 "use client";
 
+import CarouselControls from "@/components/carousel-controls";
+
 import {
   AnimatePresence,
   motion,
@@ -8,8 +10,6 @@ import {
 } from "framer-motion";
 import Image from "next/image";
 import { useRef, useState } from "react";
-
-import CarouselControls from "./carousel-controls";
 
 interface Testimonial {
   name: string;

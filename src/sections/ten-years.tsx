@@ -1,11 +1,11 @@
 "use client";
 
+import ImageCarousel from "@/components/image-carousel";
+
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
-
-import ImageCarousel from "./image-carousel";
 
 /**
  * Ten Years page
@@ -286,14 +286,14 @@ export default function TenYears() {
                       </div>
 
                       <p className="leading-relaxed">
-                        We can't wait to see what you'll create at this
-                        milestone edition of HackCamp. Come celebrate a decade
-                        of hacking with us!
+                        We can&apos;t wait to see what you&apos;ll create at
+                        this milestone edition of HackCamp. Come celebrate a
+                        decade of hacking with us!
                       </p>
 
                       <div className="pt-4">
                         <p className="mb-4">
-                          Read more about HackCamp's history{" "}
+                          Read more about HackCamp&apos;s history{" "}
                           <Link
                             href="#"
                             className="text-blue-300 hover:text-blue-200 underline"
