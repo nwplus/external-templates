@@ -2,7 +2,7 @@ import { Button } from "./button";
 
 export default function Navbar() {
   return (
-    <div className="flex justify-between items-center px-25 mt-10">
+    <div className="flex justify-between items-center px-25">
       <div className="flex gap-15 px-3 py-6 text-[1.3rem] font-extrabold">
         <a href="/about" className="">
           About
