@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "cross-env NODE_OPTIONS='--inspect' next dev --turbopack",
-    "build": "next build && next export",
-    "build:staging": "cross-env DEPLOY_ENV=STAGING next build && next export",
-    "build:prod": "cross-env DEPLOY_ENV=PRODUCTION next build && next export",
+    "build": "next build",
+    "build:staging": "cross-env DEPLOY_ENV=STAGING next build",
+    "build:prod": "cross-env DEPLOY_ENV=PRODUCTION next build",
     "start": "cross-env DEPLOY_ENV=STAGING next build && next start",
     "lint": "next lint",
     "format": "prettier --write ."
