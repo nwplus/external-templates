@@ -19,6 +19,15 @@ export default function LearnSection() {
       />
 
       <Image
+        src="/assets/heropage/events.svg"
+        alt="tent"
+        className="absolute top-30 left-1/2 ml-12 -translate-x-1/2 min-w-[55vw] h-auto z-10"
+        width={750}
+        height={1200}
+        priority
+      />
+
+      <Image
         src="/assets/heropage/backgroundbears.svg"
         alt="tent"
         className="absolute top-155 left-1/2 ml-12 -translate-x-1/2 min-w-[50vw] h-auto z-10"
@@ -39,7 +48,7 @@ export default function LearnSection() {
       <Image
         src="/assets/heropage/backtugtrees.svg"
         alt="tree"
-        className="absolute top-10 -left-5"
+        className="absolute top-10 -left-5 min-w-[100vw]"
         width={1950}
         height={200}
         priority
@@ -86,6 +95,15 @@ export default function LearnSection() {
         alt="tree"
         className="absolute top-150 ml-10 left-1/2 -translate-x-1/2 z-20"
         width={340}
+        height={200}
+        priority
+      />
+
+      <Image
+        src="/assets/heropage/tugofwar.png"
+        alt="tree"
+        className="absolute top-180 ml-10 left-1/2 min-w-[90vw] -translate-x-1/2 z-20"
+        width={900}
         height={200}
         priority
       />

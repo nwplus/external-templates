@@ -6,7 +6,7 @@ import React from "react";
 export default function HorizontalScrollSection({
   children,
   panelClassName = "",
-  height = "h-[130vh]",
+  height = "h-screen",
 }: {
   children: React.ReactNode[];
   panelClassName?: string;
@@ -75,17 +75,17 @@ export default function HorizontalScrollSection({
       style={{ height: `calc(${React.Children.count(children) * 100}vh)` }}
     >
       {/* Sticky viewport-height container */}
-      <div ref={stickyRef} className="sticky top-0 overflow-x-hidden overflow-y-visible h-[120vh]">
+      <div ref={stickyRef} className="sticky top-0 overflow-hidden h-screen">
         {/* Track that moves horizontally */}
         <div
-          className="flex h-[120vh] will-change-transform"
+          className="flex h-full will-change-transform"
           style={{
             width: `${React.Children.count(children) * 100}vw`,
             transform: `translateX(${trackTranslateX}vw)`,
           }}
         >
           {React.Children.map(children, (child, index) => (
-            <div key={index} className={`w-screen h-[120vh] ${panelClassName}`}>
+            <div key={index} className={`w-screen h-full ${panelClassName}`}>
               {child}
             </div>
           ))}

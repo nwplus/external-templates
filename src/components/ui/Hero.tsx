@@ -94,13 +94,47 @@ export default function Hero() {
       />
       {/* sign */}
       <Image
-        src="/assets/heropage/big-sign.svg"
+        src="/assets/heropage/bigsign2.svg"
         alt="sign"
         className="absolute top-35 left-1/2 -translate-x-1/2 z-10"
         width={1100}
         height={300}
         priority
       />
+      <Image
+        src="/assets/heropage/mentor.svg"
+        alt="tent"
+        className="absolute top-110 left-1/2 ml-28 -translate-x-1/2 h-auto z-10"
+        width={160}
+        height={1200}
+        priority
+      />
+      <Image
+        src="/assets/heropage/register.svg"
+        alt="tent"
+        className="absolute top-110 left-1/2 -ml-24 -translate-x-1/2 h-auto z-10"
+        width={140}
+        height={1200}
+        priority
+      />
+      <Image
+        src="/assets/heropage/carfront.png"
+        alt="tent"
+        className="absolute top-140 left-1/2 -translate-x-1/2 h-auto z-10"
+        width={250}
+        height={1200}
+        priority
+      />
+
+      <Image
+        src="/assets/heropage/bigsign2.svg"
+        alt="sign"
+        className="absolute top-35 left-1/2 -translate-x-1/2 z-10"
+        width={1100}
+        height={300}
+        priority
+      />
+
       {/* right grass */}
       <Image
         src="/assets/heropage/grass-right-2.svg"
@@ -244,10 +278,18 @@ export default function Hero() {
         priority
       />
       <Image
-        src="/assets/heropage/welcome6.png"
+        src="/assets/heropage/welcome7.png"
         alt="welcome"
         className="absolute top-250 -left-20 z-10"
         width={1200}
+        height={200}
+        priority
+      />
+      <Image
+        src="/assets/heropage/welcometext.svg"
+        alt="welcome"
+        className="absolute top-268 left-30 z-10"
+        width={630}
         height={200}
         priority
       />
@@ -257,6 +299,14 @@ export default function Hero() {
         className="absolute top-375 left-1/2 -translate-x-1/2 min-w-[130vw] h-auto"
         width={2400}
         height={1200}
+        priority
+      />
+      <Image
+        src="/assets/heropage/whattext.svg"
+        alt="welcome"
+        className="absolute top-430 right-0 z-10"
+        width={750}
+        height={200}
         priority
       />
     </div>

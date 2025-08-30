@@ -1,4 +1,4 @@
-import { Button } from "./button";
+import Image from "next/image";
 
 export default function Navbar() {
   return (
@@ -29,9 +29,16 @@ export default function Navbar() {
           Sponsors
         </a>
       </div>
-      <Button className="bg-blue-300 z-10 w-[160px] h-[60px] rounded-xl text-xl font-bold ">
-        Live Portal
-      </Button>
+      <div>
+        <Image
+          src="/assets/heropage/portal.svg"
+          alt="logo"
+          className="w-[160px] h-[60px]"
+          width={120}
+          height={40}
+          priority
+        />
+      </div>
     </div>
   );
 }

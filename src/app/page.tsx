@@ -31,19 +31,19 @@ export default function Home() {
           />
           <Image
             src="/assets/heropage/recapback2.svg"
-            className="min-w-[120vw]"
+            className="absolute min-w-[115vw] top-25"
             alt="recap"
             width={1000}
             height={1000}
           />
           <Image
-            src="/assets/heropage/recapstand.svg"
+            src="/assets/heropage/recapstand2.png"
             className="absolute top-0 left-55"
             alt="recap"
             width={1600}
             height={1000}
           />
-          <Image
+          {/* <Image
             src="/assets/heropage/recapsign.svg"
             className="absolute top-100 left-50"
             alt="recap"
@@ -56,7 +56,7 @@ export default function Home() {
             alt="recap"
             width={440}
             height={1000}
-          />
+          /> */}
         </div>
         <div className="relative w-full h-full flex items-center justify-center bg-green-500">
           <h2 className="text-6xl font-bold text-white">NEXT SECTION</h2>
