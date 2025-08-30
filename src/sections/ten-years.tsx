@@ -1,6 +1,6 @@
 "use client";
 
-import ImageCarousel from "@/components/image-carousel";
+import ImageCarousel from "@/components/ten-years/image-carousel";
 
 import { motion, MotionValue, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";

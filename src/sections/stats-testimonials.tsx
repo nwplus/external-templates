@@ -1,6 +1,6 @@
 "use client";
 
-import CarouselControls from "@/components/carousel-controls";
+import CarouselControls from "@/components/stats-testimonials/carousel-controls";
 
 import {
   AnimatePresence,
