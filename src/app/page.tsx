@@ -1,8 +1,11 @@
+import Faq from "@/sections/faq";
+import SponsorFooter from "@/sections/sponsor-footer";
+
 export default function Home() {
   return (
     <div>
-      <h1 className="text-4xl font-title">Title</h1>
-      Home
+      <Faq />
+      <SponsorFooter />
     </div>
   );
 }
