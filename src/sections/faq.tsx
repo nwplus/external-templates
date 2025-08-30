@@ -1,4 +1,3 @@
-import BufferGrass from "@/components/faq/buffer-grass";
 import Comet from "@/components/faq/comet";
 import Firefly from "@/components/faq/firefly";
 import {
@@ -14,6 +13,8 @@ import {
   groupFAQsByCategory,
 } from "@/lib/firestore";
 
+import Image from "next/image";
+
 const Faq = async () => {
   const faqs = await getFAQsByHackathon(CURRENT_HACKATHON);
   const faqData = groupFAQsByCategory(faqs);
@@ -21,7 +22,12 @@ const Faq = async () => {
   return (
     <div className="relative text-white flex flex-col items-center w-full bg-faq-radial">
       <div className="flex flex-col w-full z-10">
-        <BufferGrass className="w-full -mt-2" />
+        <Image
+          src="/assets/faq/buffer-grass-bottom.png"
+          alt="Buffer grass bottom"
+          width={1920}
+          height={131}
+        />
         <div className="flex flex-col px-32 pb-28 gap-8">
           <h1 className="font-title text-6xl text-center">FAQ</h1>
           <div className="flex justify-center gap-28">

@@ -44,8 +44,9 @@ export default function TenYears() {
   });
 
   return (
-    <div ref={containerRef} className="relative h-[300vh]">
-      <div className="sticky top-0 h-screen overflow-hidden">
+    // Container min-height based on background image aspect ratio * 3 background images (1080÷1920 = 56.25vw * 3 = 168.75vw)
+    <div ref={containerRef} className="relative h-[168.75vw]">
+      <div className="sticky top-0 h-[56.25vw] overflow-hidden">
         <motion.div
           className="absolute inset-0"
           style={{
@@ -317,6 +318,7 @@ export default function TenYears() {
             </motion.div>
           </div>
         </div>
+        {/* <BufferGrassTop className=" w-full" /> */}
         <div className="absolute left-1/2 top-1/2 transform -translate-x-40 -translate-y-8 z-20">
           <div className="flex flex-col space-y-3">
             {Array.from({ length: 3 }).map((_, index) => (
