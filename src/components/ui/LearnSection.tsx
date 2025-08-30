@@ -8,7 +8,7 @@ export default function LearnSection() {
   const [buildHover, setBuildHover] = React.useState(false);
 
   return (
-    <div className="relative w-full h-full -mt-15 overflow-visible">
+    <div className="relative w-full h-full -mt-10">
       <Image
         src="/assets/heropage/tug8.svg"
         alt="tent"

@@ -7,7 +7,7 @@ import Navbar from "./navbar";
 
 export default function Hero() {
   return (
-    <div className="relative w-full h-[200vh] mb-30 pt-10 overflow-x-clip overflow-y-visible">
+    <div className="relative w-full h-[235vh] pt-10 overflow-x-clip">
       <Navbar />
       {/* Hero Section */}
       <Image

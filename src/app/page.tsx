@@ -40,7 +40,7 @@ export default function Home() {
             src="/assets/heropage/recapstand2.png"
             className="absolute top-0 left-55"
             alt="recap"
-            width={1600}
+            width={1400}
             height={1000}
           />
           {/* <Image
