@@ -55,6 +55,7 @@ const SponsorFooter = async () => {
       </div>
 
       <div className="z-10 flex flex-col items-center justify-between h-full pt-40 px-16 text-white">
+        <h2 className="font-title text-6xl mb-12">Last Year&apos;s Sponsors</h2>
         <div className="flex flex-col items-center gap-20">
           {activeTiers.map((tier) => (
             <div
