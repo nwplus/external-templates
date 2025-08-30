@@ -3,11 +3,11 @@
 import { useState } from "react";
 
 import { Button } from "../ui/button";
-import Facebook from "./facebook";
-import Instagram from "./instagram";
-import Linkedin from "./linkedin";
-import Medium from "./medium";
-import Youtube from "./youtube";
+import Facebook from "./social/facebook";
+import Instagram from "./social/instagram";
+import Linkedin from "./social/linkedin";
+import Medium from "./social/medium";
+import Youtube from "./social/youtube";
 
 const Contact = () => {
   const [inputMessage, setInputMessage] = useState("");

@@ -1,5 +1,5 @@
-import Contact from "@/components/social/contact";
-import TeamGallery from "@/components/team-gallery";
+import Contact from "@/components/sponsor-footer/contact";
+import TeamGallery from "@/components/sponsor-footer/team-gallery";
 
 import Image from "next/image";
 
