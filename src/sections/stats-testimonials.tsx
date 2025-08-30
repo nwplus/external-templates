@@ -32,7 +32,7 @@ const testimonials: Testimonial[] = [
     program: "Computer Science • Statistics",
     testimonial:
       "This hackathon was the first time I properly built something all the way through, and that experience gave me a real boost in confidence. It made me feel like I could take on harder problems and actually follow through on ideas I had. That early success encouraged me to join more hackathons and keep exploring things I was curious about. The lessons I learned and the momentum I gained from that project helped me land my first internship. More than anything, it showed me the value of trying new things, even if I don't have everything figured out at the start.",
-    photo: "/assets/testimonials-jonathan.png",
+    photo: "/assets/stats-and-testimonials/testimonials-jonathan.png",
     devpost: "#",
     linkedin: "#",
   },
@@ -44,7 +44,7 @@ const testimonials: Testimonial[] = [
     program: "Design • Engineering",
     testimonial:
       "HackCamp was an incredible experience that pushed me out of my comfort zone. Working with developers and learning about the technical side really broadened my perspective on how design and engineering work together. The mentorship and collaborative environment made it easy to ask questions and learn from others. I walked away with not just a great project, but also new friendships and a better understanding of the tech industry.",
-    photo: "/assets/testimonials-jonathan.png",
+    photo: "/assets/stats-and-testimonials/testimonials-jonathan.png",
     devpost: "#",
     linkedin: "#",
   },
@@ -78,7 +78,7 @@ export default function StatsTestimonials() {
     >
       <div className="absolute inset-0 z-0">
         <Image
-          src="/stats-and-testimonials/sky.svg"
+          src="/assets/stats-and-testimonials/graphics/sky.svg"
           alt="Sky background"
           fill
           className="object-cover"
@@ -91,7 +91,7 @@ export default function StatsTestimonials() {
         className="absolute top-[10vh] left-0 w-full h-[100vh] z-5"
       >
         <Image
-          src="/stats-and-testimonials/stats-backdrop-255-participants-sign.png"
+          src="/assets/stats-and-testimonials/graphics/stats-backdrop-255-participants-sign.png"
           alt="Mountains background"
           fill
           className="object-cover object-top"
@@ -101,7 +101,7 @@ export default function StatsTestimonials() {
 
       <div className="absolute bottom-0 left-0 w-full h-[175vh] z-0">
         <Image
-          src="/stats-and-testimonials/river.svg"
+          src="/assets/stats-and-testimonials/graphics/river.svg"
           alt="River background"
           fill
           className="object-cover object-top"
@@ -111,7 +111,7 @@ export default function StatsTestimonials() {
 
       <div className="absolute right-0 lg:-right-4 top-[5vh] bottom-0 z-30">
         <Image
-          src="/stats-and-testimonials/waterfall-60-projects-sign.svg"
+          src="/assets/stats-and-testimonials/graphics/waterfall-60-projects-sign.svg"
           alt="Waterfall with mist"
           height={600}
           width={900}
@@ -122,7 +122,7 @@ export default function StatsTestimonials() {
       <div className="absolute top-[25rem] left-2 z-50">
         <div className="relative">
           <Image
-            src="/stats-and-testimonials/boats-and-stat.svg"
+            src="/assets/stats-and-testimonials/graphics/boats-and-stat.svg"
             alt="Boats with participants"
             width={850}
             height={580}
@@ -133,7 +133,7 @@ export default function StatsTestimonials() {
 
       <motion.div className="absolute right-0 top-[70vh] z-30 h-1/2">
         <Image
-          src="/stats-and-testimonials/first-island-300-raised-for-charity-sign.svg"
+          src="/assets/stats-and-testimonials/graphics/first-island-300-raised-for-charity-sign.svg"
           alt="First island"
           height={600}
           width={900}
@@ -147,7 +147,7 @@ export default function StatsTestimonials() {
             className="absolute right-0 -top-56 z-50"
           >
             <Image
-              src="/stats-and-testimonials/deer w binoculars.svg"
+              src="/assets/stats-and-testimonials/graphics/deer w binoculars.svg"
               alt="Deer with binoculars"
               width={175}
               height={300}
@@ -161,7 +161,7 @@ export default function StatsTestimonials() {
             className="absolute right-12 -top-24 z-50"
           >
             <Image
-              src="/stats-and-testimonials/bear pointing.svg"
+              src="/assets/stats-and-testimonials/graphics/bear pointing.svg"
               alt="Bear pointing"
               width={250}
               height={300}
@@ -172,7 +172,7 @@ export default function StatsTestimonials() {
 
       <motion.div className="absolute top-[110vh] right-0 z-30 h-1/3">
         <Image
-          src="/stats-and-testimonials/middle island.svg"
+          src="/assets/stats-and-testimonials/graphics/middle island.svg"
           alt="Middle island"
           height={600}
           width={750}
@@ -183,7 +183,7 @@ export default function StatsTestimonials() {
       {/* Testimonials body text */}
       <motion.div className="absolute bottom-0 right-0 z-30">
         <Image
-          src="/stats-and-testimonials/testimonial ground.svg"
+          src="/assets/stats-and-testimonials/graphics/testimonial ground.svg"
           alt="Testimonial ground background"
           height={600}
           width={900}
@@ -228,7 +228,7 @@ export default function StatsTestimonials() {
         className="absolute top-[110vh] left-[10rem] z-15"
       >
         <Image
-          src="/stats-and-testimonials/nugget tube.svg"
+          src="/assets/stats-and-testimonials/graphics/nugget tube.svg"
           alt="Nugget floating in tube"
           width={550}
           height={350}
@@ -239,7 +239,7 @@ export default function StatsTestimonials() {
       <motion.div className="absolute left-0 bottom-[10vh] z-20">
         <div className="relative">
           <Image
-            src="/stats-and-testimonials/testimonial-tube.svg"
+            src="/assets/stats-and-testimonials/graphics/testimonial-tube.svg"
             alt="Testimonial tube"
             height={450}
             width={700}

@@ -68,7 +68,7 @@ export default function TenYears() {
         <motion.div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: "url(/ten-years/backdrop-1.png)",
+            backgroundImage: "url(/assets/ten-years/graphics/backdrop-1.png)",
             opacity: backgroundOpacity1,
           }}
         />
@@ -76,7 +76,7 @@ export default function TenYears() {
         <motion.div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: "url(/ten-years/backdrop-2.png)",
+            backgroundImage: "url(/assets/ten-years/graphics/backdrop-2.png)",
             opacity: backgroundOpacity2,
           }}
         />
@@ -84,7 +84,7 @@ export default function TenYears() {
         <motion.div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: "url(/ten-years/backdrop-3.png)",
+            backgroundImage: "url(/assets/ten-years/graphics/backdrop-3.png)",
             opacity: backgroundOpacity3,
           }}
         />
@@ -103,7 +103,7 @@ export default function TenYears() {
                     <div>
                       <div className="relative">
                         <Image
-                          src="/ten-years/10-years-title.svg"
+                          src="/assets/ten-years/graphics/10-years-title.svg"
                           alt="10 Years of HackCamp!"
                           width={410}
                           height={90}
@@ -114,7 +114,7 @@ export default function TenYears() {
                       <div className="space-y-6">
                         <div className="relative w-full max-w-md">
                           <Image
-                            src="/ten-years/image-background.svg"
+                            src="/assets/ten-years/graphics/image-background.svg"
                             alt="Image background"
                             width={400}
                             height={300}
@@ -123,7 +123,7 @@ export default function TenYears() {
                           <div className="absolute inset-0 p-3 flex items-center justify-center">
                             <div className="relative w-full h-full">
                               <Image
-                                src="/assets/10-years-1.png"
+                                src="/assets/ten-years/10-years-1.png"
                                 alt="HackCamp participants"
                                 fill
                                 className="object-cover rounded-md"
@@ -170,7 +170,7 @@ export default function TenYears() {
                     <div className="space-y-6">
                       <div className="relative w-full max-w-md">
                         <Image
-                          src="/ten-years/image-background.svg"
+                          src="/assets/ten-years/graphics/image-background.svg"
                           alt="Image background"
                           width={400}
                           height={300}
@@ -180,9 +180,9 @@ export default function TenYears() {
                           <div className="relative w-full h-full">
                             <ImageCarousel
                               images={[
-                                "/assets/10-years-2-1.png",
-                                "/assets/10-years-2-2.svg",
-                                "/assets/10-years-2-3.svg",
+                                "/assets/ten-years/10-years-2-1.png",
+                                "/assets/ten-years/10-years-2-2.svg",
+                                "/assets/ten-years/10-years-2-3.svg",
                               ]}
                               alt="HackCamp event photo"
                             />
@@ -239,7 +239,7 @@ export default function TenYears() {
                     <div className="space-y-6">
                       <div className="relative w-full max-w-md">
                         <Image
-                          src="/ten-years/image-background.svg"
+                          src="/assets/ten-years/graphics/image-background.svg"
                           alt="Image background"
                           width={400}
                           height={300}
@@ -249,9 +249,9 @@ export default function TenYears() {
                           <div className="relative w-full h-full">
                             <ImageCarousel
                               images={[
-                                "/assets/10-years-3-1.svg",
-                                "/assets/10-years-3-2.svg",
-                                "/assets/10-years-3-3.png",
+                                "/assets/ten-years/10-years-3-1.svg",
+                                "/assets/ten-years/10-years-3-2.svg",
+                                "/assets/ten-years/10-years-3-3.png",
                               ]}
                               alt="HackCamp anniversary image"
                             />
