@@ -1,6 +1,7 @@
 import Contact from "@/components/sponsor-footer/contact";
 import TeamGallery from "@/components/sponsor-footer/team-gallery";
 import {
+  CURRENT_HACKATHON,
   getSponsorsByHackathon,
   groupSponsorsByTier,
   type SponsorDoc,
@@ -10,7 +11,7 @@ import Image from "next/image";
 
 const SponsorFooter = async () => {
   // Fetch sponsors from Firestore
-  const sponsors = await getSponsorsByHackathon("HackCamp2024");
+  const sponsors = await getSponsorsByHackathon(CURRENT_HACKATHON);
   const sponsorsByTier = groupSponsorsByTier(sponsors);
 
   // Tier configuration for size and layout

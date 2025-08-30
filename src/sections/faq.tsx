@@ -7,13 +7,14 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import {
+  CURRENT_HACKATHON,
   type FAQDoc,
   getFAQsByHackathon,
   groupFAQsByCategory,
 } from "@/lib/firestore";
 
 const Faq = async () => {
-  const faqs = await getFAQsByHackathon("HackCamp2024");
+  const faqs = await getFAQsByHackathon(CURRENT_HACKATHON);
   const faqData = groupFAQsByCategory(faqs);
 
   return (
