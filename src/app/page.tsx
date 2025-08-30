@@ -1,7 +1,7 @@
-import Hero from "@/components/ui/Hero";
-import HorizontalScrollSection from "@/components/ui/Horizontal";
-import LearnSection from "@/components/ui/LearnSection";
+import HorizontalScrollSection from "@/components/ui/horizontal";
 import Faq from "@/sections/faq";
+import Hero from "@/sections/hero";
+import Learn from "@/sections/learn";
 import SponsorFooter from "@/sections/sponsor-footer";
 import StatsTestimonials from "@/sections/stats-testimonials";
 import TenYears from "@/sections/ten-years";
@@ -13,7 +13,7 @@ export default function Home() {
     <div>
       <Hero />
       <HorizontalScrollSection panelClassName="bg-transparent">
-        <LearnSection />
+        <Learn />
         <div className="relative w-full h-full flex items-center justify-center">
           <Image
             src="/assets/heropage/recaphill2.svg"
