@@ -3,13 +3,9 @@
 import Image from "next/image";
 import React from "react";
 
-import HorizontalScrollSection from "./Horizontal";
 import Navbar from "./navbar";
-import Welcome from "./Welcome";
 
 export default function Hero() {
-  const [learnHover, setLearnHover] = React.useState(false);
-  const [buildHover, setBuildHover] = React.useState(false);
   return (
     <div className="relative w-full h-[200vh] mb-30 pt-10 overflow-x-clip overflow-y-visible">
       <Navbar />
