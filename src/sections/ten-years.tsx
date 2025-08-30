@@ -2,7 +2,7 @@
 
 import ImageCarousel from "@/components/image-carousel";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, MotionValue, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
@@ -320,28 +320,36 @@ export default function TenYears() {
         <div className="absolute left-1/2 top-1/2 transform -translate-x-40 -translate-y-8 z-20">
           <div className="flex flex-col space-y-3">
             {Array.from({ length: 3 }).map((_, index) => (
-              <motion.div
-                key={index}
-                className="w-3 h-3 rounded-full border-2 border-white cursor-pointer"
-                style={{
-                  backgroundColor: useTransform(activeDot, (active) =>
-                    index === active
-                      ? "rgba(255, 255, 255, 1)"
-                      : "rgba(255, 255, 255, 0)"
-                  ),
-                  scale: useTransform(activeDot, (active) =>
-                    index === active ? 1.2 : 1
-                  ),
-                }}
-                transition={{
-                  duration: 0.3,
-                  ease: "easeInOut",
-                }}
-              />
+              <Dot key={index} index={index} active={activeDot} />
             ))}
           </div>
         </div>
       </div>
     </div>
+  );
+}
+
+function Dot({
+  index,
+  active,
+}: {
+  index: number;
+  active: MotionValue<0 | 1 | 2>;
+}) {
+  return (
+    <motion.div
+      key={index}
+      className="w-3 h-3 rounded-full border-2 border-white cursor-pointer"
+      style={{
+        backgroundColor: useTransform(active, (active) =>
+          index === active ? "rgba(255, 255, 255, 1)" : "rgba(255, 255, 255, 0)"
+        ),
+        scale: useTransform(active, (active) => (index === active ? 1.2 : 1)),
+      }}
+      transition={{
+        duration: 0.3,
+        ease: "easeInOut",
+      }}
+    />
   );
 }
