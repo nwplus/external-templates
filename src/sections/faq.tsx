@@ -18,7 +18,7 @@ const Faq = async () => {
   const faqData = groupFAQsByCategory(faqs);
 
   return (
-    <div className="relative text-white flex flex-col items-center min-h-screen w-full bg-faq-radial">
+    <div className="relative text-white flex flex-col items-center w-full bg-faq-radial">
       <div className="flex flex-col px-32 pt-16 pb-28 gap-8 w-full z-10">
         <h1 className="font-title text-6xl text-center">FAQ</h1>
 
