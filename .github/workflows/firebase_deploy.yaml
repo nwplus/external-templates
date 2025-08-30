@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       targetedHackathon:
-        description: 'Targetted hackathon to build'
+        description: "Targetted hackathon to build"
         required: true
   push:
     branches: [hackcamp2025_dev, hackcamp2025_main]
@@ -18,11 +18,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      # TEMP FIX FOR NODE ERRORS
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16.x'
+          node-version: "22.x"
 
       - name: Prepare google app credentials (dev)
         if: ${{ env.IS_PRODUCTION == 'false' }}
@@ -44,11 +43,11 @@ jobs:
         run: firebase use ${{ secrets.PROD_FIREBASE_PROJECT_ID }}
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: npm ci
 
       - name: Build with dev env variables
         if: ${{ env.IS_PRODUCTION == 'false' }}
-        run: yarn build:staging
+        run: npm run build:staging
         env:
           NEXT_PUBLIC_FIREBASE_API_KEY: ${{ secrets.DEV_FIREBASE_API_KEY }}
           NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN: ${{ secrets.DEV_FIREBASE_AUTH_DOMAIN }}
@@ -60,7 +59,7 @@ jobs:
 
       - name: Build with prod env variables
         if: ${{ env.IS_PRODUCTION == 'true' }}
-        run: yarn build:prod
+        run: npm run build:prod
 
       - name: Check for targeted hackathon
         if: ${{ !github.event.inputs.targetedHackathon }}

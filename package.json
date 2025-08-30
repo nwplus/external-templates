@@ -3,9 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build",
-    "start": "next start",
+    "dev": "cross-env NODE_OPTIONS='--inspect' next dev --turbopack",
+    "build": "next build && next export",
+    "build:staging": "cross-env DEPLOY_ENV=STAGING next build && next export",
+    "build:prod": "cross-env DEPLOY_ENV=PRODUCTION next build && next export",
+    "start": "cross-env DEPLOY_ENV=STAGING next build && next start",
     "lint": "next lint",
     "format": "prettier --write ."
   },
@@ -30,6 +32,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "cross-env": "^10.0.0",
     "eslint": "^9",
     "eslint-config-next": "15.4.7",
     "eslint-config-prettier": "^10.1.8",
