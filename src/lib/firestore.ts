@@ -17,6 +17,17 @@ export interface FAQDoc {
   lastModifiedBy: string;
 }
 
+export interface SponsorDoc {
+  blurb: string;
+  imgName: string;
+  imgURL: string;
+  lastmod?: Timestamp;
+  lastmodby?: string;
+  link: string;
+  name: string;
+  tier: "platinum" | "gold" | "silver" | "bronze" | "inkind";
+}
+
 /**
  * Fetches FAQ documents from Firestore for a specific hackathon
  * @param hackathonId - The hackathon ID to filter by
@@ -54,5 +65,42 @@ export function groupFAQsByCategory(faqs: FAQDoc[]): Record<string, FAQDoc[]> {
       return acc;
     },
     {} as Record<string, FAQDoc[]>
+  );
+}
+
+/**
+ * Fetches sponsor documents from Firestore subcollection for a specific hackathon
+ * @param hackathonName - The hackathon name to fetch sponsors for
+ * @returns Promise<SponsorDoc[]> - Array of sponsor documents
+ */
+export async function getSponsorsByHackathon(
+  hackathonName: string
+): Promise<SponsorDoc[]> {
+  try {
+    const sponsorsRef = collection(db, "Hackathons", hackathonName, "Sponsors");
+    const querySnapshot = await getDocs(sponsorsRef);
+    const sponsors = querySnapshot.docs.map((doc) => doc.data() as SponsorDoc);
+    return sponsors;
+  } catch (error) {
+    console.error("Error fetching sponsors from Firestore:", error);
+    throw error;
+  }
+}
+
+/**
+ * Groups sponsor documents by tier with proper ordering
+ * @param sponsors - Array of sponsor documents from Firestore
+ * @returns Record<string, SponsorDoc[]> - Sponsors grouped by tier
+ */
+export function groupSponsorsByTier(
+  sponsors: SponsorDoc[]
+): Record<string, SponsorDoc[]> {
+  return sponsors.reduce(
+    (acc, sponsor) => {
+      if (!acc[sponsor.tier]) acc[sponsor.tier] = [];
+      acc[sponsor.tier].push(sponsor);
+      return acc;
+    },
+    {} as Record<string, SponsorDoc[]>
   );
 }
