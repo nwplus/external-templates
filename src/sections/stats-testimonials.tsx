@@ -91,7 +91,7 @@ export default function StatsTestimonials() {
         className="absolute top-[10vh] left-0 w-full h-[100vh] z-5"
       >
         <Image
-          src="/stats-and-testimonials/stats-backdrop-255-participants-sign.svg"
+          src="/stats-and-testimonials/stats-backdrop-255-participants-sign.png"
           alt="Mountains background"
           fill
           className="object-cover object-top"

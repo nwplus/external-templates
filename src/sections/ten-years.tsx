@@ -68,7 +68,7 @@ export default function TenYears() {
         <motion.div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: "url(/ten-years/backdrop-1.svg)",
+            backgroundImage: "url(/ten-years/backdrop-1.png)",
             opacity: backgroundOpacity1,
           }}
         />
@@ -76,7 +76,7 @@ export default function TenYears() {
         <motion.div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: "url(/ten-years/backdrop-2.svg)",
+            backgroundImage: "url(/ten-years/backdrop-2.png)",
             opacity: backgroundOpacity2,
           }}
         />
@@ -84,7 +84,7 @@ export default function TenYears() {
         <motion.div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: "url(/ten-years/backdrop-3.svg)",
+            backgroundImage: "url(/ten-years/backdrop-3.png)",
             opacity: backgroundOpacity3,
           }}
         />
