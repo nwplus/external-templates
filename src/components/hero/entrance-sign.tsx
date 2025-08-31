@@ -23,9 +23,10 @@ const SignButton = ({
 
 const EntranceSign = () => {
   return (
+    // TODO: add buttons back in and switch to `entrance-sign.png` when applications open
     <div>
       <Image
-        src="/assets/hero/entrance-sign.png"
+        src="/assets/hero/entrance-sign-without-buttons.png"
         alt="Entrance sign"
         width={1200}
         height={800}
@@ -37,12 +38,12 @@ const EntranceSign = () => {
           Canada&apos;s largest beginner-only hackathon
         </h2>
       </div>
-      <SignButton className="left-[22.6vw] top-[19.8vw]">
+      {/* <SignButton className="left-[22.6vw] top-[19.8vw]">
         Register Now
       </SignButton>
       <SignButton className="right-[20.5vw] top-[19.8vw]">
         Become a Mentor
-      </SignButton>
+      </SignButton> */}
     </div>
   );
 };
