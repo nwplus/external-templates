@@ -46,6 +46,12 @@ export default function Navbar() {
                     window.scrollTo({ top: y + 1500, behavior: "smooth" });
                   }
                   break;
+                case "10 Years":
+                  if (el) {
+                    const y = el.getBoundingClientRect().top + window.scrollY;
+                    window.scrollTo({ top: y + 600, behavior: "smooth" });
+                  }
+                  break;
                 default:
                   scrollToSection(link.href);
               }
