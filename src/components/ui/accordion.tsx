@@ -45,7 +45,8 @@ function AccordionTrigger({
           "focus-visible:border-ring focus-visible:ring-ring/50 flex flex-1 items-start  gap-4 rounded-md py-4 text-left text-sm transition-all outline-none focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50",
           className,
           variant == "faq" &&
-            "[&[data-state=open]_.plus-icon]:hidden [&[data-state=open]_.minus-icon]:block justify-between"
+            "[&[data-state=open]_.plus-icon]:hidden [&[data-state=open]_.minus-icon]:block justify-between",
+          variant == "hero" && "[&[data-state=open]_.arrow-right]:rotate-90"
         )}
         {...props}
       >
