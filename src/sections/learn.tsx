@@ -7,7 +7,7 @@ export default function Learn() {
   return (
     <div className="relative h-[62vw] -mt-[14vw] flex flex-col items-center">
       <div className="absolute inset-0 bg-[url('/assets/learn/background.svg')] bg-cover bg-top bg-no-repeat"></div>
-      <div className="flex flex-col items-center gap-[1.5vw] mt-[7vw] w-[60vw]">
+      <div className="relative flex flex-col items-center gap-[1.5vw] mt-[7vw] w-[60vw]">
         <h2 className="text-[3.5vw] font-title leading-none text-shadow-bold">
           Our Events
         </h2>
