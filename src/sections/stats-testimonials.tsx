@@ -62,18 +62,16 @@ export default function StatsTestimonials() {
   });
 
   const mountainsY = useTransform(scrollYProgress, [0, 1], [-50, 150]);
-  const midgroundY = useTransform(scrollYProgress, [0, 1], [0, 200]);
 
   const nuggetX = useTransform(scrollYProgress, [0, 1], [0, 20]);
   const nuggetY = useTransform(scrollYProgress, [0, 1], [0, -40]);
 
   const scale = useTransform(scrollYProgress, [0.7, 1], [1, 0.95]);
-  const opacity = useTransform(scrollYProgress, [0.8, 1], [1, 0.8]);
 
   return (
     <motion.div
       ref={containerRef}
-      style={{ scale, opacity }}
+      style={{ scale }}
       className="relative w-full min-h-[230vh] overflow-hidden"
     >
       <div className="absolute inset-0 z-0">
