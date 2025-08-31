@@ -28,3 +28,8 @@ export default function Home() {
     </div>
   );
 }
+
+{
+  /* todo:make it an accordion DONE, navbar, car animation, sign times DONE, recap section board, alignment with stats 
+  notes: accordion arrow design change? , navbar testimonial section is wack..., assuming boards show application time? not found on firebase,  */
+}

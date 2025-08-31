@@ -5,7 +5,10 @@ import Image from "next/image";
 export default function Learn() {
   // Container min-height based on background image aspect ratio (1190÷1920 = 62vw)
   return (
-    <div className="relative h-[62vw] flex flex-col items-center w-full">
+    <div
+      className="relative h-[62vw] flex flex-col items-center w-full"
+      id="our-events"
+    >
       <div className="absolute inset-0 bg-[url('/assets/learn/background.svg')] bg-cover bg-center bg-no-repeat"></div>
       <div className="relative flex flex-col items-center gap-[1.5vw] mt-[7vw] w-[60vw]">
         <h2 className="text-[3.5vw] font-title leading-none text-shadow-bold">
@@ -89,7 +92,7 @@ export default function Learn() {
         alt="Tug of War"
         width={400}
         height={100}
-        className="absolute bottom-0 left-0 w-[70vw]"
+        className="absolute bottom-0 left-[19vw] w-[70vw]"
       />
     </div>
   );

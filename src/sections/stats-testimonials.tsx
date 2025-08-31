@@ -75,16 +75,29 @@ export default function StatsTestimonials() {
     <motion.div
       ref={containerRef}
       style={{ scale, opacity }}
-      className="relative w-full h-[128.07vw]"
+      className="relative w-screen h-[128.07vw]"
+      id="stats"
     >
       <Image
-        src="/assets/cloud.svg"
-        alt="Cloud"
-        width={200}
-        height={600}
-        className="z-100 absolute -left-[9vw] -top-[2vh] w-[40vh]"
+        src={"/assets/stats-and-testimonials/graphics/grasstents.png"}
+        alt="Stats background"
+        width={1000}
+        height={100}
+        className="absolute inset-0 w-[100vw] h-[84vh]  top-[17vh] z-30 -left-[19vw]"
       />
-      <div className="absolute inset-0 z-0">
+
+      <Image
+        src={"/assets/stats-and-testimonials/graphics/mountains.png"}
+        alt="Stats background"
+        width={1000}
+        height={100}
+        className="absolute inset-0 min-w-[145vw] -top-[1vh] -left-[42vw]"
+      />
+
+      {/* covers up the weird river edge from recap section */}
+      <div className="absolute top-[95vh] left-[2vw] bg-[#b4eaf2] w-36 h-36 rounded-full  z-50"></div>
+
+      {/* <div className="absolute inset-0 z-0">
         <Image
           src="/assets/stats-and-testimonials/graphics/sky.svg"
           alt="Sky background"
@@ -92,9 +105,9 @@ export default function StatsTestimonials() {
           className="object-cover"
           priority
         />
-      </div>
+      </div> */}
 
-      <motion.div
+      {/* <motion.div
         style={{ y: mountainsY }}
         className="absolute top-[10vh] left-0 w-full h-[100vh] z-5"
       >
@@ -105,9 +118,9 @@ export default function StatsTestimonials() {
           className="object-cover object-top"
           priority
         />
-      </motion.div>
+      </motion.div> */}
 
-      <div className="absolute bottom-0 left-0 w-full h-[175vh] z-0">
+      <div className="absolute top-[62vh] left-0 w-full h-[175vh] z-10">
         <Image
           src="/assets/stats-and-testimonials/graphics/river.svg"
           alt="River background"
@@ -127,7 +140,7 @@ export default function StatsTestimonials() {
         />
       </div>
 
-      <div className="absolute top-[25rem] left-2 z-50">
+      <div className="absolute top-[30rem] left-2 z-50">
         <div className="relative">
           <Image
             src="/assets/stats-and-testimonials/graphics/boats-and-stat.svg"
@@ -211,7 +224,10 @@ export default function StatsTestimonials() {
               {testimonials[currentSlide].year} |{" "}
               {testimonials[currentSlide].program}
             </div>
-            <div className="text-md leading-relaxed max-w-3xl">
+            <div
+              className="text-md leading-relaxed max-w-3xl"
+              id="testimonials"
+            >
               {testimonials[currentSlide].testimonial}
             </div>
           </div>
