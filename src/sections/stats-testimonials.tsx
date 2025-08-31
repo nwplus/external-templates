@@ -75,8 +75,15 @@ export default function StatsTestimonials() {
     <motion.div
       ref={containerRef}
       style={{ scale, opacity }}
-      className="relative w-full h-[128.07vw] overflow-hidden"
+      className="relative w-full h-[128.07vw]"
     >
+      <Image
+        src="/assets/cloud.svg"
+        alt="Cloud"
+        width={200}
+        height={600}
+        className="z-100 absolute -left-[9vw] -top-[2vh] w-[40vh]"
+      />
       <div className="absolute inset-0 z-0">
         <Image
           src="/assets/stats-and-testimonials/graphics/sky.svg"
@@ -274,7 +281,7 @@ export default function StatsTestimonials() {
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="font-title absolute top-0 left-8 md:top-8 md:left-16 text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 z-50"
+          className="font-title absolute top-0 left-8 md:top-8 md:left-24 text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 z-50"
         >
           Last Year We Had...
         </motion.h2>
