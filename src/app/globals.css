@@ -6,6 +6,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-title: var(--title);
   --font-sans: var(--font-cygre);
   --font-title: var(--font-poor-story);
   --color-sidebar-ring: var(--sidebar-ring);
@@ -41,6 +42,7 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  --text-shadow-bold: 0.5px 0.5px 0 rgba(0, 0, 0, 1);
 }
 
 html,
@@ -55,6 +57,7 @@ body {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
+  --title: #ffe4d0;
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
@@ -130,6 +133,12 @@ body {
 }
 
 @layer utilities {
+  .bg-hero-1 {
+    background-image:
+      url("/assets/hero/background-1.svg"),
+      linear-gradient(180deg, #93d9fa 0%, #ffffff 12%, #acc67e 20%);
+  }
+
   .bg-faq-radial {
     background: radial-gradient(
       40% 60% at 50% 50%,
