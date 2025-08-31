@@ -23,7 +23,7 @@ const Section2 = ({ className }: { className?: string }) => {
             What is a Hackathon?
           </h2>
           <div className="flex flex-col gap-[1vw] text-[1.3vw]">
-            <p className="">
+            <p>
               A hackathon is a collaborative, typically multi-day invention
               marathon where participants come together to ideate, design, and
               build projects in a limited time frame. It&apos;s a space to
