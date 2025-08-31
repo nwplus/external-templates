@@ -75,7 +75,7 @@ export default function HorizontalScrollSection({
       style={{ height: `calc(${React.Children.count(children) * 100}vh)` }}
     >
       {/* Sticky viewport-height container */}
-      <div ref={stickyRef} className="sticky top-0 overflow-hidden h-screen">
+      <div ref={stickyRef} className="sticky top-0 h-screen">
         {/* Track that moves horizontally */}
         <div
           className="flex h-full will-change-transform"

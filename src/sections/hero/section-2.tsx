@@ -17,6 +17,7 @@ const Section2 = ({ className }: { className?: string }) => {
           alt="Tent"
           width={800}
           height={400}
+          className="w-1/2"
         />
         <div className="flex flex-col gap-[1.5vw] basis-1/2 mt-[4vw]">
           <h2 className="text-[3.5vw] font-title leading-none text-shadow-bold">
