@@ -41,7 +41,7 @@ const SponsorFooter = async () => {
 
   // Container min-height based on background image aspect ratio (2660÷1920 = 138.54vw)
   return (
-    <div className="relative flex flex-col w-full h-[138.54vw]">
+    <div className="relative flex flex-col w-full h-[138.54vw]" id="sponsors">
       {/* Background gradient */}
       <div className="sticky top-0 min-h-screen bg-footer-radial z-0 -mb-[100vh]" />
       {/* Background graphic */}

@@ -20,7 +20,10 @@ const Faq = async () => {
   const faqData = groupFAQsByCategory(faqs);
 
   return (
-    <div className="relative text-white flex flex-col items-center w-full bg-faq-radial">
+    <div
+      className="relative text-white flex flex-col items-center w-full bg-faq-radial"
+      id="faq"
+    >
       <div className="flex flex-col w-full z-10">
         <Image
           src="/assets/faq/buffer-grass-bottom.png"

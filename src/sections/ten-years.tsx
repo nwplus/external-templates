@@ -45,7 +45,7 @@ export default function TenYears() {
 
   return (
     // Container min-height based on background image aspect ratio * 3 background images (1080÷1920 = 56.25vw * 3 = 168.75vw)
-    <div ref={containerRef} className="relative h-[168.75vw]">
+    <div ref={containerRef} className="relative h-[168.75vw]" id="10-years">
       <div className="sticky top-0 h-[56.25vw] overflow-hidden">
         <motion.div
           className="absolute inset-0"
