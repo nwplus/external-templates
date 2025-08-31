@@ -1,8 +1,5 @@
 "use client";
 
-import { vh } from "framer-motion";
-import Image from "next/image";
-
 export default function Navbar() {
   function scrollToSection(id: string) {
     const el = document.getElementById(id);
@@ -28,19 +25,32 @@ export default function Navbar() {
         {links.map((link) => (
           <div
             key={link.name}
-            onClick={
-              link.name != "Testimonials"
-                ? () => scrollToSection(link.href)
-                : () => {
-                    const el = document.getElementById("testimonials");
-                    if (el) {
-                      const y = el.getBoundingClientRect().top + window.scrollY;
-                      console.log(y);
-                      window.scrollTo({ top: y + 1200, behavior: "smooth" });
-                    } //really scuffed but ids dont seem to work on stats page? hard coding this for now...
+            onClick={() => {
+              const el = document.getElementById(link.href);
+              switch (link.name) {
+                case "Testimonials":
+                  if (el) {
+                    const y = el.getBoundingClientRect().top + window.scrollY;
+                    window.scrollTo({ top: y + 1200, behavior: "smooth" });
+                  } // really scuffed but ids dont seem to work on stats page? hard coding this for now...
+                  break;
+                case "Recap":
+                  if (el) {
+                    const y = el.getBoundingClientRect().top + window.scrollY;
+                    window.scrollTo({ top: y + 800, behavior: "smooth" });
                   }
-            }
-            className="cursor-grab hover:opacity-60 transition duration-150"
+                  break;
+                case "Stats":
+                  if (el) {
+                    const y = el.getBoundingClientRect().top + window.scrollY;
+                    window.scrollTo({ top: y + 1500, behavior: "smooth" });
+                  }
+                  break;
+                default:
+                  scrollToSection(link.href);
+              }
+            }}
+            className="cursor-pointer hover:opacity-60 transition duration-150"
           >
             {link.name}
           </div>

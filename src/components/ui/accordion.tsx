@@ -54,7 +54,7 @@ function AccordionTrigger({
             <Image
               src="/assets/hero/arrow.svg"
               alt="Arrow"
-              className="arrow-right pointer-events-none mt-3 transition-all duration-200"
+              className="arrow-right pointer-events-none my-auto transition-all duration-200"
               width={16}
               height={16}
             />
