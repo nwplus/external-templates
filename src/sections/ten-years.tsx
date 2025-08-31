@@ -60,7 +60,7 @@ export default function TenYears() {
       id="10-years"
     >
       <motion.div
-        className="sticky top-0 h-[56.25vw] overflow-hidden"
+        className="sticky top-0 h-screen overflow-hidden"
         style={{
           scale: zoomScale,
           opacity: zoomOpacity,
@@ -119,7 +119,7 @@ export default function TenYears() {
                 <div className="grid lg:grid-cols-3 gap-8 lg:gap-12 items-center text-white">
                   <div className="hidden lg:block"></div>
 
-                  <div className="lg:col-span-2 space-y-8">
+                  <div className="lg:col-span-2 space-y-4">
                     <div>
                       <div className="relative">
                         <Image
@@ -159,13 +159,13 @@ export default function TenYears() {
                       <h2 className="text-4xl font-title">
                         HackCamp has come a long way.
                       </h2>
-                      <p className="text-lg leading-relaxed">
+                      <p className="text-md leading-relaxed">
                         It all began with Local Hack Day, a global initiative by
                         Major League Hacking where campuses around the world
                         hosted a beginner-friendly 12-hour hackathon - all on
                         the same day!
                       </p>
-                      <p className="text-lg leading-relaxed">
+                      <p className="text-md leading-relaxed">
                         At UBC, the very first Local Hack Day was organized in
                         2016 by just two passionate students, <em>Kristen</em>{" "}
                         and <em>Charmaine</em>, under the UBC Hacks club, with a
@@ -186,7 +186,7 @@ export default function TenYears() {
                 <div className="grid lg:grid-cols-3 gap-8 lg:gap-12 items-center text-white">
                   <div className="hidden lg:block"></div>
 
-                  <div className="lg:col-span-2 space-y-8 text-md">
+                  <div className="lg:col-span-2 space-y-4 text-md">
                     <div className="space-y-6">
                       <div className="relative w-full max-w-md">
                         <Image
@@ -255,7 +255,7 @@ export default function TenYears() {
                 <div className="grid lg:grid-cols-3 gap-8 lg:gap-12 items-center text-white">
                   <div className="hidden lg:block"></div>
 
-                  <div className="lg:col-span-2 space-y-8">
+                  <div className="lg:col-span-2 space-y-4">
                     <div className="space-y-6">
                       <div className="relative w-full max-w-md">
                         <Image
@@ -312,25 +312,23 @@ export default function TenYears() {
                         decade of hacking with us!
                       </p>
 
-                      <div className="pt-4">
-                        <p className="mb-4">
-                          Read more about HackCamp&apos;s history{" "}
-                          <Link
-                            href="#"
-                            className="text-blue-300 hover:text-blue-200 underline"
-                          >
-                            here
-                          </Link>{" "}
-                          and{" "}
-                          <Link
-                            href="#"
-                            className="text-blue-300 hover:text-blue-200 underline"
-                          >
-                            here
-                          </Link>
-                          !
-                        </p>
-                      </div>
+                      <p className="mb-4">
+                        Read more about HackCamp&apos;s history{" "}
+                        <Link
+                          href="#"
+                          className="text-blue-300 hover:text-blue-200 underline"
+                        >
+                          here
+                        </Link>{" "}
+                        and{" "}
+                        <Link
+                          href="#"
+                          className="text-blue-300 hover:text-blue-200 underline"
+                        >
+                          here
+                        </Link>
+                        !
+                      </p>
                     </div>
                   </div>
                 </div>
