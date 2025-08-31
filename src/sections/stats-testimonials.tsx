@@ -83,7 +83,7 @@ export default function StatsTestimonials() {
         alt="Stats background"
         width={1000}
         height={100}
-        className="absolute inset-0 w-[100vw] top-[17vh] z-30 -left-[19vw]"
+        className="absolute inset-0 w-[100vw] h-[84vh]  top-[17vh] z-30 -left-[19vw]"
       />
 
       <Image
@@ -93,6 +93,9 @@ export default function StatsTestimonials() {
         height={100}
         className="absolute inset-0 min-w-[145vw] -top-[1vh] -left-[42vw]"
       />
+
+      {/* covers up the weird river edge from recap section */}
+      <div className="absolute top-[95vh] left-[2vw] bg-[#b4eaf2] w-36 h-36 rounded-full  z-50"></div>
 
       {/* <div className="absolute inset-0 z-0">
         <Image
