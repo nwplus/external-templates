@@ -55,6 +55,34 @@ export default function Learn() {
           className="absolute -bottom-[1vw] -right-[0.9vw]"
         />
       </div>
+      <Image
+        src="/assets/learn/2022-mascots.png"
+        alt="2022 Mascots"
+        width={500}
+        height={300}
+        className="absolute bottom-[8vw] left-[16vw] w-[23vw]"
+      />
+      <Image
+        src="/assets/learn/stump-nugget.svg"
+        alt="Nugget on a tree stump"
+        width={600}
+        height={600}
+        className="absolute bottom-[10vw] left-1/2 -translate-x-1/2 w-[18vw]"
+      />
+      <Image
+        src="/assets/learn/2024-mascots.png"
+        alt="2024 Mascots"
+        width={500}
+        height={300}
+        className="absolute bottom-[8vw] right-[16vw] w-[23vw]"
+      />
+      <Image
+        src="/assets/learn/tug-of-war.svg"
+        alt="Tug of War"
+        width={400}
+        height={100}
+        className="absolute bottom-0 left-0 w-[70vw]"
+      />
     </div>
   );
 }
