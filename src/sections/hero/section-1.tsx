@@ -89,7 +89,7 @@ const twoify = (num: number) => {
 };
 
 const Section1 = () => {
-  const countDownDate = new Date("Nov 9, 2025 09:00:00").getTime();
+  const countDownDate = new Date("Oct 17, 2025 09:00:00").getTime();
   const [days, hours, minutes] = useCountdown(countDownDate);
   const [scrollProgress, setScrollProgress] = useState(0);
 
