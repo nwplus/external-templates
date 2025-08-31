@@ -19,6 +19,13 @@ export default function Learn() {
           newfound passion for tech!
         </p>
       </div>
+      <Image
+        src="/assets/learn/tree.svg"
+        alt="Tree"
+        width={200}
+        height={800}
+        className="absolute left-[9vw] bottom-[9vw] w-[11vw]"
+      />
       <div className="absolute top-[21vw] left-1/2 -translate-x-1/2 flex justify-between w-[65vw]">
         <Sign
           faceContent={
