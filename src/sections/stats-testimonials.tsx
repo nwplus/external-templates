@@ -70,11 +70,12 @@ export default function StatsTestimonials() {
   const scale = useTransform(scrollYProgress, [0.7, 1], [1, 0.95]);
   const opacity = useTransform(scrollYProgress, [0.8, 1], [1, 0.8]);
 
+  // Container min-height based on background image aspect ratio (2459÷1920 = 128.07vw)
   return (
     <motion.div
       ref={containerRef}
       style={{ scale, opacity }}
-      className="relative w-full min-h-[230vh] overflow-hidden"
+      className="relative w-full h-[128.07vw] overflow-hidden"
     >
       <div className="absolute inset-0 z-0">
         <Image

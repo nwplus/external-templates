@@ -21,7 +21,7 @@ export default function Home() {
         <Recap />
         <StatsTestimonials />
       </HorizontalScrollSection>
-      <div className="h-[calc(230vh-100vh)] w-full"></div>
+      <div className="h-[calc(128.07vw-100vh)] w-full"></div>
       <TenYears />
       <Faq />
       <SponsorFooter />
