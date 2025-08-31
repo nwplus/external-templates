@@ -61,16 +61,14 @@ export default function StatsTestimonials() {
     offset: ["start start", "end start"],
   });
 
-  const mountainsY = useTransform(scrollYProgress, [0, 1], [-50, 150]);
+  const nuggetX = useTransform(scrollYProgress, [0, 1], [0, -50]);
+  const nuggetY = useTransform(scrollYProgress, [0, 1], [0, 80]);
 
-  const nuggetX = useTransform(scrollYProgress, [0, 1], [0, 20]);
-  const nuggetY = useTransform(scrollYProgress, [0, 1], [0, -40]);
-
-  const scale = useTransform(scrollYProgress, [0.7, 1], [1, 0.95]);
+  const scale = useTransform(scrollYProgress, [0.8, 1], [1, 0.95]);
 
   const containerOpacity = useTransform(
     scrollYProgress,
-    [0.6, 0.65, 0.75],
+    [0.7, 0.8, 0.9],
     [1, 0.2, 0]
   );
 

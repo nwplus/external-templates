@@ -29,9 +29,6 @@ export default function TenYears() {
     [0, 0, 1, 1]
   );
 
-  // Prevent Ten Years from intercepting clicks during overlap with previous sections
-  // We'll selectively re-enable pointer events on interactive children as needed
-
   // Body text and image transitions
   const section1Progress = useTransform(scrollYProgress, [0.4, 0.55], [1, 0]);
   const section2Progress = useTransform(
