@@ -14,45 +14,61 @@ export default function TenYears() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start start", "end start"],
+    offset: ["start end", "end start"],
   });
 
   const backgroundColor1 = "#769854";
   const backgroundColor2 = "#233E25";
   const backgroundColor3 = "#07171C";
 
-  const section1Progress = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
+  // Zoom out transition from stats and testimonials section
+  const zoomScale = useTransform(scrollYProgress, [0.1, 0.2, 0.4], [11, 9, 1]);
+  const zoomOpacity = useTransform(
+    scrollYProgress,
+    [0, 0.2, 0.3, 1],
+    [0, 0, 1, 1]
+  );
+
+  // Body text and image transitions
+  const section1Progress = useTransform(scrollYProgress, [0.4, 0.55], [1, 0]);
   const section2Progress = useTransform(
     scrollYProgress,
-    [0.15, 0.4, 0.6],
-    [0, 1, 0]
-  );
-  const section3Progress = useTransform(scrollYProgress, [0.45, 0.6], [0, 1]);
-
-  const backgroundOpacity1 = useTransform(scrollYProgress, [0, 0.4], [1, 0]);
-  const backgroundOpacity2 = useTransform(
-    scrollYProgress,
-    [0.2, 0.4, 0.6, 0.8],
+    [0.4, 0.55, 0.65, 0.75],
     [0, 1, 1, 0]
   );
-  const backgroundOpacity3 = useTransform(scrollYProgress, [0.45, 0.7], [0, 1]);
+  const section3Progress = useTransform(scrollYProgress, [0.65, 0.75], [0, 1]);
+
+  // Background object transitions
+  const backgroundOpacity1 = useTransform(scrollYProgress, [0.4, 0.5], [1, 0]);
+  const backgroundOpacity2 = useTransform(
+    scrollYProgress,
+    [0.4, 0.5, 0.6, 0.7],
+    [0, 1, 1, 0]
+  );
+  const backgroundOpacity3 = useTransform(scrollYProgress, [0.6, 0.7], [0, 1]);
 
   const activeDot = useTransform(scrollYProgress, (progress) => {
-    if (progress > 0.45) return 2;
-    if (progress > 0.15) return 1;
+    if (progress > 0.7) return 2;
+    if (progress > 0.4) return 1;
     return 0;
   });
 
   return (
-    // Container min-height based on background image aspect ratio * 3 background images (1080÷1920 = 56.25vw * 3 = 168.75vw)
-    <div ref={containerRef} className="relative h-[168.75vw]">
-      <div className="sticky top-0 h-[56.25vw] overflow-hidden">
+    <div ref={containerRef} className="relative h-[350vh] z-20 -mt-[100vh]">
+      <motion.div
+        className="sticky top-0 h-[56.25vw] overflow-hidden"
+        style={{
+          scale: zoomScale,
+          opacity: zoomOpacity,
+          transformOrigin: "24% 25%",
+        }}
+      >
         <motion.div
           className="absolute inset-0"
           style={{
             backgroundColor: useTransform(
               scrollYProgress,
-              [0, 0.2, 0.3, 0.5, 0.6, 1],
+              [0, 0.4, 0.5, 0.6, 0.7, 1],
               [
                 backgroundColor1,
                 backgroundColor1,
@@ -318,7 +334,6 @@ export default function TenYears() {
             </motion.div>
           </div>
         </div>
-        {/* <BufferGrassTop className=" w-full" /> */}
         <div className="absolute left-1/2 top-1/2 transform -translate-x-40 -translate-y-8 z-20">
           <div className="flex flex-col space-y-3">
             {Array.from({ length: 3 }).map((_, index) => (
@@ -326,7 +341,7 @@ export default function TenYears() {
             ))}
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

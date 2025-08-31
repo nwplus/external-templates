@@ -68,10 +68,12 @@ export default function StatsTestimonials() {
 
   const scale = useTransform(scrollYProgress, [0.7, 1], [1, 0.95]);
 
+  const containerOpacity = useTransform(scrollYProgress, [0.6, 0.65, 0.75], [1, 0.2, 0]);
+
   return (
     <motion.div
       ref={containerRef}
-      style={{ scale }}
+      style={{ scale, opacity: containerOpacity }}
       className="relative w-full min-h-[230vh] overflow-hidden"
     >
       <div className="absolute inset-0 z-0">
