@@ -29,6 +29,9 @@ export default function TenYears() {
     [0, 0, 1, 1]
   );
 
+  // Prevent Ten Years from intercepting clicks during overlap with previous sections
+  // We'll selectively re-enable pointer events on interactive children as needed
+
   // Body text and image transitions
   const section1Progress = useTransform(scrollYProgress, [0.4, 0.55], [1, 0]);
   const section2Progress = useTransform(
@@ -56,11 +59,11 @@ export default function TenYears() {
   return (
     <div
       ref={containerRef}
-      className="relative h-[350vh] z-20 -mt-[100vh]"
+      className="relative h-[350vh] z-20 -mt-[100vh] pointer-events-none"
       id="10-years"
     >
       <motion.div
-        className="sticky top-0 h-screen overflow-hidden"
+        className="sticky top-0 h-screen overflow-hidden pointer-events-none"
         style={{
           scale: zoomScale,
           opacity: zoomOpacity,
@@ -316,14 +319,14 @@ export default function TenYears() {
                         Read more about HackCamp&apos;s history{" "}
                         <Link
                           href="#"
-                          className="text-blue-300 hover:text-blue-200 underline"
+                          className="text-blue-300 hover:text-blue-200 underline pointer-events-auto"
                         >
                           here
                         </Link>{" "}
                         and{" "}
                         <Link
                           href="#"
-                          className="text-blue-300 hover:text-blue-200 underline"
+                          className="text-blue-300 hover:text-blue-200 underline pointer-events-auto"
                         >
                           here
                         </Link>

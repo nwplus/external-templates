@@ -239,7 +239,7 @@ export default function StatsTestimonials() {
       </motion.div>
 
       {/* Testimonial carousel controls */}
-      <div className="absolute bottom-[5rem] left-1/5 transform -translate-x-1/2 z-50">
+      <div className="absolute bottom-[5rem] left-1/5 transform -translate-x-1/2 z-[9999] pointer-events-auto">
         <CarouselControls
           totalSlides={testimonials.length}
           currentSlide={currentSlide}
