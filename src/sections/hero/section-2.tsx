@@ -5,12 +5,8 @@ import Image from "next/image";
 const Section2 = ({ className }: { className?: string }) => {
   // Container min-height based on background image aspect ratio (1027÷1260 = 53.5vw)
   return (
-    <div
-      className={cn(
-        "relative bg-[url('/assets/hero/background-2.svg')] bg-cover bg-center bg-no-repeat h-[53.5vw]",
-        className
-      )}
-    >
+    <div className={cn("relative h-[39.5vw]", className)}>
+      <div className="absolute inset-0 bg-[url('/assets/hero/background-2.svg')] bg-cover bg-center bg-no-repeat h-[53.5vw]"></div>
       <div className="absolute left-0 top-[6vw] w-[95vw] flex justify-between">
         <Image
           src="/assets/hero/tent-plus-things.png"

@@ -9,13 +9,19 @@ import TenYears from "@/sections/ten-years";
 
 export default function Home() {
   return (
-    <div>
+    <div className="relative">
       <Hero />
+      <div className="h-[calc(62vw-100vh)] w-full"></div>
       <HorizontalScrollSection>
-        <Learn />
+        <div className="relative h-screen w-screen">
+          <div className="absolute bottom-0 left-0 w-full">
+            <Learn />
+          </div>
+        </div>
         <Recap />
+        <StatsTestimonials />
       </HorizontalScrollSection>
-      <StatsTestimonials />
+      <div className="h-[calc(230vh-100vh)] w-full"></div>
       <TenYears />
       <Faq />
       <SponsorFooter />
