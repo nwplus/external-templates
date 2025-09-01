@@ -61,16 +61,14 @@ export default function StatsTestimonials() {
     offset: ["start start", "end start"],
   });
 
-  const mountainsY = useTransform(scrollYProgress, [0, 1], [-50, 150]);
+  const nuggetX = useTransform(scrollYProgress, [0, 1], [0, -50]);
+  const nuggetY = useTransform(scrollYProgress, [0, 1], [0, 80]);
 
-  const nuggetX = useTransform(scrollYProgress, [0, 1], [0, 20]);
-  const nuggetY = useTransform(scrollYProgress, [0, 1], [0, -40]);
-
-  const scale = useTransform(scrollYProgress, [0.7, 1], [1, 0.95]);
+  const scale = useTransform(scrollYProgress, [0.8, 1], [1, 0.95]);
 
   const containerOpacity = useTransform(
     scrollYProgress,
-    [0.6, 0.65, 0.75],
+    [0.7, 0.8, 0.9],
     [1, 0.2, 0]
   );
 
@@ -80,28 +78,28 @@ export default function StatsTestimonials() {
       ref={containerRef}
       style={{ scale, opacity: containerOpacity }}
       className="relative w-screen h-[128.07vw]"
-      id="stats"
     >
       <Image
         src={"/assets/stats-and-testimonials/graphics/grasstents.png"}
         alt="Stats background"
         width={1000}
         height={100}
-        className="absolute inset-0 w-[100vw] h-[84vh]  top-[17vh] z-30 -left-[19vw]"
+        className="absolute inset-0 w-[100vw] h-[84vh] top-[17vh] z-30 -left-[19vw]"
+        id="stats"
       />
 
       <Image
-        src={"/assets/stats-and-testimonials/graphics/mountains.png"}
+        src={"/assets/stats-and-testimonials/graphics/mountains-and-sun.png"}
         alt="Stats background"
         width={1000}
         height={100}
-        className="absolute inset-0 min-w-[145vw] -top-[1vh] -left-[42vw]"
+        className="absolute inset-0 w-[100vw] h-[65vh] left-0 top-[3vh] z-5"
       />
 
       {/* covers up the weird river edge from recap section */}
       <div className="absolute top-[95vh] left-[2vw] bg-[#b4eaf2] w-36 h-36 rounded-full  z-50"></div>
 
-      {/* <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 min-h-[50vh] max-h-[80vh]">
         <Image
           src="/assets/stats-and-testimonials/graphics/sky.svg"
           alt="Sky background"
@@ -109,7 +107,7 @@ export default function StatsTestimonials() {
           className="object-cover"
           priority
         />
-      </div> */}
+      </div>
 
       {/* <motion.div
         style={{ y: mountainsY }}
@@ -124,7 +122,7 @@ export default function StatsTestimonials() {
         />
       </motion.div> */}
 
-      <div className="absolute top-[62vh] left-0 w-full h-[175vh] z-10">
+      <div className="absolute top-[55vh] left-0 w-full h-[175vh] z-10">
         <Image
           src="/assets/stats-and-testimonials/graphics/river.svg"
           alt="River background"
@@ -144,7 +142,7 @@ export default function StatsTestimonials() {
         />
       </div>
 
-      <div className="absolute top-[30rem] left-2 z-50">
+      <div className="absolute top-[48vh] left-2 z-40">
         <div className="relative">
           <Image
             src="/assets/stats-and-testimonials/graphics/boats-and-stat.svg"
@@ -206,9 +204,9 @@ export default function StatsTestimonials() {
       </motion.div>
 
       {/* Testimonials body text */}
-      <motion.div className="absolute bottom-0 right-0 z-30">
+      <motion.div className="absolute bottom-0 right-0 translate-y-[10vh] z-30">
         <Image
-          src="/assets/stats-and-testimonials/graphics/testimonial ground.svg"
+          src="/assets/stats-and-testimonials/graphics/testimonial-ground.svg"
           alt="Testimonial ground background"
           height={600}
           width={900}
@@ -239,7 +237,7 @@ export default function StatsTestimonials() {
       </motion.div>
 
       {/* Testimonial carousel controls */}
-      <div className="absolute bottom-[5rem] left-1/5 transform -translate-x-1/2 z-50">
+      <div className="absolute bottom-[5rem] left-1/5 transform -translate-x-1/2 z-[9999] pointer-events-auto">
         <CarouselControls
           totalSlides={testimonials.length}
           currentSlide={currentSlide}
@@ -253,7 +251,7 @@ export default function StatsTestimonials() {
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 0.8 }}
         style={{ x: nuggetX, y: nuggetY }}
-        className="absolute top-[110vh] left-[10rem] z-15"
+        className="absolute top-[105vh] left-[12rem] z-20"
       >
         <Image
           src="/assets/stats-and-testimonials/graphics/nugget tube.svg"

@@ -22,45 +22,45 @@ export default function TenYears() {
   const backgroundColor3 = "#07171C";
 
   // Zoom out transition from stats and testimonials section
-  const zoomScale = useTransform(scrollYProgress, [0.1, 0.2, 0.4], [11, 9, 1]);
+  const zoomScale = useTransform(scrollYProgress, [0.1, 0.2, 0.35], [11, 9, 1]);
   const zoomOpacity = useTransform(
     scrollYProgress,
-    [0, 0.2, 0.3, 1],
-    [0, 0, 1, 1]
+    [0, 0.2, 0.22, 0.225, 0.23, 1],
+    [0, 0, 0.2, 0.9, 1, 1]
   );
 
   // Body text and image transitions
-  const section1Progress = useTransform(scrollYProgress, [0.4, 0.55], [1, 0]);
+  const section1Progress = useTransform(scrollYProgress, [0.55, 0.57], [1, 0]);
   const section2Progress = useTransform(
     scrollYProgress,
-    [0.4, 0.55, 0.65, 0.75],
+    [0.57, 0.6, 0.7, 0.72],
     [0, 1, 1, 0]
   );
-  const section3Progress = useTransform(scrollYProgress, [0.65, 0.75], [0, 1]);
+  const section3Progress = useTransform(scrollYProgress, [0.73, 0.76], [0, 1]);
 
   // Background object transitions
-  const backgroundOpacity1 = useTransform(scrollYProgress, [0.4, 0.5], [1, 0]);
+  const backgroundOpacity1 = useTransform(scrollYProgress, [0.55, 0.6], [1, 0]);
   const backgroundOpacity2 = useTransform(
     scrollYProgress,
-    [0.4, 0.5, 0.6, 0.7],
+    [0.55, 0.6, 0.7, 0.75],
     [0, 1, 1, 0]
   );
-  const backgroundOpacity3 = useTransform(scrollYProgress, [0.6, 0.7], [0, 1]);
+  const backgroundOpacity3 = useTransform(scrollYProgress, [0.72, 0.75], [0, 1]);
 
   const activeDot = useTransform(scrollYProgress, (progress) => {
-    if (progress > 0.7) return 2;
-    if (progress > 0.4) return 1;
+    if (progress > 0.73) return 2;
+    if (progress > 0.55) return 1;
     return 0;
   });
 
   return (
     <div
       ref={containerRef}
-      className="relative h-[350vh] z-20 -mt-[100vh]"
+      className="relative h-[400vh] z-20 -mt-[100vh] pointer-events-none"
       id="10-years"
     >
       <motion.div
-        className="sticky top-0 h-screen overflow-hidden"
+        className="sticky top-0 h-screen overflow-hidden pointer-events-none"
         style={{
           scale: zoomScale,
           opacity: zoomOpacity,
@@ -72,7 +72,7 @@ export default function TenYears() {
           style={{
             backgroundColor: useTransform(
               scrollYProgress,
-              [0, 0.4, 0.5, 0.6, 0.7, 1],
+              [0, 0.55, 0.57, 0.7, 0.75, 1],
               [
                 backgroundColor1,
                 backgroundColor1,
@@ -86,25 +86,28 @@ export default function TenYears() {
         />
 
         <motion.div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="absolute inset-0 w-full h-full bg-center bg-no-repeat"
           style={{
             backgroundImage: "url(/assets/ten-years/graphics/backdrop-1.png)",
+            backgroundSize: "100% 100%",
             opacity: backgroundOpacity1,
           }}
         />
 
         <motion.div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="absolute inset-0 w-full h-full bg-center bg-no-repeat"
           style={{
             backgroundImage: "url(/assets/ten-years/graphics/backdrop-2.png)",
+            backgroundSize: "100% 100%",
             opacity: backgroundOpacity2,
           }}
         />
 
         <motion.div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="absolute inset-0 w-full h-full bg-center bg-no-repeat"
           style={{
             backgroundImage: "url(/assets/ten-years/graphics/backdrop-3.png)",
+            backgroundSize: "100% 100%",
             opacity: backgroundOpacity3,
           }}
         />
@@ -316,14 +319,14 @@ export default function TenYears() {
                         Read more about HackCamp&apos;s history{" "}
                         <Link
                           href="#"
-                          className="text-blue-300 hover:text-blue-200 underline"
+                          className="text-blue-300 hover:text-blue-200 underline pointer-events-auto"
                         >
                           here
                         </Link>{" "}
                         and{" "}
                         <Link
                           href="#"
-                          className="text-blue-300 hover:text-blue-200 underline"
+                          className="text-blue-300 hover:text-blue-200 underline pointer-events-auto"
                         >
                           here
                         </Link>
