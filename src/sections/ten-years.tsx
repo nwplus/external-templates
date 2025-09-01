@@ -89,6 +89,7 @@ export default function TenYears() {
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
             backgroundImage: "url(/assets/ten-years/graphics/backdrop-1.png)",
+            backgroundSize: "cover",
             opacity: backgroundOpacity1,
           }}
         />
@@ -97,6 +98,7 @@ export default function TenYears() {
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
             backgroundImage: "url(/assets/ten-years/graphics/backdrop-2.png)",
+            backgroundSize: "cover",
             opacity: backgroundOpacity2,
           }}
         />
@@ -105,6 +107,7 @@ export default function TenYears() {
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
             backgroundImage: "url(/assets/ten-years/graphics/backdrop-3.png)",
+            backgroundSize: "cover",
             opacity: backgroundOpacity3,
           }}
         />
