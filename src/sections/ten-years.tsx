@@ -22,30 +22,30 @@ export default function TenYears() {
   const backgroundColor3 = "#07171C";
 
   // Zoom out transition from stats and testimonials section
-  const zoomScale = useTransform(scrollYProgress, [0.1, 0.2, 0.4], [11, 9, 1]);
+  const zoomScale = useTransform(scrollYProgress, [0.1, 0.2, 0.35], [11, 9, 1]);
   const zoomOpacity = useTransform(
     scrollYProgress,
-    [0, 0.2, 0.3, 1],
-    [0, 0, 1, 1]
+    [0, 0.2, 0.22, 0.225, 0.23, 1],
+    [0, 0, 0.2, 0.9, 1, 1]
   );
 
   // Body text and image transitions
-  const section1Progress = useTransform(scrollYProgress, [0.4, 0.55], [1, 0]);
+  const section1Progress = useTransform(scrollYProgress, [0.55, 0.57], [1, 0]);
   const section2Progress = useTransform(
     scrollYProgress,
-    [0.4, 0.55, 0.65, 0.75],
+    [0.57, 0.6, 0.7, 0.72],
     [0, 1, 1, 0]
   );
-  const section3Progress = useTransform(scrollYProgress, [0.65, 0.75], [0, 1]);
+  const section3Progress = useTransform(scrollYProgress, [0.73, 0.76], [0, 1]);
 
   // Background object transitions
-  const backgroundOpacity1 = useTransform(scrollYProgress, [0.4, 0.5], [1, 0]);
+  const backgroundOpacity1 = useTransform(scrollYProgress, [0.55, 0.6], [1, 0]);
   const backgroundOpacity2 = useTransform(
     scrollYProgress,
-    [0.4, 0.5, 0.6, 0.7],
+    [0.55, 0.6, 0.7, 0.75],
     [0, 1, 1, 0]
   );
-  const backgroundOpacity3 = useTransform(scrollYProgress, [0.6, 0.7], [0, 1]);
+  const backgroundOpacity3 = useTransform(scrollYProgress, [0.72, 0.75], [0, 1]);
 
   const activeDot = useTransform(scrollYProgress, (progress) => {
     if (progress > 0.7) return 2;
@@ -56,7 +56,7 @@ export default function TenYears() {
   return (
     <div
       ref={containerRef}
-      className="relative h-[350vh] z-20 -mt-[100vh] pointer-events-none"
+      className="relative h-[400vh] z-20 -mt-[100vh] pointer-events-none"
       id="10-years"
     >
       <motion.div
@@ -72,7 +72,7 @@ export default function TenYears() {
           style={{
             backgroundColor: useTransform(
               scrollYProgress,
-              [0, 0.4, 0.5, 0.6, 0.7, 1],
+              [0, 0.55, 0.57, 0.7, 0.75, 1],
               [
                 backgroundColor1,
                 backgroundColor1,

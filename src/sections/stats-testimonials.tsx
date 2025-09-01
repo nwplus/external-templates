@@ -142,7 +142,7 @@ export default function StatsTestimonials() {
         />
       </div>
 
-      <div className="absolute top-[30rem] left-2 z-50">
+      <div className="absolute top-[30rem] left-2 z-30">
         <div className="relative">
           <Image
             src="/assets/stats-and-testimonials/graphics/boats-and-stat.svg"
@@ -204,9 +204,9 @@ export default function StatsTestimonials() {
       </motion.div>
 
       {/* Testimonials body text */}
-      <motion.div className="absolute bottom-0 right-0 z-30">
+      <motion.div className="absolute bottom-0 right-0 translate-y-[10vh] z-30">
         <Image
-          src="/assets/stats-and-testimonials/graphics/testimonial ground.svg"
+          src="/assets/stats-and-testimonials/graphics/testimonial-ground.svg"
           alt="Testimonial ground background"
           height={600}
           width={900}
@@ -251,7 +251,7 @@ export default function StatsTestimonials() {
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 0.8 }}
         style={{ x: nuggetX, y: nuggetY }}
-        className="absolute top-[110vh] left-[10rem] z-15"
+        className="absolute top-[105vh] left-[12rem] z-20"
       >
         <Image
           src="/assets/stats-and-testimonials/graphics/nugget tube.svg"
