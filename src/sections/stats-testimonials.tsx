@@ -93,13 +93,13 @@ export default function StatsTestimonials() {
         alt="Stats background"
         width={1000}
         height={100}
-        className="absolute inset-0 w-[100vw] h-[54.5vh] left-[4vw] top-[7vh] z-5"
+        className="absolute inset-0 w-[100vw] h-[65vh] left-0 top-[3vh] z-5"
       />
 
       {/* covers up the weird river edge from recap section */}
-      <div className="absolute top-[91vh] right-[145vh] bg-[#b4eaf2] min-w-36 min-h-40 rounded-full z-40"></div>
+      <div className="absolute top-[95vh] left-[2vw] bg-[#b4eaf2] w-36 h-36 rounded-full  z-50"></div>
 
-      <div className="absolute inset-0 z-0 min-h-[50vh] max-h-[70vh]">
+      <div className="absolute inset-0 z-0 min-h-[50vh] max-h-[80vh]">
         <Image
           src="/assets/stats-and-testimonials/graphics/sky.svg"
           alt="Sky background"
@@ -122,7 +122,7 @@ export default function StatsTestimonials() {
         />
       </motion.div> */}
 
-      <div className="absolute top-[54vh] left-0 w-full h-[175vh] z-10">
+      <div className="absolute top-[55vh] left-0 w-full h-[175vh] z-10">
         <Image
           src="/assets/stats-and-testimonials/graphics/river.svg"
           alt="River background"
@@ -166,6 +166,7 @@ export default function StatsTestimonials() {
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 2.2, duration: 0.8 }}
             className="absolute right-0 -top-56 z-50"
           >
             <Image
@@ -179,6 +180,7 @@ export default function StatsTestimonials() {
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 1.4, duration: 0.8 }}
             className="absolute right-12 -top-24 z-50"
           >
             <Image
@@ -245,9 +247,11 @@ export default function StatsTestimonials() {
       </div>
 
       <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 0.8 }}
         style={{ x: nuggetX, y: nuggetY }}
-        className="absolute top-[105vh] left-[12rem] z-60"
+        className="absolute top-[105vh] left-[12rem] z-20"
       >
         <Image
           src="/assets/stats-and-testimonials/graphics/nugget tube.svg"

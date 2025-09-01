@@ -48,8 +48,8 @@ export default function TenYears() {
   const backgroundOpacity3 = useTransform(scrollYProgress, [0.72, 0.75], [0, 1]);
 
   const activeDot = useTransform(scrollYProgress, (progress) => {
-    if (progress > 0.7) return 2;
-    if (progress > 0.4) return 1;
+    if (progress > 0.73) return 2;
+    if (progress > 0.55) return 1;
     return 0;
   });
 
@@ -86,28 +86,28 @@ export default function TenYears() {
         />
 
         <motion.div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="absolute inset-0 w-full h-full bg-center bg-no-repeat"
           style={{
             backgroundImage: "url(/assets/ten-years/graphics/backdrop-1.png)",
-            backgroundSize: "cover",
+            backgroundSize: "100% 100%",
             opacity: backgroundOpacity1,
           }}
         />
 
         <motion.div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="absolute inset-0 w-full h-full bg-center bg-no-repeat"
           style={{
             backgroundImage: "url(/assets/ten-years/graphics/backdrop-2.png)",
-            backgroundSize: "cover",
+            backgroundSize: "100% 100%",
             opacity: backgroundOpacity2,
           }}
         />
 
         <motion.div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="absolute inset-0 w-full h-full bg-center bg-no-repeat"
           style={{
             backgroundImage: "url(/assets/ten-years/graphics/backdrop-3.png)",
-            backgroundSize: "cover",
+            backgroundSize: "100% 100%",
             opacity: backgroundOpacity3,
           }}
         />
