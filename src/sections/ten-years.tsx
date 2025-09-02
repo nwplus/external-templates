@@ -25,7 +25,7 @@ export default function TenYears() {
   const zoomScale = useTransform(scrollYProgress, [0.1, 0.2, 0.35], [11, 9, 1]);
   const zoomOpacity = useTransform(
     scrollYProgress,
-    [0, 0.2, 0.22, 0.225, 0.23, 1],
+    [0, 0.21, 0.215, 0.22, 0.23, 1],
     [0, 0, 0.2, 0.9, 1, 1]
   );
 
