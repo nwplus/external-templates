@@ -84,11 +84,29 @@ const SponsorFooter = async () => {
             </div>
           ))}
         </div>
-        <div className="grow flex flex-col justify-end gap-[30dvw]">
+        <div className="grow flex flex-col justify-end lg:gap-[12dvw] xl:gap-[30dvw]">
           <Contact />
           <div className="flex flex-col items-center">
             <TeamGallery />
-            <p className="font-bold my-4">Copyright © HackCamp 2025</p>
+            <p className="w-[70vw] text-center my-4">
+              nwPlus acknowledges that our members have the privilege of living,
+              learning and facilitating hackathons on the traditional,
+              ancestral, and stolen territory of the xʷməθkʷəy̓əm (Musqueam) and
+              səlilwətaɬ (Tsleil-Waututh) peoples. As members of nwPlus, we play
+              an active role in reconciliation and are working to learn and
+              expand our knowledge on the history of Indigenous peoples. To
+              learn more, visit{" "}
+              <a
+                href="https://guides.library.ubc.ca/xwi7xwaresearchguide"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline"
+              >
+                xwi7xwa&apos;s Research Guide
+              </a>
+              .
+            </p>
+            <p className="font-bold mb-4">Copyright © HackCamp 2025</p>
           </div>
         </div>
       </div>
