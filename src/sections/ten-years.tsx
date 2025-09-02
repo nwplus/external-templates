@@ -61,7 +61,6 @@ export default function TenYears() {
     <div
       ref={containerRef}
       className="relative h-[400vh] z-20 -mt-[100vh] pointer-events-none"
-      id="10-years"
     >
       <motion.div
         className="sticky top-0 h-screen overflow-hidden pointer-events-none"
@@ -139,7 +138,7 @@ export default function TenYears() {
                       </div>
 
                       <div className="space-y-6">
-                        <div className="relative w-full max-w-md">
+                        <div className="relative w-full max-w-md" id="10-years">
                           <Image
                             src="/assets/ten-years/graphics/image-background.svg"
                             alt="Image background"
