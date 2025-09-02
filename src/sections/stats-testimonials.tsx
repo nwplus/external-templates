@@ -105,13 +105,13 @@ export default function StatsTestimonials() {
         alt="Stats background"
         width={1000}
         height={100}
-        className="absolute inset-0 w-[100vw] h-[65vh] left-0 top-[3vh] z-5"
+        className="absolute inset-0 w-[100vw] h-[58vh] left-[7vh] top-[6vh] z-5"
       />
 
       {/* covers up the weird river edge from recap section */}
       <div className="absolute top-[95vh] left-[2vw] bg-[#b4eaf2] w-36 h-36 rounded-full  z-50"></div>
 
-      <div className="absolute inset-0 z-0 min-h-[50vh] max-h-[80vh]">
+      <div className="absolute inset-0 z-0 min-h-[50vh] max-h-[72vh]">
         <Image
           src="/assets/stats-and-testimonials/graphics/sky.svg"
           alt="Sky background"
@@ -134,7 +134,7 @@ export default function StatsTestimonials() {
         />
       </motion.div> */}
 
-      <div className="absolute top-[55vh] left-0 w-full h-[175vh] z-10">
+      <div className="absolute top-[55vh] left-0 w-full h-[120vw] z-10">
         <Image
           src="/assets/stats-and-testimonials/graphics/river.svg"
           alt="River background"
