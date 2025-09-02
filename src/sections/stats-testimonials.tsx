@@ -56,7 +56,7 @@ const testimonials: Testimonial[] = [
     program: "Integrated Engineering",
     testimonial:
       "As someone who had been self-learning coding alone up until this hackathon, HackCamp gave me the opportunity to finally work on a project with others, put to practice the concepts I had been learning, and make some really good friends, too! Thank you nwPlus for giving me such an encouraging first hackathon experience!",
-    photo: "",
+    photo: "/assets/stats-and-testimonials/testimonials-isabella.png",
     devpost: "https://devpost.com/software/capcap-8xjrw7",
     linkedin: "https://www.linkedin.com/in/isabellalinde/",
   },
