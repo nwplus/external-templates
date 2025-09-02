@@ -45,7 +45,11 @@ export default function TenYears() {
     [0.55, 0.6, 0.7, 0.75],
     [0, 1, 1, 0]
   );
-  const backgroundOpacity3 = useTransform(scrollYProgress, [0.72, 0.75], [0, 1]);
+  const backgroundOpacity3 = useTransform(
+    scrollYProgress,
+    [0.72, 0.75],
+    [0, 1]
+  );
 
   const activeDot = useTransform(scrollYProgress, (progress) => {
     if (progress > 0.73) return 2;
@@ -240,7 +244,7 @@ export default function TenYears() {
 
                       <p className="leading-relaxed">
                         Then in 2020, Local Hack Day officially transformed into
-                        what we now call HackCamp***, a weekend-long bootcamp
+                        what we now call HackCamp, a weekend-long bootcamp
                         hackathon designed for beginners and tech lovers
                         worldwide.
                       </p>
@@ -285,7 +289,7 @@ export default function TenYears() {
 
                     <div className="space-y-6 max-w-2xl text-md">
                       <p className="leading-relaxed max-w-lg">
-                        This November 16- 17, HackCamp returns for its{" "}
+                        This November, HackCamp returns for its{" "}
                         <strong>10th anniversary!</strong> While the name has
                         changed throughout the years, the mission remains the
                         same.
@@ -318,14 +322,14 @@ export default function TenYears() {
                       <p className="mb-4">
                         Read more about HackCamp&apos;s history{" "}
                         <Link
-                          href="#"
+                          href="https://medium.com/nwplusubc/the-evolution-of-hackcamp-526d32592641"
                           className="text-blue-300 hover:text-blue-200 underline pointer-events-auto"
                         >
                           here
                         </Link>{" "}
                         and{" "}
                         <Link
-                          href="#"
+                          href="https://kristen.dev/blog/2018-12-20/"
                           className="text-blue-300 hover:text-blue-200 underline pointer-events-auto"
                         >
                           here
