@@ -61,7 +61,15 @@ const Section2 = ({ className }: { className?: string }) => {
 
             <p>
               To learn more about hackathons and what to expect, check out our
-              article on Medium.
+              article on{" "}
+              <a
+                href="https://medium.com/nwplusubc/nwchats-what-is-a-hackathon-7b5032011487"
+                target="_blank"
+                className="text-blue-800 hover:underline"
+              >
+                Medium
+              </a>
+              .
             </p>
           </div>
         </div>
