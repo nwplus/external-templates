@@ -1,6 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useAutoplayAudio } from "@/hooks/use-autoplay-audio";
+
+import { useRef, useState } from "react";
 
 import { Button } from "../ui/button";
 import Facebook from "./social/facebook";
@@ -11,6 +13,13 @@ import Youtube from "./social/youtube";
 
 const Contact = () => {
   const [inputMessage, setInputMessage] = useState("");
+  const audioThresholdRef = useRef<HTMLInputElement>(null);
+
+  // Comes from https://pixabay.com/sound-effects/campfire-crackling-fireplace-sound-119594/
+  useAutoplayAudio(
+    audioThresholdRef,
+    "/assets/sponsor-footer/campfire-sound.mp3"
+  );
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -109,6 +118,7 @@ const Contact = () => {
           placeholder="Sign up for our newsletter!"
           className="py-2 px-4 pr-20 rounded-lg text-black bg-white w-xl"
           name="email"
+          ref={audioThresholdRef}
         />
         <Button
           className="absolute right-2 bg-[#350001]"
