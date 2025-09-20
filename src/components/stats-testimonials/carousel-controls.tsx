@@ -23,11 +23,35 @@ export default function CarouselControls({
 }: CarouselControlsProps) {
   return (
     <div className={`flex items-center justify-center space-x-4 ${className}`}>
+      <div className="md:hidden bg-neutral-500/30 backdrop-blur-sm rounded-full">
+        <button
+          onClick={() =>
+            onSlideChange(currentSlide === 0 ? totalSlides - 1 : currentSlide - 1)
+          }
+          className="p-2 hover:scale-110 hover:cursor-pointer rounded-full transition duration-200 disabled:opacity-50"
+          aria-label="Previous testimonial"
+        >
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="text-gray-700"
+          >
+            <polyline points="15,18 9,12 15,6"></polyline>
+          </svg>
+        </button>
+      </div>
+
       <button
         onClick={() =>
           onSlideChange(currentSlide === 0 ? totalSlides - 1 : currentSlide - 1)
         }
-        className="p-2 hover:scale-110 hover:cursor-pointer rounded-full transition duration-200 disabled:opacity-50"
+        className="hidden md:block p-2 hover:cursor-pointer rounded-full transition duration-200 disabled:opacity-50"
         aria-label="Previous testimonial"
       >
         <svg
@@ -54,11 +78,10 @@ export default function CarouselControls({
             aria-label={`Go to testimonial ${index + 1}`}
           >
             <motion.div
-              className="w-full h-full rounded-full border-2 border-gray-400"
+              className="w-full h-full rounded-full"
               animate={{
                 backgroundColor:
-                  index === currentSlide ? "#374151" : "transparent",
-                scale: index === currentSlide ? 1.2 : 1,
+                  index === currentSlide ? "#374151" : "rgba(55, 65, 81, 0.3)",
               }}
               transition={{
                 duration: 0.2,
@@ -69,11 +92,34 @@ export default function CarouselControls({
         ))}
       </div>
 
+      <div className="md:hidden bg-neutral-500/30 backdrop-blur-sm rounded-full">
+        <button
+          onClick={() =>
+            onSlideChange(currentSlide === totalSlides - 1 ? 0 : currentSlide + 1)
+          }
+          className="p-2 hover:scale-110 hover:cursor-pointer rounded-full transition duration-200 disabled:opacity-50"
+          aria-label="Next testimonial"
+        >
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="text-gray-700"
+          >
+            <polyline points="9,18 15,12 9,6"></polyline>
+          </svg>
+        </button>
+      </div>
       <button
         onClick={() =>
           onSlideChange(currentSlide === totalSlides - 1 ? 0 : currentSlide + 1)
         }
-        className="p-2 hover:scale-110 hover:cursor-pointer rounded-full transition duration-200 disabled:opacity-50"
+        className="hidden md:block p-2 hover:scale-110 hover:cursor-pointer rounded-full transition duration-200 disabled:opacity-50"
         aria-label="Next testimonial"
       >
         <svg

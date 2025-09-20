@@ -1,6 +1,7 @@
 "use client";
 
 import CarouselControls from "@/components/stats-testimonials/carousel-controls";
+import StatsTestimonialsMobile from "@/components/mobile/stats-testimonials-mobile";
 
 import {
   AnimatePresence,
@@ -63,9 +64,9 @@ const testimonials: Testimonial[] = [
 ];
 
 /**
- * Stats and testimonials page
+ * Desktop version of Stats and testimonials page
  */
-export default function StatsTestimonials() {
+function StatsTestimonialsDesktop() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -317,5 +318,22 @@ export default function StatsTestimonials() {
         </motion.h2>
       </motion.div>
     </motion.div>
+  );
+}
+
+/**
+ * Page switches between mobile/desktop components to create responsive view
+ */
+export default function StatsTestimonials() {
+  return (
+    <>
+      <div className="block md:hidden">
+        <StatsTestimonialsMobile />
+      </div>
+
+      <div className="hidden md:block">
+        <StatsTestimonialsDesktop />
+      </div>
+    </>
   );
 }
