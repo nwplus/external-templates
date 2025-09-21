@@ -226,7 +226,7 @@ export default function StatsTestimonialsMobile() {
             </p>
           </div>
           <div className="mb-4 text-[15px] leading-relaxed">
-            "{testimonials[currentSlide].testimonial}"
+            &quot;{testimonials[currentSlide].testimonial}&quot;
           </div>
 
           <p className="text-lg text-center font-medium">

@@ -10,7 +10,6 @@ import { useRef, useState, useEffect } from "react";
  */
 export default function TenYearsMobile() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [currentSection, setCurrentSection] = useState(0);
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],
@@ -23,13 +22,9 @@ export default function TenYearsMobile() {
   const section2Opacity = useTransform(scrollYProgress, [0.25, 0.35, 0.55, 0.65], [0, 1, 1, 0]);
   const section3Opacity = useTransform(scrollYProgress, [0.55, 0.65, 0.85, 1], [0, 1, 1, 0.8]);
 
-  useEffect(() => {
-    return scrollYProgress.on("change", (latest) => {
-      if (latest < 0.3) setCurrentSection(0);
-      else if (latest < 0.6) setCurrentSection(1);
-      else setCurrentSection(2);
-    });
-  }, [scrollYProgress]);
+  const circle0Background = useTransform(scrollYProgress, [0, 0.01], ['#FFE4D0', '#D94713']);
+  const circle1Background = useTransform(scrollYProgress, [0.5, 0.51], ['#FFE4D0', '#D94713']);
+  const circle2Background = useTransform(scrollYProgress, [0.98, 0.99], ['#FFE4D0', '#D94713']);
 
   return (
     <div
@@ -84,23 +79,12 @@ export default function TenYearsMobile() {
 
             <div className="flex justify-between items-center relative z-10">
               {[0, 1, 2].map((index) => {
-                const circleThreshold = index === 2 ? 0.98 : index * 0.5;
-                const isReached = useTransform(
-                  scrollYProgress,
-                  [circleThreshold, circleThreshold + 0.01],
-                  [0, 1]
-                );
-
                 return (
                   <motion.div
                     key={index}
                     className="w-3 h-3 rounded-full"
                     style={{
-                      backgroundColor: useTransform(
-                        isReached,
-                        [0, 1],
-                        ['#FFE4D0', '#D94713']
-                      )
+                      backgroundColor: index === 0 ? circle0Background : index === 1 ? circle1Background : circle2Background
                     }}
                   />
                 );
@@ -235,12 +219,12 @@ export default function TenYearsMobile() {
                 </div>
 
                 <p className="text-xs leading-relaxed">
-                  We can't wait to see what you'll create at this milestone edition of HackCamp. Come celebrate a decade of hacking with us!
+                  We can&apos;t wait to see what you&apos;ll create at this milestone edition of HackCamp. Come celebrate a decade of hacking with us!
                 </p>
 
                 <div className="space-y-2">
                   <p className="text-xs">
-                    Read more about HackCamp's history{" "}
+                    Read more about HackCamp&apos;s history{" "}
                     <Link
                       href="https://medium.com/nwplusubc/the-evolution-of-hackcamp-526d32592641"
                       className="text-blue-300 hover:text-blue-200 underline"
