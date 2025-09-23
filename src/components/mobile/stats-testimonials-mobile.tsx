@@ -96,7 +96,7 @@ export default function StatsTestimonialsMobile() {
         />
       </div>
 
-      <div className="absolute top-[30vh] left-0 w-full h-[200vh] z-0">
+      <div className="absolute top-[40vh] left-0 w-full h-[140vh] z-0">
         <Image
           src="/assets/stats-and-testimonials/graphics/mobile_river.svg"
           alt="Mobile river background"

@@ -36,7 +36,7 @@ export default function TenYearsMobile() {
       id="10-years"
     >
 
-      <div className="text-center pt-8 pb-4">
+      <div className="sticky top-0 z-30 text-center pt-4 pb-6">
         <Image
           src="/assets/ten-years/graphics/10-years-title.svg"
           alt="10 Years of HackCamp!"
@@ -46,7 +46,7 @@ export default function TenYearsMobile() {
         />
       </div>
 
-      <div className="sticky top-6 h-screen flex flex-col justify-between p-4">
+      <div className="sticky top-20 h-[calc(100vh-5rem)] flex flex-col justify-between p-4">
 
         <div className="w-full max-w-xs mx-auto mb-8">
           <div className="relative mb-4">
@@ -120,12 +120,12 @@ export default function TenYearsMobile() {
                 </div>
               </div>
 
-              <div className="text-left space-y-3 px-8">
-                <h3 className="text-xl font-title font-bold text-center">HackCamp has come a long way.</h3>
-                <p className="text-xs leading-relaxed">
+              <div className="text-left space-y-3 px-10 text-[13.5px]">
+                <h3 className="text-2xl font-title font-bold text-center">HackCamp has come a long way.</h3>
+                <p className="leading-relaxed">
                   It all began with Local Hack Day, a global initiative by Major League Hacking where campuses around the world hosted a beginner-friendly 12-hour hackathon - all on the same day!
                 </p>
-                <p className="text-xs leading-relaxed">
+                <p className="leading-relaxed">
                   At UBC, the very first Local Hack Day was organized in 2016 by just two passionate students, <em>Kristen</em> and <em>Charmaine</em>, under the UBC Hacks club, with a goal to make hackathons more accessible and inclusive for everyone in the community.
                 </p>
               </div>
@@ -156,23 +156,23 @@ export default function TenYearsMobile() {
                 </div>
               </div>
 
-              <div className="text-left space-y-3 px-8">
-                <p className="text-xs leading-relaxed">
+              <div className="text-left space-y-3 px-10 text-[13px]">
+                <p className="leading-relaxed">
                   In 2018, Local Hack Day and UBC Hacks merged with the team behind nwHacks to form the club you now know as nwPlus. That same year, nwPlus went on to host the largest Local Hack Day in North America, welcoming over 350 attendees!
                 </p>
 
                 <div className="space-y-2">
-                  <p className="font-semibold text-xs">
+                  <p className="font-semibold">
                     By 2019, the event had grown so much that it evolved into three seasonal editions:
                   </p>
-                  <ul className="list-disc text-xs ml-6 space-y-1">
+                  <ul className="list-disc ml-6 space-y-1">
                     <li>Learn Day (October)</li>
                     <li>Build Day (November/December)</li>
                     <li>Share Day (planned for April 2020, but later cancelled due to the pandemic)</li>
                   </ul>
                 </div>
 
-                <p className="text-xs leading-relaxed">
+                <p className="leading-relaxed">
                   Then in 2020, Local Hack Day officially transformed into what we now call HackCamp, a weekend-long bootcamp hackathon designed for beginners and tech lovers worldwide.
                 </p>
               </div>
@@ -203,47 +203,45 @@ export default function TenYearsMobile() {
                 </div>
               </div>
 
-              <div className="text-left space-y-3 px-8">
-                <p className="text-xs leading-relaxed">
+              <div className="text-left space-y-3 px-10 text-[13px]">
+                <p className="leading-relaxed">
                   This November, HackCamp returns for its <strong>10th anniversary!</strong> While the name has changed throughout the years, the mission remains the same.
                 </p>
 
                 <div className="space-y-2">
-                  <p className="font-semibold text-xs">
+                  <p className="font-semibold">
                     To promote diversity, inclusivity, and accessibility by:
                   </p>
-                  <ul className="list-disc text-xs ml-6 space-y-1">
+                  <ul className="list-disc ml-6 space-y-1">
                     <li>Bringing students together to tackle real-world challenges</li>
                     <li>Creating a beginner-friendly space for students from all backgrounds, disciplines, and experience levels to learn, build, and connect</li>
                   </ul>
                 </div>
 
-                <p className="text-xs leading-relaxed">
+                <p className="leading-relaxed">
                   We can&apos;t wait to see what you&apos;ll create at this milestone edition of HackCamp. Come celebrate a decade of hacking with us!
                 </p>
 
                 <div className="space-y-2">
-                  <p className="text-xs">
-                    Read more about HackCamp&apos;s history{" "}
-                    <Link
-                      href="https://medium.com/nwplusubc/the-evolution-of-hackcamp-526d32592641"
-                      className="text-blue-300 hover:text-blue-200 underline"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      here
-                    </Link>{" "}
-                    and{" "}
-                    <Link
-                      href="https://kristen.dev/blog/2018-12-20/"
-                      className="text-blue-300 hover:text-blue-200 underline"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      here
-                    </Link>
-                    !
-                  </p>
+                  Read more about HackCamp&apos;s history{" "}
+                  <Link
+                    href="https://medium.com/nwplusubc/the-evolution-of-hackcamp-526d32592641"
+                    className="text-blue-300 hover:text-blue-200 underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    here
+                  </Link>{" "}
+                  and{" "}
+                  <Link
+                    href="https://kristen.dev/blog/2018-12-20/"
+                    className="text-blue-300 hover:text-blue-200 underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    here
+                  </Link>
+                  !
                 </div>
               </div>
             </motion.div>
