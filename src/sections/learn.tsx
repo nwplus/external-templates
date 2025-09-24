@@ -1,13 +1,50 @@
+"use client";
+
 import Sign from "@/components/learn/sign";
 
 import Image from "next/image";
+import { useLayoutEffect, useRef, useState } from "react";
+import { useEffect } from "react";
 
 export default function Learn() {
   // Container min-height based on background image aspect ratio (1190÷1920 = 62vw)
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const tugOfWarRef = useRef(null);
+  const sectionRef = useRef(null);
+
+  useLayoutEffect(() => {
+    const el = sectionRef.current?.offsetTop; //returns 0??
+
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const sectionStart = window.innerHeight * 2.5; //can't find a workaround for this hardcode?
+      // const sectionStart = el;
+      const sectionHeight = window.innerHeight * 0.4;
+      const sectionEnd = sectionStart + sectionHeight;
+
+      if (scrollTop < sectionStart) {
+        setScrollProgress(0);
+      } else if (scrollTop > sectionEnd) {
+        setScrollProgress(1);
+      } else {
+        const progress = (scrollTop - sectionStart) / sectionHeight;
+        setScrollProgress(progress);
+        const leftPosition = 7 - Math.sin(progress * 3 * Math.PI) * 10;
+        if (tugOfWarRef.current) {
+          tugOfWarRef.current.style.transform = `translateX(${leftPosition}%)`;
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <div
       className="relative h-[62vw] flex flex-col items-center w-full"
       id="our-events"
+      ref={sectionRef}
     >
       <div className="absolute inset-0 bg-[url('/assets/learn/background.svg')] bg-cover bg-center bg-no-repeat"></div>
       <div className="relative flex flex-col items-center gap-[1.5vw] mt-[7vw] w-[60vw]">
@@ -87,13 +124,25 @@ export default function Learn() {
         height={300}
         className="absolute bottom-[8vw] right-[16vw] w-[23vw]"
       />
-      <Image
-        src="/assets/learn/tug-of-war.svg"
-        alt="Tug of War"
-        width={400}
-        height={100}
-        className="absolute bottom-0 left-[19vw] w-[70vw]"
-      />
+
+      {scrollProgress <= 0.8 ? (
+        <Image
+          src="/assets/learn/tug-of-war.svg"
+          alt="Tug of War"
+          width={400}
+          height={100}
+          className={"absolute bottom-0 w-[70vw] transition-transform"}
+          ref={tugOfWarRef}
+        />
+      ) : (
+        <Image
+          src="/assets/learn/tug-fall.png"
+          alt="Tug of War"
+          width={400}
+          height={100}
+          className={"absolute -bottom-12 w-[60vw] left-12"}
+        />
+      )}
     </div>
   );
 }

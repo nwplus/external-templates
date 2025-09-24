@@ -64,13 +64,11 @@ const getReturnValues = (
 const useCountdown = (targetDate: number) => {
   const countDownDate = new Date(targetDate).getTime();
 
-  const [countDown, setCountDown] = useState(
-    countDownDate - new Date().getTime()
-  );
+  const [countDown, setCountDown] = useState(countDownDate - Date.now());
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCountDown(countDownDate - new Date().getTime());
+      setCountDown(countDownDate - Date.now());
     }, 5000);
 
     return () => clearInterval(interval);
