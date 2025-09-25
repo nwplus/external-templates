@@ -15,16 +15,16 @@ export default function TenYearsMobile() {
     offset: ["start start", "end end"],
   });
 
-  const progressWidth = useTransform(scrollYProgress, [0, 1], ["0%", "99%"]);
-  const canoePosition = useTransform(scrollYProgress, [0, 1], ["4%", "85%"]);
+  const progressWidth = useTransform(scrollYProgress, [0, 0.85], ["0%", "100%"]);
+  const canoePosition = useTransform(scrollYProgress, [0, 0.43, 0.85], ["8%", "50%", "90%"]);
 
-  const section1Opacity = useTransform(scrollYProgress, [0, 0.2, 0.25, 0.35], [1, 1, 0.5, 0]);
-  const section2Opacity = useTransform(scrollYProgress, [0.25, 0.35, 0.55, 0.65], [0, 1, 1, 0]);
-  const section3Opacity = useTransform(scrollYProgress, [0.55, 0.65, 0.85, 1], [0, 1, 1, 0.8]);
+  const section1Opacity = useTransform(scrollYProgress, [0, 0.33, 0.38, 0.43], [1, 1, 0.5, 0]);
+  const section2Opacity = useTransform(scrollYProgress, [0.38, 0.43, 0.79, 0.84], [0, 1, 1, 0]);
+  const section3Opacity = useTransform(scrollYProgress, [0.81, 0.86], [0, 1]);
 
-  const circle0Background = useTransform(scrollYProgress, [0, 0.01], ['#FFE4D0', '#D94713']);
-  const circle1Background = useTransform(scrollYProgress, [0.5, 0.51], ['#FFE4D0', '#D94713']);
-  const circle2Background = useTransform(scrollYProgress, [0.98, 0.99], ['#FFE4D0', '#D94713']);
+  const circle0Background = useTransform(scrollYProgress, [0, 0.02], ['#FFE4D0', '#D94713']);
+  const circle1Background = useTransform(scrollYProgress, [0.41, 0.43], ['#FFE4D0', '#D94713']);
+  const circle2Background = useTransform(scrollYProgress, [0.84, 0.85], ['#FFE4D0', '#D94713']);
 
   return (
     <div
@@ -36,19 +36,17 @@ export default function TenYearsMobile() {
       id="10-years"
     >
 
-      <div className="sticky top-0 z-30 text-center pt-4 pb-6">
+      <div className="sticky top-6 h-[100vh] flex flex-col justify-between px-4">
+
         <Image
           src="/assets/ten-years/graphics/10-years-title.svg"
           alt="10 Years of HackCamp!"
           width={300}
           height={60}
-          className="mx-auto"
+          className="mx-auto mb-6"
         />
-      </div>
 
-      <div className="sticky top-20 h-[calc(100vh-5rem)] flex flex-col justify-between p-4">
-
-        <div className="w-full max-w-xs mx-auto mb-8">
+        <div className="w-full max-w-md">
           <div className="relative mb-4">
             <motion.div
               className="absolute -top-6"
@@ -67,7 +65,7 @@ export default function TenYearsMobile() {
             </motion.div>
           </div>
 
-          <div className="relative">
+          <div className="relative max-w-xs mx-auto">
             <div className="absolute top-1/2 left-0 right-0 transform -translate-y-1/2">
               <div className="w-full h-1 bg-[#FFE4D0] rounded-full overflow-hidden">
                 <motion.div
@@ -133,7 +131,7 @@ export default function TenYearsMobile() {
 
             <motion.div
               style={{ opacity: section2Opacity }}
-              className="absolute inset-0 flex flex-col items-center justify-center text-white"
+              className="absolute inset-0 flex flex-col items-center justify-center text-white pt-8"
             >
               <div className="relative w-full max-w-xs mb-6 px-4">
                 <Image
@@ -180,7 +178,7 @@ export default function TenYearsMobile() {
 
             <motion.div
               style={{ opacity: section3Opacity }}
-              className="absolute inset-0 flex flex-col items-center justify-center text-white"
+              className="absolute inset-0 flex flex-col items-center justify-center text-white pt-4"
             >
               <div className="relative w-full max-w-xs mb-6 px-4">
                 <Image
