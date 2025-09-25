@@ -29,7 +29,7 @@ export default function TenYearsMobile() {
   return (
     <div
       ref={containerRef}
-      className="relative h-[400vh]"
+      className="relative h-[400vh] pb-[5vh]"
       style={{
         background: "linear-gradient(to bottom, #bfa28b 0%, #769854 6%, #233E25 59%, #081C20 100%)"
       }}
@@ -247,8 +247,16 @@ export default function TenYearsMobile() {
             </motion.div>
           </div>
         </div>
+      </div>
 
-
+      <div className="absolute -bottom-[10vh] left-0 right-0 z-10">
+        <Image
+          src="/assets/stats-and-testimonials/graphics/mobile_grass_buffer.svg"
+          alt="Grass buffer"
+          width={393}
+          height={153}
+          className="w-full h-auto"
+        />
       </div>
     </div>
   );

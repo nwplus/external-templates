@@ -24,7 +24,7 @@ interface Testimonial {
   linkedin?: string;
 }
 
-const testimonials: Testimonial[] = [
+export const testimonials: Testimonial[] = [
   {
     name: "Jonathan Cai",
     pronouns: "he/him",
