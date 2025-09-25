@@ -14,6 +14,11 @@ const Comet = (props: React.SVGProps<SVGSVGElement>) => (
         shapeRendering="crispEdges"
       />
     </g>
+  </svg>
+);
+
+export const CometDefs = () => (
+  <svg>
     <defs>
       <filter
         id="filter0_d_2_2"
