@@ -245,6 +245,29 @@ function StatsTestimonialsDesktop() {
             >
               {testimonials[currentSlide].testimonial}
             </div>
+            <div className="mt-4 text-xl font-medium">
+              {testimonials[currentSlide].devpost && (
+                <a
+                  href={testimonials[currentSlide].devpost}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline hover:opacity-60 hover:cursor-pointer transition duration-150"
+                >
+                  Devpost
+                </a>
+              )}
+              {testimonials[currentSlide].devpost && testimonials[currentSlide].linkedin && " | "}
+              {testimonials[currentSlide].linkedin && (
+                <a
+                  href={testimonials[currentSlide].linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline hover:opacity-60 hover:cursor-pointer transition duration-150"
+                >
+                  Linkedin
+                </a>
+              )}
+            </div>
           </div>
         </div>
       </motion.div>
