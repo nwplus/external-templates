@@ -9,7 +9,7 @@ import Image from "next/image";
 
 export default function LearnMobile() {
   return (
-    <div className=" w-full relative -mt-[50vh]" id="about-mobile">
+    <div className=" w-full relative -mt-[40vh]" id="about-mobile">
       <Image
         src="/assets/hero/mobile/mobile-learnbg3.png"
         fill

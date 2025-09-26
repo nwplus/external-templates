@@ -28,7 +28,7 @@ const LearnSign = ({
       onClick={() => setisClicked(!isClicked)}
     >
       <Image
-        src="/assets/learn/learn-sign.svg"
+        src="/assets/hero/mobile/signback.png"
         alt="Learn sign"
         width={650}
         height={500}
