@@ -33,7 +33,7 @@ const Team = () => {
 
   return (
     <div className="flex flex-col items-center gap-2">
-      <h2 className="font-bold text-white text-2xl">
+      <h2 className="font-bold text-white lg:text-2xl">
         Made with 💖 by the nwPlus Team
       </h2>
 
@@ -73,7 +73,8 @@ const Team = () => {
           ))}
         </div>
       </div>
-      <p>
+      {/* This section is hidden on mobile because we can't have hover states */}
+      <p className="hidden md:block">
         <span className="mr-2">
           <b className="mr-2">{selectedProfile?.name}</b>{" "}
           {selectedProfile?.emoji}

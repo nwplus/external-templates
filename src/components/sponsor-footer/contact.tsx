@@ -1,6 +1,7 @@
 "use client";
 
 import { useAutoplayAudio } from "@/hooks/use-autoplay-audio";
+import { useMobile } from "@/hooks/use-mobile";
 
 import { useRef, useState } from "react";
 
@@ -15,10 +16,13 @@ const Contact = () => {
   const [inputMessage, setInputMessage] = useState("");
   const audioThresholdRef = useRef<HTMLInputElement>(null);
 
+  const { isMobile } = useMobile();
+
   // Comes from https://pixabay.com/sound-effects/campfire-crackling-fireplace-sound-119594/
   useAutoplayAudio(
     audioThresholdRef,
-    "/assets/sponsor-footer/campfire-sound.mp3"
+    "/assets/sponsor-footer/campfire-sound.mp3",
+    isMobile
   );
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -46,7 +50,7 @@ const Contact = () => {
     }
   };
   return (
-    <div className="flex flex-col items-center gap-8">
+    <div className="flex flex-col items-center py-4 px-6 gap-4 md:gap-8">
       <div className="flex gap-8">
         <a
           href="https://www.facebook.com/nwplusubc"
@@ -54,7 +58,7 @@ const Contact = () => {
           rel="noopener noreferrer"
           className="hover:opacity-80 transition-opacity"
         >
-          <Facebook />
+          <Facebook className="size-8 md:size-12" />
         </a>
         <a
           href="https://www.instagram.com/nwplusubc"
@@ -62,7 +66,7 @@ const Contact = () => {
           rel="noopener noreferrer"
           className="hover:opacity-80 transition-opacity"
         >
-          <Instagram />
+          <Instagram className="size-8 md:size-12" />
         </a>
         <a
           href="https://www.linkedin.com/company/nwplus"
@@ -70,7 +74,7 @@ const Contact = () => {
           rel="noopener noreferrer"
           className="hover:opacity-80 transition-opacity"
         >
-          <Linkedin />
+          <Linkedin className="size-8 md:size-12" />
         </a>
         <a
           href="https://www.youtube.com/c/nwPlusUBC"
@@ -78,7 +82,7 @@ const Contact = () => {
           rel="noopener noreferrer"
           className="hover:opacity-80 transition-opacity"
         >
-          <Youtube />
+          <Youtube className="size-8 md:size-12" />
         </a>
         <a
           href="https://medium.com/nwplusubc"
@@ -86,25 +90,22 @@ const Contact = () => {
           rel="noopener noreferrer"
           className="hover:opacity-80 transition-opacity"
         >
-          <Medium />
+          <Medium className="size-8 md:size-12" />
         </a>
       </div>
-      <div className="flex gap-8">
-        <a
-          href="mailto:info@nwplus.io"
-          className="font-bold text-2xl underline"
-        >
+      <div className="flex gap-2 text-sm md:gap-8 md:text-2xl">
+        <a href="mailto:info@nwplus.io" className="font-bold underline">
           Email Us
         </a>
         <a
           href="mailto:sponsorship@nwplus.io?subject=Sponsorship%20Inquiry"
-          className="font-bold text-2xl underline"
+          className="font-bold underline"
         >
           Become a Sponsor
         </a>
         <a
           href="https://static.mlh.io/docs/mlh-code-of-conduct.pdft"
-          className="font-bold text-2xl underline"
+          className="font-bold underline"
         >
           Code of Conduct
         </a>
@@ -116,12 +117,12 @@ const Contact = () => {
         <input
           type="text"
           placeholder="Sign up for our newsletter!"
-          className="py-2 px-4 pr-20 rounded-lg text-black bg-white w-xl"
+          className="py-2 px-4 pr-20 rounded-lg text-black bg-white lg:w-xl"
           name="email"
           ref={audioThresholdRef}
         />
         <Button
-          className="absolute right-2 bg-[#350001]"
+          className="absolute right-1 md:right-2 bg-[#350001]"
           type="submit"
           size="sm"
         >
