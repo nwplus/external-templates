@@ -30,8 +30,8 @@ const SponsorFooter = async () => {
     },
     gold: { width: 240, height: 160, gap: "gap-6 md:gap-12" },
     silver: { width: 180, height: 120, gap: "gap-4 md:gap-8" },
-    bronze: { width: 140, height: 93, gap: "gap-2 md:gap-4" },
-    inkind: { width: 120, height: 80, gap: "gap-2 md:gap-4" },
+    bronze: { width: 140, height: 93, gap: "gap-4 md:gap-6" },
+    inkind: { width: 120, height: 80, gap: "gap-4 md:gap-6" },
   } as const;
 
   // Only render tiers that have sponsors
@@ -39,34 +39,31 @@ const SponsorFooter = async () => {
     (tier) => sponsorsByTier[tier] && sponsorsByTier[tier].length > 0
   );
 
-  // Container min-height based on background image aspect ratio (2660÷1920 = 138.54vw)
-  // Mobile: (1197÷393 = 304.58vw)
   return (
-    <div
-      className="relative flex flex-col w-full h-[304.58vw] md:h-[138.54vw]"
-      id="sponsors"
-    >
+    <div className="relative flex flex-col w-full" id="sponsors">
       {/* Background gradient */}
       <div className="sticky top-0 min-h-screen bg-footer-radial z-0 -mb-[100vh]" />
       {/* Background graphic */}
-      <div className="absolute inset-0 bottom-0">
+      <div className="absolute inset-x-0 bottom-0">
         <Image
           src="/assets/sponsor-footer/background.svg"
           alt="Background pattern"
-          fill
+          width={1920}
+          height={2660}
           priority
-          className="hidden md:block"
+          className="hidden md:block w-full"
         />
         <Image
           src="/assets/sponsor-footer/background-mobile.png"
           alt="Background pattern"
-          fill
+          width={393}
+          height={1197}
           priority
-          className="block md:hidden"
+          className="block md:hidden w-full"
         />
       </div>
 
-      <div className="z-10 flex flex-col items-center justify-between h-full md:pt-40 md:px-16 text-white">
+      <div className="z-10 flex flex-col gap-8 items-center justify-between h-full md:pt-40 md:px-16 text-white">
         <h2 className="font-title text-4xl md:text-6xl mb-12">
           Last Year&apos;s Sponsors
         </h2>
@@ -74,7 +71,7 @@ const SponsorFooter = async () => {
           {activeTiers.map((tier) => (
             <div
               key={tier}
-              className={`flex justify-center items-center ${TIER_CONFIG[tier].gap}`}
+              className={`flex justify-center items-center flex-wrap ${TIER_CONFIG[tier].gap}`}
             >
               {sponsorsByTier[tier].map(
                 (sponsor: SponsorDoc, index: number) => (
@@ -98,7 +95,7 @@ const SponsorFooter = async () => {
             </div>
           ))}
         </div>
-        <div className="grow flex flex-col justify-end w-full md:gap-[12dvw] xl:gap-[30dvw]">
+        <div className="grow flex flex-col justify-end w-full gap-[25dvw] md:gap-[12dvw] xl:gap-[30dvw]">
           <Contact />
           <div className="flex flex-col items-center">
             <TeamGallery />
