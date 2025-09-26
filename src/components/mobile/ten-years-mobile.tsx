@@ -3,7 +3,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useRef, useState, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 
 /**
  * Mobile view for Ten Years section
@@ -15,29 +15,56 @@ export default function TenYearsMobile() {
     offset: ["start start", "end end"],
   });
 
-  const progressWidth = useTransform(scrollYProgress, [0, 0.85], ["0%", "100%"]);
-  const canoePosition = useTransform(scrollYProgress, [0, 0.43, 0.85], ["8%", "50%", "90%"]);
+  const progressWidth = useTransform(
+    scrollYProgress,
+    [0, 0.85],
+    ["0%", "100%"]
+  );
+  const canoePosition = useTransform(
+    scrollYProgress,
+    [0, 0.43, 0.85],
+    ["8%", "50%", "90%"]
+  );
 
-  const section1Opacity = useTransform(scrollYProgress, [0, 0.33, 0.38, 0.43], [1, 1, 0.5, 0]);
-  const section2Opacity = useTransform(scrollYProgress, [0.38, 0.43, 0.79, 0.84], [0, 1, 1, 0]);
+  const section1Opacity = useTransform(
+    scrollYProgress,
+    [0, 0.33, 0.38, 0.43],
+    [1, 1, 0.5, 0]
+  );
+  const section2Opacity = useTransform(
+    scrollYProgress,
+    [0.38, 0.43, 0.79, 0.84],
+    [0, 1, 1, 0]
+  );
   const section3Opacity = useTransform(scrollYProgress, [0.81, 0.86], [0, 1]);
 
-  const circle0Background = useTransform(scrollYProgress, [0, 0.02], ['#FFE4D0', '#D94713']);
-  const circle1Background = useTransform(scrollYProgress, [0.41, 0.43], ['#FFE4D0', '#D94713']);
-  const circle2Background = useTransform(scrollYProgress, [0.84, 0.85], ['#FFE4D0', '#D94713']);
+  const circle0Background = useTransform(
+    scrollYProgress,
+    [0, 0.02],
+    ["#FFE4D0", "#D94713"]
+  );
+  const circle1Background = useTransform(
+    scrollYProgress,
+    [0.41, 0.43],
+    ["#FFE4D0", "#D94713"]
+  );
+  const circle2Background = useTransform(
+    scrollYProgress,
+    [0.84, 0.85],
+    ["#FFE4D0", "#D94713"]
+  );
 
   return (
     <div
       ref={containerRef}
       className="relative h-[400vh] pb-[5vh]"
       style={{
-        background: "linear-gradient(to bottom, #bfa28b 0%, #769854 6%, #233E25 59%, #081C20 100%)"
+        background:
+          "linear-gradient(to bottom, #bfa28b 0%, #769854 6%, #233E25 59%, #081C20 100%)",
       }}
       id="10-years"
     >
-
-      <div className="sticky top-6 h-[100vh] flex flex-col justify-between px-4">
-
+      <div className="sticky top-6 h-[100vh] flex flex-col justify-between px-4 z-20">
         <Image
           src="/assets/ten-years/graphics/10-years-title.svg"
           alt="10 Years of HackCamp!"
@@ -82,7 +109,12 @@ export default function TenYearsMobile() {
                     key={index}
                     className="w-3 h-3 rounded-full"
                     style={{
-                      backgroundColor: index === 0 ? circle0Background : index === 1 ? circle1Background : circle2Background
+                      backgroundColor:
+                        index === 0
+                          ? circle0Background
+                          : index === 1
+                            ? circle1Background
+                            : circle2Background,
                     }}
                   />
                 );
@@ -119,12 +151,20 @@ export default function TenYearsMobile() {
               </div>
 
               <div className="text-left space-y-3 px-10 text-[13.5px]">
-                <h3 className="text-2xl font-title font-bold text-center">HackCamp has come a long way.</h3>
+                <h3 className="text-2xl font-title font-bold text-center">
+                  HackCamp has come a long way.
+                </h3>
                 <p className="leading-relaxed">
-                  It all began with Local Hack Day, a global initiative by Major League Hacking where campuses around the world hosted a beginner-friendly 12-hour hackathon - all on the same day!
+                  It all began with Local Hack Day, a global initiative by Major
+                  League Hacking where campuses around the world hosted a
+                  beginner-friendly 12-hour hackathon - all on the same day!
                 </p>
                 <p className="leading-relaxed">
-                  At UBC, the very first Local Hack Day was organized in 2016 by just two passionate students, <em>Kristen</em> and <em>Charmaine</em>, under the UBC Hacks club, with a goal to make hackathons more accessible and inclusive for everyone in the community.
+                  At UBC, the very first Local Hack Day was organized in 2016 by
+                  just two passionate students, <em>Kristen</em> and{" "}
+                  <em>Charmaine</em>, under the UBC Hacks club, with a goal to
+                  make hackathons more accessible and inclusive for everyone in
+                  the community.
                 </p>
               </div>
             </motion.div>
@@ -156,22 +196,31 @@ export default function TenYearsMobile() {
 
               <div className="text-left space-y-3 px-10 text-[13px]">
                 <p className="leading-relaxed">
-                  In 2018, Local Hack Day and UBC Hacks merged with the team behind nwHacks to form the club you now know as nwPlus. That same year, nwPlus went on to host the largest Local Hack Day in North America, welcoming over 350 attendees!
+                  In 2018, Local Hack Day and UBC Hacks merged with the team
+                  behind nwHacks to form the club you now know as nwPlus. That
+                  same year, nwPlus went on to host the largest Local Hack Day
+                  in North America, welcoming over 350 attendees!
                 </p>
 
                 <div className="space-y-2">
                   <p className="font-semibold">
-                    By 2019, the event had grown so much that it evolved into three seasonal editions:
+                    By 2019, the event had grown so much that it evolved into
+                    three seasonal editions:
                   </p>
                   <ul className="list-disc ml-6 space-y-1">
                     <li>Learn Day (October)</li>
                     <li>Build Day (November/December)</li>
-                    <li>Share Day (planned for April 2020, but later cancelled due to the pandemic)</li>
+                    <li>
+                      Share Day (planned for April 2020, but later cancelled due
+                      to the pandemic)
+                    </li>
                   </ul>
                 </div>
 
                 <p className="leading-relaxed">
-                  Then in 2020, Local Hack Day officially transformed into what we now call HackCamp, a weekend-long bootcamp hackathon designed for beginners and tech lovers worldwide.
+                  Then in 2020, Local Hack Day officially transformed into what
+                  we now call HackCamp, a weekend-long bootcamp hackathon
+                  designed for beginners and tech lovers worldwide.
                 </p>
               </div>
             </motion.div>
@@ -203,7 +252,9 @@ export default function TenYearsMobile() {
 
               <div className="text-left space-y-3 px-10 text-[13px]">
                 <p className="leading-relaxed">
-                  This November, HackCamp returns for its <strong>10th anniversary!</strong> While the name has changed throughout the years, the mission remains the same.
+                  This November, HackCamp returns for its{" "}
+                  <strong>10th anniversary!</strong> While the name has changed
+                  throughout the years, the mission remains the same.
                 </p>
 
                 <div className="space-y-2">
@@ -211,13 +262,21 @@ export default function TenYearsMobile() {
                     To promote diversity, inclusivity, and accessibility by:
                   </p>
                   <ul className="list-disc ml-6 space-y-1">
-                    <li>Bringing students together to tackle real-world challenges</li>
-                    <li>Creating a beginner-friendly space for students from all backgrounds, disciplines, and experience levels to learn, build, and connect</li>
+                    <li>
+                      Bringing students together to tackle real-world challenges
+                    </li>
+                    <li>
+                      Creating a beginner-friendly space for students from all
+                      backgrounds, disciplines, and experience levels to learn,
+                      build, and connect
+                    </li>
                   </ul>
                 </div>
 
                 <p className="leading-relaxed">
-                  We can&apos;t wait to see what you&apos;ll create at this milestone edition of HackCamp. Come celebrate a decade of hacking with us!
+                  We can&apos;t wait to see what you&apos;ll create at this
+                  milestone edition of HackCamp. Come celebrate a decade of
+                  hacking with us!
                 </p>
 
                 <div className="space-y-2">
@@ -247,7 +306,7 @@ export default function TenYearsMobile() {
         </div>
       </div>
 
-      <div className="absolute -bottom-[10vh] left-0 right-0 z-10">
+      <div className="absolute -bottom-[18vw] left-0 right-0 z-10">
         <Image
           src="/assets/stats-and-testimonials/graphics/mobile_grass_buffer.svg"
           alt="Grass buffer"

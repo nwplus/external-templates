@@ -55,7 +55,7 @@ const Faq = async () => {
 
   return (
     <div
-      className="relative text-white flex flex-col items-center w-full bg-faq-radial"
+      className="relative text-white flex flex-col items-center w-full bg-faq-radial pt-10 md:pt-0"
       id="faq"
     >
       <div className="flex flex-col w-full z-10">
@@ -65,13 +65,6 @@ const Faq = async () => {
           width={1920}
           height={131}
           className="hidden md:block"
-        />
-        <Image
-          src="/assets/faq/buffer-grass-mobile.svg"
-          alt="Buffer grass"
-          width={1252}
-          height={152}
-          className="block -mt-16 mb-8 md:hidden"
         />
         <div className="flex flex-col px-8 md:px-32 pb-28 gap-8">
           <h1 className="font-title text-6xl text-center">FAQ</h1>
