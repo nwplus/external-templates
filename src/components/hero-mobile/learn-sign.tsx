@@ -44,18 +44,16 @@ const LearnSign = ({
         </div>
         <div
           className={cn(
-            "flex flex-col px-[2vw] py-[1.8vw] text-title gap-[0.5vw] transition-opacity",
+            "flex flex-col px-[4vw] py-[2vw] text-title gap-[0.5vw] transition-opacity",
             !isClicked && "opacity-0 pointer-events-none"
           )}
         >
           <div className="flex justify-between items-center text-shadow-lg">
-            <h2 className="text-[2.5vw] font-title leading-none">
-              {backTitle}
-            </h2>
-            <h3 className="text-[1.5vw]">{backDate}</h3>
+            <h2 className="text-[6vw] font-title leading-none">{backTitle}</h2>
+            <h3 className="text-[4vw]">{backDate}</h3>
           </div>
           <div className="h-1 bg-title w-full mb-[0.5vw]" />
-          <p className="text-[1vw] whitespace-pre-line">{backDescription}</p>
+          <p className="text-[3vw] whitespace-pre-line">{backDescription}</p>
         </div>
       </div>
     </div>

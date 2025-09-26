@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <div className="relative">
       <Hero />
-      <div className="h-[calc(62vw-100vh)] w-full"></div>
+      {/* <div className="h-[calc(62vw-100vh)] w-full"></div>
       <HorizontalScrollSection>
         <div className="relative h-screen w-screen">
           <div className="absolute bottom-0 left-0 w-full">
@@ -20,7 +20,7 @@ export default function Home() {
         </div>
         <Recap />
         <StatsTestimonials />
-      </HorizontalScrollSection>
+      </HorizontalScrollSection> */}
       <div className="h-[calc(128.07vw-100vh)] w-full"></div>
       <TenYears />
       <Faq />
