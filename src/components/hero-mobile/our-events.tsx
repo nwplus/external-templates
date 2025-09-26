@@ -1,7 +1,6 @@
 import Image from "next/image";
 
 import LearnSign from "./learn-sign";
-import Sign from "./mobile-sign";
 
 export default function OurEvents() {
   return (

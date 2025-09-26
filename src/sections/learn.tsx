@@ -13,7 +13,7 @@ export default function Learn() {
   const sectionRef = useRef(null);
 
   useLayoutEffect(() => {
-    const el = sectionRef.current?.offsetTop; //returns 0??
+    // const el = sectionRef.current?.offsetTop; //returns 0??
 
     const handleScroll = () => {
       const scrollTop = window.scrollY;
@@ -30,9 +30,9 @@ export default function Learn() {
         const progress = (scrollTop - sectionStart) / sectionHeight;
         setScrollProgress(progress);
         const leftPosition = 7 - Math.sin(progress * 3 * Math.PI) * 10;
-        if (tugOfWarRef.current) {
-          tugOfWarRef.current.style.transform = `translateX(${leftPosition}%)`;
-        }
+        // if (tugOfWarRef.current) {
+        //   tugOfWarRef.current.style.transform = `translateX(${leftPosition}%)`;
+        // }
       }
     };
 
