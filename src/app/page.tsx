@@ -12,16 +12,35 @@ export default function Home() {
     <div className="relative">
       <Hero />
       <div className="h-[calc(62vw-100vh)] w-full"></div>
-      <HorizontalScrollSection>
-        <div className="relative h-screen w-screen">
-          <div className="absolute bottom-0 left-0 w-full">
-            <Learn />
+
+      {/* desktop: horizontal scroll for Learn -> Recap -> Stats */}
+      <div className="hidden md:block">
+        <HorizontalScrollSection>
+          <div className="relative h-screen w-screen">
+            <div className="absolute bottom-0 left-0 w-full">
+              <Learn />
+            </div>
           </div>
+          <Recap />
+          <StatsTestimonials />
+        </HorizontalScrollSection>
+      </div>
+
+      {/* mobile: stack sections vertically */}
+      <div className="block md:hidden">
+        <div className="relative">
+          <div className="relative min-h-screen w-full">
+            <div className="absolute bottom-0 left-0 w-full">
+              <Learn />
+            </div>
+          </div>
+          <Recap />
+          <StatsTestimonials />
         </div>
-        <Recap />
-        <StatsTestimonials />
-      </HorizontalScrollSection>
-      <div className="h-[calc(128.07vw-100vh)] w-full"></div>
+      </div>
+
+      {/* desktop spacing between horizontal scroll and ten years */}
+      <div className="hidden md:block h-[calc(128.07vw-100vh)] w-full"></div>
       <TenYears />
       <Faq />
       <SponsorFooter />
