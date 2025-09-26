@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function MobileRecap() {
   return (
-    <div className="w-full h-[130vh] -mt-[3vh] relative">
+    <div className="w-full h-[130vh] -mt-[3vh] relative" id="recap-mobile">
       <Image
         src="/assets/hero/mobile/mobile-grass.png"
         width={1000}
@@ -25,7 +25,7 @@ export default function MobileRecap() {
         src="https://www.youtube.com/embed/WXZEhL0T_-4?si=s-myjEY33xI-qGXV"
         title="Hackcamp 2024 recap"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        className="absolute left-[14vw] top-[21vh] w-[75vw] h-[20vh]"
+        className="absolute left-[13vw] top-[21vh] w-[76vw] h-[20vh]"
         allowFullScreen
       ></iframe>
     </div>

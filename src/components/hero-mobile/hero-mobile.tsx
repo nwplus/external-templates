@@ -4,12 +4,14 @@ import { useCountdown } from "@/lib/useCountdown";
 
 import Image from "next/image";
 
+import MobileNavbar from "./mobile-navbar";
 import Sign from "./mobile-sign";
 
 export default function HeroMobile() {
   const { days, hours, minutes } = useCountdown();
   return (
-    <div className="h-[150vh] bg-red-500 relative">
+    <div className="h-[150vh] relative">
+      <MobileNavbar />
       <div className="absolute h-[70vh] left-0 right-0 -top-25 overflow-hidden bg-white">
         <Image
           src="/assets/hero/mobile/mobile-back.png"

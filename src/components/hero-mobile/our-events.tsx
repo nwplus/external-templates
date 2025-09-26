@@ -5,7 +5,10 @@ import Sign from "./mobile-sign";
 
 export default function OurEvents() {
   return (
-    <div className="w-full h-[130vh] -mt-[23vh] relative">
+    <div
+      className="w-full h-[130vh] -mt-[23vh] relative"
+      id="our-events-mobile"
+    >
       <Image
         src="/assets/hero/mobile/mobile-events.png"
         width={2000}
@@ -18,7 +21,7 @@ export default function OurEvents() {
         <h2 className="text-[8vw] font-title leading-none text-shadow-bold text-center">
           Our Events
         </h2>
-        <div className="w-[84%] mx-auto mt-[3vh]">
+        <div className="w-[84%] mx-auto mt-[1vh]">
           <p>
             This year, we are celebrating our 10 year anniversary! And we are
             bringing you a 2-day, in-person event where you’ll learn new skills,
@@ -34,14 +37,14 @@ export default function OurEvents() {
           <Image
             src="/assets/learn/learn-day-text.png"
             alt="Learn Day - Nov 15, 2025. Hover to learn more"
-            width={600}
+            width={650}
             height={400}
           />
         }
         backTitle="Learn Day"
         backDate="Nov 15, 2025"
         backDescription="A day of workshops and skill building in preparation for Build Day. With topics ranging from web development, version control, design and more, we will have something for you!"
-        className="absolute top-[45vh] left-1/2 -translate-x-1/2"
+        className="absolute top-[42vh] left-1/2 -translate-x-1/2"
       />
 
       <Image
@@ -66,7 +69,7 @@ export default function OurEvents() {
         backDescription={
           "A 18-hour overnight hackathon that starts after Learn Day, focused around creating projects centred around accessibility, inclusivity, and diversity.\n\n For each project submission, HackCamp will donate $5 to one of these charities: AMS Food Bank, GiveInternet.Org, Michael Cuccione Foundation"
         }
-        className="absolute top-[84vh] left-1/2 -translate-x-1/2"
+        className="absolute top-[85vh] left-1/2 -translate-x-1/2"
       />
 
       <Image
@@ -74,15 +77,15 @@ export default function OurEvents() {
         width={80}
         height={80}
         alt="Mascot Bear"
-        className="absolute top-[100vh] right-[3vw]"
+        className="absolute top-[105vh] right-[1vw]"
       />
 
       <Image
         src="/assets/hero/mobile/mobile-mascots2.png"
-        width={310}
-        height={310}
+        width={270}
+        height={270}
         alt="Mascot Bear"
-        className="absolute top-[105vh] left-0"
+        className="absolute top-[107vh] left-0"
       />
     </div>
   );

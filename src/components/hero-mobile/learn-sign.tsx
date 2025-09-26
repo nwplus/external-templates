@@ -24,13 +24,13 @@ const LearnSign = ({
 
   return (
     <div
-      className={cn("relative w-[80vw]", className)}
+      className={cn("relative w-[90vw]", className)}
       onClick={() => setisClicked(!isClicked)}
     >
       <Image
         src="/assets/learn/learn-sign.svg"
         alt="Learn sign"
-        width={600}
+        width={650}
         height={500}
       />
       <div className="absolute w-full top-0 left-0">
@@ -49,11 +49,11 @@ const LearnSign = ({
           )}
         >
           <div className="flex justify-between items-center text-shadow-lg">
-            <h2 className="text-[6vw] font-title leading-none">{backTitle}</h2>
-            <h3 className="text-[4vw]">{backDate}</h3>
+            <h2 className="text-[7vw] font-title leading-none">{backTitle}</h2>
+            <h3 className="text-[5vw]">{backDate}</h3>
           </div>
           <div className="h-1 bg-title w-full mb-[0.5vw]" />
-          <p className="text-[3vw] whitespace-pre-line">{backDescription}</p>
+          <p className="text-[3.2vw] whitespace-pre-line">{backDescription}</p>
         </div>
       </div>
     </div>

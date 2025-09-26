@@ -9,7 +9,7 @@ import Image from "next/image";
 
 export default function LearnMobile() {
   return (
-    <div className=" w-full relative -mt-[50vh]">
+    <div className=" w-full relative -mt-[50vh]" id="about-mobile">
       <Image
         src="/assets/hero/mobile/mobile-learnbg3.png"
         fill
@@ -45,19 +45,19 @@ export default function LearnMobile() {
                 <AccordionTrigger className="text-[4vw]" variant="hero">
                   What are the benefits of attending a hackathon?
                 </AccordionTrigger>
-                <AccordionContent className="text-[4vw] ml-5">
-                  <li className="marker:text-[0.8rem]">
+                <AccordionContent className="text-[4vw] font-thin ml-[8vw]">
+                  <li className="marker:text-[0.5rem]">
                     Learn new technologies with the help of workshops and
                     mentors
                   </li>
-                  <li className="marker:text-[0.8rem]">
+                  <li className="marker:text-[0.5rem]">
                     Network with like-minded peers and industry recruiters
                   </li>
-                  <li className="marker:text-[0.8rem]">
+                  <li className="marker:text-[0.5rem]">
                     Collect swag, eat free food, engage in fun activities, and
                     make memories to last a lifetime
                   </li>
-                  <li className="marker:text-[0.8rem]">
+                  <li className="marker:text-[0.5rem]">
                     At the end of it all, have your own project to show off and
                     add to your resume!
                   </li>
