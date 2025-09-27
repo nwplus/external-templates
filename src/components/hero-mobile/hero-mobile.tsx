@@ -14,24 +14,24 @@ export default function HeroMobile() {
       <MobileNavbar />
       <div className="absolute h-[75vh] left-0 right-0 -top-[13vh] overflow-hidden bg-white">
         <Image
-          src="/assets/hero/mobile/mobile-back.png"
+          src="/assets/hero/mobile/mobile-back2.png"
           className="object-cover h-full object-[63%_center]"
           width={2000}
           height={1200}
           priority
-          alt="Hackcamp Background"
+          alt="Hackcamp - Canada's largest beginner-only hackathon"
         />
       </div>
 
       {/* hero text */}
-      <div className="absolute left-1/2 -translate-x-1/2 top-[12%] flex flex-col items-center font-title text-title w-[80vw]">
+      {/* <div className="absolute left-1/2 -translate-x-1/2 top-[12%] flex flex-col items-center font-title text-title w-[80vw]">
         <h1 className="text-7xl text-shadow-lg leading-tight -mt-2 ">
           HackCamp
         </h1>
         <h2 className="text-lg -mt-1">
           Canada&apos;s largest beginner-only hackathon
         </h2>
-      </div>
+      </div> */}
       {/* for buttons */}
       <div className="absolute left-1/2 -translate-x-1/2 top-[33vh] flex w-[79vw] justify-center space-x-5 items-center ">
         <button
