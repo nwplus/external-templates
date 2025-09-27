@@ -28,10 +28,10 @@ export default function LearnMobile() {
         </div>
 
         <div className="top-[10vh] mt-[10vh] z-20">
-          <h2 className="text-[8vw] font-title leading-none text-shadow-bold text-center">
+          <h2 className="text-3xl font-title leading-none text-shadow-bold text-center">
             What is a Hackathon?
           </h2>
-          <div className="flex flex-col gap-[0.4vw] text-[4vw] mx-[7vw] mt-[1vh] ">
+          <div className="flex flex-col gap-[0.4vw] text-md mx-[7vw] mt-[2vh] ">
             <p>
               A hackathon is a collaborative, typically multi-day invention
               marathon where participants come together to ideate, design, and
@@ -42,10 +42,10 @@ export default function LearnMobile() {
 
             <Accordion type="single" collapsible>
               <AccordionItem value="item-1">
-                <AccordionTrigger className="text-[4vw]" variant="hero">
+                <AccordionTrigger className="text-md" variant="hero">
                   What are the benefits of attending a hackathon?
                 </AccordionTrigger>
-                <AccordionContent className="text-[4vw] font-thin ml-[8vw]">
+                <AccordionContent className="text-md font-thin ml-[8vw]">
                   <li className="marker:text-[0.5rem]">
                     Learn new technologies with the help of workshops and
                     mentors

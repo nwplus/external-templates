@@ -12,7 +12,7 @@ export default function HeroMobile() {
   return (
     <div className="h-[150vh] relative">
       <MobileNavbar />
-      <div className="absolute h-[75vh] left-0 right-0 -top-25 overflow-hidden bg-white">
+      <div className="absolute h-[75vh] left-0 right-0 -top-[13vh] overflow-hidden bg-white">
         <Image
           src="/assets/hero/mobile/mobile-back.png"
           className="object-cover h-full object-[63%_center]"
@@ -24,11 +24,11 @@ export default function HeroMobile() {
       </div>
 
       {/* hero text */}
-      <div className="absolute left-1/2 -translate-x-1/2 top-[19vh] flex flex-col items-center font-title text-title w-[80vw]">
-        <h1 className="text-[17vw] text-shadow-lg leading-tight -mt-2 ">
+      <div className="absolute left-1/2 -translate-x-1/2 top-[12%] flex flex-col items-center font-title text-title w-[80vw]">
+        <h1 className="text-7xl text-shadow-lg leading-tight -mt-2 ">
           HackCamp
         </h1>
-        <h2 className="text-[4.4vw] -mt-1">
+        <h2 className="text-lg -mt-1">
           Canada&apos;s largest beginner-only hackathon
         </h2>
       </div>
@@ -36,19 +36,19 @@ export default function HeroMobile() {
       <div className="absolute left-1/2 -translate-x-1/2 top-[33vh] flex w-[79vw] justify-center space-x-5 items-center ">
         <button
           type="button"
-          className="bg-[#2C6D7D] text-[3.7vw] py-[1vw] px-[1.2vw] rounded-sm text-title cursor-pointer hover:opacity-80 transition-opacity"
+          className="bg-[#2C6D7D] text-md py-[1vw] px-[1.2vw] rounded-sm text-title cursor-pointer hover:opacity-80 transition-opacity"
         >
           Register Now
         </button>
         <button
           type="button"
-          className="bg-[#2C6D7D] text-[3.7vw] py-[1vw] px-[1.2vw] rounded-sm text-title cursor-pointer hover:opacity-80 transition-opacity"
+          className="bg-[#2C6D7D] text-md py-[1vw] px-[1.2vw] rounded-sm text-title cursor-pointer hover:opacity-80 transition-opacity"
         >
           Become a Mentor
         </button>
       </div>
 
-      <div className="absolute h-[134vh] top-[46vh] left-0 right-0">
+      <div className="absolute h-[134vh] top-[45vh] left-0 right-0">
         <Image
           src="/assets/hero/mobile/mobile-road3.png"
           className="object-cover h-full object-[45%_center]"

@@ -17,11 +17,11 @@ export default function OurEvents() {
       />
 
       <div className="z-20 top-[13vh] absolute w-full">
-        <h2 className="text-[8vw] font-title leading-none text-shadow-bold text-center">
+        <h2 className="text-3xl font-title leading-none text-shadow-bold text-center">
           Our Events
         </h2>
         <div className="w-[84%] mx-auto mt-[3vh]">
-          <p>
+          <p className="text-md">
             This year, we are celebrating our 10 year anniversary! And we are
             bringing you a 2-day, in-person event where you’ll learn new skills,
             connect with like-minded enthusiasts, and build solutions to tackle
@@ -43,7 +43,7 @@ export default function OurEvents() {
         backTitle="Learn Day"
         backDate="Nov 15, 2025"
         backDescription="A day of workshops and skill building in preparation for Build Day. With topics ranging from web development, version control, design and more, we will have something for you!"
-        className="absolute top-[47vh] left-1/2 -translate-x-1/2"
+        className="absolute top-[47vh] left-1/2 -translate-x-1/2 mt-[2vh]"
       />
 
       <Image
@@ -51,7 +51,7 @@ export default function OurEvents() {
         width={220}
         height={200}
         alt="Mascots"
-        className="absolute top-[73vh] right-0"
+        className="absolute top-[75vh] right-0"
       />
 
       <LearnSign
