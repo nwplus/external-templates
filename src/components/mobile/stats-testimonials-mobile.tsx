@@ -1,11 +1,16 @@
 "use client";
 
 import CarouselControls from "@/components/stats-testimonials/carousel-controls";
+import { testimonials } from "@/sections/stats-testimonials";
 
-import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
+import {
+  AnimatePresence,
+  motion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 import Image from "next/image";
 import { useRef, useState } from "react";
-import { testimonials } from "@/sections/stats-testimonials";
 
 /**
  * Mobile view for Stats and Testimonials section
@@ -16,25 +21,24 @@ export default function StatsTestimonialsMobile() {
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start end", "end start"]
+    offset: ["start end", "end start"],
   });
 
   const nuggetY = useTransform(scrollYProgress, [0, 1], [0, 150]);
   const nuggetX = useTransform(scrollYProgress, [0, 1], [0, 50]);
 
   return (
-    <div ref={containerRef} className="relative min-h-[415vw]" id="stats">
-
-      <div className="absolute inset-0 h-[40vh]">
+    <div ref={containerRef} className="relative min-h-[415vw]">
+      <div className="absolute inset-0 h-[45vh]">
         <Image
           src="/assets/stats-and-testimonials/graphics/mobile_sky.svg"
           alt="Mobile sky background"
           fill
           className="object-cover"
           priority
+          id="mobile-stats"
         />
       </div>
-
 
       <div className="absolute inset-0 top-[10vh] overflow-hidden z-1">
         <Image
@@ -109,7 +113,6 @@ export default function StatsTestimonialsMobile() {
         >
           Last Year We Had...
         </motion.h2>
-
       </div>
 
       <motion.div className="absolute top-[44.5%] left-1/2 transform -translate-x-1/2 z-40">
@@ -160,7 +163,6 @@ export default function StatsTestimonialsMobile() {
           height={600}
           className="w-full h-auto object-bottom"
         />
-
         <div className="absolute top-[6%] left-1/2 transform -translate-x-1/2">
           <h3 className="font-title text-4xl font-bold text-gray-800 text-center">
             Testimonials
@@ -169,24 +171,41 @@ export default function StatsTestimonialsMobile() {
         <div className="absolute top-[20%] text-left left-1/2 transform -translate-x-1/2 w-full max-w-sm px-8">
           <div className="mb-3">
             <h4 className="text-2xl font-semibold text-gray-800 mb-1">
-              {testimonials[currentSlide].name} ({testimonials[currentSlide].pronouns})
+              {testimonials[currentSlide].name} (
+              {testimonials[currentSlide].pronouns})
             </h4>
             <p className="text-lg font-medium">
-              {testimonials[currentSlide].role} | {testimonials[currentSlide].program} | {testimonials[currentSlide].year}
+              {testimonials[currentSlide].role} |{" "}
+              {testimonials[currentSlide].program} |{" "}
+              {testimonials[currentSlide].year}
             </p>
           </div>
-          <div className="mb-4 text-[15px] leading-relaxed">
+          <div
+            className="mb-4 text-[15px] leading-relaxed"
+            id="testimonials-mobile"
+          >
             &quot;{testimonials[currentSlide].testimonial}&quot;
           </div>
 
           <p className="text-lg text-center font-medium">
             {testimonials[currentSlide].devpost && (
-              <a href={testimonials[currentSlide].devpost} target="_blank" rel="noopener noreferrer" className="underline">
+              <a
+                href={testimonials[currentSlide].devpost}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline"
+              >
                 Devpost
               </a>
-            )} | {" "}
+            )}{" "}
+            |{" "}
             {testimonials[currentSlide].linkedin && (
-              <a href={testimonials[currentSlide].linkedin} target="_blank" rel="noopener noreferrer" className="underline">
+              <a
+                href={testimonials[currentSlide].linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline"
+              >
                 LinkedIn
               </a>
             )}

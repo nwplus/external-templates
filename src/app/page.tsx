@@ -30,16 +30,8 @@ export default function Home() {
       {/* mobile: stack sections vertically */}
       <div className="block md:hidden">
         <div className="relative">
-          <div className="relative min-h-screen w-full">
-            <div className="absolute bottom-0 left-0 w-full">
-              <Learn />
-            </div>
-
-          </div>
-          <Recap />
           <StatsTestimonials />
         </div>
-
       </div>
 
       {/* desktop spacing between horizontal scroll and ten years */}

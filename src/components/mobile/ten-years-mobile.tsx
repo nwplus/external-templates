@@ -62,7 +62,7 @@ export default function TenYearsMobile() {
         background:
           "linear-gradient(to bottom, #bfa28b 0%, #769854 6%, #233E25 59%, #081C20 100%)",
       }}
-      id="10-years"
+      id="10-years-mobile"
     >
       <div className="sticky top-6 h-[100vh] flex flex-col justify-between px-4 z-20">
         <Image
