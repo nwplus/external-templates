@@ -11,6 +11,7 @@ export default function Home() {
   return (
     <div className="relative">
       <Hero />
+
       <div className="h-[calc(62vw-100vh)] w-full"></div>
 
       {/* desktop: horizontal scroll for Learn -> Recap -> Stats */}
@@ -33,22 +34,20 @@ export default function Home() {
             <div className="absolute bottom-0 left-0 w-full">
               <Learn />
             </div>
+
           </div>
           <Recap />
           <StatsTestimonials />
         </div>
+
       </div>
 
       {/* desktop spacing between horizontal scroll and ten years */}
       <div className="hidden md:block h-[calc(128.07vw-100vh)] w-full"></div>
+
       <TenYears />
       <Faq />
       <SponsorFooter />
     </div>
   );
-}
-
-{
-  /* todo:make it an accordion DONE, navbar, car animation, sign times DONE, recap section board, alignment with stats 
-  notes: accordion arrow design change? , navbar testimonial section is wack..., assuming boards show application time? not found on firebase,  */
 }

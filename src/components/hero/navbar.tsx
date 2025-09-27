@@ -65,6 +65,7 @@ export default function Navbar() {
       <a
         href="https://portal.nwplus.io/"
         target="_blank"
+        rel="noopener"
         className=" bg-[#2C6D7D] text-[1.2vw] font-semibold py-[0.7vw] px-[1.7vw] rounded-[0.8vw] text-title cursor-pointer hover:bg-[#32787b] transition duration-200"
       >
         Live Portal

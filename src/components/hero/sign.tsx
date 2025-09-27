@@ -5,7 +5,7 @@ const Sign = ({
   unit,
   className,
 }: {
-  number: string;
+  number: string | number;
   unit: string;
   className: string;
 }) => {

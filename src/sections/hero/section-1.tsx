@@ -2,6 +2,7 @@
 
 import EntranceSign from "@/components/hero/entrance-sign";
 import Sign from "@/components/hero/sign";
+import { useCountdown } from "@/lib/useCountdown";
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -43,54 +44,8 @@ const carImages = [
   },
 ];
 
-const getReturnValues = (
-  countdown: number
-): [number, number, number, number] => {
-  // calculate time left
-  const days = Math.floor(countdown / (1000 * 60 * 60 * 24));
-  const hours = Math.floor(
-    (countdown % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-  );
-  const minutes = Math.floor((countdown % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((countdown % (1000 * 60)) / 1000);
-
-  if (days < 0 || hours < 0 || minutes < 0 || seconds < 0) {
-    return [0, 0, 0, 0];
-  }
-
-  return [days, hours, minutes, seconds];
-};
-
-const useCountdown = (targetDate: number) => {
-  const countDownDate = new Date(targetDate).getTime();
-
-  const [countDown, setCountDown] = useState(
-    countDownDate - new Date().getTime()
-  );
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCountDown(countDownDate - new Date().getTime());
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, [countDownDate]);
-
-  return getReturnValues(countDown);
-};
-
-const twoify = (num: number) => {
-  const str = num.toString();
-  if (str.length === 1) {
-    return `0${str}`;
-  }
-
-  return str;
-};
-
 const Section1 = () => {
-  const countDownDate = new Date("Oct 1, 2025 09:00:00").getTime();
-  const [days, hours, minutes] = useCountdown(countDownDate);
+  const { days, hours, minutes } = useCountdown();
   const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
@@ -123,12 +78,6 @@ const Section1 = () => {
     return 1;
   };
 
-  const count = {
-    days: days.toString(),
-    hours: twoify(hours),
-    minutes: twoify(minutes),
-  };
-
   // Container min-height based on background image aspect ratio (2238÷1920 = 116.56vw)
   return (
     <div className="relative flex flex-col bg-hero-1 bg-cover bg-center bg-no-repeat h-[116.56vw] pt-4">
@@ -153,17 +102,17 @@ const Section1 = () => {
         />
       </div>
       <Sign
-        number={count.days}
+        number={days}
         unit="days"
         className="absolute left-[8vw] top-[38vw] w-[9vw]"
       />
       <Sign
-        number={count.hours}
+        number={hours}
         unit="hours"
         className="absolute left-[15.5vw] top-[41vw] w-[9vw]"
       />
       <Sign
-        number={count.minutes}
+        number={minutes}
         unit="minutes"
         className="absolute left-[23vw] top-[45vw] w-[9vw]"
       />
