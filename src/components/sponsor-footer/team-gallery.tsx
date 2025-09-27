@@ -66,7 +66,7 @@ const Team = () => {
                 }}
                 width={100}
                 height={100}
-                className="hover:opacity-100 rounded-md object-cover transition-all duration-100 ease-in-out opacity-42 w-full h-full"
+                className="hover:opacity-100 rounded-md object-cover transition-all duration-100 ease-in-out opacity-80 md:opacity-42 w-full h-full"
                 style={{ backgroundColor: profile.color }}
               />
             </a>
