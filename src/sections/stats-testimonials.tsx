@@ -106,7 +106,7 @@ function StatsTestimonialsDesktop() {
         alt="Stats background"
         width={1000}
         height={100}
-        className="absolute inset-0 w-[100vw] h-[58vh] left-[7vh] top-[6vh] z-5"
+        className="absolute inset-0 w-[100vw] h-[58vh] left-[6.4vh] top-[6vh] z-5"
       />
 
       {/* covers up the weird river edge from recap section */}
