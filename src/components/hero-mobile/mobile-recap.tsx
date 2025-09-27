@@ -8,7 +8,7 @@ export default function MobileRecap() {
         width={1000}
         height={1000}
         alt="grass"
-        className="object-cover object-[50%_center]"
+        className="object-cover object-[50%_center] h-full"
       />
       <div className="w-full absolute top-[3vh] h-full p-0 flex">
         <Image

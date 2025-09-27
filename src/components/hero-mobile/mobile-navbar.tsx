@@ -30,6 +30,7 @@ export default function MobileNavbar() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [isOpen]);
+
   function scrollToSection(id: string) {
     const el = document.getElementById(id);
 
@@ -45,11 +46,11 @@ export default function MobileNavbar() {
 
     { name: "Recap", href: "recap-mobile" },
 
-    { name: "Stats", href: "stats" },
+    { name: "Stats", href: "mobile-stats" },
 
-    { name: "Testimonials", href: "testimonials" },
+    { name: "Testimonials", href: "testimonials-mobile" },
 
-    { name: "10 Years", href: "10-years" },
+    { name: "10 Years", href: "10-years-mobile" },
 
     { name: "FAQ", href: "faq" },
 
@@ -87,8 +88,32 @@ export default function MobileNavbar() {
               type="button"
               key={link.name}
               onClick={() => {
-                scrollToSection(link.href);
+                const el = document.getElementById(link.href);
+                switch (link.name) {
+                  case "Testimonials":
+                    if (el) {
+                      console.log(el);
+                      console.log(el.getBoundingClientRect().top);
+                      console.log(window.scrollY);
+                      const y = el.getBoundingClientRect().top + window.scrollY;
+                      window.scrollTo({
+                        top: y,
+                        behavior: "smooth",
+                      });
+                    } //the element exists but el.getBoundingClientRect.top returns 0? No clue why the Id's are in the same position
+                    break;
 
+                  case "Stats":
+                    if (el) {
+                      const y = el.getBoundingClientRect().top + window.scrollY;
+                      window.scrollTo({ top: y, behavior: "smooth" });
+                    }
+                    break;
+
+                  default:
+                    console.log(el);
+                    scrollToSection(link.href);
+                }
                 setIsOpen(false);
               }}
               className="cursor-pointer active:underline transition duration-200"
