@@ -1,6 +1,7 @@
 "use client";
 
 import CarouselControls from "@/components/stats-testimonials/carousel-controls";
+import StatsTestimonialsMobile from "@/components/mobile/stats-testimonials-mobile";
 
 import {
   AnimatePresence,
@@ -23,7 +24,7 @@ interface Testimonial {
   linkedin?: string;
 }
 
-const testimonials: Testimonial[] = [
+export const testimonials: Testimonial[] = [
   {
     name: "Jonathan Cai",
     pronouns: "he/him",
@@ -63,9 +64,9 @@ const testimonials: Testimonial[] = [
 ];
 
 /**
- * Stats and testimonials page
+ * Desktop version of Stats and testimonials page
  */
-export default function StatsTestimonials() {
+function StatsTestimonialsDesktop() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -244,6 +245,29 @@ export default function StatsTestimonials() {
             >
               {testimonials[currentSlide].testimonial}
             </div>
+            <div className="mt-4 text-xl font-medium">
+              {testimonials[currentSlide].devpost && (
+                <a
+                  href={testimonials[currentSlide].devpost}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline hover:opacity-60 hover:cursor-pointer transition duration-150"
+                >
+                  Devpost
+                </a>
+              )}
+              {testimonials[currentSlide].devpost && testimonials[currentSlide].linkedin && " | "}
+              {testimonials[currentSlide].linkedin && (
+                <a
+                  href={testimonials[currentSlide].linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline hover:opacity-60 hover:cursor-pointer transition duration-150"
+                >
+                  Linkedin
+                </a>
+              )}
+            </div>
           </div>
         </div>
       </motion.div>
@@ -317,5 +341,22 @@ export default function StatsTestimonials() {
         </motion.h2>
       </motion.div>
     </motion.div>
+  );
+}
+
+/**
+ * Page switches between mobile/desktop components to create responsive view
+ */
+export default function StatsTestimonials() {
+  return (
+    <>
+      <div className="block md:hidden">
+        <StatsTestimonialsMobile />
+      </div>
+
+      <div className="hidden md:block">
+        <StatsTestimonialsDesktop />
+      </div>
+    </>
   );
 }

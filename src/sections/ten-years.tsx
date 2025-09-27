@@ -1,6 +1,7 @@
 "use client";
 
 import ImageCarousel from "@/components/ten-years/image-carousel";
+import TenYearsMobile from "@/components/mobile/ten-years-mobile";
 
 import { motion, MotionValue, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
@@ -8,9 +9,9 @@ import Link from "next/link";
 import { useRef } from "react";
 
 /**
- * Ten Years page
+ * Desktop version of Ten Years page
  */
-export default function TenYears() {
+function TenYearsDesktop() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -351,6 +352,20 @@ export default function TenYears() {
         </div>
       </motion.div>
     </div>
+  );
+}
+
+export default function TenYears() {
+  return (
+    <>
+      <div className="block md:hidden">
+        <TenYearsMobile />
+      </div>
+
+      <div className="hidden md:block">
+        <TenYearsDesktop />
+      </div>
+    </>
   );
 }
 

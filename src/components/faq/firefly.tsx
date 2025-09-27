@@ -17,6 +17,11 @@ const Firefly = (props: React.SVGProps<SVGSVGElement>) => (
         fill="url(#paint0_radial_4_6)"
       />
     </g>
+  </svg>
+);
+
+export const FireflyDefs = () => (
+  <svg>
     <defs>
       <filter
         id="filter0_d_4_6"

@@ -2,7 +2,8 @@ import { useEffect, useRef, useState } from "react";
 
 export const useAutoplayAudio = (
   elementRef: React.RefObject<HTMLElement | null>,
-  audioSrc: string
+  audioSrc: string,
+  paused?: boolean
 ) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -45,7 +46,7 @@ export const useAutoplayAudio = (
         if (!elementRef.current) return;
 
         const entry = entries[0];
-        if (entry?.isIntersecting) {
+        if (entry?.isIntersecting && !paused) {
           // Element is visible, start playing audio
           if (!audioRef.current) {
             audioRef.current = new Audio(audioSrc);
@@ -90,7 +91,7 @@ export const useAutoplayAudio = (
         audioRef.current = null;
       }
     };
-  }, [elementRef, audioSrc]);
+  }, [elementRef, audioSrc, paused]);
 
   return { isPlaying };
 };
