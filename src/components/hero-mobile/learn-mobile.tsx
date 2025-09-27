@@ -27,7 +27,7 @@ export default function LearnMobile() {
           />
         </div>
 
-        <div className="top-[10vh] mt-[10vh] z-20">
+        <div className="top-[10vh] mt-[10vh] z-20 mb-[2vh]">
           <h2 className="text-3xl font-title leading-none text-shadow-bold text-center">
             What is a Hackathon?
           </h2>

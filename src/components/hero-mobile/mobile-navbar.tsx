@@ -68,7 +68,7 @@ export default function MobileNavbar() {
       </button>
 
       <div
-        className={`fixed w-[100vw] h-[70vh] left-0 top-0 bg-[#87B171] text-white shadow-lg transform transition-all duration-300 origin-top-right z-10 py-[5vh] ${
+        className={`fixed w-[100vw] h-[130vw] left-0 top-0 bg-[#87B171] text-white shadow-lg transform transition-all duration-300 origin-top-right z-10 py-7 ${
           isOpen
             ? "opacity-100 scale-100 translate-y-0"
             : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
@@ -79,10 +79,10 @@ export default function MobileNavbar() {
           width={60}
           height={50}
           alt="HackCamp 2025 logo"
-          className="mx-auto mb-5 -mt-3"
+          className="mx-auto mb-5"
         />
 
-        <nav className="flex flex-col text-center space-y-7 font-bold text-[4.7vw]">
+        <nav className="flex flex-col text-center text-[5vw] space-y-5 font-bold">
           {links.map((link) => (
             <button
               type="button"
@@ -92,9 +92,6 @@ export default function MobileNavbar() {
                 switch (link.name) {
                   case "Testimonials":
                     if (el) {
-                      console.log(el);
-                      console.log(el.getBoundingClientRect().top);
-                      console.log(window.scrollY);
                       const y = el.getBoundingClientRect().top + window.scrollY;
                       window.scrollTo({
                         top: y,
