@@ -15,6 +15,10 @@ export default function Learn() {
     amount: 0.6,
   });
 
+  useEffect(() => {
+    console.log(isInView);
+  }, [isInView]);
+
   return (
     <div
       className="relative h-[62vw] flex flex-col items-center w-full"
@@ -49,6 +53,7 @@ export default function Learn() {
               alt="Learn Day - Nov 15, 2025. Hover to learn more"
               width={600}
               height={400}
+              className="w-full"
             />
           }
           backTitle="Learn Day"
@@ -62,6 +67,7 @@ export default function Learn() {
               alt="Build Night - Nov 15 - 16, 2025. Hover to learn more"
               width={600}
               height={400}
+              className="w-full"
             />
           }
           backTitle="Build Night"
@@ -108,7 +114,7 @@ export default function Learn() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
             className={
-              "absolute bottom-0 w-[70%] left-1/2 ml-[4vw] -translate-x-1/2 transition-transform"
+              "absolute bottom-0 w-[70%] left-1/2 -translate-x-1/2 transition-transform"
             }
           >
             <motion.div
@@ -126,6 +132,7 @@ export default function Learn() {
                 alt="Tug of War"
                 width={1100}
                 height={500}
+                className="w-full"
               />
             </motion.div>
           </motion.div>
@@ -143,6 +150,7 @@ export default function Learn() {
               alt="Tug of War"
               width={1000}
               height={100}
+              className="w-full"
             />
           </motion.div>
         )}
