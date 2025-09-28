@@ -15,10 +15,6 @@ export default function Learn() {
     amount: 0.7,
   });
 
-  useEffect(() => {
-    console.log(isInView);
-  }, [isInView]);
-
   return (
     <div
       className="relative h-[62vw] flex flex-col items-center w-full"
