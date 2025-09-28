@@ -21,7 +21,7 @@ export interface SponsorDoc {
   blurb: string;
   imgName: string;
   imgURL: string;
-  lastmod?: Timestamp;
+  lastmod?: Timestamp | string;
   lastmodby?: string;
   link: string;
   name: string;
@@ -82,7 +82,10 @@ export async function getSponsorsByHackathon(
     const sponsorsRef = collection(db, "Hackathons", hackathonName, "Sponsors");
     const querySnapshot = await getDocs(sponsorsRef);
     const sponsors = querySnapshot.docs.map((doc) => doc.data() as SponsorDoc);
-    return sponsors;
+    return sponsors.map((sponsor) => ({
+      ...sponsor,
+      lastmod: sponsor.lastmod?.toString(),
+    }));
   } catch (error) {
     console.error("Error fetching sponsors from Firestore:", error);
     throw error;
