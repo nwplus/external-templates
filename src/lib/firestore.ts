@@ -28,7 +28,7 @@ export interface SponsorDoc {
   tier: "platinum" | "gold" | "silver" | "bronze" | "inkind";
 }
 
-export const CURRENT_HACKATHON = "HackCamp2025";
+export const CURRENT_HACKATHON = "HackCamp2024";
 
 /**
  * Fetches FAQ documents from Firestore for a specific hackathon
