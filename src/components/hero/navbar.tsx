@@ -31,19 +31,19 @@ export default function Navbar() {
                 case "Testimonials":
                   if (el) {
                     const y = el.getBoundingClientRect().top + window.scrollY;
-                    window.scrollTo({ top: y + 1200, behavior: "smooth" });
-                  } // really scuffed but ids dont seem to work on stats page? hard coding this for now...
+                    window.scrollTo({ top: y + 1300, behavior: "smooth" });
+                  }
                   break;
                 case "Recap":
                   if (el) {
                     const y = el.getBoundingClientRect().top + window.scrollY;
-                    window.scrollTo({ top: y + 800, behavior: "smooth" });
+                    window.scrollTo({ top: y + 1000, behavior: "smooth" });
                   }
                   break;
                 case "Stats":
                   if (el) {
                     const y = el.getBoundingClientRect().top + window.scrollY;
-                    window.scrollTo({ top: y + 1500, behavior: "smooth" });
+                    window.scrollTo({ top: y + 1700, behavior: "smooth" });
                   }
                   break;
                 case "10 Years":

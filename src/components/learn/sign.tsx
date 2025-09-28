@@ -33,11 +33,12 @@ const Sign = ({
         alt="Learn sign"
         width={600}
         height={500}
+        className="w-full"
       />
       <div className="absolute w-full top-0 left-0">
         <div
           className={cn(
-            "absolute left-[2.5%] top-[1vw] w-[95%] transition-opacity",
+            "absolute left-[3%] top-[1vw] w-[95%] transition-opacity",
             isHovered && "opacity-0 pointer-events-none"
           )}
         >

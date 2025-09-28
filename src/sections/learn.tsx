@@ -2,43 +2,18 @@
 
 import Sign from "@/components/learn/sign";
 
+import { AnimatePresence, easeInOut, motion, useInView } from "framer-motion";
 import Image from "next/image";
-import { useLayoutEffect, useRef, useState } from "react";
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function Learn() {
   // Container min-height based on background image aspect ratio (1190÷1920 = 62vw)
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const tugOfWarRef = useRef(null);
   const sectionRef = useRef(null);
 
-  useLayoutEffect(() => {
-    // const el = sectionRef.current?.offsetTop; //returns 0??
-
-    const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      const sectionStart = window.innerHeight * 2.5; //can't find a workaround for this hardcode?
-      // const sectionStart = el;
-      const sectionHeight = window.innerHeight * 0.4;
-      const sectionEnd = sectionStart + sectionHeight;
-
-      if (scrollTop < sectionStart) {
-        setScrollProgress(0);
-      } else if (scrollTop > sectionEnd) {
-        setScrollProgress(1);
-      } else {
-        const progress = (scrollTop - sectionStart) / sectionHeight;
-        setScrollProgress(progress);
-        const leftPosition = 7 - Math.sin(progress * 3 * Math.PI) * 10;
-        // if (tugOfWarRef.current) {
-        //   tugOfWarRef.current.style.transform = `translateX(${leftPosition}%)`;
-        // }
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const isInView = useInView(sectionRef, {
+    margin: "0px 0px 0px 0px",
+    amount: 0.7,
+  });
 
   return (
     <div
@@ -74,6 +49,7 @@ export default function Learn() {
               alt="Learn Day - Nov 15, 2025. Hover to learn more"
               width={600}
               height={400}
+              className="w-full"
             />
           }
           backTitle="Learn Day"
@@ -87,6 +63,7 @@ export default function Learn() {
               alt="Build Night - Nov 15 - 16, 2025. Hover to learn more"
               width={600}
               height={400}
+              className="w-full"
             />
           }
           backTitle="Build Night"
@@ -124,25 +101,56 @@ export default function Learn() {
         height={300}
         className="absolute bottom-[8vw] right-[16vw] w-[23vw]"
       />
-
-      {scrollProgress <= 0.8 ? (
-        <Image
-          src="/assets/learn/tug-of-war.svg"
-          alt="Tug of War"
-          width={400}
-          height={100}
-          className={"absolute bottom-0 w-[70vw] transition-transform"}
-          ref={tugOfWarRef}
-        />
-      ) : (
-        <Image
-          src="/assets/learn/tug-fall.png"
-          alt="Tug of War"
-          width={400}
-          height={100}
-          className={"absolute -bottom-12 w-[60vw] left-12"}
-        />
-      )}
+      <AnimatePresence>
+        {isInView ? (
+          <motion.div
+            key="firstComponent"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            className={
+              "absolute bottom-0 w-[70%] left-1/2 -translate-x-1/2 mr-[1vw] transition-transform"
+            }
+          >
+            <motion.div
+              initial={{ x: 0 }}
+              animate={{ x: 100 }}
+              transition={{
+                duration: 1,
+                ease: easeInOut,
+                repeat: Infinity,
+                repeatType: "reverse",
+              }}
+            >
+              <Image
+                src="/assets/learn/tug-of-war.svg"
+                alt="Tug of War"
+                width={1100}
+                height={500}
+                className="w-full"
+              />
+            </motion.div>
+          </motion.div>
+        ) : (
+          <motion.div
+            className={`absolute -bottom-[8vh] w-[60vw] left-40`}
+            key="secondComponent"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Image
+              src="/assets/learn/tug-fall.png"
+              alt="Tug of War"
+              width={1000}
+              height={100}
+              className="w-full"
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

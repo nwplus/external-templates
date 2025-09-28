@@ -24,15 +24,15 @@ const SignButton = ({
 const EntranceSign = () => {
   return (
     // TODO: add buttons back in and switch to `entrance-sign.png` when applications open
-    <div>
+    <div className="w-full">
       <Image
         src="/assets/hero/entrance-sign-without-buttons.png"
         alt="Entrance sign"
         width={1200}
         height={800}
-        className="pointer-events-none"
+        className="pointer-events-none w-full"
       />
-      <div className="absolute left-1/2 -translate-x-1/2 top-[20%] flex flex-col items-center font-title text-title">
+      <div className="absolute left-1/2 -translate-x-1/2 top-[20%] ml-[1vw] flex flex-col items-center font-title text-title">
         <h1 className="text-[6.8vw] text-shadow-lg leading-tight">HackCamp</h1>
         <h2 className="text-[1.5vw]">
           Canada&apos;s largest beginner-only hackathon
