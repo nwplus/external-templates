@@ -104,7 +104,7 @@ const Contact = () => {
           Become a Sponsor
         </a>
         <a
-          href="https://static.mlh.io/docs/mlh-code-of-conduct.pdft"
+          href="https://github.com/MLH/mlh-policies/blob/main/code-of-conduct.md"
           className="font-bold underline"
         >
           Code of Conduct
