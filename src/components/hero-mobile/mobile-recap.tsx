@@ -24,7 +24,7 @@ export default function MobileRecap() {
           src="https://www.youtube.com/embed/WXZEhL0T_-4?si=s-myjEY33xI-qGXV"
           title="Hackcamp 2024 recap"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          className="absolute top-[17.2%] w-[17.5rem] h-[17.5%] left-[55%] transform -translate-x-1/2"
+          className="absolute top-[17.2%] w-[17rem] h-[17.5%] left-[54%] transform -translate-x-1/2"
           allowFullScreen
         ></iframe>
       </div>
