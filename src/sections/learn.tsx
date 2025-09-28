@@ -12,7 +12,7 @@ export default function Learn() {
 
   const isInView = useInView(sectionRef, {
     margin: "0px 0px 0px 0px",
-    amount: 0.6,
+    amount: 0.7,
   });
 
   useEffect(() => {
@@ -114,7 +114,7 @@ export default function Learn() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
             className={
-              "absolute bottom-0 w-[70%] left-1/2 -translate-x-1/2 transition-transform"
+              "absolute bottom-0 w-[70%] left-1/2 -translate-x-1/2 mr-[1vw] transition-transform"
             }
           >
             <motion.div
