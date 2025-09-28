@@ -1,4 +1,5 @@
 import Contact from "@/components/sponsor-footer/contact";
+import SponsorBlurbs from "@/components/sponsor-footer/sponsor-blurbs";
 import TeamGallery from "@/components/sponsor-footer/team-gallery";
 import {
   CURRENT_HACKATHON,
@@ -12,7 +13,9 @@ import Image from "next/image";
 const SponsorFooter = async () => {
   // Fetch sponsors from Firestore
   const sponsors = await getSponsorsByHackathon(CURRENT_HACKATHON);
-  const sponsorsByTier = groupSponsorsByTier(sponsors);
+  const sponsorsWithBlurbs = sponsors.filter((sponsor) => sponsor.blurb);
+  const sponsorsWithoutBlurbs = sponsors.filter((sponsor) => !sponsor.blurb);
+  const sponsorsByTier = groupSponsorsByTier(sponsorsWithoutBlurbs);
 
   // Tier configuration for size and layout
   const TIER_ORDER = [
@@ -63,10 +66,8 @@ const SponsorFooter = async () => {
         />
       </div>
 
-      <div className="z-10 flex flex-col gap-8 items-center justify-between h-full md:pt-40 md:px-16 text-white">
-        <h2 className="font-title text-4xl md:text-6xl mb-12">
-          Last Year&apos;s Sponsors
-        </h2>
+      <div className="z-10 flex flex-col gap-8 items-center justify-between h-full md:pt-12 md:px-16 text-white">
+        <SponsorBlurbs sponsors={sponsorsWithBlurbs} />
         <div className="flex flex-col items-center gap-12 md:gap-20">
           {activeTiers.map((tier) => (
             <div
@@ -95,7 +96,7 @@ const SponsorFooter = async () => {
             </div>
           ))}
         </div>
-        <div className="grow flex flex-col justify-end w-full gap-[25dvw] md:gap-[12dvw] xl:gap-[30dvw]">
+        <div className="grow flex flex-col justify-end w-full gap-[25dvw] md:gap-[12dvw] xl:gap-[50dvw]">
           <Contact />
           <div className="flex flex-col items-center">
             <TeamGallery />
