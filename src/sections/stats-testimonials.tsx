@@ -91,6 +91,7 @@ function StatsTestimonialsDesktop() {
       ref={containerRef}
       style={{ scale, opacity: containerOpacity }}
       className="relative w-screen h-[128.07vw]"
+      id="stats"
     >
       <Image
         src={"/assets/stats-and-testimonials/graphics/grasstents.png"}
@@ -98,7 +99,6 @@ function StatsTestimonialsDesktop() {
         width={1000}
         height={100}
         className="absolute inset-0 w-[100vw] h-[84vh] top-[17vh] z-30 -left-[19vw]"
-        id="stats"
       />
 
       <Image
@@ -106,7 +106,7 @@ function StatsTestimonialsDesktop() {
         alt="Stats background"
         width={1000}
         height={100}
-        className="absolute inset-0 w-[100vw] h-[58vh] left-[7vh] top-[6vh] z-5"
+        className="absolute inset-0 w-[100vw] h-[58vh] left-[6.4vh] top-[6vh] z-5"
       />
 
       {/* covers up the weird river edge from recap section */}
@@ -217,7 +217,7 @@ function StatsTestimonialsDesktop() {
       </motion.div>
 
       {/* Testimonials body text */}
-      <motion.div className="absolute bottom-0 right-0 translate-y-[10vh] z-30">
+      <motion.div className="absolute bottom-0 right-0 translate-y-[10vh] z-30" id="testimonials">
         <Image
           src="/assets/stats-and-testimonials/graphics/testimonial-ground.svg"
           alt="Testimonial ground background"
@@ -239,10 +239,7 @@ function StatsTestimonialsDesktop() {
               {testimonials[currentSlide].year} |{" "}
               {testimonials[currentSlide].program}
             </div>
-            <div
-              className="text-md leading-relaxed max-w-3xl"
-              id="testimonials"
-            >
+            <div className="text-md leading-relaxed max-w-3xl">
               {testimonials[currentSlide].testimonial}
             </div>
             <div className="mt-4 text-xl font-medium">

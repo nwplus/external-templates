@@ -171,7 +171,7 @@ export default function TenYearsMobile() {
 
             <motion.div
               style={{ opacity: section2Opacity }}
-              className="absolute inset-0 flex flex-col items-center justify-center text-white pt-16"
+              className="absolute inset-0 flex flex-col items-center justify-center text-white pt-20"
             >
               <div className="relative w-full max-w-xs mb-6 px-4">
                 <Image
@@ -227,7 +227,7 @@ export default function TenYearsMobile() {
 
             <motion.div
               style={{ opacity: section3Opacity }}
-              className="absolute inset-0 flex flex-col items-center justify-center text-white pt-16"
+              className="absolute inset-0 flex flex-col items-center justify-center text-white pt-20"
             >
               <div className="relative w-full max-w-xs mb-6 px-4">
                 <Image

@@ -36,7 +36,6 @@ export default function StatsTestimonialsMobile() {
           fill
           className="object-cover"
           priority
-          id="mobile-stats"
         />
       </div>
 
@@ -70,12 +69,13 @@ export default function StatsTestimonialsMobile() {
         />
       </div>
 
-      <div className="absolute top-[18.5%] -left-5 w-full h-[45vh] z-10">
+      <div className="absolute top-[18.5%] -left-5 z-10">
         <Image
           src="/assets/stats-and-testimonials/graphics/mobile_stat_canoe.svg"
           alt="Stats canoe"
-          fill
-          className="object-contain object-bottom"
+          width={342}
+          height={312}
+          className="w-[85vw] h-auto object-contain"
         />
       </div>
 
@@ -104,7 +104,7 @@ export default function StatsTestimonialsMobile() {
         />
       </motion.div>
 
-      <div className="relative z-10 pt-12 ml-4">
+      <div className="relative z-10 pt-12 ml-4" id="mobile-stats">
         <motion.h2
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -155,7 +155,7 @@ export default function StatsTestimonialsMobile() {
         </div>
       </motion.div>
 
-      <div className="absolute -bottom-1 left-0 w-full z-30">
+      <div className="absolute bottom-0 left-0 w-full z-30">
         <Image
           src="/assets/stats-and-testimonials/graphics/mobile_testimonial_ground.svg"
           alt="Testimonial ground background"
@@ -163,7 +163,7 @@ export default function StatsTestimonialsMobile() {
           height={600}
           className="w-full h-auto object-bottom"
         />
-        <div className="absolute top-[6%] left-1/2 transform -translate-x-1/2">
+        <div className="absolute top-[6%] left-1/2 transform -translate-x-1/2" id="testimonials-mobile">
           <h3 className="font-title text-4xl font-bold text-gray-800 text-center">
             Testimonials
           </h3>
@@ -180,10 +180,7 @@ export default function StatsTestimonialsMobile() {
               {testimonials[currentSlide].year}
             </p>
           </div>
-          <div
-            className="mb-4 text-[15px] leading-relaxed"
-            id="testimonials-mobile"
-          >
+          <div className="mb-4 text-[15px] leading-relaxed">
             &quot;{testimonials[currentSlide].testimonial}&quot;
           </div>
 
