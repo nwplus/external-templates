@@ -32,7 +32,7 @@ export default function Navbar() {
                   if (el) {
                     const y = el.getBoundingClientRect().top + window.scrollY;
                     window.scrollTo({ top: y + 1300, behavior: "smooth" });
-                  } // really scuffed but ids dont seem to work on stats page? hard coding this for now...
+                  }
                   break;
                 case "Recap":
                   if (el) {
