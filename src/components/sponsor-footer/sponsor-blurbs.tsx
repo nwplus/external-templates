@@ -13,7 +13,7 @@ const SponsorBlurbs = ({ sponsors }: { sponsors: SponsorDoc[] }) => {
 
   return (
     <div className="relative flex justify-center pb-20">
-      <div className="absolute -top-[42vw] left-[55%] -translate-x-1/2 w-full">
+      <div className="absolute -top-[44vw] left-[55%] -translate-x-1/2 w-full">
         <Image
           src="/assets/sponsor-footer/blurbs-background.svg"
           alt="Sponsor Blurbs background"
