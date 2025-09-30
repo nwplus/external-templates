@@ -12,8 +12,8 @@ const SponsorBlurbs = ({ sponsors }: { sponsors: SponsorDoc[] }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   return (
-    <div className="relative flex justify-center pb-20">
-      <div className="absolute -top-[44vw] left-[55%] -translate-x-1/2 w-full">
+    <div className="relative flex justify-center py-20">
+      <div className="absolute -top-[38vw] left-[55%] -translate-x-1/2 w-full -z-10">
         <Image
           src="/assets/sponsor-footer/blurbs-background.svg"
           alt="Sponsor Blurbs background"

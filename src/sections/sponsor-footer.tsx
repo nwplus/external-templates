@@ -62,7 +62,7 @@ const SponsorFooter = async () => {
         />
       </div>
 
-      <div className="z-10 flex flex-col gap-8 items-center justify-between h-full md:pt-12 md:px-16 text-white">
+      <div className="z-10 flex flex-col gap-8 items-center justify-between h-full md:pt-12 md:px-16 text-white overflow-y-clip">
         <SponsorBlurbs sponsors={sponsorsWithBlurbs} />
         <div className="flex flex-col items-center gap-12 md:gap-20">
           {activeTiers.map((tier) => (
