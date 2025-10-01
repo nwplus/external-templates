@@ -19,17 +19,21 @@ const SponsorFooter = async () => {
 
   // Tier configuration for size and layout
   const TIER_ORDER = [
+    "title",
     "platinum",
     "gold",
     "silver",
     "bronze",
+    "startup",
     "inkind",
   ] as const;
   const TIER_CONFIG = {
+    title: { width: 300, height: 200, gap: "gap-6 md:gap-12" },
     platinum: { width: 300, height: 200, gap: "gap-6 md:gap-12" },
     gold: { width: 240, height: 160, gap: "gap-6 md:gap-12" },
     silver: { width: 180, height: 120, gap: "gap-4 md:gap-8" },
     bronze: { width: 140, height: 93, gap: "gap-4 md:gap-6" },
+    startup: { width: 120, height: 80, gap: "gap-4 md:gap-6" },
     inkind: { width: 120, height: 80, gap: "gap-4 md:gap-6" },
   } as const;
 
