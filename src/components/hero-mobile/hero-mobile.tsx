@@ -34,18 +34,22 @@ export default function HeroMobile() {
       </div> */}
       {/* for buttons */}
       <div className="absolute left-1/2 -translate-x-1/2 top-[33vh] flex w-[79vw] justify-center space-x-5 items-center ">
-        <button
-          type="button"
+        <a
           className="bg-[#2C6D7D] text-md py-[1vw] px-[1.2vw] rounded-sm text-title cursor-pointer hover:opacity-80 transition-opacity"
+          target="_blank"
+          rel="noopener"
+          href="https://portal.nwplus.io/"
         >
           Register Now
-        </button>
-        <button
-          type="button"
+        </a>
+        <a
           className="bg-[#2C6D7D] text-md py-[1vw] px-[1.2vw] rounded-sm text-title cursor-pointer hover:opacity-80 transition-opacity"
+          target="_blank"
+          rel="noopener"
+          href="https://forms.gle/6TwPkJ6HWCJt6w5N7"
         >
           Become a Mentor
-        </button>
+        </a>
       </div>
 
       <div className="absolute h-[134vh] top-[45vh] left-0 right-0">

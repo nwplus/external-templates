@@ -5,28 +5,32 @@ import Image from "next/image";
 const SignButton = ({
   children,
   className,
+  href,
 }: {
   children: React.ReactNode;
   className: string;
+  href: string;
 }) => {
   return (
-    <button
+    <a
       className={cn(
         "absolute bg-[#2C6D7D] text-[1vw] py-[0.5vw] px-[1vw] rounded-[0.5vw] text-title cursor-pointer hover:opacity-80 transition-opacity",
         className
       )}
+      href={href}
+      target="_blank"
+      rel="noopener"
     >
       {children}
-    </button>
+    </a>
   );
 };
 
 const EntranceSign = () => {
   return (
-    // TODO: add buttons back in and switch to `entrance-sign.png` when applications open
     <div className="w-full">
       <Image
-        src="/assets/hero/entrance-sign-without-buttons.png"
+        src="/assets/hero/entrance-sign.png"
         alt="Entrance sign"
         width={1200}
         height={800}
@@ -38,12 +42,18 @@ const EntranceSign = () => {
           Canada&apos;s largest beginner-only hackathon
         </h2>
       </div>
-      {/* <SignButton className="left-[22.6vw] top-[19.8vw]">
+      <SignButton
+        className="left-[22.6vw] top-[19.8vw]"
+        href="https://portal.nwplus.io/"
+      >
         Register Now
       </SignButton>
-      <SignButton className="right-[20.5vw] top-[19.8vw]">
+      <SignButton
+        className="right-[20.5vw] top-[19.8vw]"
+        href="https://forms.gle/6TwPkJ6HWCJt6w5N7"
+      >
         Become a Mentor
-      </SignButton> */}
+      </SignButton>
     </div>
   );
 };
