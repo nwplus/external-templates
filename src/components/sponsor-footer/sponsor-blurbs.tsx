@@ -14,12 +14,13 @@ const SponsorBlurbs = ({ sponsors }: { sponsors: SponsorDoc[] }) => {
 
   return (
     <div className="relative flex justify-center py-20">
-      <div className="absolute -top-[40vw] left-[55%] -translate-x-1/2 w-full -z-10">
+      <div className="absolute -top-[38rem] left-[55%] -translate-x-1/2 w-full -z-10">
         <Image
           src="/assets/sponsor-footer/blurbs-background.svg"
           alt="Sponsor Blurbs background"
           width={1561}
           height={442}
+          priority
           className="w-full max-w-full! hidden xl:block"
         />
       </div>
