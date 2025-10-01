@@ -32,9 +32,9 @@ const SponsorFooter = async () => {
     platinum: { width: 300, height: 200, gap: "gap-6 md:gap-12" },
     gold: { width: 240, height: 160, gap: "gap-6 md:gap-12" },
     silver: { width: 140, height: 100, gap: "gap-4 md:gap-8" },
-    bronze: { width: 120, height: 90, gap: "gap-4 md:gap-6" },
-    startup: { width: 120, height: 80, gap: "gap-4 md:gap-6" },
-    inkind: { width: 120, height: 80, gap: "gap-4 md:gap-6" },
+    bronze: { width: 130, height: 90, gap: "gap-4 md:gap-6" },
+    startup: { width: 130, height: 90, gap: "gap-4 md:gap-6" },
+    inkind: { width: 130, height: 90, gap: "gap-4 md:gap-6" },
   } as const;
 
   // Only render tiers that have sponsors
