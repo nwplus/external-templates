@@ -31,8 +31,8 @@ const SponsorFooter = async () => {
     title: { width: 300, height: 200, gap: "gap-6 md:gap-12" },
     platinum: { width: 300, height: 200, gap: "gap-6 md:gap-12" },
     gold: { width: 240, height: 160, gap: "gap-6 md:gap-12" },
-    silver: { width: 180, height: 120, gap: "gap-4 md:gap-8" },
-    bronze: { width: 140, height: 93, gap: "gap-4 md:gap-6" },
+    silver: { width: 140, height: 100, gap: "gap-4 md:gap-8" },
+    bronze: { width: 120, height: 90, gap: "gap-4 md:gap-6" },
     startup: { width: 120, height: 80, gap: "gap-4 md:gap-6" },
     inkind: { width: 120, height: 80, gap: "gap-4 md:gap-6" },
   } as const;

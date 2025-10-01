@@ -2,6 +2,7 @@
 
 import { SponsorDoc } from "@/lib/firestore";
 
+import { motion } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -28,12 +29,20 @@ const SponsorBlurbs = ({ sponsors }: { sponsors: SponsorDoc[] }) => {
             <h2 className="font-title text-2xl text-center uppercase">
               Proudly Sponsored By
             </h2>
-            <Image
-              src={sponsors[currentSlide].imgURL}
-              alt={sponsors[currentSlide].name}
-              width={400}
-              height={400}
-            />
+            <motion.div
+              key={`image-${currentSlide}`}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+            >
+              <Image
+                src={sponsors[currentSlide].imgURL}
+                alt={sponsors[currentSlide].name}
+                width={400}
+                height={400}
+              />
+            </motion.div>
           </div>
           <CarouselControls
             totalSlides={sponsors.length}
@@ -42,7 +51,16 @@ const SponsorBlurbs = ({ sponsors }: { sponsors: SponsorDoc[] }) => {
           />
         </div>
         <div className="flex flex-col items-center md:items-start gap-4">
-          <p className="text-xs">{sponsors[currentSlide].blurb}</p>
+          <motion.p
+            key={`text-${currentSlide}`}
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="text-xs"
+          >
+            {sponsors[currentSlide].blurb}
+          </motion.p>
           <Button variant="secondary">Learn More</Button>
         </div>
       </div>
