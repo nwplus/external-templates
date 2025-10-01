@@ -21,14 +21,14 @@ export interface SponsorDoc {
   blurb: string;
   imgName: string;
   imgURL: string;
-  lastmod?: Timestamp;
+  lastmod?: Timestamp | string;
   lastmodby?: string;
   link: string;
   name: string;
   tier: "platinum" | "gold" | "silver" | "bronze" | "inkind";
 }
 
-export const CURRENT_HACKATHON = "HackCamp2024";
+export const CURRENT_HACKATHON = "HackCamp2025";
 
 /**
  * Fetches FAQ documents from Firestore for a specific hackathon
@@ -82,7 +82,10 @@ export async function getSponsorsByHackathon(
     const sponsorsRef = collection(db, "Hackathons", hackathonName, "Sponsors");
     const querySnapshot = await getDocs(sponsorsRef);
     const sponsors = querySnapshot.docs.map((doc) => doc.data() as SponsorDoc);
-    return sponsors;
+    return sponsors.map((sponsor) => ({
+      ...sponsor,
+      lastmod: sponsor.lastmod?.toString(),
+    }));
   } catch (error) {
     console.error("Error fetching sponsors from Firestore:", error);
     throw error;

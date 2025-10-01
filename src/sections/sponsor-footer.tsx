@@ -1,4 +1,5 @@
 import Contact from "@/components/sponsor-footer/contact";
+import SponsorBlurbs from "@/components/sponsor-footer/sponsor-blurbs";
 import TeamGallery from "@/components/sponsor-footer/team-gallery";
 import {
   CURRENT_HACKATHON,
@@ -12,7 +13,9 @@ import Image from "next/image";
 const SponsorFooter = async () => {
   // Fetch sponsors from Firestore
   const sponsors = await getSponsorsByHackathon(CURRENT_HACKATHON);
-  const sponsorsByTier = groupSponsorsByTier(sponsors);
+  const sponsorsWithBlurbs = sponsors.filter((sponsor) => sponsor.blurb);
+  const sponsorsWithoutBlurbs = sponsors.filter((sponsor) => !sponsor.blurb);
+  const sponsorsByTier = groupSponsorsByTier(sponsorsWithoutBlurbs);
 
   // Tier configuration for size and layout
   const TIER_ORDER = [
@@ -23,11 +26,7 @@ const SponsorFooter = async () => {
     "inkind",
   ] as const;
   const TIER_CONFIG = {
-    platinum: {
-      width: 300,
-      height: 200,
-      gap: "gap-6 md:gap-12",
-    },
+    platinum: { width: 300, height: 200, gap: "gap-6 md:gap-12" },
     gold: { width: 240, height: 160, gap: "gap-6 md:gap-12" },
     silver: { width: 180, height: 120, gap: "gap-4 md:gap-8" },
     bronze: { width: 140, height: 93, gap: "gap-4 md:gap-6" },
@@ -63,10 +62,8 @@ const SponsorFooter = async () => {
         />
       </div>
 
-      <div className="z-10 flex flex-col gap-8 items-center justify-between h-full md:pt-40 md:px-16 text-white">
-        <h2 className="font-title text-4xl md:text-6xl mb-12">
-          Last Year&apos;s Sponsors
-        </h2>
+      <div className="z-10 flex flex-col gap-8 items-center justify-between h-full md:pt-12 md:px-16 text-white overflow-y-clip">
+        <SponsorBlurbs sponsors={sponsorsWithBlurbs} />
         <div className="flex flex-col items-center gap-12 md:gap-20">
           {activeTiers.map((tier) => (
             <div
@@ -94,8 +91,13 @@ const SponsorFooter = async () => {
               )}
             </div>
           ))}
+          {Array.from({
+            length: TIER_ORDER.length - activeTiers.length - 1,
+          }).map((_, i) => (
+            <div className="h-10" key={i} />
+          ))}
         </div>
-        <div className="grow flex flex-col justify-end w-full gap-[25dvw] md:gap-[12dvw] xl:gap-[30dvw]">
+        <div className="grow flex flex-col justify-end w-full gap-[25dvw] md:gap-[12dvw] xl:gap-[50dvw]">
           <Contact />
           <div className="flex flex-col items-center">
             <TeamGallery />
