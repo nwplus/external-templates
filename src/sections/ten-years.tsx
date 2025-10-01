@@ -23,10 +23,10 @@ function TenYearsDesktop() {
   const backgroundColor3 = "#07171C";
 
   // Zoom out transition from stats and testimonials section
-  const zoomScale = useTransform(scrollYProgress, [0.1, 0.2, 0.35], [11, 9, 1]);
+  const zoomScale = useTransform(scrollYProgress, [0.15, 0.2, 0.35], [10, 8.5, 1]);
   const zoomOpacity = useTransform(
     scrollYProgress,
-    [0, 0.21, 0.215, 0.22, 0.23, 1],
+    [0, 0.235, 0.24, 0.245, 0.25, 1],
     [0, 0, 0.2, 0.9, 1, 1]
   );
 

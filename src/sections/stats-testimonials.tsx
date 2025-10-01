@@ -217,7 +217,7 @@ function StatsTestimonialsDesktop() {
       </motion.div>
 
       {/* Testimonials body text */}
-      <motion.div className="absolute bottom-0 right-0 translate-y-[10vh] z-30" id="testimonials">
+      <motion.div className="absolute bottom-0 right-0 translate-y-[35vh] z-30" id="testimonials">
         <Image
           src="/assets/stats-and-testimonials/graphics/testimonial-ground.svg"
           alt="Testimonial ground background"

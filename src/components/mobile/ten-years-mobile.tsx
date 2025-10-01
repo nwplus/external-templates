@@ -22,9 +22,12 @@ export default function TenYearsMobile() {
   );
   const canoePosition = useTransform(
     scrollYProgress,
-    [0, 0.43, 0.85],
-    ["8%", "50%", "90%"]
+    [0, 0.5, 0.9, 1],
+    ["3%", "50%", "84%", "84%"]
   );
+
+  // Fix: we shouldn't need this but canoe gets compressed by the mobile container across progress bar
+  const canoeScale = useTransform(scrollYProgress, [0, 1], [1, 1]);
 
   const section1Opacity = useTransform(
     scrollYProgress,
@@ -79,7 +82,8 @@ export default function TenYearsMobile() {
               className="absolute -top-6"
               style={{
                 left: canoePosition,
-                transform: "translateX(-50%) scale(1)",
+                transform: "translateX(-50%)",
+                scale: canoeScale,
               }}
             >
               <Image
