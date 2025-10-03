@@ -132,4 +132,3 @@ const SponsorFooter = async () => {
 };
 
 export default SponsorFooter;
-export const dynamic = "force-dynamic";
