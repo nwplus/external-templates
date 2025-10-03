@@ -4,7 +4,7 @@ Purpose:
 To simplify development work from our single paged applications by abstracting some styling, metadata, components into our CMS.
 We also get rid of the need to implement seperate CI/CD pipelines and unify the language and libraries dev teams are using.
 
-The Main branch will contain all templated components with minimal styling. Each hackathon branch will be prefixed with their hackathon names. e.g. cmd-f_main, cmd-f_dev
+The Main branch will contain all templated components with minimal styling. Each hackathon branch will be prefixed with their hackathon names. e.g. cmd-f_main, cmd-f_dev.
 
 ## Getting started
 
