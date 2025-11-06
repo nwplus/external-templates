@@ -12,6 +12,10 @@ import { Button } from "../ui/button";
 const SponsorBlurbs = ({ sponsors }: { sponsors: SponsorDoc[] }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
+  if (!sponsors || sponsors.length === 0) {
+    return null;
+  }
+
   return (
     <div className="relative flex justify-center py-20">
       <div className="absolute -top-[38rem] left-[55%] -translate-x-1/2 w-full -z-10">
