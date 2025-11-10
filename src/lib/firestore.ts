@@ -4,6 +4,8 @@ import {
   query,
   Timestamp,
   where,
+  onSnapshot,
+  Unsubscribe,
 } from "firebase/firestore";
 
 import { db } from "./firebase";
@@ -90,6 +92,31 @@ export async function getSponsorsByHackathon(
     console.error("Error fetching sponsors from Firestore:", error);
     throw error;
   }
+}
+
+/**
+ * Subscribes to sponsor documents for a specific hackathon and invokes the
+ * provided callback with the latest list whenever data changes.
+ * @param hackathonName - The hackathon name to listen for sponsors
+ * @param onUpdate - Callback invoked with the latest SponsorDoc[]
+ * @param onError - Optional error callback for snapshot listener errors
+ * @returns Unsubscribe function to stop listening
+ */
+export function subscribeToSponsorsByHackathon(
+  hackathonName: string,
+  onUpdate: (sponsors: SponsorDoc[]) => void
+): Unsubscribe {
+  const sponsorsRef = collection(db, "Hackathons", hackathonName, "Sponsors");
+  return onSnapshot(
+    sponsorsRef,
+    (snapshot) => {
+      const sponsors = snapshot.docs.map((doc) => doc.data() as SponsorDoc);
+      onUpdate(sponsors);
+    },
+    (error) => {
+      console.error("Error subscribing to sponsors:", error);
+    }
+  );
 }
 
 /**
