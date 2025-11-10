@@ -1,18 +1,29 @@
+"use client";
+
 import Contact from "@/components/sponsor-footer/contact";
 import SponsorBlurbs from "@/components/sponsor-footer/sponsor-blurbs";
 import TeamGallery from "@/components/sponsor-footer/team-gallery";
 import {
   CURRENT_HACKATHON,
-  getSponsorsByHackathon,
   groupSponsorsByTier,
   type SponsorDoc,
+  subscribeToSponsorsByHackathon,
 } from "@/lib/firestore";
 
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
-const SponsorFooter = async () => {
-  // Fetch sponsors from Firestore
-  const sponsors = await getSponsorsByHackathon(CURRENT_HACKATHON);
+const SponsorFooter = () => {
+  const [sponsors, setSponsors] = useState<SponsorDoc[]>([]);
+
+  useEffect(() => {
+    const unsubscribe = subscribeToSponsorsByHackathon(
+      CURRENT_HACKATHON,
+      setSponsors
+    );
+    return () => unsubscribe();
+  }, []);
+
   const sponsorsWithBlurbs = sponsors.filter((sponsor) => sponsor.blurb);
   const sponsorsWithoutBlurbs = sponsors.filter((sponsor) => !sponsor.blurb);
   const sponsorsByTier = groupSponsorsByTier(sponsorsWithoutBlurbs);

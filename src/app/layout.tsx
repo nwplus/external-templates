@@ -56,12 +56,31 @@ const poorStory = Poor_Story({
   variable: "--font-poor-story",
 });
 
+const siteUrl = "https://hackcamp.nwplus.io";
+const metaDescription =
+  "This year, we are bringing you a 2-day in-person event where participants can learn new skills, connect with fellow tech enthusiasts, and build solutions to tackle challenges together.";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "HackCamp 2025",
-  description:
-    "This year, we are bringing you a 2-day in-person event where participants can learn new skills, connect with fellow tech enthusiasts, and build solutions to tackle challenges together.",
+  description: metaDescription,
   openGraph: {
-    images: ["/hackcamp2023meta.png"],
+    title: "HackCamp 2025",
+    description: metaDescription,
+    url: siteUrl,
+    siteName: "HackCamp",
+    type: "website",
+    images: [
+      {
+        url: "/opengraph-image.jpg",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "HackCamp 2025",
+    description: metaDescription,
+    images: ["/opengraph-image.jpg"],
   },
 };
 
