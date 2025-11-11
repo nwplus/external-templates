@@ -448,7 +448,7 @@ const profiles = [
 ]
 
 const StyledTitle = styled(Header3)`
-  color: #f9c745;
+  color: #FCDCCF;
   font-size: calc(100vw * (40 / 1280));
   font-weight: 700;
   margin-bottom: calc(100vw * (5 / 1280));
@@ -495,7 +495,7 @@ const ProfileImage = styled.img`
   object-fit: cover;
   margin: 10px 15px;
   transition: all 100ms ease-in-out;
-  opacity: 0.69;
+  opacity: 0.8;
   ${p => p.theme.mediaQueries.mobile} {
     width: 50px;
     height: 50px;

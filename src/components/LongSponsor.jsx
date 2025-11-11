@@ -1,7 +1,6 @@
 // used for inkind and startup tiers since they're both displayed in a single card
 import { memo } from 'react'
 import styled from 'styled-components'
-import Floor from './Floor'
 
 const LongSponsorLevelContainer = styled.div`
   position: relative;
@@ -57,7 +56,6 @@ const LongSponsorImg = styled.img`
 const LongSponsorList = memo(({ sponsors }) => (
   <>
     <LongSponsorLevelContainer>
-      <Floor />
       <LongSponsorCard>
         <FlexContainer>
           {sponsors.map(sponsor => (

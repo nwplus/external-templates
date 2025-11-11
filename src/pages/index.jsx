@@ -17,7 +17,28 @@ import Hero from '../components/Hero'
 import NavigationBar from '../components/NavigationBar'
 
 const HalfContainer = styled.div`
-  background-color: #2a2218;
+  background: linear-gradient(180deg, 
+    #1E0831 0%,
+    #DA9E9F 8%,
+    #F6DBC8 10%,
+    #F9DCAE 14%,
+    #FFC973 17%,
+    #F9F2EA 18%,
+    #76C7EA 21%,
+    #C1EEFE 24%,
+    #B0E2FB 29%,
+    #74B0E4 38%,
+    #E0E9ED 49%,
+    #CFE9F0 57%,
+    #C7E2F7 64%,
+    #F9F1D1 69%,
+    #F8C885 70.5%,
+    #F4EEE5 73%,
+    #FFE0B0 91%,
+    #FFCE9A 93%,
+    #D3999C 95%,
+    #28083D 100%
+  );
   position: relative;
   width: 100%;
 `
@@ -54,7 +75,6 @@ const MiddleSectionsContainer = styled.div`
 `
 
 const FaqSponsorsContainer = styled.div`
-  background-image: url(/assets/images/faq_sponsors_background.svg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -108,7 +128,6 @@ export default function Index({ title }) {
             <Faq />
             <Sponsors />
           </FaqSponsorsContainer>
-          <Separator />
           <Footer />
         </ContentContainer>
       </HalfContainer>

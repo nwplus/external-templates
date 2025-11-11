@@ -41,7 +41,7 @@ const Button = styled.button`
   height: 80%;
   transform: translateY(-50%);
   padding: calc(100vw * (3 / 1280)) calc(100vw * (8 / 1280));
-  background-color: #8d603f;
+  background-color: #8C5D75;
   color: white;
   border-radius: calc(100vw * (6 / 1280));
   border: none;
@@ -51,7 +51,7 @@ const Button = styled.button`
   font-size: calc(100vw * (13 / 1280));
 
   &:hover {
-    background-color: #6d4d2f;
+    background-color: #6b485aff;
   }
 
   ${p => p.theme.mediaQueries.mobile} {

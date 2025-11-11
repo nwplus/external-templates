@@ -10,35 +10,16 @@ import {
 } from '@fortawesome/free-brands-svg-icons'
 import Team from '@components/Team'
 import Newsletter from '@components/Newsletter'
-import Confetti from 'react-confetti-boom'
 import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
 
 const FooterContainer = styled.div`
   position: relative;
-  aspect-ratio: 1280/1334;
+  aspect-ratio: 1280/800;
   width: 100%;
   overflow: hidden;
 
   ${p => p.theme.mediaQueries.mobile} {
     aspect-ratio: 487/950;
-  }
-`
-
-const FooterBackground = styled.div`
-  background-image: url('./assets/images/footer_background.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  object-fit: cover;
-
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    background-image: url('./assets/images/footer_background_mobile.png');
   }
 `
 
@@ -51,10 +32,10 @@ const SocialMediaIcons = styled.div`
   a {
     width: calc(100vw * (53 / 1280));
     text-decoration: none;
-    color: #f0d4a1;
+    color: #ffffff;
 
     &:hover {
-      color: #eac669;
+      color: #FCDCCF;
     }
   }
 
@@ -74,10 +55,10 @@ const Links = styled.div`
 
   a {
     font-weight: 600;
-    color: #f0d4a1;
+    color: #ffffffff;
 
     &:hover {
-      color: #eac669;
+      color: #FCDCCF;
     }
   }
 
@@ -96,9 +77,10 @@ const TextContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 100%;
-  align-items: center;
-  padding-top: calc(100vw * (40 / 1280));
+  width: 60%;
+  align-items: flex-start;
+  padding-left: calc(100vw * (100 / 1280));
+  padding-top: calc(100vw * (150 / 1280));
   gap: calc(100vw * (16 / 1280));
 
   ${p => p.theme.mediaQueries.mobile} {
@@ -111,7 +93,7 @@ const SmallText = styled.div`
   padding-top: calc(100vw * (15 / 1280));
   text-align: center;
 
-  color: #f9c745;
+  color: #FCDCCF;
   font-size: calc(100vw * (14 / 1280));
   font-weight: 600;
 
@@ -137,7 +119,6 @@ const StaticContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  position: absolute;
   width: 100%;
   height: 100%;
 
@@ -147,39 +128,98 @@ const StaticContainer = styled.div`
   }
 `
 
-const ConfettiContainer = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 200vw;
-  height: 200vh;
-
-  canvas {
-    width: 100% !important;
-    height: 100% !important;
-  }
-`
-
 const LandAcknowledgementText = styled.div`
-  padding: 0 5%;
-  text-align: center;
-  margin-bottom: calc(100vw * (40 / 1280));
-  color: #f9c745;
+  color: #FFF8F5;
   font-size: calc(100vw * (16 / 1280));
   font-weight: 500;
-  font-family: 'HK Grotesk Medium';
 
   a {
-    color: #f9c745;
+    color: #FFF8F5;
     text-decoration: underline;
     &:hover {
-      color: #ffe08a;
+      color: #FCDCCF;
     }
   }
 
   ${p => p.theme.mediaQueries.mobile} {
     font-size: calc(100vw * (12 / 487));
     margin-bottom: calc(100vw * (16 / 487));
+  }
+`
+
+const OrangeSphere = styled.img`
+  position: absolute;
+  right: 0;
+  width: 45%;
+  pointer-events: none;
+  transition: transform 0.1s ease-out;
+  animation: float 5s ease-in-out infinite;
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+`
+
+const NuggetCloud = styled.img`
+  position: absolute;
+  right: calc(100vw * (200 / 1280));
+  top: calc(100vw * (250 / 1280));
+  width: 20%;
+  z-index: 1;
+  pointer-events: none;
+  transition: transform 0.1s ease-out;
+  animation: float 5s ease-in-out infinite 1s;
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+`
+
+const BlueSphere = styled.img`
+  position: absolute;
+  left: 0;
+  bottom: calc(100vw * (100 / 1280));
+  width: 20%;
+  pointer-events: none;
+  transition: transform 0.1s ease-out;
+  animation: float 6s ease-in-out infinite 0.5s;
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-25px);
+    }
+  }
+`
+
+const PinkSphere = styled.img`
+  position: absolute;
+  right: 0;  
+  bottom: calc(100vw * (5 / 1280));
+  width: 20%;
+  pointer-events: none;
+  transition: transform 0.1s ease-out;
+  animation: float 5.5s ease-in-out infinite 2s;
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-18px);
+    }
   }
 `
 
@@ -192,23 +232,22 @@ const Footer = () => {
 
   return (
     <FooterContainer id="footer">
-      <FooterBackground />
-      {!isMobile && (
-        <ConfettiContainer>
-          <Confetti
-            mode="fall"
-            shapeSize={20}
-            colors={['#E261BB', '#61B5E2', '#E26161', '#E28A61', '#ED9823', '#FDC699']}
-          />
-        </ConfettiContainer>
-      )}
+      <OrangeSphere 
+        src="/assets/images/footer/orange_sphere.png"
+      />
+      <NuggetCloud 
+        src="/assets/images/footer/nugget_cloud.png"
+      />
+      <BlueSphere 
+        src="/assets/images/footer/blue_sphere.png"
+      />
+      <PinkSphere 
+        src="/assets/images/footer/pink_sphere.png"
+      />
 
       <StaticContainer>
         <TextContainer>
           <SocialMediaIcons>
-            <a href="https://www.facebook.com/nwplusubc" target="_blank" rel="noreferrer">
-              <FontAwesomeIcon icon={faFacebook} />
-            </a>
             <a href="https://www.instagram.com/nwplusubc" target="_blank" rel="noreferrer">
               <FontAwesomeIcon icon={faInstagram} />
             </a>
@@ -220,6 +259,9 @@ const Footer = () => {
             </a>
             <a href="https://medium.com/nwplusubc" target="_blank" rel="noreferrer">
               <FontAwesomeIcon icon={faMediumM} />
+            </a>
+            <a href="https://www.facebook.com/nwplusubc" target="_blank" rel="noreferrer">
+              <FontAwesomeIcon icon={faFacebook} />
             </a>
           </SocialMediaIcons>
           <Links>
@@ -234,8 +276,6 @@ const Footer = () => {
             </a>
           </Links>
           <Newsletter />
-        </TextContainer>
-        <TeamContainer>
           <LandAcknowledgementText>
             nwHacks 2026 will be taking place on xʷməθkʷəy̓əm (Musqueam) and səlilwətaɬ (Tsleil-Waututh) territory. As we
             build tomorrow&apos;s tech community, we recognize our responsibility to understand and respect Indigenous
@@ -245,6 +285,8 @@ const Footer = () => {
             </a>
             .
           </LandAcknowledgementText>
+        </TextContainer>
+        <TeamContainer>
           <Team />
           <SmallText>Copyright &copy; nwHacks 2026</SmallText>
         </TeamContainer>
