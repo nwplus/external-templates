@@ -15,6 +15,11 @@ const FooterContainer = styled.div`
   aspect-ratio: 1280/800;
   width: 100%;
   overflow: hidden;
+  background: linear-gradient(180deg,
+    #fdc182ff 0.1%,
+    #D3999C 20%,
+    #28083D 100%
+  );
 
   ${p => p.theme.mediaQueries.mobile} {
     aspect-ratio: 487/950;

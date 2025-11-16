@@ -2,7 +2,7 @@ import { useEffect, useState, useRef, memo } from 'react'
 import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
 import styled from 'styled-components'
 
-const SPONSOR_WIDTH = { title: 65, platinum: 35, gold: 25, silver: 25, bronze: 22, startup: 20, inkind: 15 }
+const SPONSOR_WIDTH = { title: 85, platinum: 50, gold: 45, silver: 35, bronze: 25, startup: 22, inkind: 20 }
 const MOBILE_SPONSOR_WIDTH = { title: 95, platinum: 80, gold: 45, silver: 35, bronze: 30, startup: 25, inkind: 20 }
 
 const calculateSponsorRows = (tierList, containerWidth, isMobile) => {
@@ -41,7 +41,10 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: calc(100vw * (4 / 1280));
+  gap: calc(100vw * (15 / 1280));
+  margin-top: calc(100vw * (75 / 1280));
+  margin-left: calc(100vw * (200 / 1280));
+  margin-right: calc(100vw * (200 / 1280));
 `
 
 const SponsorLevelContainer = styled.div`
@@ -58,7 +61,7 @@ const Row = styled.div`
   justify-content: space-evenly;
   gap: 1rem;
   width: 100%;
-  margin-bottom: calc(100vw * (1.5 / 1280));
+  margin-bottom: calc(100vw * (2 / 1280));
 
   ${p => p.theme.mediaQueries.mobile} {
     gap: calc(100vw * (2 / 487));
@@ -71,9 +74,21 @@ const islandMap = {
   gold: "url('/assets/images/sponsor/gold_island.svg')",
 };
 
+const aspectRatioMap = {
+  title: '577 / 409',
+  platinum: '577 / 409',
+  gold: '394 / 247'
+};
+
+const sponsorImageConfig = {
+  title: { height: '80%', maxWidth: '80%', marginTop: '50%' },
+  platinum: { height: '80%', maxWidth: '80%', marginTop: '30%' },
+  gold: { height: '80%', maxWidth: '80%', marginTop: '0%' }
+};
+
 const SponsorContainer = styled.div`
   width: ${p => p.size}%;
-  aspect-ratio: 577 / 409;
+  aspect-ratio: ${p => aspectRatioMap[p.tier] || '577 / 409'};
   z-index: 2;
   display: flex;
   justify-content: center;
@@ -99,10 +114,11 @@ const SponsorLink = styled.a`
 `
 
 const SponsorImg = styled.img`
-  height: 100%;
-  max-width: 70%;
+  height: ${p => sponsorImageConfig[p.tier]?.height || '100%'};
+  max-width: ${p => sponsorImageConfig[p.tier]?.maxWidth || '100%'};
   border: none;
   object-fit: contain;
+  margin-top: ${p => sponsorImageConfig[p.tier]?.marginTop || '0'};
 `
 
 const Sponsor = memo(({ link, url, size, tier }) => (

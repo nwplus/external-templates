@@ -8,15 +8,21 @@ import Carousel from '../components/Carousel'
 const SponsorsContainer = styled.div`
   position: relative;
   z-index: 10;
-  top: calc(100vw * (600 / 1280));
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: calc(100vw * (10 / 1280));
-  padding-bottom: calc(100vw * (650 / 1280));
-`
+  background: linear-gradient(180deg,
+    #C7E2F7 0%,
+    #F9F1D1 10%,
+    #F8C885 16%,
+    #F4EEE5 17%,
+    #FFE0B0 50%,
+    #fdc182ff 100%
+  );
+`;
 
 const ContentWrapper = styled.div`
   position: relative;
@@ -55,7 +61,15 @@ const Description = styled.p`
   margin: 0 auto;
   margin-bottom: calc(100vw * (150 / 1280));
 
-  a {color: #000000;}
+  a {
+    color: #000000;
+    transition: font-weight 0.2s ease, color 0.2s ease;
+    
+    &:hover {
+      font-weight: bold;
+      color: #d1923aff;
+    }
+  }
 `
 
 const SwipeDescription = styled.p`
