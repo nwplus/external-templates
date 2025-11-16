@@ -3,8 +3,6 @@ import styled from 'styled-components'
 import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
 import { scale } from '@utilities/format'
 import { BANNER_OFFSET } from '../constants/measurements'
-import MenuImg from '../../public/images/icons/menu.svg'
-import NwPlusLogo from './NwPlusLogo'
 
 const NavBarContainer = styled.nav`
   position: ${p => (p.stayAtTop ? 'absolute' : 'fixed')};
@@ -42,7 +40,7 @@ const NavGroupContainer = styled.div`
 
 const NavTextContainer = styled.div`
   display: flex;
-  gap: 5%;
+  gap: calc(100vw * (55 / 1512));
   align-items: center;
   width: 100%;
   justify-content: center;
@@ -53,13 +51,14 @@ const NavTextContainer = styled.div`
 `
 
 const NwPlusLogoContainer = styled.div`
-  svg {
-    max-height: 40px;
-    height: 400px;
+  display: none;
 
-    ${p => p.theme.mediaQueries.mobile} {
-      width: 30px;
-    }
+  ${p => p.theme.mediaQueries.mobile} {
+    display: block;
+    position: absolute;
+    left: 24px;
+    top: 20px;
+    z-index: 1000;
   }
 `
 
@@ -104,7 +103,10 @@ const HamburgerMenu = styled.img`
   display: none;
   ${p => p.theme.mediaQueries.mobile} {
     display: block;
-    width: 30px;
+    width: calc(100vw * (30 / 487));
+
+    filter: invert(1) brightness(2);
+    -webkit-filter: invert(1) brightness(2);
   }
 `
 
@@ -138,7 +140,7 @@ const Button = styled.a`
   display: table;
   text-decoration: none;
   position: relative;
-  padding: 11px 21px;
+  padding: calc(100vw * (11 / 1512)) calc(100vw * (21 / 1512));
   border-radius: 8px;
   font-weight: bold;
   background: linear-gradient(to bottom right, #5b4862ff 50%, #887655ff 100%) padding-box,
@@ -211,6 +213,10 @@ const TrustBadgeLink = styled.a`
   }
 `
 
+const NwPlusLogo = styled.img`
+  width: calc(100vw * (28 / 487));
+`
+
 const MenuItem = ({ name, href, isAnchor, target, rel, isMobile, closeDropdown }) => {
   const [anchorTarget, setAnchorTarget] = useState(null)
 
@@ -240,8 +246,8 @@ const MenuItem = ({ name, href, isAnchor, target, rel, isMobile, closeDropdown }
 const PortalButton = ({ portalOpen }) => (
   <PortalButtonContainer portalOpen={portalOpen}>
     <Button
-      width="130px"
-      height="45px"
+      width="calc(100vw * (130 / 1512))"
+      height="calc(100vw * (45 / 1512))"
       borderRadius="100px"
       isGradient
       textColor="black"
@@ -259,7 +265,7 @@ const MenuList = ({ isMobile, closeDropdown }) => (
     {isMobile && (
       <NwPlusLogoContainer>
         <a href="/#home">
-          <NwPlusLogo fill="#3A2F21" />
+          <NwPlusLogo src="/assets/images/hero/nwhacks_logo.svg" />
         </a>
       </NwPlusLogoContainer>
     )}
@@ -366,6 +372,11 @@ const NavigationBar = ({ bannerExists }) => {
   // Only for desktop version
   return (
     <NavBarContainer visibility={visibility} opacity={opacity} stayAtTop={stayAtTop}>
+      <NwPlusLogoContainer>
+        <a href="/#home">
+          <NwPlusLogo src="/assets/images/hero/nwhacks_logo.svg" />
+        </a>
+      </NwPlusLogoContainer>
       <NavGroupContainer>
         <PortalButton portalOpen />
         <NavTextContainer>
@@ -374,7 +385,7 @@ const NavigationBar = ({ bannerExists }) => {
         {/* Make sure mobile (above) has the same portalOpen value */}
         <TrustBadge stayAtTop={stayAtTop} />
       </NavGroupContainer>
-      <HamburgerMenu src={MenuImg} alt="dropdown menu icon" onClick={() => setShowDropdown(true)} />
+      <HamburgerMenu src="/images/icons/menu.svg" alt="dropdown menu icon" onClick={() => setShowDropdown(true)} />
     </NavBarContainer>
   )
 }

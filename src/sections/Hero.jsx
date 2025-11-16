@@ -40,7 +40,7 @@ const ContentSide = styled.div`
 
   ${p => p.theme.mediaQueries.mobile} {
     position: absolute;
-    top: calc(100vw * (400 / 1512));
+    top: calc(100vw * (800 / 1512));
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
@@ -82,7 +82,7 @@ const Title = styled.img`
 
   ${p => p.theme.mediaQueries.mobile} {
     position: absolute;
-    top: calc(100vw * (-150 / 1512));
+    top: calc(100vw * (-200 / 1512));
     right: calc(100vw * (-70 / 487));
     width: calc(100vw * (273 / 487));
     transform: translateX(-50%);
@@ -204,7 +204,7 @@ const HeroIsland = styled.img`
 
   ${p => p.theme.mediaQueries.mobile} {
     position: absolute;
-    top: calc(100vw * (1200 / 1512));
+    top: calc(100vw * (1600 / 1512));
     left: 50%;
     transform: translateX(-50%);
     width: calc(100vw * (338 / 528));
@@ -270,7 +270,7 @@ const TrainTracks = styled.img`
 
   ${p => p.theme.mediaQueries.mobile} {
     position: absolute;
-    top: calc(100vw * (1540 / 1512));
+    top: calc(100vw * (1940 / 1512));
     left: 75%;
     transform: translateX(-50%);
     width: calc(100vw * (89 / 528));
