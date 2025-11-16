@@ -94,7 +94,7 @@ const StyledLinkHeaders = styled.h3`
   text-align: center;
 
   ${p => p.theme.mediaQueries.mobile} {
-    color: #3a2f21;
+    color: #1e0831;
     font-size: 16px;
   }
 `
@@ -120,7 +120,7 @@ const DropDownContentContainer = styled.div`
   align-items: center;
   gap: 24px;
   width: 100%;
-  background: #eddecc;
+  background: #f6dbc8;
 `
 
 const PortalButtonContainer = styled.div`
@@ -262,13 +262,6 @@ const PortalButton = ({ portalOpen }) => (
 
 const MenuList = ({ isMobile, closeDropdown }) => (
   <>
-    {isMobile && (
-      <NwPlusLogoContainer>
-        <a href="/#home">
-          <NwPlusLogo src="/assets/images/hero/nwhacks_logo.svg" />
-        </a>
-      </NwPlusLogoContainer>
-    )}
     <MenuItem name="About" href="/#about" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
     <MenuItem name="Recap" href="/#stats" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
     <MenuItem name="Testimonials" href="/#testimonials" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
