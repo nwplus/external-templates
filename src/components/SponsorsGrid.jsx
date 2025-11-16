@@ -2,7 +2,7 @@ import { useEffect, useState, useRef, memo } from 'react'
 import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
 import styled from 'styled-components'
 
-const SPONSOR_WIDTH = { title: 85, platinum: 50, gold: 45, silver: 35, bronze: 25, startup: 22, inkind: 20 }
+const SPONSOR_WIDTH = { title: 85, platinum: 50, gold: 45, silver: 40, bronze: 30, startup: 20, inkind: 15 }
 const MOBILE_SPONSOR_WIDTH = { title: 95, platinum: 80, gold: 45, silver: 35, bronze: 30, startup: 25, inkind: 20 }
 
 const calculateSponsorRows = (tierList, containerWidth, isMobile) => {
@@ -69,8 +69,8 @@ const Row = styled.div`
 `
 
 const islandMap = {
-  title: "url('/assets/images/sponsor/title_platinum_island.svg')",
-  platinum: "url('/assets/images/sponsor/title_platinum_island.svg')",
+  title: "url('/assets/images/sponsor/title_platinum_island.png')",
+  platinum: "url('/assets/images/sponsor/title_platinum_island.png')",
   gold: "url('/assets/images/sponsor/gold_island.svg')",
 };
 

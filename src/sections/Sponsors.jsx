@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import styled from 'styled-components'
 import { Header2 } from '@components/Typography'
 import SponsorsGrid from '@components/SponsorsGrid'
@@ -18,7 +18,7 @@ const SponsorsContainer = styled.div`
     #C7E2F7 0%,
     #F9F1D1 10%,
     #F8C885 16%,
-    #F4EEE5 17%,
+    #F4EEE5 20%,
     #FFE0B0 50%,
     #fdc182ff 100%
   );
@@ -37,7 +37,6 @@ const ContentWrapper = styled.div`
     padding-top: calc(100vw * (200 / 487));
   }
 `
-
 
 const Title = styled(Header2)`
   text-align: center;
@@ -90,13 +89,13 @@ const CloudsBehind = styled.div`
   width: 100%;
   aspect-ratio: 808 / 600;
   z-index: 1;
-
-  background-image: url('/assets/images/sponsor/sponsor_clouds_behind.svg');
+  background-image: url('/assets/images/sponsor/sponsor_clouds_behind.png');
   background-repeat: no-repeat;
   background-position: top center;
   background-size: 100% auto;
-
   pointer-events: none;
+  will-change: transform;
+  transition: transform 0.1s ease-out;
 
   ${p => p.theme.mediaQueries.mobile} {
     top: 0;
@@ -112,13 +111,13 @@ const CloudsFront = styled.div`
   width: 100%;
   aspect-ratio: 808 / 600;
   z-index: 3;
-
   background-image: url('/assets/images/sponsor/sponsor_clouds_front.svg');
   background-repeat: no-repeat;
   background-position: top center;
   background-size: 100% auto;
-
   pointer-events: none;
+  will-change: transform;
+  transition: transform 0.1s ease-out;
 
   ${p => p.theme.mediaQueries.mobile} {
     top: calc(100vw * (350 / 487));
@@ -136,7 +135,6 @@ const BearAnimation = styled.img`
   pointer-events: none;
 `
 
-
 const SPONSOR_IMAGE_OVERRIDES = {
   TELUS: '/assets/images/telus.png',
   CSE: '/assets/images/cse.png',
@@ -147,6 +145,9 @@ const SPONSOR_IMAGE_OVERRIDES = {
 const Sponsors = () => {
   const [sponsors, setSponsors] = useState([])
   const [carouselSponsors, setCarouselSponsors] = useState([])
+  const cloudsBehindRef = useRef(null)
+  const cloudsFrontRef = useRef(null)
+  const containerRef = useRef(null)
 
   useEffect(async () => {
     const data = await fireDb.getCollection('nwHacks2025', 'Sponsors')
@@ -158,8 +159,6 @@ const Sponsors = () => {
       )
       setCarouselSponsors(sortedCarouselSponsors)
 
-      // create a deep copy of the data so we can modify TELUS' logo for the
-      // sponsors grid without affecting how it appears in the carousel
       const deepCopyData = JSON.parse(JSON.stringify(data))
       const modifiedSponsors = deepCopyData.map(sponsor => ({
         ...sponsor,
@@ -169,10 +168,35 @@ const Sponsors = () => {
     }
   }, [])
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!containerRef.current || !cloudsBehindRef.current || !cloudsFrontRef.current) return
+
+      const containerTop = containerRef.current.offsetTop
+      const scrollY = window.scrollY
+      const scrollPosition = scrollY - containerTop
+
+      const behindSpeed = 0.3
+      const frontSpeed = 0.6
+
+      const behindOffset = scrollPosition * behindSpeed
+      const frontOffset = scrollPosition * frontSpeed
+
+      const behindLimited = Math.max(-100, Math.min(0, behindOffset))
+      const frontLimited = Math.max(-150, Math.min(0, frontOffset))
+
+      cloudsBehindRef.current.style.transform = `translateY(${behindLimited}px)`
+      cloudsFrontRef.current.style.transform = `translateY(${frontLimited}px)`
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
-    <SponsorsContainer>
-      <CloudsBehind />
-      <CloudsFront />
+    <SponsorsContainer ref={containerRef}>
+      <CloudsBehind ref={cloudsBehindRef} />
+      <CloudsFront ref={cloudsFrontRef} />
       <BearAnimation src="/assets/images/animations/bear.gif" alt="Bear animation" />
       <ContentWrapper>
         <Title id="sponsors">Sponsor nwHacks 2026</Title>
