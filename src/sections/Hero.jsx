@@ -14,8 +14,8 @@ const HeroContainer = styled.div`
   z-index: 10;
   display: flex;
   justify-content: center;
-  padding-top: 200px;
-  gap: 200px;
+  padding-top: calc(100vw * (200 / 1512));
+  gap: calc(100vw * (200 / 1512));
 
   background: linear-gradient(to bottom, #1e0831 0%, #da9e9f 70%, #f6dbc8 100%);
   opacity: 1 !important;
@@ -24,6 +24,9 @@ const HeroContainer = styled.div`
     position: relative;
     aspect-ratio: 487/935;
     min-height: calc(100vw * (935 / 487));
+    padding-top: calc(100vw * (40 / 1512));
+    flex-direction: column;
+    align-items: center;
   }
 `
 
@@ -34,25 +37,70 @@ const ContentSide = styled.div`
   position: absolute;
   top: calc(100vw * (230 / 1512));
   right: calc(100vw * (950 / 1512));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    position: absolute;
+    top: calc(100vw * (400 / 1512));
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    padding: calc(100vw * (20 / 1512)) calc(100vw * (20 / 1512));
+  }
 `
 
 const Logo = styled.img`
   width: calc(100vw * (75 / 1512));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const Subheader = styled.p`
   color: white;
   font-size: calc(100vw * (20 / 1512));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: calc(100vw * (18 / 487));
+  }
+`
+
+const SecondarySubheader = styled.p`
+  color: white;
+  font-size: calc(100vw * (20 / 1512));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    margin-top: calc(100vw * (16 / 487));
+    font-size: calc(100vw * (14 / 487));
+  }
 `
 
 const Title = styled.img`
   width: calc(100vw * (420 / 1512));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    position: absolute;
+    top: calc(100vw * (-150 / 1512));
+    right: calc(100vw * (-70 / 487));
+    width: calc(100vw * (273 / 487));
+    transform: translateX(-50%);
+    align-items: center;
+    text-align: center;
+    padding: calc(100vw * (20 / 1512)) calc(100vw * (20 / 1512));
+  }
 `
 
 const Buttons = styled.div`
   display: flex;
   gap: calc(100vw * (15 / 1512));
   margin: calc(100vw * (15 / 1512)) 0px;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    gap: calc(100vw * (15 / 487));
+    margin: calc(100vw * (30 / 487)) 0px;
+  }
 `
 
 const Description = styled.div`
@@ -60,6 +108,10 @@ const Description = styled.div`
   display: flex;
   flex-direction: column;
   gap: calc(100vw * (5 / 1512));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    margin: calc(100vw * (50 / 1512)) 0px;
+  }
 `
 
 const SponsorText = styled.a`
@@ -68,6 +120,11 @@ const SponsorText = styled.a`
   cursor: pointer;
   color: #421123;
   text-decoration: underline;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: calc(100vw * (16 / 487));
+    color: #ffffff;
+  }
 `
 
 const HackerButton = styled.a`
@@ -83,6 +140,12 @@ const HackerButton = styled.a`
 
   &:hover {
     box-shadow: inset 0 -8px 8px rgba(58, 13, 83, 0.25);
+  }
+
+  ${p => p.theme.mediaQueries.mobile} {
+    border-radius: calc(100vw * (5 / 487));
+    padding: calc(100vw * (8 / 487)) calc(100vw * (12 / 487));
+    font-size: calc(100vw * (14 / 487));
   }
 `
 
@@ -100,6 +163,12 @@ const MentorButton = styled.a`
   &:hover {
     box-shadow: inset 0 -8px 8px rgba(30, 4, 27, 0.45);
   }
+
+  ${p => p.theme.mediaQueries.mobile} {
+    border-radius: calc(100vw * (5 / 487));
+    padding: calc(100vw * (8 / 487)) calc(100vw * (12 / 487));
+    font-size: calc(100vw * (14 / 487));
+  }
 `
 
 const VolunteerButton = styled.a`
@@ -116,6 +185,12 @@ const VolunteerButton = styled.a`
   &:hover {
     box-shadow: inset 0 -8px 8px rgba(30, 4, 27, 0.45);
   }
+
+  ${p => p.theme.mediaQueries.mobile} {
+    border-radius: calc(100vw * (5 / 487));
+    padding: calc(100vw * (8 / 487)) calc(100vw * (12 / 487));
+    font-size: calc(100vw * (14 / 487));
+  }
 `
 // LEFT SIDE END
 
@@ -126,6 +201,15 @@ const HeroIsland = styled.img`
   width: calc(100vw * (676.2 / 1512));
   top: calc(100vw * (170 / 1512));
   right: calc(100vw * (120 / 1512));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    position: absolute;
+    top: calc(100vw * (1200 / 1512));
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100vw * (338 / 528));
+    z-index: 2;
+  }
 `
 
 const HeroWind = styled.img`
@@ -135,6 +219,10 @@ const HeroWind = styled.img`
   right: 0;
   pointer-events: none;
   width: calc(100vw * (951 / 1512));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const CloudOne = styled.img`
@@ -143,6 +231,10 @@ const CloudOne = styled.img`
   right: calc(100vw * (175 / 1512));
   z-index: 3;
   width: calc(100vw * (480 / 1512));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const CloudTwo = styled.img`
@@ -151,6 +243,10 @@ const CloudTwo = styled.img`
   width: calc(100vw * (248 / 1512));
   top: calc(100vw * (290 / 1512));
   right: calc(100vw * (100 / 1512));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const CloudThree = styled.img`
@@ -159,6 +255,10 @@ const CloudThree = styled.img`
   width: calc(100vw * (190 / 1512));
   top: calc(100vw * (580 / 1512));
   right: calc(100vw * (570 / 1512));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const TrainTracks = styled.img`
@@ -167,6 +267,14 @@ const TrainTracks = styled.img`
   width: calc(100vw * (159 / 1512));
   top: calc(100vw * (400 / 1512));
   right: calc(100vw * (150 / 1512));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    position: absolute;
+    top: calc(100vw * (1540 / 1512));
+    left: 75%;
+    transform: translateX(-50%);
+    width: calc(100vw * (89 / 528));
+  }
 `
 
 const MiniIsland = styled.img`
@@ -175,6 +283,10 @@ const MiniIsland = styled.img`
   width: calc(100vw * (135 / 1512));
   top: calc(100vw * (630 / 1512));
   right: calc(100vw * (150 / 1512));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const CloudFour = styled.img`
@@ -183,6 +295,10 @@ const CloudFour = styled.img`
   width: calc(100vw * (115 / 1512));
   top: calc(100vw * (640 / 1512));
   right: calc(100vw * (220 / 1512));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 // IMAGES END
 
@@ -194,7 +310,7 @@ const Hero = () => (
         <Title src="./assets/images/hero/nwhacks_title.svg" />
         <Description>
           <Subheader>Western Canada&apos;s Premier Hackathon</Subheader>
-          <Subheader>January 17-18 @ UBC Life Sciences Institute</Subheader>
+          <SecondarySubheader>January 17-18 @ UBC Life Sciences Institute</SecondarySubheader>
         </Description>
         <Subheader>Apply to be a:</Subheader>
         <Buttons>
