@@ -287,7 +287,7 @@ const TrustBadge = ({ stayAtTop }) => (
     target="_blank"
     stayAtTop={stayAtTop}
   >
-    <img src={'/assets/images/mlhTrustBadgeWhite.svg'} alt="Major League Hacking 2025 Hackathon Season" style={{ width: '100%' }} />
+    <img src="/assets/images/mlhTrustBadgeWhite.svg" alt="Major League Hacking 2025 Hackathon Season" style={{ width: '100%' }} />
   </TrustBadgeLink>
 )
 

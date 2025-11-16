@@ -1,9 +1,20 @@
 import React, { useState, useRef } from 'react'
 import styled from 'styled-components'
-import ChevronLeft from '@assets/images/chevron_left.svg'
+import ChevronLeft from '@assets/images/sponsor/arrow_left.png'
 
-// const PAGE_FRAC_MOBILE = 90 // width: ?vw for the carousel component on mobile
-const PAGE_FRAC_DESKTOP = 80 // width: ?% for the carousel component on desktop
+const PAGE_FRAC_DESKTOP = 60 // % width of carousel content on desktop
+
+const CarouselWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  touch-action: pan-y;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    user-select: none;
+  }
+`
 
 const CarouselContainer = styled.div`
   display: flex;
@@ -11,20 +22,19 @@ const CarouselContainer = styled.div`
   align-items: center;
   width: 100%;
   max-width: 1600px;
-  gap: 2%;
-
+  position: relative;
   z-index: 2;
 `
 
 const ContentContainer = styled.div`
   width: ${PAGE_FRAC_DESKTOP}%;
-  aspect-ratio: 889 / 431;
+  aspect-ratio: 864.75 / 476.62;
   position: relative;
 
   display: flex;
-  padding: 1.171875%; // the tv's border
 
-  background-image: url('/assets/images/sponsor_tv.svg');
+  background-image: url('/assets/images/sponsor/sponsor_card.svg');
+  opacity: 1;
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: center;
@@ -80,7 +90,7 @@ const RightContainer = styled.div`
 const RightInnerContainer = styled.div`
   display: flex;
   width: 90%;
-  height: 100%;
+  height: 90%;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
@@ -89,21 +99,33 @@ const RightInnerContainer = styled.div`
 `
 
 const ActiveButton = styled.div`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+
   display: flex;
   align-items: center;
   justify-content: center;
   width: calc(100vw * (40 / 1280));
   height: calc(100vw * (40 / 1280));
 
-  border-radius: 50%;
-  background-color: ${props => (props.visible ? 'rgba(255, 255, 255, 0.2)' : 'transparent')};
+  border-radius: 12px;
+  background-color: ${props => (props.visible ? 'rgba(255, 255, 255, 0.8)' : 'transparent')};
   cursor: ${props => (props.visible ? 'pointer' : 'default')};
   transition: 200ms ease-in-out;
   visibility: ${props => (props.visible ? 'visible' : 'hidden')};
 
   &:hover {
-    background-color: ${props => (props.visible ? 'rgba(255, 255, 255, 0.4)' : 'transparent')};
+    background-color: ${props => (props.visible ? 'rgba(255, 255, 255, 1)' : 'transparent')};
   }
+
+  ${props => props.left && `
+    left: -2rem;
+  `}
+  ${props => props.right && `
+    right: -2rem;
+  `}
 
   ${p => p.theme.mediaQueries.mobile} {
     display: none;
@@ -150,21 +172,11 @@ const Logo = styled.img`
   width: 100%;
 `
 
-// const SponsoredByText = styled.div`
-//   font-size: 2rem;
-//   font-weight: 600;
-//   color: white;
-//   text-align: center;
-
-//   ${p => p.theme.mediaQueries.mobile} {
-//     font-size: 13px;
-//   }
-// `
-
 const Blurb = styled.div`
-  font-size: 1.25rem;
-  font-family: 'HK Grotesk Medium';
-  font-weight: 500;
+  font-size: 1rem;
+  color: #381f1c;
+  font-family: 'Space Grotesk';
+  font-weight: 400;
   max-height: 75%;
   overflow-y: auto;
   word-wrap: break-word;
@@ -201,21 +213,21 @@ const Blurb = styled.div`
   }
 `
 
-const LearnMoreButton = styled.a`
-  font-size: 1rem;
-  font-weight: 600;
-  background: #883030;
-  color: white;
-  text-decoration: none;
-  padding: calc(100vw * (10 / 1280)) calc(100vw * (15 / 1280));
-  border-radius: calc(100vw * (8 / 1280));
+// const LearnMoreButton = styled.a`
+//   font-size: 1rem;
+//   font-weight: 600;
+//   background: #883030;
+//   color: white;
+//   text-decoration: none;
+//   padding: calc(100vw * (10 / 1280)) calc(100vw * (15 / 1280));
+//   border-radius: calc(100vw * (8 / 1280));
 
-  ${p => p.theme.mediaQueries.mobile} {
-    font-size: 0.75rem;
-    padding: calc(100vw * (8 / 487)) calc(100vw * (15 / 487));
-    border-radius: calc(100vw * (8 / 487));
-  }
-`
+//   ${p => p.theme.mediaQueries.mobile} {
+//     font-size: 0.75rem;
+//     padding: calc(100vw * (8 / 487)) calc(100vw * (15 / 487));
+//     border-radius: calc(100vw * (8 / 487));
+//   }
+// `
 
 const sanitizeBlurb = blurb =>
   blurb.replace(/<a\s+(?:[^>]*?)href=/g, '<a target="_blank" rel="noopener noreferrer" href=')
@@ -262,25 +274,20 @@ const Carousel = ({ sponsors }) => {
   return (
     <CarouselWrapper onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} onTouchEnd={handleTouchEnd}>
       <CarouselContainer>
-        <ActiveButton
-          visible={showLeftButton}
-          onClick={() => {
-            if (showLeftButton) {
-              setViewing(prev => Math.max(0, prev - 1))
-            }
-          }}
-        >
-          <ChevronImg src={ChevronLeft} />
-        </ActiveButton>
-
         <ContentContainer>
+          <ActiveButton
+            visible={showLeftButton}
+            left
+            onClick={() => showLeftButton && setViewing(prev => Math.max(0, prev - 1))}
+          >
+            <ChevronImg src={ChevronLeft.src} />
+          </ActiveButton>
+
           <LeftContainer>
             <LeftInnerContainer>
-              {/* <SponsoredByText>
-                PROUDLY <br /> SPONSORED BY
-              </SponsoredByText> */}
               <Logo src={sponsors[viewing]?.imgURL} />
             </LeftInnerContainer>
+
             {sponsors.length >= 1 && (
               <Dots>
                 {sponsors.map((sponsor, i) => (
@@ -293,36 +300,20 @@ const Carousel = ({ sponsors }) => {
           <RightContainer>
             <RightInnerContainer>
               <Blurb dangerouslySetInnerHTML={{ __html: sanitizeBlurb(sponsors[viewing]?.blurb) }} />
-              <LearnMoreButton href={sponsors[viewing]?.link}>Learn More</LearnMoreButton>
             </RightInnerContainer>
           </RightContainer>
-        </ContentContainer>
 
-        <ActiveButton
-          visible={showRightButton}
-          onClick={() => {
-            if (showRightButton) {
-              setViewing(prev => Math.min(sponsors.length - 1, prev + 1))
-            }
-          }}
-        >
-          <ChevronImg src={ChevronLeft} flip />
-        </ActiveButton>
+          <ActiveButton
+            visible={showRightButton}
+            right
+            onClick={() => showRightButton && setViewing(prev => Math.min(sponsors.length - 1, prev + 1))}
+          >
+            <ChevronImg src={ChevronLeft.src} flip />
+          </ActiveButton>
+        </ContentContainer>
       </CarouselContainer>
     </CarouselWrapper>
   )
 }
-
-const CarouselWrapper = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  touch-action: pan-y;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    user-select: none;
-  }
-`
 
 export default Carousel

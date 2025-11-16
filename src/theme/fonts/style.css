@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;700&family=Fira+Code:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400&display=swap');
 
 @font-face {
   font-family: 'HK Grotesk';
@@ -103,4 +104,11 @@
   font-style: normal;
   font-weight: 900;
   src: local('LT Museum Black'), url('LTMuseum-Black.ttf') format('truetype');
+}
+
+.space-grotesk {
+  font-family: "Space Grotesk", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }

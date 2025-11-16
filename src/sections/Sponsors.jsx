@@ -7,23 +7,55 @@ import Carousel from '../components/Carousel'
 
 const SponsorsContainer = styled.div`
   position: relative;
-  top: 0;
+  z-index: 10;
+  top: calc(100vw * (600 / 1280));
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: calc(100vw * (100 / 1280));
+  gap: calc(100vw * (10 / 1280));
+  padding-bottom: calc(100vw * (650 / 1280));
 `
+
+const ContentWrapper = styled.div`
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(100vw * (50 / 1280));
+  padding-top: calc(100vw * (200 / 1280));
+  
+  ${p => p.theme.mediaQueries.mobile} {
+    padding-top: calc(100vw * (200 / 487));
+  }
+`
+
 
 const Title = styled(Header2)`
   text-align: center;
-  color: #fff;
-  font-size: calc(100vw * (48 / 1280));
+  color: #0F2333;
+  font-family: 'Space Grotesk';
+  font-size: calc(100vw * (40 / 1280));
 
   ${p => p.theme.mediaQueries.mobile} {
     font-size: calc(100vw * (56 / 487));
   }
+`
+
+const Description = styled.p`
+  text-align: left;
+  color: #000000;
+  font-family: 'Space Grotesk';
+  line-height: 140%;
+  letter-spacing: 0px;
+  font-size: calc(100vw * (20 / 1280));
+  width: 50%;
+  margin: 0 auto;
+  margin-bottom: calc(100vw * (150 / 1280));
+
+  a {color: #000000;}
 `
 
 const SwipeDescription = styled.p`
@@ -37,25 +69,59 @@ const SwipeDescription = styled.p`
   }
 `
 
-const Spotlight = styled.div`
+const CloudsBehind = styled.div`
   position: absolute;
-  top: calc(100vw * (100 / 1280));
-  left: ${props => (props.direction === 'left' ? '0' : 'none')};
-  right: ${props => (props.direction === 'right' ? '0' : 'none')};
+  top: 0;
+  left: 0;
   width: 100%;
   aspect-ratio: 808 / 600;
-  background-image: url('/assets/images/sponsor_spotlight.svg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
   z-index: 1;
 
-  transform: ${props => (props.direction === 'left' ? 'scaleX(-1)' : 'none')};
+  background-image: url('/assets/images/sponsor/sponsor_clouds_behind.svg');
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: 100% auto;
+
+  pointer-events: none;
 
   ${p => p.theme.mediaQueries.mobile} {
-    top: calc(100vw * (250 / 487));
+    top: 0;
+    aspect-ratio: 808 / 600;
+    background-size: 100% auto;
   }
 `
+
+const CloudsFront = styled.div`
+  position: absolute;
+  top: calc(100vw * (350 / 1280));
+  left: 0;
+  width: 100%;
+  aspect-ratio: 808 / 600;
+  z-index: 3;
+
+  background-image: url('/assets/images/sponsor/sponsor_clouds_front.svg');
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: 100% auto;
+
+  pointer-events: none;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    top: calc(100vw * (350 / 487));
+    aspect-ratio: 808 / 600;
+    background-size: 100% auto;
+  }
+`
+
+const BearAnimation = styled.img`
+  position: absolute;
+  top: calc(100vw * (325 / 1280));
+  right: calc(100vw * (175 / 1280));
+  width: calc(100vw * (150 / 1280));
+  z-index: 2;
+  pointer-events: none;
+`
+
 
 const SPONSOR_IMAGE_OVERRIDES = {
   TELUS: '/assets/images/telus.png',
@@ -91,19 +157,19 @@ const Sponsors = () => {
 
   return (
     <SponsorsContainer>
-      <Spotlight direction="left" />
-      <Spotlight direction="right" />
-      <Title id="sponsors">Our 2025 Sponsors</Title>
-      <div style={{
-        margin: "0 auto",
-        width: "70%",
-        textAlign: 'center',
-        color: 'white',
-        lineHeight: '200%',
-        fontSize: 20
-      }}>nwHacks is more than just a hackathon; it's a place that supports and fosters a community for the next generation of tech leaders. If you're interested in collaborating with us or speaking at one of our events, please reach out at sponsorship@nwplus.io. </div>
-      <SwipeDescription>Swipe on the TV screen to read about our sponsors</SwipeDescription>
-      {carouselSponsors.length > 0 && <Carousel sponsors={carouselSponsors} />}
+      <CloudsBehind />
+      <CloudsFront />
+      <BearAnimation src="/assets/images/animations/bear.gif" alt="Bear animation" />
+      <ContentWrapper>
+        <Title id="sponsors">Sponsor nwHacks 2026</Title>
+        <Description>
+          nwHacks is more than just a hackathon; it&apos;s a place that supports and fosters a community for the next generation of tech leaders. 
+          <br /><br />
+          If you&apos;re interested in collaborating with us or speaking at one of our events, please reach out at <a href="mailto:sponsorship@nwplus.io">sponsorship@nwplus.io</a>. 
+        </Description>
+        <SwipeDescription>Swipe to learn more about our sponsors</SwipeDescription>
+        {carouselSponsors.length > 0 && <Carousel sponsors={carouselSponsors} />}
+      </ContentWrapper>
       <SponsorsGrid sponsors={sponsors} />
     </SponsorsContainer>
   )

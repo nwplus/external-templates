@@ -1,9 +1,8 @@
 import { useEffect, useState, useRef, memo } from 'react'
 import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
 import styled from 'styled-components'
-import Floor from './Floor'
 
-const SPONSOR_WIDTH = { title: 70, platinum: 45, gold: 40, silver: 35, bronze: 30, startup: 25, inkind: 20 }
+const SPONSOR_WIDTH = { title: 65, platinum: 35, gold: 25, silver: 25, bronze: 22, startup: 20, inkind: 15 }
 const MOBILE_SPONSOR_WIDTH = { title: 95, platinum: 80, gold: 45, silver: 35, bronze: 30, startup: 25, inkind: 20 }
 
 const calculateSponsorRows = (tierList, containerWidth, isMobile) => {
@@ -42,7 +41,7 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: calc(100vw * (120 / 1280));
+  gap: calc(100vw * (4 / 1280));
 `
 
 const SponsorLevelContainer = styled.div`
@@ -50,33 +49,39 @@ const SponsorLevelContainer = styled.div`
   margin: 0 auto;
   display: flex;
   justify-content: center;
+  align-items: center;
 `
 
 const Row = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 2rem;
-  width: 95vw;
-  margin-bottom: calc(100vw * (25 / 1280));
+  justify-content: space-evenly;
+  gap: 1rem;
+  width: 100%;
+  margin-bottom: calc(100vw * (1.5 / 1280));
 
   ${p => p.theme.mediaQueries.mobile} {
-    // flex-direction: column;
-    // width: 100%;
-    gap: calc(100vw * (5 / 487));
+    gap: calc(100vw * (2 / 487));
   }
 `
 
+const islandMap = {
+  title: "url('/assets/images/sponsor/title_platinum_island.svg')",
+  platinum: "url('/assets/images/sponsor/title_platinum_island.svg')",
+  gold: "url('/assets/images/sponsor/gold_island.svg')",
+};
+
 const SponsorContainer = styled.div`
   width: ${p => p.size}%;
-  aspect-ratio: 769 / 384;
-  background-image: url(./assets/images/sponsor_card.svg);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+  aspect-ratio: 577 / 409;
   z-index: 2;
   display: flex;
   justify-content: center;
+
+  background-image: ${p => islandMap[p.tier] || 'none'};
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 
   ${p => p.theme.mediaQueries.mobile} {
     width: ${p => MOBILE_SPONSOR_WIDTH[p.tier]}%;
@@ -84,13 +89,13 @@ const SponsorContainer = styled.div`
 `
 
 const SponsorLink = styled.a`
-  height: 60%;
+  height: 65%;
   width: auto;
   max-width: 90%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 5%;
+  margin-top: 2%;
 `
 
 const SponsorImg = styled.img`
@@ -100,25 +105,10 @@ const SponsorImg = styled.img`
   object-fit: contain;
 `
 
-const Nugget = styled.img`
-  position: absolute;
-  width: calc(100vw * (135 / 1280));
-  height: auto;
-  z-index: 3;
-  left: calc(100vw * (475 / 1280));
-  top: calc(100vw * (275 / 1280));
-
-  ${p => p.theme.mediaQueries.mobile} {
-    width: calc(100vw * (70 / 487));
-    left: calc(100vw * (150 / 487));
-    top: calc(100vw * (135 / 487));
-  }
-`
-
 const Sponsor = memo(({ link, url, size, tier }) => (
   <SponsorContainer size={size} tier={tier}>
     <SponsorLink href={link} target="_blank" rel="noreferrer">
-      <SponsorImg src={url} alt="Sponsor Logo" />
+      <SponsorImg src={url} alt="Sponsor Logo" tier={tier} />
     </SponsorLink>
   </SponsorContainer>
 ))
@@ -130,8 +120,6 @@ const ListByTier = memo(({ listOfRows, tierSize, tier }) => {
     <>
       {listOfRows.map(row => (
         <SponsorLevelContainer key={`${tier}-${row[0].name}`}>
-          <Floor />
-          {tier === 'title' && <Nugget src="./assets/images/nugget_sponsor.png" />}
           <Row>
             {row.map(item => (
               <Sponsor key={item.name} link={item.link} url={item.imgURL} size={tierSize} tier={tier} />
