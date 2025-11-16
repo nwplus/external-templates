@@ -3,12 +3,10 @@ import styled from 'styled-components'
 import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
 import { scale } from '@utilities/format'
 import { BANNER_OFFSET } from '../constants/measurements'
-import MenuImg from '../../public/images/icons/menu.svg'
-import NwPlusLogo from './NwPlusLogo'
 
 const NavBarContainer = styled.nav`
   position: ${p => (p.stayAtTop ? 'absolute' : 'fixed')};
-  top: ${p => (p.stayAtTop ? BANNER_OFFSET : '0')}px;
+  top: ${p => (p.stayAtTop ? BANNER_OFFSET : '10')}px;
   z-index: 999;
   width: 100%;
   display: flex;
@@ -30,7 +28,7 @@ const NavBarContainer = styled.nav`
 
 const NavGroupContainer = styled.div`
   display: flex;
-  gap: 3%;
+  gap: 5%;
   align-items: center;
   justify-content: space-between;
   width: 100%;
@@ -42,7 +40,7 @@ const NavGroupContainer = styled.div`
 
 const NavTextContainer = styled.div`
   display: flex;
-  gap: 3%;
+  gap: calc(100vw * (55 / 1512));
   align-items: center;
   width: 100%;
   justify-content: center;
@@ -53,13 +51,14 @@ const NavTextContainer = styled.div`
 `
 
 const NwPlusLogoContainer = styled.div`
-  svg {
-    max-height: 40px;
-    height: 400px;
+  display: none;
 
-    ${p => p.theme.mediaQueries.mobile} {
-      width: 30px;
-    }
+  ${p => p.theme.mediaQueries.mobile} {
+    display: block;
+    position: absolute;
+    left: 24px;
+    top: 20px;
+    z-index: 1000;
   }
 `
 
@@ -95,7 +94,7 @@ const StyledLinkHeaders = styled.h3`
   text-align: center;
 
   ${p => p.theme.mediaQueries.mobile} {
-    color: #3a2f21;
+    color: #1e0831;
     font-size: 16px;
   }
 `
@@ -104,7 +103,10 @@ const HamburgerMenu = styled.img`
   display: none;
   ${p => p.theme.mediaQueries.mobile} {
     display: block;
-    width: 30px;
+    width: calc(100vw * (30 / 487));
+
+    filter: invert(1) brightness(2);
+    -webkit-filter: invert(1) brightness(2);
   }
 `
 
@@ -118,7 +120,7 @@ const DropDownContentContainer = styled.div`
   align-items: center;
   gap: 24px;
   width: 100%;
-  background: #eddecc;
+  background: #f6dbc8;
 `
 
 const PortalButtonContainer = styled.div`
@@ -138,10 +140,12 @@ const Button = styled.a`
   display: table;
   text-decoration: none;
   position: relative;
-  padding: 11px 21px;
-  border-radius: 50px;
+  padding: calc(100vw * (11 / 1512)) calc(100vw * (21 / 1512));
+  border-radius: 8px;
   font-weight: bold;
-  background: linear-gradient(36deg, #d69a0e 23.92%, #f0bb3e 68.82%);
+  background: linear-gradient(to bottom right, #5b4862ff 50%, #887655ff 100%) padding-box,
+    linear-gradient(270deg, #ffffff 0%, #836a8c 100%) border-box;
+  border: 1px solid transparent;
   font-size: ${() => scale(1024, 1440, 12, 16)};
   color: #f3f5f4;
   ${p => p.theme.mediaQueries.mobile} {
@@ -155,7 +159,7 @@ const Button = styled.a`
     content: 'Live Portal';
     color: #f3f5f4;
 
-    border-radius: 50px;
+    border-radius: 8px;
     position: absolute;
     top: 0;
     right: 0;
@@ -166,7 +170,8 @@ const Button = styled.a`
     transition: opacity 0.25s ease-in-out;
     opacity: 0;
 
-    background: linear-gradient(36deg, #b88a0d 23.92%, #d69a0e 68.82%);
+    background: linear-gradient(to bottom right, #5b4862ff 50%, #887655ff 100%) padding-box,
+      linear-gradient(270deg, #ffffff 0%, #836a8c 100%) border-box;
   }
 
   &:hover::before {
@@ -208,6 +213,10 @@ const TrustBadgeLink = styled.a`
   }
 `
 
+const NwPlusLogo = styled.img`
+  width: calc(100vw * (28 / 487));
+`
+
 const MenuItem = ({ name, href, isAnchor, target, rel, isMobile, closeDropdown }) => {
   const [anchorTarget, setAnchorTarget] = useState(null)
 
@@ -237,8 +246,8 @@ const MenuItem = ({ name, href, isAnchor, target, rel, isMobile, closeDropdown }
 const PortalButton = ({ portalOpen }) => (
   <PortalButtonContainer portalOpen={portalOpen}>
     <Button
-      width="130px"
-      height="45px"
+      width="calc(100vw * (130 / 1512))"
+      height="calc(100vw * (45 / 1512))"
       borderRadius="100px"
       isGradient
       textColor="black"
@@ -253,29 +262,22 @@ const PortalButton = ({ portalOpen }) => (
 
 const MenuList = ({ isMobile, closeDropdown }) => (
   <>
-    {isMobile && (
-      <NwPlusLogoContainer>
-        <a href="/#home">
-          <NwPlusLogo fill="#3A2F21" />
-        </a>
-      </NwPlusLogoContainer>
-    )}
     <MenuItem name="About" href="/#about" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
     <MenuItem name="Recap" href="/#stats" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
-    <MenuItem name="Workshops" href="/#workshops" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
-    <MenuItem name="Past Projects" href="/#past-projects" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
-    {!isMobile && (
-      <NwPlusLogoContainer>
-        <a href="/#home">
-          <NwPlusLogo fill="white" />
-        </a>
-      </NwPlusLogoContainer>
-    )}
     <MenuItem name="Testimonials" href="/#testimonials" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
+    <MenuItem name="Past Projects" href="/#past-projects" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
     <MenuItem name="FAQ" href="/#faq" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
     <MenuItem name="Sponsors" href="/#sponsors" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
     <MenuItem name="Contact us" href="/#footer" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
-    <MenuItem name="2025" href="https://2025.nwhacks.io/" target="_blank" rel="noreferrer" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
+    <MenuItem
+      name="2025"
+      href="https://2025.nwhacks.io/"
+      target="_blank"
+      rel="noreferrer"
+      isAnchor
+      isMobile={isMobile}
+      closeDropdown={closeDropdown}
+    />
   </>
 )
 
@@ -287,7 +289,11 @@ const TrustBadge = ({ stayAtTop }) => (
     target="_blank"
     stayAtTop={stayAtTop}
   >
-    <img src="/assets/images/mlhTrustBadgeWhite.svg" alt="Major League Hacking 2025 Hackathon Season" style={{ width: '100%' }} />
+    <img
+      src="/assets/images/mlhTrustBadgeWhite.svg"
+      alt="Major League Hacking 2026 Hackathon Season"
+      style={{ width: '100%' }}
+    />
   </TrustBadgeLink>
 )
 
@@ -359,6 +365,11 @@ const NavigationBar = ({ bannerExists }) => {
   // Only for desktop version
   return (
     <NavBarContainer visibility={visibility} opacity={opacity} stayAtTop={stayAtTop}>
+      <NwPlusLogoContainer>
+        <a href="/#home">
+          <NwPlusLogo src="/assets/images/hero/nwhacks_logo.svg" />
+        </a>
+      </NwPlusLogoContainer>
       <NavGroupContainer>
         <PortalButton portalOpen />
         <NavTextContainer>
@@ -367,7 +378,7 @@ const NavigationBar = ({ bannerExists }) => {
         {/* Make sure mobile (above) has the same portalOpen value */}
         <TrustBadge stayAtTop={stayAtTop} />
       </NavGroupContainer>
-      <HamburgerMenu src={MenuImg} alt="dropdown menu icon" onClick={() => setShowDropdown(true)} />
+      <HamburgerMenu src="/images/icons/menu.svg" alt="dropdown menu icon" onClick={() => setShowDropdown(true)} />
     </NavBarContainer>
   )
 }
