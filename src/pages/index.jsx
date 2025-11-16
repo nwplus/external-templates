@@ -13,7 +13,7 @@ import Projects from 'src/sections/Projects'
 import Separator from 'src/components/Separator'
 import Testimonials from 'src/sections/Testimonials'
 
-import Hero from '../components/Hero'
+import Hero from 'src/sections/Hero'
 import NavigationBar from '../components/NavigationBar'
 
 const HalfContainer = styled.div`
@@ -120,6 +120,6 @@ export async function getStaticProps() {
   return {
     props: {
       title: 'nwHacks 2026',
-    }, 
+    },
   }
 }
