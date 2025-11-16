@@ -163,9 +163,9 @@ const Sponsors = () => {
       <ContentWrapper>
         <Title id="sponsors">Sponsor nwHacks 2026</Title>
         <Description>
-          nwHacks is more than just a hackathon; it's a place that supports and fosters a community for the next generation of tech leaders. 
+          nwHacks is more than just a hackathon; it&apos;s a place that supports and fosters a community for the next generation of tech leaders. 
           <br /><br />
-          If you're interested in collaborating with us or speaking at one of our events, please reach out at <a href="mailto:sponsorship@nwplus.io">sponsorship@nwplus.io</a>. 
+          If you&apos;re interested in collaborating with us or speaking at one of our events, please reach out at <a href="mailto:sponsorship@nwplus.io">sponsorship@nwplus.io</a>. 
         </Description>
         <SwipeDescription>Swipe to learn more about our sponsors</SwipeDescription>
         {carouselSponsors.length > 0 && <Carousel sponsors={carouselSponsors} />}

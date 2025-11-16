@@ -286,7 +286,7 @@ const Workshops = () => {
           </Description>
         </Text>
       </Grid>
-      <Nugget src={'/assets/images/nugget_workshop.png'} />
+      <Nugget src="/assets/images/nugget_workshop.png" />
     </WorkshopsContainer>
   )
 }

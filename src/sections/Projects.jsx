@@ -532,8 +532,8 @@ const Projects = () => {
 
           <TVContainer>
             <TVImage src={tvLit ? '/assets/images/projects/onTV.svg' : '/assets/images/projects/TV.svg'} />
-            <NuggetImage src={'/assets/images/projects/nugget.svg'} />
-            <NuggetArmImage src={'/assets/images/projects/nuggetArm.svg'} />
+            <NuggetImage src="/assets/images/projects/nugget.svg" />
+            <NuggetArmImage src="/assets/images/projects/nuggetArm.svg" />
             {tvLit && hoveredProject && (
               <TVOverlay>
                 <TVText>{hoveredProject.description}</TVText>
@@ -564,10 +564,10 @@ const Projects = () => {
           ))}
         </Carousel>
         <LeftButton onClick={handleLeftClick}>
-          <img src={'/assets/images/carouselLeft.svg'} alt="Carousel Left Arrow" />
+          <img src="/assets/images/carouselLeft.svg" alt="Carousel Left Arrow" />
         </LeftButton>
         <RightButton onClick={handleRightClick}>
-          <img src={'/assets/images/carouselRight.svg'} alt="Carousel Right Arrow" />
+          <img src="/assets/images/carouselRight.svg" alt="Carousel Right Arrow" />
         </RightButton>
         <DotsContainer>
           {projects.map((_, index) => (

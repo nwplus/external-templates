@@ -127,9 +127,9 @@ const Dot = styled.div`
 const Gallery = () => (
   <GalleryContainer>
     {/* Images for different screen sizes */}
-    <DesktopImage src={'/assets/images/desktopGallery.png'} alt="Desktop Gallery" />
-    <TabletImage src={'/assets/images/tabletGallery.png'} alt="Tablet Gallery" />
-    <MobileImage src={'/assets/images/mobileGallery.png'} alt="Mobile Gallery" />
+    <DesktopImage src="/assets/images/desktopGallery.png" alt="Desktop Gallery" />
+    <TabletImage src="/assets/images/tabletGallery.png" alt="Tablet Gallery" />
+    <MobileImage src="/assets/images/mobileGallery.png" alt="Mobile Gallery" />
 
     {/* Video Container */}
     <VideoContainer>

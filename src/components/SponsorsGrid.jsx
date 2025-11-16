@@ -65,6 +65,12 @@ const Row = styled.div`
   }
 `
 
+const islandMap = {
+  title: "url('/assets/images/sponsor/title_platinum_island.svg')",
+  platinum: "url('/assets/images/sponsor/title_platinum_island.svg')",
+  gold: "url('/assets/images/sponsor/gold_island.svg')",
+};
+
 const SponsorContainer = styled.div`
   width: ${p => p.size}%;
   aspect-ratio: 577 / 409;
@@ -72,12 +78,7 @@ const SponsorContainer = styled.div`
   display: flex;
   justify-content: center;
 
-  background-image: ${p =>
-    p.tier === 'title' || p.tier === 'platinum'
-      ? "url('/assets/images/sponsor/title_platinum_island.svg')"
-      : p.tier === 'gold'
-      ? "url('/assets/images/sponsor/gold_island.svg')"
-      : 'none'};
+  background-image: ${p => islandMap[p.tier] || 'none'};
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;

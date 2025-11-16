@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
@@ -10,7 +9,6 @@ import {
 } from '@fortawesome/free-brands-svg-icons'
 import Team from '@components/Team'
 import Newsletter from '@components/Newsletter'
-import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
 
 const FooterContainer = styled.div`
   position: relative;
@@ -223,14 +221,7 @@ const PinkSphere = styled.img`
   }
 `
 
-const Footer = () => {
-  const [isMobile, setIsMobile] = useState(false)
-
-  useEffect(() => {
-    setIsMobile(window.innerWidth <= SCREEN_BREAKPOINTS.mobile)
-  }, [])
-
-  return (
+const Footer = () => (
     <FooterContainer id="footer">
       <OrangeSphere 
         src="/assets/images/footer/orange_sphere.png"
@@ -293,6 +284,5 @@ const Footer = () => {
       </StaticContainer>
     </FooterContainer>
   )
-}
 
 export default Footer
