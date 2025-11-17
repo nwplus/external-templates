@@ -5,7 +5,7 @@ const AboutContainer = styled.div`
   aspect-ratio: 1512/900;
   height: 100%;
   position: relative;
-  z-index: 11;
+  z-index: 10;
   display: flex;
   align-items: center;
   width: 100%;
@@ -63,7 +63,7 @@ const AboutContainer = styled.div`
 const Tracks = styled.img`
   position: absolute;
   width: calc(100vw * (760 / 1512));
-  top: calc(100vw * (-450 / 1512));
+  top: calc(100vw * (-228 / 1512));
   right: calc(100vw * (750 / 1512));
   z-index: 1;
 `
@@ -74,10 +74,38 @@ const Rails = styled.img`
   top: calc(100vw * (-150 / 1512));
 `
 
+const Countdown = styled.div``
+
+const CountdownContainer = styled.img`
+  position: absolute;
+  width: calc(100vw * (613 / 1512));
+  top: calc(100vw * (-53 / 1512));
+  right: calc(100vw * (50 / 1512));
+`
+
+const CountdownBorder = styled.img`
+  position: absolute;
+  width: calc(100vw * (224 / 1512));
+  top: calc(100vw * (-30 / 1512));
+  right: calc(100vw * (85 / 1512));
+`
+
+const CountdownMascots = styled.img`
+  position: absolute;
+  width: calc(100vw * (195 / 1512));
+  top: calc(100vw * (-153 / 1512));
+  right: calc(100vw * (50 / 1512));
+`
+
 const About = () => (
   <AboutContainer id="about">
     <Tracks src="./assets/images/about/about_train.png" />
     <Rails src="./assets/images/about/about_rails.svg" />
+    <Countdown>
+      <CountdownContainer src="./assets/images/about/countdown_container.svg" />
+      <CountdownBorder src="./assets/images/about/countdown_border.svg" />
+      <CountdownMascots src="./assets/images/about/countdown_mascots.svg" />
+    </Countdown>
     {/* <TextContainer>
       <Title>One for the history books</Title>
       <Description>

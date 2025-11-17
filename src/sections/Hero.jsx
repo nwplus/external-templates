@@ -19,6 +19,7 @@ const HeroContainer = styled.div`
 
   background: linear-gradient(to bottom, #1e0831 0%, #da9e9f 70%, #f6dbc8 100%);
   opacity: 1 !important;
+  overflow: hidden;
 
   ${p => p.theme.mediaQueries.mobile} {
     position: relative;
@@ -195,12 +196,15 @@ const VolunteerButton = styled.a`
 // LEFT SIDE END
 
 // IMAGES START
-const HeroIsland = styled.img`
+const HeroIslandWrapper = styled.div`
   position: absolute;
   z-index: 2;
   width: calc(100vw * (676.2 / 1512));
   top: calc(100vw * (170 / 1512));
   right: calc(100vw * (120 / 1512));
+
+  height: clamp(400px, calc(100vw * (778 / 1512)), 1000px);
+  overflow: hidden;
 
   ${p => p.theme.mediaQueries.mobile} {
     position: absolute;
@@ -209,6 +213,22 @@ const HeroIsland = styled.img`
     transform: translateX(-50%);
     width: calc(100vw * (338 / 528));
     z-index: 2;
+    height: auto;
+  }
+`
+
+const HeroIsland = styled.img`
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-position: top; /* ensure top stays visible when cropped */
+  object-fit: cover; /* prevents the browser from scaling to fit differently */
+  pointer-events: none;
+  user-select: none;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: 100%;
+    height: auto;
   }
 `
 
@@ -320,7 +340,9 @@ const Hero = () => (
         </Buttons>
         <SponsorText href="mailto:sponsorship@nwplus.io?subject=Sponsorship Inquiry">Become a Sponsor</SponsorText>
       </ContentSide>
-      <HeroIsland src="./assets/images/hero/hero_island.svg" alt="hero island" />
+      <HeroIslandWrapper>
+        <HeroIsland src="./assets/images/hero/hero_island.svg" alt="hero island" />
+      </HeroIslandWrapper>
       <TrainTracks src="./assets/images/hero/hero_tracks.svg" />
       <HeroWind src="./assets/images/hero/hero_wind.svg" />
       <CloudOne src="./assets/images/hero/hero_cloud_one.svg" />
