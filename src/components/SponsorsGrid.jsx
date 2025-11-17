@@ -3,7 +3,7 @@ import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
 import styled from 'styled-components'
 
 const SPONSOR_WIDTH = { title: 85, platinum: 50, gold: 45, silver: 40, bronze: 30, startup: 20, inkind: 15 }
-const MOBILE_SPONSOR_WIDTH = { title: 95, platinum: 80, gold: 45, silver: 35, bronze: 30, startup: 25, inkind: 20 }
+const MOBILE_SPONSOR_WIDTH = { title: 95, platinum: 70, gold: 60, silver: 55, bronze: 40, startup: 35, inkind: 30 }
 
 const calculateSponsorRows = (tierList, containerWidth, isMobile) => {
   const newRows = {}
