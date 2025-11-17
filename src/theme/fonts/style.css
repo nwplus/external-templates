@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;700&family=Fira+Code:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
 
 @font-face {
   font-family: 'HK Grotesk';
@@ -107,7 +108,14 @@
 }
 
 .space-grotesk {
-  font-family: "Space Grotesk", sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.pixelify-sans-400 {
+  font-family: 'Pixelify Sans', sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
