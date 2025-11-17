@@ -40,6 +40,7 @@ const CountdownContainer = styled.img`
   width: calc(100vw * (613 / 1512));
   top: calc(100vw * (-53 / 1512));
   right: calc(100vw * (60 / 1512));
+  z-index: 1;
 `
 
 const CountdownBorder = styled.img`
@@ -54,6 +55,7 @@ const CountdownMascots = styled.img`
   width: calc(100vw * (195 / 1512));
   top: calc(100vw * (-153 / 1512));
   right: calc(100vw * (50 / 1512));
+  z-index: 5;
 `
 
 const CountdownP = styled.p`
@@ -72,7 +74,7 @@ const CountdownP = styled.p`
 const CountdownT = styled.p`
   font-family: 'Space Grotesk';
   color: #ffffff;
-  font-weight: bold;
+  font-weight: 500;
 
   background: linear-gradient(to bottom, #ffffff 0%, #f7e8e8 100%);
   -webkit-background-clip: text;
@@ -137,6 +139,96 @@ const GridLabel = styled.p`
 `
 // COUNTDOWN THINGS END
 
+// ABOUT IMAGES
+const LeftIsland = styled.img`
+  position: absolute;
+  width: calc(100vw * (250 / 1512));
+  top: calc(100vw * (-60 / 1512));
+  left: 0;
+  z-index: 2;
+`
+
+const CloudOne = styled.img`
+  position: absolute;
+  width: calc(100vw * (445 / 1512));
+  top: calc(100vw * (-80 / 1512));
+  // right: calc(100vw * (1050 / 1512));
+  left: 0;
+`
+
+const LeftBgIsland = styled.img`
+  position: absolute;
+  width: calc(100vw * (175 / 1512));
+  top: calc(100vw * (190 / 1512));
+  right: calc(100vw * (1220 / 1512));
+`
+
+const CloudTwo = styled.img`
+  position: absolute;
+  width: calc(100vw * (305 / 1512));
+  top: calc(100vw * (300 / 1512));
+  right: calc(100vw * (1200 / 1512));
+`
+
+const RightIsland = styled.img`
+  position: absolute;
+  width: calc(100vw * (230 / 1512));
+  top: calc(100vw * (200 / 1512));
+  right: 0;
+  z-index: 1;
+`
+
+const CloudThree = styled.img`
+  position: absolute;
+  width: calc(100vw * (445 / 1512));
+  top: calc(100vw * (00 / 1512));
+  right: 0;
+`
+
+const Fog = styled.img`
+  position: absolute;
+  bottom: calc(100vw * (50 / 1512));
+  width: 100%;
+  z-index: 2;
+`
+
+const Sun = styled.img`
+  position: absolute;
+  bottom: calc(100vw * (100 / 1512));
+  right: calc(100vw * (350 / 1512));
+  z-index: 1;
+  width: calc(100vw * (803 / 1512));
+`
+// ABOUT IMAGES END
+
+// TEXT START
+const TextContainer = styled.div`
+  display: flex;
+  position: absolute;
+  right: calc(100vw * (350 / 1512));
+  width: calc(100vw * (844 / 1512));
+  top: calc(100vw * (200 / 1512));
+  gap: calc(100vw * (45 / 1512));
+  align-items: center;
+  z-index: 10;
+  color: #262609;
+`
+
+const TextLeft = styled.p`
+  font-weight: 500;
+  font-size: calc(100vw * (40 / 1512));
+  width: calc(100vw * (282 / 1512));
+  text-align: right;
+`
+
+const TextRight = styled.p`
+  width: calc(100vw * (514 / 1512));
+  text-align: left;
+  font-weight: 400;
+  font-size: calc(100vw * (20 / 1512));
+`
+// TEXT END
+
 const getReturnValues = countDown => {
   const days = Math.floor(countDown / (1000 * 60 * 60 * 24))
   const hours = Math.floor((countDown % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
@@ -193,6 +285,29 @@ const About = () => {
           </GridItem>
         </CountdownGrid>
       </Countdown>
+      <LeftIsland src="./assets/images/about/about_left_island.svg" />
+      <CloudOne src="./assets/images/about/about_cloud_one.svg" />
+      <LeftBgIsland src="./assets/images/about/about_left_bg_island.svg" />
+      <CloudTwo src="./assets/images/about/about_cloud_two.svg" />
+      <RightIsland src="./assets/images/about/about_right_island.svg" />
+      <CloudThree src="./assets/images/about/about_cloud_three.svg" />
+      <Fog src="./assets/images/about/fog.svg" />
+      <Sun src="./assets/images/about/sun.svg" />
+      <TextContainer>
+        <TextLeft>Join us for the 11th iteration of nwHacks!</TextLeft>
+        <TextRight>
+          Welcome to the 11th iteration of nwHacks, where ideas take flight!
+          <br />
+          <br />
+          Whether you're just getting into tech or already a seasoned hacker, you're invited to rise above the ordinary
+          and explore new heights of creativity, community, and innovation. <br />
+          <br />
+          Happening in-person on January 17-18, 2026, this 24-hour journey will lift you into a space where imagination
+          knows no bounds. All you need is an open mind and an insatiable desire to learn - we'll take care of the rest.
+          Build something extraordinary, discover new skills, and connect with friends as your ideas drift beyond the
+          horizon, all in 24 hours!
+        </TextRight>
+      </TextContainer>
       {/* <TextContainer>
       <Title>One for the history books</Title>
       <Description>
