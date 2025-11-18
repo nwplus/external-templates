@@ -12,7 +12,7 @@ const AboutContainer = styled.div`
   background: linear-gradient(to bottom, #f6dbc8 0%, #f9dcae 50%, #ffc973 100%);
 
   ${p => p.theme.mediaQueries.mobile} {
-    aspect-ratio: 487 / 922;
+    aspect-ratio: 487 / 1000;
   }
 `
 
@@ -23,12 +23,24 @@ const Tracks = styled.img`
   top: calc(100vw * (-228 / 1512));
   right: calc(100vw * (750 / 1512));
   z-index: 1;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    top: calc(100vw * (-20 / 393));
+    right: calc(100vw * (260 / 393));
+    width: calc(100vw * (300 / 393));
+  }
 `
 
 const Rails = styled.img`
   position: absolute;
   width: 100vw;
   top: calc(100vw * (-150 / 1512));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    top: calc(100vw * (-90 / 393));
+    width: 300vw;
+    right: calc(100vw * (-350 / 393));
+  }
 `
 // TRAIN END
 
@@ -41,6 +53,13 @@ const CountdownContainer = styled.img`
   top: calc(100vw * (-53 / 1512));
   right: calc(100vw * (60 / 1512));
   z-index: 1;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (188 / 393));
+    height: calc(100vw * (132 / 393));
+    right: calc(100vw * (100 / 393));
+    top: calc(100vw * (-40 / 393));
+  }
 `
 
 const CountdownBorder = styled.img`
@@ -48,6 +67,16 @@ const CountdownBorder = styled.img`
   width: calc(100vw * (224 / 1512));
   top: calc(100vw * (-30 / 1512));
   right: calc(100vw * (85 / 1512));
+  z-index: 20;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (112 / 393));
+    height: calc(100vw * (49 / 393));
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    top: calc(100vw * (30 / 393));
+  }
 `
 
 const CountdownMascots = styled.img`
@@ -56,6 +85,10 @@ const CountdownMascots = styled.img`
   top: calc(100vw * (-153 / 1512));
   right: calc(100vw * (50 / 1512));
   z-index: 5;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const CountdownP = styled.p`
@@ -69,6 +102,10 @@ const CountdownP = styled.p`
 
   display: inline-block;
   font-size: calc(100vw * (18 / 1512));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: calc(100vw * (10 / 393));
+  }
 `
 
 const CountdownT = styled.p`
@@ -83,6 +120,10 @@ const CountdownT = styled.p`
 
   display: inline-block;
   font-size: calc(100vw * (30 / 1512));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: calc(100vw * (15 / 393));
+  }
 `
 
 const CountdownLeft = styled.div`
@@ -93,12 +134,19 @@ const CountdownLeft = styled.div`
   display: flex;
   flex-direction: column;
   gap: calc(100vw * (6 / 1512));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    top: calc(100vw * (-25 / 393));
+  }
 `
 
 const CountdownGrid = styled.div`
   position: absolute;
   top: calc(100vw * (-19 / 1512));
-  right: calc(100vw * (-133 / 1512));
+  right: calc(100vw * (-12 / 1512));
   z-index: 3;
 
   display: grid;
@@ -106,8 +154,18 @@ const CountdownGrid = styled.div`
   column-gap: calc(100vw * (12 / 1512));
   align-items: center;
   justify-items: center;
+  justify-content: center;
 
   width: calc(100vw * (420 / 1512));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (97 / 393));
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    top: calc(100vw * (38 / 393));
+    column-gap: calc(100vw * (12 / 393));
+  }
 `
 
 const GridItem = styled.div`
@@ -128,6 +186,10 @@ const GridNumber = styled.p`
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: calc(100vw * (20 / 393));
+  }
 `
 
 const GridLabel = styled.p`
@@ -136,6 +198,10 @@ const GridLabel = styled.p`
   margin: 0;
   color: rgba(255, 255, 255, 0.9);
   opacity: 0.95;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: calc(100vw * (11 / 393));
+  }
 `
 // COUNTDOWN THINGS END
 
@@ -146,14 +212,25 @@ const LeftIsland = styled.img`
   top: calc(100vw * (-60 / 1512));
   left: 0;
   z-index: 2;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (100 / 393));
+    top: calc(100vw * (380 / 1512));
+  }
 `
 
 const CloudOne = styled.img`
   position: absolute;
   width: calc(100vw * (445 / 1512));
   top: calc(100vw * (-80 / 1512));
-  // right: calc(100vw * (1050 / 1512));
   left: 0;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (222 / 393));
+    right: calc(100vw * (300 / 393));
+    top: calc(100vw * (80 / 393));
+    z-index: 1;
+  }
 `
 
 const LeftBgIsland = styled.img`
@@ -161,6 +238,12 @@ const LeftBgIsland = styled.img`
   width: calc(100vw * (175 / 1512));
   top: calc(100vw * (190 / 1512));
   right: calc(100vw * (1220 / 1512));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (87.5 / 393));
+    right: calc(100vw * (260 / 393));
+    top: calc(100vw * (190 / 393));
+  }
 `
 
 const CloudTwo = styled.img`
@@ -168,6 +251,12 @@ const CloudTwo = styled.img`
   width: calc(100vw * (305 / 1512));
   top: calc(100vw * (300 / 1512));
   right: calc(100vw * (1200 / 1512));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (700 / 393));
+    top: calc(100vw * (550 / 393));
+    right: calc(100vw * (190 / 393));
+  }
 `
 
 const RightIsland = styled.img`
@@ -176,6 +265,13 @@ const RightIsland = styled.img`
   top: calc(100vw * (200 / 1512));
   right: 0;
   z-index: 1;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (110 / 393));
+    top: calc(100vw * (520 / 393));
+    right: -20px;
+    opacity: 0.5;
+  }
 `
 
 const CloudThree = styled.img`
@@ -183,6 +279,10 @@ const CloudThree = styled.img`
   width: calc(100vw * (445 / 1512));
   top: calc(100vw * (00 / 1512));
   right: 0;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const Fog = styled.img`
@@ -190,6 +290,11 @@ const Fog = styled.img`
   bottom: calc(100vw * (50 / 1512));
   width: 100%;
   z-index: 2;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (1200 / 393));
+    right: calc(100vw * (-200 / 393));
+  }
 `
 
 const Sun = styled.img`
@@ -198,6 +303,10 @@ const Sun = styled.img`
   right: calc(100vw * (350 / 1512));
   z-index: 1;
   width: calc(100vw * (803 / 1512));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 // ABOUT IMAGES END
 
@@ -212,6 +321,11 @@ const TextContainer = styled.div`
   align-items: center;
   z-index: 10;
   color: #262609;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    flex-direction: column;
+    top: calc(100vw * (250 / 393));
+  }
 `
 
 const TextLeft = styled.p`
@@ -219,6 +333,12 @@ const TextLeft = styled.p`
   font-size: calc(100vw * (40 / 1512));
   width: calc(100vw * (282 / 1512));
   text-align: right;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    text-align: center;
+    font-size: calc(100vw * (30 / 487));
+    width: calc(100vw * (212 / 393));
+  }
 `
 
 const TextRight = styled.p`
@@ -226,6 +346,12 @@ const TextRight = styled.p`
   text-align: left;
   font-weight: 400;
   font-size: calc(100vw * (20 / 1512));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    text-align: center;
+    font-size: calc(100vw * (15 / 487));
+    width: calc(100vw * (267 / 393));
+  }
 `
 // TEXT END
 
@@ -308,15 +434,6 @@ const About = () => {
           horizon, all in 24 hours!
         </TextRight>
       </TextContainer>
-      {/* <TextContainer>
-      <Title>One for the history books</Title>
-      <Description>
-        Join us for the 11th iteration of nwHacks! Everyone is welcome at nwHacks, whether you are just getting into
-        tech or are a seasoned hacker. Join us in-person on January 17-18, 2026 for a weekend of creativity, community,
-        and innovation. All you need is an open mind and an insatiable desire to learn - we’ll take care of the rest.
-        Create a project, learn new skills, and bond with friends, all in 24 hours!
-      </Description>
-    </TextContainer> */}
     </AboutContainer>
   )
 }
