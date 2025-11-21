@@ -88,11 +88,9 @@ export default function Index({ title }) {
 
         <ContentContainer>
           <About />
-          <Separator />
-
+          <Stats />
           <MiddleSectionsContainer>
-            <Stats />
-            <Gallery />
+            {/* <Gallery /> */}
             <Workshops />
           </MiddleSectionsContainer>
 

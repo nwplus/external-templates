@@ -9,7 +9,7 @@ const AboutContainer = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
-  background: linear-gradient(to bottom, #f6dbc8 0%, #f9dcae 50%, #ffc973 100%);
+  background: linear-gradient(to bottom, #f6dbc8 0%, #f9dcae 50%, #ffc973 70%, #f9f2ea 100%);
 
   ${p => p.theme.mediaQueries.mobile} {
     aspect-ratio: 487 / 1000;
