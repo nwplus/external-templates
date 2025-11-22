@@ -571,6 +571,7 @@ const Stats = () => {
         if (raf) cancelAnimationFrame(raf)
         obs.disconnect()
         clearPrevious()
+        return null
       }
     }, [ref])
 
@@ -630,7 +631,7 @@ const Stats = () => {
             referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen
             style={{ position: 'absolute', top: 0, left: 0 }}
-          ></iframe>
+          />
         </VideoContainer>
         <BaseRecapVideo src="./assets/images/stats/base_recap_video.png" />
         <RecapTextContainer>

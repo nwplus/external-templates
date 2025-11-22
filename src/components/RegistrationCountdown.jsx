@@ -98,14 +98,12 @@ function RegistrationCountdown() {
 
   useEffect(() => {
     async function fetchDeadline() {
-      try {
-        const deadlineString = await fireDb.getApplicationDate()
-        if (deadlineString) {
-          const deadline = parseDate(deadlineString)
-          setTimeLeft(calculateTimeLeft(deadline))
-          setLoading(false)
-        }
-      } catch (error) {}
+      const deadlineString = await fireDb.getApplicationDate()
+      if (deadlineString) {
+        const deadline = parseDate(deadlineString)
+        setTimeLeft(calculateTimeLeft(deadline))
+        setLoading(false)
+      }
     }
 
     fetchDeadline()
