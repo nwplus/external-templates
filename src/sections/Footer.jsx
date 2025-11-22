@@ -18,15 +18,15 @@ const FooterContainer = styled.div`
   width: 100%;
   overflow: hidden;
   background: linear-gradient(180deg,
-    #fdc182ff 0.1%,
+    #fdc182ff 0%,
     #D3999C 20%,
     #28083D 100%
   );
 
   ${p => p.theme.mediaQueries.mobile} {
-    aspect-ratio: 487/950;
+    aspect-ratio: 500/950;
     background: linear-gradient(180deg,
-      #fdc182ff 0%,
+      #E3B2A3 0%,
       #D3999C 10%,
       #28083D 45%
     );
@@ -154,8 +154,6 @@ const StaticContainer = styled.div`
 
   ${p => p.theme.mediaQueries.mobile} {
     width: 100%;
-    padding: 0 4vw;
-    box-sizing: border-box;
   }
 `
 

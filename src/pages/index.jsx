@@ -62,7 +62,6 @@ const FaqSponsorsContainer = styled.div`
 
   display: flex;
   flex-direction: column;
-  gap: 10rem;
   height: auto;
 `
 

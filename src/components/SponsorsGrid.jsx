@@ -3,7 +3,7 @@ import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
 import styled from 'styled-components'
 
 const SPONSOR_WIDTH = { title: 85, platinum: 50, gold: 45, silver: 40, bronze: 30, startup: 20, inkind: 15 }
-const MOBILE_SPONSOR_WIDTH = { title: 95, platinum: 70, gold: 60, silver: 55, bronze: 40, startup: 35, inkind: 30 }
+const MOBILE_SPONSOR_WIDTH = { title: 75, platinum: 50, gold: 45, silver: 40, bronze: 35, startup: 30, inkind: 25 }
 
 const calculateSponsorRows = (tierList, containerWidth, isMobile) => {
   const newRows = {}
@@ -45,6 +45,11 @@ const Container = styled.div`
   margin-top: calc(100vw * (75 / 1280));
   margin-left: calc(100vw * (200 / 1280));
   margin-right: calc(100vw * (200 / 1280));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    margin-left: calc(100vw * (25 / 1280));
+    margin-right: calc(100vw * (25 / 1280));
+  }
 `
 
 const SponsorLevelContainer = styled.div`
@@ -89,7 +94,7 @@ const sponsorImageConfig = {
 const SponsorContainer = styled.div`
   width: ${p => p.size}%;
   aspect-ratio: ${p => aspectRatioMap[p.tier] || '577 / 409'};
-  z-index: 2;
+  z-index: 3;
   display: flex;
   justify-content: center;
 
