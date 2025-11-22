@@ -9,7 +9,7 @@ const AboutContainer = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
-  background: linear-gradient(to bottom, #f6dbc8 0%, #f9dcae 50%, #ffc973 100%);
+  background: linear-gradient(to bottom, #f6dbc8 0%, #f9dcae 50%, #ffc973 70%, #f9f2ea 100%);
 
   ${p => p.theme.mediaQueries.mobile} {
     aspect-ratio: 487 / 1000;
@@ -425,13 +425,13 @@ const About = () => {
           Welcome to the 11th iteration of nwHacks, where ideas take flight!
           <br />
           <br />
-          Whether you're just getting into tech or already a seasoned hacker, you're invited to rise above the ordinary
-          and explore new heights of creativity, community, and innovation. <br />
+          Whether you&apos;re just getting into tech or already a seasoned hacker, you&apos;re invited to rise above the
+          ordinary and explore new heights of creativity, community, and innovation. <br />
           <br />
           Happening in-person on January 17-18, 2026, this 24-hour journey will lift you into a space where imagination
-          knows no bounds. All you need is an open mind and an insatiable desire to learn - we'll take care of the rest.
-          Build something extraordinary, discover new skills, and connect with friends as your ideas drift beyond the
-          horizon, all in 24 hours!
+          knows no bounds. All you need is an open mind and an insatiable desire to learn - we&apos;ll take care of the
+          rest. Build something extraordinary, discover new skills, and connect with friends as your ideas drift beyond
+          the horizon, all in 24 hours!
         </TextRight>
       </TextContainer>
     </AboutContainer>

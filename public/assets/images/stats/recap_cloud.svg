@@ -1,0 +1,51 @@
+<svg width="294" height="148" viewBox="0 0 294 148" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g opacity="0.7" filter="url(#filter0_fn_6776_97)">
+<ellipse cx="162.164" cy="60.1" rx="64.1608" ry="49.9718" fill="url(#paint0_radial_6776_97)"/>
+<path d="M283.715 116.546C283.763 133.974 212.774 137.819 125.264 137.819C37.7534 137.819 10.1283 127.637 10.1283 116.546C10.1283 105.455 37.7534 95.2725 125.264 95.2725C212.774 95.2725 283.667 99.1172 283.715 116.546Z" fill="url(#paint1_linear_6776_97)"/>
+<path d="M138.409 95.3601C138.409 122.971 111.473 125.762 78.2449 125.762C45.0169 125.762 18.0804 122.971 18.0804 95.3601C18.0804 67.7497 45.0169 45.3669 78.2449 45.3669C111.473 45.3669 138.409 67.7497 138.409 95.3601Z" fill="#DFE2E2"/>
+<path d="M138.409 95.3601C138.409 122.971 111.473 125.762 78.2449 125.762C45.0169 125.762 18.0804 122.971 18.0804 95.3601C18.0804 67.7497 45.0169 45.3669 78.2449 45.3669C111.473 45.3669 138.409 67.7497 138.409 95.3601Z" fill="url(#paint2_radial_6776_97)"/>
+<ellipse cx="132.502" cy="64.7169" rx="49.9745" ry="36.1209" fill="#DFE2E2"/>
+<ellipse cx="132.502" cy="64.7169" rx="49.9745" ry="36.1209" fill="url(#paint3_radial_6776_97)"/>
+<path d="M265.435 92.93C265.435 119.578 234.073 113.545 202.004 113.545C169.934 113.545 149.301 119.578 149.301 92.93C149.301 66.2822 175.299 44.6799 207.368 44.6799C239.437 44.6799 265.435 66.2822 265.435 92.93Z" fill="#DFE2E2"/>
+<path d="M265.435 92.93C265.435 119.578 234.073 113.545 202.004 113.545C169.934 113.545 149.301 119.578 149.301 92.93C149.301 66.2822 175.299 44.6799 207.368 44.6799C239.437 44.6799 265.435 66.2822 265.435 92.93Z" fill="url(#paint4_radial_6776_97)"/>
+</g>
+<defs>
+<filter id="filter0_fn_6776_97" x="2.57492e-05" y="-9.63211e-05" width="293.843" height="147.948" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="5.06414" result="effect1_foregroundBlur_6776_97"/>
+<feTurbulence type="fractalNoise" baseFrequency="1.3333333730697632 1.3333333730697632" stitchTiles="stitch" numOctaves="3" result="noise" seed="4179" />
+<feColorMatrix in="noise" type="luminanceToAlpha" result="alphaNoise" />
+<feComponentTransfer in="alphaNoise" result="coloredNoise1">
+<feFuncA type="discrete" tableValues="0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 "/>
+</feComponentTransfer>
+<feComposite operator="in" in2="effect1_foregroundBlur_6776_97" in="coloredNoise1" result="noise1Clipped" />
+<feFlood flood-color="#C5E0F6" result="color1Flood" />
+<feComposite operator="in" in2="noise1Clipped" in="color1Flood" result="color1" />
+<feMerge result="effect2_noise_6776_97">
+<feMergeNode in="effect1_foregroundBlur_6776_97" />
+<feMergeNode in="color1" />
+</feMerge>
+</filter>
+<radialGradient id="paint0_radial_6776_97" cx="0" cy="0" r="1" gradientTransform="matrix(35.3425 40.6253 -52.1604 27.5266 126.821 42.1263)" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FDFEFE"/>
+<stop offset="1" stop-color="#D2E3EB"/>
+</radialGradient>
+<linearGradient id="paint1_linear_6776_97" x1="10.1283" y1="122.293" x2="59.2021" y2="115.761" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FDFEFE" stop-opacity="0.8"/>
+<stop offset="1" stop-color="#D2E3EB"/>
+</linearGradient>
+<radialGradient id="paint2_radial_6776_97" cx="0" cy="0" r="1" gradientTransform="matrix(-27.06 19.9284 -23.4319 -23.161 45.1037 77.3788)" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FDFEFE"/>
+<stop offset="1" stop-color="#D2E0F0"/>
+</radialGradient>
+<radialGradient id="paint3_radial_6776_97" cx="0" cy="0" r="1" gradientTransform="matrix(27.5281 29.365 -40.6274 19.8969 104.974 51.725)" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FDFEFE"/>
+<stop offset="1" stop-color="#D8E1EC"/>
+</radialGradient>
+<radialGradient id="paint4_radial_6776_97" cx="0" cy="0" r="1" gradientTransform="matrix(31.9856 39.2256 -47.2062 26.5782 175.382 75.5756)" gradientUnits="userSpaceOnUse">
+<stop stop-color="white"/>
+<stop offset="1" stop-color="#D2E3EB"/>
+</radialGradient>
+</defs>
+</svg>
