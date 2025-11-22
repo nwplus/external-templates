@@ -6,9 +6,8 @@ import Sponsors from 'src/sections/Sponsors'
 import Faq from 'src/sections/FAQ'
 import Footer from 'src/sections/Footer'
 import About from 'src/sections/About'
-import Workshops from 'src/sections/Workshops'
 import Stats from 'src/sections/Stats'
-import Gallery from 'src/sections/Gallery'
+// import Gallery from 'src/sections/Gallery'
 import Projects from 'src/sections/Projects'
 import Separator from 'src/components/Separator'
 import Testimonials from 'src/sections/Testimonials'
@@ -89,10 +88,7 @@ export default function Index({ title }) {
         <ContentContainer>
           <About />
           <Stats />
-          <MiddleSectionsContainer>
-            {/* <Gallery /> */}
-            <Workshops />
-          </MiddleSectionsContainer>
+          <MiddleSectionsContainer>{/* <Gallery /> */}</MiddleSectionsContainer>
 
           <Separator />
           <Projects />

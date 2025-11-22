@@ -1,13 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
 import styled, { keyframes, createGlobalStyle, css } from 'styled-components'
-import tabletStatsImage from '@assets/images/tabletStats.png'
-import mobileStatsImage from '@assets/images/mobileStats.png'
-import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
-import StatsBoxes from '@components/StatsBoxes'
-
-const OuterContainer = styled.div`
-  position: relative;
-`
 
 const GlobalCounterStyles = createGlobalStyle`
   /* declare animated custom property for numeric counters */
@@ -501,9 +493,7 @@ const Stats = () => {
         jsStarted = false
         // remove previous dynamic keyframe style if present
         if (styleEl) {
-          try {
-            document.head.removeChild(styleEl)
-          } catch (e) {}
+          document.head.removeChild(styleEl)
           styleEl = null
         }
         // clear inline animation so we can restart
@@ -536,7 +526,7 @@ const Stats = () => {
         raf = requestAnimationFrame(step)
       }
 
-      const onIntersect = (entries /*, observer */) => {
+      const onIntersect = entries => {
         entries.forEach(entry => {
           const currentTop = entry.boundingClientRect && entry.boundingClientRect.top
           // detect entering while scrolling down (element moves up => currentTop < prevTop)

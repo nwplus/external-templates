@@ -105,9 +105,7 @@ function RegistrationCountdown() {
           setTimeLeft(calculateTimeLeft(deadline))
           setLoading(false)
         }
-      } catch (error) {
-        console.error('Error fetching application deadline:', error)
-      }
+      } catch (error) {}
     }
 
     fetchDeadline()
