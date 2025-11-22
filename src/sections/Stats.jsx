@@ -474,7 +474,7 @@ const Stats = () => {
 
     useEffect(() => {
       const node = ref.current
-      if (!node) return
+      if (!node) return () => {}
 
       let raf = null
       let jsStarted = false
@@ -571,7 +571,6 @@ const Stats = () => {
         if (raf) cancelAnimationFrame(raf)
         obs.disconnect()
         clearPrevious()
-        return null
       }
     }, [ref])
 
