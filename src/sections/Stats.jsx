@@ -25,12 +25,23 @@ const StatsContainer = styled.div`
   position: relative;
   z-index: 2;
   background: linear-gradient(to bottom, #f9f2ea 0%, #76c7ea 15%, #c1eefe 50%, #b0e2fb 70%, #74b0e4 100%);
+
+  ${p => p.theme.mediaQueries.mobile} {
+    aspect-ratio: 487 / 1800;
+  }
 `
 
 const Rain = styled.img`
   position: absolute;
   width: calc(100vw * (1805 / 1512));
   top: calc(100vw * (-30 / 1512));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (600 / 393));
+    top: calc(100vw * (-10 / 393));
+    right: calc(100vw * (-100 / 393));
+    opacity: 0.6;
+  }
 `
 
 const Whale = styled.img`
@@ -38,6 +49,13 @@ const Whale = styled.img`
   width: calc(100vw * (590 / 1512));
   top: calc(100vw * (170 / 1512));
   right: calc(100vw * (300 / 1512));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (295 / 393));
+    top: calc(100vw * (200 / 393));
+    right: calc(100vw * (20 / 393));
+    transform: scaleX(-1);
+  }
 `
 
 const CloudBehindHacker = styled.img`
@@ -45,6 +63,10 @@ const CloudBehindHacker = styled.img`
   width: calc(100vw * (371 / 1512));
   top: calc(100vw * (350 / 1512));
   right: calc(100vw * (200 / 1512));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const Hackers = styled.img`
@@ -53,6 +75,12 @@ const Hackers = styled.img`
   top: calc(100vw * (250 / 1512));
   right: calc(100vw * (100 / 1512));
   z-index: 5;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (340 / 393));
+    top: calc(100vw * (240 / 393));
+    right: calc(100vw * (100 / 393));
+  }
 `
 
 const Projects = styled.img`
@@ -61,6 +89,12 @@ const Projects = styled.img`
   top: calc(100vw * (550 / 1512));
   right: calc(100vw * (850 / 1512));
   z-index: 1;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (350 / 393));
+    top: calc(100vw * (480 / 393));
+    right: calc(100vw * (150 / 393));
+  }
 `
 
 const ProjectsCloudOne = styled.img`
@@ -69,6 +103,10 @@ const ProjectsCloudOne = styled.img`
   top: calc(100vw * (760 / 1512));
   right: calc(100vw * (1150 / 1512));
   z-index: 3;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const ProjectsCloudTwo = styled.img`
@@ -77,6 +115,10 @@ const ProjectsCloudTwo = styled.img`
   top: calc(100vw * (480 / 1512));
   right: calc(100vw * (1150 / 1512));
   z-index: 0;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const MentorsCloudOne = styled.img`
@@ -84,6 +126,11 @@ const MentorsCloudOne = styled.img`
   width: calc(100vw * (550 / 1512));
   top: calc(100vw * (600 / 1512));
   right: 0;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (230 / 393));
+    top: calc(100vw * (300 / 393));
+  }
 `
 
 const MentorsCloudTwo = styled.img`
@@ -91,6 +138,10 @@ const MentorsCloudTwo = styled.img`
   width: calc(100vw * (229 / 1512));
   top: calc(100vw * (850 / 1512));
   right: calc(100vw * (350 / 1512));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const MentorsCloudThree = styled.img`
@@ -98,6 +149,10 @@ const MentorsCloudThree = styled.img`
   width: calc(100vw * (243 / 1512));
   top: calc(100vw * (1000 / 1512));
   right: calc(100vw * (200 / 1512));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const Mentors = styled.img`
@@ -106,6 +161,12 @@ const Mentors = styled.img`
   top: calc(100vw * (800 / 1512));
   right: 0;
   z-index: 1;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (250 / 393));
+    top: calc(100vw * (360 / 393));
+    right: 0;
+  }
 `
 
 const BaseRecapVideo = styled.img`
@@ -114,6 +175,12 @@ const BaseRecapVideo = styled.img`
   top: calc(100vw * (865 / 1512));
   right: calc(100vw * (385 / 1512));
   z-index: 1;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (550 / 393));
+    top: calc(100vw * (800 / 393));
+    right: calc(100vw * (-83 / 393));
+  }
 `
 
 const RecapCloud = styled.img`
@@ -130,6 +197,12 @@ const SmallBlueSphere = styled.img`
   top: calc(100vw * (1470 / 1512));
   right: calc(100vw * (150 / 1512));
   z-index: 0;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (260 / 393));
+    top: calc(100vw * (660 / 393));
+    right: calc(100vw * (-40 / 393));
+  }
 `
 
 const SmallJellyfish = styled.img`
@@ -137,6 +210,10 @@ const SmallJellyfish = styled.img`
   width: calc(100vw * (159 / 1512));
   top: calc(100vw * (1000 / 1512));
   left: 0;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const BigJellyfish = styled.img`
@@ -144,6 +221,12 @@ const BigJellyfish = styled.img`
   width: calc(100vw * (450 / 1512));
   top: calc(100vw * (1000 / 1512));
   left: calc(100vw * (50 / 1512));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (300 / 393));
+    top: calc(100vw * (1250 / 393));
+    left: calc(100vw * (-80 / 393));
+  }
 `
 
 const BigCloud = styled.img`
@@ -151,6 +234,13 @@ const BigCloud = styled.img`
   width: calc(100vw * (390 / 1512));
   top: calc(100vw * (1250 / 1512));
   left: 0;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (180 / 393));
+    top: calc(100vw * (1150 / 393));
+    left: calc(100vw * (250 / 393));
+    transform: scaleX(-1);
+  }
 `
 
 const SectionHeader = styled.p`
@@ -160,6 +250,14 @@ const SectionHeader = styled.p`
   left: calc(100vw * (150 / 1512));
   color: #1c5f7f;
   font-weight: 500;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: calc(100vw * (30 / 487));
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    top: calc(100vw * (110 / 393));
+  }
 `
 
 const bob = keyframes`
@@ -201,6 +299,12 @@ const VideoContainer = styled.div`
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (350 / 393));
+    height: calc(100vw * (220 / 393));
+    top: calc(100vw * (828 / 393));
+  }
 `
 
 // HACKER NUMBERS container(s)
@@ -218,6 +322,12 @@ const NumberHackerContainer = styled.div`
   align-items: center;
   justify-content: center;
   text-align: center;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (80 / 393));
+    top: calc(100vw * (330 / 393));
+    right: calc(100vw * (220 / 393));
+  }
 `
 
 // Replace the single HackerNumber with a reusable BaseNumber and two styled variants
@@ -242,6 +352,10 @@ const HackerNumber = styled(BaseNumber)`
   font-size: calc(100vw * (92 / 1512));
   font-weight: 500;
   /* add any hacker-specific styling here */
+
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: calc(100vw * (44 / 393));
+  }
 `
 
 const NumberProjectContainer = styled.div`
@@ -258,12 +372,21 @@ const NumberProjectContainer = styled.div`
   align-items: center;
   justify-content: center;
   text-align: center;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (92 / 393));
+    top: calc(100vw * (600 / 393));
+    left: calc(100vw * (20 / 393));
+  }
 `
 
 const ProjectNumber = styled(BaseNumber)`
   font-size: calc(100vw * (76 / 1512));
   font-weight: 500;
   /* add any project-specific styling here */
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: calc(100vw * (50 / 393));
+  }
 `
 
 // Mentor number variant
@@ -271,6 +394,10 @@ const MentorNumber = styled(BaseNumber)`
   font-size: calc(100vw * (82 / 1512));
   font-weight: 500;
   /* add any mentor-specific styling here */
+
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: calc(100vw * (41 / 393));
+  }
 `
 
 const NumberMentorContainer = styled.div`
@@ -286,18 +413,31 @@ const NumberMentorContainer = styled.div`
   align-items: center;
   justify-content: center;
   text-align: center;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (65 / 393));
+    top: calc(100vw * (470 / 393));
+    right: calc(100vw * (35 / 393));
+  }
 `
 
 const Label = styled.p`
   font-size: calc(100vw * (40 / 1512));
   color: white;
   font-weight: 500;
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: calc(100vw * (20 / 393));
+  }
 `
 
 const SecondaryLabel = styled.p`
   font-size: calc(100vw * (32 / 1512));
   color: white;
   font-weight: 500;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: calc(100vw * (22 / 393));
+  }
 `
 
 const RecapText = styled.p`
@@ -305,6 +445,10 @@ const RecapText = styled.p`
   color: white;
   font-weight: 500;
   text-align: center;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: calc(100vw * (40 / 393));
+  }
 `
 
 const RecapTextContainer = styled.p`
@@ -314,6 +458,12 @@ const RecapTextContainer = styled.p`
   top: calc(100vw * (1320 / 1512));
   right: calc(100vw * (630 / 1512));
   z-index: 40;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (246 / 393));
+    top: calc(100vw * (1140 / 393));
+    right: calc(100vw * (73 / 393));
+  }
 `
 
 const Stats = () => {
