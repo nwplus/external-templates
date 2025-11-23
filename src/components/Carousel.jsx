@@ -10,9 +10,11 @@ const CarouselWrapper = styled.div`
   justify-content: center;
   align-items: center;
   touch-action: pan-y;
+  margin-top: calc(100vw * (150 / 1280));
 
   ${p => p.theme.mediaQueries.mobile} {
     user-select: none;
+    margin-top: calc(100vw * (400 / 487));
   }
 `
 
@@ -25,7 +27,6 @@ const CarouselContainer = styled.div`
   position: relative;
   z-index: 2;
 `
-
 const ContentContainer = styled.div`
   width: ${PAGE_FRAC_DESKTOP}%;
   aspect-ratio: 864.75 / 476.62;
@@ -35,15 +36,16 @@ const ContentContainer = styled.div`
 
   background-image: url('/assets/images/sponsor/sponsor_card.svg');
   opacity: 1;
-  background-size: 100% 100%;
+  background-size: 100%;
   background-repeat: no-repeat;
   background-position: center;
 
   ${p => p.theme.mediaQueries.mobile} {
-    width: 95%;
-    background-image: url('/assets/images/sponsor_tv_mobile.svg');
-    padding: calc(100vw * (9.8 / 487)) calc(100vw * (7.43 / 487));
-    aspect-ratio: 441 / 283;
+    aspect-ratio: 334 / 670;
+    width: 80%;
+    background-image: url('/assets/images/sponsor/mobile/sponsor_card.png');
+    background-size: cover;
+    flex-direction: column;
   }
 `
 
@@ -55,9 +57,12 @@ const LeftContainer = styled.div`
   align-items: center;
 
   ${p => p.theme.mediaQueries.mobile} {
-    width: calc(100vw * (150 / 487));
+    width: 100%;
+    aspect-ratio: auto;
+    height: 20%;
+    justify-content: center;
   }
-`
+`;
 
 const LeftInnerContainer = styled.div`
   display: flex;
@@ -67,10 +72,11 @@ const LeftInnerContainer = styled.div`
   width: 80%;
 
   ${p => p.theme.mediaQueries.mobile} {
-    gap: calc(100vw * (20 / 487));
-    width: 90%;
+    width: 100%;
+    height: 100%;
+    padding: 5%;
   }
-`
+`;
 
 const RightContainer = styled.div`
   width: 66.822%;
@@ -81,11 +87,12 @@ const RightContainer = styled.div`
   max-height: 95%;
 
   ${p => p.theme.mediaQueries.mobile} {
-    width: calc(100vw * (295 / 487));
-    height: 95%;
-    max-height: 100%;
+    width: 100%;
+    aspect-ratio: auto;
+    height: 80%;
+    justify-content: flex-start;
   }
-`
+`;
 
 const RightInnerContainer = styled.div`
   display: flex;
@@ -96,6 +103,13 @@ const RightInnerContainer = styled.div`
   align-items: flex-start;
   gap: 5%;
   padding-top: 2%;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    justify-content: flex-start;
+    padding: 7%;
+    width: 100%;
+    height: 100%;
+  }
 `
 
 const ActiveButton = styled.div`
@@ -139,7 +153,7 @@ const ChevronImg = styled.img`
 
 const Dots = styled.div`
   position: absolute;
-  bottom: calc(100vw * (30 / 1280));
+  bottom: calc(100vw * (50 / 1280));
 
   display: flex;
   flex-direction: row;
@@ -157,7 +171,7 @@ const Dot = styled.div`
   width: calc(100vw * (10 / 1280));
   height: calc(100vw * (10 / 1280));
   border-radius: 50%;
-  background-color: white;
+  background-color: #8E7058;
   transition: 300ms;
   cursor: pointer;
   opacity: ${props => (props.viewing ? 1 : 0.2)};
@@ -170,6 +184,14 @@ const Dot = styled.div`
 
 const Logo = styled.img`
   width: 100%;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    display: block
+  }
 `
 
 const Blurb = styled.div`
@@ -199,8 +221,9 @@ const Blurb = styled.div`
   -webkit-overflow-scrolling: touch;
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 0.75rem;
-    padding-right: calc(100vw * (10 / 487));
+    font-size: calc(100vw * (20 / 487));
+    height: 95%;
+    max-height: none;
   }
 
   a {
@@ -212,22 +235,6 @@ const Blurb = styled.div`
     }
   }
 `
-
-// const LearnMoreButton = styled.a`
-//   font-size: 1rem;
-//   font-weight: 600;
-//   background: #883030;
-//   color: white;
-//   text-decoration: none;
-//   padding: calc(100vw * (10 / 1280)) calc(100vw * (15 / 1280));
-//   border-radius: calc(100vw * (8 / 1280));
-
-//   ${p => p.theme.mediaQueries.mobile} {
-//     font-size: 0.75rem;
-//     padding: calc(100vw * (8 / 487)) calc(100vw * (15 / 487));
-//     border-radius: calc(100vw * (8 / 487));
-//   }
-// `
 
 const sanitizeBlurb = blurb =>
   blurb.replace(/<a\s+(?:[^>]*?)href=/g, '<a target="_blank" rel="noopener noreferrer" href=')

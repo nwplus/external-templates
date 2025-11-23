@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { useState, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faFacebook,
@@ -9,6 +10,7 @@ import {
 } from '@fortawesome/free-brands-svg-icons'
 import Team from '@components/Team'
 import Newsletter from '@components/Newsletter'
+import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
 
 const FooterContainer = styled.div`
   position: relative;
@@ -16,13 +18,18 @@ const FooterContainer = styled.div`
   width: 100%;
   overflow: hidden;
   background: linear-gradient(180deg,
-    #fdc182ff 0.1%,
+    #fdc182ff 0%,
     #D3999C 20%,
     #28083D 100%
   );
 
   ${p => p.theme.mediaQueries.mobile} {
-    aspect-ratio: 487/950;
+    aspect-ratio: 500/950;
+    background: linear-gradient(180deg,
+      #E3B2A3 0%,
+      #D3999C 10%,
+      #28083D 45%
+    );
   }
 `
 
@@ -34,8 +41,13 @@ const SocialMediaIcons = styled.div`
 
   a {
     width: calc(100vw * (53 / 1280));
+    height: calc(100vw * (53 / 1280));
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     text-decoration: none;
     color: #ffffff;
+    padding: calc(100vw * (6 / 1280)); /* increase tap target */
 
     &:hover {
       color: #FCDCCF;
@@ -46,6 +58,8 @@ const SocialMediaIcons = styled.div`
     width: 100%;
     a {
       width: calc(100vw * (40 / 487));
+      height: calc(100vw * (40 / 487));
+      padding: calc(100vw * (6 / 487));
     }
     justify-content: space-evenly;
   }
@@ -67,11 +81,17 @@ const Links = styled.div`
 
   ${p => p.theme.mediaQueries.mobile} {
     width: 100%;
-    font-size: calc(100vw * (20 / 487));
-    justify-content: space-evenly;
+    font-size: calc(100vw * (13 / 487));
+    flex-direction: row;
+    align-items: center;
+    gap: calc(100vw * (8 / 487));
 
     a {
-      white-space: nowrap;
+      white-space: normal;
+      text-align: center;
+      display: block;
+      width: 100%;
+      padding: calc(100vw * (6 / 487)) 0;
     }
   }
 `
@@ -87,7 +107,12 @@ const TextContainer = styled.div`
   gap: calc(100vw * (16 / 1280));
 
   ${p => p.theme.mediaQueries.mobile} {
-    padding-top: calc(100vw * (90 / 487));
+    width: 100%;
+    align-items: center;
+    padding-left: 6vw;
+    padding-right: 6vw;
+    padding-top: calc(100vw * (250 / 487));
+    gap: calc(100vw * (12 / 487));
   }
 `
 
@@ -102,6 +127,7 @@ const SmallText = styled.div`
 
   ${p => p.theme.mediaQueries.mobile} {
     font-size: calc(100vw * (12 / 487));
+    padding-top: calc(100vw * (10 / 487));
   }
 `
 
@@ -113,8 +139,9 @@ const TeamContainer = styled.div`
   width: 100%;
 
   ${p => p.theme.mediaQueries.mobile} {
-    width: 100%;
-    bottom: 1rem;
+    position: relative;
+    bottom: 0;
+    padding: 2rem 0 1rem 0;
   }
 `
 
@@ -127,7 +154,6 @@ const StaticContainer = styled.div`
 
   ${p => p.theme.mediaQueries.mobile} {
     width: 100%;
-    padding: 0 6vw;
   }
 `
 
@@ -145,8 +171,9 @@ const LandAcknowledgementText = styled.div`
   }
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: calc(100vw * (12 / 487));
+    font-size: calc(100vw * (13 / 487));
     margin-bottom: calc(100vw * (16 / 487));
+    text-align: center;
   }
 `
 
@@ -165,6 +192,12 @@ const OrangeSphere = styled.img`
     50% {
       transform: translateY(-20px);
     }
+  }
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: 70%;
+    right: 0;
+    top: 0;
   }
 `
 
@@ -186,6 +219,12 @@ const NuggetCloud = styled.img`
       transform: translateY(-10px);
     }
   }
+
+  ${p => p.theme.mediaQueries.mobile} {
+    left: 0;
+    top: calc(100vw * (75 / 487));
+    width: 40%;
+  }
 `
 
 const BlueSphere = styled.img`
@@ -204,6 +243,11 @@ const BlueSphere = styled.img`
     50% {
       transform: translateY(-25px);
     }
+  }
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: 50%;
+    bottom: 7rem;
   }
 `
 
@@ -224,22 +268,56 @@ const PinkSphere = styled.img`
       transform: translateY(-18px);
     }
   }
+
+  ${p => p.theme.mediaQueries.mobile} {
+    left: 0;
+    bottom: 16rem;
+  }
 `
 
-const Footer = () => (
+const NightIsland = styled.img`
+  display: none;
+  
+  ${p => p.theme.mediaQueries.mobile} {
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: -5rem;
+    width: 60%;
+  }
+`
+
+const Footer = () => {
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= SCREEN_BREAKPOINTS.mobile)
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
+  return (
     <FooterContainer id="footer">
       <OrangeSphere 
-        src="/assets/images/footer/orange_sphere.png"
+        src={isMobile ? "/assets/images/footer/mobile/orange_sphere.png" : "/assets/images/footer/orange_sphere.png"}
       />
       <NuggetCloud 
-        src="/assets/images/footer/nugget_cloud.png"
+        src={isMobile ? "/assets/images/footer/mobile/nugget_cloud.png" : "/assets/images/footer/nugget_cloud.png"}
       />
       <BlueSphere 
-        src="/assets/images/footer/blue_sphere.png"
+        src={isMobile ? "/assets/images/footer/mobile/blue_sphere.png" : "/assets/images/footer/blue_sphere.png"}
       />
       <PinkSphere 
-        src="/assets/images/footer/pink_sphere.png"
+        src={isMobile ? "/assets/images/footer/mobile/pink_sphere.png" : "/assets/images/footer/pink_sphere.png"}
       />
+      {isMobile && (
+        <NightIsland 
+          src="/assets/images/footer/mobile/night_island.png"
+        />
+      )}
 
       <StaticContainer>
         <TextContainer>
@@ -289,5 +367,5 @@ const Footer = () => (
       </StaticContainer>
     </FooterContainer>
   )
-
+}
 export default Footer
