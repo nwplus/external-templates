@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react'
 import styled from 'styled-components'
 import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
-import { Header2 } from '@components/Typography'
 import SponsorsGrid from '@components/SponsorsGrid'
 import fireDb from '@utilities/firebase'
 import Carousel from '../components/Carousel'
@@ -230,7 +229,7 @@ const Sponsors = () => {
       if (!containerRef.current || !cloudsBehindRef.current || !cloudsFrontRef.current) return
 
       const containerTop = containerRef.current.offsetTop
-      const scrollY = window.scrollY
+      const {scrollY} = window
       const scrollPosition = scrollY - containerTop
 
       const behindSpeed = 0.2
