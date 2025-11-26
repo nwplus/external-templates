@@ -334,7 +334,7 @@ const Hero = () => (
         </Description>
         <Subheader>Apply to be a:</Subheader>
         <Buttons>
-          <HackerButton>Hacker</HackerButton>
+          <HackerButton href="https://portal.nwplus.io/">Hacker</HackerButton>
           <MentorButton>Mentor</MentorButton>
           <VolunteerButton>Volunteer</VolunteerButton>
         </Buttons>
