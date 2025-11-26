@@ -86,7 +86,6 @@ const LinkText = styled.a`
 `
 
 const StyledLinkHeaders = styled.h3`
-  font-family: HK Grotesk;
   font-size: ${() => scale(1024, 1440, 12, 16)};
   font-weight: 600;
   line-height: 23px;

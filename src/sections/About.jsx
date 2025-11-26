@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 
 const AboutContainer = styled.div`
   aspect-ratio: 1512/900;
@@ -370,6 +370,14 @@ const getReturnValues = countDown => {
 const About = () => {
   const target = new Date('Dec 19, 2025 11:59:59').getTime()
   const [timeLeft, setTimeLeft] = useState(target - Date.now())
+  // refs for parallax
+  const containerRef = useRef(null)
+  const cloudOneRef = useRef(null)
+  const cloudTwoRef = useRef(null)
+  const cloudThreeRef = useRef(null)
+  const leftIslandRef = useRef(null)
+  const rightIslandRef = useRef(null)
+  const fogRef = useRef(null)
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -379,12 +387,40 @@ const About = () => {
     return () => clearInterval(interval)
   }, [target])
 
+  // Parallax scroll effect (similar pattern to Sponsors.jsx)
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!containerRef.current) return
+      const containerTop = containerRef.current.offsetTop
+      const { scrollY } = window
+      const scrollPosition = scrollY - containerTop
+
+      const setTransform = (elementRef, speed) => {
+        const node = elementRef && elementRef.current
+        if (!node) return
+        node.style.transform = `translateY(${scrollPosition * speed}px)`
+      }
+
+      // Adjust speeds to taste (positive = moves down as user scrolls down,
+      // negative = moves up / opposite direction)
+      setTransform(cloudOneRef, 0.1)
+      setTransform(cloudTwoRef, 0.12)
+      setTransform(cloudThreeRef, 0.08)
+      setTransform(leftIslandRef, 0.05)
+      setTransform(rightIslandRef, 0.07)
+      setTransform(fogRef, 0.02)
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   const [days, hours, minutes] = getReturnValues(timeLeft)
 
   const pad = n => String(n).padStart(2, '0')
 
   return (
-    <AboutContainer id="about">
+    <AboutContainer id="about" ref={containerRef}>
       <Tracks src="./assets/images/about/about_train.png" />
       <Rails src="./assets/images/about/about_rails.svg" />
       <Countdown>
@@ -411,13 +447,13 @@ const About = () => {
           </GridItem>
         </CountdownGrid>
       </Countdown>
-      <LeftIsland src="./assets/images/about/about_left_island.svg" />
-      <CloudOne src="./assets/images/about/about_cloud_one.svg" />
+      <LeftIsland ref={leftIslandRef} src="./assets/images/about/about_left_island.svg" />
+      <CloudOne ref={cloudOneRef} src="./assets/images/about/about_cloud_one.svg" />
       <LeftBgIsland src="./assets/images/about/about_left_bg_island.svg" />
-      <CloudTwo src="./assets/images/about/about_cloud_two.svg" />
-      <RightIsland src="./assets/images/about/about_right_island.svg" />
-      <CloudThree src="./assets/images/about/about_cloud_three.svg" />
-      <Fog src="./assets/images/about/fog.svg" />
+      <CloudTwo ref={cloudTwoRef} src="./assets/images/about/about_cloud_two.svg" />
+      <RightIsland ref={rightIslandRef} src="./assets/images/about/about_right_island.svg" />
+      <CloudThree ref={cloudThreeRef} src="./assets/images/about/about_cloud_three.svg" />
+      <Fog ref={fogRef} src="./assets/images/about/fog.svg" />
       <Sun src="./assets/images/about/sun.svg" />
       <TextContainer>
         <TextLeft>Join us for the 11th iteration of nwHacks!</TextLeft>
