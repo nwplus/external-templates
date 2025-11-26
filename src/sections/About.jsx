@@ -395,9 +395,10 @@ const About = () => {
       const { scrollY } = window
       const scrollPosition = scrollY - containerTop
 
-      const setTransform = (ref, speed) => {
-        if (!ref || !ref.current) return
-        ref.current.style.transform = `translateY(${scrollPosition * speed}px)`
+      const setTransform = (elementRef, speed) => {
+        const node = elementRef && elementRef.current
+        if (!node) return
+        node.style.transform = `translateY(${scrollPosition * speed}px)`
       }
 
       // Adjust speeds to taste (positive = moves down as user scrolls down,
