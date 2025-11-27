@@ -6,20 +6,8 @@ import { Header3 } from '@components/Typography'
 
 const FaqContainer = styled.div`
   position: relative;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    aspect-ratio: 1280 / 886;
-    background-image: url('./assets/images/faq.svg');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: top;
-    z-index: 0;
-  }
+  background: #CAE1F5;
+  padding-top: 100px;
 
   ${p => p.theme.mediaQueries.tablet} {
     &::before {
@@ -36,8 +24,23 @@ const FaqContainer = styled.div`
   }
 `
 
+const FaqWindow = styled.div`
+  height: 200%;
+  width: 200%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  aspect-ratio: 1319 / 1070;
+  background-image: url('./assets/images/faq.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: top;
+  z-index: 0;
+`
+
 const Wrapper = styled.div`
-  grid-column: 3 / span 10;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   margin: 0 auto;
   width: 75vw;
   min-width: 900px;
@@ -51,40 +54,6 @@ const Wrapper = styled.div`
   }
 `
 
-// faq grid
-const FaqGrid = styled.div`
-  padding-top: calc(100vw * (50 / 1280));
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto;
-  gap: 50px;
-
-  ${p => p.theme.mediaQueries.tablet} {
-    display: flex;
-    flex-direction: column;
-    gap: calc(100vw * (80 / 834));
-    margin-top: 50px;
-    padding-bottom: 4rem;
-  }
-
-  ${p => p.theme.mediaQueries.mobile} {
-    gap: calc(100vw * (40 / 487));
-  }
-`
-
-// for proper grid positioning
-const FaqColumn = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  & > div:not(:first-child) {
-    margin-top: 40px;
-    ${p => p.theme.mediaQueries.mobile} {
-      margin-top: 24px;
-    }
-  }
-`
-
 // Collection -> questions of specific category
 const CollectionContainer = styled.div`
   text-align: center;
@@ -92,26 +61,11 @@ const CollectionContainer = styled.div`
   flex-direction: column;
 `
 
-const CollectionName = styled(Header3)`
-  color: white;
-  font-size: calc(100vw * (35 / 1280));
-  font-weight: 700;
-  padding-bottom: calc(100vw * (20 / 1280));
-  text-align: left;
-
-  ${p => p.theme.mediaQueries.tablet} {
-    font-size: calc(100vw * (35 / 834));
-    padding-bottom: calc(100vw * (20 / 834));
-  }
-
-  ${p => p.theme.mediaQueries.mobile} {
-    font-size: calc(100vw * (24 / 487));
-    padding-bottom: calc(100vw * (20 / 487));
-  }
-`
-
 const StyledTitle = styled.p`
-  display: none;
+  font-weight: 500;
+  color: #123250;
+  text-align: center;
+  font-size: calc(100vw * (20 / 834));
 
   ${p => p.theme.mediaQueries.tablet} {
     display: block;
@@ -130,7 +84,7 @@ const StyledTitle = styled.p`
 
 const FaqCollection = ({ category, faqs, expandedQuestion, setExpandedQuestion }) => (
   <CollectionContainer>
-    <CollectionName>{category}</CollectionName>
+    {/* <CollectionName>{category}</CollectionName> */}
 
     {faqs.map(q => (
       <FaqBox
@@ -150,9 +104,17 @@ const FaqCollection = ({ category, faqs, expandedQuestion, setExpandedQuestion }
   </CollectionContainer>
 )
 
+const FAQ_CATEGORIES = {
+  GENERAL: "General",
+  TEAM: "Teams & Projects",
+  LOGS: "Logistics"
+}
+
 const Faq = () => {
-  const [faqData, setFaqData] = useState(null)
-  const [expandedQuestion, setExpandedQuestion] = useState(null)
+  const [faqData, setFaqData] = useState(null);
+  const [expandedQuestion, setExpandedQuestion] = useState(null);
+
+  const [tab, setTab] = useState(FAQ_CATEGORIES.GENERAL);
 
   // (@htdf processData)
   // (@signature (listof FAQ) -> Object)
@@ -171,7 +133,7 @@ const Faq = () => {
   }
 
   useEffect(async () => {
-    const data = await fireDb.getCollection('nwHacks2025', 'FAQ')
+    const data = await fireDb.getCollection('nwHacks2026', 'FAQ')
     const processedData = processData(data)
     setFaqData(processedData)
   }, [])
@@ -179,46 +141,53 @@ const Faq = () => {
   return (
     <FaqContainer>
       <Wrapper id="faq">
-        <StyledTitle>FAQ</StyledTitle>
+        <div style={{
+            position: "relative",
+            zIndex: 20,
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "flex-start",
+            gap: 40
+          }}>
+            <StyledTitle>FAQs</StyledTitle>
+            <div style={{
+              display: "flex",
+              justifyContent: "space-between",
+            }}>
+              {[FAQ_CATEGORIES.GENERAL, FAQ_CATEGORIES.TEAM, FAQ_CATEGORIES.LOGS].map((c) => (
+                <button type="button" style={{
+                  borderRadius: 12,
+                  fontFamily: "Space Grotesk",
+                  fontSize: "calc(100vw * (10 / 834))",
+                  border: "2px solid white",
+                  color: "#123250",
+                  cursor: "pointer",
+                  fontWeight: c === tab ? 500 : 400,
+                  background: c === tab ? "white" : "#FFFFFF90",
+                  padding: 12,
+                }} onClick={()=>setTab(c)}>
+                  {c}
+                </button>
+              ))}
+            </div>
+            {faqData && tab && (
+              <FaqCollection
+                category={tab}
+                faqs={faqData[tab]}
+                expandedQuestion={expandedQuestion}
+                setExpandedQuestion={setExpandedQuestion}
+              />
+            )}
+        </div>
 
-        {faqData ? (
-          <FaqGrid>
-            <FaqColumn>
-              {faqData.General && (
-                <FaqCollection
-                  category="General"
-                  faqs={faqData.General}
-                  expandedQuestion={expandedQuestion}
-                  setExpandedQuestion={setExpandedQuestion}
-                />
-              )}
-            </FaqColumn>
 
-            <FaqColumn>
-              {faqData['Teams & Projects'] && (
-                <FaqCollection
-                  category="Projects"
-                  faqs={faqData['Teams & Projects']}
-                  expandedQuestion={expandedQuestion}
-                  setExpandedQuestion={setExpandedQuestion}
-                />
-              )}
-            </FaqColumn>
-
-            <FaqColumn>
-              {faqData.Logistics && (
-                <FaqCollection
-                  category="Logistics"
-                  faqs={faqData.Logistics}
-                  expandedQuestion={expandedQuestion}
-                  setExpandedQuestion={setExpandedQuestion}
-                />
-              )}
-            </FaqColumn>
-          </FaqGrid>
-        ) : (
-          ''
-        )}
+        <div style={{
+          position: "relative",
+          aspectRatio: "600 / 690",
+          maxWidth: 600
+        }}>
+          <FaqWindow />
+        </div>
       </Wrapper>
     </FaqContainer>
   )

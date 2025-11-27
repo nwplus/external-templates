@@ -9,7 +9,6 @@ import About from 'src/sections/About'
 import Stats from 'src/sections/Stats'
 // import Gallery from 'src/sections/Gallery'
 import Projects from 'src/sections/Projects'
-import Separator from 'src/components/Separator'
 import Testimonials from 'src/sections/Testimonials'
 
 import Hero from 'src/sections/Hero'
@@ -26,28 +25,6 @@ const ContentContainer = styled.div`
   ${p => p.theme.mediaQueries.mobile} {
     top: 0;
     min-height: 200vh;
-  }
-`
-
-const MiddleSectionsContainer = styled.div`
-  position: relative;
-  background-image: url(/assets/images/middle_background.jpg);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  object-fit: cover;
-
-  width: 100%;
-  aspect-ratio: 1280/2303;
-
-  ${p => p.theme.mediaQueries.tablet} {
-    background-image: url(/assets/images/middle_background_tablet.jpg);
-    aspect-ratio: 834/2870;
-  }
-
-  ${p => p.theme.mediaQueries.mobile} {
-    background-image: url(/assets/images/middle_background_mobile.jpg);
-    aspect-ratio: 487/3470;
   }
 `
 
@@ -87,14 +64,10 @@ export default function Index({ title }) {
         <ContentContainer>
           <About />
           <Stats />
-          <MiddleSectionsContainer>{/* <Gallery /> */}</MiddleSectionsContainer>
 
-          <Separator />
-          <Projects />
-          <Separator />
           <Testimonials />
-          <Separator />
-          {/* <Track /> */}
+          <Projects />
+
           <FaqSponsorsContainer>
             <Faq />
             <Sponsors />

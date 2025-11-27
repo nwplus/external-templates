@@ -4,18 +4,15 @@ import styled from 'styled-components'
 const Container = styled.div`
   font-family: 'HK Grotesk', sans-serif;
   text-align: left;
-  background: white;
-  border: 1.5px solid #fff;
-  border-radius: 5px;
   box-sizing: border-box;
+  color: #123250;
   overflow: hidden;
   ${p =>
     p.expanded
       ? `
-    border-color: #4B1B1B;
+    font-weight: 600;
   `
       : `
-    border-color: #4B1B1B;
   `}
 
   &:not(:last-child) {
@@ -24,21 +21,15 @@ const Container = styled.div`
 `
 
 const Top = styled.div`
-  color: #252525;
+  color: #123250;
   padding: 1rem;
   font-size: 1.2rem;
   display: flex;
   justify-content: space-between;
-  border-bottom: solid;
   margin-bottom: -1.2px;
-  font-weight: 700;
-  border-width: 1px;
-  border-radius: 5px 5px 0 0;
   ${p =>
     p.expanded &&
     `
-    color:#252525;
-    background-color: #FFF;
   `}
 
   ${p => p.theme.mediaQueries.mobile} {
@@ -51,14 +42,14 @@ const Top = styled.div`
 `
 
 const AnswerBox = styled.div`
-  color: white;
+  color: #123250;
   box-sizing: border-box;
   overflow: hidden;
+    font-weight: 500;
   height: ${p => (p.isOpen ? 'auto' : '0')};
   visibility: ${p => (p.isOpen ? 'visible' : 'hidden')};
   opacity: ${p => (p.isOpen ? 1 : 0)};
   transition: opacity 0.2s ease;
-  background-color: #883030;
   border-radius: 0 0 5px 5px;
 
   ${p => p.theme.mediaQueries.mobile} {
@@ -79,24 +70,26 @@ const TopExpand = styled.div`
 
 // style={{ transform: `rotate(${false ? '0deg' : ''});` }}
 
-const Arrow = ({ color }) => (
-  <svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path
-      d="M17.3145 10L9.47162 2L1.62879 10"
-      stroke={color}
-      strokeWidth="3"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
+const Plus = () => (
+<svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M8.005 13.6084H19.212M13.6085 8.00488V19.2119" stroke="#123250" strokeWidth="1.601" strokeLinecap="round" strokeLinejoin="round"/>
+<path d="M8.005 13.6084H19.212M13.6085 8.00488V19.2119" stroke="#123250" strokeWidth="1.601" strokeLinecap="round" strokeLinejoin="round"/>
+</svg>
+)
+
+const Minus = () => (
+  <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M8.00488 13.6084H19.2119" stroke="#123250" strokeWidth="1.601" strokeLinecap="round" strokeLinejoin="round"/>
+</svg>
+
 )
 
 const FaqBox = ({ question, answer, isExpanded, onExpand }) => (
   <Container expanded={isExpanded}>
     <Top expanded={isExpanded} onClick={onExpand}>
       {question}
-      <TopExpand style={isExpanded ? { transform: 'rotate(180deg)' } : { transform: 'rotate(270deg)' }}>
-        <Arrow color={isExpanded ? '#252525' : '#2C2543'} />
+      <TopExpand>
+        {isExpanded ? <Minus /> : <Plus />}
       </TopExpand>
     </Top>
     <AnswerBox isOpen={isExpanded}>
