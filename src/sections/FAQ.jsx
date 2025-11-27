@@ -2,12 +2,11 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import fireDb from '@utilities/firebase'
 import FaqBox from '@components/FaqBox'
-import { Header3 } from '@components/Typography'
 
 const FaqContainer = styled.div`
   position: relative;
   background: #CAE1F5;
-  padding-top: 100px;
+  padding-top: 0px;
 
   ${p => p.theme.mediaQueries.tablet} {
     &::before {
@@ -21,6 +20,8 @@ const FaqContainer = styled.div`
       aspect-ratio: 487 / 1060;
       background-image: url('./assets/images/faq_mobile.svg');
     }
+
+    background: linear-gradient(to bottom, #CAE1F5, #E5E9E0)
   }
 `
 
@@ -49,8 +50,9 @@ const Wrapper = styled.div`
   position: relative;
 
   ${p => p.theme.mediaQueries.tablet} {
-    grid-column: 2 / span 12;
+    grid-template-columns: 1fr;
     min-width: 0;
+    width: 85vw;
   }
 `
 
@@ -69,24 +71,61 @@ const StyledTitle = styled.p`
 
   ${p => p.theme.mediaQueries.tablet} {
     display: block;
-    color: white;
     margin-top: calc(100vw * (50 / 834));
     font-size: calc(100vw * (56 / 834));
-    font-weight: 900;
     text-align: center;
   }
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: calc(100vw * (56 / 487));
+    font-size: calc(100vw * (28 / 487));
     margin-top: calc(100vw * (50 / 487));
   }
 `
 
-const FaqCollection = ({ category, faqs, expandedQuestion, setExpandedQuestion }) => (
-  <CollectionContainer>
-    {/* <CollectionName>{category}</CollectionName> */}
+const ContentColumn = styled.div`
+  position: relative;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 40px;
+`
 
-    {faqs.map(q => (
+const TabButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
+
+const TabButton = styled.button`
+  border-radius: 12px;
+  font-family: "Space Grotesk";
+  font-size: calc(100vw * (10 / 834));
+  transition: all 0.13s ease;
+  border: solid 2px rgba(255, 255, 255, 0.2);
+  color: #123250;
+  cursor: pointer;
+  font-weight: ${props => props.$isActive ? 500 : 400};
+  background: ${props => props.$isActive ? "white" : "#FFFFFF90"};
+  padding: 12px;
+
+  ${p => p.theme.mediaQueries.tablet} {
+    font-size: 16px;
+    padding: 7px 8px;
+  }
+`
+
+const ImageColumn = styled.div`
+  position: relative;
+  aspect-ratio: 600 / 690;
+  max-width: 600px;
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
+`
+
+const FaqCollection = ({ faqs, expandedQuestion, setExpandedQuestion }) => (
+  <CollectionContainer>
+    {faqs?.map(q => (
       <FaqBox
         key={q.question}
         question={q.question}
@@ -133,7 +172,7 @@ const Faq = () => {
   }
 
   useEffect(async () => {
-    const data = await fireDb.getCollection('nwHacks2026', 'FAQ')
+    const data = await fireDb.getCollection('nwHacks2025', 'FAQ')
     const processedData = processData(data)
     setFaqData(processedData)
   }, [])
@@ -141,53 +180,32 @@ const Faq = () => {
   return (
     <FaqContainer>
       <Wrapper id="faq">
-        <div style={{
-            position: "relative",
-            zIndex: 20,
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "flex-start",
-            gap: 40
-          }}>
-            <StyledTitle>FAQs</StyledTitle>
-            <div style={{
-              display: "flex",
-              justifyContent: "space-between",
-            }}>
-              {[FAQ_CATEGORIES.GENERAL, FAQ_CATEGORIES.TEAM, FAQ_CATEGORIES.LOGS].map((c) => (
-                <button type="button" style={{
-                  borderRadius: 12,
-                  fontFamily: "Space Grotesk",
-                  fontSize: "calc(100vw * (10 / 834))",
-                  border: "2px solid white",
-                  color: "#123250",
-                  cursor: "pointer",
-                  fontWeight: c === tab ? 500 : 400,
-                  background: c === tab ? "white" : "#FFFFFF90",
-                  padding: 12,
-                }} onClick={()=>setTab(c)}>
-                  {c}
-                </button>
-              ))}
-            </div>
-            {faqData && tab && (
-              <FaqCollection
-                category={tab}
-                faqs={faqData[tab]}
-                expandedQuestion={expandedQuestion}
-                setExpandedQuestion={setExpandedQuestion}
-              />
-            )}
-        </div>
+        <ContentColumn>
+          <StyledTitle>FAQs</StyledTitle>
+          <TabButtonContainer>
+            {[FAQ_CATEGORIES.GENERAL, FAQ_CATEGORIES.TEAM, FAQ_CATEGORIES.LOGS].map((c) => (
+              <TabButton 
+                key={c}
+                type="button" 
+                $isActive={c === tab}
+                onClick={() => setTab(c)}
+              >
+                {c}
+              </TabButton>
+            ))}
+          </TabButtonContainer>
+          {faqData && tab && (
+            <FaqCollection
+              faqs={faqData[tab]}
+              expandedQuestion={expandedQuestion}
+              setExpandedQuestion={setExpandedQuestion}
+            />
+          )}
+        </ContentColumn>
 
-
-        <div style={{
-          position: "relative",
-          aspectRatio: "600 / 690",
-          maxWidth: 600
-        }}>
+        <ImageColumn>
           <FaqWindow />
-        </div>
+        </ImageColumn>
       </Wrapper>
     </FaqContainer>
   )
