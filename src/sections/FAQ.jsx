@@ -36,6 +36,7 @@ const FaqWindow = styled.div`
   background-size: contain;
   background-repeat: no-repeat;
   background-position: top;
+  pointer-events: none;
   z-index: 0;
 `
 

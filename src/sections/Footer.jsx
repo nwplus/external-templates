@@ -69,6 +69,7 @@ const Links = styled.div`
   display: flex;
   gap: calc(100vw * (20 / 1280));
   font-size: calc(100vw * (27 / 1280));
+  z-index: 2;
 
   a {
     font-weight: 600;
@@ -174,6 +175,7 @@ const LandAcknowledgementText = styled.div`
     font-size: calc(100vw * (13 / 487));
     margin-bottom: calc(100vw * (16 / 487));
     text-align: center;
+    z-index: 2;
   }
 `
 
@@ -184,6 +186,7 @@ const OrangeSphere = styled.img`
   pointer-events: none;
   transition: transform 0.1s ease-out;
   animation: float 5s ease-in-out infinite;
+  z-index: 0;
 
   @keyframes float {
     0%, 100% {
@@ -282,8 +285,9 @@ const NightIsland = styled.img`
     display: block;
     position: absolute;
     right: 0;
-    bottom: -5rem;
+    bottom: calc(100vw * (100 / 487));;
     width: 60%;
+    z-Index: 0;
   }
 `
 
