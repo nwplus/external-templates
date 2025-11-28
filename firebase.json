@@ -6,7 +6,7 @@
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
     },
     {
-      "target": "nwhacks2025_dev",
+      "target": "nwhacks2026_dev",
       "public": "out",
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
     },
