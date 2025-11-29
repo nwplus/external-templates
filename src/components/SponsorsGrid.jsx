@@ -47,8 +47,8 @@ const Container = styled.div`
   margin-right: calc(100vw * (200 / 1280));
 
   ${p => p.theme.mediaQueries.mobile} {
-    // margin-left: calc(100vw * (25 / 487));
-    // margin-right: calc(100vw * (25 / 487));
+    margin-left: calc(100vw * (5 / 487));
+    margin-right: calc(100vw * (5 / 487));
   }
 `
 
