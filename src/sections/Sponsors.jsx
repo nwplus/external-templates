@@ -13,7 +13,6 @@ const SponsorsContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: calc(100vw * (10 / 1280));
 
   background: linear-gradient(180deg,
   #C7E2F7 0%,
@@ -35,10 +34,6 @@ const SponsorsContainer = styled.div`
       #FFCE9A 90%,
       #E3B2A3 100%
     );
-
-    > * {
-      margin-top: 0;
-    }
   }
 `;
 

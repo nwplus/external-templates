@@ -2,8 +2,9 @@ import { useEffect, useState, useRef, memo } from 'react'
 import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
 import styled from 'styled-components'
 
-const SPONSOR_WIDTH = { title: 85, platinum: 50, gold: 45, silver: 40, bronze: 30, startup: 20, inkind: 15 }
+const SPONSOR_WIDTH = { title: 85, platinum: 50, gold: 45, silver: 40, bronze: 30, startup: 25, inkind: 20 }
 const MOBILE_SPONSOR_WIDTH = { title: 75, platinum: 50, gold: 45, silver: 40, bronze: 35, startup: 30, inkind: 25 }
+const MOBILE_SPONSOR_HEIGHT = { title: 200, platinum: 125, gold: 90, silver: 80, bronze: 70, startup: 60, inkind: 40 }
 
 const calculateSponsorRows = (tierList, containerWidth, isMobile) => {
   const newRows = {}
@@ -47,8 +48,8 @@ const Container = styled.div`
   margin-right: calc(100vw * (200 / 1280));
 
   ${p => p.theme.mediaQueries.mobile} {
-    margin-left: calc(100vw * (5 / 487));
-    margin-right: calc(100vw * (5 / 487));
+    margin-left: calc(100vw * (50 / 487));
+    margin-right: calc(100vw * (50 / 487));
   }
 `
 
@@ -82,7 +83,11 @@ const islandMap = {
 const aspectRatioMap = {
   title: '577 / 409',
   platinum: '577 / 409',
-  gold: '394 / 247'
+  gold: '394 / 247',
+  silver: '420 / 280',
+  bronze: '230 / 130',
+  startup: '170 / 50',
+  inkind: '170 / 50',
 };
 
 const sponsorImageConfig = {
@@ -102,9 +107,10 @@ const SponsorContainer = styled.div`
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-
+  
   ${p => p.theme.mediaQueries.mobile} {
     width: ${p => MOBILE_SPONSOR_WIDTH[p.tier]}%;
+    height: ${p => MOBILE_SPONSOR_HEIGHT[p.tier]}px;
   }
 `
 
