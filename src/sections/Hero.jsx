@@ -211,7 +211,7 @@ const HeroIslandWrapper = styled.div`
     top: calc(100vw * (1600 / 1512));
     left: 50%;
     transform: translateX(-50%);
-    width: calc(100vw * (338 / 528));
+    width: calc(100vw * (310 / 528));
     z-index: 2;
     height: auto;
   }
