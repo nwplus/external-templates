@@ -112,7 +112,7 @@ const HamburgerMenu = styled.img`
 const DropDownContentContainer = styled.div`
   position: fixed;
   top: 0;
-  z-index: 998;
+  z-index: 1000; /* raised above the navbar (nav z-index: 999) */
   padding: 20px 40px 24px 40px;
   display: flex;
   flex-direction: column;
@@ -120,6 +120,18 @@ const DropDownContentContainer = styled.div`
   gap: 24px;
   width: 100%;
   background: #f6dbc8;
+`
+
+/* New: fixed container for the close button so it lives outside NavBarContainer's stacking context */
+const CloseButtonContainer = styled.div`
+  display: none;
+  ${p => p.theme.mediaQueries.mobile} {
+    display: block;
+    position: fixed;
+    top: 20px;
+    right: 24px;
+    z-index: 1002; /* above the dropdown panel */
+  }
 `
 
 const PortalButtonContainer = styled.div`
@@ -346,12 +358,13 @@ const NavigationBar = ({ bannerExists }) => {
     return (
       <>
         <NavBarContainer mobileView>
-          <HamburgerMenu
-            src="/images/icons/cross.svg"
-            alt="dropdown menu icon"
-            onClick={() => setShowDropdown(false)}
-          />
+          {/* keep the nav structure but don't render the X inside it (so it doesn't get trapped in nav's stacking context) */}
         </NavBarContainer>
+
+        <CloseButtonContainer>
+          <HamburgerMenu src="/images/icons/cross.svg" alt="close dropdown" onClick={() => setShowDropdown(false)} />
+        </CloseButtonContainer>
+
         <DropDownContentContainer>
           <MenuList isMobile={showDropdown} closeDropdown={setShowDropdown} />
           {/* Make sure desktop (below) has the same portalOpen value */}
