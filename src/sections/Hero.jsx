@@ -203,7 +203,7 @@ const HeroIslandWrapper = styled.div`
   top: calc(100vw * (170 / 1512));
   right: calc(100vw * (120 / 1512));
 
-  height: clamp(400px, calc(100vw * (778 / 1512)), 1000px);
+  height: clamp(300px, calc(100vw * (778 / 1512)), 1000px);
   overflow: hidden;
 
   ${p => p.theme.mediaQueries.mobile} {
