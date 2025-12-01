@@ -334,9 +334,21 @@ const Hero = () => (
         </Description>
         <Subheader>Apply to be a:</Subheader>
         <Buttons>
-          <HackerButton href="https://portal.nwplus.io/">Hacker</HackerButton>
-          <MentorButton>Mentor</MentorButton>
-          <VolunteerButton>Volunteer</VolunteerButton>
+          <HackerButton href="https://portal.nwplus.io/" target="_blank">
+            Hacker
+          </HackerButton>
+          <MentorButton
+            href="https://docs.google.com/forms/d/e/1FAIpQLSed4X4CvZI3NoeOF5xjhMEISiM3RR6W96reEB-uFn_3IUVhzg/viewform"
+            target="_blank"
+          >
+            Mentor
+          </MentorButton>
+          <VolunteerButton
+            href="https://docs.google.com/forms/d/e/1FAIpQLScTRJmFJLBG8fGFSlSBJmR_O2Jk2_mZjZ-EBNYpoFhrkoczFg/viewform"
+            target="_blank"
+          >
+            Volunteer
+          </VolunteerButton>
         </Buttons>
         <SponsorText href="mailto:sponsorship@nwplus.io?subject=Sponsorship Inquiry">Become a Sponsor</SponsorText>
       </ContentSide>
