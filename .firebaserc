@@ -19,11 +19,8 @@
         "root": [
           "nwplus-root"
         ],
-        "nwhacks2025_main": [
-          "nwplus-nwhacks2025"
-        ],
-        "nwhacks2026_placeholder": [
-          "nwplus-nwhacks2026-placeholder"
+        "nwhacks2026_main": [
+          "nwplus-nwhacks2026"
         ]
       }
     }
