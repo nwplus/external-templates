@@ -45,7 +45,6 @@ const Wrapper = styled.div`
   grid-template-columns: 1fr 1fr;
   margin: 0 auto;
   width: 75vw;
-  min-width: 900px;
   max-width: 1200px;
   z-index: 88;
   position: relative;
@@ -99,7 +98,7 @@ const TabButtonContainer = styled.div`
 
 const TabButton = styled.button`
   border-radius: 12px;
-  font-family: "Space Grotesk";
+  font-family: "Space Grotesk", monospace;
   font-size: calc(100vw * (10 / 834));
   transition: all 0.13s ease;
   border: solid 2px rgba(255, 255, 255, 0.2);
@@ -118,7 +117,7 @@ const TabButton = styled.button`
 const ImageColumn = styled.div`
   position: relative;
   aspect-ratio: 600 / 690;
-  max-width: 600px;
+  max-width: 590px;
   ${p => p.theme.mediaQueries.mobile} {
     display: none;
   }
@@ -173,7 +172,7 @@ const Faq = () => {
   }
 
   useEffect(async () => {
-    const data = await fireDb.getCollection('nwHacks2025', 'FAQ')
+    const data = await fireDb.getCollection('nwHacks2026', 'FAQ')
     const processedData = processData(data)
     setFaqData(processedData)
   }, [])
