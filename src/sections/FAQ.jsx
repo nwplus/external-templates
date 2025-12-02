@@ -98,7 +98,7 @@ const TabButtonContainer = styled.div`
 
 const TabButton = styled.button`
   border-radius: 12px;
-  font-family: "Space Grotesk", monospace';
+  font-family: "Space Grotesk", monospace;
   font-size: calc(100vw * (10 / 834));
   transition: all 0.13s ease;
   border: solid 2px rgba(255, 255, 255, 0.2);
