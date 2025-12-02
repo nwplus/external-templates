@@ -264,6 +264,10 @@ const PersonButton = styled.div`
 
 const ButtonName = styled.div`
   font-size: calc(100vw * (12 / 834));
+  
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: calc(100vw * (26 / 487));
+  }
 
 `
 

@@ -201,7 +201,7 @@ const Sponsors = () => {
   const containerRef = useRef(null)
 
   useEffect(async () => {
-    const data = await fireDb.getCollection('nwHacks2025', 'Sponsors')
+    const data = await fireDb.getCollection('nwHacks2026', 'Sponsors')
     if (data) {
       const filteredCarouselSponsors = data.filter(child => child.blurb !== undefined && child.blurb !== '')
       const tierOrder = ['title', 'platinum', 'gold', 'silver', 'bronze', 'startup', 'inkind']

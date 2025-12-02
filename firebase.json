@@ -11,12 +11,7 @@
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
     },
     {
-      "target": "nwhacks2026_placeholder",
-      "public": "out",
-      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
-    },
-    {
-      "target": "nwhacks2025_main",
+      "target": "nwhacks2026_main",
       "public": "out",
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
     }
