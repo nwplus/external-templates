@@ -41,8 +41,7 @@ const FaqWindow = styled.div`
 `
 
 const Wrapper = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
   margin: 0 auto;
   width: 75vw;
   max-width: 1200px;
@@ -50,7 +49,6 @@ const Wrapper = styled.div`
   position: relative;
 
   ${p => p.theme.mediaQueries.tablet} {
-    grid-template-columns: 1fr;
     min-width: 0;
     width: 85vw;
   }
@@ -89,6 +87,11 @@ const ContentColumn = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   gap: 40px;
+  width: 50%;
+
+  ${p => p.theme.mediaQueries.tablet} {
+    width: 100%;
+  }
 `
 
 const TabButtonContainer = styled.div`
@@ -118,6 +121,8 @@ const ImageColumn = styled.div`
   position: relative;
   aspect-ratio: 600 / 690;
   max-width: 590px;
+  width: 50%;
+
   ${p => p.theme.mediaQueries.mobile} {
     display: none;
   }
