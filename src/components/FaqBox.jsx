@@ -2,18 +2,11 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Container = styled.div`
-  font-family: 'HK Grotesk', sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
   text-align: left;
   box-sizing: border-box;
   color: #123250;
   overflow: hidden;
-  ${p =>
-    p.expanded
-      ? `
-    font-weight: 600;
-  `
-      : `
-  `}
 
   &:not(:last-child) {
     margin-bottom: 20px;
@@ -30,6 +23,7 @@ const Top = styled.div`
   ${p =>
     p.expanded &&
     `
+    font-weight: 600;
   `}
 
   ${p => p.theme.mediaQueries.mobile} {
@@ -45,7 +39,6 @@ const AnswerBox = styled.div`
   color: #123250;
   box-sizing: border-box;
   overflow: hidden;
-    font-weight: 500;
   height: ${p => (p.isOpen ? 'auto' : '0')};
   visibility: ${p => (p.isOpen ? 'visible' : 'hidden')};
   opacity: ${p => (p.isOpen ? 1 : 0)};
