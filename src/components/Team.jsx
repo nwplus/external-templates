@@ -447,7 +447,7 @@ const profiles = [
   }
 ]
 
-const StyledTitle = styled.p`
+const StyledTitle = styled(Header3)`
   color: #FCDCCF;
   font-size: calc(100vw * (40 / 1280));
   font-weight: 700;
