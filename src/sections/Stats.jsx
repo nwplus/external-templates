@@ -623,7 +623,7 @@ const Stats = () => {
           <iframe
             width="100%"
             height="100%"
-            src="https://www.youtube.com/embed/C_1ygFqM_oo?si=uqh4K5-xcQ_hEBZJ"
+            src="https://www.youtube.com/embed/TtYBTPVJCwo?si=_CGjDyKyKvEIIEHS"
             title="YouTube video player"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
