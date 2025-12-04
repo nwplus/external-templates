@@ -17,9 +17,9 @@ const SponsorsContainer = styled.div`
   background: linear-gradient(180deg,
   #C7E2F7 0%,
   #F9F1D1 10%,
-  #F8C885 16%,
-  #F4EEE5 20%,
-  #FFE0B0 50%,
+  #F8C885 22%,
+  #F4EEE5 27%,
+  #FFE0B0 60%,
   #fdc182ff 100%
   );
   
@@ -186,13 +186,6 @@ const IslandFog = styled.img`
   }
 `
 
-const SPONSOR_IMAGE_OVERRIDES = {
-  TELUS: '/assets/images/telus.png',
-  CSE: '/assets/images/cse.png',
-  Deloitte: '/assets/images/deloitte.png',
-  Warp: '/assets/images/warp.png',
-}
-
 const Sponsors = () => {
   const [sponsors, setSponsors] = useState([])
   const [carouselSponsors, setCarouselSponsors] = useState([])
@@ -213,7 +206,7 @@ const Sponsors = () => {
       const deepCopyData = JSON.parse(JSON.stringify(data))
       const modifiedSponsors = deepCopyData.map(sponsor => ({
         ...sponsor,
-        imgURL: SPONSOR_IMAGE_OVERRIDES[sponsor.name] || sponsor.imgURL,
+        imgURL: sponsor.imgURL,
       }))
       setSponsors(modifiedSponsors)
     }
