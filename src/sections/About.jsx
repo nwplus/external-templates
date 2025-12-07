@@ -92,7 +92,7 @@ const CountdownMascots = styled.img`
 `
 
 const CountdownP = styled.p`
-  font-family: 'Pixelify Sans';
+  font-family: 'Jersey 10';
   color: #ffffff;
 
   background: linear-gradient(to bottom, #ffffff 0%, #f7e8e8 100%);
@@ -101,7 +101,8 @@ const CountdownP = styled.p`
   -webkit-text-fill-color: transparent;
 
   display: inline-block;
-  font-size: calc(100vw * (18 / 1512));
+  font-size: calc(100vw * (22 / 1512));
+  letter-spacing: calc(100vw * (2 / 1512));
 
   ${p => p.theme.mediaQueries.mobile} {
     font-size: calc(100vw * (10 / 393));
@@ -176,11 +177,12 @@ const GridItem = styled.div`
 `
 
 const GridNumber = styled.p`
-  font-family: 'Pixelify Sans';
+  font-family: 'Jersey 10';
   font-weight: 700;
-  font-size: calc(100vw * (48 / 1512));
+  font-size: calc(100vw * (55 / 1512));
   line-height: 1;
   margin: 0;
+  letter-spacing: calc(100vw * (5 / 1512));
 
   background: linear-gradient(to bottom, #ffffff 0%, #f7e8e8 100%);
   -webkit-background-clip: text;
@@ -193,11 +195,12 @@ const GridNumber = styled.p`
 `
 
 const GridLabel = styled.p`
-  font-family: 'Pixelify Sans';
+  font-family: 'Jersey 10';
   font-size: calc(100vw * (18 / 1512));
   margin: 0;
   color: rgba(255, 255, 255, 0.9);
   opacity: 0.95;
+  letter-spacing: calc(100vw * (2 / 1512));
 
   ${p => p.theme.mediaQueries.mobile} {
     font-size: calc(100vw * (11 / 393));
