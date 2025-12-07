@@ -368,7 +368,7 @@ const getReturnValues = countDown => {
 }
 
 const About = () => {
-  const target = new Date('Dec 19, 2025 11:59:59').getTime()
+  const target = new Date('Dec 19, 2025 23:59:59').getTime()
   const [timeLeft, setTimeLeft] = useState(target - Date.now())
   // refs for parallax
   const containerRef = useRef(null)
