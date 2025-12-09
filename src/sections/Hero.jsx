@@ -341,7 +341,7 @@ const Hero = () => (
             href="https://docs.google.com/forms/d/e/1FAIpQLSed4X4CvZI3NoeOF5xjhMEISiM3RR6W96reEB-uFn_3IUVhzg/viewform"
             target="_blank"
           >
-            Mentor
+            Mentor / Judge
           </MentorButton>
           <VolunteerButton
             href="https://docs.google.com/forms/d/e/1FAIpQLScTRJmFJLBG8fGFSlSBJmR_O2Jk2_mZjZ-EBNYpoFhrkoczFg/viewform"
