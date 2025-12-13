@@ -3,7 +3,7 @@ import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
 import styled from 'styled-components'
 
 const SPONSOR_WIDTH = { title: 85, platinum: 50, gold: 45, silver: 40, bronze: 30, startup: 25, inkind: 20 }
-const MOBILE_SPONSOR_WIDTH = { title: 100, platinum: 80, gold: 75, silver: 50, bronze: 40, startup: 30, inkind: 25 }
+const MOBILE_SPONSOR_WIDTH = { title: 100, platinum: 80, gold: 75, silver: 50, bronze: 40, startup: 35, inkind: 28 }
 const MOBILE_SPONSOR_HEIGHT = { title: 200, platinum: 150, gold: 125, silver: 90, bronze: 70, startup: 50, inkind: 40 }
 
 const ASPECT_RATIO = {
