@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
-import ClockSVG from "../assets/images/countdown.svg"
-import MobileClockSVG from "../assets/images/mobile/clock.svg"
-import NuggetWaving from "../assets/images/animations/nugget-waving.gif"
-
 const CountdownContainer = styled.div`
   min-height: calc(calc(1027 / 1440) * 100vw);
   position: relative;
@@ -38,7 +34,7 @@ const NuggetWavingImg = styled.img`
 
 const ClockImg = styled.img`
   position: absolute;
-  width: 100%;
+  width: 25rem;
   height: auto;
   ${p => p.theme.mediaQueries.mobile} {
     display: none;
@@ -62,9 +58,9 @@ const CountdownGrid = styled.div`
   grid-template-columns: repeat(5, 1fr);
   flex-grow: 2;
   width: 30%;
-  transform: rotate(-11deg);
+  // transform: rotate(-11deg);
   padding-top: 22%;
-  left: 40%;
+  // left: 40%;
 
   ${p => p.theme.mediaQueries.mobile} {
     gap: 1rem;
@@ -124,16 +120,16 @@ const useCountdown = targetDate => {
 }
 
 const Countdown = () => {
-  const countDownDate = new Date('Nov 18, 2024 18:00:00').getTime()
+  const countDownDate = new Date('Jan 26, 2026 18:00:00').getTime()
 
   const countdown = useCountdown(countDownDate)
 
   return (
     <CountdownContainer>
       <Clock>
-        <NuggetWavingImg src={NuggetWaving} />
-        <ClockImg src={ClockSVG} />
-        <MobileClockImg src={MobileClockSVG} />
+        {/* <NuggetWavingImg src={NuggetWaving} /> */}
+        <ClockImg src="/assets/images/watchDeer.svg" alt="Watch deer" />
+        {/* <MobileClockImg src={MobileClockSVG} /> */}
 
         <CountdownGrid>
           {/* {['Days', 'Hours', 'Minutes'].map((item, index) => (
