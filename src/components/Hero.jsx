@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { gsap } from 'gsap'
 import ScrollTrigger from 'gsap/dist/ScrollTrigger'
+import Countdown from 'src/sections/Countdown'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -32,12 +33,13 @@ const HeroContent = styled.div`
 `
 
 const HeroTitle = styled.h1`
-  font-family: 'Gloock';
-  font-size: calc(100vw * (64 / 1920));
+  font-family: 'Bree Serif';
+  font-size: calc(100vw * (48 / 1920));
   font-weight: 400;
-  color: #a6321e;
+  line-height: 1.2;
+  color: black;
   margin: 16px 0;
-  width: calc(100vw * (1000 / 1920));
+  width: calc(100vw * (780 / 1920));
 
   ${p => p.theme.mediaQueries.mobile} {
     font-size: calc(100vw * (30 / 393));
@@ -45,12 +47,16 @@ const HeroTitle = styled.h1`
   }
 `
 
+const HeroHighlight = styled.span`
+  color: #E64B73;
+`
+
 const HeroDescription = styled.p`
-  font-family: 'Happy Time';
-  font-style: italic;
-  font-size: calc(40vw * (80 / 1920));
-  color: #751c0d;
-  margin-bottom: 2rem;
+  font-family: 'Quicksand';
+  font-size: calc(40vw * (66 / 1920));
+  font-weight: 600;
+  color: black;
+  margin-bottom: 3rem;
 
   ${p => p.theme.mediaQueries.mobile} {
     font-size: calc(100vw * (14 / 393));
@@ -59,7 +65,7 @@ const HeroDescription = styled.p`
 
 const ButtonContainer = styled.div`
   display: flex;
-  gap: 1.5rem;
+  gap: 1rem;
 
   ${p => p.theme.mediaQueries.mobile} {
     flex-direction: column;
@@ -68,7 +74,7 @@ const ButtonContainer = styled.div`
 `
 
 const LogoContainer = styled.div`
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   width: calc(100vw * (143 / 1920));
   max-width: 143px;
   height: auto;
@@ -80,11 +86,11 @@ const LogoContainer = styled.div`
   }
 `
 const SponsorText = styled.p`
-  margin-top: 1.5rem;
-  font-family: 'Happy Time';
-  font-style: italic;
-  font-size: calc(100vw * (23 / 1920));
-  color: #751c0d;
+  margin-top: 1rem;
+  font-family: 'Quicksand';
+  font-size: calc(100vw * (22 / 1920));
+  font-weight: 600;
+  color: black;
 
   ${p => p.theme.mediaQueries.mobile} {
     font-size: calc(100vw * (14 / 393));
@@ -92,12 +98,12 @@ const SponsorText = styled.p`
 `
 
 const TextLink = styled.a`
-  color: #751c0d;
+  color: black;
   text-decoration: underline;
   cursor: pointer;
 
   &:hover {
-    color: #456774;
+    color: #DDB142;
   }
 `
 
@@ -106,36 +112,33 @@ const Button = styled.a`
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  padding: 11px 21px;
+  padding: 10px 18px;
   white-space: nowrap;
 
-  font-family: 'Poppins';
-  font-size: calc(100vw * (23 / 1920));
+  font-family: 'Quicksand';
+  font-size: calc(100vw * (22 / 1920));
   border-radius: 15px;
-  height: calc(100vw * (64 / 1920));
-  width: calc(100vw * (280 / 1920));
-  font-weight: 600;
+  font-weight: 500;
   cursor: pointer;
 
   transition: all 0.3s ease;
   &.primary {
-    background-color: #a6321e;
-    color: #f0e9d7;
+    background-color: #254CB7;
+    color: white;
     border: none;
 
     &:hover {
-      background-color: #456774;
+      background-color:rgb(69, 100, 184);
     }
   }
 
   &.secondary {
-    background-color: transparent;
-    color: #a6321e;
-    border: 2px solid #a6321e;
+    background-color: #C63359;
+    color: white;
+    border: none;
 
     &:hover {
-      color: #456774;
-      border: 2px solid #456774;
+      color:rgb(210, 78, 113);
     }
   }
 
@@ -168,30 +171,53 @@ const HeroImage = styled.img`
   }
 `
 
+const LINKS = {
+  mentor: 'https://forms.gle/ad67KnGec2yxvZwh9',
+  apply: 'https://nwplus.io',
+  sponsor: 'mailto:sponsorship@nwplus.io',
+  volunteer: 'mailto:info@nwplus.io',
+  photographer: 'mailto:info@nwplus.io',
+}
+
 const Hero = () => (
   <div id="home">
     <HeroContainer>
       <HeroContent>
         <LogoContainer>
-          <img src="/assets/images/cmdfLogo.svg" alt="cmd-f Logo" width="100%" height="100%" />
+          <img src="/assets/images/cmdfLogoBlack.svg" alt="cmd-f Logo" width="90%" height="100%" />
         </LogoContainer>
-        <HeroTitle>Western Canada&apos;s largest hackathon celebrating underrepresented genders in tech.</HeroTitle>
+        <HeroTitle>Western Canada&apos;s largest hackathon <HeroHighlight>celebrating underrepresented genders in tech.</HeroHighlight></HeroTitle>
         <HeroDescription>
-          March 7-8, 2026 (Event dates are subject to change) | In-person (Location TBD)
+          March 8-9, 2026 | In-person at Life Sciences Institute
         </HeroDescription>
+
         <ButtonContainer>
-          <Button className="primary" href="https://forms.gle/ad67KnGec2yxvZwh9" target="_blank">
-            Hacker Interest Form
+          <Button className="primary" href={LINKS.mentor} target="_blank" rel="noopener noreferrer">
+            Become a Mentor!
+          </Button>
+          <Button className="secondary" href={LINKS.apply} target="_blank" rel="noopener noreferrer">
+            Apply Now!
           </Button>
         </ButtonContainer>
+
         <SponsorText>
           Become a{' '}
-          <TextLink href="mailto:sponsorship@nwplus.io" target="_blank" rel="noopener noreferrer">
-            sponsor
+          <TextLink href={LINKS.sponsor} target="_blank" rel="noopener noreferrer">
+            Sponsor
           </TextLink>
-          !
+          {', '}
+          <TextLink href={LINKS.volunteer} target="_blank" rel="noopener noreferrer">
+            Volunteer
+          </TextLink>
+          {' or '}
+          <TextLink href={LINKS.photographer} target="_blank" rel="noopener noreferrer">
+            Photographer
+          </TextLink>
         </SponsorText>
+
+        <Countdown />
       </HeroContent>
+
       <HeroImageContainer>
         <HeroImage src="/assets/images/animations/hero-pancake.gif" alt="Hero pancakes gif" />
       </HeroImageContainer>
