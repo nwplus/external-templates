@@ -87,6 +87,7 @@ const LogoContainer = styled.div`
 `
 const SponsorText = styled.p`
   margin-top: 1rem;
+  margin-bottom: 2rem;
   font-family: 'Quicksand';
   font-size: calc(100vw * (22 / 1920));
   font-weight: 600;

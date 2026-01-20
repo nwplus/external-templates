@@ -15,6 +15,7 @@ const CountdownContainer = styled.div`
 const Clock = styled.div`
   width: 100vw;
   height: auto;
+  position: relative;
 `
 
 const NuggetWavingImg = styled.img`
@@ -32,10 +33,21 @@ const NuggetWavingImg = styled.img`
   }
 `
 
+const ClockWrapper = styled.div`
+  position: relative;
+  width: 30rem;
+  display: inline-block;
+  
+  ${p => p.theme.mediaQueries.mobile} {
+    width: 100%;
+  }
+`
+
 const ClockImg = styled.img`
-  position: absolute;
-  width: 25rem;
+  position: relative;
+  width: 100%;
   height: auto;
+  display: block;
   ${p => p.theme.mediaQueries.mobile} {
     display: none;
   }
@@ -53,34 +65,34 @@ const MobileClockImg = styled.img`
 `
 
 const CountdownGrid = styled.div`
-  position: relative;
+  position: absolute;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  flex-grow: 2;
-  width: 30%;
-  // transform: rotate(-11deg);
-  padding-top: 22%;
-  // left: 40%;
+  grid-template-columns: repeat(5, auto);
+  gap: 0.3rem;
+  width: fit-content;
+  top: 35%;
+  left: 17%;
 
   ${p => p.theme.mediaQueries.mobile} {
-    gap: 1rem;
-    flex-grow: 0;
-    padding-top: 30%;
+    gap: 0.5rem;
+    top: 30%;
     left: 27%;
   }
 `
 
 const TimeUnit = styled.div`
   text-align: center;
+  margin: 0;
+  padding: 0;
 `
 
 const Digits = styled.h2`
-  font-family: 'HK Grotesk', sans-serif;
-  color: #564D4A;
-  font-weight: 600;
-  font-size: 4vw;
-  letter-spacing: 0.2rem;
+  font-family: 'Bree Serif';
+  color: black;
+  font-weight: 500;
+  font-size: 3rem;
   display: inline-block;
+  margin: 0;
 
   ${p => p.theme.mediaQueries.mobile} {
     margin-top: 5px;
@@ -128,34 +140,35 @@ const Countdown = () => {
     <CountdownContainer>
       <Clock>
         {/* <NuggetWavingImg src={NuggetWaving} /> */}
-        <ClockImg src="/assets/images/watchDeer.svg" alt="Watch deer" />
-        {/* <MobileClockImg src={MobileClockSVG} /> */}
-
-        <CountdownGrid>
-          {/* {['Days', 'Hours', 'Minutes'].map((item, index) => (
-            <TimeUnit key={item}>
-              <Digits>{countdown[index]}</Digits>
-             {index < 2 &&
-                <Colon>&nbsp;&nbsp;:</Colon>
-              
+        <ClockWrapper>
+          <ClockImg src="/assets/images/watchDeer.svg" alt="Watch deer" />
+          <CountdownGrid>
+            {/* {['Days', 'Hours', 'Minutes'].map((item, index) => (
+              <TimeUnit key={item}>
+                <Digits>{countdown[index]}</Digits>
+               {index < 2 &&
+                  <Colon>&nbsp;&nbsp;:</Colon>
+                
+              </TimeUnit>
+            ))} */}
+            <TimeUnit>
+              <Digits>{countdown[0]}</Digits>
             </TimeUnit>
-          ))} */}
-          <TimeUnit>
-            <Digits>{countdown[0]}</Digits>
-          </TimeUnit>
-          <TimeUnit>
-            <Digits>:</Digits>
-          </TimeUnit>
-          <TimeUnit>
-            <Digits>{countdown[1]}</Digits>
-          </TimeUnit>
-          <TimeUnit>
-            <Digits>:</Digits>
-          </TimeUnit>
-          <TimeUnit>
-            <Digits>{countdown[2]}</Digits>
-          </TimeUnit>
-        </CountdownGrid>
+            <TimeUnit>
+              <Digits>:</Digits>
+            </TimeUnit>
+            <TimeUnit>
+              <Digits>{countdown[1]}</Digits>
+            </TimeUnit>
+            <TimeUnit>
+              <Digits>:</Digits>
+            </TimeUnit>
+            <TimeUnit>
+              <Digits>{countdown[2]}</Digits>
+            </TimeUnit>
+          </CountdownGrid>
+        </ClockWrapper>
+        {/* <MobileClockImg src={MobileClockSVG} /> */}
       </Clock>
     </CountdownContainer>
   )
