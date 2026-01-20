@@ -5,6 +5,7 @@ const CountdownContainer = styled.div`
   min-height: calc(calc(1027 / 1440) * 100vw);
   position: relative;
   z-index: 1;
+  margin-left: -4rem;
 
   ${p => p.theme.mediaQueries.mobile} {
     min-height: calc(calc(387 / 414) * 100vw);
@@ -16,21 +17,6 @@ const Clock = styled.div`
   width: 100vw;
   height: auto;
   position: relative;
-`
-
-const NuggetWavingImg = styled.img`
-  position: absolute;
-  width: 12vw;
-  height: auto;
-  left: 32.5%;
-  z-index: 1;
-  top: 30px;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    width: 65px;
-    top: 10px;
-    left: 15%;
-  }
 `
 
 const ClockWrapper = styled.div`
@@ -50,17 +36,6 @@ const ClockImg = styled.img`
   display: block;
   ${p => p.theme.mediaQueries.mobile} {
     display: none;
-  }
-`
-
-const MobileClockImg = styled.img`
-  position: absolute;
-  width: 100%;
-  height: auto;
-  display: none;
-  
-  ${p => p.theme.mediaQueries.mobile} {
-    display: block;
   }
 `
 

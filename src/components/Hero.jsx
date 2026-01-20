@@ -34,12 +34,12 @@ const HeroContent = styled.div`
 
 const HeroTitle = styled.h1`
   font-family: 'Bree Serif';
-  font-size: calc(100vw * (48 / 1920));
+  font-size: calc(100vw * (44 / 1920));
   font-weight: 400;
   line-height: 1.2;
   color: black;
   margin: 16px 0;
-  width: calc(100vw * (780 / 1920));
+  width: calc(100vw * (700 / 1920));
 
   ${p => p.theme.mediaQueries.mobile} {
     font-size: calc(100vw * (30 / 393));
@@ -53,7 +53,7 @@ const HeroHighlight = styled.span`
 
 const HeroDescription = styled.p`
   font-family: 'Quicksand';
-  font-size: calc(40vw * (66 / 1920));
+  font-size: calc(40vw * (56 / 1920));
   font-weight: 600;
   color: black;
   margin-bottom: 3rem;
@@ -87,9 +87,9 @@ const LogoContainer = styled.div`
 `
 const SponsorText = styled.p`
   margin-top: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   font-family: 'Quicksand';
-  font-size: calc(100vw * (22 / 1920));
+  font-size: calc(100vw * (18 / 1920));
   font-weight: 600;
   color: black;
 
@@ -113,12 +113,12 @@ const Button = styled.a`
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  padding: 10px 18px;
+  padding: 10px 14px;
   white-space: nowrap;
 
   font-family: 'Quicksand';
-  font-size: calc(100vw * (22 / 1920));
-  border-radius: 15px;
+  font-size: calc(100vw * (18 / 1920));
+  border-radius: 10px;
   font-weight: 500;
   cursor: pointer;
 
