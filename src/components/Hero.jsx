@@ -1,13 +1,14 @@
 import styled from 'styled-components'
-import { gsap } from 'gsap'
-import ScrollTrigger from 'gsap/dist/ScrollTrigger'
+// import { gsap } from 'gsap'
+// import ScrollTrigger from 'gsap/dist/ScrollTrigger'
 import Countdown from 'src/sections/Countdown'
 
-gsap.registerPlugin(ScrollTrigger)
+// gsap.registerPlugin(ScrollTrigger)
 
 const HeroContainer = styled.div`
   min-height: 100vh;
-  padding: calc(100vw * (150 / 1920));
+  padding: calc(100vw * (200 / 1920));
+  padding-top: calc(100vw * (120 / 1080));
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -23,7 +24,6 @@ const HeroContent = styled.div`
   flex: 2;
   max-width: 800px;
   ${p => p.theme.mediaQueries.mobile} {
-    //position: absolute;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -172,6 +172,14 @@ const HeroImage = styled.img`
   }
 `
 
+const HeroBackground = styled.img`
+  position: absolute;
+  top: 0;
+  left: 0;  
+  width: 100vw;
+  z-index: -1;
+`
+
 const LINKS = {
   mentor: 'https://forms.gle/ad67KnGec2yxvZwh9',
   apply: 'https://nwplus.io',
@@ -182,6 +190,7 @@ const LINKS = {
 
 const Hero = () => (
   <div id="home">
+    <HeroBackground src="/assets/images/hero_background.svg" />
     <HeroContainer>
       <HeroContent>
         <LogoContainer>
@@ -220,7 +229,7 @@ const Hero = () => (
       </HeroContent>
 
       <HeroImageContainer>
-        <HeroImage src="/assets/images/animations/hero-pancake.gif" alt="Hero pancakes gif" />
+        {/* <HeroImage src="/assets/images/animations/hero-pancake.gif" alt="Hero pancakes gif" /> */}
       </HeroImageContainer>
     </HeroContainer>
   </div>

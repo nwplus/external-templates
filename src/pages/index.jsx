@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import React from 'react'
 import GlobalStyles from '@styles/global'
-// import styled from 'styled-components'
+import styled from 'styled-components'
 import Sponsors from 'src/sections/Sponsors'
 import Faq from 'src/sections/FAQ'
 import Footer from 'src/sections/Footer'
@@ -68,6 +68,36 @@ import NavigationBar from '../components/NavigationBar'
 //   height: auto;
 // `
 
+const PageWrapper = styled.div`
+  position: relative;
+  width: 100%;
+  min-height: calc(100vw * (16955 / 1512));
+  overflow-x: hidden;
+  overflow-y: visible;
+`
+
+const BackgroundLayer = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100vw * (16955 / 1512));
+  background-image: url('/assets/images/hero_background.svg');
+  background-size: 100% auto;
+  background-position: top center;
+  background-repeat: no-repeat;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+`
+
+const ContentLayer = styled.div`
+  position: relative;
+  z-index: 1;
+  overflow-x: hidden;
+  overflow-y: visible;
+`
+
 export default function Index({ title }) {
   return (
     <>
@@ -89,16 +119,21 @@ export default function Index({ title }) {
 
       {/* <LoadingScreen /> */}
 
-      <NavigationBar />
-      <Hero />
-      <About />
-      <Values />
-      <Stats />
-      <Projects />
-      <Gallery />
-      <Faq />
-      <Sponsors />
-      <Footer />
+      <PageWrapper>
+        <BackgroundLayer aria-hidden="true" />
+        <ContentLayer>
+          <NavigationBar />
+          <Hero />
+          <About />
+          <Values />
+          <Stats />
+          <Projects />
+          <Gallery />
+          <Faq />
+          <Sponsors />
+          <Footer />
+        </ContentLayer>
+      </PageWrapper>
     </>
   )
 }
