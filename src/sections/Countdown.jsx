@@ -6,6 +6,7 @@ const CountdownContainer = styled.div`
   position: relative;
   z-index: 1;
   margin-left: -4rem;
+  width: fit-content;
 
   ${p => p.theme.mediaQueries.mobile} {
     min-height: calc(calc(387 / 414) * 100vw);
@@ -14,7 +15,6 @@ const CountdownContainer = styled.div`
 `
 
 const Clock = styled.div`
-  width: 100vw;
   height: auto;
   position: relative;
 `

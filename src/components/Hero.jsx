@@ -2,6 +2,7 @@ import styled from 'styled-components'
 // import { gsap } from 'gsap'
 // import ScrollTrigger from 'gsap/dist/ScrollTrigger'
 import Countdown from 'src/sections/Countdown'
+import CheshireCat from './CheshireCat'
 
 // gsap.registerPlugin(ScrollTrigger)
 
@@ -10,7 +11,7 @@ const HeroContainer = styled.div`
   padding: calc(100vw * (200 / 1920));
   padding-top: calc(100vw * (120 / 1080));
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 2rem;
 
@@ -23,6 +24,7 @@ const HeroContainer = styled.div`
 const HeroContent = styled.div`
   flex: 2;
   max-width: 800px;
+  width: fit-content;
   ${p => p.theme.mediaQueries.mobile} {
     text-align: center;
     display: flex;
@@ -57,6 +59,7 @@ const HeroDescription = styled.p`
   font-weight: 600;
   color: black;
   margin-bottom: 3rem;
+  width: fit-content;
 
   ${p => p.theme.mediaQueries.mobile} {
     font-size: calc(100vw * (14 / 393));
@@ -66,6 +69,7 @@ const HeroDescription = styled.p`
 const ButtonContainer = styled.div`
   display: flex;
   gap: 1rem;
+  width: fit-content;
 
   ${p => p.theme.mediaQueries.mobile} {
     flex-direction: column;
@@ -92,6 +96,7 @@ const SponsorText = styled.p`
   font-size: calc(100vw * (18 / 1920));
   font-weight: 600;
   color: black;
+  width: fit-content;
 
   ${p => p.theme.mediaQueries.mobile} {
     font-size: calc(100vw * (14 / 393));
@@ -151,24 +156,12 @@ const Button = styled.a`
 `
 
 const HeroImageContainer = styled.div`
-  flex: 1;
-  position: relative;
-  max-width: 400px;
-  margin-top: -100px;
+  width: 100%;
+  height: 100%;
 
   ${p => p.theme.mediaQueries.mobile} {
     //max-width: 100%;
     margin-top: -30px;
-  }
-`
-
-const HeroImage = styled.img`
-  width: calc(100vw * (530 / 1920));
-  height: auto;
-  object-fit: cover;
-  ${p => p.theme.mediaQueries.mobile} {
-    width: calc(100vw * (240 / 393));
-    height: calc(100vw * (300 / 393));
   }
 `
 
@@ -229,7 +222,7 @@ const Hero = () => (
       </HeroContent>
 
       <HeroImageContainer>
-        {/* <HeroImage src="/assets/images/animations/hero-pancake.gif" alt="Hero pancakes gif" /> */}
+        <CheshireCat />
       </HeroImageContainer>
     </HeroContainer>
   </div>
