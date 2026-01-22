@@ -129,7 +129,7 @@ const Button = styled.a`
     border: none;
 
     &:hover {
-      background-color:rgb(69, 100, 184);
+      background-color: #3F71FF;
     }
   }
 
@@ -139,7 +139,7 @@ const Button = styled.a`
     border: none;
 
     &:hover {
-      color:rgb(210, 78, 113);
+      background-color: #F25C93;
     }
   }
 
