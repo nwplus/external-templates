@@ -17,7 +17,7 @@ const StatsContainer = styled.div`
   background: linear-gradient(to bottom, #78c7f3cc 0%, #94d2f5 50%, #ddffdb 100%);
 
   ${p => p.theme.mediaQueries.mobile} {
-    aspect-ratio: 393/905;
+    aspect-ratio: 393/2300;
     margin-bottom: 4rem;
   }
 `
@@ -32,7 +32,7 @@ const Title = styled.p`
   left: calc(100vw * (100 / 1512));
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: calc(100vw * (30 / 393));
+    font-size: calc(100vw * (36 / 393));
     text-align: center;
     width: 100%;
     left: 0;
@@ -48,6 +48,13 @@ const YellowTreeStats = styled.img`
   position: absolute;
   left: 0;
   top: calc(100vw * (300 / 1512));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (480 / 393));
+    position: absolute;
+    top: calc(100vw * (200 / 393));
+    left: calc(100vw * (0 / 393));
+  }
 `
 
 const LeftIsland = styled.img`
@@ -55,6 +62,13 @@ const LeftIsland = styled.img`
   z-index: 5;
   position: absolute;
   top: calc(100vw * (1030 / 1512));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (500 / 393));
+    position: absolute;
+    top: calc(100vw * (800 / 393));
+    left: calc(100vw * (0 / 393));
+  }
 `
 
 const BallFlowers = styled.img`
@@ -88,6 +102,14 @@ const RedTreeStats = styled.img`
   position: absolute;
   left: calc(100vw * (450 / 1512));
   top: calc(100vw * (180 / 1512));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (524 / 393));
+    position: absolute;
+    top: calc(100vw * (840 / 393));
+    left: calc(100vw * (-50 / 393));
+    z-index: 9;
+  }
 `
 
 const TopMiddleIsland = styled.img`
@@ -96,6 +118,13 @@ const TopMiddleIsland = styled.img`
   position: absolute;
   top: calc(100vw * (840 / 1512));
   left: calc(100vw * (530 / 1512));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (350 / 393));
+    position: absolute;
+    top: calc(100vw * (1360 / 393));
+    left: calc(100vw * (15 / 393));
+  }
 `
 
 // PURPLE TREE
@@ -105,6 +134,14 @@ const PurpleTreeStats = styled.img`
   position: absolute;
   right: 0;
   top: calc(100vw * (220 / 1512));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (500 / 393));
+    position: absolute;
+    top: calc(100vw * (1400 / 393));
+    left: calc(100vw * (-50 / 393));
+    z-index: 10;
+  }
 `
 
 const RightIsland = styled.img`
@@ -113,6 +150,14 @@ const RightIsland = styled.img`
   position: absolute;
   right: 0;
   top: calc(100vw * (900 / 1512));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (370 / 393));
+    position: absolute;
+    top: calc(100vw * (1960 / 393));
+    left: calc(100vw * (0 / 393));
+    z-index: 9;
+  }
 `
 
 const PurpleBallFlowers = styled.img`
@@ -211,6 +256,14 @@ const Stats = () => {
       ) : (
         <StatsContainer ref={statsContainerRef}>
           <Title>Last year we had...</Title>
+          <YellowTreeStats src="/assets/images/stats/yellow/yellow_tree_stats.svg" />
+          <LeftIsland src="/assets/images/stats/yellow/left_island.svg" />
+
+          <RedTreeStats src="/assets/images/stats/red/red_tree_stats.svg" />
+          <TopMiddleIsland src="/assets/images/stats/red/top_middle_island.svg" />
+
+          <PurpleTreeStats src="/assets/images/stats/mobile/purple_tree_stats.svg" />
+          <RightIsland src="/assets/images/stats/mobile/right_island.svg" />
         </StatsContainer>
       )}
     </OuterContainer>
