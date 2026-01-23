@@ -150,7 +150,6 @@ const MiddleStick = styled.img`
 
 const Stats = () => {
   const [isMobile, setIsMobile] = useState(false)
-  const [scrollOffset, setScrollOffset] = useState(0)
   const statsContainerRef = useRef(null)
 
   useEffect(() => {
@@ -185,16 +184,6 @@ const Stats = () => {
     }
 
     return () => observer.disconnect()
-  }, [])
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const { scrollY } = window
-      setScrollOffset(scrollY * 0.05)
-    }
-
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   return (
