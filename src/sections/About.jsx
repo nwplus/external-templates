@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { useState, useEffect, useRef } from 'react'
 
 const AboutContainer = styled.div`
-  aspect-ratio: 1512/2300;
+  aspect-ratio: 1512/2500;
   height: 100%;
   position: relative;
   z-index: 1;
@@ -318,6 +318,7 @@ const About = () => {
   const getAliceTransform = scroll => {
     if (!aboutRef.current) return { translateX: 0, translateY: 0 }
 
+    const vw = window.innerWidth
     const rect = aboutRef.current.getBoundingClientRect()
     const sectionTop = aboutRef.current.offsetTop
     const sectionHeight = rect.height
@@ -332,13 +333,13 @@ const About = () => {
     if (scrollProgress <= 0.5) {
       // Phase 1: Diagonal - left and down
       const phaseProgress = scrollProgress / 0.5
-      translateX = phaseProgress * -800 // move left faster
-      translateY = phaseProgress * 500 // move down faster
+      translateX = phaseProgress * (vw * (-800 / 1512)) // move left faster
+      translateY = phaseProgress * (vw * (500 / 1512)) // move down faster
     } else {
       // Phase 2: Vertical - straight down
       const phaseProgress = (scrollProgress - 0.5) / 0.5
-      translateX = -950 // maintain left position from end of phase 1
-      translateY = 800 + phaseProgress * 1400 // continue from phase 1's end position
+      translateX = vw * (-850 / 1512) // maintain left position from end of phase 1
+      translateY = vw * (650 / 1512) + phaseProgress * (vw * (1400 / 1512)) // continue from phase 1's end position
     }
 
     return { translateX, translateY }
