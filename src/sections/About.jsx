@@ -319,9 +319,8 @@ const About = () => {
   const getAliceTransform = (scroll, vh, sectionEl) => {
     if (!sectionEl || !vh) return { translateX: 0, translateY: 0 }
 
-    const { height } = sectionEl.getBoundingClientRect()
-    const sectionTop = sectionEl.offsetTop
-    const scrollInSection = scroll - sectionTop + vh
+    const { top, height } = sectionEl.getBoundingClientRect()
+    const scrollInSection = -top + vh
     const scrollProgress = Math.max(0, Math.min(1, scrollInSection / (height + vh)))
 
     if (scrollProgress <= 0.5) {
