@@ -3,34 +3,17 @@ import { useState, useEffect } from 'react'
 // import { TABLET } from '@constants/measurements'
 
 const AboutContainer = styled.div`
-  aspect-ratio: 1920/1204;
+  aspect-ratio: 1512/2200;
   height: 100%;
   position: relative;
   z-index: 1;
   display: flex;
   align-items: center;
   width: 100%;
+  background: linear-gradient(to bottom, #f9ed9bcc 0%, #e8b6b7cc 30%, #b0bed5cc 60%, #78c7f3cc 75%);
 
   ${p => p.theme.mediaQueries.mobile} {
     aspect-ratio: 393 / 958;
-  }
-`
-
-const AboutBackground = styled.div`
-  background-color: #F0E9D7
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  object-fit: cover;
-
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-
-  ${p => p.theme.mediaQueries.mobile} {
   }
 `
 
@@ -55,11 +38,11 @@ const TextContainer = styled.div`
 `
 
 const Title = styled.p`
-  font-family: 'Gloock';
-  font-size: calc(100vw * (62 / 1920));
+  font-family: 'Bree Serif';
+  font-size: calc(100vw * (48 / 1512));
   font-weight: 400;
-  text-align: center;
-  color: #A6321E;
+  color: #ffffff;
+  line-height: 1.31;
 
   ${p => p.theme.mediaQueries.mobile} {
     font-size: calc(100vw * (30 / 393));
@@ -67,183 +50,246 @@ const Title = styled.p`
 `
 
 const Description = styled.p`
-  font-family: 'Poppins';
-  font-size: calc(100vw * (20 / 1920));
-  font-weight: 400;
+  font-family: 'Quicksand';
+  font-size: calc(100vw * (20 / 1512));
+  font-weight: 500;
   line-height: 1.5;
   font-style: normal;
-  color: #4F2F22;
-  
+  color: #ffffff;
+  margin-top: calc(100vw * (20 / 1512));
+
   ${p => p.theme.mediaQueries.mobile} {
     font-size: calc(100vw * (15 / 393));
   }
 `
 
-const AboutImage = styled.img`
+const Divider = styled.img`
+  width: calc(100vw * (1010 / 1512));
   position: absolute;
-  height: auto;
-  width: ${({ width }) => `calc(100vw * (${width} / 1920))`};
-  top: ${({ top, scroll }) => `calc(calc(${top} / 1920) * 100vw + ${scroll * 0.09}px)`};
-  left: ${({ left }) => `calc(calc(${left} / 1920) * 100vw)`};
-  transition: top 0.75s ease-out;
+  top: calc(100vw * (-305 / 1512));
+  left: calc(100vw * (-555 / 1512));
+  z-index: 2;
+`
 
-  ${p => p.theme.mediaQueries.mobile} {
-    width: ${({ mobileWidth }) => `calc(100vw * (${mobileWidth} / 393))`};
-    top: ${({ mobileTop }) => `calc(calc(${mobileTop} / 393) * 100vw)`};
-    left: ${({ mobileLeft }) => `calc(calc(${mobileLeft} / 393) * 100vw)`};
-    transition: none;
-  }
-`;
+const LeftGround = styled.img`
+  width: calc(100vw * (950 / 1512));
+  position: absolute;
+  top: calc(100vw * (-282 / 1512));
+  left: calc(100vw * (-490 / 1512));
+  z-index: 1;
+`
 
-const images = [
-  {
-    src: 'piping_bag.svg',
-    alt: 'Piping Bag',
-    width: 160,
-    top: 100,
-    left: 800,
-    mobileWidth: 0,
-  },
-  {
-    src: 'measuring_glass.svg',
-    alt: 'Measuring Glass',
-    width: 220,
-    top: 110,
-    left: 1200,
-    mobileWidth: 0,
-  },
-  {
-    src: 'flour_sifter.svg',
-    alt: 'Flour Sifter',
-    width: 160,
-    top: 240,
-    left: 1650,
-    mobileWidth: 0,
-  },
-  {
-    src: 'spatula.svg',
-    alt: 'Spatula',
-    width: 150,
-    top: 490,
-    left: 1450,
-    mobileWidth: 0,
-  },
-  {
-    src: 'oven_mitts.svg',
-    alt: 'Oven Mitts',
-    width: 330,
-    top: 810,
-    left: 1400,
-    mobileWidth: 0,
-  },
-  {
-    src: 'measuring_cup.svg',
-    alt: 'Measuring Cup',
-    width: 120,
-    top: 1010,
-    left: 900,
-    mobileWidth: 0,
-  },
-  {
-    src: 'rolling_pin.svg',
-    alt: 'Rolling Pin',
-    width: 300,
-    top: 840,
-    left: 320,
-    mobileWidth: 0,
-  },
-  {
-    src: 'cookie_cutter.svg',
-    alt: 'Cookie Cutter',
-    width: 100,
-    top: 940,
-    left: 100,
-    mobileWidth: 0,
-  },
-  {
-    src: 'mixing_bowl.svg',
-    alt: 'Mixing Bowl',
-    width: 240,
-    top: 490,
-    left: 150,
-    mobileWidth: 0,
-  },
-  {
-    src: 'hand_mixer.svg',
-    alt: 'Hand Mixer',
-    width: 320,
-    top: 115,
-    left: 235,
-    mobileWidth: 0,
-  }
-];
+const LeftRoot = styled.img`
+  width: calc(100vw * (180 / 1512));
+  position: absolute;
+  top: calc(100vw * (-80 / 1512));
+  left: calc(100vw * (-480 / 1512));
+  z-index: 2;
+`
 
-const mobileImages = [
-  {
-    src: 'hand_mixer_mobile.png',
-    alt: 'Hand Mixer',
-    width: 100,
-    top: 5,
-    left: 296
-  },
-  {
-    src: 'piping_bag_mobile.svg',
-    alt: 'Piping Bag',
-    width: 80,
-    top: 77,
-    left: -5
-  },
-  {
-    src: 'measuring_glass_mobile.svg',
-    alt: 'Measuring Glass',
-    width: 55,
-    top: 247,
-    left: 343
-  },
-  {
-    src: 'rolling_pin_mobile.png',
-    alt: 'Rolling Pin',
-    width: 27,
-    top: 355,
-    left: 0
-  },
-  {
-    src: 'cookie_cutter_mobile.svg',
-    alt: 'Cookie Cutter',
-    width: 43,
-    top: 470,
-    left: 351
-  },
-  {
-    src: 'spatula_mobile.png',
-    alt: 'Spatula',
-    width: 90,
-    top: 770,
-    left: 300
-  },
-  {
-    src: 'oven_mitts_mobile.png',
-    alt: 'Oven Mitts',
-    width: 100,
-    top: 825,
-    left: 0
-  },
-];
+const UpperLeftText = styled.div`
+  position: absolute;
+  width: calc(100vw * (765 / 1512));
+  top: calc(100vw * (-180 / 1512));
+  left: calc(100vw * (-390 / 1512));
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+`
+
+const RightGround = styled.img`
+  width: calc(100vw * (1000 / 1512));
+  position: absolute;
+  top: calc(100vw * (-200 / 1512));
+  left: calc(100vw * (50 / 1512));
+  z-index: 1;
+`
+
+const RightRootOne = styled.img`
+  width: calc(100vw * (300 / 1512));
+  position: absolute;
+  top: calc(100vw * (300 / 1512));
+  left: calc(100vw * (750 / 1512));
+  z-index: 2;
+`
+
+const RightRootTwo = styled.img`
+  width: calc(100vw * (300 / 1512));
+  position: absolute;
+  top: calc(100vw * (1200 / 1512));
+  left: calc(100vw * (750 / 1512));
+  z-index: 2;
+`
+
+const UpperRightText = styled.div`
+  position: absolute;
+  width: calc(100vw * (636 / 1512));
+  top: calc(100vw * (720 / 1512));
+  left: calc(100vw * (240 / 1512));
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+`
+
+const LightRays = styled.img`
+  position: absolute;
+  width: calc(100vw * (900 / 1512));
+  top: calc(100vw * (-660 / 1512));
+  left: calc(100vw * (615 / 1512));
+  z-index: 3;
+  opacity: 0.25;
+`
+
+// FALLING OBJECTS
+const CardOne = styled.img`
+  position: absolute;
+  width: calc(100vw * (50 / 1512));
+  top: calc(100vw * (-100 / 1512));
+  left: calc(100vw * (500 / 1512));
+  z-index: 1;
+`
+
+const Alice = styled.img`
+  position: absolute;
+  width: calc(100vw * (250 / 1512));
+  top: calc(100vw * (-50 / 1512));
+  left: calc(100vw * (550 / 1512));
+  z-index: 1;
+`
+
+const CardTwo = styled.img`
+  position: absolute;
+  width: calc(100vw * (80 / 1512));
+  top: calc(100vw * (250 / 1512));
+  left: calc(100vw * (650 / 1512));
+  z-index: 1;
+`
+
+const Hat = styled.img`
+  position: absolute;
+  width: calc(100vw * (300 / 1512));
+  top: calc(100vw * (250 / 1512));
+  left: calc(100vw * (370 / 1512));
+  z-index: 0;
+`
+
+const CardThree = styled.img`
+  position: absolute;
+  width: calc(100vw * (70 / 1512));
+  top: calc(100vw * (180 / 1512));
+  left: calc(100vw * (100 / 1512));
+  z-index: 1;
+`
+
+const CardFour = styled.img`
+  position: absolute;
+  width: calc(100vw * (100 / 1512));
+  top: calc(100vw * (470 / 1512));
+  left: calc(100vw * (250 / 1512));
+  z-index: 1;
+`
+
+const PinkTeapot = styled.img`
+  position: absolute;
+  width: calc(100vw * (250 / 1512));
+  top: calc(100vw * (400 / 1512));
+  left: calc(100vw * (-300 / 1512));
+  z-index: 1;
+`
+
+const TeaSpill = styled.img`
+  position: absolute;
+  width: calc(100vw * (700 / 1512));
+  top: calc(100vw * (130 / 1512));
+  left: calc(100vw * (-120 / 1512));
+  z-index: 0;
+`
+
+const TeacupOne = styled.img`
+  position: absolute;
+  width: calc(100vw * (130 / 1512));
+  top: calc(100vw * (350 / 1512));
+  left: calc(100vw * (50 / 1512));
+  z-index: 1;
+`
+
+const TeacupTwo = styled.img`
+  position: absolute;
+  width: calc(100vw * (130 / 1512));
+  top: calc(100vw * (270 / 1512));
+  left: calc(100vw * (-140 / 1512));
+  z-index: 1;
+`
+
+const FallingClockTop = styled.img`
+  position: absolute;
+  width: calc(100vw * (150 / 1512));
+  top: calc(100vw * (480 / 1512));
+  left: calc(100vw * (-470 / 1512));
+  z-index: 1;
+`
+
+const CardFive = styled.img`
+  position: absolute;
+  width: calc(100vw * (85 / 1512));
+  top: calc(100vw * (780 / 1512));
+  left: calc(100vw * (-100 / 1512));
+  z-index: 1;
+`
+
+const Deer = styled.img`
+  position: absolute;
+  width: calc(100vw * (251 / 1512));
+  top: calc(100vw * (900 / 1512));
+  left: calc(100vw * (-380 / 1512));
+  z-index: 1;
+`
+
+const CardSix = styled.img`
+  position: absolute;
+  width: calc(100vw * (80 / 1512));
+  top: calc(100vw * (1100 / 1512));
+  left: calc(100vw * (-480 / 1512));
+  z-index: 1;
+`
+
+const FallingClockBottom = styled.img`
+  position: absolute;
+  width: calc(100vw * (280 / 1512));
+  top: calc(100vw * (1200 / 1512));
+  left: calc(100vw * (-180 / 1512));
+  z-index: 1;
+`
+
+const CardSeven = styled.img`
+  position: absolute;
+  width: calc(100vw * (160 / 1512));
+  top: calc(100vw * (1450 / 1512));
+  left: calc(100vw * (-380 / 1512));
+  z-index: 1;
+`
+
+const BlueTeapot = styled.img`
+  position: absolute;
+  width: calc(100vw * (400 / 1512));
+  top: calc(100vw * (1450 / 1512));
+  left: calc(100vw * (0 / 1512));
+  z-index: 1;
+`
 
 const About = () => {
-  const [scrollY, setScrollY] = useState(0);
+  // const [scrollY, setScrollY] = useState(0)
 
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  // useEffect(() => {
+  //   const handleScroll = () => setScrollY(window.scrollY)
+  //   window.addEventListener('scroll', handleScroll)
+  //   return () => window.removeEventListener('scroll', handleScroll)
+  // }, [])
 
   return (
     <AboutContainer id="about">
-      <AboutBackground />
       {/* Desktop Images */}
-      {images.map(({ src, alt, width, top, left, mobileWidth }) => (
+      {/* {images.map(({ src, alt, width, top, left, mobileWidth }) => (
         <AboutImage
           key={`desktop-${src}`}
           src={`assets/images/about/${src}`}
@@ -254,9 +300,9 @@ const About = () => {
           mobileWidth={mobileWidth}
           scroll={scrollY}
         />
-      ))}
+      ))} */}
       {/* Mobile Images */}
-      {mobileImages.map(({ src, alt, width, top, left }) => (
+      {/* {mobileImages.map(({ src, alt, width, top, left }) => (
         <AboutImage
           key={`mobile-${src}`}
           src={`assets/images/about/mobile/${src}`}
@@ -269,24 +315,68 @@ const About = () => {
           left={0}
           scroll={scrollY}
         />
-      ))}
+      ))} */}
+      <LightRays src="/assets/images/about/light_rays.svg" />
       <TextContainer>
-        <Title>What is cmd-f?</Title>
-        <Description>
-          cmd-f is a 24-hour hackathon focused on addressing gender inequality in technology. Our main purpose is
-          to create a safe and dedicated space for individuals who identify with underrepresented genders in tech
-          to hack together. We&apos;re trying to create access for people who have faced systemic barriers to inclusion
-          on the basis of gender. We encourage participation from women, trans, non-binary, Two-Spirit and gender
-          diverse people. Thus, cmd-f prioritizes and centers individuals who identify as a member of an
-          underrepresented gender in technology.<br /><br />
+        <Divider src="/assets/images/about/divider.svg" />
+        <LeftGround src="/assets/images/about/left_ground.svg" />
+        <LeftRoot src="/assets/images/about/root.svg" />
+        <UpperLeftText>
+          <Title>Jump into a new world at cmd-f</Title>
+          <Title>what a treat to share!</Title>
+          <Description>
+            Learn new skills, build with passion and connect with a community dedicated to making a difference. No
+            matter your background or technical expertise, we provide the resources and support to ensure your journey
+            is a success.
+          </Description>
+        </UpperLeftText>
 
-          We&apos;re aware that gender is not the only inequality in technology. We appreciate allyship and recognize
-          it is important in the community. We invite allies to show their support by volunteering or mentoring,
-          as opposed to hacking. Please make sure your participation in this event is aligned with the intentions
-          of the event. We also ask all participants who attend to trust that everyone attending is meant to be here.<br /><br />
+        {/* FALLING OBJECTS */}
+        <CardOne src="/assets/images/about/card_one.svg" />
+        <Alice src="/assets/images/about/alice.svg" />
+        <CardTwo src="/assets/images/about/card_two.svg" />
+        <Hat src="/assets/images/about/hat.svg" />
+        <CardThree src="/assets/images/about/card_three.svg" />
+        <CardFour src="/assets/images/about/card_four.svg" />
+        <PinkTeapot src="/assets/images/about/pink_teapot.svg" />
+        <TeaSpill src="/assets/images/about/tea_spill.svg" />
+        <TeacupOne src="/assets/images/about/teacup_one.svg" />
+        <TeacupTwo src="/assets/images/about/teacup_two.svg" />
+        <FallingClockTop src="/assets/images/about/falling_clock_top.svg" />
+        <CardFive src="/assets/images/about/card_five.svg" />
+        <Deer src="/assets/images/about/deer.svg" />
+        <CardSix src="/assets/images/about/card_six.svg" />
+        <FallingClockBottom src="/assets/images/about/falling_clock_bottom.svg" />
+        <CardSeven src="/assets/images/about/card_seven.svg" />
+        <BlueTeapot src="/assets/images/about/blue_teapot.svg" />
 
-          For more information on who is an underrepresented gender in technology, please email us at <a href="mailto:cmd-f@nwplus.io" style={{ textDecoration: 'underline', color: 'inherit' }}>cmd-f@nwplus.io</a>.
-        </Description>
+        <RightGround src="/assets/images/about/right_ground.svg" />
+        <RightRootOne src="/assets/images/about/right_root_one.svg" />
+        <RightRootTwo src="/assets/images/about/right_root_two.svg" />
+        <UpperRightText>
+          <Title>What is cmd-f?</Title>
+          <Description>
+            cmd-f is a 24-hour hackathon focused on addressing gender inequality in technology. Our main purpose is to
+            create a safe and dedicated space for individuals who identify with underrepresented genders in tech to hack
+            together. We&apos;re trying to create access for people who have faced systemic barriers to inclusion on the
+            basis of gender. We encourage participation from women, trans, non-binary, Two-Spirit and gender diverse
+            people. Thus, cmd-f prioritizes and centers individuals who identify as a member of an underrepresented
+            gender in technology.
+            <br />
+            <br />
+            We&apos;re aware that gender is not the only inequality in technology. We appreciate allyship and recognize
+            it is important in the community. We invite allies to show their support by volunteering or mentoring, as
+            opposed to hacking. Please make sure your participation in this event is aligned with the intentions of the
+            event. We also ask all participants who attend to trust that everyone attending is meant to be here.
+            <br />
+            <br />
+            For more information on who is an underrepresented gender in technology, please email us at{' '}
+            <a href="mailto:cmd-f@nwplus.io" style={{ textDecoration: 'underline', color: 'inherit' }}>
+              cmd-f@nwplus.io
+            </a>
+            .
+          </Description>
+        </UpperRightText>
       </TextContainer>
     </AboutContainer>
   )
