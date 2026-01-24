@@ -600,7 +600,7 @@ const Projects = () => {
             </>
           )}
 
-          {PROJECTS_DATA[currentSlide].sideTeacups.map((teacup, idx) => (
+          {PROJECTS_DATA[currentSlide].sideTeacups.map(teacup => (
             <MobileSideTeacup
               key={`${PROJECTS_DATA[currentSlide].id}-teacup-${teacup.src}`}
               src={teacup.src}
