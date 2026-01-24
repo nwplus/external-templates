@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
-import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
+// import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
 
 const ProjectsContainer = styled.div`
   position: relative;
@@ -252,7 +252,7 @@ const Projects = () => {
   // }, [])
 
   const handleOnClick = selected => {
-    if (selected == selectedProject) {
+    if (selected === selectedProject) {
       setSelectedProject(null)
     } else {
       setSelectedProject(selected)
@@ -261,13 +261,13 @@ const Projects = () => {
 
   return (
     <ProjectsContainer id="past-projects">
-      {selectedProject == null && <PastProjectsSmoke src="/assets/images/projects/past_projects_smoke.svg" />}
-      {selectedProject == 'mindfulMeadows' && (
+      {selectedProject === null && <PastProjectsSmoke src="/assets/images/projects/past_projects_smoke.svg" />}
+      {selectedProject === 'mindfulMeadows' && (
         <MindfulMeadowsSmoke src="/assets/images/projects/mindful_meadows_smoke.svg" />
       )}
-      {selectedProject == 'dinoBuddies' && <DinoAuraSmoke src="/assets/images/projects/dino_aura_smoke.svg" />}
-      {selectedProject == 'bigFish' && <BigFishSmoke src="/assets/images/projects/big_fish_smoke.svg" />}
-      {selectedProject == 'busBuddies' && <BusBuddiesSmoke src="/assets/images/projects/bus_buddies_smoke.svg" />}
+      {selectedProject === 'dinoBuddies' && <DinoAuraSmoke src="/assets/images/projects/dino_aura_smoke.svg" />}
+      {selectedProject === 'bigFish' && <BigFishSmoke src="/assets/images/projects/big_fish_smoke.svg" />}
+      {selectedProject === 'busBuddies' && <BusBuddiesSmoke src="/assets/images/projects/bus_buddies_smoke.svg" />}
 
       {selectedProject === 'mindfulMeadows' ? (
         <MindfulMeadowsSelected
