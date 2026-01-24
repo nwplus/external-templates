@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { useState, useEffect, useRef, useMemo } from 'react'
+import { useState, useEffect } from 'react'
 
 const AboutContainer = styled.div`
   aspect-ratio: 1512/2300;
@@ -156,7 +156,7 @@ const Alice = styled.img`
   top: calc(100vw * (-50 / 1512));
   left: calc(100vw * (550 / 1512));
   z-index: 10;
-  transform: translate(${p => p.$translateX}px, ${p => p.$translateY}px);
+  transform: translate(${p => p.$scroll * -0.3}px, ${p => p.$scroll * 0.3}px);
   will-change: transform;
 `
 
@@ -312,60 +312,23 @@ const BlueTeapot = styled.img`
 
 const About = () => {
   const [scrollY, setScrollY] = useState(0)
-  const [viewportHeight, setViewportHeight] = useState(0)
-  const rafRef = useRef(null)
-  const aboutRef = useRef(null)
-
-  const getAliceTransform = (scroll, vh, sectionEl) => {
-    if (!sectionEl || !vh) return { translateX: 0, translateY: 0 }
-
-    const { top, height } = sectionEl.getBoundingClientRect()
-    const scrollInSection = -top + vh
-    const scrollProgress = Math.max(0, Math.min(1, scrollInSection / (height + vh)))
-
-    if (scrollProgress <= 0.5) {
-      const phaseProgress = scrollProgress / 0.5
-      return { translateX: phaseProgress * -750, translateY: phaseProgress * 500 }
-    }
-
-    const phaseProgress = (scrollProgress - 0.5) / 0.5
-    return { translateX: -800, translateY: 600 + phaseProgress * 1400 }
-  }
-
-  const aliceTransform = useMemo(
-    () => getAliceTransform(scrollY, viewportHeight, aboutRef.current),
-    [scrollY, viewportHeight]
-  )
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const updateViewportHeight = () => setViewportHeight(window.innerHeight)
-      updateViewportHeight()
-      window.addEventListener('resize', updateViewportHeight)
-
-      return () => window.removeEventListener('resize', updateViewportHeight)
+    const handleScroll = () => {
+      setScrollY(window.scrollY)
     }
-    return undefined
-  }, [])
 
-  useEffect(() => {
     if (typeof window !== 'undefined') {
-      const handleScroll = () => {
-        if (rafRef.current) cancelAnimationFrame(rafRef.current)
-        rafRef.current = requestAnimationFrame(() => setScrollY(window.scrollY))
-      }
-
       window.addEventListener('scroll', handleScroll, { passive: true })
       return () => {
         window.removeEventListener('scroll', handleScroll)
-        if (rafRef.current) cancelAnimationFrame(rafRef.current)
       }
     }
     return undefined
   }, [])
 
   return (
-    <AboutContainer id="about" ref={aboutRef}>
+    <AboutContainer id="about">
       {/* Mobile Images */}
       {/* {mobileImages.map(({ src, alt, width, top, left }) => (
         <AboutImage
@@ -396,11 +359,7 @@ const About = () => {
           </Description>
         </UpperLeftText>
 
-        <Alice
-          src="/assets/images/about/alice.svg"
-          $translateX={aliceTransform.translateX}
-          $translateY={aliceTransform.translateY}
-        />
+        <Alice src="/assets/images/about/alice.svg" $scroll={scrollY} />
 
         {/* FALLING OBJECTS */}
         {/* falling downwards on parallax */}
