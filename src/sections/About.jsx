@@ -12,7 +12,8 @@ const AboutContainer = styled.div`
   background: linear-gradient(to bottom, #f9ed9bcc 0%, #e8b6b7cc 30%, #b0bed5cc 60%, #78c7f3cc 75%);
 
   ${p => p.theme.mediaQueries.mobile} {
-    aspect-ratio: 393 / 958;
+    aspect-ratio: 393 / 2500;
+    background: linear-gradient(to bottom, #f9ed9bcc 0%, #e8b6b7cc 50%, #b0bed5cc 80%, #78c7f3cc 100%);
   }
 `
 
@@ -44,7 +45,7 @@ const Title = styled.p`
   line-height: 1.31;
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: calc(100vw * (30 / 393));
+    font-size: calc(100vw * (22 / 393));
   }
 `
 
@@ -68,6 +69,10 @@ const Divider = styled.img`
   top: calc(100vw * (-305 / 1512));
   left: calc(100vw * (-555 / 1512));
   z-index: 2;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const LeftGround = styled.img`
@@ -76,6 +81,10 @@ const LeftGround = styled.img`
   top: calc(100vw * (-282 / 1512));
   left: calc(100vw * (-490 / 1512));
   z-index: 1;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const LeftRoot = styled.img`
@@ -84,6 +93,10 @@ const LeftRoot = styled.img`
   top: calc(100vw * (-80 / 1512));
   left: calc(100vw * (-480 / 1512));
   z-index: 2;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const UpperLeftText = styled.div`
@@ -94,6 +107,12 @@ const UpperLeftText = styled.div`
   z-index: 3;
   display: flex;
   flex-direction: column;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (334 / 393));
+    top: calc(100vw * (-110 / 393));
+    left: calc(100vw * (10 / 393));
+  }
 `
 
 const RightGround = styled.img`
@@ -102,6 +121,10 @@ const RightGround = styled.img`
   top: calc(100vw * (-200 / 1512));
   left: calc(100vw * (50 / 1512));
   z-index: 1;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const RightRootOne = styled.img`
@@ -110,6 +133,10 @@ const RightRootOne = styled.img`
   top: calc(100vw * (300 / 1512));
   left: calc(100vw * (750 / 1512));
   z-index: 2;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const RightRootTwo = styled.img`
@@ -118,6 +145,10 @@ const RightRootTwo = styled.img`
   top: calc(100vw * (1200 / 1512));
   left: calc(100vw * (750 / 1512));
   z-index: 2;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const UpperRightText = styled.div`
@@ -128,6 +159,12 @@ const UpperRightText = styled.div`
   z-index: 3;
   display: flex;
   flex-direction: column;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (324 / 393));
+    top: calc(100vw * (850 / 393));
+    left: calc(100vw * (10 / 393));
+  }
 `
 
 const LightRays = styled.img`
@@ -137,6 +174,10 @@ const LightRays = styled.img`
   left: calc(100vw * (615 / 1512));
   z-index: 3;
   opacity: 0.25;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 // FALLING OBJECTS - with parallax
@@ -148,6 +189,10 @@ const CardOne = styled.img`
   z-index: 1;
   transform: translateY(${p => p.$scroll * 0.1}px);
   will-change: transform;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const Alice = styled.img`
@@ -158,6 +203,10 @@ const Alice = styled.img`
   z-index: 10;
   transform: translate(${p => p.$translateX}px, ${p => p.$translateY}px);
   will-change: transform;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const CardTwo = styled.img`
@@ -168,6 +217,10 @@ const CardTwo = styled.img`
   z-index: 1;
   transform: translate(${p => p.$scroll * -0.1}px, ${p => p.$scroll * 0.1}px);
   will-change: transform;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const Hat = styled.img`
@@ -178,6 +231,10 @@ const Hat = styled.img`
   z-index: 0;
   transform: translate(${p => p.$scroll * -0.1}px, ${p => p.$scroll * 0.01}px);
   will-change: transform;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const CardThree = styled.img`
@@ -188,6 +245,10 @@ const CardThree = styled.img`
   z-index: 1;
   transform: translate(${p => p.$scroll * -0.1}px, ${p => p.$scroll * 0.1}px);
   will-change: transform;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const CardFour = styled.img`
@@ -198,6 +259,10 @@ const CardFour = styled.img`
   z-index: 1;
   transform: translate(${p => p.$scroll * -0.1}px, ${p => p.$scroll * 0.01}px);
   will-change: transform;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const PinkTeapot = styled.img`
@@ -208,6 +273,10 @@ const PinkTeapot = styled.img`
   z-index: 1;
   transform: translateY(${p => p.$scroll * 0.15}px);
   will-change: transform;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const TeaSpill = styled.img`
@@ -218,6 +287,10 @@ const TeaSpill = styled.img`
   z-index: 0;
   transform: translateY(${p => p.$scroll * 0.15}px);
   will-change: transform;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const TeacupOne = styled.img`
@@ -228,6 +301,10 @@ const TeacupOne = styled.img`
   z-index: 1;
   transform: translate(${p => p.$scroll * -0.1}px, ${p => p.$scroll * 0.1}px);
   will-change: transform;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const TeacupTwo = styled.img`
@@ -238,6 +315,10 @@ const TeacupTwo = styled.img`
   z-index: 1;
   transform: translate(${p => p.$scroll * -0.1}px, ${p => p.$scroll * 0.1}px);
   will-change: transform;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const FallingClockTop = styled.img`
@@ -248,6 +329,10 @@ const FallingClockTop = styled.img`
   z-index: 1;
   transform: translateY(${p => p.$scroll * 0.2}px);
   will-change: transform;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const CardFive = styled.img`
@@ -258,6 +343,10 @@ const CardFive = styled.img`
   z-index: 1;
   transform: translateY(${p => p.$scroll * 0.2}px);
   will-change: transform;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const Deer = styled.img`
@@ -268,6 +357,10 @@ const Deer = styled.img`
   z-index: 1;
   transform: translateY(${p => p.$scroll * 0.2}px);
   will-change: transform;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const CardSix = styled.img`
@@ -278,6 +371,10 @@ const CardSix = styled.img`
   z-index: 1;
   transform: translateY(${p => p.$scroll * 0.2}px);
   will-change: transform;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const FallingClockBottom = styled.img`
@@ -288,6 +385,10 @@ const FallingClockBottom = styled.img`
   z-index: 1;
   transform: translateY(${p => p.$scroll * 0.1}px);
   will-change: transform;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const CardSeven = styled.img`
@@ -298,6 +399,10 @@ const CardSeven = styled.img`
   z-index: 1;
   transform: translateY(${p => p.$scroll * 0.1}px);
   will-change: transform;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const BlueTeapot = styled.img`
@@ -308,6 +413,227 @@ const BlueTeapot = styled.img`
   z-index: 1;
   transform: translateY(${p => p.$scroll * 0.05}px);
   will-change: transform;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
+`
+
+// MOBILE
+const TopRock = styled.img`
+  display: none;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: block;
+    position: absolute;
+    width: calc(100vw * (400 / 393));
+    top: calc(100vw * (-170 / 393));
+    left: calc(100vw * (-30 / 393));
+  }
+`
+
+const TopRoot = styled.img`
+  display: none;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: block;
+    position: absolute;
+    width: calc(100vw * (120 / 393));
+    top: calc(100vw * (70 / 393));
+    left: calc(100vw * (-30 / 393));
+  }
+`
+
+const BottomRock = styled.img`
+  display: none;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: block;
+    position: absolute;
+    width: calc(100vw * (400 / 393));
+    top: calc(100vw * (50 / 393));
+    left: calc(100vw * (-30 / 393));
+  }
+`
+
+const BottomRootOne = styled.img`
+  display: none;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: block;
+    position: absolute;
+    width: calc(100vw * (150 / 393));
+    top: calc(100vw * (550 / 393));
+    left: calc(100vw * (215 / 393));
+  }
+`
+
+const BottomRootTwo = styled.img`
+  display: none;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: block;
+    position: absolute;
+    width: calc(100vw * (150 / 393));
+    top: calc(100vw * (1450 / 393));
+    left: calc(100vw * (215 / 393));
+  }
+`
+
+const Teapot = styled.img`
+  display: none;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: block;
+    position: absolute;
+    width: calc(100vw * (400 / 393));
+    top: calc(100vw * (180 / 393));
+    left: calc(100vw * (-30 / 393));
+  }
+`
+
+const HatMobile = styled.img`
+  display: none;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: block;
+    position: absolute;
+    width: calc(100vw * (110 / 393));
+    top: calc(100vw * (120 / 393));
+    left: calc(100vw * (250 / 393));
+  }
+`
+
+const CardOneMobile = styled.img`
+  display: none;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: block;
+    position: absolute;
+    width: calc(100vw * (53 / 393));
+    top: calc(100vw * (230 / 393));
+    left: calc(100vw * (150 / 393));
+  }
+`
+
+const TopWatch = styled.img`
+  display: none;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: block;
+    position: absolute;
+    width: calc(100vw * (150 / 393));
+    top: calc(100vw * (260 / 393));
+    left: calc(100vw * (-20 / 393));
+  }
+`
+
+const CardTwoMobile = styled.img`
+  display: none;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: block;
+    position: absolute;
+    width: calc(100vw * (80 / 393));
+    top: calc(100vw * (490 / 393));
+    left: calc(100vw * (150 / 393));
+  }
+`
+
+const AliceMobile = styled.img`
+  display: none;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: block;
+    position: absolute;
+    width: calc(100vw * (150 / 393));
+    top: calc(100vw * (360 / 393));
+    left: calc(100vw * (215 / 393));
+  }
+`
+
+const CardThreeMobile = styled.img`
+  display: none;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: block;
+    position: absolute;
+    width: calc(100vw * (60 / 393));
+    top: calc(100vw * (1650 / 393));
+    left: calc(100vw * (-30 / 393));
+  }
+`
+
+const TeacupOneMobile = styled.img`
+  display: none;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: block;
+    position: absolute;
+    width: calc(100vw * (90 / 393));
+    top: calc(100vw * (1640 / 393));
+    left: calc(100vw * (50 / 393));
+  }
+`
+
+const TeacupTwoMobile = styled.img`
+  display: none;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: block;
+    position: absolute;
+    width: calc(100vw * (90 / 393));
+    top: calc(100vw * (1780 / 393));
+    left: calc(100vw * (0 / 393));
+  }
+`
+
+const BottomTeapot = styled.img`
+  display: none;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: block;
+    position: absolute;
+    width: calc(100vw * (180 / 393));
+    top: calc(100vw * (1700 / 393));
+    left: calc(100vw * (160 / 393));
+  }
+`
+
+const DeerMobile = styled.img`
+  display: none;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: block;
+    position: absolute;
+    width: calc(100vw * (250 / 393));
+    top: calc(100vw * (1830 / 393));
+    left: calc(100vw * (40 / 393));
+  }
+`
+
+const BottomClock = styled.img`
+  display: none;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: block;
+    position: absolute;
+    width: calc(100vw * (150 / 393));
+    top: calc(100vw * (2030 / 393));
+    left: calc(100vw * (-20 / 393));
+  }
+`
+
+const CardFourMobile = styled.img`
+  display: none;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: block;
+    position: absolute;
+    width: calc(100vw * (120 / 393));
+    top: calc(100vw * (2150 / 393));
+    left: calc(100vw * (220 / 393));
+  }
 `
 
 const About = () => {
@@ -363,21 +689,7 @@ const About = () => {
 
   return (
     <AboutContainer id="about" ref={aboutRef}>
-      {/* Mobile Images */}
-      {/* {mobileImages.map(({ src, alt, width, top, left }) => (
-        <AboutImage
-          key={`mobile-${src}`}
-          src={`assets/images/about/mobile/${src}`}
-          alt={alt}
-          mobileWidth={width}
-          mobileTop={top}
-          mobileLeft={left}
-          width={0}
-          top={0}
-          left={0}
-          scroll={scrollY}
-        />
-      ))} */}
+      {/* DESKTOP OBJECTS */}
       <LightRays src="/assets/images/about/light_rays.svg" />
       <TextContainer>
         <Divider src="/assets/images/about/divider.svg" />
@@ -426,6 +738,26 @@ const About = () => {
         <RightGround src="/assets/images/about/right_ground.svg" />
         <RightRootOne src="/assets/images/about/right_root_one.svg" />
         <RightRootTwo src="/assets/images/about/right_root_two.svg" />
+        {/* MOBILE OBJECTS */}
+        <TopRock src="/assets/images/about/mobile/top_rock.svg" />
+        <TopRoot src="/assets/images/about/mobile/top_root.svg" />
+        <BottomRock src="/assets/images/about/mobile/bottom_rock.svg" />
+        <BottomRootOne src="/assets/images/about/mobile/bottom_root_one.svg" />
+        <BottomRootTwo src="/assets/images/about/mobile/bottom_root_two.svg" />
+        <Teapot src="/assets/images/about/mobile/teapot.svg" />
+        <HatMobile src="/assets/images/about/mobile/hat.svg" />
+        <CardOneMobile src="/assets/images/about/mobile/card_one.svg" />
+        <TopWatch src="/assets/images/about/mobile/top_watch.svg" />
+        <CardTwoMobile src="/assets/images/about/mobile/card_two.svg" />
+        <AliceMobile src="/assets/images/about/mobile/alice.svg" />
+        <CardThreeMobile src="/assets/images/about/mobile/card_three.svg" />
+        <TeacupOneMobile src="/assets/images/about/mobile/teacup_one.svg" />
+        <TeacupTwoMobile src="/assets/images/about/mobile/teacup_two.svg" />
+        <BottomTeapot src="/assets/images/about/mobile/bottom_teapot.svg" />
+        <DeerMobile src="/assets/images/about/mobile/deer.svg" />
+        <BottomClock src="/assets/images/about/mobile/bottom_clock.svg" />
+        <CardFourMobile src="/assets/images/about/mobile/card_four.svg" />
+
         <UpperRightText>
           <Title>What is cmd-f?</Title>
           <Description>
