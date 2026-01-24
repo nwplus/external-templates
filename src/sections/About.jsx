@@ -346,6 +346,7 @@ const About = () => {
 
       return () => window.removeEventListener('resize', updateViewportHeight)
     }
+    return undefined
   }, [])
 
   useEffect(() => {
@@ -361,6 +362,7 @@ const About = () => {
         if (rafRef.current) cancelAnimationFrame(rafRef.current)
       }
     }
+    return undefined
   }, [])
 
   return (
