@@ -1,6 +1,5 @@
 import styled from 'styled-components'
-import { useState, useEffect } from 'react'
-// import { TABLET } from '@constants/measurements'
+import { useState, useEffect, useRef } from 'react'
 
 const AboutContainer = styled.div`
   aspect-ratio: 1512/2200;
@@ -140,13 +139,15 @@ const LightRays = styled.img`
   opacity: 0.25;
 `
 
-// FALLING OBJECTS
+// FALLING OBJECTS - with parallax
 const CardOne = styled.img`
   position: absolute;
   width: calc(100vw * (50 / 1512));
   top: calc(100vw * (-100 / 1512));
   left: calc(100vw * (500 / 1512));
   z-index: 1;
+  transform: translateY(${p => p.$scroll * 0.06}px);
+  will-change: transform;
 `
 
 const Alice = styled.img`
@@ -163,6 +164,8 @@ const CardTwo = styled.img`
   top: calc(100vw * (250 / 1512));
   left: calc(100vw * (650 / 1512));
   z-index: 1;
+  transform: translate(${p => p.$scroll * -0.04}px, ${p => p.$scroll * 0.01}px);
+  will-change: transform;
 `
 
 const Hat = styled.img`
@@ -171,6 +174,8 @@ const Hat = styled.img`
   top: calc(100vw * (250 / 1512));
   left: calc(100vw * (370 / 1512));
   z-index: 0;
+  transform: translate(${p => p.$scroll * -0.04}px, ${p => p.$scroll * 0.01}px);
+  will-change: transform;
 `
 
 const CardThree = styled.img`
@@ -179,6 +184,8 @@ const CardThree = styled.img`
   top: calc(100vw * (180 / 1512));
   left: calc(100vw * (100 / 1512));
   z-index: 1;
+  transform: translate(${p => p.$scroll * -0.035}px, ${p => p.$scroll * 0.01}px);
+  will-change: transform;
 `
 
 const CardFour = styled.img`
@@ -187,6 +194,8 @@ const CardFour = styled.img`
   top: calc(100vw * (470 / 1512));
   left: calc(100vw * (250 / 1512));
   z-index: 1;
+  transform: translate(${p => p.$scroll * -0.03}px, ${p => p.$scroll * 0.004}px);
+  will-change: transform;
 `
 
 const PinkTeapot = styled.img`
@@ -195,6 +204,8 @@ const PinkTeapot = styled.img`
   top: calc(100vw * (400 / 1512));
   left: calc(100vw * (-300 / 1512));
   z-index: 1;
+  transform: translateY(${p => p.$scroll * 0.035}px);
+  will-change: transform;
 `
 
 const TeaSpill = styled.img`
@@ -203,6 +214,8 @@ const TeaSpill = styled.img`
   top: calc(100vw * (130 / 1512));
   left: calc(100vw * (-120 / 1512));
   z-index: 0;
+  transform: translateY(${p => p.$scroll * 0.035}px);
+  will-change: transform;
 `
 
 const TeacupOne = styled.img`
@@ -211,6 +224,8 @@ const TeacupOne = styled.img`
   top: calc(100vw * (350 / 1512));
   left: calc(100vw * (50 / 1512));
   z-index: 1;
+  transform: translate(${p => p.$scroll * -0.03}px, ${p => p.$scroll * 0.028}px);
+  will-change: transform;
 `
 
 const TeacupTwo = styled.img`
@@ -219,6 +234,8 @@ const TeacupTwo = styled.img`
   top: calc(100vw * (270 / 1512));
   left: calc(100vw * (-140 / 1512));
   z-index: 1;
+  transform: translate(${p => p.$scroll * -0.03}px, ${p => p.$scroll * 0.022}px);
+  will-change: transform;
 `
 
 const FallingClockTop = styled.img`
@@ -227,6 +244,8 @@ const FallingClockTop = styled.img`
   top: calc(100vw * (480 / 1512));
   left: calc(100vw * (-470 / 1512));
   z-index: 1;
+  transform: translateY(${p => p.$scroll * 0.035}px);
+  will-change: transform;
 `
 
 const CardFive = styled.img`
@@ -235,6 +254,8 @@ const CardFive = styled.img`
   top: calc(100vw * (780 / 1512));
   left: calc(100vw * (-100 / 1512));
   z-index: 1;
+  transform: translateY(${p => p.$scroll * 0.035}px);
+  will-change: transform;
 `
 
 const Deer = styled.img`
@@ -243,6 +264,8 @@ const Deer = styled.img`
   top: calc(100vw * (900 / 1512));
   left: calc(100vw * (-380 / 1512));
   z-index: 1;
+  transform: translateY(${p => p.$scroll * 0.035}px);
+  will-change: transform;
 `
 
 const CardSix = styled.img`
@@ -251,6 +274,8 @@ const CardSix = styled.img`
   top: calc(100vw * (1100 / 1512));
   left: calc(100vw * (-480 / 1512));
   z-index: 1;
+  transform: translateY(${p => p.$scroll * 0.03}px);
+  will-change: transform;
 `
 
 const FallingClockBottom = styled.img`
@@ -259,6 +284,8 @@ const FallingClockBottom = styled.img`
   top: calc(100vw * (1200 / 1512));
   left: calc(100vw * (-180 / 1512));
   z-index: 1;
+  transform: translateY(${p => p.$scroll * 0.04}px);
+  will-change: transform;
 `
 
 const CardSeven = styled.img`
@@ -267,6 +294,8 @@ const CardSeven = styled.img`
   top: calc(100vw * (1450 / 1512));
   left: calc(100vw * (-380 / 1512));
   z-index: 1;
+  transform: translateY(${p => p.$scroll * 0.016}px);
+  will-change: transform;
 `
 
 const BlueTeapot = styled.img`
@@ -275,32 +304,35 @@ const BlueTeapot = styled.img`
   top: calc(100vw * (1450 / 1512));
   left: calc(100vw * (0 / 1512));
   z-index: 1;
+  transform: translateY(${p => p.$scroll * 0.03}px);
+  will-change: transform;
 `
 
 const About = () => {
-  // const [scrollY, setScrollY] = useState(0)
+  const [scrollY, setScrollY] = useState(0)
+  const rafRef = useRef(null)
 
-  // useEffect(() => {
-  //   const handleScroll = () => setScrollY(window.scrollY)
-  //   window.addEventListener('scroll', handleScroll)
-  //   return () => window.removeEventListener('scroll', handleScroll)
-  // }, [])
+  useEffect(() => {
+    const handleScroll = () => {
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current)
+      }
+      rafRef.current = requestAnimationFrame(() => {
+        setScrollY(window.scrollY)
+      })
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current)
+      }
+    }
+  }, [])
 
   return (
     <AboutContainer id="about">
-      {/* Desktop Images */}
-      {/* {images.map(({ src, alt, width, top, left, mobileWidth }) => (
-        <AboutImage
-          key={`desktop-${src}`}
-          src={`assets/images/about/${src}`}
-          alt={alt}
-          width={width}
-          top={top}
-          left={left}
-          mobileWidth={mobileWidth}
-          scroll={scrollY}
-        />
-      ))} */}
       {/* Mobile Images */}
       {/* {mobileImages.map(({ src, alt, width, top, left }) => (
         <AboutImage
@@ -331,24 +363,31 @@ const About = () => {
           </Description>
         </UpperLeftText>
 
-        {/* FALLING OBJECTS */}
-        <CardOne src="/assets/images/about/card_one.svg" />
         <Alice src="/assets/images/about/alice.svg" />
-        <CardTwo src="/assets/images/about/card_two.svg" />
-        <Hat src="/assets/images/about/hat.svg" />
-        <CardThree src="/assets/images/about/card_three.svg" />
-        <CardFour src="/assets/images/about/card_four.svg" />
-        <PinkTeapot src="/assets/images/about/pink_teapot.svg" />
-        <TeaSpill src="/assets/images/about/tea_spill.svg" />
-        <TeacupOne src="/assets/images/about/teacup_one.svg" />
-        <TeacupTwo src="/assets/images/about/teacup_two.svg" />
-        <FallingClockTop src="/assets/images/about/falling_clock_top.svg" />
-        <CardFive src="/assets/images/about/card_five.svg" />
-        <Deer src="/assets/images/about/deer.svg" />
-        <CardSix src="/assets/images/about/card_six.svg" />
-        <FallingClockBottom src="/assets/images/about/falling_clock_bottom.svg" />
-        <CardSeven src="/assets/images/about/card_seven.svg" />
-        <BlueTeapot src="/assets/images/about/blue_teapot.svg" />
+
+        {/* FALLING OBJECTS */}
+        {/* falling downwards on parallax */}
+        <CardOne $scroll={scrollY} src="/assets/images/about/card_one.svg" />
+
+        {/* moving horizontally to the left with super slight down angle on parallax */}
+        <CardTwo $scroll={scrollY} src="/assets/images/about/card_two.svg" />
+        <Hat $scroll={scrollY} src="/assets/images/about/hat.svg" />
+        <CardThree $scroll={scrollY} src="/assets/images/about/card_three.svg" />
+        <CardFour $scroll={scrollY} src="/assets/images/about/card_four.svg" />
+
+        {/* moving straight down on parallax */}
+        <PinkTeapot $scroll={scrollY} src="/assets/images/about/pink_teapot.svg" />
+        <TeaSpill $scroll={scrollY} src="/assets/images/about/tea_spill.svg" />
+        <TeacupOne $scroll={scrollY} src="/assets/images/about/teacup_one.svg" />
+        <TeacupTwo $scroll={scrollY} src="/assets/images/about/teacup_two.svg" />
+        <FallingClockTop $scroll={scrollY} src="/assets/images/about/falling_clock_top.svg" />
+        <CardFive $scroll={scrollY} src="/assets/images/about/card_five.svg" />
+        <Deer $scroll={scrollY} src="/assets/images/about/deer.svg" />
+        <CardSix $scroll={scrollY} src="/assets/images/about/card_six.svg" />
+        <FallingClockBottom $scroll={scrollY} src="/assets/images/about/falling_clock_bottom.svg" />
+        <CardSeven $scroll={scrollY} src="/assets/images/about/card_seven.svg" />
+        <BlueTeapot $scroll={scrollY} src="/assets/images/about/blue_teapot.svg" />
+        {/* FALLING OBJECTS END */}
 
         <RightGround src="/assets/images/about/right_ground.svg" />
         <RightRootOne src="/assets/images/about/right_root_one.svg" />
