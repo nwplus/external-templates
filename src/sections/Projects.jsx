@@ -564,7 +564,7 @@ const Projects = () => {
         <ProjectsContainer>
           <CarouselWrapper onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} onTouchEnd={handleTouchEnd}>
             <SlidesContainer currentSlide={currentSlide}>
-              {PROJECTS_DATA.map((project, index) => (
+              {PROJECTS_DATA.map(project => (
                 <Slide key={project.id}>{/* Smoke and content will be positioned absolutely outside */}</Slide>
               ))}
             </SlidesContainer>
@@ -602,7 +602,7 @@ const Projects = () => {
 
           {PROJECTS_DATA[currentSlide].sideTeacups.map((teacup, idx) => (
             <MobileSideTeacup
-              key={idx}
+              key={`${PROJECTS_DATA[currentSlide].id}-teacup-${teacup.src}`}
               src={teacup.src}
               left={teacup.left}
               right={teacup.right}
@@ -613,8 +613,12 @@ const Projects = () => {
           ))}
 
           <PaginationDots>
-            {PROJECTS_DATA.map((_, index) => (
-              <Dot key={index} active={index === currentSlide} onClick={() => setCurrentSlide(index)} />
+            {PROJECTS_DATA.map(project => (
+              <Dot
+                key={project.id}
+                active={project.id === PROJECTS_DATA[currentSlide].id}
+                onClick={() => setCurrentSlide(PROJECTS_DATA.findIndex(p => p.id === project.id))}
+              />
             ))}
           </PaginationDots>
 
