@@ -339,27 +339,27 @@ const About = () => {
   )
 
   useEffect(() => {
-    if (typeof window === 'undefined') return
+    if (typeof window !== 'undefined') {
+      const updateViewportHeight = () => setViewportHeight(window.innerHeight)
+      updateViewportHeight()
+      window.addEventListener('resize', updateViewportHeight)
 
-    const updateViewportHeight = () => setViewportHeight(window.innerHeight)
-    updateViewportHeight()
-    window.addEventListener('resize', updateViewportHeight)
-
-    return () => window.removeEventListener('resize', updateViewportHeight)
+      return () => window.removeEventListener('resize', updateViewportHeight)
+    }
   }, [])
 
   useEffect(() => {
-    if (typeof window === 'undefined') return
+    if (typeof window !== 'undefined') {
+      const handleScroll = () => {
+        if (rafRef.current) cancelAnimationFrame(rafRef.current)
+        rafRef.current = requestAnimationFrame(() => setScrollY(window.scrollY))
+      }
 
-    const handleScroll = () => {
-      if (rafRef.current) cancelAnimationFrame(rafRef.current)
-      rafRef.current = requestAnimationFrame(() => setScrollY(window.scrollY))
-    }
-
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-      if (rafRef.current) cancelAnimationFrame(rafRef.current)
+      window.addEventListener('scroll', handleScroll, { passive: true })
+      return () => {
+        window.removeEventListener('scroll', handleScroll)
+        if (rafRef.current) cancelAnimationFrame(rafRef.current)
+      }
     }
   }, [])
 
