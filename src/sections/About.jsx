@@ -206,7 +206,7 @@ const PinkTeapot = styled.img`
   top: calc(100vw * (400 / 1512));
   left: calc(100vw * (-300 / 1512));
   z-index: 1;
-  transform: translateY(${p => p.$scroll * 0.1}px);
+  transform: translateY(${p => p.$scroll * 0.15}px);
   will-change: transform;
 `
 
@@ -216,7 +216,7 @@ const TeaSpill = styled.img`
   top: calc(100vw * (130 / 1512));
   left: calc(100vw * (-120 / 1512));
   z-index: 0;
-  transform: translateY(${p => p.$scroll * 0.1}px);
+  transform: translateY(${p => p.$scroll * 0.15}px);
   will-change: transform;
 `
 
@@ -246,7 +246,7 @@ const FallingClockTop = styled.img`
   top: calc(100vw * (480 / 1512));
   left: calc(100vw * (-470 / 1512));
   z-index: 1;
-  transform: translateY(${p => p.$scroll * 0.1}px);
+  transform: translateY(${p => p.$scroll * 0.2}px);
   will-change: transform;
 `
 
@@ -256,7 +256,7 @@ const CardFive = styled.img`
   top: calc(100vw * (780 / 1512));
   left: calc(100vw * (-100 / 1512));
   z-index: 1;
-  transform: translateY(${p => p.$scroll * 0.1}px);
+  transform: translateY(${p => p.$scroll * 0.2}px);
   will-change: transform;
 `
 
@@ -266,7 +266,7 @@ const Deer = styled.img`
   top: calc(100vw * (900 / 1512));
   left: calc(100vw * (-380 / 1512));
   z-index: 1;
-  transform: translateY(${p => p.$scroll * 0.1}px);
+  transform: translateY(${p => p.$scroll * 0.2}px);
   will-change: transform;
 `
 
@@ -276,7 +276,7 @@ const CardSix = styled.img`
   top: calc(100vw * (1100 / 1512));
   left: calc(100vw * (-480 / 1512));
   z-index: 1;
-  transform: translateY(${p => p.$scroll * 0.1}px);
+  transform: translateY(${p => p.$scroll * 0.2}px);
   will-change: transform;
 `
 
@@ -286,7 +286,7 @@ const FallingClockBottom = styled.img`
   top: calc(100vw * (1200 / 1512));
   left: calc(100vw * (-180 / 1512));
   z-index: 1;
-  transform: translateY(${p => p.$scroll * 0.04}px);
+  transform: translateY(${p => p.$scroll * 0.1}px);
   will-change: transform;
 `
 
@@ -296,7 +296,7 @@ const CardSeven = styled.img`
   top: calc(100vw * (1450 / 1512));
   left: calc(100vw * (-380 / 1512));
   z-index: 1;
-  transform: translateY(${p => p.$scroll * 0.05}px);
+  transform: translateY(${p => p.$scroll * 0.1}px);
   will-change: transform;
 `
 
@@ -306,7 +306,7 @@ const BlueTeapot = styled.img`
   top: calc(100vw * (1450 / 1512));
   left: calc(100vw * (0 / 1512));
   z-index: 1;
-  transform: translateY(${p => p.$scroll * 0.03}px);
+  transform: translateY(${p => p.$scroll * 0.05}px);
   will-change: transform;
 `
 
