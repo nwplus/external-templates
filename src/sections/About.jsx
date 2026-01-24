@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 const AboutContainer = styled.div`
   aspect-ratio: 1512/2300;
@@ -146,7 +146,7 @@ const CardOne = styled.img`
   top: calc(100vw * (-100 / 1512));
   left: calc(100vw * (500 / 1512));
   z-index: 1;
-  transform: translateY(${p => p.$scroll * 0.06}px);
+  transform: translateY(${p => p.$scroll * 0.1}px);
   will-change: transform;
 `
 
@@ -156,7 +156,7 @@ const Alice = styled.img`
   top: calc(100vw * (-50 / 1512));
   left: calc(100vw * (550 / 1512));
   z-index: 10;
-  transform: translate(${p => p.$scroll * -0.3}px, ${p => p.$scroll * 0.3}px);
+  transform: translate(${p => p.$translateX}px, ${p => p.$translateY}px);
   will-change: transform;
 `
 
@@ -166,7 +166,7 @@ const CardTwo = styled.img`
   top: calc(100vw * (250 / 1512));
   left: calc(100vw * (650 / 1512));
   z-index: 1;
-  transform: translate(${p => p.$scroll * -0.04}px, ${p => p.$scroll * 0.01}px);
+  transform: translate(${p => p.$scroll * -0.1}px, ${p => p.$scroll * 0.1}px);
   will-change: transform;
 `
 
@@ -176,7 +176,7 @@ const Hat = styled.img`
   top: calc(100vw * (250 / 1512));
   left: calc(100vw * (370 / 1512));
   z-index: 0;
-  transform: translate(${p => p.$scroll * -0.04}px, ${p => p.$scroll * 0.01}px);
+  transform: translate(${p => p.$scroll * -0.1}px, ${p => p.$scroll * 0.01}px);
   will-change: transform;
 `
 
@@ -186,7 +186,7 @@ const CardThree = styled.img`
   top: calc(100vw * (180 / 1512));
   left: calc(100vw * (100 / 1512));
   z-index: 1;
-  transform: translate(${p => p.$scroll * -0.035}px, ${p => p.$scroll * 0.01}px);
+  transform: translate(${p => p.$scroll * -0.1}px, ${p => p.$scroll * 0.1}px);
   will-change: transform;
 `
 
@@ -196,7 +196,7 @@ const CardFour = styled.img`
   top: calc(100vw * (470 / 1512));
   left: calc(100vw * (250 / 1512));
   z-index: 1;
-  transform: translate(${p => p.$scroll * -0.03}px, ${p => p.$scroll * 0.004}px);
+  transform: translate(${p => p.$scroll * -0.1}px, ${p => p.$scroll * 0.01}px);
   will-change: transform;
 `
 
@@ -206,7 +206,7 @@ const PinkTeapot = styled.img`
   top: calc(100vw * (400 / 1512));
   left: calc(100vw * (-300 / 1512));
   z-index: 1;
-  transform: translateY(${p => p.$scroll * 0.035}px);
+  transform: translateY(${p => p.$scroll * 0.1}px);
   will-change: transform;
 `
 
@@ -216,7 +216,7 @@ const TeaSpill = styled.img`
   top: calc(100vw * (130 / 1512));
   left: calc(100vw * (-120 / 1512));
   z-index: 0;
-  transform: translateY(${p => p.$scroll * 0.035}px);
+  transform: translateY(${p => p.$scroll * 0.1}px);
   will-change: transform;
 `
 
@@ -226,7 +226,7 @@ const TeacupOne = styled.img`
   top: calc(100vw * (350 / 1512));
   left: calc(100vw * (50 / 1512));
   z-index: 1;
-  transform: translate(${p => p.$scroll * -0.03}px, ${p => p.$scroll * 0.028}px);
+  transform: translate(${p => p.$scroll * -0.1}px, ${p => p.$scroll * 0.1}px);
   will-change: transform;
 `
 
@@ -236,7 +236,7 @@ const TeacupTwo = styled.img`
   top: calc(100vw * (270 / 1512));
   left: calc(100vw * (-140 / 1512));
   z-index: 1;
-  transform: translate(${p => p.$scroll * -0.03}px, ${p => p.$scroll * 0.022}px);
+  transform: translate(${p => p.$scroll * -0.1}px, ${p => p.$scroll * 0.1}px);
   will-change: transform;
 `
 
@@ -246,7 +246,7 @@ const FallingClockTop = styled.img`
   top: calc(100vw * (480 / 1512));
   left: calc(100vw * (-470 / 1512));
   z-index: 1;
-  transform: translateY(${p => p.$scroll * 0.035}px);
+  transform: translateY(${p => p.$scroll * 0.1}px);
   will-change: transform;
 `
 
@@ -256,7 +256,7 @@ const CardFive = styled.img`
   top: calc(100vw * (780 / 1512));
   left: calc(100vw * (-100 / 1512));
   z-index: 1;
-  transform: translateY(${p => p.$scroll * 0.035}px);
+  transform: translateY(${p => p.$scroll * 0.1}px);
   will-change: transform;
 `
 
@@ -266,7 +266,7 @@ const Deer = styled.img`
   top: calc(100vw * (900 / 1512));
   left: calc(100vw * (-380 / 1512));
   z-index: 1;
-  transform: translateY(${p => p.$scroll * 0.035}px);
+  transform: translateY(${p => p.$scroll * 0.1}px);
   will-change: transform;
 `
 
@@ -276,7 +276,7 @@ const CardSix = styled.img`
   top: calc(100vw * (1100 / 1512));
   left: calc(100vw * (-480 / 1512));
   z-index: 1;
-  transform: translateY(${p => p.$scroll * 0.03}px);
+  transform: translateY(${p => p.$scroll * 0.1}px);
   will-change: transform;
 `
 
@@ -296,7 +296,7 @@ const CardSeven = styled.img`
   top: calc(100vw * (1450 / 1512));
   left: calc(100vw * (-380 / 1512));
   z-index: 1;
-  transform: translateY(${p => p.$scroll * 0.016}px);
+  transform: translateY(${p => p.$scroll * 0.05}px);
   will-change: transform;
 `
 
@@ -312,6 +312,39 @@ const BlueTeapot = styled.img`
 
 const About = () => {
   const [scrollY, setScrollY] = useState(0)
+  const aboutRef = useRef(null)
+
+  // Calculate Alice's position based on scroll phases
+  const getAliceTransform = scroll => {
+    if (!aboutRef.current) return { translateX: 0, translateY: 0 }
+
+    const rect = aboutRef.current.getBoundingClientRect()
+    const sectionTop = aboutRef.current.offsetTop
+    const sectionHeight = rect.height
+
+    // Calculate progress within this section (0 to 1)
+    const scrollInSection = scroll - sectionTop + window.innerHeight
+    const scrollProgress = Math.max(0, Math.min(1, scrollInSection / (sectionHeight + window.innerHeight)))
+
+    let translateX = 0
+    let translateY = 0
+
+    if (scrollProgress <= 0.5) {
+      // Phase 1: Diagonal - left and down
+      const phaseProgress = scrollProgress / 0.5
+      translateX = phaseProgress * -800 // move left faster
+      translateY = phaseProgress * 500 // move down faster
+    } else {
+      // Phase 2: Vertical - straight down
+      const phaseProgress = (scrollProgress - 0.5) / 0.5
+      translateX = -950 // maintain left position from end of phase 1
+      translateY = 800 + phaseProgress * 1400 // continue from phase 1's end position
+    }
+
+    return { translateX, translateY }
+  }
+
+  const aliceTransform = getAliceTransform(scrollY)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -328,7 +361,7 @@ const About = () => {
   }, [])
 
   return (
-    <AboutContainer id="about">
+    <AboutContainer id="about" ref={aboutRef}>
       {/* Mobile Images */}
       {/* {mobileImages.map(({ src, alt, width, top, left }) => (
         <AboutImage
@@ -359,7 +392,11 @@ const About = () => {
           </Description>
         </UpperLeftText>
 
-        <Alice src="/assets/images/about/alice.svg" $scroll={scrollY} />
+        <Alice
+          src="/assets/images/about/alice.svg"
+          $translateX={aliceTransform.translateX}
+          $translateY={aliceTransform.translateY}
+        />
 
         {/* FALLING OBJECTS */}
         {/* falling downwards on parallax */}
