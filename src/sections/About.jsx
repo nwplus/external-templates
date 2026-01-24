@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useMemo } from 'react'
 
 const AboutContainer = styled.div`
   aspect-ratio: 1512/2300;
@@ -312,57 +312,54 @@ const BlueTeapot = styled.img`
 
 const About = () => {
   const [scrollY, setScrollY] = useState(0)
+  const [viewportHeight, setViewportHeight] = useState(0)
   const rafRef = useRef(null)
   const aboutRef = useRef(null)
 
-  // Calculate Alice's position based on scroll phases
-  const getAliceTransform = scroll => {
-    if (!aboutRef.current) return { translateX: 0, translateY: 0 }
+  const getAliceTransform = (scroll, vh, sectionEl) => {
+    if (!sectionEl || !vh) return { translateX: 0, translateY: 0 }
 
-    const rect = aboutRef.current.getBoundingClientRect()
-    const sectionTop = aboutRef.current.offsetTop
-    const sectionHeight = rect.height
-
-    // Calculate progress within this section (0 to 1)
-    const scrollInSection = scroll - sectionTop + window.innerHeight
-    const scrollProgress = Math.max(0, Math.min(1, scrollInSection / (sectionHeight + window.innerHeight)))
-
-    let translateX = 0
-    let translateY = 0
+    const { height } = sectionEl.getBoundingClientRect()
+    const sectionTop = sectionEl.offsetTop
+    const scrollInSection = scroll - sectionTop + vh
+    const scrollProgress = Math.max(0, Math.min(1, scrollInSection / (height + vh)))
 
     if (scrollProgress <= 0.5) {
-      // Phase 1: Diagonal - left and down
       const phaseProgress = scrollProgress / 0.5
-      translateX = phaseProgress * -750 // move left faster
-      translateY = phaseProgress * 500 // move down faster
-    } else {
-      // Phase 2: Vertical - straight down
-      const phaseProgress = (scrollProgress - 0.5) / 0.5
-      translateX = -800 // maintain left position from end of phase 1
-      translateY = 600 + phaseProgress * 1400 // continue from phase 1's end position
+      return { translateX: phaseProgress * -750, translateY: phaseProgress * 500 }
     }
 
-    return { translateX, translateY }
+    const phaseProgress = (scrollProgress - 0.5) / 0.5
+    return { translateX: -800, translateY: 600 + phaseProgress * 1400 }
   }
 
-  const aliceTransform = getAliceTransform(scrollY)
+  const aliceTransform = useMemo(
+    () => getAliceTransform(scrollY, viewportHeight, aboutRef.current),
+    [scrollY, viewportHeight]
+  )
 
   useEffect(() => {
+    if (typeof window === 'undefined') return
+
+    const updateViewportHeight = () => setViewportHeight(window.innerHeight)
+    updateViewportHeight()
+    window.addEventListener('resize', updateViewportHeight)
+
+    return () => window.removeEventListener('resize', updateViewportHeight)
+  }, [])
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+
     const handleScroll = () => {
-      if (rafRef.current) {
-        cancelAnimationFrame(rafRef.current)
-      }
-      rafRef.current = requestAnimationFrame(() => {
-        setScrollY(window.scrollY)
-      })
+      if (rafRef.current) cancelAnimationFrame(rafRef.current)
+      rafRef.current = requestAnimationFrame(() => setScrollY(window.scrollY))
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => {
       window.removeEventListener('scroll', handleScroll)
-      if (rafRef.current) {
-        cancelAnimationFrame(rafRef.current)
-      }
+      if (rafRef.current) cancelAnimationFrame(rafRef.current)
     }
   }, [])
 
