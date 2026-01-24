@@ -13,7 +13,8 @@ const Container = styled.div`
   // margin-left: calc(100vw * (70 / 1280));
 
   ${p => p.theme.mediaQueries.mobile} {
-    width: calc(100vw * (130 / 393));
+    width: calc(100vw * (300 / 393));
+    height: calc(100vw * (20 / 393));
   }
 `
 
@@ -29,9 +30,9 @@ const Input = styled.input`
   color: #a96778;
 
   ${p => p.theme.mediaQueries.mobile} {
-    padding: calc(100vw * (6 / 487)) calc(100vw * (16 / 487));
+    padding: calc(100vw * (6 / 487)) calc(100vw * (10 / 487));
     border-radius: calc(100vw * (7 / 487));
-    font-size: calc(100vw * (5 / 393));
+    font-size: calc(100vw * (7 / 393));
   }
 `
 
@@ -55,18 +56,19 @@ const Button = styled.button`
   font-size: calc(100vw * (18 / 1512));
 
   &:hover {
-    background-color: #612c25;
+    background-color: #eb7f9cff;
   }
 
   ${p => p.theme.mediaQueries.mobile} {
     right: calc(100vw * (-1 / 393));
 
-    width: calc(100vw * (30 / 393));
-    height: calc(100vw * (10 / 393));
-    padding: calc(100vw * (2.14 / 487)) calc(100vw * (5.71 / 487));
-    border-radius: calc(100vw * (5 / 487));
+    width: calc(100vw * (40 / 393));
+    height: calc(100vw * (16 / 393));
+    padding: calc(100vw * (2.14 / 393)) calc(100vw * (5.71 / 393));
+    border-radius: calc(100vw * (5 / 393));
+    margin-right: calc(100vw * (5 / 393));
 
-    font-size: calc(100vw * (5 / 393));
+    font-size: calc(100vw * (7 / 393));
   }
 `
 

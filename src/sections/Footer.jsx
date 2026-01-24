@@ -11,7 +11,8 @@ const FooterContainer = styled.div`
   font-family: 'Space Grotesk';
 
   ${p => p.theme.mediaQueries.mobile} {
-    aspect-ratio: 200/393;
+    background: #c1e8fe;
+    aspect-ratio: 393/630;
     margin-top: -150px;
   }
 `
@@ -35,7 +36,7 @@ const ClosingCard = styled.div`
   gap: calc(100vw * (30 / 1512));
 
   ${p => p.theme.mediaQueries.mobile} {
-    top: calc(100vw * (290 / 393));
+    top: calc(100vw * (10 / 393));
     padding-left: calc(100vw * (30 / 393));
   }
 `
@@ -56,6 +57,9 @@ const SocialMediaIcons = styled.div`
   }
 
   ${p => p.theme.mediaQueries.mobile} {
+    a {
+      width: calc(100vw * (30 / 393));
+    }
   }
 `
 
@@ -78,7 +82,7 @@ const Links = styled.div`
 
   ${p => p.theme.mediaQueries.mobile} {
     gap: calc(100vw * (10 / 393));
-    font-size: calc(100vw * (5 / 393));
+    font-size: calc(100vw * (13 / 393));
   }
 }
 `
@@ -92,7 +96,7 @@ const TeamContainer = styled.div`
   z-index: 5;
 
   ${p => p.theme.mediaQueries.mobile} {
-    bottom: calc(100vw * (70 / 393));
+    bottom: calc(100vw * (10 / 393));
   }
 `
 
@@ -117,9 +121,8 @@ const LandAcknowledgementText = styled.div`
   }
 
   ${p => p.theme.mediaQueries.mobile} {
-    padding: 4% 10%;
-    font-size: calc(100vw * (18 / 487));
-    bottom: calc(100vw * (-350 / 393));
+    padding: 10% 0;
+    font-size: calc(100vw * (12 / 393));
   }
 `
 
@@ -136,8 +139,8 @@ const CopyRight = styled.div`
   z-index: 5;
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: calc(100vw * (15 / 393));
-    bottom: calc(100vw * (20 / 393));
+    font-size: calc(100vw * (10 / 393));
+    bottom: calc(100vw * (5 / 393));
   }
 `
 const NewsletterBox = styled.div`
@@ -150,6 +153,10 @@ const NewsletterBox = styled.div`
 const NewsletterP = styled.p`
   font-size: calc(100vw * (23 / 1512));
   font-weight: 500;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: calc(100vw * (12 / 393));
+  }
 `
 
 // BACKGROUND
@@ -157,7 +164,12 @@ const GreenFrontBg = styled.img`
   width: calc(100vw * (1600 / 1512));
   position: absolute;
   bottom: calc(100vw * (-10 / 1512));
-  z-index: 3;
+  z-index: 4;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (450 / 393));
+    right: calc(100vw * (-42 / 393));
+  }
 `
 
 const GreenBackBg = styled.img`
@@ -166,6 +178,12 @@ const GreenBackBg = styled.img`
   bottom: calc(100vw * (200 / 1512));
   right: calc(100vw * (-115 / 1512));
   z-index: 2;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (600 / 393));
+    right: calc(100vw * (-170 / 393));
+    bottom: calc(100vw * (30 / 393));
+  }
 `
 
 const Clouds = styled.img`
@@ -173,6 +191,10 @@ const Clouds = styled.img`
   position: absolute;
   bottom: calc(100vw * (200 / 1512));
   z-index: 0;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    bottom: calc(100vw * (100 / 393));
+  }
 `
 
 const Castle = styled.img`
@@ -181,6 +203,12 @@ const Castle = styled.img`
   bottom: calc(100vw * (550 / 1512));
   left: calc(100vw * (460 / 1512));
   z-index: 1;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (126 / 393));
+    bottom: calc(100vw * (160 / 393));
+    left: calc(100vw * (110 / 393));
+  }
 `
 
 const RedQueen = styled.img`
@@ -189,6 +217,12 @@ const RedQueen = styled.img`
   bottom: calc(100vw * (480 / 1512));
   left: calc(100vw * (645 / 1512));
   z-index: 3;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (32 / 393));
+    bottom: calc(100vw * (130 / 393));
+    left: calc(100vw * (199 / 393));
+  }
 `
 
 const LeftMaze = styled.img`
@@ -197,6 +231,11 @@ const LeftMaze = styled.img`
   bottom: calc(100vw * (260 / 1512));
   left: calc(100vw * (0 / 1512));
   z-index: 4;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (100 / 393));
+    bottom: calc(100vw * (55 / 393));
+  }
 `
 
 const RightMaze = styled.img`
@@ -205,6 +244,12 @@ const RightMaze = styled.img`
   bottom: calc(100vw * (200 / 1512));
   right: calc(100vw * (0 / 1512));
   z-index: 4;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (200 / 393));
+    bottom: calc(100vw * (70 / 393));
+    right: calc(100vw * (-80 / 393));
+  }
 `
 
 const DeerHeartTree = styled.img`
@@ -213,6 +258,12 @@ const DeerHeartTree = styled.img`
   bottom: calc(100vw * (240 / 1512));
   left: calc(100vw * (60 / 1512));
   z-index: 5;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (110 / 393));
+    bottom: calc(100vw * (70 / 393));
+    left: calc(100vw * (20 / 393));
+  }
 `
 
 const WhiteHeartTree = styled.img`
@@ -221,6 +272,10 @@ const WhiteHeartTree = styled.img`
   bottom: calc(100vw * (60 / 1512));
   right: calc(100vw * (0 / 1512));
   z-index: 7;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
 `
 
 const RightHeartTree = styled.img`
@@ -229,6 +284,12 @@ const RightHeartTree = styled.img`
   bottom: calc(100vw * (270 / 1512));
   right: calc(100vw * (40 / 1512));
   z-index: 6;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (127 / 393));
+    bottom: calc(100vw * (60 / 393));
+    right: calc(100vw * (0 / 393));
+  }
 `
 
 const Alice = styled.img`
@@ -237,6 +298,12 @@ const Alice = styled.img`
   bottom: calc(100vw * (340 / 1512));
   left: calc(100vw * (400 / 1512));
   z-index: 6;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (57 / 393));
+    bottom: calc(100vw * (40 / 393));
+    left: calc(100vw * (40 / 393));
+  }
 `
 
 const ButterflyOne = styled.img`
@@ -245,6 +312,12 @@ const ButterflyOne = styled.img`
   bottom: calc(100vw * (980 / 1512));
   right: calc(100vw * (300 / 1512));
   z-index: 10;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (10 / 393));
+    bottom: calc(100vw * (240 / 393));
+    left: calc(100vw * (220 / 393));
+  }
 `
 
 const ButterflyTwo = styled.img`
@@ -253,6 +326,23 @@ const ButterflyTwo = styled.img`
   bottom: calc(100vw * (900 / 1512));
   right: calc(100vw * (100 / 1512));
   z-index: 10;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
+`
+
+const ButterflyTwoMobile = styled.img`
+  display: none;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: block;
+    position: absolute;
+    width: calc(100vw * (10 / 393));
+    bottom: calc(100vw * (270 / 393));
+    left: calc(100vw * (140 / 393));
+    z-index: 10;
+  }
 `
 
 const Footer = () => (
@@ -320,6 +410,7 @@ const Footer = () => (
       <Alice src="/assets/images/footer/alice.svg" />
       <ButterflyOne src="/assets/images/footer/butterfly_one.svg" />
       <ButterflyTwo src="/assets/images/footer/butterfly_two.svg" />
+      <ButterflyTwoMobile src="/assets/images/footer/butterfly_two_mobile.svg" />
     </FooterContainer>
   </div>
 )
