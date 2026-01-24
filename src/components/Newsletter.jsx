@@ -3,15 +3,14 @@ import styled from 'styled-components'
 import axios from 'axios'
 
 const Container = styled.div`
-  //position: relative;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: calc(100vw * (600 / 1920));
-  height: calc(100vw * (50 / 1920));
-  margin-top: calc(100vw * (25 / 1280));
-  margin-left: calc(100vw * (70 / 1280));
-  transform: rotate(-4deg);
+  width: calc(100vw * (800 / 1512));
+  height: calc(100vw * (50 / 1512));
+  // margin-top: calc(100vw * (25 / 1280));
+  // margin-left: calc(100vw * (70 / 1280));
 
   ${p => p.theme.mediaQueries.mobile} {
     width: calc(100vw * (130 / 393));
@@ -19,14 +18,15 @@ const Container = styled.div`
 `
 
 const Input = styled.input`
+  font-family: 'Space Grotesk';
   width: 100%;
   height: 100%;
   padding: calc(100vw * (4 / 1280)) calc(100vw * (16 / 1280));
   border-radius: calc(100vw * (10 / 1280));
-  border: 1px solid #d4ccc3;
+  border: 1px solid #ffffff;
   outline: none;
-  font-size: calc(100vw * (14 / 1280));
-  color: #8d603f;
+  font-size: calc(100vw * (18 / 1280));
+  color: #a96778;
 
   ${p => p.theme.mediaQueries.mobile} {
     padding: calc(100vw * (6 / 487)) calc(100vw * (16 / 487));
@@ -36,6 +36,7 @@ const Input = styled.input`
 `
 
 const Button = styled.button`
+  font-family: 'Space Grotesk';
   position: absolute;
   right: calc(100vw * (5 / 1280));
   top: 50%;
@@ -44,14 +45,14 @@ const Button = styled.button`
   height: 80%;
   transform: translateY(-50%);
   padding: calc(100vw * (3 / 1280)) calc(100vw * (8 / 1280));
-  background-color: #2f1713;
+  background-color: #c63359;
   color: white;
   border-radius: calc(100vw * (6 / 1280));
   border: none;
   cursor: pointer;
   transition: background-color 0.2s ease;
 
-  font-size: calc(100vw * (11 / 1280));
+  font-size: calc(100vw * (18 / 1512));
 
   &:hover {
     background-color: #612c25;
@@ -139,7 +140,7 @@ const Newsletter = () => {
 
   return (
     <Container>
-      <Input ref={emailInput} type="email" placeholder="Sign up for our newsletter!" />
+      <Input ref={emailInput} type="email" placeholder="Enter your email" />
       <Button onClick={addToMailingList}>Submit</Button>
       {inputMessage && <MessageText color={inputMessageColor}>{inputMessage}</MessageText>}
     </Container>
