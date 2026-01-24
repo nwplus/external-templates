@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { useState, useEffect, useRef } from 'react'
 
 const AboutContainer = styled.div`
-  aspect-ratio: 1512/2200;
+  aspect-ratio: 1512/2300;
   height: 100%;
   position: relative;
   z-index: 1;
@@ -155,7 +155,9 @@ const Alice = styled.img`
   width: calc(100vw * (250 / 1512));
   top: calc(100vw * (-50 / 1512));
   left: calc(100vw * (550 / 1512));
-  z-index: 1;
+  z-index: 10;
+  transform: translate(${p => p.$translateX}px, ${p => p.$translateY}px);
+  will-change: transform;
 `
 
 const CardTwo = styled.img`
@@ -311,6 +313,39 @@ const BlueTeapot = styled.img`
 const About = () => {
   const [scrollY, setScrollY] = useState(0)
   const rafRef = useRef(null)
+  const aboutRef = useRef(null)
+
+  // Calculate Alice's position based on scroll phases
+  const getAliceTransform = scroll => {
+    if (!aboutRef.current) return { translateX: 0, translateY: 0 }
+
+    const rect = aboutRef.current.getBoundingClientRect()
+    const sectionTop = aboutRef.current.offsetTop
+    const sectionHeight = rect.height
+
+    // Calculate progress within this section (0 to 1)
+    const scrollInSection = scroll - sectionTop + window.innerHeight
+    const scrollProgress = Math.max(0, Math.min(1, scrollInSection / (sectionHeight + window.innerHeight)))
+
+    let translateX = 0
+    let translateY = 0
+
+    if (scrollProgress <= 0.5) {
+      // Phase 1: Diagonal - left and down
+      const phaseProgress = scrollProgress / 0.5
+      translateX = phaseProgress * -750 // move left faster
+      translateY = phaseProgress * 500 // move down faster
+    } else {
+      // Phase 2: Vertical - straight down
+      const phaseProgress = (scrollProgress - 0.5) / 0.5
+      translateX = -800 // maintain left position from end of phase 1
+      translateY = 600 + phaseProgress * 1400 // continue from phase 1's end position
+    }
+
+    return { translateX, translateY }
+  }
+
+  const aliceTransform = getAliceTransform(scrollY)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -332,7 +367,7 @@ const About = () => {
   }, [])
 
   return (
-    <AboutContainer id="about">
+    <AboutContainer id="about" ref={aboutRef}>
       {/* Mobile Images */}
       {/* {mobileImages.map(({ src, alt, width, top, left }) => (
         <AboutImage
@@ -363,7 +398,11 @@ const About = () => {
           </Description>
         </UpperLeftText>
 
-        <Alice src="/assets/images/about/alice.svg" />
+        <Alice
+          src="/assets/images/about/alice.svg"
+          $translateX={aliceTransform.translateX}
+          $translateY={aliceTransform.translateY}
+        />
 
         {/* FALLING OBJECTS */}
         {/* falling downwards on parallax */}
