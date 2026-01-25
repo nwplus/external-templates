@@ -169,6 +169,7 @@ const HeroImageContainer = styled.div`
   right: var(--hero-padding);
   bottom: var(--hero-padding);
   left: var(--hero-padding);
+  pointer-events: none;
 
   ${p => p.theme.mediaQueries.mobile} {
     max-width: 100%;
