@@ -12,7 +12,7 @@ import Projects from 'src/sections/Projects'
 import Values from 'src/sections/Values'
 // import LoadingScreen from '../components/LoadingScreen'
 
-import Hero from '../components/Hero'
+import Hero from '../sections/Hero'
 import NavigationBar from '../components/NavigationBar'
 
 // const HalfContainer = styled.div`

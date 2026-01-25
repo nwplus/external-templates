@@ -2,10 +2,10 @@ import styled from 'styled-components'
 // import { gsap } from 'gsap'
 // import ScrollTrigger from 'gsap/dist/ScrollTrigger'
 import Countdown from 'src/sections/Countdown'
-import CheshireCat from './CheshireCat'
-import ToastButterflies from './ToastButterflies'
-import Smoke from './Smoke'
-import MidRightShrooms from './MidRightShrooms'
+import CheshireCat from '../components/hero/CheshireCat'
+import ToastButterflies from '../components/hero/ToastButterflies'
+import Smoke from '../components/hero/Smoke'
+import MidRightShrooms from '../components/hero/MidRightShrooms'
 
 // gsap.registerPlugin(ScrollTrigger)
 
