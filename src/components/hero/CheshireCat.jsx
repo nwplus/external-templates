@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 const CatContainer = styled.div`
   position: absolute;
-  top: calc(100% * (40 / 1080));
+  top: calc(100% * (80 / 1080));
   right: calc(100% * (-50 / 1920));
 `
 
