@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 // import { gsap } from 'gsap'
 // import ScrollTrigger from 'gsap/dist/ScrollTrigger'
-import Countdown from 'src/sections/Countdown'
+import Countdown from '@components/hero/Countdown'
 import CheshireCat from '../components/hero/CheshireCat'
 import ToastButterflies from '../components/hero/ToastButterflies'
 import Smoke from '../components/hero/Smoke'
@@ -226,8 +226,6 @@ const Hero = () => (
             Photographer
           </TextLink>
         </SponsorText>
-
-        <Countdown />
       </HeroContent>
 
       <HeroImageContainer>
@@ -235,6 +233,7 @@ const Hero = () => (
         <MidRightShrooms />
         <CheshireCat />
         <ToastButterflies />
+        <Countdown />
       </HeroImageContainer>
     </HeroContainer>
   </div>

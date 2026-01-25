@@ -2,11 +2,9 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
 const CountdownContainer = styled.div`
-  min-height: calc(calc(1027 / 1440) * 100vw);
-  position: relative;
-  z-index: 1;
-  margin-left: -4rem;
-  width: fit-content;
+  position: absolute;
+  left: calc(100% * (-80 / 1080));
+  bottom: calc(100% * (-150 / 1080));
 
   ${p => p.theme.mediaQueries.mobile} {
     min-height: calc(calc(387 / 414) * 100vw);
@@ -14,25 +12,30 @@ const CountdownContainer = styled.div`
   }
 `
 
-const Clock = styled.div`
-  height: auto;
-  position: relative;
-`
-
 const ClockWrapper = styled.div`
   position: relative;
-  width: 30rem;
-  display: inline-block;
+  display: flex;
+  justify-content: center;
   
   ${p => p.theme.mediaQueries.mobile} {
     width: 100%;
   }
 `
 
+const ClockFacePositioner = styled.div`
+  position: absolute;
+  left: calc(calc(84 / 1920) * 100vw);
+  bottom: calc(calc(20 / 1920) * 100vw);
+  width: calc(calc(238 / 1920) * 100vw);
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
 const ClockImg = styled.img`
   position: relative;
-  width: 100%;
-  height: auto;
+  width: calc(100vw * (600 / 1920));
   display: block;
   ${p => p.theme.mediaQueries.mobile} {
     display: none;
@@ -40,18 +43,13 @@ const ClockImg = styled.img`
 `
 
 const CountdownGrid = styled.div`
-  position: absolute;
   display: grid;
-  grid-template-columns: repeat(5, auto);
-  gap: 0.3rem;
-  width: fit-content;
-  top: 35%;
-  left: 17%;
+  grid-template-columns: repeat(3, auto);
+  gap: 0.3vw;
+  height: fit-content;
 
   ${p => p.theme.mediaQueries.mobile} {
-    gap: 0.5rem;
-    top: 30%;
-    left: 27%;
+    gap: 0.5vm;
   }
 `
 
@@ -65,16 +63,21 @@ const Digits = styled.h2`
   font-family: 'Bree Serif';
   color: black;
   font-weight: 500;
-  font-size: 3rem;
+  font-size: 2.7vw;
   display: inline-block;
   margin: 0;
 
   ${p => p.theme.mediaQueries.mobile} {
-    margin-top: 5px;
     font-size: 6vw;
     letter-spacing: 0;
   }
 `
+
+// The date we are counting down to
+const TARGET_DATE = new Date('Feb 16, 2026 11:59:59').getTime()
+
+// Cutoff for switching from days:hours to hours:minutes display
+const HOURS_CUTOFF_FOR_DAYS_DISPLAY = 72
 
 const getReturnValues = countDown => {
   // calculate time left
@@ -107,44 +110,44 @@ const useCountdown = targetDate => {
 }
 
 const Countdown = () => {
-  const countDownDate = new Date('Jan 26, 2026 18:00:00').getTime()
-
-  const countdown = useCountdown(countDownDate)
+  const [days, hours, minutes] = useCountdown(TARGET_DATE);
+  const totalHours = days * 24 + hours;
+  const showDays = totalHours >= HOURS_CUTOFF_FOR_DAYS_DISPLAY;
 
   return (
     <CountdownContainer>
-      <Clock>
-        {/* <NuggetWavingImg src={NuggetWaving} /> */}
         <ClockWrapper>
           <ClockImg src="/assets/images/watchDeer.svg" alt="Watch deer" />
-          <CountdownGrid>
-            {/* {['Days', 'Hours', 'Minutes'].map((item, index) => (
-              <TimeUnit key={item}>
-                <Digits>{countdown[index]}</Digits>
-               {index < 2 &&
-                  <Colon>&nbsp;&nbsp;:</Colon>
-                
-              </TimeUnit>
-            ))} */}
-            <TimeUnit>
-              <Digits>{countdown[0]}</Digits>
-            </TimeUnit>
-            <TimeUnit>
-              <Digits>:</Digits>
-            </TimeUnit>
-            <TimeUnit>
-              <Digits>{countdown[1]}</Digits>
-            </TimeUnit>
-            <TimeUnit>
-              <Digits>:</Digits>
-            </TimeUnit>
-            <TimeUnit>
-              <Digits>{countdown[2]}</Digits>
-            </TimeUnit>
-          </CountdownGrid>
+          <ClockFacePositioner>
+            <CountdownGrid>
+              {showDays ? (
+                <>
+                  <TimeUnit>
+                    <Digits>{String(days).padStart(2, '0')}d</Digits>
+                  </TimeUnit>
+                  <TimeUnit>
+                    <Digits>:</Digits>
+                  </TimeUnit>
+                  <TimeUnit>
+                    <Digits>{String(hours).padStart(2, '0')}h</Digits>
+                  </TimeUnit>
+                </>
+              ) : (
+                <>
+                  <TimeUnit>
+                    <Digits>{String(totalHours).padStart(2, '0')}h</Digits>
+                  </TimeUnit>
+                  <TimeUnit>
+                    <Digits>:</Digits>
+                  </TimeUnit>
+                  <TimeUnit>
+                    <Digits>{String(minutes).padStart(2, '0')}m</Digits>
+                  </TimeUnit>
+                </>
+              )}
+            </CountdownGrid>
+          </ClockFacePositioner>
         </ClockWrapper>
-        {/* <MobileClockImg src={MobileClockSVG} /> */}
-      </Clock>
     </CountdownContainer>
   )
 }
