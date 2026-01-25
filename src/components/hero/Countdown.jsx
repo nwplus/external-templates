@@ -2,31 +2,22 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
 const CountdownContainer = styled.div`
-  position: absolute;
-  left: calc(100% * (-80 / 1080));
-  bottom: calc(100% * (-150 / 1080));
-
+  position: relative;
+  left: -4vw;
+  height: calc(100vw * (200 / 1080));
+  width: fit-content;
   ${p => p.theme.mediaQueries.mobile} {
     min-height: calc(calc(387 / 414) * 100vw);
     top:-200px;
   }
 `
 
-const ClockWrapper = styled.div`
-  position: relative;
-  display: flex;
-  justify-content: center;
-  
-  ${p => p.theme.mediaQueries.mobile} {
-    width: 100%;
-  }
-`
-
 const ClockFacePositioner = styled.div`
   position: absolute;
-  left: calc(calc(84 / 1920) * 100vw);
+  left: calc(calc(70 / 1920) * 100vw);
   bottom: calc(calc(20 / 1920) * 100vw);
-  width: calc(calc(238 / 1920) * 100vw);
+  // background-color: rgba(0,0,0,0.2);
+  width: calc(calc(205 / 1920) * 100vw);
   height: 100%;
   display: flex;
   justify-content: center;
@@ -35,7 +26,7 @@ const ClockFacePositioner = styled.div`
 
 const ClockImg = styled.img`
   position: relative;
-  width: calc(100vw * (600 / 1920));
+  height: 100%;
   display: block;
   ${p => p.theme.mediaQueries.mobile} {
     display: none;
@@ -63,7 +54,7 @@ const Digits = styled.h2`
   font-family: 'Bree Serif';
   color: black;
   font-weight: 500;
-  font-size: 2.7vw;
+  font-size: 2.5vw;
   display: inline-block;
   margin: 0;
 
@@ -116,38 +107,36 @@ const Countdown = () => {
 
   return (
     <CountdownContainer>
-        <ClockWrapper>
-          <ClockImg src="/assets/images/watchDeer.svg" alt="Watch deer" />
-          <ClockFacePositioner>
-            <CountdownGrid>
-              {showDays ? (
-                <>
-                  <TimeUnit>
-                    <Digits>{String(days).padStart(2, '0')}d</Digits>
-                  </TimeUnit>
-                  <TimeUnit>
-                    <Digits>:</Digits>
-                  </TimeUnit>
-                  <TimeUnit>
-                    <Digits>{String(hours).padStart(2, '0')}h</Digits>
-                  </TimeUnit>
-                </>
-              ) : (
-                <>
-                  <TimeUnit>
-                    <Digits>{String(totalHours).padStart(2, '0')}h</Digits>
-                  </TimeUnit>
-                  <TimeUnit>
-                    <Digits>:</Digits>
-                  </TimeUnit>
-                  <TimeUnit>
-                    <Digits>{String(minutes).padStart(2, '0')}m</Digits>
-                  </TimeUnit>
-                </>
-              )}
-            </CountdownGrid>
-          </ClockFacePositioner>
-        </ClockWrapper>
+        <ClockImg src="/assets/images/watchDeer.svg" alt="Watch deer" />
+        <ClockFacePositioner>
+          <CountdownGrid>
+            {showDays ? (
+              <>
+                <TimeUnit>
+                  <Digits>{String(days).padStart(2, '0')}d</Digits>
+                </TimeUnit>
+                <TimeUnit>
+                  <Digits>:</Digits>
+                </TimeUnit>
+                <TimeUnit>
+                  <Digits>{String(hours).padStart(2, '0')}h</Digits>
+                </TimeUnit>
+              </>
+            ) : (
+              <>
+                <TimeUnit>
+                  <Digits>{String(totalHours).padStart(2, '0')}h</Digits>
+                </TimeUnit>
+                <TimeUnit>
+                  <Digits>:</Digits>
+                </TimeUnit>
+                <TimeUnit>
+                  <Digits>{String(minutes).padStart(2, '0')}m</Digits>
+                </TimeUnit>
+              </>
+            )}
+          </CountdownGrid>
+        </ClockFacePositioner>
     </CountdownContainer>
   )
 }

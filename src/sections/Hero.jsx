@@ -11,7 +11,7 @@ import MidRightShrooms from '../components/hero/MidRightShrooms'
 
 const HeroContainer = styled.div`
   --hero-padding: calc(100vw * (200 / 1920));
-  --hero-padding-top: calc(100vw * (120 / 1080));
+  --hero-padding-top: calc(100vw * (100 / 1080));
 
   position: relative;
   min-height: 100vh;
@@ -29,6 +29,7 @@ const HeroContainer = styled.div`
 `
 
 const HeroContent = styled.div`
+  position: relative;
   flex: 2;
   max-width: 800px;
   width: fit-content;
@@ -226,6 +227,8 @@ const Hero = () => (
             Photographer
           </TextLink>
         </SponsorText>
+
+        <Countdown />
       </HeroContent>
 
       <HeroImageContainer>
@@ -233,7 +236,6 @@ const Hero = () => (
         <MidRightShrooms />
         <CheshireCat />
         <ToastButterflies />
-        <Countdown />
       </HeroImageContainer>
     </HeroContainer>
   </div>

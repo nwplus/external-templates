@@ -78,7 +78,7 @@ const PageWrapper = styled.div`
 
 const BackgroundLayer = styled.div`
   position: absolute;
-  top: 0;
+  top: -4vw;
   left: 0;
   width: 100%;
   height: calc(100vw * (16955 / 1512));
