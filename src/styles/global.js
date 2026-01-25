@@ -12,7 +12,7 @@ export const GlobalStyles = createGlobalStyle`
   html, body {
     overflow-x: hidden;
     overflow-y: auto;
-    background: #F0E9D7;
+    background: #c1e9ff;
   }
   body {
     position: relative;
