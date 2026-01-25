@@ -5,6 +5,7 @@ import Countdown from 'src/sections/Countdown'
 import CheshireCat from './CheshireCat'
 import ToastButterflies from './ToastButterflies'
 import Smoke from './Smoke'
+import MidRightShrooms from './MidRightShrooms'
 
 // gsap.registerPlugin(ScrollTrigger)
 
@@ -231,6 +232,7 @@ const Hero = () => (
 
       <HeroImageContainer>
         <Smoke />
+        <MidRightShrooms />
         <CheshireCat />
         <ToastButterflies />
       </HeroImageContainer>
