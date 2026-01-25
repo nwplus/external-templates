@@ -17,7 +17,7 @@ const smokeBreath = keyframes`
 
 const SmokeContainer = styled.div`
   position: absolute;
-  top: calc(100vw * (-70 / 1920));
+  top: calc(100vw * (-115 / 1920));
   right: calc(100vw * (-190 / 1920));
 `
 
