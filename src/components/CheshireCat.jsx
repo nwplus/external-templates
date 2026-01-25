@@ -3,12 +3,8 @@ import styled from 'styled-components'
 
 const CatContainer = styled.div`
   position: absolute;
-  top: calc(100vh * (220 / 1080));
-  right: calc(100vw * (160 / 1920));
-`
-
-const CatWrapper = styled.div`
-  position: relative;
+  top: calc(100% * (40 / 1080));
+  right: calc(100% * (-50 / 1920));
 `
 
 const BaseCatImg = styled.img`
@@ -170,26 +166,24 @@ const CheshireCat = () => {
   const irisSize = IRIS_RADIUS_SVG * 2 * scale
 
   return (
-    <CatContainer>
-      <CatWrapper ref={containerRef}>
-        <BaseCatImg src="/assets/images/cat_eyeless.svg" />
-        <Iris
-          style={{
-            left: irisPositions.left.x * scale,
-            top: irisPositions.left.y * scale,
-            width: irisSize,
-            height: irisSize,
-          }}
-        />
-        <Iris
-          style={{
-            left: irisPositions.right.x * scale,
-            top: irisPositions.right.y * scale,
-            width: irisSize,
-            height: irisSize,
-          }}
-        />
-      </CatWrapper>
+    <CatContainer ref={containerRef}>
+      <BaseCatImg src="/assets/images/cat_eyeless.svg" />
+      <Iris
+        style={{
+          left: irisPositions.left.x * scale,
+          top: irisPositions.left.y * scale,
+          width: irisSize,
+          height: irisSize,
+        }}
+      />
+      <Iris
+        style={{
+          left: irisPositions.right.x * scale,
+          top: irisPositions.right.y * scale,
+          width: irisSize,
+          height: irisSize,
+        }}
+      />
     </CatContainer>
   )
 }

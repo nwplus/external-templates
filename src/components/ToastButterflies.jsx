@@ -41,14 +41,8 @@ const floatLeft = keyframes`
 
 const ButterfliesContainer = styled.div`
   position: absolute;
-  top: calc(100vh * (180 / 1080));
-  right: calc(100vw * (550 / 1920));
-`
-
-const ButterfliesWrapper = styled.div`
-  position: relative;
-  width: calc(100vw * (120 / 1920));
-  height: calc(100vw * (150 / 1920));
+  top: calc(100% * (60 / 1080));
+  right: calc(100% * (520 / 1920));
 `
 
 const ButterflyImg = styled.img`
@@ -72,10 +66,8 @@ const ButterflyLeft = styled(ButterflyImg)`
 
 const ToastButterflies = () => (
   <ButterfliesContainer>
-    <ButterfliesWrapper>
-      <ButterflyUp src="/assets/images/butterfly_up.svg" alt="A toast butterfly flying up" />
-      <ButterflyLeft src="/assets/images/butterfly_left.svg" alt="A toast butterfly flying left" />
-    </ButterfliesWrapper>
+    <ButterflyUp src="/assets/images/butterfly_up.svg" alt="A toast butterfly flying up" />
+    <ButterflyLeft src="/assets/images/butterfly_left.svg" alt="A toast butterfly flying left" />
   </ButterfliesContainer>
 )
 

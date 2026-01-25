@@ -4,13 +4,18 @@ import styled from 'styled-components'
 import Countdown from 'src/sections/Countdown'
 import CheshireCat from './CheshireCat'
 import ToastButterflies from './ToastButterflies'
+import Smoke from './Smoke'
 
 // gsap.registerPlugin(ScrollTrigger)
 
 const HeroContainer = styled.div`
+  --hero-padding: calc(100vw * (200 / 1920));
+  --hero-padding-top: calc(100vw * (120 / 1080));
+
+  position: relative;
   min-height: 100vh;
-  padding: calc(100vw * (200 / 1920));
-  padding-top: calc(100vw * (120 / 1080));
+  padding: var(--hero-padding);
+  padding-top: var(--hero-padding-top);
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -157,11 +162,14 @@ const Button = styled.a`
 `
 
 const HeroImageContainer = styled.div`
-  width: 100%;
-  height: 100%;
+  position: absolute;
+  top: var(--hero-padding-top);
+  right: var(--hero-padding);
+  bottom: var(--hero-padding);
+  left: var(--hero-padding);
 
   ${p => p.theme.mediaQueries.mobile} {
-    //max-width: 100%;
+    max-width: 100%;
     margin-top: -30px;
   }
 `
@@ -184,7 +192,6 @@ const LINKS = {
 
 const Hero = () => (
   <div id="home">
-    <HeroBackground src="/assets/images/hero_background.svg" />
     <HeroContainer>
       <HeroContent>
         <LogoContainer>
@@ -223,6 +230,7 @@ const Hero = () => (
       </HeroContent>
 
       <HeroImageContainer>
+        <Smoke />
         <CheshireCat />
         <ToastButterflies />
       </HeroImageContainer>
