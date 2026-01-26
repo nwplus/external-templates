@@ -6,7 +6,7 @@ const ShroomsContainer = styled.div`
   right: calc(100vw * (-155 / 1920));
 
   ${p => p.theme.mediaQueries.mobile} {
-    top: calc(100vw * (400 / 393));
+    top: calc(100vw * (450 / 393));
   }
 `
 

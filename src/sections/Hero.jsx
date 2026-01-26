@@ -24,7 +24,7 @@ const HeroContainer = styled.div`
 
   ${p => p.theme.mediaQueries.mobile} {
     --hero-padding: calc(100vw * (75 / 1920));
-    --hero-padding-top: calc(100vw * (140 / 1080));
+    --hero-padding-top: calc(100vw * (0 / 1080));
     flex-direction: column;
     text-align: center;
   }
@@ -42,7 +42,7 @@ const HeroContent = styled.div`
     flex-direction: column;
     align-items: center;
     width: 100%;
-    gap: 1vh;
+    gap: 0.5vh;
   }
 `
 
@@ -52,12 +52,11 @@ const HeroTitle = styled.h1`
   font-weight: 400;
   line-height: 1.2;
   color: black;
-  margin: 1.5vw 0;
+  margin: 1.5vw 0 3vw 0;
   width: calc(100vw * (700 / 1920));
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: calc(100vw * (22 / 393));
-    font-weight: 300;
+    font-size: calc(100vw * (24 / 393));
     width: 100%;
   }
 `
@@ -75,7 +74,7 @@ const HeroDescription = styled.p`
   width: fit-content;
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: calc(100vw * (14 / 393));
+    font-size: calc(100vw * (16 / 393));
     margin-bottom: 0;
   }
 `
@@ -113,6 +112,7 @@ const ButtonContainer = styled.div`
 
   ${p => p.theme.mediaQueries.mobile} {
     gap: 3vw;
+    margin-top: 1vh;
   }
 `
 
@@ -140,6 +140,7 @@ const SponsorText = styled.p`
     font-size: calc(100vw * (14 / 393));
     font-weight: 400;
     width: 70vw;
+    margin-top: 0.5rem;
   }
 `
 
@@ -189,7 +190,8 @@ const Button = styled.a`
   }
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: calc(100vw * (12 / 393));
+    font-size: calc(100vw * (14 / 393));
+    font-weight: 600;
     padding: 2vw 3vw;
     border-radius: 2vw;
   }

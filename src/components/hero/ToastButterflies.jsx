@@ -45,7 +45,7 @@ const ButterfliesContainer = styled.div`
   right: calc(100% * (520 / 1920));
 
   ${p => p.theme.mediaQueries.mobile} {
-    // top: calc(100% * (60 / 1080));
+    top: calc(100% * (100 / 1080));
     // right: calc(100% * (520 / 1920));
   }
 `

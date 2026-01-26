@@ -36,7 +36,7 @@ const SmokeContainer = styled.div`
   right: calc(100vw * (-190 / 1920));
 
   ${p => p.theme.mediaQueries.mobile} {
-    top: calc(100vw * (310 / 393));
+    top: calc(100vw * (362 / 393));
     right: calc(100vw * (-20 / 393));
   }
 `

@@ -8,7 +8,7 @@ const CatContainer = styled.div`
   right: calc(100% * (-50 / 1920));
 
   ${p => p.theme.mediaQueries.mobile} {
-    top: calc(100vw * (365 / 393));
+    top: calc(100vw * (415 / 393));
     right: calc(100% * (-60 / 1920));
   }
 `
