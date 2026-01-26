@@ -23,6 +23,8 @@ const HeroContainer = styled.div`
   gap: 2rem;
 
   ${p => p.theme.mediaQueries.mobile} {
+    --hero-padding: calc(100vw * (75 / 1920));
+    --hero-padding-top: calc(100vw * (140 / 1080));
     flex-direction: column;
     text-align: center;
   }
@@ -30,6 +32,7 @@ const HeroContainer = styled.div`
 
 const HeroContent = styled.div`
   position: relative;
+  z-index: 10;
   flex: 2;
   max-width: 800px;
   width: fit-content;
@@ -38,7 +41,8 @@ const HeroContent = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: calc(100vw * (300 / 393));
+    width: 100%;
+    gap: 1vh;
   }
 `
 
@@ -52,8 +56,9 @@ const HeroTitle = styled.h1`
   width: calc(100vw * (700 / 1920));
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: calc(100vw * (30 / 393));
-    width: calc(100vw * (300 / 393));
+    font-size: calc(100vw * (22 / 393));
+    font-weight: 300;
+    width: 100%;
   }
 `
 
@@ -80,8 +85,7 @@ const ButtonContainer = styled.div`
   width: fit-content;
 
   ${p => p.theme.mediaQueries.mobile} {
-    flex-direction: column;
-    gap: 0.5em;
+    gap: 3vw;
   }
 `
 
@@ -93,7 +97,6 @@ const LogoContainer = styled.div`
 
   ${p => p.theme.mediaQueries.mobile} {
     margin-top: calc(100vw * (50 / 393));
-    margin-bottom: 1em;
     width: calc(100vw * (80 / 393));
   }
 `
@@ -108,6 +111,8 @@ const SponsorText = styled.p`
 
   ${p => p.theme.mediaQueries.mobile} {
     font-size: calc(100vw * (14 / 393));
+    font-weight: 400;
+    width: 70vw;
   }
 `
 
@@ -158,8 +163,8 @@ const Button = styled.a`
 
   ${p => p.theme.mediaQueries.mobile} {
     font-size: calc(100vw * (12 / 393));
-    height: calc(100vw * (40 / 393));
-    width: calc(100vw * (150 / 393));
+    padding: 2vw 3vw;
+    border-radius: 2vw;
   }
 `
 
@@ -200,7 +205,7 @@ const Hero = () => (
         <LogoContainer>
           <img src="/assets/images/cmdfLogoBlack.svg" alt="cmd-f Logo" width="90%" height="100%" />
         </LogoContainer>
-        <HeroTitle>Western Canada&apos;s largest hackathon <HeroHighlight>celebrating underrepresented genders in tech.</HeroHighlight></HeroTitle>
+        <HeroTitle>Western Canada&apos;s largest hackathon <HeroHighlight>celebrating underrepresented genders in tech</HeroHighlight></HeroTitle>
         <HeroDescription>
           March 8-9, 2026 | In-person at Life Sciences Institute
         </HeroDescription>

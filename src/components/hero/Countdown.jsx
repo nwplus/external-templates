@@ -7,8 +7,9 @@ const CountdownContainer = styled.div`
   height: calc(100vw * (200 / 1080));
   width: fit-content;
   ${p => p.theme.mediaQueries.mobile} {
-    min-height: calc(calc(387 / 414) * 100vw);
-    top:-200px;
+    top: calc(100vh * (40 / 393));
+    left: calc(100vw * (-70 / 393));
+    height: calc(100vw * (170 / 393));
   }
 `
 
@@ -22,15 +23,18 @@ const ClockFacePositioner = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    left: calc(calc(33 / 393) * 100vw);
+    bottom: calc(calc(3.5 / 393) * 100vh);
+    width: calc(calc(92 / 393) * 100vw);
+  }
 `
 
 const ClockImg = styled.img`
   position: relative;
   height: 100%;
   display: block;
-  ${p => p.theme.mediaQueries.mobile} {
-    display: none;
-  }
 `
 
 const CountdownGrid = styled.div`

@@ -1,15 +1,25 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import styled from 'styled-components'
+import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
 
 const CatContainer = styled.div`
   position: absolute;
   top: calc(100% * (80 / 1080));
   right: calc(100% * (-50 / 1920));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    top: calc(100vw * (365 / 393));
+    right: calc(100% * (-60 / 1920));
+  }
 `
 
 const BaseCatImg = styled.img`
   width: calc(100vw * (300 / 1920));
   display: block;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (90 / 393));
+  }
 `
 
 const Iris = styled.div`
@@ -118,9 +128,10 @@ function calculateIrisPosition(mouseX, mouseY, eye, irisRadius) {
 const CheshireCat = () => {
   const containerRef = useRef(null)
   const [scale, setScale] = useState(1)
+  // Default position: looking left and slightly down
   const [irisPositions, setIrisPositions] = useState({
-    left: { x: LEFT_EYE.cx, y: LEFT_EYE.cy },
-    right: { x: RIGHT_EYE.cx, y: RIGHT_EYE.cy },
+    left: { x: LEFT_EYE.cx - 3, y: LEFT_EYE.cy + 1 },
+    right: { x: RIGHT_EYE.cx - 3, y: RIGHT_EYE.cy + 1 },
   })
 
   // Update scale when window resizes
@@ -138,6 +149,12 @@ const CheshireCat = () => {
   }, [updateScale])
 
   useEffect(() => {
+    // Skip mouse tracking on mobile devices
+    const isMobile = window.innerWidth <= SCREEN_BREAKPOINTS.mobile
+    if (isMobile) {
+      return () => {}
+    }
+
     const handleMouseMove = (e) => {
       if (!containerRef.current) return
       const imgElement = containerRef.current.querySelector('img')

@@ -89,6 +89,10 @@ const BackgroundLayer = styled.div`
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    background-image: url('/assets/images/mobile_bg.svg');
+  }
 `
 
 const ContentLayer = styled.div`
