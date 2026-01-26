@@ -76,6 +76,33 @@ const HeroDescription = styled.p`
 
   ${p => p.theme.mediaQueries.mobile} {
     font-size: calc(100vw * (14 / 393));
+    margin-bottom: 0;
+  }
+`
+
+const HeroDescriptionContainer = styled.div`
+  display: contents;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5vh;
+    margin-bottom: 3vh;
+    align-items: center;
+  }
+`
+
+const HeroDescriptionDesktop = styled(HeroDescription)`
+  ${p => p.theme.mediaQueries.mobile} {
+    display: none;
+  }
+`
+
+const HeroDescriptionMobile = styled(HeroDescription)`
+  display: none;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: block;
   }
 `
 
@@ -206,9 +233,17 @@ const Hero = () => (
           <img src="/assets/images/cmdfLogoBlack.svg" alt="cmd-f Logo" width="90%" height="100%" />
         </LogoContainer>
         <HeroTitle>Western Canada&apos;s largest hackathon <HeroHighlight>celebrating underrepresented genders in tech</HeroHighlight></HeroTitle>
-        <HeroDescription>
-          March 8-9, 2026 | In-person at Life Sciences Institute
-        </HeroDescription>
+        <HeroDescriptionContainer>
+          <HeroDescriptionDesktop>
+            March 7-8, 2026 (Subject to change) | In-person (Location TBD)
+          </HeroDescriptionDesktop>
+          <HeroDescriptionMobile>
+            March 7-8, 2026 (Subject to change)
+          </HeroDescriptionMobile>
+          <HeroDescriptionMobile>
+            In-person (Location TBD)
+          </HeroDescriptionMobile>
+        </HeroDescriptionContainer>
 
         <ButtonContainer>
           <Button className="primary" href={LINKS.mentor} target="_blank" rel="noopener noreferrer">
