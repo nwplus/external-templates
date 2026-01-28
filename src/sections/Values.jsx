@@ -1,6 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import styled, { css, keyframes } from 'styled-components'
-import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
 import { gsap } from 'gsap'
 import ScrollTrigger from 'gsap/dist/ScrollTrigger'
 
@@ -21,6 +20,15 @@ const OuterContainer = styled.div`
 
   ${p => p.theme.mediaQueries.mobile} {
     margin-top: 0px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('/assets/images/values/cards_background_mobile.svg') center/100% auto no-repeat;
+      z-index: 0;
+      pointer-events: none;
+    }
   }
 `
 
@@ -34,27 +42,9 @@ const ValuesContainer = styled.div`
   z-index: 2;
 
   ${p => p.theme.mediaQueries.mobile} {
-    aspect-ratio: 393/2300;
-    margin-bottom: 4rem;
+    aspect-ratio: 393/1600;
   }
 `
-
-// const ValuesContainer = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   justify-content: center;
-//   width: 100%;
-//   gap: 6rem;
-
-//   @media (min-width: 768px) {
-//     flex-direction: row;
-//     align-items: flex-start;
-//     gap: 8rem;
-//   }
-// `
-
-const CardsContainer = styled.div``
 
 const hoverJiggle = keyframes`
   0% {
@@ -163,10 +153,10 @@ const BuildConfidence = styled.div`
   ${hoverJiggleStyles}
 
   ${p => p.theme.mediaQueries.mobile} {
-    width: calc(100vw * (524 / 393));
+    width: calc(100vw * (300 / 393));
     position: absolute;
-    top: calc(100vw * (840 / 393));
-    left: calc(100vw * (-50 / 393));
+    left: calc(100vw * (50 / 393));
+    top: calc(100vw * (50 / 393));
     z-index: 9;
   }
 `
@@ -182,10 +172,10 @@ const LearnTogether = styled.div`
   ${hoverJiggleStyles}
 
   ${p => p.theme.mediaQueries.mobile} {
-    width: calc(100vw * (390 / 393));
+    width: calc(100vw * (300 / 393));
     position: absolute;
-    top: calc(100vw * (1200 / 393));
-    left: calc(100vw * (-50 / 393));
+    left: calc(100vw * (50 / 393));
+    top: calc(100vw * (550 / 393));
     z-index: 9;
   }
 `
@@ -201,10 +191,10 @@ const ExploreInASafeSpace = styled.div`
   ${hoverJiggleStyles}
 
   ${p => p.theme.mediaQueries.mobile} {
-    width: calc(100vw * (320 / 393));
+    width: calc(100vw * (300 / 393));
     position: absolute;
-    top: calc(100vw * (1600 / 393));
-    left: calc(100vw * (0 / 393));
+    left: calc(100vw * (50 / 393));
+    top: calc(100vw * (1050 / 393));
     z-index: 9;
   }
 `
@@ -216,35 +206,28 @@ const Values = () => {
   return (
     <OuterContainer id="values" ref={valuesRef}>
       <Title>Our Main Values</Title>
-      <Subtitle>Select a card to read more.</Subtitle>
+      <Subtitle>Select a card to read more</Subtitle>
       <ValuesContainer>
-        <CardsContainer>
-          <BuildConfidence
-            onClick={() => setActiveImage(activeImage === 'build_confidence' ? null : 'build_confidence')}
-          >
-            <CardInner $flipped={activeImage === 'build_confidence'}>
-              <CardFace src="/assets/images/values/build_confidence.png" alt="Build Confidence" />
-              <CardBack src="/assets/images/values/build_confidence_text.png" alt="Build Confidence Text" />
-            </CardInner>
-          </BuildConfidence>
-          <LearnTogether onClick={() => setActiveImage(activeImage === 'learn_together' ? null : 'learn_together')}>
-            <CardInner $flipped={activeImage === 'learn_together'}>
-              <CardFace src="/assets/images/values/learn_together.png" alt="Learn Together" />
-              <CardBack src="/assets/images/values/learn_together_text.png" alt="Learn Together Text" />
-            </CardInner>
-          </LearnTogether>
-          <ExploreInASafeSpace
-            onClick={() => setActiveImage(activeImage === 'explore_in_a_safe_space' ? null : 'explore_in_a_safe_space')}
-          >
-            <CardInner $flipped={activeImage === 'explore_in_a_safe_space'}>
-              <CardFace src="/assets/images/values/explore_in_a_safe_space.png" alt="Explore In A Safe Space" />
-              <CardBack
-                src="/assets/images/values/explore_in_a_safe_space_text.png"
-                alt="Explore In A Safe Space Text"
-              />
-            </CardInner>
-          </ExploreInASafeSpace>
-        </CardsContainer>
+        <BuildConfidence onClick={() => setActiveImage(activeImage === 'build_confidence' ? null : 'build_confidence')}>
+          <CardInner $flipped={activeImage === 'build_confidence'}>
+            <CardFace src="/assets/images/values/build_confidence.png" alt="Build Confidence" />
+            <CardBack src="/assets/images/values/build_confidence_text.png" alt="Build Confidence Text" />
+          </CardInner>
+        </BuildConfidence>
+        <LearnTogether onClick={() => setActiveImage(activeImage === 'learn_together' ? null : 'learn_together')}>
+          <CardInner $flipped={activeImage === 'learn_together'}>
+            <CardFace src="/assets/images/values/learn_together.png" alt="Learn Together" />
+            <CardBack src="/assets/images/values/learn_together_text.png" alt="Learn Together Text" />
+          </CardInner>
+        </LearnTogether>
+        <ExploreInASafeSpace
+          onClick={() => setActiveImage(activeImage === 'explore_in_a_safe_space' ? null : 'explore_in_a_safe_space')}
+        >
+          <CardInner $flipped={activeImage === 'explore_in_a_safe_space'}>
+            <CardFace src="/assets/images/values/explore_in_a_safe_space.png" alt="Explore In A Safe Space" />
+            <CardBack src="/assets/images/values/explore_in_a_safe_space_text.png" alt="Explore In A Safe Space Text" />
+          </CardInner>
+        </ExploreInASafeSpace>
       </ValuesContainer>
     </OuterContainer>
   )
