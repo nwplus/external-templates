@@ -1,42 +1,103 @@
-import React, { useEffect, useRef, useState } from 'react'
-import styled from 'styled-components'
-import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
+import React, { useRef, useState } from 'react'
+import styled, { css, keyframes } from 'styled-components'
 import { gsap } from 'gsap'
 import ScrollTrigger from 'gsap/dist/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
 const OuterContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 4rem 2rem;
-  margin: 40px 20px 20px 20px;
+  position: relative;
+  background: #78c7f3cc;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('/assets/images/values/cards_background.svg') center/90% auto no-repeat;
+    z-index: 0;
+    pointer-events: none;
+  }
 
   ${p => p.theme.mediaQueries.mobile} {
     margin-top: 0px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('/assets/images/values/cards_background_mobile.svg') center/100% auto no-repeat;
+      z-index: 0;
+      pointer-events: none;
+    }
   }
 `
 
 const ValuesContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   width: 100%;
-  gap: 6rem;
+  height: 100%;
+  aspect-ratio: 1520/750;
+  height: auto;
+  display: flex;
+  position: relative;
+  z-index: 2;
 
-  @media (min-width: 768px) {
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 8rem;
+  ${p => p.theme.mediaQueries.mobile} {
+    aspect-ratio: 393/1600;
   }
 `
 
+const hoverJiggle = keyframes`
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+  25% {
+    transform: scale(1.06) rotate(1deg);
+  }
+  50% {
+    transform: scale(1.06) rotate(-1deg);
+  }
+  75% {
+    transform: scale(1.06) rotate(0.5deg);
+  }
+  100% {
+    transform: scale(1.06) rotate(0deg);
+  }
+`
+
+const hoverJiggleStyles = css`
+  cursor: pointer;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.06);
+    animation: ${hoverJiggle} 0.35s ease-in-out 1;
+  }
+`
+
+const CardInner = styled.div`
+  width: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease;
+  display: grid;
+
+  ${p => p.$flipped && 'transform: rotateY(180deg);'}
+`
+
+const CardFace = styled.img`
+  grid-area: 1 / 1;
+  width: 100%;
+  height: auto;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+`
+
+const CardBack = styled(CardFace)`
+  transform: rotateY(180deg);
+`
+
 const Title = styled.p`
-  color: #a6321e;
-  font-family: 'Gloock';
+  font-color: #000000;
+  font-family: 'Bree Serif';
   font-weight: 400;
   text-align: center;
   font-size: calc(100vw * (64 / 1920));
@@ -48,367 +109,125 @@ const Title = styled.p`
   }
 `
 
-const ColumnContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`
-
-const ExpandedCakeImage = styled.img`
-  width: calc(100vw * (280 / 1100));
-  height: auto;
-  margin-top: calc(100vw * -1 * (48 / 1200));
-
-  @media (max-width: 768px) {
-    width: calc(100vw * (140 / 393));
-    margin-top: 0px;
-    margin-bottom: -48px;
-  }
-`
-
-const ValuesList = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 2rem;
-  margin-top: 16px;
-
-  @media (max-width: 768px) {
-    margin-top: 0px;
-  }
-`
-
-const ValueItem = styled.div`
-  display: flex;
-  align-items: flex-start;
-  width: 100%;
-  gap: 1rem; /* Space between dot/line and text */
-`
-
-const DotLineContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 6px;
-  margin-right: calc(100vw * (100 / 1920));
-
-  @media (max-width: 768px) {
-    display: none;
-  }
-`
-
-const Dot = styled.div`
-  width: calc(100vw * (16 / 1920));
-  height: calc(100vw * (16 / 1920));
-  background-color: #a6321e;
-  border-radius: 50%;
-`
-
-const Line1 = styled.div`
-  width: 3px;
-  background-color: #a6321e;
-  margin-top: 8px;
-  margin-bottom: -56px;
-  height: calc(100vw * (192 / 1920));
-`
-const Line2 = styled.div`
-  width: 3px;
-  background-color: #a6321e;
-  margin-top: 8px;
-  margin-bottom: -56px;
-  height: calc(100vw * (220 / 1920));
-`
-const ValueContent = styled.div`
-  display: flex;
-  flex-direction: column;
-  max-width: calc(100vw * (640 / 1920));
-
-  @media (max-width: 768px) {
-    max-width: calc(100vw * (600 / 768));
-  }
-`
-
-const ValueTitle = styled.p`
-  font-size: calc(100vw * (32 / 1920));
-  color: #a6321e;
-  font-family: 'Happy Time';
+const Subtitle = styled.p`
+  font-color: #000000;
+  font-family: 'Bree Serif';
   font-style: italic;
-  font-weight: 500;
-  margin-bottom: 0.5rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: calc(100vw * (8 / 1920));
+  font-size: calc(100vw * (22 / 1920));
+  margin-top: calc(100vw * (-20 / 1280));
+  margin-bottom: calc(100vw * (40 / 1280));
 
-  @media (max-width: 768px) {
-    font-size: calc(100vw * (20 / 393));
+  &::before {
+    content: '';
+    width: calc(100vw * (20 / 1920));
+    height: calc(100vw * (20 / 1920));
+    background: url('/assets/images/values/pointer.svg') center/contain no-repeat;
+    flex: 0 0 auto;
+  }
+
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: calc(100vw * (16 / 393));
+    margin-top: calc(100vw * (-12 / 393));
+    gap: calc(100vw * (6 / 393));
+
+    &::before {
+      width: calc(100vw * (16 / 393));
+      height: calc(100vw * (16 / 393));
+    }
   }
 `
 
-const ValueDescription = styled.p`
-  font-size: calc(100vw * (18 / 1920));
-  color: #4f2f22;
-  font-family: 'Poppins';
-  font-weight: 400;
-  line-height: 1.6;
+const BuildConfidence = styled.div`
+  width: calc(100vw * (300 / 1512));
+  z-index: 4;
+  position: absolute;
+  left: calc(100vw * (150 / 1512));
+  top: calc(100vw * (25 / 1512));
+  perspective: 1000px;
 
-  @media (max-width: 768px) {
-    font-size: calc(100vw * (15 / 393));
+  ${hoverJiggleStyles}
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (300 / 393));
+    position: absolute;
+    left: calc(100vw * (50 / 393));
+    top: calc(100vw * (50 / 393));
+    z-index: 9;
+  }
+`
+
+const LearnTogether = styled.div`
+  width: calc(100vw * (300 / 1512));
+  z-index: 6;
+  position: absolute;
+  left: calc(100vw * (600 / 1512));
+  top: calc(100vw * (25 / 1512));
+  perspective: 1000px;
+
+  ${hoverJiggleStyles}
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (300 / 393));
+    position: absolute;
+    left: calc(100vw * (50 / 393));
+    top: calc(100vw * (550 / 393));
+    z-index: 9;
+  }
+`
+
+const ExploreInASafeSpace = styled.div`
+  width: calc(100vw * (300 / 1512));
+  z-index: 6;
+  position: absolute;
+  left: calc(100vw * (1050 / 1512));
+  top: calc(100vw * (25 / 1512));
+  perspective: 1000px;
+
+  ${hoverJiggleStyles}
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (300 / 393));
+    position: absolute;
+    left: calc(100vw * (50 / 393));
+    top: calc(100vw * (1050 / 393));
+    z-index: 9;
   }
 `
 
 const Values = () => {
   const valuesRef = useRef(null)
-  const cakeTopRef = useRef(null)
-  const cakeMidRef = useRef(null)
-  const cakeBotRef = useRef(null)
-  const title1Ref = useRef(null)
-  const title3Ref = useRef(null)
-  const dot1Ref = useRef(null)
-  const dot3Ref = useRef(null)
-  const line1Ref = useRef(null)
-  const line2Ref = useRef(null)
-  const [title1StartY, setTitle1StartY] = useState(100)
-  const [title3StartY, setTitle3StartY] = useState(-100)
-  const [dot1StartY, setDot1StartY] = useState(100)
-  const [dot3StartY, setDot3StartY] = useState(-100)
-  const [cakeTopStartY, setCakeTopStartY] = useState(100)
-  const [cakeBotStartY, setCakeBotStartY] = useState(-100)
-  const [isMobile, setIsMobile] = useState(false)
-
-  const fadeDescRefs = [useRef(null), useRef(null), useRef(null)]
-
-  useEffect(() => {
-    const updateY = () => {
-      const screenWidth = window.innerWidth
-      const screenHeight = window.innerHeight
-      const valY = Math.min(screenWidth * 0.1, screenHeight * 0.15)
-      setTitle1StartY(valY)
-      setTitle3StartY(-1.2 * valY)
-      setDot1StartY(valY)
-      setDot3StartY(-1.2 * valY)
-      setCakeTopStartY(valY - 12)
-      setCakeBotStartY(valY * -1 + 12)
-    }
-
-    updateY()
-    window.addEventListener('resize', updateY)
-
-    return () => {
-      window.removeEventListener('resize', updateY)
-    }
-  }, [])
-
-  useEffect(() => {
-    const updateDeviceType = () => {
-      setIsMobile(window.innerWidth <= SCREEN_BREAKPOINTS.mobile)
-    }
-
-    updateDeviceType()
-    window.addEventListener('resize', updateDeviceType)
-
-    return () => {
-      window.removeEventListener('resize', updateDeviceType)
-    }
-  }, [])
-
-  useEffect(() => {
-    // Set initial positions so that all elements start offset
-    gsap.set(cakeTopRef.current, { y: cakeTopStartY })
-    gsap.set(cakeMidRef.current, { y: 0 })
-    gsap.set(cakeBotRef.current, { y: cakeBotStartY })
-    gsap.set(title1Ref.current, isMobile ? { y: 0 } : { y: title1StartY })
-    gsap.set(title3Ref.current, isMobile ? { y: 0 } : { y: title3StartY })
-    gsap.set(dot1Ref.current, isMobile ? { y: 0 } : { y: dot1StartY })
-    gsap.set(dot3Ref.current, isMobile ? { y: 0 } : { y: dot3StartY })
-    fadeDescRefs.forEach(ref => gsap.set(ref.current, isMobile ? { opacity: 1 } : { opacity: 0 }))
-    gsap.set(line1Ref.current, { scaleY: 0, opacity: 0, y: 100 })
-    gsap.set(line2Ref.current, { scaleY: 0, opacity: 0, y: -100 })
-
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: valuesRef.current,
-        start: 'top top',
-        end: isMobile ? '+=75%' : '+=120%',
-        scrub: 1,
-        pin: true,
-        anticipatePin: 1,
-        fastScrollEnd: true,
-      },
-    })
-
-    tl.to(
-      cakeTopRef.current,
-      {
-        y: -5,
-        ease: 'easeInOutQuad',
-        duration: 0.8,
-      },
-      0
-    )
-
-    tl.to(
-      cakeBotRef.current,
-      {
-        y: 5,
-        ease: 'easeInOutQuad',
-        duration: 0.8,
-      },
-      0
-    )
-
-    tl.to(
-      title1Ref.current,
-      {
-        y: 0,
-        ease: 'easeInOutCubic',
-        duration: 0.8,
-      },
-      0
-    )
-
-    tl.to(
-      title3Ref.current,
-      {
-        y: 0,
-        ease: 'easeInOutCubic',
-        duration: 0.8,
-      },
-      0
-    )
-
-    tl.to(
-      dot1Ref.current,
-      {
-        y: 0,
-        ease: 'easeInOutQuart',
-        duration: 0.8,
-      },
-      0
-    )
-
-    tl.to(
-      dot3Ref.current,
-      {
-        y: 0,
-        ease: 'easeInOutQuart',
-        duration: 0.8,
-      },
-      0
-    )
-
-    tl.to(
-      line1Ref.current,
-      {
-        y: 0,
-        scaleY: isMobile ? 0 : 1,
-        opacity: isMobile ? 0 : 1,
-        ease: 'easeInOutQuad',
-        duration: 0.8,
-      },
-      0
-    )
-
-    tl.to(
-      line2Ref.current,
-      {
-        y: 0,
-        scaleY: isMobile ? 0 : 1,
-        opacity: isMobile ? 0 : 1,
-        ease: 'easeInOutQuad',
-        duration: 0.8,
-      },
-      0
-    )
-
-    fadeDescRefs.forEach(ref => {
-      tl.to(
-        ref.current,
-        {
-          opacity: 1,
-          ease: 'easeInOutQuad',
-          duration: 0.6,
-        },
-        1
-      )
-    })
-
-    // Cleanup on unmount
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill())
-    }
-  }, [fadeDescRefs])
+  const [activeImage, setActiveImage] = useState(null)
 
   return (
     <OuterContainer id="values" ref={valuesRef}>
-      <Title>Our Values</Title>
+      <Title>Our Main Values</Title>
+      <Subtitle>Select a card to read more</Subtitle>
       <ValuesContainer>
-        <ColumnContainer>
-          <ExpandedCakeImage
-            ref={cakeTopRef}
-            src="/assets/images/cake_top.svg"
-            alt="Cake Top Layer"
-            style={{ zIndex: 3 }}
-          />
-          <ExpandedCakeImage
-            ref={cakeMidRef}
-            src="/assets/images/cake_mid.svg"
-            alt="Cake Middle Layer"
-            style={{ zIndex: 2 }}
-          />
-          <ExpandedCakeImage
-            ref={cakeBotRef}
-            src="/assets/images/cake_bottom.svg"
-            alt="Cake Bottom Layer"
-            style={{ zIndex: 1 }}
-          />
-        </ColumnContainer>
-        <ColumnContainer>
-          <ValuesList>
-            <ValueItem>
-              <DotLineContainer>
-                <Dot ref={dot1Ref} />
-                <Line1 ref={line1Ref} />
-              </DotLineContainer>
-              <ValueContent>
-                <ValueTitle ref={title1Ref}>Build Confidence</ValueTitle>
-                <ValueDescription ref={fadeDescRefs[0]}>
-                  Develop career-ready skills, fight impostor syndrome, and create an invaluable support network with
-                  friends, mentors, and sponsors. Regardless of your background, you bring a unique and important
-                  perspective to tech. Like how there is always a treat for everyone, there is always a place for you in
-                  tech—a space where everyone belongs.
-                </ValueDescription>
-              </ValueContent>
-            </ValueItem>
-            <ValueItem>
-              <DotLineContainer>
-                <Dot />
-                <Line2 ref={line2Ref} />
-              </DotLineContainer>
-              <ValueContent>
-                <ValueTitle>Learn Together</ValueTitle>
-                <ValueDescription ref={fadeDescRefs[1]}>
-                  Whether you have never coded before, or you dream in assembly, challenge yourself to create something
-                  meaningful! Learn new skills at our workshops and apply them to fresh and creative projects!
-                  Regardless of your project&apos;s completion at the end of the weekend, take pride in the knowledge
-                  gained or the courage to try something new. It&apos;s time to rise to the occasion because it&apos;s
-                  always sweet to learn more!
-                </ValueDescription>
-              </ValueContent>
-            </ValueItem>
-            <ValueItem>
-              <DotLineContainer>
-                <Dot ref={dot3Ref} />
-              </DotLineContainer>
-              <ValueContent>
-                <ValueTitle ref={title3Ref}>Explore in a Safe Space</ValueTitle>
-                <ValueDescription ref={fadeDescRefs[2]}>
-                  Discover a community of like-minded, creative, and passionate individuals. Form lasting bonds, share
-                  experiences, and create memories in an environment free from judgment, where all gender identities and
-                  expressions are respected. We&apos;re all here unified under one cause—to strive for better
-                  representation in tech!
-                </ValueDescription>
-              </ValueContent>
-            </ValueItem>
-          </ValuesList>
-        </ColumnContainer>
+        <BuildConfidence onClick={() => setActiveImage(activeImage === 'build_confidence' ? null : 'build_confidence')}>
+          <CardInner $flipped={activeImage === 'build_confidence'}>
+            <CardFace src="/assets/images/values/build_confidence.png" alt="Build Confidence" />
+            <CardBack src="/assets/images/values/build_confidence_text.png" alt="Build Confidence Text" />
+          </CardInner>
+        </BuildConfidence>
+        <LearnTogether onClick={() => setActiveImage(activeImage === 'learn_together' ? null : 'learn_together')}>
+          <CardInner $flipped={activeImage === 'learn_together'}>
+            <CardFace src="/assets/images/values/learn_together.png" alt="Learn Together" />
+            <CardBack src="/assets/images/values/learn_together_text.png" alt="Learn Together Text" />
+          </CardInner>
+        </LearnTogether>
+        <ExploreInASafeSpace
+          onClick={() => setActiveImage(activeImage === 'explore_in_a_safe_space' ? null : 'explore_in_a_safe_space')}
+        >
+          <CardInner $flipped={activeImage === 'explore_in_a_safe_space'}>
+            <CardFace src="/assets/images/values/explore_in_a_safe_space.png" alt="Explore In A Safe Space" />
+            <CardBack src="/assets/images/values/explore_in_a_safe_space_text.png" alt="Explore In A Safe Space Text" />
+          </CardInner>
+        </ExploreInASafeSpace>
       </ValuesContainer>
     </OuterContainer>
   )
