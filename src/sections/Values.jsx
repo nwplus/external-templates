@@ -111,7 +111,7 @@ const Title = styled.p`
 
 const Subtitle = styled.p`
   font-color: #000000;
-  font-family: 'Bree Serif';
+  font-family: 'Quicksand', sans-serif;
   font-style: italic;
   text-align: center;
   display: flex;

@@ -21,120 +21,15 @@ const DraggableImage = styled.img`
   cursor: grab;
 `
 
-const PolaroidBase = styled(DraggableImage)`
+const Photo = styled(DraggableImage)`
   z-index: 5;
   width: calc(100vw * (375 / 1920));
 `
 
-const BreadBase = styled(DraggableImage)`
-  width: calc(100vw * (155 / 1920));
-  z-index: 15;
-`
-
-const BreadOne = styled(BreadBase)`
-  top: calc(100vw * (60 / 1920));
-  left: calc(100vw * (505 / 1920));
-
-  ${p => p.theme.mediaQueries.mobile} {
-    width: calc(100vw * (80 / 393));
-    top: calc(100vw * (200 / 1286));
-    left: calc(100vw * (135 / 393));
-  }
-`
-
-const BreadTwo = styled(BreadBase)`
-  width: calc(100vw * (100 / 1920));
-  top: calc(100vw * (600 / 1920));
-  left: calc(100vw * (925 / 1920));
-  z-index: 15;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    width: calc(100vw * (80 / 393));
-    top: calc(100vw * (580 / 393));
-    left: calc(100vw * (290 / 393));
-  }
-`
-
-const BreadThree = styled(BreadBase)`
-  width: calc(100vw * (105 / 1920));
-  top: calc(100vw * (200 / 1920));
-  left: calc(100vw * (1130 / 1920));
-  z-index: 15;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    width: calc(100vw * (65 / 393));
-    top: calc(100vw * (560 / 393));
-    left: calc(100vw * (60 / 393));
-  }
-`
-
-const Croissant = styled(DraggableImage)`
-  width: calc(100vw * (280 / 1920));
-  top: calc(100vw * (470 / 1920));
-  left: calc(100vw * (1330 / 1920));
-  z-index: 15;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    width: calc(100vw * (130 / 393));
-    top: calc(100vw * (795 / 393));
-    left: calc(100vw * (80 / 393));
-    z-index: 15;
-  }
-`
-
-const PolaroidSelfie = styled(PolaroidBase)`
-  top: calc(100vw * (450 / 1920));
-  left: calc(100vw * (80 / 1920));
-
-  ${p => p.theme.mediaQueries.mobile} {
-    width: calc(100vw * (240 / 393));
-    top: calc(100vw * (980 / 1286));
-    left: calc(100vw * (0 / 393));
-  }
-`
-
-const PolaroidCeremony = styled(PolaroidBase)`
-  top: calc(100vw * (580 / 1920));
-  left: calc(100vw * (720 / 1920));
-  z-index: 6;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    width: calc(100vw * (220 / 393));
-    top: calc(100vw * (350 / 393));
-    left: calc(100vw * (170 / 393));
-  }
-`
-
-const PolaroidPanel = styled(PolaroidBase)`
-  width: calc(100vw * (400 / 1920));
-  top: calc(100vw * (200 / 1920));
-  left: calc(100vw * (930 / 1920));
-  z-index: 14;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    width: calc(100vw * (270 / 393));
-    top: calc(100vw * (830 / 393));
-    left: calc(100vw * (-20 / 393));
-  }
-`
-
-const PolaroidHeart = styled(PolaroidBase)`
-  width: calc(100vw * (320 / 1920));
-  top: calc(100vw * (500 / 1920));
-  left: calc(100vw * (1040 / 1920));
-  z-index: 7;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    width: calc(100vw * (215 / 393));
-    top: calc(100vw * (570 / 393));
-    left: calc(100vw * (-28 / 393));
-  }
-`
-
-const PolaroidWinners = styled(PolaroidBase)`
-  width: calc(100vw * (360 / 1920));
-  top: calc(100vw * (80 / 1920));
-  left: calc(100vw * (1240 / 1920));
+const SelfiePhoto = styled(Photo)`
+  width: calc(100vw * (250 / 1920));
+  top: calc(100vw * (10 / 1920));
+  left: calc(100vw * (1440 / 1920));
   z-index: 8;
 
   ${p => p.theme.mediaQueries.mobile} {
@@ -145,25 +40,23 @@ const PolaroidWinners = styled(PolaroidBase)`
   }
 `
 
-const PolaroidMerch = styled(PolaroidBase)`
-  width: calc(100vw * (350 / 1920));
-  top: calc(100vw * (320 / 1920));
-  left: calc(100vw * (1450 / 1920));
-  z-index: 9;
+const OpeningPhoto = styled(Photo)`
+  width: calc(100vw * (220 / 1920));
+  top: calc(100vw * (725 / 1920));
+  left: calc(100vw * (775 / 1920));
+  z-index: 6;
 
   ${p => p.theme.mediaQueries.mobile} {
     width: calc(100vw * (220 / 393));
-    top: calc(100vw * (985 / 393));
-    left: calc(100vw * (-5 / 393));
-    z-index: 14;
-    rotate: -28deg;
+    top: calc(100vw * (350 / 393));
+    left: calc(100vw * (170 / 393));
   }
 `
 
-const PolaroidAtrium = styled(PolaroidBase)`
+const PanelPhoto = styled(Photo)`
   width: calc(100vw * (400 / 1920));
-  top: calc(100vw * (600 / 1920));
-  left: calc(100vw * (1280 / 1920));
+  top: calc(100vw * (750 / 1920));
+  left: calc(100vw * (1440 / 1920));
   z-index: 10;
 
   ${p => p.theme.mediaQueries.mobile} {
@@ -173,27 +66,76 @@ const PolaroidAtrium = styled(PolaroidBase)`
   }
 `
 
-const Nugget = styled(DraggableImage)`
-  width: calc(100vw * (300 / 1920));
-  top: calc(100vw * (720 / 1920));
-  left: calc(100vw * (1600 / 1920));
-  z-index: 15;
+const HeartPhoto = styled(Photo)`
+  width: calc(100vw * (200 / 1920));
+  top: calc(100vw * (400 / 1920));
+  left: calc(100vw * (250 / 1920));
+  z-index: 8;
+`
+
+const WinnersPhoto = styled(Photo)`
+  width: calc(100vw * (350 / 1920));
+  top: calc(100vw * (20 / 1920));
+  left: calc(100vw * (700 / 1920));
+  z-index: 8;
 
   ${p => p.theme.mediaQueries.mobile} {
-    width: calc(100vw * (180 / 393));
-    top: calc(100vw * (1050 / 393));
-    left: calc(100vw * (210 / 393));
+    width: calc(100vw * (240 / 393));
+    top: calc(100vw * (800 / 393));
+    left: calc(100vw * (200 / 393));
+    z-index: 11;
+  }
+`
+
+const JudgingPhoto = styled(Photo)`
+  width: calc(100vw * (250 / 1920));
+  top: calc(100vw * (750 / 1920));
+  left: calc(100vw * (1125 / 1920));
+  z-index: 10;
+`
+
+const AtriumPhoto = styled(Photo)`
+  width: calc(100vw * (300 / 1920));
+  top: calc(100vw * (0 / 1920));
+  left: calc(100vw * (1100 / 1920));
+  z-index: 8;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (240 / 393));
+    top: calc(100vw * (800 / 393));
+    left: calc(100vw * (200 / 393));
+    z-index: 11;
+  }
+`
+
+const SmilePhoto = styled(Photo)`
+  width: calc(100vw * (350 / 1920));
+  top: calc(100vw * (750 / 1920));
+  left: calc(100vw * (300 / 1920));
+  z-index: 12;
+`
+
+const BoothingPhoto = styled(Photo)`
+  width: calc(100vw * (250 / 1920));
+  top: calc(100vw * (400 / 1920));
+  left: calc(100vw * (1440 / 1920));
+  z-index: 10;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (280 / 393));
+    top: calc(100vw * (605 / 393));
+    left: calc(100vw * (150 / 393));
   }
 `
 
 const VideoComponent = styled.div`
   ${absolutePositionCSS}
   ${noDragCSS}
-  width: calc(100vw * (830 / 1920));
+  width: calc(100vw * (550 / 1920));
   cursor: grab;
   z-index: 2;
-  top: calc(100vw * (100 / 1920));
-  left: calc(100vw * (180 / 1920));
+  top: calc(100vw * (300 / 1920));
+  left: calc(100vw * (500 / 1920));
 
   ${p => p.theme.mediaQueries.mobile} {
     width: calc(100vw * (350 / 393));
@@ -215,15 +157,12 @@ const VideoComponent = styled.div`
 
   .video-container {
     ${noDragCSS}
-    width: calc(100vw * (760 / 1920));
-    height: calc(100vw * (446 / 1920));
-    padding: calc(100vw * (12 / 1920));
-    transform: rotate(-2.303deg);
-    background: #151515;
+    width: calc(100vw * (420 / 1920));
+    height: calc(100vw * (280 / 1920));
+    background: #000000;
     position: absolute;
-    top: calc(100vw * (40 / 1920));
-    left: calc(100vw * (35 / 1920));
-    overflow: visible;
+    top: calc(100vw * (47 / 1920));
+    left: calc(100vw * (64 / 1920));
 
     ${p => p.theme.mediaQueries.mobile} {
       width: calc(100vw * (315 / 393));
@@ -237,7 +176,7 @@ const VideoComponent = styled.div`
 
 // Styled Components
 const GalleryContainer = styled.div`
-  background-color: #fef9f3;
+  background-color: #c1e8fe;
   width: 100vw;
   aspect-ratio: 1920 / 1142;
   height: auto;
@@ -249,55 +188,22 @@ const GalleryContainer = styled.div`
   }
 `
 
-const InfiniteScrollWrapper = styled.div`
-  width: 100vw;
-  overflow: hidden;
-  white-space: nowrap;
-  position: relative;
-  z-index: 20;
-  background-color: #fef9f3;
-  padding: calc(100vw * (5 / 1920)) 0;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    padding: calc(100vw * (8 / 393)) 0;
-  }
-`
-
-const InfiniteScrollText = styled.div`
-  display: inline-block;
-  gap: 2rem;
-  color: #98bcec;
-  font-family: Gloock;
-  font-size: 48px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  white-space: nowrap;
-  animation: scrollText 70s linear infinite;
-  position: relative;
-  top: 0;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    top: calc(100vw * (0 / 393));
-  }
-
-  @keyframes scrollText {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(-50%);
-    }
-  }
-`
-
 const RecapContainer = styled.div`
-  background-color: #b8d2f3;
+  background-color: #c1e8fe;
   width: 100vw;
   aspect-ratio: 1920 / 1054;
   height: auto;
   position: absolute;
   bottom: 0;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('/assets/images/gallery/flying_cards.svg') left 100% / auto 80% no-repeat;
+    z-index: 0;
+    pointer-events: none;
+  }
 
   ${p => p.theme.mediaQueries.mobile} {
     aspect-ratio: 393 / 1286;
@@ -308,32 +214,82 @@ const RecapContainer = styled.div`
 const VideoWrapper = styled.div`
   position: absolute;
   width: 100%;
-  height: calc(100vw * (400 / 1920));
+  height: calc(100vw * (399 / 1920));
   top: 0;
   left: 0;
 `
 
-const TooltipText = styled.div`
-  color: #fff;
+const Title = styled.div`
+  color: #000000;
   text-align: center;
-  font-feature-settings: 'liga' off;
-  font-family: 'Poppins';
-  font-size: calc(100vw * (24 / 1920));
-  font-style: normal;
-  font-weight: 600;
-  line-height: 23px;
+  font-family: 'Bree Serif';
+  font-size: calc(100vw * (65 / 1920));
+  font-weight: 300;
+  line-height: calc(100vw * (28 / 1920));
   letter-spacing: -0.15px;
   position: absolute;
   top: calc(100vw * (40 / 1920));
-  left: calc(100vw * (1350 / 1920));
+  left: calc(100vw * (120 / 1920));
 `
 
-const TooltipImg = styled.img`
+const Subtitle = styled.div`
+  color: #000000;
+  text-align: left;
+  font-family: 'Quicksand', sans-serif;
+  font-size: calc(100vw * (22 / 1920));
+  line-height: calc(100vw * (28 / 1920));
+
   position: absolute;
-  height: auto;
-  width: calc(100vw * (30 / 1920));
-  top: calc(100vw * (30 / 1920));
-  left: calc(100vw * (1295 / 1920));
+  top: calc(100vw * (150 / 1920));
+  left: calc(100vw * (120 / 1920));
+  display: inline-flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  white-space: normal;
+  max-width: calc(100vw * (460 / 1920));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: calc(100vw * (16 / 393));
+    top: calc(100vw * (92 / 393));
+    left: calc(100vw * (20 / 393));
+    gap: calc(100vw * (6 / 393));
+    max-width: calc(100vw * (320 / 393));
+
+    &::before {
+      width: calc(100vw * (22 / 393));
+      height: calc(100vw * (22 / 393));
+    }
+  }
+`
+
+const Tooltip = styled.div`
+  color: #000000;
+  text-align: center;
+  font-family: 'Quicksand', sans-serif;
+  font-size: calc(100vw * (18 / 1920));
+  line-height: calc(100vw * (18 / 1920));
+  position: absolute;
+  top: calc(100vw * (105 / 1920));
+  left: calc(100vw * (120 / 1920));
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: calc(100vw * (8 / 1920));
+
+  &::before {
+    content: '';
+    width: calc(100vw * (20 / 1920));
+    height: calc(100vw * (20 / 1920));
+    background: url('/assets/images/values/pointer.svg') center/contain no-repeat;
+    flex: 0 0 auto;
+  }
+
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: calc(100vw * (14 / 393));
+    top: calc(100vw * (70 / 393));
+    left: calc(100vw * (20 / 393));
+  }
 `
 
 // Component
@@ -355,19 +311,8 @@ const Gallery = () => {
       {isMobile ? (
         // Mobile view
         <>
-          <InfiniteScrollWrapper>
-            <InfiniteScrollText>
-              2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025
-              Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded
-              2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025
-              Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded
-              2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025
-              Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded
-              2025 Unfolded 2025 Unfolded 2025 Unfolded
-            </InfiniteScrollText>
-          </InfiniteScrollWrapper>
           <RecapContainer>
-            <BreadOne src="assets/images/gallery/bread_one.png" />
+            {/* <BreadOne src="assets/images/gallery/bread_one.png" />
             <BreadTwo src="assets/images/gallery/bread_two.png" />
             <BreadThree src="assets/images/gallery/bread_three.png" />
             <Croissant src="assets/images/gallery/croissant.png" />
@@ -395,64 +340,44 @@ const Gallery = () => {
                   />
                 </div>
               </VideoComponent>
-            </VideoWrapper>
+            </VideoWrapper> */}
           </RecapContainer>
         </>
       ) : (
         // Desktop view
         <>
-          <InfiniteScrollWrapper>
-            <InfiniteScrollText>
-              2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025
-              Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded
-              2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025
-              Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded
-              2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025
-              Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded 2025 Unfolded
-              2025 Unfolded 2025 Unfolded 2025 Unfolded
-            </InfiniteScrollText>
-          </InfiniteScrollWrapper>
           <RecapContainer>
             <Draggable bounds="parent">
-              <BreadOne src="assets/images/gallery/bread_one.svg" />
+              <SelfiePhoto src="assets/images/gallery/selfie.png" />
             </Draggable>
             <Draggable bounds="parent">
-              <BreadTwo src="assets/images/gallery/bread_two.svg" />
+              <OpeningPhoto src="assets/images/gallery/opening.png" />
             </Draggable>
             <Draggable bounds="parent">
-              <BreadThree src="assets/images/gallery/bread_three.svg" />
+              <PanelPhoto src="assets/images/gallery/panel.png" />
             </Draggable>
             <Draggable bounds="parent">
-              <Croissant src="assets/images/gallery/croissant.svg" />
+              <HeartPhoto src="assets/images/gallery/heart.png" />
             </Draggable>
             <Draggable bounds="parent">
-              <PolaroidSelfie src="assets/images/gallery/polaroid_selfie.png" />
+              <WinnersPhoto src="assets/images/gallery/winners.png" />
             </Draggable>
             <Draggable bounds="parent">
-              <PolaroidCeremony src="assets/images/gallery/polaroid_ceremony.png" />
+              <JudgingPhoto src="assets/images/gallery/judging.png" />
             </Draggable>
             <Draggable bounds="parent">
-              <PolaroidPanel src="assets/images/gallery/polaroid_panel.png" />
+              <AtriumPhoto src="assets/images/gallery/atrium.png" />
             </Draggable>
             <Draggable bounds="parent">
-              <PolaroidHeart src="assets/images/gallery/polaroid_heart.png" />
+              <SmilePhoto src="assets/images/gallery/smile.png" />
             </Draggable>
             <Draggable bounds="parent">
-              <PolaroidWinners src="assets/images/gallery/polaroid_winners.png" />
-            </Draggable>
-            <Draggable bounds="parent">
-              <PolaroidMerch src="assets/images/gallery/polaroid_merch.png" />
-            </Draggable>
-            <Draggable bounds="parent">
-              <PolaroidAtrium src="assets/images/gallery/polaroid_atrium.png" />
-            </Draggable>
-            <Draggable bounds="parent">
-              <Nugget src="assets/images/gallery/nugget.svg" />
+              <BoothingPhoto src="assets/images/gallery/boothing.png" />
             </Draggable>
             <VideoWrapper>
               <Draggable bounds="parent">
                 <VideoComponent>
-                  <img className="polaroid" src="assets/images/gallery/video_polaroid.svg" alt="video polaroid" />
+                  <img className="polaroid" src="assets/images/gallery/video_frame.png" alt="video polaroid" />
                   <div className="video-container">
                     <iframe
                       width="100%"
@@ -462,14 +387,14 @@ const Gallery = () => {
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
                       referrerPolicy="strict-origin-when-cross-origin"
                       allowFullScreen
-                      style={{ position: 'absolute', top: 0, left: 0 }}
                     />
                   </div>
                 </VideoComponent>
               </Draggable>
             </VideoWrapper>
-            <TooltipImg src="assets/images/gallery/tooltip.svg" />
-            <TooltipText>Drag the polaroids and magnets as you like.</TooltipText>
+            <Title>2025 Unfolded</Title>
+            <Tooltip>Drag the frames around as you like!</Tooltip>
+            <Subtitle>Relive some of our favourite memories from last year!</Subtitle>
           </RecapContainer>
         </>
       )}
