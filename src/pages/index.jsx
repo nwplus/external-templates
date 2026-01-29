@@ -68,40 +68,6 @@ import NavigationBar from '../components/NavigationBar'
 //   height: auto;
 // `
 
-const PageWrapper = styled.div`
-  position: relative;
-  width: 100%;
-  min-height: calc(100vw * (16955 / 1512));
-  overflow-x: hidden;
-  overflow-y: visible;
-`
-
-const BackgroundLayer = styled.div`
-  position: absolute;
-  top: -4vw;
-  left: 0;
-  width: 100%;
-  height: calc(100vw * (16955 / 1512));
-  background-image: url('/assets/images/hero_background.svg');
-  background-size: 100% auto;
-  background-position: top center;
-  background-repeat: no-repeat;
-  z-index: 0;
-  pointer-events: none;
-  overflow: hidden;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    background-image: url('/assets/images/mobile_bg.svg');
-  }
-`
-
-const ContentLayer = styled.div`
-  position: relative;
-  z-index: 1;
-  overflow-x: hidden;
-  overflow-y: visible;
-`
-
 export default function Index({ title }) {
   return (
     <>
@@ -123,21 +89,16 @@ export default function Index({ title }) {
 
       {/* <LoadingScreen /> */}
 
-      <PageWrapper>
-        <BackgroundLayer aria-hidden="true" />
-        <ContentLayer>
-          <NavigationBar />
-          <Hero />
-          <About />
-          <Values />
-          <Stats />
-          <Projects />
-          <Gallery />
-          <Faq />
-          <Sponsors />
-          <Footer />
-        </ContentLayer>
-      </PageWrapper>
+      <NavigationBar />
+      <Hero />
+      <About />
+      <Values />
+      <Stats />
+      <Gallery />
+      <Projects />
+      <Faq />
+      <Sponsors />
+      <Footer />
     </>
   )
 }

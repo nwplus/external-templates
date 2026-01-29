@@ -444,17 +444,17 @@ const profiles = [
     color: '#91213a',
     title: 'Engagement Coordinator',
     social: '',
-  }
+  },
 ]
 
 const StyledTitle = styled(Header3)`
-  font-family: 'Poppins';
+  font-family: 'Space Grotesk';
   color: #ffffff;
-  font-size: calc(100vw * (40 / 1920));
+  font-size: calc(100vw * (42 / 1512));
   font-weight: 600;
-  margin-bottom: calc(100vw * (5 / 1280));
+  margin-bottom: calc(100vw * (-10 / 1280));
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: 1.1rem;
+    font-size: calc(100vw * (12 / 393));
   }
 `
 
@@ -498,8 +498,8 @@ const ProfileImage = styled.img`
   transition: all 100ms ease-in-out;
   opacity: 0.69;
   ${p => p.theme.mediaQueries.mobile} {
-    width: 50px;
-    height: 50px;
+    width: calc(100vw * (30 / 393));
+    width: calc(100vw * (30 / 393));
   }
 `
 
