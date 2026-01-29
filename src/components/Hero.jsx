@@ -177,7 +177,7 @@ const Hero = () => (
         </LogoContainer>
         <HeroTitle>Western Canada&apos;s largest hackathon celebrating underrepresented genders in tech.</HeroTitle>
         <HeroDescription>
-          March 7-8, 2026 (Event dates are subject to change) | In-person (Location TBD)
+          March 7-8, 2026 | In-person @ Life Sciences Institute
         </HeroDescription>
         <ButtonContainer>
           <Button className="primary" href="https://forms.gle/ad67KnGec2yxvZwh9" target="_blank">
