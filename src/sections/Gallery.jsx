@@ -33,9 +33,9 @@ const SelfiePhoto = styled(Photo)`
   z-index: 8;
 
   ${p => p.theme.mediaQueries.mobile} {
-    width: calc(100vw * (240 / 393));
-    top: calc(100vw * (800 / 393));
-    left: calc(100vw * (200 / 393));
+    width: calc(100vw * (180 / 393));
+    top: calc(100vw * (1100 / 393));
+    left: calc(100vw * (10 / 393));
     z-index: 11;
   }
 `
@@ -47,9 +47,9 @@ const OpeningPhoto = styled(Photo)`
   z-index: 6;
 
   ${p => p.theme.mediaQueries.mobile} {
-    width: calc(100vw * (220 / 393));
-    top: calc(100vw * (350 / 393));
-    left: calc(100vw * (170 / 393));
+    width: calc(100vw * (160 / 393));
+    top: calc(100vw * (1400 / 393));
+    left: calc(100vw * (10 / 393));
   }
 `
 
@@ -61,8 +61,8 @@ const PanelPhoto = styled(Photo)`
 
   ${p => p.theme.mediaQueries.mobile} {
     width: calc(100vw * (280 / 393));
-    top: calc(100vw * (605 / 393));
-    left: calc(100vw * (150 / 393));
+    top: calc(100vw * (1600 / 393));
+    left: calc(100vw * (0 / 393));
   }
 `
 
@@ -71,6 +71,12 @@ const HeartPhoto = styled(Photo)`
   top: calc(100vw * (400 / 1920));
   left: calc(100vw * (250 / 1920));
   z-index: 8;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (160 / 393));
+    top: calc(100vw * (650 / 393));
+    left: calc(100vw * (220 / 393));
+  }
 `
 
 const WinnersPhoto = styled(Photo)`
@@ -80,8 +86,8 @@ const WinnersPhoto = styled(Photo)`
   z-index: 8;
 
   ${p => p.theme.mediaQueries.mobile} {
-    width: calc(100vw * (240 / 393));
-    top: calc(100vw * (800 / 393));
+    width: calc(100vw * (260 / 393));
+    top: calc(100vw * (450 / 393));
     left: calc(100vw * (200 / 393));
     z-index: 11;
   }
@@ -92,6 +98,12 @@ const JudgingPhoto = styled(Photo)`
   top: calc(100vw * (750 / 1920));
   left: calc(100vw * (1125 / 1920));
   z-index: 10;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (180 / 393));
+    top: calc(100vw * (1375 / 393));
+    left: calc(100vw * (190 / 393));
+  }
 `
 
 const AtriumPhoto = styled(Photo)`
@@ -101,9 +113,9 @@ const AtriumPhoto = styled(Photo)`
   z-index: 8;
 
   ${p => p.theme.mediaQueries.mobile} {
-    width: calc(100vw * (240 / 393));
-    top: calc(100vw * (800 / 393));
-    left: calc(100vw * (200 / 393));
+    width: calc(100vw * (160 / 393));
+    top: calc(100vw * (450 / 393));
+    left: calc(100vw * (20 / 393));
     z-index: 11;
   }
 `
@@ -113,6 +125,12 @@ const SmilePhoto = styled(Photo)`
   top: calc(100vw * (750 / 1920));
   left: calc(100vw * (300 / 1920));
   z-index: 12;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (220 / 393));
+    top: calc(100vw * (1200 / 393));
+    left: calc(100vw * (200 / 393));
+  }
 `
 
 const BoothingPhoto = styled(Photo)`
@@ -122,9 +140,22 @@ const BoothingPhoto = styled(Photo)`
   z-index: 10;
 
   ${p => p.theme.mediaQueries.mobile} {
-    width: calc(100vw * (280 / 393));
-    top: calc(100vw * (605 / 393));
-    left: calc(100vw * (150 / 393));
+    width: calc(100vw * (170 / 393));
+    top: calc(100vw * (925 / 393));
+    left: calc(100vw * (220 / 393));
+  }
+`
+
+const CatPhoto = styled(Photo)`
+  width: calc(100vw * (200 / 1920));
+  top: calc(100vw * (600 / 1920));
+  left: calc(100vw * (50 / 1920));
+  z-index: 7;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (200 / 393));
+    top: calc(100vw * (850 / 393));
+    left: calc(100vw * (10 / 393));
   }
 `
 
@@ -139,7 +170,7 @@ const VideoComponent = styled.div`
 
   ${p => p.theme.mediaQueries.mobile} {
     width: calc(100vw * (350 / 393));
-    top: calc(100vw * (100 / 393));
+    top: calc(100vw * (160 / 393));
     left: calc(100vw * (20 / 393));
   }
 
@@ -159,16 +190,15 @@ const VideoComponent = styled.div`
     ${noDragCSS}
     width: calc(100vw * (420 / 1920));
     height: calc(100vw * (280 / 1920));
-    background: #000000;
     position: absolute;
     top: calc(100vw * (47 / 1920));
     left: calc(100vw * (64 / 1920));
 
     ${p => p.theme.mediaQueries.mobile} {
-      width: calc(100vw * (315 / 393));
-      height: calc(100vw * (180 / 393));
-      top: calc(100vw * (18 / 393));
-      left: calc(100vw * (17 / 393));
+      width: calc(100vw * (280 / 393));
+      height: calc(100vw * (192 / 393));
+      top: calc(100vw * (23 / 393));
+      left: calc(100vw * (34 / 393));
       padding: calc(100vw * (8 / 393));
     }
   }
@@ -183,7 +213,7 @@ const GalleryContainer = styled.div`
   position: relative;
 
   ${p => p.theme.mediaQueries.mobile} {
-    aspect-ratio: 393 / 1286;
+    aspect-ratio: 393 / 1750;
     top: 0;
   }
 `
@@ -206,8 +236,12 @@ const RecapContainer = styled.div`
   }
 
   ${p => p.theme.mediaQueries.mobile} {
-    aspect-ratio: 393 / 1286;
+    aspect-ratio: 393 / 1750;
     top: calc(100vw * (50 / 487));
+  }
+
+  &::before {
+    content: none;
   }
 `
 
@@ -217,6 +251,10 @@ const VideoWrapper = styled.div`
   height: calc(100vw * (399 / 1920));
   top: 0;
   left: 0;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    height: 90%;
+  }
 `
 
 const Title = styled.div`
@@ -230,6 +268,12 @@ const Title = styled.div`
   position: absolute;
   top: calc(100vw * (40 / 1920));
   left: calc(100vw * (120 / 1920));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: calc(100vw * (38 / 393));
+    top: calc(100vw * (20 / 393));
+    left: calc(100vw * (90 / 393));
+  }
 `
 
 const Subtitle = styled.div`
@@ -249,16 +293,14 @@ const Subtitle = styled.div`
   max-width: calc(100vw * (460 / 1920));
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: calc(100vw * (16 / 393));
+    font-size: calc(100vw * (15 / 393));
+    line-height: calc(100vw * (18 / 393));
     top: calc(100vw * (92 / 393));
-    left: calc(100vw * (20 / 393));
-    gap: calc(100vw * (6 / 393));
-    max-width: calc(100vw * (320 / 393));
-
-    &::before {
-      width: calc(100vw * (22 / 393));
-      height: calc(100vw * (22 / 393));
-    }
+    left: calc(100vw * (65 / 393));
+    max-width: calc(100vw * (280 / 393));
+    text-align: center;
+    justify-content: center;
+    align-items: center;
   }
 `
 
@@ -286,9 +328,14 @@ const Tooltip = styled.div`
   }
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: calc(100vw * (14 / 393));
-    top: calc(100vw * (70 / 393));
-    left: calc(100vw * (20 / 393));
+    font-size: calc(100vw * (15 / 393));
+    top: calc(100vw * (60 / 393));
+    left: calc(100vw * (75 / 393));
+
+    &::before {
+      width: calc(100vw * (15 / 393));
+      height: calc(100vw * (15 / 393));
+    }
   }
 `
 
@@ -312,35 +359,57 @@ const Gallery = () => {
         // Mobile view
         <>
           <RecapContainer>
-            {/* <BreadOne src="assets/images/gallery/bread_one.png" />
-            <BreadTwo src="assets/images/gallery/bread_two.png" />
-            <BreadThree src="assets/images/gallery/bread_three.png" />
-            <Croissant src="assets/images/gallery/croissant.png" />
-            <PolaroidSelfie src="assets/images/gallery/polaroid_selfie.png" />
-            <PolaroidCeremony src="assets/images/gallery/polaroid_ceremony.png" />
-            <PolaroidPanel src="assets/images/gallery/polaroid_panel.png" />
-            <PolaroidHeart src="assets/images/gallery/polaroid_heart.png" />
-            <PolaroidWinners src="assets/images/gallery/polaroid_winners.png" />
-            <PolaroidMerch src="assets/images/gallery/polaroid_merch.png" />
-            <PolaroidAtrium src="assets/images/gallery/polaroid_atrium.png" />
-            <Nugget src="assets/images/gallery/nugget.png" />
+            <Draggable bounds="parent">
+              <SelfiePhoto src="assets/images/gallery/selfie.png" />
+            </Draggable>
+            <Draggable bounds="parent">
+              <OpeningPhoto src="assets/images/gallery/opening.png" />
+            </Draggable>
+            <Draggable bounds="parent">
+              <PanelPhoto src="assets/images/gallery/panel.png" />
+            </Draggable>
+            <Draggable bounds="parent">
+              <HeartPhoto src="assets/images/gallery/heart.png" />
+            </Draggable>
+            <Draggable bounds="parent">
+              <WinnersPhoto src="assets/images/gallery/winners.png" />
+            </Draggable>
+            <Draggable bounds="parent">
+              <JudgingPhoto src="assets/images/gallery/judging.png" />
+            </Draggable>
+            <Draggable bounds="parent">
+              <AtriumPhoto src="assets/images/gallery/atrium.png" />
+            </Draggable>
+            <Draggable bounds="parent">
+              <SmilePhoto src="assets/images/gallery/smile.png" />
+            </Draggable>
+            <Draggable bounds="parent">
+              <BoothingPhoto src="assets/images/gallery/boothing.png" />
+            </Draggable>
+            <Draggable bounds="parent">
+              <CatPhoto src="assets/images/gallery/cat.svg" />
+            </Draggable>
             <VideoWrapper>
-              <VideoComponent>
-                <img className="polaroid" src="assets/images/gallery/video_polaroid.svg" alt="video polaroid" />
-                <div className="video-container">
-                  <iframe
-                    width="100%"
-                    height="100%"
-                    src="https://www.youtube.com/embed/-N_ds4fcVL4?si=-4UJKRL8_e2l3u-P"
-                    title="YouTube video player"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-                    referrerPolicy="strict-origin-when-cross-origin"
-                    allowFullScreen
-                    style={{ position: 'absolute', top: 0, left: 0 }}
-                  />
-                </div>
-              </VideoComponent>
-            </VideoWrapper> */}
+              <Draggable bounds="parent">
+                <VideoComponent>
+                  <img className="polaroid" src="assets/images/gallery/video_frame.png" alt="video polaroid" />
+                  <div className="video-container">
+                    <iframe
+                      width="100%"
+                      height="100%"
+                      src="https://www.youtube.com/embed/BxPQXbN2VCM?si=ykZ_PHVmU85np54n"
+                      title="YouTube video player"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                      referrerPolicy="strict-origin-when-cross-origin"
+                      allowFullScreen
+                    />
+                  </div>
+                </VideoComponent>
+              </Draggable>
+            </VideoWrapper>
+            <Title>2025 Unfolded</Title>
+            <Tooltip>Drag the frames around as you like!</Tooltip>
+            <Subtitle>Relive some of our favourite memories from last year!</Subtitle>
           </RecapContainer>
         </>
       ) : (
