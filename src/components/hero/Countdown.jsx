@@ -7,7 +7,7 @@ const CountdownContainer = styled.div`
   height: calc(100vw * (200 / 1080));
   width: fit-content;
   ${p => p.theme.mediaQueries.mobile} {
-    top: calc(100vh * (55 / 393));
+    top: calc(100vw * (110 / 393));
     left: calc(100vw * (-70 / 393));
     height: calc(100vw * (170 / 393));
   }
@@ -105,42 +105,42 @@ const useCountdown = targetDate => {
 }
 
 const Countdown = () => {
-  const [days, hours, minutes] = useCountdown(TARGET_DATE);
-  const totalHours = days * 24 + hours;
-  const showDays = totalHours >= HOURS_CUTOFF_FOR_DAYS_DISPLAY;
+  const [days, hours, minutes] = useCountdown(TARGET_DATE)
+  const totalHours = days * 24 + hours
+  const showDays = totalHours >= HOURS_CUTOFF_FOR_DAYS_DISPLAY
 
   return (
     <CountdownContainer>
-        <ClockImg src="/assets/images/watchDeer.svg" alt="Watch deer" />
-        <ClockFacePositioner>
-          <CountdownGrid>
-            {showDays ? (
-              <>
-                <TimeUnit>
-                  <Digits>{String(days).padStart(2, '0')}d</Digits>
-                </TimeUnit>
-                <TimeUnit>
-                  <Digits>:</Digits>
-                </TimeUnit>
-                <TimeUnit>
-                  <Digits>{String(hours).padStart(2, '0')}h</Digits>
-                </TimeUnit>
-              </>
-            ) : (
-              <>
-                <TimeUnit>
-                  <Digits>{String(totalHours).padStart(2, '0')}h</Digits>
-                </TimeUnit>
-                <TimeUnit>
-                  <Digits>:</Digits>
-                </TimeUnit>
-                <TimeUnit>
-                  <Digits>{String(minutes).padStart(2, '0')}m</Digits>
-                </TimeUnit>
-              </>
-            )}
-          </CountdownGrid>
-        </ClockFacePositioner>
+      <ClockImg src="/assets/images/watchDeer.svg" alt="Watch deer" />
+      <ClockFacePositioner>
+        <CountdownGrid>
+          {showDays ? (
+            <>
+              <TimeUnit>
+                <Digits>{String(days).padStart(2, '0')}d</Digits>
+              </TimeUnit>
+              <TimeUnit>
+                <Digits>:</Digits>
+              </TimeUnit>
+              <TimeUnit>
+                <Digits>{String(hours).padStart(2, '0')}h</Digits>
+              </TimeUnit>
+            </>
+          ) : (
+            <>
+              <TimeUnit>
+                <Digits>{String(totalHours).padStart(2, '0')}h</Digits>
+              </TimeUnit>
+              <TimeUnit>
+                <Digits>:</Digits>
+              </TimeUnit>
+              <TimeUnit>
+                <Digits>{String(minutes).padStart(2, '0')}m</Digits>
+              </TimeUnit>
+            </>
+          )}
+        </CountdownGrid>
+      </ClockFacePositioner>
     </CountdownContainer>
   )
 }

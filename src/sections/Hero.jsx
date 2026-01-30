@@ -14,7 +14,7 @@ const HeroContainer = styled.div`
   --hero-padding-top: calc(100vw * (100 / 1080));
 
   position: relative;
-  min-height: 100vh;
+  min-height: 115vh;
   padding: var(--hero-padding);
   padding-top: var(--hero-padding-top);
   display: flex;
@@ -27,6 +27,8 @@ const HeroContainer = styled.div`
     --hero-padding-top: calc(100vw * (0 / 1080));
     flex-direction: column;
     text-align: center;
+    min-height: 210vw;
+    z-index: 2;
   }
 `
 
@@ -62,7 +64,7 @@ const HeroTitle = styled.h1`
 `
 
 const HeroHighlight = styled.span`
-  color: #E64B73;
+  color: #e64b73;
 `
 
 const HeroDescription = styled.p`
@@ -150,7 +152,7 @@ const TextLink = styled.a`
   cursor: pointer;
 
   &:hover {
-    color: #DDB142;
+    color: #ddb142;
   }
 `
 
@@ -170,22 +172,22 @@ const Button = styled.a`
 
   transition: all 0.3s ease;
   &.primary {
-    background-color: #254CB7;
+    background-color: #254cb7;
     color: white;
     border: none;
 
     &:hover {
-      background-color: #3F71FF;
+      background-color: #3f71ff;
     }
   }
 
   &.secondary {
-    background-color: #C63359;
+    background-color: #c63359;
     color: white;
     border: none;
 
     &:hover {
-      background-color: #F25C93;
+      background-color: #f25c93;
     }
   }
 
@@ -197,7 +199,7 @@ const Button = styled.a`
   }
 `
 
-const HeroImageContainer = styled.div`
+const HeroForegroundContainer = styled.div`
   position: absolute;
   top: var(--hero-padding-top);
   right: var(--hero-padding);
@@ -211,12 +213,25 @@ const HeroImageContainer = styled.div`
   }
 `
 
-const HeroBackground = styled.img`
+const HeroBackground = styled.div`
   position: absolute;
-  top: 0;
-  left: 0;  
+  top: -310px;
+  left: 0;
   width: 100vw;
-  z-index: -1;
+  height: calc(100vw * (1900 / 1512));
+  z-index: 2;
+
+  background-image: url('/assets/images/hero_background.svg');
+  background-size: 100% auto;
+  background-position: top center;
+  background-repeat: no-repeat;
+  pointer-events: none;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    top: -45px;
+    height: calc(100vw * (900 / 393));
+    background-image: url('/assets/images/hero_background_mobile.svg');
+  }
 `
 
 const LINKS = {
@@ -228,60 +243,55 @@ const LINKS = {
 }
 
 const Hero = () => (
-  <div id="home">
-    <HeroContainer>
-      <HeroContent>
-        <LogoContainer>
-          <img src="/assets/images/cmdfLogoBlack.svg" alt="cmd-f Logo" width="90%" height="100%" />
-        </LogoContainer>
-        <HeroTitle>Western Canada&apos;s largest hackathon <HeroHighlight>celebrating underrepresented genders in tech</HeroHighlight></HeroTitle>
-        <HeroDescriptionContainer>
-          <HeroDescriptionDesktop>
-            March 7-8, 2026 (Subject to change) | In-person (Location TBD)
-          </HeroDescriptionDesktop>
-          <HeroDescriptionMobile>
-            March 7-8, 2026 (Subject to change)
-          </HeroDescriptionMobile>
-          <HeroDescriptionMobile>
-            In-person (Location TBD)
-          </HeroDescriptionMobile>
-        </HeroDescriptionContainer>
+  <HeroContainer>
+    <HeroBackground />
+    <HeroContent>
+      <LogoContainer>
+        <img src="/assets/images/cmdfLogoBlack.svg" alt="cmd-f Logo" width="90%" height="100%" />
+      </LogoContainer>
+      <HeroTitle>
+        Western Canada&apos;s largest hackathon{' '}
+        <HeroHighlight>celebrating underrepresented genders in tech</HeroHighlight>
+      </HeroTitle>
+      <HeroDescriptionContainer>
+        <HeroDescriptionDesktop>March 7-8, 2026 (Subject to change) | In-person (Location TBD)</HeroDescriptionDesktop>
+        <HeroDescriptionMobile>March 7-8, 2026 (Subject to change)</HeroDescriptionMobile>
+        <HeroDescriptionMobile>In-person (Location TBD)</HeroDescriptionMobile>
+      </HeroDescriptionContainer>
 
-        <ButtonContainer>
-          <Button className="primary" href={LINKS.mentor} target="_blank" rel="noopener noreferrer">
-            Become a Mentor
-          </Button>
-          <Button className="secondary" href={LINKS.apply} target="_blank" rel="noopener noreferrer">
-            Apply Now
-          </Button>
-        </ButtonContainer>
+      <ButtonContainer>
+        <Button className="primary" href={LINKS.mentor} target="_blank" rel="noopener noreferrer">
+          Become a Mentor
+        </Button>
+        <Button className="secondary" href={LINKS.apply} target="_blank" rel="noopener noreferrer">
+          Apply Now
+        </Button>
+      </ButtonContainer>
 
-        <SponsorText>
-          Become a{' '}
-          <TextLink href={LINKS.sponsor} target="_blank" rel="noopener noreferrer">
-            Sponsor
-          </TextLink>
-          {', '}
-          <TextLink href={LINKS.volunteer} target="_blank" rel="noopener noreferrer">
-            Volunteer
-          </TextLink>
-          {' or '}
-          <TextLink href={LINKS.photographer} target="_blank" rel="noopener noreferrer">
-            Photographer
-          </TextLink>
-        </SponsorText>
+      <SponsorText>
+        Become a{' '}
+        <TextLink href={LINKS.sponsor} target="_blank" rel="noopener noreferrer">
+          Sponsor
+        </TextLink>
+        {', '}
+        <TextLink href={LINKS.volunteer} target="_blank" rel="noopener noreferrer">
+          Volunteer
+        </TextLink>
+        {' or '}
+        <TextLink href={LINKS.photographer} target="_blank" rel="noopener noreferrer">
+          Photographer
+        </TextLink>
+      </SponsorText>
 
-        <Countdown />
-      </HeroContent>
-
-      <HeroImageContainer>
-        <Smoke />
-        <MidRightShrooms />
-        <CheshireCat />
-        <ToastButterflies />
-      </HeroImageContainer>
-    </HeroContainer>
-  </div>
+      <Countdown />
+    </HeroContent>
+    <HeroForegroundContainer>
+      <Smoke />
+      <MidRightShrooms />
+      <CheshireCat />
+      <ToastButterflies />
+    </HeroForegroundContainer>
+  </HeroContainer>
 )
 
 export default Hero

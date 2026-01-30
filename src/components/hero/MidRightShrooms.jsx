@@ -7,6 +7,7 @@ const ShroomsContainer = styled.div`
 
   ${p => p.theme.mediaQueries.mobile} {
     top: calc(100vw * (450 / 393));
+    z-index: 3;
   }
 `
 

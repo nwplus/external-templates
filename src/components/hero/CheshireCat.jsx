@@ -10,6 +10,7 @@ const CatContainer = styled.div`
   ${p => p.theme.mediaQueries.mobile} {
     top: calc(100vw * (415 / 393));
     right: calc(100% * (-60 / 1920));
+    z-index: 4;
   }
 `
 
@@ -100,8 +101,7 @@ function calculateIrisPosition(mouseX, mouseY, eye, irisRadius) {
   const uy = localY / localDist
 
   // Parameter t gives distance from center to ellipse boundary along ray
-  const t =
-    1 / Math.sqrt((ux * ux) / (constraintRx * constraintRx) + (uy * uy) / (constraintRy * constraintRy))
+  const t = 1 / Math.sqrt((ux * ux) / (constraintRx * constraintRx) + (uy * uy) / (constraintRy * constraintRy))
 
   // Step 5: Position iris - follow mouse up to boundary, then clamp
   let irisLocalX
@@ -155,7 +155,7 @@ const CheshireCat = () => {
       return () => {}
     }
 
-    const handleMouseMove = (e) => {
+    const handleMouseMove = e => {
       if (!containerRef.current) return
       const imgElement = containerRef.current.querySelector('img')
       if (!imgElement) return

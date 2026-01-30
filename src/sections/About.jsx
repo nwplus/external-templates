@@ -5,15 +5,28 @@ const AboutContainer = styled.div`
   aspect-ratio: 1512/2500;
   height: 100%;
   position: relative;
-  z-index: 1;
   display: flex;
   align-items: center;
   width: 100%;
-  background: linear-gradient(to bottom, #f9ed9bcc 0%, #e8b6b7cc 30%, #b0bed5cc 60%, #78c7f3cc 75%);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #f9ed9bcc 0%, #e8b6b7cc 30%, #b0bed5cc 60%, #78c7f3cc 75%);
+    z-index: 1;
+
+    ${p => p.theme.mediaQueries.mobile} {
+      background: linear-gradient(to bottom, #f9ed9bcc 0%, #e8b6b7cc 50%, #b0bed5cc 80%, #78c7f3cc 100%);
+    }
+  }
 
   ${p => p.theme.mediaQueries.mobile} {
     aspect-ratio: 393 / 2500;
-    background: linear-gradient(to bottom, #f9ed9bcc 0%, #e8b6b7cc 50%, #b0bed5cc 80%, #78c7f3cc 100%);
+    z-index: 1;
   }
 `
 
