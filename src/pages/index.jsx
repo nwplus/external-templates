@@ -10,6 +10,7 @@ import Stats from 'src/sections/Stats'
 import Gallery from 'src/sections/Gallery'
 import Projects from 'src/sections/Projects'
 import Values from 'src/sections/Values'
+import Workshops from 'src/sections/Workshops'
 // import LoadingScreen from '../components/LoadingScreen'
 
 import Hero from '../components/Hero'
@@ -94,6 +95,7 @@ export default function Index({ title }) {
       <About />
       <Values />
       <Stats />
+      <Workshops />
       <Gallery />
       <Projects />
       <Faq />
