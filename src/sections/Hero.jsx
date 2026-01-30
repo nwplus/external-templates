@@ -14,7 +14,7 @@ const HeroContainer = styled.div`
   --hero-padding-top: calc(100vw * (100 / 1080));
 
   position: relative;
-  min-height: 115vh;
+  min-height: calc(100vw * (830 / 1080));
   padding: var(--hero-padding);
   padding-top: var(--hero-padding-top);
   display: flex;
@@ -36,7 +36,6 @@ const HeroContent = styled.div`
   position: relative;
   z-index: 10;
   flex: 2;
-  max-width: 800px;
   width: fit-content;
   ${p => p.theme.mediaQueries.mobile} {
     text-align: center;
@@ -121,7 +120,6 @@ const ButtonContainer = styled.div`
 const LogoContainer = styled.div`
   margin-bottom: 1vh;
   width: calc(100vw * (143 / 1920));
-  max-width: 143px;
   height: auto;
 
   ${p => p.theme.mediaQueries.mobile} {
@@ -130,8 +128,8 @@ const LogoContainer = styled.div`
   }
 `
 const SponsorText = styled.p`
-  margin-top: 1rem;
-  margin-bottom: 3rem;
+  margin-top: calc(100vw * (20 / 1920));
+  margin-bottom: calc(100vw * (60 / 1920));
   font-family: 'Quicksand';
   font-size: calc(100vw * (18 / 1920));
   font-weight: 600;
@@ -215,7 +213,7 @@ const HeroForegroundContainer = styled.div`
 
 const HeroBackground = styled.div`
   position: absolute;
-  top: -310px;
+  top: calc(100vw * (-380 / 1512));
   left: 0;
   width: 100vw;
   height: calc(100vw * (1900 / 1512));

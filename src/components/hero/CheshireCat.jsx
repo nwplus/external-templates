@@ -6,11 +6,11 @@ const CatContainer = styled.div`
   position: absolute;
   top: calc(100% * (80 / 1080));
   right: calc(100% * (-50 / 1920));
+  z-index: 4;
 
   ${p => p.theme.mediaQueries.mobile} {
     top: calc(100vw * (415 / 393));
     right: calc(100% * (-60 / 1920));
-    z-index: 4;
   }
 `
 
