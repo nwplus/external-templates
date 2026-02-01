@@ -11,6 +11,7 @@ import Gallery from 'src/sections/Gallery'
 import Projects from 'src/sections/Projects'
 import Values from 'src/sections/Values'
 import Workshops from 'src/sections/Workshops'
+import Testimonials from 'src/sections/Testimonials'
 // import LoadingScreen from '../components/LoadingScreen'
 
 import Hero from '../components/Hero'
@@ -98,6 +99,7 @@ export default function Index({ title }) {
       <Workshops />
       <Gallery />
       <Projects />
+      <Testimonials />
       <Faq />
       <Sponsors />
       <Footer />

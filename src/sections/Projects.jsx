@@ -13,7 +13,6 @@ const ProjectsContainer = styled.div`
   width: 100%;
   height: 100%;
   background: #c1e8fe;
-  overflow: hidden;
 
   ${p => p.theme.mediaQueries.mobile} {
     aspect-ratio: 393 / 850;
