@@ -219,16 +219,16 @@ const Testimonials = () => {
 
       <TextContainer>
         <Info>
-          <OvalImage src={selectedHacker['imageUrl']} />
+          <OvalImage src={selectedHacker.imageUrl} />
           <PersonalInfo>
             <NameRole>
-              <Name>{selectedHacker['name']}</Name>
-              <Role>{selectedHacker['role']}</Role>
+              <Name>{selectedHacker.name}</Name>
+              <Role>{selectedHacker.role}</Role>
             </NameRole>
-            <Pronouns>{selectedHacker['pronouns']}</Pronouns>
+            <Pronouns>{selectedHacker.pronouns}</Pronouns>
           </PersonalInfo>
         </Info>
-        <Text>{selectedHacker['description']}</Text>
+        <Text>{selectedHacker.description}</Text>
       </TextContainer>
     </TestimonialsContainer>
   )
