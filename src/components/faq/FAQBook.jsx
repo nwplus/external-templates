@@ -10,12 +10,11 @@ const BookContainer = styled.div`
   align-items: center;
   justify-content: center;
 
-  ${p => p.theme.mediaQueries.tablet} {
-    width: calc(100vw * (500 / 834));
-  }
-
   ${p => p.theme.mediaQueries.mobile} {
-    width: calc(100vw * (350 / 393));
+    left: -65vw;
+    bottom: calc(100vw * (90 / 393));
+    width: 160vw;
+    justify-content: flex-end;
   }
 `
 
@@ -43,6 +42,10 @@ const RightPageSvg = styled.img`
   left: 0;
   width: 92%;
   height: auto;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    top: calc(100vw * (12 / 393));
+  }
 `
 
 const TabContainer = styled.div`
@@ -52,6 +55,11 @@ const TabContainer = styled.div`
   display: flex;
   gap: calc(100vw * (20 / 1920));
   margin-bottom: 4%;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    top: calc(100vw * (-10 / 393));
+    right: calc(100vw * (30 / 393));
+  }
 `
 
 const Tab = styled.button`
@@ -72,6 +80,12 @@ const Tab = styled.button`
 
   &:hover {
     background-color: ${p => (p.$active ? '#fefbf3' : '#E8EDF5')};
+  }
+
+  ${p => p.theme.mediaQueries.mobile} {
+    padding: calc(100vw * (8 / 393)) calc(100vw * (10 / 393));
+    border-radius: calc(100vw * (6 / 393)) calc(100vw * (6 / 393)) 0 0;
+    font-size: calc(100vw * (12 / 393));
   }
 `
 
@@ -113,7 +127,7 @@ const FadeOverlay = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
-  height: 20%;
+  height: 2rem;
   background: linear-gradient(to bottom, transparent, #fefbf3);
   pointer-events: none;
 `
@@ -142,6 +156,10 @@ const QuestionHeader = styled.button`
   &:hover {
     opacity: 0.7;
   }
+
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: calc(100vw * (12 / 393));
+  }
 `
 
 const QuestionText = styled.span`
@@ -154,6 +172,10 @@ const PlusIcon = styled.span`
   font-weight: 300;
   transition: transform 0.3s ease;
   transform: ${p => (p.$expanded ? 'rotate(45deg)' : 'rotate(0)')};
+
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: calc(100vw * (16 / 393));
+  }
 `
 
 const AnswerContainer = styled.div`
@@ -170,6 +192,10 @@ const AnswerText = styled.p`
   color: #555;
   line-height: 1.5;
   margin: 0;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    font-size: calc(100vw * (12 / 393));
+  }
 `
 
 const FAQBook = ({ faqData }) => {

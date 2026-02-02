@@ -6,17 +6,13 @@ import FAQBook from '@components/faq/FAQBook'
 const FaqContainer = styled.div`
   position: relative;
   width: 100vw;
-  aspect-ratio: 1280 / 886;
+  height: calc(100vw * (1051 / 1512));
   display: flex;
   align-items: center;
   justify-content: center;
 
-  ${p => p.theme.mediaQueries.tablet} {
-    aspect-ratio: 834 / 1049;
-  }
-
   ${p => p.theme.mediaQueries.mobile} {
-    aspect-ratio: 393 / 1112;
+    height: calc(100vw * (600 / 393));
   }
 `
 
@@ -27,16 +23,46 @@ const FaqBackground = styled.img`
   width: 100vw;
   z-index: 1;
   pointer-events: none;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    top: 0;
+    content: url('/assets/images/faq/mobile_background.svg');
+    height: calc(100vw * (555 / 393));
+  }
 `
 
 const FaqForeground = styled.img`
   position: absolute;
-  bottom: -calc(100vw * (10 / 393));
+  bottom: calc(100vw * (-150 / 1080));
   left: 0;
   width: 100%;
   object-fit: cover;
   z-index: 10;
   pointer-events: none;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    content: url('/assets/images/faq/mobile_foreground.svg');
+    bottom: calc(100vw * (-10 / 393));
+  }
+`
+
+const FaqTitle = styled.h2`
+  position: absolute;
+  top: calc(100vw * (20 / 393));
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  font-family: 'Baskervville', serif;
+  font-style: italic;
+  font-size: calc(100vw * (40 / 393));
+  font-weight: 500;
+  color: #fefbf3;
+  margin: 0;
+  display: none;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    display: block;
+  }
 `
 
 const Faq = () => {
@@ -54,8 +80,7 @@ const Faq = () => {
   }
 
   useEffect(async () => {
-    const data = await fireDb.getCollection('cmd-f2025', 'FAQ')
-    console.log(data)
+    const data = await fireDb.getCollection('cmd-f2026', 'FAQ')
     const processedData = processData(data)
     setFaqData(processedData)
   }, [])
@@ -63,6 +88,7 @@ const Faq = () => {
   return (
     <FaqContainer id="faq">
       <FaqBackground src="/assets/images/faq/faq_background.svg" alt="" />
+      <FaqTitle>FAQs</FaqTitle>
       <FAQBook faqData={faqData} />
       <FaqForeground src="/assets/images/faq/faq_foreground.svg" alt="" />
     </FaqContainer>
