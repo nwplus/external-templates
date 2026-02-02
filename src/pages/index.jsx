@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import React from 'react'
 import GlobalStyles from '@styles/global'
-// import styled from 'styled-components'
 import Sponsors from 'src/sections/Sponsors'
 import Faq from 'src/sections/FAQ'
 import Footer from 'src/sections/Footer'
@@ -14,7 +13,7 @@ import Workshops from 'src/sections/Workshops'
 import Testimonials from 'src/sections/Testimonials'
 // import LoadingScreen from '../components/LoadingScreen'
 
-import Hero from '../components/Hero'
+import Hero from '../sections/Hero'
 import NavigationBar from '../components/NavigationBar'
 
 // const HalfContainer = styled.div`

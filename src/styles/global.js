@@ -11,14 +11,16 @@ export const GlobalStyles = createGlobalStyle`
   }
   html, body {
     overflow-x: hidden;
-    background: #F0E9D7;
+    overflow-y: auto;
+    background: #c1e9ff;
   }
   body {
     position: relative;
+    overflow-y: hidden;
   }
   
   :root {
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Quicksand', sans-serif;
 
       @media (min-width: 768px) {
       }

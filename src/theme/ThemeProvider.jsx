@@ -11,15 +11,15 @@ export const SCREEN_BREAKPOINTS = {
 
 const base = {
   colors: {
-    background: '#3B7580',
-    text: '#4F2F22',
+    background: '#c1e9ff',
+    text: '#000000',
     primary: '#1D4CBD',
     light: '#D0FFFF',
     mobileBackground: 'linear-gradient(to bottom, rgba(81, 152, 158, 1), rgba(5, 20, 57, 1))',
   },
   typography: {
-    headerFont: 'Gloock Regular',
-    bodyFont: 'Poppins Regular',
+    headerFont: 'Bree Serif',
+    bodyFont: 'Quicksand',
     header1: {
       fontWeight: 900,
       fontSize: '3.5rem',

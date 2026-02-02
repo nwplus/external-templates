@@ -1,0 +1,90 @@
+import styled, { keyframes } from 'styled-components'
+
+const floatUp = keyframes`
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  20% {
+    transform: translate(-6px, -8px) rotate(-2deg);
+  }
+  40% {
+    transform: translate(4px, -12px) rotate(3deg);
+  }
+  60% {
+    transform: translate(-3px, -6px) rotate(-1deg);
+  }
+  80% {
+    transform: translate(5px, -10px) rotate(2deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+`
+
+const floatLeft = keyframes`
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(8px, -5px) rotate(3deg);
+  }
+  50% {
+    transform: translate(-4px, -10px) rotate(-2deg);
+  }
+  75% {
+    transform: translate(6px, -3px) rotate(1deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+`
+
+const ButterfliesContainer = styled.div`
+  position: absolute;
+  top: calc(100% * (60 / 1080));
+  right: calc(100% * (520 / 1920));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    top: calc(100% * (100 / 1080));
+    // right: calc(100% * (520 / 1920));
+  }
+`
+
+const ButterflyImg = styled.img`
+  position: absolute;
+  pointer-events: none;
+`
+
+const ButterflyUp = styled(ButterflyImg)`
+  width: calc(100vw * (120 / 1920));
+  top: calc(100vw * (150 / 1920));
+  right: 0;
+  animation: ${floatUp} 9s ease-in-out infinite;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (50 / 393));
+    top: calc(100vw * (280 / 393));
+    right: calc(100vh * (-40 / 393));
+  }
+`
+
+const ButterflyLeft = styled(ButterflyImg)`
+  width: calc(100vw * (90 / 1920));
+  top: 0;
+  right: calc(100vw * (150 / 1920));
+  animation: ${floatLeft} 11s ease-in-out infinite;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (40 / 393));
+    right: calc(100vw * (200 / 393));
+  }
+`
+
+const ToastButterflies = () => (
+  <ButterfliesContainer>
+    <ButterflyUp src="/assets/images/butterfly_up.svg" alt="A toast butterfly flying up" />
+    <ButterflyLeft src="/assets/images/butterfly_left.svg" alt="A toast butterfly flying left" />
+  </ButterfliesContainer>
+)
+
+export default ToastButterflies
