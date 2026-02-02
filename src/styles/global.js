@@ -16,6 +16,7 @@ export const GlobalStyles = createGlobalStyle`
   }
   body {
     position: relative;
+    overflow-y: hidden;
   }
   
   :root {
