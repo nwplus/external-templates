@@ -10,6 +10,8 @@ const FaqContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: -15vw;
+  z-index: 20;
 
   ${p => p.theme.mediaQueries.mobile} {
     height: calc(100vw * (600 / 393));
@@ -39,7 +41,7 @@ const FaqForeground = styled.img`
   left: 0;
   width: 100%;
   object-fit: cover;
-  z-index: 10;
+  z-index: 30;
   pointer-events: none;
   user-select: none;
   -webkit-user-drag: none;

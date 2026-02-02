@@ -91,6 +91,7 @@ const BlueTeacup = styled.img`
   position: absolute;
   top: calc(100vw * (680 / 1512));
   left: calc(100vw * (80 / 1512));
+  z-index: 21;
 
   ${p => p.theme.mediaQueries.mobile} {
     width: calc(100vw * (1000 / 393));
@@ -491,7 +492,7 @@ const Testimonials = () => {
     <TestimonialsContainer id="testimonials">
       {!isMobile ? (
         <>
-          <Background src="/assets/images/testimonials/testimonials_faq_bg.svg" />
+          <Background src="/assets/images/testimonials/testimonials_bg.svg" />
           <RedTeaSpill src="/assets/images/testimonials/red_tea_spill.svg" />
           <GreenTeacup src="/assets/images/testimonials/green_teacup.svg" />
           <GreenTeacupLeaf src="/assets/images/testimonials/green_teacup_leaf.svg" />

@@ -5,7 +5,7 @@ const BookContainer = styled.div`
   position: absolute;
   bottom: calc(100vw * (50 / 1280));
   width: calc(100vw * (900 / 1280));
-  z-index: 6;
+  z-index: 20;
   display: flex;
   align-items: center;
   justify-content: center;
