@@ -373,8 +373,8 @@ const YellowTeacupMobile = styled.img`
   ${p => p.theme.mediaQueries.mobile} {
     display: block;
     position: absolute;
-    width: calc(100vw * (190 / 393));
-    top: calc(100vw * (705 / 393));
+    width: calc(100vw * (220 / 393));
+    top: calc(100vw * (670 / 393));
     left: calc(100vw * (190 / 393));
     z-index: 2;
   }
