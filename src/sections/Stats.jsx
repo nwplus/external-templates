@@ -18,7 +18,6 @@ const StatsContainer = styled.div`
 
   ${p => p.theme.mediaQueries.mobile} {
     aspect-ratio: 393/2300;
-    margin-bottom: 4rem;
   }
 `
 

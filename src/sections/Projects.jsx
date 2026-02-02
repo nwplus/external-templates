@@ -13,7 +13,6 @@ const ProjectsContainer = styled.div`
   width: 100%;
   height: 100%;
   background: #c1e8fe;
-  overflow: hidden;
 
   ${p => p.theme.mediaQueries.mobile} {
     aspect-ratio: 393 / 850;
@@ -331,9 +330,9 @@ const LightGround = styled.img`
 
 const Bushes = styled.img`
   width: calc(100vw * (1600 / 1512));
-  z-index: 5;
+  z-index: 45;
   position: absolute;
-  bottom: calc(100vw * (-200 / 1512));
+  bottom: calc(100vw * (-170 / 1512));
 
   ${p => p.theme.mediaQueries.mobile} {
     width: calc(100vw * (600 / 393));
