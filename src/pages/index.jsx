@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import React from 'react'
 import GlobalStyles from '@styles/global'
-import styled from 'styled-components'
 import Sponsors from 'src/sections/Sponsors'
 import Faq from 'src/sections/FAQ'
 import Footer from 'src/sections/Footer'

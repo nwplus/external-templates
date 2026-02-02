@@ -2,8 +2,8 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 import styled from 'styled-components'
 import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
 import { scale } from '@utilities/format'
-import { BANNER_OFFSET } from '../constants/measurements'
 import fireDb from '@utilities/firebase'
+import { BANNER_OFFSET } from '../constants/measurements'
 
 const NavBarContainer = styled.nav`
   position: ${p => (p.stayAtTop ? 'absolute' : 'fixed')};
