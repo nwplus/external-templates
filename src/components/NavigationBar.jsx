@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
 import { scale } from '@utilities/format'
 import { BANNER_OFFSET } from '../constants/measurements'
+import fireDb from '@utilities/firebase'
 
 const NavBarContainer = styled.nav`
   position: ${p => (p.stayAtTop ? 'absolute' : 'fixed')};
@@ -350,6 +351,7 @@ const NavigationBar = ({ bannerExists }) => {
   const [visibility, setVisibility] = useState('visible')
   const [opacity, setOpacity] = useState('1')
   const [stayAtTop, setStayAtTop] = useState(bannerExists)
+  const [portalOpen, setPortalOpen] = useState(null)
   const lastScrollRef = useRef(0)
 
   const handleResize = useCallback(() => {
@@ -390,6 +392,15 @@ const NavigationBar = ({ bannerExists }) => {
     }
   }, [handleScroll, handleResize])
 
+  useEffect(() => {
+    const unsub = fireDb.subscribeToDocument('InternalWebsites', 'Portal', doc => {
+      setPortalOpen(!!doc?.portalLive?.['cmd-f'])
+    })
+    return () => {
+      if (typeof unsub === 'function') unsub()
+    }
+  }, [])
+
   if (showDropdown) {
     // Mobile version
     return (
@@ -413,7 +424,7 @@ const NavigationBar = ({ bannerExists }) => {
   // Only for desktop version
   return (
     <NavBarContainer visibility={visibility} opacity={opacity} stayAtTop={stayAtTop}>
-      <PortalButton portalOpen={null} />
+      <PortalButton portalOpen={portalOpen} />
       <NavGroupContainer>
         <NavTextContainer>
           <MenuList isMobile={false} />
