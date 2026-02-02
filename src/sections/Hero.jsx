@@ -252,9 +252,9 @@ const Hero = () => (
         <HeroHighlight>celebrating underrepresented genders in tech</HeroHighlight>
       </HeroTitle>
       <HeroDescriptionContainer>
-        <HeroDescriptionDesktop>March 7-8, 2026 (Subject to change) | In-person (Location TBD)</HeroDescriptionDesktop>
-        <HeroDescriptionMobile>March 7-8, 2026 (Subject to change)</HeroDescriptionMobile>
-        <HeroDescriptionMobile>In-person (Location TBD)</HeroDescriptionMobile>
+        <HeroDescriptionDesktop>March 8-9, 2026 | In-person at Life Sciences Institute</HeroDescriptionDesktop>
+        <HeroDescriptionMobile>March 7-8, 2026</HeroDescriptionMobile>
+        <HeroDescriptionMobile>In-person at Life Sciences Institute</HeroDescriptionMobile>
       </HeroDescriptionContainer>
 
       <ButtonContainer>
