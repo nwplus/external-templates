@@ -23,6 +23,8 @@ const FaqBackground = styled.img`
   width: 100vw;
   z-index: 1;
   pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
 
   ${p => p.theme.mediaQueries.mobile} {
     top: 0;
@@ -39,6 +41,8 @@ const FaqForeground = styled.img`
   object-fit: cover;
   z-index: 10;
   pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
 
   ${p => p.theme.mediaQueries.mobile} {
     content: url('/assets/images/faq/mobile_foreground.svg');
@@ -59,6 +63,7 @@ const FaqTitle = styled.h2`
   color: #fefbf3;
   margin: 0;
   display: none;
+  user-select: none;
 
   ${p => p.theme.mediaQueries.mobile} {
     display: block;

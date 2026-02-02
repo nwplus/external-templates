@@ -168,6 +168,11 @@ const Button = styled.a`
   font-weight: 500;
   cursor: pointer;
 
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+
   transition: all 0.3s ease;
   &.primary {
     background-color: #254cb7;

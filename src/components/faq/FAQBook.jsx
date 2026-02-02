@@ -22,6 +22,8 @@ const BookSvg = styled.img`
   width: 100%;
   height: auto;
   display: block;
+  user-select: none;
+  -webkit-user-drag: none;
 `
 
 const BookOverlay = styled.div`
@@ -42,6 +44,8 @@ const RightPageSvg = styled.img`
   left: 0;
   width: 92%;
   height: auto;
+  user-select: none;
+  -webkit-user-drag: none;
 
   ${p => p.theme.mediaQueries.mobile} {
     top: calc(100vw * (12 / 393));
@@ -77,7 +81,7 @@ const Tab = styled.button`
   transition: background-color 0.2s ease;
   white-space: nowrap;
   text-overflow: ellipsis;
-
+  user-select: none;
   &:hover {
     background-color: ${p => (p.$active ? '#fefbf3' : '#E8EDF5')};
   }
@@ -152,6 +156,7 @@ const QuestionHeader = styled.button`
   font-weight: 400;
   color: #333;
   transition: opacity 0.2s ease;
+  user-select: none;
 
   &:hover {
     opacity: 0.7;
@@ -215,7 +220,7 @@ const FAQBook = ({ faqData }) => {
 
   return (
     <BookContainer>
-      <BookSvg src="/assets/images/faq/faq_book.svg" alt="" />
+      <BookSvg src="/assets/images/faq/faq_book.svg" alt="" draggable={false} />
       <BookOverlay>
         <TabContainer>
           {categories.map(category => (
@@ -224,7 +229,7 @@ const FAQBook = ({ faqData }) => {
             </Tab>
           ))}
         </TabContainer>
-        <RightPageSvg src="/assets/images/faq/faq_page.svg" alt="" />
+        <RightPageSvg src="/assets/images/faq/faq_page.svg" alt="" draggable={false} />
         <ContentArea>
           <ScrollableContent>
             {currentFaqs.map(faq => (
