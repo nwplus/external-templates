@@ -16,6 +16,7 @@ const NavBarContainer = styled.nav`
   opacity: ${p => p.opacity};
   transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
   padding: calc(100vw * (40 / 1920)) calc(100vw * (160 / 1920));
+  gap: 2rem;
 
   ${p => p.theme.mediaQueries.mobile} {
     background: none;
@@ -74,15 +75,14 @@ const LinkText = styled.a`
 `
 
 const StyledLinkHeaders = styled.h3`
-  font-family: Poppins;
+  font-family: Hanken Grotesk, sans-serif;
   font-size: ${() => scale(1024, 1440, 12, 16)};
-  font-weight: 600;
+  font-weight: 800;
   line-height: 23px;
   letter-spacing: 0px;
   text-align: center;
 
   ${p => p.theme.mediaQueries.mobile} {
-    color: #4f2f22;
     font-size: 16px;
   }
 `
@@ -109,9 +109,9 @@ const DropDownContentContainer = styled.div`
 `
 
 const PortalButtonContainer = styled.div`
-  visibility: ${p => (p.portalOpen !== null ? 'visible' : 'hidden')};
-  opacity: ${p => (p.portalOpen !== null ? '1' : '0')};
-  transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+  display: ${p => (p.portalOpen ? 'block' : 'none')};
+  opacity: ${p => (p.portalOpen ? '1' : '0')};
+  transition: opacity 0.5s ease-in-out;
   user-select: none;
 `
 
@@ -121,13 +121,14 @@ const StyledPortalText = styled.div`
 
 const Button = styled.a`
   color: #f0e9d7;
-  background: #a6321e;
+  background: #4c9b7b;
   display: table;
   text-decoration: none;
   padding: 10px 21px;
   border-radius: 15px;
   font-weight: bold;
   font-size: ${() => scale(1024, 1440, 12, 16)};
+  font-family: Space Grotesk, sans-serif;
   white-space: nowrap;
   ${p => p.theme.mediaQueries.mobile} {
     right: 0;
@@ -135,7 +136,7 @@ const Button = styled.a`
 
   transition: all 0.3s ease;
   &:hover {
-    background: #456774;
+    background: #55ae8b;
   }
 
   // Removes the button if on mobile
@@ -412,6 +413,7 @@ const NavigationBar = ({ bannerExists }) => {
   // Only for desktop version
   return (
     <NavBarContainer visibility={visibility} opacity={opacity} stayAtTop={stayAtTop}>
+      <PortalButton portalOpen={null} />
       <NavGroupContainer>
         <NavTextContainer>
           <MenuList isMobile={false} />
@@ -419,7 +421,6 @@ const NavigationBar = ({ bannerExists }) => {
         {/* Make sure mobile (above) has the same portalOpen value */}
         <TrustBadge stayAtTop={stayAtTop} />
       </NavGroupContainer>
-      <PortalButton portalOpen />
       <HamburgerMenu src="/images/icons/menu.svg" alt="dropdown menu icon" onClick={() => setShowDropdown(true)} />
     </NavBarContainer>
   )

@@ -20,7 +20,7 @@ export const GlobalStyles = createGlobalStyle`
   }
   
   :root {
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Quicksand', sans-serif;
 
       @media (min-width: 768px) {
       }
