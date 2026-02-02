@@ -233,11 +233,11 @@ const HeroBackground = styled.div`
 `
 
 const LINKS = {
-  mentor: 'https://forms.gle/ad67KnGec2yxvZwh9',
-  apply: 'https://nwplus.io',
+  mentor: 'https://forms.gle/rk8swTSA5dHcrKuq5',
+  apply: 'https://portal.nwplus.io',
   sponsor: 'mailto:sponsorship@nwplus.io',
-  volunteer: 'mailto:info@nwplus.io',
-  photographer: 'mailto:info@nwplus.io',
+  volunteer: 'https://forms.gle/nQGvJJzcYsHaRRj87',
+  photographer: 'https://forms.gle/NqqjwHQfyv78mWkq6',
 }
 
 const Hero = () => (
@@ -252,7 +252,7 @@ const Hero = () => (
         <HeroHighlight>celebrating underrepresented genders in tech</HeroHighlight>
       </HeroTitle>
       <HeroDescriptionContainer>
-        <HeroDescriptionDesktop>March 8-9, 2026 | In-person at Life Sciences Institute</HeroDescriptionDesktop>
+        <HeroDescriptionDesktop>March 7-8, 2026 | In-person at Life Sciences Institute</HeroDescriptionDesktop>
         <HeroDescriptionMobile>March 7-8, 2026</HeroDescriptionMobile>
         <HeroDescriptionMobile>In-person at Life Sciences Institute</HeroDescriptionMobile>
       </HeroDescriptionContainer>
