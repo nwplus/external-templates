@@ -327,8 +327,8 @@ const MenuList = ({ isMobile, closeDropdown }) => (
     <Dropdown
       label="History"
       items={[
-        { name: 'Past Projects', href: '/#past-projects' },
         { name: 'Recap', href: '/#gallery' },
+        { name: 'Past Projects', href: '/#past-projects' },
       ]}
       isMobile={isMobile}
       closeDropdown={closeDropdown}

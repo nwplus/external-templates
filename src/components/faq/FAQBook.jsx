@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import ReactMarkdown from 'react-markdown'
 import styled from 'styled-components'
 
 const BookContainer = styled.div`
@@ -190,13 +191,52 @@ const AnswerContainer = styled.div`
   padding: ${p => (p.$expanded ? '2% 2%' : '0 2%')};
 `
 
-const AnswerText = styled.p`
+const AnswerText = styled.div`
   font-family: 'Quicksand', sans-serif;
   font-size: calc(100vw * (18 / 1920));
   font-weight: 400;
   color: #555;
   line-height: 1.5;
-  margin: 0;
+
+  p {
+    margin: 0 0 0.6em;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+
+  strong {
+    font-weight: 600;
+    color: #333;
+  }
+
+  em {
+    font-style: italic;
+  }
+
+  a {
+    color: #4a6cf7;
+    text-decoration: underline;
+  }
+
+  ul,
+  ol {
+    margin: 0.4em 0 0.6em 1.2em;
+    padding: 0;
+  }
+
+  li {
+    margin: 0.2em 0;
+  }
+
+  code {
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+    font-size: 0.9em;
+    background: rgba(0, 0, 0, 0.05);
+    padding: 0.1em 0.3em;
+    border-radius: 3px;
+  }
 
   ${p => p.theme.mediaQueries.mobile} {
     font-size: calc(100vw * (12 / 393));
@@ -239,7 +279,9 @@ const FAQBook = ({ faqData }) => {
                   <PlusIcon $expanded={expandedQuestion === faq.question}>+</PlusIcon>
                 </QuestionHeader>
                 <AnswerContainer $expanded={expandedQuestion === faq.question}>
-                  <AnswerText>{faq.answer}</AnswerText>
+                  <AnswerText>
+                    <ReactMarkdown>{faq.answer}</ReactMarkdown>
+                  </AnswerText>
                 </AnswerContainer>
               </QuestionItem>
             ))}
