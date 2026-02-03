@@ -77,9 +77,9 @@ const Description = styled.p`
 `
 
 const Divider = styled.img`
-  width: calc(100vw * (1010 / 1512));
+  width: calc(100vw * (1064 / 1512));
   position: absolute;
-  top: calc(100vw * (-305 / 1512));
+  top: calc(100vw * (-306 / 1512));
   left: calc(100vw * (-555 / 1512));
   z-index: 2;
 
@@ -89,7 +89,7 @@ const Divider = styled.img`
 `
 
 const LeftGround = styled.img`
-  width: calc(100vw * (950 / 1512));
+  width: calc(100vw * (1005 / 1512));
   position: absolute;
   top: calc(100vw * (-282 / 1512));
   left: calc(100vw * (-490 / 1512));
@@ -116,7 +116,7 @@ const UpperLeftText = styled.div`
   position: absolute;
   width: calc(100vw * (765 / 1512));
   top: calc(100vw * (-180 / 1512));
-  left: calc(100vw * (-400 / 1512));
+  left: calc(100vw * (-380 / 1512));
   z-index: 3;
   display: flex;
   flex-direction: column;
@@ -198,7 +198,7 @@ const CardOne = styled.img`
   position: absolute;
   width: calc(100vw * (50 / 1512));
   top: calc(100vw * (-100 / 1512));
-  left: calc(100vw * (500 / 1512));
+  left: calc(100vw * (540 / 1512));
   z-index: 1;
   transform: translateY(${p => p.$scroll * 0.1}px);
   will-change: transform;
