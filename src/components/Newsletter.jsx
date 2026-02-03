@@ -5,22 +5,20 @@ import axios from 'axios'
 const Container = styled.div`
   position: relative;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
   width: calc(100vw * (800 / 1512));
-  height: calc(100vw * (50 / 1512));
   // margin-top: calc(100vw * (25 / 1280));
   // margin-left: calc(100vw * (70 / 1280));
 
   ${p => p.theme.mediaQueries.mobile} {
     width: calc(100vw * (300 / 393));
-    height: calc(100vw * (20 / 393));
   }
 `
 
 const Input = styled.input`
   font-family: 'Space Grotesk';
-  width: 100%;
+  width: 80%;
   height: 100%;
   padding: calc(100vw * (4 / 1280)) calc(100vw * (16 / 1280));
   border-radius: calc(100vw * (10 / 1280));
@@ -39,16 +37,14 @@ const Input = styled.input`
 const Button = styled.button`
   font-family: 'Space Grotesk';
   position: absolute;
-  right: calc(100vw * (5 / 1280));
-  top: 50%;
+  right: calc(100vw * (50 / 1280));
+  top: calc(100vw * (-5 / 1280));
   width: calc(100vw * (72 / 1280));
-  height: calc(100vw * (26 / 1280));
-  height: 80%;
-  transform: translateY(-50%);
-  padding: calc(100vw * (3 / 1280)) calc(100vw * (8 / 1280));
+  height: calc(100vw * (50 / 1280));
+  padding: calc(100vw * (10 / 1280));
   background-color: #c63359;
   color: white;
-  border-radius: calc(100vw * (6 / 1280));
+  border-radius: calc(100vw * (20 / 1280));
   border: none;
   cursor: pointer;
   transition: background-color 0.2s ease;
@@ -60,10 +56,10 @@ const Button = styled.button`
   }
 
   ${p => p.theme.mediaQueries.mobile} {
-    right: calc(100vw * (-1 / 393));
-
+    right: calc(100vw * (5 / 393));
+    top: 0;
     width: calc(100vw * (40 / 393));
-    height: calc(100vw * (16 / 393));
+    height: calc(100vw * (20 / 393));
     padding: calc(100vw * (2.14 / 393)) calc(100vw * (5.71 / 393));
     border-radius: calc(100vw * (5 / 393));
     margin-right: calc(100vw * (5 / 393));
@@ -75,7 +71,7 @@ const Button = styled.button`
 const MessageText = styled.p`
   margin-top: calc(100vw * (8 / 1280));
   font-size: calc(100vw * (12 / 1280));
-  color: #f0d4a1;
+  color: #000000;
   margin-left: calc(100vw * (2 / 1280));
   font-weight: 600;
 
@@ -83,6 +79,18 @@ const MessageText = styled.p`
     margin-top: calc(100vw * (8 / 487));
     font-size: calc(100vw * (12 / 487));
     margin-left: calc(100vw * (2 / 487));
+  }
+`
+
+const NewsletterObj = styled.div`
+  display: flex;
+  align-items: center;
+  width: calc(100vw * (800 / 1512));
+  height: calc(100vw * (50 / 1512));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (300 / 393));
+    height: calc(100vw * (20 / 393));
   }
 `
 
@@ -114,11 +122,11 @@ const submitEmail = async email => {
 const Newsletter = () => {
   const emailInput = useRef(null)
   const [inputMessage, setInputMessage] = useState('')
-  const [inputMessageColor, setinputMessageColor] = useState('')
+  const [inputMessageColor, setinputMessageColor] = useState('#000000')
 
   const addToMailingList = async () => {
     setInputMessage('')
-    setinputMessageColor('#F65C5C')
+    setinputMessageColor('#000000')
 
     const email = emailInput.current.value
     if (!validateEmail(email)) {
@@ -130,7 +138,7 @@ const Newsletter = () => {
 
     if (result.success) {
       setInputMessage('Thank you for subscribing!')
-      setinputMessageColor('#78FF96')
+      setinputMessageColor('#000000')
       emailInput.current.value = ''
     } else if (result.error === 'alreadySubscribed') {
       setInputMessage(`${email} is already subscribed!`)
@@ -142,9 +150,11 @@ const Newsletter = () => {
 
   return (
     <Container>
-      <Input ref={emailInput} type="email" placeholder="Enter your email" />
-      <Button onClick={addToMailingList}>Submit</Button>
-      {inputMessage && <MessageText color={inputMessageColor}>{inputMessage}</MessageText>}
+      <NewsletterObj>
+        <Input ref={emailInput} type="email" placeholder="Enter your email" />
+        <Button onClick={addToMailingList}>Submit</Button>
+      </NewsletterObj>
+      {inputMessage && <MessageText color={'#000000'}>{inputMessage}</MessageText>}
     </Container>
   )
 }
