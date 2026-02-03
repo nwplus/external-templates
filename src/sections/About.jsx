@@ -712,10 +712,10 @@ const About = () => {
           <Title>Step into the world of Wonderland</Title>
           <Title>through cmd-f 2026</Title>
           <Description>
-            This is your invitation to the Mad Hatter's tea party! In this realm full of whimsical characters,
-            nonsensical oxymorons, and punny dialogue, it's time to learn new skills, build with passion, and connect
-            with a community dedicated to making a difference. No matter your background or technical expertise, we
-            provide the resources and support to ensure your journey is a success.
+            This is your invitation to the Mad Hatter&apos;s tea party! In this realm full of whimsical characters,
+            nonsensical oxymorons, and punny dialogue, it&apos;s time to learn new skills, build with passion, and
+            connect with a community dedicated to making a difference. No matter your background or technical expertise,
+            we provide the resources and support to ensure your journey is a success.
           </Description>
         </UpperLeftText>
 
@@ -777,14 +777,14 @@ const About = () => {
           <Description>
             cmd-f is a 24-hour hackathon focused on addressing gender inequality in technology. Our main purpose is to
             create a safe and dedicated space for individuals who identify with underrepresented genders in tech to hack
-            together. We're trying to create access for people who have faced systemic barriers to inclusion on the
+            together. We&apos;re trying to create access for people who have faced systemic barriers to inclusion on the
             basis of gender. We encourage participation from women, trans, non-binary, Two-Spirit, and gender-diverse
             people. Thus, cmd-f prioritizes and centers individuals who identify as members of an underrepresented
             gender in technology.
             <br />
             <br />
-            We're aware that gender is not the only inequality in technology. We appreciate ally-ship and recognize it
-            is important in the community. We invite allies to show their support by volunteering or mentoring, as
+            We&apos;re aware that gender is not the only inequality in technology. We appreciate ally-ship and recognize
+            it is important in the community. We invite allies to show their support by volunteering or mentoring, as
             opposed to hacking. Please make sure your participation in this event is aligned with the intentions of the
             event. We also ask all participants who attend to trust that everyone attending is meant to be here.
             <br />
