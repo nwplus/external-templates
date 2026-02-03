@@ -123,7 +123,7 @@ const UpperLeftText = styled.div`
 
   ${p => p.theme.mediaQueries.mobile} {
     width: calc(100vw * (334 / 393));
-    top: calc(100vw * (-110 / 393));
+    top: calc(100vw * (-90 / 393));
     left: calc(100vw * (10 / 393));
   }
 `
@@ -439,9 +439,10 @@ const TopRock = styled.img`
   ${p => p.theme.mediaQueries.mobile} {
     display: block;
     position: absolute;
-    width: calc(100vw * (400 / 393));
-    top: calc(100vw * (-170 / 393));
-    left: calc(100vw * (-30 / 393));
+    width: calc(100vw * (600 / 393));
+    height: calc(100vw * (900 / 393));
+    top: calc(100vw * (-260 / 393));
+    left: calc(100vw * (-50 / 393));
   }
 `
 
@@ -452,7 +453,7 @@ const TopRoot = styled.img`
     display: block;
     position: absolute;
     width: calc(100vw * (120 / 393));
-    top: calc(100vw * (70 / 393));
+    top: calc(100vw * (180 / 393));
     left: calc(100vw * (-30 / 393));
   }
 `
@@ -500,7 +501,7 @@ const Teapot = styled.img`
     display: block;
     position: absolute;
     width: calc(100vw * (400 / 393));
-    top: calc(100vw * (180 / 393));
+    top: calc(100vw * (260 / 393));
     left: calc(100vw * (-30 / 393));
   }
 `
@@ -512,7 +513,7 @@ const HatMobile = styled.img`
     display: block;
     position: absolute;
     width: calc(100vw * (110 / 393));
-    top: calc(100vw * (120 / 393));
+    top: calc(100vw * (200 / 393));
     left: calc(100vw * (250 / 393));
   }
 `
@@ -524,7 +525,7 @@ const CardOneMobile = styled.img`
     display: block;
     position: absolute;
     width: calc(100vw * (53 / 393));
-    top: calc(100vw * (230 / 393));
+    top: calc(100vw * (310 / 393));
     left: calc(100vw * (150 / 393));
   }
 `
@@ -536,7 +537,7 @@ const TopWatch = styled.img`
     display: block;
     position: absolute;
     width: calc(100vw * (150 / 393));
-    top: calc(100vw * (260 / 393));
+    top: calc(100vw * (340 / 393));
     left: calc(100vw * (-20 / 393));
   }
 `
@@ -560,7 +561,7 @@ const AliceMobile = styled.img`
     display: block;
     position: absolute;
     width: calc(100vw * (150 / 393));
-    top: calc(100vw * (360 / 393));
+    top: calc(100vw * (370 / 393));
     left: calc(100vw * (215 / 393));
   }
 `
