@@ -712,8 +712,8 @@ const About = () => {
           <Title>Step into the world of Wonderland</Title>
           <Title>through cmd-f 2026</Title>
           <Description>
-            This is your invitation to the Mad Hatter’s tea party! In this realm full of whimsical characters,
-            nonsensical oxymorons, and punny dialogue, it’s time to learn new skills, build with passion, and connect
+            This is your invitation to the Mad Hatter's tea party! In this realm full of whimsical characters,
+            nonsensical oxymorons, and punny dialogue, it's time to learn new skills, build with passion, and connect
             with a community dedicated to making a difference. No matter your background or technical expertise, we
             provide the resources and support to ensure your journey is a success.
           </Description>
