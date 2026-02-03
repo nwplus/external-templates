@@ -677,8 +677,8 @@ const About = () => {
     } else {
       // Phase 2: Vertical - straight down
       const phaseProgress = (scrollProgress - 0.5) / 0.5
-      translateX = vw * (-850 / 1512) // maintain left position from end of phase 1
-      translateY = vw * (650 / 1512) + phaseProgress * (vw * (1400 / 1512)) // continue from phase 1's end position
+      translateX = vw * (-830 / 1512) // maintain left position from end of phase 1
+      translateY = vw * (520 / 1512) + phaseProgress * (vw * (1400 / 1512)) // continue from phase 1's end position
     }
 
     return { translateX, translateY }
