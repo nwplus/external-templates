@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef, useCallback } from 'react'
 import styled from 'styled-components'
 import Draggable from 'react-draggable'
 
@@ -56,7 +56,7 @@ const OpeningPhoto = styled(Photo)`
 const PanelPhoto = styled(Photo)`
   width: calc(100vw * (400 / 1920));
   top: calc(100vw * (750 / 1920));
-  left: calc(100vw * (1440 / 1920));
+  left: calc(100vw * (1350 / 1920));
   z-index: 10;
 
   ${p => p.theme.mediaQueries.mobile} {
@@ -95,8 +95,8 @@ const WinnersPhoto = styled(Photo)`
 
 const JudgingPhoto = styled(Photo)`
   width: calc(100vw * (250 / 1920));
-  top: calc(100vw * (750 / 1920));
-  left: calc(100vw * (1125 / 1920));
+  top: calc(100vw * (780 / 1920));
+  left: calc(100vw * (1050 / 1920));
   z-index: 10;
 
   ${p => p.theme.mediaQueries.mobile} {
@@ -107,9 +107,9 @@ const JudgingPhoto = styled(Photo)`
 `
 
 const AtriumPhoto = styled(Photo)`
-  width: calc(100vw * (300 / 1920));
+  width: calc(100vw * (250 / 1920));
   top: calc(100vw * (0 / 1920));
-  left: calc(100vw * (1100 / 1920));
+  left: calc(100vw * (1125 / 1920));
   z-index: 8;
 
   ${p => p.theme.mediaQueries.mobile} {
@@ -146,11 +146,14 @@ const BoothingPhoto = styled(Photo)`
   }
 `
 
-const CatPhoto = styled(Photo)`
-  width: calc(100vw * (200 / 1920));
-  top: calc(100vw * (600 / 1920));
-  left: calc(100vw * (50 / 1920));
+const CatPhotoContainer = styled.div`
+  ${absolutePositionCSS}
+  ${noDragCSS}
+  width: calc(100vw * (250 / 1920));
+  top: calc(100vw * (510 / 1920));
+  left: calc(100vw * (1125 / 1920));
   z-index: 7;
+  cursor: grab;
 
   ${p => p.theme.mediaQueries.mobile} {
     width: calc(100vw * (200 / 393));
@@ -158,6 +161,154 @@ const CatPhoto = styled(Photo)`
     left: calc(100vw * (10 / 393));
   }
 `
+
+const CatBaseImg = styled.img`
+  width: 100%;
+  display: block;
+  ${noDragCSS}
+`
+
+const CatIris = styled.div`
+  position: absolute;
+  background-color: black;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+`
+
+// SVG dimensions from viewBox
+const CAT_SVG_WIDTH = 191
+
+// Eye definitions in SVG coordinates (from the SVG file)
+const CAT_LEFT_EYE = {
+  cx: 85.85,
+  cy: 89.91,
+  rx: 8.34,
+  ry: 8.34,
+  rotation: (6.86441 * Math.PI) / 180,
+}
+
+const CAT_RIGHT_EYE = {
+  cx: 111.12,
+  cy: 84.95,
+  rx: 8.78,
+  ry: 8.34,
+  rotation: (6.86441 * Math.PI) / 180,
+}
+
+const CAT_IRIS_RADIUS_SVG = 4.5
+
+function calculateCatIrisPosition(mouseX, mouseY, eye, irisRadius) {
+  const { cx, cy, rx, ry, rotation } = eye
+
+  const dx = mouseX - cx
+  const dy = mouseY - cy
+
+  const dist = Math.sqrt(dx * dx + dy * dy)
+  if (dist < 0.001) {
+    return { x: cx, y: cy }
+  }
+
+  const cosNeg = Math.cos(-rotation)
+  const sinNeg = Math.sin(-rotation)
+  const localX = dx * cosNeg - dy * sinNeg
+  const localY = dx * sinNeg + dy * cosNeg
+
+  const constraintRx = Math.max(rx - irisRadius, 0.1)
+  const constraintRy = Math.max(ry - irisRadius, 0.1)
+
+  const localDist = Math.sqrt(localX * localX + localY * localY)
+  const ux = localX / localDist
+  const uy = localY / localDist
+
+  const t = 1 / Math.sqrt((ux * ux) / (constraintRx * constraintRx) + (uy * uy) / (constraintRy * constraintRy))
+
+  let irisLocalX
+  let irisLocalY
+  if (localDist <= t) {
+    irisLocalX = localX
+    irisLocalY = localY
+  } else {
+    irisLocalX = ux * t
+    irisLocalY = uy * t
+  }
+
+  const cosPos = Math.cos(rotation)
+  const sinPos = Math.sin(rotation)
+  const globalX = irisLocalX * cosPos - irisLocalY * sinPos + cx
+  const globalY = irisLocalX * sinPos + irisLocalY * cosPos + cy
+
+  return { x: globalX, y: globalY }
+}
+
+const CatPhoto = () => {
+  const containerRef = useRef(null)
+  const [scale, setScale] = useState(1)
+  const [irisPositions, setIrisPositions] = useState({
+    left: { x: CAT_LEFT_EYE.cx - 3, y: CAT_LEFT_EYE.cy + 1 },
+    right: { x: CAT_RIGHT_EYE.cx - 3, y: CAT_RIGHT_EYE.cy + 1 },
+  })
+
+  const updateScale = useCallback(() => {
+    if (!containerRef.current) return
+    const imgElement = containerRef.current.querySelector('img')
+    if (!imgElement) return
+    setScale(imgElement.getBoundingClientRect().width / CAT_SVG_WIDTH)
+  }, [])
+
+  useEffect(() => {
+    updateScale()
+    window.addEventListener('resize', updateScale)
+    return () => window.removeEventListener('resize', updateScale)
+  }, [updateScale])
+
+  useEffect(() => {
+    const handleMouseMove = e => {
+      if (!containerRef.current) return
+      const imgElement = containerRef.current.querySelector('img')
+      if (!imgElement) return
+
+      const imgRect = imgElement.getBoundingClientRect()
+      const currentScale = imgRect.width / CAT_SVG_WIDTH
+
+      const mouseXSvg = (e.clientX - imgRect.left) / currentScale
+      const mouseYSvg = (e.clientY - imgRect.top) / currentScale
+
+      const leftIris = calculateCatIrisPosition(mouseXSvg, mouseYSvg, CAT_LEFT_EYE, CAT_IRIS_RADIUS_SVG)
+      const rightIris = calculateCatIrisPosition(mouseXSvg, mouseYSvg, CAT_RIGHT_EYE, CAT_IRIS_RADIUS_SVG)
+
+      setIrisPositions({ left: leftIris, right: rightIris })
+      setScale(currentScale)
+    }
+
+    window.addEventListener('mousemove', handleMouseMove)
+    return () => window.removeEventListener('mousemove', handleMouseMove)
+  }, [])
+
+  const irisSize = CAT_IRIS_RADIUS_SVG * 2 * scale
+
+  return (
+    <CatPhotoContainer ref={containerRef}>
+      <CatBaseImg src="/assets/images/gallery/cat_desktop.svg" alt="Cat" />
+      <CatIris
+        style={{
+          left: irisPositions.left.x * scale,
+          top: irisPositions.left.y * scale,
+          width: irisSize,
+          height: irisSize,
+        }}
+      />
+      <CatIris
+        style={{
+          left: irisPositions.right.x * scale,
+          top: irisPositions.right.y * scale,
+          width: irisSize,
+          height: irisSize,
+        }}
+      />
+    </CatPhotoContainer>
+  )
+}
 
 const VideoComponent = styled.div`
   ${absolutePositionCSS}
@@ -248,7 +399,7 @@ const RecapContainer = styled.div`
 const VideoWrapper = styled.div`
   position: absolute;
   width: 100%;
-  height: calc(100vw * (399 / 1920));
+  height: calc(100vw * (700 / 1920));
   top: 0;
   left: 0;
 
@@ -387,7 +538,7 @@ const Gallery = () => {
               <BoothingPhoto src="assets/images/gallery/boothing.png" />
             </Draggable>
             <Draggable bounds="parent">
-              <CatPhoto src="assets/images/gallery/cat.svg" />
+              <CatPhoto />
             </Draggable>
             <VideoWrapper>
               <Draggable bounds="parent">
@@ -442,6 +593,9 @@ const Gallery = () => {
             </Draggable>
             <Draggable bounds="parent">
               <BoothingPhoto src="assets/images/gallery/boothing.png" />
+            </Draggable>
+            <Draggable bounds="parent">
+              <CatPhoto />
             </Draggable>
             <VideoWrapper>
               <Draggable bounds="parent">
