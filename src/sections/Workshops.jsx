@@ -24,7 +24,7 @@ const WorkshopsContainer = styled.div`
   }
 
   ${p => p.theme.mediaQueries.mobile} {
-    aspect-ratio: 393/1600;
+    aspect-ratio: 393/1900;
     padding-left: 0;
     align-items: center;
     text-align: center;
@@ -58,7 +58,7 @@ const CloudImage = styled.img`
 
   ${p => p.theme.mediaQueries.mobile} {
     position: absolute;
-    top: calc(100vw * (550 / 393));
+    top: calc(100vw * (900 / 393));
     left: calc(100vw * (-90 / 393));
     width: calc(100vw * (700 / 393));
   }
@@ -74,7 +74,7 @@ const TeaPartyImage = styled.img`
 
   ${p => p.theme.mediaQueries.mobile} {
     position: absolute;
-    top: calc(100vw * (1000 / 393));
+    top: calc(100vw * (1350 / 393));
     left: calc(100vw * (-70 / 393));
     width: calc(100vw * (550 / 393));
   }
@@ -95,7 +95,7 @@ const WorkshopOverlay = styled.div`
 
   ${p => p.theme.mediaQueries.mobile} {
     position: absolute;
-    top: calc(100vw * (600 / 393));
+    top: calc(100vw * (950 / 393));
     left: calc(100vw * (196.5 / 393));
     width: calc(100vw * (300 / 393));
     gap: calc(100vw * (8 / 393));
@@ -108,7 +108,7 @@ const WorkshopHeader = styled.h3`
   color: #000000;
   font-size: calc(100vw * (40 / 1920));
   margin: 0;
-  max-width: calc(100vw * (500 / 1920));
+  max-width: calc(100vw * (380 / 1920));
 
   ${p => p.theme.mediaQueries.mobile} {
     font-size: calc(100vw * (26 / 393));
@@ -116,15 +116,15 @@ const WorkshopHeader = styled.h3`
   }
 `
 
-const WorkshopSubheader = styled.p`
+const WorkshopSubHeader = styled.p`
   font-family: 'Quicksand', sans-serif;
-  font-weight: 400;
+  font-weight: 600;
   color: #000000;
-  font-size: calc(100vw * (20 / 1920));
+  font-size: calc(100vw * (24 / 1920));
   margin: 0;
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: calc(100vw * (14 / 393));
+    font-size: calc(100vw * (16 / 393));
     max-width: calc(100vw * (1500 / 1920));
   }
 `
@@ -135,7 +135,7 @@ const WorkshopDescription = styled.p`
   color: #000000;
   font-size: calc(100vw * (20 / 1920));
   line-height: calc(100vw * (22 / 1920));
-  margin: calc(100vw * (30 / 1920)) 0 0 0;
+  margin: 0;
   max-width: calc(100vw * (500 / 1920));
 
   ${p => p.theme.mediaQueries.mobile} {
@@ -145,16 +145,16 @@ const WorkshopDescription = styled.p`
   }
 `
 
-const WorkshopNav = styled.div`
+const DescriptionWrapper = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: calc(100vw * (18 / 1920));
-  margin-top: calc(100vw * (8 / 1920));
+  width: 100%;
+  min-height: calc(100vw * (150 / 1920));
 
   ${p => p.theme.mediaQueries.mobile} {
-    gap: calc(100vw * (12 / 393));
-    margin-top: calc(100vw * (6 / 393));
+    min-height: calc(100vw * (150 / 393));
   }
 `
 
@@ -185,6 +185,9 @@ const WorkshopNav = styled.div`
 // `
 
 const ArrowButton = styled.button`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   background: transparent;
   border: none;
   padding: 0;
@@ -193,14 +196,30 @@ const ArrowButton = styled.button`
   align-items: center;
   justify-content: center;
 
+  &.left {
+    left: calc(100vw * (0 / 1920));
+  }
+
+  &.right {
+    right: calc(100vw * (0 / 1920));
+  }
+
   img {
-    width: calc(100vw * (28 / 1920));
+    width: calc(100vw * (45 / 1920));
     height: auto;
   }
 
   ${p => p.theme.mediaQueries.mobile} {
+    &.left {
+      left: calc(100vw * (-35 / 393));
+    }
+
+    &.right {
+      right: calc(100vw * (-35 / 393));
+    }
+
     img {
-      width: calc(100vw * (20 / 393));
+      width: calc(100vw * (30 / 393));
     }
   }
 `
@@ -245,7 +264,7 @@ const Description = styled.p`
     max-width: calc(100vw * (1500 / 1920));
 
     & + & {
-      top: calc(100vw * (470 / 393));
+      top: calc(100vw * (800 / 393));
     }
   }
 `
@@ -265,58 +284,53 @@ const Workshops = () => {
 
   const workshops = [
     {
-      header: 'Intro to PRD 101',
-      subheader: 'Tuesday, March 4 at 5 PM',
+      header: 'Setting Up Your Project For Success',
+      date: 'March 2, 2026',
       description:
-        'Kickstart your project journey with our Intro to PRD workshop! Learn how to craft a clear and concise Product Requirements Document (PRD) that outlines your project goals, features, and user needs. This workshop will guide you through the essential components of a PRD, helping you communicate your vision effectively to your team and stakeholders.',
+        'Every great project starts with clarity, not code. This workshop focuses on problem discovery and ideation, guiding you through creating a lightweight Product Requirements Document (PRD) for an in-house Pomodoro app (built exclusively by nwPlus members).',
     },
     {
-      header: 'Intro to Git',
-      subheader: 'Tuesday, March 4 at 6 PM',
+      header: 'Intro to Git/Version Control',
+      date: 'March 2, 2026',
       description:
-        'Ready to level up your coding skills? Join us for an Intro to Git workshop! Learn the essentials of version control, including how to create repositories, commit changes, and collaborate with others using branches and pull requests. Whether you’re a beginner or looking to refresh your skills, this workshop will equip you with the tools you need to manage your code like a pro.',
+        'Learn the fundamentals of Git to track changes, collaborate with teammates, and navigate your codebase confidently as your project grows.',
     },
     {
-      header: 'Intro to Figma and UX',
-      subheader: 'Tuesday, March 4 at 7 PM',
+      header: 'Intro to Figma & UX',
+      date: 'March 2, 2026',
       description:
-        "Design is a crucial aspect of any successful hackathon project. In this workshop, we'll explore the fundamentals of UI/UX design and how to create user-friendly interfaces that captivate your audience. From wireframing to prototyping, you'll gain practical skills to elevate your project's design and make a lasting impression!",
+        'Ready to unleash your design skills? Join us as we learn the basics of UI and UX in Figma. You will design key screens and user flows for a Pomodoro app and shape an intuitive experience from start to finish.',
     },
     {
-      header: 'Intro to Web Dev Pt. 1 (HTML/CSS + JS)',
-      subheader: 'Wednesday, March 5 at 5 PM',
+      header: 'Intro to Web Dev',
+      subHeader: 'Pt 1: HTML/CSS + JS | Pt 2: React + JS',
+      date: 'March 3, 2026',
       description:
-        'Want to learn how to build your first website? Come to our workshop to explore the basics of Web Development, and learn how to build a simple webpage using HTML and CSS! Make your website deliciously dynamic with JavaScript, perfect for any personal projects or designing your own personal portfolio.',
+        'Bring designs to life on the frontend using HTML, CSS, JavaScript, and React. Build interactive interfaces and transform your Pomodoro project from static pages into a dynamic app.',
     },
     {
-      header: 'Intro to Web Dev Pt. 2 (React + JS)',
-      subheader: 'Wednesday, March 5 at 6:40 PM',
+      header: 'Intro to Express & APIs',
+      date: 'March 3, 2026',
       description:
-        'Take your web dev skills to the next level with React.js! React is one of the most popular front-end JavaScript libraries in the industry. Learn how to build your very first interactive user interface. If you are looking to put your JavaScript, HTML and CSS knowledge into action and dive into the world of dynamic web applications, this workshop is for you.',
+        'Explore what happens behind the scenes by building a backend with Express. Create APIs, handle data requests, and support core functionality for your Pomodoro app.',
     },
     {
-      header: 'Intro to Express and APIs',
-      subheader: 'Thursday, March 6 at 5 PM',
+      header: 'Project Integration & Final Work Session',
+      date: 'March 4, 2026',
       description:
-        "Ever wondered how apps talk to each other? Come join us for an Intro to APIs workshop! We'll break down what APIs are, how they work, and why they're so powerful. With hands-on activities, you'll learn how to make API calls, fetch data, and even use APIs to build cool projects. No prior experience needed!",
-    },
-    {
-      header: 'Project Integration and Final Work Session',
-      subheader: 'Thursday, March 6 at 6 PM',
-      description:
-        "Bring your projects to life with our Project Integration and Final Work Session! This workshop is designed to help you integrate various components of your project, troubleshoot any issues, and put the finishing touches on your work. Whether you're coding, designing, or preparing your presentation, our team will be there to support you every step of the way.",
+        'Ever felt stuck connecting frontend and backend in the final hours of a hackathon? This new workshop walks through integration and debugging, and gives you time to wrap up your Pomodoro project.',
     },
     {
       header: 'Pitching 101',
-      subheader: 'Friday, March 7 at 5 PM',
+      date: 'March 5, 2026',
       description:
-        "Nervous about pitching your project at the hackathon? Don't worry, we've got you covered! Join our Pitching Workshop to learn how to craft a compelling story, engage your audience, and deliver a memorable pitch. With practical tips and hands-on practice, you'll be ready to wow the judges and make your project shine!",
+        'Now that your project is built, it is time to share it! Learn how to clearly pitch your idea, explain impact, and present your project with confidence.',
     },
     {
       header: 'Networking 101',
-      subheader: 'Friday, March 7 at 6 PM',
+      date: 'March 5, 2026',
       description:
-        "Networking is a key skill for any aspiring hacker or entrepreneur. In this workshop, we'll explore effective networking strategies, including how to make meaningful connections, communicate your ideas, and build lasting relationships. Whether you're attending a hackathon or a tech conference, you'll gain the confidence and skills to network like a pro!",
+        'Ready to share your project and meet new people? This workshop covers how to start conversations, connect with mentors and sponsors, and build meaningful relationships during the hackathon.',
     },
   ]
 
@@ -339,20 +353,21 @@ const Workshops = () => {
       <TeaPartyImage src="/assets/images/workshops/teaparty.svg" alt="Tea party" />
       <WorkshopOverlay>
         <WorkshopHeader>{currentWorkshop.header}</WorkshopHeader>
-        <WorkshopSubheader>{currentWorkshop.subheader}</WorkshopSubheader>
-        <WorkshopDescription>{currentWorkshop.description}</WorkshopDescription>
-        <WorkshopNav>
+        {currentWorkshop.subHeader && <WorkshopSubHeader>{currentWorkshop.subHeader}</WorkshopSubHeader>}
+        <WorkshopSubHeader>{currentWorkshop.date}</WorkshopSubHeader>
+        <DescriptionWrapper>
           {workshopIndex > 0 && (
-            <ArrowButton type="button" onClick={handlePrev} aria-label="Previous workshop">
-              <img src="/assets/images/carouselLeft.svg" alt="Previous" />
+            <ArrowButton type="button" className="left" onClick={handlePrev} aria-label="Previous workshop">
+              <img src="/assets/images/workshops/arrow_left.svg" alt="Previous" />
             </ArrowButton>
           )}
+          <WorkshopDescription>{currentWorkshop.description}</WorkshopDescription>
           {workshopIndex < workshops.length - 1 && (
-            <ArrowButton type="button" onClick={handleNext} aria-label="Next workshop">
-              <img src="/assets/images/carouselRight.svg" alt="Next" />
+            <ArrowButton type="button" className="right" onClick={handleNext} aria-label="Next workshop">
+              <img src="/assets/images/workshops/arrow_right.svg" alt="Next" />
             </ArrowButton>
           )}
-        </WorkshopNav>
+        </DescriptionWrapper>
         {/* <WorkshopDots>
           {workshops.map((_, index) => (
             <img
@@ -369,9 +384,18 @@ const Workshops = () => {
       </WorkshopOverlay>
       <Header>Join us @cmd-f HackWeek!</Header>
       <Description>
-        Want to prepare your mise en place before the big weekend? Join us at our pre-hackathon workshops to learn how
-        to hack, design, pitch, and more. By the time you walk out, you will have new skills, connections, and a sweet
-        new project to add to your repertoire!
+        From painting the roses red to slaying the Jabberwock, join us at our pre-hackathon workshop series to learn how
+        to hack, design, pitch, and more. Below is our curated list of workshops to help you plan your path:
+        <br />
+        <br />
+        To the right is our curated list of workshops to help you plan your path! Click through the arrows to learn
+        more!
+        <br />
+        <br />
+        Each workshop offers practical guidance to help you bring ideas from concept to execution. While the workshops
+        collectively walk through the process of building a project from idea to presentation, each session is designed
+        to stand on its own and welcomes participants at any stage. By the time the weekend arrives, you will have new
+        skills, connections, and a sweet new project to help guide your hackathon experience!
       </Description>
       <Description>
         For more resources, check out our{' '}
