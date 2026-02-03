@@ -52,7 +52,7 @@ const TextContainer = styled.div`
 
 const Title = styled.p`
   font-family: 'Bree Serif';
-  font-size: calc(100vw * (48 / 1512));
+  font-size: calc(100vw * (45 / 1512));
   font-weight: 400;
   color: #ffffff;
   line-height: 1.31;
@@ -64,7 +64,7 @@ const Title = styled.p`
 
 const Description = styled.p`
   font-family: 'Quicksand';
-  font-size: calc(100vw * (20 / 1512));
+  font-size: calc(100vw * (18 / 1512));
   font-weight: 500;
   line-height: 1.5;
   font-style: normal;
@@ -116,7 +116,7 @@ const UpperLeftText = styled.div`
   position: absolute;
   width: calc(100vw * (765 / 1512));
   top: calc(100vw * (-180 / 1512));
-  left: calc(100vw * (-390 / 1512));
+  left: calc(100vw * (-400 / 1512));
   z-index: 3;
   display: flex;
   flex-direction: column;
@@ -709,12 +709,13 @@ const About = () => {
         <LeftGround src="/assets/images/about/left_ground.svg" />
         <LeftRoot src="/assets/images/about/root.svg" />
         <UpperLeftText>
-          <Title>Jump into a new world at cmd-f</Title>
-          <Title>what a treat to share!</Title>
+          <Title>Step into the world of Wonderland</Title>
+          <Title>through cmd-f 2026</Title>
           <Description>
-            Learn new skills, build with passion and connect with a community dedicated to making a difference. No
-            matter your background or technical expertise, we provide the resources and support to ensure your journey
-            is a success.
+            This is your invitation to the Mad Hatter&apos;s tea party! In this realm full of whimsical characters,
+            nonsensical oxymorons, and punny dialogue, it&apos;s time to learn new skills, build with passion, and
+            connect with a community dedicated to making a difference. No matter your background or technical expertise,
+            we provide the resources and support to ensure your journey is a success.
           </Description>
         </UpperLeftText>
 
@@ -777,12 +778,12 @@ const About = () => {
             cmd-f is a 24-hour hackathon focused on addressing gender inequality in technology. Our main purpose is to
             create a safe and dedicated space for individuals who identify with underrepresented genders in tech to hack
             together. We&apos;re trying to create access for people who have faced systemic barriers to inclusion on the
-            basis of gender. We encourage participation from women, trans, non-binary, Two-Spirit and gender diverse
-            people. Thus, cmd-f prioritizes and centers individuals who identify as a member of an underrepresented
+            basis of gender. We encourage participation from women, trans, non-binary, Two-Spirit, and gender-diverse
+            people. Thus, cmd-f prioritizes and centers individuals who identify as members of an underrepresented
             gender in technology.
             <br />
             <br />
-            We&apos;re aware that gender is not the only inequality in technology. We appreciate allyship and recognize
+            We&apos;re aware that gender is not the only inequality in technology. We appreciate ally-ship and recognize
             it is important in the community. We invite allies to show their support by volunteering or mentoring, as
             opposed to hacking. Please make sure your participation in this event is aligned with the intentions of the
             event. We also ask all participants who attend to trust that everyone attending is meant to be here.
