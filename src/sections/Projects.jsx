@@ -341,6 +341,26 @@ const Bushes = styled.img`
   }
 `
 
+const DevpostBtn = styled.a`
+  position: absolute;
+  ${p => p.devpostTop || 'top: calc(100vw * (320 / 1512));'}
+  ${p => p.devpostLeft || 'left: calc(100vw * (710 / 1512));'}
+  color: #000000;
+  text-decoration: underline;
+  font-family: 'Quicksand';
+  z-index: 10;
+  opacity: ${p => (p.visible ? 1 : 0)};
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    color: #095575;
+  }
+
+  ${p => p.theme.mediaQueries.mobile} {
+    bottom: calc(100vw * (200 / 393));
+  }
+`
+
 // MOBILE CAROUSEL STYLES
 const CarouselWrapper = styled.div`
   position: absolute;
@@ -413,12 +433,18 @@ const MobileSideTeacup = styled.img`
 const PROJECTS_DATA = [
   {
     id: 'mindfulMeadows',
+    devpost: 'https://devpost.com/software/mindful-meadows',
+    devpostTop: 'top: calc(100vw * (320 / 1512));',
+    devpostLeft: 'left: calc(100vw * (700 / 1512));',
     sideTeacups: [
       { src: '/assets/images/projects/dino_buddies_teacup.svg', right: '20px', width: '70px', mobileWidth: 90 },
     ],
   },
   {
     id: 'dinoBuddies',
+    devpost: 'https://devpost.com/software/dinoaura',
+    devpostTop: 'top: calc(100vw * (320 / 1512));',
+    devpostLeft: 'left: calc(100vw * (720 / 1512));',
     sideTeacups: [
       { src: '/assets/images/projects/mindful_meadows_teacup.svg', left: '10px', width: '100px', mobileWidth: 106 },
       { src: '/assets/images/projects/big_fish_teacup.svg', right: '20px', width: '60px', mobileWidth: 72 },
@@ -426,6 +452,9 @@ const PROJECTS_DATA = [
   },
   {
     id: 'bigFish',
+    devpost: 'https://devpost.com/software/best-fish',
+    devpostTop: 'top: calc(100vw * (310 / 1512));',
+    devpostLeft: 'left: calc(100vw * (730 / 1512));',
     sideTeacups: [
       { src: '/assets/images/projects/dino_buddies_teacup.svg', left: '10px', width: '100px', mobileWidth: 90 },
       { src: '/assets/images/projects/bus_buddies_teacup.svg', right: '10px', width: '80px', mobileWidth: 97 },
@@ -433,6 +462,9 @@ const PROJECTS_DATA = [
   },
   {
     id: 'busBuddies',
+    devpost: 'https://devpost.com/software/busbuddies-3k9bqn',
+    devpostTop: 'top: calc(100vw * (320 / 1512));',
+    devpostLeft: 'left: calc(100vw * (710 / 1512));',
     sideTeacups: [{ src: '/assets/images/projects/big_fish_teacup.svg', left: '20px', width: '60px', mobileWidth: 72 }],
   },
 ]
@@ -548,6 +580,17 @@ const Projects = () => {
             />
           )}
           <BusBuddiesLabel src="/assets/images/projects/bus_buddies_label.svg" />
+
+          <DevpostBtn
+            href={selectedProject ? PROJECTS_DATA.find(p => p.id === selectedProject)?.devpost : '#'}
+            visible={selectedProject !== null}
+            devpostTop={selectedProject ? PROJECTS_DATA.find(p => p.id === selectedProject)?.devpostTop : undefined}
+            devpostLeft={selectedProject ? PROJECTS_DATA.find(p => p.id === selectedProject)?.devpostLeft : undefined}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Devpost
+          </DevpostBtn>
 
           <Deer src="/assets/images/projects/deer.svg" />
           <Bunny src="/assets/images/projects/bunny.svg" />
