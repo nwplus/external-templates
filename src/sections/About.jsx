@@ -701,7 +701,7 @@ const About = () => {
   }, [])
 
   return (
-    <AboutContainer id="about" ref={aboutRef}>
+    <AboutContainer ref={aboutRef}>
       {/* DESKTOP OBJECTS */}
       <LightRays src="/assets/images/about/light_rays.svg" />
       <TextContainer>
@@ -772,7 +772,7 @@ const About = () => {
         <BottomClock src="/assets/images/about/mobile/bottom_clock.svg" />
         <CardFourMobile src="/assets/images/about/mobile/card_four.svg" />
 
-        <UpperRightText>
+        <UpperRightText id="about">
           <Title>What is cmd-f?</Title>
           <Description>
             cmd-f is a 24-hour hackathon focused on addressing gender inequality in technology. Our main purpose is to
