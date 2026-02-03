@@ -122,11 +122,9 @@ const submitEmail = async email => {
 const Newsletter = () => {
   const emailInput = useRef(null)
   const [inputMessage, setInputMessage] = useState('')
-  const [inputMessageColor, setinputMessageColor] = useState('#000000')
 
   const addToMailingList = async () => {
     setInputMessage('')
-    setinputMessageColor('#000000')
 
     const email = emailInput.current.value
     if (!validateEmail(email)) {
@@ -138,7 +136,6 @@ const Newsletter = () => {
 
     if (result.success) {
       setInputMessage('Thank you for subscribing!')
-      setinputMessageColor('#000000')
       emailInput.current.value = ''
     } else if (result.error === 'alreadySubscribed') {
       setInputMessage(`${email} is already subscribed!`)
@@ -154,7 +151,7 @@ const Newsletter = () => {
         <Input ref={emailInput} type="email" placeholder="Enter your email" />
         <Button onClick={addToMailingList}>Submit</Button>
       </NewsletterObj>
-      {inputMessage && <MessageText color={'#000000'}>{inputMessage}</MessageText>}
+      {inputMessage && <MessageText color="#000000">{inputMessage}</MessageText>}
     </Container>
   )
 }
