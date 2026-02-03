@@ -224,8 +224,8 @@ const Values = () => {
           onClick={() => setActiveImage(activeImage === 'explore_in_a_safe_space' ? null : 'explore_in_a_safe_space')}
         >
           <CardInner $flipped={activeImage === 'explore_in_a_safe_space'}>
-            <CardFace src="/assets/images/values/explore_in_a_safe_space.png" alt="Explore In A Safe Space" />
-            <CardBack src="/assets/images/values/explore_in_a_safe_space_text.png" alt="Explore In A Safe Space Text" />
+            <CardFace src="/assets/images/values/explore.png" alt="Explore In A Safe Space" />
+            <CardBack src="/assets/images/values/explore_text.png" alt="Explore In A Safe Space Text" />
           </CardInner>
         </ExploreInASafeSpace>
       </ValuesContainer>
