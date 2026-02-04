@@ -27,6 +27,10 @@ const MindfulMeadows = styled.img`
   bottom: calc(100vw * (475 / 1512));
   left: calc(100vw * (350 / 1512));
   cursor: pointer;
+
+  &:hover {
+    opacity: 0;
+  }
 `
 
 const MindfulMeadowsSelected = styled.img`
@@ -36,12 +40,18 @@ const MindfulMeadowsSelected = styled.img`
   bottom: calc(100vw * (460 / 1512));
   left: calc(100vw * (335 / 1512));
   cursor: pointer;
+  opacity: ${p => (p.isSelected ? 1 : 0)};
+
+  &:hover {
+    opacity: 1;
+  }
 
   ${p => p.theme.mediaQueries.mobile} {
     width: calc(100vw * (185 / 393));
     bottom: calc(100vw * (310 / 393));
     left: 50%;
     transform: translateX(-50%);
+    opacity: 1;
   }
 `
 
@@ -67,6 +77,10 @@ const DinoBuddies = styled.img`
   bottom: calc(100vw * (483 / 1512));
   left: calc(100vw * (585 / 1512));
   cursor: pointer;
+
+  &:hover {
+    opacity: 0;
+  }
 `
 
 const DinoBuddiesLabel = styled.img`
@@ -91,12 +105,18 @@ const DinoBuddiesSelected = styled.img`
   bottom: calc(100vw * (484 / 1512));
   left: calc(100vw * (575 / 1512));
   cursor: pointer;
+  opacity: ${p => (p.isSelected ? 1 : 0)};
+
+  &:hover {
+    opacity: 1;
+  }
 
   ${p => p.theme.mediaQueries.mobile} {
     width: calc(100vw * (181 / 393));
     bottom: calc(100vw * (310 / 393));
     left: 50%;
     transform: translateX(-50%);
+    opacity: 1;
   }
 `
 
@@ -107,6 +127,10 @@ const BigFish = styled.img`
   bottom: calc(100vw * (490 / 1512));
   left: calc(100vw * (790 / 1512));
   cursor: pointer;
+
+  &:hover {
+    opacity: 0;
+  }
 `
 
 const BigFishLabel = styled.img`
@@ -131,12 +155,18 @@ const BigFishSelected = styled.img`
   bottom: calc(100vw * (475 / 1512));
   left: calc(100vw * (780 / 1512));
   cursor: pointer;
+  opacity: ${p => (p.isSelected ? 1 : 0)};
+
+  &:hover {
+    opacity: 1;
+  }
 
   ${p => p.theme.mediaQueries.mobile} {
     width: calc(100vw * (156 / 393));
     bottom: calc(100vw * (300 / 393));
     left: 50%;
     transform: translateX(-50%);
+    opacity: 1;
   }
 `
 
@@ -147,6 +177,10 @@ const BusBuddies = styled.img`
   bottom: calc(100vw * (490 / 1512));
   left: calc(100vw * (960 / 1512));
   cursor: pointer;
+
+  &:hover {
+    opacity: 0;
+  }
 `
 
 const BusBuddiesLabel = styled.img`
@@ -171,12 +205,18 @@ const BusBuddiesSelected = styled.img`
   bottom: calc(100vw * (455 / 1512));
   left: calc(100vw * (930 / 1512));
   cursor: pointer;
+  opacity: ${p => (p.isSelected ? 1 : 0)};
+
+  &:hover {
+    opacity: 1;
+  }
 
   ${p => p.theme.mediaQueries.mobile} {
     width: calc(100vw * (220 / 393));
     bottom: calc(100vw * (300 / 393));
     left: 50%;
     transform: translateX(-50%);
+    opacity: 1;
   }
 `
 
@@ -532,53 +572,45 @@ const Projects = () => {
           {selectedProject === 'bigFish' && <BigFishSmoke src="/assets/images/projects/big_fish_smoke.svg" />}
           {selectedProject === 'busBuddies' && <BusBuddiesSmoke src="/assets/images/projects/bus_buddies_smoke.svg" />}
 
-          {selectedProject === 'mindfulMeadows' ? (
-            <MindfulMeadowsSelected
-              src="/assets/images/projects/mindful_meadows_selected.svg"
-              onClick={() => handleOnClick('mindfulMeadows')}
-            />
-          ) : (
-            <MindfulMeadows
-              src="/assets/images/projects/mindful_meadows_teacup.svg"
-              onClick={() => handleOnClick('mindfulMeadows')}
-            />
-          )}
+          <MindfulMeadows
+            src="/assets/images/projects/mindful_meadows_teacup.svg"
+            onClick={() => handleOnClick('mindfulMeadows')}
+          />
+          <MindfulMeadowsSelected
+            src="/assets/images/projects/mindful_meadows_selected.svg"
+            onClick={() => handleOnClick('mindfulMeadows')}
+            isSelected={selectedProject === 'mindfulMeadows'}
+          />
           <MindfulMeadowsLabel src="/assets/images/projects/mindful_meadows_label.svg" />
 
-          {selectedProject === 'dinoBuddies' ? (
-            <DinoBuddiesSelected
-              src="/assets/images/projects/dino_buddies_selected.svg"
-              onClick={() => handleOnClick('dinoBuddies')}
-            />
-          ) : (
-            <DinoBuddies
-              src="/assets/images/projects/dino_buddies_teacup.svg"
-              onClick={() => handleOnClick('dinoBuddies')}
-            />
-          )}
+          <DinoBuddies
+            src="/assets/images/projects/dino_buddies_teacup.svg"
+            onClick={() => handleOnClick('dinoBuddies')}
+          />
+          <DinoBuddiesSelected
+            src="/assets/images/projects/dino_buddies_selected.svg"
+            onClick={() => handleOnClick('dinoBuddies')}
+            isSelected={selectedProject === 'dinoBuddies'}
+          />
           <DinoBuddiesLabel src="/assets/images/projects/dino_buddies_label.svg" />
 
-          {selectedProject === 'bigFish' ? (
-            <BigFishSelected
-              src="/assets/images/projects/big_fish_selected.svg"
-              onClick={() => handleOnClick('bigFish')}
-            />
-          ) : (
-            <BigFish src="/assets/images/projects/big_fish_teacup.svg" onClick={() => handleOnClick('bigFish')} />
-          )}
+          <BigFish src="/assets/images/projects/big_fish_teacup.svg" onClick={() => handleOnClick('bigFish')} />
+          <BigFishSelected
+            src="/assets/images/projects/big_fish_selected.svg"
+            onClick={() => handleOnClick('bigFish')}
+            isSelected={selectedProject === 'bigFish'}
+          />
           <BigFishLabel src="/assets/images/projects/big_fish_label.svg" />
 
-          {selectedProject === 'busBuddies' ? (
-            <BusBuddiesSelected
-              src="/assets/images/projects/bus_buddies_selected.svg"
-              onClick={() => handleOnClick('busBuddies')}
-            />
-          ) : (
-            <BusBuddies
-              src="/assets/images/projects/bus_buddies_teacup.svg"
-              onClick={() => handleOnClick('busBuddies')}
-            />
-          )}
+          <BusBuddies
+            src="/assets/images/projects/bus_buddies_teacup.svg"
+            onClick={() => handleOnClick('busBuddies')}
+          />
+          <BusBuddiesSelected
+            src="/assets/images/projects/bus_buddies_selected.svg"
+            onClick={() => handleOnClick('busBuddies')}
+            isSelected={selectedProject === 'busBuddies'}
+          />
           <BusBuddiesLabel src="/assets/images/projects/bus_buddies_label.svg" />
 
           <DevpostBtn
