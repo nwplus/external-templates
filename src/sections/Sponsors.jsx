@@ -18,11 +18,11 @@ const SponsorsContainer = styled.div`
 
 const Title = styled(Header2)`
   text-align: center;
-  color: #a6321e;
+  color: #000000;
   font-size: calc(100vw * (64 / 1920));
-  font-family: Gloock;
+  font-family: Bree Serif;
   font-weight: 400;
-  margin: 0;
+  margin-top: calc(100vw * (100 / 1920));
 
   ${p => p.theme.mediaQueries.mobile} {
     font-size: calc(100vw * (40 / 393));
@@ -30,11 +30,11 @@ const Title = styled(Header2)`
 `
 
 const Description = styled.p`
-  font-family: Poppins;
   font-weight: 400;
-  font-size: calc(100vw * (20 / 1920));
-  width: calc(100vw * (850 / 1920));
-  color: #4f2f22;
+  font-size: calc(100vw * (21 / 1920));
+  width: calc(100vw * (900 / 1920));
+  color: #000000;
+  text-align: center;
 
   ${p => p.theme.mediaQueries.mobile} {
     font-size: calc(100vw * (15 / 393));
@@ -44,21 +44,20 @@ const Description = styled.p`
 `
 
 const SponsorButton = styled.button`
-  width: calc(100vw * (323 / 1920));
-  background: #a6321e;
-  color: #f0e9d7;
-  font-family: Poppins;
-  font-size: calc(100vw * (28 / 1920));
-  font-weight: 700;
+  width: calc(100vw * (250 / 1920));
+  background: #c63359;
+  color: #fffcfa;
+  font-family: Space Grotesk;
+  font-size: calc(100vw * (25 / 1920));
+  font-weight: 400;
   border-radius: calc(100vw * (15 / 1920));
   height: calc(100vw * (67 / 1920));
   border: none;
-  margin-bottom: calc(100vw * 40 / 1920);
 
   cursor: pointer;
   transition: all 0.3s ease;
   &:hover {
-    background-color: #456774;
+    background-color: #e76c79;
   }
 
   ${p => p.theme.mediaQueries.mobile} {
@@ -102,7 +101,7 @@ const Sponsors = () => {
   const [carouselSponsors, setCarouselSponsors] = useState([])
 
   useEffect(async () => {
-    const data = await fireDb.getCollection('cmd-f2025', 'Sponsors')
+    const data = await fireDb.getCollection('cmd-f2026', 'Sponsors')
     if (data) {
       const filteredCarouselSponsors = data.filter(child => child.blurb !== undefined && child.blurb !== '')
       const tierOrder = ['title', 'platinum', 'gold', 'silver', 'bronze', 'startup', 'inkind']
@@ -127,17 +126,17 @@ const Sponsors = () => {
     <SponsorsContainer>
       {/* <Spotlight direction="left" />
       <Spotlight direction="right" /> */}
-      <Title id="sponsors">Our 2025 Sponsors</Title>
+      <Title id="sponsors">Our 2026 Sponsors</Title>
       <Description>
-        nwPlus is always looking for new ventures, opportunities, and connections. If you are interested in sponsoring
-        us, working with us, or speaking at one of our events, shoot us an email at sponsorship@nwplus.io.
+        cmd-f is always looking for new ventures, opportunities, and connections. If you are interested in sponsoring
+        us, working with us, or speaking at one of our events, shoot us an email at sponsorship@nwplus.io
       </Description>
       <SponsorButton
         onClick={() => {
           window.location.href = 'mailto:sponsorship@nwplus.io'
         }}
       >
-        Sponsor cmd-f
+        Sponsor us!
       </SponsorButton>
       {/* <SwipeDescription>Swipe on the TV screen to read about our sponsors</SwipeDescription> */}
       {carouselSponsors.length > 0 && <Carousel sponsors={carouselSponsors} />}
