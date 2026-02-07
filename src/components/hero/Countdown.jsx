@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
+import fireDb from '@utilities/firebase'
+import { msToUnits, parseIsoDateString } from '@utilities/date'
 
 const CountdownContainer = styled.div`
   position: relative;
@@ -13,6 +15,13 @@ const CountdownContainer = styled.div`
   }
 `
 
+const ClockWrapper = styled.div`
+  position: relative;
+  height: 100%;
+  width: fit-content;
+  display: inline-block;
+`
+
 const ClockFacePositioner = styled.div`
   position: absolute;
   left: calc(calc(70 / 1920) * 100vw);
@@ -23,10 +32,12 @@ const ClockFacePositioner = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1;
+  pointer-events: none;
 
   ${p => p.theme.mediaQueries.mobile} {
-    left: calc(calc(33 / 393) * 100vw);
-    bottom: calc(calc(3.5 / 393) * 100vh);
+    left: calc(calc(35 / 393) * 100vw);
+    bottom: calc(calc(3.8 / 393) * 100vh);
     width: calc(calc(92 / 393) * 100vw);
   }
 `
@@ -35,6 +46,7 @@ const ClockImg = styled.img`
   position: relative;
   height: 100%;
   display: block;
+  z-index: 0;
 `
 
 const CountdownGrid = styled.div`
@@ -58,7 +70,7 @@ const Digits = styled.h2`
   font-family: 'Bree Serif';
   color: black;
   font-weight: 500;
-  font-size: 2.5vw;
+  font-size: 2.4vw;
   display: inline-block;
   margin: 0;
 
@@ -68,79 +80,203 @@ const Digits = styled.h2`
   }
 `
 
-// The date we are counting down to
-const TARGET_DATE = new Date('Feb 16, 2026 11:59:59').getTime()
+const CountdownLabel = styled.div`
+  position: absolute;
+  top: calc(calc(30 / 1920) * 100vw);
+  left: calc(calc(20 / 1920) * 100vw);
+  display: flex;
+  justify-content: center;
+  z-index: 2;
+  pointer-events: none;
+
+  ${p => p.theme.mediaQueries.mobile} {
+    top: calc(calc(2 / 393) * 100vw);
+    left: calc(calc(-5 / 393) * 100vw);
+  }
+`
+
+const CurvedLabelSvg = styled.svg`
+  width: 18vw;
+  height: 4.5vw;
+  overflow: visible;
+
+  text {
+    font-family: 'Bree Serif';
+    fill: #663a0b;
+    font-weight: 500;
+    font-size: 22px;
+  }
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: 50vw;
+    height: 14vw;
+
+    text {
+      font-size: 18px;
+    }
+  }
+`
+
+const ScreenReaderOnly = styled.span`
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+`
 
 // Cutoff for switching from days:hours to hours:minutes display
 const HOURS_CUTOFF_FOR_DAYS_DISPLAY = 72
-
-const getReturnValues = countDown => {
-  // calculate time left
-  const days = Math.floor(countDown / (1000 * 60 * 60 * 24))
-  const hours = Math.floor((countDown % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
-  const minutes = Math.floor((countDown % (1000 * 60 * 60)) / (1000 * 60))
-  const seconds = Math.floor((countDown % (1000 * 60)) / 1000)
-
-  if (days < 0 || hours < 0 || seconds < 0) {
-    return [0, 0, 0, 0]
-  }
-
-  return [days, hours, minutes, seconds]
-}
+const TARGET_HACKATHON = 'cmd-f'
 
 const useCountdown = targetDate => {
-  const countDownDate = new Date(targetDate).getTime()
-
-  const [countDown, setCountDown] = useState(countDownDate - new Date().getTime())
+  const [countDown, setCountDown] = useState(null)
 
   useEffect(() => {
+    if (!targetDate) {
+      setCountDown(null)
+      return undefined
+    }
+
+    const countDownDate = new Date(targetDate).getTime()
+    setCountDown(countDownDate - Date.now())
+
     const interval = setInterval(() => {
-      setCountDown(countDownDate - new Date().getTime())
-    }, 5000)
+      setCountDown(countDownDate - Date.now())
+    }, 1000)
 
     return () => clearInterval(interval)
-  }, [countDownDate])
+  }, [targetDate])
 
-  return getReturnValues(countDown)
+  return msToUnits(countDown ?? 0)
 }
 
 const Countdown = () => {
-  const [days, hours, minutes] = useCountdown(TARGET_DATE)
+  const [portalData, setPortalData] = useState(null)
+  const [targetInfo, setTargetInfo] = useState(null)
+
+  useEffect(() => {
+    const unsubscribe = fireDb.subscribeToDocument('InternalWebsites', 'Portal', data => {
+      setPortalData(data || null)
+    })
+
+    return () => {
+      if (typeof unsubscribe === 'function') {
+        unsubscribe()
+      }
+    }
+  }, [])
+
+  useEffect(() => {
+    if (!portalData) {
+      setTargetInfo(null)
+      return
+    }
+
+    const candidates = [
+      {
+        key: 'applicationDeadline',
+        label: 'Applications close in:',
+        value: portalData.applicationDeadline?.[TARGET_HACKATHON],
+      },
+      {
+        key: 'rsvpBy',
+        label: 'RSVP ending in:',
+        value: portalData.rsvpBy?.[TARGET_HACKATHON],
+      },
+      {
+        key: 'waitlistSignupDeadline',
+        label: 'Waitlist ends in:',
+        value: portalData.waitlistSignupDeadline?.[TARGET_HACKATHON],
+      },
+    ]
+
+    const now = Date.now()
+    const sortedCandidates = candidates
+      .map(item => ({
+        ...item,
+        hackathon: TARGET_HACKATHON,
+        timestamp: parseIsoDateString(item.value),
+      }))
+      .filter(item => item.timestamp)
+      .sort((a, b) => a.timestamp - b.timestamp)
+
+    const nextTarget = sortedCandidates.find(item => item.timestamp > now)
+    const target = nextTarget || sortedCandidates[sortedCandidates.length - 1]
+
+    setTargetInfo(target || null)
+  }, [portalData])
+
+  const [days, hours, minutes, seconds] = useCountdown(targetInfo?.timestamp)
   const totalHours = days * 24 + hours
   const showDays = totalHours >= HOURS_CUTOFF_FOR_DAYS_DISPLAY
+  const showSeconds = totalHours < 1
+
+  let mode = 'hours'
+  if (showDays) {
+    mode = 'days'
+  } else if (showSeconds) {
+    mode = 'seconds'
+  }
+
+  const timeMapping = {
+    days: [
+      { value: days, unit: 'd' },
+      { value: hours, unit: 'h' },
+    ],
+    hours: [
+      { value: totalHours, unit: 'h' },
+      { value: minutes, unit: 'm' },
+    ],
+    seconds: [
+      { value: minutes, unit: 'm' },
+      { value: seconds, unit: 's' },
+    ],
+  }
+  const [first, second] = timeMapping[mode]
 
   return (
     <CountdownContainer>
-      <ClockImg src="/assets/images/watchDeer.svg" alt="Watch deer" />
-      <ClockFacePositioner>
-        <CountdownGrid>
-          {showDays ? (
-            <>
-              <TimeUnit>
-                <Digits>{String(days).padStart(2, '0')}d</Digits>
-              </TimeUnit>
-              <TimeUnit>
-                <Digits>:</Digits>
-              </TimeUnit>
-              <TimeUnit>
-                <Digits>{String(hours).padStart(2, '0')}h</Digits>
-              </TimeUnit>
-            </>
-          ) : (
-            <>
-              <TimeUnit>
-                <Digits>{String(totalHours).padStart(2, '0')}h</Digits>
-              </TimeUnit>
-              <TimeUnit>
-                <Digits>:</Digits>
-              </TimeUnit>
-              <TimeUnit>
-                <Digits>{String(minutes).padStart(2, '0')}m</Digits>
-              </TimeUnit>
-            </>
-          )}
-        </CountdownGrid>
-      </ClockFacePositioner>
+      <ClockWrapper>
+        <CountdownLabel>
+          <ScreenReaderOnly>{targetInfo ? `${targetInfo.label}` : 'No upcoming deadline'}</ScreenReaderOnly>
+          <CurvedLabelSvg viewBox="0 -15 260 70" role="img" aria-hidden="true">
+            <defs>
+              <path id="countdown-bowl-curve" d="M15,12 Q130,60 245,12" />
+            </defs>
+            <text textAnchor="middle">
+              <textPath href="#countdown-bowl-curve" startOffset="50%">
+                {targetInfo ? `${targetInfo.label}` : 'No upcoming deadline'}
+              </textPath>
+            </text>
+          </CurvedLabelSvg>
+        </CountdownLabel>
+
+        <ClockImg src="/assets/images/watchDeer.svg" alt="A deer holding a stopwatch" />
+
+        <ClockFacePositioner>
+          <CountdownGrid>
+            <TimeUnit>
+              <Digits>
+                {String(first.value).padStart(2, '0')}
+                {first.unit}
+              </Digits>
+            </TimeUnit>
+            <TimeUnit>
+              <Digits>:</Digits>
+            </TimeUnit>
+            <TimeUnit>
+              <Digits>
+                {String(second.value).padStart(2, '0')}
+                {second.unit}
+              </Digits>
+            </TimeUnit>
+          </CountdownGrid>
+        </ClockFacePositioner>
+      </ClockWrapper>
     </CountdownContainer>
   )
 }
