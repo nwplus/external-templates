@@ -500,26 +500,31 @@ const EatMeUnselectedTwo = styled.img`
 
 const keynoteData = [
   {
+    id: 'have-one-cookie',
     name: '',
     company: '',
     description: 'Details coming soon...',
   },
   {
+    id: 'eat-me-cookie',
     name: '',
     company: '',
     description: 'Details coming soon...',
   },
   {
+    id: 'drink-me-bottle',
     name: '',
     company: '',
     description: 'Details coming soon...',
   },
   {
+    id: 'try-me-cookie',
     name: '',
     company: '',
     description: 'Details coming soon...',
   },
   {
+    id: 'take-one-cookie',
     name: '',
     company: '',
     description: 'Details coming soon...',
@@ -629,12 +634,8 @@ const Keynotes = () => {
             <NavigationContainer>
               <NavArrow onClick={handlePreviousSpeaker}>&lt;</NavArrow>
               <DotsContainer>
-                {keynoteData.map((_, index) => (
-                  <Dot
-                    key={`keynote-dot-${index}`}
-                    active={selectedSpeaker === index}
-                    onClick={() => handleKeynoteClick(index)}
-                  />
+                {keynoteData.map((keynote, index) => (
+                  <Dot key={keynote.id} active={selectedSpeaker === index} onClick={() => handleKeynoteClick(index)} />
                 ))}
               </DotsContainer>
               <NavArrow onClick={handleNextSpeaker}>&gt;</NavArrow>
@@ -684,9 +685,9 @@ const Keynotes = () => {
                 <NavArrowLeft onClick={handlePreviousSpeaker}>&lt;</NavArrowLeft>
                 <NavigationContainer>
                   <DotsContainer>
-                    {keynoteData.map((_, index) => (
+                    {keynoteData.map((keynote, index) => (
                       <Dot
-                        key={`keynote-dot-${index}`}
+                        key={keynote.id}
                         active={selectedSpeaker === index}
                         onClick={() => handleKeynoteClick(index)}
                       />
