@@ -422,14 +422,6 @@ const profiles = [
     social: 'https://www.linkedin.com/in/makafui-amouzouvi/',
   },
   {
-    img: '/profiles/Jia_Jin.png',
-    name: 'Jia Jin',
-    emoji: '',
-    color: '#F8D7E1',
-    title: 'Engagement Coordinator',
-    social: 'https://www.linkedin.com/in/jiahui-jin',
-  },
-  {
     img: '/profiles/Ege_Taslicay.png',
     name: 'Ege Taslicay',
     emoji: '',
