@@ -6,7 +6,7 @@ const WorkshopsContainer = styled.div`
   background: linear-gradient(to top, #94d2f500 0%, #94d2f5 30%, #ddffdb 100%);
   width: 100%;
   height: 100%;
-  aspect-ratio: 1520/1300;
+  aspect-ratio: 1520/1200;
   height: auto;
   display: flex;
   position: relative;

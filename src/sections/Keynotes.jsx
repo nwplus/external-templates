@@ -3,7 +3,7 @@ import styled, { css, keyframes } from 'styled-components'
 import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
 
 const KeynotesContainer = styled.div`
-  aspect-ratio: 1512/1200;
+  aspect-ratio: 1512/920;
   height: 100%;
   position: relative;
   width: 100%;
@@ -360,7 +360,11 @@ const Keynotes = () => {
               <NavArrow onClick={handlePreviousSpeaker}>&lt;</NavArrow>
               <DotsContainer>
                 {keynoteData.map((_, index) => (
-                  <Dot key={index} active={selectedSpeaker === index} onClick={() => handleKeynoteClick(index)} />
+                  <Dot
+                    key={`keynote-dot-${index}`}
+                    active={selectedSpeaker === index}
+                    onClick={() => handleKeynoteClick(index)}
+                  />
                 ))}
               </DotsContainer>
               <NavArrow onClick={handleNextSpeaker}>&gt;</NavArrow>
