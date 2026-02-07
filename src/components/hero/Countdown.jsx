@@ -215,6 +215,29 @@ const Countdown = () => {
   const showDays = totalHours >= HOURS_CUTOFF_FOR_DAYS_DISPLAY
   const showSeconds = totalHours < 1
 
+  let mode = 'hours'
+  if (showDays) {
+    mode = 'days'
+  } else if (showSeconds) {
+    mode = 'seconds'
+  }
+
+  const timeMapping = {
+    days: [
+      { value: days, unit: 'd' },
+      { value: hours, unit: 'h' },
+    ],
+    hours: [
+      { value: totalHours, unit: 'h' },
+      { value: minutes, unit: 'm' },
+    ],
+    seconds: [
+      { value: minutes, unit: 'm' },
+      { value: seconds, unit: 's' },
+    ],
+  }
+  const [first, second] = timeMapping[mode]
+
   return (
     <CountdownContainer>
       <ClockWrapper>
@@ -236,43 +259,21 @@ const Countdown = () => {
 
         <ClockFacePositioner>
           <CountdownGrid>
-            {showDays ? (
-              <>
-                <TimeUnit>
-                  <Digits>{String(days).padStart(2, '0')}d</Digits>
-                </TimeUnit>
-                <TimeUnit>
-                  <Digits>:</Digits>
-                </TimeUnit>
-                <TimeUnit>
-                  <Digits>{String(hours).padStart(2, '0')}h</Digits>
-                </TimeUnit>
-              </>
-            ) : showSeconds ? (
-              <>
-                <TimeUnit>
-                  <Digits>{String(minutes).padStart(2, '0')}m</Digits>
-                </TimeUnit>
-                <TimeUnit>
-                  <Digits>:</Digits>
-                </TimeUnit>
-                <TimeUnit>
-                  <Digits>{String(seconds).padStart(2, '0')}s</Digits>
-                </TimeUnit>
-              </>
-            ) : (
-              <>
-                <TimeUnit>
-                  <Digits>{String(totalHours).padStart(2, '0')}h</Digits>
-                </TimeUnit>
-                <TimeUnit>
-                  <Digits>:</Digits>
-                </TimeUnit>
-                <TimeUnit>
-                  <Digits>{String(minutes).padStart(2, '0')}m</Digits>
-                </TimeUnit>
-              </>
-            )}
+            <TimeUnit>
+              <Digits>
+                {String(first.value).padStart(2, '0')}
+                {first.unit}
+              </Digits>
+            </TimeUnit>
+            <TimeUnit>
+              <Digits>:</Digits>
+            </TimeUnit>
+            <TimeUnit>
+              <Digits>
+                {String(second.value).padStart(2, '0')}
+                {second.unit}
+              </Digits>
+            </TimeUnit>
           </CountdownGrid>
         </ClockFacePositioner>
       </ClockWrapper>
