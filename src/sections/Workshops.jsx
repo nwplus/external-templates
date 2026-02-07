@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 const WorkshopsContainer = styled.div`
   position: relative;
-  background: linear-gradient(to top, #78c7f3cc 0%, #94d2f5 30%, #ddffdb 100%);
+  background: linear-gradient(to top, #94d2f500 0%, #94d2f5 30%, #ddffdb 100%);
   width: 100%;
   height: 100%;
   aspect-ratio: 1520/1300;
