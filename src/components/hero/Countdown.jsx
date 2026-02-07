@@ -69,7 +69,7 @@ const Digits = styled.h2`
 `
 
 // The date we are counting down to
-const TARGET_DATE = new Date('Feb 16, 2026 11:59:59').getTime()
+const TARGET_DATE = new Date('Feb 14, 2026 11:59:59').getTime()
 
 // Cutoff for switching from days:hours to hours:minutes display
 const HOURS_CUTOFF_FOR_DAYS_DISPLAY = 72
