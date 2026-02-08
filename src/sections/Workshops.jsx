@@ -310,7 +310,7 @@ const Workshops = () => {
     },
     {
       header: 'Intro to Express & APIs',
-      date: 'March 3, 2026',
+      date: 'March 4, 2026',
       description:
         'Explore what happens behind the scenes by building a backend with Express. Create APIs, handle data requests, and support core functionality for your Pomodoro app.',
     },
