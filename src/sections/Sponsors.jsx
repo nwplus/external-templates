@@ -4,6 +4,7 @@ import { Header2 } from '@components/Typography'
 import SponsorsGrid from '@components/SponsorsGrid'
 import fireDb from '@utilities/firebase'
 import Carousel from '../components/Carousel'
+import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
 
 const SponsorsContainer = styled.div`
   position: relative;
@@ -14,6 +15,11 @@ const SponsorsContainer = styled.div`
   justify-content: center;
   gap: calc(100vw * (40 / 1920));
   margin-top: calc(100vw * (200 / 1920));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    margin-top: calc(100vw * (-150 / 393));
+    aspect-ratio: 393 / 800;
+  }
 `
 
 const Title = styled(Header2)`
@@ -99,6 +105,24 @@ const SponsorButton = styled.button`
 const Sponsors = () => {
   const [sponsors, setSponsors] = useState([])
   const [carouselSponsors, setCarouselSponsors] = useState([])
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= SCREEN_BREAKPOINTS.mobile)
+    }
+
+    if (typeof window !== 'undefined') {
+      handleResize()
+      window.addEventListener('resize', handleResize)
+    }
+
+    return () => {
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('resize', handleResize)
+      }
+    }
+  }, [])
 
   useEffect(async () => {
     const data = await fireDb.getCollection('cmd-f2026', 'Sponsors')
@@ -139,8 +163,19 @@ const Sponsors = () => {
         Sponsor us!
       </SponsorButton>
       {/* <SwipeDescription>Swipe on the TV screen to read about our sponsors</SwipeDescription> */}
-      {carouselSponsors.length > 0 && <Carousel sponsors={carouselSponsors} />}
-      <SponsorsGrid sponsors={sponsors} />
+      {!isMobile ? (
+        <>
+          {carouselSponsors.length > 0 && <Carousel sponsors={carouselSponsors} />}
+          <SponsorsGrid sponsors={sponsors} />
+        </>
+      ) : (
+        <>
+          <Description>
+            To view our current full list of sponsors, please view this website on desktop. We are still working on the
+            mobile version!
+          </Description>
+        </>
+      )}
     </SponsorsContainer>
   )
 }
