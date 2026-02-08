@@ -1,421 +1,520 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 
 import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
 
+const OuterContainer = styled.div`
+  position: relative;
+`
+
 const ProjectsContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(6, 1fr);
-  grid-gap: 20px;
   position: relative;
-  aspect-ratio: 1280/812;
-  padding: 0 calc(100vw * (73 / 1683));
+  aspect-ratio: 1512/1100;
+  width: 100%;
+  height: 100%;
+  background: #c1e8fe;
 
   ${p => p.theme.mediaQueries.mobile} {
-    aspect-ratio: 393 / 1271;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    padding: 0;
+    aspect-ratio: 393 / 850;
   }
 `
 
-const CardContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
+// PROJECT TEACUPS
+const MindfulMeadows = styled.img`
+  width: calc(100vw * (229 / 1512));
+  z-index: 7;
+  position: absolute;
+  bottom: calc(100vw * (475 / 1512));
+  left: calc(100vw * (350 / 1512));
+  cursor: pointer;
 
-  ${p => p.theme.mediaQueries.mobile} {
-    width: calc(100vw);
+  &:hover {
+    opacity: 0;
   }
 `
 
-const MainCardContainer = styled(CardContainer)`
-  grid-column: 2;
-  grid-row: 3 / span 2;
+const MindfulMeadowsSelected = styled.img`
+  width: calc(100vw * (245 / 1512));
+  z-index: 7;
+  position: absolute;
+  bottom: calc(100vw * (460 / 1512));
+  left: calc(100vw * (335 / 1512));
+  cursor: pointer;
+  opacity: ${p => (p.isSelected ? 1 : 0)};
+
+  &:hover {
+    opacity: 1;
+  }
 
   ${p => p.theme.mediaQueries.mobile} {
-    display: none;
+    width: calc(100vw * (185 / 393));
+    bottom: calc(100vw * (310 / 393));
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 1;
   }
 `
 
-const RizzsumoCardContainer = styled(CardContainer)`
-  grid-column: 1;
-  grid-row: 1 / span 2;
-  transform: translate(10%, 37%);
+const MindfulMeadowsLabel = styled.img`
+  width: calc(100vw * (149 / 1512));
+  z-index: 7;
+  position: absolute;
+  bottom: calc(100vw * (440 / 1512));
+  left: calc(100vw * (400 / 1512));
 
   ${p => p.theme.mediaQueries.mobile} {
-    transform: none;
-    grid-row: 2 / span 2;
+    width: calc(100vw * (116 / 393));
+    bottom: calc(100vw * (295 / 393));
+    left: 50%;
+    transform: translateX(-50%);
   }
 `
 
-const ChownowCardContainer = styled(CardContainer)`
-  grid-column: 2;
-  grid-row: 5 / span 2;
-  transform: translate(5%, -11%);
+const DinoBuddies = styled.img`
+  width: calc(100vw * (175 / 1512));
+  z-index: 7;
+  position: absolute;
+  bottom: calc(100vw * (483 / 1512));
+  left: calc(100vw * (585 / 1512));
+  cursor: pointer;
 
-  ${p => p.theme.mediaQueries.mobile} {
-    transform: none;
-    grid-column: 1;
-    grid-row: 7 / span 2;
+  &:hover {
+    opacity: 0;
   }
 `
 
-const DinoauraCardContainer = styled(CardContainer)`
-  grid-column: 3;
-  grid-row: 1 / span 3;
-  flex-direction: column;
-  transform: translate(-10%, 23%);
+const DinoBuddiesLabel = styled.img`
+  width: calc(100vw * (148 / 1512));
+  z-index: 7;
+  position: absolute;
+  bottom: calc(100vw * (450 / 1512));
+  left: calc(100vw * (610 / 1512));
 
   ${p => p.theme.mediaQueries.mobile} {
-    transform: none;
-    grid-column: 1;
-    grid-row: 4 / span 3;
+    width: calc(100vw * (119 / 393));
+    bottom: calc(100vw * (295 / 393));
+    left: 50%;
+    transform: translateX(-50%);
   }
 `
 
-const LovealarmCardContainer = styled(CardContainer)`
-  grid-column: 3;
-  grid-row: 4 / span 3;
-  transform: translate(-15%, -3%);
+const DinoBuddiesSelected = styled.img`
+  width: calc(100vw * (200 / 1512));
+  z-index: 7;
+  position: absolute;
+  bottom: calc(100vw * (484 / 1512));
+  left: calc(100vw * (575 / 1512));
+  cursor: pointer;
+  opacity: ${p => (p.isSelected ? 1 : 0)};
+
+  &:hover {
+    opacity: 1;
+  }
 
   ${p => p.theme.mediaQueries.mobile} {
-    transform: none;
-    grid-column: 1;
-    grid-row: 9 / span 3;
+    width: calc(100vw * (181 / 393));
+    bottom: calc(100vw * (310 / 393));
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 1;
   }
 `
 
-const MainCardImage = styled.img`
-  width: calc(100vw * (497 / 1920));
-  height: auto;
+const BigFish = styled.img`
+  width: calc(100vw * (137 / 1512));
+  z-index: 7;
+  position: absolute;
+  bottom: calc(100vw * (490 / 1512));
+  left: calc(100vw * (790 / 1512));
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0;
+  }
+`
+
+const BigFishLabel = styled.img`
+  width: calc(100vw * (104 / 1512));
+  z-index: 7;
+  position: absolute;
+  bottom: calc(100vw * (450 / 1512));
+  left: calc(100vw * (810 / 1512));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (104 / 393));
+    bottom: calc(100vw * (285 / 393));
+    left: 50%;
+    transform: translateX(-50%);
+  }
+`
+
+const BigFishSelected = styled.img`
+  width: calc(100vw * (160 / 1512));
+  z-index: 7;
+  position: absolute;
+  bottom: calc(100vw * (475 / 1512));
+  left: calc(100vw * (780 / 1512));
+  cursor: pointer;
+  opacity: ${p => (p.isSelected ? 1 : 0)};
+
+  &:hover {
+    opacity: 1;
+  }
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (156 / 393));
+    bottom: calc(100vw * (300 / 393));
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 1;
+  }
+`
+
+const BusBuddies = styled.img`
+  width: calc(100vw * (196 / 1512));
+  z-index: 7;
+  position: absolute;
+  bottom: calc(100vw * (490 / 1512));
+  left: calc(100vw * (960 / 1512));
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0;
+  }
+`
+
+const BusBuddiesLabel = styled.img`
+  width: calc(100vw * (129 / 1512));
+  z-index: 7;
+  position: absolute;
+  bottom: calc(100vw * (455 / 1512));
+  left: calc(100vw * (980 / 1512));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (121 / 393));
+    bottom: calc(100vw * (290 / 393));
+    left: 50%;
+    transform: translateX(-50%);
+  }
+`
+
+const BusBuddiesSelected = styled.img`
+  width: calc(100vw * (260 / 1512));
+  z-index: 7;
+  position: absolute;
+  bottom: calc(100vw * (455 / 1512));
+  left: calc(100vw * (930 / 1512));
+  cursor: pointer;
+  opacity: ${p => (p.isSelected ? 1 : 0)};
+
+  &:hover {
+    opacity: 1;
+  }
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (220 / 393));
+    bottom: calc(100vw * (300 / 393));
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 1;
+  }
+`
+
+// SMOKES
+const PastProjectsSmoke = styled.img`
+  width: calc(100vw * (783 / 1512));
+  z-index: 7;
+  position: absolute;
+  bottom: calc(100vw * (660 / 1512));
+  left: calc(100vw * (350 / 1512));
+`
+
+const MindfulMeadowsSmoke = styled.img`
+  width: calc(100vw * (774 / 1512));
+  z-index: 7;
+  position: absolute;
+  bottom: calc(100vw * (610 / 1512));
+  left: calc(100vw * (355 / 1512));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (420 / 393));
+    bottom: calc(100vw * (530 / 393));
+    left: 50%;
+    transform: translateX(-50%);
+  }
+`
+
+const DinoAuraSmoke = styled.img`
+  width: calc(100vw * (797 / 1512));
+  z-index: 7;
+  position: absolute;
+  bottom: calc(100vw * (600 / 1512));
+  left: calc(100vw * (355 / 1512));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (431 / 393));
+    bottom: calc(100vw * (500 / 393));
+    left: 50%;
+    transform: translateX(-50%);
+  }
+`
+
+const BigFishSmoke = styled.img`
+  width: calc(100vw * (731 / 1512));
+  z-index: 7;
+  position: absolute;
+  bottom: calc(100vw * (660 / 1512));
+  left: calc(100vw * (398 / 1512));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (400 / 393));
+    bottom: calc(100vw * (520 / 393));
+    left: 50%;
+    transform: translateX(-50%);
+  }
+`
+
+const BusBuddiesSmoke = styled.img`
+  width: calc(100vw * (659 / 1512));
+  z-index: 7;
+  position: absolute;
+  bottom: calc(100vw * (625 / 1512));
+  left: calc(100vw * (425 / 1512));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (427 / 393));
+    bottom: calc(100vw * (500 / 393));
+    left: 50%;
+    transform: translateX(-50%);
+  }
+`
+
+// BACKGROUND
+const Deer = styled.img`
+  width: calc(100vw * (253 / 1512));
+  z-index: 5;
+  position: absolute;
+  bottom: calc(100vw * (280 / 1512));
+  left: calc(100vw * (25 / 1512));
+`
+
+const Bunny = styled.img`
+  width: calc(100vw * (273 / 1512));
+  z-index: 5;
+  position: absolute;
+  bottom: calc(100vw * (270 / 1512));
+  right: calc(100vw * (25 / 1512));
+`
+
+const CloudTwo = styled.img`
+  width: calc(100vw * (1500 / 1512));
   z-index: 1;
+  position: absolute;
+  bottom: calc(100vw * (260 / 1512));
+  left: calc(100vw * (0 / 1512));
+
   ${p => p.theme.mediaQueries.mobile} {
-    display: none;
+    width: calc(100vw * (964 / 393));
+    bottom: calc(100vw * (300 / 393));
+    left: calc(100vw * (-520 / 393));
   }
 `
 
-const MainText = styled.h1`
-  font-family: Gloock;
-  font-weight: 400;
-  font-size: calc(100vw * (48 / 1920));
-  color: #a6321e;
+const CloudOne = styled.img`
+  width: calc(100vw * (1500 / 1512));
+  z-index: 2;
   position: absolute;
-  text-align: center;
+  bottom: calc(100vw * (120 / 1512));
+  left: calc(100vw * (0 / 1512));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (964 / 393));
+    bottom: calc(100vw * (240 / 393));
+    left: calc(100vw * (-400 / 393));
+  }
+`
+
+const Table = styled.img`
+  width: calc(100vw * (1377 / 1512));
+  z-index: 6;
+  position: absolute;
+  bottom: calc(100vw * (190 / 1512));
+  left: calc(100vw * (60 / 1512));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: 100vw;
+    left: 0;
+  }
+`
+const Cat = styled.img`
+  width: calc(100vw * (190 / 1512));
+  z-index: 7;
+  position: absolute;
+  bottom: calc(100vw * (121 / 1512));
+  left: calc(100vw * (460 / 1512));
+`
+
+const DarkerGround = styled.img`
+  width: calc(100vw * (1600 / 1512));
+  z-index: 3;
+  position: absolute;
+  bottom: calc(100vw * (120 / 1512));
+`
+
+const LightGround = styled.img`
+  width: calc(100vw * (1600 / 1512));
+  z-index: 4;
+  position: absolute;
+  bottom: calc(100vw * (65 / 1512));
+`
+
+const Bushes = styled.img`
+  width: calc(100vw * (1600 / 1512));
+  z-index: 45;
+  position: absolute;
+  bottom: calc(100vw * (-170 / 1512));
+
+  ${p => p.theme.mediaQueries.mobile} {
+    width: calc(100vw * (600 / 393));
+    bottom: calc(100vw * (-40 / 393));
+    left: calc(100vw * (0 / 393));
+  }
+`
+
+const DevpostBtn = styled.a`
+  position: absolute;
+  ${p => p.devpostTop || 'top: calc(100vw * (320 / 1512));'}
+  ${p => p.devpostLeft || 'left: calc(100vw * (710 / 1512));'}
+  color: #000000;
+  text-decoration: underline;
+  font-family: 'Quicksand';
   z-index: 10;
-  width: calc(100vw * (497 / 1920));
-  padding: calc(100vw * (40 / 1920));
+  opacity: ${p => (p.visible ? 1 : 0)};
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    color: #095575;
+  }
+
   ${p => p.theme.mediaQueries.mobile} {
-    display: none;
+    bottom: calc(100vw * (200 / 393));
   }
 `
 
-const MobileHeader = styled.p`
-  display: none;
-  font-family: Gloock;
-  font-weight: 400;
-  font-size: calc(100vw * (35 / 393));
-  color: #a6321e;
-  text-align: left;
-  margin: calc(100vw * (40 / 393));
-
-  ${p => p.theme.mediaQueries.mobile} {
-    display: block;
-    grid-column: 1;
-    grid-row: 1 / span 1;
-  }
-`
-
-const TapeImage = styled.img`
-  width: calc(100vw * (188 / 1920));
+// MOBILE CAROUSEL STYLES
+const CarouselWrapper = styled.div`
   position: absolute;
-  top: 10%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+`
+
+const SlidesContainer = styled.div`
+  display: flex;
+  width: 400%;
+  height: 100%;
+  transform: translateX(${p => -p.currentSlide * 25}%);
+  transition: transform 0.3s ease-out;
+`
+
+const Slide = styled.div`
+  width: 25%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 30px 0;
+  box-sizing: border-box;
+`
+
+const PaginationDots = styled.div`
+  position: absolute;
+  bottom: calc(100vw * (235 / 393));
   left: 50%;
   transform: translateX(-50%);
-  z-index: 5;
-
-  ${MainCardContainer} & {
-    ${p => p.theme.mediaQueries.mobile} {
-      display: none;
-    }
-  }
-
-  ${p => p.theme.mediaQueries.mobile} {
-    width: calc(100vw * (106 / 393));
-    top: -3%;
-    left: 35%;
-    transform: translate(0%, 0%);
-  }
+  display: flex;
+  gap: 12px;
+  z-index: 11;
 `
 
-const Project1Image = styled.img`
-  width: calc(100vw * (497 / 1920));
-  height: auto;
-  z-index: 1;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    width: calc(100vw * (317 / 393));
-  }
-`
-
-const Project1Title = styled.p`
-  font-family: 'Happy Time';
-  font-weight: 400;
-  font-size: calc(100vw * (40 / 1920));
-  font-style: italic;
-  color: #a6321e;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    font-size: calc(100vw * (20 / 393));
-  }
-`
-
-const Project1Description = styled.p`
-  font-weight: 400;
-  font-size: calc(100vw * (18 / 1920));
-  padding: calc(100vw * (20 / 1920)) 0px;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    font-size: calc(100vw * (15 / 393));
-  }
-`
-
-const ProjectButton = styled.button`
-  background: #a6321e;
-  width: calc(100vw * (170 / 1920));
-  height: calc(100vw * (37 / 1920));
-  min-height: calc(100vw * (37 / 1920));
-  color: #fff;
-  font-size: calc(100vw * (16 / 1920));
-  font-weight: 600;
-  font-family: 'Poppins';
-  border-radius: calc(100vw * (5 / 1920));
-  border: none;
-  margin-top: auto;
-
+const Dot = styled.div`
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: ${p => (p.active ? '#8B7355' : '#FFFFFF')};
   cursor: pointer;
-  transition: all 0.3s ease;
-  &:hover {
-    background-color: #456774;
+  transition: background-color 0.3s ease;
+  &:nth-child(1) {
+    transform: translateY(-4px);
   }
-
-  ${p => p.theme.mediaQueries.mobile} {
-    width: calc(100vw * (112 / 393));
-    height: calc(100vw * (24 / 393));
-    min-height: calc(100vw * (24 / 393));
-    font-size: calc(100vw * (10 / 393));
-    border-radius: calc(100vw * (5 / 393));
+  &:nth-child(2) {
+    transform: translateY(-2px);
+  }
+  &:nth-child(3) {
+    transform: translateY(-2px);
+  }
+  &:nth-child(4) {
+    transform: translateY(-4px);
   }
 `
 
-const ProjectText = styled.div`
+const MobileSideTeacup = styled.img`
   position: absolute;
-  top: 53%;
-  left: 48%;
-  width: calc(100vw * (380 / 1920));
-  transform: translate(-50%, -60%);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  z-index: 5;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    transform: none;
-    top: 13%;
-    left: 18%;
-    width: calc(100vw * (260 / 393));
-    height: 70%;
-  }
+  width: calc(100vw * (${p => p.mobileWidth || 80} / 393));
+  opacity: 0.6;
+  bottom: ${p => p.bottom || 'calc(100vw * (360 / 393))'};
+  ${p => (p.left ? `left: calc(${p.left} + 100vw * (20 / 393));` : '')}
+  ${p => (p.right ? `right: calc(${p.right} + 100vw * (20 / 393));` : '')}
+  z-index: 8;
 `
 
-const ChococakeCardContainer = styled.div`
-  grid-column: 2;
-  grid-row: 1 / span 2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  transform: translate(7%, 30%);
-
-  ${p => p.theme.mediaQueries.mobile} {
-    display: none;
-  }
-`
-
-const ChococakeCardImage = styled.img`
-  width: calc(100vw * (422 / 1920));
-  height: auto;
-  z-index: 1;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    display: none;
-  }
-`
-
-const DessertCardsContainer = styled.div`
-  grid-column: 1;
-  grid-row: 3 / span 4;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    display: none;
-  }
-`
-
-const BrownieCardImage = styled.img`
-  width: calc(100vw * (307 / 1920));
-  height: auto;
-  z-index: 5;
-  position: absolute;
-  top: 35%;
-  left: 43%;
-  transform: translate(-50%, -50%);
-
-  ${p => p.theme.mediaQueries.mobile} {
-    display: none;
-  }
-`
-
-const BlueberryCardImage = styled.img`
-  width: calc(100vw * (304 / 1920));
-  height: auto;
-  z-index: 3;
-  position: absolute;
-  top: 61%;
-  left: 80%;
-  transform: translate(-50%, -46%);
-
-  ${p => p.theme.mediaQueries.mobile} {
-    display: none;
-  }
-`
-
-const BreadImage = styled.img`
-  width: calc(100vw * (175 / 1920));
-  height: auto;
-  z-index: 3;
-  position: absolute;
-  transform: translateX(140%);
-
-  ${p => p.theme.mediaQueries.mobile} {
-    width: calc(100vw * (86 / 393));
-    z-index: 15;
-    transform: translate(170%, 150%);
-  }
-`
-
-const CroissantImage = styled.img`
-  width: calc(100vw * (360 / 1920));
-  height: auto;
-  z-index: 3;
-  position: absolute;
-  transform: translate(55%, -40%);
-
-  ${p => p.theme.mediaQueries.mobile} {
-    width: calc(100vw * (203 / 393));
-    transform: translate(-65%, 65%);
-  }
-`
-
-const DinoauraCardImage = styled.img`
-  width: calc(100vw * (497 / 1920));
-  height: auto;
-  z-index: 1;
-  transform: translateY(-5%);
-
-  ${p => p.theme.mediaQueries.mobile} {
-    width: calc(100vw * (317 / 393));
-    transform: none;
-  }
-`
-
-const DinoauraText = styled.p`
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  top: 46%;
-  left: 43%;
-  transform: translate(-50%, -55%);
-  z-index: 5;
-  height: 50%;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    transform: none;
-    top: 9%;
-    left: 18%;
-    width: calc(100vw * (260 / 393));
-    height: 75%;
-  }
-`
-
-const BreadBasketImage = styled.img`
-  width: calc(100vw * (236 / 1920));
-  height: auto;
-  z-index: 3;
-  position: absolute;
-  transform: translate(90%, 53%);
-
-  ${p => p.theme.mediaQueries.mobile} {
-    display: none;
-  }
-`
-
-const LovealarmCardImage = styled.img`
-  width: calc(100vw * (352 / 1920));
-  height: auto;
-  z-index: 1;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    width: calc(100vw * (317 / 393));
-  }
-`
-
-const LovealarmText = styled.p`
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  top: 52%;
-  left: 52%;
-  transform: translate(-50%, -51%);
-  height: 50%;
-  z-index: 5;
-  ${p => p.theme.mediaQueries.mobile} {
-    transform: none;
-    top: 20%;
-    left: 18%;
-    width: calc(100vw * (260 / 393));
-    height: 60%;
-  }
-`
-
-const Bread2Image = styled.img`
-  width: calc(100vw * (117 / 1920));
-  height: auto;
-  z-index: 3;
-  position: absolute;
-  transform: translate(0%, -210%);
-
-  ${p => p.theme.mediaQueries.mobile} {
-    display: none;
-  }
-`
+const PROJECTS_DATA = [
+  {
+    id: 'mindfulMeadows',
+    devpost: 'https://devpost.com/software/mindful-meadows',
+    devpostTop: 'top: calc(100vw * (320 / 1512));',
+    devpostLeft: 'left: calc(100vw * (700 / 1512));',
+    sideTeacups: [
+      { src: '/assets/images/projects/dino_buddies_teacup.svg', right: '20px', width: '70px', mobileWidth: 90 },
+    ],
+  },
+  {
+    id: 'dinoBuddies',
+    devpost: 'https://devpost.com/software/dinoaura',
+    devpostTop: 'top: calc(100vw * (320 / 1512));',
+    devpostLeft: 'left: calc(100vw * (720 / 1512));',
+    sideTeacups: [
+      { src: '/assets/images/projects/mindful_meadows_teacup.svg', left: '10px', width: '100px', mobileWidth: 106 },
+      { src: '/assets/images/projects/big_fish_teacup.svg', right: '20px', width: '60px', mobileWidth: 72 },
+    ],
+  },
+  {
+    id: 'bigFish',
+    devpost: 'https://devpost.com/software/best-fish',
+    devpostTop: 'top: calc(100vw * (310 / 1512));',
+    devpostLeft: 'left: calc(100vw * (730 / 1512));',
+    sideTeacups: [
+      { src: '/assets/images/projects/dino_buddies_teacup.svg', left: '10px', width: '100px', mobileWidth: 90 },
+      { src: '/assets/images/projects/bus_buddies_teacup.svg', right: '10px', width: '80px', mobileWidth: 97 },
+    ],
+  },
+  {
+    id: 'busBuddies',
+    devpost: 'https://devpost.com/software/busbuddies-3k9bqn',
+    devpostTop: 'top: calc(100vw * (320 / 1512));',
+    devpostLeft: 'left: calc(100vw * (710 / 1512));',
+    sideTeacups: [{ src: '/assets/images/projects/big_fish_teacup.svg', left: '20px', width: '60px', mobileWidth: 72 }],
+  },
+]
 
 const Projects = () => {
-  const [hoveredProject, setHoveredProject] = useState(null)
+  const [selectedProject, setSelectedProject] = useState(null)
   const [isMobile, setIsMobile] = useState(false)
-  const projects = {
-    rizzsumo: '/assets/images/projects/rizzsumo.png',
-    chownow: '/assets/images/projects/chow-now.png',
-    dinoaura: '/assets/images/projects/dinoaura.png',
-    lovealarm: '/assets/images/projects/lovealarm.png',
-  }
+  const [currentSlide, setCurrentSlide] = useState(0)
+  const touchStartX = useRef(0)
+  const touchEndX = useRef(0)
 
   useEffect(() => {
     const handleResize = () => {
@@ -423,7 +522,7 @@ const Projects = () => {
     }
 
     if (typeof window !== 'undefined') {
-      handleResize() // Set initial state
+      handleResize()
       window.addEventListener('resize', handleResize)
     }
 
@@ -434,101 +533,176 @@ const Projects = () => {
     }
   }, [])
 
+  const handleTouchStart = e => {
+    touchStartX.current = e.touches[0].clientX
+  }
+
+  const handleTouchMove = e => {
+    touchEndX.current = e.touches[0].clientX
+  }
+
+  const handleTouchEnd = () => {
+    const diff = touchStartX.current - touchEndX.current
+    const threshold = 50
+
+    if (diff > threshold && currentSlide < PROJECTS_DATA.length - 1) {
+      setCurrentSlide(prev => prev + 1)
+    } else if (diff < -threshold && currentSlide > 0) {
+      setCurrentSlide(prev => prev - 1)
+    }
+  }
+
+  const handleOnClick = selected => {
+    if (selected === selectedProject) {
+      setSelectedProject(null)
+    } else {
+      setSelectedProject(selected)
+    }
+  }
+
   return (
-    <ProjectsContainer id="past-projects">
-      <MobileHeader>Check out these inspiring projects from past years!</MobileHeader>
-      <MainCardContainer>
-        <TapeImage src="/assets/images/projects/tape.png" />
-        <MainCardImage src={hoveredProject ? projects[hoveredProject] : '/assets/images/projects/maincard.svg'} />
-        {!hoveredProject && <MainText>Check out these inspiring projects from past years!</MainText>}
-      </MainCardContainer>
+    <OuterContainer id="past-projects">
+      {!isMobile ? (
+        <ProjectsContainer>
+          {selectedProject === null && <PastProjectsSmoke src="/assets/images/projects/past_projects_smoke.svg" />}
+          {selectedProject === 'mindfulMeadows' && (
+            <MindfulMeadowsSmoke src="/assets/images/projects/mindful_meadows_smoke.svg" />
+          )}
+          {selectedProject === 'dinoBuddies' && <DinoAuraSmoke src="/assets/images/projects/dino_aura_smoke.svg" />}
+          {selectedProject === 'bigFish' && <BigFishSmoke src="/assets/images/projects/big_fish_smoke.svg" />}
+          {selectedProject === 'busBuddies' && <BusBuddiesSmoke src="/assets/images/projects/bus_buddies_smoke.svg" />}
 
-      <RizzsumoCardContainer
-        onMouseEnter={() => setHoveredProject('rizzsumo')}
-        onMouseLeave={() => setHoveredProject(null)}
-      >
-        <TapeImage src="/assets/images/projects/tape.png" />
-        <Project1Image src="/assets/images/projects/project1.svg" />
-        <ProjectText>
-          <Project1Title>Rizzsumo</Project1Title>
-          <Project1Description>Bringing a world of interests, and friendships in front of you.</Project1Description>
-          <ProjectButton onClick={() => window.open('https://devpost.com/software/rizzsumo', '_blank')}>
-            Check it out now!
-          </ProjectButton>
-        </ProjectText>
-        <BreadImage src="/assets/images/projects/Bread.png" />
-      </RizzsumoCardContainer>
+          <MindfulMeadows
+            src="/assets/images/projects/mindful_meadows_teacup.svg"
+            onClick={() => handleOnClick('mindfulMeadows')}
+          />
+          <MindfulMeadowsSelected
+            src="/assets/images/projects/mindful_meadows_selected.svg"
+            onClick={() => handleOnClick('mindfulMeadows')}
+            isSelected={selectedProject === 'mindfulMeadows'}
+          />
+          <MindfulMeadowsLabel src="/assets/images/projects/mindful_meadows_label.svg" />
 
-      <ChownowCardContainer
-        onMouseEnter={() => setHoveredProject('chownow')}
-        onMouseLeave={() => setHoveredProject(null)}
-      >
-        <TapeImage src="/assets/images/projects/tape.png" />
-        <Project1Image
-          src={isMobile ? '/assets/images/projects/chownow_mobile.svg' : '/assets/images/projects/project1.svg'}
-        />
-        <ProjectText>
-          <Project1Title>Chow-now</Project1Title>
-          <Project1Description>
-            Discretely providing victims of domestic violence with the help they need.
-          </Project1Description>
-          <ProjectButton onClick={() => window.open('https://devpost.com/software/chow-now', '_blank')}>
-            Check it out now!
-          </ProjectButton>
-        </ProjectText>
-        <CroissantImage src="/assets/images/projects/Croissant.png" />
-      </ChownowCardContainer>
+          <DinoBuddies
+            src="/assets/images/projects/dino_buddies_teacup.svg"
+            onClick={() => handleOnClick('dinoBuddies')}
+          />
+          <DinoBuddiesSelected
+            src="/assets/images/projects/dino_buddies_selected.svg"
+            onClick={() => handleOnClick('dinoBuddies')}
+            isSelected={selectedProject === 'dinoBuddies'}
+          />
+          <DinoBuddiesLabel src="/assets/images/projects/dino_buddies_label.svg" />
 
-      <ChococakeCardContainer>
-        <ChococakeCardImage src="/assets/images/projects/chococake.svg" />
-      </ChococakeCardContainer>
+          <BigFish src="/assets/images/projects/big_fish_teacup.svg" onClick={() => handleOnClick('bigFish')} />
+          <BigFishSelected
+            src="/assets/images/projects/big_fish_selected.svg"
+            onClick={() => handleOnClick('bigFish')}
+            isSelected={selectedProject === 'bigFish'}
+          />
+          <BigFishLabel src="/assets/images/projects/big_fish_label.svg" />
 
-      <DessertCardsContainer>
-        <BrownieCardImage src="/assets/images/projects/brownies.svg" />
-        <BlueberryCardImage src="/assets/images/projects/blueberry.svg" />
-      </DessertCardsContainer>
+          <BusBuddies
+            src="/assets/images/projects/bus_buddies_teacup.svg"
+            onClick={() => handleOnClick('busBuddies')}
+          />
+          <BusBuddiesSelected
+            src="/assets/images/projects/bus_buddies_selected.svg"
+            onClick={() => handleOnClick('busBuddies')}
+            isSelected={selectedProject === 'busBuddies'}
+          />
+          <BusBuddiesLabel src="/assets/images/projects/bus_buddies_label.svg" />
 
-      <DinoauraCardContainer
-        onMouseEnter={() => setHoveredProject('dinoaura')}
-        onMouseLeave={() => setHoveredProject(null)}
-      >
-        <TapeImage src="/assets/images/projects/tape.png" />
-        <DinoauraCardImage
-          src={isMobile ? '/assets/images/projects/dinoaura_mobile.svg' : '/assets/images/projects/dinoaura_card.svg'}
-        />
-        <DinoauraText>
-          <Project1Title>Dinoaura</Project1Title>
-          <Project1Description>
-            People are more likely to take advice when it is personalized to be for someone like them. DinoAura lets you
-            take a personality test and then becomes a perfect emotional outlet for someone like you!
-          </Project1Description>
-          <ProjectButton onClick={() => window.open('https://devpost.com/software/dinoaura', '_blank')}>
-            Check it out now!
-          </ProjectButton>
-        </DinoauraText>
-        <BreadBasketImage src="/assets/images/projects/breadbasket.svg" />
-      </DinoauraCardContainer>
+          <DevpostBtn
+            href={selectedProject ? PROJECTS_DATA.find(p => p.id === selectedProject)?.devpost : '#'}
+            visible={selectedProject !== null}
+            devpostTop={selectedProject ? PROJECTS_DATA.find(p => p.id === selectedProject)?.devpostTop : undefined}
+            devpostLeft={selectedProject ? PROJECTS_DATA.find(p => p.id === selectedProject)?.devpostLeft : undefined}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Devpost
+          </DevpostBtn>
 
-      <LovealarmCardContainer
-        onMouseEnter={() => setHoveredProject('lovealarm')}
-        onMouseLeave={() => setHoveredProject(null)}
-      >
-        <Bread2Image src="/assets/images/projects/bread2.svg" />
-        {isMobile && <TapeImage src="/assets/images/projects/tape.png" />}
-        <LovealarmCardImage
-          src={isMobile ? '/assets/images/projects/lovealarm_mobile.svg' : '/assets/images/projects/lovealarm_card.svg'}
-        />
-        <LovealarmText>
-          <Project1Title>Love Alarm</Project1Title>
-          <Project1Description>
-            Anonymously connect with others within a 10-metre radius by ringing their love alarm.
-          </Project1Description>
-          <ProjectButton onClick={() => window.open('https://devpost.com/software/lovealarm', '_blank')}>
-            Check it out now!
-          </ProjectButton>
-        </LovealarmText>
-      </LovealarmCardContainer>
-    </ProjectsContainer>
+          <Deer src="/assets/images/projects/deer.svg" />
+          <Bunny src="/assets/images/projects/bunny.svg" />
+          <CloudTwo src="/assets/images/projects/cloud_two.svg" />
+          <CloudOne src="/assets/images/projects/cloud_one.svg" />
+          <Table src="/assets/images/projects/table.svg" />
+          <Cat src="/assets/images/projects/cat.svg" />
+          <DarkerGround src="/assets/images/projects/darker_ground.svg" />
+          <LightGround src="/assets/images/projects/light_ground.svg" />
+          <Bushes src="/assets/images/projects/bushes_divider.svg" />
+        </ProjectsContainer>
+      ) : (
+        <ProjectsContainer>
+          <CarouselWrapper onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} onTouchEnd={handleTouchEnd}>
+            <SlidesContainer currentSlide={currentSlide}>
+              {PROJECTS_DATA.map(project => (
+                <Slide key={project.id}>{/* Smoke and content will be positioned absolutely outside */}</Slide>
+              ))}
+            </SlidesContainer>
+          </CarouselWrapper>
+
+          {currentSlide === 0 && <MindfulMeadowsSmoke src="/assets/images/projects/mobile/mindful_meadows_smoke.svg" />}
+          {currentSlide === 1 && <DinoAuraSmoke src="/assets/images/projects/mobile/dino_aura_smoke.svg" />}
+          {currentSlide === 2 && <BigFishSmoke src="/assets/images/projects/mobile/big_fish_smoke.svg" />}
+          {currentSlide === 3 && <BusBuddiesSmoke src="/assets/images/projects/mobile/bus_buddies_smoke.svg" />}
+
+          {currentSlide === 0 && (
+            <>
+              <MindfulMeadowsSelected src="/assets/images/projects/mindful_meadows_selected.svg" />
+              <MindfulMeadowsLabel src="/assets/images/projects/mindful_meadows_label.svg" />
+            </>
+          )}
+          {currentSlide === 1 && (
+            <>
+              <DinoBuddiesSelected src="/assets/images/projects/dino_buddies_selected.svg" />
+              <DinoBuddiesLabel src="/assets/images/projects/dino_buddies_label.svg" />
+            </>
+          )}
+          {currentSlide === 2 && (
+            <>
+              <BigFishSelected src="/assets/images/projects/big_fish_selected.svg" />
+              <BigFishLabel src="/assets/images/projects/big_fish_label.svg" />
+            </>
+          )}
+          {currentSlide === 3 && (
+            <>
+              <BusBuddiesSelected src="/assets/images/projects/bus_buddies_selected.svg" />
+              <BusBuddiesLabel src="/assets/images/projects/bus_buddies_label.svg" />
+            </>
+          )}
+
+          {PROJECTS_DATA[currentSlide].sideTeacups.map(teacup => (
+            <MobileSideTeacup
+              key={`${PROJECTS_DATA[currentSlide].id}-teacup-${teacup.src}`}
+              src={teacup.src}
+              left={teacup.left}
+              right={teacup.right}
+              width={teacup.width}
+              mobileWidth={teacup.mobileWidth}
+              bottom={teacup.bottom}
+            />
+          ))}
+
+          <PaginationDots>
+            {PROJECTS_DATA.map(project => (
+              <Dot
+                key={project.id}
+                active={project.id === PROJECTS_DATA[currentSlide].id}
+                onClick={() => setCurrentSlide(PROJECTS_DATA.findIndex(p => p.id === project.id))}
+              />
+            ))}
+          </PaginationDots>
+
+          <Table src="/assets/images/projects/mobile/table.svg" />
+          <Bushes src="/assets/images/projects/bushes_divider.svg" />
+          <CloudTwo src="/assets/images/projects/cloud_two.svg" />
+          <CloudOne src="/assets/images/projects/cloud_one.svg" />
+        </ProjectsContainer>
+      )}
+    </OuterContainer>
   )
 }
 

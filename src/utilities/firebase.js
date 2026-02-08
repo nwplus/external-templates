@@ -53,6 +53,13 @@ const fireDb = {
     const data = await ref.get()
     return data.data()
   },
+  // Subscribe to a document. `collection` is the collection name, `docId` the document id.
+  // Calls `cb` with `doc.data()` on every snapshot and returns the unsubscribe function.
+  subscribeToDocument: (collection, docId, cb) => {
+    const ref = db.collection(collection).doc(docId)
+    const unsub = ref.onSnapshot(doc => cb(doc.data()))
+    return unsub
+  },
   getTargetedHackathon: async () => {
     const ref = db.collection(INTERNAL_WEBSITES).doc(CMS)
     const data = await ref.get()
