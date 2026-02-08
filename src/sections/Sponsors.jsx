@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
+import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
 import styled from 'styled-components'
 import { Header2 } from '@components/Typography'
 import SponsorsGrid from '@components/SponsorsGrid'
 import fireDb from '@utilities/firebase'
 import Carousel from '../components/Carousel'
-import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
 
 const SponsorsContainer = styled.div`
   position: relative;
