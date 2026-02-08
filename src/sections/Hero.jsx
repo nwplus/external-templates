@@ -264,7 +264,7 @@ const Hero = () => (
 
       <ButtonContainer>
         <Button className="primary" href={LINKS.mentor} target="_blank" rel="noopener noreferrer">
-          Become a Mentor / Judge
+          Become a Mentor
         </Button>
         <Button className="secondary" href={LINKS.apply} target="_blank" rel="noopener noreferrer">
           Apply Now
