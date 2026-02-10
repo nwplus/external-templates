@@ -13,15 +13,16 @@ const CarouselContainer = styled.div`
 `
 
 const ContentContainer = styled.div`
-  width: calc(100vw * (960 / 1920));
-  height: calc(100vw * (450 / 1920));
+  width: calc(100vw * (1200 / 1920));
+  height: calc(100vw * (700 / 1920));
   position: relative;
-  background-color: #fffdfa;
+  background-image: url('/assets/images/sponsors/blurb_frame.svg');
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: calc(100vw * (60 / 1920)) 0;
+  padding: calc(100vw * (200 / 1920)) 0;
+  margin-bottom: calc(100vw * (200 / 1920));
 
   background-size: 100% 100%;
   background-repeat: no-repeat;
@@ -54,10 +55,10 @@ const TopContainer = styled.div`
 const RightContainer = styled.div`
   width: calc(100vw * (793 / 1920));
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 95%;
+  position: absolute;
+  top: calc(100vw * (380 / 1920));
+  left: calc(100vw * (140 / 1920));
+  width: calc(100vw * (900 / 1920));
 
   ${p => p.theme.mediaQueries.mobile} {
     width: calc(100vw * (283 / 393));
@@ -72,8 +73,6 @@ const ActiveButton = styled.div`
   width: calc(100vw * (40 / 1920));
   height: calc(100vw * (40 / 1920));
 
-  border-radius: 50%;
-  background-color: ${props => (props.visible ? 'rgba(69, 103, 116, 0.4)' : 'transparent')};
   cursor: ${props => (props.visible ? 'pointer' : 'default')};
   transition: 200ms ease-in-out;
   visibility: ${props => (props.visible ? 'visible' : 'hidden')};
@@ -83,38 +82,37 @@ const ActiveButton = styled.div`
     width: calc(100vw * (40 / 393));
     height: calc(100vw * (40 / 393));
     z-index: 10;
-    ${props => (props.flip ? 'right: 3%;' : 'left: 3%;')};
+    ${props => (props.flip ? 'right: 0%;' : 'left: -1%;')};
   }
 `
 
 const ChevronImg = styled.img`
-  height: calc(100vw * (19 / 1920));
-  transform: ${props => (props.flip ? 'scaleX(-1)' : 'none')};
+  height: calc(100vw * (55 / 1920));
   ${p => p.theme.mediaQueries.mobile} {
     height: calc(100vw * (19 / 393));
-  }
 `
 
 const Logo = styled.img`
   max-width: calc(100vw * (676.889 / 1920));
-  max-height: calc(100vw * (150 / 1920));
+  max-height: calc(100vw * (140 / 1920));
 
   ${p => p.theme.mediaQueries.mobile} {
-    max-width: calc(100vw * (254 / 393));
-    max-height: calc(100vw * (120 / 393));
+    position: absolute;
+    top: calc(100vw * (130 / 393));
+    max-width: calc(100vw * (40 / 393));
+    max-height: calc(100vw * (40 / 393));
   }
 `
 
 const Blurb = styled.div`
-  font-size: calc(100vw * (18 / 1920));
-  font-family: Poppins;
+  font-size: calc(100vw * (20 / 1920));
   font-weight: 400;
   height: calc(100vw * (180 / 1920));
   overflow-y: scroll;
   word-wrap: break-word;
   text-overflow: ellipsis;
-  width: calc(100vw * (860 / 1920));
-  color: #4f2f22;
+  width: calc(100vw * (930 / 1920));
+  color: #000000;
 
   ::-webkit-scrollbar {
     width: 0.5rem;
@@ -133,8 +131,10 @@ const Blurb = styled.div`
   -webkit-overflow-scrolling: touch;
 
   ${p => p.theme.mediaQueries.mobile} {
+    position: absolute;
+    top: calc(100vw * (110 / 393));
     width: calc(100vw * (283 / 393));
-    font-size: calc(100vw * (15 / 393));
+    font-size: calc(100vw * (9 / 393));
     height: calc(100vw * (150 / 393));
   }
 `
@@ -192,7 +192,7 @@ const Carousel = ({ sponsors }) => {
             }
           }}
         >
-          <ChevronImg src="/assets/images/chevron_left.svg" />
+          <ChevronImg src="/assets/images/workshops/arrow_left.svg" />
         </ActiveButton>
 
         <ContentContainer>
@@ -214,7 +214,7 @@ const Carousel = ({ sponsors }) => {
           }}
           flip
         >
-          <ChevronImg src="/assets/images/chevron_left.svg" flip />
+          <ChevronImg src="/assets/images/workshops/arrow_right.svg" />
         </ActiveButton>
       </CarouselContainer>
     </CarouselWrapper>

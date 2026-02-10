@@ -3,10 +3,10 @@ import styled from 'styled-components'
 
 const WorkshopsContainer = styled.div`
   position: relative;
-  background: linear-gradient(to top, #78c7f3cc 0%, #94d2f5 30%, #ddffdb 100%);
+  background: linear-gradient(to top, #94d2f500 0%, #94d2f5 30%, #ddffdb 100%);
   width: 100%;
   height: 100%;
-  aspect-ratio: 1520/1300;
+  aspect-ratio: 1520/1200;
   height: auto;
   display: flex;
   position: relative;
@@ -310,7 +310,7 @@ const Workshops = () => {
     },
     {
       header: 'Intro to Express & APIs',
-      date: 'March 3, 2026',
+      date: 'March 4, 2026',
       description:
         'Explore what happens behind the scenes by building a backend with Express. Create APIs, handle data requests, and support core functionality for your Pomodoro app.',
     },

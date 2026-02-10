@@ -27,6 +27,10 @@ const MindfulMeadows = styled.img`
   bottom: calc(100vw * (475 / 1512));
   left: calc(100vw * (350 / 1512));
   cursor: pointer;
+
+  &:hover {
+    opacity: 0;
+  }
 `
 
 const MindfulMeadowsSelected = styled.img`
@@ -36,12 +40,18 @@ const MindfulMeadowsSelected = styled.img`
   bottom: calc(100vw * (460 / 1512));
   left: calc(100vw * (335 / 1512));
   cursor: pointer;
+  opacity: ${p => (p.isSelected ? 1 : 0)};
+
+  &:hover {
+    opacity: 1;
+  }
 
   ${p => p.theme.mediaQueries.mobile} {
     width: calc(100vw * (185 / 393));
     bottom: calc(100vw * (310 / 393));
     left: 50%;
     transform: translateX(-50%);
+    opacity: 1;
   }
 `
 
@@ -67,6 +77,10 @@ const DinoBuddies = styled.img`
   bottom: calc(100vw * (483 / 1512));
   left: calc(100vw * (585 / 1512));
   cursor: pointer;
+
+  &:hover {
+    opacity: 0;
+  }
 `
 
 const DinoBuddiesLabel = styled.img`
@@ -91,12 +105,18 @@ const DinoBuddiesSelected = styled.img`
   bottom: calc(100vw * (484 / 1512));
   left: calc(100vw * (575 / 1512));
   cursor: pointer;
+  opacity: ${p => (p.isSelected ? 1 : 0)};
+
+  &:hover {
+    opacity: 1;
+  }
 
   ${p => p.theme.mediaQueries.mobile} {
     width: calc(100vw * (181 / 393));
     bottom: calc(100vw * (310 / 393));
     left: 50%;
     transform: translateX(-50%);
+    opacity: 1;
   }
 `
 
@@ -107,6 +127,10 @@ const BigFish = styled.img`
   bottom: calc(100vw * (490 / 1512));
   left: calc(100vw * (790 / 1512));
   cursor: pointer;
+
+  &:hover {
+    opacity: 0;
+  }
 `
 
 const BigFishLabel = styled.img`
@@ -131,12 +155,18 @@ const BigFishSelected = styled.img`
   bottom: calc(100vw * (475 / 1512));
   left: calc(100vw * (780 / 1512));
   cursor: pointer;
+  opacity: ${p => (p.isSelected ? 1 : 0)};
+
+  &:hover {
+    opacity: 1;
+  }
 
   ${p => p.theme.mediaQueries.mobile} {
     width: calc(100vw * (156 / 393));
     bottom: calc(100vw * (300 / 393));
     left: 50%;
     transform: translateX(-50%);
+    opacity: 1;
   }
 `
 
@@ -147,6 +177,10 @@ const BusBuddies = styled.img`
   bottom: calc(100vw * (490 / 1512));
   left: calc(100vw * (960 / 1512));
   cursor: pointer;
+
+  &:hover {
+    opacity: 0;
+  }
 `
 
 const BusBuddiesLabel = styled.img`
@@ -171,12 +205,18 @@ const BusBuddiesSelected = styled.img`
   bottom: calc(100vw * (455 / 1512));
   left: calc(100vw * (930 / 1512));
   cursor: pointer;
+  opacity: ${p => (p.isSelected ? 1 : 0)};
+
+  &:hover {
+    opacity: 1;
+  }
 
   ${p => p.theme.mediaQueries.mobile} {
     width: calc(100vw * (220 / 393));
     bottom: calc(100vw * (300 / 393));
     left: 50%;
     transform: translateX(-50%);
+    opacity: 1;
   }
 `
 
@@ -341,6 +381,26 @@ const Bushes = styled.img`
   }
 `
 
+const DevpostBtn = styled.a`
+  position: absolute;
+  ${p => p.devpostTop || 'top: calc(100vw * (320 / 1512));'}
+  ${p => p.devpostLeft || 'left: calc(100vw * (710 / 1512));'}
+  color: #000000;
+  text-decoration: underline;
+  font-family: 'Quicksand';
+  z-index: 10;
+  opacity: ${p => (p.visible ? 1 : 0)};
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    color: #095575;
+  }
+
+  ${p => p.theme.mediaQueries.mobile} {
+    bottom: calc(100vw * (200 / 393));
+  }
+`
+
 // MOBILE CAROUSEL STYLES
 const CarouselWrapper = styled.div`
   position: absolute;
@@ -413,12 +473,18 @@ const MobileSideTeacup = styled.img`
 const PROJECTS_DATA = [
   {
     id: 'mindfulMeadows',
+    devpost: 'https://devpost.com/software/mindful-meadows',
+    devpostTop: 'top: calc(100vw * (320 / 1512));',
+    devpostLeft: 'left: calc(100vw * (700 / 1512));',
     sideTeacups: [
       { src: '/assets/images/projects/dino_buddies_teacup.svg', right: '20px', width: '70px', mobileWidth: 90 },
     ],
   },
   {
     id: 'dinoBuddies',
+    devpost: 'https://devpost.com/software/dinoaura',
+    devpostTop: 'top: calc(100vw * (320 / 1512));',
+    devpostLeft: 'left: calc(100vw * (720 / 1512));',
     sideTeacups: [
       { src: '/assets/images/projects/mindful_meadows_teacup.svg', left: '10px', width: '100px', mobileWidth: 106 },
       { src: '/assets/images/projects/big_fish_teacup.svg', right: '20px', width: '60px', mobileWidth: 72 },
@@ -426,6 +492,9 @@ const PROJECTS_DATA = [
   },
   {
     id: 'bigFish',
+    devpost: 'https://devpost.com/software/best-fish',
+    devpostTop: 'top: calc(100vw * (310 / 1512));',
+    devpostLeft: 'left: calc(100vw * (730 / 1512));',
     sideTeacups: [
       { src: '/assets/images/projects/dino_buddies_teacup.svg', left: '10px', width: '100px', mobileWidth: 90 },
       { src: '/assets/images/projects/bus_buddies_teacup.svg', right: '10px', width: '80px', mobileWidth: 97 },
@@ -433,6 +502,9 @@ const PROJECTS_DATA = [
   },
   {
     id: 'busBuddies',
+    devpost: 'https://devpost.com/software/busbuddies-3k9bqn',
+    devpostTop: 'top: calc(100vw * (320 / 1512));',
+    devpostLeft: 'left: calc(100vw * (710 / 1512));',
     sideTeacups: [{ src: '/assets/images/projects/big_fish_teacup.svg', left: '20px', width: '60px', mobileWidth: 72 }],
   },
 ]
@@ -500,54 +572,57 @@ const Projects = () => {
           {selectedProject === 'bigFish' && <BigFishSmoke src="/assets/images/projects/big_fish_smoke.svg" />}
           {selectedProject === 'busBuddies' && <BusBuddiesSmoke src="/assets/images/projects/bus_buddies_smoke.svg" />}
 
-          {selectedProject === 'mindfulMeadows' ? (
-            <MindfulMeadowsSelected
-              src="/assets/images/projects/mindful_meadows_selected.svg"
-              onClick={() => handleOnClick('mindfulMeadows')}
-            />
-          ) : (
-            <MindfulMeadows
-              src="/assets/images/projects/mindful_meadows_teacup.svg"
-              onClick={() => handleOnClick('mindfulMeadows')}
-            />
-          )}
+          <MindfulMeadows
+            src="/assets/images/projects/mindful_meadows_teacup.svg"
+            onClick={() => handleOnClick('mindfulMeadows')}
+          />
+          <MindfulMeadowsSelected
+            src="/assets/images/projects/mindful_meadows_selected.svg"
+            onClick={() => handleOnClick('mindfulMeadows')}
+            isSelected={selectedProject === 'mindfulMeadows'}
+          />
           <MindfulMeadowsLabel src="/assets/images/projects/mindful_meadows_label.svg" />
 
-          {selectedProject === 'dinoBuddies' ? (
-            <DinoBuddiesSelected
-              src="/assets/images/projects/dino_buddies_selected.svg"
-              onClick={() => handleOnClick('dinoBuddies')}
-            />
-          ) : (
-            <DinoBuddies
-              src="/assets/images/projects/dino_buddies_teacup.svg"
-              onClick={() => handleOnClick('dinoBuddies')}
-            />
-          )}
+          <DinoBuddies
+            src="/assets/images/projects/dino_buddies_teacup.svg"
+            onClick={() => handleOnClick('dinoBuddies')}
+          />
+          <DinoBuddiesSelected
+            src="/assets/images/projects/dino_buddies_selected.svg"
+            onClick={() => handleOnClick('dinoBuddies')}
+            isSelected={selectedProject === 'dinoBuddies'}
+          />
           <DinoBuddiesLabel src="/assets/images/projects/dino_buddies_label.svg" />
 
-          {selectedProject === 'bigFish' ? (
-            <BigFishSelected
-              src="/assets/images/projects/big_fish_selected.svg"
-              onClick={() => handleOnClick('bigFish')}
-            />
-          ) : (
-            <BigFish src="/assets/images/projects/big_fish_teacup.svg" onClick={() => handleOnClick('bigFish')} />
-          )}
+          <BigFish src="/assets/images/projects/big_fish_teacup.svg" onClick={() => handleOnClick('bigFish')} />
+          <BigFishSelected
+            src="/assets/images/projects/big_fish_selected.svg"
+            onClick={() => handleOnClick('bigFish')}
+            isSelected={selectedProject === 'bigFish'}
+          />
           <BigFishLabel src="/assets/images/projects/big_fish_label.svg" />
 
-          {selectedProject === 'busBuddies' ? (
-            <BusBuddiesSelected
-              src="/assets/images/projects/bus_buddies_selected.svg"
-              onClick={() => handleOnClick('busBuddies')}
-            />
-          ) : (
-            <BusBuddies
-              src="/assets/images/projects/bus_buddies_teacup.svg"
-              onClick={() => handleOnClick('busBuddies')}
-            />
-          )}
+          <BusBuddies
+            src="/assets/images/projects/bus_buddies_teacup.svg"
+            onClick={() => handleOnClick('busBuddies')}
+          />
+          <BusBuddiesSelected
+            src="/assets/images/projects/bus_buddies_selected.svg"
+            onClick={() => handleOnClick('busBuddies')}
+            isSelected={selectedProject === 'busBuddies'}
+          />
           <BusBuddiesLabel src="/assets/images/projects/bus_buddies_label.svg" />
+
+          <DevpostBtn
+            href={selectedProject ? PROJECTS_DATA.find(p => p.id === selectedProject)?.devpost : '#'}
+            visible={selectedProject !== null}
+            devpostTop={selectedProject ? PROJECTS_DATA.find(p => p.id === selectedProject)?.devpostTop : undefined}
+            devpostLeft={selectedProject ? PROJECTS_DATA.find(p => p.id === selectedProject)?.devpostLeft : undefined}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Devpost
+          </DevpostBtn>
 
           <Deer src="/assets/images/projects/deer.svg" />
           <Bunny src="/assets/images/projects/bunny.svg" />

@@ -215,7 +215,7 @@ const RedQueen = styled.img`
   width: calc(100vw * (50 / 1512));
   position: absolute;
   bottom: calc(100vw * (480 / 1512));
-  left: calc(100vw * (645 / 1512));
+  left: calc(100vw * (665 / 1512));
   z-index: 3;
 
   ${p => p.theme.mediaQueries.mobile} {
