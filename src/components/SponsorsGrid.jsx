@@ -240,11 +240,10 @@ const SponsorImg = styled.img`
   border: none;
   object-fit: contain;
   z-index: 2;
-  top: 40%;
-  left: 25%;
   transform: ${({ index, total, tier }) => {
     const middle = (total - 1) / 2
     const offset = Math.abs(index - middle)
+    const xOffset = (index - middle) * 10
     const yOffset = (middle - offset) * 10 // Adjust this value to control the height difference
     let tierOffset = 0
     switch (tier) {
@@ -252,21 +251,21 @@ const SponsorImg = styled.img`
         tierOffset = 0
         break
       case 'silver':
-        tierOffset = -12
+        tierOffset = 0
         break
       case 'bronze':
-        tierOffset = -4
+        tierOffset = 0
         break
       case 'inkind':
-        tierOffset = -70
+        tierOffset = 50
         break
       case 'startup':
       default:
-        tierOffset = -18
+        tierOffset = 0
         break
     }
 
-    return `translate(-50%, ${yOffset + tierOffset}%)`
+    return `translate(${xOffset - 50 + tierOffset}%, ${yOffset}%)`
   }};
 `
 
