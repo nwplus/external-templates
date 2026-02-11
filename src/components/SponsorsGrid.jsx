@@ -18,19 +18,19 @@ const CARD_POSITION_OVERRIDES = {
     3: { rotate: 10, y: 5 },
   },
   bronze: {
-    0: { rotate: -25, y: 30 },
-    1: { rotate: -15, y: 1 },
-    2: { rotate: -0, y: -20 },
-    3: { rotate: 15, y: 1 },
-    4: { rotate: 25, y: 30 },
+    0: { rotate: -25, mobileRotate: -20, y: 30, mobileY: 30 },
+    1: { rotate: -15, mobileRotate: -10, y: 1, mobileY: 1 },
+    2: { rotate: -0, mobileRotate: 0, y: -20, mobileY: 0 },
+    3: { rotate: 15, mobileRotate: 10, y: 1, mobileY: 25 },
+    4: { rotate: 25, mobileRotate: 20, y: 30, mobileY: 30 },
   },
   inkind: {
-    0: { rotate: -20, y: 25 },
-    1: { rotate: -10, y: 10 },
-    2: { y: -5 },
-    3: { rotate: 10, y: -5 },
-    4: { rotate: 20, y: 20 },
-    5: { rotate: 30, y: 50 },
+    0: { rotate: -20, mobileRotate: -20, y: 25, mobileY: 30 },
+    1: { rotate: -10, mobileRotate: -10, y: 10, mobileY: 0 },
+    2: { rotate: 0, mobileRotate: 0, y: -5, mobileY: -20 },
+    3: { rotate: 10, mobileRotate: 10, y: -5, mobileY: -20 },
+    4: { rotate: 20, mobileRotate: 20, y: 20, mobileY: 10 },
+    5: { rotate: 30, mobileRotate: 30, y: 50, mobileY: 30 },
   },
   startup: {
     0: { rotate: -25, y: 30 },
@@ -45,10 +45,12 @@ const CARD_POSITION_OVERRIDES = {
 const getCardPositionOverride = (tier, index, total, isMobile) => {
   const tierOverrides = CARD_POSITION_OVERRIDES[tier] || {}
   const override = tierOverrides[index] || {}
+  const rotate = isMobile && override.mobileRotate !== undefined ? override.mobileRotate : override.rotate ?? 0
+  const y = isMobile && override.mobileY !== undefined ? override.mobileY : override.y ?? 0
   return {
     x: override.x ?? 0,
-    y: override.y ?? 0,
-    rotate: override.rotate ?? 0,
+    y,
+    rotate,
     zIndex: override.zIndex ?? null,
     isMobile,
   }
@@ -123,8 +125,8 @@ const calculateSponsorRows = (tierList, isMobile) => {
   // newRows.platinum = groupSponsors(tierList.platinum, 2)
   newRows.gold = groupSponsors(tierList.gold, 3)
   newRows.silver = groupSponsors(tierList.silver, 4)
-  newRows.bronze = groupSponsors(tierList.bronze, isMobile ? 3 : 5)
-  newRows.inkind = groupSponsors(tierList.inkind, isMobile ? 3 : 6)
+  newRows.bronze = groupSponsors(tierList.bronze, isMobile ? 4 : 5)
+  newRows.inkind = groupSponsors(tierList.inkind, isMobile ? 6 : 6)
 
   return newRows
 }
@@ -154,13 +156,13 @@ const Row = styled.div`
   transform: ${props => {
     switch (props.tier) {
       case 'gold':
-        return props.isMobile ? 'translate(-20%, -70%)' : 'translate(5%, -65%)'
+        return props.isMobile ? 'translate(5%, -50%)' : 'translate(5%, -65%)'
       case 'silver':
-        return props.isMobile ? 'translate(2%, -73%)' : 'translate(6%, -60%)'
+        return props.isMobile ? 'translate(8%, -53%)' : 'translate(6%, -60%)'
       case 'bronze':
-        return props.isMobile ? 'translate(5%, -67%)' : 'translate(2%, -80%)'
+        return props.isMobile ? 'translate(12%, -90%)' : 'translate(2%, -80%)'
       case 'inkind':
-        return props.isMobile ? 'translate(3%, -67%)' : 'translate(9%, -95%)'
+        return props.isMobile ? 'translate(8%, -100%)' : 'translate(9%, -95%)'
       case 'startup':
       default:
         return props.isMobile ? 'translate(2%, -63%)' : 'translate(12%, -50%)'
@@ -184,16 +186,16 @@ const SponsorContainer = styled.div`
     if (index === 0) return '0'
     switch (tier) {
       case 'gold':
-        return isMobile ? 'calc(100vw * (-55/393))' : 'calc(100vw * (-120/1920))'
+        return isMobile ? 'calc(100vw * (-40/393))' : 'calc(100vw * (-120/1920))'
       case 'silver':
-        return isMobile ? 'calc(100vw * (-50/393))' : 'calc(100vw * (-130/1920))'
+        return isMobile ? 'calc(100vw * (-55/393))' : 'calc(100vw * (-130/1920))'
       case 'bronze':
-        return isMobile ? 'calc(100vw * (-45/393))' : 'calc(100vw * (-160/1920))'
+        return isMobile ? 'calc(100vw * (-40/393))' : 'calc(100vw * (-160/1920))'
       case 'inkind':
-        return isMobile ? 'calc(100vw * (-40/393))' : 'calc(100vw * (-90/1920))'
+        return isMobile ? 'calc(100vw * (-18/393))' : 'calc(100vw * (-90/1920))'
       case 'startup':
       default:
-        return isMobile ? 'calc(100vw * (-35/393))' : 'calc(100vw * (-80/1920))'
+        return isMobile ? 'calc(100vw * (-30/393))' : 'calc(100vw * (-80/1920))'
     }
   }};
   z-index: ${({ tier, index, total, isMobile }) => {
@@ -238,11 +240,10 @@ const SponsorImg = styled.img`
   border: none;
   object-fit: contain;
   z-index: 2;
-  top: 40%;
-  left: 25%;
   transform: ${({ index, total, tier }) => {
     const middle = (total - 1) / 2
     const offset = Math.abs(index - middle)
+    const xOffset = (index - middle) * 10
     const yOffset = (middle - offset) * 10 // Adjust this value to control the height difference
     let tierOffset = 0
     switch (tier) {
@@ -253,18 +254,18 @@ const SponsorImg = styled.img`
         tierOffset = -12
         break
       case 'bronze':
-        tierOffset = -4
+        tierOffset = 0
         break
       case 'inkind':
-        tierOffset = -70
+        tierOffset = 50
         break
       case 'startup':
       default:
-        tierOffset = -18
+        tierOffset = 0
         break
     }
 
-    return `translate(-50%, ${yOffset + tierOffset}%)`
+    return `translate(${xOffset - 50 + tierOffset}%, ${yOffset}%)`
   }};
 `
 
@@ -300,6 +301,10 @@ const PlateContainer = styled.div`
         return 'translateY(0)'
     }
   }};
+
+  ${p => p.theme.mediaQueries.mobile} {
+    ${props => props.tier === 'inkind' && `transform: translateY(-15%);`}
+  }
 `
 
 const PlayingCard = memo(({ tier, isMobile, index, total }) => {
@@ -322,11 +327,11 @@ const PlayingCard = memo(({ tier, isMobile, index, total }) => {
       break
     case 'bronze':
       svgSrc = '/assets/images/sponsors/silver_card.svg'
-      length = isMobile ? 'calc(100vw * (110 / 393))' : 'calc(100vw * (360 / 1920))'
+      length = isMobile ? 'calc(100vw * (120 / 393))' : 'calc(100vw * (360 / 1920))'
       break
     case 'inkind':
       svgSrc = '/assets/images/sponsors/bronze_card.svg'
-      length = isMobile ? 'calc(100vw * (130 / 393))' : 'calc(100vw * (290 / 1920))'
+      length = isMobile ? 'calc(100vw * (72 / 393))' : 'calc(100vw * (290 / 1920))'
       break
     // case 'startup':
     default:
@@ -340,19 +345,19 @@ const Plate = memo(({ tier, isMobile }) => {
   switch (tier) {
     case 'gold':
       svgSrc = '/assets/images/sponsors/plat_tier.svg'
-      length = isMobile ? 'calc(100vw * (320 / 393))' : 'calc(100vw * (760 / 1920))'
+      length = isMobile ? 'calc(100vw * (310 / 393))' : 'calc(100vw * (760 / 1920))'
       break
     case 'silver':
       svgSrc = '/assets/images/sponsors/gold_tier.svg'
-      length = isMobile ? 'calc(100vw * (380 / 393))' : 'calc(100vw * (1100 / 1920))'
+      length = isMobile ? 'calc(100vw * (370 / 393))' : 'calc(100vw * (1100 / 1920))'
       break
     case 'bronze':
       svgSrc = '/assets/images/sponsors/silver_tier.svg'
-      length = isMobile ? 'calc(100vw * (380 / 393))' : 'calc(100vw * (1200 / 1920))'
+      length = isMobile ? 'calc(100vw * (370 / 393))' : 'calc(100vw * (1200 / 1920))'
       break
     case 'inkind':
       svgSrc = '/assets/images/sponsors/bronze_tier.svg'
-      length = isMobile ? 'calc(100vw * (410 / 393))' : 'calc(100vw * (1500 / 1920))'
+      length = isMobile ? 'calc(100vw * (390 / 393))' : 'calc(100vw * (1500 / 1920))'
       break
     default:
     // case 'startup':
@@ -369,7 +374,7 @@ const Plate = memo(({ tier, isMobile }) => {
 })
 
 const Sponsor = memo(({ link, url, size, tier, isPlaceholder, index, total, isMobile }) => (
-  <SponsorContainer size={size} tier={tier} index={index} total={total}>
+  <SponsorContainer size={size} tier={tier} index={index} total={total} isMobile={isMobile}>
     <SponsorLink href={link} target="_blank" rel="noreferrer">
       <PlayingCard tier={tier} isMobile={isMobile} index={index} total={total} />
       {!isPlaceholder && <SponsorImg src={url} alt="Sponsor Logo" index={index} total={total} tier={tier} />}

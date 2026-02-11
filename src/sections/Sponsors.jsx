@@ -17,6 +17,7 @@ const SponsorsContainer = styled.div`
   margin-top: calc(100vw * (200 / 1920));
 
   ${p => p.theme.mediaQueries.mobile} {
+    margin-bottom: calc(100vw * (150 / 393));
     margin-top: calc(100vw * (-150 / 393));
     aspect-ratio: 393 / 800;
   }

@@ -82,7 +82,7 @@ const ActiveButton = styled.div`
     width: calc(100vw * (40 / 393));
     height: calc(100vw * (40 / 393));
     z-index: 10;
-    ${props => (props.flip ? 'right: 3%;' : 'left: 3%;')};
+    ${props => (props.flip ? 'right: 0%;' : 'left: -1%;')};
   }
 `
 
@@ -90,7 +90,6 @@ const ChevronImg = styled.img`
   height: calc(100vw * (55 / 1920));
   ${p => p.theme.mediaQueries.mobile} {
     height: calc(100vw * (19 / 393));
-  }
 `
 
 const Logo = styled.img`
@@ -98,8 +97,10 @@ const Logo = styled.img`
   max-height: calc(100vw * (140 / 1920));
 
   ${p => p.theme.mediaQueries.mobile} {
-    max-width: calc(100vw * (254 / 393));
-    max-height: calc(100vw * (120 / 393));
+    position: absolute;
+    top: calc(100vw * (130 / 393));
+    max-width: calc(100vw * (40 / 393));
+    max-height: calc(100vw * (40 / 393));
   }
 `
 
@@ -130,8 +131,10 @@ const Blurb = styled.div`
   -webkit-overflow-scrolling: touch;
 
   ${p => p.theme.mediaQueries.mobile} {
+    position: absolute;
+    top: calc(100vw * (110 / 393));
     width: calc(100vw * (283 / 393));
-    font-size: calc(100vw * (15 / 393));
+    font-size: calc(100vw * (9 / 393));
     height: calc(100vw * (150 / 393));
   }
 `
