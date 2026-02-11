@@ -251,10 +251,10 @@ const SponsorImg = styled.img`
         tierOffset = 0
         break
       case 'silver':
-        tierOffset = 0
+        tierOffset = 15
         break
       case 'bronze':
-        tierOffset = 10
+        tierOffset = 20
         break
       case 'inkind':
         tierOffset = 50
