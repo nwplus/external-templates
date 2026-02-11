@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { SCREEN_BREAKPOINTS } from 'src/theme/ThemeProvider'
 import styled from 'styled-components'
 import { Header2 } from '@components/Typography'
 import SponsorsGrid from '@components/SponsorsGrid'
@@ -17,6 +18,9 @@ const SponsorsContainer = styled.div`
 
   ${p => p.theme.mediaQueries.mobile} {
     margin-bottom: calc(100vw * (150 / 393));
+    margin-top: calc(100vw * (-150 / 393));
+    aspect-ratio: 393 / 800;
+  }
 `
 
 const Title = styled(Header2)`
@@ -102,6 +106,24 @@ const SponsorButton = styled.button`
 const Sponsors = () => {
   const [sponsors, setSponsors] = useState([])
   const [carouselSponsors, setCarouselSponsors] = useState([])
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= SCREEN_BREAKPOINTS.mobile)
+    }
+
+    if (typeof window !== 'undefined') {
+      handleResize()
+      window.addEventListener('resize', handleResize)
+    }
+
+    return () => {
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('resize', handleResize)
+      }
+    }
+  }, [])
 
   useEffect(async () => {
     const data = await fireDb.getCollection('cmd-f2026', 'Sponsors')
@@ -142,8 +164,19 @@ const Sponsors = () => {
         Sponsor us!
       </SponsorButton>
       {/* <SwipeDescription>Swipe on the TV screen to read about our sponsors</SwipeDescription> */}
-      {carouselSponsors.length > 0 && <Carousel sponsors={carouselSponsors} />}
-      <SponsorsGrid sponsors={sponsors} />
+      {!isMobile ? (
+        <>
+          {carouselSponsors.length > 0 && <Carousel sponsors={carouselSponsors} />}
+          <SponsorsGrid sponsors={sponsors} />
+        </>
+      ) : (
+        <>
+          <Description>
+            To view our current full list of sponsors, please view this website on desktop. We are still working on the
+            mobile version!
+          </Description>
+        </>
+      )}
     </SponsorsContainer>
   )
 }
