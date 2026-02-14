@@ -129,7 +129,7 @@ const ScreenReaderOnly = styled.span`
 `
 
 // Cutoff for switching from days:hours to hours:minutes display
-const HOURS_CUTOFF_FOR_DAYS_DISPLAY = 72
+const HOURS_CUTOFF_FOR_DAYS_DISPLAY = 24
 const TARGET_HACKATHON = 'cmd-f'
 
 const useCountdown = targetDate => {
