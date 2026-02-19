@@ -422,14 +422,6 @@ const profiles = [
     social: 'https://www.linkedin.com/in/makafui-amouzouvi/',
   },
   {
-    img: '/profiles/Jia_Jin.png',
-    name: 'Jia Jin',
-    emoji: '',
-    color: '#F8D7E1',
-    title: 'Engagement Coordinator',
-    social: 'https://www.linkedin.com/in/jiahui-jin',
-  },
-  {
     img: '/profiles/Ege_Taslicay.png',
     name: 'Ege Taslicay',
     emoji: '',
@@ -452,7 +444,7 @@ const StyledTitle = styled(Header3)`
   color: #ffffff;
   font-size: calc(100vw * (42 / 1512));
   font-weight: 600;
-  margin-bottom: calc(100vw * (-10 / 1280));
+  margin-bottom: calc(100vw * (10 / 1280));
   ${p => p.theme.mediaQueries.mobile} {
     font-size: calc(100vw * (12 / 393));
   }

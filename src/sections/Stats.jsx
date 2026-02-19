@@ -45,14 +45,14 @@ const YellowTreeStats = styled.img`
   width: calc(100vw * (600 / 1512));
   z-index: 7;
   position: absolute;
-  left: 0;
+  left: calc(100vw * (-40 / 1512));
   top: calc(100vw * (300 / 1512));
 
   ${p => p.theme.mediaQueries.mobile} {
-    width: calc(100vw * (480 / 393));
+    width: calc(100vw * (500 / 393));
     position: absolute;
-    top: calc(100vw * (200 / 393));
-    left: calc(100vw * (0 / 393));
+    top: calc(100vw * (290 / 393));
+    left: calc(100vw * (-20 / 393));
   }
 `
 
@@ -60,7 +60,8 @@ const LeftIsland = styled.img`
   width: calc(100vw * (600 / 1512));
   z-index: 5;
   position: absolute;
-  top: calc(100vw * (1030 / 1512));
+  top: calc(100vw * (940 / 1512));
+  left: calc(100vw * (-80 / 1512));
 
   ${p => p.theme.mediaQueries.mobile} {
     width: calc(100vw * (500 / 393));
@@ -74,23 +75,23 @@ const BallFlowers = styled.img`
   width: calc(100vw * (120 / 1512));
   z-index: 8;
   position: absolute;
-  top: calc(100vw * (1060 / 1512));
+  top: calc(100vw * (1000 / 1512));
   left: calc(100vw * (30 / 1512));
 `
 
 const AliceNugget = styled.img`
-  width: calc(100vw * (167 / 1512));
+  width: calc(100vw * (150 / 1512));
   z-index: 6;
   position: absolute;
-  top: calc(100vw * (960 / 1512));
-  left: calc(100vw * (80 / 1512));
+  top: calc(100vw * (840 / 1512));
+  left: calc(100vw * (110 / 1512));
 `
 
 const OverHere = styled.img`
-  width: calc(100vw * (200 / 1512));
+  width: calc(100vw * (180 / 1512));
   z-index: 6;
   position: absolute;
-  top: calc(100vw * (940 / 1512));
+  top: calc(100vw * (830 / 1512));
   left: calc(100vw * (340 / 1512));
 `
 
@@ -137,8 +138,8 @@ const PurpleTreeStats = styled.img`
   ${p => p.theme.mediaQueries.mobile} {
     width: calc(100vw * (500 / 393));
     position: absolute;
-    top: calc(100vw * (1400 / 393));
-    left: calc(100vw * (-50 / 393));
+    top: calc(100vw * (1380 / 393));
+    left: calc(100vw * (-100 / 393));
     z-index: 10;
   }
 `
@@ -148,7 +149,7 @@ const RightIsland = styled.img`
   z-index: 5;
   position: absolute;
   right: 0;
-  top: calc(100vw * (900 / 1512));
+  top: calc(100vw * (880 / 1512));
 
   ${p => p.theme.mediaQueries.mobile} {
     width: calc(100vw * (370 / 393));

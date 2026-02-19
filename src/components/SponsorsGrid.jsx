@@ -5,11 +5,113 @@ import styled from 'styled-components'
 const SPONSOR_WIDTH = { title: 70, platinum: 45, gold: 40, silver: 35, bronze: 30, startup: 25, inkind: 20 }
 const MOBILE_SPONSOR_WIDTH = { title: 95, platinum: 80, gold: 45, silver: 35, bronze: 30, startup: 25, inkind: 20 }
 
+const CARD_POSITION_OVERRIDES = {
+  gold: {
+    0: { rotate: -20, y: 8 },
+    1: { y: -8 },
+    2: { rotate: 12, y: 20 },
+  },
+  silver: {
+    0: { rotate: -25, y: 0 },
+    1: { rotate: -15, y: -20 },
+    2: { rotate: -2, y: -20 },
+    3: { rotate: 10, y: 5 },
+  },
+  bronze: {
+    0: { rotate: -25, mobileRotate: -20, y: 30, mobileY: 30 },
+    1: { rotate: -15, mobileRotate: -10, y: 1, mobileY: 1 },
+    2: { rotate: -0, mobileRotate: 0, y: -20, mobileY: 0 },
+    3: { rotate: 15, mobileRotate: 10, y: 1, mobileY: 25 },
+    4: { rotate: 25, mobileRotate: 20, y: 30, mobileY: 30 },
+  },
+  inkind: {
+    0: { rotate: -20, mobileRotate: -20, y: 25, mobileY: 30 },
+    1: { rotate: -10, mobileRotate: -10, y: 10, mobileY: 0 },
+    2: { rotate: 0, mobileRotate: 0, y: -5, mobileY: -20 },
+    3: { rotate: 10, mobileRotate: 10, y: -5, mobileY: -20 },
+    4: { rotate: 20, mobileRotate: 20, y: 20, mobileY: 10 },
+    5: { rotate: 30, mobileRotate: 30, y: 50, mobileY: 30 },
+  },
+  startup: {
+    0: { rotate: -25, y: 30 },
+    1: { rotate: -15, y: 15 },
+    2: { rotate: -5, y: 5 },
+    3: { rotate: 5, y: 5 },
+    4: { rotate: 15, y: 15 },
+    5: { rotate: 25, y: 30 },
+  },
+}
+
+const getCardPositionOverride = (tier, index, total, isMobile) => {
+  const tierOverrides = CARD_POSITION_OVERRIDES[tier] || {}
+  const override = tierOverrides[index] || {}
+  const rotate = isMobile && override.mobileRotate !== undefined ? override.mobileRotate : override.rotate ?? 0
+  const y = isMobile && override.mobileY !== undefined ? override.mobileY : override.y ?? 0
+  return {
+    x: override.x ?? 0,
+    y,
+    rotate,
+    zIndex: override.zIndex ?? null,
+    isMobile,
+  }
+}
+
+// Z-index tiers: Lower tiers (rendered later) need lower z-index
+// Platinum is at top visually, needs highest z-index for its cards
+// Each tier's plate should be BELOW its cards but ABOVE the next tier's cards
+const getTierBaseZIndex = tier => {
+  // Manually set z-index for each tier's cards
+  switch (tier) {
+    case 'gold':
+      return 300
+    case 'silver':
+      return 400
+    case 'bronze':
+      return 500
+    case 'inkind':
+      return 600
+    case 'startup':
+    default:
+      return 700
+  }
+}
+
+const getPlateZIndex = tier => {
+  // Manually set z-index for each tier's plate
+  switch (tier) {
+    case 'gold':
+      return 320
+    case 'silver':
+      return 420
+    case 'bronze':
+      return 520
+    case 'inkind':
+      return 620
+    case 'startup':
+    default:
+      return 720
+  }
+}
+
+const getRowZIndex = tier =>
+  // Row containing cards should be at the tier's base z-index
+  getTierBaseZIndex(tier)
+
 const calculateSponsorRows = (tierList, isMobile) => {
   const newRows = {}
 
   const groupSponsors = (sponsors, groupSize, tier) => {
     const rows = []
+    // Always create at least one row, even if empty
+    if (sponsors.length === 0) {
+      const emptyRow = []
+      // eslint-disable-next-line no-plusplus
+      for (let i = 0; i < groupSize; i++) {
+        emptyRow.push({ name: `empty-${tier}-${i}`, isPlaceholder: true })
+      }
+      rows.push(emptyRow)
+      return rows
+    }
     for (let i = 0; i < sponsors.length; i += groupSize) {
       const row = sponsors.slice(i, i + groupSize)
       while (row.length < groupSize) {
@@ -20,14 +122,11 @@ const calculateSponsorRows = (tierList, isMobile) => {
     return rows
   }
 
-  newRows.platinum = groupSponsors(tierList.platinum, 2)
+  // newRows.platinum = groupSponsors(tierList.platinum, 2)
   newRows.gold = groupSponsors(tierList.gold, 3)
-  newRows.silver = groupSponsors(tierList.silver, isMobile ? 3 : 4)
-  newRows.bronze = groupSponsors(tierList.bronze, isMobile ? 3 : 5)
-
-  // Combine startup and inkind sponsors
-  const combinedStartupInkind = [...tierList.startup, ...tierList.inkind]
-  newRows.startup = groupSponsors(combinedStartupInkind, isMobile ? 4 : 6)
+  newRows.silver = groupSponsors(tierList.silver, 4)
+  newRows.bronze = groupSponsors(tierList.bronze, isMobile ? 4 : 5)
+  newRows.inkind = groupSponsors(tierList.inkind, isMobile ? 6 : 6)
 
   return newRows
 }
@@ -56,37 +155,22 @@ const Row = styled.div`
   left: 0;
   transform: ${props => {
     switch (props.tier) {
-      case 'platinum':
-        return props.isMobile ? 'translate(27%, -75%)' : 'translate(20%, -75%)'
       case 'gold':
-        return props.isMobile ? 'translate(6%, -63%)' : 'translate(12%, -60%)'
+        return props.isMobile ? 'translate(5%, -50%)' : 'translate(5%, -65%)'
       case 'silver':
-        return props.isMobile ? 'translate(15%, -58%)' : 'translate(13%, -55%)'
+        return props.isMobile ? 'translate(8%, -53%)' : 'translate(6%, -60%)'
       case 'bronze':
-        return props.isMobile ? 'translate(12%, -60%)' : 'translate(8%, -45%)'
+        return props.isMobile ? 'translate(12%, -90%)' : 'translate(2%, -80%)'
+      case 'inkind':
+        return props.isMobile ? 'translate(8%, -100%)' : 'translate(9%, -95%)'
       case 'startup':
       default:
-        return props.isMobile ? 'translate(8%, -55%)' : 'translate(22%, -40%)'
+        return props.isMobile ? 'translate(2%, -63%)' : 'translate(12%, -50%)'
     }
   }};
-  z-index: 150;
+  z-index: ${props => getRowZIndex(props.tier)};
   display: flex;
   align-items: center;
-  gap: ${props => {
-    switch (props.tier) {
-      case 'platinum':
-        return props.isMobile ? 'calc(100vw * (15/393))' : 'calc(100vw * (20/1920))'
-      case 'gold':
-        return props.isMobile ? 0 : 'calc(100vw * (10/1920))'
-      case 'silver':
-        return props.isMobile ? 'calc(100vw * (10/393))' : 'calc(100vw * (10/1920))'
-      case 'bronze':
-        return props.isMobile ? 'calc(100vw * (10/393))' : 'calc(100vw * (5/1920))'
-      case 'startup':
-      default:
-        return 'calc(100vw * (10/1920))'
-    }
-  }};
 `
 
 const SponsorContainer = styled.div`
@@ -97,13 +181,41 @@ const SponsorContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 5%;
-  z-index: 100;
-  transform: ${({ index, total }) => {
+  margin-top: 3%;
+  margin-left: ${({ tier, index, isMobile }) => {
+    if (index === 0) return '0'
+    switch (tier) {
+      case 'gold':
+        return isMobile ? 'calc(100vw * (-40/393))' : 'calc(100vw * (-120/1920))'
+      case 'silver':
+        return isMobile ? 'calc(100vw * (-55/393))' : 'calc(100vw * (-130/1920))'
+      case 'bronze':
+        return isMobile ? 'calc(100vw * (-40/393))' : 'calc(100vw * (-160/1920))'
+      case 'inkind':
+        return isMobile ? 'calc(100vw * (-18/393))' : 'calc(100vw * (-90/1920))'
+      case 'startup':
+      default:
+        return isMobile ? 'calc(100vw * (-30/393))' : 'calc(100vw * (-80/1920))'
+    }
+  }};
+  z-index: ${({ tier, index, total, isMobile }) => {
+    const override = getCardPositionOverride(tier, index, total, isMobile)
+    if (override.zIndex !== null) return override.zIndex
+    // Center cards should be on top within their tier
     const middle = (total - 1) / 2
     const offset = Math.abs(index - middle)
-    const yOffset = (middle - offset) * 10 // Adjust this value to control the height difference
-    return `translateY(${yOffset}%)`
+    const baseZIndex = getTierBaseZIndex(tier)
+    return baseZIndex + 10 - offset
+  }};
+  transform: ${({ index, total, tier, isMobile }) => {
+    const middle = (total - 1) / 2
+    const offset = Math.abs(index - middle)
+    let yOffset = (middle - offset) * 12 // Adjust this value to control the height difference
+    const override = getCardPositionOverride(tier, index, total, isMobile)
+    const xOffset = override.x || 0
+    yOffset += override.y || 0
+
+    return `translate(${xOffset}%, ${yOffset}%)`
   }};
 
   ${p => p.theme.mediaQueries.mobile} {
@@ -124,36 +236,36 @@ const SponsorLink = styled.a`
 const SponsorImg = styled.img`
   position: absolute;
   max-height: 30%;
-  max-width: 70%;
+  max-width: 50%;
   border: none;
   object-fit: contain;
   z-index: 2;
-  top: 50%;
   transform: ${({ index, total, tier }) => {
     const middle = (total - 1) / 2
     const offset = Math.abs(index - middle)
+    const xOffset = (index - middle) * 10
     const yOffset = (middle - offset) * 10 // Adjust this value to control the height difference
     let tierOffset = 0
     switch (tier) {
-      case 'platinum':
-        tierOffset = 0
-        break
       case 'gold':
-        tierOffset = -8
+        tierOffset = 0
         break
       case 'silver':
-        tierOffset = 0
+        tierOffset = 15
         break
       case 'bronze':
-        tierOffset = -80
+        tierOffset = 0
+        break
+      case 'inkind':
+        tierOffset = 50
         break
       case 'startup':
       default:
-        tierOffset = -20
+        tierOffset = 0
         break
     }
 
-    return `translateY(${yOffset + tierOffset}%)`
+    return `translate(${xOffset - 50 + tierOffset}%, ${yOffset}%)`
   }};
 `
 
@@ -161,6 +273,8 @@ const PastryImage = styled.img`
   width: ${props => props.length};
   height: auto;
   z-index: 1;
+  transform: ${props => (props.rotate ? `rotate(${props.rotate}deg)` : 'none')};
+  transform-origin: 50% 100%;
 `
 
 const PlateImage = styled.img`
@@ -169,123 +283,113 @@ const PlateImage = styled.img`
   height: auto;
 `
 
-const StandImage = styled.img`
-  position: absolute;
-  width: ${props => {
-    if (props.isMobile) {
-      return props.isFirstRow ? 'calc(100vw * (38/ 393))' : 'calc(100vw * (18/ 393))'
-    }
-    return props.isFirstRow ? 'calc(100vw * (67/ 1920))' : 'calc(100vw * (28 / 1920))'
-  }};
-  height: auto;
-  bottom: ${props => {
-    if (props.isMobile) {
-      return props.isFirstRow ? '-60%' : '-20%'
-    }
-    return props.isFirstRow ? '-60%' : props.adjustment
-  }};
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 5;
-`
-
-const PlateStandContainer = styled.div`
+const PlateContainer = styled.div`
   position: relative;
-  z-index: ${props => props.zIndex};
+  z-index: ${props => getPlateZIndex(props.tier)};
+  transform: ${props => {
+    switch (props.tier) {
+      case 'gold':
+        return 'translateY(15%)'
+      case 'silver':
+        return 'translateY(0)'
+      case 'bronze':
+        return 'translateY(0)'
+      case 'inkind':
+        return 'translateY(0)'
+      case 'startup':
+      default:
+        return 'translateY(0)'
+    }
+  }};
+
+  ${p => p.theme.mediaQueries.mobile} {
+    ${props => props.tier === 'inkind' && `transform: translateY(-15%);`}
+  }
 `
 
-const Cupcake = memo(({ tier, isMobile }) => {
+const PlayingCard = memo(({ tier, isMobile, index, total }) => {
   let svgSrc = null
   let length = 0
+  const override = getCardPositionOverride(tier, index, total, isMobile)
+  const rotate = override.rotate || 0
   switch (tier) {
-    case 'platinum':
-      svgSrc = '/assets/images/sponsors/platpastry.svg'
-      length = isMobile ? 'calc(100vw * (90 / 393))' : 'calc(100vw * (174 / 1920))'
-      break
+    // case 'platinum':
+    //   svgSrc = '/assets/images/sponsors/platpastry.svg'
+    //   length = isMobile ? 'calc(100vw * (90 / 393))' : 'calc(100vw * (174 / 1920))'
+    //   break
     case 'gold':
-      svgSrc = '/assets/images/sponsors/goldpastry.png'
-      length = isMobile ? 'calc(100vw * (100 / 393))' : 'calc(100vw * (200 / 1920))'
+      svgSrc = '/assets/images/sponsors/plat_card.svg'
+      length = isMobile ? 'calc(100vw * (120 / 393))' : 'calc(100vw * (320 / 1920))'
       break
     case 'silver':
-      svgSrc = '/assets/images/sponsors/silverpastry.svg'
-      length = isMobile ? 'calc(100vw * (85 / 393))' : 'calc(100vw * (178 / 1920))'
+      svgSrc = '/assets/images/sponsors/gold_card.svg'
+      length = isMobile ? 'calc(100vw * (130 / 393))' : 'calc(100vw * (360 / 1920))'
       break
     case 'bronze':
-      svgSrc = '/assets/images/sponsors/bronzepastry.svg'
-      length = isMobile ? 'calc(100vw * (100 / 393))' : 'calc(100vw * (204 / 1920))'
+      svgSrc = '/assets/images/sponsors/silver_card.svg'
+      length = isMobile ? 'calc(100vw * (120 / 393))' : 'calc(100vw * (360 / 1920))'
       break
-    case 'startup':
+    case 'inkind':
+      svgSrc = '/assets/images/sponsors/bronze_card.svg'
+      length = isMobile ? 'calc(100vw * (72 / 393))' : 'calc(100vw * (290 / 1920))'
+      break
+    // case 'startup':
     default:
-      svgSrc = '/assets/images/sponsors/startuppastry.png'
-      length = isMobile ? 'calc(100vw * (90 / 393))' : 'calc(100vw * (170 / 1920))'
-      break
   }
-  return <PastryImage src={svgSrc} length={length} />
+  return <PastryImage src={svgSrc} length={length} rotate={rotate} />
 })
 
-const PlateStand = memo(({ tier, zIndex, isFirstRow, isMobile }) => {
+const Plate = memo(({ tier, isMobile }) => {
   let svgSrc = null
   let length = 0
-  let adjustment = '0%'
   switch (tier) {
-    case 'platinum':
-      svgSrc = '/assets/images/sponsors/platplate.svg'
-      length = isMobile ? 'calc(100vw * (300 / 393))' : 'calc(100vw * (510 / 1920))'
-      adjustment = '-40%'
-      break
     case 'gold':
-      svgSrc = '/assets/images/sponsors/goldplate.svg'
-      length = isMobile ? 'calc(100vw * (330 / 393))' : 'calc(100vw * (769 / 1920))'
-      adjustment = '10%'
+      svgSrc = '/assets/images/sponsors/plat_tier.svg'
+      length = isMobile ? 'calc(100vw * (310 / 393))' : 'calc(100vw * (760 / 1920))'
       break
     case 'silver':
-      svgSrc = '/assets/images/sponsors/silverplate.svg'
-      length = isMobile ? 'calc(100vw * (360 / 393))' : 'calc(100vw * (926 / 1920))'
-      adjustment = '25%'
+      svgSrc = '/assets/images/sponsors/gold_tier.svg'
+      length = isMobile ? 'calc(100vw * (370 / 393))' : 'calc(100vw * (1100 / 1920))'
       break
     case 'bronze':
-      svgSrc = '/assets/images/sponsors/bronzeplate.svg'
-      length = isMobile ? 'calc(100vw * (390 / 393))' : 'calc(100vw * (1220 / 1920))'
-      adjustment = '40%'
+      svgSrc = '/assets/images/sponsors/silver_tier.svg'
+      length = isMobile ? 'calc(100vw * (370 / 393))' : 'calc(100vw * (1200 / 1920))'
       break
-    case 'startup':
+    case 'inkind':
+      svgSrc = '/assets/images/sponsors/bronze_tier.svg'
+      length = isMobile ? 'calc(100vw * (390 / 393))' : 'calc(100vw * (1500 / 1920))'
+      break
     default:
-      svgSrc = '/assets/images/sponsors/startupplate.svg'
-      length = isMobile ? 'calc(100vw * (426 / 393))' : 'calc(100vw * (1529 / 1920))'
-      adjustment = '45%'
-      break
+    // case 'startup':
+    // default:
+    //   svgSrc = '/assets/images/sponsors/startupplate.svg'
+    //   length = isMobile ? 'calc(100vw * (426 / 393))' : 'calc(100vw * (1529 / 1920))'
+    //   break
   }
-  const standSrc = isFirstRow ? '/assets/images/sponsors/startingstand.svg' : '/assets/images/sponsors/normalstand.svg'
   return (
-    <PlateStandContainer zIndex={zIndex}>
-      <StandImage src={standSrc} adjustment={adjustment} isFirstRow={isFirstRow} isMobile={isMobile} />
+    <PlateContainer tier={tier}>
       <PlateImage src={svgSrc} length={length} />
-    </PlateStandContainer>
+    </PlateContainer>
   )
 })
 
 const Sponsor = memo(({ link, url, size, tier, isPlaceholder, index, total, isMobile }) => (
-  <SponsorContainer size={size} tier={tier} index={index} total={total}>
+  <SponsorContainer size={size} tier={tier} index={index} total={total} isMobile={isMobile}>
     <SponsorLink href={link} target="_blank" rel="noreferrer">
-      <Cupcake tier={tier} isMobile={isMobile} />
+      <PlayingCard tier={tier} isMobile={isMobile} index={index} total={total} />
       {!isPlaceholder && <SponsorImg src={url} alt="Sponsor Logo" index={index} total={total} tier={tier} />}
     </SponsorLink>
   </SponsorContainer>
 ))
 
-const ListByTier = memo(({ listOfRows, tierSize, tier, startIndex, isMobile }) => {
+const ListByTier = memo(({ listOfRows, tierSize, tier, isMobile }) => {
   if (!listOfRows || listOfRows.length === 0) return null
 
   return (
     <>
-      {listOfRows.map((row, index) => (
+      {listOfRows.map(row => (
         <SponsorLevelContainer key={`${tier}-${row[0].name}`}>
-          <PlateStand
-            tier={tier}
-            zIndex={100 - startIndex - index}
-            isFirstRow={startIndex + index === 5}
-            isMobile={isMobile}
-          />
+          <Plate tier={tier} isMobile={isMobile} />
           <Row tier={tier} isMobile={isMobile}>
             {row.map((item, i) => (
               <Sponsor
@@ -347,12 +451,11 @@ const SponsorsGrid = ({ sponsors }) => {
     return () => window.removeEventListener('resize', calculateRows)
   }, [tierList, isMobile])
 
-  const startIndexPlatinum = 5
-  const startIndexGold = startIndexPlatinum + tierList.platinum.length
+  const startIndexGold = 5
   const startIndexSilver = startIndexGold + tierList.gold.length
   const startIndexBronze = startIndexSilver + tierList.silver.length
-  const startIndexStartup = startIndexBronze + tierList.bronze.length
-  const startIndexInkind = startIndexStartup + tierList.startup.length
+  const startIndexInkind = startIndexBronze + tierList.bronze.length
+  // const startIndexStartup = startIndexInkind + tierList.inkind.length
 
   return (
     <Container ref={containerRef}>
@@ -361,13 +464,13 @@ const SponsorsGrid = ({ sponsors }) => {
         tierSize={isMobile ? MOBILE_SPONSOR_WIDTH.title : SPONSOR_WIDTH.title}
         tier="title"
       /> */}
-      <ListByTier
+      {/* <ListByTier
         listOfRows={rows.platinum}
         tierSize={isMobile ? MOBILE_SPONSOR_WIDTH.platinum : SPONSOR_WIDTH.platinum}
         tier="platinum"
         startIndex={startIndexPlatinum}
         isMobile={isMobile}
-      />
+      /> */}
       <ListByTier
         listOfRows={rows.gold}
         tierSize={isMobile ? MOBILE_SPONSOR_WIDTH.gold : SPONSOR_WIDTH.gold}
@@ -390,19 +493,19 @@ const SponsorsGrid = ({ sponsors }) => {
         isMobile={isMobile}
       />
       <ListByTier
-        listOfRows={rows.startup}
-        tierSize={isMobile ? MOBILE_SPONSOR_WIDTH.startup : SPONSOR_WIDTH.startup}
-        tier="startup"
-        startIndex={startIndexStartup}
-        isMobile={isMobile}
-      />
-      <ListByTier
         listOfRows={rows.inkind}
         tierSize={isMobile ? MOBILE_SPONSOR_WIDTH.inkind : SPONSOR_WIDTH.inkind}
         tier="inkind"
         startIndex={startIndexInkind}
         isMobile={isMobile}
       />
+      {/* <ListByTier
+        listOfRows={rows.startup}
+        tierSize={isMobile ? MOBILE_SPONSOR_WIDTH.startup : SPONSOR_WIDTH.startup}
+        tier="startup"
+        startIndex={startIndexStartup}
+        isMobile={isMobile}
+      /> */}
     </Container>
   )
 }
