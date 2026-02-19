@@ -176,6 +176,18 @@ const Countdown = () => {
       return
     }
 
+    if (!portalData.rsvpOpen?.[TARGET_HACKATHON]) {
+      const appDeadline = {
+        key: 'applicationDeadline',
+        label: 'Applications close in:',
+        value: portalData.applicationDeadline?.[TARGET_HACKATHON],
+        hackathon: TARGET_HACKATHON,
+        timestamp: parseIsoDateString(portalData.applicationDeadline?.[TARGET_HACKATHON]) || 0,
+      }
+      setTargetInfo(appDeadline)
+      return
+    }
+
     const candidates = [
       {
         key: 'applicationDeadline',
