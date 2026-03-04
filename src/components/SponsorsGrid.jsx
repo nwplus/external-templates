@@ -202,10 +202,8 @@ const SponsorContainer = styled.div`
     const override = getCardPositionOverride(tier, index, total, isMobile)
     if (override.zIndex !== null) return override.zIndex
     // Center cards should be on top within their tier
-    const middle = (total - 1) / 2
-    const offset = Math.abs(index - middle)
     const baseZIndex = getTierBaseZIndex(tier)
-    return baseZIndex + 10 - offset
+    return baseZIndex + 10
   }};
   transform: ${({ index, total, tier, isMobile }) => {
     const middle = (total - 1) / 2
