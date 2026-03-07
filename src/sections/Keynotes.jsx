@@ -202,33 +202,32 @@ const Smoke = styled.img`
   left: calc(100vw * (770 / 1512));
 
   ${p => p.theme.mediaQueries.mobile} {
-    width: calc(100vw * (362 / 393));
+    width: calc(100vw * (420 / 393));
     top: calc(100vw * (600 / 393));
-    left: calc(100vw * (10 / 393));
+    left: calc(100vw * (-25 / 393));
   }
 `
 
 const TextContainer = styled.div`
   position: absolute;
   width: calc(100vw * (451 / 1512));
-  top: calc(100vw * (390 / 1512));
-  left: calc(100vw * (990 / 1512));
+  top: calc(100vw * (260 / 1512));
+  left: calc(100vw * (930 / 1512));
 
   ${p => p.theme.mediaQueries.mobile} {
-    width: calc(100vw * (222 / 393));
-    top: calc(100vw * (710 / 393));
-    left: calc(100vw * (95 / 393));
+    width: calc(100vw * (240 / 393));
+    top: calc(100vw * (650 / 393));
+    left: calc(100vw * (78 / 393));
     text-align: center;
   }
 `
 
 const Description = styled.p`
   font-family: 'Quicksand';
-  font-size: calc(100vw * (32 / 1512));
-  font-weight: 600;
+  font-size: calc(100vw * (18 / 1512));
 
   ${p => p.theme.mediaQueries.mobile} {
-    font-size: calc(100vw * (16 / 393));
+    font-size: calc(100vw * (10 / 393));
   }
 `
 
@@ -238,13 +237,13 @@ const NavigationContainer = styled.div`
   align-items: center;
   justify-content: center;
   gap: calc(100vw * (20 / 1512));
-  top: calc(100vw * (540 / 1512));
+  top: calc(100vw * (550 / 1512));
   left: calc(100vw * (1050 / 1512));
   width: calc(100vw * (200 / 1512));
 
   ${p => p.theme.mediaQueries.mobile} {
-    top: calc(100vw * (780 / 393));
-    left: calc(100vw * (30 / 393));
+    top: calc(100vw * (830 / 393));
+    left: calc(100vw * (25 / 393));
     width: calc(100vw * (347 / 393));
     z-index: 5;
     gap: calc(100vw * (90 / 393));
@@ -503,25 +502,29 @@ const keynoteData = [
     id: 'have-one-cookie',
     name: '',
     company: '',
-    description: 'Details coming soon...',
+    description:
+      '**Swetha Moturu** is a Principal Software Engineer at Microsoft, based in Vancouver. With 10+ years in industry, she has led high scale, customer facing systems, scaling Android device usage from thousands to hundreds of thousands. Swetha is passionate about mentoring engineers, sharing real world industry lessons with students and helping students bridge academic learning with real world software engineering.',
   },
   {
     id: 'eat-me-cookie',
     name: '',
     company: '',
-    description: 'Details coming soon...',
+    description:
+      '**Sasha Pang** is the Lead Product Manager on Voice Search at Google, with over 15 years of experience in the tech industry. Her previous work includes online learning platforms, patient-centered health applications, and fitness wearables. In addition to building products on the cutting edge of innovation, Sasha has established multiple programs that help individuals from underrepresented backgrounds thrive in tech. Outside of her professional life, she is a mom to two girls and marathoner. Sasha holds an MBA with High Distinction from Harvard Business School, and an A.B. in Government from Harvard College.',
   },
   {
     id: 'drink-me-bottle',
     name: '',
     company: '',
-    description: 'Details coming soon...',
+    description:
+      '**Ariel Cao** is the Student Life Manager for Pre-University Programs at UBC Extended Learning, overseeing the planning, delivery, and evaluation of student life components of pre-university programs for Canadian and international high school students. With a BA in Visual Arts and Computer Science from UBC, an MPhil from Cambridge, and an EdM from Harvard, Ariel combines her academic expertise with a passion for inclusivity and access in education. Ariel is also the founder of Girls in STEAM, a nonprofit that merges art and STEM education to empower underrepresented groups and foster a more diverse tech community.',
   },
   {
     id: 'try-me-cookie',
     name: '',
     company: '',
-    description: 'Details coming soon...',
+    description:
+      "**Kitty Lam** is a Senior Analytics Engineer at Aritzia, with over 15 years of experience building end-to-end data solutions. At Aritzia, she designs and builds data models that power Performance Marketing and eCommerce Analytics. Kitty holds a BSc in Computer Science and an MEng in Electrical Engineering, and previously served as the Workday Data Conversion Technical Lead for UBC's Integrated Renewal Program. She brings a deep passion for scalable data pipelines, thoughtful engineering, and mentoring the next generation of creators.",
   },
   {
     id: 'take-one-cookie',
@@ -574,6 +577,11 @@ const Keynotes = () => {
     } else {
       setSelectedSpeaker(0)
     }
+  }
+
+  const renderDescription = text => {
+    const parts = text.split(/\*\*(.*?)\*\*/g)
+    return parts.map((part, index) => (index % 2 === 1 ? <strong key={`bold-${part}`}>{part}</strong> : part))
   }
 
   return (
@@ -644,7 +652,7 @@ const Keynotes = () => {
 
           {selectedSpeaker !== null && (
             <TextContainer>
-              <Description>{keynoteData[selectedSpeaker].description}</Description>
+              <Description>{renderDescription(keynoteData[selectedSpeaker].description)}</Description>
             </TextContainer>
           )}
 
@@ -779,7 +787,7 @@ const Keynotes = () => {
               )}
               <Smoke src="/assets/images/keynotes/smoke.svg" />
               <TextContainer>
-                <Description>{keynoteData[selectedSpeaker].description}</Description>
+                <Description>{renderDescription(keynoteData[selectedSpeaker].description)}</Description>
               </TextContainer>
             </>
           )}
