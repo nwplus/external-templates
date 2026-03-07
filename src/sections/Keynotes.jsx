@@ -581,7 +581,7 @@ const Keynotes = () => {
 
   const renderDescription = text => {
     const parts = text.split(/\*\*(.*?)\*\*/g)
-    return parts.map((part, index) => (index % 2 === 1 ? <strong key={index}>{part}</strong> : part))
+    return parts.map((part, index) => (index % 2 === 1 ? <strong key={`bold-${part}`}>{part}</strong> : part))
   }
 
   return (
