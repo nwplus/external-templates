@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "sendit": "yarn build:prod && firebase deploy --only hosting:nwhacks2026_placeholder",
+    "sendit": "yarn build:prod && firebase deploy --only hosting:nwhacks2027_placeholder",
     "dev": "cross-env NODE_OPTIONS='--inspect' next dev",
     "build": "next build && next export",
     "build:staging": "cross-env DEPLOY_ENV=STAGING next build && next export",

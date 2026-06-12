@@ -1,17 +1,7 @@
 {
   "hosting": [
     {
-      "target": "root",
-      "public": "out",
-      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
-    },
-    {
-      "target": "nwhacks2026_dev",
-      "public": "out",
-      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
-    },
-    {
-      "target": "nwhacks2026_main",
+      "target": "nwhacks2027_placeholder",
       "public": "out",
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
     }

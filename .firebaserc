@@ -6,21 +6,15 @@
   "targets": {
     "nwplus-ubc-dev": {
       "hosting": {
-        "root": [
-          "dev-nwplus-root"
-        ],
-        "nwhacks2026_dev": [
-          "dev-nwplus-nwhacks2026"
+        "nwhacks2027_placeholder": [
+          "dev-nwplus-nwhacks2027"
         ]
       }
     },
     "nwplus-ubc": {
       "hosting": {
-        "root": [
-          "nwplus-root"
-        ],
-        "nwhacks2026_main": [
-          "nwplus-nwhacks2026"
+        "nwhacks2027_placeholder": [
+          "nwplus-nwhacks2027"
         ]
       }
     }
