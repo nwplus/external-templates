@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 
 const AboutContainer = styled.div`
   aspect-ratio: 1512/900;
@@ -44,169 +44,7 @@ const Rails = styled.img`
 `
 // TRAIN END
 
-// COUNTDOWN THINGS START
-const Countdown = styled.div``
 
-const CountdownContainer = styled.img`
-  position: absolute;
-  width: calc(100vw * (613 / 1512));
-  top: calc(100vw * (-53 / 1512));
-  right: calc(100vw * (60 / 1512));
-  z-index: 1;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    width: calc(100vw * (188 / 393));
-    height: calc(100vw * (132 / 393));
-    right: calc(100vw * (100 / 393));
-    top: calc(100vw * (-40 / 393));
-  }
-`
-
-const CountdownBorder = styled.img`
-  position: absolute;
-  width: calc(100vw * (224 / 1512));
-  top: calc(100vw * (-30 / 1512));
-  right: calc(100vw * (85 / 1512));
-  z-index: 20;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    width: calc(100vw * (112 / 393));
-    height: calc(100vw * (49 / 393));
-    left: 50%;
-    right: auto;
-    transform: translateX(-50%);
-    top: calc(100vw * (30 / 393));
-  }
-`
-
-const CountdownMascots = styled.img`
-  position: absolute;
-  width: calc(100vw * (195 / 1512));
-  top: calc(100vw * (-153 / 1512));
-  right: calc(100vw * (50 / 1512));
-  z-index: 5;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    display: none;
-  }
-`
-
-const CountdownP = styled.p`
-  font-family: 'Jersey 10';
-  color: #ffffff;
-
-  background: linear-gradient(to bottom, #ffffff 0%, #f7e8e8 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-  display: inline-block;
-  font-size: calc(100vw * (22 / 1512));
-  letter-spacing: calc(100vw * (2 / 1512));
-
-  ${p => p.theme.mediaQueries.mobile} {
-    font-size: calc(100vw * (10 / 393));
-  }
-`
-
-const CountdownT = styled.p`
-  font-family: 'Space Grotesk';
-  color: #ffffff;
-  font-weight: 500;
-
-  background: linear-gradient(to bottom, #ffffff 0%, #f7e8e8 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-  display: inline-block;
-  font-size: calc(100vw * (30 / 1512));
-
-  ${p => p.theme.mediaQueries.mobile} {
-    font-size: calc(100vw * (15 / 393));
-  }
-`
-
-const CountdownLeft = styled.div`
-  position: absolute;
-  top: calc(100vw * (-30 / 1512));
-  right: calc(100vw * (340 / 1512));
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  gap: calc(100vw * (6 / 1512));
-
-  ${p => p.theme.mediaQueries.mobile} {
-    left: 50%;
-    right: auto;
-    transform: translateX(-50%);
-    top: calc(100vw * (-25 / 393));
-  }
-`
-
-const CountdownGrid = styled.div`
-  position: absolute;
-  top: calc(100vw * (-19 / 1512));
-  right: calc(100vw * (-12 / 1512));
-  z-index: 3;
-
-  display: grid;
-  grid-template-columns: repeat(3, max-content);
-  column-gap: calc(100vw * (12 / 1512));
-  align-items: center;
-  justify-items: center;
-  justify-content: center;
-
-  width: calc(100vw * (420 / 1512));
-
-  ${p => p.theme.mediaQueries.mobile} {
-    width: calc(100vw * (97 / 393));
-    left: 50%;
-    right: auto;
-    transform: translateX(-50%);
-    top: calc(100vw * (38 / 393));
-    column-gap: calc(100vw * (12 / 393));
-  }
-`
-
-const GridItem = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: calc(100vw * (0 / 1512));
-`
-
-const GridNumber = styled.p`
-  font-family: 'Jersey 10';
-  font-weight: 700;
-  font-size: calc(100vw * (55 / 1512));
-  line-height: 1;
-  margin: 0;
-  letter-spacing: calc(100vw * (5 / 1512));
-
-  background: linear-gradient(to bottom, #ffffff 0%, #f7e8e8 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-  ${p => p.theme.mediaQueries.mobile} {
-    font-size: calc(100vw * (20 / 393));
-  }
-`
-
-const GridLabel = styled.p`
-  font-family: 'Jersey 10';
-  font-size: calc(100vw * (18 / 1512));
-  margin: 0;
-  color: rgba(255, 255, 255, 0.9);
-  opacity: 0.95;
-  letter-spacing: calc(100vw * (2 / 1512));
-
-  ${p => p.theme.mediaQueries.mobile} {
-    font-size: calc(100vw * (11 / 393));
-  }
-`
-// COUNTDOWN THINGS END
 
 // ABOUT IMAGES
 const LeftIsland = styled.img`
@@ -358,21 +196,7 @@ const TextRight = styled.p`
 `
 // TEXT END
 
-const getReturnValues = countDown => {
-  const days = Math.floor(countDown / (1000 * 60 * 60 * 24))
-  const hours = Math.floor((countDown % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
-  const minutes = Math.floor((countDown % (1000 * 60 * 60)) / (1000 * 60))
-
-  if (days < 0 || hours < 0 || minutes < 0) {
-    return [0, 0, 0]
-  }
-
-  return [days, hours, minutes]
-}
-
 const About = () => {
-  const target = new Date('Dec 19, 2025 23:59:59').getTime()
-  const [timeLeft, setTimeLeft] = useState(target - Date.now())
   // refs for parallax
   const containerRef = useRef(null)
   const cloudOneRef = useRef(null)
@@ -381,14 +205,6 @@ const About = () => {
   const leftIslandRef = useRef(null)
   const rightIslandRef = useRef(null)
   const fogRef = useRef(null)
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTimeLeft(target - Date.now())
-    }, 1000)
-
-    return () => clearInterval(interval)
-  }, [target])
 
   // Parallax scroll effect (similar pattern to Sponsors.jsx)
   useEffect(() => {
@@ -417,10 +233,6 @@ const About = () => {
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
-
-  const [days, hours, minutes] = getReturnValues(timeLeft)
-
-  const pad = n => String(n).padStart(2, '0')
 
   return (
     <AboutContainer id="about" ref={containerRef}>

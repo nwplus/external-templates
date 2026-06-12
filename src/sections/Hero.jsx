@@ -150,49 +150,6 @@ const HackerButton = styled.a`
   }
 `
 
-const MentorButton = styled.a`
-  cursor: pointer;
-  text-decoration: none;
-  padding: calc(100vw * (15 / 1512)) calc(100vw * (20 / 1512));
-  font-size: calc(100vw * (20 / 1512));
-  border-radius: calc(100vw * (9 / 1512));
-  background: linear-gradient(to bottom, #80344f 0%, #622a4d 100%) padding-box,
-    linear-gradient(90deg, #f8c3e5 0%, #e69fdb 100%) border-box;
-  border: 1px solid transparent;
-  color: white;
-
-  &:hover {
-    box-shadow: inset 0 -8px 8px rgba(30, 4, 27, 0.45);
-  }
-
-  ${p => p.theme.mediaQueries.mobile} {
-    border-radius: calc(100vw * (5 / 487));
-    padding: calc(100vw * (8 / 487)) calc(100vw * (12 / 487));
-    font-size: calc(100vw * (14 / 487));
-  }
-`
-
-const VolunteerButton = styled.a`
-  cursor: pointer;
-  text-decoration: none;
-  padding: calc(100vw * (15 / 1512)) calc(100vw * (20 / 1512));
-  font-size: calc(100vw * (20 / 1512));
-  border-radius: calc(100vw * (9 / 1512));
-  background: linear-gradient(to bottom, #404721 0%, #1e2f0e 100%) padding-box,
-    linear-gradient(90deg, #ffffff 0%, #9fc3be 100%) border-box;
-  border: 1px solid transparent;
-  color: white;
-
-  &:hover {
-    box-shadow: inset 0 -8px 8px rgba(30, 4, 27, 0.45);
-  }
-
-  ${p => p.theme.mediaQueries.mobile} {
-    border-radius: calc(100vw * (5 / 487));
-    padding: calc(100vw * (8 / 487)) calc(100vw * (12 / 487));
-    font-size: calc(100vw * (14 / 487));
-  }
-`
 // LEFT SIDE END
 
 // IMAGES START
