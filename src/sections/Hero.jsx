@@ -330,14 +330,14 @@ const Hero = () => (
         <Title src="./assets/images/hero/nwhacks_title.svg" />
         <Description>
           <Subheader>Western Canada&apos;s Premier Hackathon</Subheader>
-          <SecondarySubheader>January 17-18 @ UBC Life Sciences Institute</SecondarySubheader>
+          <SecondarySubheader>January 23-24, 2027 @ UBC Life Sciences Institute</SecondarySubheader>
         </Description>
-        <Subheader>Apply to be a:</Subheader>
+        <Subheader>Get notified when applications open!</Subheader>
         <Buttons>
-          <HackerButton href="https://portal.nwplus.io/" target="_blank">
-            Hacker
+          <HackerButton href="https://forms.gle/731hXWXsFFAb7wQo8" target="_blank">
+            Interest Form
           </HackerButton>
-          <MentorButton
+          {/* <MentorButton
             href="https://docs.google.com/forms/d/e/1FAIpQLSed4X4CvZI3NoeOF5xjhMEISiM3RR6W96reEB-uFn_3IUVhzg/viewform"
             target="_blank"
           >
@@ -348,7 +348,7 @@ const Hero = () => (
             target="_blank"
           >
             Volunteer
-          </VolunteerButton>
+          </VolunteerButton> */}
         </Buttons>
         <SponsorText href="mailto:sponsorship@nwplus.io?subject=Sponsorship Inquiry">Become a Sponsor</SponsorText>
       </ContentSide>

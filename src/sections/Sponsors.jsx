@@ -253,7 +253,7 @@ const Sponsors = () => {
       <CloudsFront ref={cloudsFrontRef} />
       <BearAnimation src="/assets/images/animations/bear.gif" alt="Bear animation" />
       <ContentWrapper>
-        <Title id="sponsors">Sponsor nwHacks 2026</Title>
+        <Title id="sponsors">Sponsor nwHacks 2027</Title>
         <Description>
           nwHacks is more than just a hackathon; it&apos;s a place that supports and fosters a community for the next generation of tech leaders. 
           <br /><br />

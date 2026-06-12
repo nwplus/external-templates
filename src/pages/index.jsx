@@ -52,7 +52,7 @@ export default function Index({ title }) {
         <link rel="icon" href="/favicon.png" />
 
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="Join us at nwHacks 2026!" />
+        <meta name="description" content="Join us at nwHacks 2027!" />
         <meta property="og:image" content="/og_preview.png" />
       </Head>
 

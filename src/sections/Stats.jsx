@@ -591,7 +591,7 @@ const Stats = () => {
       <HackerDome>
         <NumberHackerContainer>
           {/* Hacker counter: target comes from aria-label and is styled via HackerNumber */}
-          <HackerNumber ref={hackerRef} aria-label="734" animate={hackerAnimated} />
+          <HackerNumber ref={hackerRef} aria-label="627" animate={hackerAnimated} />
           <Label>Hackers</Label>
         </NumberHackerContainer>
         <CloudBehindHacker src="./assets/images/stats/cloud_behind_hacker.svg" />
@@ -600,7 +600,7 @@ const Stats = () => {
       <ProjectDome>
         <NumberProjectContainer>
           {/* Project counter: target comes from aria-label and is styled via ProjectNumber */}
-          <ProjectNumber ref={projectRef} aria-label="182" animate={projectAnimated} />
+          <ProjectNumber ref={projectRef} aria-label="170" animate={projectAnimated} />
           <SecondaryLabel>Projects</SecondaryLabel>
         </NumberProjectContainer>
         <Projects src="./assets/images/stats/stats_projects.png" />
@@ -610,7 +610,7 @@ const Stats = () => {
       <MentorDome>
         <NumberMentorContainer>
           {/* Mentor counter: target comes from aria-label and is styled via MentorNumber */}
-          <MentorNumber ref={mentorRef} aria-label="68" animate={mentorAnimated} />
+          <MentorNumber ref={mentorRef} aria-label="85" animate={mentorAnimated} />
           <SecondaryLabel>Mentors</SecondaryLabel>
         </NumberMentorContainer>
         <Mentors src="./assets/images/stats/stats_mentors.png" />
@@ -623,7 +623,7 @@ const Stats = () => {
           <iframe
             width="100%"
             height="100%"
-            src="https://www.youtube.com/embed/TtYBTPVJCwo?si=_CGjDyKyKvEIIEHS"
+            src="https://www.youtube.com/embed/xnldoFAWzaM?si=6ix2vInoMQxnS4_f"
             title="YouTube video player"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -635,7 +635,7 @@ const Stats = () => {
         <BaseRecapVideo src="./assets/images/stats/base_recap_video.png" />
         <RecapTextContainer>
           <RecapText>
-            2025
+            2026
             <br />
             Recap
           </RecapText>

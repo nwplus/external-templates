@@ -177,7 +177,7 @@ const Faq = () => {
   }
 
   useEffect(async () => {
-    const data = await fireDb.getCollection('nwHacks2026', 'FAQ')
+    const data = await fireDb.getCollection('nwHacks2025', 'FAQ')
     const processedData = processData(data)
     setFaqData(processedData)
   }, [])

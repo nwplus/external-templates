@@ -281,8 +281,8 @@ const MenuList = ({ isMobile, closeDropdown }) => (
     <MenuItem name="Sponsors" href="/#sponsors" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
     <MenuItem name="Contact us" href="/#footer" isAnchor isMobile={isMobile} closeDropdown={closeDropdown} />
     <MenuItem
-      name="2025"
-      href="https://2025.nwhacks.io/"
+      name="2026"
+      href="https://2026.nwhacks.io/"
       target="_blank"
       rel="noreferrer"
       isAnchor
@@ -296,13 +296,13 @@ const TrustBadge = ({ stayAtTop }) => (
   <TrustBadgeLink
     id="mlh-trust-badge"
     rel="noreferrer"
-    href="https://mlh.io/na?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2025-season&utm_content=white"
+    href="https://mlh.io/na?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2027-season&utm_content=white"
     target="_blank"
     stayAtTop={stayAtTop}
   >
     <img
       src="/assets/images/mlhTrustBadgeWhite.svg"
-      alt="Major League Hacking 2026 Hackathon Season"
+      alt="Major League Hacking 2027 Hackathon Season"
       style={{ width: '100%' }}
     />
   </TrustBadgeLink>

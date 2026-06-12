@@ -426,7 +426,7 @@ const About = () => {
     <AboutContainer id="about" ref={containerRef}>
       <Tracks src="./assets/images/about/about_train.png" />
       <Rails src="./assets/images/about/about_rails.svg" />
-      <Countdown>
+      {/* <Countdown>
         <CountdownContainer src="./assets/images/about/countdown_container.svg" />
         <CountdownBorder src="./assets/images/about/countdown_border.svg" />
         <CountdownMascots src="./assets/images/about/countdown_mascots.svg" />
@@ -449,7 +449,7 @@ const About = () => {
             <GridLabel>mins</GridLabel>
           </GridItem>
         </CountdownGrid>
-      </Countdown>
+      </Countdown> */}
       <LeftIsland ref={leftIslandRef} src="./assets/images/about/about_left_island.svg" />
       <CloudOne ref={cloudOneRef} src="./assets/images/about/about_cloud_one.svg" />
       <LeftBgIsland src="./assets/images/about/about_left_bg_island.svg" />
@@ -459,18 +459,12 @@ const About = () => {
       <Fog ref={fogRef} src="./assets/images/about/fog.svg" />
       <Sun src="./assets/images/about/sun.svg" />
       <TextContainer>
-        <TextLeft>Join us for the 11th iteration of nwHacks!</TextLeft>
+        <TextLeft>Join us for the 12th iteration of nwHacks!</TextLeft>
         <TextRight>
-          Welcome to the 11th iteration of nwHacks, where ideas take flight!
+          Welcome to the 12th iteration of nwHacks, where ideas take flight!
           <br />
           <br />
-          Whether you&apos;re just getting into tech or already a seasoned hacker, you&apos;re invited to rise above the
-          ordinary and explore new heights of creativity, community, and innovation. <br />
-          <br />
-          Happening in-person on January 17-18, 2026, this 24-hour journey will lift you into a space where imagination
-          knows no bounds. All you need is an open mind and an insatiable desire to learn - we&apos;ll take care of the
-          rest. Build something extraordinary, discover new skills, and connect with friends as your ideas drift beyond
-          the horizon, all in 24 hours!
+          Everyone is welcome at nwHacks, whether you are just getting into tech or are a seasoned hacker. Join us in-person on January 23-24, 2027 for a weekend of creativity, community, and innovation. All you need is an open mind and an insatiable desire to learn - we’ll take care of the rest. Create a project, learn new skills, and bond with friends, all in 24 hours! 
         </TextRight>
       </TextContainer>
     </AboutContainer>
