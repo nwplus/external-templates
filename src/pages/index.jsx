@@ -82,7 +82,7 @@ export default function Index({ title }) {
 export async function getStaticProps() {
   return {
     props: {
-      title: 'nwHacks 2026',
+      title: 'nwHacks 2027',
     },
   }
 }
