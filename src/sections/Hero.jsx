@@ -287,7 +287,7 @@ const Hero = () => (
         <Title src="./assets/images/hero/nwhacks_title.svg" />
         <Description>
           <Subheader>Western Canada&apos;s Premier Hackathon</Subheader>
-          <SecondarySubheader>January 23-24, 2027 @ UBC Life Sciences Institute</SecondarySubheader>
+          <SecondarySubheader>January 16-17, 2027 @ UBC Life Sciences Institute</SecondarySubheader>
         </Description>
         <Subheader>Get notified when applications open!</Subheader>
         <Buttons>
