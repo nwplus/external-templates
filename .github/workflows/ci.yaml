@@ -44,8 +44,6 @@ jobs:
           NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.DEV_FIREBASE_MESSAGING_SENDER_ID }}
           NEXT_PUBLIC_FIREBASE_APP_ID: ${{ secrets.DEV_FIREBASE_APP_ID }}
       - name: run Lighthouse CI
-        run: |
-          pnpm add -g @lhci/cli@0.6.x
-          lhci autorun --upload.target=temporary-public-storage
+        run: pnpm dlx @lhci/cli@0.6.x autorun --upload.target=temporary-public-storage
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
