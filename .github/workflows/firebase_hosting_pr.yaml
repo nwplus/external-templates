@@ -9,13 +9,18 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 8.15.9
+
       # TEMP FIX FOR NODE ERRORS
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '16.x'
+          cache: 'pnpm'
 
-      - run: yarn install --frozen-lockfile && yarn build:staging
+      - run: pnpm install --frozen-lockfile && pnpm run build:staging
         env:
           NEXT_PUBLIC_FIREBASE_API_KEY: ${{ secrets.DEV_FIREBASE_API_KEY }}
           NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN: ${{ secrets.DEV_FIREBASE_AUTH_DOMAIN }}
