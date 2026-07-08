@@ -9,12 +9,17 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.10.0
+
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
           node-version: "22.x"
+          cache: 'pnpm'
 
-      - run: npm ci && npm run build:staging
+      - run: pnpm install --frozen-lockfile && pnpm run build:staging
         env:
           NEXT_PUBLIC_FIREBASE_API_KEY: ${{ secrets.DEV_FIREBASE_API_KEY }}
           NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN: ${{ secrets.DEV_FIREBASE_AUTH_DOMAIN }}
@@ -30,6 +35,6 @@ jobs:
           target: root
           projectId: nwplus-ubc-dev
           expires: 10d
-          firebaseToolsVersion: 12.9.1
+          firebaseToolsVersion: '13.0.0'
         env:
           FIREBASE_CLI_PREVIEWS: hostingchannels
