@@ -13,11 +13,10 @@ jobs:
         with:
           version: 8.15.9
 
-      # TEMP FIX FOR NODE ERRORS
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16.x'
+          node-version: '22.x'
           cache: 'pnpm'
 
       - run: pnpm install --frozen-lockfile && pnpm run build:staging
@@ -29,12 +28,6 @@ jobs:
           NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET: ${{ secrets.DEV_FIREBASE_STORAGE_BUCKET }}
           NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.DEV_FIREBASE_MESSAGING_SENDER_ID }}
           NEXT_PUBLIC_FIREBASE_APP_ID: ${{ secrets.DEV_FIREBASE_APP_ID }}
-
-      # firebase-tools 13.x requires Node >=18; the build step above stays on 16.x
-      - name: Use Node.js for Firebase CLI
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18.x'
 
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
