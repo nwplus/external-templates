@@ -16,8 +16,8 @@ https://www.notion.so/nwplus/Dev-15c97474537e49788938e588cad1bacf?p=2d2c848fd6d3
 Then, run the development server:
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
 Open http://localhost:3000 with your browser to see the result.
