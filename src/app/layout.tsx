@@ -62,10 +62,10 @@ const metaDescription =
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "HackCamp 2025",
+  title: "HackCamp 2026",
   description: metaDescription,
   openGraph: {
-    title: "HackCamp 2025",
+    title: "HackCamp 2026",
     description: metaDescription,
     url: siteUrl,
     siteName: "HackCamp",
@@ -78,7 +78,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "HackCamp 2025",
+    title: "HackCamp 2026",
     description: metaDescription,
     images: ["/opengraph-image.jpg"],
   },

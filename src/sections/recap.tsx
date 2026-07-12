@@ -31,8 +31,8 @@ const Recap = () => {
       <iframe
         width="560"
         height="315"
-        src="https://www.youtube.com/embed/WXZEhL0T_-4?si=s-myjEY33xI-qGXV"
-        title="Hackcamp 2024 recap"
+        src="https://www.youtube.com/embed/3AQoV3BiRpc?si=s-myjEY33xI-qGXV"
+        title="Hackcamp 2025 recap"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         className="absolute left-[19vw] top-[13vw] w-[26vw] h-[27vh]"
         allowFullScreen
