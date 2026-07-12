@@ -18,7 +18,7 @@ const getReturnValues = (countdown: number) => {
 };
 
 export const useCountdown = () => {
-  const countDownDate = new Date("Nov 15, 2025 9:00:00").getTime();
+  const countDownDate = new Date("Nov 7, 2026 9:00:00").getTime();
   const [countDown, setCountDown] = useState(countDownDate - Date.now());
 
   useEffect(() => {

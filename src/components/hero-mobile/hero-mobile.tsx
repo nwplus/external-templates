@@ -113,7 +113,7 @@ export default function HeroMobile() {
         className="absolute right-[3vw] top-[73vh] w-[62vw]"
         width={200}
         height={200}
-        alt="Nov 15: Learn Day"
+        alt="Nov 7: Learn Day"
       />
 
       <Image
@@ -121,7 +121,7 @@ export default function HeroMobile() {
         className="absolute left-[3vw] top-[82vh] w-[65vw]"
         width={200}
         height={200}
-        alt="Nov 15-16: Build Night"
+        alt="Nov 7-8: Build Night"
       />
     </div>
   );

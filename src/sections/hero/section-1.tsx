@@ -94,8 +94,8 @@ const Section1 = () => {
         />
         <Image
           src="/assets/hero/hackathon-info-right.svg"
-          alt="Nov 15: Learn Day; Nov 15-16: Build Night"
-          title="Nov 15: Learn Day; Nov 15-16: Build Night"
+          alt="Nov 7: Learn Day; Nov 7-8: Build Night"
+          title="Nov 7: Learn Day; Nov 7-8: Build Night"
           width={400}
           height={400}
           className="absolute -right-[5vw] -bottom-[5vw] w-[35%]"
@@ -143,7 +143,7 @@ const Section1 = () => {
           learning, regardless of whether you have coding experience or not!
         </p>
         <p className="text-[1.2vw]">
-          Over the past 10 years, HackCamp has revolved around accessibility,
+          Over the past 11 years, HackCamp has revolved around accessibility,
           inclusivity, and diversity. We strive to help people break into
           hackathon spaces by providing beginner-oriented workshops, industry
           connections, encouraging you to bring your unique perspectives and
