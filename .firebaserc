@@ -11,6 +11,9 @@
         ],
         "hackcamp2025_dev": [
           "dev-nwplus-hackcamp2025"
+        ],
+        "hackcamp2026_placeholder": [
+          "dev-nwplus-hackcamp2026"
         ]
       }
     },
@@ -21,6 +24,9 @@
         ],
         "hackcamp2025_main": [
           "nwplus-hackcamp2025"
+        ],
+        "hackcamp2026_placeholder": [
+          "nwplus-hackcamp2026"
         ]
       }
     }
