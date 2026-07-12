@@ -38,17 +38,9 @@ export default function HeroMobile() {
           className="bg-[#2C6D7D] text-md py-[1vw] px-[1.2vw] rounded-sm text-title cursor-pointer hover:opacity-80 transition-opacity"
           target="_blank"
           rel="noopener"
-          href="https://portal.nwplus.io/"
+          href="https://forms.gle/B6Eai84mh9SKLNa28"
         >
-          Register Now
-        </a>
-        <a
-          className="bg-[#2C6D7D] text-md py-[1vw] px-[1.2vw] rounded-sm text-title cursor-pointer hover:opacity-80 transition-opacity"
-          target="_blank"
-          rel="noopener"
-          href="https://forms.gle/6TwPkJ6HWCJt6w5N7"
-        >
-          Become a Mentor
+          Interest Form
         </a>
       </div>
 

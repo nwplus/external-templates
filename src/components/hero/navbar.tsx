@@ -66,12 +66,12 @@ export default function Navbar() {
         ))}
       </div>
       <a
-        href="https://portal.nwplus.io/"
+        href="https://forms.gle/B6Eai84mh9SKLNa28"
         target="_blank"
         rel="noopener"
         className=" bg-[#2C6D7D] text-[1.2vw] font-semibold py-[0.7vw] px-[1.7vw] rounded-[0.8vw] text-title cursor-pointer hover:bg-[#32787b] transition duration-200"
       >
-        Live Portal
+        Interest Form
       </a>
     </div>
   );

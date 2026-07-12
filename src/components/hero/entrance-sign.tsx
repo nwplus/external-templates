@@ -43,16 +43,10 @@ const EntranceSign = () => {
         </h2>
       </div>
       <SignButton
-        className="left-[22.6vw] top-[19.8vw]"
-        href="https://portal.nwplus.io/"
+        className="left-1/2 -translate-x-1/2 top-[19.8vw]"
+        href="https://forms.gle/B6Eai84mh9SKLNa28"
       >
-        Register Now
-      </SignButton>
-      <SignButton
-        className="right-[20.5vw] top-[19.8vw]"
-        href="https://forms.gle/6TwPkJ6HWCJt6w5N7"
-      >
-        Become a Mentor
+        Interest Form
       </SignButton>
     </div>
   );
