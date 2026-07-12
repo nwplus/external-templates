@@ -4,6 +4,8 @@ import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
+import MlhBadge from "@/components/mlh-badge";
+
 export default function MobileNavbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
@@ -59,6 +61,7 @@ export default function MobileNavbar() {
 
   return (
     <div className={`fixed top-4 right-4 z-50  `}>
+      <MlhBadge />
       <button
         className={`flex flex-col space-y-1.5 p-2 rounded-md hover:bg-gray-100 transition z-20 ${!isVisible && "-translate-y-24"} transition duration-300`}
         onClick={() => setIsOpen(!isOpen)}
@@ -78,7 +81,7 @@ export default function MobileNavbar() {
           src="/assets/hero/mobile/hclogo.svg"
           width={60}
           height={50}
-          alt="HackCamp 2025 logo"
+          alt="HackCamp 2026 logo"
           className="mx-auto mb-5"
         />
 
