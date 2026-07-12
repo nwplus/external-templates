@@ -22,7 +22,7 @@ export default function OurEvents() {
         </h2>
         <div className="w-[84%] mx-auto mt-[3vh]">
           <p className="text-md">
-            This year, we are celebrating our 10 year anniversary! And we are
+            This year, we are celebrating our 11 year anniversary! And we are
             bringing you a 2-day, in-person event where you’ll learn new skills,
             connect with like-minded enthusiasts, and build solutions to tackle
             challenges together. Hopefully you’ll leave with a newfound passion
@@ -36,13 +36,13 @@ export default function OurEvents() {
           faceContent={
             <Image
               src="/assets/hero/mobile/mobile-learn3.png"
-              alt="Learn Day - Nov 15, 2025. Hover to learn more"
+              alt="Learn Day - Nov 7, 2026. Hover to learn more"
               width={3000}
               height={500}
             />
           }
           backTitle="Learn Day"
-          backDate="Nov 15, 2025"
+          backDate="Nov 7, 2026"
           backDescription="A day of workshops and skill building in preparation for Build Day. With topics ranging from web development, version control, design and more, we will have something for you!"
         />
 
@@ -60,13 +60,13 @@ export default function OurEvents() {
           faceContent={
             <Image
               src="/assets/hero/mobile/mobile-build3.png"
-              alt="Build Night - Nov 15 - 16, 2025. Hover to learn more"
+              alt="Build Night - Nov 7 - 8, 2026. Hover to learn more"
               width={3000}
               height={500}
             />
           }
           backTitle="Build Night"
-          backDate="Nov 15 - 16, 2025"
+          backDate="Nov 7 - 8, 2026"
           backDescription={
             "A 18-hour overnight hackathon that starts after Learn Day, focused around creating projects centred around accessibility, inclusivity, and diversity.\n\n For each project submission, HackCamp will donate $5 to one of these charities: AMS Food Bank, GiveInternet.Org, Michael Cuccione Foundation"
           }

@@ -27,7 +27,7 @@ export default function Learn() {
           Our Events
         </h2>
         <p className="flex flex-col gap-[1vw] text-[1.3vw] text-center">
-          This year, we are celebrating our 10 year anniversary! And we are
+          This year, we are celebrating our 11 year anniversary! And we are
           bringing you a 2-day, in-person event where you&apos;ll learn new
           skills, connect with like-minded enthusiasts, and build solutions to
           tackle challenges together. Hopefully you&apos;ll leave with a
@@ -46,28 +46,28 @@ export default function Learn() {
           faceContent={
             <Image
               src="/assets/learn/learn-day-text.png"
-              alt="Learn Day - Nov 15, 2025. Hover to learn more"
+              alt="Learn Day - Nov 7, 2026. Hover to learn more"
               width={600}
               height={400}
               className="w-full"
             />
           }
           backTitle="Learn Day"
-          backDate="Nov 15, 2025"
+          backDate="Nov 7, 2026"
           backDescription="A day of workshops and skill building in preparation for Build Day. With topics ranging from web development, version control, design and more, we will have something for you!"
         />
         <Sign
           faceContent={
             <Image
               src="/assets/learn/build-night-text.png"
-              alt="Build Night - Nov 15 - 16, 2025. Hover to learn more"
+              alt="Build Night - Nov 7 - 8, 2026. Hover to learn more"
               width={600}
               height={400}
               className="w-full"
             />
           }
           backTitle="Build Night"
-          backDate="Nov 15 - 16, 2025"
+          backDate="Nov 7 - 8, 2026"
           backDescription={
             "A 18-hour overnight hackathon that starts after Learn Day, focused around creating projects centred around accessibility, inclusivity, and diversity.\n\n For each project submission, HackCamp will donate $5 to one of these charities: AMS Food Bank, GiveInternet.Org, Michael Cuccione Foundation"
           }
