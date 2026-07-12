@@ -117,13 +117,10 @@ const SponsorFooter = () => {
           <div className="flex flex-col items-center">
             <TeamGallery />
             <p className="p-2 md:w-[70vw] text-center my-4 text-xs md:text-base">
-              nwPlus acknowledges that our members have the privilege of living,
-              learning and facilitating hackathons on the traditional,
-              ancestral, and stolen territory of the xʷməθkʷəy̓əm (Musqueam) and
-              səlilwətaɬ (Tsleil-Waututh) peoples. As members of nwPlus, we play
-              an active role in reconciliation and are working to learn and
-              expand our knowledge on the history of Indigenous peoples. To
-              learn more, visit{" "}
+              HackCamp 2026 will be taking place on xʷməθkʷəy̓əm (Musqueam) and
+              səlilwətaɬ (Tsleil-Waututh) territory. As we build
+              tomorrow&apos;s tech community, we recognize our responsibility to
+              understand and respect Indigenous histories. To learn more, visit{" "}
               <a
                 href="https://guides.library.ubc.ca/xwi7xwaresearchguide"
                 target="_blank"
@@ -134,7 +131,7 @@ const SponsorFooter = () => {
               </a>
               .
             </p>
-            <p className="text-sm font-bold mb-4">Copyright © HackCamp 2025</p>
+            <p className="text-sm font-bold mb-4">Copyright © HackCamp 2026</p>
           </div>
         </div>
       </div>
