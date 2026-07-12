@@ -1,5 +1,7 @@
 "use client";
 
+import MlhBadge from "@/components/mlh-badge";
+
 export default function Navbar() {
   function scrollToSection(id: string) {
     const el = document.getElementById(id);
@@ -21,6 +23,7 @@ export default function Navbar() {
 
   return (
     <div className="flex justify-between items-center px-25">
+      <MlhBadge />
       <div className="flex gap-15 px-3 py-6 text-[1.3rem] font-extrabold">
         {links.map((link) => (
           <div
