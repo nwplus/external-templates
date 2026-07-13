@@ -37,7 +37,7 @@ jobs:
         run: echo "${{ secrets.FIREBASE_SERVICE_ACCOUNT_NWPLUS_UBC }}" | base64 --decode > "google-application-credentials.json"
 
       - name: Set up firebase
-        run: pnpm add -g firebase-tools@12.9.1
+        run: sudo npm install -g firebase-tools@12.9.1 --unsafe
 
       - name: Choose dev firebase project
         if: ${{ env.IS_PRODUCTION == 'false' }}
