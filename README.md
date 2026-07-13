@@ -11,8 +11,8 @@ First, grab `.env` from Notion
 https://www.notion.so/nwplus/Dev-15c97474537e49788938e588cad1bacf?p=2d2c848fd6d344099e50ee7bf7b6466d
 
 Then, run the development server:
-`yarn` to install dependencies
-`yarn dev` to start dev environment
+`pnpm install` to install dependencies
+`pnpm dev` to start dev environment
 Open http://localhost:3000 with your browser to see the result.
 
 ## Deploying

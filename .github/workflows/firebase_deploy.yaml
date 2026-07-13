@@ -18,10 +18,15 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 8.15.9
+
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '22.x'
+          cache: 'pnpm'
 
       - name: Prepare google app credentials (dev)
         if: ${{ env.IS_PRODUCTION == 'false' }}
@@ -43,11 +48,11 @@ jobs:
         run: firebase use ${{ secrets.PROD_FIREBASE_PROJECT_ID }}
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: pnpm install --frozen-lockfile
 
       - name: Build with dev env variables
         if: ${{ env.IS_PRODUCTION == 'false' }}
-        run: yarn build:staging
+        run: pnpm run build:staging
         env:
           NEXT_PUBLIC_FIREBASE_API_KEY: ${{ secrets.DEV_FIREBASE_API_KEY }}
           NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN: ${{ secrets.DEV_FIREBASE_AUTH_DOMAIN }}
@@ -59,7 +64,7 @@ jobs:
 
       - name: Build with prod env variables
         if: ${{ env.IS_PRODUCTION == 'true' }}
-        run: yarn build:prod
+        run: pnpm run build:prod
         env:
           NEXT_PUBLIC_FIREBASE_API_KEY: ${{ secrets.PROD_FIREBASE_API_KEY }}
           NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN: ${{ secrets.PROD_FIREBASE_AUTH_DOMAIN }}
