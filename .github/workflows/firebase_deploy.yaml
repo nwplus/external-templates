@@ -36,8 +36,14 @@ jobs:
         if: ${{ env.IS_PRODUCTION == 'true' }}
         run: echo "${{ secrets.FIREBASE_SERVICE_ACCOUNT_NWPLUS_UBC }}" | base64 --decode > "google-application-credentials.json"
 
+      - name: Configure pnpm global bin dir
+        run: |
+          mkdir -p "$HOME/.pnpm-global-bin"
+          pnpm config set global-bin-dir "$HOME/.pnpm-global-bin"
+          echo "$HOME/.pnpm-global-bin" >> "$GITHUB_PATH"
+
       - name: Set up firebase
-        run: sudo npm install -g firebase-tools@12.9.1 --unsafe
+        run: pnpm add -g firebase-tools@12.9.1
 
       - name: Choose dev firebase project
         if: ${{ env.IS_PRODUCTION == 'false' }}
