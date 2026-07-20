@@ -108,13 +108,13 @@ export default function HeroMobile() {
         alt="Nov 7: Learn Day"
       />
 
-      <Image
+      {/* <Image
         src="assets/hero/mobile/nuggetflag.svg"
         className="absolute left-[3vw] top-[82vh] w-[65vw]"
         width={200}
         height={200}
         alt="Nov 7-8: Build Night"
-      />
+      /> */}
     </div>
   );
 }

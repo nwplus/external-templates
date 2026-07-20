@@ -30,7 +30,7 @@ const EntranceSign = () => {
   return (
     <div className="w-full">
       <Image
-        src="/assets/hero/entrance-sign.png"
+        src="/assets/hero/entrance-sign-without-buttons.png"
         alt="Entrance sign"
         width={1200}
         height={800}
