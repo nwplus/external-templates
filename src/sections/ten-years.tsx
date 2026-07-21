@@ -234,7 +234,7 @@ function TenYearsDesktop() {
                         </p>
                         <ul className="list-disc text-base ml-8">
                           <li>Learn Day (October)</li>
-                          <li>Build Day (November/December)</li>
+                          <li>Build Week (November/December)</li>
                           <li>
                             Share Day (planned for April 2020, but later
                             cancelled due to the pandemic)

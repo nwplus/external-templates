@@ -213,7 +213,7 @@ export default function TenYearsMobile() {
                   </p>
                   <ul className="list-disc ml-6 space-y-1">
                     <li>Learn Day (October)</li>
-                    <li>Build Day (November/December)</li>
+                    <li>Build Week (November/December)</li>
                     <li>
                       Share Day (planned for April 2020, but later cancelled due
                       to the pandemic)

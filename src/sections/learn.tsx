@@ -54,7 +54,7 @@ export default function Learn() {
           }
           backTitle="Learn Day"
           backDate="Nov 7, 2026"
-          backDescription="A day of workshops and skill building in preparation for Build Day. With topics ranging from web development, version control, design and more, we will have something for you!"
+          backDescription="A day of workshops and skill-building in preparation for Build Week. With topics ranging from web development, version control, design and more, we will have something for you!"
         />
         <Sign
           faceContent={
@@ -66,7 +66,7 @@ export default function Learn() {
               className="w-full"
             />
           }
-          backTitle="Build Night"
+          backTitle="Build Week"
           backDate="Nov 7 - 8, 2026"
           backDescription={
             "A 18-hour overnight hackathon that starts after Learn Day, focused around creating projects centred around accessibility, inclusivity, and diversity.\n\n For each project submission, HackCamp will donate $5 to one of these charities: AMS Food Bank, GiveInternet.Org, Michael Cuccione Foundation"
