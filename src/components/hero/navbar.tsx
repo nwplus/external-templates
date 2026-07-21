@@ -16,7 +16,7 @@ export default function Navbar() {
     { name: "Recap", href: "recap" },
     { name: "Stats", href: "stats" },
     { name: "Testimonials", href: "testimonials" },
-    { name: "10 Years", href: "10-years" },
+    { name: "11 Years", href: "10-years" },
     { name: "FAQ", href: "faq" },
     { name: "Sponsors", href: "sponsors" },
   ];
