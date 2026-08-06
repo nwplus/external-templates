@@ -2,18 +2,36 @@
   "hosting": [
     {
       "target": "root",
-      "public": "out",
-      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+      "public": ".next/out",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
     },
     {
       "target": "hackcamp2025_dev",
-      "public": "out",
-      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+      "public": ".next/out",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
     },
     {
       "target": "hackcamp2025_main",
-      "public": "out",
-      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+      "public": ".next/out",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
     }
   ]
 }
