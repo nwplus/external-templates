@@ -15,7 +15,7 @@ Spec: `docs/superpowers/specs/2026-09-04-sponsors-footer-design.md`
 - Branch `eric/hackcamp2026-sponsors-footer`, off `hackcamp2026_dev`. Never touch `hackcamp2026_placeholder` or create `hackcamp2026_main`.
 - Node `>=22`, pnpm `11.10.0` (the `packageManager` field). Use `pnpm`, never `npm` or `yarn`.
 - Static export: every `next/image` needs explicit `width` and `height`; images are globally `unoptimized`. No server components with data fetching; sections that use hooks start with `"use client"`.
-- Imports follow `.prettierrc` order: third-party, then `@/...`, then relative, groups separated by a blank line. Run `pnpm format` before each commit.
+- Imports follow `.prettierrc` order: third-party, then `@/...`, then relative, groups separated by a blank line. Format only the files you touched before each commit with `pnpm exec prettier --write <paths>`. Never run `pnpm format` (it formats the whole repo and would reformat 22 unrelated files).
 - Path alias `@/*` maps to `./src/*`.
 - Copy: land acknowledgement and copyright say "HackCamp 2026". Sponsors description is exactly: "nwPlus is always looking for new ventures, opportunities, and connections. If you are interested in working with us, joining us or speaking at one of our events, feel free to reach out to us at sponsorship@nwplus.io."
 - `CURRENT_HACKATHON` stays `"HackCamp2025"`.
@@ -325,7 +325,7 @@ Expected: `Test Files 1 passed (1)` and `Tests 8 passed (8)`.
 
 - [ ] **Step 7: Lint, format, commit**
 
-Run: `pnpm format && pnpm lint`
+Run: `pnpm exec prettier --write $(git diff --name-only --diff-filter=AM HEAD; git ls-files --others --exclude-standard) && pnpm lint`
 
 Expected: lint output shows only the five pre-existing warnings (mlh-badge, ten-years-mobile, image-carousel, learn) and no errors.
 
@@ -745,7 +745,7 @@ export default StringLights;
 
 - [ ] **Step 6: Type-check, lint, format, commit**
 
-Run: `pnpm format && pnpm lint && npx tsc --noEmit`
+Run: `pnpm exec prettier --write $(git diff --name-only --diff-filter=AM HEAD; git ls-files --others --exclude-standard) && pnpm lint && npx tsc --noEmit`
 
 Expected: no errors. Warnings are limited to the five pre-existing ones.
 
@@ -872,7 +872,7 @@ Open http://localhost:3000/#sponsors. Expected: the placeholder string lights, t
 
 - [ ] **Step 4: Lint, format, commit**
 
-Run: `pnpm format && pnpm lint`
+Run: `pnpm exec prettier --write $(git diff --name-only --diff-filter=AM HEAD; git ls-files --others --exclude-standard) && pnpm lint`
 
 ```bash
 git add src/sections/sponsors.tsx src/app/page.tsx
@@ -1177,7 +1177,7 @@ export default CloudBorder;
 
 - [ ] **Step 5: Type-check, lint, format, commit**
 
-Run: `pnpm format && pnpm lint && npx tsc --noEmit`
+Run: `pnpm exec prettier --write $(git diff --name-only --diff-filter=AM HEAD; git ls-files --others --exclude-standard) && pnpm lint && npx tsc --noEmit`
 
 Expected: no errors. The old `src/sections/sponsor-footer.tsx` still compiles because it imports from `sponsor-footer/sponsor-blurbs`, which has not moved; its imports of `contact` and `team-gallery` will fail, so update those two import lines in `src/sections/sponsor-footer.tsx` to the new paths for this intermediate commit:
 
@@ -1292,7 +1292,7 @@ Expected: both `ls` targets report `No such file or directory`. Also remove the 
 
 - [ ] **Step 5: Type-check, lint, format, test, build**
 
-Run: `pnpm format && pnpm lint && npx tsc --noEmit && pnpm test && pnpm build:staging`
+Run: `pnpm exec prettier --write $(git diff --name-only --diff-filter=AM HEAD; git ls-files --others --exclude-standard) && pnpm lint && npx tsc --noEmit && pnpm test && pnpm build:staging`
 
 Expected: no errors, 8 tests pass, build ends with `✓ Exporting (3/3)`. If `tsc` reports a stale import of `sponsor-footer` anywhere, fix that import; nothing outside this task should reference the old folder.
 
