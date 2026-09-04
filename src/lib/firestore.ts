@@ -1,11 +1,11 @@
 import {
   collection,
   getDocs,
+  onSnapshot,
   query,
   Timestamp,
-  where,
-  onSnapshot,
   Unsubscribe,
+  where,
 } from "firebase/firestore";
 
 import { db } from "./firebase";
@@ -27,7 +27,14 @@ export interface SponsorDoc {
   lastmodby?: string;
   link: string;
   name: string;
-  tier: "platinum" | "gold" | "silver" | "bronze" | "inkind";
+  tier:
+    | "title"
+    | "platinum"
+    | "gold"
+    | "silver"
+    | "bronze"
+    | "startup"
+    | "inkind";
 }
 
 export const CURRENT_HACKATHON = "HackCamp2025";

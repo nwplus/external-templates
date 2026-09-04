@@ -14,8 +14,8 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 22
-          cache: 'pnpm'
-      - run: pnpm install --frozen-lockfile && pnpm run lint
+          cache: "pnpm"
+      - run: pnpm install --frozen-lockfile && pnpm run lint && pnpm run test
   lhci:
     name: Lighthouse
     runs-on: ubuntu-latest
@@ -30,7 +30,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 22
-          cache: 'pnpm'
+          cache: "pnpm"
       - name: pnpm install and build
         run: |
           pnpm install --frozen-lockfile
