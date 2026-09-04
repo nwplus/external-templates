@@ -7,7 +7,7 @@ on:
         description: "Targetted hackathon to build"
         required: true
   push:
-    branches: [hackcamp2026_placeholder]
+    branches: [hackcamp2026_dev, hackcamp2026_main]
 
 jobs:
   firebase_deploy:

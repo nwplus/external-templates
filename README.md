@@ -24,7 +24,13 @@ Open http://localhost:3000 with your browser to see the result.
 
 ## Deploying
 
-<!--- Guide on how one would deploy this app -->
+Sites are hosted on Firebase Hosting and deployed by `.github/workflows/firebase_deploy.yaml`:
+
+- Pushes to `hackcamp2026_dev` build with staging env vars and deploy to the `dev-nwplus-hackcamp2026` site on the `nwplus-ubc-dev` project.
+- Pushes to `hackcamp2026_main` build with production env vars and deploy to the `nwplus-hackcamp2026` site on the `nwplus-ubc` project, which serves hackcamp.nwplus.io. Only create `hackcamp2026_main` when the site is ready to launch, since the first push replaces whatever is live there.
+- Pull requests get a 10-day preview channel via `.github/workflows/firebase_hosting_pr.yaml`.
+
+The workflow runs `firebase deploy --only hosting:<branch name>`, so the branch name, the `target` in `firebase.json`, and the key in `.firebaserc` must match exactly. To set up a new year, branch from the previous site, rename those entries for the new `_dev` and `_main` branches, and create the two hosting sites in the Firebase console before the first deploy.
 
 ## Contributing
 
