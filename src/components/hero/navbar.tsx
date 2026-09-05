@@ -28,37 +28,7 @@ export default function Navbar() {
         {links.map((link) => (
           <div
             key={link.name}
-            onClick={() => {
-              const el = document.getElementById(link.href);
-              switch (link.name) {
-                case "Testimonials":
-                  if (el) {
-                    const y = el.getBoundingClientRect().top + window.scrollY;
-                    window.scrollTo({ top: y + 1300, behavior: "smooth" });
-                  }
-                  break;
-                case "Recap":
-                  if (el) {
-                    const y = el.getBoundingClientRect().top + window.scrollY;
-                    window.scrollTo({ top: y + 1000, behavior: "smooth" });
-                  }
-                  break;
-                case "Stats":
-                  if (el) {
-                    const y = el.getBoundingClientRect().top + window.scrollY;
-                    window.scrollTo({ top: y + 1700, behavior: "smooth" });
-                  }
-                  break;
-                case "10 Years":
-                  if (el) {
-                    const y = el.getBoundingClientRect().top + window.scrollY;
-                    window.scrollTo({ top: y + 600, behavior: "smooth" });
-                  }
-                  break;
-                default:
-                  scrollToSection(link.href);
-              }
-            }}
+            onClick={() => scrollToSection(link.href)}
             className="cursor-pointer hover:opacity-60 transition duration-150"
           >
             {link.name}
