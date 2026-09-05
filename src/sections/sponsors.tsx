@@ -50,19 +50,23 @@ const Sponsors = () => {
 
       {shelves.length > 0 && (
         <div className="mt-12 flex flex-col gap-16 md:mt-16 md:gap-24">
-          {shelves.map((shelf, i) =>
-            shelf.kind === "card" ? (
-              <Shelf key={i} left={shelf.left} right={shelf.right}>
+          {shelves.map((shelf) => {
+            const key =
+              shelf.kind === "card"
+                ? `card-${shelf.sponsor.name}`
+                : `frames-${shelf.sponsors.map((s) => s.name).join("|")}`;
+            return shelf.kind === "card" ? (
+              <Shelf key={key} left={shelf.left} right={shelf.right}>
                 <ChalkboardCard sponsor={shelf.sponsor} />
               </Shelf>
             ) : (
-              <Shelf key={i} left={shelf.left} right={shelf.right}>
+              <Shelf key={key} left={shelf.left} right={shelf.right}>
                 {shelf.sponsors.map((sponsor) => (
                   <PictureFrame key={sponsor.name} sponsor={sponsor} />
                 ))}
               </Shelf>
-            )
-          )}
+            );
+          })}
         </div>
       )}
 
