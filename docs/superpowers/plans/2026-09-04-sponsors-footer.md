@@ -330,7 +330,7 @@ Run: `pnpm exec prettier --write $(git diff --name-only --diff-filter=AM HEAD; g
 Expected: lint output shows only the five pre-existing warnings (mlh-badge, ten-years-mobile, image-carousel, learn) and no errors.
 
 ```bash
-git add vitest.config.ts package.json pnpm-lock.yaml .github/workflows/ci.yaml src/lib/firestore.ts src/lib/shelves.ts src/lib/shelves.test.ts
+git add vitest.config.mts package.json pnpm-lock.yaml .github/workflows/ci.yaml src/lib/firestore.ts src/lib/shelves.ts src/lib/shelves.test.ts
 git commit -m "feat(sponsors): add shelf layout rule with vitest coverage"
 ```
 
