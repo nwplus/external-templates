@@ -1,8 +1,8 @@
 "use client";
 
-import Contact from "@/components/sponsor-footer/contact";
+import Contact from "@/components/footer/contact";
+import TeamGallery from "@/components/footer/team-gallery";
 import SponsorBlurbs from "@/components/sponsor-footer/sponsor-blurbs";
-import TeamGallery from "@/components/sponsor-footer/team-gallery";
 import {
   CURRENT_HACKATHON,
   groupSponsorsByTier,
