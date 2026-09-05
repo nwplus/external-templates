@@ -32,7 +32,7 @@ Claude-Session: https://claude.ai/code/session_01UpvHDWskBck57fcXnmy4Jq
 
 | Path | Responsibility |
 |---|---|
-| `vitest.config.ts` | Test runner config with the `@` alias |
+| `vitest.config.mts` | Test runner config with the `@` alias |
 | `src/lib/shelves.ts` | Pure layout rule: sponsors in, shelf specs out |
 | `src/lib/shelves.test.ts` | Unit tests for the layout rule |
 | `src/lib/firestore.ts` | Existing; widen `SponsorDoc.tier` union |
@@ -59,7 +59,7 @@ Claude-Session: https://claude.ai/code/session_01UpvHDWskBck57fcXnmy4Jq
 ### Task 1: Shelf layout rule with tests
 
 **Files:**
-- Create: `vitest.config.ts`
+- Create: `vitest.config.mts`
 - Create: `src/lib/shelves.ts`
 - Create: `src/lib/shelves.test.ts`
 - Modify: `src/lib/firestore.ts` (the `SponsorDoc.tier` line)
@@ -86,7 +86,7 @@ Edit `package.json` scripts to add a `test` entry after `lint`:
     "format": "prettier --write ."
 ```
 
-Create `vitest.config.ts`:
+Create `vitest.config.mts`:
 
 ```ts
 import { fileURLToPath } from "node:url";
