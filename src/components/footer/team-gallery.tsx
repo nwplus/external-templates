@@ -8,6 +8,12 @@ import { useEffect, useState } from "react";
 
 type Member = (typeof teamMembers)[number];
 
+const toHref = (social: string) => {
+  const value = social.trim();
+  if (!value) return undefined;
+  return /^https?:\/\//i.test(value) ? value : `https://${value}`;
+};
+
 const TeamGallery = () => {
   const [animator, setAnimator] = useState<JSAnimation>();
   const [selectedProfile, setSelectedProfile] = useState<Member | null>(null);
@@ -36,22 +42,19 @@ const TeamGallery = () => {
           className="flex gap-6 py-4 will-change-transform"
           id="anim-profiles"
         >
-          {[...teamMembers, ...teamMembers].map((profile, i) => (
-            <a
-              href={profile.social}
-              key={i}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block size-16 shrink-0 rounded-md bg-white transition-transform duration-100 ease-in-out hover:scale-110 md:size-20"
-              onMouseEnter={() => {
-                setSelectedProfile(profile);
-                animator?.pause();
-              }}
-              onMouseLeave={() => {
-                setSelectedProfile(null);
-                animator?.play();
-              }}
-            >
+          {[...teamMembers, ...teamMembers].map((profile, i) => {
+            const href = toHref(profile.social);
+            const className =
+              "inline-block size-16 shrink-0 rounded-md bg-white transition-transform duration-100 ease-in-out hover:scale-110 md:size-20";
+            const onMouseEnter = () => {
+              setSelectedProfile(profile);
+              animator?.pause();
+            };
+            const onMouseLeave = () => {
+              setSelectedProfile(null);
+              animator?.play();
+            };
+            const tile = (
               <Image
                 src={profile.img}
                 alt={profile.name}
@@ -59,8 +62,35 @@ const TeamGallery = () => {
                 height={100}
                 className="size-full rounded-md object-cover"
               />
-            </a>
-          ))}
+            );
+
+            if (href) {
+              return (
+                <a
+                  href={href}
+                  key={i}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={className}
+                  onMouseEnter={onMouseEnter}
+                  onMouseLeave={onMouseLeave}
+                >
+                  {tile}
+                </a>
+              );
+            }
+
+            return (
+              <div
+                key={i}
+                className={className}
+                onMouseEnter={onMouseEnter}
+                onMouseLeave={onMouseLeave}
+              >
+                {tile}
+              </div>
+            );
+          })}
         </div>
       </div>
 
