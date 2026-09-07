@@ -177,14 +177,4 @@ body {
       #0b101c 90%
     );
   }
-
-  .bg-footer-radial {
-    background-image: radial-gradient(
-      180% 95% at 50% 100%,
-      #9f2b2b 20%,
-      #1b3b6b 40%,
-      #0c1e38 60%,
-      #0b101c 80%
-    );
-  }
 }
