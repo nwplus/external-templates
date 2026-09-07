@@ -898,18 +898,35 @@ git commit -m "feat(sponsors): add bookshelf sponsors section"
 - Consumes: `Button` from `@/components/ui/button`, `teamMembers` from `@/constants/team-members`, animejs.
 - Produces default exports `Contact`, `TeamGallery`, `BedScene`, `CloudBorder`.
 
-- [ ] **Step 1: Move the social icons**
+- [ ] **Step 1: Move the files with git mv and commit the pure renames**
+
+Moves and rewrites go in separate commits so `git log --follow` keeps each file's history; a rewrite in the same commit as the rename is too large for git's rename detection.
 
 ```bash
 mkdir -p src/components/footer
 git mv src/components/sponsor-footer/social src/components/footer/social
+git mv src/components/sponsor-footer/contact.tsx src/components/footer/contact.tsx
+git mv src/components/sponsor-footer/team-gallery.tsx src/components/footer/team-gallery.tsx
 ```
 
-- [ ] **Step 2: Move and rewrite Contact**
+Then change only the two import lines in `src/sections/sponsor-footer.tsx` so it keeps compiling (do not run prettier on that file; Task 6 deletes it):
+
+```tsx
+import Contact from "@/components/footer/contact";
+import TeamGallery from "@/components/footer/team-gallery";
+import SponsorBlurbs from "@/components/sponsor-footer/sponsor-blurbs";
+```
+
+Run: `pnpm exec tsc --noEmit && git checkout -- tsconfig.tsbuildinfo`
+
+Expected: no output. Then commit:
 
 ```bash
-git mv src/components/sponsor-footer/contact.tsx src/components/footer/contact.tsx
+git add -A src/components/footer src/components/sponsor-footer src/sections/sponsor-footer.tsx
+git commit -m "refactor(footer): move contact, team gallery, and social icons to components/footer"
 ```
+
+- [ ] **Step 2: Rewrite Contact**
 
 Replace the whole content of `src/components/footer/contact.tsx` with:
 
@@ -1027,11 +1044,7 @@ const Contact = () => {
 export default Contact;
 ```
 
-- [ ] **Step 3: Move and restyle TeamGallery**
-
-```bash
-git mv src/components/sponsor-footer/team-gallery.tsx src/components/footer/team-gallery.tsx
-```
+- [ ] **Step 3: Restyle TeamGallery**
 
 Replace the whole content of `src/components/footer/team-gallery.tsx` with:
 
@@ -1179,19 +1192,14 @@ const CloudBorder = () => {
 export default CloudBorder;
 ```
 
-- [ ] **Step 5: Type-check, lint, format, commit**
+- [ ] **Step 5: Type-check, lint, format, commit the rewrite**
 
-Run: `pnpm exec prettier --write $(git diff --name-only --diff-filter=AM HEAD; git ls-files --others --exclude-standard) && pnpm lint && npx tsc --noEmit`
+Run: `pnpm exec prettier --write src/components/footer && pnpm lint && pnpm exec tsc --noEmit && git checkout -- tsconfig.tsbuildinfo`
 
-Expected: no errors. The old `src/sections/sponsor-footer.tsx` still compiles because it imports from `sponsor-footer/sponsor-blurbs`, which has not moved; its imports of `contact` and `team-gallery` will fail, so update those two import lines in `src/sections/sponsor-footer.tsx` to the new paths for this intermediate commit:
-
-```tsx
-import Contact from "@/components/footer/contact";
-import TeamGallery from "@/components/footer/team-gallery";
-```
+Expected: no errors. Warnings are limited to the five pre-existing ones.
 
 ```bash
-git add src/components/footer src/components/sponsor-footer src/sections/sponsor-footer.tsx
+git add src/components/footer
 git commit -m "feat(footer): add restyled contact, team gallery, bed scene, and cloud border"
 ```
 
