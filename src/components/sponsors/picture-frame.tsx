@@ -22,19 +22,18 @@ const PictureFrame = ({ sponsor }: { sponsor: SponsorDoc }) => {
       className={frameClass}
       style={{ width: `min(${width}px, 40vw)`, aspectRatio: "5 / 4" }}
     >
-      <SponsorLogo sponsor={sponsor} className="h-full w-full p-3" />
+      <SponsorLogo
+        key={sponsor.imgURL}
+        sponsor={sponsor}
+        className="h-full w-full p-3"
+      />
     </div>
   );
 
   if (!sponsor.link) return frame;
 
   return (
-    <a
-      href={sponsor.link}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label={sponsor.name}
-    >
+    <a href={sponsor.link} target="_blank" rel="noopener noreferrer">
       {frame}
     </a>
   );

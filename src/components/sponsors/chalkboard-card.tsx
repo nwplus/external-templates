@@ -13,6 +13,7 @@ const ChalkboardCard = ({ sponsor }: { sponsor: SponsorDoc }) => {
       )}
     >
       <SponsorLogo
+        key={sponsor.imgURL}
         sponsor={sponsor}
         className="h-16 w-auto max-w-[70%] md:h-20"
       />
@@ -29,7 +30,6 @@ const ChalkboardCard = ({ sponsor }: { sponsor: SponsorDoc }) => {
       href={sponsor.link}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label={sponsor.name}
       className="flex w-full justify-center"
     >
       {card}
