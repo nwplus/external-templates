@@ -1,7 +1,7 @@
 "use client";
 
-import CarouselControls from "@/components/stats-testimonials/carousel-controls";
 import StatsTestimonialsMobile from "@/components/mobile/stats-testimonials-mobile";
+import CarouselControls from "@/components/stats-testimonials/carousel-controls";
 
 import {
   AnimatePresence,
@@ -77,20 +77,11 @@ function StatsTestimonialsDesktop() {
   const nuggetX = useTransform(scrollYProgress, [0, 1], [0, -50]);
   const nuggetY = useTransform(scrollYProgress, [0, 1], [0, 80]);
 
-  const scale = useTransform(scrollYProgress, [0.8, 1], [1, 0.95]);
-
-  const containerOpacity = useTransform(
-    scrollYProgress,
-    [0.7, 0.8, 0.9],
-    [1, 0.2, 0]
-  );
-
   // Container min-height based on background image aspect ratio (2459÷1920 = 128.07vw)
   return (
     <motion.div
       ref={containerRef}
-      style={{ scale, opacity: containerOpacity }}
-      className="relative w-screen h-[128.07vw]"
+      className="relative w-full h-[128.07vw] mb-[35vh]"
       id="stats"
     >
       <Image
@@ -108,9 +99,6 @@ function StatsTestimonialsDesktop() {
         height={100}
         className="absolute inset-0 w-[100vw] h-[58vh] left-[6.4vh] top-[6vh] z-5"
       />
-
-      {/* covers up the weird river edge from recap section */}
-      <div className="absolute top-[95vh] left-[2vw] bg-[#b4eaf2] w-36 h-36 rounded-full  z-50"></div>
 
       <div className="absolute inset-0 z-0 min-h-[50vh] max-h-[72vh]">
         <Image
@@ -217,7 +205,10 @@ function StatsTestimonialsDesktop() {
       </motion.div>
 
       {/* Testimonials body text */}
-      <motion.div className="absolute bottom-0 right-0 translate-y-[35vh] z-30" id="testimonials">
+      <motion.div
+        className="absolute bottom-0 right-0 translate-y-[35vh] z-30"
+        id="testimonials"
+      >
         <Image
           src="/assets/stats-and-testimonials/graphics/testimonial-ground.svg"
           alt="Testimonial ground background"
@@ -253,7 +244,9 @@ function StatsTestimonialsDesktop() {
                   Devpost
                 </a>
               )}
-              {testimonials[currentSlide].devpost && testimonials[currentSlide].linkedin && " | "}
+              {testimonials[currentSlide].devpost &&
+                testimonials[currentSlide].linkedin &&
+                " | "}
               {testimonials[currentSlide].linkedin && (
                 <a
                   href={testimonials[currentSlide].linkedin}

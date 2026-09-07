@@ -4,7 +4,7 @@ const Recap = () => {
   // Container min-height based on background image aspect ratio (2125÷1080 = 196.76vh)
   return (
     <div
-      className="relative bg-cover bg-center bg-no-repeat w-screen h-screen flex flex-col items-center z-40"
+      className="relative bg-cover bg-center bg-no-repeat w-full h-screen overflow-hidden flex flex-col items-center z-40"
       id="recap"
     >
       <Image

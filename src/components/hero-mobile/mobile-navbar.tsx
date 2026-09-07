@@ -1,10 +1,10 @@
 "use client";
 
+import MlhBadge from "@/components/mlh-badge";
+
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-
-import MlhBadge from "@/components/mlh-badge";
 
 export default function MobileNavbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -91,29 +91,7 @@ export default function MobileNavbar() {
               type="button"
               key={link.name}
               onClick={() => {
-                const el = document.getElementById(link.href);
-                switch (link.name) {
-                  case "Testimonials":
-                    if (el) {
-                      const y = el.getBoundingClientRect().top + window.scrollY;
-                      window.scrollTo({
-                        top: y,
-                        behavior: "smooth",
-                      });
-                    } //the element exists but el.getBoundingClientRect.top returns 0? No clue why the Id's are in the same position
-                    break;
-
-                  case "Stats":
-                    if (el) {
-                      const y = el.getBoundingClientRect().top + window.scrollY;
-                      window.scrollTo({ top: y, behavior: "smooth" });
-                    }
-                    break;
-
-                  default:
-                    console.log(el);
-                    scrollToSection(link.href);
-                }
+                scrollToSection(link.href);
                 setIsOpen(false);
               }}
               className="cursor-pointer active:underline transition duration-200"

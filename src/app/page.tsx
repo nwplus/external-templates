@@ -1,4 +1,3 @@
-import HorizontalScrollSection from "@/components/ui/horizontal";
 import Faq from "@/sections/faq";
 import Footer from "@/sections/footer";
 import Hero from "@/sections/hero";
@@ -13,31 +12,13 @@ export default function Home() {
     <div className="relative">
       <Hero />
 
-      <div className="h-[calc(62vw-100vh)] w-full"></div>
-
-      {/* desktop: horizontal scroll for Learn -> Recap -> Stats */}
+      {/* Learn/Recap have no mobile variant here; their mobile versions render inside Hero's mobile branch */}
       <div className="hidden md:block">
-        <HorizontalScrollSection>
-          <div className="relative h-screen w-screen">
-            <div className="absolute bottom-0 left-0 w-full">
-              <Learn />
-            </div>
-          </div>
-          <Recap />
-          <StatsTestimonials />
-        </HorizontalScrollSection>
+        <Learn />
+        <Recap />
       </div>
 
-      {/* mobile: stack sections vertically */}
-      <div className="block md:hidden">
-        <div className="relative">
-          <StatsTestimonials />
-        </div>
-      </div>
-
-      {/* desktop spacing between horizontal scroll and ten years */}
-      <div className="hidden md:block h-[calc(128.07vw-100vh)] w-full"></div>
-
+      <StatsTestimonials />
       <TenYears />
       <Faq />
       <Sponsors />
