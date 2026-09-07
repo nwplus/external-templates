@@ -1,135 +1,125 @@
 "use client";
 
-import { useAutoplayAudio } from "@/hooks/use-autoplay-audio";
-import { useMobile } from "@/hooks/use-mobile";
+import { Button } from "@/components/ui/button";
 
-import { useRef, useState } from "react";
+import { useState } from "react";
 
-import { Button } from "../ui/button";
 import Facebook from "./social/facebook";
 import Instagram from "./social/instagram";
 import Linkedin from "./social/linkedin";
 import Medium from "./social/medium";
 import Youtube from "./social/youtube";
 
+const SOCIALS = [
+  {
+    href: "https://www.instagram.com/nwplusubc",
+    label: "Instagram",
+    Icon: Instagram,
+  },
+  {
+    href: "https://www.linkedin.com/company/nwplus",
+    label: "LinkedIn",
+    Icon: Linkedin,
+  },
+  {
+    href: "https://www.youtube.com/c/nwPlusUBC",
+    label: "YouTube",
+    Icon: Youtube,
+  },
+  { href: "https://medium.com/nwplusubc", label: "Medium", Icon: Medium },
+  {
+    href: "https://www.facebook.com/nwplusubc",
+    label: "Facebook",
+    Icon: Facebook,
+  },
+];
+
+const LINKS = [
+  { href: "mailto:info@nwplus.io", label: "Email Us" },
+  {
+    href: "mailto:sponsorship@nwplus.io?subject=Sponsorship%20Inquiry",
+    label: "Become a Sponsor",
+  },
+  {
+    href: "https://github.com/MLH/mlh-policies/blob/main/code-of-conduct.md",
+    label: "Code of Conduct",
+  },
+];
+
 const Contact = () => {
   const [inputMessage, setInputMessage] = useState("");
-  const audioThresholdRef = useRef<HTMLInputElement>(null);
-
-  const { isMobile } = useMobile();
-
-  // Comes from https://pixabay.com/sound-effects/campfire-crackling-fireplace-sound-119594/
-  useAutoplayAudio(
-    audioThresholdRef,
-    "/assets/sponsor-footer/campfire-sound.mp3",
-    isMobile
-  );
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    const email = e.currentTarget.email.value;
+    const form = e.currentTarget;
+    const email = (form.elements.namedItem("email") as HTMLInputElement).value;
     setInputMessage("");
-    const response = await fetch(
-      "https://us-central1-nwplus-ubc.cloudfunctions.net/addToMailingList",
-      {
-        method: "POST",
-        body: JSON.stringify({ email }),
-      }
-    );
-    if (response.ok) {
-      setInputMessage(`${email} is now subscribed!`);
-      e.currentTarget.reset();
-    } else {
-      // If the email is already subscribed we get a 409
-      if (response.status === 409) {
+
+    try {
+      const response = await fetch(
+        "https://us-central1-nwplus-ubc.cloudfunctions.net/addToMailingList",
+        { method: "POST", body: JSON.stringify({ email }) }
+      );
+      if (response.ok) {
+        setInputMessage(`${email} is now subscribed!`);
+        form.reset();
+      } else if (response.status === 409) {
         setInputMessage(`${email} is already subscribed!`);
       } else {
         setInputMessage("Something went wrong, please try again later.");
       }
+    } catch {
+      setInputMessage("Something went wrong, please try again later.");
     }
   };
+
   return (
-    <div className="flex flex-col items-center py-4 px-6 gap-4 md:gap-8">
-      <div className="flex gap-8">
-        <a
-          href="https://www.facebook.com/nwplusubc"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:opacity-80 transition-opacity"
-        >
-          <Facebook className="size-8 md:size-12" />
-        </a>
-        <a
-          href="https://www.instagram.com/nwplusubc"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:opacity-80 transition-opacity"
-        >
-          <Instagram className="size-8 md:size-12" />
-        </a>
-        <a
-          href="https://www.linkedin.com/company/nwplus"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:opacity-80 transition-opacity"
-        >
-          <Linkedin className="size-8 md:size-12" />
-        </a>
-        <a
-          href="https://www.youtube.com/c/nwPlusUBC"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:opacity-80 transition-opacity"
-        >
-          <Youtube className="size-8 md:size-12" />
-        </a>
-        <a
-          href="https://medium.com/nwplusubc"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:opacity-80 transition-opacity"
-        >
-          <Medium className="size-8 md:size-12" />
-        </a>
+    <div className="flex w-full flex-col items-center gap-6 md:gap-8">
+      <div className="flex items-center gap-6 md:gap-10">
+        {SOCIALS.map(({ href, label, Icon }) => (
+          <a
+            key={href}
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={label}
+            className="transition-opacity hover:opacity-80"
+          >
+            <Icon className="size-8 md:size-12" />
+          </a>
+        ))}
       </div>
-      <div className="flex gap-2 text-sm md:gap-8 md:text-2xl">
-        <a href="mailto:info@nwplus.io" className="font-bold underline">
-          Email Us
-        </a>
-        <a
-          href="mailto:sponsorship@nwplus.io?subject=Sponsorship%20Inquiry"
-          className="font-bold underline"
-        >
-          Become a Sponsor
-        </a>
-        <a
-          href="https://github.com/MLH/mlh-policies/blob/main/code-of-conduct.md"
-          className="font-bold underline"
-        >
-          Code of Conduct
-        </a>
+
+      <div className="flex flex-wrap justify-center gap-x-8 gap-y-2 font-body text-base font-bold underline md:text-2xl">
+        {LINKS.map(({ href, label }) => (
+          <a key={href} href={href} target="_blank" rel="noopener noreferrer">
+            {label}
+          </a>
+        ))}
       </div>
+
       <form
-        className="relative flex items-center text-sm"
+        className="flex w-full max-w-xl flex-col items-stretch gap-3 md:flex-row md:items-center"
         onSubmit={handleSubmit}
       >
         <input
-          type="text"
-          placeholder="Sign up for our newsletter!"
-          className="py-2 px-4 pr-20 rounded-lg text-black bg-white lg:w-xl"
+          type="email"
           name="email"
-          ref={audioThresholdRef}
+          required
+          placeholder="Sign up for our newsletter!"
+          className="grow rounded-full bg-[#bab9c5] px-5 py-3 font-body text-ink placeholder:text-ink/70 focus:outline-none focus-visible:ring-2 focus-visible:ring-sun"
         />
         <Button
-          className="absolute right-1 md:right-2 bg-[#350001]"
           type="submit"
-          size="sm"
+          className="rounded-md bg-sun px-6 py-3 font-body text-sun-ink hover:bg-sun/90"
         >
           Submit
         </Button>
       </form>
-      {inputMessage && <p className="text-sm text-slate-300">{inputMessage}</p>}
+
+      {inputMessage && (
+        <p className="font-body text-sm text-muted-cream">{inputMessage}</p>
+      )}
     </div>
   );
 };

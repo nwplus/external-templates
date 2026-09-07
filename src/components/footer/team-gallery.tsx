@@ -6,16 +6,9 @@ import { animate as anime, JSAnimation } from "animejs";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-interface Member {
-  img: string;
-  name: string;
-  emoji: string;
-  color: string;
-  title: string;
-  social: string;
-}
+type Member = (typeof teamMembers)[number];
 
-const Team = () => {
+const TeamGallery = () => {
   const [animator, setAnimator] = useState<JSAnimation>();
   const [selectedProfile, setSelectedProfile] = useState<Member | null>(null);
 
@@ -32,57 +25,57 @@ const Team = () => {
   }, []);
 
   return (
-    <div className="flex flex-col items-center gap-2">
-      <h2 className="font-bold text-white lg:text-2xl">
-        Made with 💖 by the nwPlus Team
+    <div className="flex w-full flex-col items-center gap-4">
+      <h2 className="font-display text-2xl text-cream md:text-4xl">
+        Meet the minds behind HackCamp
       </h2>
 
-      <div className="overflow-x-hidden whitespace-nowrap">
-        {
-          // will-change enables hardware acceleration for smoother animations
-          // duplicate profile maps so that the carousel can loop infinitely
-        }
+      <div className="w-full overflow-x-hidden whitespace-nowrap">
+        {/* Profiles are duplicated so the marquee loops seamlessly. */}
         <div
-          className="py-4 flex gap-6 will-change-transform"
+          className="flex gap-6 py-4 will-change-transform"
           id="anim-profiles"
         >
           {[...teamMembers, ...teamMembers].map((profile, i) => (
             <a
               href={profile.social}
               key={i}
-              className="inline-block hover:scale-110 rounded-md w-16 h-16 transition-transform duration-100 ease-in-out"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block size-16 shrink-0 rounded-md bg-white transition-transform duration-100 ease-in-out hover:scale-110 md:size-20"
+              onMouseEnter={() => {
+                setSelectedProfile(profile);
+                animator?.pause();
+              }}
+              onMouseLeave={() => {
+                setSelectedProfile(null);
+                animator?.play();
+              }}
             >
               <Image
                 src={profile.img}
                 alt={profile.name}
-                onClick={() => setSelectedProfile(profile)}
-                onMouseEnter={() => {
-                  setSelectedProfile(profile);
-                  animator?.pause();
-                }}
-                onMouseLeave={() => {
-                  setSelectedProfile(null);
-                  animator?.play();
-                }}
                 width={100}
                 height={100}
-                className="hover:opacity-100 rounded-md object-cover transition-all duration-100 ease-in-out opacity-80 md:opacity-42 w-full h-full"
-                style={{ backgroundColor: profile.color }}
+                className="size-full rounded-md object-cover"
               />
             </a>
           ))}
         </div>
       </div>
-      {/* This section is hidden on mobile because we can't have hover states */}
-      <p className="hidden md:block">
-        <span className="mr-2">
-          <b className="mr-2">{selectedProfile?.name}</b>{" "}
-          {selectedProfile?.emoji}
-        </span>{" "}
-        {selectedProfile?.title}
+
+      {/* Hidden on mobile because there is no hover state there. */}
+      <p className="hidden h-6 font-body md:block">
+        {selectedProfile && (
+          <>
+            <b className="mr-2">{selectedProfile.name}</b>
+            <span className="mr-2">{selectedProfile.emoji}</span>
+            {selectedProfile.title}
+          </>
+        )}
       </p>
     </div>
   );
 };
 
-export default Team;
+export default TeamGallery;
