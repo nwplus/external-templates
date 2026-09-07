@@ -91,11 +91,19 @@ const Contact = () => {
       </div>
 
       <div className="flex flex-wrap justify-center gap-x-8 gap-y-2 font-body text-base font-bold underline md:text-2xl">
-        {LINKS.map(({ href, label }) => (
-          <a key={href} href={href} target="_blank" rel="noopener noreferrer">
-            {label}
-          </a>
-        ))}
+        {LINKS.map(({ href, label }) => {
+          const external = href.startsWith("http");
+          return (
+            <a
+              key={href}
+              href={href}
+              target={external ? "_blank" : undefined}
+              rel={external ? "noopener noreferrer" : undefined}
+            >
+              {label}
+            </a>
+          );
+        })}
       </div>
 
       <form
@@ -106,20 +114,24 @@ const Contact = () => {
           type="email"
           name="email"
           required
+          aria-label="Email address"
           placeholder="Sign up for our newsletter!"
           className="grow rounded-full bg-[#bab9c5] px-5 py-3 font-body text-ink placeholder:text-ink/70 focus:outline-none focus-visible:ring-2 focus-visible:ring-sun"
         />
         <Button
           type="submit"
-          className="rounded-md bg-sun px-6 py-3 font-body text-sun-ink hover:bg-sun/90"
+          className="h-auto rounded-md bg-sun px-6 py-3 font-body text-sun-ink hover:bg-sun/90"
         >
           Submit
         </Button>
       </form>
 
-      {inputMessage && (
-        <p className="font-body text-sm text-muted-cream">{inputMessage}</p>
-      )}
+      <p
+        aria-live="polite"
+        className="min-h-5 font-body text-sm text-muted-cream"
+      >
+        {inputMessage}
+      </p>
     </div>
   );
 };
