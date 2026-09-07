@@ -96,4 +96,35 @@ describe("buildShelves", () => {
       shelves.map((s) => (s.kind === "frames" ? s.sponsors.length : 0))
     ).toEqual([2, 1]);
   });
+
+  it("sorts an unknown tier after every known tier", () => {
+    const odd = { ...mk("odd", "gold"), tier: "mystery" as SponsorDoc["tier"] };
+    const shelves = buildShelves([odd, mk("bronze-co", "bronze")]);
+    const names =
+      shelves[0].kind === "frames"
+        ? shelves[0].sponsors.map((s) => s.name)
+        : [];
+    expect(names).toEqual(["bronze-co", "odd"]);
+  });
+
+  it("treats a missing blurb as no blurb", () => {
+    const noBlurb = {
+      ...mk("a", "gold"),
+      blurb: undefined as unknown as string,
+    };
+    expect(buildShelves([noBlurb])[0].kind).toBe("frames");
+  });
+
+  it("keeps card and frame decoration counters independent", () => {
+    const shelves = buildShelves([
+      mk("card-co", "title", "has a blurb"),
+      ...["a", "b", "c", "d"].map((n) => mk(n, "silver")),
+    ]);
+    expect(shelves.map((s) => s.kind)).toEqual(["card", "frames", "frames"]);
+    expect(shelves.map((s) => [s.left, s.right])).toEqual([
+      ["books-left", "sheep"],
+      ["plant", undefined],
+      [undefined, "books-right"],
+    ]);
+  });
 });
