@@ -125,21 +125,3 @@ export function subscribeToSponsorsByHackathon(
     }
   );
 }
-
-/**
- * Groups sponsor documents by tier with proper ordering
- * @param sponsors - Array of sponsor documents from Firestore
- * @returns Record<string, SponsorDoc[]> - Sponsors grouped by tier
- */
-export function groupSponsorsByTier(
-  sponsors: SponsorDoc[]
-): Record<string, SponsorDoc[]> {
-  return sponsors.reduce(
-    (acc, sponsor) => {
-      if (!acc[sponsor.tier]) acc[sponsor.tier] = [];
-      acc[sponsor.tier].push(sponsor);
-      return acc;
-    },
-    {} as Record<string, SponsorDoc[]>
-  );
-}
