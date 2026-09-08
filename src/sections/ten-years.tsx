@@ -14,7 +14,7 @@ const panelClassName =
 
 function TenYearsDesktop() {
   return (
-    <div className="relative z-20">
+    <div className="relative z-20" id="10-years">
       <div
         className={panelClassName}
         style={{
@@ -40,7 +40,7 @@ function TenYearsDesktop() {
                 </div>
 
                 <div className="space-y-6">
-                  <div className="relative w-full max-w-md" id="10-years">
+                  <div className="relative w-full max-w-md">
                     <Image
                       src="/assets/ten-years/graphics/image-background.svg"
                       alt="Image background"

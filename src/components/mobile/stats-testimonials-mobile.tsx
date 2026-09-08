@@ -3,32 +3,18 @@
 import CarouselControls from "@/components/stats-testimonials/carousel-controls";
 import { testimonials } from "@/sections/stats-testimonials";
 
-import {
-  AnimatePresence,
-  motion,
-  useScroll,
-  useTransform,
-} from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 /**
  * Mobile view for Stats and Testimonials section
  */
 export default function StatsTestimonialsMobile() {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  });
-
-  const nuggetY = useTransform(scrollYProgress, [0, 1], [0, 150]);
-  const nuggetX = useTransform(scrollYProgress, [0, 1], [0, 50]);
 
   return (
-    <div ref={containerRef} className="relative min-h-[415vw]">
+    <div className="relative min-h-[415vw]">
       <div className="absolute inset-0 h-[45vh]">
         <Image
           src="/assets/stats-and-testimonials/graphics/mobile_sky.svg"
@@ -93,7 +79,6 @@ export default function StatsTestimonialsMobile() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 0.8 }}
-        style={{ y: nuggetY, x: nuggetX }}
         className="absolute top-[30%] -left-5 w-[45vw] h-[40vw] z-10"
       >
         <Image
@@ -163,7 +148,10 @@ export default function StatsTestimonialsMobile() {
           height={600}
           className="w-full h-auto object-bottom"
         />
-        <div className="absolute top-[6%] left-1/2 transform -translate-x-1/2" id="testimonials-mobile">
+        <div
+          className="absolute top-[6%] left-1/2 transform -translate-x-1/2"
+          id="testimonials-mobile"
+        >
           <h3 className="font-title text-4xl font-bold text-gray-800 text-center">
             Testimonials
           </h3>

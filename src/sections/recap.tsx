@@ -1,10 +1,10 @@
 import Image from "next/image";
 
 const Recap = () => {
-  // Container min-height based on background image aspect ratio (2125÷1080 = 196.76vh)
+  // Height in vw so the board (1581×1059 at 82vw ≈ 54.9vw tall) fits at any viewport
   return (
     <div
-      className="relative bg-cover bg-center bg-no-repeat w-full h-screen overflow-hidden flex flex-col items-center z-40"
+      className="relative bg-cover bg-center bg-no-repeat w-full h-[55vw] overflow-hidden flex flex-col items-center z-40"
       id="recap"
     >
       <Image
@@ -12,7 +12,7 @@ const Recap = () => {
         alt="Recap Background"
         width={500}
         height={500}
-        className="absolute inset-0 min-w-[105vw] h-[100vh] top-[0vh] -left-[1vw]"
+        className="absolute inset-0 min-w-[105vw] h-full -left-[1vw]"
       />
       <Image
         src="/assets/learn/tree.svg"
@@ -34,7 +34,7 @@ const Recap = () => {
         src="https://www.youtube.com/embed/3AQoV3BiRpc?si=s-myjEY33xI-qGXV"
         title="Hackcamp 2025 recap"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        className="absolute left-[19vw] top-[13vw] w-[26vw] h-[27vh]"
+        className="absolute left-[19vw] top-[13vw] w-[26vw] h-[14.6vw]"
         allowFullScreen
       ></iframe>
     </div>

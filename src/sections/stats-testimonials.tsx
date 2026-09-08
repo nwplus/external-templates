@@ -3,14 +3,9 @@
 import StatsTestimonialsMobile from "@/components/mobile/stats-testimonials-mobile";
 import CarouselControls from "@/components/stats-testimonials/carousel-controls";
 
-import {
-  AnimatePresence,
-  motion,
-  useScroll,
-  useTransform,
-} from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 interface Testimonial {
   name: string;
@@ -68,20 +63,13 @@ export const testimonials: Testimonial[] = [
  */
 function StatsTestimonialsDesktop() {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"],
-  });
 
-  const nuggetX = useTransform(scrollYProgress, [0, 1], [0, -50]);
-  const nuggetY = useTransform(scrollYProgress, [0, 1], [0, 80]);
-
-  // Container min-height based on background image aspect ratio (2459÷1920 = 128.07vw)
+  // Container height based on background image aspect ratio (2459÷1920 = 128.07vw).
+  // overflow-hidden clips the artwork that hangs below the container so the
+  // next section starts right where this one ends.
   return (
     <motion.div
-      ref={containerRef}
-      className="relative w-full h-[128.07vw] mb-[35vh]"
+      className="relative w-full h-[128.07vw] overflow-hidden"
       id="stats"
     >
       <Image
@@ -276,7 +264,6 @@ function StatsTestimonialsDesktop() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 0.8 }}
-        style={{ x: nuggetX, y: nuggetY }}
         className="absolute top-[105vh] left-[12rem] z-20"
       >
         <Image
@@ -320,7 +307,7 @@ function StatsTestimonialsDesktop() {
         </div>
       </motion.div>
 
-      <motion.div className="relative z-40 min-h-screen">
+      <motion.div className="relative z-40">
         <motion.h2
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
