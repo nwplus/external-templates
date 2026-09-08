@@ -4,12 +4,11 @@ import { cn } from "@/lib/utils";
 
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
 import * as React from "react";
-import { MinusIcon, PlusIcon } from "lucide-react";
 import Image from "next/image";
 
 interface AccordionTriggerProps
   extends React.ComponentProps<typeof AccordionPrimitive.Trigger> {
-  variant?: "faq" | "hero";
+  variant?: "hero";
 }
 
 function Accordion({
@@ -34,7 +33,7 @@ function AccordionItem({
 function AccordionTrigger({
   className,
   children,
-  variant = "faq",
+  variant = "hero",
   ...props
 }: AccordionTriggerProps) {
   return (
@@ -44,8 +43,6 @@ function AccordionTrigger({
         className={cn(
           "focus-visible:border-ring focus-visible:ring-ring/50 flex flex-1 items-start  gap-4 rounded-md py-4 text-left text-sm transition-all outline-none focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50",
           className,
-          variant == "faq" &&
-            "[&[data-state=open]_.plus-icon]:hidden [&[data-state=open]_.minus-icon]:block justify-between",
           variant == "hero" && "[&[data-state=open]_.arrow-right]:rotate-90"
         )}
         {...props}
@@ -62,12 +59,6 @@ function AccordionTrigger({
           </>
         )}
         {children}
-        {variant == "faq" && (
-          <>
-            <PlusIcon className="plus-icon text-[#FFD700] pointer-events-none size-4 shrink-0 translate-y-0.5 transition-all duration-200" />
-            <MinusIcon className="minus-icon text-[#FFD700] pointer-events-none size-4 shrink-0 translate-y-0.5 transition-all duration-200 hidden" />
-          </>
-        )}
       </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>
   );

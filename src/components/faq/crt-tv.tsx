@@ -1,10 +1,10 @@
-import type { FAQDoc } from "@/lib/firestore";
+import type { FaqItem } from "@/lib/faq-layout";
 
 import Image from "next/image";
 import { useId } from "react";
 
 type CrtTvProps = {
-  selected: FAQDoc | null;
+  selected: FaqItem | null;
   /** True when there are no questions at all; swaps the idle prompt. */
   empty: boolean;
 };

@@ -1,13 +1,13 @@
-import type { FAQDoc } from "@/lib/firestore";
+import type { FaqItem } from "@/lib/faq-layout";
 import { cn } from "@/lib/utils";
 
 type VhsTapeProps = {
-  faq: FAQDoc;
+  faq: FaqItem;
   selected: boolean;
   /** Optional single letter shown in a small circle to the left of the label. */
   badge?: string;
   badgeColor?: string;
-  onSelect: (faq: FAQDoc) => void;
+  onSelect: (faq: FaqItem) => void;
 };
 
 const VhsTape = ({

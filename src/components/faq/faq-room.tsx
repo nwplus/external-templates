@@ -2,8 +2,7 @@
 
 import CrtTv from "@/components/faq/crt-tv";
 import VhsTape from "@/components/faq/vhs-tape";
-import type { FaqGroup, FaqLayout } from "@/lib/faq-layout";
-import type { FAQDoc } from "@/lib/firestore";
+import type { FaqGroup, FaqItem, FaqLayout } from "@/lib/faq-layout";
 import { cn } from "@/lib/utils";
 
 import Image from "next/image";
@@ -19,8 +18,8 @@ const staggerClass = (position: number) =>
   position % 2 === 0 ? "md:-translate-x-2" : "md:translate-x-2";
 
 type SelectProps = {
-  selected: FAQDoc | null;
-  onSelect: (faq: FAQDoc) => void;
+  selected: FaqItem | null;
+  onSelect: (faq: FaqItem) => void;
 };
 
 /**
@@ -32,7 +31,7 @@ const TapestryStack = ({
   group,
   selected,
   onSelect,
-}: SelectProps & { group: FaqGroup | null }) => (
+}: SelectProps & { group: FaqGroup<FaqItem> | null }) => (
   <div className="grid w-full">
     <Image
       src="/assets/faq/tapestry.svg"
@@ -79,7 +78,7 @@ const CabinetBand = ({
   shelf,
   selected,
   onSelect,
-}: SelectProps & { shelf: FaqGroup }) => {
+}: SelectProps & { shelf: FaqGroup<FaqItem> }) => {
   const count = shelf.faqs.length;
   // When the left column has one more tape, start the right column one row
   // down so both columns end on the cabinet floor.
@@ -108,7 +107,7 @@ const CabinetBand = ({
             height={225}
             className="h-auto w-[255px]"
           />
-          <h3 className="absolute top-[42%] left-1/2 max-w-[80%] -translate-x-1/2 -translate-y-1/2 truncate rounded bg-tv-ink/80 px-3 py-1 font-display text-lg tracking-[0.2em] text-cream uppercase">
+          <h3 className="absolute top-[42%] left-1/2 max-w-[88%] -translate-x-1/2 -translate-y-1/2 truncate rounded bg-tv-ink/80 px-3 py-1 font-display text-base tracking-[0.1em] text-cream uppercase">
             {shelf.category}
           </h3>
         </div>
@@ -180,16 +179,16 @@ const RightShelf = () => (
 );
 
 /**
- * The VHS room. Renders the whole `#faq` section: the wall row (tapestry
+ * The VHS room, rendered inside the `#faq` section: the wall row (tapestry
  * stack, television, right shelf), the desk with one cabinet band per shelf
  * category, and the cloth band that leads into Sponsors.
  */
-const FaqRoom = ({ layout }: { layout: FaqLayout }) => {
-  const [selected, setSelected] = useState<FAQDoc | null>(null);
+const FaqRoom = ({ layout }: { layout: FaqLayout<FaqItem> }) => {
+  const [selected, setSelected] = useState<FaqItem | null>(null);
   const tvRef = useRef<HTMLDivElement>(null);
   const empty = layout.tapestry === null && layout.shelves.length === 0;
 
-  const handleSelect = (faq: FAQDoc) => {
+  const handleSelect = (faq: FaqItem) => {
     setSelected(faq);
     if (window.matchMedia(MOBILE_QUERY).matches) {
       tvRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
@@ -197,12 +196,7 @@ const FaqRoom = ({ layout }: { layout: FaqLayout }) => {
   };
 
   return (
-    <section
-      id="faq"
-      className="relative w-full overflow-x-clip bg-linear-to-b from-wall from-80% to-night-top text-cream"
-    >
-      <h2 className="sr-only">FAQ</h2>
-
+    <>
       {/* Row 1: everything sits on the desk. */}
       <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-8 px-6 pt-16 md:grid md:grid-cols-[36fr_32fr_32fr] md:items-end md:gap-6 md:pt-24 lg:gap-10">
         <TapestryStack
@@ -246,7 +240,7 @@ const FaqRoom = ({ layout }: { layout: FaqLayout }) => {
         height={150}
         className="block h-auto w-full"
       />
-    </section>
+    </>
   );
 };
 
