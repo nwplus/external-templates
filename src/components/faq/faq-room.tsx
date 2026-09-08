@@ -48,7 +48,7 @@ const TapestryStack = ({
       >
         {group.faqs.map((faq, i) => (
           <li
-            key={faq.question}
+            key={`${faq.question}-${i}`}
             className={cn("flex w-full justify-center", staggerClass(i))}
           >
             <VhsTape
@@ -120,7 +120,7 @@ const CabinetBand = ({
             const row = Math.floor(i / 2) + (column === 1 ? rightOffset : 0);
             return (
               <li
-                key={faq.question}
+                key={`${faq.question}-${i}`}
                 style={
                   {
                     "--tape-col": column + 1,
