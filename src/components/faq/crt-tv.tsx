@@ -25,7 +25,7 @@ const CrtTv = ({ selected, empty }: CrtTvProps) => {
       />
 
       {/* Screen: the bezel's inner rect. */}
-      <div className="absolute top-[14%] left-[12%] h-[62%] w-[76%] overflow-hidden rounded-2xl bg-static">
+      <div className="absolute top-[14%] left-[12%] @container h-[62%] w-[76%] overflow-hidden rounded-2xl bg-static">
         <svg
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 h-full w-full opacity-35"
@@ -47,7 +47,7 @@ const CrtTv = ({ selected, empty }: CrtTvProps) => {
         />
         <div
           aria-live="polite"
-          className="relative h-full overflow-y-auto p-4 text-tv-ink md:p-6"
+          className="relative h-full overflow-y-auto p-4 text-tv-ink lg:p-6"
         >
           {selected ? (
             <p className="font-body text-sm leading-relaxed whitespace-pre-line md:text-base">
@@ -55,8 +55,10 @@ const CrtTv = ({ selected, empty }: CrtTvProps) => {
             </p>
           ) : (
             <div className="flex h-full flex-col items-center justify-center gap-3 text-center">
-              <p className="font-display text-4xl md:text-5xl">FAQ</p>
-              <p className="font-body text-base md:text-xl">
+              <p className="font-display text-[clamp(1.5rem,14cqw,3rem)] leading-none">
+                FAQ
+              </p>
+              <p className="font-body text-[clamp(0.8rem,6.3cqw,1.25rem)] leading-tight">
                 {empty
                   ? "Questions coming soon"
                   : "Click on a question to get started"}

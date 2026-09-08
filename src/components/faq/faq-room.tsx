@@ -206,7 +206,7 @@ const FaqRoom = ({ layout }: { layout: FaqLayout<FaqItem> }) => {
         />
         <div
           ref={tvRef}
-          className="order-first flex w-full justify-center md:order-none"
+          className="order-first flex w-full scroll-mt-32 justify-center md:order-none md:scroll-mt-0"
         >
           <CrtTv selected={selected} empty={empty} />
         </div>
