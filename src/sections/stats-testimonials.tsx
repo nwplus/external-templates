@@ -31,7 +31,7 @@ function StatsTestimonialsDesktop() {
         alt="Stats background"
         width={1000}
         height={100}
-        className="absolute inset-0 w-[100vw] h-[84vh] top-[17vh] z-30 -left-[19vw]"
+        className="absolute inset-0 w-[100vw] h-[47.25vw] top-[9.56vw] z-30 -left-[19vw]"
       />
 
       <Image
@@ -39,13 +39,13 @@ function StatsTestimonialsDesktop() {
         alt="Stats background"
         width={1000}
         height={100}
-        className="absolute inset-0 w-[100vw] h-[58vh] left-[6.4vh] top-[6vh] z-5"
+        className="absolute inset-0 w-[100vw] h-[32.63vw] left-[3.6vw] top-[3.38vw] z-5"
       />
 
       {/* covers up the weird river edge from recap section */}
-      <div className="absolute top-[95vh] left-[2vw] bg-[#b4eaf2] w-36 h-36 rounded-full  z-50"></div>
+      <div className="absolute top-[53.44vw] left-[2vw] bg-[#b4eaf2] w-[7.5vw] h-[7.5vw] rounded-full  z-50"></div>
 
-      <div className="absolute inset-0 z-0 min-h-[50vh] max-h-[72vh]">
+      <div className="absolute inset-0 z-0 min-h-[28.13vw] max-h-[40.5vw]">
         <Image
           src="/assets/stats-and-testimonials/graphics/sky.svg"
           alt="Sky background"
@@ -68,7 +68,7 @@ function StatsTestimonialsDesktop() {
         />
       </motion.div> */}
 
-      <div className="absolute top-[55vh] left-0 w-full h-[120vw] z-10">
+      <div className="absolute top-[30.94vw] left-0 w-full h-[120vw] z-10">
         <Image
           src="/assets/stats-and-testimonials/graphics/river.svg"
           alt="River background"
