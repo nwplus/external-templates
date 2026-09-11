@@ -78,42 +78,42 @@ function StatsTestimonialsDesktop() {
         />
       </div>
 
-      <div className="absolute right-0 lg:-right-4 top-[5vh] bottom-0 z-30">
+      <div className="absolute -right-[0.83vw] top-[2.81vw] bottom-0 z-30">
         <Image
           src="/assets/stats-and-testimonials/graphics/waterfall-60-projects-sign.svg"
           alt="Waterfall with mist"
           height={600}
           width={900}
-          className="object-cover object-right"
+          className="w-[46.88vw] h-auto object-cover object-right"
         />
       </div>
 
-      <div className="absolute top-[48vh] left-2 z-40">
+      <div className="absolute top-[27vw] left-[0.42vw] z-40">
         <div className="relative">
           <Image
             src="/assets/stats-and-testimonials/graphics/boats-and-stat.svg"
             alt="Boats with participants"
             width={850}
             height={580}
-            className="w-60 md:w-80 lg:w-150 h-auto"
+            className="w-[31.25vw] h-auto"
           />
         </div>
       </div>
 
-      <motion.div className="absolute right-0 top-[70vh] z-30 h-1/2">
+      <motion.div className="absolute right-0 top-[39.38vw] z-30 h-1/2">
         <Image
           src="/assets/stats-and-testimonials/graphics/first-island-300-raised-for-charity-sign.svg"
           alt="First island"
           height={600}
           width={900}
-          className="object-cover object-bottom"
+          className="w-[46.88vw] h-auto object-cover object-bottom"
         />
         <div>
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 2.2, duration: 0.8 }}
-            className="absolute right-0 -top-56 z-50"
+            className="absolute right-0 -top-[11.67vw] z-50"
           >
             <Image
               src="/assets/stats-and-testimonials/graphics/deer w binoculars.svg"
@@ -127,7 +127,7 @@ function StatsTestimonialsDesktop() {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 1.4, duration: 0.8 }}
-            className="absolute right-12 -top-24 z-50"
+            className="absolute right-[2.5vw] -top-[5vw] z-50"
           >
             <Image
               src="/assets/stats-and-testimonials/graphics/bear pointing.svg"
@@ -139,13 +139,13 @@ function StatsTestimonialsDesktop() {
         </div>
       </motion.div>
 
-      <motion.div className="absolute top-[110vh] right-0 z-30 h-1/3">
+      <motion.div className="absolute top-[61.88vw] right-0 z-30 h-1/3">
         <Image
           src="/assets/stats-and-testimonials/graphics/middle island.svg"
           alt="Middle island"
           height={600}
           width={750}
-          className="object-contain object-bottom"
+          className="w-[39.06vw] h-auto object-contain object-bottom"
         />
       </motion.div>
 
@@ -154,23 +154,23 @@ function StatsTestimonialsDesktop() {
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 0.8 }}
         style={{ x: nuggetX, y: nuggetY }}
-        className="absolute top-[105vh] left-[12rem] z-20"
+        className="absolute top-[59.06vw] left-[10vw] z-20"
       >
         <Image
           src="/assets/stats-and-testimonials/graphics/nugget tube.svg"
           alt="Nugget floating in tube"
           width={550}
           height={350}
-          className="w-12 md:w-[16rem] lg:w-[26rem] h-auto"
+          className="w-[21.67vw] h-auto"
         />
       </motion.div>
 
-      <motion.div className="relative z-40 min-h-screen">
+      <motion.div className="relative z-40 min-h-[56.25vw]">
         <motion.h2
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="font-title absolute top-0 left-8 md:top-8 md:left-24 text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 z-50"
+          className="font-title absolute top-[1.67vw] left-[5vw] text-[3.13vw] font-bold text-gray-800 z-50"
         >
           Last Year We Had...
         </motion.h2>
