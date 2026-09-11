@@ -73,8 +73,8 @@ const SpeechBubble = ({
 );
 
 const Testimonials = () => {
-  const [selected, setSelected] = useState<number | null>(null);
-  const person = testimonials[selected ?? 0];
+  const [selected, setSelected] = useState(0);
+  const person = testimonials[selected];
 
   return (
     <div
@@ -354,7 +354,7 @@ const Testimonials = () => {
           bubble={bubbles[index]}
           person={person}
           selected={index === selected}
-          dimmed={selected !== null && index !== selected}
+          dimmed={index !== selected}
           onSelect={() => setSelected(index)}
         />
       ))}
