@@ -60,7 +60,7 @@ export default function StatsTestimonialsMobile() {
         />
       </div>
 
-      <div className="absolute top-[18.5%] -left-5 z-10">
+      <div className="absolute top-[18.5%] -left-[5.13vw] z-10">
         <Image
           src="/assets/stats-and-testimonials/graphics/mobile_stat_canoe.svg"
           alt="Stats canoe"
@@ -85,7 +85,7 @@ export default function StatsTestimonialsMobile() {
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 0.8 }}
         style={{ y: nuggetY, x: nuggetX }}
-        className="absolute top-[30%] -left-5 w-[45vw] h-[40vw] z-10"
+        className="absolute top-[30%] -left-[5.13vw] w-[45vw] h-[40vw] z-10"
       >
         <Image
           src="/assets/stats-and-testimonials/graphics/nugget tube.svg"
@@ -95,12 +95,12 @@ export default function StatsTestimonialsMobile() {
         />
       </motion.div>
 
-      <div className="relative z-10 pt-12 ml-4" id="mobile-stats">
+      <div className="relative z-10 pt-[12.31vw] ml-[4.1vw]" id="mobile-stats">
         <motion.h2
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="font-title text-3xl font-bold text-gray-800 mb-8"
+          className="font-title text-[7.69vw] font-bold text-gray-800 mb-[8.21vw]"
         >
           Last Year We Had...
         </motion.h2>
