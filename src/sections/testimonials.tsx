@@ -380,15 +380,15 @@ const Testimonials = () => {
         height={314}
         className="absolute left-[55.07vw] top-[11.42vw] h-[20.52vw] w-[1.51vw]"
       />
-      <div className="absolute left-[58.9vw] top-[7.9vw] flex h-[27.4vw] w-[35.1vw] flex-col justify-center">
+      <div className="absolute left-[56.9vw] top-[7.4vw] flex h-[28.4vw] w-[36vw] flex-col justify-center">
         <p className="font-title text-[2.2vw] leading-none text-[#16224f]">
           {person.name}
         </p>
-        <p className="mt-[1.1vw] text-[1.15vw] leading-none text-[#5a6396]">
+        <p className="mt-[0.9vw] text-[1.15vw] leading-none text-[#5a6396]">
           {person.pronouns} · {person.role}
         </p>
-        <div className="mt-[1.4vw] h-px w-[2.6vw] bg-[#1a3375]/25" />
-        <p className="mt-[1.5vw] text-[1.2vw] leading-[1.55] text-[#2b3055]">
+        <div className="mt-[1.1vw] h-px w-[2.6vw] bg-[#1a3375]/25" />
+        <p className="mt-[1.2vw] text-[1.2vw] leading-[1.5] text-[#2b3055]">
           {person.testimonial}
         </p>
       </div>
