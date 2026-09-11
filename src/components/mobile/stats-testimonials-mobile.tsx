@@ -20,7 +20,7 @@ export default function StatsTestimonialsMobile() {
 
   return (
     <div ref={containerRef} className="relative min-h-[200vw]">
-      <div className="absolute inset-0 h-[45vh]">
+      <div className="absolute inset-0 h-[97.4vw]">
         <Image
           src="/assets/stats-and-testimonials/graphics/mobile_sky.svg"
           alt="Mobile sky background"
@@ -30,7 +30,7 @@ export default function StatsTestimonialsMobile() {
         />
       </div>
 
-      <div className="absolute inset-0 top-[10vh] overflow-hidden z-1">
+      <div className="absolute inset-0 top-[21.64vw] overflow-hidden z-1">
         <Image
           src="/assets/stats-and-testimonials/graphics/mobile_stats_backdrop.svg"
           alt="Mobile stats backdrop"
@@ -40,7 +40,7 @@ export default function StatsTestimonialsMobile() {
         />
       </div>
 
-      <div className="absolute top-[40vh] left-0 w-full h-[140vh] z-0">
+      <div className="absolute top-[86.56vw] left-0 w-full h-[302.96vw] z-0">
         <Image
           src="/assets/stats-and-testimonials/graphics/mobile_river.svg"
           alt="Mobile river background"
@@ -50,7 +50,7 @@ export default function StatsTestimonialsMobile() {
         />
       </div>
 
-      <div className="absolute top-[8vh] right-0 w-[70%] z-2">
+      <div className="absolute top-[17.31vw] right-0 w-[70%] z-2">
         <Image
           src="/assets/stats-and-testimonials/graphics/mobile_waterfall.svg"
           alt="Mobile waterfall"
