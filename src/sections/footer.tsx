@@ -52,10 +52,10 @@ const Footer = () => {
         {/* Holds open the space the bed fills in the scene behind. */}
         <div
           aria-hidden
-          className="order-3 w-full flex-1 pb-[74%] xl:flex-none xl:pb-[72.8%]"
+          className="order-3 w-full flex-1 pb-[84%] xl:flex-none xl:pb-[72.8%]"
         />
 
-        <div className="order-5 mt-[2%] w-full xl:mt-[2.2%]">
+        <div className="order-5 mt-[2%] w-full xl:mt-[4.6%]">
           <TeamGallery />
         </div>
 

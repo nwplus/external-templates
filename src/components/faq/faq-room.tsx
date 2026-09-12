@@ -324,14 +324,19 @@ const FaqRoom = ({ layout }: { layout: FaqLayout<FaqItem> }) => {
             onSelect={handleSelect}
           />
         ))}
-        {/* The cloud band starts behind the cabinet and closes the section. */}
+        {/* The cloud band starts behind the cabinet and closes the section.
+            With no categories there is no cabinet to hide behind, so it sits
+            below the wall instead of climbing into it. */}
         <Image
           src="/assets/faq/cloth-band.svg"
           alt=""
           aria-hidden="true"
           width={1531}
           height={351}
-          className="relative z-0 -mt-[19.62%] block h-auto w-full"
+          className={cn(
+            "relative z-0 block h-auto w-full",
+            layout.shelves.length > 0 && "-mt-[19.62%]"
+          )}
         />
       </div>
 
