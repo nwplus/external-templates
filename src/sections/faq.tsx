@@ -36,7 +36,7 @@ const Faq = async () => {
   return (
     <section
       id="faq"
-      className="relative z-10 w-full overflow-x-clip bg-linear-to-b from-wall from-80% to-night-top text-cream"
+      className="relative w-full overflow-x-clip bg-linear-to-b from-wall from-80% to-night-top text-cream"
     >
       <h2 className="sr-only">FAQ</h2>
       <FaqRoom layout={layout} />

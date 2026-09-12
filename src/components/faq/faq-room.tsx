@@ -341,7 +341,7 @@ const FaqRoom = ({ layout }: { layout: FaqLayout<FaqItem> }) => {
           aria-hidden="true"
           width={1531}
           height={351}
-          className="relative z-0 -mt-[19.62%] block h-auto w-full"
+          className="relative z-[2] -mt-[19.62%] block h-auto w-full"
         />
       </div>
 

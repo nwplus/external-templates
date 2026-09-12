@@ -39,7 +39,9 @@ const Sponsors = () => {
       {/* Everything is sized as a share of this box, which is the design's
           own width, so the band keeps its proportions at any viewport. */}
       <div className="mx-auto w-full max-w-[1531px]">
-        <StringLights variant="top" />
+        {/* Sits above the night sky but under the FAQ's clouds, so the
+            hanging cords disappear between the scallops. */}
+        <StringLights variant="top" className="relative z-[1]" />
 
         {/* The design hangs the heading inside the lowest reach of the
             garland's glow, so the text block is pulled back up under it. */}
