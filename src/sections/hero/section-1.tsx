@@ -9,6 +9,9 @@ import { cn } from "@/lib/utils";
 import Navbar from "../../components/hero/navbar";
 import { TopCloudScrim } from "@/components/hero/top-cloud-scrim";
 import { TopCloudInnerScrim } from "@/components/hero/top-cloud-inner-scrim";
+import { BottomCloudScrim } from "@/components/hero/bottom-cloud-scrim";
+import Image from "next/image";
+import { Decals } from "@/components/hero/decals";
 
 const carImages = [
   {
@@ -92,21 +95,17 @@ const Section1 = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const getCarOpacity = (scrollRange: number[]) => {
-    const [start, end] = scrollRange;
-
-    if (scrollProgress < start || scrollProgress > end) {
-      return 0;
-    }
-    return 1;
-  };
-
   return (
-    <div className="bg-linear-to-b from-[#0B0F27] to-[#28418D]">
+    <div className="bg-linear-to-b from-[#0B0F27] to-[#0C1637]">
       <Navbar />
 
       {/* Hero wrapper */}
       <div className="relative top-0 w-full">
+
+        {/* Page decals */}
+        <div className="absolute -top-30 left-0 w-full z-10">
+          <Decals />
+        </div>
 
         {/* Cloud decal */}
         <div className="absolute top-0 left-0 w-full">
@@ -118,12 +117,22 @@ const Section1 = () => {
           <TopCloudInnerScrim />
         </div>
 
+        {/* Bottom clouds decal */}
+        <div className="absolute w-1/2 -bottom-120 left-0">
+          <div className="bottom-0 left-0 absolute z-10 w-550 aspect-[1.7]">
+            <Image src="/assets/hero/house.png" alt="House" layout="fill" />
+          </div>
+          <div className="relative z-20 -mb-50">
+            <BottomCloudScrim />
+          </div>
+        </div>
+
         {/* Hero content */}
-        <div className="relative z-20 min-h-screen pt-50">
+        <div className="relative z-20 min-h-screen pt-60">
 
           {/* Hero text */}
-          <div className=" mx-auto w-[80vw] flex flex-col items-center">
-            <h1 className='font-title text-9xl uppercase text-white'>HackCamp</h1>
+          <div className="mx-auto w-[80vw] flex flex-col items-center">
+            <h1 className="font-title text-9xl uppercase text-white">HackCamp</h1>
             <h3 className="text-white text-2xl">Canada's largest beginner friendly hackathon</h3>
             <div className="flex gap-4 items-center pt-8">
               <CtaLink href="#">Register Now</CtaLink>
@@ -133,28 +142,32 @@ const Section1 = () => {
             </div>
           </div>
 
-          {/* Countdown */}
-          <div className="flex flex-col gap-2 text-white">
-            <div>
-              Applications close in
-            </div>
-            <div className="flex">
-              <div>
-                <div>{days}</div>
-                <div>
-                  Days
-                </div>
+          {/* Countdown Wrapper (to position) */}
+          <div className="mx-auto w-10 py-36">
+
+            {/* Countdown */}
+            <div className="flex flex-col gap-2 text-[#0B1327] w-100 items-center [text-shadow:0_0_8px_#FFDA88,0_0_20px_#FFDA88,0_0_40px_#FFDA88]">
+              <div className="font-title text-4xl">
+                Applications close in
               </div>
-              <div>
-                <div>{minutes}</div>
-                <div>
-                  Minutes
+              <div className="flex gap-10">
+                <div className="flex flex-col items-center">
+                  <div className="text-9xl">{days}</div>
+                  <div>
+                    Days
+                  </div>
                 </div>
-              </div>
-              <div>
-                <div>{seconds}</div>
-                <div>
-                  Seconds
+                <div className="flex flex-col items-center">
+                  <div className="text-9xl">{minutes}</div>
+                  <div>
+                    Minutes
+                  </div>
+                </div>
+                <div className="flex flex-col items-center">
+                  <div className="text-9xl">{seconds}</div>
+                  <div>
+                    Seconds
+                  </div>
                 </div>
               </div>
             </div>
