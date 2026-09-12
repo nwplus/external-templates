@@ -30,7 +30,10 @@ const Sponsors = () => {
   return (
     <section
       id="sponsors"
-      className="relative w-full overflow-hidden bg-linear-to-b from-night-top to-night-bottom text-cream"
+      // Slides up under the FAQ's cloud band by the same 22% of the width the
+      // design overlaps them, so the garland's cords come out of the clouds
+      // instead of hanging from the top edge of the band.
+      className="relative -mt-[22.08%] w-full overflow-hidden bg-linear-to-b from-night-top to-night-bottom pt-[9.28%] text-cream"
     >
       {/* Everything is sized as a share of this box, which is the design's
           own width, so the band keeps its proportions at any viewport. */}
