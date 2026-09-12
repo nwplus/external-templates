@@ -52,7 +52,6 @@ export default function MobileNavbar() {
 
     { name: "Testimonials", href: "testimonials-mobile" },
 
-    { name: "11 Years", href: "10-years-mobile" },
 
     { name: "FAQ", href: "faq" },
 

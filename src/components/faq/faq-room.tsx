@@ -349,10 +349,7 @@ const FaqRoom = ({ layout }: { layout: FaqLayout<FaqItem> }) => {
       <div className="xl:hidden">
         <div
           ref={mobileTvRef}
-          // The Ten Years section above is z-20 as a whole and its grass
-          // buffer hangs 18vw past its own bottom edge, so the television
-          // starts below that reach rather than fighting it for z-order.
-          className="mx-auto w-[92%] max-w-[520px] scroll-mt-6 pt-[20vw] pb-8"
+          className="mx-auto w-[92%] max-w-[520px] scroll-mt-6 pt-10 pb-8"
         >
           <CrtTv selected={selected} empty={empty} />
         </div>

@@ -7,7 +7,6 @@ import Learn from "@/sections/learn";
 import Recap from "@/sections/recap";
 import Sponsors from "@/sections/sponsors";
 import StatsTestimonials from "@/sections/stats-testimonials";
-import TenYears from "@/sections/ten-years";
 import Testimonials from "@/sections/testimonials";
 
 export default function Home() {
@@ -31,7 +30,6 @@ export default function Home() {
         <TestimonialsMobile />
       </div>
 
-      <TenYears />
       <Faq />
       <Sponsors />
       <Footer />
