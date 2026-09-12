@@ -1,22 +1,13 @@
 "use client";
 
-import CarouselControls from "@/components/stats-testimonials/carousel-controls";
-import { testimonials } from "@/sections/stats-testimonials";
-
-import {
-  AnimatePresence,
-  motion,
-  useScroll,
-  useTransform,
-} from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 
 /**
- * Mobile view for Stats and Testimonials section
+ * Mobile view for the Stats section
  */
 export default function StatsTestimonialsMobile() {
-  const [currentSlide, setCurrentSlide] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
@@ -28,8 +19,8 @@ export default function StatsTestimonialsMobile() {
   const nuggetX = useTransform(scrollYProgress, [0, 1], [0, 50]);
 
   return (
-    <div ref={containerRef} className="relative min-h-[415vw]">
-      <div className="absolute inset-0 h-[45vh]">
+    <div ref={containerRef} className="relative min-h-[200vw]">
+      <div className="absolute inset-0 h-[97.4vw]">
         <Image
           src="/assets/stats-and-testimonials/graphics/mobile_sky.svg"
           alt="Mobile sky background"
@@ -39,7 +30,7 @@ export default function StatsTestimonialsMobile() {
         />
       </div>
 
-      <div className="absolute inset-0 top-[10vh] overflow-hidden z-1">
+      <div className="absolute inset-0 top-[21.64vw] overflow-hidden z-1">
         <Image
           src="/assets/stats-and-testimonials/graphics/mobile_stats_backdrop.svg"
           alt="Mobile stats backdrop"
@@ -49,7 +40,7 @@ export default function StatsTestimonialsMobile() {
         />
       </div>
 
-      <div className="absolute top-[40vh] left-0 w-full h-[140vh] z-0">
+      <div className="absolute top-[86.56vw] left-0 w-full h-[302.96vw] z-0">
         <Image
           src="/assets/stats-and-testimonials/graphics/mobile_river.svg"
           alt="Mobile river background"
@@ -59,7 +50,7 @@ export default function StatsTestimonialsMobile() {
         />
       </div>
 
-      <div className="absolute top-[8vh] right-0 w-[70%] z-2">
+      <div className="absolute top-[17.31vw] right-0 w-[70%] z-2">
         <Image
           src="/assets/stats-and-testimonials/graphics/mobile_waterfall.svg"
           alt="Mobile waterfall"
@@ -69,7 +60,7 @@ export default function StatsTestimonialsMobile() {
         />
       </div>
 
-      <div className="absolute top-[18.5%] -left-5 z-10">
+      <div className="absolute top-[18.5%] -left-[5.13vw] z-10">
         <Image
           src="/assets/stats-and-testimonials/graphics/mobile_stat_canoe.svg"
           alt="Stats canoe"
@@ -94,7 +85,7 @@ export default function StatsTestimonialsMobile() {
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 0.8 }}
         style={{ y: nuggetY, x: nuggetX }}
-        className="absolute top-[30%] -left-5 w-[45vw] h-[40vw] z-10"
+        className="absolute top-[30%] -left-[5.13vw] w-[45vw] h-[40vw] z-10"
       >
         <Image
           src="/assets/stats-and-testimonials/graphics/nugget tube.svg"
@@ -104,110 +95,25 @@ export default function StatsTestimonialsMobile() {
         />
       </motion.div>
 
-      <div className="relative z-10 pt-12 ml-4" id="mobile-stats">
+      <div className="relative z-10 pt-[12.31vw] ml-[4.1vw]" id="mobile-stats">
         <motion.h2
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="font-title text-3xl font-bold text-gray-800 mb-8"
+          className="font-title text-[7.69vw] font-bold text-gray-800 mb-[8.21vw]"
         >
           Last Year We Had...
         </motion.h2>
       </div>
 
-      <motion.div className="absolute top-[44.5%] left-1/2 transform -translate-x-1/2 z-40">
-        <div className="relative w-[75vw] h-[50vw]">
-          <Image
-            src="/assets/stats-and-testimonials/graphics/mobile_testimonial_tube.svg"
-            alt="Testimonial tube"
-            fill
-            className="object-contain"
-          />
-
-          <div className="absolute -top-[30%] left-[25%] w-[140px] h-[170px] overflow-hidden">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentSlide}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
-                transition={{ duration: 0.5, ease: "easeInOut" }}
-                className="w-full h-full"
-              >
-                <Image
-                  src={testimonials[currentSlide].photo}
-                  alt={`${testimonials[currentSlide].name} profile picture`}
-                  fill
-                  className="object-contain object-center"
-                />
-              </motion.div>
-            </AnimatePresence>
-          </div>
-        </div>
-
-        <div className="absolute top-[calc(100%+0.5rem)] left-1/2 transform -translate-x-1/2 flex justify-center">
-          <CarouselControls
-            totalSlides={testimonials.length}
-            currentSlide={currentSlide}
-            onSlideChange={setCurrentSlide}
-            className="justify-center"
-          />
-        </div>
-      </motion.div>
-
-      <div className="absolute bottom-0 left-0 w-full z-30">
+      <div className="absolute bottom-0 left-0 w-full h-[30vw] overflow-hidden z-30">
         <Image
           src="/assets/stats-and-testimonials/graphics/mobile_testimonial_ground.svg"
-          alt="Testimonial ground background"
+          alt="River bank closing the stats scene"
           width={900}
           height={600}
-          className="w-full h-auto object-bottom"
+          className="w-full h-auto"
         />
-        <div className="absolute top-[6%] left-1/2 transform -translate-x-1/2" id="testimonials-mobile">
-          <h3 className="font-title text-4xl font-bold text-gray-800 text-center">
-            Testimonials
-          </h3>
-        </div>
-        <div className="absolute top-[20%] text-left left-1/2 transform -translate-x-1/2 w-full max-w-sm px-8">
-          <div className="mb-3">
-            <h4 className="text-2xl font-semibold text-gray-800 mb-1">
-              {testimonials[currentSlide].name} (
-              {testimonials[currentSlide].pronouns})
-            </h4>
-            <p className="text-lg font-medium">
-              {testimonials[currentSlide].role} |{" "}
-              {testimonials[currentSlide].program} |{" "}
-              {testimonials[currentSlide].year}
-            </p>
-          </div>
-          <div className="mb-4 text-[15px] leading-relaxed">
-            &quot;{testimonials[currentSlide].testimonial}&quot;
-          </div>
-
-          <p className="text-lg text-center font-medium">
-            {testimonials[currentSlide].devpost && (
-              <a
-                href={testimonials[currentSlide].devpost}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline"
-              >
-                Devpost
-              </a>
-            )}{" "}
-            |{" "}
-            {testimonials[currentSlide].linkedin && (
-              <a
-                href={testimonials[currentSlide].linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline"
-              >
-                LinkedIn
-              </a>
-            )}
-          </p>
-        </div>
       </div>
     </div>
   );
