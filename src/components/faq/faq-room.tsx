@@ -95,7 +95,7 @@ const RoomWall = ({
   group: FaqGroup<FaqItem> | null;
   empty: boolean;
 }) => (
-  <div className="relative z-20 aspect-[1531/592] w-full">
+  <div className="relative z-40 aspect-[1531/592] w-full">
     <Image
       src="/assets/faq/tapestry.svg"
       alt=""
@@ -167,7 +167,7 @@ const Cabinet = ({
     : { left: [], right: [] };
 
   return (
-    <div className="relative z-10 w-full">
+    <div className="relative z-30 w-full">
       <Image
         src="/assets/faq/cabinet.svg"
         alt=""
@@ -315,7 +315,7 @@ const FaqRoom = ({ layout }: { layout: FaqLayout<FaqItem> }) => {
   return (
     <>
       {/* Desktop: the room itself. */}
-      <div className="hidden w-full @container xl:block">
+      <div className="hidden w-full @container xl:-mt-[60.3%] xl:block">
         <RoomWall
           group={layout.tapestry}
           empty={empty}
@@ -341,7 +341,7 @@ const FaqRoom = ({ layout }: { layout: FaqLayout<FaqItem> }) => {
           aria-hidden="true"
           width={1531}
           height={351}
-          className="relative z-[2] -mt-[19.62%] block h-auto w-full"
+          className="relative z-20 -mt-[19.62%] block h-auto w-full"
         />
       </div>
 
