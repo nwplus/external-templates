@@ -28,12 +28,19 @@ const CrtTv = ({ selected, empty }: CrtTvProps) => (
     {/* The flat part of the screen, inside the curve of the static. */}
     <div
       aria-live="polite"
-      className="absolute top-[9%] left-[12.5%] h-[60.5%] w-[75.4%] overflow-y-auto px-[2cqw] pt-[2cqw] text-tv-ink"
+      className="absolute top-[8.5%] left-[12.5%] h-[64%] w-[75.4%] overflow-y-auto text-tv-ink"
     >
       {selected ? (
-        <p className="font-body text-[3.4cqw] leading-snug whitespace-pre-line">
-          {selected.answer}
-        </p>
+        /* An answer is prose, and prose does not survive being set straight on
+           the static — the speckle runs at the same frequency as the
+           letterforms. A wash calms the texture under the words while the set
+           still reads as a CRT, and the block is centred so a short answer
+           does not hang off the top edge. */
+        <div className="flex min-h-full items-center bg-tape-label/80 px-[4cqw] py-[3.5cqw] [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)]">
+          <p className="font-body text-[max(0.8125rem,3.6cqw)] leading-relaxed whitespace-pre-line">
+            {selected.answer}
+          </p>
+        </div>
       ) : (
         <div className="flex h-full flex-col items-center justify-center gap-[7cqw] text-center">
           <p className="font-display text-[12.4cqw] leading-none">FAQ</p>
@@ -47,7 +54,7 @@ const CrtTv = ({ selected, empty }: CrtTvProps) => (
     </div>
 
     {/* The tape in the slot carries the question being answered. */}
-    <p className="absolute top-[79.5%] left-[26%] flex h-[5.9%] w-[64.6%] items-center justify-center overflow-hidden px-[1.5cqw] text-center font-body text-[1.9cqw] leading-[1.15] text-ink">
+    <p className="absolute top-[79.5%] left-[26%] flex h-[5.9%] w-[64.6%] items-center justify-center overflow-hidden px-[1.5cqw] text-center font-body text-[max(0.625rem,1.9cqw)] leading-[1.15] text-ink">
       <span className="truncate">{selected?.question}</span>
     </p>
   </div>

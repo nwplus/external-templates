@@ -315,7 +315,7 @@ const FaqRoom = ({ layout }: { layout: FaqLayout<FaqItem> }) => {
   return (
     <>
       {/* Desktop: the room itself. */}
-      <div className="hidden w-full @container md:block">
+      <div className="hidden w-full @container xl:block">
         <RoomWall
           group={layout.tapestry}
           empty={empty}
@@ -346,13 +346,13 @@ const FaqRoom = ({ layout }: { layout: FaqLayout<FaqItem> }) => {
       </div>
 
       {/* Mobile: shelves only, with the television above them. */}
-      <div className="md:hidden">
+      <div className="xl:hidden">
         <div
           ref={mobileTvRef}
           // The Ten Years section above is z-20 as a whole and its grass
           // buffer hangs 18vw past its own bottom edge, so the television
           // starts below that reach rather than fighting it for z-order.
-          className="mx-auto w-[92%] scroll-mt-6 pt-[20vw] pb-8"
+          className="mx-auto w-[92%] max-w-[520px] scroll-mt-6 pt-[20vw] pb-8"
         >
           <CrtTv selected={selected} empty={empty} />
         </div>
