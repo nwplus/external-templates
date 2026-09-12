@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import Facebook from "./social/facebook";
 import Instagram from "./social/instagram";
@@ -46,8 +46,21 @@ const LINKS = [
   },
 ];
 
+const NARROW_QUERY = "(max-width: 1279px)";
+
 const Contact = () => {
   const [inputMessage, setInputMessage] = useState("");
+  const [isNarrow, setIsNarrow] = useState(false);
+
+  // The phone frame labels the field and asks for "Enter your email"; the desktop
+  // frame drops the label and puts the invitation in the placeholder instead.
+  useEffect(() => {
+    const query = window.matchMedia(NARROW_QUERY);
+    const sync = () => setIsNarrow(query.matches);
+    sync();
+    query.addEventListener("change", sync);
+    return () => query.removeEventListener("change", sync);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -74,8 +87,8 @@ const Contact = () => {
   };
 
   return (
-    <div className="flex w-full flex-col items-center gap-6 md:gap-8">
-      <div className="flex items-center gap-6 md:gap-10">
+    <div className="flex w-full flex-col items-center gap-6 xl:gap-8">
+      <div className="flex items-center gap-5 xl:gap-11">
         {SOCIALS.map(({ href, label, Icon }) => (
           <a
             key={href}
@@ -85,12 +98,12 @@ const Contact = () => {
             aria-label={label}
             className="transition-opacity hover:opacity-80"
           >
-            <Icon className="size-8 md:size-12" />
+            <Icon className="size-7 xl:size-15" />
           </a>
         ))}
       </div>
 
-      <div className="flex flex-wrap justify-center gap-x-8 gap-y-2 font-body text-base font-bold underline md:text-2xl">
+      <div className="flex flex-wrap justify-center gap-x-3 gap-y-2 font-body text-sm font-bold underline xl:gap-x-9 xl:text-3xl">
         {LINKS.map(({ href, label }) => {
           const external = href.startsWith("http");
           return (
@@ -107,28 +120,39 @@ const Contact = () => {
       </div>
 
       <form
-        className="flex w-full max-w-xl flex-col items-stretch gap-3 md:flex-row md:items-center"
+        className="flex w-full max-w-[45rem] flex-col gap-1"
         onSubmit={handleSubmit}
       >
-        <input
-          type="email"
-          name="email"
-          required
-          aria-label="Email address"
-          placeholder="Sign up for our newsletter!"
-          className="grow rounded-full bg-[#bab9c5] px-5 py-3 font-body text-ink placeholder:text-ink/70 focus:outline-none focus-visible:ring-2 focus-visible:ring-sun"
-        />
-        <Button
-          type="submit"
-          className="h-auto rounded-md bg-sun px-6 py-3 font-body text-sun-ink hover:bg-sun/90"
+        <label
+          htmlFor="newsletter-email"
+          className="font-body text-lg xl:sr-only"
         >
-          Submit
-        </Button>
+          Sign up for our newsletter!
+        </label>
+
+        <div className="flex items-center gap-2 xl:gap-5">
+          <input
+            id="newsletter-email"
+            type="email"
+            name="email"
+            required
+            placeholder={
+              isNarrow ? "Enter your email" : "Sign up for our newsletter!"
+            }
+            className="grow rounded-2xl border border-white bg-cream-soft/70 px-5 py-2.5 font-body text-night-top placeholder:text-night-top focus:outline-none focus-visible:ring-2 focus-visible:ring-sun xl:text-xl"
+          />
+          <Button
+            type="submit"
+            className="h-auto shrink-0 rounded-[10px] bg-sun px-6 py-3 font-body text-sun-ink hover:bg-sun/90 xl:text-lg"
+          >
+            Submit
+          </Button>
+        </div>
       </form>
 
       <p
         aria-live="polite"
-        className="min-h-5 font-body text-sm text-muted-cream"
+        className="min-h-5 font-body text-sm text-cream-soft"
       >
         {inputMessage}
       </p>

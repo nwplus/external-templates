@@ -15,6 +15,7 @@
   --color-night-bottom: var(--night-bottom);
   --color-cream: var(--cream);
   --color-cream-light: var(--cream-light);
+  --color-cream-soft: var(--cream-soft);
   --color-wood: var(--wood);
   --color-shelf: var(--shelf);
   --color-sun: var(--sun);
@@ -88,10 +89,11 @@ body {
   --night-bottom: #172453;
   --cream: #fff3d5;
   --cream-light: #fff5e1;
+  --cream-soft: #fff8f5;
   --wood: #764928;
   --shelf: #d7ad56;
-  --sun: #d9a625;
-  --sun-ink: #5a450f;
+  --sun: #eeb62a;
+  --sun-ink: #010100;
   --star: #fff186;
   --cloud: #241e47;
   --bed: #596ed8;
