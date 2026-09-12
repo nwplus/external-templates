@@ -11,7 +11,7 @@ export default function Hero() {
       {/* Desktop */}
       <div className="hidden md:block">
         <Section1 />
-        <Section2 className="-mt-[25vw]" />
+        <Section2 />
       </div>
       {/* Mobile */}
       <div className="block md:hidden">

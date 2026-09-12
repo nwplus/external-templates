@@ -22,9 +22,9 @@ export default function Navbar() {
   ];
 
   return (
-    <div>
+    <div className="absolute z-100 w-full top-0 left-0">
       <MlhBadge />
-      <div className="text-white w-full justify-center items-center flex gap-15 px-3 py-6 text-[1.3rem] font-extrabold">
+      <div className="text-white w-full justify-center items-center flex gap-15 px-3 py-6 text-[1.6rem] uppercase font-title">
         {links.map((link) => (
           <div
             key={link.name}
