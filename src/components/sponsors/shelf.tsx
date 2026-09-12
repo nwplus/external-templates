@@ -1,77 +1,97 @@
 import type { Decoration } from "@/lib/shelves";
+import { cn } from "@/lib/utils";
 
 import Image from "next/image";
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
-const DECORATIONS: Record<
+/** The real artwork behind each decoration, at its true intrinsic size. */
+export const DECORATION_ART: Record<
   Decoration,
-  { src: string; width: number; height: number; className: string }
+  { src: string; width: number; height: number }
 > = {
   "books-left": {
-    src: "/assets/sponsors/books-left.svg",
-    width: 230,
-    height: 260,
-    className: "w-[16vw] max-w-[230px]",
+    src: "/assets/sponsors/books-left.webp",
+    width: 515,
+    height: 596,
   },
   "books-right": {
-    src: "/assets/sponsors/books-right.svg",
-    width: 230,
-    height: 240,
-    className: "w-[16vw] max-w-[230px]",
+    src: "/assets/sponsors/books-right.webp",
+    width: 516,
+    height: 545,
   },
-  sheep: {
-    src: "/assets/sponsors/sheep.svg",
-    width: 200,
-    height: 200,
-    className: "w-[14vw] max-w-[200px]",
-  },
-  plant: {
-    src: "/assets/sponsors/plant.svg",
-    width: 330,
-    height: 330,
-    className: "w-[22vw] max-w-[330px]",
-  },
+  sheep: { src: "/assets/sponsors/sheep.svg", width: 231, height: 238 },
+  plant: { src: "/assets/sponsors/plant.svg", width: 368, height: 368 },
 };
 
-const DecorationImage = ({ kind }: { kind: Decoration }) => {
-  const d = DECORATIONS[kind];
+/**
+ * How wide each decoration stands, and how far its outer edge is inset from
+ * the end of the plank — both as a share of the shelf, so a row keeps the
+ * design's proportions at any width. The plant leans past the shelf's end,
+ * hence its negative inset.
+ */
+const PLACEMENT: Record<Decoration, { size: number; inset: number }> = {
+  "books-left": { size: 20.5, inset: 3.1 },
+  "books-right": { size: 20.4, inset: 2.2 },
+  sheep: { size: 18.2, inset: 5.6 },
+  plant: { size: 29, inset: -3.3 },
+};
+
+const ShelfDecoration = ({
+  kind,
+  side,
+}: {
+  kind: Decoration;
+  side: "left" | "right";
+}) => {
+  const art = DECORATION_ART[kind];
+  const { size, inset } = PLACEMENT[kind];
+  const style: CSSProperties = {
+    width: `${size}%`,
+    ...(side === "left" ? { left: `${inset}%` } : { right: `${inset}%` }),
+  };
+
   return (
     <Image
-      src={d.src}
+      src={art.src}
       alt=""
       aria-hidden
-      width={d.width}
-      height={d.height}
-      className={`hidden h-auto shrink-0 md:block ${d.className}`}
+      width={art.width}
+      height={art.height}
+      style={style}
+      className="pointer-events-none absolute bottom-0 hidden h-auto xl:block"
     />
   );
 };
 
+/**
+ * One shelf: whatever stands on it, bottom-aligned onto the plank, with a
+ * decoration parked against either end.
+ */
 const Shelf = ({
   left,
   right,
+  className,
   children,
 }: {
   left?: Decoration;
   right?: Decoration;
+  className?: string;
   children: ReactNode;
 }) => {
   return (
-    <div className="mx-auto w-full max-w-[1110px] px-4">
-      <div className="flex items-end justify-center gap-6 md:gap-10">
-        {left && <DecorationImage kind={left} />}
-        <div className="flex flex-wrap items-end justify-center gap-6 md:gap-10">
-          {children}
-        </div>
-        {right && <DecorationImage kind={right} />}
+    <div className={cn("mx-auto w-[94.8%] xl:w-[82.8%]", className)}>
+      <div className="relative flex items-end justify-center">
+        {children}
+        {left && <ShelfDecoration kind={left} side="left" />}
+        {right && <ShelfDecoration kind={right} side="right" />}
       </div>
       <Image
-        src="/assets/sponsors/shelf.svg"
+        src="/assets/sponsors/shelf.webp"
         alt=""
         aria-hidden
-        width={1110}
-        height={60}
-        className="-mt-1 h-auto w-full"
+        width={1600}
+        height={78}
+        className="pointer-events-none relative -mt-px h-auto w-full"
       />
     </div>
   );

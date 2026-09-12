@@ -1,5 +1,5 @@
 import type { SponsorDoc } from "@/lib/firestore";
-import { buildShelves } from "@/lib/shelves";
+import { buildShelves, frameRows, type ShelfSpec } from "@/lib/shelves";
 
 import { describe, expect, it } from "vitest";
 
@@ -16,6 +16,10 @@ const mk = (
   link: `https://${name}.example.com`,
 });
 
+/** The shelves that carry sponsors, without the decoration-only one. */
+const sponsorShelves = (shelves: ShelfSpec[]) =>
+  shelves.filter((shelf) => shelf.kind !== "decor");
+
 describe("buildShelves", () => {
   it("returns no shelves for no sponsors", () => {
     expect(buildShelves([])).toEqual([]);
@@ -23,7 +27,7 @@ describe("buildShelves", () => {
 
   it("gives a blurb sponsor its own card shelf with books left and sheep right", () => {
     const shelves = buildShelves([mk("google", "title", "We love hackers")]);
-    expect(shelves).toEqual([
+    expect(sponsorShelves(shelves)).toEqual([
       {
         kind: "card",
         sponsor: expect.objectContaining({ name: "google" }),
@@ -39,26 +43,32 @@ describe("buildShelves", () => {
       mk("b", "platinum", "blurb b"),
       mk("c", "gold", "blurb c"),
     ]);
-    expect(shelves.map((s) => [s.left, s.right])).toEqual([
+    expect(sponsorShelves(shelves).map((s) => [s.left, s.right])).toEqual([
       ["books-left", "sheep"],
       ["sheep", "books-left"],
       ["books-left", "sheep"],
     ]);
   });
 
-  it("packs non-blurb sponsors into frame shelves of three, alternating plant and books", () => {
+  it("packs non-blurb sponsors into frame shelves of three, swapping the plant and books sides", () => {
     const sponsors = ["a", "b", "c", "d", "e", "f", "g"].map((n) =>
       mk(n, "silver")
     );
     const shelves = buildShelves(sponsors);
-    expect(shelves.map((s) => s.kind)).toEqual(["frames", "frames", "frames"]);
+    expect(sponsorShelves(shelves).map((s) => s.kind)).toEqual([
+      "frames",
+      "frames",
+      "frames",
+    ]);
     expect(
-      shelves.map((s) => (s.kind === "frames" ? s.sponsors.length : 0))
+      sponsorShelves(shelves).map((s) =>
+        s.kind === "frames" ? s.sponsors.length : 0
+      )
     ).toEqual([3, 3, 1]);
-    expect(shelves.map((s) => [s.left, s.right])).toEqual([
-      ["plant", undefined],
-      [undefined, "books-right"],
-      ["plant", undefined],
+    expect(sponsorShelves(shelves).map((s) => [s.left, s.right])).toEqual([
+      ["plant", "books-right"],
+      ["books-right", "plant"],
+      ["plant", "books-right"],
     ]);
   });
 
@@ -86,14 +96,19 @@ describe("buildShelves", () => {
       mk("frame-co", "gold"),
       mk("card-co", "silver", "has a blurb"),
     ]);
-    expect(shelves.map((s) => s.kind)).toEqual(["card", "frames"]);
+    expect(sponsorShelves(shelves).map((s) => s.kind)).toEqual([
+      "card",
+      "frames",
+    ]);
   });
 
-  it("respects a smaller framesPerShelf for mobile", () => {
+  it("respects a smaller framesPerShelf", () => {
     const sponsors = ["a", "b", "c"].map((n) => mk(n, "gold"));
-    const shelves = buildShelves(sponsors, 2);
+    const shelves = buildShelves(sponsors, { framesPerShelf: 2 });
     expect(
-      shelves.map((s) => (s.kind === "frames" ? s.sponsors.length : 0))
+      sponsorShelves(shelves).map((s) =>
+        s.kind === "frames" ? s.sponsors.length : 0
+      )
     ).toEqual([2, 1]);
   });
 
@@ -120,11 +135,70 @@ describe("buildShelves", () => {
       mk("card-co", "title", "has a blurb"),
       ...["a", "b", "c", "d"].map((n) => mk(n, "silver")),
     ]);
-    expect(shelves.map((s) => s.kind)).toEqual(["card", "frames", "frames"]);
-    expect(shelves.map((s) => [s.left, s.right])).toEqual([
-      ["books-left", "sheep"],
-      ["plant", undefined],
-      [undefined, "books-right"],
+    expect(shelves.map((s) => s.kind)).toEqual([
+      "card",
+      "decor",
+      "frames",
+      "frames",
     ]);
+    expect(sponsorShelves(shelves).map((s) => [s.left, s.right])).toEqual([
+      ["books-left", "sheep"],
+      ["plant", "books-right"],
+      ["books-right", "plant"],
+    ]);
+  });
+
+  it("sits the decoration shelf between the cards and the frames", () => {
+    const shelves = buildShelves([
+      mk("card-co", "title", "has a blurb"),
+      ...["a", "b", "c"].map((n) => mk(n, "silver")),
+    ]);
+    expect(shelves.map((s) => s.kind)).toEqual(["card", "decor", "frames"]);
+    expect(shelves[1]).toEqual({
+      kind: "decor",
+      items: ["books-left", "sheep", "plant"],
+    });
+  });
+
+  it("puts the decoration shelf last when there are no frame sponsors", () => {
+    const shelves = buildShelves([mk("card-co", "title", "has a blurb")]);
+    expect(shelves.map((s) => s.kind)).toEqual(["card", "decor"]);
+  });
+
+  it("never opens the band with the decoration shelf", () => {
+    const shelves = buildShelves(["a", "b"].map((n) => mk(n, "silver")));
+    expect(shelves.map((s) => s.kind)).toEqual(["frames", "decor"]);
+  });
+
+  it("skips the decoration shelf when there are no sponsors at all", () => {
+    expect(buildShelves([])).toEqual([]);
+  });
+});
+
+describe("frameRows", () => {
+  it("hangs the first frame above the two that stand on the shelf", () => {
+    expect(frameRows(["a", "b", "c"])).toEqual({
+      raised: ["a"],
+      standing: ["b", "c"],
+    });
+  });
+
+  it("stands a lone frame on the shelf", () => {
+    expect(frameRows(["a"])).toEqual({ raised: [], standing: ["a"] });
+  });
+
+  it("stands a pair of frames on the shelf", () => {
+    expect(frameRows(["a", "b"])).toEqual({ raised: [], standing: ["a", "b"] });
+  });
+
+  it("raises every frame past the last two", () => {
+    expect(frameRows(["a", "b", "c", "d"])).toEqual({
+      raised: ["a", "b"],
+      standing: ["c", "d"],
+    });
+  });
+
+  it("has nothing on either row for no frames", () => {
+    expect(frameRows([])).toEqual({ raised: [], standing: [] });
   });
 });
