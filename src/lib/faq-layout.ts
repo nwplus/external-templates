@@ -30,3 +30,14 @@ export function layoutFaqs<T extends FaqItem>(
   const [tapestry = null, ...shelves] = groups;
   return { tapestry, shelves };
 }
+
+/**
+ * Splits one cabinet category's tapes into the two bottom-aligned stacks the
+ * design piles inside the cabinet. The split is sequential, so reading order
+ * runs down the left stack and then down the right one; an odd count leaves
+ * the extra tape on the left, which is the taller stack in the design.
+ */
+export function splitTapeStacks<T>(faqs: T[]): { left: T[]; right: T[] } {
+  const half = Math.ceil(faqs.length / 2);
+  return { left: faqs.slice(0, half), right: faqs.slice(half) };
+}

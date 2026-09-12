@@ -1,4 +1,4 @@
-import { layoutFaqs } from "@/lib/faq-layout";
+import { layoutFaqs, splitTapeStacks } from "@/lib/faq-layout";
 import type { FAQDoc } from "@/lib/firestore";
 
 import { describe, expect, it } from "vitest";
@@ -63,5 +63,29 @@ describe("layoutFaqs", () => {
       tapestry: { category: "General", faqs: general },
       shelves: [{ category: "Teams & Projects", faqs: teams }],
     });
+  });
+});
+
+describe("splitTapeStacks", () => {
+  it("returns two empty stacks for no tapes", () => {
+    expect(splitTapeStacks([])).toEqual({ left: [], right: [] });
+  });
+
+  it("keeps reading order down the left stack and then the right one", () => {
+    expect(splitTapeStacks(["a", "b", "c", "d"])).toEqual({
+      left: ["a", "b"],
+      right: ["c", "d"],
+    });
+  });
+
+  it("leaves the extra tape on the left stack for an odd count", () => {
+    expect(splitTapeStacks(["a", "b", "c"])).toEqual({
+      left: ["a", "b"],
+      right: ["c"],
+    });
+  });
+
+  it("puts a lone tape on the left stack", () => {
+    expect(splitTapeStacks(["a"])).toEqual({ left: ["a"], right: [] });
   });
 });
