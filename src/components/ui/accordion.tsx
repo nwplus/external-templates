@@ -10,6 +10,7 @@ import Image from "next/image";
 interface AccordionTriggerProps
   extends React.ComponentProps<typeof AccordionPrimitive.Trigger> {
   variant?: "faq" | "hero";
+  icon?: React.ReactNode;
 }
 
 function Accordion({
@@ -35,6 +36,7 @@ function AccordionTrigger({
   className,
   children,
   variant = "faq",
+  icon,
   ...props
 }: AccordionTriggerProps) {
   return (
@@ -51,15 +53,16 @@ function AccordionTrigger({
         {...props}
       >
         {variant == "hero" && (
-          <>
-            <Image
-              src="/assets/hero/arrow.svg"
-              alt="Arrow"
-              className="arrow-right pointer-events-none my-auto transition-all duration-200"
-              width={16}
-              height={16}
-            />
-          </>
+          <span className="arrow-right pointer-events-none my-auto shrink-0 transition-all duration-200">
+            {icon ?? (
+              <Image
+                src="/assets/hero/arrow.svg"
+                alt="Arrow"
+                width={16}
+                height={16}
+              />
+            )}
+          </span>
         )}
         {children}
         {variant == "faq" && (
