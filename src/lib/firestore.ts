@@ -37,7 +37,7 @@ export interface SponsorDoc {
     | "inkind";
 }
 
-export const CURRENT_HACKATHON = "HackCamp2025";
+export const CURRENT_HACKATHON = "HackCamp2026";
 
 /**
  * Fetches FAQ documents from Firestore for a specific hackathon

@@ -1,59 +1,21 @@
 import type { Metadata } from "next";
-import { Poor_Story } from "next/font/google";
+import { Arsenal } from "next/font/google";
 import localFont from "next/font/local";
 
 import "./globals.css";
 
-const cygre = localFont({
-  src: [
-    {
-      path: "../../public/fonts/cygre/Cygre-Regular.ttf",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "../../public/fonts/cygre/Cygre-RegularIt.ttf",
-      weight: "400",
-      style: "italic",
-    },
-    {
-      path: "../../public/fonts/cygre/Cygre-Medium.ttf",
-      weight: "500",
-      style: "normal",
-    },
-    {
-      path: "../../public/fonts/cygre/Cygre-MediumIt.ttf",
-      weight: "500",
-      style: "italic",
-    },
-    {
-      path: "../../public/fonts/cygre/Cygre-SemiBold.ttf",
-      weight: "600",
-      style: "normal",
-    },
-    {
-      path: "../../public/fonts/cygre/Cygre-SemiBoldIt.ttf",
-      weight: "600",
-      style: "italic",
-    },
-    {
-      path: "../../public/fonts/cygre/Cygre-Bold.ttf",
-      weight: "700",
-      style: "normal",
-    },
-    {
-      path: "../../public/fonts/cygre/Cygre-BoldIt.ttf",
-      weight: "700",
-      style: "italic",
-    },
-  ],
-  variable: "--font-cygre",
+const arsenal = Arsenal({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-arsenal",
 });
 
-const poorStory = Poor_Story({
-  subsets: ["latin"],
-  weight: ["400"],
-  variable: "--font-poor-story",
+const tovariSans = localFont({
+  src: "../../public/fonts/TovariSans.ttf",
+  weight: "700",
+  display: "swap",
+  variable: "--font-tovari-sans",
 });
 
 const siteUrl = "https://hackcamp.nwplus.io";
@@ -92,9 +54,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${poorStory.variable} ${cygre.variable} antialiased`}
+      className={`${tovariSans.variable} ${arsenal.variable} antialiased`}
     >
-      <body className={cygre.className}>{children}</body>
+      <body className={arsenal.className}>{children}</body>
     </html>
   );
 }

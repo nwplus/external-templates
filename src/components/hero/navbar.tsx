@@ -13,8 +13,8 @@ export default function Navbar() {
   const links = [
     { name: "About", href: "about" },
     { name: "Our Events", href: "our-events" },
-    { name: "Recap", href: "recap" },
     { name: "Stats", href: "stats" },
+    { name: "Recap", href: "recap" },
     { name: "Testimonials", href: "testimonials" },
     { name: "11 Years", href: "10-years" },
     { name: "FAQ", href: "faq" },

@@ -1,6 +1,5 @@
 import HeroMobile from "@/components/hero-mobile/hero-mobile";
 import LearnMobile from "@/components/hero-mobile/learn-mobile";
-import MobileRecap from "@/components/hero-mobile/mobile-recap";
 import OurEvents from "@/components/hero-mobile/our-events";
 
 import Section1 from "./section-1";
@@ -17,7 +16,6 @@ export default function Hero() {
         <HeroMobile />
         <LearnMobile />
         <OurEvents />
-        <MobileRecap />
       </div>
     </>
   );

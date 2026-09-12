@@ -7,10 +7,10 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-title: var(--title);
-  --font-sans: var(--font-cygre);
-  --font-title: var(--font-poor-story);
-  --font-display: var(--font-poor-story);
-  --font-body: var(--font-cygre);
+  --font-sans: var(--font-arsenal);
+  --font-title: var(--font-tovari-sans);
+  --font-display: var(--font-tovari-sans);
+  --font-body: var(--font-arsenal);
   --color-night-top: var(--night-top);
   --color-night-bottom: var(--night-bottom);
   --color-cream: var(--cream);
@@ -75,14 +75,13 @@ html,
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
   overflow-x: clip;
   scroll-behavior: smooth;
 }
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
+  --background: #121b40;
   --foreground: oklch(0.145 0 0);
   --title: #ffe4d0;
   --night-top: #101737;
