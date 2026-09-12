@@ -8,7 +8,7 @@ const Footer = () => {
   return (
     <footer
       id="footer"
-      className="relative w-full overflow-hidden bg-night-bottom text-cream-soft"
+      className="relative z-10 -mt-[26.6%] w-full overflow-hidden bg-night-bottom text-cream-soft"
     >
       {/*
         The night scene keeps the proportions it has in the design: a box as

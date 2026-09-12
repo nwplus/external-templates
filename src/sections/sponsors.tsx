@@ -11,6 +11,7 @@ import {
   subscribeToSponsorsByHackathon,
 } from "@/lib/firestore";
 import { buildShelves } from "@/lib/shelves";
+import { cn } from "@/lib/utils";
 
 import { useEffect, useState } from "react";
 
@@ -33,7 +34,7 @@ const Sponsors = () => {
       // Slides up under the FAQ's cloud band by the same 22% of the width the
       // design overlaps them, so the garland's cords come out of the clouds
       // instead of hanging from the top edge of the band.
-      className="relative -mt-[22.08%] w-full overflow-hidden bg-linear-to-b from-night-top to-night-bottom pt-[9.28%] text-cream"
+      className="relative -mt-[22.08%] w-full overflow-visible bg-linear-to-b from-night-top to-night-bottom to-85% pt-[9.28%] text-cream"
     >
       {/* Everything is sized as a share of this box, which is the design's
           own width, so the band keeps its proportions at any viewport. */}
@@ -90,11 +91,13 @@ const Sponsors = () => {
         )}
 
         {/* The second garland hangs off the last plank, so it overlaps it. */}
+        {/* Hangs over the footer's clouds, which start behind it. */}
         <StringLights
           variant="bottom"
-          className={
+          className={cn(
+            "relative z-20",
             shelves.length > 0 ? "-mt-[1.8%] xl:-mt-[3.6%]" : "mt-[6%]"
-          }
+          )}
         />
       </div>
     </section>
