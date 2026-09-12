@@ -8,10 +8,12 @@ import Section2 from "./section-2";
 export default function Hero() {
   return (
     <>
+      {/* Desktop */}
       <div className="hidden md:block">
         <Section1 />
         <Section2 className="-mt-[25vw]" />
       </div>
+      {/* Mobile */}
       <div className="block md:hidden">
         <HeroMobile />
         <LearnMobile />
