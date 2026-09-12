@@ -1,13 +1,14 @@
 "use client";
 
-import EntranceSign from "@/components/hero/entrance-sign";
-import Sign from "@/components/hero/sign";
 import { useCountdown } from "@/lib/useCountdown";
 
-import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
+
+import { cn } from "@/lib/utils";
 
 import Navbar from "../../components/hero/navbar";
+import { TopCloudScrim } from "@/components/hero/top-cloud-scrim";
+import { TopCloudInnerScrim } from "@/components/hero/top-cloud-inner-scrim";
 
 const carImages = [
   {
@@ -44,8 +45,30 @@ const carImages = [
   },
 ];
 
+const CtaLink = ({
+  href,
+  children,
+  className,
+}: {
+  href: string;
+  children: ReactNode;
+  className?: string;
+}) => (
+  <a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    className={cn(
+      "bg-[#EEB62A] text-2xl font-bold rounded-md px-4 py-2.5 hover:opacity-80 transition-opacity",
+      className
+    )}
+  >
+    {children}
+  </a>
+);
+
 const Section1 = () => {
-  const { days, hours, minutes } = useCountdown();
+  const { days, minutes, seconds } = useCountdown();
   const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
@@ -78,80 +101,70 @@ const Section1 = () => {
     return 1;
   };
 
-  // Container min-height based on background image aspect ratio (2238÷1920 = 116.56vw)
   return (
-    <div className="relative flex flex-col bg-hero-1 bg-cover bg-center bg-no-repeat h-[116.56vw] pt-4">
+    <div className="bg-linear-to-b from-[#0B0F27] to-[#28418D]">
       <Navbar />
-      <div className="absolute left-1/2 -translate-x-1/2 top-[10vw] w-[65vw]">
-        <EntranceSign />
-        <Image
-          src="/assets/hero/hackathon-info-left.svg"
-          alt="In-person event"
-          title="In-person event"
-          width={350}
-          height={200}
-          className="absolute left-0 bottom-0 w-[35%]"
-        />
-        <Image
-          src="/assets/hero/hackathon-info-right.svg"
-          alt="Nov 7: Learn Day; Nov 7-8: Build Night"
-          title="Nov 7: Learn Day; Nov 7-8: Build Night"
-          width={400}
-          height={400}
-          className="absolute -right-[5vw] -bottom-[5vw] w-[35%]"
-        />
-      </div>
-      <Sign
-        number={days}
-        unit="days"
-        className="absolute left-[8vw] top-[38vw] w-[9vw]"
-      />
-      <Sign
-        number={hours}
-        unit="hours"
-        className="absolute left-[15.5vw] top-[41vw] w-[9vw]"
-      />
-      <Sign
-        number={minutes}
-        unit="minutes"
-        className="absolute left-[23vw] top-[45vw] w-[9vw]"
-      />
-      {carImages.map((car, index) => (
-        <Image
-          key={index}
-          src={car.src}
-          alt={car.alt}
-          className="absolute"
-          width={250}
-          height={250}
-          style={{
-            left: car.left,
-            top: car.top,
-            width: car.width,
-            opacity: getCarOpacity(car.scrollRange),
-            transition: "opacity 0.3s ease-out",
-          }}
-        />
-      ))}
-      <div className="absolute left-[7.5vw] top-[62.5vw] w-[37vw] flex flex-col gap-[1.5vw]">
-        <h2 className="text-[3.5vw] font-title leading-none text-shadow-bold">
-          Welcome to HackCamp
-        </h2>
-        <p className="text-[1.2vw]">
-          HackCamp provides a space for hundreds of first-time hackers curious
-          about technology to explore the field further through hands-on
-          learning, regardless of whether you have coding experience or not!
-        </p>
-        <p className="text-[1.2vw]">
-          Over the past 11 years, HackCamp has revolved around accessibility,
-          inclusivity, and diversity. We strive to help people break into
-          hackathon spaces by providing beginner-oriented workshops, industry
-          connections, encouraging you to bring your unique perspectives and
-          experiences to build your own project.
-        </p>
+
+      {/* Hero wrapper */}
+      <div className="relative top-0 w-full">
+
+        {/* Cloud decal */}
+        <div className="absolute top-0 left-0 w-full">
+          <TopCloudScrim />
+        </div>
+
+        {/* Inner cloud decal */}
+        <div className="absolute top-0 left-0 w-full">
+          <TopCloudInnerScrim />
+        </div>
+
+        {/* Hero content */}
+        <div className="relative z-20 min-h-screen pt-50">
+
+          {/* Hero text */}
+          <div className=" mx-auto w-[80vw] flex flex-col items-center">
+            <h1 className='font-title text-9xl uppercase text-white'>HackCamp</h1>
+            <h3 className="text-white text-2xl">Canada's largest beginner friendly hackathon</h3>
+            <div className="flex gap-4 items-center pt-8">
+              <CtaLink href="#">Register Now</CtaLink>
+              <CtaLink href="#">
+                Become a Mentor
+              </CtaLink>
+            </div>
+          </div>
+
+          {/* Countdown */}
+          <div className="flex flex-col gap-2 text-white">
+            <div>
+              Applications close in
+            </div>
+            <div className="flex">
+              <div>
+                <div>{days}</div>
+                <div>
+                  Days
+                </div>
+              </div>
+              <div>
+                <div>{minutes}</div>
+                <div>
+                  Minutes
+                </div>
+              </div>
+              <div>
+                <div>{seconds}</div>
+                <div>
+                  Seconds
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
       </div>
     </div>
   );
 };
+
 
 export default Section1;

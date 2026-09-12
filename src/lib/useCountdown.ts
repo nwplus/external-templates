@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 const getReturnValues = (countdown: number) => {
   if (countdown < 0) {
-    return { days: 0, hours: 0, minutes: 0 };
+    return { days: 0, hours: 0, minutes: 0, seconds: 0 };
   }
 
   // calculate time left
@@ -13,8 +13,9 @@ const getReturnValues = (countdown: number) => {
   const minutes = twoify(
     Math.floor((countdown % (1000 * 60 * 60)) / (1000 * 60))
   );
+  const seconds = twoify(Math.floor((countdown % (1000 * 60)) / 1000));
 
-  return { days, hours, minutes };
+  return { days, hours, minutes, seconds };
 };
 
 export const useCountdown = () => {

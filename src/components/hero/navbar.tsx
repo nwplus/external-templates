@@ -14,17 +14,17 @@ export default function Navbar() {
     { name: "About", href: "about" },
     { name: "Our Events", href: "our-events" },
     { name: "Stats", href: "stats" },
+    { name: "Prizing", href: "prizing" },
     { name: "Recap", href: "recap" },
     { name: "Testimonials", href: "testimonials" },
-    { name: "11 Years", href: "10-years" },
     { name: "FAQ", href: "faq" },
     { name: "Sponsors", href: "sponsors" },
   ];
 
   return (
-    <div className="flex justify-between items-center px-25">
+    <div className="absolute z-100 w-full top-0 left-0">
       <MlhBadge />
-      <div className="flex gap-15 px-3 py-6 text-[1.3rem] font-extrabold">
+      <div className="text-white w-full justify-center items-center flex gap-15 px-3 py-6 text-[1.6rem] uppercase font-title">
         {links.map((link) => (
           <div
             key={link.name}
