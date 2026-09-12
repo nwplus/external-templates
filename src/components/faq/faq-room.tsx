@@ -161,8 +161,10 @@ const Cabinet = ({
   shelf,
   selected,
   onSelect,
-}: SelectProps & { shelf: FaqGroup<FaqItem> }) => {
-  const { left, right } = splitTapeStacks(shelf.faqs);
+}: SelectProps & { shelf?: FaqGroup<FaqItem> }) => {
+  const { left, right } = shelf
+    ? splitTapeStacks(shelf.faqs)
+    : { left: [], right: [] };
 
   return (
     <div className="relative z-10 w-full">
@@ -182,34 +184,38 @@ const Cabinet = ({
         height={168}
         className="pointer-events-none absolute top-[64.4%] left-[4.15%] h-auto w-[91.5%]"
       />
-      <div className="absolute top-[20.55%] left-[10.53%] @container w-[18.56%]">
-        <Image
-          src="/assets/faq/boombox.svg"
-          alt=""
-          aria-hidden="true"
-          width={282}
-          height={224}
-          className="h-auto w-full"
-        />
-        <h3 className="absolute top-[46.2%] left-[27.2%] flex h-[13.4%] w-[45.7%] items-center justify-center overflow-hidden rounded-[4cqw] bg-tape-label px-[1.5cqw] text-center font-display text-[4.4cqw] leading-none text-ink uppercase">
-          <span className="truncate">{shelf.category}</span>
-        </h3>
-      </div>
-      <TapeStack
-        faqs={left}
-        label={shelf.category}
-        className="absolute bottom-[33.26%] left-[28.97%] w-[28%]"
-        selected={selected}
-        onSelect={onSelect}
-      />
-      <TapeStack
-        faqs={right}
-        label={shelf.category}
-        offset={left.length}
-        className="absolute bottom-[27.12%] left-[57.67%] w-[33.1%]"
-        selected={selected}
-        onSelect={onSelect}
-      />
+      {shelf && (
+        <>
+          <div className="absolute top-[20.55%] left-[10.53%] @container w-[18.56%]">
+            <Image
+              src="/assets/faq/boombox.svg"
+              alt=""
+              aria-hidden="true"
+              width={282}
+              height={224}
+              className="h-auto w-full"
+            />
+            <h3 className="absolute top-[46.2%] left-[27.2%] flex h-[13.4%] w-[45.7%] items-center justify-center overflow-hidden rounded-[4cqw] bg-tape-label px-[1.5cqw] text-center font-display text-[4.4cqw] leading-none text-ink uppercase">
+              <span className="truncate">{shelf.category}</span>
+            </h3>
+          </div>
+          <TapeStack
+            faqs={left}
+            label={shelf.category}
+            className="absolute bottom-[33.26%] left-[28.97%] w-[28%]"
+            selected={selected}
+            onSelect={onSelect}
+          />
+          <TapeStack
+            faqs={right}
+            label={shelf.category}
+            offset={left.length}
+            className="absolute bottom-[27.12%] left-[57.67%] w-[33.1%]"
+            selected={selected}
+            onSelect={onSelect}
+          />
+        </>
+      )}
     </div>
   );
 };
@@ -316,27 +322,26 @@ const FaqRoom = ({ layout }: { layout: FaqLayout<FaqItem> }) => {
           selected={selected}
           onSelect={handleSelect}
         />
-        {layout.shelves.map((shelf) => (
-          <Cabinet
-            key={shelf.category}
-            shelf={shelf}
-            selected={selected}
-            onSelect={handleSelect}
-          />
-        ))}
-        {/* The cloud band starts behind the cabinet and closes the section.
-            With no categories there is no cabinet to hide behind, so it sits
-            below the wall instead of climbing into it. */}
+        {layout.shelves.length > 0 ? (
+          layout.shelves.map((shelf) => (
+            <Cabinet
+              key={shelf.category}
+              shelf={shelf}
+              selected={selected}
+              onSelect={handleSelect}
+            />
+          ))
+        ) : (
+          <Cabinet selected={selected} onSelect={handleSelect} />
+        )}
+        {/* The cloud band starts behind the cabinet and closes the section. */}
         <Image
           src="/assets/faq/cloth-band.svg"
           alt=""
           aria-hidden="true"
           width={1531}
           height={351}
-          className={cn(
-            "relative z-0 block h-auto w-full",
-            layout.shelves.length > 0 && "-mt-[19.62%]"
-          )}
+          className="relative z-0 -mt-[19.62%] block h-auto w-full"
         />
       </div>
 
