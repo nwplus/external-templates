@@ -1,8 +1,8 @@
 import RecapMobile from "@/components/mobile/recap-mobile";
 import TestimonialsMobile from "@/components/mobile/testimonials-mobile";
+import Events from "@/sections/events";
 import Faq from "@/sections/faq";
 import Hero from "@/sections/hero";
-import Learn from "@/sections/learn";
 import Recap from "@/sections/recap";
 import SponsorFooter from "@/sections/sponsor-footer";
 import StatsTestimonials from "@/sections/stats-testimonials";
@@ -13,10 +13,7 @@ export default function Home() {
   return (
     <div className="relative">
       <Hero />
-
-      <div className="hidden md:block">
-        <Learn />
-      </div>
+      <Events />
 
       <StatsTestimonials />
 
