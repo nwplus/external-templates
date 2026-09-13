@@ -1,23 +1,40 @@
 import { WELCOME_PARAGRAPHS, WELCOME_TITLE } from "@/constants/about";
 
+import Image from "next/image";
+
 import { HackathonFaq } from "./hackathon-faq";
 
-// TODO(mobile): add moon bear / illustration layers once assets land
 export const MobileAbout = () => (
-  <div className="relative bg-linear-to-b from-[#0C1637] to-[#12204D] text-white">
-    <div className="relative z-10 flex flex-col gap-16 px-6 py-24">
-      {/* Welcome to HackCamp */}
-      <div>
-        <h2 className="font-title text-4xl">{WELCOME_TITLE}</h2>
-        {WELCOME_PARAGRAPHS.map((paragraph, i) => (
-          <p key={i} className="pt-4 text-base">
-            {paragraph}
-          </p>
-        ))}
-      </div>
-
-      {/* What is a hackathon */}
-      <HackathonFaq className="flex flex-col [&_h2]:text-4xl [&_p]:text-base" />
+  <div className="relative overflow-x-clip bg-linear-to-b from-[#0C1637] to-[#12204D] text-white">
+    {/* Welcome to HackCamp */}
+    <div className="relative z-10 px-6 pt-10">
+      <h2 className="font-title text-4xl">{WELCOME_TITLE}</h2>
+      {WELCOME_PARAGRAPHS.map((paragraph, i) => (
+        <p key={i} className="pt-4 text-base">
+          {paragraph}
+        </p>
+      ))}
     </div>
+
+    {/* Loose sparkles between the two blocks of copy */}
+    <Image
+      src="/assets/about/mobile-sparkles.svg"
+      alt=""
+      width={393}
+      height={200}
+      className="pointer-events-none block w-full h-auto"
+    />
+
+    {/* What is a hackathon */}
+    <HackathonFaq className="relative z-10 flex flex-col px-6 [&_h2]:text-4xl [&_p]:text-base [&_li]:text-base" />
+
+    {/* Moon bear on the clouds, leading into the tall-clouds section */}
+    <Image
+      src="/assets/about/mobile-moon-bear.svg"
+      alt=""
+      width={900}
+      height={560}
+      className="pointer-events-none block w-full h-auto pt-4"
+    />
   </div>
 );

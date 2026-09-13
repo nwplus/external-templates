@@ -16,7 +16,7 @@ export const StarOverlay = ({ value, label, className }: StarOverlayProps) => (
       className
     )}
   >
-    <p className="font-title text-5xl leading-none">{value}</p>
-    <p className="font-title text-xl leading-tight">{label}</p>
+    <p className="font-title text-3xl md:text-5xl leading-none">{value}</p>
+    <p className="font-title text-sm md:text-xl leading-tight">{label}</p>
   </div>
 );

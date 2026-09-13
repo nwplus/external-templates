@@ -1,11 +1,13 @@
-export const Cursor = () => (
+import { cn } from "@/lib/utils";
+
+export const Cursor = ({ className }: { className?: string }) => (
   <svg
     width="21"
     height="21"
     viewBox="0 0 21 21"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    className="shrink-0"
+    className={cn("shrink-0", className)}
     aria-hidden
   >
     <path
