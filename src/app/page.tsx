@@ -7,6 +7,7 @@ import Prizing from "@/sections/prizing";
 import Recap from "@/sections/recap";
 import SponsorFooter from "@/sections/sponsor-footer";
 import Stats from "@/sections/stats";
+import TallCloudsSection from "@/sections/tall-clouds-section";
 import TenYears from "@/sections/ten-years";
 import Testimonials from "@/sections/testimonials";
 
@@ -14,9 +15,11 @@ export default function Home() {
   return (
     <div className="relative">
       <Hero />
-      <Events />
-      <Stats />
-      <Prizing />
+      <TallCloudsSection>
+        <Events />
+        <Stats />
+        <Prizing />
+      </TallCloudsSection>
 
       <div className="relative z-20 hidden md:block">
         <Recap />

@@ -118,9 +118,39 @@ const Section1 = () => {
         </div>
 
         {/* Bottom clouds decal */}
-        <div className="absolute w-1/2 -bottom-120 left-0">
-          <div className="bottom-0 left-0 absolute z-10 w-550 aspect-[1.7]">
-            <Image src="/assets/hero/house.png" alt="House" layout="fill" />
+        <div className="absolute w-1/2 -bottom-100 left-0">
+          <div className="bottom-0 left-0 absolute w-[120vw] aspect-[1.7]">
+            <div className="absolute inset-0 z-10">
+              <Image src="/assets/hero/house.png" alt="House" fill className="object-contain object-bottom-left" />
+            </div>
+            {/* Locked to the house spotlight; % tracks the house box as the viewport resizes */}
+            <div className="absolute left-[54%] top-[37%] z-30 -translate-x-1/2 -translate-y-1/2">
+              <div className="flex flex-col gap-2 text-[#0B1327] w-max items-center [text-shadow:0_0_8px_#FFDA88,0_0_20px_#FFDA88,0_0_40px_#FFDA88]">
+                <div className="font-title text-[2.4vw]">
+                  Applications close in
+                </div>
+                <div className="flex gap-[2.4vw]">
+                  <div className="flex flex-col items-center">
+                    <div className="text-[6.5vw] leading-none">{days}</div>
+                    <div className="text-[1.2vw]">
+                      Days
+                    </div>
+                  </div>
+                  <div className="flex flex-col items-center">
+                    <div className="text-[6.5vw] leading-none">{minutes}</div>
+                    <div className="text-[1.2vw]">
+                      Minutes
+                    </div>
+                  </div>
+                  <div className="flex flex-col items-center">
+                    <div className="text-[6.5vw] leading-none">{seconds}</div>
+                    <div className="text-[1.2vw]">
+                      Seconds
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           <div className="relative z-20 -mb-50">
             <BottomCloudScrim />
@@ -128,7 +158,7 @@ const Section1 = () => {
         </div>
 
         {/* Hero content */}
-        <div className="relative z-20 min-h-screen pt-60">
+        <div className="relative z-20 min-h-screen pt-60 pb-[22vw]">
 
           {/* Hero text */}
           <div className="mx-auto w-[80vw] flex flex-col items-center">
@@ -139,37 +169,6 @@ const Section1 = () => {
               <CtaLink href="#">
                 Become a Mentor
               </CtaLink>
-            </div>
-          </div>
-
-          {/* Countdown Wrapper (to position) */}
-          <div className="mx-auto w-10 py-36">
-
-            {/* Countdown */}
-            <div className="flex flex-col gap-2 text-[#0B1327] w-100 items-center [text-shadow:0_0_8px_#FFDA88,0_0_20px_#FFDA88,0_0_40px_#FFDA88]">
-              <div className="font-title text-4xl">
-                Applications close in
-              </div>
-              <div className="flex gap-10">
-                <div className="flex flex-col items-center">
-                  <div className="text-9xl">{days}</div>
-                  <div>
-                    Days
-                  </div>
-                </div>
-                <div className="flex flex-col items-center">
-                  <div className="text-9xl">{minutes}</div>
-                  <div>
-                    Minutes
-                  </div>
-                </div>
-                <div className="flex flex-col items-center">
-                  <div className="text-9xl">{seconds}</div>
-                  <div>
-                    Seconds
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>

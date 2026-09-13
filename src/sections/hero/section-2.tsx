@@ -22,16 +22,16 @@ const Section2 = ({ className }: { className?: string }) => {
             <h2 className="font-title text-6xl">
               Welcome to HackCamp
             </h2>
-            <p>
+            <p className="text-lg">
               HackCamp provides a space for hundreds of beginner hackers curious about technology to explore the field further through hands-on learning, regardless of whether you have coding experience or not!
             </p>
-            <p className="pt-5">
+            <p className="pt-6 text-lg">
               Over the past 11 years, HackCamp has revolved around accessibility, inclusivity, and diversity. We strive to help people break into hackathon spaces by providing beginner-oriented workshops, industry connections, encouraging you to bring your unique perspectives and experiences to build your own project.
             </p>
           </div>
         </div>
         {/* What is a hackathon */}
-        <div className="relative w-full aspect-[2.1840228245]">
+        <div className="relative w-full aspect-[2.100228245]">
           {/* Illustration */}
           <div className="absolute z-0 w-full h-full">
             <MoonBear />
@@ -45,7 +45,7 @@ const Section2 = ({ className }: { className?: string }) => {
                 <h2 className="font-title text-6xl">
                   What is a hackathon?
                 </h2>
-                <p>
+                <p className="text-lg">
                   A hackathon is a collaborative, typically multi-day invention marathon where participants come together to ideate, design, and build projects in a limited time frame. It’s a space to learn, experiment, and bring your unique ideas to life, regardless of your experience level.
                 </p>
                 <Accordion type="single" collapsible>
@@ -53,12 +53,12 @@ const Section2 = ({ className }: { className?: string }) => {
                     <AccordionTrigger
                       variant="hero"
                       icon={<AccordionIcon />}
-                      className="text-base items-center"
+                      className="text-lg items-center"
                     >
                       What are the benefits of attending a hackathon?
                     </AccordionTrigger>
                     <AccordionContent>
-                      <ul className="list-disc pl-6 space-y-1">
+                      <ul className="list-disc pl-6 space-y-1 text-lg">
                         <li>Learn new technologies with the help of workshops and mentors</li>
                         <li>Network with like-minded peers and industry recruiters</li>
                         <li>Collect swag, eat free food, engage in fun activities, and make memories to last a lifetime</li>
@@ -67,7 +67,7 @@ const Section2 = ({ className }: { className?: string }) => {
                     </AccordionContent>
                   </AccordionItem>
                 </Accordion>
-                <p>
+                <p className="text-lg">
                   To learn more about hackathons and what to expect, check out our article on Medium.
                 </p>
               </div>

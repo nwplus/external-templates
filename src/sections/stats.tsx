@@ -11,13 +11,13 @@ import { StarRight } from "@/components/stats/star-right";
 function StatsTestimonialsDesktop() {
   
   return (
-    <div className="bg-linear-to-b from-[#192758] to-[#1C2D63]">
+    <div>
 
       {/* Wrapper */}
-      <div className="text-white pt-20">
+      <div className="text-white pt-40">
         <h2 className="mx-auto w-300 font-title text-6xl leading-none pb-10">Last year we had...</h2>
-        <div className="mx-auto w-400">
-          <div className="relative -mt-[10vw] w-[80%]">
+        <div className="mx-auto pt-20 w-400">
+          <div className="relative -mt-[10vw] w-[86%]">
             {/* Background decal */}
             <div className="absolute z-0 top-1/2 left-0 w-full -translate-y-1/2 pointer-events-none">
               <SmallStars />

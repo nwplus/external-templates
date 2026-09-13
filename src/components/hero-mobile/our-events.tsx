@@ -16,7 +16,7 @@ export default function OurEvents() {
         className="object-cover h-full object-[58%_center]"
       />
 
-      <div className="z-20 top-[13vh] absolute w-full">
+      <div className="z-20 pt-40 top-[40vh] absolute w-full">
         <h2 className="text-3xl font-title leading-none text-shadow-bold text-center">
           Our Events
         </h2>
