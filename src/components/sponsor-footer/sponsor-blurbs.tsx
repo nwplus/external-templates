@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
 
-import CarouselControls from "../stats-testimonials/carousel-controls";
+import CarouselControls from "../ui/carousel-controls";
 import { Button } from "../ui/button";
 
 const SponsorBlurbs = ({ sponsors }: { sponsors: SponsorDoc[] }) => {
