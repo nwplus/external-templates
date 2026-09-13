@@ -2,7 +2,7 @@ import { SheepOverlay, type SheepContent } from "./sheep-overlay";
 
 export const SheepRight = ({ title, subtitle, description }: SheepContent) => (
   <div className="group relative w-full">
-  <svg className="block w-full h-auto" width="762" height="618" viewBox="0 0 762 618" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+  <svg className="block w-full h-auto" width="762" height="618" viewBox="0 0 762 618" fill="none" xmlns="http://www.w3.org/2000/svg">
   <g filter="url(#filter0_g_5247_13053)">
   <path d="M418.85 73.189C445.918 73.189 470.555 84.8949 488.982 104.051C495.798 102.364 502.9 101.471 510.197 101.471C546.965 101.471 578.771 124.121 594.018 157.049C646.458 175.275 683.581 220.447 683.581 273.287C683.581 307.44 668.07 338.388 642.939 360.929C652.72 378.695 658.366 399.644 658.366 422.078C658.366 486.306 612.086 538.373 554.997 538.374C543.241 538.374 531.943 536.164 521.413 532.096C510.987 546.566 497.557 555.278 482.899 555.278C469.16 555.278 456.498 547.624 446.378 534.748C421.887 552.052 391.396 562.316 358.341 562.316C294.315 562.316 239.902 523.815 220.1 470.208C207.259 476.645 193.039 480.224 178.074 480.224C120.985 480.224 74.7052 428.157 74.7051 363.928C74.7051 310.774 106.401 265.95 149.689 252.072C156.676 219.616 178.965 195.781 205.484 195.325C222.504 157.37 257.464 131.338 297.83 131.337C307.967 131.337 317.763 132.981 327.02 136.041C344.223 98.7025 378.887 73.1891 418.85 73.189Z" fill="#DDE6D9"/>
   <path d="M418.85 73.189C445.918 73.189 470.555 84.8949 488.982 104.051C495.798 102.364 502.9 101.471 510.197 101.471C546.965 101.471 578.771 124.121 594.018 157.049C646.458 175.275 683.581 220.447 683.581 273.287C683.581 307.44 668.07 338.388 642.939 360.929C652.72 378.695 658.366 399.644 658.366 422.078C658.366 486.306 612.086 538.373 554.997 538.374C543.241 538.374 531.943 536.164 521.413 532.096C510.987 546.566 497.557 555.278 482.899 555.278C469.16 555.278 456.498 547.624 446.378 534.748C421.887 552.052 391.396 562.316 358.341 562.316C294.315 562.316 239.902 523.815 220.1 470.208C207.259 476.645 193.039 480.224 178.074 480.224C120.985 480.224 74.7052 428.157 74.7051 363.928C74.7051 310.774 106.401 265.95 149.689 252.072C156.676 219.616 178.965 195.781 205.484 195.325C222.504 157.37 257.464 131.338 297.83 131.337C307.967 131.337 317.763 132.981 327.02 136.041C344.223 98.7025 378.887 73.1891 418.85 73.189Z" fill="#5E7A8E"/>
@@ -20,19 +20,17 @@ export const SheepRight = ({ title, subtitle, description }: SheepContent) => (
   <path d="M314.193 181.854C297.292 151.853 247.979 141.254 201.182 185.262C210.496 205.856 190.443 196.79 187.828 215.263C251.943 232.95 331.095 211.856 314.193 181.854Z" fill="#BBBBBB"/>
   <path d="M297.795 188.574C282.593 161.554 253.422 151.46 211.104 191.212C219.474 209.762 186.071 202.243 183.678 218.901C241.517 234.741 312.997 215.594 297.795 188.574Z" fill="#665E5E"/>
   <path d="M177.54 155.496C245.424 175.779 209.22 320.731 178.953 365.314C148.686 409.897 8.13359 366.867 29.6935 303.254C51.2534 239.641 109.656 135.214 177.54 155.496Z" fill="url(#paint5_linear_5247_13053)"/>
-  <path d="M129.691 362.617C127.235 356.237 124.655 343.156 133.99 341.881M64.8518 322.991C68.1376 326.74 72.6273 335.529 64.3002 340.697" stroke="#434242" stroke-width="4" stroke-linecap="round"/>
+  <path d="M129.691 362.617C127.235 356.237 124.655 343.156 133.99 341.881M64.8518 322.991C68.1376 326.74 72.6273 335.529 64.3002 340.697" stroke="#434242" strokeWidth="4" strokeLinecap="round"/>
   <ellipse cx="177.989" cy="239.031" rx="21.7858" ry="23.7066" transform="rotate(-7.77845 177.989 239.031)" fill="#D9D9D9"/>
   <ellipse cx="107.104" cy="224.518" rx="21.7858" ry="23.7066" transform="rotate(-7.77845 107.104 224.518)" fill="#D9D9D9"/>
-  <ellipse cx="99.7731" cy="229.877" rx="11.1873" ry="12.4772" transform="rotate(-7.77845 99.7731 229.877)" fill="url(#pattern0_5247_13053)"/>
-  <ellipse cx="99.7731" cy="229.877" rx="11.1873" ry="12.4772" transform="rotate(-7.77845 99.7731 229.877)" fill="black" fill-opacity="0.6"/>
+  <ellipse cx="99.7731" cy="229.877" rx="11.1873" ry="12.4772" transform="rotate(-7.77845 99.7731 229.877)" fill="black" fillOpacity="0.6"/>
   <ellipse cx="99.7731" cy="229.877" rx="11.1873" ry="12.4772" transform="rotate(-7.77845 99.7731 229.877)" fill="black"/>
-  <path d="M182.016 242.433C182.949 249.261 178.742 255.474 172.621 256.31C166.499 257.146 160.78 252.289 159.848 245.462C158.915 238.634 163.122 232.421 169.243 231.585C175.365 230.749 181.084 235.606 182.016 242.433Z" fill="url(#pattern1_5247_13053)"/>
-  <path d="M182.016 242.433C182.949 249.261 178.742 255.474 172.621 256.31C166.499 257.146 160.78 252.289 159.848 245.462C158.915 238.634 163.122 232.421 169.243 231.585C175.365 230.749 181.084 235.606 182.016 242.433Z" fill="black" fill-opacity="0.6"/>
+  <path d="M182.016 242.433C182.949 249.261 178.742 255.474 172.621 256.31C166.499 257.146 160.78 252.289 159.848 245.462C158.915 238.634 163.122 232.421 169.243 231.585C175.365 230.749 181.084 235.606 182.016 242.433Z" fill="black" fillOpacity="0.6"/>
   <path d="M182.016 242.433C182.949 249.261 178.742 255.474 172.621 256.31C166.499 257.146 160.78 252.289 159.848 245.462C158.915 238.634 163.122 232.421 169.243 231.585C175.365 230.749 181.084 235.606 182.016 242.433Z" fill="black"/>
   </g>
   <defs>
-  <filter id="filter0_g_5247_13053" x="70.7051" y="69.189" width="616.876" height="497.127" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-  <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+  <filter id="filter0_g_5247_13053" x="70.7051" y="69.189" width="616.876" height="497.127" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+  <feFlood floodOpacity="0" result="BackgroundImageFix"/>
   <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
   <feTurbulence type="fractalNoise" baseFrequency="0.058823529630899429 0.058823529630899429" numOctaves="3" seed="3643" />
   <feDisplacementMap in="shape" scale="8" xChannelSelector="R" yChannelSelector="G" result="displacedImage" width="100%" height="100%" />
@@ -40,8 +38,8 @@ export const SheepRight = ({ title, subtitle, description }: SheepContent) => (
   <feMergeNode in="displacedImage"/>
   </feMerge>
   </filter>
-  <filter id="filter1_g_5247_13053" x="133.114" y="102.64" width="546.119" height="412.528" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-  <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+  <filter id="filter1_g_5247_13053" x="133.114" y="102.64" width="546.119" height="412.528" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+  <feFlood floodOpacity="0" result="BackgroundImageFix"/>
   <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
   <feTurbulence type="fractalNoise" baseFrequency="0.058823529630899429 0.058823529630899429" numOctaves="3" seed="6761" />
   <feDisplacementMap in="shape" scale="8" xChannelSelector="R" yChannelSelector="G" result="displacedImage" width="100%" height="100%" />
@@ -49,8 +47,8 @@ export const SheepRight = ({ title, subtitle, description }: SheepContent) => (
   <feMergeNode in="displacedImage"/>
   </feMerge>
   </filter>
-  <filter id="filter2_d_5247_13053" x="23.4553" y="109.303" width="297.051" height="282.332" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-  <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+  <filter id="filter2_d_5247_13053" x="23.4553" y="109.303" width="297.051" height="282.332" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+  <feFlood floodOpacity="0" result="BackgroundImageFix"/>
   <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
   <feOffset dy="4"/>
   <feGaussianBlur stdDeviation="2"/>
@@ -59,35 +57,29 @@ export const SheepRight = ({ title, subtitle, description }: SheepContent) => (
   <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_5247_13053"/>
   <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_5247_13053" result="shape"/>
   </filter>
-  <pattern id="pattern0_5247_13053" patternContentUnits="objectBoundingBox" width="1" height="1">
-  <use xlinkHref="#image0_5247_13053" transform="matrix(0.00249508 0 0 0.00223714 -0.0613921 0)"/>
-  </pattern>
-  <pattern id="pattern1_5247_13053" patternContentUnits="objectBoundingBox" width="1" height="1">
-  <use xlinkHref="#image0_5247_13053" transform="matrix(0.00249508 0 0 0.00223714 -0.0613921 0)"/>
-  </pattern>
   <linearGradient id="paint0_linear_5247_13053" x1="129.597" y1="441.629" x2="89.0127" y2="540.725" gradientUnits="userSpaceOnUse">
-  <stop stop-color="#B1B0B4"/>
-  <stop offset="1" stop-color="#444445"/>
+  <stop stopColor="#B1B0B4"/>
+  <stop offset="1" stopColor="#444445"/>
   </linearGradient>
   <linearGradient id="paint1_linear_5247_13053" x1="209.577" y1="463.186" x2="134.273" y2="591.412" gradientUnits="userSpaceOnUse">
-  <stop stop-color="#B1B0B4"/>
-  <stop offset="1" stop-color="#444445"/>
+  <stop stopColor="#B1B0B4"/>
+  <stop offset="1" stopColor="#444445"/>
   </linearGradient>
   <linearGradient id="paint2_linear_5247_13053" x1="571.596" y1="371.049" x2="757.539" y2="385.933" gradientUnits="userSpaceOnUse">
-  <stop stop-color="#B1B0B4"/>
-  <stop offset="1" stop-color="#444445"/>
+  <stop stopColor="#B1B0B4"/>
+  <stop offset="1" stopColor="#444445"/>
   </linearGradient>
   <linearGradient id="paint3_linear_5247_13053" x1="575.039" y1="427.488" x2="714.148" y2="486.806" gradientUnits="userSpaceOnUse">
-  <stop stop-color="#B1B0B4"/>
-  <stop offset="1" stop-color="#444445"/>
+  <stop stopColor="#B1B0B4"/>
+  <stop offset="1" stopColor="#444445"/>
   </linearGradient>
   <linearGradient id="paint4_linear_5247_13053" x1="319.961" y1="105.498" x2="527.755" y2="495.725" gradientUnits="userSpaceOnUse">
-  <stop stop-color="#D8D8D8"/>
-  <stop offset="1" stop-color="#90DADC"/>
+  <stop stopColor="#D8D8D8"/>
+  <stop offset="1" stopColor="#90DADC"/>
   </linearGradient>
   <linearGradient id="paint5_linear_5247_13053" x1="106.875" y1="159.654" x2="137.503" y2="383.874" gradientUnits="userSpaceOnUse">
-  <stop offset="0.293269" stop-color="#B1B0B4"/>
-  <stop offset="1" stop-color="#444445"/>
+  <stop offset="0.293269" stopColor="#B1B0B4"/>
+  <stop offset="1" stopColor="#444445"/>
   </linearGradient>
   </defs>
   </svg>

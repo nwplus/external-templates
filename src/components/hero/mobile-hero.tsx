@@ -16,7 +16,7 @@ export const MobileHero = () => (
           </CtaLink>
         ))}
       </div>
-      <Countdown className="pt-16 text-[14vw]" />
+      <Countdown compact className="pt-16 text-[14vw]" />
     </div>
   </div>
 );

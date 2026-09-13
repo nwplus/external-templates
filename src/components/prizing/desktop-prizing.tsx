@@ -1,13 +1,23 @@
+import { Parallax } from "@/components/ui/parallax";
 import { PRIZING_PARAGRAPHS, PRIZING_TITLE } from "@/constants/prizing";
 
-import { DesktopSparkles } from "./desktop-sparkles";
+import Image from "next/image";
 
 export const DesktopPrizing = () => (
   <div className="relative w-full aspect-928/609">
     {/* Illustration */}
-    <div className="absolute z-0 pt-30 w-full h-full pointer-events-none">
-      <DesktopSparkles />
-    </div>
+    <Parallax
+      speed={0.2}
+      className="absolute z-0 pt-30 w-full h-full pointer-events-none"
+    >
+      <Image
+        src="/assets/prizing/desktop-sparkles.svg"
+        alt=""
+        width={1528}
+        height={559}
+        className="block w-full h-auto"
+      />
+    </Parallax>
 
     {/* Content */}
     <div className="relative z-10 h-full top-0 left-0">

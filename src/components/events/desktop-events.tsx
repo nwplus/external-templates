@@ -1,3 +1,4 @@
+import { Parallax } from "@/components/ui/parallax";
 import {
   BUILD_DAY,
   EVENTS_DESCRIPTION,
@@ -5,16 +6,26 @@ import {
   LEARN_WEEK,
 } from "@/constants/events";
 
-import { DesktopSparkles } from "./desktop-sparkles";
+import Image from "next/image";
+
 import { SheepLeft } from "./sheep-left";
 import { SheepRight } from "./sheep-right";
 
 export const DesktopEvents = () => (
   <div className="relative w-full aspect-1531/983">
     {/* Illustration */}
-    <div className="absolute z-0 w-full h-full pointer-events-none">
-      <DesktopSparkles />
-    </div>
+    <Parallax
+      speed={0.2}
+      className="absolute z-0 w-full h-full pointer-events-none"
+    >
+      <Image
+        src="/assets/events/desktop-sparkles.svg"
+        alt=""
+        width={1531}
+        height={983}
+        className="block w-full h-auto"
+      />
+    </Parallax>
 
     {/* Content */}
     <div className="relative z-10 h-full top-0 left-0">
@@ -27,13 +38,17 @@ export const DesktopEvents = () => (
           </div>
 
           {/* Sheep */}
-          <div className="w-[138%] -ml-[38%]">
-            <SheepLeft {...BUILD_DAY} />
+          <Parallax speed={-0.06}>
+            <div className="w-[138%] -ml-[38%]">
+              <SheepLeft {...BUILD_DAY} />
+            </div>
+          </Parallax>
+        </div>
+        <Parallax speed={-0.12}>
+          <div className="w-[138%] -translate-y-46">
+            <SheepRight {...LEARN_WEEK} />
           </div>
-        </div>
-        <div className="w-[138%] -translate-y-46">
-          <SheepRight {...LEARN_WEEK} />
-        </div>
+        </Parallax>
       </div>
     </div>
   </div>

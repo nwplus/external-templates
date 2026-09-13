@@ -4,7 +4,7 @@ export const SheepLeft = ({ title, subtitle, description }: SheepContent) => (
   <div className="group relative w-full">
   <svg className="block w-full h-auto" width="789" height="672" viewBox="0 0 789 672" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g filter="url(#filter0_d_5247_12981)">
-<path d="M694.895 255.37C698.47 255.605 703.208 259.317 704.281 266.647M722.383 229.977C719.925 229.507 725.065 238.435 733.781 240.55" stroke="#5C5C5C" stroke-width="4" stroke-linecap="round"/>
+<path d="M694.895 255.37C698.47 255.605 703.208 259.317 704.281 266.647M722.383 229.977C719.925 229.507 725.065 238.435 733.781 240.55" stroke="#5C5C5C" strokeWidth="4" strokeLinecap="round"/>
 <path d="M730.236 62.9934C700.949 41.7343 621.421 47.9139 597.122 110.327L613.107 145.153C696.163 131.601 759.523 84.2524 730.236 62.9934Z" fill="#BBBBBB"/>
 <path d="M708.657 71.8856C685.365 54.9782 622.116 59.8929 602.791 109.53L615.504 137.227C681.559 126.45 731.949 88.793 708.657 71.8856Z" fill="#665E5E"/>
 <path d="M542.405 121.139C479.948 165.203 566.402 287.729 612.544 318.354C658.686 348.979 787.647 256.775 743.91 205.096C700.174 153.418 604.861 77.0743 542.405 121.139Z" fill="url(#paint0_linear_5247_12981)"/>
@@ -30,8 +30,8 @@ export const SheepLeft = ({ title, subtitle, description }: SheepContent) => (
 <path d="M574.582 430.119C563.909 444.822 608.359 472.649 624.821 509.798C639.119 542.062 676.356 537.313 688.31 523.522L673.031 500.527L671.962 498.921L673.639 499.777L698.382 512.414C709.73 502.245 717.726 479.484 683.642 459.679C643.099 436.12 585.256 415.417 574.582 430.119Z" fill="url(#paint7_linear_5247_12981)"/>
 </g>
 <defs>
-<filter id="filter0_d_5247_12981" x="6.22046" y="51.9458" width="750.606" height="606.589" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<filter id="filter0_d_5247_12981" x="6.22046" y="51.9458" width="750.606" height="606.589" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+<feFlood floodOpacity="0" result="BackgroundImageFix"/>
 <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
 <feOffset dy="4"/>
 <feGaussianBlur stdDeviation="2"/>
@@ -40,8 +40,8 @@ export const SheepLeft = ({ title, subtitle, description }: SheepContent) => (
 <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_5247_12981"/>
 <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_5247_12981" result="shape"/>
 </filter>
-<filter id="filter1_g_5247_12981" x="92.3989" y="137.64" width="617.235" height="484.159" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<filter id="filter1_g_5247_12981" x="92.3989" y="137.64" width="617.235" height="484.159" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+<feFlood floodOpacity="0" result="BackgroundImageFix"/>
 <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
 <feTurbulence type="fractalNoise" baseFrequency="0.058823529630899429 0.058823529630899429" numOctaves="3" seed="1820" />
 <feDisplacementMap in="shape" scale="8" xChannelSelector="R" yChannelSelector="G" result="displacedImage" width="100%" height="100%" />
@@ -49,8 +49,8 @@ export const SheepLeft = ({ title, subtitle, description }: SheepContent) => (
 <feMergeNode in="displacedImage"/>
 </feMerge>
 </filter>
-<filter id="filter2_g_5247_12981" x="107.808" y="125.15" width="562.204" height="448.356" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<filter id="filter2_g_5247_12981" x="107.808" y="125.15" width="562.204" height="448.356" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+<feFlood floodOpacity="0" result="BackgroundImageFix"/>
 <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
 <feTurbulence type="fractalNoise" baseFrequency="0.083333335816860199 0.083333335816860199" numOctaves="3" seed="7138" />
 <feDisplacementMap in="shape" scale="4" xChannelSelector="R" yChannelSelector="G" result="displacedImage" width="100%" height="100%" />
@@ -58,8 +58,8 @@ export const SheepLeft = ({ title, subtitle, description }: SheepContent) => (
 <feMergeNode in="displacedImage"/>
 </feMerge>
 </filter>
-<filter id="filter3_g_5247_12981" x="107.808" y="125.15" width="562.204" height="457.051" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<filter id="filter3_g_5247_12981" x="107.808" y="125.15" width="562.204" height="457.051" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+<feFlood floodOpacity="0" result="BackgroundImageFix"/>
 <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
 <feTurbulence type="fractalNoise" baseFrequency="0.083333335816860199 0.083333335816860199" numOctaves="3" seed="7138" />
 <feDisplacementMap in="shape" scale="4" xChannelSelector="R" yChannelSelector="G" result="displacedImage" width="100%" height="100%" />
@@ -68,36 +68,36 @@ export const SheepLeft = ({ title, subtitle, description }: SheepContent) => (
 </feMerge>
 </filter>
 <linearGradient id="paint0_linear_5247_12981" x1="616.041" y1="98.9594" x2="665.759" y2="319.438" gradientUnits="userSpaceOnUse">
-<stop stop-color="#B1B0B4"/>
-<stop offset="1" stop-color="#444445"/>
+<stop stopColor="#B1B0B4"/>
+<stop offset="1" stopColor="#444445"/>
 </linearGradient>
 <linearGradient id="paint1_linear_5247_12981" x1="401.017" y1="141.64" x2="401.017" y2="617.799" gradientUnits="userSpaceOnUse">
-<stop stop-color="#989FCE"/>
-<stop offset="1" stop-color="#575F94"/>
+<stop stopColor="#989FCE"/>
+<stop offset="1" stopColor="#575F94"/>
 </linearGradient>
 <linearGradient id="paint2_linear_5247_12981" x1="362.59" y1="124.921" x2="466.75" y2="574.923" gradientUnits="userSpaceOnUse">
-<stop stop-color="#D8D8D8"/>
-<stop offset="1" stop-color="#ABB1D9"/>
+<stop stopColor="#D8D8D8"/>
+<stop offset="1" stopColor="#ABB1D9"/>
 </linearGradient>
 <linearGradient id="paint3_linear_5247_12981" x1="362.59" y1="124.921" x2="466.75" y2="574.923" gradientUnits="userSpaceOnUse">
-<stop stop-color="#D8D8D8"/>
-<stop offset="1" stop-color="#ABB1D9"/>
+<stop stopColor="#D8D8D8"/>
+<stop offset="1" stopColor="#ABB1D9"/>
 </linearGradient>
 <linearGradient id="paint4_linear_5247_12981" x1="107.832" y1="413.052" x2="54.3696" y2="544.621" gradientUnits="userSpaceOnUse">
-<stop stop-color="#AFAFAF"/>
-<stop offset="1" stop-color="#4E4E4E"/>
+<stop stopColor="#AFAFAF"/>
+<stop offset="1" stopColor="#4E4E4E"/>
 </linearGradient>
 <linearGradient id="paint5_linear_5247_12981" x1="188.779" y1="479.31" x2="94.5344" y2="641.052" gradientUnits="userSpaceOnUse">
-<stop stop-color="#B1B0B4"/>
-<stop offset="1" stop-color="#444445"/>
+<stop stopColor="#B1B0B4"/>
+<stop offset="1" stopColor="#444445"/>
 </linearGradient>
 <linearGradient id="paint6_linear_5247_12981" x1="646.777" y1="373.341" x2="720.935" y2="450.593" gradientUnits="userSpaceOnUse">
-<stop stop-color="#B1B0B4"/>
-<stop offset="1" stop-color="#444445"/>
+<stop stopColor="#B1B0B4"/>
+<stop offset="1" stopColor="#444445"/>
 </linearGradient>
 <linearGradient id="paint7_linear_5247_12981" x1="580.314" y1="422.779" x2="697.466" y2="514.365" gradientUnits="userSpaceOnUse">
-<stop stop-color="#B1B0B4"/>
-<stop offset="1" stop-color="#444445"/>
+<stop stopColor="#B1B0B4"/>
+<stop offset="1" stopColor="#444445"/>
 </linearGradient>
 </defs>
 </svg>

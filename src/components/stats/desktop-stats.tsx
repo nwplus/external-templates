@@ -1,6 +1,8 @@
+import { Parallax } from "@/components/ui/parallax";
 import { STATS, STATS_TITLE } from "@/constants/stats";
 
-import { DesktopSmallStars } from "./desktop-small-stars";
+import Image from "next/image";
+
 import { StarCenter } from "./star-center";
 import { StarLeft } from "./star-left";
 import { StarRight } from "./star-right";
@@ -15,19 +17,28 @@ export const DesktopStats = () => (
     <div className="mx-auto pt-20 w-400">
       <div className="relative -mt-[10vw] w-[86%]">
         {/* Background decal */}
-        <div className="absolute z-0 top-1/2 left-0 w-full -translate-y-1/2 pointer-events-none">
-          <DesktopSmallStars />
-        </div>
+        <Parallax
+          speed={0.2}
+          className="absolute z-0 top-1/2 left-0 w-full -translate-y-1/2 pointer-events-none"
+        >
+          <Image
+            src="/assets/stats/desktop-small-stars.svg"
+            alt=""
+            width={1172}
+            height={389}
+            className="block w-full h-auto"
+          />
+        </Parallax>
         <div className="relative z-10 flex items-end justify-start">
-          <div className="w-[64%] -mr-[19%]">
+          <Parallax speed={-0.05} className="w-[64%] -mr-[19%]">
             <StarLeft {...hackers} />
-          </div>
-          <div className="w-[58%]">
+          </Parallax>
+          <Parallax speed={-0.1} className="w-[58%]">
             <StarCenter {...projects} />
-          </div>
-          <div className="w-[64%] -ml-[16%]">
+          </Parallax>
+          <Parallax speed={-0.05} className="w-[64%] -ml-[16%]">
             <StarRight {...mentors} />
-          </div>
+          </Parallax>
         </div>
       </div>
     </div>
