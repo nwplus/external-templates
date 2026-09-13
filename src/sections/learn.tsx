@@ -4,7 +4,7 @@ import Sign from "@/components/learn/sign";
 
 import { AnimatePresence, easeInOut, motion, useInView } from "framer-motion";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 
 export default function Learn() {
   // Container min-height based on background image aspect ratio (1190÷1920 = 62vw)

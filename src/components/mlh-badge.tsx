@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 export default function MlhBadge() {
   return (
     <a
@@ -9,10 +11,12 @@ export default function MlhBadge() {
       rel="noreferrer"
       className="block fixed top-0 right-[50px] w-[5%] min-w-[60px] max-w-[100px] z-[1000] left-[25px] md:left-auto md:right-[50px]"
     >
-      <img
+      <Image
         src="/assets/images/mlhTrustBadgeWhite.svg"
         alt="Major League Hacking 2027 Hackathon Season"
-        className="w-full"
+        width={100}
+        height={176}
+        className="w-full h-auto"
       />
     </a>
   );

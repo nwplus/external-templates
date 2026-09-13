@@ -1,4 +1,3 @@
-import { BottomCloudScrim } from "@/components/hero/bottom-cloud-scrim";
 import { MoonBear } from "@/components/hero/moon-bear";
 import {
   Accordion,
@@ -6,11 +5,8 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { cn } from "@/lib/utils";
 
-import Image from "next/image";
-
-const Section2 = ({ className }: { className?: string }) => {
+const Section2 = () => {
   return (
     <div className="relative bg-linear-to-b from-[#0C1637] to-[#12204D]">
       <div>
