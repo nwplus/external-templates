@@ -1,0 +1,32 @@
+<svg width="486" height="501" viewBox="0 0 486 501" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_f_13622_984)">
+<path d="M232.244 213.959L173.911 194.258C170.832 193.218 167.993 196.755 169.733 199.463L205.98 255.881C206.648 256.92 206.668 258.269 206.034 259.394L164.016 333.886C162.195 337.113 165.87 340.36 168.899 338.201L234.889 291.156C235.847 290.474 237.06 290.296 238.121 290.683L317.26 319.553C320.622 320.779 323.576 316.547 321.178 313.94L267.631 255.717C266.71 254.715 266.519 253.224 267.149 251.947L309.117 166.934C310.72 163.686 307.026 160.669 304.092 162.831L235.448 213.425C234.508 214.118 233.307 214.318 232.244 213.959Z" fill="url(#paint0_radial_13622_984)"/>
+</g>
+<g filter="url(#filter1_g_13622_984)">
+<path d="M232.244 213.959L173.911 194.258C170.832 193.218 167.993 196.755 169.733 199.463L205.98 255.881C206.648 256.92 206.668 258.269 206.034 259.394L164.016 333.886C162.195 337.113 165.87 340.36 168.899 338.201L234.889 291.156C235.847 290.474 237.06 290.296 238.121 290.683L317.26 319.553C320.622 320.779 323.576 316.547 321.178 313.94L267.631 255.717C266.71 254.715 266.519 253.224 267.149 251.947L309.117 166.934C310.72 163.686 307.026 160.669 304.092 162.831L235.448 213.425C234.508 214.118 233.307 214.318 232.244 213.959Z" fill="url(#paint1_radial_13622_984)"/>
+</g>
+<defs>
+<filter id="filter0_f_13622_984" x="47.9745" y="46.544" width="389.632" height="407.912" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="57.7647" result="effect1_foregroundBlur_13622_984"/>
+</filter>
+<filter id="filter1_g_13622_984" x="158.486" y="157.055" width="168.609" height="186.889" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feTurbulence type="fractalNoise" baseFrequency="0.039652671664953232 0.039652671664953232" numOctaves="3" seed="2227" />
+<feDisplacementMap in="shape" scale="10.087593078613281" xChannelSelector="R" yChannelSelector="G" result="displacedImage" width="100%" height="100%" />
+<feMerge result="effect1_texture_13622_984">
+<feMergeNode in="displacedImage"/>
+</feMerge>
+</filter>
+<radialGradient id="paint0_radial_13622_984" cx="0" cy="0" r="1" gradientTransform="matrix(-79.2571 96.1316 -83.3095 -66.7617 246.427 259.216)" gradientUnits="userSpaceOnUse">
+<stop stop-color="#60CC90"/>
+<stop offset="1" stop-color="#60CC90" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="paint1_radial_13622_984" cx="0" cy="0" r="1" gradientTransform="matrix(-79.2571 96.1316 -83.3095 -66.7617 246.427 259.216)" gradientUnits="userSpaceOnUse">
+<stop stop-color="#8DEEE6"/>
+<stop offset="1" stop-color="#60CC90"/>
+</radialGradient>
+</defs>
+</svg>

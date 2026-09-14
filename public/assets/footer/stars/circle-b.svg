@@ -1,0 +1,34 @@
+<svg width="174" height="198" viewBox="0 0 174 198" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="circle">
+<g id="Ellipse 1143" filter="url(#filter0_f_13622_981)">
+<circle cx="98.7245" cy="98.7246" r="21.5" fill="url(#paint0_radial_13622_981)"/>
+</g>
+<g id="Ellipse 1144" filter="url(#filter1_g_13622_981)">
+<circle cx="98.7245" cy="98.7246" r="21.5" fill="url(#paint1_radial_13622_981)"/>
+</g>
+</g>
+<defs>
+<filter id="filter0_f_13622_981" x="-7.62939e-06" y="0.000114441" width="197.449" height="197.449" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="38.6122" result="effect1_foregroundBlur_13622_981"/>
+</filter>
+<filter id="filter1_g_13622_981" x="72.7158" y="72.716" width="52.0173" height="52.0173" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feTurbulence type="fractalNoise" baseFrequency="0.044359270483255386 0.044359270483255386" numOctaves="3" seed="2227" />
+<feDisplacementMap in="shape" scale="9.0172805786132812" xChannelSelector="R" yChannelSelector="G" result="displacedImage" width="100%" height="100%" />
+<feMerge result="effect1_texture_13622_981">
+<feMergeNode in="displacedImage"/>
+</feMerge>
+</filter>
+<radialGradient id="paint0_radial_13622_981" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(98.7245 98.7246) rotate(90) scale(21.5)">
+<stop stop-color="#F0A561"/>
+<stop offset="1" stop-color="#F0A561" stop-opacity="0.09"/>
+</radialGradient>
+<radialGradient id="paint1_radial_13622_981" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(98.7245 98.7246) rotate(90) scale(21.5)">
+<stop stop-color="#F0D173"/>
+<stop offset="1" stop-color="#F0A561"/>
+</radialGradient>
+</defs>
+</svg>

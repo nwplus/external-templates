@@ -3,14 +3,14 @@ import TestimonialsMobile from "@/components/mobile/testimonials-mobile";
 import About from "@/sections/about";
 import Events from "@/sections/events";
 import Faq from "@/sections/faq";
+import Footer from "@/sections/footer";
 import Hero from "@/sections/hero";
 import Navbar from "@/sections/navbar";
 import Prizing from "@/sections/prizing";
 import Recap from "@/sections/recap";
-import SponsorFooter from "@/sections/sponsor-footer";
+import Sponsors from "@/sections/sponsors";
 import Stats from "@/sections/stats";
 import TallCloudsSection from "@/sections/tall-clouds-section";
-import TenYears from "@/sections/ten-years";
 import Testimonials from "@/sections/testimonials";
 
 export default function Home() {
@@ -35,9 +35,9 @@ export default function Home() {
         <TestimonialsMobile />
       </div>
 
-      <TenYears />
       <Faq />
-      <SponsorFooter />
+      <Sponsors />
+      <Footer />
     </div>
   );
 }

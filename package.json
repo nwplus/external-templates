@@ -13,6 +13,7 @@
     "build:prod": "cross-env DEPLOY_ENV=PRODUCTION next build",
     "start": "cross-env DEPLOY_ENV=STAGING next build && next start",
     "lint": "next lint",
+    "test": "vitest run",
     "format": "prettier --write ."
   },
   "dependencies": {
@@ -43,6 +44,7 @@
     "prettier": "3.6.2",
     "tailwindcss": "^4",
     "tw-animate-css": "^1.3.7",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^5.0.0"
   }
 }

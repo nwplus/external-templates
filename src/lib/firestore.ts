@@ -1,11 +1,11 @@
 import {
   collection,
   getDocs,
+  onSnapshot,
   query,
   Timestamp,
-  where,
-  onSnapshot,
   Unsubscribe,
+  where,
 } from "firebase/firestore";
 
 import { db } from "./firebase";
@@ -27,7 +27,14 @@ export interface SponsorDoc {
   lastmodby?: string;
   link: string;
   name: string;
-  tier: "platinum" | "gold" | "silver" | "bronze" | "inkind";
+  tier:
+    | "title"
+    | "platinum"
+    | "gold"
+    | "silver"
+    | "bronze"
+    | "startup"
+    | "inkind";
 }
 
 export const CURRENT_HACKATHON = "HackCamp2026";
@@ -116,23 +123,5 @@ export function subscribeToSponsorsByHackathon(
     (error) => {
       console.error("Error subscribing to sponsors:", error);
     }
-  );
-}
-
-/**
- * Groups sponsor documents by tier with proper ordering
- * @param sponsors - Array of sponsor documents from Firestore
- * @returns Record<string, SponsorDoc[]> - Sponsors grouped by tier
- */
-export function groupSponsorsByTier(
-  sponsors: SponsorDoc[]
-): Record<string, SponsorDoc[]> {
-  return sponsors.reduce(
-    (acc, sponsor) => {
-      if (!acc[sponsor.tier]) acc[sponsor.tier] = [];
-      acc[sponsor.tier].push(sponsor);
-      return acc;
-    },
-    {} as Record<string, SponsorDoc[]>
   );
 }
