@@ -79,6 +79,11 @@ body {
   scroll-behavior: smooth;
 }
 
+/* Painted beyond the page edges on overscroll; matches the hero's top clouds decal. */
+html {
+  background: #262F5C;
+}
+
 :root {
   --radius: 0.625rem;
   --background: #121b40;
@@ -188,5 +193,31 @@ body {
     background-image:
       url("/assets/hero/background-1.svg"),
       linear-gradient(180deg, #93d9fa 0%, #ffffff 12%, #acc67e 20%);
+  }
+}
+
+/* Decorative glow pulses (see components/ui/glow.tsx and the star decal SVGs) */
+@theme {
+  --animate-glow: glow 3s ease-in-out infinite;
+  --animate-twinkle: twinkle 2.8s ease-in-out infinite;
+
+  @keyframes glow {
+    0%,
+    100% {
+      opacity: 0.35;
+    }
+    50% {
+      opacity: 0.8;
+    }
+  }
+
+  @keyframes twinkle {
+    0%,
+    100% {
+      opacity: 0.4;
+    }
+    50% {
+      opacity: 1;
+    }
   }
 }
