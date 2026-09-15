@@ -5,8 +5,19 @@ import { testimonials } from "@/constants/testimonials";
 import Image from "next/image";
 import { useState } from "react";
 
-const BUBBLE_SHAPE =
-  "polygon(0% 0%, 100% 0%, 92.71% 90.16%, 55.39% 91.77%, 47.81% 100%, 40.23% 92.17%, 6.41% 93.78%)";
+const BUBBLE_WIDTH = 345;
+const BUBBLE_HEIGHT = 513;
+// every tail needs the same number of points or the clip-path transition just snaps
+const BUBBLE_TAILS = [
+  [[141.774, 469.465], [105, 513], [105, 469.465]],
+  [[184.5, 459], [168, 500], [136, 459]],
+  [[261.5, 456], [261.5, 493], [223, 459.5]],
+];
+
+const bubbleShape = (tail: number[][]) =>
+  `polygon(${[[0, 0], [BUBBLE_WIDTH, 0], [320.5, 450], ...tail, [23.116, 469.465]]
+    .map(([x, y]) => `${(x / BUBBLE_WIDTH) * 100}% ${(y / BUBBLE_HEIGHT) * 100}%`)
+    .join(", ")})`;
 
 type ArrowProps = {
   direction: "prev" | "next";
@@ -306,8 +317,10 @@ const TestimonialsMobile = () => {
       </h2>
 
       <div
-        className="absolute left-[8.14vw] top-[11.45vw] h-[126.72vw] w-[87.28vw] bg-[#f4e9ff]"
-        style={{ clipPath: BUBBLE_SHAPE }}
+        className="absolute left-[8.14vw] top-[11.45vw] h-[129.78vw] w-[87.28vw] bg-[#f4e9ff] transition-[clip-path] duration-300 ease-out"
+        style={{
+          clipPath: bubbleShape(BUBBLE_TAILS[current % BUBBLE_TAILS.length]),
+        }}
       />
       <div className="absolute left-[16.54vw] top-[17.56vw] w-[70.23vw]">
         <p className="text-[6.11vw] font-bold leading-none text-black">
