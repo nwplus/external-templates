@@ -4,6 +4,52 @@ import Image from "next/image";
 
 const RECAP_VIDEO = "https://www.youtube.com/embed/3AQoV3BiRpc";
 
+type FramedPhotoProps = {
+  className: string;
+  frame: { src: string; size: [number, number] };
+  photo: { src: string; alt: string; size: [number, number] };
+  aperture: [number, number, number, number];
+  objectPosition: string;
+  rounded?: boolean;
+};
+
+const FramedPhoto = ({
+  className,
+  frame,
+  photo,
+  aperture: [left, top, width, height],
+  objectPosition,
+  rounded,
+}: FramedPhotoProps) => (
+  <div className={`absolute ${className}`}>
+    <Image
+      src={frame.src}
+      alt=""
+      width={frame.size[0]}
+      height={frame.size[1]}
+      className="absolute inset-0 h-full w-full"
+    />
+    <div
+      className={`absolute overflow-hidden ${rounded ? "rounded-full" : ""}`}
+      style={{
+        left: `${left}%`,
+        top: `${top}%`,
+        width: `${width}%`,
+        height: `${height}%`,
+      }}
+    >
+      <Image
+        src={photo.src}
+        alt={photo.alt}
+        width={photo.size[0]}
+        height={photo.size[1]}
+        className="h-full w-full object-cover"
+        style={{ objectPosition }}
+      />
+    </div>
+  </div>
+);
+
 const RecapMobile = () => {
   return (
     <div
@@ -49,22 +95,18 @@ const RecapMobile = () => {
         Recap
       </h2>
 
-      <Image
-        src="/assets/recap/green-frame.webp"
-        alt=""
-        width={275}
-        height={206}
-        className="absolute left-[52.42vw] top-[175.83vw] h-[15.78vw] w-[22.9vw]"
+      <FramedPhoto
+        className="left-[52.42vw] top-[175.83vw] h-[15.78vw] w-[22.9vw]"
+        frame={{ src: "/assets/recap/green-frame.webp", size: [275, 206] }}
+        photo={{
+          src: "/assets/recap/photos/green.jpg",
+          alt: "Participants working at desks across a lecture hall",
+          size: [496, 331],
+        }}
+        aperture={[12.06, 14.39, 75.17, 60.46]}
+        objectPosition="66% 91%"
+        rounded
       />
-      <div className="absolute left-[55vw] top-[178.38vw] h-[10.68vw] w-[17.73vw] overflow-hidden rounded-full">
-        <Image
-          src="/assets/recap/photos/green.jpg"
-          alt="Participants working at desks across a lecture hall"
-          width={496}
-          height={331}
-          className="absolute left-[-2.33vw] top-[-3.15vw] h-[14.15vw] w-[21.27vw] max-w-none"
-        />
-      </div>
 
       <Image
         src="/assets/recap/red-frame.webp"
@@ -94,22 +136,18 @@ const RecapMobile = () => {
         className="absolute left-[72.26vw] top-[10.94vw] h-[24.4vw] w-[17.81vw]"
       />
 
-      <Image
-        src="/assets/recap/purple-frame.webp"
-        alt=""
-        width={289}
-        height={371}
-        className="absolute left-[3.31vw] top-[115.07vw] h-[34.32vw] w-[22.9vw]"
+      <FramedPhoto
+        className="left-[3.31vw] top-[115.07vw] h-[34.32vw] w-[22.9vw]"
+        frame={{ src: "/assets/recap/purple-frame.webp", size: [289, 371] }}
+        photo={{
+          src: "/assets/recap/photos/purple.jpg",
+          alt: "Two hackers demoing their project beside a hand-lettered sign",
+          size: [570, 760],
+        }}
+        aperture={[4.97, 12.99, 90.06, 77.53]}
+        objectPosition="70% 91%"
+        rounded
       />
-      <div className="absolute left-[4.45vw] top-[119.53vw] h-[26.61vw] w-[20.62vw] overflow-hidden rounded-full">
-        <Image
-          src="/assets/recap/photos/purple.jpg"
-          alt="Two hackers demoing their project beside a hand-lettered sign"
-          width={570}
-          height={760}
-          className="absolute left-[-2.3vw] top-[-6.47vw] h-[32.56vw] w-[24.42vw] max-w-none"
-        />
-      </div>
       <Image
         src="/assets/recap/purple-frame-bow-left.webp"
         alt=""
