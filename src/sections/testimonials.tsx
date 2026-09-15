@@ -380,7 +380,7 @@ const Testimonials = () => {
         height={314}
         className="absolute left-[55.07vw] top-[11.42vw] h-[20.52vw] w-[1.51vw]"
       />
-      <div className="absolute left-[56.9vw] top-[7.4vw] flex h-[28.4vw] w-[36vw] flex-col justify-center">
+      <div className="absolute left-[58.8vw] top-[7.4vw] flex h-[28.4vw] w-[35vw] flex-col justify-center">
         <p className="font-title text-[2.2vw] leading-none text-[#16224f]">
           {person.name}
         </p>
