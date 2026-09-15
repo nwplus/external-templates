@@ -92,21 +92,21 @@ const Recap = () => {
       </h2>
 
       <Image
-        src="/assets/recap/green-frame.svg"
+        src="/assets/recap/green-frame.webp"
         alt=""
         width={275}
         height={206}
         className="absolute left-[42.41vw] top-[36.52vw] h-[13.48vw] w-[18vw]"
       />
       <Image
-        src="/assets/recap/red-frame.svg"
+        src="/assets/recap/red-frame.webp"
         alt=""
         width={299}
         height={292}
         className="absolute left-[21.86vw] top-[44.37vw] h-[19.08vw] w-[19.57vw]"
       />
       <Image
-        src="/assets/recap/clock.svg"
+        src="/assets/recap/clock.webp"
         alt=""
         width={195}
         height={236}
@@ -114,49 +114,49 @@ const Recap = () => {
       />
 
       <Image
-        src="/assets/recap/purple-frame.svg"
+        src="/assets/recap/purple-frame.webp"
         alt=""
         width={289}
         height={371}
         className="absolute left-[1.57vw] top-[41.49vw] h-[24.25vw] w-[18.91vw]"
       />
       <Image
-        src="/assets/recap/purple-frame-bow-left.svg"
+        src="/assets/recap/purple-frame-bow-left.webp"
         alt=""
         width={29}
         height={16}
         className="absolute left-[8.28vw] top-[43.37vw] h-[0.91vw] w-[1.69vw] rotate-[-20.76deg]"
       />
       <Image
-        src="/assets/recap/purple-frame-bow-right.svg"
+        src="/assets/recap/purple-frame-bow-right.webp"
         alt=""
         width={29}
         height={16}
         className="absolute left-[12.04vw] top-[43.37vw] h-[0.91vw] w-[1.69vw] rotate-[159.24deg]"
       />
       <Image
-        src="/assets/recap/purple-frame-gem-outer.svg"
+        src="/assets/recap/purple-frame-gem-outer.webp"
         alt=""
         width={32}
         height={31}
         className="absolute left-[9.99vw] top-[41.98vw] h-[1.97vw] w-[2.08vw]"
       />
       <Image
-        src="/assets/recap/purple-frame-gem-inner.svg"
+        src="/assets/recap/purple-frame-gem-inner.webp"
         alt=""
         width={20}
         height={18}
         className="absolute left-[10.38vw] top-[42.4vw] h-[1.12vw] w-[1.27vw]"
       />
       <Image
-        src="/assets/recap/purple-frame-foot-left.svg"
+        src="/assets/recap/purple-frame-foot-left.webp"
         alt=""
         width={34}
         height={23}
         className="absolute left-[8.87vw] top-[63.58vw] h-[1.49vw] w-[2.2vw]"
       />
       <Image
-        src="/assets/recap/purple-frame-foot-right.svg"
+        src="/assets/recap/purple-frame-foot-right.webp"
         alt=""
         width={34}
         height={23}
@@ -174,28 +174,28 @@ const Recap = () => {
       </div>
 
       <Image
-        src="/assets/recap/hanging-frame.svg"
+        src="/assets/recap/hanging-frame.webp"
         alt=""
         width={246}
         height={371}
         className="absolute left-[89.86vw] top-[2.03vw] h-[24.28vw] w-[16.1vw]"
       />
       <Image
-        src="/assets/recap/calendar.svg"
+        src="/assets/recap/calendar.webp"
         alt=""
         width={127}
         height={122}
         className="absolute left-[51.83vw] top-[51.64vw] h-[7.98vw] w-[8.31vw]"
       />
       <Image
-        src="/assets/recap/dark-brown-frame.svg"
+        src="/assets/recap/dark-brown-frame.webp"
         alt=""
         width={233}
         height={270}
         className="absolute left-[82.85vw] top-[40.51vw] h-[17.67vw] w-[15.26vw]"
       />
       <Image
-        src="/assets/recap/mirror.svg"
+        src="/assets/recap/mirror.webp"
         alt=""
         width={218}
         height={270}
@@ -220,7 +220,7 @@ const Recap = () => {
       />
 
       <Image
-        src="/assets/recap/brown-photo-frame.svg"
+        src="/assets/recap/brown-photo-frame.webp"
         alt=""
         width={330}
         height={255}
@@ -268,7 +268,7 @@ const Recap = () => {
       </div>
 
       <Image
-        src="/assets/recap/light.svg"
+        src="/assets/recap/light.webp"
         alt=""
         width={843}
         height={1033}
