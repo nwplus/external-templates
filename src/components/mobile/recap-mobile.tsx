@@ -191,39 +191,30 @@ const RecapMobile = () => {
         className="absolute left-[15vw] top-[146.33vw] h-[2.11vw] w-[2.67vw]"
       />
 
-      <Image
-        src="/assets/recap/hanging-frame.webp"
-        alt=""
-        width={246}
-        height={371}
-        className="absolute left-[74.55vw] top-[146.07vw] h-[32.13vw] w-[20.11vw]"
+      <FramedPhoto
+        className="left-[74.55vw] top-[146.07vw] h-[32.13vw] w-[20.11vw]"
+        frame={{ src: "/assets/recap/hanging-frame.webp", size: [246, 371] }}
+        photo={{
+          src: "/assets/recap/photos/hanging.jpg",
+          alt: "The opening ceremony in a packed lecture theatre",
+          size: [609, 406],
+        }}
+        aperture={[6.46, 47.98, 77.33, 48.97]}
+        objectPosition="32% 61%"
+        rounded
       />
-      <div className="absolute left-[76vw] top-[160.63vw] h-[16.53vw] w-[17.31vw] overflow-hidden rounded-full">
-        <Image
-          src="/assets/recap/photos/hanging.jpg"
-          alt="The opening ceremony in a packed lecture theatre"
-          width={609}
-          height={406}
-          className="absolute left-[-3.37vw] top-[-1.18vw] h-[18.47vw] w-[27.67vw] max-w-none"
-        />
-      </div>
 
-      <Image
-        src="/assets/recap/dark-brown-frame.webp"
-        alt=""
-        width={233}
-        height={270}
-        className="absolute left-[20.87vw] top-[151.4vw] h-[29.96vw] w-[24.5vw]"
+      <FramedPhoto
+        className="left-[20.87vw] top-[151.4vw] h-[29.96vw] w-[24.5vw]"
+        frame={{ src: "/assets/recap/dark-brown-frame.webp", size: [233, 270] }}
+        photo={{
+          src: "/assets/recap/photos/dark-brown.jpg",
+          alt: "A participant coding on a laptop during the event",
+          size: [396, 594],
+        }}
+        aperture={[11.86, 11.6, 67.82, 75.55]}
+        objectPosition="49% 49%"
       />
-      <div className="absolute left-[24.02vw] top-[154.76vw] h-[23.33vw] w-[18.08vw] overflow-hidden">
-        <Image
-          src="/assets/recap/photos/dark-brown.jpg"
-          alt="A participant coding on a laptop during the event"
-          width={396}
-          height={594}
-          className="absolute left-[-2.24vw] top-[-5.19vw] h-[33.96vw] w-[22.64vw] max-w-none"
-        />
-      </div>
 
       <Image
         src="/assets/recap/mirror.webp"
@@ -262,22 +253,17 @@ const RecapMobile = () => {
         className="absolute left-[14.29vw] top-[49.97vw] h-[53.69vw] w-[75.23vw] border-0"
       />
 
-      <Image
-        src="/assets/recap/brown-photo-frame.webp"
-        alt=""
-        width={330}
-        height={255}
-        className="absolute left-[63.61vw] top-[117.18vw] h-[24.67vw] w-[30.79vw]"
+      <FramedPhoto
+        className="left-[63.61vw] top-[117.18vw] h-[24.67vw] w-[30.79vw]"
+        frame={{ src: "/assets/recap/brown-photo-frame.webp", size: [330, 255] }}
+        photo={{
+          src: "/assets/recap/photos/brown.jpg",
+          alt: "A team gathered around a laptop at a table",
+          size: [681, 454],
+        }}
+        aperture={[13.89, 17.91, 66.44, 68.48]}
+        objectPosition="50% 40%"
       />
-      <div className="absolute left-[68.15vw] top-[120.68vw] h-[17.66vw] w-[21.71vw] overflow-hidden">
-        <Image
-          src="/assets/recap/photos/brown.jpg"
-          alt="A team gathered around a laptop at a table"
-          width={681}
-          height={454}
-          className="absolute left-[-6.4vw] top-[-1.47vw] h-[22.01vw] w-[33.01vw] max-w-none"
-        />
-      </div>
 
       <Image
         src="/assets/recap/light.webp"
