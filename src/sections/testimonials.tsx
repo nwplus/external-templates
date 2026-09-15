@@ -78,7 +78,7 @@ const Testimonials = () => {
 
   return (
     <div
-      className="relative -mt-[16.5vw] h-[114.33vw] w-full overflow-hidden"
+      className="relative -mt-[16.5vw] h-[114.33vw] w-full scroll-mt-[5vw] overflow-hidden"
       id="testimonials"
     >
       <div className="absolute left-[-0.33vw] top-[16.45vw] h-[97.89vw] w-[100.98vw] bg-gradient-to-b from-[#393f52] to-[#222035]" />
@@ -380,7 +380,7 @@ const Testimonials = () => {
         height={314}
         className="absolute left-[55.07vw] top-[11.42vw] h-[20.52vw] w-[1.51vw]"
       />
-      <div className="absolute left-[56.9vw] top-[7.4vw] flex h-[28.4vw] w-[36vw] flex-col justify-center">
+      <div className="absolute left-[58.8vw] top-[7.4vw] flex h-[28.4vw] w-[35vw] flex-col justify-center">
         <p className="font-title text-[2.2vw] leading-none text-[#16224f]">
           {person.name}
         </p>
