@@ -53,7 +53,7 @@ const TestimonialsMobile = () => {
 
   return (
     <div
-      className="relative -mt-[132.32vw] h-[225.28vw] w-full overflow-hidden"
+      className="relative -mt-[132.32vw] h-[225.28vw] w-full scroll-mt-[16vw] overflow-hidden"
       id="testimonials-mobile"
     >
       <div className="absolute left-0 top-[132.32vw] h-[92.97vw] w-full bg-gradient-to-b from-[#393f52] to-[#222035]" />

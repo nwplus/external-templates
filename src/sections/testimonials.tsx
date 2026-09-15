@@ -78,7 +78,7 @@ const Testimonials = () => {
 
   return (
     <div
-      className="relative -mt-[16.5vw] h-[114.33vw] w-full overflow-hidden"
+      className="relative -mt-[16.5vw] h-[114.33vw] w-full scroll-mt-[5vw] overflow-hidden"
       id="testimonials"
     >
       <div className="absolute left-[-0.33vw] top-[16.45vw] h-[97.89vw] w-[100.98vw] bg-gradient-to-b from-[#393f52] to-[#222035]" />
