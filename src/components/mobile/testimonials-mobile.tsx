@@ -53,10 +53,10 @@ const TestimonialsMobile = () => {
 
   return (
     <div
-      className="relative -mt-[132.32vw] h-[216.28vw] w-full overflow-hidden"
+      className="relative -mt-[132.32vw] h-[225.28vw] w-full overflow-hidden"
       id="testimonials-mobile"
     >
-      <div className="absolute left-0 top-[132.32vw] h-[83.97vw] w-full bg-gradient-to-b from-[#393f52] to-[#222035]" />
+      <div className="absolute left-0 top-[132.32vw] h-[92.97vw] w-full bg-gradient-to-b from-[#393f52] to-[#222035]" />
       <Image
         src="/assets/testimonials/baseboard-bottom.png"
         alt=""
@@ -334,7 +334,7 @@ const TestimonialsMobile = () => {
         </p>
       </div>
 
-      <div className="absolute left-[29.52vw] top-[197.96vw] flex w-[44.53vw] items-center justify-between">
+      <div className="absolute left-[29.52vw] top-[206.96vw] flex w-[44.53vw] items-center justify-between">
         <Arrow direction="prev" onClick={() => step(-1)} />
         <div className="flex gap-[2.8vw]">
           {testimonials.map((entry, index) => (
