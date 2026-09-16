@@ -25,6 +25,13 @@ const CrtTv = ({ selected, empty }: CrtTvProps) => (
       className="h-auto w-full"
     />
 
+    {/* The set's light breathing over the bezel: above the artwork's own
+        static glow, below the copy. */}
+    <div
+      aria-hidden="true"
+      className="pointer-events-none absolute top-[5%] left-[9%] h-[71%] w-[82%] rounded-[12%] bg-static/50 blur-2xl mix-blend-screen motion-safe:animate-glow"
+    />
+
     {/* The flat part of the screen, inside the curve of the static. */}
     <div
       aria-live="polite"

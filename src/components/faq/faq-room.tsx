@@ -36,6 +36,23 @@ const badgeFor = (position: number) =>
       }
     : {};
 
+/**
+ * The lava lamp with its glow: the artwork carries a faint static halo, and a
+ * warmer one breathes behind it so that corner of the room reads as lit.
+ */
+const LavaLamp = ({ className }: { className?: string }) => (
+  <div aria-hidden="true" className={cn("pointer-events-none", className)}>
+    <div className="absolute inset-[-30%] rounded-full bg-[radial-gradient(closest-side,rgba(250,203,107,0.7),rgba(250,203,107,0))] blur-xl motion-safe:animate-glow" />
+    <Image
+      src="/assets/faq/lava-lamp.svg"
+      alt=""
+      width={302}
+      height={381}
+      className="relative h-auto w-full"
+    />
+  </div>
+);
+
 type SelectProps = {
   selected: FaqItem | null;
   onSelect: (faq: FaqItem) => void;
@@ -128,14 +145,7 @@ const RoomWall = ({
       height={161}
       className="pointer-events-none absolute top-[77.2%] left-[73.61%] h-auto w-[10.25%]"
     />
-    <Image
-      src="/assets/faq/lava-lamp.svg"
-      alt=""
-      aria-hidden="true"
-      width={302}
-      height={381}
-      className="pointer-events-none absolute top-[38.85%] left-[77.33%] h-auto w-[19.73%]"
-    />
+    <LavaLamp className="absolute top-[38.85%] left-[77.33%] w-[19.73%]" />
     <div className="absolute top-[30.07%] left-[41.99%] w-[31.16%]">
       <CrtTv selected={selected} empty={empty} />
     </div>
@@ -277,16 +287,7 @@ const MobileShelf = ({
       selected={selected}
       onSelect={onSelect}
     />
-    {lamp && (
-      <Image
-        src="/assets/faq/lava-lamp.svg"
-        alt=""
-        aria-hidden="true"
-        width={302}
-        height={381}
-        className="pointer-events-none absolute bottom-[8%] -left-[17%] h-auto w-[58%]"
-      />
-    )}
+    {lamp && <LavaLamp className="absolute bottom-[8%] -left-[17%] w-[58%]" />}
     <Image
       src="/assets/faq/shelf-blanket.svg"
       alt=""
