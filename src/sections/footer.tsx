@@ -30,7 +30,7 @@ const Footer = () => {
         desktop frame puts it below, so the two orders are set with `order`
         rather than duplicated markup.
       */}
-      <div className="relative z-10 mx-auto flex min-h-[145vw] w-full max-w-[1531px] flex-col items-center px-6 pt-12 xl:min-h-0 xl:pt-[17.2%]">
+      <div className="relative z-10 mx-auto flex min-h-[145vw] w-full max-w-[1531px] flex-col items-center px-6 pt-[22%] xl:min-h-0 xl:pt-[17.2%]">
         <Contact />
 
         <p className="order-2 max-w-[67%] text-center font-body text-base leading-relaxed xl:order-4 xl:max-w-[81%] xl:text-xl">
