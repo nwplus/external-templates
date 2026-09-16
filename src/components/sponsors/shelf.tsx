@@ -1,6 +1,7 @@
 import type { Decoration } from "@/lib/shelves";
 import { cn } from "@/lib/utils";
 
+import { motion } from "framer-motion";
 import Image from "next/image";
 import type { CSSProperties, ReactNode } from "react";
 
@@ -36,6 +37,12 @@ const PLACEMENT: Record<Decoration, { size: number; inset: number }> = {
   plant: { size: 29, inset: -3.3 },
 };
 
+/** A short rock on the base, the way a plush or a book wobbles when nudged. */
+export const wobble = {
+  rotate: [0, -4, 4, -2, 2, 0],
+  transition: { duration: 0.6, ease: "easeInOut" as const },
+};
+
 const ShelfDecoration = ({
   kind,
   side,
@@ -47,19 +54,26 @@ const ShelfDecoration = ({
   const { size, inset } = PLACEMENT[kind];
   const style: CSSProperties = {
     width: `${size}%`,
+    transformOrigin: "50% 100%",
     ...(side === "left" ? { left: `${inset}%` } : { right: `${inset}%` }),
   };
 
   return (
-    <Image
-      src={art.src}
-      alt=""
+    <motion.div
       aria-hidden
-      width={art.width}
-      height={art.height}
       style={style}
-      className="pointer-events-none absolute bottom-0 hidden h-auto xl:block"
-    />
+      className="absolute bottom-0 hidden xl:block"
+      whileHover={wobble}
+      whileTap={wobble}
+    >
+      <Image
+        src={art.src}
+        alt=""
+        width={art.width}
+        height={art.height}
+        className="pointer-events-none block h-auto w-full"
+      />
+    </motion.div>
   );
 };
 

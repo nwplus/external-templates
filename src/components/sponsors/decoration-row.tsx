@@ -1,8 +1,9 @@
 import type { Decoration } from "@/lib/shelves";
 
+import { motion } from "framer-motion";
 import Image from "next/image";
 
-import { DECORATION_ART } from "./shelf";
+import { DECORATION_ART, wobble } from "./shelf";
 
 /**
  * Where each decoration stands on the narrow layout's decoration-only shelf,
@@ -25,22 +26,32 @@ const ROW_HEIGHT = 48.9;
 const DecorationRow = ({ items }: { items: Decoration[] }) => (
   <div
     aria-hidden
-    className="pointer-events-none relative w-full"
+    className="relative w-full"
     style={{ paddingBottom: `${ROW_HEIGHT}%` }}
   >
     {items.map((kind) => {
       const art = DECORATION_ART[kind];
       const { left, width } = PLACEMENT[kind];
       return (
-        <Image
+        <motion.div
           key={kind}
-          src={art.src}
-          alt=""
-          width={art.width}
-          height={art.height}
-          style={{ left: `${left}%`, width: `${width}%` }}
-          className="absolute bottom-0 h-auto max-w-none"
-        />
+          style={{
+            left: `${left}%`,
+            width: `${width}%`,
+            transformOrigin: "50% 100%",
+          }}
+          className="absolute bottom-0"
+          whileHover={wobble}
+          whileTap={wobble}
+        >
+          <Image
+            src={art.src}
+            alt=""
+            width={art.width}
+            height={art.height}
+            className="pointer-events-none block h-auto w-full max-w-none"
+          />
+        </motion.div>
       );
     })}
   </div>
