@@ -226,9 +226,11 @@ const Cabinet = ({
 };
 
 /**
- * One mobile shelf: a wooden band with the tapes stacked in a single column,
- * closed by the blanket hanging over its front edge. The mobile design keeps
- * every category on a shelf like this, so there is no wall and no tapestry.
+ * One mobile shelf: a plank along the top, the tapes stacked in a single
+ * column below it, closed by the blanket hanging over its front edge. The
+ * mobile design keeps every category on a shelf like this, so there is no
+ * wall and no tapestry. The heading sits on the first plank, which keeps it
+ * clear of the lava lamp when the first shelf is also the last.
  */
 const MobileShelf = ({
   group,
@@ -246,29 +248,32 @@ const MobileShelf = ({
   lamp: boolean;
 }) => (
   <div className="relative bg-cabinet">
-    <Image
-      src="/assets/faq/desk-top.svg"
-      alt=""
-      aria-hidden="true"
-      width={1519}
-      height={34}
-      className="block h-[10.4vw] w-full object-fill"
-    />
-    <div className="flex items-start justify-between gap-3 px-4 pt-2">
+    {/* The plank along the top of the shelf, which carries the heading. */}
+    <div className="flex h-[10.4vw] items-center bg-[#a98469] px-4">
       {title && (
-        <p aria-hidden="true" className="font-display text-3xl text-cream">
+        <p
+          aria-hidden="true"
+          className="font-display text-[6.6vw] leading-none text-cream-soft"
+        >
           FAQ
         </p>
       )}
-      <h3 className="ml-auto w-fit max-w-[52%] rotate-3 rounded-xs bg-cream-soft px-3 py-1.5 font-display text-sm tracking-wide text-ink">
+    </div>
+    <div className="flex justify-end px-4 pt-2">
+      <h3 className="w-fit max-w-[52%] rotate-3 rounded-xs bg-cream-soft px-3 py-1.5 font-display text-sm tracking-wide text-ink">
         {group.category}
       </h3>
     </div>
+    {/* The lamp shelf is kept tall enough for the lamp to stand under the
+        plank even when the category has only a question or two. */}
     <TapeStack
       faqs={group.faqs}
       label={group.category}
       badged={badged}
-      className={cn("relative w-full pt-2 pr-3 pb-6", lamp ? "pl-14" : "pl-3")}
+      className={cn(
+        "relative w-full pt-2 pr-3 pb-6",
+        lamp ? "min-h-[78vw] pl-14" : "pl-3"
+      )}
       selected={selected}
       onSelect={onSelect}
     />
