@@ -155,7 +155,9 @@ const RoomWall = ({
 /**
  * One open cabinet: `cabinet.svg` sets the band's height, and the radio, the
  * two tape stacks and the blanket draped over the shelf edge are placed on it
- * as fractions of that artwork. Desktop only.
+ * as fractions of that artwork. The radio and blanket are always there; the
+ * stacks and the radio's label only when a category sits on the shelf.
+ * Desktop only.
  */
 const Cabinet = ({
   shelf,
@@ -184,21 +186,24 @@ const Cabinet = ({
         height={168}
         className="pointer-events-none absolute top-[64.4%] left-[4.15%] h-auto w-[91.5%]"
       />
+      {/* The radio is part of the furniture, so it stays when the shelf is empty. */}
+      <div className="absolute top-[20.55%] left-[10.53%] @container w-[18.56%]">
+        <Image
+          src="/assets/faq/boombox.svg"
+          alt=""
+          aria-hidden="true"
+          width={282}
+          height={224}
+          className="h-auto w-full"
+        />
+        {shelf && (
+          <h3 className="absolute top-[46.2%] left-[27.2%] flex h-[13.4%] w-[45.7%] items-center justify-center overflow-hidden rounded-[4cqw] bg-tape-label px-[1.5cqw] text-center font-display text-[4.4cqw] leading-none text-ink uppercase">
+            <span className="truncate">{shelf.category}</span>
+          </h3>
+        )}
+      </div>
       {shelf && (
         <>
-          <div className="absolute top-[20.55%] left-[10.53%] @container w-[18.56%]">
-            <Image
-              src="/assets/faq/boombox.svg"
-              alt=""
-              aria-hidden="true"
-              width={282}
-              height={224}
-              className="h-auto w-full"
-            />
-            <h3 className="absolute top-[46.2%] left-[27.2%] flex h-[13.4%] w-[45.7%] items-center justify-center overflow-hidden rounded-[4cqw] bg-tape-label px-[1.5cqw] text-center font-display text-[4.4cqw] leading-none text-ink uppercase">
-              <span className="truncate">{shelf.category}</span>
-            </h3>
-          </div>
           <TapeStack
             faqs={left}
             label={shelf.category}
