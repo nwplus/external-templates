@@ -201,6 +201,7 @@ html {
   --animate-glow: glow 3s ease-in-out infinite;
   --animate-twinkle: twinkle 2.8s ease-in-out infinite;
   --animate-breathe: breathe 3.4s ease-in-out infinite;
+  --animate-float: float 7s ease-in-out infinite;
 
   @keyframes glow {
     0%,
@@ -230,6 +231,17 @@ html {
     }
     50% {
       opacity: 1;
+    }
+  }
+
+  /* The footer's stars drifting in place. */
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-6%) rotate(4deg);
     }
   }
 }
