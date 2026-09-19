@@ -312,7 +312,7 @@ const TestimonialsMobile = () => {
           {person.name}
         </p>
         <p className="mt-[2.04vw] text-[4.07vw] leading-none text-[#2b2b33]">
-          {person.pronouns} | {person.role}
+          {person.role}
         </p>
         <p className="mt-[7.12vw] text-[3.82vw] leading-[1.5] text-black">
           {person.testimonial}

@@ -63,10 +63,7 @@ const SpeechBubble = ({
       <span className="text-[0.96vw] font-bold leading-tight text-[#16224f]">
         {person.name}
       </span>
-      <span className="mt-[0.42vw] text-[0.83vw] leading-tight text-[#5a6396]">
-        {person.pronouns}
-      </span>
-      <span className="text-[0.83vw] leading-tight text-[#5a6396]">
+      <span className="mt-[0.3vw] text-[0.83vw] leading-tight text-[#5a6396]">
         {person.role}
       </span>
     </span>
@@ -371,11 +368,10 @@ const Testimonials = () => {
         <p className="font-title text-[2.2vw] leading-none text-[#16224f]">
           {person.name}
         </p>
-        <p className="mt-[0.9vw] text-[1.15vw] leading-none text-[#5a6396]">
-          {person.pronouns} · {person.role}
+        <p className="mt-[0.6vw] text-[1.1vw] leading-none text-[#5a6396]">
+          {person.role}
         </p>
-        <div className="mt-[1.1vw] h-px w-[2.6vw] bg-[#1a3375]/25" />
-        <p className="mt-[1.2vw] text-[1.2vw] leading-[1.5] text-[#2b3055]">
+        <p className="mt-[1.3vw] text-[1.2vw] leading-[1.5] text-[#2b3055]">
           {person.testimonial}
         </p>
       </div>
