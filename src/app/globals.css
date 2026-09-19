@@ -228,6 +228,114 @@ html {
   fill-opacity: 0;
 }
 
+/*
+ * The bed scene (components/footer/bed-scene.tsx). While the bear shows off
+ * its phone, the phone in its hand disappears and its face is no longer lit;
+ * both come back once the phone has flipped home.
+ */
+.bed-art :is([data-part="phone"], .screen-glow) {
+  transition: opacity 0.2s ease 0.4s;
+}
+
+.bed-art[data-phone="out"] [data-part="phone"] {
+  opacity: 0;
+  transition-delay: 0s;
+}
+
+.bed-art[data-phone="out"] .screen-glow {
+  opacity: 0.25;
+  transition-delay: 0s;
+}
+
+/* The runner game on the bear's phone (components/footer/phone-show.tsx). */
+@keyframes runner-ground {
+  to {
+    background-position: 0 10cqw;
+  }
+}
+
+@keyframes runner-coin {
+  0% {
+    transform: translate(-50%, 0) scale(0.25);
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  80% {
+    transform: translate(-50%, 70cqw) scale(1.1);
+    opacity: 1;
+  }
+  88%,
+  100% {
+    transform: translate(-50%, 78cqw) scale(1.25);
+    opacity: 0;
+  }
+}
+
+@keyframes runner-barrier {
+  0% {
+    transform: translate(-50%, 0) scale(0.2);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  84% {
+    transform: translate(-50%, 76cqw) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, 100cqw) scale(1.35);
+    opacity: 0;
+  }
+}
+
+@keyframes runner-jump {
+  0%,
+  68% {
+    transform: translate(-50%, 0);
+  }
+  78%,
+  86% {
+    transform: translate(-50%, -30cqw);
+  }
+  96%,
+  100% {
+    transform: translate(-50%, 0);
+  }
+}
+
+@keyframes runner-bob {
+  to {
+    transform: translateY(-2cqw);
+  }
+}
+
+@keyframes runner-stride {
+  from {
+    transform: rotate(-28deg);
+  }
+  to {
+    transform: rotate(28deg);
+  }
+}
+
+/* Nugget's z's, drifting up and away. */
+@keyframes zzz {
+  0% {
+    transform: translate(0, 0) scale(0.6);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(2.4cqw, -5cqw) scale(1.15);
+    opacity: 0;
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

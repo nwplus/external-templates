@@ -15,12 +15,10 @@ const Footer = () => {
         wide as the footer and roughly 1.35x as tall, pinned to the bottom edge.
         It grows with the screen past the design's 1531px, like the room above.
         Everything inside is placed as a percentage of that box, so the clouds,
-        the bed and the stars never drift apart from one another.
+        the bed and the stars never drift apart from one another. The scene
+        takes no clicks except on the two mascots.
       */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute bottom-[10vw] left-0 aspect-[1531/2065] w-full xl:bottom-0"
-      >
+      <div className="pointer-events-none absolute bottom-[10vw] left-0 aspect-[1531/2065] w-full xl:bottom-0">
         <CloudBorder />
         <BedScene />
         <StarField />
@@ -31,7 +29,7 @@ const Footer = () => {
         desktop frame puts it below, so the two orders are set with `order`
         rather than duplicated markup.
       */}
-      <div className="relative z-10 flex min-h-[145vw] w-full flex-col items-center px-6 pt-[22%] xl:min-h-0 xl:px-[max(1.5rem,1.568vw)] xl:pt-[17.2%]">
+      <div className="pointer-events-none relative z-10 flex min-h-[145vw] w-full flex-col items-center px-6 pt-[22%] xl:min-h-0 xl:px-[max(1.5rem,1.568vw)] xl:pt-[17.2%] [&>*:not([aria-hidden])]:pointer-events-auto">
         <Contact />
 
         <p className="order-2 max-w-[67%] text-center font-body text-base leading-relaxed xl:order-4 xl:max-w-[81%] xl:text-[length:max(1.25rem,1.306vw)]">
@@ -50,7 +48,8 @@ const Footer = () => {
           .
         </p>
 
-        {/* Holds open the space the bed fills in the scene behind. */}
+        {/* Holds open the space the bed fills in the scene behind, and lets
+            clicks through to the mascots in it. */}
         <div
           aria-hidden
           className="order-3 w-full flex-1 pb-[84%] xl:flex-none xl:pb-[72.8%]"
