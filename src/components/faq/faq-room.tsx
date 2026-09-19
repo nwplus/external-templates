@@ -251,10 +251,21 @@ const MobileShelf = ({
   badged: boolean;
   /** The first shelf carries the section's heading. */
   title: boolean;
-  /** The last shelf stands the lava lamp at its left edge. */
+  /**
+   * The last shelf stands the lava lamp at its left edge, and its blanket
+   * drapes over the cloud band that closes the section.
+   */
   lamp: boolean;
 }) => (
-  <div className="relative bg-cabinet">
+  <div className={cn("relative", lamp ? "z-30" : "bg-cabinet")}>
+    {/* On the last shelf the wall stops under the blanket's top, so the
+        blanket hangs over the clouds instead of over more wall. */}
+    {lamp && (
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 top-0 bottom-[8vw] -z-10 bg-cabinet"
+      />
+    )}
     {/* The plank along the top of the shelf, which carries the heading. */}
     <div className="flex h-[10.4vw] items-center bg-[#a98469] px-4">
       {title && (
@@ -295,7 +306,7 @@ const MobileShelf = ({
       aria-hidden="true"
       width={1390}
       height={168}
-      className="relative block h-auto w-full"
+      className="pointer-events-none relative block h-auto w-full"
     />
   </div>
 );
@@ -376,13 +387,16 @@ const FaqRoom = ({ layout }: { layout: FaqLayout<FaqItem> }) => {
             onSelect={handleSelect}
           />
         ))}
+        {/* Tucked up behind the last shelf's blanket, as in the phone frame,
+            and above the Sponsors band, which slides up under it, so its
+            string lights hang out of the clouds as they do on desktop. */}
         <Image
           src="/assets/faq/cloth-band.svg"
           alt=""
           aria-hidden="true"
           width={1531}
           height={351}
-          className="block h-auto w-full"
+          className="relative z-20 -mt-[16%] block h-auto w-full"
         />
       </div>
     </>
