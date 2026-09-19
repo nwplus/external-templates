@@ -13,12 +13,13 @@ const Footer = () => {
       {/*
         The night scene keeps the proportions it has in the design: a box as
         wide as the footer and roughly 1.35x as tall, pinned to the bottom edge.
+        It grows with the screen past the design's 1531px, like the room above.
         Everything inside is placed as a percentage of that box, so the clouds,
         the bed and the stars never drift apart from one another.
       */}
       <div
         aria-hidden
-        className="pointer-events-none absolute bottom-[10vw] left-1/2 aspect-[1531/2065] w-full max-w-[1531px] -translate-x-1/2 xl:bottom-0"
+        className="pointer-events-none absolute bottom-[10vw] left-0 aspect-[1531/2065] w-full xl:bottom-0"
       >
         <CloudBorder />
         <BedScene />
@@ -30,10 +31,10 @@ const Footer = () => {
         desktop frame puts it below, so the two orders are set with `order`
         rather than duplicated markup.
       */}
-      <div className="relative z-10 mx-auto flex min-h-[145vw] w-full max-w-[1531px] flex-col items-center px-6 pt-[22%] xl:min-h-0 xl:pt-[17.2%]">
+      <div className="relative z-10 flex min-h-[145vw] w-full flex-col items-center px-6 pt-[22%] xl:min-h-0 xl:px-[max(1.5rem,1.568vw)] xl:pt-[17.2%]">
         <Contact />
 
-        <p className="order-2 max-w-[67%] text-center font-body text-base leading-relaxed xl:order-4 xl:max-w-[81%] xl:text-xl">
+        <p className="order-2 max-w-[67%] text-center font-body text-base leading-relaxed xl:order-4 xl:max-w-[81%] xl:text-[length:max(1.25rem,1.306vw)]">
           HackCamp 2026 will be taking place on xʷməθkʷəy̓əm (Musqueam) and
           səlilwətaɬ (Tsleil-Waututh) territory. As we build tomorrow&apos;s
           tech community, we recognize our responsibility to understand and
@@ -59,7 +60,7 @@ const Footer = () => {
           <TeamGallery />
         </div>
 
-        <p className="order-6 mb-[5.1%] mt-[3.4%] font-body text-lg font-bold text-white xl:mb-[2.2%] xl:mt-[0.5%]">
+        <p className="order-6 mb-[5.1%] mt-[3.4%] font-body text-lg font-bold text-white xl:mt-[0.5%] xl:mb-[2.2%] xl:text-[length:max(1.125rem,1.176vw)]/[1.5556]">
           Copyright © HackCamp 2026
         </p>
       </div>

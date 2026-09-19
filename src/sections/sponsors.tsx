@@ -36,18 +36,21 @@ const Sponsors = () => {
       // instead of hanging from the top edge of the band.
       className="relative -mt-[22.08%] w-full overflow-visible bg-linear-to-b from-night-top to-night-bottom to-85% pt-[9.28%] text-cream"
     >
-      {/* Everything is sized as a share of this box, which is the design's
-          own width, so the band keeps its proportions at any viewport. */}
-      <div className="mx-auto w-full max-w-[1531px]">
+      {/* Everything is sized as a share of the width, so the band keeps the
+          design's proportions at any viewport; above the design's 1531px the
+          fixed-size type and gaps grow with it too. */}
+      <div className="w-full">
         {/* Sits above the night sky but under the FAQ's clouds, so the
             hanging cords disappear between the scallops. */}
         <StringLights variant="top" className="relative z-[1]" />
 
         {/* The design hangs the heading inside the lowest reach of the
             garland's glow, so the text block is pulled back up under it. */}
-        <div className="relative -mt-[11.9%] flex flex-col items-center gap-6 px-6 text-center">
-          <h2 className="font-display text-4xl xl:text-6xl">Sponsors</h2>
-          <p className="max-w-[90%] font-body text-base xl:max-w-[64%] xl:text-2xl">
+        <div className="relative -mt-[11.9%] flex flex-col items-center gap-6 px-6 text-center xl:gap-[max(1.5rem,1.568vw)] xl:px-[max(1.5rem,1.568vw)]">
+          <h2 className="font-display text-4xl xl:text-[length:max(3.75rem,3.919vw)]/[1]">
+            Sponsors
+          </h2>
+          <p className="max-w-[90%] font-body text-base xl:max-w-[64%] xl:text-[length:max(1.5rem,1.568vw)]/[1.3333]">
             nwPlus is always looking for new ventures, opportunities, and
             connections. If you are interested in working with us, joining us or
             speaking at one of our events, feel free to reach out to us at{" "}

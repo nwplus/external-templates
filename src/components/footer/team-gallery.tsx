@@ -31,21 +31,21 @@ const TeamGallery = () => {
   }, []);
 
   return (
-    <div className="flex w-full flex-col items-center gap-1 xl:gap-4">
-      <h2 className="font-display text-2xl text-cream-soft xl:text-[2.5rem]">
+    <div className="flex w-full flex-col items-center gap-1 xl:gap-[max(1rem,1.045vw)]">
+      <h2 className="font-display text-2xl text-cream-soft xl:text-[length:max(2.5rem,2.613vw)]">
         Meet the minds behind HackCamp
       </h2>
 
       <div className="w-full overflow-x-hidden whitespace-nowrap">
         {/* Profiles are duplicated so the marquee loops seamlessly. */}
         <div
-          className="flex gap-6 py-2 will-change-transform xl:gap-7 xl:py-4"
+          className="flex gap-6 py-2 will-change-transform xl:gap-[max(1.75rem,1.829vw)] xl:py-[max(1rem,1.045vw)]"
           id="anim-profiles"
         >
           {[...teamMembers, ...teamMembers].map((profile, i) => {
             const href = toHref(profile.social);
             const className =
-              "inline-block size-16 shrink-0 rounded-md bg-white transition-transform duration-100 ease-in-out hover:scale-110 xl:size-20";
+              "inline-block size-16 shrink-0 rounded-md bg-white transition-transform duration-100 ease-in-out hover:scale-110 xl:size-[max(5rem,5.225vw)]";
             const onMouseEnter = () => {
               setSelectedProfile(profile);
               animator?.pause();
@@ -95,7 +95,7 @@ const TeamGallery = () => {
       </div>
 
       {/* Hidden on mobile because there is no hover state there. */}
-      <p className="hidden h-6 font-body xl:block">
+      <p className="hidden h-6 font-body xl:block xl:h-[max(1.5rem,1.568vw)] xl:text-[length:max(1rem,1.045vw)]">
         {selectedProfile && (
           <>
             <b className="mr-2">{selectedProfile.name}</b>
