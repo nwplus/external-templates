@@ -1,5 +1,6 @@
 "use client";
 
+import { TappableBear } from "@/components/testimonials/tappable-bear";
 import { testimonials } from "@/constants/testimonials";
 
 import Image from "next/image";
@@ -205,26 +206,10 @@ const TestimonialsMobile = () => {
         height={12}
         className="absolute left-[75.24vw] top-[167.7vw] h-[1.44vw] w-[1.85vw]"
       />
-      <Image
-        src="/assets/testimonials/bear-body.svg"
-        alt=""
-        width={138}
-        height={126}
-        className="absolute left-[20.28vw] top-[161.73vw] h-[15.18vw] w-[16.66vw] rotate-[-1.14deg]"
-      />
-      <Image
-        src="/assets/testimonials/bear-head.svg"
-        alt=""
-        width={116}
-        height={98}
-        className="absolute left-[21.5vw] top-[151.39vw] h-[11.82vw] w-[14.0vw]"
-      />
-      <Image
-        src="/assets/testimonials/bear-hat.svg"
-        alt=""
-        width={92}
-        height={48}
-        className="absolute left-[21.33vw] top-[147.83vw] h-[5.84vw] w-[11.12vw]"
+      <TappableBear
+        onClick={() => step(1)}
+        whileTap={{ scale: 0.95 }}
+        className="left-[20.28vw] top-[147.83vw] h-[29.08vw] w-[16.66vw]"
       />
       <Image
         src="/assets/testimonials/nugget.svg"
@@ -259,7 +244,7 @@ const TestimonialsMobile = () => {
         alt=""
         width={242}
         height={262}
-        className="absolute left-[6.62vw] top-[165.3vw] h-[31.67vw] w-[29.22vw]"
+        className="pointer-events-none absolute left-[6.62vw] top-[165.3vw] h-[31.67vw] w-[29.22vw]"
       />
       <Image
         src="/assets/testimonials/oval-pillow.svg"
@@ -298,14 +283,14 @@ const TestimonialsMobile = () => {
       />
 
       <div
-        className="absolute left-[27.04vw] top-[157.56vw] h-[30.69vw] w-[45.56vw] opacity-50 mix-blend-plus-lighter"
+        className="pointer-events-none absolute left-[27.04vw] top-[157.56vw] h-[30.69vw] w-[45.56vw] opacity-50 mix-blend-plus-lighter"
         style={{
           background:
             "radial-gradient(50% 50% at 50% 50%, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 100%)",
         }}
       />
       <div
-        className="absolute left-[45.16vw] top-[147.77vw] h-[30.69vw] w-[45.45vw] opacity-25 mix-blend-plus-lighter"
+        className="pointer-events-none absolute left-[45.16vw] top-[147.77vw] h-[30.69vw] w-[45.45vw] opacity-25 mix-blend-plus-lighter"
         style={{
           background:
             "radial-gradient(50% 50% at 50% 50%, rgba(255,223,141,1) 0%, rgba(255,223,141,0) 100%)",
