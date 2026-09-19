@@ -9,14 +9,44 @@ import { useId, useState } from "react";
 const LAVA =
   "M135.68 160H167.68C167.68 160 197.68 272 187.68 272C177.68 272 125.68 272 114.68 272C103.68 272 135.68 160 135.68 160Z";
 
+/**
+ * How each lump of wax moves, in the order the artwork draws them: the small
+ * and the medium blob rise and sink, the cap at the top of the glass drips,
+ * and the column at the bottom sways. Each scales about its own box, anchored
+ * where it touches the glass. The delay and the pause are set inline because
+ * the animate utility is the `animation` shorthand, which resets both.
+ */
+const WAX = [
+  {
+    className:
+      "[transform-box:fill-box] origin-center motion-safe:animate-lava-rise-small",
+    delay: "-4s",
+  },
+  {
+    className:
+      "[transform-box:fill-box] origin-center motion-safe:animate-lava-rise",
+    delay: "0s",
+  },
+  {
+    className:
+      "[transform-box:fill-box] origin-top motion-safe:animate-lava-drip",
+    delay: "-3s",
+  },
+  {
+    className:
+      "[transform-box:fill-box] origin-bottom motion-safe:animate-lava-pool",
+    delay: "0s",
+  },
+];
+
 /** A warming bulb: a couple of stutters before it holds, off in a blink. */
 const FLICKER_ON = [0, 1, 0.3, 1, 0.55, 1];
 const FLICKER_TIMES = [0, 0.15, 0.3, 0.5, 0.7, 1];
 
 /**
- * The lava lamp. Clicking it switches it off and on: the glow fades, the
- * glass goes dark, and switching back on flickers the way a warming bulb
- * does. The artwork is inline so the glow and the glass can change on their
+ * The lava lamp. The wax drifts while it is on. Clicking it switches it off
+ * and on: the glow fades, the glass goes dark and the wax stops where it is,
+ * and switching back on flickers the way a warming bulb does. The artwork is inline so the glow and the glass can change on their
  * own; ids are namespaced because the desktop wall and the phone shelf both
  * render a lamp, and a duplicate id would resolve to the hidden copy.
  */
@@ -115,22 +145,45 @@ export const LavaLamp = ({ className }: { className?: string }) => {
             />
           </g>
         </g>
-        <path
-          d="M168.656 196.679C162.468 192.167 159.373 197.807 158.445 201.191C157.517 204.575 166.49 209.463 169.275 207.583C172.06 205.703 174.845 201.191 168.656 196.679Z"
-          fill={`url(#${id}-blob1)`}
-        />
-        <path
-          d="M152.363 190.049C152.731 198.256 146.438 204.006 139.109 204C134.966 203.41 131.378 201.128 131.378 197.024C131.378 192.921 132.482 186.766 132.482 186.766C134.508 183.876 135.973 182.455 140.95 181.431C147.77 180.026 151.994 181.841 152.363 190.049Z"
-          fill={`url(#${id}-blob2)`}
-        />
-        <path
-          d="M167.378 160H136.378C136.621 164.303 140.421 170.884 145.813 173.887C151.204 176.889 152.552 176.514 157.269 173.887C161.987 171.259 166.41 164.851 167.378 160Z"
-          fill={`url(#${id}-blob3)`}
-        />
-        <path
-          d="M144.994 243.392C139.378 250.446 142.943 266.013 139.378 272H167.107C164.526 266.22 167.107 253.581 162.895 244.567C158.683 235.554 157.981 235.946 162.895 228.5C167.809 221.054 170.629 211.116 160.789 202.635C154.644 198.472 151.543 199.837 146.047 202.635C137.451 211.577 139.027 221.446 144.994 227.324C150.961 233.203 150.61 236.338 144.994 243.392Z"
-          fill={`url(#${id}-blob4)`}
-        />
+        {/* The wax, kept inside the glass while it moves. */}
+        <g clipPath={`url(#${id}-glass)`}>
+          <path
+            d="M168.656 196.679C162.468 192.167 159.373 197.807 158.445 201.191C157.517 204.575 166.49 209.463 169.275 207.583C172.06 205.703 174.845 201.191 168.656 196.679Z"
+            fill={`url(#${id}-blob1)`}
+            className={WAX[0].className}
+            style={{
+              animationDelay: WAX[0].delay,
+              animationPlayState: lit ? "running" : "paused",
+            }}
+          />
+          <path
+            d="M152.363 190.049C152.731 198.256 146.438 204.006 139.109 204C134.966 203.41 131.378 201.128 131.378 197.024C131.378 192.921 132.482 186.766 132.482 186.766C134.508 183.876 135.973 182.455 140.95 181.431C147.77 180.026 151.994 181.841 152.363 190.049Z"
+            fill={`url(#${id}-blob2)`}
+            className={WAX[1].className}
+            style={{
+              animationDelay: WAX[1].delay,
+              animationPlayState: lit ? "running" : "paused",
+            }}
+          />
+          <path
+            d="M167.378 160H136.378C136.621 164.303 140.421 170.884 145.813 173.887C151.204 176.889 152.552 176.514 157.269 173.887C161.987 171.259 166.41 164.851 167.378 160Z"
+            fill={`url(#${id}-blob3)`}
+            className={WAX[2].className}
+            style={{
+              animationDelay: WAX[2].delay,
+              animationPlayState: lit ? "running" : "paused",
+            }}
+          />
+          <path
+            d="M144.994 243.392C139.378 250.446 142.943 266.013 139.378 272H167.107C164.526 266.22 167.107 253.581 162.895 244.567C158.683 235.554 157.981 235.946 162.895 228.5C167.809 221.054 170.629 211.116 160.789 202.635C154.644 198.472 151.543 199.837 146.047 202.635C137.451 211.577 139.027 221.446 144.994 227.324C150.961 233.203 150.61 236.338 144.994 243.392Z"
+            fill={`url(#${id}-blob4)`}
+            className={WAX[3].className}
+            style={{
+              animationDelay: WAX[3].delay,
+              animationPlayState: lit ? "running" : "paused",
+            }}
+          />
+        </g>
         {/* The glass with the light off. */}
         <motion.path
           d={LAVA}
