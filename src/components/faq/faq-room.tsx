@@ -372,7 +372,7 @@ const FaqRoom = ({ layout }: { layout: FaqLayout<FaqItem> }) => {
       <div className="xl:hidden">
         <div
           ref={mobileTvRef}
-          className="mx-auto w-[92%] max-w-[520px] scroll-mt-6 pt-10 pb-8"
+          className="mx-auto w-[92%] max-w-[520px] scroll-mt-6 pt-16 pb-8"
         >
           <CrtTv selected={selected} empty={empty} />
         </div>
