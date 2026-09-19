@@ -1,28 +1,10 @@
 import type { Decoration } from "@/lib/shelves";
 import { cn } from "@/lib/utils";
 
-import { motion } from "framer-motion";
 import Image from "next/image";
 import type { CSSProperties, ReactNode } from "react";
 
-/** The real artwork behind each decoration, at its true intrinsic size. */
-export const DECORATION_ART: Record<
-  Decoration,
-  { src: string; width: number; height: number }
-> = {
-  "books-left": {
-    src: "/assets/sponsors/books-left.webp",
-    width: 515,
-    height: 596,
-  },
-  "books-right": {
-    src: "/assets/sponsors/books-right.webp",
-    width: 516,
-    height: 545,
-  },
-  sheep: { src: "/assets/sponsors/sheep.svg", width: 231, height: 238 },
-  plant: { src: "/assets/sponsors/plant.svg", width: 368, height: 368 },
-};
+import { ShelfOrnament } from "./shelf-ornament";
 
 /**
  * How wide each decoration stands, and how far its outer edge is inset from
@@ -37,12 +19,6 @@ const PLACEMENT: Record<Decoration, { size: number; inset: number }> = {
   plant: { size: 29, inset: -3.3 },
 };
 
-/** A short rock on the base, the way a plush or a book wobbles when nudged. */
-export const wobble = {
-  rotate: [0, -4, 4, -2, 2, 0],
-  transition: { duration: 0.6, ease: "easeInOut" as const },
-};
-
 const ShelfDecoration = ({
   kind,
   side,
@@ -50,30 +26,16 @@ const ShelfDecoration = ({
   kind: Decoration;
   side: "left" | "right";
 }) => {
-  const art = DECORATION_ART[kind];
   const { size, inset } = PLACEMENT[kind];
   const style: CSSProperties = {
     width: `${size}%`,
-    transformOrigin: "50% 100%",
     ...(side === "left" ? { left: `${inset}%` } : { right: `${inset}%` }),
   };
 
   return (
-    <motion.div
-      aria-hidden
-      style={style}
-      className="absolute bottom-0 hidden xl:block"
-      whileHover={wobble}
-      whileTap={wobble}
-    >
-      <Image
-        src={art.src}
-        alt=""
-        width={art.width}
-        height={art.height}
-        className="pointer-events-none block h-auto w-full"
-      />
-    </motion.div>
+    <div style={style} className="absolute bottom-0 hidden xl:block">
+      <ShelfOrnament kind={kind} />
+    </div>
   );
 };
 
