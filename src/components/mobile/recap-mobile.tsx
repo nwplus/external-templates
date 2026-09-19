@@ -96,7 +96,7 @@ const RecapMobile = () => {
       </h2>
 
       <FramedPhoto
-        className="left-[52.42vw] top-[175.83vw] h-[15.78vw] w-[22.9vw]"
+        className="left-[60vw] top-[176.5vw] h-[14.2vw] w-[20.61vw]"
         frame={{ src: "/assets/recap/green-frame.webp", size: [275, 206] }}
         photo={{
           src: "/assets/recap/photos/green.jpg",
@@ -113,10 +113,10 @@ const RecapMobile = () => {
         alt=""
         width={299}
         height={292}
-        className="absolute left-[28.24vw] top-[118.07vw] h-[30.84vw] w-[31.81vw]"
+        className="absolute left-[32.5vw] top-[113.5vw] h-[27.14vw] w-[27.99vw]"
       />
       <div
-        className="absolute left-[28.24vw] top-[118.07vw] h-[30.84vw] w-[31.81vw] overflow-hidden"
+        className="absolute left-[32.5vw] top-[113.5vw] h-[27.14vw] w-[27.99vw] overflow-hidden"
         style={{ clipPath: "url(#recap-mobile-red-aperture)" }}
       >
         <Image
@@ -124,7 +124,7 @@ const RecapMobile = () => {
           alt="Teams building together in the atrium"
           width={730}
           height={487}
-          className="absolute left-[-5.59vw] top-[1.36vw] h-[26.98vw] w-[40.46vw] max-w-none"
+          className="absolute left-[-4.92vw] top-[1.2vw] h-[23.74vw] w-[35.6vw] max-w-none"
         />
       </div>
 
@@ -137,7 +137,7 @@ const RecapMobile = () => {
       />
 
       <FramedPhoto
-        className="left-[3.31vw] top-[115.07vw] h-[34.32vw] w-[22.9vw]"
+        className="left-[4vw] top-[112vw] h-[30.2vw] w-[20.15vw]"
         frame={{ src: "/assets/recap/purple-frame.webp", size: [289, 371] }}
         photo={{
           src: "/assets/recap/photos/purple.jpg",
@@ -153,46 +153,46 @@ const RecapMobile = () => {
         alt=""
         width={29}
         height={16}
-        className="absolute left-[11.43vw] top-[117.73vw] h-[1.29vw] w-[2.05vw] rotate-[-20.76deg]"
+        className="absolute left-[11.15vw] top-[114.34vw] h-[1.14vw] w-[1.8vw] rotate-[-20.76deg]"
       />
       <Image
         src="/assets/recap/purple-frame-bow-right.webp"
         alt=""
         width={29}
         height={16}
-        className="absolute left-[15.99vw] top-[117.73vw] h-[1.29vw] w-[2.05vw] rotate-[159.24deg]"
+        className="absolute left-[15.16vw] top-[114.34vw] h-[1.14vw] w-[1.8vw] rotate-[159.24deg]"
       />
       <Image
         src="/assets/recap/purple-frame-gem-outer.webp"
         alt=""
         width={32}
         height={31}
-        className="absolute left-[13.5vw] top-[115.76vw] h-[2.79vw] w-[2.52vw]"
+        className="absolute left-[12.97vw] top-[112.61vw] h-[2.46vw] w-[2.22vw]"
       />
       <Image
         src="/assets/recap/purple-frame-gem-inner.webp"
         alt=""
         width={20}
         height={18}
-        className="absolute left-[13.98vw] top-[116.36vw] h-[1.59vw] w-[1.54vw]"
+        className="absolute left-[13.39vw] top-[113.14vw] h-[1.4vw] w-[1.36vw]"
       />
       <Image
         src="/assets/recap/purple-frame-foot-left.webp"
         alt=""
         width={34}
         height={23}
-        className="absolute left-[12.14vw] top-[146.33vw] h-[2.11vw] w-[2.67vw]"
+        className="absolute left-[11.77vw] top-[139.51vw] h-[1.86vw] w-[2.35vw]"
       />
       <Image
         src="/assets/recap/purple-frame-foot-right.webp"
         alt=""
         width={34}
         height={23}
-        className="absolute left-[15vw] top-[146.33vw] h-[2.11vw] w-[2.67vw]"
+        className="absolute left-[14.29vw] top-[139.51vw] h-[1.86vw] w-[2.35vw]"
       />
 
       <FramedPhoto
-        className="left-[74.55vw] top-[146.07vw] h-[32.13vw] w-[20.11vw]"
+        className="left-[78.9vw] top-[143.5vw] h-[27.31vw] w-[17.09vw]"
         frame={{ src: "/assets/recap/hanging-frame.webp", size: [246, 371] }}
         photo={{
           src: "/assets/recap/photos/hanging.jpg",
@@ -205,7 +205,7 @@ const RecapMobile = () => {
       />
 
       <FramedPhoto
-        className="left-[20.87vw] top-[151.4vw] h-[29.96vw] w-[24.5vw]"
+        className="left-[22.8vw] top-[146vw] h-[25.47vw] w-[20.83vw]"
         frame={{ src: "/assets/recap/dark-brown-frame.webp", size: [233, 270] }}
         photo={{
           src: "/assets/recap/photos/dark-brown.jpg",
@@ -221,10 +221,10 @@ const RecapMobile = () => {
         alt=""
         width={218}
         height={270}
-        className="absolute left-[45.8vw] top-[149.38vw] h-[31.38vw] w-[28.36vw]"
+        className="absolute left-[49.2vw] top-[145.5vw] h-[26.67vw] w-[24.11vw]"
       />
       <div
-        className="absolute left-[45.8vw] top-[149.38vw] h-[31.38vw] w-[28.36vw]"
+        className="absolute left-[49.2vw] top-[145.5vw] h-[26.67vw] w-[24.11vw]"
         style={{ clipPath: "url(#recap-mobile-mirror-aperture)" }}
       >
         <Image
@@ -254,7 +254,7 @@ const RecapMobile = () => {
       />
 
       <FramedPhoto
-        className="left-[63.61vw] top-[117.18vw] h-[24.67vw] w-[30.79vw]"
+        className="left-[68.9vw] top-[115.2vw] h-[21.71vw] w-[27.1vw]"
         frame={{ src: "/assets/recap/brown-photo-frame.webp", size: [330, 255] }}
         photo={{
           src: "/assets/recap/photos/brown.jpg",
@@ -293,7 +293,7 @@ const RecapMobile = () => {
         alt=""
         width={127}
         height={122}
-        className="absolute left-[2.8vw] top-[153.18vw] h-[12.47vw] w-[13.23vw]"
+        className="absolute left-[4vw] top-[150vw] h-[12.47vw] w-[13.23vw]"
       />
     </div>
   );
