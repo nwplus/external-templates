@@ -3,7 +3,8 @@ import Image from "next/image";
 /**
  * The stars, spirals and droplets that drift over the cloud frame. Every
  * position is taken straight from the design and expressed as a percentage of
- * the cloud scene, so the whole field scales with it.
+ * the cloud scene, so the whole field scales with it. Each one floats on its
+ * own timing so the field never moves in lockstep.
  */
 const STARS = [
   { src: "point5-d", left: 76.05, top: 0.46, width: 23.95, w: 367, h: 536 },
@@ -29,15 +30,21 @@ const STARS = [
 const StarField = () => {
   return (
     <>
-      {STARS.map(({ src, left, top, width, w, h }) => (
+      {STARS.map(({ src, left, top, width, w, h }, i) => (
         <Image
           key={src}
           src={`/assets/footer/stars/${src}.svg`}
           alt=""
           width={w}
           height={h}
-          className="absolute h-auto max-w-none"
-          style={{ left: `${left}%`, top: `${top}%`, width: `${width}%` }}
+          className="absolute h-auto max-w-none motion-safe:animate-float"
+          style={{
+            left: `${left}%`,
+            top: `${top}%`,
+            width: `${width}%`,
+            animationDuration: `${6 + (i % 4)}s`,
+            animationDelay: `-${(i * 1.3) % 7}s`,
+          }}
         />
       ))}
     </>

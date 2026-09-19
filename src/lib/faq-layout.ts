@@ -32,6 +32,20 @@ export function layoutFaqs<T extends FaqItem>(
 }
 
 /**
+ * Where a tape is drawn in its stack, counted from the top. A stack drawn
+ * from the bottom puts its first tape lowest and piles the rest on top, so
+ * the order is flipped; the stagger and the HACKING badges follow this
+ * position, which keeps the badge letters reading downwards either way.
+ */
+export function positionFromTop(
+  index: number,
+  count: number,
+  fromBottom: boolean
+): number {
+  return fromBottom ? count - 1 - index : index;
+}
+
+/**
  * Splits one cabinet category's tapes into the two bottom-aligned stacks the
  * design piles inside the cabinet. The split is sequential, so reading order
  * runs down the left stack and then down the right one; an odd count leaves

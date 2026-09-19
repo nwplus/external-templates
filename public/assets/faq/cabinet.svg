@@ -5,7 +5,7 @@
 <rect y="34" width="1519" height="290" fill="#A98469"/>
 <rect y="34" width="1519" height="290" fill="url(#pattern0_13622_3188)" fill-opacity="0.2"/>
 </g>
-<rect id="back wall" x="171" y="52" width="1208" height="276" fill="url(#paint0_linear_13622_3188)"/>
+<rect id="back wall" x="106" y="52" width="1273" height="276" fill="url(#paint0_linear_13622_3188)"/>
 <path id="left side" d="M106.001 52H171.001V328L106.001 348V52Z" fill="url(#paint1_linear_13622_3188)"/>
 <path id="right side" d="M1430 52H1365V328L1430 348V52Z" fill="url(#paint2_linear_13622_3188)"/>
 <path id="top" d="M89.1761 0H1429.82L1519 34H0L89.1761 0Z" fill="#5C3B23"/>
