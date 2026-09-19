@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 
 import { AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 
 import { BedArt } from "./bed-art";
 import CloudBorder from "./cloud-border";
@@ -13,9 +13,6 @@ import { TurnedPhone } from "./phone-show";
 /** Where the bed sits in the night scene: phone frame, then desktop frame. */
 const BED_BOX =
   "absolute left-[-8.4%] top-[28.6%] w-[117%] max-w-none xl:left-[-1.7%] xl:top-[27.17%] xl:w-[103.4%]";
-
-/** How long the bear shows off the phone before turning it back. */
-const SHOW_MS = 6000;
 
 const lessMotion = () =>
   window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -43,8 +40,9 @@ const wakeUp: Keyframe[] = [
  * The bed the two mascots sleep in. The headboard sits behind the bed, a second
  * copy of the cloud frame closes over the blanket so it settles into the
  * clouds, and the glowing stars lie on top of everything. The bear with the
- * phone turns it round to show the game it is playing, and Nugget can be
- * tucked in, and woken up again.
+ * phone turns it round to show the game it is playing, which can be played
+ * with the arrow keys or by swiping, and Nugget can be tucked in, and woken
+ * up again.
  *
  * Every offset is a percentage of the surrounding night scene: the base values
  * come from the phone frame, the xl ones from the desktop frame. The overlay
@@ -56,11 +54,8 @@ const BedScene = () => {
   const [showing, setShowing] = useState(false);
   const [tucked, setTucked] = useState(false);
 
-  useEffect(() => {
-    if (!showing) return;
-    const done = setTimeout(() => setShowing(false), SHOW_MS);
-    return () => clearTimeout(done);
-  }, [showing]);
+  // The game decides when the phone goes back: Esc, or no run in progress.
+  const putPhoneAway = useCallback(() => setShowing(false), []);
 
   const toggleTuck = () => {
     const nugget = bed.current?.querySelector('[data-part="nugget"]');
@@ -101,7 +96,7 @@ const BedScene = () => {
       />
       <div className={cn(BED_BOX, "aspect-[1583/1310] @container")}>
         <AnimatePresence>
-          {showing && <TurnedPhone key="phone" />}
+          {showing && <TurnedPhone key="phone" onClose={putPhoneAway} />}
         </AnimatePresence>
         {tucked &&
           ["z", "z", "Z"].map((letter, i) => (
@@ -124,7 +119,14 @@ const BedScene = () => {
           aria-label="Show the bear's phone"
           aria-pressed={showing}
           onClick={() => setShowing((on) => !on)}
-          className="pointer-events-auto absolute top-[4.4%] left-[36.9%] h-[19%] w-[14%] cursor-pointer rounded-[40%] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-star"
+          className={cn(
+            "pointer-events-auto absolute top-[4.4%] left-[36.9%] h-[19%] w-[14%] cursor-pointer rounded-[40%]",
+            // The arrow keys that play the game would otherwise light up this
+            // button's focus ring over the bear; it returns with the phone.
+            showing
+              ? "focus-visible:outline-none"
+              : "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-star"
+          )}
         />
         <button
           type="button"
