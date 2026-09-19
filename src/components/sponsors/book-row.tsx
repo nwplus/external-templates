@@ -13,6 +13,11 @@ type Book = {
   origin: string;
   /** How far a leaning book tips from upright, in degrees. */
   lean?: number;
+  /**
+   * Stays put. The middle book is wedged between its neighbours, with the
+   * leaning one resting over it, so it has no room to be pulled out.
+   */
+  still?: boolean;
 };
 
 /** Each book cut out of its row's artwork, left to right. */
@@ -27,6 +32,7 @@ const BOOKS: Record<"books-left" | "books-right", Book[]> = {
       title: "nwPlus Yearbook",
       clip: "polygon(26.76% 27.69%, 27.54% 27.35%, 43.73% 27.35%, 44.90% 28.19%, 44.70% 99.66%, 43.92% 100.00%, 26.95% 100.00%, 26.37% 99.32%)",
       origin: "35.6% 100%",
+      still: true,
     },
     {
       title: "The HackCampers",
@@ -45,6 +51,7 @@ const BOOKS: Record<"books-left" | "books-right", Book[]> = {
       title: "Nugget and Pals",
       clip: "polygon(30.00% 0.37%, 30.78% 0.00%, 49.65% 0.00%, 50.23% 0.55%, 50.23% 99.45%, 49.26% 100.00%, 30.39% 100.00%, 29.81% 99.26%)",
       origin: "40.0% 100%",
+      still: true,
     },
     {
       title: "Starry Night",
@@ -102,9 +109,10 @@ const isMoving = (el: Element) =>
  * A row of books standing on a shelf. Hovering runs a ripple along the
  * spines; clicking a book pulls it out and drops it back with a thud that
  * jolts its neighbours, or stands the leaning one up before it flops back.
- * From the keyboard the whole row takes a turn, left to right. The whole
- * row is one hover area, gaps included, so moving between books does not
- * restart the ripple; only a book itself takes a click.
+ * From the keyboard the whole row takes a turn, left to right. The middle
+ * book never moves. The whole row is one hover area, gaps included, so
+ * moving between books does not restart the ripple; only a book itself
+ * takes a click.
  */
 export const BookRow = ({ kind }: { kind: "books-left" | "books-right" }) => {
   const art = ORNAMENT_ART[kind];
@@ -112,9 +120,10 @@ export const BookRow = ({ kind }: { kind: "books-left" | "books-right" }) => {
   const row = useRef<HTMLSpanElement>(null);
   const busyUntil = useRef(0);
 
-  const spines = () => [
-    ...(row.current?.querySelectorAll<HTMLElement>("[data-book]") ?? []),
-  ];
+  const spines = () =>
+    [
+      ...(row.current?.querySelectorAll<HTMLElement>("[data-book]") ?? []),
+    ].filter((el) => !books[Number(el.dataset.book)].still);
 
   const move = (el: HTMLElement, book: Book, delay: number, thud: boolean) => {
     const duration = book.lean ? 1500 : 1000;
@@ -156,13 +165,16 @@ export const BookRow = ({ kind }: { kind: "books-left" | "books-right" }) => {
       "[data-book]"
     );
     if (picked) {
-      move(picked, books[Number(picked.dataset.book)], 0, true);
+      const book = books[Number(picked.dataset.book)];
+      if (!book.still) move(picked, book, 0, true);
       return;
     }
     // Enter or Space: the whole row takes a turn. A pointer click in a gap
     // between books does nothing.
     if (event.detail === 0)
-      spines().forEach((el, i) => move(el, books[i], i * 180, false));
+      spines().forEach((el, i) =>
+        move(el, books[Number(el.dataset.book)], i * 180, false)
+      );
   };
 
   const onPointerEnter = () => {
@@ -191,7 +203,11 @@ export const BookRow = ({ kind }: { kind: "books-left" | "books-right" }) => {
           <span
             key={book.title}
             data-book={i}
-            className="absolute inset-0 block cursor-pointer will-change-transform"
+            className={
+              book.still
+                ? "absolute inset-0 block"
+                : "absolute inset-0 block cursor-pointer will-change-transform"
+            }
             style={{ clipPath: book.clip, transformOrigin: book.origin }}
           >
             <Image
