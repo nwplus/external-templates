@@ -178,6 +178,56 @@ html {
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+/*
+ * Fairy lights (components/sponsors/string-lights.tsx). Only the lights, bulbs
+ * and cords take clicks. Switching off dims each light and hides its glow;
+ * every light changes after a delay set by how far along the garland it hangs
+ * (--x, 0 at the left end to 1 at the right), so the switch sweeps along the
+ * strand. The dimming uses fill-opacity so it stacks with the twinkle and
+ * breathe animations, which drive opacity; these rules sit outside any layer
+ * so they win over those utilities.
+ */
+.fairy-lights :is(.dot, .bulb) {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.fairy-lights .cord-hit {
+  cursor: pointer;
+}
+
+.fairy-lights :is(.dot, .bulb, .halo) {
+  transition: fill-opacity 0.35s ease;
+  transition-delay: calc(var(--x, 0) * 0.9s);
+}
+
+/* Each strand's glow switches with the sweep; a filter can only snap, so it
+   flips halfway through its own short transition. */
+.fairy-lights .strand-glow {
+  transition: filter 0.35s allow-discrete;
+  transition-delay: calc(var(--x, 0) * 0.9s);
+}
+
+.fairy-lights[aria-pressed="false"] .strand-glow {
+  filter: none;
+}
+
+.fairy-lights[aria-pressed="false"] :is(.dot, .halo) {
+  animation-play-state: paused;
+}
+
+.fairy-lights[aria-pressed="false"] .dot {
+  fill-opacity: 0.22;
+}
+
+.fairy-lights[aria-pressed="false"] .bulb {
+  fill-opacity: 0.28;
+}
+
+.fairy-lights[aria-pressed="false"] .halo {
+  fill-opacity: 0;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
