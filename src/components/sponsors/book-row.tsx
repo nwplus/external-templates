@@ -87,19 +87,24 @@ const jolt: Keyframe[] = [
   { transform: "translateY(0)" },
 ];
 
-/** A finger run along the spines. */
+/** A finger run along the spines: each lifts, dips a hair, and settles. */
 const ripple: Keyframe[] = [
   { transform: "translateY(0)" },
-  { transform: "translateY(-3%)" },
+  { transform: "translateY(-3.5%)", offset: 0.4 },
+  { transform: "translateY(0.4%)", offset: 0.75 },
   { transform: "translateY(0)" },
 ];
+
+const isMoving = (el: Element) =>
+  el.getAnimations().some((animation) => animation.playState === "running");
 
 /**
  * A row of books standing on a shelf. Hovering runs a ripple along the
  * spines; clicking a book pulls it out and drops it back with a thud that
  * jolts its neighbours, or stands the leaning one up before it flops back.
- * From the keyboard the whole row takes a turn, left to right. Only the
- * books themselves take the pointer, not the gaps between them.
+ * From the keyboard the whole row takes a turn, left to right. The whole
+ * row is one hover area, gaps included, so moving between books does not
+ * restart the ripple; only a book itself takes a click.
  */
 export const BookRow = ({ kind }: { kind: "books-left" | "books-right" }) => {
   const art = ORNAMENT_ART[kind];
@@ -113,18 +118,30 @@ export const BookRow = ({ kind }: { kind: "books-left" | "books-right" }) => {
 
   const move = (el: HTMLElement, book: Book, delay: number, thud: boolean) => {
     const duration = book.lean ? 1500 : 1000;
-    play(el, book.lean ? standUp(book.lean) : pullOut, {
+    const animation = play(el, book.lean ? standUp(book.lean) : pullOut, {
       duration,
       delay,
       easing: "ease-in-out",
     });
+    // A book on the move passes in front of its neighbours, so pulling the
+    // middle one out never slides it behind the one leaning over it.
+    el.style.zIndex = "1";
+    const settle = () => {
+      if (!el.getAnimations().some((other) => other !== animation))
+        el.style.zIndex = "";
+    };
+    animation.addEventListener("finish", settle);
+    animation.addEventListener("cancel", settle);
     busyUntil.current = Math.max(
       busyUntil.current,
       performance.now() + delay + duration
     );
     if (!thud) return;
-    // It lands 80% of the way through its move.
-    for (const other of spines().filter((spine) => spine !== el)) {
+    // It lands 80% of the way through its move; a neighbour that is busy
+    // with its own move is left alone rather than cut short.
+    for (const other of spines().filter(
+      (spine) => spine !== el && !isMoving(spine)
+    )) {
       play(other, jolt, {
         duration: 220,
         delay: delay + duration * 0.8,
@@ -142,13 +159,18 @@ export const BookRow = ({ kind }: { kind: "books-left" | "books-right" }) => {
       move(picked, books[Number(picked.dataset.book)], 0, true);
       return;
     }
-    spines().forEach((el, i) => move(el, books[i], i * 180, false));
+    // Enter or Space: the whole row takes a turn. A pointer click in a gap
+    // between books does nothing.
+    if (event.detail === 0)
+      spines().forEach((el, i) => move(el, books[i], i * 180, false));
   };
 
   const onPointerEnter = () => {
     if (prefersLessMotion() || performance.now() < busyUntil.current) return;
-    spines().forEach((el, i) =>
-      play(el, ripple, { duration: 320, delay: i * 70, easing: "ease-out" })
+    const books = spines();
+    if (books.some(isMoving)) return;
+    books.forEach((el, i) =>
+      play(el, ripple, { duration: 520, delay: i * 80, easing: "ease-out" })
     );
   };
 
@@ -158,7 +180,7 @@ export const BookRow = ({ kind }: { kind: "books-left" | "books-right" }) => {
       aria-label="Books"
       onClick={onClick}
       onPointerEnter={onPointerEnter}
-      className="pointer-events-none block w-full rounded-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-star"
+      className="block w-full rounded-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-star"
     >
       <span
         ref={row}
@@ -169,7 +191,7 @@ export const BookRow = ({ kind }: { kind: "books-left" | "books-right" }) => {
           <span
             key={book.title}
             data-book={i}
-            className="pointer-events-auto absolute inset-0 block cursor-pointer"
+            className="absolute inset-0 block cursor-pointer will-change-transform"
             style={{ clipPath: book.clip, transformOrigin: book.origin }}
           >
             <Image
