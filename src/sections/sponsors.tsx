@@ -95,13 +95,15 @@ const Sponsors = () => {
           </div>
         )}
 
-        {/* The second garland hangs off the last plank, so it overlaps it. */}
-        {/* Hangs over the footer's clouds, which start behind it. */}
+        {/* The second garland hangs off the last plank, its cords starting on
+            the wood so they read as hung from it; the phone plank is thinner,
+            so the garland rides higher there. It hangs over the footer's
+            clouds, which start behind it. */}
         <StringLights
           variant="bottom"
           className={cn(
             "relative z-20",
-            shelves.length > 0 ? "-mt-[1.8%] xl:-mt-[3.6%]" : "mt-[6%]"
+            shelves.length > 0 ? "-mt-[3.4%] xl:-mt-[3.6%]" : "mt-[6%]"
           )}
         />
       </div>
