@@ -275,13 +275,15 @@ const MobileShelf = ({
         that reaches over it still takes the tap. */}
     {lamp && <LavaLamp className="absolute bottom-[8%] -left-[17%] w-[58%]" />}
     {/* The lamp shelf is kept tall enough for the lamp to stand under the
-        plank even when the category has only a question or two. */}
+        plank even when the category has only a question or two; the tapes
+        stand on the shelf at the bottom of it rather than hanging from the
+        top, so a short category never leaves a tape floating. */}
     <TapeStack
       faqs={group.faqs}
       label={group.category}
       badged={badged}
       className={cn(
-        "relative w-full pt-2 pr-3 pb-6",
+        "relative w-full justify-end pt-2 pr-3 pb-1",
         lamp ? "min-h-[78vw] pl-14" : "pl-3"
       )}
       selected={selected}
