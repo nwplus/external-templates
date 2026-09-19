@@ -6,6 +6,7 @@ import {
   type FaqGroup,
   type FaqItem,
   type FaqLayout,
+  positionFromTop,
   splitTapeStacks,
 } from "@/lib/faq-layout";
 import { cn } from "@/lib/utils";
@@ -13,7 +14,10 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { useRef, useState } from "react";
 
-/** Letters badged onto the wall tapes at indices 1..7 (index 0 has none). */
+/**
+ * Letters badged onto the wall tapes at positions 1..7, counted from the top
+ * of the pile (the top tape has none).
+ */
 const BADGE_LETTERS = "HACKING";
 const BADGE_COLORS = [
   "#4f497c",
@@ -65,6 +69,13 @@ type StackProps = SelectProps & {
   offset?: number;
   className?: string;
   badged?: boolean;
+  /**
+   * Draw the first question at the bottom and pile the rest on top of it, so
+   * the stack stands on whatever it is anchored to however many tapes it
+   * holds. The list keeps question order for screen readers and the Tab key;
+   * only the drawing is flipped.
+   */
+  fromBottom?: boolean;
 };
 
 /** A pile of tapes, each as wide as its question, centred on its own column. */
@@ -74,26 +85,34 @@ const TapeStack = ({
   offset = 0,
   className,
   badged = false,
+  fromBottom = false,
   selected,
   onSelect,
 }: StackProps) => (
   <ul
     aria-label={label}
-    className={cn("flex flex-col items-center gap-0.5", className)}
+    className={cn(
+      "flex items-center gap-0.5",
+      fromBottom ? "flex-col-reverse" : "flex-col",
+      className
+    )}
   >
-    {faqs.map((faq, i) => (
-      <li
-        key={`${faq.question}-${i}`}
-        className={cn("flex max-w-full", staggerClass(i + offset))}
-      >
-        <VhsTape
-          faq={faq}
-          selected={selected === faq}
-          {...(badged ? badgeFor(i + offset) : {})}
-          onSelect={onSelect}
-        />
-      </li>
-    ))}
+    {faqs.map((faq, i) => {
+      const position = positionFromTop(i, faqs.length, fromBottom) + offset;
+      return (
+        <li
+          key={`${faq.question}-${i}`}
+          className={cn("flex max-w-full", staggerClass(position))}
+        >
+          <VhsTape
+            faq={faq}
+            selected={selected === faq}
+            {...(badged ? badgeFor(position) : {})}
+            onSelect={onSelect}
+          />
+        </li>
+      );
+    })}
   </ul>
 );
 
@@ -102,6 +121,10 @@ const TapeStack = ({
  * where geo-faq.json puts it: the tapestry and its tape pile on the left, the
  * window behind the television in the middle, and the hanging frames, teddy
  * and lava lamp on the right. Desktop only — the mobile design has no wall.
+ *
+ * The pile stands on the cabinet top, its bottom tape 25px into the cabinet's
+ * top face as in the design, and grows upward from the first question, so a
+ * short category never leaves a tape hanging in mid-air.
  */
 const RoomWall = ({
   group,
@@ -154,7 +177,8 @@ const RoomWall = ({
         faqs={group.faqs}
         label={group.category}
         badged
-        className="absolute top-[59.63%] left-[24.17%] w-[36%] -translate-x-1/2 -translate-y-1/2"
+        fromBottom
+        className="absolute bottom-[-4.22%] left-[24.17%] w-[36%] -translate-x-1/2"
         selected={selected}
         onSelect={onSelect}
       />
