@@ -1,6 +1,9 @@
 "use client";
 
+import { Boombox } from "@/components/faq/boombox";
 import CrtTv from "@/components/faq/crt-tv";
+import { LavaLamp } from "@/components/faq/lava-lamp";
+import { TeddyBear } from "@/components/faq/teddy-bear";
 import VhsTape from "@/components/faq/vhs-tape";
 import {
   type FaqGroup,
@@ -40,23 +43,6 @@ const badgeFor = (position: number) =>
       }
     : {};
 
-/**
- * The lava lamp with its glow: the artwork carries a faint static halo, and a
- * warmer one breathes behind it so that corner of the room reads as lit.
- */
-const LavaLamp = ({ className }: { className?: string }) => (
-  <div aria-hidden="true" className={cn("pointer-events-none", className)}>
-    <div className="absolute inset-[-30%] rounded-full bg-[radial-gradient(closest-side,rgba(250,203,107,0.7),rgba(250,203,107,0))] blur-xl motion-safe:animate-glow" />
-    <Image
-      src="/assets/faq/lava-lamp.svg"
-      alt=""
-      width={302}
-      height={381}
-      className="relative h-auto w-full"
-    />
-  </div>
-);
-
 type SelectProps = {
   selected: FaqItem | null;
   onSelect: (faq: FaqItem) => void;
@@ -92,7 +78,9 @@ const TapeStack = ({
   <ul
     aria-label={label}
     className={cn(
-      "flex items-center gap-0.5",
+      // Only the tapes take clicks; the rest of the stack's box lets them
+      // through to whatever stands behind it, like the phone shelf's lamp.
+      "pointer-events-none flex items-center gap-0.5",
       fromBottom ? "flex-col-reverse" : "flex-col",
       className
     )}
@@ -102,7 +90,10 @@ const TapeStack = ({
       return (
         <li
           key={`${faq.question}-${i}`}
-          className={cn("flex max-w-full", staggerClass(position))}
+          className={cn(
+            "pointer-events-auto flex max-w-full",
+            staggerClass(position)
+          )}
         >
           <VhsTape
             faq={faq}
@@ -160,14 +151,7 @@ const RoomWall = ({
       height={654}
       className="pointer-events-none absolute top-[21.79%] left-[74.66%] h-auto w-[22.08%]"
     />
-    <Image
-      src="/assets/faq/teddy.svg"
-      alt=""
-      aria-hidden="true"
-      width={158}
-      height={161}
-      className="pointer-events-none absolute top-[77.2%] left-[73.61%] h-auto w-[10.25%]"
-    />
+    <TeddyBear className="absolute top-[77.2%] left-[73.61%] w-[10.25%]" />
     <LavaLamp className="absolute top-[38.85%] left-[77.33%] w-[19.73%]" />
     <div className="absolute top-[30.07%] left-[41.99%] w-[31.16%]">
       <CrtTv selected={selected} empty={empty} />
@@ -221,21 +205,10 @@ const Cabinet = ({
         className="pointer-events-none absolute top-[64.4%] left-[4.15%] h-auto w-[91.5%]"
       />
       {/* The radio is part of the furniture, so it stays when the shelf is empty. */}
-      <div className="absolute top-[20.55%] left-[10.53%] @container w-[18.56%]">
-        <Image
-          src="/assets/faq/boombox.svg"
-          alt=""
-          aria-hidden="true"
-          width={282}
-          height={224}
-          className="h-auto w-full"
-        />
-        {shelf && (
-          <h3 className="absolute top-[46.2%] left-[27.2%] flex h-[13.4%] w-[45.7%] items-center justify-center overflow-hidden rounded-[4cqw] bg-tape-label px-[1.5cqw] text-center font-display text-[4.4cqw] leading-none text-ink uppercase">
-            <span className="truncate">{shelf.category}</span>
-          </h3>
-        )}
-      </div>
+      <Boombox
+        category={shelf?.category}
+        className="absolute top-[20.55%] left-[10.53%] w-[18.56%]"
+      />
       {shelf && (
         <>
           <TapeStack
@@ -298,6 +271,9 @@ const MobileShelf = ({
         {group.category}
       </h3>
     </div>
+    {/* The lamp stands behind the tapes, as in the phone frame, so a tape
+        that reaches over it still takes the tap. */}
+    {lamp && <LavaLamp className="absolute bottom-[8%] -left-[17%] w-[58%]" />}
     {/* The lamp shelf is kept tall enough for the lamp to stand under the
         plank even when the category has only a question or two. */}
     <TapeStack
@@ -311,7 +287,6 @@ const MobileShelf = ({
       selected={selected}
       onSelect={onSelect}
     />
-    {lamp && <LavaLamp className="absolute bottom-[8%] -left-[17%] w-[58%]" />}
     <Image
       src="/assets/faq/shelf-blanket.svg"
       alt=""
