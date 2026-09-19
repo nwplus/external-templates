@@ -1,5 +1,6 @@
 "use client";
 
+import { TappableBear } from "@/components/testimonials/tappable-bear";
 import { type Testimonial, testimonials } from "@/constants/testimonials";
 
 import Image from "next/image";
@@ -75,6 +76,7 @@ const SpeechBubble = ({
 const Testimonials = () => {
   const [selected, setSelected] = useState(0);
   const person = testimonials[selected];
+  const shown = testimonials.slice(0, bubbles.length);
 
   return (
     <div
@@ -232,26 +234,11 @@ const Testimonials = () => {
         className="absolute left-[42.4vw] top-[28.72vw] h-[0.78vw] w-[1vw]"
       />
 
-      <Image
-        src="/assets/testimonials/bear-body.svg"
-        alt=""
-        width={138}
-        height={126}
-        className="absolute left-[12.64vw] top-[25.49vw] h-[8.22vw] w-[9.02vw] rotate-[-1.14deg]"
-      />
-      <Image
-        src="/assets/testimonials/bear-head.svg"
-        alt=""
-        width={116}
-        height={98}
-        className="absolute left-[13.3vw] top-[19.89vw] h-[6.4vw] w-[7.58vw]"
-      />
-      <Image
-        src="/assets/testimonials/bear-hat.svg"
-        alt=""
-        width={92}
-        height={48}
-        className="absolute left-[13.21vw] top-[17.96vw] h-[3.16vw] w-[6.02vw]"
+      <TappableBear
+        onClick={() => setSelected((i) => (i + 1) % shown.length)}
+        whileHover={{ y: "-0.3vw", scale: 1.04 }}
+        whileTap={{ scale: 0.97 }}
+        className="left-[12.64vw] top-[17.96vw] h-[15.75vw] w-[9.02vw]"
       />
 
       <Image
@@ -288,7 +275,7 @@ const Testimonials = () => {
         alt=""
         width={242}
         height={262}
-        className="absolute left-[5.24vw] top-[27.42vw] h-[17.15vw] w-[15.82vw]"
+        className="pointer-events-none absolute left-[5.24vw] top-[27.42vw] h-[17.15vw] w-[15.82vw]"
       />
       <Image
         src="/assets/testimonials/oval-pillow.svg"
@@ -327,14 +314,14 @@ const Testimonials = () => {
       />
 
       <div
-        className="absolute left-[16.3vw] top-[23.23vw] h-[16.62vw] w-[24.67vw] opacity-50 mix-blend-plus-lighter"
+        className="pointer-events-none absolute left-[16.3vw] top-[23.23vw] h-[16.62vw] w-[24.67vw] opacity-50 mix-blend-plus-lighter"
         style={{
           background:
             "radial-gradient(50% 50% at 50% 50%, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 100%)",
         }}
       />
       <div
-        className="absolute left-[26.11vw] top-[17.93vw] h-[16.62vw] w-[24.61vw] opacity-25 mix-blend-plus-lighter"
+        className="pointer-events-none absolute left-[26.11vw] top-[17.93vw] h-[16.62vw] w-[24.61vw] opacity-25 mix-blend-plus-lighter"
         style={{
           background:
             "radial-gradient(50% 50% at 50% 50%, rgba(255,223,141,1) 0%, rgba(255,223,141,0) 100%)",
@@ -348,7 +335,7 @@ const Testimonials = () => {
         </p>
       </div>
 
-      {testimonials.slice(0, bubbles.length).map((person, index) => (
+      {shown.map((person, index) => (
         <SpeechBubble
           key={person.name}
           bubble={bubbles[index]}
