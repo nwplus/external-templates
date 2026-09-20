@@ -52,8 +52,7 @@ export const MobileHero = () => (
       </div>
     </div>
 
-    {/* House with the countdown sitting in its spotlight beam */}
-    <div className="relative z-10 -mt-14 -mb-20 w-full">
+    <div className="relative z-10 -mt-6 -mb-20 w-full">
       <Image
         src="/assets/hero/mobile-house.svg"
         alt="House"
