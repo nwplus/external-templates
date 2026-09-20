@@ -26,7 +26,6 @@ export const DesktopHero = () => (
         />
       </Parallax>
 
-      {/* Top clouds (outer + inner layers) */}
       <Parallax
         speed={0.1}
         anchor="top"
@@ -56,10 +55,6 @@ export const DesktopHero = () => (
         />
       </Parallax>
 
-      {/*
-        Bottom clouds + house with countdown. Each layer scrolls at its own
-        speed, faster the closer it is: back clouds, house, front clouds, stars.
-      */}
       <div className="absolute w-1/2 -bottom-100 left-0 z-20">
         <Parallax
           speed={-0.08}
