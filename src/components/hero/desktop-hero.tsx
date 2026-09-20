@@ -124,8 +124,7 @@ export const DesktopHero = () => (
         </div>
       </div>
 
-      {/* Hero content */}
-      <div className="relative z-20 min-h-screen pt-60 pb-[22vw]">
+      <div className="relative z-20 min-h-[max(50vw_+_200px,min(100vh,50vw_+_340px))] pt-60">
         <div className="mx-auto w-[80vw] flex flex-col items-center">
           <h1 className="font-title text-9xl uppercase text-white">
             {HERO_TITLE}
