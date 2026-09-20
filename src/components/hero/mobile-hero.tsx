@@ -32,7 +32,7 @@ export const MobileHero = () => (
         width={1687}
         height={1154}
         priority
-        className="absolute -top-[30%] left-1/2 w-[200%] max-w-none h-auto -translate-x-1/2"
+        className="absolute -top-10 right-0 w-[200%] max-w-none h-auto -scale-x-100"
       />
     </div>
 
