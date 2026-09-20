@@ -3,15 +3,14 @@ import { HERO_CTA_LINKS, HERO_TAGLINE, HERO_TITLE } from "@/constants/hero";
 
 import Image from "next/image";
 
+import { ChimneySmoke } from "./chimney-smoke";
 import { Countdown } from "./countdown";
 import { CtaLink } from "./cta-link";
 import { SpotlightGlow } from "./spotlight-glow";
 
 export const DesktopHero = () => (
   <div className="bg-linear-to-b from-[#0B0F27] to-[#0C1637]">
-    {/* Hero wrapper */}
     <div className="relative top-0 w-full">
-      {/* Sparkles */}
       <Parallax
         speed={0.25}
         anchor="top"
@@ -75,19 +74,13 @@ export const DesktopHero = () => (
               className="object-contain object-bottom-left"
             />
           </div>
-          {/* Spotlight glow along the beam */}
+          <ChimneySmoke className="left-[14.8%] top-[31%] z-10 w-[3.5%]" />
           <SpotlightGlow />
 
-          {/* Locked to the house spotlight; % tracks the house box as the viewport resizes */}
           <div className="absolute left-[54%] top-[37%] z-30 -translate-x-1/2 -translate-y-1/2">
             <Countdown className="text-[6.5vw] text-[#0B1327] [text-shadow:0_0_8px_#FFDA88,0_0_20px_#FFDA88,0_0_40px_#FFDA88]" />
           </div>
         </Parallax>
-        {/*
-          Cloud layers, placed on the 770x572 canvas the combined art used so the
-          house (anchored to this box's bottom) keeps its position. Back sits
-          behind the house, front in front of it, stars on top of everything.
-        */}
         <div className="relative -mb-50 aspect-[770/572]">
           <Parallax
             speed={-0.04}

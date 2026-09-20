@@ -2,13 +2,13 @@ import { HERO_CTA_LINKS, HERO_TAGLINE, HERO_TITLE } from "@/constants/hero";
 
 import Image from "next/image";
 
+import { ChimneySmoke } from "./chimney-smoke";
 import { Countdown } from "./countdown";
 import { CtaLink } from "./cta-link";
 
 // TODO(mobile): swap the scaled desktop top clouds / sparkles for mobile exports
 export const MobileHero = () => (
   <div className="relative overflow-x-clip bg-linear-to-b from-[#0B0F27] to-[#0C1637] text-white">
-    {/* Top clouds (outer + inner), desktop art shown at 2x so the scallops read at phone width */}
     <div className="pointer-events-none absolute inset-x-0 top-0 z-0">
       <Image
         src="/assets/hero/desktop-top-clouds-outer.svg"
@@ -62,7 +62,10 @@ export const MobileHero = () => (
         priority
         className="block w-full h-auto"
       />
-      {/* % tracks the 393x710 house art; the beam runs from the lamp (~36%, 31%) off the right edge */}
+      <ChimneySmoke
+        className="left-[2%] top-[19%] w-[10%]"
+        blurClassName="blur-sm"
+      />
       <div className="absolute left-[75%] top-[35%] z-10 -translate-x-1/2 -translate-y-1/2">
         <Countdown
           compact
