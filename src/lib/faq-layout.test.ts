@@ -1,4 +1,4 @@
-import { layoutFaqs, splitTapeStacks } from "@/lib/faq-layout";
+import { layoutFaqs, positionFromTop, splitTapeStacks } from "@/lib/faq-layout";
 import type { FAQDoc } from "@/lib/firestore";
 
 import { describe, expect, it } from "vitest";
@@ -87,5 +87,24 @@ describe("splitTapeStacks", () => {
 
   it("puts a lone tape on the left stack", () => {
     expect(splitTapeStacks(["a"])).toEqual({ left: ["a"], right: [] });
+  });
+});
+
+describe("positionFromTop", () => {
+  it("keeps list order for a stack drawn top-down", () => {
+    expect([0, 1, 2].map((i) => positionFromTop(i, 3, false))).toEqual([
+      0, 1, 2,
+    ]);
+  });
+
+  it("puts the first tape at the bottom of a stack drawn from the bottom", () => {
+    expect([0, 1, 2].map((i) => positionFromTop(i, 3, true))).toEqual([
+      2, 1, 0,
+    ]);
+  });
+
+  it("puts a lone tape at the top either way", () => {
+    expect(positionFromTop(0, 1, true)).toBe(0);
+    expect(positionFromTop(0, 1, false)).toBe(0);
   });
 });

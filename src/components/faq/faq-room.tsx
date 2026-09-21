@@ -1,11 +1,15 @@
 "use client";
 
+import { Boombox } from "@/components/faq/boombox";
 import CrtTv from "@/components/faq/crt-tv";
+import { LavaLamp } from "@/components/faq/lava-lamp";
+import { TeddyBear } from "@/components/faq/teddy-bear";
 import VhsTape from "@/components/faq/vhs-tape";
 import {
   type FaqGroup,
   type FaqItem,
   type FaqLayout,
+  positionFromTop,
   splitTapeStacks,
 } from "@/lib/faq-layout";
 import { cn } from "@/lib/utils";
@@ -13,7 +17,10 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { useRef, useState } from "react";
 
-/** Letters badged onto the wall tapes at indices 1..7 (index 0 has none). */
+/**
+ * Letters badged onto the wall tapes at positions 1..7, counted from the top
+ * of the pile (the top tape has none).
+ */
 const BADGE_LETTERS = "HACKING";
 const BADGE_COLORS = [
   "#4f497c",
@@ -48,6 +55,13 @@ type StackProps = SelectProps & {
   offset?: number;
   className?: string;
   badged?: boolean;
+  /**
+   * Draw the first question at the bottom and pile the rest on top of it, so
+   * the stack stands on whatever it is anchored to however many tapes it
+   * holds. The list keeps question order for screen readers and the Tab key;
+   * only the drawing is flipped.
+   */
+  fromBottom?: boolean;
 };
 
 /** A pile of tapes, each as wide as its question, centred on its own column. */
@@ -57,26 +71,39 @@ const TapeStack = ({
   offset = 0,
   className,
   badged = false,
+  fromBottom = false,
   selected,
   onSelect,
 }: StackProps) => (
   <ul
     aria-label={label}
-    className={cn("flex flex-col items-center gap-0.5", className)}
+    className={cn(
+      // Only the tapes take clicks; the rest of the stack's box lets them
+      // through to whatever stands behind it, like the phone shelf's lamp.
+      "pointer-events-none flex items-center gap-0.5",
+      fromBottom ? "flex-col-reverse" : "flex-col",
+      className
+    )}
   >
-    {faqs.map((faq, i) => (
-      <li
-        key={`${faq.question}-${i}`}
-        className={cn("flex max-w-full", staggerClass(i + offset))}
-      >
-        <VhsTape
-          faq={faq}
-          selected={selected === faq}
-          {...(badged ? badgeFor(i + offset) : {})}
-          onSelect={onSelect}
-        />
-      </li>
-    ))}
+    {faqs.map((faq, i) => {
+      const position = positionFromTop(i, faqs.length, fromBottom) + offset;
+      return (
+        <li
+          key={`${faq.question}-${i}`}
+          className={cn(
+            "pointer-events-auto flex max-w-full",
+            staggerClass(position)
+          )}
+        >
+          <VhsTape
+            faq={faq}
+            selected={selected === faq}
+            {...(badged ? badgeFor(position) : {})}
+            onSelect={onSelect}
+          />
+        </li>
+      );
+    })}
   </ul>
 );
 
@@ -85,6 +112,10 @@ const TapeStack = ({
  * where geo-faq.json puts it: the tapestry and its tape pile on the left, the
  * window behind the television in the middle, and the hanging frames, teddy
  * and lava lamp on the right. Desktop only — the mobile design has no wall.
+ *
+ * The pile stands on the cabinet top, its bottom tape 25px into the cabinet's
+ * top face as in the design, and grows upward from the first question, so a
+ * short category never leaves a tape hanging in mid-air.
  */
 const RoomWall = ({
   group,
@@ -120,22 +151,8 @@ const RoomWall = ({
       height={654}
       className="pointer-events-none absolute top-[21.79%] left-[74.66%] h-auto w-[22.08%]"
     />
-    <Image
-      src="/assets/faq/teddy.svg"
-      alt=""
-      aria-hidden="true"
-      width={158}
-      height={161}
-      className="pointer-events-none absolute top-[77.2%] left-[73.61%] h-auto w-[10.25%]"
-    />
-    <Image
-      src="/assets/faq/lava-lamp.svg"
-      alt=""
-      aria-hidden="true"
-      width={302}
-      height={381}
-      className="pointer-events-none absolute top-[38.85%] left-[77.33%] h-auto w-[19.73%]"
-    />
+    <TeddyBear className="absolute top-[77.2%] left-[73.61%] w-[10.25%]" />
+    <LavaLamp className="absolute top-[38.85%] left-[77.33%] w-[19.73%]" />
     <div className="absolute top-[30.07%] left-[41.99%] w-[31.16%]">
       <CrtTv selected={selected} empty={empty} />
     </div>
@@ -144,7 +161,8 @@ const RoomWall = ({
         faqs={group.faqs}
         label={group.category}
         badged
-        className="absolute top-[59.63%] left-[24.17%] w-[36%] -translate-x-1/2 -translate-y-1/2"
+        fromBottom
+        className="absolute bottom-[-4.22%] left-[24.17%] w-[36%] -translate-x-1/2"
         selected={selected}
         onSelect={onSelect}
       />
@@ -155,7 +173,9 @@ const RoomWall = ({
 /**
  * One open cabinet: `cabinet.svg` sets the band's height, and the radio, the
  * two tape stacks and the blanket draped over the shelf edge are placed on it
- * as fractions of that artwork. Desktop only.
+ * as fractions of that artwork. The radio and blanket are always there; the
+ * stacks and the radio's label only when a category sits on the shelf.
+ * Desktop only.
  */
 const Cabinet = ({
   shelf,
@@ -184,21 +204,13 @@ const Cabinet = ({
         height={168}
         className="pointer-events-none absolute top-[64.4%] left-[4.15%] h-auto w-[91.5%]"
       />
+      {/* The radio is part of the furniture, so it stays when the shelf is empty. */}
+      <Boombox
+        category={shelf?.category}
+        className="absolute top-[20.55%] left-[10.53%] w-[18.56%]"
+      />
       {shelf && (
         <>
-          <div className="absolute top-[20.55%] left-[10.53%] @container w-[18.56%]">
-            <Image
-              src="/assets/faq/boombox.svg"
-              alt=""
-              aria-hidden="true"
-              width={282}
-              height={224}
-              className="h-auto w-full"
-            />
-            <h3 className="absolute top-[46.2%] left-[27.2%] flex h-[13.4%] w-[45.7%] items-center justify-center overflow-hidden rounded-[4cqw] bg-tape-label px-[1.5cqw] text-center font-display text-[4.4cqw] leading-none text-ink uppercase">
-              <span className="truncate">{shelf.category}</span>
-            </h3>
-          </div>
           <TapeStack
             faqs={left}
             label={shelf.category}
@@ -221,9 +233,11 @@ const Cabinet = ({
 };
 
 /**
- * One mobile shelf: a wooden band with the tapes stacked in a single column,
- * closed by the blanket hanging over its front edge. The mobile design keeps
- * every category on a shelf like this, so there is no wall and no tapestry.
+ * One mobile shelf: a plank along the top, the tapes stacked in a single
+ * column below it, closed by the blanket hanging over its front edge. The
+ * mobile design keeps every category on a shelf like this, so there is no
+ * wall and no tapestry. The heading sits on the first plank, which keeps it
+ * clear of the lava lamp when the first shelf is also the last.
  */
 const MobileShelf = ({
   group,
@@ -237,53 +251,62 @@ const MobileShelf = ({
   badged: boolean;
   /** The first shelf carries the section's heading. */
   title: boolean;
-  /** The last shelf stands the lava lamp at its left edge. */
+  /**
+   * The last shelf stands the lava lamp at its left edge, and its blanket
+   * drapes over the cloud band that closes the section.
+   */
   lamp: boolean;
 }) => (
-  <div className="relative bg-cabinet">
-    <Image
-      src="/assets/faq/desk-top.svg"
-      alt=""
-      aria-hidden="true"
-      width={1519}
-      height={34}
-      className="block h-[10.4vw] w-full object-fill"
-    />
-    <div className="flex items-start justify-between gap-3 px-4 pt-2">
+  <div className={cn("relative", lamp ? "z-30" : "bg-cabinet")}>
+    {/* On the last shelf the wall stops under the blanket's top, so the
+        blanket hangs over the clouds instead of over more wall. */}
+    {lamp && (
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 top-0 bottom-[8vw] -z-10 bg-cabinet"
+      />
+    )}
+    {/* The plank along the top of the shelf, which carries the heading. */}
+    <div className="flex h-[10.4vw] items-center bg-[#a98469] px-4">
       {title && (
-        <p aria-hidden="true" className="font-display text-3xl text-cream">
+        <p
+          aria-hidden="true"
+          className="font-display text-[6.6vw] leading-none text-cream-soft"
+        >
           FAQ
         </p>
       )}
-      <h3 className="ml-auto w-fit max-w-[52%] rotate-3 rounded-xs bg-cream-soft px-3 py-1.5 font-display text-sm tracking-wide text-ink">
+    </div>
+    <div className="flex justify-end px-4 pt-2">
+      <h3 className="w-fit max-w-[52%] rotate-3 rounded-xs bg-cream-soft px-3 py-1.5 font-display text-sm tracking-wide text-ink">
         {group.category}
       </h3>
     </div>
+    {/* The lamp stands behind the tapes, as in the phone frame, so a tape
+        that reaches over it still takes the tap. */}
+    {lamp && <LavaLamp className="absolute bottom-[8%] -left-[17%] w-[58%]" />}
+    {/* The lamp shelf is kept tall enough for the lamp to stand under the
+        plank even when the category has only a question or two; the tapes
+        stand on the shelf at the bottom of it rather than hanging from the
+        top, so a short category never leaves a tape floating. */}
     <TapeStack
       faqs={group.faqs}
       label={group.category}
       badged={badged}
-      className={cn("relative w-full pt-2 pr-3 pb-6", lamp ? "pl-14" : "pl-3")}
+      className={cn(
+        "relative w-full justify-end pt-2 pr-3 pb-1",
+        lamp ? "min-h-[78vw] pl-14" : "pl-3"
+      )}
       selected={selected}
       onSelect={onSelect}
     />
-    {lamp && (
-      <Image
-        src="/assets/faq/lava-lamp.svg"
-        alt=""
-        aria-hidden="true"
-        width={302}
-        height={381}
-        className="pointer-events-none absolute bottom-[8%] -left-[17%] h-auto w-[58%]"
-      />
-    )}
     <Image
       src="/assets/faq/shelf-blanket.svg"
       alt=""
       aria-hidden="true"
       width={1390}
       height={168}
-      className="relative block h-auto w-full"
+      className="pointer-events-none relative block h-auto w-full"
     />
   </div>
 );
@@ -349,7 +372,7 @@ const FaqRoom = ({ layout }: { layout: FaqLayout<FaqItem> }) => {
       <div className="xl:hidden">
         <div
           ref={mobileTvRef}
-          className="mx-auto w-[92%] max-w-[520px] scroll-mt-6 pt-10 pb-8"
+          className="mx-auto w-[92%] max-w-[520px] scroll-mt-6 pt-16 pb-8"
         >
           <CrtTv selected={selected} empty={empty} />
         </div>
@@ -364,13 +387,16 @@ const FaqRoom = ({ layout }: { layout: FaqLayout<FaqItem> }) => {
             onSelect={handleSelect}
           />
         ))}
+        {/* Tucked up behind the last shelf's blanket, as in the phone frame,
+            and above the Sponsors band, which slides up under it, so its
+            string lights hang out of the clouds as they do on desktop. */}
         <Image
           src="/assets/faq/cloth-band.svg"
           alt=""
           aria-hidden="true"
           width={1531}
           height={351}
-          className="block h-auto w-full"
+          className="relative z-20 -mt-[16%] block h-auto w-full"
         />
       </div>
     </>

@@ -25,6 +25,13 @@ const CrtTv = ({ selected, empty }: CrtTvProps) => (
       className="h-auto w-full"
     />
 
+    {/* The set's light breathing over the bezel: above the artwork's own
+        static glow, below the copy. */}
+    <div
+      aria-hidden="true"
+      className="pointer-events-none absolute top-[5%] left-[9%] h-[71%] w-[82%] rounded-[12%] bg-static/50 blur-2xl mix-blend-screen motion-safe:animate-glow"
+    />
+
     {/* The flat part of the screen, inside the curve of the static. */}
     <div
       aria-live="polite"
@@ -37,14 +44,14 @@ const CrtTv = ({ selected, empty }: CrtTvProps) => (
            still reads as a CRT, and the block is centred so a short answer
            does not hang off the top edge. */
         <div className="flex min-h-full items-center bg-tape-label/80 px-[4cqw] py-[3.5cqw] [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)]">
-          <p className="font-body text-[max(0.8125rem,3.6cqw)] leading-relaxed whitespace-pre-line">
+          <p className="font-body text-[max(1rem,3.6cqw)] leading-relaxed whitespace-pre-line">
             {selected.answer}
           </p>
         </div>
       ) : (
         <div className="flex h-full flex-col items-center justify-center gap-[7cqw] text-center">
-          <p className="font-display text-[12.4cqw] leading-none">FAQ</p>
-          <p className="font-display text-[6.6cqw] leading-[1.5]">
+          <p className="font-display text-[13.4cqw] leading-none">FAQ</p>
+          <p className="font-display text-[7.5cqw] leading-[1.5]">
             {empty
               ? "Questions coming soon"
               : "Click on a question to get started"}

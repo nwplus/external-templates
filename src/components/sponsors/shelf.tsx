@@ -4,24 +4,7 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import type { CSSProperties, ReactNode } from "react";
 
-/** The real artwork behind each decoration, at its true intrinsic size. */
-export const DECORATION_ART: Record<
-  Decoration,
-  { src: string; width: number; height: number }
-> = {
-  "books-left": {
-    src: "/assets/sponsors/books-left.webp",
-    width: 515,
-    height: 596,
-  },
-  "books-right": {
-    src: "/assets/sponsors/books-right.webp",
-    width: 516,
-    height: 545,
-  },
-  sheep: { src: "/assets/sponsors/sheep.svg", width: 231, height: 238 },
-  plant: { src: "/assets/sponsors/plant.svg", width: 368, height: 368 },
-};
+import { ShelfOrnament } from "./shelf-ornament";
 
 /**
  * How wide each decoration stands, and how far its outer edge is inset from
@@ -43,7 +26,6 @@ const ShelfDecoration = ({
   kind: Decoration;
   side: "left" | "right";
 }) => {
-  const art = DECORATION_ART[kind];
   const { size, inset } = PLACEMENT[kind];
   const style: CSSProperties = {
     width: `${size}%`,
@@ -51,15 +33,9 @@ const ShelfDecoration = ({
   };
 
   return (
-    <Image
-      src={art.src}
-      alt=""
-      aria-hidden
-      width={art.width}
-      height={art.height}
-      style={style}
-      className="pointer-events-none absolute bottom-0 hidden h-auto xl:block"
-    />
+    <div style={style} className="absolute bottom-0 hidden xl:block">
+      <ShelfOrnament kind={kind} />
+    </div>
   );
 };
 
