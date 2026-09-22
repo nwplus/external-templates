@@ -14,9 +14,8 @@ export const DesktopStats = () => (
     <h2 className="mx-auto w-300 font-title text-6xl leading-none pb-10">
       {STATS_TITLE}
     </h2>
-    <div className="mx-auto pt-20 w-400">
-      <div className="relative -mt-[10vw] w-[86%]">
-        {/* Background decal */}
+    <div className="mx-auto w-400">
+      <div className="relative -mt-42 w-[86%]">
         <Parallax
           speed={0.2}
           className="absolute z-0 top-1/2 left-0 w-full -translate-y-1/2 pointer-events-none"
