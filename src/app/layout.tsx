@@ -18,6 +18,13 @@ const tovariSans = localFont({
   variable: "--font-tovari-sans",
 });
 
+const midnightConstellations = localFont({
+  src: "../../public/fonts/MidnightConstellations.ttf",
+  weight: "700",
+  display: "swap",
+  variable: "--font-midnight-constellations",
+});
+
 const siteUrl = "https://hackcamp.nwplus.io";
 const metaDescription =
   "This year, we are bringing you a 2-day in-person event where participants can learn new skills, connect with fellow tech enthusiasts, and build solutions to tackle challenges together.";
@@ -54,7 +61,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${tovariSans.variable} ${arsenal.variable} antialiased`}
+      className={`${tovariSans.variable} ${arsenal.variable} ${midnightConstellations.variable} antialiased`}
     >
       <body className={arsenal.className}>{children}</body>
     </html>
