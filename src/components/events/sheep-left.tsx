@@ -29,7 +29,7 @@ export const SheepLeft = ({
   idPrefix = "sheep-left",
 }: SheepContent & { idPrefix?: string }) => (
   <SheepTapToggle>
-    <SheepBleat bubbleClassName="left-[80%] top-[6%]">
+    <SheepBleat>
       <svg
         className="block w-full h-auto"
         width="789"
