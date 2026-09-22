@@ -60,6 +60,20 @@ export const DesktopHouse = () => {
           className="hero-house object-contain object-bottom-left"
           style={lit ? undefined : { clipPath: DESKTOP_UNLIT_CLIP }}
         />
+        {/*
+          The house once more, without its beam, over the top. The cursor's
+          shadow is cut out of the layer below, and the lower eave sits inside
+          the beam's outline, so this keeps the house whole whatever the shadow
+          takes. Same raster, already decoded, so it costs a layer and no bytes.
+        */}
+        <Image
+          src="/assets/hero/house.webp"
+          alt=""
+          aria-hidden
+          fill
+          className="pointer-events-none object-contain object-bottom-left"
+          style={{ clipPath: DESKTOP_UNLIT_CLIP }}
+        />
       </div>
       {/* Spotlight glow along the beam */}
       <div

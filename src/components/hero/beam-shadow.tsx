@@ -16,8 +16,9 @@ const LIGHT: Point = [10.8 * HOUSE_IMAGE_TO_BOX, 45.4];
  * The beam as drawn in the raster, in house-box percentages: from the lamp
  * bracket out to where its top edge leaves the top of the image and its
  * bottom edge leaves the right edge (the same vertices the lamp-off clip
- * follows). Convex, so a shadow can be clipped to it edge by edge, and it
- * never reaches the house, so nothing of the house is ever cut.
+ * follows). Convex, so a shadow can be clipped to it edge by edge. The lower
+ * eave does poke into it, which is why the house is drawn again, beamless,
+ * over the shadowed layer (see house-light.tsx).
  */
 const BEAM: Point[] = (
   [
