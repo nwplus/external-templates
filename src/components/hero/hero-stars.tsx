@@ -3,9 +3,13 @@
  * background so they can drift like the footer's stars. Each one was cut
  * from the 1687x1154 art at the box below (its glow's filter region plus a
  * small margin) and rasterised at that size and at double it, so laying it
- * back at the same box recreates the original picture. Each floats on its
- * own timing so the sky never moves in lockstep.
+ * back at the same box recreates the original picture. Each drifts on its
+ * own timing so the sky never moves in lockstep; the drift is wider than the
+ * footer stars' float because these sit among sparkles that stay put, and a
+ * small move reads as none.
  */
+import "./hero.css";
+
 const ART = { width: 1687, height: 1154 };
 
 const STARS = [
@@ -45,13 +49,13 @@ export const HeroStars = ({ scale = 1 }: HeroStarsProps) => (
           alt=""
           loading="lazy"
           decoding="async"
-          className="pointer-events-none absolute h-auto max-w-none motion-safe:animate-float"
+          className="hero-star pointer-events-none absolute h-auto max-w-none"
           style={{
             left: `${((x / ART.width) * 100).toFixed(2)}%`,
             top: `${((y / ART.height) * 100).toFixed(2)}%`,
             width: `${width.toFixed(2)}%`,
-            animationDuration: `${6 + (i % 4)}s`,
-            animationDelay: `-${(i * 1.3) % 7}s`,
+            animationDuration: `${5 + (i % 4)}s`,
+            animationDelay: `-${(i * 1.7) % 8}s`,
           }}
         />
       );

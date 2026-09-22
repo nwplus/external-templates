@@ -27,6 +27,30 @@
 }
 
 /*
+ * The hero's loose stars: a slow figure-of-eight drift with a little tilt,
+ * roomier than the footer's float. Transform only; paused off screen by the
+ * motion gate like everything else, and off entirely under reduced motion.
+ */
+@keyframes hero-drift {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  30% {
+    transform: translate(3.5%, -12%) rotate(7deg);
+  }
+  65% {
+    transform: translate(-3.5%, -5%) rotate(-6deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-star {
+    animation: hero-drift 6s ease-in-out infinite;
+  }
+}
+
+/*
  * The shadow the cursor casts in the beam: darkens what it covers, and never
  * spills outside the beam's wedge (the same triangle the glow is clipped to).
  * The streak is a box as wide as the beam box and a sliver tall, hinged at
