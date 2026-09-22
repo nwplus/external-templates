@@ -46,12 +46,16 @@ const starDrop: Keyframe[] = [
   { opacity: 1, offset: 0.3 },
   { opacity: 1, transform: "translateY(0) rotate(0deg)" },
 ];
-const starWiggle: Keyframe[] = [-16, 13, -9, 6, -3, 0].map((deg) => ({
-  transform: `translateY(0) rotate(${deg}deg)`,
-}));
+// Each step is its own animation and cancels the last, so every step has to
+// say the star is visible or it falls back to its resting opacity of 0.
+const starWiggle: Keyframe[] = [-16, 13, -9, 6, -3, 0, 4, -3, 2, 0].map(
+  (deg) => ({ opacity: 1, transform: `translateY(0) rotate(${deg}deg)` })
+);
+// The star rides the line up and slips into the reel at the top; it fades
+// right there, so nothing is left to snap back when the rod swings away.
 const starReel: Keyframe[] = [
   { opacity: 1, transform: "translateY(0) rotate(0deg)" },
-  { opacity: 1, offset: 0.7 },
+  { opacity: 1, offset: 0.82 },
   { opacity: 0, transform: `translateY(${-STAR_RIDE}px) rotate(0deg)` },
 ];
 
@@ -176,14 +180,14 @@ export const MoonBearFigure = ({
         fill: forwards,
       }).finished;
       await play(star, starWiggle, {
-        duration: 900,
+        duration: 2400,
         easing: "ease-in-out",
         fill: forwards,
       }).finished;
-      await pause(150);
-      play(line, lineReel, { duration: 300, easing: "ease-in" });
-      await play(star, starReel, { duration: 300, easing: "ease-in" }).finished;
-      await pause(100);
+      await pause(300);
+      play(line, lineReel, { duration: 500, easing: "ease-in" });
+      await play(star, starReel, { duration: 500, easing: "ease-in" }).finished;
+      await pause(120);
       await play(rod, swingBack, { duration: 450, easing: "ease-in" }).finished;
     } catch {
       // A cancelled animation rejects `finished`; the parts are back at rest.
