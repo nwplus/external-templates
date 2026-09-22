@@ -42,9 +42,12 @@ const LampButton = ({
 
 /**
  * The desktop house with its countdown, inside the house box. Clicking the
- * house turns its lamp off and on: the beam is baked into the raster, so
- * "off" clips it away with a polygon that leaves the rest of the house, the
- * glow fades, and the countdown swaps to cream on the dark sky.
+ * house turns its lamp off and on. The beam is baked into the raster, so the
+ * raster is drawn twice: the whole thing underneath, which is the only layer
+ * the cursor's shadow cuts into and which "off" simply hides, and over it the
+ * house alone, clipped to its lamp-off silhouette, so the house is whole
+ * whatever the shadow takes and is all that is left when the lamp is off.
+ * The glow fades with it and the countdown swaps to cream on the dark sky.
  */
 export const DesktopHouse = () => {
   const [lit, setLit] = useState(true);
@@ -53,19 +56,15 @@ export const DesktopHouse = () => {
   return (
     <>
       <div className="absolute inset-0 z-10">
+        {/* The beam layer: beam-shadow.tsx owns its clip-path, nothing else sets one */}
         <Image
           src="/assets/hero/house.webp"
           alt="House"
           fill
           className="hero-house object-contain object-bottom-left"
-          style={lit ? undefined : { clipPath: DESKTOP_UNLIT_CLIP }}
+          style={lit ? undefined : { visibility: "hidden" }}
         />
-        {/*
-          The house once more, without its beam, over the top. The cursor's
-          shadow is cut out of the layer below, and the lower eave sits inside
-          the beam's outline, so this keeps the house whole whatever the shadow
-          takes. Same raster, already decoded, so it costs a layer and no bytes.
-        */}
+        {/* Same raster, already decoded: a layer, not more bytes */}
         <Image
           src="/assets/hero/house.webp"
           alt=""
