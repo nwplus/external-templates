@@ -1,6 +1,8 @@
 "use client";
 
 import { Candle } from "@/components/testimonials/candle";
+import { DeerHead } from "@/components/testimonials/deer-head";
+import { Pillow } from "@/components/testimonials/pillow";
 import { type Testimonial, testimonials } from "@/constants/testimonials";
 
 import Image from "next/image";
@@ -105,40 +107,40 @@ const Testimonials = () => {
         height={239}
         className="absolute left-[8.46vw] top-[24.21vw] h-[15.64vw] w-[43.52vw]"
       />
-      <Image
+      <Pillow
         src="/assets/testimonials/ruffled-cushion.svg"
-        alt=""
         width={149}
         height={92}
-        className="absolute left-[35.51vw] top-[21.72vw] h-[6vw] w-[9.77vw] rotate-[10deg]"
+        label="Ruffled cushion"
+        className="left-[35.51vw] top-[21.72vw] h-[6vw] w-[9.77vw] rotate-[10deg]"
       />
-      <Image
+      <Pillow
         src="/assets/testimonials/back-pillow.svg"
-        alt=""
         width={151}
         height={136}
-        className="absolute left-[18.19vw] top-[19.97vw] h-[8.89vw] w-[9.88vw]"
+        label="Back pillow"
+        className="left-[18.19vw] top-[19.97vw] h-[8.89vw] w-[9.88vw]"
       />
-      <Image
+      <Pillow
         src="/assets/testimonials/round-cushion.svg"
-        alt=""
         width={166}
         height={78}
-        className="absolute left-[24.33vw] top-[24.64vw] h-[5.07vw] w-[10.85vw]"
+        label="Round cushion"
+        className="left-[24.33vw] top-[24.64vw] h-[5.07vw] w-[10.85vw]"
       />
-      <Image
+      <Pillow
         src="/assets/testimonials/yellow-cushion.svg"
-        alt=""
         width={370}
         height={217}
-        className="absolute left-[10.57vw] top-[26.95vw] h-[14.23vw] w-[24.2vw]"
+        label="Yellow cushion"
+        className="left-[10.57vw] top-[26.95vw] h-[14.23vw] w-[24.2vw]"
       />
-      <Image
+      <Pillow
         src="/assets/testimonials/square-cushion.svg"
-        alt=""
         width={209}
         height={209}
-        className="absolute left-[35.75vw] top-[24.57vw] h-[13.65vw] w-[13.65vw]"
+        label="Square cushion"
+        className="left-[35.75vw] top-[24.57vw] h-[13.65vw] w-[13.65vw]"
       />
 
       <Image
@@ -183,48 +185,7 @@ const Testimonials = () => {
         height={32}
         className="absolute left-[43.91vw] top-[20.5vw] h-[2.1vw] w-[2.09vw] rotate-[-5.37deg]"
       />
-      <Image
-        src="/assets/testimonials/deer-head.svg"
-        alt=""
-        width={116}
-        height={106}
-        className="absolute left-[39.14vw] top-[20.54vw] h-[6.93vw] w-[7.62vw]"
-      />
-      <Image
-        src="/assets/testimonials/deer-spots.svg"
-        alt=""
-        width={22}
-        height={14}
-        className="absolute left-[41.57vw] top-[20.89vw] h-[0.9vw] w-[1.47vw]"
-      />
-      <Image
-        src="/assets/testimonials/deer-muzzle.svg"
-        alt=""
-        width={47}
-        height={30}
-        className="absolute left-[40.49vw] top-[24.11vw] h-[1.99vw] w-[3.08vw]"
-      />
-      <Image
-        src="/assets/testimonials/deer-eye-left.svg"
-        alt=""
-        width={6}
-        height={9}
-        className="absolute left-[40.28vw] top-[23.76vw] h-[0.58vw] w-[0.39vw]"
-      />
-      <Image
-        src="/assets/testimonials/deer-eye-right.svg"
-        alt=""
-        width={6}
-        height={9}
-        className="absolute left-[43.28vw] top-[23.74vw] h-[0.59vw] w-[0.4vw]"
-      />
-      <Image
-        src="/assets/testimonials/deer-mouth.svg"
-        alt=""
-        width={18}
-        height={12}
-        className="absolute left-[41.25vw] top-[24.66vw] h-[0.76vw] w-[1.17vw]"
-      />
+      <DeerHead className="left-[39.14vw] top-[20.54vw] h-[6.93vw] w-[7.62vw]" />
       <Image
         src="/assets/testimonials/deer-pyjama-cat.svg"
         alt=""
@@ -285,12 +246,12 @@ const Testimonials = () => {
         height={262}
         className="absolute left-[5.24vw] top-[27.42vw] h-[17.15vw] w-[15.82vw]"
       />
-      <Image
+      <Pillow
         src="/assets/testimonials/oval-pillow.svg"
-        alt=""
         width={124}
         height={107}
-        className="absolute left-[28.58vw] top-[35.59vw] h-[7.02vw] w-[8.1vw]"
+        label="Oval pillow"
+        className="left-[28.58vw] top-[35.59vw] h-[7.02vw] w-[8.1vw]"
       />
       <Image
         src="/assets/testimonials/blanket-right.svg"
@@ -299,37 +260,39 @@ const Testimonials = () => {
         height={166}
         className="absolute left-[31.53vw] top-[31.49vw] h-[10.83vw] w-[19.82vw]"
       />
-      <Image
+      <Pillow
         src="/assets/testimonials/foreground-pillow.svg"
-        alt=""
         width={193}
         height={133}
-        className="absolute left-[7.87vw] top-[33.78vw] h-[8.73vw] w-[12.61vw]"
+        label="Foreground pillow"
+        className="left-[7.87vw] top-[33.78vw] h-[8.73vw] w-[12.61vw]"
       />
-      <Image
+      <Pillow
         src="/assets/testimonials/star-pillow.svg"
-        alt=""
         width={126}
         height={112}
-        className="absolute left-[21.74vw] top-[35.04vw] h-[7.32vw] w-[8.25vw]"
+        label="Star pillow"
+        className="left-[21.74vw] top-[35.04vw] h-[7.32vw] w-[8.25vw]"
       />
-      <Image
+      <Pillow
         src="/assets/testimonials/log-pillow.svg"
-        alt=""
         width={196}
         height={118}
-        className="absolute left-[40.9vw] top-[33.08vw] h-[7.72vw] w-[12.85vw]"
+        label="Log pillow"
+        className="left-[40.9vw] top-[33.08vw] h-[7.72vw] w-[12.85vw]"
       />
 
+      {/* The lamp light lies over the whole nook, so it must let clicks
+          through to the pillows and the deer underneath. */}
       <div
-        className="absolute left-[16.3vw] top-[23.23vw] h-[16.62vw] w-[24.67vw] opacity-50 mix-blend-plus-lighter"
+        className="pointer-events-none absolute left-[16.3vw] top-[23.23vw] h-[16.62vw] w-[24.67vw] opacity-50 mix-blend-plus-lighter"
         style={{
           background:
             "radial-gradient(50% 50% at 50% 50%, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 100%)",
         }}
       />
       <div
-        className="absolute left-[26.11vw] top-[17.93vw] h-[16.62vw] w-[24.61vw] opacity-25 mix-blend-plus-lighter"
+        className="pointer-events-none absolute left-[26.11vw] top-[17.93vw] h-[16.62vw] w-[24.61vw] opacity-25 mix-blend-plus-lighter"
         style={{
           background:
             "radial-gradient(50% 50% at 50% 50%, rgba(255,223,141,1) 0%, rgba(255,223,141,0) 100%)",
