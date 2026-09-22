@@ -35,6 +35,14 @@ const BEAM: Point[] = (
  * leaves a shadow you can see.
  */
 const CURSOR_RADIUS = 0.026;
+/**
+ * The cursor casts nothing until it is inside the beam, and the blocker then
+ * grows in from nothing: this many times the cursor's distance in from the
+ * nearer long edge, until it reaches hand size. Near the bulb the beam is
+ * narrow and a hand anywhere in it fills it, so it grows faster there.
+ */
+const ENTRY_TAPER = 2;
+const ENTRY_TAPER_AT_WALL = 8;
 
 /**
  * The box is 1.7 times wider than it is tall, so a percentage of its width
@@ -45,6 +53,19 @@ const toPixels = ([x, y]: Point, width: number, height: number): Point => [
   (x / 100) * width,
   (y / 100) * height,
 ];
+
+/**
+ * How far a point is inside the line through `a` and `b`, one edge of a
+ * polygon with winding `turn`: positive inside, negative outside.
+ */
+const insideDistance = (
+  [ax, ay]: Point,
+  [bx, by]: Point,
+  [px, py]: Point,
+  turn: number
+) =>
+  (((bx - ax) * (py - ay) - (by - ay) * (px - ax)) * turn) /
+  Math.hypot(bx - ax, by - ay);
 
 /** Which way round a polygon's vertices run (the sign of its area). */
 const winding = (poly: Point[]) =>
@@ -128,7 +149,8 @@ const shadowShape = (
  * an even-odd clip path: everything stays except the wedge behind the
  * cursor, where the night sky shows through as if the lamp did not reach.
  * Works right up against the bulb (the disc covers the whole beam) and at
- * the beam's edges (the shadow is clipped to the beam's outline); the
+ * the beam's edges (the shadow is clipped to the beam's outline), and does
+ * nothing at all while the cursor is above or below the beam; the
  * countdown goes dark when the shadow falls on it. Written to
  * the DOM once per frame at most; hover-only, and cleared while the lamp is
  * off, on scroll, or when the pointer leaves.
@@ -196,9 +218,20 @@ export const BeamShadow = ({ lit }: { lit: boolean }) => {
           edgeY([beam[0], beam[1]], cursor[0])) /
         2;
       const nearWall = Math.max(0, 1 - (cursor[0] - wallX) / (0.12 * width));
-      const radius =
+      const hand =
         CURSOR_RADIUS * width +
         Math.max(0, halfHeight - CURSOR_RADIUS * width) * nearWall;
+      // Above or below the beam the cursor is not in the light and casts
+      // nothing; just inside an edge, the blocker is still small.
+      const turn = winding(beam);
+      const margin = Math.min(
+        insideDistance(beam[0], beam[1], cursor, turn),
+        insideDistance(beam[3], beam[4], cursor, turn)
+      );
+      if (margin <= 0) return clear();
+      const taper =
+        ENTRY_TAPER + (ENTRY_TAPER_AT_WALL - ENTRY_TAPER) * nearWall;
+      const radius = Math.min(hand, taper * margin);
       const shadow = clipPolygon(
         shadowShape(cursor, light, beam, radius),
         beam
