@@ -68,14 +68,6 @@ const SponsorsClient = ({ initial }: { initial: SponsorDoc[] }) => {
       // instead of hanging from the top edge of the band.
       className="relative -mt-[22.08%] w-full overflow-visible bg-linear-to-b from-night-top to-night-bottom to-85% pt-[9.28%] text-cream"
     >
-      {/* Where the band comes out from under the clouds (a top margin, since
-          only margins take their percentage from the width); the nav lands
-          here, held 3.5rem down so the phone's fixed menu button clears it. */}
-      <span
-        data-scroll-anchor
-        aria-hidden="true"
-        className="absolute top-0 left-0 mt-[22.08%] scroll-mt-14"
-      />
       {/* Everything is sized as a share of the width, so the band keeps the
           design's proportions at any viewport; above the design's 1531px the
           fixed-size type and gaps grow with it too. */}
@@ -85,9 +77,14 @@ const SponsorsClient = ({ initial }: { initial: SponsorDoc[] }) => {
         <StringLights variant="top" className="relative z-[1]" />
 
         {/* The design hangs the heading inside the lowest reach of the
-            garland's glow, so the text block is pulled back up under it. */}
+            garland's glow, so the text block is pulled back up under it. The
+            nav lands on the heading, held 5rem down: the phone's fixed menu
+            button clears it and the glow above it stays in view. */}
         <div className="relative -mt-[11.9%] flex flex-col items-center gap-6 px-6 text-center xl:gap-[max(1.5rem,1.568vw)] xl:px-[max(1.5rem,1.568vw)]">
-          <h2 className="font-display text-4xl xl:text-[length:max(3.75rem,3.919vw)]/[1]">
+          <h2
+            data-scroll-anchor
+            className="scroll-mt-20 font-display text-4xl xl:text-[length:max(3.75rem,3.919vw)]/[1]"
+          >
             Sponsors
           </h2>
           <p className="max-w-[90%] font-body text-base xl:max-w-[64%] xl:text-[length:max(1.5rem,1.568vw)]/[1.3333]">
