@@ -4,9 +4,8 @@ import { HERO_CTA_LINKS, HERO_TAGLINE, HERO_TITLE } from "@/constants/hero";
 
 import Image from "next/image";
 
-import { Countdown } from "./countdown";
 import { CtaLink } from "./cta-link";
-import { SpotlightGlow } from "./spotlight-glow";
+import { DesktopHouse } from "./house-light";
 
 export const DesktopHero = () => (
   <div className="bg-linear-to-b from-[#0B0F27] to-[#0C1637]">
@@ -70,21 +69,8 @@ export const DesktopHero = () => (
           anchor="top"
           className="bottom-0 left-0 absolute w-[120vw] aspect-[1.7]"
         >
-          <div className="absolute inset-0 z-10">
-            <Image
-              src="/assets/hero/house.webp"
-              alt="House"
-              fill
-              className="object-contain object-bottom-left"
-            />
-          </div>
-          {/* Spotlight glow along the beam */}
-          <SpotlightGlow />
-
-          {/* Locked to the house spotlight; % tracks the house box as the viewport resizes */}
-          <div className="absolute left-[54%] top-[37%] z-30 -translate-x-1/2 -translate-y-1/2">
-            <Countdown className="text-[6.5vw] text-[#0B1327] [text-shadow:0_0_8px_#FFDA88,0_0_20px_#FFDA88,0_0_40px_#FFDA88]" />
-          </div>
+          {/* House, glow and countdown: a client island so the lamp can be switched */}
+          <DesktopHouse />
         </Parallax>
         {/*
           Cloud layers, placed on the 770x572 canvas the combined art used so the
@@ -108,7 +94,7 @@ export const DesktopHero = () => (
           <Parallax
             speed={-0.11}
             anchor="top"
-            className="absolute z-20 left-[0.195%] top-[15.731%] w-[99.87%]"
+            className="pointer-events-none absolute z-20 left-[0.195%] top-[15.731%] w-[99.87%]"
           >
             <Image
               src="/assets/hero/desktop-bottom-cloud-front.svg"
@@ -121,7 +107,7 @@ export const DesktopHero = () => (
           <Parallax
             speed={-0.14}
             anchor="top"
-            className="absolute z-40 left-[-6.658%] top-[9.696%] w-[104.286%]"
+            className="pointer-events-none absolute z-40 left-[-6.658%] top-[9.696%] w-[104.286%]"
           >
             <Image
               src="/assets/hero/desktop-bottom-cloud-stars.svg"
@@ -134,9 +120,13 @@ export const DesktopHero = () => (
         </div>
       </div>
 
-      {/* Hero content */}
-      <div className="relative z-20 min-h-screen pt-60 pb-[22vw]">
-        <div className="mx-auto w-[53vw] flex flex-col items-start">
+      {/*
+        Hero content. The wrapper's box covers the house, so it lets pointer
+        events through and only the text block takes them; otherwise the
+        house's lamp, windows and door could never be clicked.
+      */}
+      <div className="pointer-events-none relative z-20 min-h-screen pt-60 pb-[22vw]">
+        <div className="pointer-events-auto mx-auto w-[53vw] flex flex-col items-start">
           <h1 className="font-title text-[170px] leading-42.5 uppercase text-white">
             {HERO_TITLE}
           </h1>

@@ -1,0 +1,38 @@
+/*
+ * The hero's lamp state. `data-lit` sits on the pieces that follow it: the
+ * countdown reads as dark text inside the beam while the lamp is on and as
+ * cream text on the night sky once it is off, and the spotlight glow fades
+ * away with the beam. Only colour and opacity move.
+ */
+.hero-countdown {
+  color: #0b1327;
+  text-shadow:
+    0 0 8px #ffda88,
+    0 0 20px #ffda88,
+    0 0 40px #ffda88;
+  transition: color 300ms ease;
+}
+
+[data-lit="false"] .hero-countdown {
+  color: #fff4d6;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.85);
+}
+
+.hero-glow {
+  transition: opacity 250ms ease;
+}
+
+.hero-glow[data-lit="false"] {
+  opacity: 0;
+}
+
+/*
+ * The shadow the cursor casts in the beam: darkens what it covers, and never
+ * spills outside the beam's wedge (the same triangle the glow is clipped to).
+ */
+.hero-beam-shadow {
+  opacity: 0;
+  transition: opacity 150ms ease;
+  mix-blend-mode: multiply;
+  clip-path: polygon(28% 37%, 80% 15%, 80% 57%);
+}
