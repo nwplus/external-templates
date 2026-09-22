@@ -1,3 +1,4 @@
+import { ResponsiveArt } from "@/components/ui/responsive-art";
 import { PRIZING_PARAGRAPHS, PRIZING_TITLE } from "@/constants/prizing";
 
 import Image from "next/image";
@@ -28,11 +29,13 @@ export const MobilePrizing = () => (
 
     {/* House on the hill closing out the section; the negative bottom margin lets the section
         edge (overflow-hidden) cut the hill just above the art's ragged bottom edge */}
-    <Image
-      src="/assets/prizing/mobile-house-hill.svg"
-      alt=""
+    <ResponsiveArt
+      base="/assets/prizing/mobile-house-hill"
+      widths={[800, 1200, 1600]}
       width={1011}
       height={1270}
+      sizes="100vw"
+      media="(max-width: 767px)"
       className="pointer-events-none relative z-10 block w-full h-auto mt-2 -mb-[6%] [mask-image:linear-gradient(to_bottom,transparent,black_18%)]"
     />
   </div>

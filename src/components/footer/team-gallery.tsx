@@ -3,8 +3,9 @@
 import { teamMembers } from "@/constants/team-members";
 
 import { animate as anime, JSAnimation } from "animejs";
+import { useReducedMotion } from "framer-motion";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type Member = (typeof teamMembers)[number];
 
@@ -17,18 +18,35 @@ const toHref = (social: string) => {
 const TeamGallery = () => {
   const [animator, setAnimator] = useState<JSAnimation>();
   const [selectedProfile, setSelectedProfile] = useState<Member | null>(null);
+  const hovering = useRef(false);
+  // With reduced motion the row does not scroll itself; it can be scrolled by
+  // hand instead (see `motion-reduce:overflow-x-auto` below).
+  const reduceMotion = useReducedMotion();
 
   useEffect(() => {
-    setAnimator(
-      anime("#anim-profiles", {
-        easing: "linear",
-        loop: true,
-        translateX: [-(40 * teamMembers.length), 0],
-        duration: 1500 * teamMembers.length,
-        autoplay: true,
-      })
-    );
-  }, []);
+    if (reduceMotion) return;
+    const row = document.getElementById("anim-profiles");
+    const animation = anime("#anim-profiles", {
+      easing: "linear",
+      loop: true,
+      translateX: [-(40 * teamMembers.length), 0],
+      duration: 1500 * teamMembers.length,
+      autoplay: true,
+    });
+    setAnimator(animation);
+
+    // The marquee only runs while it is on screen.
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) animation.pause();
+      else if (!hovering.current) animation.play();
+    });
+    if (row) observer.observe(row);
+
+    return () => {
+      observer.disconnect();
+      animation.revert();
+    };
+  }, [reduceMotion]);
 
   return (
     <div className="flex w-full flex-col items-center gap-1 xl:gap-[max(1rem,1.045vw)]">
@@ -36,7 +54,7 @@ const TeamGallery = () => {
         Meet the minds behind HackCamp
       </h2>
 
-      <div className="w-full overflow-x-hidden whitespace-nowrap">
+      <div className="w-full overflow-x-hidden whitespace-nowrap motion-reduce:overflow-x-auto">
         {/* Profiles are duplicated so the marquee loops seamlessly. */}
         <div
           className="flex gap-6 py-2 will-change-transform xl:gap-[max(1.75rem,1.829vw)] xl:py-[max(1rem,1.045vw)]"
@@ -47,10 +65,12 @@ const TeamGallery = () => {
             const className =
               "inline-block size-16 shrink-0 rounded-md bg-white transition-transform duration-100 ease-in-out hover:scale-110 xl:size-[max(5rem,5.225vw)]";
             const onMouseEnter = () => {
+              hovering.current = true;
               setSelectedProfile(profile);
               animator?.pause();
             };
             const onMouseLeave = () => {
+              hovering.current = false;
               setSelectedProfile(null);
               animator?.play();
             };

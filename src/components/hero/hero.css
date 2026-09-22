@@ -1,0 +1,62 @@
+/*
+ * The hero's lamp state. `data-lit` sits on the pieces that follow it: the
+ * countdown reads as dark text inside the beam while the lamp is on and as
+ * cream text on the night sky once it is off, and the spotlight glow fades
+ * away with the beam. Only colour and opacity move.
+ */
+.hero-countdown {
+  color: #0b1327;
+  text-shadow:
+    0 0 8px #ffda88,
+    0 0 20px #ffda88,
+    0 0 40px #ffda88;
+  transition: color 300ms ease;
+}
+
+[data-lit="false"] .hero-countdown,
+.hero-countdown [data-shaded="true"] {
+  color: #fff4d6;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.85);
+}
+
+.hero-countdown [data-shaded] {
+  transition: color 150ms ease;
+}
+
+.hero-glow {
+  transition: opacity 250ms ease;
+}
+
+.hero-glow[data-lit="false"] {
+  opacity: 0;
+}
+
+/*
+ * The hero's loose stars: a slow figure-of-eight drift with a little tilt,
+ * roomier than the footer's float. Transform only; paused off screen by the
+ * motion gate like everything else, and off entirely under reduced motion.
+ */
+@keyframes hero-drift {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  30% {
+    transform: translate(3.5%, -12%) rotate(7deg);
+  }
+  65% {
+    transform: translate(-3.5%, -5%) rotate(-6deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-star {
+    animation: hero-drift 6s ease-in-out infinite;
+  }
+}
+
+/*
+ * The cursor's shadow in the beam is a clip-path that beam-shadow.tsx writes
+ * onto `.hero-house` and `.hero-glow` straight from the pointer; there is no
+ * overlay to style.
+ */

@@ -3,7 +3,7 @@ import { MobileAbout } from "@/components/about/mobile-about";
 
 export default function About() {
   return (
-    <div id="about">
+    <div id="about" data-motion-scope>
       <div className="hidden md:block">
         <DesktopAbout />
       </div>

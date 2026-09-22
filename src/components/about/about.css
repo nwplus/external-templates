@@ -1,0 +1,53 @@
+/* The moon bear's moving parts, at rest. The Web Animations in
+   moon-bear-figure.tsx take them from here and hand them back: every run
+   ends on these values, so nothing is left filling forwards. Only transform
+   and opacity move; the figure never carries a filter. */
+
+.moon-bear-rod,
+.moon-bear-line,
+.moon-bear-hook-star {
+  transform-box: fill-box;
+}
+
+/* Swung round behind the bear's head, and invisible besides. */
+.moon-bear-rod {
+  opacity: 0;
+  transform: rotate(70deg);
+}
+
+/* Reeled in: scaled to nothing from the rod's tip. */
+.moon-bear-line {
+  transform-origin: 50% 0;
+  transform: scaleY(0);
+}
+
+.moon-bear-hook-star {
+  opacity: 0;
+  transform-origin: 50% 50%;
+}
+
+/* The copy that laps the page, and the sparks it leaves behind. Both are
+   `position: fixed` at the viewport's corner: with the element's box at the
+   origin, the path's coordinates are viewport coordinates whichever box the
+   browser measures `offset-path` from. */
+.moon-bear-flight,
+.moon-bear-spark {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  offset-rotate: auto;
+  offset-distance: 0%;
+  will-change: transform;
+}
+
+.moon-bear-flight {
+  z-index: 1100;
+}
+
+.moon-bear-spark {
+  z-index: 1099;
+  border-radius: 50%;
+  background: #facb6b;
+  opacity: 0;
+}

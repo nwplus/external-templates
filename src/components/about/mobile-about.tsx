@@ -1,3 +1,4 @@
+import { ResponsiveArt } from "@/components/ui/responsive-art";
 import { WELCOME_PARAGRAPHS, WELCOME_TITLE } from "@/constants/about";
 
 import Image from "next/image";
@@ -30,11 +31,13 @@ export const MobileAbout = () => (
 
     {/* Moon bear on the clouds, leading into the tall-clouds section. The crop keeps
         the moon's glow, so the art has transparent headroom; pull it up to close the gap */}
-    <Image
-      src="/assets/about/mobile-moon-bear.svg"
-      alt=""
+    <ResponsiveArt
+      base="/assets/about/mobile-moon-bear"
+      widths={[800, 1200, 1600]}
       width={900}
       height={790}
+      sizes="100vw"
+      media="(max-width: 767px)"
       className="pointer-events-none block w-full h-auto -mt-6"
     />
   </div>

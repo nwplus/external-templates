@@ -1,0 +1,15 @@
+/*
+ * The deer's idle blink (components/testimonials/deer-head.tsx): the eyes
+ * stay open for almost the whole cycle and shut for a quarter of a second
+ * near its end. The cycle length is set on the element.
+ */
+@keyframes deer-blink {
+  0%,
+  96.5%,
+  100% {
+    transform: scaleY(1);
+  }
+  98.2% {
+    transform: scaleY(0.1);
+  }
+}

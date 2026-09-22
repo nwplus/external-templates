@@ -10,7 +10,12 @@ export const ORNAMENT_ART = {
     width: 516,
     height: 545,
   },
-  plant: { src: "/assets/sponsors/plant.svg", width: 368, height: 368 },
+  plant: {
+    base: "/assets/sponsors/plant",
+    widths: [400, 800, 1200],
+    width: 368,
+    height: 368,
+  },
 } as const;
 
 /** Plays nothing when the visitor has asked for less motion. */
