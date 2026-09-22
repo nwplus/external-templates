@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -347,11 +346,33 @@ html {
   }
 }
 
-@layer utilities {
-  .bg-hero-1 {
-    background-image:
-      url("/assets/hero/background-1.svg"),
-      linear-gradient(180deg, #93d9fa 0%, #ffffff 12%, #acc67e 20%);
+/* Decorative animations only run while their section is near the viewport
+   (components/motion-gate.tsx flags the ones that are). */
+[data-motion-scope]:not([data-onscreen]) * {
+  animation-play-state: paused;
+}
+
+/* The accordion's open and close (the only motion we took from tw-animate-css). */
+@theme {
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
   }
 }
 
