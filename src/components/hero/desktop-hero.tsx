@@ -69,7 +69,7 @@ export const DesktopHero = () => (
         >
           <div className="absolute inset-0 z-10">
             <Image
-              src="/assets/hero/house.png"
+              src="/assets/hero/house.webp"
               alt="House"
               fill
               className="object-contain object-bottom-left"
