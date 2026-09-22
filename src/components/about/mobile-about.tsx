@@ -5,7 +5,7 @@ import Image from "next/image";
 import { HackathonFaq } from "./hackathon-faq";
 
 export const MobileAbout = () => (
-  <div className="relative overflow-x-clip bg-linear-to-b from-[#0C1637] to-[#12204D] text-white">
+  <div className="relative overflow-x-clip bg-linear-to-b from-[#0C1637] to-[#12204D] text-white pt-22">
     {/* Welcome to HackCamp */}
     <div className="relative z-10 px-6 pt-10 pb-15">
       <h2 className="font-title text-4xl">{WELCOME_TITLE}</h2>

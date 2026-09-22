@@ -24,7 +24,7 @@ export const HackathonFaq = ({ className }: { className?: string }) => (
         <AccordionTrigger
           variant="hero"
           icon={<AccordionIcon />}
-          className="text-[20px] items-center"
+          className="text-base md:text-[20px] items-center"
         >
           {HACKATHON_BENEFITS_QUESTION}
         </AccordionTrigger>
