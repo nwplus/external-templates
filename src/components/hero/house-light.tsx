@@ -57,7 +57,7 @@ export const DesktopHouse = () => {
           src="/assets/hero/house.webp"
           alt="House"
           fill
-          className="object-contain object-bottom-left"
+          className="hero-house object-contain object-bottom-left"
           style={lit ? undefined : { clipPath: DESKTOP_UNLIT_CLIP }}
         />
       </div>
