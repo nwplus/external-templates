@@ -1,5 +1,6 @@
 "use client";
 
+import { Candle } from "@/components/testimonials/candle";
 import { type Testimonial, testimonials } from "@/constants/testimonials";
 
 import Image from "next/image";
@@ -268,19 +269,13 @@ const Testimonials = () => {
         height={83}
         className="absolute left-[24.51vw] top-[28.72vw] h-[5.42vw] w-[7.63vw]"
       />
-      <Image
-        src="/assets/testimonials/candle-large.svg"
-        alt=""
-        width={30}
-        height={30}
-        className="absolute left-[35.39vw] top-[27.17vw] h-[1.96vw] w-[1.95vw]"
+      <Candle
+        variant="large"
+        className="left-[35.39vw] top-[27.17vw] h-[1.96vw] w-[1.95vw]"
       />
-      <Image
-        src="/assets/testimonials/candle-small.svg"
-        alt=""
-        width={17}
-        height={21}
-        className="absolute left-[37.64vw] top-[27.01vw] h-[1.38vw] w-[1.08vw]"
+      <Candle
+        variant="small"
+        className="left-[37.64vw] top-[27.01vw] h-[1.38vw] w-[1.08vw]"
       />
 
       <Image

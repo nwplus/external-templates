@@ -1,5 +1,6 @@
 "use client";
 
+import { Candle } from "@/components/testimonials/candle";
 import { testimonials } from "@/constants/testimonials";
 
 import Image from "next/image";
@@ -9,14 +10,34 @@ const BUBBLE_WIDTH = 345;
 const BUBBLE_HEIGHT = 513;
 // every tail needs the same number of points or the clip-path transition just snaps
 const BUBBLE_TAILS = [
-  [[141.774, 469.465], [105, 513], [105, 469.465]],
-  [[184.5, 459], [168, 500], [136, 459]],
-  [[261.5, 456], [261.5, 493], [223, 459.5]],
+  [
+    [141.774, 469.465],
+    [105, 513],
+    [105, 469.465],
+  ],
+  [
+    [184.5, 459],
+    [168, 500],
+    [136, 459],
+  ],
+  [
+    [261.5, 456],
+    [261.5, 493],
+    [223, 459.5],
+  ],
 ];
 
 const bubbleShape = (tail: number[][]) =>
-  `polygon(${[[0, 0], [BUBBLE_WIDTH, 0], [320.5, 450], ...tail, [23.116, 469.465]]
-    .map(([x, y]) => `${(x / BUBBLE_WIDTH) * 100}% ${(y / BUBBLE_HEIGHT) * 100}%`)
+  `polygon(${[
+    [0, 0],
+    [BUBBLE_WIDTH, 0],
+    [320.5, 450],
+    ...tail,
+    [23.116, 469.465],
+  ]
+    .map(
+      ([x, y]) => `${(x / BUBBLE_WIDTH) * 100}% ${(y / BUBBLE_HEIGHT) * 100}%`
+    )
     .join(", ")})`;
 
 type ArrowProps = {
@@ -28,7 +49,9 @@ const Arrow = ({ direction, onClick }: ArrowProps) => (
   <button
     type="button"
     onClick={onClick}
-    aria-label={direction === "prev" ? "Previous testimonial" : "Next testimonial"}
+    aria-label={
+      direction === "prev" ? "Previous testimonial" : "Next testimonial"
+    }
     className="flex h-[10.18vw] w-[10.18vw] items-center justify-center rounded-full bg-white/[0.18]"
   >
     <svg
@@ -40,7 +63,9 @@ const Arrow = ({ direction, onClick }: ArrowProps) => (
       strokeLinejoin="round"
       className="h-[4.6vw] w-[4.6vw]"
     >
-      <polyline points={direction === "prev" ? "15,18 9,12 15,6" : "9,18 15,12 9,6"} />
+      <polyline
+        points={direction === "prev" ? "15,18 9,12 15,6" : "9,18 15,12 9,6"}
+      />
     </svg>
   </button>
 );
@@ -240,19 +265,13 @@ const TestimonialsMobile = () => {
         height={83}
         className="absolute left-[42.2vw] top-[167.7vw] h-[10.01vw] w-[14.09vw]"
       />
-      <Image
-        src="/assets/testimonials/candle-large.svg"
-        alt=""
-        width={30}
-        height={30}
-        className="absolute left-[62.3vw] top-[164.84vw] h-[3.62vw] w-[3.6vw]"
+      <Candle
+        variant="large"
+        className="left-[62.3vw] top-[164.84vw] h-[3.62vw] w-[3.6vw]"
       />
-      <Image
-        src="/assets/testimonials/candle-small.svg"
-        alt=""
-        width={17}
-        height={21}
-        className="absolute left-[66.45vw] top-[164.54vw] h-[2.55vw] w-[1.99vw]"
+      <Candle
+        variant="small"
+        className="left-[66.45vw] top-[164.54vw] h-[2.55vw] w-[1.99vw]"
       />
       <Image
         src="/assets/testimonials/blanket-left.svg"
