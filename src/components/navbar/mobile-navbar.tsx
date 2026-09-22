@@ -1,6 +1,8 @@
 "use client";
 
 import { NAV_LINKS } from "@/constants/navbar";
+import { useHideOnScroll } from "@/hooks/use-hide-on-scroll";
+import { cn } from "@/lib/utils";
 
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
@@ -11,6 +13,7 @@ import { scrollToSection } from "./scroll-to-section";
 // TODO(mobile): restyle once remaining mobile assets land (logo, type)
 export const MobileNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const hidden = useHideOnScroll() && !isOpen;
 
   return (
     <div className="fixed top-4 right-4 z-100 text-white">
