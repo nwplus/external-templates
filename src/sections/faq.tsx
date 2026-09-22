@@ -36,6 +36,7 @@ const Faq = async () => {
   return (
     <section
       id="faq"
+      data-motion-scope
       className="relative w-full overflow-x-clip bg-linear-to-b from-wall from-80% to-night-top text-cream"
     >
       <h2 className="sr-only">FAQ</h2>

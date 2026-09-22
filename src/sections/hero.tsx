@@ -3,7 +3,7 @@ import { MobileHero } from "@/components/hero/mobile-hero";
 
 export default function Hero() {
   return (
-    <div id="hero">
+    <div id="hero" data-motion-scope>
       <div className="hidden md:block">
         <DesktopHero />
       </div>

@@ -8,6 +8,7 @@ const Footer = () => {
   return (
     <footer
       id="footer"
+      data-motion-scope
       className="relative z-10 -mt-[26.6%] w-full overflow-hidden bg-night-bottom text-cream-soft"
     >
       {/*
