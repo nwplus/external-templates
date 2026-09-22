@@ -1,8 +1,8 @@
 "use client";
 
+import { ResponsiveArt } from "@/components/ui/responsive-art";
 import { cn } from "@/lib/utils";
 
-import Image from "next/image";
 import { useRef } from "react";
 
 import { ORNAMENT_ART, play, prefersLessMotion } from "./ornament-art";
@@ -13,6 +13,9 @@ import { ORNAMENT_ART, play, prefersLessMotion } from "./ornament-art";
  * halves meet; the leaves hanging over the pot below it stay put.
  */
 const RIM = 51.6;
+
+/** The plant takes 37.5% of a shelf that is 94.8% (82.8% from xl) of the width. */
+const PLANT_SIZES = "(min-width: 1280px) 31vw, 36vw";
 
 const sway = (angles: number[]): Keyframe[] =>
   angles.map((deg) => ({ transform: `skewX(${deg}deg)` }));
@@ -88,11 +91,12 @@ export const PottedPlant = () => {
         className="absolute inset-0 block"
         style={layer(`inset(${RIM}% 0 0 0)`)}
       >
-        <Image
-          src={art.src}
-          alt=""
+        <ResponsiveArt
+          base={art.base}
+          widths={art.widths}
           width={art.width}
           height={art.height}
+          sizes={PLANT_SIZES}
           className="pointer-events-none block h-full w-full"
         />
       </span>
@@ -102,11 +106,12 @@ export const PottedPlant = () => {
         className="absolute inset-0 block"
         style={layer(`inset(0 0 calc(${100 - RIM}% - 1px) 0)`)}
       >
-        <Image
-          src={art.src}
-          alt=""
+        <ResponsiveArt
+          base={art.base}
+          widths={art.widths}
           width={art.width}
           height={art.height}
+          sizes={PLANT_SIZES}
           className="pointer-events-none block h-full w-full"
         />
       </span>

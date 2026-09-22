@@ -1,7 +1,6 @@
 import { Parallax } from "@/components/ui/parallax";
+import { ResponsiveArt } from "@/components/ui/responsive-art";
 import { WELCOME_PARAGRAPHS, WELCOME_TITLE } from "@/constants/about";
-
-import Image from "next/image";
 
 import { HackathonFaq } from "./hackathon-faq";
 
@@ -28,11 +27,13 @@ export const DesktopAbout = () => (
     <div className="relative w-full aspect-[2.100228245]">
       {/* Illustration */}
       <Parallax speed={0.15} className="absolute z-10 w-full h-full">
-        <Image
-          src="/assets/about/moon-bear.svg"
-          alt=""
+        <ResponsiveArt
+          base="/assets/about/moon-bear"
+          widths={[1000, 1531, 2400, 3062]}
           width={1531}
           height={768}
+          sizes="100vw"
+          media="(min-width: 768px)"
           className="block w-full h-auto"
         />
       </Parallax>

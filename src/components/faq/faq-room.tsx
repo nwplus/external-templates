@@ -5,6 +5,7 @@ import CrtTv from "@/components/faq/crt-tv";
 import { LavaLamp } from "@/components/faq/lava-lamp";
 import { TeddyBear } from "@/components/faq/teddy-bear";
 import VhsTape from "@/components/faq/vhs-tape";
+import { ResponsiveArt } from "@/components/ui/responsive-art";
 import {
   type FaqGroup,
   type FaqItem,
@@ -127,12 +128,14 @@ const RoomWall = ({
   empty: boolean;
 }) => (
   <div className="relative z-40 aspect-[1531/592] w-full">
-    <Image
-      src="/assets/faq/tapestry.svg"
-      alt=""
-      aria-hidden="true"
+    <ResponsiveArt
+      base="/assets/faq/tapestry"
+      widths={[600, 1000, 1440]}
       width={573}
       height={402}
+      sizes="37.43vw"
+      media="(min-width: 1280px)"
+      aria-hidden="true"
       className="pointer-events-none absolute top-0 left-[2.16%] h-auto w-[37.43%]"
     />
     <Image

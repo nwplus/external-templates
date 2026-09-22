@@ -1,3 +1,4 @@
+import { ResponsiveArt } from "@/components/ui/responsive-art";
 import { HERO_CTA_LINKS, HERO_TAGLINE, HERO_TITLE } from "@/constants/hero";
 
 import Image from "next/image";
@@ -26,11 +27,16 @@ export const MobileHero = () => (
         priority
         className="absolute top-0 left-1/2 w-[200%] max-w-none h-auto -translate-x-1/2"
       />
-      <Image
-        src="/assets/hero/desktop-sparkles.svg"
-        alt=""
+      {/* Laid out at 200vw, but it is soft glows on black: a candidate for a
+          little over the viewport width upscales without a visible cost, and
+          it is the first big paint on a phone, so the bytes matter. */}
+      <ResponsiveArt
+        base="/assets/hero/desktop-sparkles"
+        widths={[1024, 1400, 1687, 2560, 3374]}
         width={1687}
         height={1154}
+        sizes="120vw"
+        media="(max-width: 767px)"
         priority
         className="absolute -top-[30%] left-1/2 w-[200%] max-w-none h-auto -translate-x-1/2"
       />
@@ -54,12 +60,15 @@ export const MobileHero = () => (
 
     {/* House with the countdown sitting in its spotlight beam */}
     <div className="relative z-10 -mt-14 -mb-20 w-full">
-      <Image
-        src="/assets/hero/mobile-house.svg"
-        alt="House"
+      <ResponsiveArt
+        base="/assets/hero/mobile-house"
+        widths={[800, 1200, 1600]}
         width={393}
         height={710}
+        sizes="100vw"
+        media="(max-width: 767px)"
         priority
+        alt="House"
         className="block w-full h-auto"
       />
       {/* % tracks the 393x710 house art; the beam runs from the lamp (~36%, 31%) off the right edge */}
