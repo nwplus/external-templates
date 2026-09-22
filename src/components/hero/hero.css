@@ -13,9 +13,14 @@
   transition: color 300ms ease;
 }
 
-[data-lit="false"] .hero-countdown {
+[data-lit="false"] .hero-countdown,
+.hero-countdown [data-shaded="true"] {
   color: #fff4d6;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.85);
+}
+
+.hero-countdown [data-shaded] {
+  transition: color 150ms ease;
 }
 
 .hero-glow {

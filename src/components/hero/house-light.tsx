@@ -76,7 +76,7 @@ export const DesktopHouse = () => {
       {/* Locked to the house spotlight; % tracks the house box as the viewport resizes */}
       <div
         data-lit={lit}
-        className="absolute left-[54%] top-[37%] z-30 -translate-x-1/2 -translate-y-1/2"
+        className="hero-countdown-box absolute left-[54%] top-[37%] z-30 -translate-x-1/2 -translate-y-1/2"
       >
         <Countdown className="hero-countdown text-[6.5vw]" />
       </div>
