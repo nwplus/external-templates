@@ -264,6 +264,6 @@ export const StarLeft = ({
         </radialGradient>
       </defs>
     </svg>
-    <StarOverlay value={value} label={label} className="left-[40%] top-[52%]" />
+    <StarOverlay value={value} label={label} className="left-[37.5%] top-[52%]" />
   </div>
 );

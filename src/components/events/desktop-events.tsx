@@ -34,7 +34,7 @@ export const DesktopEvents = () => (
           {/* Copy */}
           <div className="pt-45">
             <h2 className="font-title text-6xl">{EVENTS_TITLE}</h2>
-            <p className="text-lg">{EVENTS_DESCRIPTION}</p>
+            <p className="text-[20px]">{EVENTS_DESCRIPTION}</p>
           </div>
 
           {/* Sheep */}

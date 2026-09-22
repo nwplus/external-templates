@@ -25,7 +25,7 @@ export const DesktopPrizing = () => (
         <h2 className="font-title text-6xl leading-none pb-10">
           {PRIZING_TITLE}
         </h2>
-        <div className="w-1/2 text-lg flex flex-col gap-5 pb-40">
+        <div className="w-1/2 text-[20px] flex flex-col gap-5 pb-40">
           {PRIZING_PARAGRAPHS.map((paragraph, i) => (
             <p key={i}>{paragraph}</p>
           ))}
