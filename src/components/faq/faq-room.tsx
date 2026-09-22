@@ -5,7 +5,12 @@ import CrtTv from "@/components/faq/crt-tv";
 import { LavaLamp } from "@/components/faq/lava-lamp";
 import { TeddyBear } from "@/components/faq/teddy-bear";
 import VhsTape from "@/components/faq/vhs-tape";
+import { LightboxGallery, LightboxTrigger } from "@/components/ui/lightbox";
 import { ResponsiveArt } from "@/components/ui/responsive-art";
+import {
+  FAQ_FRAME_CAPTIONS,
+  type FaqFrame,
+} from "@/constants/faq-frame-captions";
 import {
   type FaqGroup,
   type FaqItem,
@@ -31,6 +36,62 @@ const BADGE_COLORS = [
   "#bd6b3c",
 ] as const;
 const MOBILE_QUERY = "(max-width: 767px)";
+
+/** The sheet the six framed pictures on the wall are drawn on. */
+const SHELF_FRAMES_SHEET = {
+  src: "/assets/faq/shelf-frames.webp",
+  width: 677,
+  height: 654,
+};
+
+/**
+ * How wide the sheet is drawn when a frame is opened: its own 677px, about
+ * twice its size on the wall at 1440, and as sharp as the export allows.
+ */
+const SHELF_FRAMES_ENLARGED_WIDTH = 677;
+
+/**
+ * Each frame's box as fractions of the sheet, measured from the export's
+ * alpha channel, in the wall's reading order.
+ */
+const SHELF_FRAMES: {
+  id: FaqFrame;
+  alt: string;
+  box: [x: number, y: number, w: number, h: number];
+  round?: boolean;
+}[] = [
+  {
+    id: "cross-stitch",
+    alt: "A round cross-stitch of a tent",
+    box: [0.7548, 0.026, 0.1935, 0.1988],
+    round: true,
+  },
+  {
+    id: "campfire",
+    alt: "The mascots around a campfire, one strumming a guitar",
+    box: [0.0118, 0.2095, 0.5052, 0.4602],
+  },
+  {
+    id: "astronaut",
+    alt: "An astronaut plush drifting through space",
+    box: [0.5465, 0.211, 0.2127, 0.2844],
+  },
+  {
+    id: "selfie",
+    alt: "The deer and the bear taking a selfie",
+    box: [0.5598, 0.5535, 0.4269, 0.3303],
+  },
+  {
+    id: "aurora-bear",
+    alt: "A small bear under the northern lights",
+    box: [0.1285, 0.7125, 0.1581, 0.1407],
+  },
+  {
+    id: "pterodactyl",
+    alt: "A pterodactyl gliding over the clouds",
+    box: [0.3146, 0.7125, 0.2142, 0.2875],
+  },
+];
 
 /** Alternating −8px / +8px horizontal offset, the way the design stacks tapes. */
 const staggerClass = (position: number) =>
@@ -147,13 +208,36 @@ const RoomWall = ({
       className="pointer-events-none absolute top-[12.99%] left-[41.53%] h-auto w-[35.47%]"
     />
     <Image
-      src="/assets/faq/shelf-frames.webp"
+      src={SHELF_FRAMES_SHEET.src}
       alt=""
       aria-hidden="true"
-      width={677}
-      height={654}
+      width={SHELF_FRAMES_SHEET.width}
+      height={SHELF_FRAMES_SHEET.height}
       className="pointer-events-none absolute top-[21.79%] left-[74.66%] h-auto w-[22.08%]"
     />
+    {/* A button over each frame, in the sheet's own box, opens that picture
+        large. Placed before the lamp so its glass still takes the click where
+        it stands in front of the frames. */}
+    <div className="absolute top-[21.79%] left-[74.66%] aspect-[677/654] w-[22.08%]">
+      {SHELF_FRAMES.map(({ id, alt, box: [x, y, w, h], round }) => (
+        <LightboxTrigger
+          key={id}
+          photo={{
+            ...SHELF_FRAMES_SHEET,
+            alt,
+            caption: FAQ_FRAME_CAPTIONS[id],
+            crop: { x, y, w, h, sheetWidth: SHELF_FRAMES_ENLARGED_WIDTH },
+          }}
+          className={cn("absolute", round ? "rounded-full" : "rounded-xs")}
+          style={{
+            left: `${x * 100}%`,
+            top: `${y * 100}%`,
+            width: `${w * 100}%`,
+            height: `${h * 100}%`,
+          }}
+        />
+      ))}
+    </div>
     <TeddyBear className="absolute top-[77.2%] left-[73.61%] w-[10.25%]" />
     <LavaLamp className="absolute top-[38.85%] left-[77.33%] w-[19.73%]" />
     <div className="absolute top-[30.07%] left-[41.99%] w-[31.16%]">
@@ -342,12 +426,14 @@ const FaqRoom = ({ layout }: { layout: FaqLayout<FaqItem> }) => {
     <>
       {/* Desktop: the room itself. */}
       <div className="hidden w-full @container xl:-mt-[60.3%] xl:block">
-        <RoomWall
-          group={layout.tapestry}
-          empty={empty}
-          selected={selected}
-          onSelect={handleSelect}
-        />
+        <LightboxGallery>
+          <RoomWall
+            group={layout.tapestry}
+            empty={empty}
+            selected={selected}
+            onSelect={handleSelect}
+          />
+        </LightboxGallery>
         {layout.shelves.length > 0 ? (
           layout.shelves.map((shelf) => (
             <Cabinet
