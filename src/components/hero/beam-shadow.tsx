@@ -6,8 +6,12 @@ import { HOUSE_IMAGE_TO_BOX } from "./house-geometry";
 
 type Point = [x: number, y: number];
 
-/** Where the bulb is, in house-box percentages. */
-const LIGHT: Point = [29.5 * HOUSE_IMAGE_TO_BOX, 40];
+/**
+ * Where the light comes from, in house-box percentages: not the bulb on the
+ * wall but the point the beam's two edges converge on, a little way inside
+ * the house. Shadows cast from there run true to the beam's own spread.
+ */
+const LIGHT: Point = [10.8 * HOUSE_IMAGE_TO_BOX, 45.4];
 /**
  * The beam as drawn in the raster, in house-box percentages: from the lamp
  * bracket out to where its top edge leaves the top of the image and its
@@ -25,11 +29,21 @@ const BEAM: Point[] = (
   ] as Point[]
 ).map(([x, y]) => [x * HOUSE_IMAGE_TO_BOX, y]);
 /**
- * How big a thing the cursor is, in box-width percent: about a hand, so that
- * close to the bulb it takes the whole beam and far out it still leaves a
- * shadow you can see.
+ * How big a thing the cursor is, as a share of the box width: about a hand,
+ * so that close to the bulb it takes the whole beam and far out it still
+ * leaves a shadow you can see.
  */
-const CURSOR_RADIUS = 2.6;
+const CURSOR_RADIUS = 0.026;
+
+/**
+ * The box is 1.7 times wider than it is tall, so a percentage of its width
+ * and a percentage of its height are different lengths; all the geometry
+ * below is done in pixels, with these read off the box each frame.
+ */
+const toPixels = ([x, y]: Point, width: number, height: number): Point => [
+  (x / 100) * width,
+  (y / 100) * height,
+];
 
 /** Which way round a polygon's vertices run (the sign of its area). */
 const winding = (poly: Point[]) =>
@@ -76,22 +90,28 @@ const clipPolygon = (subject: Point[], clip: Point[]) => {
  * well past the beam's end. Close to the bulb the disc covers the whole beam,
  * so the beam's outline itself is the shadow.
  */
-const shadowShape = (cx: number, cy: number): Point[] => {
-  const [lx, ly] = LIGHT;
+const shadowShape = (
+  cursor: Point,
+  light: Point,
+  beam: Point[],
+  radius: number
+): Point[] => {
+  const [cx, cy] = cursor;
+  const [lx, ly] = light;
   const distance = Math.hypot(cx - lx, cy - ly);
-  if (distance <= CURSOR_RADIUS * 1.05) return BEAM;
+  if (distance <= radius * 1.05) return beam;
   // Angle from the cursor back to the bulb, and how far round the disc the
   // grazing rays touch it.
   const toLight = Math.atan2(ly - cy, lx - cx);
-  const alpha = Math.acos(CURSOR_RADIUS / distance);
+  const alpha = Math.acos(radius / distance);
   const on = (angle: number): Point => [
-    cx + Math.cos(angle) * CURSOR_RADIUS,
-    cy + Math.sin(angle) * CURSOR_RADIUS,
+    cx + Math.cos(angle) * radius,
+    cy + Math.sin(angle) * radius,
   ];
-  const FAR = 400;
+  const far = distance * 40;
   const beyond = ([tx, ty]: Point): Point => {
     const length = Math.hypot(tx - lx, ty - ly);
-    return [lx + ((tx - lx) / length) * FAR, ly + ((ty - ly) / length) * FAR];
+    return [lx + ((tx - lx) / length) * far, ly + ((ty - ly) / length) * far];
   };
   const arc: Point[] = [];
   const steps = 14;
@@ -156,25 +176,45 @@ export const BeamShadow = ({ lit }: { lit: boolean }) => {
       frame = 0;
       if (!pointer) return;
       const rect = box.getBoundingClientRect();
-      const x = ((pointer.x - rect.left) / rect.width) * 100;
-      const y = ((pointer.y - rect.top) / rect.height) * 100;
+      const { width, height } = rect;
+      const cursor: Point = [pointer.x - rect.left, pointer.y - rect.top];
+      const light = toPixels(LIGHT, width, height);
       // Behind the bulb there is nothing to block.
-      if (x <= LIGHT[0] + 0.2) return clear();
-      const shadow = clipPolygon(shadowShape(x, y), BEAM);
+      if (cursor[0] <= toPixels(BEAM[0], width, height)[0] - 4) return clear();
+      const beam = BEAM.map((p) => toPixels(p, width, height));
+      // A hand right by the lamp blocks the whole beam, so close to the wall
+      // the blocker grows to the beam's height there and settles back to
+      // hand size over the first stretch of the beam.
+      const edgeY = (edge: [Point, Point], x: number) => {
+        const [[x0, y0], [x1, y1]] = edge;
+        return y0 + ((x - x0) / (x1 - x0)) * (y1 - y0);
+      };
+      const wallX = beam[0][0];
+      const halfHeight =
+        (edgeY([beam[4], beam[3]], cursor[0]) -
+          edgeY([beam[0], beam[1]], cursor[0])) /
+        2;
+      const nearWall = Math.max(0, 1 - (cursor[0] - wallX) / (0.12 * width));
+      const radius =
+        CURSOR_RADIUS * width +
+        Math.max(0, halfHeight - CURSOR_RADIUS * width) * nearWall;
+      const shadow = clipPolygon(
+        shadowShape(cursor, light, beam, radius),
+        beam
+      );
       if (shadow.length < 3) return clear();
-      const px = ([sx, sy]: Point) =>
-        `${((sx / 100) * rect.width).toFixed(1)} ${((sy / 100) * rect.height).toFixed(1)}`;
+      const px = ([sx, sy]: Point) => `${sx.toFixed(1)} ${sy.toFixed(1)}`;
       const hole =
         shadow.map((p, i) => `${i ? "L" : "M"}${px(p)}`).join("") + "Z";
-      const path = `path(evenodd, "M0 0H${rect.width.toFixed(1)}V${rect.height.toFixed(1)}H0Z${hole}")`;
+      const path = `path(evenodd, "M0 0H${width.toFixed(1)}V${height.toFixed(1)}H0Z${hole}")`;
       targets.forEach((el) => (el.style.clipPath = path));
       // The countdown sits in the beam; whatever part of it the shadow falls
       // on reads as it does with the lamp off rather than glowing in the dark.
       for (const part of countdownParts) {
         const r = part.getBoundingClientRect();
         const centre: Point = [
-          ((r.left + r.width / 2 - rect.left) / rect.width) * 100,
-          ((r.top + r.height / 2 - rect.top) / rect.height) * 100,
+          r.left + r.width / 2 - rect.left,
+          r.top + r.height / 2 - rect.top,
         ];
         if (inShadow(centre, shadow)) part.setAttribute("data-shaded", "true");
         else part.removeAttribute("data-shaded");
