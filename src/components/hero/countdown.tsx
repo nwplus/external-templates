@@ -36,7 +36,7 @@ export const Countdown = ({ className, compact = false }: CountdownProps) => {
       <div className="flex gap-[0.37em]">
         {units.map(([label, value]) => (
           <div key={label} className="flex flex-col items-center">
-            <div className="leading-none" suppressHydrationWarning>
+            <div className="leading-none font-countdown" suppressHydrationWarning>
               {value}
             </div>
             <div className="text-[0.185em]">{label}</div>
