@@ -19,20 +19,22 @@ export const MOON_BEAR_VIEWBOX = "0 0 1531 768";
 
 /* --- The fishing rod, in art units ------------------------------------- */
 
-/** Where the bear's paw (viewer's right) holds the rod. */
-const PAW = { x: 1256, y: 409 };
+/** Where the bear's paw (viewer's left) holds the rod. */
+const PAW = { x: 1112, y: 405 };
 const ROD_LENGTH = 260;
-/** The rod is drawn pointing up and to the right, this far off vertical. */
-const ROD_ANGLE = 48;
-/** The swing: hidden behind the head at rest, cast out over the clouds. */
-export const ROD_REST_DEG = -70;
-export const ROD_CAST_DEG = 15;
+/** The rod is drawn pointing up and out in front of the bear (viewer's
+ * left), this far off vertical. */
+const ROD_ANGLE = -48;
+/** The swing: hidden behind the head at rest, cast out over the clouds in
+ * front of the bear. Positive turns clockwise, so the cast goes the other way. */
+export const ROD_REST_DEG = 70;
+export const ROD_CAST_DEG = -15;
 /** How far the line drops from the tip. */
 export const LINE_LENGTH = 150;
 const STAR_SCALE = 0.8;
 
 const rad = (deg: number) => (deg * Math.PI) / 180;
-/** A point `along` the rod from the paw, shifted `across` it (down-right). */
+/** A point `along` the rod from the paw, shifted `across` it. */
 const onRod = (along: number, across = 0) => ({
   x:
     PAW.x +
@@ -54,7 +56,7 @@ const shaft = [
   onRod(-14, 3),
 ];
 const grip = [onRod(-14, -3.4), onRod(24, -3), onRod(24, 3), onRod(-14, 3.4)];
-const reel = onRod(30, 10);
+const reel = onRod(30, -10);
 const REEL_R = 7;
 
 // The rod turns about the paw. `transform-box: fill-box` measures the origin

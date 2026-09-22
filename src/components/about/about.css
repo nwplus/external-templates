@@ -12,7 +12,7 @@
 /* Swung round behind the bear's head, and invisible besides. */
 .moon-bear-rod {
   opacity: 0;
-  transform: rotate(-70deg);
+  transform: rotate(70deg);
 }
 
 /* Reeled in: scaled to nothing from the rod's tip. */
