@@ -1,12 +1,12 @@
 "use client";
 
-import { useEffect, useId, useRef } from "react";
+import { useEffect, useRef } from "react";
 
 type Point = [x: number, y: number];
 
-/** Where the lamp is, in house-box percentages (the svg's viewBox units). */
+/** Where the lamp is, in house-box percentages. */
 const LIGHT: Point = [29, 38];
-/** The beam's far edge. */
+/** The beam's far edge, as a share of the box width. */
 const FAR_X = 80;
 /** The beam's wedge, the same triangle the glow is clipped to. */
 const WEDGE: [Point, Point, Point] = [
@@ -14,8 +14,6 @@ const WEDGE: [Point, Point, Point] = [
   [80, 15],
   [80, 57],
 ];
-/** How big an object the cursor is, in viewBox units. */
-const CURSOR_RADIUS = 1.6;
 
 const inWedge = (x: number, y: number) => {
   const [[ax, ay], [bx, by], [cx, cy]] = WEDGE;
@@ -28,52 +26,22 @@ const inWedge = (x: number, y: number) => {
 };
 
 /**
- * The shadow a disc around the cursor would cast: the two rays from the lamp
- * that graze the disc, carried on to the beam's far edge. The polygon runs
- * from the two grazing points out to where the rays leave the beam.
- */
-const shadowPoints = (cx: number, cy: number) => {
-  const [lx, ly] = LIGHT;
-  const dx = cx - lx;
-  const dy = cy - ly;
-  const distance = Math.hypot(dx, dy);
-  // Right at the lamp there is no shadow to draw.
-  if (distance <= CURSOR_RADIUS * 1.05) return null;
-  const heading = Math.atan2(dy, dx);
-  const spread = Math.asin(CURSOR_RADIUS / distance);
-  const reach = Math.sqrt(distance * distance - CURSOR_RADIUS * CURSOR_RADIUS);
-  const near: Point[] = [];
-  const far: Point[] = [];
-  for (const side of [1, -1]) {
-    const angle = heading + side * spread;
-    const ux = Math.cos(angle);
-    const uy = Math.sin(angle);
-    // A ray heading back toward the house never reaches the far edge.
-    if (ux <= 0.01) return null;
-    near.push([lx + ux * reach, ly + uy * reach]);
-    const t = (FAR_X - lx) / ux;
-    far.push([lx + ux * t, ly + uy * t]);
-  }
-  return [near[0], far[0], far[1], near[1]]
-    .map(([x, y]) => `${x.toFixed(2)},${y.toFixed(2)}`)
-    .join(" ");
-};
-
-/**
- * Draws the cursor's shadow inside the light beam while the lamp is on. The
- * polygon is written straight to the DOM on each pointer move (one write per
- * frame at most), so nothing re-renders; the svg just fades in and out. Only
- * devices with a hovering pointer get the listener.
+ * The shadow the cursor casts in the beam while the lamp is on: a soft dark
+ * streak that starts under the cursor and runs away from the lamp to the
+ * beam's edge, wider the further it has travelled from the light, the way a
+ * shadow from a point source spreads. It is one gradient-filled box moved
+ * with a transform, written straight to the DOM on each pointer move (one
+ * write per frame at most), so nothing re-renders. Only devices with a
+ * hovering pointer get the listener.
  */
 export const BeamShadow = ({ lit }: { lit: boolean }) => {
-  const svg = useRef<SVGSVGElement>(null);
-  const shape = useRef<SVGPolygonElement>(null);
-  const gradient = `beam-shadow-${useId().replace(/[^a-zA-Z0-9_-]/g, "")}`;
+  const layer = useRef<HTMLDivElement>(null);
+  const streak = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const el = svg.current;
-    const poly = shape.current;
-    if (!el || !poly || !lit) return;
+    const el = layer.current;
+    const shadow = streak.current;
+    if (!el || !shadow || !lit) return;
     if (!window.matchMedia("(hover: hover)").matches) return;
 
     let frame = 0;
@@ -87,9 +55,23 @@ export const BeamShadow = ({ lit }: { lit: boolean }) => {
       const rect = el.getBoundingClientRect();
       const x = ((pointer.x - rect.left) / rect.width) * 100;
       const y = ((pointer.y - rect.top) / rect.height) * 100;
-      const points = inWedge(x, y) ? shadowPoints(x, y) : null;
-      if (!points) return hide();
-      poly.setAttribute("points", points);
+      if (!inWedge(x, y)) return hide();
+      const [lx, ly] = LIGHT;
+      // Direction from the lamp through the cursor, in screen pixels, and
+      // how far the streak has to run to leave the beam.
+      const dx = ((x - lx) / 100) * rect.width;
+      const dy = ((y - ly) / 100) * rect.height;
+      const distance = Math.hypot(dx, dy);
+      if (dx <= 1) return hide();
+      const heading = (Math.atan2(dy, dx) * 180) / Math.PI;
+      const reach = (((FAR_X - x) / 100) * rect.width) / (dx / distance);
+      // Spread with distance from the lamp: a hand held close casts a wide
+      // shadow, one held far away a slimmer one, but never a hairline.
+      const spread = Math.min(
+        1.6,
+        Math.max(0.55, 0.35 + distance / (0.55 * rect.width))
+      );
+      shadow.style.transform = `translate(${(x / 100) * rect.width}px, ${(y / 100) * rect.height}px) rotate(${heading.toFixed(2)}deg) scale(${(reach / rect.width).toFixed(3)}, ${spread.toFixed(3)})`;
       el.style.opacity = "1";
     };
     const onMove = (event: PointerEvent) => {
@@ -117,20 +99,12 @@ export const BeamShadow = ({ lit }: { lit: boolean }) => {
   }, [lit]);
 
   return (
-    <svg
-      ref={svg}
+    <div
+      ref={layer}
       aria-hidden="true"
-      viewBox="0 0 100 100"
-      preserveAspectRatio="none"
-      className="hero-beam-shadow pointer-events-none absolute inset-0 z-20 h-full w-full"
+      className="hero-beam-shadow pointer-events-none absolute inset-0 z-20"
     >
-      <defs>
-        <linearGradient id={gradient} x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0" stopColor="#0B1327" stopOpacity="0.6" />
-          <stop offset="1" stopColor="#0B1327" stopOpacity="0" />
-        </linearGradient>
-      </defs>
-      <polygon ref={shape} fill={`url(#${gradient})`} points="0,0 0,0 0,0" />
-    </svg>
+      <div ref={streak} className="hero-beam-shadow-streak" />
+    </div>
   );
 };
