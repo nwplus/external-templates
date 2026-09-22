@@ -3,6 +3,7 @@ import { ResponsiveArt } from "@/components/ui/responsive-art";
 import { WELCOME_PARAGRAPHS, WELCOME_TITLE } from "@/constants/about";
 
 import { HackathonFaq } from "./hackathon-faq";
+import { MoonBearArt } from "./moon-bear-art";
 
 // Sections are not stacking contexts, so these z-indexes order against the
 // hero's layers too: its sparkles (z-10) and house (z-20) overhang into here.
@@ -25,7 +26,10 @@ export const DesktopAbout = () => (
 
     {/* What is a hackathon */}
     <div className="relative w-full aspect-[2.100228245]">
-      {/* Illustration */}
+      {/* Illustration: the night scene as a raster, with the moon and bear
+          drawn live on top of it so they can move. The overlay is sized like
+          the image (full width, its own aspect) rather than to this box,
+          whose aspect is not the art's. */}
       <Parallax speed={0.15} className="absolute z-10 w-full h-full">
         <ResponsiveArt
           base="/assets/about/moon-bear"
@@ -35,6 +39,10 @@ export const DesktopAbout = () => (
           sizes="100vw"
           media="(min-width: 768px)"
           className="block w-full h-auto"
+        />
+        <MoonBearArt
+          idPrefix="about-moon-bear"
+          className="pointer-events-none absolute top-0 left-0 w-full h-auto"
         />
       </Parallax>
 
