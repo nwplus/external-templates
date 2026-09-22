@@ -68,6 +68,14 @@ const SponsorsClient = ({ initial }: { initial: SponsorDoc[] }) => {
       // instead of hanging from the top edge of the band.
       className="relative -mt-[22.08%] w-full overflow-visible bg-linear-to-b from-night-top to-night-bottom to-85% pt-[9.28%] text-cream"
     >
+      {/* Where the band comes out from under the clouds (a top margin, since
+          only margins take their percentage from the width); the nav lands
+          here, held 3.5rem down so the phone's fixed menu button clears it. */}
+      <span
+        data-scroll-anchor
+        aria-hidden="true"
+        className="absolute top-0 left-0 mt-[22.08%] scroll-mt-14"
+      />
       {/* Everything is sized as a share of the width, so the band keeps the
           design's proportions at any viewport; above the design's 1531px the
           fixed-size type and gaps grow with it too. */}
