@@ -84,11 +84,17 @@ export const Lightbox = ({
   useEffect(() => {
     if (!open) return;
     const opener = document.activeElement;
-    closeButton.current?.focus();
+    closeButton.current?.focus({ preventScroll: true });
 
+    // Lock the page behind the dialog. Hiding overflow drops a classic
+    // scrollbar and the page would reflow into the gap, so the gap is kept
+    // as padding for as long as the lock holds.
     const root = document.documentElement;
     const overflow = root.style.overflow;
+    const paddingRight = root.style.paddingRight;
+    const gutter = window.innerWidth - root.clientWidth;
     root.style.overflow = "hidden";
+    if (gutter > 0) root.style.paddingRight = `${gutter}px`;
 
     const openedAt = performance.now();
     const onKeyDown = (event: KeyboardEvent) => {
@@ -114,6 +120,7 @@ export const Lightbox = ({
       window.removeEventListener("wheel", onScroll);
       window.removeEventListener("touchmove", onScroll);
       root.style.overflow = overflow;
+      root.style.paddingRight = paddingRight;
       if (opener instanceof HTMLElement) opener.focus({ preventScroll: true });
     };
   }, [open, onClose]);

@@ -65,7 +65,7 @@ const FramedPhoto = ({
 const RecapMobile = () => {
   return (
     <div
-      className="relative h-[319.85vw] w-full overflow-hidden bg-[#0b101c]"
+      className="relative h-[319.85vw] w-full overflow-clip bg-[#0b101c]"
       id="recap-mobile"
     >
       <LightboxGallery>

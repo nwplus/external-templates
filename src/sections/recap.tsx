@@ -63,7 +63,7 @@ const framePhotos: {
 const Recap = () => {
   return (
     <div
-      className="relative h-[98.56vw] w-full overflow-hidden bg-[#0b101c]"
+      className="relative h-[98.56vw] w-full overflow-clip bg-[#0b101c]"
       id="recap"
     >
       <div
