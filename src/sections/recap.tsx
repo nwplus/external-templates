@@ -1,8 +1,7 @@
 import { RecapVideo } from "@/components/recap/recap-video";
-import {
-  MIRROR_APERTURE,
-  RED_APERTURE,
-} from "@/constants/recap-apertures";
+import { LightboxGallery, LightboxTrigger } from "@/components/ui/lightbox";
+import { MIRROR_APERTURE, RED_APERTURE } from "@/constants/recap-apertures";
+import { recapCaption } from "@/constants/recap-captions";
 
 import Image from "next/image";
 
@@ -47,8 +46,7 @@ const framePhotos: {
   {
     src: "/assets/recap/photos/purple.jpg",
     alt: "Two hackers demoing their project beside a hand-lettered sign",
-    aperture:
-      "left-[2.51vw] top-[44.64vw] h-[18.8vw] w-[17.03vw] rounded-full",
+    aperture: "left-[2.51vw] top-[44.64vw] h-[18.8vw] w-[17.03vw] rounded-full",
     crop: "left-[-1.14vw] top-[-5.5vw] h-[24.87vw] w-[18.65vw]",
     size: [570, 760],
   },
@@ -225,40 +223,70 @@ const Recap = () => {
           <clipPath id="recap-red-aperture" clipPathUnits="objectBoundingBox">
             <path d={RED_APERTURE} />
           </clipPath>
-          <clipPath id="recap-mirror-aperture" clipPathUnits="objectBoundingBox">
+          <clipPath
+            id="recap-mirror-aperture"
+            clipPathUnits="objectBoundingBox"
+          >
             <path d={MIRROR_APERTURE} />
           </clipPath>
         </defs>
       </svg>
 
-      {framePhotos.map((photo) => (
-        <div
-          key={photo.src}
-          className={`absolute overflow-hidden ${photo.aperture}`}
-          style={photo.clipPath ? { clipPath: photo.clipPath } : undefined}
-        >
-          <Image
-            src={photo.src}
-            alt={photo.alt}
-            width={photo.size[0]}
-            height={photo.size[1]}
-            className={`absolute max-w-none ${photo.crop}`}
-          />
-        </div>
-      ))}
+      {/* Each photo is a button that opens it large, with a caption. The
+          button keeps the aperture's box and the clipping moves to a span
+          inside it, so the focus ring is not clipped away with the photo. */}
+      <LightboxGallery>
+        {framePhotos.map((photo) => (
+          <LightboxTrigger
+            key={photo.src}
+            photo={{
+              src: photo.src,
+              alt: photo.alt,
+              caption: recapCaption(photo.src),
+              width: photo.size[0],
+              height: photo.size[1],
+            }}
+            className={`absolute ${photo.aperture}`}
+          >
+            <span
+              className="absolute inset-0 overflow-hidden rounded-[inherit]"
+              style={photo.clipPath ? { clipPath: photo.clipPath } : undefined}
+            >
+              <Image
+                src={photo.src}
+                alt={photo.alt}
+                width={photo.size[0]}
+                height={photo.size[1]}
+                className={`absolute max-w-none transition-transform duration-200 group-hover:scale-[1.02] ${photo.crop}`}
+              />
+            </span>
+          </LightboxTrigger>
+        ))}
 
-      <div
-        className="absolute left-[63.6vw] top-[40.95vw] h-[17.68vw] w-[14.29vw]"
-        style={{ clipPath: "url(#recap-mirror-aperture)" }}
-      >
-        <Image
-          src="/assets/recap/photos/mirror.jpg"
-          alt="A decorated corner of the venue"
-          width={540}
-          height={810}
-          className="h-full w-full object-cover"
-        />
-      </div>
+        <LightboxTrigger
+          photo={{
+            src: "/assets/recap/photos/mirror.jpg",
+            alt: "A decorated corner of the venue",
+            caption: recapCaption("/assets/recap/photos/mirror.jpg"),
+            width: 540,
+            height: 810,
+          }}
+          className="absolute left-[63.6vw] top-[40.95vw] h-[17.68vw] w-[14.29vw]"
+        >
+          <span
+            className="absolute inset-0 overflow-hidden"
+            style={{ clipPath: "url(#recap-mirror-aperture)" }}
+          >
+            <Image
+              src="/assets/recap/photos/mirror.jpg"
+              alt="A decorated corner of the venue"
+              width={540}
+              height={810}
+              className="h-full w-full object-cover transition-transform duration-200 group-hover:scale-[1.02]"
+            />
+          </span>
+        </LightboxTrigger>
+      </LightboxGallery>
 
       <Image
         src="/assets/recap/light.webp"
