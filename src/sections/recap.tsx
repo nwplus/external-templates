@@ -1,11 +1,10 @@
+import { RecapVideo } from "@/components/recap/recap-video";
 import {
   MIRROR_APERTURE,
   RED_APERTURE,
 } from "@/constants/recap-apertures";
 
 import Image from "next/image";
-
-const RECAP_VIDEO = "https://www.youtube.com/embed/3AQoV3BiRpc";
 
 const framePhotos: {
   src: string;
@@ -211,13 +210,7 @@ const Recap = () => {
           className="h-full w-full"
         />
       </div>
-      <iframe
-        src={RECAP_VIDEO}
-        title="HackCamp 2025 recap"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowFullScreen
-        className="absolute left-[8.29vw] top-[16.03vw] h-[20.57vw] w-[31.71vw] border-0"
-      />
+      <RecapVideo className="absolute left-[8.29vw] top-[16.03vw] h-[20.57vw] w-[31.71vw]" />
 
       <Image
         src="/assets/recap/brown-photo-frame.webp"
