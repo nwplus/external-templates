@@ -8,7 +8,6 @@ import { type CSSProperties, useState } from "react";
 import { BeamShadow } from "./beam-shadow";
 import { Countdown } from "./countdown";
 import "./hero.css";
-import { HouseFeatures } from "./house-features";
 import {
   DESKTOP_UNLIT_CLIP,
   HOUSE_SPOTS,
@@ -20,7 +19,7 @@ import { SpotlightGlow } from "./spotlight-glow";
 /**
  * The invisible button over the house that flips its lamp. The beam is part
  * of the house raster, so this sits over the house itself rather than the
- * whole (viewport-wide) image box, and the windows and door stack above it.
+ * whole (viewport-wide) image box, so a click on the sky does nothing.
  */
 const LampButton = ({
   lit,
@@ -72,7 +71,6 @@ export const DesktopHouse = () => {
       <BeamShadow lit={lit} />
       <div className="absolute inset-0 z-20">
         <LampButton lit={lit} toggle={toggle} style={HOUSE_SPOTS.lamp} />
-        <HouseFeatures />
       </div>
 
       {/* Locked to the house spotlight; % tracks the house box as the viewport resizes */}

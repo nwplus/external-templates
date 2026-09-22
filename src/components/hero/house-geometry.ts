@@ -192,30 +192,10 @@ const spot = (
   height: `${height}%`,
 });
 
-/**
- * The interactive spots on the desktop house. `lamp` is the house and its
- * hill (the click target for the light); the windows and door are the frames
- * as drawn, with the glass measured separately where something has to fit
- * inside it. The round window's width and height are chosen so it is a true
- * circle on screen (the box is 1.7 times wider than it is tall).
- */
+/** The desktop house and its hill: the click target for the light. */
 export const HOUSE_SPOTS = {
   lamp: spot(3, 28, 37.5, 72),
-  round: spot(13.5, 51, 3.4, 5.6),
-  upper: spot(21.2, 40.8, 6, 7.6),
-  lower: spot(18.8, 50.4, 5.2, 6.4),
-  door: spot(24.1, 50.7, 3.4, 10.1),
 } as const;
-
-/** The glass of each arched window, as a fraction of its frame's spot. */
-export const WINDOW_GLASS = {
-  upper: { left: "26.7%", top: "13.2%", width: "46.7%", height: "79%" },
-  lower: { left: "28.8%", top: "12.5%", width: "38.5%", height: "76.6%" },
-} as const;
-
-/** The pointed-arch outline of the window glass. */
-export const LANTERN_CLIP =
-  "polygon(50% 0, 100% 24%, 100% 74%, 50% 100%, 0 74%, 0 24%)";
 
 /** The phone house: just the tap target for the light. */
 export const MOBILE_SPOTS = {
