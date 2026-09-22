@@ -4,6 +4,7 @@ import { HERO_CTA_LINKS, HERO_TAGLINE, HERO_TITLE } from "@/constants/hero";
 import Image from "next/image";
 
 import { CtaLink } from "./cta-link";
+import { HeroStars } from "./hero-stars";
 import { MobileHouse } from "./house-light";
 
 // TODO(mobile): swap the scaled desktop top clouds / sparkles for mobile exports
@@ -41,6 +42,8 @@ export const MobileHero = () => (
           priority
           className="block w-full max-w-none h-auto"
         />
+        {/* The biggest sparkles drift over the rest; the art is two viewports wide here */}
+        <HeroStars scale={2} />
       </div>
     </div>
 

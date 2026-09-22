@@ -5,6 +5,7 @@ import { HERO_CTA_LINKS, HERO_TAGLINE, HERO_TITLE } from "@/constants/hero";
 import Image from "next/image";
 
 import { CtaLink } from "./cta-link";
+import { HeroStars } from "./hero-stars";
 import { DesktopHouse } from "./house-light";
 
 export const DesktopHero = () => (
@@ -27,6 +28,8 @@ export const DesktopHero = () => (
           priority
           className="block w-full h-auto"
         />
+        {/* The biggest sparkles drift over the rest, placed where they were cut from */}
+        <HeroStars />
       </Parallax>
 
       {/* Top clouds (outer + inner layers) */}
