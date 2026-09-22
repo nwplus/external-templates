@@ -1,0 +1,27 @@
+/* The moon bear's moving parts, at rest. The Web Animations in
+   moon-bear-figure.tsx take them from here and hand them back: every run
+   ends on these values, so nothing is left filling forwards. Only transform
+   and opacity move; the figure never carries a filter. */
+
+.moon-bear-rod,
+.moon-bear-line,
+.moon-bear-hook-star {
+  transform-box: fill-box;
+}
+
+/* Swung round behind the bear's head, and invisible besides. */
+.moon-bear-rod {
+  opacity: 0;
+  transform: rotate(-70deg);
+}
+
+/* Reeled in: scaled to nothing from the rod's tip. */
+.moon-bear-line {
+  transform-origin: 50% 0;
+  transform: scaleY(0);
+}
+
+.moon-bear-hook-star {
+  opacity: 0;
+  transform-origin: 50% 50%;
+}

@@ -1,4 +1,4 @@
-import type { CSSProperties, Ref } from "react";
+import type { CSSProperties, KeyboardEvent, MouseEvent, Ref } from "react";
 
 /**
  * The crescent and the bear from the "moon bear" illustration, lifted out of
@@ -17,6 +17,76 @@ import type { CSSProperties, Ref } from "react";
 /** The art's design size; the desktop raster is drawn at this viewBox. */
 export const MOON_BEAR_VIEWBOX = "0 0 1531 768";
 
+/* --- The fishing rod, in art units ------------------------------------- */
+
+/** Where the bear's paw (viewer's right) holds the rod. */
+const PAW = { x: 1256, y: 409 };
+const ROD_LENGTH = 260;
+/** The rod is drawn pointing up and to the right, this far off vertical. */
+const ROD_ANGLE = 48;
+/** The swing: hidden behind the head at rest, cast out over the clouds. */
+export const ROD_REST_DEG = -70;
+export const ROD_CAST_DEG = 15;
+/** How far the line drops from the tip. */
+export const LINE_LENGTH = 150;
+const STAR_SCALE = 0.8;
+
+const rad = (deg: number) => (deg * Math.PI) / 180;
+/** A point `along` the rod from the paw, shifted `across` it (down-right). */
+const onRod = (along: number, across = 0) => ({
+  x:
+    PAW.x +
+    along * Math.sin(rad(ROD_ANGLE)) +
+    across * Math.cos(rad(ROD_ANGLE)),
+  y:
+    PAW.y -
+    along * Math.cos(rad(ROD_ANGLE)) +
+    across * Math.sin(rad(ROD_ANGLE)),
+});
+const pt = (p: { x: number; y: number }) =>
+  `${p.x.toFixed(1)},${p.y.toFixed(1)}`;
+
+// A thin tapered shaft that starts a little behind the paw.
+const shaft = [
+  onRod(-14, -3),
+  onRod(ROD_LENGTH, -1),
+  onRod(ROD_LENGTH, 1),
+  onRod(-14, 3),
+];
+const grip = [onRod(-14, -3.4), onRod(24, -3), onRod(24, 3), onRod(-14, 3.4)];
+const reel = onRod(30, 10);
+const REEL_R = 7;
+
+// The rod turns about the paw. `transform-box: fill-box` measures the origin
+// from the group's own bounding box, so work out where the paw falls in it.
+const rodPoints = [...shaft, ...grip];
+const rodBox = {
+  x: Math.min(...rodPoints.map((p) => p.x), reel.x - REEL_R),
+  y: Math.min(...rodPoints.map((p) => p.y), reel.y - REEL_R),
+};
+export const ROD_ORIGIN = `${(PAW.x - rodBox.x).toFixed(2)}px ${(PAW.y - rodBox.y).toFixed(2)}px`;
+
+/** Where the tip ends up once the rod has swung out and settled. */
+const cast = rad(ROD_ANGLE + ROD_CAST_DEG);
+const TIP = {
+  x: PAW.x + ROD_LENGTH * Math.sin(cast),
+  y: PAW.y - ROD_LENGTH * Math.cos(cast),
+};
+
+// The star is one of the loose sparkles, drawn where it sits in the art and
+// moved under the line's end. Its group is scaled, so anything that rides
+// with the line has to travel the distance in that group's units.
+const STAR_CENTRE = { x: 1028, y: 243.5 };
+const STAR_HALF = 29;
+const starAt = {
+  x: TIP.x,
+  y: TIP.y + LINE_LENGTH + STAR_HALF * STAR_SCALE + 2,
+};
+const STAR_TRANSFORM = `translate(${(starAt.x - STAR_CENTRE.x * STAR_SCALE).toFixed(2)} ${(starAt.y - STAR_CENTRE.y * STAR_SCALE).toFixed(2)}) scale(${STAR_SCALE})`;
+export const STAR_RIDE = LINE_LENGTH / STAR_SCALE;
+
+/* ----------------------------------------------------------------------- */
+
 const MOON =
   "M1276.6 279.737C1274.14 316.65 1244.66 385.199 1200.93 418.377C1145.01 467.593 1029.82 473.354 1017.16 473.354C967.08 473.355 1047.37 508.525 1066.09 516.802C1178.88 566.66 1329.35 536.955 1384.83 411.45C1418.99 334.158 1414.31 259.563 1390.45 192.877C1370.95 155.877 1346.79 132.327 1306.57 110.631C1269.66 90.7242 1206.76 86.9476 1200.93 91.3769C1202.43 91.3783 1294.08 169.201 1276.6 279.737Z";
 
@@ -28,6 +98,9 @@ const PYJAMA_BODY =
 
 const NIGHTCAP =
   "M1218.01 247.658V234.951L1223.41 210.839L1258.85 226.805C1258.85 226.805 1246.36 195.525 1234.89 190.637C1223.41 185.75 1162.99 189.334 1158.27 196.177C1153.54 203.019 1143.42 241.142 1143.42 241.142C1143.42 241.142 1155.57 243.423 1170.42 247.658C1185.27 251.894 1218.01 247.658 1218.01 247.658Z";
+
+const STAR =
+  "M1043.69 223.604L1030.59 228.222C1029.62 228.565 1028.54 228.343 1027.78 227.645L1016.39 217.156C1014.61 215.522 1011.74 216.766 1011.72 219.179L1011.56 237.873C1011.55 238.851 1011.03 239.752 1010.19 240.247L1000.94 245.687C998.647 247.039 999.383 250.536 1002.03 250.849L1017.23 252.641C1018.21 252.757 1019.06 253.384 1019.45 254.289L1025.68 268.515C1026.79 271.051 1030.52 270.587 1030.97 267.857L1032.68 257.593C1032.88 256.385 1033.85 255.45 1035.07 255.291L1053.98 252.822C1056.48 252.497 1057.29 249.296 1055.26 247.815L1044.36 239.863C1043.32 239.11 1042.94 237.75 1043.42 236.567L1047.2 227.276C1048.1 225.054 1045.96 222.806 1043.69 223.604Z";
 
 const PYJAMA_STRIPES = [
   "M1152.13 349.703L1149.82 347.704C1145.75 354.81 1133.64 369.353 1131.66 388.338C1131.31 391.736 1130.34 411.321 1130.34 421.646L1116.8 448.292L1120.11 448.292L1132.98 421.646C1132.98 418.871 1132.72 407.79 1134.3 389.671C1135.89 371.552 1147.73 355.365 1152.13 349.703Z",
@@ -56,12 +129,23 @@ const CAP_STRIPES = [
   "M1208.82 248.165H1211.47V229.441L1221.49 206.854L1228.03 209.769L1258.32 226.469L1248.58 219.775L1225.91 205.071H1220.31L1208.82 229.441V248.165Z",
 ];
 
+const BUTTON =
+  "pointer-events-auto cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-star";
+
 type MoonBearArtProps = {
   ref?: Ref<SVGSVGElement>;
   /** Namespaces the gradient and mask ids; the art is drawn more than once. */
   idPrefix: string;
   /** The desktop art, or a crop of it for the phone frame. */
   viewBox?: string;
+  /**
+   * The copy that flies around the page: no cloud sliver (a scrap of cloud
+   * would fly with it), and hidden from assistive tech as the original's
+   * stand-in. Nothing is clickable without a handler, so it passes none.
+   */
+  flying?: boolean;
+  onMoon?: () => void;
+  onBear?: () => void;
   className?: string;
   style?: CSSProperties;
 };
@@ -70,9 +154,34 @@ export const MoonBearArt = ({
   ref,
   idPrefix: id,
   viewBox = MOON_BEAR_VIEWBOX,
+  flying = false,
+  onMoon,
+  onBear,
   className,
   style,
 }: MoonBearArtProps) => {
+  const press = (act: () => void) => (event: KeyboardEvent) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      act();
+    }
+  };
+  // Focus is left to the keyboard: Chrome shows the focus ring on an SVG
+  // element clicked with the mouse, which a native button would not.
+  const noFocus = (event: MouseEvent) => event.preventDefault();
+  const button = (label: string, act?: () => void) =>
+    act
+      ? {
+          role: "button",
+          tabIndex: 0,
+          "aria-label": label,
+          className: BUTTON,
+          onClick: act,
+          onKeyDown: press(act),
+          onMouseDown: noFocus,
+        }
+      : {};
+
   return (
     <svg
       ref={ref}
@@ -80,6 +189,7 @@ export const MoonBearArt = ({
       fill="none"
       className={className}
       style={style}
+      aria-hidden={flying ? "true" : undefined}
     >
       <defs>
         <mask
@@ -191,34 +301,65 @@ export const MoonBearArt = ({
           <stop stopColor="#232F56" />
           <stop offset="1" stopColor="#1A2445" />
         </linearGradient>
+        <radialGradient
+          id={`${id}-star`}
+          cx="0"
+          cy="0"
+          r="1"
+          gradientUnits="userSpaceOnUse"
+          gradientTransform="translate(1027.96 241.507) rotate(-47.3633) scale(29.2873 31.2788)"
+        >
+          <stop stopColor="#FFE5AF" />
+          <stop offset="1" stopColor="#FACB6B" />
+        </radialGradient>
       </defs>
 
-      <path data-part="moon" d={MOON} fill={`url(#${id}-moon)`} />
+      <path
+        data-part="moon"
+        d={MOON}
+        fill={`url(#${id}-moon)`}
+        {...button("Moon", onMoon)}
+      />
 
       {/* The front cloud, only where it laps over the crescent. */}
-      <g mask={`url(#${id}-under-cloud)`}>
-        <path d={FRONT_CLOUD} fill={`url(#${id}-cloud)`} />
-        <mask
-          id={`${id}-cloud-shape`}
-          style={{ maskType: "alpha" }}
-          maskUnits="userSpaceOnUse"
-          x="821"
-          y="226"
-          width="773"
-          height="462"
-        >
+      {!flying && (
+        <g mask={`url(#${id}-under-cloud)`}>
           <path d={FRONT_CLOUD} fill={`url(#${id}-cloud)`} />
-        </mask>
-        <g mask={`url(#${id}-cloud-shape)`}>
-          <circle
-            cx="1134.5"
-            cy="213.608"
-            r="531.5"
-            fill={`url(#${id}-moonlight)`}
-          />
+          <mask
+            id={`${id}-cloud-shape`}
+            style={{ maskType: "alpha" }}
+            maskUnits="userSpaceOnUse"
+            x="821"
+            y="226"
+            width="773"
+            height="462"
+          >
+            <path d={FRONT_CLOUD} fill={`url(#${id}-cloud)`} />
+          </mask>
+          <g mask={`url(#${id}-cloud-shape)`}>
+            <circle
+              cx="1134.5"
+              cy="213.608"
+              r="531.5"
+              fill={`url(#${id}-moonlight)`}
+            />
+          </g>
         </g>
+      )}
+
+      {/* The rod, behind the bear so the paw appears to hold it. */}
+      <g
+        data-part="rod"
+        className="moon-bear-rod"
+        style={{ transformOrigin: ROD_ORIGIN }}
+      >
+        <polygon points={shaft.map(pt).join(" ")} fill="#8A5634" />
+        <polygon points={grip.map(pt).join(" ")} fill="#4F2F22" />
+        <circle cx={reel.x} cy={reel.y} r={REEL_R} fill="#3B2418" />
+        <circle cx={reel.x} cy={reel.y} r={3} fill="#D9A076" />
       </g>
-      <g data-part="bear">
+
+      <g data-part="bear" {...button("Bear", onBear)}>
         <path
           d="M1200.78 487.473C1221.55 479.37 1236.45 423.723 1236.45 423.723C1236.45 423.723 1182.67 439.42 1175.01 444.249C1167.35 449.079 1159.13 483.851 1159.13 483.851C1159.13 483.851 1180.02 495.576 1200.78 487.473Z"
           fill={`url(#${id}-foot-right)`}
@@ -341,6 +482,23 @@ export const MoonBearArt = ({
           {CAP_STRIPES.map((d) => (
             <path key={d.slice(0, 16)} d={d} fill="#3E508B" />
           ))}
+        </g>
+      </g>
+
+      {/* The line drops from the rod's tip once it has settled, with the
+          star riding down on the end of it. */}
+      <rect
+        data-part="line"
+        className="moon-bear-line"
+        x={TIP.x - 0.6}
+        y={TIP.y}
+        width="1.2"
+        height={LINE_LENGTH}
+        fill="#EDE6D6"
+      />
+      <g transform={STAR_TRANSFORM}>
+        <g data-part="hook-star" className="moon-bear-hook-star">
+          <path d={STAR} fill={`url(#${id}-star)`} />
         </g>
       </g>
     </svg>

@@ -3,7 +3,7 @@ import { ResponsiveArt } from "@/components/ui/responsive-art";
 import { WELCOME_PARAGRAPHS, WELCOME_TITLE } from "@/constants/about";
 
 import { HackathonFaq } from "./hackathon-faq";
-import { MoonBearArt } from "./moon-bear-art";
+import { MoonBearFigure } from "./moon-bear-figure";
 
 // Sections are not stacking contexts, so these z-indexes order against the
 // hero's layers too: its sparkles (z-10) and house (z-20) overhang into here.
@@ -27,9 +27,9 @@ export const DesktopAbout = () => (
     {/* What is a hackathon */}
     <div className="relative w-full aspect-[2.100228245]">
       {/* Illustration: the night scene as a raster, with the moon and bear
-          drawn live on top of it so they can move. The overlay is sized like
-          the image (full width, its own aspect) rather than to this box,
-          whose aspect is not the art's. */}
+          drawn live on top of it so they can be clicked. The overlay is
+          sized like the image (full width, its own aspect) rather than to
+          this box, whose aspect is not the art's. */}
       <Parallax speed={0.15} className="absolute z-10 w-full h-full">
         <ResponsiveArt
           base="/assets/about/moon-bear"
@@ -40,16 +40,14 @@ export const DesktopAbout = () => (
           media="(min-width: 768px)"
           className="block w-full h-auto"
         />
-        <MoonBearArt
-          idPrefix="about-moon-bear"
-          className="pointer-events-none absolute top-0 left-0 w-full h-auto"
-        />
+        <MoonBearFigure className="absolute top-0 left-0 w-full h-auto" />
       </Parallax>
 
-      {/* Content */}
-      <div className="relative z-30 h-full top-0 left-0 text-[20px]">
+      {/* Content. The layer covers the whole illustration, so it lets clicks
+          through to the moon and bear except where the copy itself is. */}
+      <div className="pointer-events-none relative z-30 h-full top-0 left-0 text-[20px]">
         <div className="h-full mx-auto w-300 items-center grid grid-cols-2 text-white gap-20">
-          <HackathonFaq className="flex flex-col justify-center h-full" />
+          <HackathonFaq className="pointer-events-auto flex flex-col justify-center h-full" />
           <div />
         </div>
       </div>
