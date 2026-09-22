@@ -1,3 +1,5 @@
+import { hideDuringNavJump } from "@/hooks/use-hide-on-scroll";
+
 /** Smooth-scrolls to the section wrapper with the given id (see NAV_LINKS). */
 export function scrollToSection(id: string) {
   const section = document.getElementById(id);
@@ -5,5 +7,7 @@ export function scrollToSection(id: string) {
   const target = section?.getClientRects().length
     ? section
     : (document.getElementById(`${id}-mobile`) ?? section);
-  target?.scrollIntoView({ behavior: "smooth" });
+  if (!target) return;
+  hideDuringNavJump();
+  target.scrollIntoView({ behavior: "smooth" });
 }
