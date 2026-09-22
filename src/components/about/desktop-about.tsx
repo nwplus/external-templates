@@ -12,12 +12,12 @@ import { HackathonFaq } from "./hackathon-faq";
 export const DesktopAbout = () => (
   <div className="relative bg-linear-to-b from-[#0C1637] to-[#12204D]">
     {/* Welcome to HackCamp */}
-    <div className="relative z-30 h-150 mx-auto w-300 items-center grid grid-cols-2 text-white gap-20">
+    <div className="relative z-30 h-150 mx-auto w-300 mr-[10%] items-center grid grid-cols-2 text-white gap-20">
       <div />
       <div>
         <h2 className="font-title text-6xl">{WELCOME_TITLE}</h2>
         {WELCOME_PARAGRAPHS.map((paragraph, i) => (
-          <p key={i} className={i === 0 ? "text-lg" : "pt-6 text-lg"}>
+          <p key={i} className={i === 0 ? "text-[20px]" : "pt-6 text-[20px]"}>
             {paragraph}
           </p>
         ))}
@@ -38,7 +38,7 @@ export const DesktopAbout = () => (
       </Parallax>
 
       {/* Content */}
-      <div className="relative z-30 h-full top-0 left-0">
+      <div className="relative z-30 h-full top-0 left-0 text-[20px]">
         <div className="h-full mx-auto w-300 items-center grid grid-cols-2 text-white gap-20">
           <HackathonFaq className="flex flex-col justify-center h-full" />
           <div />

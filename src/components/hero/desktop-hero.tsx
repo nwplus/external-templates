@@ -118,7 +118,7 @@ export const DesktopHero = () => (
           <Parallax
             speed={-0.14}
             anchor="top"
-            className="absolute z-40 -left-[6.658%] top-[9.696%] w-[104.286%]"
+            className="absolute z-40 left-[-6.658%] top-[9.696%] w-[104.286%]"
           >
             <Image
               src="/assets/hero/desktop-bottom-cloud-stars.svg"
@@ -133,11 +133,11 @@ export const DesktopHero = () => (
 
       {/* Hero content */}
       <div className="relative z-20 min-h-screen pt-60 pb-[22vw]">
-        <div className="mx-auto w-[80vw] flex flex-col items-center">
-          <h1 className="font-title text-9xl uppercase text-white">
+        <div className="mx-auto w-[53vw] flex flex-col items-start">
+          <h1 className="font-title text-[170px] leading-42.5 uppercase text-white">
             {HERO_TITLE}
           </h1>
-          <h3 className="text-white text-2xl">{HERO_TAGLINE}</h3>
+          <h3 className="text-white text-2xl -mt-5">{HERO_TAGLINE}</h3>
           <div className="flex gap-4 items-center pt-8">
             {HERO_CTA_LINKS.map((link) => (
               <CtaLink key={link.label} href={link.href}>
