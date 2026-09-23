@@ -1,7 +1,11 @@
 import { RecapVideo } from "@/components/recap/recap-video";
 import { SwingingLamp } from "@/components/recap/swinging-lamp";
 import { LightboxGallery, LightboxTrigger } from "@/components/ui/lightbox";
-import { MIRROR_APERTURE, RED_APERTURE } from "@/constants/recap-apertures";
+import {
+  DARK_BROWN_APERTURE,
+  MIRROR_APERTURE,
+  RED_APERTURE,
+} from "@/constants/recap-apertures";
 import { recapCaption } from "@/constants/recap-captions";
 
 import Image from "next/image";
@@ -42,6 +46,7 @@ const framePhotos: {
     alt: "A participant coding on a laptop during the event",
     aperture: "left-[84.66vw] top-[42.56vw] h-[13.35vw] w-[10.35vw]",
     crop: "left-[-1.28vw] top-[-2.97vw] h-[19.44vw] w-[12.96vw]",
+    clipPath: "url(#recap-dark-brown-aperture)",
     size: [396, 594],
   },
   {
@@ -175,6 +180,12 @@ const Recap = () => {
 
       <svg width="0" height="0" className="absolute" aria-hidden>
         <defs>
+          <clipPath
+            id="recap-dark-brown-aperture"
+            clipPathUnits="objectBoundingBox"
+          >
+            <path d={DARK_BROWN_APERTURE} />
+          </clipPath>
           <clipPath id="recap-red-aperture" clipPathUnits="objectBoundingBox">
             <path d={RED_APERTURE} />
           </clipPath>

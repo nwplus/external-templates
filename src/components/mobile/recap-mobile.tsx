@@ -1,7 +1,11 @@
 import { RecapVideo } from "@/components/recap/recap-video";
 import { SwingingLamp } from "@/components/recap/swinging-lamp";
 import { LightboxGallery, LightboxTrigger } from "@/components/ui/lightbox";
-import { MIRROR_APERTURE, RED_APERTURE } from "@/constants/recap-apertures";
+import {
+  DARK_BROWN_APERTURE,
+  MIRROR_APERTURE,
+  RED_APERTURE,
+} from "@/constants/recap-apertures";
 import { recapCaption } from "@/constants/recap-captions";
 
 import Image from "next/image";
@@ -13,6 +17,8 @@ type FramedPhotoProps = {
   aperture: [number, number, number, number];
   objectPosition: string;
   rounded?: boolean;
+  /** A `url(#…)` clip for an opening that is neither a box nor an oval. */
+  clipPath?: string;
 };
 
 /**
@@ -26,6 +32,7 @@ const FramedPhoto = ({
   aperture: [left, top, width, height],
   objectPosition,
   rounded,
+  clipPath,
 }: FramedPhotoProps) => (
   <div className={`absolute ${className}`}>
     <Image
@@ -51,14 +58,20 @@ const FramedPhoto = ({
         height: `${height}%`,
       }}
     >
-      <Image
-        src={photo.src}
-        alt={photo.alt}
-        width={photo.size[0]}
-        height={photo.size[1]}
-        className="h-full w-full object-cover transition-transform duration-200 group-hover:scale-[1.02]"
-        style={{ objectPosition }}
-      />
+      {/* The clip sits on a span inside, so the focus ring is not clipped. */}
+      <span
+        className="absolute inset-0 overflow-hidden rounded-[inherit]"
+        style={clipPath ? { clipPath } : undefined}
+      >
+        <Image
+          src={photo.src}
+          alt={photo.alt}
+          width={photo.size[0]}
+          height={photo.size[1]}
+          className="h-full w-full object-cover transition-transform duration-200 group-hover:scale-[1.02]"
+          style={{ objectPosition }}
+        />
+      </span>
     </LightboxTrigger>
   </div>
 );
@@ -90,6 +103,12 @@ const RecapMobile = () => {
 
         <svg width="0" height="0" className="absolute" aria-hidden>
           <defs>
+            <clipPath
+              id="recap-mobile-dark-brown-aperture"
+              clipPathUnits="objectBoundingBox"
+            >
+              <path d={DARK_BROWN_APERTURE} />
+            </clipPath>
             <clipPath
               id="recap-mobile-red-aperture"
               clipPathUnits="objectBoundingBox"
@@ -201,6 +220,7 @@ const RecapMobile = () => {
             size: [396, 594],
           }}
           aperture={[11.86, 11.6, 67.82, 75.55]}
+          clipPath="url(#recap-mobile-dark-brown-aperture)"
           objectPosition="49% 49%"
         />
 
