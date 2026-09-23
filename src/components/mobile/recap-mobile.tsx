@@ -256,7 +256,7 @@ const RecapMobile = () => {
         <LightboxTrigger
           photo={{
             src: "/assets/recap/photos/mirror.jpg",
-            alt: "A decorated corner of the venue",
+            alt: "A speaker at the lecture hall podium, running a workshop",
             caption: recapCaption("/assets/recap/photos/mirror.jpg"),
             width: 540,
             height: 810,
@@ -269,7 +269,7 @@ const RecapMobile = () => {
           >
             <Image
               src="/assets/recap/photos/mirror.jpg"
-              alt="A decorated corner of the venue"
+              alt="A speaker at the lecture hall podium, running a workshop"
               width={540}
               height={810}
               className="h-full w-full object-cover transition-transform duration-200 group-hover:scale-[1.02]"

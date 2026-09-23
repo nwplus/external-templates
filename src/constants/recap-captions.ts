@@ -8,7 +8,7 @@ export const RECAP_CAPTIONS: Record<string, string> = {
   "dark-brown": "hacker in the wild, 3 AM, running on granola bars",
   green: "the lecture hall, now 90% laptops and 10% snacks",
   hanging: "hour one: 100% awake, 0% merge conflicts",
-  mirror: "the decorated corner, still tidy at this point",
+  mirror: "workshop time: a live GitHub tour, questions welcome",
   purple: "demo time: it worked five minutes ago, promise",
   red: "the atrium at hour twelve, still (mostly) upright",
 };
