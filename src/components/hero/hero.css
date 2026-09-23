@@ -59,3 +59,40 @@
  * The beam follows the cursor by a rotate that beam-follow.tsx writes onto
  * the `.hero-beam-swing` layers each frame; there is nothing to style.
  */
+
+/*
+ * Chimney smoke (chimney-smoke.tsx): a puff starts small in the chimney's
+ * mouth, rises, swells and drifts off to the right with the wind, thinning
+ * as it goes. The softness is all in the gradient; only transform and
+ * opacity move.
+ */
+.chimney-puff {
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(214, 208, 232, 0.7) 0%,
+    rgba(214, 208, 232, 0.28) 40%,
+    rgba(214, 208, 232, 0) 70%
+  );
+}
+
+@keyframes chimney-smoke {
+  0% {
+    transform: translate(-50%, -20%) scale(0.3);
+    opacity: 0;
+  }
+  14% {
+    opacity: 0.6;
+  }
+  45% {
+    transform: translate(-30%, -150%) scale(0.85);
+    opacity: 0.45;
+  }
+  75% {
+    transform: translate(15%, -250%) scale(1.3);
+    opacity: 0.2;
+  }
+  100% {
+    transform: translate(60%, -340%) scale(1.7);
+    opacity: 0;
+  }
+}

@@ -6,6 +6,7 @@ import Image from "next/image";
 import { type CSSProperties, useState } from "react";
 
 import { BeamFollow } from "./beam-follow";
+import { ChimneySmoke } from "./chimney-smoke";
 import { Countdown } from "./countdown";
 import "./hero.css";
 import {
@@ -73,6 +74,10 @@ export const DesktopHouse = () => {
 
   return (
     <>
+      {/* Centred on the chimney's mouth (15.41%, 33.3% of the image, x
+          scaled into the box): under the house, so the puffs come out from
+          behind the cap. */}
+      <ChimneySmoke className="top-[33.3%] left-[12.31%] z-[5] w-[5%]" />
       <div className="absolute inset-0 z-10">
         {/* The beam: beam-follow.tsx owns its transform, nothing else sets one */}
         <Image
@@ -147,6 +152,8 @@ export const MobileHouse = () => {
         className="block w-full h-auto"
         style={lit ? undefined : { clipPath: MOBILE_UNLIT_CLIP }}
       />
+      {/* The phone art cuts the chimney off at its left edge. */}
+      <ChimneySmoke className="top-[21.4%] left-[-4%] -z-10 w-[11%]" />
       <LampButton lit={lit} toggle={toggle} style={MOBILE_SPOTS.lamp} />
       {/* % tracks the 393x710 house art; the beam runs from the lamp (~36%, 31%) off the right edge */}
       <div
