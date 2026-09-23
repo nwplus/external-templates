@@ -11,7 +11,7 @@ type Point = readonly [x: number, y: number];
  * well up over the title (negative is up), and a little way down towards
  * the clouds.
  */
-const SWING_UP = -55;
+const SWING_UP = -48;
 const SWING_DOWN = 38;
 /**
  * How far past either limit, in degrees, the beam still follows the cursor
@@ -25,6 +25,13 @@ const FOLLOW_MARGIN = 30;
  * house itself, where a small move is a big change of angle, leaves it be.
  */
 const MIN_REACH = 6;
+/**
+ * Give at the edge of that zone, in degrees (and view units for the reach):
+ * once the beam is following, the cursor has to go this much further out
+ * before it lets go, so a jittery hand on the boundary does not flick it
+ * between following and drifting home.
+ */
+const LET_GO_BUFFER = 6;
 /**
  * How quickly the beam catches up with where it should point, in ms: the
  * time to close about two thirds of the gap. Just enough that it glides
@@ -114,6 +121,9 @@ export const BeamFollow = ({ lit }: { lit: boolean }) => {
     let pointer: { x: number; y: number } | null = null;
     let angle = 0;
     let then = 0;
+    // Whether the beam is following the cursor, kept between frames so the
+    // zone can be wider to leave than to enter (see LET_GO_BUFFER).
+    let following = false;
     const draw = (now: number) => {
       frame = 0;
       // Everything is read before anything is written, so a frame costs one
@@ -130,19 +140,18 @@ export const BeamFollow = ({ lit }: { lit: boolean }) => {
       ];
 
       let target = 0;
-      let following = false;
       if (pointer) {
         const [px, py] = view(pointer.x, pointer.y);
         const aim = fold(Math.atan2(py - PIVOT[1], px - PIVOT[0]) * DEG - rest);
         const reach = Math.hypot(px - PIVOT[0], py - PIVOT[1]);
-        if (
-          aim >= SWING_UP - FOLLOW_MARGIN &&
-          aim <= SWING_DOWN + FOLLOW_MARGIN &&
-          reach >= MIN_REACH
-        ) {
-          target = Math.min(SWING_DOWN, Math.max(SWING_UP, aim));
-          following = true;
-        }
+        const give = following ? LET_GO_BUFFER : 0;
+        following =
+          aim >= SWING_UP - FOLLOW_MARGIN - give &&
+          aim <= SWING_DOWN + FOLLOW_MARGIN + give &&
+          reach >= MIN_REACH - give / 2;
+        if (following) target = Math.min(SWING_DOWN, Math.max(SWING_UP, aim));
+      } else {
+        following = false;
       }
       // Frame-rate independent: the same glide on a 60 Hz or a 120 Hz screen.
       const elapsed = then ? Math.min(now - then, 100) : 16;
