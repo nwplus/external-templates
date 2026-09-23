@@ -18,7 +18,7 @@ const BedScene = () => {
         alt=""
         width={1026}
         height={450}
-        className="absolute left-[21.9%] top-[29.5%] h-auto w-[60.8%] max-w-none xl:left-[14.75%] xl:top-[29.67%] xl:w-[67%]"
+        className="absolute left-[21.9%] top-[24%] h-auto w-[60.8%] max-w-none xl:left-[14.75%] xl:top-[25%] xl:w-[67%]"
       />
       <Image
         src="/assets/footer/bed.svg"
