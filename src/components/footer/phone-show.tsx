@@ -602,7 +602,7 @@ export const TurnedPhone = ({ onClose }: { onClose: () => void }) => {
   return (
     <motion.div
       aria-hidden="true"
-      className="pointer-events-auto absolute top-[19.6%] left-[40.3%] w-[15%] @container xl:w-[9.5%]"
+      className="pointer-events-auto absolute top-[29.32%] left-[37.49%] w-[15.51%] @container xl:w-[9.82%]"
       style={{
         aspectRatio: "9 / 17",
         transformPerspective: 900,

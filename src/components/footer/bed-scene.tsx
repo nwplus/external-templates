@@ -11,9 +11,13 @@ import CloudBorder from "./cloud-border";
 import "./nugget-run.css";
 import { TurnedPhone } from "./phone-show";
 
-/** Where the bed sits in the night scene: phone frame, then desktop frame. */
+/**
+ * Where the bed sits in the night scene: phone frame, then desktop frame. The
+ * art is Figma's export of "bed w/o backboard" clipped to the footer frame,
+ * so on desktop it spans the scene's full width from 27.18% down.
+ */
 const BED_BOX =
-  "absolute left-[-8.4%] top-[28.6%] w-[117%] max-w-none xl:left-[-1.7%] xl:top-[27.17%] xl:w-[103.4%]";
+  "absolute left-[-6.476%] top-[28.6%] w-[113.157%] max-w-none xl:left-0 xl:top-[27.183%] xl:w-full";
 
 /** Set once someone has opened the phone, so the hint stops for good. */
 const SEEN_KEY = "hackcamp-nugget-run-seen";
@@ -119,7 +123,7 @@ const BedScene = () => {
         height={578}
         className="absolute left-[16%] top-[42.9%] h-auto w-[71.8%] max-w-none xl:left-[8.67%] xl:top-[47.03%] xl:w-[78.82%]"
       />
-      <div className={cn(BED_BOX, "aspect-[1583/1310] @container")}>
+      <div className={cn(BED_BOX, "aspect-[1531/1504] @container")}>
         <AnimatePresence>
           {showing && <TurnedPhone key="phone" onClose={putPhoneAway} />}
         </AnimatePresence>
@@ -128,12 +132,12 @@ const BedScene = () => {
             <span
               key={i}
               aria-hidden="true"
-              className="pointer-events-none absolute top-[12%] left-[60%] block font-display leading-none text-cream-soft opacity-0 [text-shadow:0_0_0.6cqw_rgba(255,241,134,0.6)] motion-safe:animate-[zzz_2.1s_ease-out_infinite] motion-reduce:opacity-80"
+              className="pointer-events-none absolute top-[22.71%] left-[57.84%] block font-display leading-none text-cream-soft opacity-0 [text-shadow:0_0_0.62cqw_rgba(255,241,134,0.6)] motion-safe:animate-[zzz_2.1s_ease-out_infinite] motion-reduce:opacity-80"
               style={{
-                fontSize: `max(${0.8 + i * 0.25}rem, ${1.6 + i * 0.65}cqw)`,
+                fontSize: `max(${0.8 + i * 0.25}rem, ${1.654 + i * 0.672}cqw)`,
                 animationDelay: `${i * 0.7}s`,
-                marginLeft: `${i * 1.4}cqw`,
-                marginTop: `${-i * 1.6}cqw`,
+                marginLeft: `${i * 1.448}cqw`,
+                marginTop: `${-i * 1.654}cqw`,
               }}
             >
               {letter}
@@ -143,7 +147,7 @@ const BedScene = () => {
         {hint && !showing && (
           <span
             aria-hidden="true"
-            className="phone-ping pointer-events-none absolute top-[19.8%] left-[40%] block size-[5cqw] rounded-full border-[0.35cqw] border-[#bfe3ff] opacity-0 shadow-[0_0_1.5cqw_#bfe3ff]"
+            className="phone-ping pointer-events-none absolute top-[29.49%] left-[37.17%] block size-[5.17cqw] rounded-full border-[0.36cqw] border-[#bfe3ff] opacity-0 shadow-[0_0_1.55cqw_#bfe3ff]"
           />
         )}
         <button
@@ -152,7 +156,7 @@ const BedScene = () => {
           aria-pressed={showing}
           onClick={togglePhone}
           className={cn(
-            "pointer-events-auto absolute top-[4.4%] left-[36.9%] h-[19%] w-[14%] cursor-pointer rounded-[40%]",
+            "pointer-events-auto absolute top-[16.08%] left-[33.96%] h-[16.55%] w-[14.47%] cursor-pointer rounded-[40%]",
             // The arrow keys that play the game would otherwise light up this
             // button's focus ring over the bear; it returns with the phone.
             showing
@@ -165,7 +169,7 @@ const BedScene = () => {
           aria-label="Tuck Nugget in"
           aria-pressed={tucked}
           onClick={toggleTuck}
-          className="pointer-events-auto absolute top-[12.6%] left-[52.1%] h-[10.3%] w-[15.2%] cursor-pointer rounded-[40%] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-star"
+          className="pointer-events-auto absolute top-[23.23%] left-[49.67%] h-[8.97%] w-[15.72%] cursor-pointer rounded-[40%] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-star"
         />
       </div>
     </>
