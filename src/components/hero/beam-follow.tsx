@@ -178,6 +178,9 @@ export const BeamFollow = ({ lit }: { lit: boolean }) => {
       if (!frame) frame = requestAnimationFrame(draw);
     };
     const onMove = (event: PointerEvent) => {
+      // Below the desktop breakpoint the desktop hero (and this beam) is
+      // hidden and the phone hero shows instead: nothing to swing.
+      if (!box.offsetParent) return;
       pointer = { x: event.clientX, y: event.clientY };
       schedule();
     };

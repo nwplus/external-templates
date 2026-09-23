@@ -81,7 +81,6 @@ export const DesktopHouse = () => {
           aria-hidden
           width={812}
           height={398}
-          priority
           className="hero-beam-swing pointer-events-none absolute max-w-none will-change-transform"
           style={
             lit
@@ -109,7 +108,6 @@ export const DesktopHouse = () => {
           aria-hidden
           width={472}
           height={239}
-          priority
           className="hero-beam-swing absolute max-w-none will-change-transform motion-safe:animate-glow"
           style={swing(DESKTOP_BEAM_ART.glow)}
         />
