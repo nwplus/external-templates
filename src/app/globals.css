@@ -223,7 +223,18 @@ html {
 }
 
 @theme {
+  /* 1s is just a placeholder, team-gallery sets the real duration inline */
+  --animate-marquee: marquee 1s linear infinite;
   --animate-smoke: smoke 6s ease-out infinite backwards;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
 
   /* chimney leans right so the smoke drifts that way */
   @keyframes smoke {
