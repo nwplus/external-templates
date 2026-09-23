@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 
 import { useEffect, useState } from "react";
 
-import { navLinkClass } from "./desktop-navbar";
+import { navLinkClass, navRowClass } from "./desktop-navbar";
 import { NAV_JUMP, scrollToSection } from "./scroll-to-section";
 
 /** Below this the hero's own nav is on screen, so the bar stays away. */
@@ -21,10 +21,9 @@ const JUMP_QUIET_MS = 1500;
  * soon as you scroll down or reach the top. Small wobbles (a trackpad's
  * jitter) are ignored, and so is the scrolling a nav link starts, so the bar
  * never pops over the section it just took you to. It moves by transform
- * only, and without a slide under reduced motion. The links keep clear of
- * the MLH badge pinned at the top right (from lg they stay centred by
- * reserving the same room on the left). Desktop only; the phone layout keeps
- * its fixed menu button.
+ * only, and without a slide under reduced motion. Its links are the hero
+ * nav's exactly (same type, size and spacing), so they sit where they did at
+ * the top. Desktop only; the phone layout keeps its fixed menu button.
  */
 export const StickyNavbar = () => {
   const [shown, setShown] = useState(false);
@@ -85,7 +84,10 @@ export const StickyNavbar = () => {
     >
       <nav
         aria-label="Sections, pinned"
-        className="flex items-center justify-center gap-5 border-b border-white/5 bg-linear-to-b from-[#0b0f27]/95 to-[#0c1637]/90 py-3.5 pr-[max(8rem,12vw)] pl-6 font-title text-[0.9rem] text-white shadow-[0_6px_24px_rgba(4,6,20,0.45)] lg:gap-10 lg:pl-[max(8rem,12vw)] lg:text-[1.15rem] xl:gap-12"
+        className={cn(
+          navRowClass,
+          "border-b border-white/5 bg-linear-to-b from-[#0b0f27]/95 to-[#0c1637]/90 shadow-[0_6px_24px_rgba(4,6,20,0.45)]"
+        )}
       >
         {NAV_LINKS.map((link) => (
           <button

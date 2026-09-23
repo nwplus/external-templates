@@ -11,9 +11,13 @@ import { scrollToSection } from "./scroll-to-section";
 export const navLinkClass =
   "cursor-pointer uppercase transition-[color,text-shadow] duration-150 hover:text-[#fedb90] hover:[text-shadow:0_0_25px_rgba(255,218,136,0.75)] focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-star";
 
+/** The row of links: the same size and spacing in the hero and pinned. */
+export const navRowClass =
+  "flex w-full items-center justify-center gap-15 px-3 py-6 font-title text-[1.6rem] text-white";
+
 export const DesktopNavbar = () => (
   <nav aria-label="Sections" className="absolute top-0 left-0 z-100 w-full">
-    <div className="flex w-full items-center justify-center gap-15 px-3 py-6 font-title text-[1.6rem] text-white">
+    <div className={navRowClass}>
       {NAV_LINKS.map((link) => (
         <button
           type="button"
