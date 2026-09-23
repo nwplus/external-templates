@@ -13,8 +13,12 @@ type Point = readonly [x: number, y: number];
  */
 const SWING_UP = -62;
 const SWING_DOWN = 18;
-/** The share of the remaining angle the beam covers each frame: a soft lag. */
-const EASE = 0.14;
+/**
+ * How quickly the beam catches up with the cursor, in ms: the time to close
+ * about two thirds of the gap. Short enough to feel attached to the cursor,
+ * long enough to smooth out a jittery hand.
+ */
+const CATCH_UP = 40;
 
 const DEG = 180 / Math.PI;
 
@@ -113,8 +117,7 @@ const side = ([ax, ay]: Point, [bx, by]: Point, [px, py]: Point) =>
 /**
  * Swings the lamp's beam round to point at the cursor. The beam (drawn and
  * glow) sits in `.hero-beam-swing` layers that turn about the bulb, so
- * following the cursor is a single rotate per frame, eased so the lamp seems
- * to be turned by hand rather than snapped. The countdown stays put: any part
+ * following the cursor is a single rotate per frame, very lightly eased. The countdown stays put: any part
  * of it the beam swings off reads as it does with the lamp off. Hover-only
  * and motion-safe; when the pointer leaves the window the beam settles back
  * to where the art has it.
@@ -155,10 +158,17 @@ export const BeamFollow = ({ lit }: { lit: boolean }) => {
     let frame = 0;
     let pointer: { x: number; y: number } | null = null;
     let angle = 0;
+    let then = 0;
 
-    const draw = () => {
+    const draw = (now: number) => {
       frame = 0;
+      // Everything is read before anything is written, so a frame costs one
+      // style pass and no layout.
       const rect = box.getBoundingClientRect();
+      const centres = countdownParts.map((part) => {
+        const r = part.getBoundingClientRect();
+        return [r.left + r.width / 2, r.top + r.height / 2] as const;
+      });
       const unit = rect.height / 100;
       const view = (x: number, y: number): Point => [
         (x - rect.left) / unit,
@@ -171,7 +181,9 @@ export const BeamFollow = ({ lit }: { lit: boolean }) => {
         const aim = Math.atan2(py - PIVOT[1], px - PIVOT[0]) * DEG;
         target = Math.min(SWING_DOWN, Math.max(SWING_UP, fold(aim - rest)));
       }
-      angle += (target - angle) * EASE;
+      // Frame-rate independent: the same catch-up on a 60 Hz or a 120 Hz screen.
+      const elapsed = then ? Math.min(now - then, 100) : 16;
+      angle += (target - angle) * (1 - Math.exp(-elapsed / CATCH_UP));
       if (Math.abs(target - angle) < 0.05) angle = target;
       layers.forEach((el) => (el.style.transform = `rotate(${angle}deg)`));
 
@@ -179,9 +191,8 @@ export const BeamFollow = ({ lit }: { lit: boolean }) => {
       // back the other way and test it against the beam as drawn.
       const cos = Math.cos(-angle / DEG);
       const sin = Math.sin(-angle / DEG);
-      for (const part of countdownParts) {
-        const r = part.getBoundingClientRect();
-        const [x, y] = view(r.left + r.width / 2, r.top + r.height / 2);
+      countdownParts.forEach((part, i) => {
+        const [x, y] = view(...centres[i]);
         const dx = x - PIVOT[0];
         const dy = y - PIVOT[1];
         const back: Point = [
@@ -190,9 +201,14 @@ export const BeamFollow = ({ lit }: { lit: boolean }) => {
         ];
         if (inBeam(back)) part.removeAttribute("data-shaded");
         else part.setAttribute("data-shaded", "true");
-      }
+      });
 
-      if (angle !== target) frame = requestAnimationFrame(draw);
+      if (angle !== target) {
+        then = now;
+        frame = requestAnimationFrame(draw);
+      } else {
+        then = 0;
+      }
     };
     const schedule = () => {
       if (!frame) frame = requestAnimationFrame(draw);
