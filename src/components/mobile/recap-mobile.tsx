@@ -219,7 +219,7 @@ const RecapMobile = () => {
             width: 540,
             height: 810,
           }}
-          className="absolute left-[45.8vw] top-[149.38vw] h-[31.38vw] w-[28.36vw]"
+          className="absolute left-[42.42vw] top-[147.87vw] h-[32.28vw] w-[32.59vw]"
         >
           <span
             className="absolute inset-0 overflow-hidden"
@@ -230,7 +230,13 @@ const RecapMobile = () => {
               alt="A speaker at the lecture hall podium, running a workshop"
               width={540}
               height={810}
-              className="h-full w-full object-cover transition-transform duration-200 group-hover:scale-[1.02]"
+              className="absolute max-w-none object-cover transition-transform duration-200 group-hover:scale-[1.02]"
+              style={{
+                left: "11.43%",
+                top: "-5.28%",
+                width: "79.94%",
+                height: "108.12%",
+              }}
             />
           </span>
         </LightboxTrigger>

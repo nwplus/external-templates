@@ -226,7 +226,7 @@ const Recap = () => {
             width: 540,
             height: 810,
           }}
-          className="absolute left-[63.6vw] top-[40.95vw] h-[17.68vw] w-[14.29vw]"
+          className="absolute left-[61.9vw] top-[40.1vw] h-[18.18vw] w-[16.42vw]"
         >
           <span
             className="absolute inset-0 overflow-hidden"
@@ -237,7 +237,13 @@ const Recap = () => {
               alt="A speaker at the lecture hall podium, running a workshop"
               width={540}
               height={810}
-              className="h-full w-full object-cover transition-transform duration-200 group-hover:scale-[1.02]"
+              className="absolute max-w-none object-cover transition-transform duration-200 group-hover:scale-[1.02]"
+              style={{
+                left: "11.43%",
+                top: "-5.28%",
+                width: "79.94%",
+                height: "108.12%",
+              }}
             />
           </span>
         </LightboxTrigger>
