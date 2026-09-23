@@ -12,7 +12,7 @@ export const SheepTapToggle = ({ children }: { children: ReactNode }) => {
 
   return (
     <div
-      className="group relative w-full"
+      className="group relative w-full cursor-pointer select-none transition-transform duration-300 hover:-translate-y-1"
       data-open={open}
       onClick={() => setOpen((value) => !value)}
     >
