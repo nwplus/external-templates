@@ -76,15 +76,14 @@ const TIP = {
 };
 
 // The star is one of the loose sparkles, drawn where it sits in the art and
-// moved under the line's end. Its group is scaled, so anything that rides
-// with the line has to travel the distance in that group's units.
-const STAR_CENTRE = { x: 1028, y: 243.5 };
-const STAR_HALF = 29;
-const starAt = {
-  x: TIP.x,
-  y: TIP.y + LINE_LENGTH + STAR_HALF * STAR_SCALE + 2,
-};
-const STAR_TRANSFORM = `translate(${(starAt.x - STAR_CENTRE.x * STAR_SCALE).toFixed(2)} ${(starAt.y - STAR_CENTRE.y * STAR_SCALE).toFixed(2)}) scale(${STAR_SCALE})`;
+// moved under the line's end. It hangs from the notch between its two top
+// points (measured off the path: the fill's top edge right under the line),
+// sunk a touch into the line so the two read as tied. Its group is scaled,
+// so anything that rides with the line has to travel the distance in that
+// group's units.
+const STAR_KNOT = { x: 1029.6, y: 228.4 };
+const KNOT_OVERLAP = 1.2;
+const STAR_TRANSFORM = `translate(${(TIP.x - STAR_KNOT.x * STAR_SCALE).toFixed(2)} ${(TIP.y + LINE_LENGTH - KNOT_OVERLAP - STAR_KNOT.y * STAR_SCALE).toFixed(2)}) scale(${STAR_SCALE})`;
 export const STAR_RIDE = LINE_LENGTH / STAR_SCALE;
 
 /* ----------------------------------------------------------------------- */

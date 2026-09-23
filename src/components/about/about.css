@@ -21,9 +21,11 @@
   transform: scaleY(0);
 }
 
+/* It wiggles from where it hangs on the line: the notch between its top two
+   points, as shares of its own box (moon-bear-art.tsx STAR_KNOT). */
 .moon-bear-hook-star {
   opacity: 0;
-  transform-origin: 50% 50%;
+  transform-origin: 52.83% 22.28%;
 }
 
 /* The copy that laps the page, and the sparks it leaves behind. Both are
