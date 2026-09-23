@@ -12,7 +12,7 @@ type Point = readonly [x: number, y: number];
  * the clouds.
  */
 const SWING_UP = -62;
-const SWING_DOWN = 28;
+const SWING_DOWN = 45;
 /**
  * How far past either limit, in degrees, the beam still follows the cursor
  * (held at the limit). Further out than that (well above or below the beam,
@@ -31,6 +31,11 @@ const MIN_REACH = 6;
  * rather than jumps.
  */
 const CATCH_UP = 50;
+/**
+ * The same for when the cursor goes somewhere the beam cannot follow: the
+ * beam drifts back to rest over a good half second rather than snapping.
+ */
+const DRIFT_BACK = 250;
 
 const DEG = 180 / Math.PI;
 
@@ -125,6 +130,7 @@ export const BeamFollow = ({ lit }: { lit: boolean }) => {
       ];
 
       let target = 0;
+      let following = false;
       if (pointer) {
         const [px, py] = view(pointer.x, pointer.y);
         const aim = fold(Math.atan2(py - PIVOT[1], px - PIVOT[0]) * DEG - rest);
@@ -133,12 +139,15 @@ export const BeamFollow = ({ lit }: { lit: boolean }) => {
           aim >= SWING_UP - FOLLOW_MARGIN &&
           aim <= SWING_DOWN + FOLLOW_MARGIN &&
           reach >= MIN_REACH
-        )
+        ) {
           target = Math.min(SWING_DOWN, Math.max(SWING_UP, aim));
+          following = true;
+        }
       }
       // Frame-rate independent: the same glide on a 60 Hz or a 120 Hz screen.
       const elapsed = then ? Math.min(now - then, 100) : 16;
-      angle += (target - angle) * (1 - Math.exp(-elapsed / CATCH_UP));
+      const ease = following ? CATCH_UP : DRIFT_BACK;
+      angle += (target - angle) * (1 - Math.exp(-elapsed / ease));
       if (Math.abs(target - angle) < 0.05) angle = target;
       layers.forEach((el) => (el.style.transform = `rotate(${angle}deg)`));
 
