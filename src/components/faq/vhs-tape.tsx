@@ -27,7 +27,7 @@ const VhsTape = ({
     aria-pressed={selected}
     onClick={() => onSelect(faq)}
     className={cn(
-      "flex max-w-full items-center gap-2 rounded-md bg-tape py-1.5 pr-2.5 pl-2 text-left transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-star xl:gap-[0.5cqw] xl:py-[0.45cqw] xl:pr-[0.65cqw] xl:pl-[0.5cqw]",
+      "flex max-w-full cursor-pointer items-center gap-2 rounded-md bg-tape py-1.5 pr-2.5 pl-2 text-left transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-star xl:gap-[0.5cqw] xl:py-[0.45cqw] xl:pr-[0.65cqw] xl:pl-[0.5cqw]",
       selected
         ? "shadow-[inset_0_1px_0_rgba(255,255,255,0.14),0_0_18px_var(--color-star)]"
         : "shadow-[inset_0_1px_0_rgba(255,255,255,0.14)]"
