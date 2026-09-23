@@ -1,4 +1,5 @@
 import { RecapVideo } from "@/components/recap/recap-video";
+import { SwingingLamp } from "@/components/recap/swinging-lamp";
 import { LightboxGallery, LightboxTrigger } from "@/components/ui/lightbox";
 import { MIRROR_APERTURE, RED_APERTURE } from "@/constants/recap-apertures";
 import { recapCaption } from "@/constants/recap-captions";
@@ -266,7 +267,7 @@ const Recap = () => {
         <LightboxTrigger
           photo={{
             src: "/assets/recap/photos/mirror.jpg",
-            alt: "A decorated corner of the venue",
+            alt: "A speaker at the lecture hall podium, running a workshop",
             caption: recapCaption("/assets/recap/photos/mirror.jpg"),
             width: 540,
             height: 810,
@@ -279,7 +280,7 @@ const Recap = () => {
           >
             <Image
               src="/assets/recap/photos/mirror.jpg"
-              alt="A decorated corner of the venue"
+              alt="A speaker at the lecture hall podium, running a workshop"
               width={540}
               height={810}
               className="h-full w-full object-cover transition-transform duration-200 group-hover:scale-[1.02]"
@@ -288,13 +289,7 @@ const Recap = () => {
         </LightboxTrigger>
       </LightboxGallery>
 
-      <Image
-        src="/assets/recap/light.webp"
-        alt=""
-        width={843}
-        height={1033}
-        className="pointer-events-none absolute left-[23.1vw] top-[0.13vw] h-[67.61vw] w-[55.12vw]"
-      />
+      <SwingingLamp className="absolute left-[23.1vw] top-[0.13vw] h-[67.61vw] w-[55.12vw]" />
 
       <Image
         src="/assets/recap/baseboard-bottom.png"
