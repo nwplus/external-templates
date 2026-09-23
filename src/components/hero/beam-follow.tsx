@@ -9,10 +9,17 @@ type Point = readonly [x: number, y: number];
 /**
  * How far the beam may swing from where it points in the art, in degrees:
  * well up over the title (negative is up), and a little way down towards
- * the clouds.
+ * the clouds. The beam only follows a cursor inside this arc; anywhere else
+ * (above or below it, or behind the lamp) it points where the art has it.
  */
 const SWING_UP = -62;
 const SWING_DOWN = 18;
+/**
+ * How far out from the bulb, in view units (see ASPECT), the cursor has to
+ * be before the beam follows it: clear of the house wall, so a cursor on the
+ * house itself, where a small move is a big change of angle, leaves it be.
+ */
+const MIN_REACH = 8;
 
 const DEG = 180 / Math.PI;
 
@@ -20,9 +27,8 @@ const DEG = 180 / Math.PI;
 const fold = (degrees: number) => ((((degrees + 180) % 360) + 360) % 360) - 180;
 
 /**
- * The house box is 1.7 times wider than tall; the beam's SVG uses a
- * 170x100 viewBox over it so that its units are square and the wedge keeps
- * its shape when it turns.
+ * The house box is 1.7 times wider than tall; the geometry below is worked
+ * in 170x100 "view" units over it, which are square, so angles come out true.
  */
 const ASPECT = 1.7;
 const toView = ([x, y]: Point): Point => [x * ASPECT, y];
@@ -41,81 +47,19 @@ const FAR_MIDDLE: Point = [
   (FAR_TOP[1] + FAR_BOTTOM[1]) / 2,
 ];
 
-/**
- * The beam's light along its length, sampled from the raster down its
- * middle: full strength for the first fifth, then fading out by two thirds.
- */
-const FALLOFF: [offset: number, opacity: number][] = [
-  [0, 1],
-  [0.2, 1],
-  [0.3, 0.69],
-  [0.4, 0.43],
-  [0.5, 0.18],
-  [0.6, 0.03],
-  [0.66, 0],
-];
-
-/**
- * The lamp's beam, drawn rather than baked in so that it can turn: the
- * wedge the raster's beam fills, in its colour and falloff, starting just
- * inside the house (which is drawn over that end). A touch of blur softens
- * its edges as the art's are.
- */
-export const BeamArt = () => (
-  <svg
-    aria-hidden
-    viewBox="0 0 170 100"
-    preserveAspectRatio="none"
-    className="absolute inset-0 h-full w-full overflow-visible"
-  >
-    <defs>
-      <linearGradient
-        id="hero-beam-falloff"
-        gradientUnits="userSpaceOnUse"
-        x1={PIVOT[0]}
-        y1={PIVOT[1]}
-        x2={FAR_MIDDLE[0]}
-        y2={FAR_MIDDLE[1]}
-      >
-        {FALLOFF.map(([offset, opacity]) => (
-          <stop
-            key={offset}
-            offset={offset}
-            stopColor="#ffdb8f"
-            stopOpacity={opacity}
-          />
-        ))}
-      </linearGradient>
-      <filter
-        id="hero-beam-soften"
-        x="-10%"
-        y="-10%"
-        width="120%"
-        height="120%"
-      >
-        <feGaussianBlur stdDeviation="1.2" />
-      </filter>
-    </defs>
-    <polygon
-      points={WEDGE.map((p) => p.join(",")).join(" ")}
-      fill="url(#hero-beam-falloff)"
-      filter="url(#hero-beam-soften)"
-    />
-  </svg>
-);
-
 /** Which side of the line through `a` and `b` a point is on, by its sign. */
 const side = ([ax, ay]: Point, [bx, by]: Point, [px, py]: Point) =>
   (bx - ax) * (py - ay) - (by - ay) * (px - ax);
 
 /**
- * Swings the lamp's beam round to point at the cursor. The beam (drawn and
- * glow) sits in `.hero-beam-swing` layers that turn about the bulb, so
+ * Swings the lamp's beam round to point at the cursor. The beam and its glow
+ * are baked images (`.hero-beam-swing`) that turn about the bulb, so
  * following the cursor is a single rotate per frame, with no easing: the
  * beam points wherever the cursor is. The countdown stays put: any part of
  * it the beam swings off reads as it does with the lamp off. Hover-only and
  * motion-safe; when the pointer leaves the window the beam goes back to
- * where the art has it.
+ * where the art has it, as it does whenever the cursor is somewhere the
+ * beam could not point.
  */
 export const BeamFollow = ({ lit }: { lit: boolean }) => {
   const anchor = useRef<HTMLSpanElement>(null);
@@ -170,8 +114,10 @@ export const BeamFollow = ({ lit }: { lit: boolean }) => {
       let angle = 0;
       if (pointer) {
         const [px, py] = view(pointer.x, pointer.y);
-        const aim = Math.atan2(py - PIVOT[1], px - PIVOT[0]) * DEG;
-        angle = Math.min(SWING_DOWN, Math.max(SWING_UP, fold(aim - rest)));
+        const aim = fold(Math.atan2(py - PIVOT[1], px - PIVOT[0]) * DEG - rest);
+        const reach = Math.hypot(px - PIVOT[0], py - PIVOT[1]);
+        if (aim >= SWING_UP && aim <= SWING_DOWN && reach >= MIN_REACH)
+          angle = aim;
       }
       layers.forEach((el) => (el.style.transform = `rotate(${angle}deg)`));
 

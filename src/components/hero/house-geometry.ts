@@ -202,6 +202,18 @@ export const DESKTOP_BEAM = {
   pivot: beamPoint(29.8, (beamTop(29.8) + beamBottom(29.8)) / 2),
 } as const;
 
+/**
+ * Where the beam's baked images sit in the house box, in percentages, as
+ * cropped to their visible pixels. `beam.webp` is the wedge above;
+ * `beam-glow.webp` is the spotlight glow that used to be a live 40 px CSS
+ * blur. Both are rendered once, so turning them is only a texture rotating on
+ * the GPU (a blurred, blended layer had to be re-blurred every frame).
+ */
+export const DESKTOP_BEAM_ART = {
+  beam: { left: 24.286, top: 16.332, width: 48.357, height: 40.254 },
+  glow: { left: 25.036, top: 12.082, width: 56.179, height: 48.45 },
+} as const;
+
 export const MOBILE_UNLIT_CLIP = polygon(MOBILE_UNLIT, 1);
 
 /** A rectangle given in image percentages, as a style for the house box. */

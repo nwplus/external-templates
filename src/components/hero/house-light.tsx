@@ -5,17 +5,17 @@ import { ResponsiveArt } from "@/components/ui/responsive-art";
 import Image from "next/image";
 import { type CSSProperties, useState } from "react";
 
-import { BeamArt, BeamFollow } from "./beam-follow";
+import { BeamFollow } from "./beam-follow";
 import { Countdown } from "./countdown";
 import "./hero.css";
 import {
   DESKTOP_BEAM,
+  DESKTOP_BEAM_ART,
   DESKTOP_UNLIT_CLIP,
   HOUSE_SPOTS,
   MOBILE_SPOTS,
   MOBILE_UNLIT_CLIP,
 } from "./house-geometry";
-import { SpotlightGlow } from "./spotlight-glow";
 
 /**
  * The invisible button over the house that flips its lamp. The beam is part
@@ -41,10 +41,22 @@ const LampButton = ({
   />
 );
 
-/** The beam's layers turn about the bulb (see beam-follow.tsx). */
-const SWING_ORIGIN: CSSProperties = {
-  transformOrigin: `${DESKTOP_BEAM.pivot[0]}% ${DESKTOP_BEAM.pivot[1]}%`,
-};
+/**
+ * One of the beam's images placed in the house box, turning about the bulb
+ * (see beam-follow.tsx): the pivot given relative to the image's own box.
+ */
+const swing = (art: {
+  left: number;
+  top: number;
+  width: number;
+  height: number;
+}): CSSProperties => ({
+  left: `${art.left}%`,
+  top: `${art.top}%`,
+  width: `${art.width}%`,
+  height: `${art.height}%`,
+  transformOrigin: `${(((DESKTOP_BEAM.pivot[0] - art.left) / art.width) * 100).toFixed(3)}% ${(((DESKTOP_BEAM.pivot[1] - art.top) / art.height) * 100).toFixed(3)}%`,
+});
 
 /**
  * The desktop house with its countdown, inside the house box. Clicking the
@@ -63,12 +75,20 @@ export const DesktopHouse = () => {
     <>
       <div className="absolute inset-0 z-10">
         {/* The beam: beam-follow.tsx owns its transform, nothing else sets one */}
-        <div
-          className="hero-beam-swing pointer-events-none absolute inset-0 will-change-transform"
-          style={lit ? SWING_ORIGIN : { ...SWING_ORIGIN, visibility: "hidden" }}
-        >
-          <BeamArt />
-        </div>
+        <Image
+          src="/assets/hero/beam.webp"
+          alt=""
+          aria-hidden
+          width={812}
+          height={398}
+          priority
+          className="hero-beam-swing pointer-events-none absolute max-w-none will-change-transform"
+          style={
+            lit
+              ? swing(DESKTOP_BEAM_ART.beam)
+              : { ...swing(DESKTOP_BEAM_ART.beam), visibility: "hidden" }
+          }
+        />
         {/* The house without its baked-in beam */}
         <Image
           src="/assets/hero/house.webp"
@@ -78,14 +98,21 @@ export const DesktopHouse = () => {
           style={{ clipPath: DESKTOP_UNLIT_CLIP }}
         />
       </div>
-      {/* Spotlight glow along the beam, turning with it */}
+      {/* Spotlight glow along the beam, turning and pulsing with it */}
       <div
-        className="hero-beam-swing pointer-events-none absolute inset-0 z-20 will-change-transform"
-        style={SWING_ORIGIN}
+        data-lit={lit}
+        className="hero-glow pointer-events-none absolute inset-0 z-20"
       >
-        <div data-lit={lit} className="hero-glow absolute inset-0">
-          <SpotlightGlow />
-        </div>
+        <Image
+          src="/assets/hero/beam-glow.webp"
+          alt=""
+          aria-hidden
+          width={472}
+          height={239}
+          priority
+          className="hero-beam-swing absolute max-w-none will-change-transform motion-safe:animate-glow"
+          style={swing(DESKTOP_BEAM_ART.glow)}
+        />
       </div>
       <BeamFollow lit={lit} />
       <div className="absolute inset-0 z-20">
