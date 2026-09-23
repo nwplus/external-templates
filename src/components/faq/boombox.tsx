@@ -9,7 +9,11 @@ import { useState } from "react";
 /** One beat at 120 bpm. */
 const BEAT = 0.5;
 
-/** The two speaker cones, as shares of the radio artwork (boombox.svg). */
+/**
+ * The two speaker cones, as shares of the radio artwork. `boombox.webp` is
+ * Figma's own 2x PNG export of the radio (564x448, shown at 282x224): its SVG
+ * export lost the body's shading.
+ */
 const SPEAKERS = [
   "left-0 top-[47.4%] h-[42.5%] w-[26.5%]",
   "right-0 top-[47.4%] h-[42.5%] w-[26.5%]",
@@ -65,7 +69,7 @@ export const Boombox = ({
         }
       >
         <Image
-          src="/assets/faq/boombox.svg"
+          src="/assets/faq/boombox.webp"
           alt=""
           aria-hidden="true"
           width={282}

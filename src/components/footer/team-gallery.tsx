@@ -9,6 +9,9 @@ import { useEffect, useRef, useState } from "react";
 
 type Member = (typeof teamMembers)[number];
 
+/** How fast the row of faces drifts, in px a second. */
+const SPEED = 28;
+
 const toHref = (social: string) => {
   const value = social.trim();
   if (!value) return undefined;
@@ -26,25 +29,47 @@ const TeamGallery = () => {
   useEffect(() => {
     if (reduceMotion) return;
     const row = document.getElementById("anim-profiles");
-    const animation = anime("#anim-profiles", {
-      easing: "linear",
-      loop: true,
-      translateX: [-(40 * teamMembers.length), 0],
-      duration: 1500 * teamMembers.length,
-      autoplay: true,
-    });
-    setAnimator(animation);
+    const frame = row?.parentElement;
+    if (!row || !frame) return;
 
-    // The marquee only runs while it is on screen.
-    const observer = new IntersectionObserver(([entry]) => {
-      if (!entry.isIntersecting) animation.pause();
-      else if (!hovering.current) animation.play();
+    let animation: JSAnimation | undefined;
+    let onScreen = false;
+    // The row holds the team twice; sliding it along by exactly one set's
+    // width and starting over loops without a seam. The tiles are sized with
+    // the viewport, so the distance is measured, and measured again whenever
+    // the frame changes size.
+    const start = () => {
+      animation?.revert();
+      const tiles = row.children;
+      const set =
+        (tiles[teamMembers.length] as HTMLElement).offsetLeft -
+        (tiles[0] as HTMLElement).offsetLeft;
+      animation = anime(row, {
+        ease: "linear",
+        loop: true,
+        translateX: [-set, 0],
+        duration: (set / SPEED) * 1000,
+        autoplay: onScreen && !hovering.current,
+      });
+      setAnimator(animation);
+    };
+    const resize = new ResizeObserver(start);
+    resize.observe(frame);
+
+    // The marquee only runs while it is on screen. This watches the frame,
+    // not the row: the row is slid a set's width off to the left, where its
+    // own box is never on screen at all.
+    const visible = new IntersectionObserver(([entry]) => {
+      onScreen = entry.isIntersecting;
+      if (!onScreen) animation?.pause();
+      else if (!hovering.current) animation?.play();
     });
-    if (row) observer.observe(row);
+    visible.observe(frame);
 
     return () => {
-      observer.disconnect();
-      animation.revert();
+      resize.disconnect();
+      visible.disconnect();
+      animation?.revert();
     };
   }, [reduceMotion]);
 

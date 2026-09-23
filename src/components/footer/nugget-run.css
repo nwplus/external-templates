@@ -63,46 +63,6 @@
   }
 }
 
-/*
- * Hovering the phone shakes three coins out of it: each springs up and out
- * by its own --coin-dx (negative is left, away from the bear's face),
- * spinning, and drops away. Once per hover; mouse and keyboard only, since a
- * tap opens the phone anyway.
- */
-@keyframes phone-coin {
-  0% {
-    transform: translate(-50%, -50%) scale(0.3, 0.3);
-    opacity: 0;
-  }
-  12% {
-    opacity: 1;
-  }
-  40% {
-    transform: translate(calc(-50% + var(--coin-dx) * 140%), -420%) scale(-1, 1);
-    opacity: 1;
-  }
-  70% {
-    transform: translate(calc(-50% + var(--coin-dx) * 240%), -330%) scale(1, 1);
-    opacity: 1;
-  }
-  100% {
-    transform: translate(calc(-50% + var(--coin-dx) * 330%), 40%) scale(-0.4, 1);
-    opacity: 0;
-  }
-}
-
-@media (hover: hover) and (prefers-reduced-motion: no-preference) {
-  .group:hover .phone-coin {
-    animation: phone-coin 0.85s cubic-bezier(0.3, 0.7, 0.5, 1) both;
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .group:focus-visible .phone-coin {
-    animation: phone-coin 0.85s cubic-bezier(0.3, 0.7, 0.5, 1) both;
-  }
-}
-
 /* The game's shield: a soft ring round Nugget that breathes. */
 @keyframes runner-shield {
   from {

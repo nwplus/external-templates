@@ -99,7 +99,9 @@ const SponsorsClient = ({ initial }: { initial: SponsorDoc[] }) => {
         </div>
 
         {shelves.length > 0 && (
-          <div className="mt-[4.2%] space-y-[6%] xl:space-y-[8.1%]">
+          // Above the lower garland (z-20), so its cords come out from
+          // behind the last plank rather than being drawn across it.
+          <div className="relative z-30 mt-[4.2%] space-y-[6%] xl:space-y-[8.1%]">
             {shelves.map((shelf) => {
               if (shelf.kind === "decor") {
                 return (
@@ -134,8 +136,8 @@ const SponsorsClient = ({ initial }: { initial: SponsorDoc[] }) => {
 
         {/* The second garland hangs off the last plank, its cords starting on
             the wood so they read as hung from it; the phone plank is thinner,
-            so the garland rides higher there. It hangs over the footer's
-            clouds, which start behind it. */}
+            so the garland rides higher there. It sits behind the shelves but
+            over the footer's clouds, which start behind it. */}
         <StringLights
           variant="bottom"
           className={cn(

@@ -1,7 +1,11 @@
 import { RecapVideo } from "@/components/recap/recap-video";
 import { SwingingLamp } from "@/components/recap/swinging-lamp";
 import { LightboxGallery, LightboxTrigger } from "@/components/ui/lightbox";
-import { MIRROR_APERTURE, RED_APERTURE } from "@/constants/recap-apertures";
+import {
+  DARK_BROWN_APERTURE,
+  MIRROR_APERTURE,
+  RED_APERTURE,
+} from "@/constants/recap-apertures";
 import { recapCaption } from "@/constants/recap-captions";
 
 import Image from "next/image";
@@ -42,6 +46,7 @@ const framePhotos: {
     alt: "A participant coding on a laptop during the event",
     aperture: "left-[84.66vw] top-[42.56vw] h-[13.35vw] w-[10.35vw]",
     crop: "left-[-1.28vw] top-[-2.97vw] h-[19.44vw] w-[12.96vw]",
+    clipPath: "url(#recap-dark-brown-aperture)",
     size: [396, 594],
   },
   {
@@ -114,62 +119,18 @@ const Recap = () => {
       <Image
         src="/assets/recap/purple-frame.webp"
         alt=""
-        width={289}
-        height={371}
-        className="absolute left-[1.57vw] top-[41.49vw] h-[24.25vw] w-[18.91vw]"
-      />
-      <Image
-        src="/assets/recap/purple-frame-bow-left.webp"
-        alt=""
-        width={29}
-        height={16}
-        className="absolute left-[8.28vw] top-[43.37vw] h-[0.91vw] w-[1.69vw] rotate-[-20.76deg]"
-      />
-      <Image
-        src="/assets/recap/purple-frame-bow-right.webp"
-        alt=""
-        width={29}
-        height={16}
-        className="absolute left-[12.04vw] top-[43.37vw] h-[0.91vw] w-[1.69vw] rotate-[159.24deg]"
-      />
-      <Image
-        src="/assets/recap/purple-frame-gem-outer.webp"
-        alt=""
-        width={32}
-        height={31}
-        className="absolute left-[9.99vw] top-[41.98vw] h-[1.97vw] w-[2.08vw]"
-      />
-      <Image
-        src="/assets/recap/purple-frame-gem-inner.webp"
-        alt=""
-        width={20}
-        height={18}
-        className="absolute left-[10.38vw] top-[42.4vw] h-[1.12vw] w-[1.27vw]"
-      />
-      <Image
-        src="/assets/recap/purple-frame-foot-left.webp"
-        alt=""
-        width={34}
-        height={23}
-        className="absolute left-[8.87vw] top-[63.58vw] h-[1.49vw] w-[2.2vw]"
-      />
-      <Image
-        src="/assets/recap/purple-frame-foot-right.webp"
-        alt=""
-        width={34}
-        height={23}
-        className="absolute left-[11.23vw] top-[63.58vw] h-[1.49vw] w-[2.2vw]"
+        width={306}
+        height={381}
+        className="absolute left-[0.54vw] top-[40.77vw] h-[24.92vw] w-[19.99vw]"
       />
 
-      <div className="absolute left-[60.6vw] top-[32.53vw] h-[2.16vw] w-[32.33vw] overflow-hidden rounded-[0.26vw] bg-[#7b471c]">
-        <Image
-          src="/assets/recap/shelf-wood.svg"
-          alt=""
-          width={530}
-          height={71}
-          className="h-full w-full"
-        />
-      </div>
+      <Image
+        src="/assets/recap/shelf.webp"
+        alt=""
+        width={494}
+        height={33}
+        className="absolute left-[60.57vw] top-[32.54vw] h-[2.16vw] w-[32.27vw]"
+      />
 
       <Image
         src="/assets/recap/hanging-frame.webp"
@@ -195,32 +156,36 @@ const Recap = () => {
       <Image
         src="/assets/recap/mirror.webp"
         alt=""
-        width={218}
-        height={270}
-        className="absolute left-[63.6vw] top-[40.95vw] h-[17.68vw] w-[14.29vw]"
+        width={278}
+        height={308}
+        className="absolute left-[61.03vw] top-[39.14vw] h-[20.09vw] w-[18.16vw]"
       />
 
-      <div className="absolute left-[6.02vw] top-[14.14vw] h-[24.35vw] w-[36.26vw] overflow-hidden rounded-[0.33vw] bg-[#f25c4e] shadow-[inset_-0.2vw_-0.39vw_0.26vw_0_rgba(0,0,0,0.25)]">
-        <Image
-          src="/assets/recap/video-frame-texture.svg"
-          alt=""
-          width={570}
-          height={382}
-          className="h-full w-full"
-        />
-      </div>
+      <Image
+        src="/assets/recap/video-frame.webp"
+        alt=""
+        width={568}
+        height={389}
+        className="absolute left-[5.18vw] top-[13.08vw] h-[25.41vw] w-[37.1vw]"
+      />
       <RecapVideo className="absolute left-[8.29vw] top-[16.03vw] h-[20.57vw] w-[31.71vw]" />
 
       <Image
         src="/assets/recap/brown-photo-frame.webp"
         alt=""
-        width={330}
-        height={255}
-        className="absolute left-[66.3vw] top-[15.84vw] h-[16.69vw] w-[21.6vw]"
+        width={345}
+        height={260}
+        className="absolute left-[66.25vw] top-[15.62vw] h-[16.92vw] w-[22.53vw]"
       />
 
       <svg width="0" height="0" className="absolute" aria-hidden>
         <defs>
+          <clipPath
+            id="recap-dark-brown-aperture"
+            clipPathUnits="objectBoundingBox"
+          >
+            <path d={DARK_BROWN_APERTURE} />
+          </clipPath>
           <clipPath id="recap-red-aperture" clipPathUnits="objectBoundingBox">
             <path d={RED_APERTURE} />
           </clipPath>
@@ -272,7 +237,7 @@ const Recap = () => {
             width: 540,
             height: 810,
           }}
-          className="absolute left-[63.6vw] top-[40.95vw] h-[17.68vw] w-[14.29vw]"
+          className="absolute left-[61.9vw] top-[40.1vw] h-[18.18vw] w-[16.42vw]"
         >
           <span
             className="absolute inset-0 overflow-hidden"
@@ -283,7 +248,13 @@ const Recap = () => {
               alt="A speaker at the lecture hall podium, running a workshop"
               width={540}
               height={810}
-              className="h-full w-full object-cover transition-transform duration-200 group-hover:scale-[1.02]"
+              className="absolute max-w-none object-cover transition-transform duration-200 group-hover:scale-[1.02]"
+              style={{
+                left: "11.43%",
+                top: "-5.28%",
+                width: "79.94%",
+                height: "108.12%",
+              }}
             />
           </span>
         </LightboxTrigger>

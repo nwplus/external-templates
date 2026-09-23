@@ -1,3 +1,6 @@
+/** Fired just before a nav link scrolls the page to its section. */
+export const NAV_JUMP = "hackcamp:nav-jump";
+
 /**
  * Smooth-scrolls to the section wrapper with the given id (see NAV_LINKS).
  * A section that tucks its top edge under the one above it can mark where
@@ -12,5 +15,7 @@ export function scrollToSection(id: string) {
     : (document.getElementById(`${id}-mobile`) ?? section);
   if (!target) return;
   const anchor = target.querySelector("[data-scroll-anchor]") ?? target;
+  // The sticky bar stays out of the way of the jump (see sticky-navbar.tsx).
+  window.dispatchEvent(new Event(NAV_JUMP));
   anchor.scrollIntoView({ block: "start", behavior: "smooth" });
 }

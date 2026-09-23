@@ -8,15 +8,15 @@ type Point = readonly [x: number, y: number];
 
 /**
  * How far the beam may swing from where it points in the art, in degrees:
- * well up over the title (negative is up), and a little way down towards
- * the clouds.
+ * only a little way up (negative is up), so it never lights the white title
+ * and washes it out, and further down towards the clouds.
  */
-const SWING_UP = -48;
+const SWING_UP = -10;
 const SWING_DOWN = 38;
 /**
  * How far past either limit, in degrees, the beam still follows the cursor
- * (held at the limit). Further out than that (well above or below the beam,
- * or behind the lamp) it points where the art has it.
+ * (held at the limit). Further out than that (above or below the beam, or
+ * behind the lamp) it drifts back to where the art has it.
  */
 const FOLLOW_MARGIN = 30;
 /**
