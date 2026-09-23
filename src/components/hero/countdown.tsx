@@ -36,8 +36,21 @@ export const Countdown = ({ className, compact = false }: CountdownProps) => {
       <div className="flex gap-[0.37em]">
         {units.map(([label, value]) => (
           <div key={label} className="flex flex-col items-center">
-            <div className="leading-none font-countdown" suppressHydrationWarning>
-              {value}
+            <div className="leading-none font-countdown">
+              {/*
+                The font's numerals are all different widths (a 1 is three
+                quarters of a 7), so each digit sits in a slot as wide as the
+                widest one and the block stays still as the numbers tick.
+              */}
+              {[...value].map((digit, i) => (
+                <span
+                  key={i}
+                  className="inline-block w-[0.62em] text-center"
+                  suppressHydrationWarning
+                >
+                  {digit}
+                </span>
+              ))}
             </div>
             <div className="text-[0.185em]">{label}</div>
           </div>

@@ -4,15 +4,25 @@ import { cn } from "@/lib/utils";
 
 import { AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { useCallback, useRef, useState } from "react";
+import {
+  type CSSProperties,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
 import { BedArt } from "./bed-art";
 import CloudBorder from "./cloud-border";
+import "./nugget-run.css";
 import { TurnedPhone } from "./phone-show";
 
 /** Where the bed sits in the night scene: phone frame, then desktop frame. */
 const BED_BOX =
   "absolute left-[-8.4%] top-[28.6%] w-[117%] max-w-none xl:left-[-1.7%] xl:top-[27.17%] xl:w-[103.4%]";
+
+/** Set once someone has opened the phone, so the hint stops for good. */
+const SEEN_KEY = "hackcamp-nugget-run-seen";
 
 const lessMotion = () =>
   window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -53,6 +63,26 @@ const BedScene = () => {
   const bed = useRef<HTMLDivElement>(null);
   const [showing, setShowing] = useState(false);
   const [tucked, setTucked] = useState(false);
+  // Off until mounted, so a returning visitor never sees it flash on.
+  const [hint, setHint] = useState(false);
+
+  useEffect(() => {
+    try {
+      setHint(!window.localStorage.getItem(SEEN_KEY));
+    } catch {
+      setHint(true);
+    }
+  }, []);
+
+  const togglePhone = () => {
+    setShowing((on) => !on);
+    setHint(false);
+    try {
+      window.localStorage.setItem(SEEN_KEY, "1");
+    } catch {
+      // Blocked storage: the hint just comes back on the next visit.
+    }
+  };
 
   // The game decides when the phone goes back: Esc, or no run in progress.
   const putPhoneAway = useCallback(() => setShowing(false), []);
@@ -82,6 +112,7 @@ const BedScene = () => {
       <div
         ref={bed}
         data-phone={showing ? "out" : "in"}
+        data-hint={hint || undefined}
         className={cn("bed-art", BED_BOX)}
       >
         <BedArt className="block h-auto w-full" />
@@ -114,20 +145,48 @@ const BedScene = () => {
               {letter}
             </span>
           ))}
+        {/* The phone's ping, in step with its buzz (nugget-run.css). */}
+        {hint && !showing && (
+          <span
+            aria-hidden="true"
+            className="phone-ping pointer-events-none absolute top-[19.8%] left-[40%] block size-[5cqw] rounded-full border-[0.35cqw] border-[#bfe3ff] opacity-0 shadow-[0_0_1.5cqw_#bfe3ff]"
+          />
+        )}
         <button
           type="button"
           aria-label="Show the bear's phone"
           aria-pressed={showing}
-          onClick={() => setShowing((on) => !on)}
+          onClick={togglePhone}
           className={cn(
-            "pointer-events-auto absolute top-[4.4%] left-[36.9%] h-[19%] w-[14%] cursor-pointer rounded-[40%]",
+            "group pointer-events-auto absolute top-[4.4%] left-[36.9%] h-[19%] w-[14%] cursor-pointer rounded-[40%]",
             // The arrow keys that play the game would otherwise light up this
             // button's focus ring over the bear; it returns with the phone.
             showing
               ? "focus-visible:outline-none"
               : "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-star"
           )}
-        />
+        >
+          {/*
+            A hover (or keyboard focus) shakes a few of the game's coins out
+            of the phone, jackpot style (nugget-run.css). They start at the
+            phone, which sits a fifth of the way across this button and four
+            fifths of the way down.
+          */}
+          {!showing &&
+            [-1.3, -0.65, 0].map((dx, i) => (
+              <span
+                key={dx}
+                aria-hidden="true"
+                className="phone-coin pointer-events-none absolute top-[81%] left-[22%] block size-[max(0.7rem,1.8cqw)] rounded-full border-[max(0.15rem,0.3cqw)] border-[#e0a100] bg-[#ffd23f] opacity-0"
+                style={
+                  {
+                    "--coin-dx": dx,
+                    animationDelay: `${i * 70}ms`,
+                  } as CSSProperties
+                }
+              />
+            ))}
+        </button>
         <button
           type="button"
           aria-label="Tuck Nugget in"

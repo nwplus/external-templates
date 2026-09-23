@@ -62,8 +62,10 @@ const LANE = 28;
 const LANE_FAR = 3;
 
 type Lane = -1 | 0 | 1;
-type Kind = "coin" | "barrier" | "train";
+type Kind = "coin" | "star" | "barrier" | "train";
 type Thing = { id: number; kind: Kind; lane: Lane; d: number };
+/** A little word that floats up from Nugget: "+50", "Shield!". */
+type Pop = { id: number; text: string; lane: Lane; at: number };
 type Status = "demo" | "playing" | "over";
 
 /**
@@ -98,6 +100,12 @@ const RAILS = (() => {
 })();
 
 const JUMP_MS = 650;
+/** How long a lane change leans Nugget into the turn. */
+const LEAN_MS = 220;
+/** How long a pop floats before it is gone. */
+const POP_MS = 650;
+/** How long the screen flashes when the shield takes a hit. */
+const BUMP_MS = 260;
 const BEST_KEY = "hackcamp-nugget-run-best";
 
 const readBest = () => {
@@ -128,6 +136,12 @@ const fresh = () => ({
   nextSpawn: 0.5,
   nextId: 1,
   overAt: 0,
+  shield: false,
+  bumpAt: -Infinity,
+  leanAt: -Infinity,
+  leanDir: 0,
+  pops: [] as Pop[],
+  newBest: false,
 });
 
 /** What each thing on the track looks like, anchored at its base. */
@@ -135,6 +149,12 @@ const Piece = ({ kind }: { kind: Kind }) => {
   if (kind === "coin")
     return (
       <span className="block size-[9cqw] rounded-full border-[1.3cqw] border-[#e0a100] bg-[#ffd23f]" />
+    );
+  if (kind === "star")
+    return (
+      <span className="block size-[12cqw] bg-[#e0a100] p-[1.4cqw] [clip-path:polygon(50%_0,61%_35%,98%_35%,68%_57%,79%_91%,50%_70%,21%_91%,32%_57%,2%_35%,39%_35%)]">
+        <span className="block size-full bg-[#fff186] [clip-path:polygon(50%_0,61%_35%,98%_35%,68%_57%,79%_91%,50%_70%,21%_91%,32%_57%,2%_35%,39%_35%)]" />
+      </span>
     );
   if (kind === "barrier")
     return (
@@ -155,11 +175,18 @@ const Piece = ({ kind }: { kind: Kind }) => {
  * The game on the bear's phone: an endless runner. Until someone plays it
  * runs a looping demo; ↑ (or a tap) starts a run. ← and → switch lanes and ↑
  * jumps, or swipe on a touch screen. Coins are collected by running through
- * them, barriers must be jumped, trains can only be dodged. Esc puts the
+ * them, barriers must be jumped, trains can only be dodged, and the odd star
+ * gives Nugget a shield that takes one hit for it. Esc puts the
  * phone away, and so does leaving it alone for a few seconds when no run is
  * in progress. Sized in the phone's own container units.
  */
-const RunnerGame = ({ onClose }: { onClose: () => void }) => {
+const RunnerGame = ({
+  onClose,
+  onCrash,
+}: {
+  onClose: () => void;
+  onCrash: () => void;
+}) => {
   const reduceMotion = useReducedMotion();
   const game = useRef(fresh());
   const [status, setStatus] = useState<Status>("demo");
@@ -205,8 +232,13 @@ const RunnerGame = ({ onClose }: { onClose: () => void }) => {
         if (move === "jump" && performance.now() - g.overAt > 450) start();
         return;
       }
+      const from = g.lane;
       if (move === "left") g.lane = Math.max(-1, g.lane - 1) as Lane;
       if (move === "right") g.lane = Math.min(1, g.lane + 1) as Lane;
+      if (g.lane !== from) {
+        g.leanAt = performance.now();
+        g.leanDir = g.lane - from;
+      }
       if (move === "jump" && performance.now() - g.jumpAt > JUMP_MS)
         g.jumpAt = performance.now();
     },
@@ -252,13 +284,15 @@ const RunnerGame = ({ onClose }: { onClose: () => void }) => {
       if (g.nextSpawn <= 0) {
         const roll = Math.random();
         const lane = randomLane();
-        if (roll < 0.35) {
+        if (!g.shield && roll < 0.06) {
+          g.things.push({ id: g.nextId++, kind: "star", lane, d: 0 });
+        } else if (roll < 0.38) {
           for (let i = 0; i < 3; i++)
             g.things.push({ id: g.nextId++, kind: "coin", lane, d: -i * 0.1 });
         } else {
           g.things.push({
             id: g.nextId++,
-            kind: roll < 0.75 ? "barrier" : "train",
+            kind: roll < 0.76 ? "barrier" : "train",
             lane,
             d: 0,
           });
@@ -269,26 +303,48 @@ const RunnerGame = ({ onClose }: { onClose: () => void }) => {
       const since = now - g.jumpAt;
       const airborne = since > JUMP_MS * 0.1 && since < JUMP_MS * 0.85;
       let crashed = false;
+      const pop = (text: string) =>
+        g.pops.push({ id: g.nextId++, text, lane: g.lane, at: now });
       g.things = g.things.filter((thing) => {
         thing.d += g.speed * dt;
         if (thing.lane === g.lane && thing.d >= 0.92 && thing.d <= 1) {
           if (thing.kind === "coin") {
             g.coins += 1;
+            pop("+50");
             return false;
           }
-          if (thing.kind === "train" || !airborne) crashed = true;
+          if (thing.kind === "star") {
+            g.shield = true;
+            pop("Shield!");
+            return false;
+          }
+          if (thing.kind === "train" || !airborne) {
+            // The shield takes the hit, and the thing goes with it.
+            if (!g.shield) {
+              crashed = true;
+              return true;
+            }
+            g.shield = false;
+            g.bumpAt = now;
+            pop("Saved!");
+            return false;
+          }
         }
         return thing.d < 1.15;
       });
+      g.pops = g.pops.filter((p) => now - p.at < POP_MS);
 
       if (crashed) {
         g.overAt = now;
         const score = Math.floor(g.distance) + g.coins * 50;
-        setBest((previous) => {
-          const next = Math.max(previous, score);
-          if (next > previous) saveBest(next);
-          return next;
-        });
+        const previous = readBest();
+        // Beating a score that was already there is worth a cheer; the first
+        // run of all is a best by default.
+        g.newBest = previous > 0 && score > previous;
+        if (score > previous) saveBest(score);
+        setBest(Math.max(previous, score));
+        g.pops = [];
+        onCrash();
         setStatus("over");
         return;
       }
@@ -297,7 +353,7 @@ const RunnerGame = ({ onClose }: { onClose: () => void }) => {
     };
     raf = requestAnimationFrame(step);
     return () => cancelAnimationFrame(raf);
-  }, [status]);
+  }, [status, onCrash]);
 
   const onPointerDown = (event: PointerEvent) => {
     swipe.current = { x: event.clientX, y: event.clientY };
@@ -317,11 +373,17 @@ const RunnerGame = ({ onClose }: { onClose: () => void }) => {
   const score =
     status === "demo" ? demoScore : Math.floor(g.distance) + g.coins * 50;
   const coins = status === "demo" ? Math.floor(demoScore / 57) : g.coins;
-  const since = performance.now() - g.jumpAt;
+  const now = performance.now();
+  const since = now - g.jumpAt;
   const lift =
     status === "playing" && since < JUMP_MS
       ? Math.sin((Math.PI * since) / JUMP_MS) * 32
       : 0;
+  const lean =
+    status === "playing"
+      ? g.leanDir * 14 * Math.max(0, 1 - (now - g.leanAt) / LEAN_MS)
+      : 0;
+  const bump = Math.max(0, 1 - (now - g.bumpAt) / BUMP_MS);
 
   return (
     <div
@@ -420,7 +482,7 @@ const RunnerGame = ({ onClose }: { onClose: () => void }) => {
             className="absolute bottom-[7%] w-[30cqw] transition-[left] duration-150 ease-out"
             style={{
               left: `${50 + g.lane * LANE}%`,
-              transform: `translate(-50%, ${-lift}cqw) rotate(${status === "over" ? -80 : 0}deg)`,
+              transform: `translate(-50%, ${-lift}cqw) rotate(${status === "over" ? -80 : lean}deg)`,
               transformOrigin: "50% 90%",
             }}
           >
@@ -433,7 +495,32 @@ const RunnerGame = ({ onClose }: { onClose: () => void }) => {
             >
               <Runner />
             </div>
+            {g.shield && status === "playing" && (
+              <span className="absolute -inset-[3cqw] block rounded-full border-[1cqw] border-[#fff186] bg-[#fff186]/15 shadow-[0_0_3cqw_#fff186] motion-safe:animate-[runner-shield_0.5s_ease-in-out_infinite_alternate]" />
+            )}
           </div>
+          {g.pops.map((p) => {
+            const age = (now - p.at) / POP_MS;
+            return (
+              <span
+                key={p.id}
+                className="absolute bottom-[40%] block text-[6.5cqw] leading-none whitespace-nowrap text-[#fff186] [text-shadow:0_0.6cqw_0_#1c2b78]"
+                style={{
+                  left: `${50 + p.lane * LANE}%`,
+                  transform: `translate(-50%, ${-age * 14}cqw)`,
+                  opacity: 1 - age * age,
+                }}
+              >
+                {p.text}
+              </span>
+            );
+          })}
+          {bump > 0 && (
+            <span
+              className="pointer-events-none absolute inset-0 block bg-white"
+              style={{ opacity: bump * 0.6 }}
+            />
+          )}
         </>
       )}
 
@@ -457,7 +544,11 @@ const RunnerGame = ({ onClose }: { onClose: () => void }) => {
           <p className="text-[8cqw] leading-tight">
             {score.toLocaleString("en-CA")}
             <span className="block text-[6cqw] text-white/80">
-              best {best.toLocaleString("en-CA")}
+              {g.newBest ? (
+                <span className="text-[#fff186]">New best!</span>
+              ) : (
+                <>best {best.toLocaleString("en-CA")}</>
+              )}
             </span>
           </p>
           <p className="mt-[2cqw] text-[6.5cqw] text-[#fff186]">
@@ -477,6 +568,28 @@ const RunnerGame = ({ onClose }: { onClose: () => void }) => {
  */
 export const TurnedPhone = ({ onClose }: { onClose: () => void }) => {
   const reduceMotion = useReducedMotion();
+  const shaker = useRef<HTMLDivElement>(null);
+
+  // A crash rattles the phone in the bear's paw (and a real one, if it can).
+  const onCrash = useCallback(() => {
+    if (!reduceMotion)
+      shaker.current?.animate(
+        [
+          { transform: "translate(0, 0) rotate(0deg)" },
+          { transform: "translate(-4%, 1%) rotate(-3deg)" },
+          { transform: "translate(4%, -1%) rotate(3deg)" },
+          { transform: "translate(-3%, 0) rotate(-2deg)" },
+          { transform: "translate(2%, 1%) rotate(1deg)" },
+          { transform: "translate(0, 0) rotate(0deg)" },
+        ],
+        { duration: 380, easing: "ease-out" }
+      );
+    try {
+      navigator.vibrate?.(60);
+    } catch {
+      // Not every browser lets a page buzz the phone.
+    }
+  }, [reduceMotion]);
   const away = {
     x: "-50%",
     y: "-50%",
@@ -516,17 +629,23 @@ export const TurnedPhone = ({ onClose }: { onClose: () => void }) => {
             }
       }
     >
-      {/* The screen side. */}
-      <div className="absolute inset-0 rounded-[16cqw] bg-[#1d1f33] p-[5cqw] shadow-[0_3cqw_8cqw_rgba(0,0,0,0.45)] [backface-visibility:hidden]">
-        <div className="relative h-full w-full">
-          <RunnerGame onClose={onClose} />
+      <div
+        ref={shaker}
+        className="absolute inset-0"
+        style={{ transformStyle: "preserve-3d" }}
+      >
+        {/* The screen side. */}
+        <div className="absolute inset-0 rounded-[16cqw] bg-[#1d1f33] p-[5cqw] shadow-[0_3cqw_8cqw_rgba(0,0,0,0.45)] [backface-visibility:hidden]">
+          <div className="relative h-full w-full">
+            <RunnerGame onClose={onClose} onCrash={onCrash} />
+          </div>
         </div>
-      </div>
-      {/* The back, as it looks in the bear's hand. */}
-      <div className="absolute inset-0 flex items-center justify-center rounded-[16cqw] bg-linear-to-br from-[#bcd6fb] to-[#86aef0] [backface-visibility:hidden] [transform:rotateY(180deg)]">
-        <span className="font-display text-[34cqw] leading-none text-[#e6eeff]/80">
-          N
-        </span>
+        {/* The back, as it looks in the bear's hand. */}
+        <div className="absolute inset-0 flex items-center justify-center rounded-[16cqw] bg-linear-to-br from-[#bcd6fb] to-[#86aef0] [backface-visibility:hidden] [transform:rotateY(180deg)]">
+          <span className="font-display text-[34cqw] leading-none text-[#e6eeff]/80">
+            N
+          </span>
+        </div>
       </div>
     </motion.div>
   );
