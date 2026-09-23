@@ -11,8 +11,8 @@ type Point = readonly [x: number, y: number];
  * well up over the title (negative is up), and a little way down towards
  * the clouds.
  */
-const SWING_UP = -62;
-const SWING_DOWN = 45;
+const SWING_UP = -55;
+const SWING_DOWN = 38;
 /**
  * How far past either limit, in degrees, the beam still follows the cursor
  * (held at the limit). Further out than that (well above or below the beam,
