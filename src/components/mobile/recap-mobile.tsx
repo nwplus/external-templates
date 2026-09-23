@@ -164,58 +164,16 @@ const RecapMobile = () => {
         />
 
         <FramedPhoto
-          className="left-[3.31vw] top-[115.07vw] h-[34.32vw] w-[22.9vw]"
-          frame={{ src: "/assets/recap/purple-frame.webp", size: [289, 371] }}
+          className="left-[2.06vw] top-[114.05vw] h-[35.27vw] w-[24.21vw]"
+          frame={{ src: "/assets/recap/purple-frame.webp", size: [306, 381] }}
           photo={{
             src: "/assets/recap/photos/purple.jpg",
             alt: "Two hackers demoing their project beside a hand-lettered sign",
             size: [570, 760],
           }}
-          aperture={[4.97, 12.99, 90.06, 77.53]}
+          aperture={[9.86, 15.53, 85.19, 75.44]}
           objectPosition="70% 91%"
           rounded
-        />
-        <Image
-          src="/assets/recap/purple-frame-bow-left.webp"
-          alt=""
-          width={29}
-          height={16}
-          className="absolute left-[11.43vw] top-[117.73vw] h-[1.29vw] w-[2.05vw] rotate-[-20.76deg]"
-        />
-        <Image
-          src="/assets/recap/purple-frame-bow-right.webp"
-          alt=""
-          width={29}
-          height={16}
-          className="absolute left-[15.99vw] top-[117.73vw] h-[1.29vw] w-[2.05vw] rotate-[159.24deg]"
-        />
-        <Image
-          src="/assets/recap/purple-frame-gem-outer.webp"
-          alt=""
-          width={32}
-          height={31}
-          className="absolute left-[13.5vw] top-[115.76vw] h-[2.79vw] w-[2.52vw]"
-        />
-        <Image
-          src="/assets/recap/purple-frame-gem-inner.webp"
-          alt=""
-          width={20}
-          height={18}
-          className="absolute left-[13.98vw] top-[116.36vw] h-[1.59vw] w-[1.54vw]"
-        />
-        <Image
-          src="/assets/recap/purple-frame-foot-left.webp"
-          alt=""
-          width={34}
-          height={23}
-          className="absolute left-[12.14vw] top-[146.33vw] h-[2.11vw] w-[2.67vw]"
-        />
-        <Image
-          src="/assets/recap/purple-frame-foot-right.webp"
-          alt=""
-          width={34}
-          height={23}
-          className="absolute left-[15vw] top-[146.33vw] h-[2.11vw] w-[2.67vw]"
         />
 
         <FramedPhoto
@@ -249,9 +207,9 @@ const RecapMobile = () => {
         <Image
           src="/assets/recap/mirror.webp"
           alt=""
-          width={218}
-          height={270}
-          className="absolute left-[45.8vw] top-[149.38vw] h-[31.38vw] w-[28.36vw]"
+          width={278}
+          height={308}
+          className="absolute left-[40.7vw] top-[146.17vw] h-[35.66vw] w-[36.04vw]"
         />
         <LightboxTrigger
           photo={{
@@ -277,29 +235,27 @@ const RecapMobile = () => {
           </span>
         </LightboxTrigger>
 
-        <div className="absolute left-[8.91vw] top-[45.04vw] h-[63.55vw] w-[86.01vw] overflow-hidden rounded-[0.64vw] bg-[#f25c4e] shadow-[inset_-0.5vw_-1vw_0.64vw_0_rgba(0,0,0,0.25)]">
-          <Image
-            src="/assets/recap/video-frame-texture.svg"
-            alt=""
-            width={570}
-            height={382}
-            className="h-full w-full"
-          />
-        </div>
+        <Image
+          src="/assets/recap/video-frame.webp"
+          alt=""
+          width={568}
+          height={389}
+          className="absolute left-[6.92vw] top-[42.27vw] h-[66.32vw] w-[88.0vw]"
+        />
         <RecapVideo className="absolute left-[14.29vw] top-[49.97vw] h-[53.69vw] w-[75.23vw]" />
 
         <FramedPhoto
-          className="left-[63.61vw] top-[117.18vw] h-[24.67vw] w-[30.79vw]"
+          className="left-[63.54vw] top-[116.85vw] h-[25.01vw] w-[32.12vw]"
           frame={{
             src: "/assets/recap/brown-photo-frame.webp",
-            size: [330, 255],
+            size: [345, 260],
           }}
           photo={{
             src: "/assets/recap/photos/brown.jpg",
             alt: "A team gathered around a laptop at a table",
             size: [681, 454],
           }}
-          aperture={[13.89, 17.91, 66.44, 68.48]}
+          aperture={[13.53, 18.99, 63.69, 67.55]}
           objectPosition="50% 40%"
         />
 
