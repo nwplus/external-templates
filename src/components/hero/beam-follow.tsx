@@ -9,17 +9,22 @@ type Point = readonly [x: number, y: number];
 /**
  * How far the beam may swing from where it points in the art, in degrees:
  * well up over the title (negative is up), and a little way down towards
- * the clouds. The beam only follows a cursor inside this arc; anywhere else
- * (above or below it, or behind the lamp) it points where the art has it.
+ * the clouds.
  */
 const SWING_UP = -62;
 const SWING_DOWN = 18;
+/**
+ * How far past either limit, in degrees, the beam still follows the cursor
+ * (held at the limit). Further out than that (well above or below the beam,
+ * or behind the lamp) it points where the art has it.
+ */
+const FOLLOW_MARGIN = 30;
 /**
  * How far out from the bulb, in view units (see ASPECT), the cursor has to
  * be before the beam follows it: clear of the house wall, so a cursor on the
  * house itself, where a small move is a big change of angle, leaves it be.
  */
-const MIN_REACH = 8;
+const MIN_REACH = 6;
 
 const DEG = 180 / Math.PI;
 
@@ -116,8 +121,12 @@ export const BeamFollow = ({ lit }: { lit: boolean }) => {
         const [px, py] = view(pointer.x, pointer.y);
         const aim = fold(Math.atan2(py - PIVOT[1], px - PIVOT[0]) * DEG - rest);
         const reach = Math.hypot(px - PIVOT[0], py - PIVOT[1]);
-        if (aim >= SWING_UP && aim <= SWING_DOWN && reach >= MIN_REACH)
-          angle = aim;
+        if (
+          aim >= SWING_UP - FOLLOW_MARGIN &&
+          aim <= SWING_DOWN + FOLLOW_MARGIN &&
+          reach >= MIN_REACH
+        )
+          angle = Math.min(SWING_DOWN, Math.max(SWING_UP, aim));
       }
       layers.forEach((el) => (el.style.transform = `rotate(${angle}deg)`));
 
