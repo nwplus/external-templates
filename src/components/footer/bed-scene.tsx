@@ -111,7 +111,14 @@ const BedScene = () => {
         ref={bed}
         data-phone={showing ? "out" : "in"}
         data-hint={hint || undefined}
-        className={cn("bed-art", BED_BOX)}
+        className={cn(
+          "bed-art",
+          BED_BOX,
+          // The art runs the blanket on past the bottom of the phone layout's
+          // cloud frame (which ends 86.65% of the way down this box at every
+          // width below xl), so there it is cut just inside the clouds.
+          "max-xl:[clip-path:inset(0_0_13.5%_0)]"
+        )}
       >
         <BedArt className="block h-auto w-full" />
       </div>
