@@ -5,10 +5,11 @@ import { ResponsiveArt } from "@/components/ui/responsive-art";
 import Image from "next/image";
 import { type CSSProperties, useState } from "react";
 
-import { BeamShadow } from "./beam-shadow";
+import { BeamArt, BeamFollow } from "./beam-follow";
 import { Countdown } from "./countdown";
 import "./hero.css";
 import {
+  DESKTOP_BEAM,
   DESKTOP_UNLIT_CLIP,
   HOUSE_SPOTS,
   MOBILE_SPOTS,
@@ -40,14 +41,19 @@ const LampButton = ({
   />
 );
 
+/** The beam's layers turn about the bulb (see beam-follow.tsx). */
+const SWING_ORIGIN: CSSProperties = {
+  transformOrigin: `${DESKTOP_BEAM.pivot[0]}% ${DESKTOP_BEAM.pivot[1]}%`,
+};
+
 /**
  * The desktop house with its countdown, inside the house box. Clicking the
- * house turns its lamp off and on. The beam is baked into the raster, so the
- * raster is drawn twice: the whole thing underneath, which is the only layer
- * the cursor's shadow cuts into and which "off" simply hides, and over it the
- * house alone, clipped to its lamp-off silhouette, so the house is whole
- * whatever the shadow takes and is all that is left when the lamp is off.
- * The glow fades with it and the countdown swaps to cream on the dark sky.
+ * house turns its lamp off and on, and the beam swings round to follow the
+ * cursor. The raster's own beam is clipped away (the house is drawn to its
+ * lamp-off silhouette) and a drawn one that can turn sits underneath it, so
+ * the house always covers the beam's root. "Off" simply hides the beam; the
+ * glow turns and fades with it, and the countdown swaps to cream on the
+ * dark sky.
  */
 export const DesktopHouse = () => {
   const [lit, setLit] = useState(true);
@@ -56,32 +62,32 @@ export const DesktopHouse = () => {
   return (
     <>
       <div className="absolute inset-0 z-10">
-        {/* The beam layer: beam-shadow.tsx owns its clip-path, nothing else sets one */}
+        {/* The beam: beam-follow.tsx owns its transform, nothing else sets one */}
+        <div
+          className="hero-beam-swing pointer-events-none absolute inset-0 will-change-transform"
+          style={lit ? SWING_ORIGIN : { ...SWING_ORIGIN, visibility: "hidden" }}
+        >
+          <BeamArt />
+        </div>
+        {/* The house without its baked-in beam */}
         <Image
           src="/assets/hero/house.webp"
           alt="House"
-          fill
-          className="hero-house object-contain object-bottom-left"
-          style={lit ? undefined : { visibility: "hidden" }}
-        />
-        {/* Same raster, already decoded: a layer, not more bytes */}
-        <Image
-          src="/assets/hero/house.webp"
-          alt=""
-          aria-hidden
           fill
           className="pointer-events-none object-contain object-bottom-left"
           style={{ clipPath: DESKTOP_UNLIT_CLIP }}
         />
       </div>
-      {/* Spotlight glow along the beam */}
+      {/* Spotlight glow along the beam, turning with it */}
       <div
-        data-lit={lit}
-        className="hero-glow pointer-events-none absolute inset-0 z-20"
+        className="hero-beam-swing pointer-events-none absolute inset-0 z-20 will-change-transform"
+        style={SWING_ORIGIN}
       >
-        <SpotlightGlow />
+        <div data-lit={lit} className="hero-glow absolute inset-0">
+          <SpotlightGlow />
+        </div>
       </div>
-      <BeamShadow lit={lit} />
+      <BeamFollow lit={lit} />
       <div className="absolute inset-0 z-20">
         <LampButton lit={lit} toggle={toggle} style={HOUSE_SPOTS.lamp} />
       </div>

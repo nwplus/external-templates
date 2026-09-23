@@ -176,6 +176,32 @@ const MOBILE_UNLIT: Point[] = [
 ];
 
 export const DESKTOP_UNLIT_CLIP = polygon(DESKTOP_UNLIT, HOUSE_IMAGE_TO_BOX);
+
+/**
+ * The desktop beam as a wedge in house-box percentages, for drawing it apart
+ * from the raster. Its two long edges are where the raster's beam crosses
+ * half strength (measured at 40% and 50% across the image): the top edge
+ * falls 0.47 and the bottom edge climbs 0.23 for every step across. The
+ * wedge starts a little way behind the wall, inside the house, so its root
+ * stays hidden however it is turned, and runs out to the image's right edge.
+ */
+const beamTop = (x: number) => 31.5 - 0.47 * (x - 40);
+const beamBottom = (x: number) => 48 + 0.23 * (x - 40);
+const beamPoint = (x: number, y: number) =>
+  [x * HOUSE_IMAGE_TO_BOX, y] as const;
+
+export const DESKTOP_BEAM = {
+  backTop: beamPoint(27, beamTop(27)),
+  farTop: beamPoint(100, beamTop(100)),
+  farBottom: beamPoint(100, beamBottom(100)),
+  backBottom: beamPoint(27, beamBottom(27)),
+  /**
+   * What the beam swings about: the middle of the beam where it leaves the
+   * lamp, so it stays on the lamp whichever way it points.
+   */
+  pivot: beamPoint(29.8, (beamTop(29.8) + beamBottom(29.8)) / 2),
+} as const;
+
 export const MOBILE_UNLIT_CLIP = polygon(MOBILE_UNLIT, 1);
 
 /** A rectangle given in image percentages, as a style for the house box. */

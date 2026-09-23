@@ -56,7 +56,6 @@
 }
 
 /*
- * The cursor's shadow in the beam is a clip-path that beam-shadow.tsx writes
- * onto `.hero-house` and `.hero-glow` straight from the pointer; there is no
- * overlay to style.
+ * The beam follows the cursor by a rotate that beam-follow.tsx writes onto
+ * the `.hero-beam-swing` layers each frame; there is nothing to style.
  */
