@@ -8,17 +8,19 @@ type Point = readonly [x: number, y: number];
 
 /**
  * How far the beam may swing from where it points in the art, in degrees:
- * well up over the title (negative is up), and a little way down towards
- * the clouds.
+ * only a little way up (negative is up), so it never lights the white title
+ * and washes it out, and further down towards the clouds.
  */
-const SWING_UP = -48;
+const SWING_UP = -10;
 const SWING_DOWN = 38;
 /**
- * How far past either limit, in degrees, the beam still follows the cursor
- * (held at the limit). Further out than that (well above or below the beam,
- * or behind the lamp) it points where the art has it.
+ * How far past each limit, in degrees, the beam still follows the cursor
+ * (held at the limit). Upwards that is nearly straight up, so anywhere over
+ * the title the beam just stays at its highest; further out than these
+ * (behind the lamp, or well below the beam) it points where the art has it.
  */
-const FOLLOW_MARGIN = 30;
+const FOLLOW_MARGIN_UP = 70;
+const FOLLOW_MARGIN_DOWN = 30;
 /**
  * How far out from the bulb, in view units (see ASPECT), the cursor has to
  * be before the beam follows it: clear of the house wall, so a cursor on the
@@ -146,8 +148,8 @@ export const BeamFollow = ({ lit }: { lit: boolean }) => {
         const reach = Math.hypot(px - PIVOT[0], py - PIVOT[1]);
         const give = following ? LET_GO_BUFFER : 0;
         following =
-          aim >= SWING_UP - FOLLOW_MARGIN - give &&
-          aim <= SWING_DOWN + FOLLOW_MARGIN + give &&
+          aim >= SWING_UP - FOLLOW_MARGIN_UP - give &&
+          aim <= SWING_DOWN + FOLLOW_MARGIN_DOWN + give &&
           reach >= MIN_REACH - give / 2;
         if (following) target = Math.min(SWING_DOWN, Math.max(SWING_UP, aim));
       } else {
