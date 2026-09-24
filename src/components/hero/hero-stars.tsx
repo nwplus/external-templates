@@ -7,7 +7,8 @@
  * own timing so the sky never moves in lockstep; the drift is wider than the
  * footer stars' float because these sit among sparkles that stay put, and a
  * small move reads as none. They also twinkle, on a beat that never matches
- * their drift, so no two stars repeat the same pairing.
+ * their drift, so no two stars repeat the same pairing, and every so often
+ * one gives a little wiggle.
  */
 import "./hero.css";
 import { SkyTwinkle } from "./sky-twinkle";
@@ -60,8 +61,8 @@ export const HeroStars = ({ scale = 1 }: HeroStarsProps) => (
             left: `${((x / ART.width) * 100).toFixed(2)}%`,
             top: `${((y / ART.height) * 100).toFixed(2)}%`,
             width: `${width.toFixed(2)}%`,
-            animationDuration: `${5 + (i % 4)}s, ${2.6 + ((i * 1.3) % 2.4)}s`,
-            animationDelay: `-${(i * 1.7) % 8}s, -${(i * 0.9) % 3}s`,
+            animationDuration: `${5 + (i % 4)}s, ${2.6 + ((i * 1.3) % 2.4)}s, ${7 + ((i * 2.3) % 5)}s`,
+            animationDelay: `-${(i * 1.7) % 8}s, -${(i * 0.9) % 3}s, -${(i * 3.1) % 9}s`,
           }}
         />
       );

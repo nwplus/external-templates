@@ -50,8 +50,8 @@
 }
 
 /*
- * Their twinkle, on top of the drift. Two animations, so the inline timings
- * in hero-stars.tsx are pairs: the drift's first, the twinkle's second.
+ * Their twinkle, on top of the drift. Three animations (drift, twinkle,
+ * wiggle), so the inline timings in hero-stars.tsx come in that order.
  */
 @keyframes hero-star-twinkle {
   0%,
@@ -184,11 +184,44 @@
   }
 }
 
+/*
+ * Now and then a star wiggles: still for most of its cycle, then a quick
+ * shake that dies away. It moves `rotate` rather than `transform`, so it adds
+ * to the drift's tilt instead of replacing it. Its timings are the third of
+ * each inline set.
+ */
+@keyframes hero-star-wiggle {
+  0%,
+  70%,
+  100% {
+    rotate: 0deg;
+  }
+  73% {
+    rotate: -14deg;
+  }
+  76% {
+    rotate: 11deg;
+  }
+  79% {
+    rotate: -8deg;
+  }
+  82% {
+    rotate: 5deg;
+  }
+  85% {
+    rotate: -2deg;
+  }
+  88% {
+    rotate: 0deg;
+  }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .hero-star {
     animation:
       hero-drift 6s ease-in-out infinite,
-      hero-star-twinkle 3s ease-in-out infinite;
+      hero-star-twinkle 3s ease-in-out infinite,
+      hero-star-wiggle 8s ease-in-out infinite;
   }
 
   .hero-bloom {
