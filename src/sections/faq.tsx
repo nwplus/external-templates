@@ -17,7 +17,11 @@ import {
  */
 const toRoomGroup = ({ category, faqs }: FaqGroup): FaqGroup<FaqItem> => ({
   category,
-  faqs: faqs.map(({ question, answer }) => ({ question, answer })),
+  faqs: faqs.map(({ question, answer, category }) => ({
+    question,
+    answer,
+    category,
+  })),
 });
 
 /**

@@ -11,8 +11,9 @@ import { MoonBearFigure } from "./moon-bear-figure";
 // tall-clouds section's background below.
 export const DesktopAbout = () => (
   <div className="relative bg-linear-to-b from-[#0C1637] to-[#12204D]">
-    {/* Welcome to HackCamp */}
-    <div className="relative z-30 h-150 mx-auto w-300 mr-[10%] items-center grid grid-cols-2 text-white gap-20">
+    {/* Welcome to HackCamp. Below xl the 1200px box would run off the right
+        edge, so it spans the window instead, the copy still in the right half. */}
+    <div className="relative z-30 h-150 mx-auto w-300 mr-[10%] items-center grid grid-cols-2 text-white gap-20 max-xl:w-auto max-xl:mx-6 max-xl:gap-10">
       <div />
       <div>
         <h2 className="font-title text-6xl">{WELCOME_TITLE}</h2>
@@ -46,7 +47,7 @@ export const DesktopAbout = () => (
       {/* Content. The layer covers the whole illustration, so it lets clicks
           through to the moon and bear except where the copy itself is. */}
       <div className="pointer-events-none relative z-30 h-full top-0 left-0 text-[20px]">
-        <div className="h-full mx-auto w-300 items-center grid grid-cols-2 text-white gap-20">
+        <div className="h-full mx-auto w-300 items-center grid grid-cols-2 text-white gap-20 max-xl:w-full max-xl:px-6 max-xl:gap-10">
           <HackathonFaq className="pointer-events-auto flex flex-col justify-center h-full" />
           <div />
         </div>

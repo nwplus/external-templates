@@ -230,6 +230,46 @@ const spot = (
   height: `${height}%`,
 });
 
+/**
+ * A lit window's glow: a box centred on the pane, given as its centre and
+ * size in image percentages, grown by `grow` so the light spills past the
+ * frame onto the wall.
+ */
+const glow = (
+  x: number,
+  y: number,
+  width: number,
+  height: number,
+  xScale = HOUSE_IMAGE_TO_BOX,
+  grow = 1.7
+) =>
+  spot(
+    x - (width * grow) / 2,
+    Number((y - (height * grow) / 2).toFixed(2)),
+    width * grow,
+    Number((height * grow).toFixed(2)),
+    xScale
+  );
+
+/**
+ * The desktop house's windows, measured off the raster's panes: the upper
+ * window, the lower one beside the door and the round lattice window.
+ */
+export const HOUSE_WINDOWS = [
+  glow(24.09, 44.75, 2.2, 5.9),
+  glow(21.09, 53.67, 1.89, 5.04),
+  glow(15.32, 53.6, 3.52, 5.76),
+] as const;
+
+/**
+ * The phone house's two windows. Its round window is cut off by the left
+ * edge, so it goes without.
+ */
+export const MOBILE_WINDOWS = [
+  glow(23.13, 39.17, 6.38, 5.74, 1),
+  glow(14.63, 47.82, 5.25, 4.84, 1),
+] as const;
+
 /** The desktop house and its hill: the click target for the light. */
 export const HOUSE_SPOTS = {
   lamp: spot(3, 28, 37.5, 72),

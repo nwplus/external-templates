@@ -49,9 +49,195 @@
   }
 }
 
+/*
+ * Their twinkle, on top of the drift. Three animations (drift, twinkle,
+ * wiggle), so the inline timings in hero-stars.tsx come in that order.
+ */
+@keyframes hero-star-twinkle {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.65;
+  }
+}
+
+/*
+ * The sky's twinkle (sky-twinkle.tsx). A bloom is a soft cream glow over a
+ * sparkle baked into the art: breathing ones swell and fade gently, glints
+ * sit nearly dark and flare for a moment. Pinpricks are the faint stars
+ * scattered between them. Screen blending lets the glow brighten the
+ * sparkle's own colour instead of washing it out.
+ */
+.hero-bloom,
+.hero-glint {
+  background: radial-gradient(
+    circle,
+    rgb(255 248 228 / 0.85) 0%,
+    rgb(255 228 170 / 0.35) 28%,
+    transparent 68%
+  );
+  mix-blend-mode: screen;
+  opacity: 0.2;
+}
+
+.hero-pinprick {
+  background: #fff4d6;
+  box-shadow: 0 0 4px 1px rgb(255 244 214 / 0.6);
+  opacity: 0.5;
+}
+
+@keyframes hero-bloom {
+  0%,
+  100% {
+    opacity: 0.15;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 0.75;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes hero-glint {
+  0%,
+  100% {
+    opacity: 0.1;
+    transform: scale(0.8);
+  }
+  6% {
+    opacity: 0.95;
+    transform: scale(1.15);
+  }
+  18% {
+    opacity: 0.1;
+    transform: scale(0.8);
+  }
+}
+
+@keyframes hero-pinprick {
+  0%,
+  100% {
+    opacity: 0.15;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.2);
+  }
+}
+
+/*
+ * Light in the house's windows: a warm glow over each pane, dimming and
+ * catching unevenly like a lamp flame rather than pulsing. The wider halo
+ * spilling onto the wall is the pseudo-element, so it flickers with it.
+ */
+.hero-window {
+  background: radial-gradient(
+    closest-side,
+    rgb(255 233 176 / 0.9) 0%,
+    rgb(255 217 138 / 0.5) 45%,
+    transparent 100%
+  );
+  mix-blend-mode: screen;
+  opacity: 0.6;
+}
+
+.hero-window::after {
+  content: "";
+  position: absolute;
+  inset: -60%;
+  border-radius: 50%;
+  background: radial-gradient(
+    closest-side,
+    rgb(255 217 138 / 0.3) 0%,
+    transparent 100%
+  );
+}
+
+@keyframes hero-window-flicker {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  12% {
+    opacity: 0.78;
+  }
+  22% {
+    opacity: 0.45;
+  }
+  31% {
+    opacity: 0.85;
+  }
+  47% {
+    opacity: 0.55;
+  }
+  58% {
+    opacity: 0.7;
+  }
+  71% {
+    opacity: 0.32;
+  }
+  84% {
+    opacity: 0.8;
+  }
+}
+
+/*
+ * Now and then a star wiggles: still for most of its cycle, then a quick
+ * shake that dies away. It moves `rotate` rather than `transform`, so it adds
+ * to the drift's tilt instead of replacing it. Its timings are the third of
+ * each inline set.
+ */
+@keyframes hero-star-wiggle {
+  0%,
+  70%,
+  100% {
+    rotate: 0deg;
+  }
+  73% {
+    rotate: -14deg;
+  }
+  76% {
+    rotate: 11deg;
+  }
+  79% {
+    rotate: -8deg;
+  }
+  82% {
+    rotate: 5deg;
+  }
+  85% {
+    rotate: -2deg;
+  }
+  88% {
+    rotate: 0deg;
+  }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .hero-star {
-    animation: hero-drift 6s ease-in-out infinite;
+    animation:
+      hero-drift 6s ease-in-out infinite,
+      hero-star-twinkle 3s ease-in-out infinite,
+      hero-star-wiggle 8s ease-in-out infinite;
+  }
+
+  .hero-bloom {
+    animation: hero-bloom 3.5s ease-in-out infinite;
+  }
+
+  .hero-glint {
+    animation: hero-glint 5s ease-in-out infinite;
+  }
+
+  .hero-pinprick {
+    animation: hero-pinprick 4s ease-in-out infinite;
+  }
+
+  .hero-window {
+    animation: hero-window-flicker 5s ease-in-out infinite;
   }
 }
 

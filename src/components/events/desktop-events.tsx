@@ -11,8 +11,10 @@ import Image from "next/image";
 import { SheepLeft } from "./sheep-left";
 import { SheepRight } from "./sheep-right";
 
+// Below xl the copy and sheep outgrow the art's aspect, so the section takes
+// their height rather than spilling the sheep over the stats heading.
 export const DesktopEvents = () => (
-  <div className="relative w-full aspect-1531/983">
+  <div className="relative w-full aspect-1531/983 max-xl:aspect-auto">
     {/* Illustration */}
     <Parallax
       speed={0.2}
@@ -27,9 +29,9 @@ export const DesktopEvents = () => (
       />
     </Parallax>
 
-    {/* Content */}
+    {/* Content: 1200px wide, or the window's width below xl */}
     <div className="relative z-10 h-full top-0 left-0">
-      <div className="mx-auto w-300 items-end grid grid-cols-2 text-white gap-20 overflow-visible">
+      <div className="mx-auto w-300 max-xl:w-full max-xl:px-6 items-end grid grid-cols-2 text-white gap-20 overflow-visible">
         <div className="flex flex-col gap-3">
           {/* Copy */}
           <div className="pt-45">
@@ -44,8 +46,10 @@ export const DesktopEvents = () => (
             </div>
           </Parallax>
         </div>
+        {/* At xl this sheep reaches into the page margin. Below it there is
+            none, so it steps in far enough to keep its copy on screen. */}
         <Parallax speed={-0.12}>
-          <div className="w-[138%] -translate-y-46">
+          <div className="w-[138%] -translate-y-46 max-xl:-ml-[10%]">
             <SheepRight {...LEARN_WEEK} />
           </div>
         </Parallax>

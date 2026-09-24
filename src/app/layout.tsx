@@ -1,3 +1,5 @@
+import { OG_IMAGE } from "@/constants/hero";
+
 import type { Metadata } from "next";
 import { Arsenal } from "next/font/google";
 import localFont from "next/font/local";
@@ -40,17 +42,13 @@ export const metadata: Metadata = {
     url: siteUrl,
     siteName: "HackCamp",
     type: "website",
-    images: [
-      {
-        url: "/opengraph-image.jpg",
-      },
-    ],
+    images: [OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
     title: "HackCamp 2026",
     description: metaDescription,
-    images: ["/opengraph-image.jpg"],
+    images: [OG_IMAGE],
   },
 };
 

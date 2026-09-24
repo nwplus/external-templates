@@ -11,37 +11,69 @@ import {
   useState,
 } from "react";
 
-/** Nugget, running towards us. */
+/**
+ * Nugget, running towards us: the beaver from the testimonials art
+ * (nugget.svg), in its colours and dome shape, with the paddle tail swinging
+ * out behind and the buck tooth big enough to read at game size.
+ */
 const Runner = () => (
   <svg viewBox="0 0 40 48" className="block h-auto w-full" aria-hidden="true">
+    <ellipse
+      cx="31.5"
+      cy="32"
+      rx="6.5"
+      ry="10.5"
+      transform="rotate(35 31.5 32)"
+      fill="#885946"
+    />
     <rect
       x="13"
-      y="33"
-      width="5"
-      height="13"
-      rx="2.5"
-      fill="#6d6aa8"
+      y="35"
+      width="5.5"
+      height="11"
+      rx="2.75"
+      fill="#BC8F6C"
       className="origin-top [transform-box:fill-box] motion-safe:animate-[runner-stride_0.26s_ease-in-out_infinite_alternate]"
     />
     <rect
-      x="22"
-      y="33"
-      width="5"
-      height="13"
-      rx="2.5"
-      fill="#6d6aa8"
+      x="21.5"
+      y="35"
+      width="5.5"
+      height="11"
+      rx="2.75"
+      fill="#BC8F6C"
       className="origin-top [transform-box:fill-box] motion-safe:animate-[runner-stride_0.26s_ease-in-out_-0.26s_infinite_alternate]"
     />
-    <circle cx="11" cy="13" r="3.6" fill="#9d9cca" />
-    <circle cx="29" cy="13" r="3.6" fill="#9d9cca" />
-    <ellipse cx="20" cy="25" rx="13" ry="13.5" fill="#9d9cca" />
-    <circle cx="15.5" cy="21" r="1.9" fill="#22264f" />
-    <circle cx="24.5" cy="21" r="1.9" fill="#22264f" />
-    <ellipse cx="20" cy="26.5" rx="3.4" ry="2.2" fill="#c2ccff" />
+    <circle cx="12.6" cy="11.4" r="2.3" fill="#F2C7A3" />
+    <circle cx="27.4" cy="11.4" r="2.3" fill="#F2C7A3" />
     <path
-      d="M17.5 29.5q2.5 2 5 0"
-      stroke="#22264f"
-      strokeWidth="1.2"
+      d="M7.5 36C7.5 20 11.5 7.5 20 7.5S32.5 20 32.5 36C32.5 40 27 41.5 20 41.5S7.5 40 7.5 36Z"
+      fill="#E8BA97"
+    />
+    <ellipse
+      cx="8"
+      cy="27"
+      rx="2.6"
+      ry="5"
+      transform="rotate(18 8 27)"
+      fill="#D29F77"
+    />
+    <ellipse
+      cx="32"
+      cy="27"
+      rx="2.6"
+      ry="5"
+      transform="rotate(-18 32 27)"
+      fill="#D29F77"
+    />
+    <ellipse cx="15.8" cy="18.5" rx="1.5" ry="2" fill="#4F2F22" />
+    <ellipse cx="24.2" cy="18.5" rx="1.5" ry="2" fill="#4F2F22" />
+    <ellipse cx="20" cy="21.6" rx="1.9" ry="1.2" fill="#4F2F22" />
+    <rect x="18.7" y="23.4" width="2.6" height="3" rx="0.5" fill="#fff" />
+    <path
+      d="M16.4 23q1.8 1.3 3.6 0q1.8 1.3 3.6 0"
+      stroke="#4F2F22"
+      strokeWidth="0.9"
       strokeLinecap="round"
       fill="none"
     />

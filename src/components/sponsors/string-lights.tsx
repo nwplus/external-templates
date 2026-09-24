@@ -61,7 +61,7 @@ const StringLights = ({
           sizeClass
         )}
       >
-        <Art className={cn("block h-auto w-full", lightsClass)} />
+        <Art className={cn("block h-auto w-full overflow-visible", lightsClass)} />
       </button>
     </div>
   );

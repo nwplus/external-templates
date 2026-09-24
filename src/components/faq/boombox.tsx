@@ -29,16 +29,21 @@ const NOTES = [
 const stop = { opacity: 0, transition: { duration: 0.2 } };
 
 /**
- * The radio on the cabinet shelf, labelled with the shelf's category. Clicking
- * it plays: the set bops to the beat, rings pulse out of the speakers, the
- * display glows and notes float up. Clicking again stops it. There is no
- * sound; it is the room's, not the visitor's.
+ * The radio on the cabinet shelf, labelled with the category of the question
+ * on the television, or the shelf's own before one is picked; its display
+ * lights while a question is on. Clicking it plays: the set bops to the beat,
+ * rings pulse out of the speakers, the display glows and notes float up.
+ * Clicking again stops it. There is no sound; it is the room's, not the
+ * visitor's.
  */
 export const Boombox = ({
   category,
+  active = false,
   className,
 }: {
   category?: string;
+  /** A question is selected, so the display is lit even when not playing. */
+  active?: boolean;
   className?: string;
 }) => {
   const [playing, setPlaying] = useState(false);
@@ -78,7 +83,7 @@ export const Boombox = ({
         />
 
         <AnimatePresence>
-          {playing && (
+          {(playing || active) && (
             <motion.span
               key="display"
               aria-hidden="true"
@@ -142,7 +147,10 @@ export const Boombox = ({
         </AnimatePresence>
 
         {category && (
-          <h3 className="pointer-events-none absolute top-[46.2%] left-[27.2%] flex h-[13.4%] w-[45.7%] items-center justify-center overflow-hidden rounded-[4cqw] bg-tape-label px-[1.5cqw] text-center font-display text-[4.4cqw] leading-none text-ink uppercase">
+          <h3
+            aria-live="polite"
+            className="pointer-events-none absolute top-[46.2%] left-[27.2%] flex h-[13.4%] w-[45.7%] items-center justify-center overflow-hidden rounded-[4cqw] bg-tape-label px-[1.5cqw] text-center font-display text-[4.4cqw] leading-none text-ink uppercase"
+          >
             <span className="truncate">{category}</span>
           </h3>
         )}

@@ -3,7 +3,9 @@
 import { Candle } from "@/components/testimonials/candle";
 import { DeerHead } from "@/components/testimonials/deer-head";
 import { Pillow } from "@/components/testimonials/pillow";
+import { TappableBear } from "@/components/testimonials/tappable-bear";
 import { type Testimonial, testimonials } from "@/constants/testimonials";
+import { cn } from "@/lib/utils";
 
 import Image from "next/image";
 import { useState } from "react";
@@ -65,10 +67,7 @@ const SpeechBubble = ({
       <span className="text-[0.96vw] font-bold leading-tight text-[#16224f]">
         {person.name}
       </span>
-      <span className="mt-[0.42vw] text-[0.83vw] leading-tight text-[#5a6396]">
-        {person.pronouns}
-      </span>
-      <span className="text-[0.83vw] leading-tight text-[#5a6396]">
+      <span className="mt-[0.3vw] text-[0.83vw] leading-tight text-[#5a6396]">
         {person.role}
       </span>
     </span>
@@ -78,6 +77,7 @@ const SpeechBubble = ({
 const Testimonials = () => {
   const [selected, setSelected] = useState(0);
   const person = testimonials[selected];
+  const shown = testimonials.slice(0, bubbles.length);
 
   return (
     <div
@@ -194,26 +194,11 @@ const Testimonials = () => {
         className="absolute left-[42.4vw] top-[28.72vw] h-[0.78vw] w-[1vw]"
       />
 
-      <Image
-        src="/assets/testimonials/bear-body.svg"
-        alt=""
-        width={138}
-        height={126}
-        className="absolute left-[12.64vw] top-[25.49vw] h-[8.22vw] w-[9.02vw] rotate-[-1.14deg]"
-      />
-      <Image
-        src="/assets/testimonials/bear-head.svg"
-        alt=""
-        width={116}
-        height={98}
-        className="absolute left-[13.3vw] top-[19.89vw] h-[6.4vw] w-[7.58vw]"
-      />
-      <Image
-        src="/assets/testimonials/bear-hat.svg"
-        alt=""
-        width={92}
-        height={48}
-        className="absolute left-[13.21vw] top-[17.96vw] h-[3.16vw] w-[6.02vw]"
+      <TappableBear
+        onClick={() => setSelected((i) => (i + 1) % shown.length)}
+        whileHover={{ y: "-0.3vw", scale: 1.04 }}
+        whileTap={{ scale: 0.97 }}
+        className="left-[12.64vw] top-[17.96vw] h-[15.75vw] w-[9.02vw]"
       />
 
       <Image
@@ -244,7 +229,7 @@ const Testimonials = () => {
         alt=""
         width={242}
         height={262}
-        className="absolute left-[5.24vw] top-[27.42vw] h-[17.15vw] w-[15.82vw]"
+        className="pointer-events-none absolute left-[5.24vw] top-[27.42vw] h-[17.15vw] w-[15.82vw]"
       />
       <Pillow
         src="/assets/testimonials/oval-pillow.svg"
@@ -302,11 +287,11 @@ const Testimonials = () => {
       <div className="absolute left-[8.12vw] top-0 flex w-[18.78vw] flex-col gap-[1.05vw] text-white">
         <h2 className="font-title text-[4.19vw] leading-none">Testimonials</h2>
         <p className="text-[1.31vw] leading-[1.4]">
-          Click on the speech bubbles to read
+          Click on the speech bubbles to read:
         </p>
       </div>
 
-      {testimonials.slice(0, bubbles.length).map((person, index) => (
+      {shown.map((person, index) => (
         <SpeechBubble
           key={person.name}
           bubble={bubbles[index]}
@@ -342,11 +327,15 @@ const Testimonials = () => {
         <p className="font-title text-[2.2vw] leading-none text-[#16224f]">
           {person.name}
         </p>
-        <p className="mt-[0.9vw] text-[1.15vw] leading-none text-[#5a6396]">
-          {person.pronouns} · {person.role}
+        <p className="mt-[0.6vw] text-[1.1vw] leading-none text-[#5a6396]">
+          {person.role}
         </p>
-        <div className="mt-[1.1vw] h-px w-[2.6vw] bg-[#1a3375]/25" />
-        <p className="mt-[1.2vw] text-[1.2vw] leading-[1.5] text-[#2b3055]">
+        <p
+          className={cn(
+            "mt-[1.3vw] leading-[1.5] text-[#2b3055]",
+            person.testimonial.length > 700 ? "text-[1.1vw]" : "text-[1.2vw]"
+          )}
+        >
           {person.testimonial}
         </p>
       </div>

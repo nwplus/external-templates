@@ -1,3 +1,5 @@
+import { hideDuringNavJump } from "@/hooks/use-hide-on-scroll";
+
 /** Fired just before a nav link scrolls the page to its section. */
 export const NAV_JUMP = "hackcamp:nav-jump";
 
@@ -15,7 +17,9 @@ export function scrollToSection(id: string) {
     : (document.getElementById(`${id}-mobile`) ?? section);
   if (!target) return;
   const anchor = target.querySelector("[data-scroll-anchor]") ?? target;
-  // The sticky bar stays out of the way of the jump (see sticky-navbar.tsx).
+  // The sticky bar stays out of the way of the jump (see sticky-navbar.tsx),
+  // and so does the mobile menu button (see use-hide-on-scroll.ts).
   window.dispatchEvent(new Event(NAV_JUMP));
+  hideDuringNavJump();
   anchor.scrollIntoView({ block: "start", behavior: "smooth" });
 }

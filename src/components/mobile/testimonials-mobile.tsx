@@ -3,7 +3,9 @@
 import { Candle } from "@/components/testimonials/candle";
 import { DeerHead } from "@/components/testimonials/deer-head";
 import { Pillow } from "@/components/testimonials/pillow";
+import { TappableBear } from "@/components/testimonials/tappable-bear";
 import { testimonials } from "@/constants/testimonials";
+import { cn } from "@/lib/utils";
 
 import Image from "next/image";
 import { useState } from "react";
@@ -191,26 +193,10 @@ const TestimonialsMobile = () => {
         height={12}
         className="absolute left-[75.24vw] top-[167.7vw] h-[1.44vw] w-[1.85vw]"
       />
-      <Image
-        src="/assets/testimonials/bear-body.svg"
-        alt=""
-        width={138}
-        height={126}
-        className="absolute left-[20.28vw] top-[161.73vw] h-[15.18vw] w-[16.66vw] rotate-[-1.14deg]"
-      />
-      <Image
-        src="/assets/testimonials/bear-head.svg"
-        alt=""
-        width={116}
-        height={98}
-        className="absolute left-[21.5vw] top-[151.39vw] h-[11.82vw] w-[14.0vw]"
-      />
-      <Image
-        src="/assets/testimonials/bear-hat.svg"
-        alt=""
-        width={92}
-        height={48}
-        className="absolute left-[21.33vw] top-[147.83vw] h-[5.84vw] w-[11.12vw]"
+      <TappableBear
+        onClick={() => step(1)}
+        whileTap={{ scale: 0.95 }}
+        className="left-[20.28vw] top-[147.83vw] h-[29.08vw] w-[16.66vw]"
       />
       <Image
         src="/assets/testimonials/nugget.svg"
@@ -239,7 +225,7 @@ const TestimonialsMobile = () => {
         alt=""
         width={242}
         height={262}
-        className="absolute left-[6.62vw] top-[165.3vw] h-[31.67vw] w-[29.22vw]"
+        className="pointer-events-none absolute left-[6.62vw] top-[165.3vw] h-[31.67vw] w-[29.22vw]"
       />
       <Pillow
         src="/assets/testimonials/oval-pillow.svg"
@@ -309,9 +295,15 @@ const TestimonialsMobile = () => {
           {person.name}
         </p>
         <p className="mt-[2.04vw] text-[4.07vw] leading-none text-[#2b2b33]">
-          {person.pronouns} | {person.role}
+          {person.role}
         </p>
-        <p className="mt-[7.12vw] text-[3.82vw] leading-[1.5] text-black">
+        {/* the longest quote needs smaller type to stay inside the bubble */}
+        <p
+          className={cn(
+            "mt-[7.12vw] leading-[1.5] text-black",
+            person.testimonial.length > 700 ? "text-[3.25vw]" : "text-[3.82vw]"
+          )}
+        >
           {person.testimonial}
         </p>
       </div>

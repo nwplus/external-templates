@@ -13,8 +13,10 @@ import {
   DESKTOP_BEAM_ART,
   DESKTOP_UNLIT_CLIP,
   HOUSE_SPOTS,
+  HOUSE_WINDOWS,
   MOBILE_SPOTS,
   MOBILE_UNLIT_CLIP,
+  MOBILE_WINDOWS,
 } from "./house-geometry";
 
 /**
@@ -40,6 +42,25 @@ const LampButton = ({
     style={style}
   />
 );
+
+/**
+ * Warm light flickering in the house's windows, like a lamp burning inside.
+ * It has nothing to do with the roof lamp, so it keeps going whether or not
+ * the beam is on; each window flickers on its own timing.
+ */
+const WindowGlows = ({ spots }: { spots: readonly CSSProperties[] }) =>
+  spots.map((style, i) => (
+    <span
+      key={i}
+      aria-hidden
+      className="hero-window pointer-events-none absolute rounded-[40%]"
+      style={{
+        ...style,
+        animationDuration: `${4.6 + i * 1.1}s`,
+        animationDelay: `-${(i * 2.3) % 5}s`,
+      }}
+    />
+  ));
 
 /**
  * One of the beam's images placed in the house box, turning about the bulb
@@ -96,6 +117,7 @@ export const DesktopHouse = () => {
           className="pointer-events-none object-contain object-bottom-left"
           style={{ clipPath: DESKTOP_UNLIT_CLIP }}
         />
+        <WindowGlows spots={HOUSE_WINDOWS} />
       </div>
       {/* Spotlight glow along the beam, turning and pulsing with it */}
       <div
@@ -147,6 +169,7 @@ export const MobileHouse = () => {
         className="block w-full h-auto"
         style={lit ? undefined : { clipPath: MOBILE_UNLIT_CLIP }}
       />
+      <WindowGlows spots={MOBILE_WINDOWS} />
       <LampButton lit={lit} toggle={toggle} style={MOBILE_SPOTS.lamp} />
       {/* % tracks the 393x710 house art; the beam runs from the lamp (~36%, 31%) off the right edge */}
       <div
