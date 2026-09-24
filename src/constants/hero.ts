@@ -16,8 +16,7 @@ export interface CtaLinkItem {
   href: string;
 }
 
-// TODO: replace placeholder hrefs once the application/mentor forms are live
 export const HERO_CTA_LINKS: CtaLinkItem[] = [
-  { label: "Register Now", href: "#" },
-  { label: "Become a Mentor", href: "#" },
+  { label: "Register Now", href: "https://portal.nwplus.io" },
+  { label: "Become a Mentor", href: "https://forms.gle/v31pksqQmLozNRscA" },
 ];
