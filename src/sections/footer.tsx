@@ -34,17 +34,23 @@ const Footer = () => {
         <Contact />
 
         <p className="order-2 max-w-[67%] text-center font-body text-base leading-relaxed xl:order-4 xl:max-w-[81%] xl:text-[length:max(1.25rem,1.306vw)]">
-          HackCamp 2026 will be taking place on xʷməθkʷəy̓əm (Musqueam) and
-          səlilwətaɬ (Tsleil-Waututh) territory. As we build tomorrow&apos;s
-          tech community, we recognize our responsibility to understand and
-          respect Indigenous histories. To learn more, visit{" "}
+          nwPlus acknowledges that our members live, learn, work, and host
+          hackathons on the traditional, ancestral, and stolen territory of the
+          xʷməθkʷəy̓əm (Musqueam) Peoples. We recognize that this land was taken
+          and is currently occupied through the dispossession and displacement
+          of Indigenous peoples. As a club, we are committed to reconciliation
+          and decolonization, integrating these values into our operations and
+          continuously learning about the land and its original stewards. We
+          acknowledge the historical exclusion of Indigenous ways of knowing in
+          the tech industry and are dedicated to uplifting these communities and
+          bridging this gap. To learn more, visit{" "}
           <a
             href="https://guides.library.ubc.ca/xwi7xwaresearchguide"
             target="_blank"
             rel="noopener noreferrer"
             className="underline"
           >
-            xwi7xwa&apos;s Research Guide
+            Xwi7xwa&apos;s Research Guide
           </a>
           .
         </p>
