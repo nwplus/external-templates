@@ -9,38 +9,37 @@ export interface Testimonial {
   linkedin?: string;
 }
 
+/** The role to show, or "" while it is still a placeholder. */
+export const displayRole = ({ role }: Testimonial) =>
+  role === "TBD" ? "" : role;
+
 export const testimonials: Testimonial[] = [
   {
-    name: "Jonathan Cai",
-    pronouns: "he/him",
-    role: "Dev",
-    year: "2nd year",
-    program: "Computer Science • Statistics",
-    testimonial:
-      "This hackathon was the first time I properly built something all the way through, and that experience gave me a real boost in confidence. It made me feel like I could take on harder problems and actually follow through on ideas I had. That early success encouraged me to join more hackathons and keep exploring things I was curious about. The lessons I learned and the momentum I gained from that project helped me land my first internship. More than anything, it showed me the value of trying new things, even if I don't have everything figured out at the start.",
-    devpost: "https://devpost.com/software/selectelect",
-    linkedin: "https://www.linkedin.com/in/jonathan-cai-843873314/",
-  },
-  {
-    name: "Abdul Khalifa",
-    pronouns: "he/him",
-    role: "Software/Product",
-    year: "1st year",
-    program: "BCS",
-    testimonial:
-      "First hackathon, so things were a bit ambiguous. Once we started tackling the project, and failing quickly - we then got the ball rolling on learning new tech stacks and trying different solutions to get something going. Helped me grow because it was the first experience working collaboratively with a group on a software project - it taught me how to prioritize tasks under a time crunch and how dynamic a software project can be in such a short time. Things change quick. I recommend any beginner to attend as you will be forced to learn new technologies, meet cool people and potentially network your way into a job or interesting role.",
-    devpost: "https://devpost.com/software/sign-mate",
-    linkedin: "https://www.linkedin.com/in/abdulkhalifa/",
-  },
-  {
-    name: "Isabella Linde",
-    pronouns: "she/her",
+    name: "Wakana Kuwayama",
+    pronouns: "",
     role: "Designer/Developer",
-    year: "2nd year",
-    program: "Integrated Engineering",
+    year: "3rd year",
+    program: "",
     testimonial:
-      "As someone who had been self-learning coding alone up until this hackathon, HackCamp gave me the opportunity to finally work on a project with others, put to practice the concepts I had been learning, and make some really good friends, too! Thank you nwPlus for giving me such an encouraging first hackathon experience!",
-    devpost: "https://devpost.com/software/capcap-8xjrw7",
-    linkedin: "https://www.linkedin.com/in/isabellalinde/",
+      "HackCamp was my very first hackathon, and I went in with no idea what to expect. That ended up being the best part! My team learned everything as we went, we celebrated every small win, and had so much fun building something together that weekend. I also loved meeting so many other beginner hackers and swapping ideas with people who were just as new and excited as I was. That experience is what got me psyched about tech and pushed me to keep exploring it beyond the classroom. The energy and community stuck with me so much that I ended up even joining nwPlus to help create that experience for the next group of hackers!",
+  },
+  {
+    name: "Sabrina Yuan",
+    pronouns: "",
+    role: "Designer/Developer",
+    year: "3rd year",
+    program: "",
+    testimonial:
+      "HackCamp was my first hackathon and it set the bar really high for any hackathon I'll do in the future. The workshops were made for beginners, which really helped since I didn't have much experience going in, and I learned so much from all the different topics they covered. Building a project in one weekend gave me the chance to see what I could actually do under pressure, and after the event I kept working on projects on my own. It also gave me something to add to my resume, which helped a lot since I didn't have many projects on there before.",
+  },
+  // TODO: confirm Sunny's role and year
+  {
+    name: "Sunny Su",
+    pronouns: "",
+    role: "TBD",
+    year: "TBD",
+    program: "",
+    testimonial:
+      "With no prior hackathon experience or idea of what a hackathon entails, participating in HackCamp gave me the chance to explore something I was curious about while learning new skills and making new friends. I came across the event by chance in my first year, and being curious, intrigued, and a little scared about what it was all about, I decided to give it a try, and I am glad I did. Working through the night with friends, going through trial and error, and learning together as we went, we were able to turn an idea into something real. HackCamp showed me that even if something seems intimidating at first, when you are willing to learn, work hard, and give something new a try, you are capable of creating more than you might expect. You never know how much fun you might have while learning something new!",
   },
 ];

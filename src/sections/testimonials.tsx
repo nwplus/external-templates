@@ -4,7 +4,12 @@ import { Candle } from "@/components/testimonials/candle";
 import { DeerHead } from "@/components/testimonials/deer-head";
 import { Pillow } from "@/components/testimonials/pillow";
 import { TappableBear } from "@/components/testimonials/tappable-bear";
-import { type Testimonial, testimonials } from "@/constants/testimonials";
+import {
+  displayRole,
+  type Testimonial,
+  testimonials,
+} from "@/constants/testimonials";
+import { cn } from "@/lib/utils";
 
 import Image from "next/image";
 import { useState } from "react";
@@ -66,9 +71,11 @@ const SpeechBubble = ({
       <span className="text-[0.96vw] font-bold leading-tight text-[#16224f]">
         {person.name}
       </span>
-      <span className="mt-[0.3vw] text-[0.83vw] leading-tight text-[#5a6396]">
-        {person.role}
-      </span>
+      {displayRole(person) && (
+        <span className="mt-[0.3vw] text-[0.83vw] leading-tight text-[#5a6396]">
+          {displayRole(person)}
+        </span>
+      )}
     </span>
   </button>
 );
@@ -286,7 +293,7 @@ const Testimonials = () => {
       <div className="absolute left-[8.12vw] top-0 flex w-[18.78vw] flex-col gap-[1.05vw] text-white">
         <h2 className="font-title text-[4.19vw] leading-none">Testimonials</h2>
         <p className="text-[1.31vw] leading-[1.4]">
-          Click on the speech bubbles to read
+          Click on the speech bubbles to read:
         </p>
       </div>
 
@@ -326,10 +333,17 @@ const Testimonials = () => {
         <p className="font-title text-[2.2vw] leading-none text-[#16224f]">
           {person.name}
         </p>
-        <p className="mt-[0.6vw] text-[1.1vw] leading-none text-[#5a6396]">
-          {person.role}
-        </p>
-        <p className="mt-[1.3vw] text-[1.2vw] leading-[1.5] text-[#2b3055]">
+        {displayRole(person) && (
+          <p className="mt-[0.6vw] text-[1.1vw] leading-none text-[#5a6396]">
+            {displayRole(person)}
+          </p>
+        )}
+        <p
+          className={cn(
+            "mt-[1.3vw] leading-[1.5] text-[#2b3055]",
+            person.testimonial.length > 700 ? "text-[1.1vw]" : "text-[1.2vw]"
+          )}
+        >
           {person.testimonial}
         </p>
       </div>

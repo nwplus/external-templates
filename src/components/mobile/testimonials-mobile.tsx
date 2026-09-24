@@ -4,7 +4,8 @@ import { Candle } from "@/components/testimonials/candle";
 import { DeerHead } from "@/components/testimonials/deer-head";
 import { Pillow } from "@/components/testimonials/pillow";
 import { TappableBear } from "@/components/testimonials/tappable-bear";
-import { testimonials } from "@/constants/testimonials";
+import { displayRole, testimonials } from "@/constants/testimonials";
+import { cn } from "@/lib/utils";
 
 import Image from "next/image";
 import { useState } from "react";
@@ -293,10 +294,18 @@ const TestimonialsMobile = () => {
         <p className="text-[6.11vw] font-bold leading-none text-black">
           {person.name}
         </p>
-        <p className="mt-[2.04vw] text-[4.07vw] leading-none text-[#2b2b33]">
-          {person.role}
-        </p>
-        <p className="mt-[7.12vw] text-[3.82vw] leading-[1.5] text-black">
+        {displayRole(person) && (
+          <p className="mt-[2.04vw] text-[4.07vw] leading-none text-[#2b2b33]">
+            {displayRole(person)}
+          </p>
+        )}
+        {/* the longest quote needs smaller type to stay inside the bubble */}
+        <p
+          className={cn(
+            "mt-[7.12vw] leading-[1.5] text-black",
+            person.testimonial.length > 700 ? "text-[3.25vw]" : "text-[3.82vw]"
+          )}
+        >
           {person.testimonial}
         </p>
       </div>
