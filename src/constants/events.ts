@@ -15,5 +15,5 @@ export const BUILD_DAY: SheepContent = {
   title: "Build Day",
   subtitle: "Nov. 7/8, 2026",
   description:
-    "A 24-hour overnight hackathon that starts after Learn Week, focused around creating projects centred around accessibility, inclusivity, and diversity.\nFor each project submission, HackCamp will donate $5 to one of these charities: Canadian Centre for Arts + Technology (CanCat), Food Stash Foundation, and Aunt Leah's",
+    "A 24-hour overnight hackathon that starts after Learn Week, focused around creating projects centred around accessibility, inclusivity, and diversity.\nFor each project submission, HackCamp will donate $5 to one of these charities: Canadian Centre for Arts + Technology (CanCat), Food Stash Foundation, and Aunt Leah's.",
 };

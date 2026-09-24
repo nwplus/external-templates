@@ -1,0 +1,35 @@
+/*
+ * A wisp of smoke off a candle (components/testimonials/candle.tsx). It
+ * starts small on the wax, drifts up past the rim in a lazy S, spreads and
+ * thins out. Only transform and opacity move, so it is composited, and the
+ * wisp has no filter; the softness is all in its gradient.
+ */
+.candle-wisp {
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(236, 232, 244, 0.75) 0%,
+    rgba(236, 232, 244, 0.3) 38%,
+    rgba(236, 232, 244, 0) 70%
+  );
+}
+
+@keyframes candle-smoke {
+  0% {
+    transform: translate(-50%, -50%) scale(0.35);
+    opacity: 0;
+  }
+  18% {
+    opacity: 0.45;
+  }
+  45% {
+    transform: translate(-28%, -150%) scale(0.85);
+  }
+  72% {
+    transform: translate(-64%, -240%) scale(1.15);
+    opacity: 0.22;
+  }
+  100% {
+    transform: translate(-46%, -330%) scale(1.5);
+    opacity: 0;
+  }
+}

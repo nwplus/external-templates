@@ -3,7 +3,7 @@ import { MobileEvents } from "@/components/events/mobile-events";
 
 export default function Events() {
   return (
-    <div id="our-events">
+    <div id="our-events" data-motion-scope>
       <div className="hidden md:block">
         <DesktopEvents />
       </div>

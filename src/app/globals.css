@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -10,6 +9,7 @@
   --font-sans: var(--font-arsenal);
   --font-title: var(--font-tovari-sans);
   --font-display: var(--font-tovari-sans);
+  --font-countdown: var(--font-midnight-constellations);
   --font-body: var(--font-arsenal);
   --color-night-top: var(--night-top);
   --color-night-bottom: var(--night-bottom);
@@ -81,7 +81,7 @@ body {
 
 /* Painted beyond the page edges on overscroll; matches the hero's top clouds decal. */
 html {
-  background: #262F5C;
+  background: #262f5c;
 }
 
 :root {
@@ -178,6 +178,164 @@ html {
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+/*
+ * Fairy lights (components/sponsors/string-lights.tsx). Only the lights, bulbs
+ * and cords take clicks. Switching off dims each light and hides its glow;
+ * every light changes after a delay set by how far along the garland it hangs
+ * (--x, 0 at the left end to 1 at the right), so the switch sweeps along the
+ * strand. The dimming uses fill-opacity so it stacks with the twinkle and
+ * breathe animations, which drive opacity; these rules sit outside any layer
+ * so they win over those utilities.
+ */
+.fairy-lights :is(.dot, .bulb) {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.fairy-lights .cord-hit {
+  cursor: pointer;
+}
+
+.fairy-lights :is(.dot, .bulb, .halo) {
+  transition: fill-opacity 0.35s ease;
+  transition-delay: calc(var(--x, 0) * 0.9s);
+}
+
+/* Each strand's glow switches with the sweep; a filter can only snap, so it
+   flips halfway through its own short transition. */
+.fairy-lights .strand-glow {
+  transition: filter 0.35s allow-discrete;
+  transition-delay: calc(var(--x, 0) * 0.9s);
+}
+
+.fairy-lights[aria-pressed="false"] .strand-glow {
+  filter: none;
+}
+
+.fairy-lights[aria-pressed="false"] :is(.dot, .halo) {
+  animation-play-state: paused;
+}
+
+.fairy-lights[aria-pressed="false"] .dot {
+  fill-opacity: 0.22;
+}
+
+.fairy-lights[aria-pressed="false"] .bulb {
+  fill-opacity: 0.28;
+}
+
+.fairy-lights[aria-pressed="false"] .halo {
+  fill-opacity: 0;
+}
+
+/*
+ * The bed scene (components/footer/bed-scene.tsx). While the bear shows off
+ * its phone, the phone in its hand disappears and its face is no longer lit;
+ * both come back once the phone has flipped home.
+ */
+.bed-art :is([data-part="phone"], .screen-glow) {
+  transition: opacity 0.2s ease 0.4s;
+}
+
+.bed-art[data-phone="out"] [data-part="phone"] {
+  opacity: 0;
+  transition-delay: 0s;
+}
+
+.bed-art[data-phone="out"] .screen-glow {
+  opacity: 0.25;
+  transition-delay: 0s;
+}
+
+/* The runner game on the bear's phone (components/footer/phone-show.tsx). */
+@keyframes runner-ground {
+  to {
+    background-position: 0 10cqw;
+  }
+}
+
+@keyframes runner-coin {
+  0% {
+    transform: translate(-50%, 0) scale(0.25);
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  80% {
+    transform: translate(-50%, 70cqw) scale(1.1);
+    opacity: 1;
+  }
+  88%,
+  100% {
+    transform: translate(-50%, 78cqw) scale(1.25);
+    opacity: 0;
+  }
+}
+
+@keyframes runner-barrier {
+  0% {
+    transform: translate(-50%, 0) scale(0.2);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  84% {
+    transform: translate(-50%, 76cqw) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, 100cqw) scale(1.35);
+    opacity: 0;
+  }
+}
+
+@keyframes runner-jump {
+  0%,
+  68% {
+    transform: translate(-50%, 0);
+  }
+  78%,
+  86% {
+    transform: translate(-50%, -30cqw);
+  }
+  96%,
+  100% {
+    transform: translate(-50%, 0);
+  }
+}
+
+@keyframes runner-bob {
+  to {
+    transform: translateY(-2cqw);
+  }
+}
+
+@keyframes runner-stride {
+  from {
+    transform: rotate(-28deg);
+  }
+  to {
+    transform: rotate(28deg);
+  }
+}
+
+/* Nugget's z's, drifting up and away. */
+@keyframes zzz {
+  0% {
+    transform: translate(0, 0) scale(0.6);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(2.4cqw, -5cqw) scale(1.15);
+    opacity: 0;
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -188,18 +346,46 @@ html {
   }
 }
 
-@layer utilities {
-  .bg-hero-1 {
-    background-image:
-      url("/assets/hero/background-1.svg"),
-      linear-gradient(180deg, #93d9fa 0%, #ffffff 12%, #acc67e 20%);
+/* Decorative animations only run while their section is near the viewport
+   (components/motion-gate.tsx flags the ones that are). */
+[data-motion-scope]:not([data-onscreen]) * {
+  animation-play-state: paused;
+}
+
+/* The accordion's open and close (the only motion we took from tw-animate-css). */
+@theme {
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
   }
 }
 
-/* Decorative glow pulses (see components/ui/glow.tsx and the star decal SVGs) */
+/* Decorative motion: glow pulses, twinkling lights and drifting stars. */
 @theme {
   --animate-glow: glow 3s ease-in-out infinite;
   --animate-twinkle: twinkle 2.8s ease-in-out infinite;
+  --animate-breathe: breathe 3.4s ease-in-out infinite;
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-lava-rise: lava-rise 12s ease-in-out infinite;
+  --animate-lava-rise-small: lava-rise-small 9s ease-in-out infinite;
+  --animate-lava-drip: lava-drip 10s ease-in-out infinite;
+  --animate-lava-pool: lava-pool 8s ease-in-out infinite;
 
   @keyframes glow {
     0%,
@@ -220,12 +406,99 @@ html {
       opacity: 1;
     }
   }
+
+  /* A softer pulse for glows that are already at their designed strength. */
+  @keyframes breathe {
+    0%,
+    100% {
+      opacity: 0.65;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+
+  /* The footer's stars drifting in place. */
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-6%) rotate(4deg);
+    }
+  }
+
+  /*
+   * The lava lamp's wax, in the lamp artwork's own units. The free blobs
+   * stretch as they rise, flatten against the top of the glass, and sink back
+   * into the pool; the cap at the top drips and the column at the bottom sways.
+   */
+  @keyframes lava-rise {
+    0%,
+    100% {
+      transform: translate(0, 0) scale(1, 1);
+    }
+    30% {
+      transform: translate(4px, -14px) scale(0.92, 1.1);
+    }
+    45% {
+      transform: translate(6px, -20px) scale(1.06, 0.94);
+    }
+    75% {
+      transform: translate(3px, 26px) scale(1.08, 0.93);
+    }
+  }
+
+  @keyframes lava-rise-small {
+    0%,
+    100% {
+      transform: translate(0, 0) scale(1, 1);
+    }
+    35% {
+      transform: translate(-6px, -22px) scale(0.9, 1.14);
+    }
+    50% {
+      transform: translate(-8px, -26px) scale(1.08, 0.92);
+    }
+    85% {
+      transform: translate(-2px, 18px) scale(1, 1);
+    }
+  }
+
+  @keyframes lava-drip {
+    0%,
+    100% {
+      transform: scale(1, 1);
+    }
+    40% {
+      transform: scale(0.94, 1.45);
+    }
+    60% {
+      transform: scale(0.97, 1.3);
+    }
+    80% {
+      transform: scale(1.04, 0.9);
+    }
+  }
+
+  @keyframes lava-pool {
+    0%,
+    100% {
+      transform: scale(1, 1) skewX(0deg);
+    }
+    35% {
+      transform: scale(0.95, 1.16) skewX(-3deg);
+    }
+    70% {
+      transform: scale(1.05, 0.9) skewX(2deg);
+    }
+  }
 }
 
 @theme {
   /* 1s is just a placeholder, team-gallery sets the real duration inline */
   --animate-marquee: marquee 1s linear infinite;
-  --animate-smoke: smoke 6s ease-out infinite backwards;
 
   @keyframes marquee {
     from {
@@ -233,22 +506,6 @@ html {
     }
     to {
       transform: translateX(-50%);
-    }
-  }
-
-  /* chimney leans right so the smoke drifts that way */
-  @keyframes smoke {
-    0% {
-      transform: translate(0, 0) scale(0.6);
-      opacity: 0;
-    }
-    35% {
-      transform: translate(25%, -100%) scale(1);
-      opacity: 0.35;
-    }
-    100% {
-      transform: translate(60%, -200%) scale(1.4);
-      opacity: 0;
     }
   }
 }

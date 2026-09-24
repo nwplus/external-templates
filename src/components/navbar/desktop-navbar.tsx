@@ -1,38 +1,33 @@
 "use client";
 
 import { NAV_LINKS } from "@/constants/navbar";
-import { useHideOnScroll } from "@/hooks/use-hide-on-scroll";
-import { cn } from "@/lib/utils";
 
 import { scrollToSection } from "./scroll-to-section";
 
-export const DesktopNavbar = () => {
-  const hidden = useHideOnScroll();
+/**
+ * A nav link as the design has it on hover: the label turns the lamp's warm
+ * yellow and glows (Figma "Navbar Hover"). Shared with the sticky bar.
+ */
+export const navLinkClass =
+  "cursor-pointer uppercase transition-[color,text-shadow] duration-150 hover:text-[#fedb90] hover:[text-shadow:0_0_25px_rgba(255,218,136,0.75)] focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-star";
 
-  return (
-    <div
-      className={cn(
-        "fixed z-100 inset-x-0 top-0 transition-transform duration-200 ease-out [--scrim-tail:2.5rem]",
-        // also clear the scrim tail that hangs below the bar
-        hidden &&
-          "-translate-y-[calc(100%+var(--scrim-tail))] pointer-events-none"
-      )}
-    >
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 h-[calc(100%+var(--scrim-tail))] bg-linear-to-b from-[#0B0F27]/85 via-[#0B0F27]/50 via-60% to-transparent"
-      />
-      <div className="relative text-white w-full justify-center items-center flex gap-15 px-3 py-6 text-[1.6rem] uppercase font-title [text-shadow:0_1px_6px_rgba(0,0,0,0.6)]">
-        {NAV_LINKS.map((link) => (
-          <div
-            key={link.name}
-            onClick={() => scrollToSection(link.href)}
-            className="cursor-pointer hover:opacity-60 transition duration-150"
-          >
-            {link.name}
-          </div>
-        ))}
-      </div>
+/** The row of links: the same size and spacing in the hero and pinned. */
+export const navRowClass =
+  "flex w-full items-center justify-center gap-15 px-3 py-6 font-title text-[1.6rem] text-white";
+
+export const DesktopNavbar = () => (
+  <nav aria-label="Sections" className="absolute top-0 left-0 z-100 w-full">
+    <div className={navRowClass}>
+      {NAV_LINKS.map((link) => (
+        <button
+          type="button"
+          key={link.name}
+          onClick={() => scrollToSection(link.href)}
+          className={navLinkClass}
+        >
+          {link.name}
+        </button>
+      ))}
     </div>
-  );
-};
+  </nav>
+);

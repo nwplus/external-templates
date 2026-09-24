@@ -9,15 +9,23 @@ import "./globals.css";
 const arsenal = Arsenal({
   subsets: ["latin"],
   weight: ["400", "700"],
-  style: ["normal", "italic"],
+  // Nothing on the site sets italic, so the two italic faces are not loaded.
+  style: ["normal"],
   variable: "--font-arsenal",
 });
 
 const tovariSans = localFont({
-  src: "../../public/fonts/TovariSans.ttf",
+  src: "../../public/fonts/TovariSans.woff2",
   weight: "700",
   display: "swap",
   variable: "--font-tovari-sans",
+});
+
+const midnightConstellations = localFont({
+  src: "../../public/fonts/MidnightConstellations.woff2",
+  weight: "700",
+  display: "swap",
+  variable: "--font-midnight-constellations",
 });
 
 const siteUrl = "https://hackcamp.nwplus.io";
@@ -52,7 +60,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${tovariSans.variable} ${arsenal.variable} antialiased`}
+      className={`${tovariSans.variable} ${arsenal.variable} ${midnightConstellations.variable} antialiased`}
     >
       <body className={arsenal.className}>{children}</body>
     </html>

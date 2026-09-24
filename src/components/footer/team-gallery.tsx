@@ -17,20 +17,20 @@ const TeamGallery = () => {
   const [selectedProfile, setSelectedProfile] = useState<Member | null>(null);
 
   return (
-    <div className="flex w-full flex-col items-center gap-1 xl:gap-4">
-      <h2 className="font-display text-2xl text-cream-soft xl:text-[2.5rem]">
+    <div className="flex w-full flex-col items-center gap-1 xl:gap-[max(1rem,1.045vw)]">
+      <h2 className="font-display text-2xl text-cream-soft xl:text-[length:max(2.5rem,2.613vw)]">
         Meet the minds behind HackCamp
       </h2>
 
-      <div className="w-full overflow-x-hidden whitespace-nowrap">
+      <div className="w-full overflow-x-hidden whitespace-nowrap motion-reduce:overflow-x-auto">
         <div
-          className="flex w-max gap-6 py-2 pr-6 animate-marquee hover:[animation-play-state:paused] motion-reduce:animate-none xl:gap-7 xl:py-4 xl:pr-7"
+          className="flex w-max gap-6 py-2 pr-6 animate-marquee hover:[animation-play-state:paused] motion-reduce:animate-none xl:gap-[max(1.75rem,1.829vw)] xl:py-[max(1rem,1.045vw)] xl:pr-[max(1.75rem,1.829vw)]"
           style={{ animationDuration: `${teamMembers.length * 3.5}s` }}
         >
           {[...teamMembers, ...teamMembers].map((profile, i) => {
             const href = toHref(profile.social);
             const className =
-              "inline-block size-16 shrink-0 rounded-md bg-white transition-transform duration-100 ease-in-out hover:scale-110 xl:size-20";
+              "inline-block size-16 shrink-0 rounded-md bg-white transition-transform duration-100 ease-in-out hover:scale-110 xl:size-[max(5rem,5.225vw)]";
             const onMouseEnter = () => setSelectedProfile(profile);
             const onMouseLeave = () => setSelectedProfile(null);
             const tile = (
@@ -73,7 +73,7 @@ const TeamGallery = () => {
         </div>
       </div>
 
-      <p className="hidden h-6 font-body xl:block">
+      <p className="hidden h-6 font-body xl:block xl:h-[max(1.5rem,1.568vw)] xl:text-[length:max(1rem,1.045vw)]">
         {selectedProfile && (
           <>
             <b className="mr-2">{selectedProfile.name}</b>

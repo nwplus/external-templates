@@ -18,18 +18,18 @@ import { AccordionIcon } from "./accordion-icon";
 export const HackathonFaq = ({ className }: { className?: string }) => (
   <div className={className}>
     <h2 className="font-title text-6xl">{HACKATHON_TITLE}</h2>
-    <p className="text-lg">{HACKATHON_DESCRIPTION}</p>
+    <p className="text-[20px]">{HACKATHON_DESCRIPTION}</p>
     <Accordion type="single" collapsible>
       <AccordionItem value="benefits">
         <AccordionTrigger
           variant="hero"
           icon={<AccordionIcon />}
-          className="text-lg items-center"
+          className="text-base md:text-[20px] items-center"
         >
           {HACKATHON_BENEFITS_QUESTION}
         </AccordionTrigger>
         <AccordionContent>
-          <ul className="list-disc pl-6 space-y-1 text-lg">
+          <ul className="list-disc pl-6 space-y-1 text-[20px]">
             {HACKATHON_BENEFITS.map((benefit) => (
               <li key={benefit}>{benefit}</li>
             ))}
@@ -37,7 +37,7 @@ export const HackathonFaq = ({ className }: { className?: string }) => (
         </AccordionContent>
       </AccordionItem>
     </Accordion>
-    <p className="text-lg">
+    <p className="text-[20px]">
       To learn more about hackathons and what to expect, check out our article
       on{" "}
       <a
