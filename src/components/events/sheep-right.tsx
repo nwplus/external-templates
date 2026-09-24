@@ -329,7 +329,7 @@ export const SheepRight = ({
         title={title}
         subtitle={subtitle}
         description={description}
-        className="left-[54%] top-[51%] w-[52%] md:w-[44%]"
+        className="left-[54%] top-[55%] w-[52%] md:w-[44%]"
       />
     </SheepBleat>
   </SheepTapToggle>

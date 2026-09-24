@@ -42,7 +42,7 @@ export const SheepOverlay = ({
           <Cursor className="size-4 md:size-5" />
         </p>
       </div>
-      <p className="col-start-1 row-start-1 text-xs leading-snug md:text-xl md:leading-relaxed opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-data-[open=true]:opacity-100 whitespace-pre-line">
+      <p className="col-start-1 row-start-1 text-xs leading-snug md:text-lg md:leading-normal opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-data-[open=true]:opacity-100 whitespace-pre-line">
         {description}
       </p>
     </div>
