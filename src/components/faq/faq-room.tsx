@@ -120,8 +120,11 @@ const badgeFor = (position: number) =>
 
 type SelectProps = {
   selected: FaqItem | null;
-  /** The tape on its way to the television, dimmed in its stack meanwhile. */
-  flying: FaqItem | null;
+  /**
+   * Tapes out of their stack, greyed there: the one on its way to the
+   * television and the one playing on it, which goes back when the next lands.
+   */
+  out: (FaqItem | null)[];
   onSelect: (faq: FaqItem, el: HTMLElement) => void;
 };
 
@@ -150,7 +153,7 @@ const TapeStack = ({
   badged = false,
   fromBottom = false,
   selected,
-  flying,
+  out,
   onSelect,
 }: StackProps) => (
   <ul
@@ -176,7 +179,7 @@ const TapeStack = ({
           <VhsTape
             faq={faq}
             selected={selected === faq}
-            taken={flying === faq}
+            taken={out.includes(faq)}
             {...(badged ? badgeFor(position) : {})}
             onSelect={onSelect}
           />
@@ -203,7 +206,7 @@ const RoomWall = ({
   shown,
   slotRef,
   selected,
-  flying,
+  out,
   onSelect,
 }: SelectProps & {
   group: FaqGroup<FaqItem> | null;
@@ -275,7 +278,7 @@ const RoomWall = ({
         fromBottom
         className="absolute bottom-[-4.22%] left-[24.17%] w-[36%] -translate-x-1/2"
         selected={selected}
-        flying={flying}
+        out={out}
         onSelect={onSelect}
       />
     )}
@@ -292,7 +295,7 @@ const RoomWall = ({
 const Cabinet = ({
   shelf,
   selected,
-  flying,
+  out,
   onSelect,
 }: SelectProps & { shelf?: FaqGroup<FaqItem> }) => {
   const { left, right } = shelf
@@ -333,7 +336,7 @@ const Cabinet = ({
             fromBottom
             className="absolute bottom-[33.26%] left-[28.97%] w-[28%]"
             selected={selected}
-            flying={flying}
+            out={out}
             onSelect={onSelect}
           />
           <TapeStack
@@ -343,7 +346,7 @@ const Cabinet = ({
             fromBottom
             className="absolute bottom-[27.12%] left-[57.67%] w-[33.1%]"
             selected={selected}
-            flying={flying}
+            out={out}
             onSelect={onSelect}
           />
         </>
@@ -365,7 +368,7 @@ const MobileShelf = ({
   title,
   lamp,
   selected,
-  flying,
+  out,
   onSelect,
 }: SelectProps & {
   group: FaqGroup<FaqItem>;
@@ -421,7 +424,7 @@ const MobileShelf = ({
         lamp ? "min-h-[78vw] pl-14" : "pl-3"
       )}
       selected={selected}
-      flying={flying}
+      out={out}
       onSelect={onSelect}
     />
     <Image
@@ -514,7 +517,7 @@ const FaqRoom = ({ layout }: { layout: FaqLayout<FaqItem> }) => {
   const [selected, setSelected] = useState<FaqItem | null>(null);
   const [shown, setShown] = useState<FaqItem | null>(null);
   const [flight, setFlight] = useState<Flight | null>(null);
-  const flying = flight?.faq ?? null;
+  const out = [flight?.faq ?? null, shown];
   const flights = useRef(0);
   const reduceMotion = useReducedMotion();
   const mobileTvRef = useRef<HTMLDivElement>(null);
@@ -567,7 +570,7 @@ const FaqRoom = ({ layout }: { layout: FaqLayout<FaqItem> }) => {
             shown={shown}
             slotRef={desktopSlotRef}
             selected={selected}
-            flying={flying}
+            out={out}
             onSelect={handleSelect}
           />
         </LightboxGallery>
@@ -577,14 +580,14 @@ const FaqRoom = ({ layout }: { layout: FaqLayout<FaqItem> }) => {
               key={shelf.category}
               shelf={shelf}
               selected={selected}
-              flying={flying}
+              out={out}
               onSelect={handleSelect}
             />
           ))
         ) : (
           <Cabinet
             selected={selected}
-            flying={flying}
+            out={out}
             onSelect={handleSelect}
           />
         )}
@@ -615,7 +618,7 @@ const FaqRoom = ({ layout }: { layout: FaqLayout<FaqItem> }) => {
             title={i === 0}
             lamp={i === groups.length - 1}
             selected={selected}
-            flying={flying}
+            out={out}
             onSelect={handleSelect}
           />
         ))}
