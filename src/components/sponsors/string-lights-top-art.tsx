@@ -943,11 +943,11 @@ export const StringLightsTopArt = ({ className }: { className?: string }) => (
       </filter>
       <filter
         id="filter4_f_13622_286"
-        x="565.012"
-        y="248.087"
-        width="90.102"
-        height="89.0894"
-        filterUnits="userSpaceOnUse"
+        x="-100%"
+        y="-100%"
+        width="300%"
+        height="300%"
+        filterUnits="objectBoundingBox"
         colorInterpolationFilters="sRGB"
       >
         <feFlood floodOpacity="0" result="BackgroundImageFix" />
@@ -964,11 +964,11 @@ export const StringLightsTopArt = ({ className }: { className?: string }) => (
       </filter>
       <filter
         id="filter5_f_13622_286"
-        x="0"
-        y="380.733"
-        width="90.102"
-        height="89.0894"
-        filterUnits="userSpaceOnUse"
+        x="-100%"
+        y="-100%"
+        width="300%"
+        height="300%"
+        filterUnits="objectBoundingBox"
         colorInterpolationFilters="sRGB"
       >
         <feFlood floodOpacity="0" result="BackgroundImageFix" />
@@ -985,11 +985,11 @@ export const StringLightsTopArt = ({ className }: { className?: string }) => (
       </filter>
       <filter
         id="filter6_f_13622_286"
-        x="226.815"
-        y="297.703"
-        width="90.102"
-        height="89.0894"
-        filterUnits="userSpaceOnUse"
+        x="-100%"
+        y="-100%"
+        width="300%"
+        height="300%"
+        filterUnits="objectBoundingBox"
         colorInterpolationFilters="sRGB"
       >
         <feFlood floodOpacity="0" result="BackgroundImageFix" />
@@ -1006,11 +1006,11 @@ export const StringLightsTopArt = ({ className }: { className?: string }) => (
       </filter>
       <filter
         id="filter7_f_13622_286"
-        x="1404.43"
-        y="323.017"
-        width="90.1021"
-        height="89.0894"
-        filterUnits="userSpaceOnUse"
+        x="-100%"
+        y="-100%"
+        width="300%"
+        height="300%"
+        filterUnits="objectBoundingBox"
         colorInterpolationFilters="sRGB"
       >
         <feFlood floodOpacity="0" result="BackgroundImageFix" />
@@ -1027,11 +1027,11 @@ export const StringLightsTopArt = ({ className }: { className?: string }) => (
       </filter>
       <filter
         id="filter8_f_13622_286"
-        x="306.513"
-        y="376.404"
-        width="215.779"
-        height="212.827"
-        filterUnits="userSpaceOnUse"
+        x="-100%"
+        y="-100%"
+        width="300%"
+        height="300%"
+        filterUnits="objectBoundingBox"
         colorInterpolationFilters="sRGB"
       >
         <feFlood floodOpacity="0" result="BackgroundImageFix" />
@@ -1048,11 +1048,11 @@ export const StringLightsTopArt = ({ className }: { className?: string }) => (
       </filter>
       <filter
         id="filter9_f_13622_286"
-        x="214.14"
-        y="419.699"
-        width="396.588"
-        height="432.015"
-        filterUnits="userSpaceOnUse"
+        x="-100%"
+        y="-100%"
+        width="300%"
+        height="300%"
+        filterUnits="objectBoundingBox"
         colorInterpolationFilters="sRGB"
       >
         <feFlood floodOpacity="0" result="BackgroundImageFix" />
@@ -1069,11 +1069,11 @@ export const StringLightsTopArt = ({ className }: { className?: string }) => (
       </filter>
       <filter
         id="filter10_f_13622_286"
-        x="857.349"
-        y="328.813"
-        width="215.779"
-        height="212.827"
-        filterUnits="userSpaceOnUse"
+        x="-100%"
+        y="-100%"
+        width="300%"
+        height="300%"
+        filterUnits="objectBoundingBox"
         colorInterpolationFilters="sRGB"
       >
         <feFlood floodOpacity="0" result="BackgroundImageFix" />
@@ -1090,11 +1090,11 @@ export const StringLightsTopArt = ({ className }: { className?: string }) => (
       </filter>
       <filter
         id="filter11_f_13622_286"
-        x="761.938"
-        y="370.084"
-        width="396.588"
-        height="432.015"
-        filterUnits="userSpaceOnUse"
+        x="-100%"
+        y="-100%"
+        width="300%"
+        height="300%"
+        filterUnits="objectBoundingBox"
         colorInterpolationFilters="sRGB"
       >
         <feFlood floodOpacity="0" result="BackgroundImageFix" />
@@ -1111,11 +1111,11 @@ export const StringLightsTopArt = ({ className }: { className?: string }) => (
       </filter>
       <filter
         id="filter12_f_13622_286"
-        x="1147.96"
-        y="411.844"
-        width="215.779"
-        height="212.827"
-        filterUnits="userSpaceOnUse"
+        x="-100%"
+        y="-100%"
+        width="300%"
+        height="300%"
+        filterUnits="objectBoundingBox"
         colorInterpolationFilters="sRGB"
       >
         <feFlood floodOpacity="0" result="BackgroundImageFix" />
@@ -1132,11 +1132,11 @@ export const StringLightsTopArt = ({ className }: { className?: string }) => (
       </filter>
       <filter
         id="filter13_f_13622_286"
-        x="1057.61"
-        y="456.151"
-        width="396.588"
-        height="432.015"
-        filterUnits="userSpaceOnUse"
+        x="-100%"
+        y="-100%"
+        width="300%"
+        height="300%"
+        filterUnits="objectBoundingBox"
         colorInterpolationFilters="sRGB"
       >
         <feFlood floodOpacity="0" result="BackgroundImageFix" />

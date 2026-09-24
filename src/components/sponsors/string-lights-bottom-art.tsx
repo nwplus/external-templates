@@ -758,11 +758,11 @@ export const StringLightsBottomArt = ({
       </filter>
       <filter
         id="filter4_f_13622_632"
-        x="280.337"
-        y="221.64"
-        width="222.023"
-        height="218.985"
-        filterUnits="userSpaceOnUse"
+        x="-100%"
+        y="-100%"
+        width="300%"
+        height="300%"
+        filterUnits="objectBoundingBox"
         colorInterpolationFilters="sRGB"
       >
         <feFlood floodOpacity="0" result="BackgroundImageFix" />
@@ -779,11 +779,11 @@ export const StringLightsBottomArt = ({
       </filter>
       <filter
         id="filter5_f_13622_632"
-        x="182.254"
-        y="250.127"
-        width="408.064"
-        height="444.517"
-        filterUnits="userSpaceOnUse"
+        x="-100%"
+        y="-100%"
+        width="300%"
+        height="300%"
+        filterUnits="objectBoundingBox"
         colorInterpolationFilters="sRGB"
       >
         <feFlood floodOpacity="0" result="BackgroundImageFix" />
@@ -800,11 +800,11 @@ export const StringLightsBottomArt = ({
       </filter>
       <filter
         id="filter6_f_13622_632"
-        x="926.354"
-        y="189.237"
-        width="229.111"
-        height="226.073"
-        filterUnits="userSpaceOnUse"
+        x="-100%"
+        y="-100%"
+        width="300%"
+        height="300%"
+        filterUnits="objectBoundingBox"
         colorInterpolationFilters="sRGB"
       >
         <feFlood floodOpacity="0" result="BackgroundImageFix" />
@@ -821,11 +821,11 @@ export const StringLightsBottomArt = ({
       </filter>
       <filter
         id="filter7_f_13622_632"
-        x="836.371"
-        y="244.051"
-        width="408.064"
-        height="444.517"
-        filterUnits="userSpaceOnUse"
+        x="-100%"
+        y="-100%"
+        width="300%"
+        height="300%"
+        filterUnits="objectBoundingBox"
         colorInterpolationFilters="sRGB"
       >
         <feFlood floodOpacity="0" result="BackgroundImageFix" />
@@ -842,11 +842,11 @@ export const StringLightsBottomArt = ({
       </filter>
       <filter
         id="filter8_f_13622_632"
-        x="772.59"
-        y="142.802"
-        width="98.2025"
-        height="98.2022"
-        filterUnits="userSpaceOnUse"
+        x="-100%"
+        y="-100%"
+        width="300%"
+        height="300%"
+        filterUnits="objectBoundingBox"
         colorInterpolationFilters="sRGB"
       >
         <feFlood floodOpacity="0" result="BackgroundImageFix" />
@@ -863,11 +863,11 @@ export const StringLightsBottomArt = ({
       </filter>
       <filter
         id="filter9_f_13622_632"
-        x="1.90735e-06"
-        y="156.979"
-        width="98.2026"
-        height="98.2022"
-        filterUnits="userSpaceOnUse"
+        x="-100%"
+        y="-100%"
+        width="300%"
+        height="300%"
+        filterUnits="objectBoundingBox"
         colorInterpolationFilters="sRGB"
       >
         <feFlood floodOpacity="0" result="BackgroundImageFix" />
