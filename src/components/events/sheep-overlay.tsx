@@ -14,7 +14,8 @@ type SheepOverlayProps = SheepContent & {
 
 /**
  * Copy centred on a sheep's body. The summary swaps for the description on
- * hover (desktop) or tap (mobile, via SheepTapToggle's `data-open`).
+ * hover or tap (via SheepTapToggle's `data-open`), and the hint names
+ * whichever the device can do.
  *
  * From md up the type is sized against the sheep (SheepTapToggle is the
  * container): full size on the 773px-wide desktop sheep, shrinking with it on
@@ -41,8 +42,12 @@ export const SheepOverlay = ({
           {subtitle}
         </p>
         <p className="flex items-center justify-center gap-1 md:gap-2 text-sm md:text-[clamp(0.875rem,3.11cqw,1.5rem)] pt-1">
-          <span className="md:hidden">Tap to learn more</span>
-          <span className="hidden md:inline">Hover to learn more</span>
+          <span className="[@media(hover:hover)]:hidden">
+            Tap to learn more
+          </span>
+          <span className="hidden [@media(hover:hover)]:inline">
+            Hover to learn more
+          </span>
           <Cursor className="size-4 md:size-[clamp(1rem,2.6cqw,1.25rem)]" />
         </p>
       </div>
