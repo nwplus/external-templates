@@ -130,6 +130,16 @@ const BedScene = () => {
         height={578}
         className="absolute left-[16%] top-[42.9%] h-auto w-[71.8%] max-w-none xl:left-[8.67%] xl:top-[47.03%] xl:w-[78.82%]"
       />
+      {/* The big star is kept apart from the rest: on the phone frame its
+          place in the group lands on the bear's phone, so there it moves
+          down onto the blanket. On desktop it sits where the group has it. */}
+      <Image
+        src="/assets/footer/star-big.svg"
+        alt=""
+        width={151}
+        height={164}
+        className="absolute left-[27.1%] top-[59.83%] h-auto w-[9.31%] max-w-none xl:left-[24.55%] xl:top-[54.32%] xl:w-[10.22%]"
+      />
       <div className={cn(BED_BOX, "aspect-[1531/1504] @container")}>
         <AnimatePresence>
           {showing && <TurnedPhone key="phone" onClose={putPhoneAway} />}
