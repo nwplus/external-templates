@@ -33,7 +33,7 @@ const Footer = () => {
       <div className="pointer-events-none relative z-10 flex min-h-[145vw] w-full flex-col items-center px-6 pt-[22%] xl:min-h-0 xl:px-[max(1.5rem,1.568vw)] xl:pt-[17.2%] [&>*:not([aria-hidden])]:pointer-events-auto">
         <Contact />
 
-        <p className="order-2 max-w-[67%] text-center font-body text-base leading-relaxed xl:order-4 xl:max-w-[81%] xl:text-[length:max(1.25rem,1.306vw)]">
+        <p className="order-2 max-w-[85%] text-center font-body text-base leading-relaxed xl:order-4 xl:max-w-[93%] xl:text-[length:max(1rem,1.2vw)]">
           nwPlus acknowledges that our members live, learn, work, and host
           hackathons on the traditional, ancestral, and stolen territory of the
           xʷməθkʷəy̓əm (Musqueam) Peoples. We recognize that this land was taken
@@ -62,7 +62,7 @@ const Footer = () => {
           className="order-3 w-full flex-1 pb-[84%] xl:flex-none xl:pb-[72.8%]"
         />
 
-        <div className="order-5 mt-[2%] w-full xl:mt-[4.6%]">
+        <div className="order-5 mt-[2%] w-full xl:mt-[2.5%]">
           <TeamGallery />
         </div>
 
