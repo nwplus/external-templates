@@ -46,8 +46,10 @@ export const DesktopEvents = () => (
             </div>
           </Parallax>
         </div>
+        {/* At xl this sheep reaches into the page margin. Below it there is
+            none, so it steps in far enough to keep its copy on screen. */}
         <Parallax speed={-0.12}>
-          <div className="w-[138%] -translate-y-46">
+          <div className="w-[138%] -translate-y-46 max-xl:-ml-[10%]">
             <SheepRight {...LEARN_WEEK} />
           </div>
         </Parallax>
