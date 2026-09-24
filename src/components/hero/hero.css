@@ -64,6 +64,71 @@
 }
 
 /*
+ * The sky's twinkle (sky-twinkle.tsx). A bloom is a soft cream glow over a
+ * sparkle baked into the art: breathing ones swell and fade gently, glints
+ * sit nearly dark and flare for a moment. Pinpricks are the faint stars
+ * scattered between them. Screen blending lets the glow brighten the
+ * sparkle's own colour instead of washing it out.
+ */
+.hero-bloom,
+.hero-glint {
+  background: radial-gradient(
+    circle,
+    rgb(255 248 228 / 0.85) 0%,
+    rgb(255 228 170 / 0.35) 28%,
+    transparent 68%
+  );
+  mix-blend-mode: screen;
+  opacity: 0.2;
+}
+
+.hero-pinprick {
+  background: #fff4d6;
+  box-shadow: 0 0 4px 1px rgb(255 244 214 / 0.6);
+  opacity: 0.5;
+}
+
+@keyframes hero-bloom {
+  0%,
+  100% {
+    opacity: 0.15;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 0.75;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes hero-glint {
+  0%,
+  100% {
+    opacity: 0.1;
+    transform: scale(0.8);
+  }
+  6% {
+    opacity: 0.95;
+    transform: scale(1.15);
+  }
+  18% {
+    opacity: 0.1;
+    transform: scale(0.8);
+  }
+}
+
+@keyframes hero-pinprick {
+  0%,
+  100% {
+    opacity: 0.15;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.2);
+  }
+}
+
+/*
  * Light in the house's windows: a warm glow over each pane, dimming and
  * catching unevenly like a lamp flame rather than pulsing. The wider halo
  * spilling onto the wall is the pseudo-element, so it flickers with it.
@@ -124,6 +189,18 @@
     animation:
       hero-drift 6s ease-in-out infinite,
       hero-star-twinkle 3s ease-in-out infinite;
+  }
+
+  .hero-bloom {
+    animation: hero-bloom 3.5s ease-in-out infinite;
+  }
+
+  .hero-glint {
+    animation: hero-glint 5s ease-in-out infinite;
+  }
+
+  .hero-pinprick {
+    animation: hero-pinprick 4s ease-in-out infinite;
   }
 
   .hero-window {

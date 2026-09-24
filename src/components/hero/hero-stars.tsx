@@ -10,6 +10,7 @@
  * their drift, so no two stars repeat the same pairing.
  */
 import "./hero.css";
+import { SkyTwinkle } from "./sky-twinkle";
 
 const ART = { width: 1687, height: 1154 };
 
@@ -32,9 +33,13 @@ type HeroStarsProps = {
   scale?: number;
 };
 
-/** Drifting stars, placed over the sparkles art they were taken from. */
+/**
+ * Drifting stars, placed over the sparkles art they were taken from, with
+ * the rest of the sky's twinkle underneath them.
+ */
 export const HeroStars = ({ scale = 1 }: HeroStarsProps) => (
   <>
+    <SkyTwinkle />
     {STARS.map(({ n, x, y, w, h }, i) => {
       const width = (w / ART.width) * 100;
       const base = `/assets/hero/star-${n}`;
