@@ -50,6 +50,20 @@
 }
 
 /*
+ * Their twinkle, on top of the drift. Two animations, so the inline timings
+ * in hero-stars.tsx are pairs: the drift's first, the twinkle's second.
+ */
+@keyframes hero-star-twinkle {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.65;
+  }
+}
+
+/*
  * Light in the house's windows: a warm glow over each pane, dimming and
  * catching unevenly like a lamp flame rather than pulsing. The wider halo
  * spilling onto the wall is the pseudo-element, so it flickers with it.
@@ -107,7 +121,9 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .hero-star {
-    animation: hero-drift 6s ease-in-out infinite;
+    animation:
+      hero-drift 6s ease-in-out infinite,
+      hero-star-twinkle 3s ease-in-out infinite;
   }
 
   .hero-window {
