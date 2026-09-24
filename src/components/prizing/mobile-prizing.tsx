@@ -1,5 +1,6 @@
 import { ResponsiveArt } from "@/components/ui/responsive-art";
 import { PRIZING_PARAGRAPHS, PRIZING_TITLE } from "@/constants/prizing";
+import { withEmphasis } from "@/lib/emphasis";
 
 import Image from "next/image";
 
@@ -22,7 +23,7 @@ export const MobilePrizing = () => (
       <h2 className="font-title text-4xl leading-none pb-2">{PRIZING_TITLE}</h2>
       {PRIZING_PARAGRAPHS.map((paragraph, i) => (
         <p key={i} className="text-base">
-          {paragraph}
+          {withEmphasis(paragraph)}
         </p>
       ))}
     </div>

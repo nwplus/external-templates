@@ -1,5 +1,6 @@
 import { Parallax } from "@/components/ui/parallax";
 import { PRIZING_PARAGRAPHS, PRIZING_TITLE } from "@/constants/prizing";
+import { withEmphasis } from "@/lib/emphasis";
 
 import Image from "next/image";
 
@@ -27,7 +28,7 @@ export const DesktopPrizing = () => (
         </h2>
         <div className="w-1/2 text-[20px] flex flex-col gap-5 pb-40">
           {PRIZING_PARAGRAPHS.map((paragraph, i) => (
-            <p key={i}>{paragraph}</p>
+            <p key={i}>{withEmphasis(paragraph)}</p>
           ))}
         </div>
       </div>
