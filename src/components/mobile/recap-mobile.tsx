@@ -129,7 +129,7 @@ const RecapMobile = () => {
         </h2>
 
         <FramedPhoto
-          className="left-[52.42vw] top-[175.83vw] h-[15.78vw] w-[22.9vw]"
+          className="left-[53vw] top-[182.4vw] h-[14.1vw] w-[20.5vw]"
           frame={{ src: "/assets/recap/green-frame.webp", size: [275, 206] }}
           photo={{
             src: "/assets/recap/photos/green.jpg",
@@ -281,7 +281,7 @@ const RecapMobile = () => {
             alt: "A team gathered around a laptop at a table",
             size: [681, 454],
           }}
-          aperture={[13.53, 18.99, 63.69, 67.55]}
+          aperture={[16.5, 20.5, 60.2, 61.5]}
           objectPosition="50% 40%"
         />
 

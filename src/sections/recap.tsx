@@ -22,15 +22,15 @@ const framePhotos: {
     src: "/assets/recap/photos/hanging.jpg",
     alt: "The opening ceremony in a packed lecture theatre",
     aperture:
-      "left-[90.9vw] top-[13.68vw] h-[11.89vw] w-[12.45vw] rounded-full",
-    crop: "left-[-2.42vw] top-[-0.85vw] h-[13.29vw] w-[19.9vw]",
+      "left-[87.35vw] top-[10.98vw] h-[9.67vw] w-[10.13vw] rounded-full",
+    crop: "left-[-1.97vw] top-[-0.69vw] h-[10.81vw] w-[16.19vw]",
     size: [609, 406],
   },
   {
     src: "/assets/recap/photos/brown.jpg",
     alt: "A team gathered around a laptop at a table",
-    aperture: "left-[69.3vw] top-[18.83vw] h-[11.43vw] w-[14.35vw]",
-    crop: "left-[-3.99vw] top-[-1.38vw] h-[14.86vw] w-[22.29vw]",
+    aperture: "left-[69.97vw] top-[19.09vw] h-[10.41vw] w-[13.56vw]",
+    crop: "left-[-1.03vw] top-0 h-[10.41vw] w-[15.62vw]",
     size: [681, 454],
   },
   {
@@ -53,7 +53,7 @@ const framePhotos: {
     src: "/assets/recap/photos/purple.jpg",
     alt: "Two hackers demoing their project beside a hand-lettered sign",
     aperture: "left-[2.51vw] top-[44.64vw] h-[18.8vw] w-[17.03vw] rounded-full",
-    crop: "left-[-1.14vw] top-[-5.5vw] h-[24.87vw] w-[18.65vw]",
+    crop: "left-[-1.14vw] top-[-4.2vw] h-[24.87vw] w-[18.65vw]",
     size: [570, 760],
   },
   {
@@ -137,7 +137,7 @@ const Recap = () => {
         alt=""
         width={246}
         height={371}
-        className="absolute left-[89.86vw] top-[2.03vw] h-[24.28vw] w-[16.1vw]"
+        className="absolute left-[86.5vw] top-[1.5vw] h-[19.75vw] w-[13.1vw]"
       />
       <Image
         src="/assets/recap/calendar.webp"
