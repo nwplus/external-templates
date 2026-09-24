@@ -5,7 +5,7 @@ import type { FAQDoc } from "@/lib/firestore";
  * the server section to the client-side room (a full FAQDoc carries a
  * Firestore Timestamp, which cannot).
  */
-export type FaqItem = Pick<FAQDoc, "question" | "answer">;
+export type FaqItem = Pick<FAQDoc, "question" | "answer" | "category">;
 export type FaqGroup<T extends FaqItem = FAQDoc> = {
   category: string;
   faqs: T[];
@@ -46,12 +46,31 @@ export function positionFromTop(
 }
 
 /**
- * Splits one cabinet category's tapes into the two bottom-aligned stacks the
- * design piles inside the cabinet. The split is sequential, so reading order
- * runs down the left stack and then down the right one; an odd count leaves
- * the extra tape on the left, which is the taller stack in the design.
+ * Orders tapes the way they pile up: tapes are as wide as their question, so
+ * the longest goes first (at the bottom) and each one after is no wider than
+ * the one it rests on. Ties keep a stable alphabetical order.
  */
-export function splitTapeStacks<T>(faqs: T[]): { left: T[]; right: T[] } {
-  const half = Math.ceil(faqs.length / 2);
-  return { left: faqs.slice(0, half), right: faqs.slice(half) };
+export function stackByLength<T extends { question: string }>(faqs: T[]): T[] {
+  return [...faqs].sort(
+    (a, b) =>
+      b.question.length - a.question.length ||
+      a.question.localeCompare(b.question)
+  );
+}
+
+/**
+ * Splits one cabinet category's tapes into the two bottom-aligned stacks the
+ * design piles inside the cabinet. Tapes are dealt out longest first,
+ * alternately left and right, so each stack runs from its longest tape at the
+ * bottom to its shortest at the top and the two stay about the same height; an
+ * odd count leaves the extra tape on the left, the taller stack in the design.
+ */
+export function splitTapeStacks<T extends { question: string }>(
+  faqs: T[]
+): { left: T[]; right: T[] } {
+  const sorted = stackByLength(faqs);
+  return {
+    left: sorted.filter((_, i) => i % 2 === 0),
+    right: sorted.filter((_, i) => i % 2 === 1),
+  };
 }

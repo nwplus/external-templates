@@ -71,7 +71,7 @@ export const LavaLamp = ({ className }: { className?: string }) => {
       {/* The warm light the lamp throws on the wall, breathing while it is on. */}
       <motion.div
         aria-hidden="true"
-        className="absolute inset-[-30%]"
+        className="absolute inset-[-22%]"
         initial={false}
         animate={{ opacity: light }}
         transition={transition}

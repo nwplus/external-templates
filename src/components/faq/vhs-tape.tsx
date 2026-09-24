@@ -7,7 +7,10 @@ type VhsTapeProps = {
   /** Optional single letter shown in a small circle to the left of the label. */
   badge?: string;
   badgeColor?: string;
-  onSelect: (faq: FaqItem) => void;
+  /** Dimmed while a copy of this tape flies to the television's slot. */
+  taken?: boolean;
+  /** Also passes the tape's button, so the room can fly the tape from it. */
+  onSelect: (faq: FaqItem, el: HTMLElement) => void;
 };
 
 /**
@@ -20,17 +23,19 @@ const VhsTape = ({
   selected,
   badge,
   badgeColor,
+  taken = false,
   onSelect,
 }: VhsTapeProps) => (
   <button
     type="button"
     aria-pressed={selected}
-    onClick={() => onSelect(faq)}
+    onClick={(e) => onSelect(faq, e.currentTarget)}
     className={cn(
-      "flex max-w-full cursor-pointer items-center gap-2 rounded-md bg-tape py-1.5 pr-2.5 pl-2 text-left transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-star xl:gap-[0.5cqw] xl:py-[0.45cqw] xl:pr-[0.65cqw] xl:pl-[0.5cqw]",
+      "flex max-w-full cursor-pointer items-center gap-2 rounded-md bg-tape py-1.5 pr-2.5 pl-2 text-left transition-[transform,box-shadow,opacity] duration-200 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-star xl:gap-[0.5cqw] xl:py-[0.45cqw] xl:pr-[0.65cqw] xl:pl-[0.5cqw]",
       selected
         ? "shadow-[inset_0_1px_0_rgba(255,255,255,0.14),0_0_16px_8px_rgba(252,230,173,0.8)]"
-        : "shadow-[inset_0_1px_0_rgba(255,255,255,0.14)]"
+        : "shadow-[inset_0_1px_0_rgba(255,255,255,0.14)]",
+      taken && "opacity-40"
     )}
   >
     <span
