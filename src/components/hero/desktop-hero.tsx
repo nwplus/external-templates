@@ -65,8 +65,10 @@ export const DesktopHero = () => (
       {/*
         Bottom clouds + house with countdown. Each layer scrolls at its own
         speed, faster the closer it is: back clouds, house, front clouds, stars.
+        The offsets are in vw (400px and 200px at 1920) like the art itself, so
+        the scene keeps its shape as the window narrows.
       */}
-      <div className="absolute w-1/2 -bottom-100 left-0 z-20">
+      <div className="absolute w-1/2 -bottom-[20.8333vw] left-0 z-20">
         <Parallax
           speed={-0.08}
           anchor="top"
@@ -80,7 +82,7 @@ export const DesktopHero = () => (
           house (anchored to this box's bottom) keeps its position. Back sits
           behind the house, front in front of it, stars on top of everything.
         */}
-        <div className="relative -mb-50 aspect-[770/572]">
+        <div className="relative -mb-[10.4167vw] aspect-[770/572]">
           <Parallax
             speed={-0.04}
             anchor="top"
@@ -126,17 +128,27 @@ export const DesktopHero = () => (
       {/*
         Hero content. The wrapper's box covers the house, so it lets pointer
         events through and only the text block takes them; otherwise the
-        house's lamp, windows and door could never be clicked.
+        house's lamp, windows and door could never be clicked. Its height
+        follows the width, as the art does, up to a full screen: a 16:9 window
+        is filled, a narrower one doesn't leave the house sinking out of view.
+        The bottom padding keeps the countdown, which rides on the house, clear
+        of the buttons when the type stops shrinking.
       */}
-      <div className="pointer-events-none relative z-20 min-h-screen pt-60 pb-[22vw]">
+      <div className="pointer-events-none relative z-20 min-h-[min(100vh,56.25vw)] pt-[clamp(8rem,12.5vw,15rem)] pb-[calc(28vw+2rem)]">
         <div className="pointer-events-auto mx-auto w-[53vw] flex flex-col items-start">
-          <h1 className="font-title text-[170px] leading-42.5 uppercase text-white">
+          <h1 className="font-title text-[clamp(4.5rem,8.8542vw,170px)] leading-none uppercase text-white">
             {HERO_TITLE}
           </h1>
-          <h3 className="text-white text-2xl -mt-5">{HERO_TAGLINE}</h3>
+          <h3 className="text-white text-[clamp(1.125rem,1.25vw,1.5rem)] leading-[calc(4/3)] -mt-[clamp(0.75rem,1.0417vw,1.25rem)]">
+            {HERO_TAGLINE}
+          </h3>
           <div className="flex gap-4 items-center pt-8">
             {HERO_CTA_LINKS.map((link) => (
-              <CtaLink key={link.label} href={link.href}>
+              <CtaLink
+                key={link.label}
+                href={link.href}
+                className="text-[length:clamp(1.125rem,1.25vw,1.5rem)] leading-[calc(4/3)]"
+              >
                 {link.label}
               </CtaLink>
             ))}
