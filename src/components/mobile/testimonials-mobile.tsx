@@ -4,7 +4,7 @@ import { Candle } from "@/components/testimonials/candle";
 import { DeerHead } from "@/components/testimonials/deer-head";
 import { Pillow } from "@/components/testimonials/pillow";
 import { TappableBear } from "@/components/testimonials/tappable-bear";
-import { displayRole, testimonials } from "@/constants/testimonials";
+import { testimonials } from "@/constants/testimonials";
 import { cn } from "@/lib/utils";
 
 import Image from "next/image";
@@ -294,11 +294,9 @@ const TestimonialsMobile = () => {
         <p className="text-[6.11vw] font-bold leading-none text-black">
           {person.name}
         </p>
-        {displayRole(person) && (
-          <p className="mt-[2.04vw] text-[4.07vw] leading-none text-[#2b2b33]">
-            {displayRole(person)}
-          </p>
-        )}
+        <p className="mt-[2.04vw] text-[4.07vw] leading-none text-[#2b2b33]">
+          {person.role}
+        </p>
         {/* the longest quote needs smaller type to stay inside the bubble */}
         <p
           className={cn(

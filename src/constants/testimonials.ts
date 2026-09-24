@@ -9,10 +9,6 @@ export interface Testimonial {
   linkedin?: string;
 }
 
-/** The role to show, or "" while it is still a placeholder. */
-export const displayRole = ({ role }: Testimonial) =>
-  role === "TBD" ? "" : role;
-
 export const testimonials: Testimonial[] = [
   {
     name: "Wakana Kuwayama",
@@ -32,12 +28,11 @@ export const testimonials: Testimonial[] = [
     testimonial:
       "HackCamp was my first hackathon and it set the bar really high for any hackathon I'll do in the future. The workshops were made for beginners, which really helped since I didn't have much experience going in, and I learned so much from all the different topics they covered. Building a project in one weekend gave me the chance to see what I could actually do under pressure, and after the event I kept working on projects on my own. It also gave me something to add to my resume, which helped a lot since I didn't have many projects on there before.",
   },
-  // TODO: confirm Sunny's role and year
   {
     name: "Sunny Su",
     pronouns: "",
-    role: "TBD",
-    year: "TBD",
+    role: "UI/UX Designer",
+    year: "2nd year",
     program: "",
     testimonial:
       "With no prior hackathon experience or idea of what a hackathon entails, participating in HackCamp gave me the chance to explore something I was curious about while learning new skills and making new friends. I came across the event by chance in my first year, and being curious, intrigued, and a little scared about what it was all about, I decided to give it a try, and I am glad I did. Working through the night with friends, going through trial and error, and learning together as we went, we were able to turn an idea into something real. HackCamp showed me that even if something seems intimidating at first, when you are willing to learn, work hard, and give something new a try, you are capable of creating more than you might expect. You never know how much fun you might have while learning something new!",

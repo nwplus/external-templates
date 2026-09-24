@@ -4,11 +4,7 @@ import { Candle } from "@/components/testimonials/candle";
 import { DeerHead } from "@/components/testimonials/deer-head";
 import { Pillow } from "@/components/testimonials/pillow";
 import { TappableBear } from "@/components/testimonials/tappable-bear";
-import {
-  displayRole,
-  type Testimonial,
-  testimonials,
-} from "@/constants/testimonials";
+import { type Testimonial, testimonials } from "@/constants/testimonials";
 import { cn } from "@/lib/utils";
 
 import Image from "next/image";
@@ -71,11 +67,9 @@ const SpeechBubble = ({
       <span className="text-[0.96vw] font-bold leading-tight text-[#16224f]">
         {person.name}
       </span>
-      {displayRole(person) && (
-        <span className="mt-[0.3vw] text-[0.83vw] leading-tight text-[#5a6396]">
-          {displayRole(person)}
-        </span>
-      )}
+      <span className="mt-[0.3vw] text-[0.83vw] leading-tight text-[#5a6396]">
+        {person.role}
+      </span>
     </span>
   </button>
 );
@@ -333,11 +327,9 @@ const Testimonials = () => {
         <p className="font-title text-[2.2vw] leading-none text-[#16224f]">
           {person.name}
         </p>
-        {displayRole(person) && (
-          <p className="mt-[0.6vw] text-[1.1vw] leading-none text-[#5a6396]">
-            {displayRole(person)}
-          </p>
-        )}
+        <p className="mt-[0.6vw] text-[1.1vw] leading-none text-[#5a6396]">
+          {person.role}
+        </p>
         <p
           className={cn(
             "mt-[1.3vw] leading-[1.5] text-[#2b3055]",
