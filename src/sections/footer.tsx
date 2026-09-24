@@ -56,10 +56,13 @@ const Footer = () => {
         </p>
 
         {/* Holds open the space the bed fills in the scene behind, and lets
-            clicks through to the mascots in it. */}
+            clicks through to the mascots in it. On the phone frame the text
+            above keeps its size while the bed grows with the width, so from
+            about 450px up it needs extra room to keep the headboard clear of
+            the land acknowledgement. */}
         <div
           aria-hidden
-          className="order-3 w-full flex-1 pb-[84%] xl:flex-none xl:pb-[72.8%]"
+          className="order-3 w-full flex-1 pb-[calc(84%_+_max(0px,22vw_-_99px))] xl:flex-none xl:pb-[72.8%]"
         />
 
         <div className="order-5 mt-[2%] w-full xl:mt-[2.5%]">
