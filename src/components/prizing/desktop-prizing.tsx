@@ -20,9 +20,9 @@ export const DesktopPrizing = () => (
       />
     </Parallax>
 
-    {/* Content */}
+    {/* Content: 1200px wide, or the window's width below xl */}
     <div className="relative z-10 h-full top-0 left-0">
-      <div className="mx-auto w-300 text-white pt-50 pb-100">
+      <div className="mx-auto w-300 max-xl:w-full max-xl:px-6 text-white pt-50 pb-100">
         <h2 className="font-title text-6xl leading-none pb-10">
           {PRIZING_TITLE}
         </h2>
