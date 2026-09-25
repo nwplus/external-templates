@@ -1,0 +1,33 @@
+/* hangs up and left of its top/left so the tail lands on the point */
+.hint-bubble {
+  translate: -88% -100%;
+  animation: hint-bubble-bob 2.4s ease-in-out infinite;
+}
+
+.hint-bubble::after {
+  content: "";
+  position: absolute;
+  right: 12%;
+  bottom: -0.3em;
+  width: 0.7em;
+  height: 0.7em;
+  background: inherit;
+  rotate: 45deg;
+  border-radius: 0 0 0.15em 0;
+}
+
+@keyframes hint-bubble-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-18%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hint-bubble {
+    animation: none;
+  }
+}
