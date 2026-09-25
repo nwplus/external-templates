@@ -13,8 +13,9 @@ import {
 
 /**
  * Nugget, running towards us: the beaver from the testimonials art
- * (nugget.svg), in its colours and dome shape, with the paddle tail swinging
- * out behind and the buck tooth big enough to read at game size.
+ * (testimonials/nugget.tsx), in its colours and dome shape, with the paddle
+ * tail swinging out behind and the buck tooth big enough to read at game
+ * size.
  */
 const Runner = () => (
   <svg viewBox="0 0 40 48" className="block h-auto w-full" aria-hidden="true">

@@ -2,6 +2,8 @@
 
 import { Candle } from "@/components/testimonials/candle";
 import { DeerHead } from "@/components/testimonials/deer-head";
+import { nookShape } from "@/components/testimonials/nook-shapes";
+import { Nugget } from "@/components/testimonials/nugget";
 import { Pillow } from "@/components/testimonials/pillow";
 import { TappableBear } from "@/components/testimonials/tappable-bear";
 import { testimonials } from "@/constants/testimonials";
@@ -149,6 +151,7 @@ const TestimonialsMobile = () => {
         width={41}
         height={89}
         className="absolute left-[69.57vw] top-[143.17vw] h-[10.79vw] w-[5.02vw] rotate-[-22.24deg]"
+        style={nookShape("/assets/testimonials/deer-antler-back.svg")}
       />
       <Image
         src="/assets/testimonials/deer-antlers.svg"
@@ -156,6 +159,7 @@ const TestimonialsMobile = () => {
         width={71}
         height={98}
         className="absolute left-[74.5vw] top-[142.75vw] h-[11.84vw] w-[8.59vw]"
+        style={nookShape("/assets/testimonials/deer-antlers.svg")}
       />
       <Image
         src="/assets/testimonials/deer-body.svg"
@@ -163,6 +167,7 @@ const TestimonialsMobile = () => {
         width={153}
         height={140}
         className="absolute left-[64.4vw] top-[164.54vw] h-[16.97vw] w-[18.54vw]"
+        style={nookShape("/assets/testimonials/deer-body.svg")}
       />
       <Image
         src="/assets/testimonials/deer-pyjamas.svg"
@@ -170,6 +175,7 @@ const TestimonialsMobile = () => {
         width={78}
         height={165}
         className="absolute left-[70.22vw] top-[154.01vw] h-[19.93vw] w-[9.47vw]"
+        style={nookShape("/assets/testimonials/deer-pyjamas.svg")}
       />
       <Image
         src="/assets/testimonials/deer-ear-left.svg"
@@ -177,6 +183,7 @@ const TestimonialsMobile = () => {
         width={30}
         height={32}
         className="absolute left-[68.87vw] top-[152.39vw] h-[3.84vw] w-[3.62vw] rotate-[-5.37deg]"
+        style={nookShape("/assets/testimonials/deer-ear-left.svg")}
       />
       <Image
         src="/assets/testimonials/deer-ear-right.svg"
@@ -184,6 +191,7 @@ const TestimonialsMobile = () => {
         width={32}
         height={32}
         className="absolute left-[78.03vw] top-[152.52vw] h-[3.88vw] w-[3.86vw] rotate-[-5.37deg]"
+        style={nookShape("/assets/testimonials/deer-ear-right.svg")}
       />
       <DeerHead className="left-[69.22vw] top-[152.59vw] h-[12.8vw] w-[14.07vw]" />
       <Image
@@ -192,25 +200,21 @@ const TestimonialsMobile = () => {
         width={15}
         height={12}
         className="absolute left-[75.24vw] top-[167.7vw] h-[1.44vw] w-[1.85vw]"
+        style={nookShape("/assets/testimonials/deer-pyjama-cat.svg")}
       />
       <TappableBear
         onClick={() => step(1)}
         whileTap={{ scale: 0.95 }}
         className="left-[20.28vw] top-[147.83vw] h-[29.08vw] w-[16.66vw]"
       />
-      <Image
-        src="/assets/testimonials/nugget.svg"
-        alt=""
-        width={181}
-        height={154}
-        className="absolute left-[42.81vw] top-[148.22vw] h-[18.58vw] w-[21.92vw]"
-      />
+      <Nugget className="left-[42.81vw] top-[148.22vw] h-[18.58vw] w-[21.92vw]" />
       <Image
         src="/assets/testimonials/light-box.svg"
         alt=""
         width={117}
         height={83}
         className="absolute left-[42.2vw] top-[167.7vw] h-[10.01vw] w-[14.09vw]"
+        style={nookShape("/assets/testimonials/light-box.svg")}
       />
       <Candle
         variant="large"
@@ -240,6 +244,7 @@ const TestimonialsMobile = () => {
         width={303}
         height={166}
         className="absolute left-[55.17vw] top-[172.82vw] h-[20.0vw] w-[36.6vw]"
+        style={nookShape("/assets/testimonials/blanket-right.svg")}
       />
       <Pillow
         src="/assets/testimonials/foreground-pillow.svg"
