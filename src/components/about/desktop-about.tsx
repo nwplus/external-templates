@@ -2,7 +2,9 @@ import { Parallax } from "@/components/ui/parallax";
 import { ResponsiveArt } from "@/components/ui/responsive-art";
 import { WELCOME_PARAGRAPHS, WELCOME_TITLE } from "@/constants/about";
 
+import { AboutStars } from "./about-stars";
 import { HackathonFaq } from "./hackathon-faq";
+import { MOON_BEAR_VIEWBOX } from "./moon-bear-art";
 import { MoonBearFigure } from "./moon-bear-figure";
 
 // Sections are not stacking contexts, so these z-indexes order against the
@@ -27,8 +29,8 @@ export const DesktopAbout = () => (
 
     {/* What is a hackathon */}
     <div className="relative w-full aspect-[2.100228245]">
-      {/* Illustration: the night scene as a raster, with the moon and bear
-          drawn live on top of it so they can be clicked. The overlay is
+      {/* Illustration: the night scene as a raster, with its stars and the
+          moon and bear drawn live on top of it so they can move. The overlay is
           sized like the image (full width, its own aspect) rather than to
           this box, whose aspect is not the art's. */}
       <Parallax speed={0.15} className="absolute z-10 w-full h-full">
@@ -40,6 +42,10 @@ export const DesktopAbout = () => (
           sizes="100vw"
           media="(min-width: 768px)"
           className="block w-full h-auto"
+        />
+        <AboutStars
+          viewBox={MOON_BEAR_VIEWBOX}
+          className="absolute top-0 left-0 w-full aspect-[1531/768]"
         />
         <MoonBearFigure className="absolute top-0 left-0 w-full h-auto" />
       </Parallax>
