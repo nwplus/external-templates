@@ -33,8 +33,9 @@
 
 /*
  * The hero's loose stars: a slow figure-of-eight drift with a little tilt,
- * roomier than the footer's float. Transform only; paused off screen by the
- * motion gate like everything else, and off entirely under reduced motion.
+ * a touch roomier than the footer's float. Transform only; paused off screen
+ * by the motion gate like everything else, and off entirely under reduced
+ * motion.
  */
 @keyframes hero-drift {
   0%,
@@ -42,16 +43,17 @@
     transform: translate(0, 0) rotate(0deg);
   }
   30% {
-    transform: translate(3.5%, -12%) rotate(7deg);
+    transform: translate(2%, -7%) rotate(3.5deg);
   }
   65% {
-    transform: translate(-3.5%, -5%) rotate(-6deg);
+    transform: translate(-2%, -3%) rotate(-3deg);
   }
 }
 
 /*
  * Their twinkle, on top of the drift. Three animations (drift, twinkle,
- * wiggle), so the inline timings in hero-stars.tsx come in that order.
+ * wiggle), so the inline timings in hero-stars.tsx come in that order. It
+ * only dims a little since the glow is baked into each image.
  */
 @keyframes hero-star-twinkle {
   0%,
@@ -197,19 +199,19 @@
     rotate: 0deg;
   }
   73% {
-    rotate: -14deg;
+    rotate: -6deg;
   }
   76% {
-    rotate: 11deg;
+    rotate: 4.5deg;
   }
   79% {
-    rotate: -8deg;
+    rotate: -3deg;
   }
   82% {
-    rotate: 5deg;
+    rotate: 1.5deg;
   }
   85% {
-    rotate: -2deg;
+    rotate: -0.5deg;
   }
   88% {
     rotate: 0deg;
