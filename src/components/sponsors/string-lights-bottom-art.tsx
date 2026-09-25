@@ -11,6 +11,12 @@ const at = (x: number) => ({ "--x": x }) as CSSProperties;
  * blurred glows, `.strand-glow` the glow around each strand of small lights
  * and `.cord-hit` an invisible, wider copy of each cord that makes the strand
  * easy to click. Do not hand-edit the paths.
+ *
+ * The export cut every glow off in a straight line twice over: its blur
+ * regions stop 2 standard deviations out, and each strand sits in a frame
+ * clipped tight to its lights. The strand glows and those frames reach 4
+ * out instead (the frames keep their top edge, where the cords are cut), and
+ * the halos a full box width on every side.
  */
 export const StringLightsBottomArt = ({
   className,
@@ -618,10 +624,10 @@ export const StringLightsBottomArt = ({
     <defs>
       <filter
         id="filter0_d_13622_632"
-        x="375.046"
-        y="47.0062"
-        width="152.555"
-        height="81.9572"
+        x="355.2"
+        y="27.16"
+        width="192.248"
+        height="121.65"
         filterUnits="userSpaceOnUse"
         colorInterpolationFilters="sRGB"
       >
@@ -653,10 +659,10 @@ export const StringLightsBottomArt = ({
       </filter>
       <filter
         id="filter1_d_13622_632"
-        x="31.307"
-        y="47.9115"
-        width="376.896"
-        height="213.595"
+        x="11.461"
+        y="28.065"
+        width="416.589"
+        height="253.288"
         filterUnits="userSpaceOnUse"
         colorInterpolationFilters="sRGB"
       >
@@ -688,10 +694,10 @@ export const StringLightsBottomArt = ({
       </filter>
       <filter
         id="filter2_d_13622_632"
-        x="497.121"
-        y="56.9164"
-        width="552.669"
-        height="287.056"
+        x="477.275"
+        y="37.07"
+        width="592.362"
+        height="326.749"
         filterUnits="userSpaceOnUse"
         colorInterpolationFilters="sRGB"
       >
@@ -723,10 +729,10 @@ export const StringLightsBottomArt = ({
       </filter>
       <filter
         id="filter3_d_13622_632"
-        x="1027.14"
-        y="49.0316"
-        width="161.143"
-        height="95.2658"
+        x="1007.294"
+        y="29.185"
+        width="200.836"
+        height="134.958"
         filterUnits="userSpaceOnUse"
         colorInterpolationFilters="sRGB"
       >
@@ -976,18 +982,18 @@ export const StringLightsBottomArt = ({
       </linearGradient>
       <clipPath id="clip0_13622_632">
         <rect
-          width="494.416"
-          height="227.463"
+          width="573.801"
+          height="267.156"
           fill="white"
-          transform="matrix(-1 0 0 1 535.922 14.1992)"
+          transform="matrix(-1 0 0 1 575.615 14.1992)"
         />
       </clipPath>
       <clipPath id="clip1_13622_632">
         <rect
-          width="530.534"
-          height="299.801"
+          width="609.919"
+          height="339.494"
           fill="white"
-          transform="matrix(-1 0 0 1 1037.82 24.3252)"
+          transform="matrix(-1 0 0 1 1077.513 24.3252)"
         />
       </clipPath>
     </defs>

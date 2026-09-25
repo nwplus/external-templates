@@ -11,6 +11,12 @@ const at = (x: number) => ({ "--x": x }) as CSSProperties;
  * blurred glows, `.strand-glow` the glow around each strand of small lights
  * and `.cord-hit` an invisible, wider copy of each cord that makes the strand
  * easy to click. Do not hand-edit the paths.
+ *
+ * The export cut every glow off in a straight line twice over: its blur
+ * regions stop 2 standard deviations out, and each strand sits in a frame
+ * clipped tight to its lights. The strand glows and those frames reach 4
+ * out instead (the frames keep their top edge, where the cords are cut), and
+ * the halos a full box width on every side.
  */
 export const StringLightsTopArt = ({ className }: { className?: string }) => (
   <svg
@@ -803,10 +809,10 @@ export const StringLightsTopArt = ({ className }: { className?: string }) => (
     <defs>
       <filter
         id="filter0_d_13622_286"
-        x="1087.62"
-        y="153.196"
-        width="376.896"
-        height="213.595"
+        x="1067.774"
+        y="133.35"
+        width="416.589"
+        height="253.288"
         filterUnits="userSpaceOnUse"
         colorInterpolationFilters="sRGB"
       >
@@ -838,10 +844,10 @@ export const StringLightsTopArt = ({ className }: { className?: string }) => (
       </filter>
       <filter
         id="filter1_d_13622_286"
-        x="953.222"
-        y="152.29"
-        width="152.555"
-        height="81.9582"
+        x="933.376"
+        y="132.444"
+        width="192.248"
+        height="121.651"
         filterUnits="userSpaceOnUse"
         colorInterpolationFilters="sRGB"
       >
@@ -873,10 +879,10 @@ export const StringLightsTopArt = ({ className }: { className?: string }) => (
       </filter>
       <filter
         id="filter2_d_13622_286"
-        x="424.439"
-        y="164.226"
-        width="552.668"
-        height="287.054"
+        x="404.593"
+        y="144.38"
+        width="592.361"
+        height="326.747"
         filterUnits="userSpaceOnUse"
         colorInterpolationFilters="sRGB"
       >
@@ -908,10 +914,10 @@ export const StringLightsTopArt = ({ className }: { className?: string }) => (
       </filter>
       <filter
         id="filter3_d_13622_286"
-        x="43.9372"
-        y="141.152"
-        width="403.587"
-        height="132.943"
+        x="24.091"
+        y="121.306"
+        width="443.28"
+        height="172.636"
         filterUnits="userSpaceOnUse"
         colorInterpolationFilters="sRGB"
       >
@@ -1303,26 +1309,26 @@ export const StringLightsTopArt = ({ className }: { className?: string }) => (
       </linearGradient>
       <clipPath id="clip0_13622_286">
         <rect
-          width="494.416"
-          height="227.463"
+          width="573.801"
+          height="267.156"
           fill="white"
-          transform="translate(959.905 119.483)"
+          transform="translate(920.212 119.483)"
         />
       </clipPath>
       <clipPath id="clip1_13622_286">
         <rect
-          width="530.534"
-          height="299.801"
+          width="609.919"
+          height="339.494"
           fill="white"
-          transform="translate(436.408 131.633)"
+          transform="translate(396.715 131.633)"
         />
       </clipPath>
       <clipPath id="clip2_13622_286">
         <rect
-          width="402.941"
-          height="138.711"
+          width="482.326"
+          height="178.404"
           fill="white"
-          transform="translate(44.5447 122.521)"
+          transform="translate(4.852 122.521)"
         />
       </clipPath>
     </defs>
