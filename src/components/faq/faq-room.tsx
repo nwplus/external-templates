@@ -581,11 +581,7 @@ const FaqRoom = ({ layout }: { layout: FaqLayout<FaqItem> }) => {
             />
           ))
         ) : (
-          <Cabinet
-            selected={selected}
-            out={out}
-            onSelect={handleSelect}
-          />
+          <Cabinet selected={selected} out={out} onSelect={handleSelect} />
         )}
         {/* The cloud band starts behind the cabinet and closes the section. */}
         <Image
