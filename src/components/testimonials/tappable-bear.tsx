@@ -8,6 +8,11 @@ import {
   useReducedMotion,
 } from "framer-motion";
 import Image from "next/image";
+import { useRef } from "react";
+
+import { BearHead } from "./bear-head";
+import { blinkTwice } from "./blink";
+import { nookShape } from "./nook-shapes";
 
 // little wiggle every few sec so ppl realize it's clickable
 const bearNudge = {
@@ -31,16 +36,24 @@ export const TappableBear = ({
   whileTap,
 }: TappableBearProps) => {
   const reduceMotion = useReducedMotion();
+  const bear = useRef<HTMLButtonElement>(null);
 
   return (
     <motion.button
+      ref={bear}
       type="button"
-      onClick={onClick}
+      onClick={() => {
+        blinkTwice(bear.current);
+        onClick();
+      }}
       aria-label="Next testimonial"
       whileHover={whileHover}
       whileTap={whileTap}
       transition={{ type: "spring", stiffness: 300, damping: 18 }}
-      className={cn("absolute origin-bottom cursor-pointer", className)}
+      className={cn(
+        "pointer-events-none absolute origin-bottom cursor-pointer",
+        className
+      )}
     >
       <motion.span
         className="absolute inset-0"
@@ -54,26 +67,22 @@ export const TappableBear = ({
           alt=""
           width={138}
           height={126}
-          className="absolute left-0 top-[47.8%] h-[52.2%] w-full rotate-[-1.14deg]"
+          className="pointer-events-auto absolute left-0 top-[47.8%] h-[52.2%] w-full rotate-[-1.14deg]"
+          style={nookShape("/assets/testimonials/bear-body.svg")}
         />
         <motion.span
           className="absolute left-[6.3%] top-0 h-[52.9%] w-[85%] origin-bottom"
           animate={reduceMotion ? undefined : { rotate: [0, -3, 3, 0] }}
           transition={bearNudge}
         >
-          <Image
-            src="/assets/testimonials/bear-head.svg"
-            alt=""
-            width={116}
-            height={98}
-            className="absolute left-[1.2%] top-[23.2%] h-[76.8%] w-[98.8%]"
-          />
+          <BearHead className="absolute left-[1.2%] top-[23.2%] h-[76.8%] w-[98.8%] [&_*]:pointer-events-auto" />
           <Image
             src="/assets/testimonials/bear-hat.svg"
             alt=""
             width={92}
             height={48}
-            className="absolute left-0 top-0 h-[37.9%] w-[78.5%]"
+            className="pointer-events-auto absolute left-0 top-0 h-[37.9%] w-[78.5%]"
+            style={nookShape("/assets/testimonials/bear-hat.svg")}
           />
         </motion.span>
       </motion.span>

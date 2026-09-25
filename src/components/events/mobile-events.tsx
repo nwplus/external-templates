@@ -28,10 +28,11 @@ export const MobileEvents = () => (
       />
 
       <div className="relative z-10 flex flex-col pt-10 -mb-[4%]">
-        <div className="w-[110%] self-end -mr-[12%]">
+        {/* any wider and their legs get cut off */}
+        <div className="w-full">
           <SheepRight {...LEARN_WEEK} idPrefix="m-sheep-right" />
         </div>
-        <div className="w-[110%] -ml-[12%] -mt-[14%]">
+        <div className="w-full -mt-[14%]">
           <SheepLeft {...BUILD_DAY} idPrefix="m-sheep-left" />
         </div>
       </div>

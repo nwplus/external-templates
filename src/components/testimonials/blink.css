@@ -1,0 +1,15 @@
+/*
+ * The plushies' idle blink (deer, bear, nugget): the eyes stay open for
+ * almost the whole cycle and shut for a quarter of a second near its end.
+ * Each one sets its own length and offset so they never blink together.
+ */
+@keyframes plush-blink {
+  0%,
+  96.5%,
+  100% {
+    transform: scaleY(1);
+  }
+  98.2% {
+    transform: scaleY(0.1);
+  }
+}

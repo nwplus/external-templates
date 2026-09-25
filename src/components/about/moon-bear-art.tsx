@@ -86,6 +86,10 @@ const KNOT_OVERLAP = 1.2;
 const STAR_TRANSFORM = `translate(${(TIP.x - STAR_KNOT.x * STAR_SCALE).toFixed(2)} ${(TIP.y + LINE_LENGTH - KNOT_OVERLAP - STAR_KNOT.y * STAR_SCALE).toFixed(2)}) scale(${STAR_SCALE})`;
 export const STAR_RIDE = LINE_LENGTH / STAR_SCALE;
 
+// blur filter region from the figma export, opacity matches the old raster
+const GLOW = { x: 936.498, y: 0, width: 527.667, height: 606.306 };
+const GLOW_OPACITY = 0.57;
+
 /* ----------------------------------------------------------------------- */
 
 const MOON =
@@ -188,6 +192,7 @@ export const MoonBearArt = ({
       ref={ref}
       viewBox={viewBox}
       fill="none"
+      overflow={flying ? "visible" : undefined}
       className={className}
       style={style}
       aria-hidden={flying ? "true" : undefined}
@@ -202,6 +207,17 @@ export const MoonBearArt = ({
           height="496"
         >
           <path d={MOON} fill="#fff" stroke="#fff" strokeWidth="3" />
+        </mask>
+        <mask
+          id={`${id}-over-cloud`}
+          maskUnits="userSpaceOnUse"
+          x={GLOW.x}
+          y={GLOW.y}
+          width={GLOW.width}
+          height={GLOW.height}
+        >
+          <rect {...GLOW} fill="#fff" />
+          <path d={FRONT_CLOUD} fill="#000" />
         </mask>
         <radialGradient
           id={`${id}-moon`}
@@ -314,6 +330,15 @@ export const MoonBearArt = ({
           <stop offset="1" stopColor="#FACB6B" />
         </radialGradient>
       </defs>
+
+      {/* drawn here so it flies w/ the moon, masked to stay behind the front cloud */}
+      <image
+        href="/assets/about/moon-glow.webp"
+        {...GLOW}
+        preserveAspectRatio="none"
+        opacity={GLOW_OPACITY}
+        mask={flying ? undefined : `url(#${id}-over-cloud)`}
+      />
 
       <path
         data-part="moon"

@@ -1,12 +1,11 @@
 /**
- * The hero sky's twinkle. The sparkles that stayed in the flattened
- * background can't move, so each gets a soft bloom laid over it that swells
- * and fades on its own timing; a few glint instead, dark most of the cycle
- * and flaring briefly, so the sky sparkles rather than breathes. Around them
- * a sprinkle of pinprick stars twinkles faintly, kept dim enough that the
- * painted sparkles stay the ones you notice. Everything is placed in
- * percentages of the 1687x1154 art, like the drifting stars, and only
- * opacity and scale move.
+ * The hero sky's twinkle. The sparkles on the clouds each get a soft bloom
+ * in their own colour laid over them that swells and fades on its own
+ * timing; a couple glint instead, dark most of the cycle and flaring briefly,
+ * so the sky sparkles rather than breathes. Around them a sprinkle of
+ * pinprick stars twinkles faintly, kept dim enough that the painted
+ * sparkles stay the ones you notice. Everything is placed in percentages of the 1687x1154 art, like the
+ * drifting stars, and only opacity and scale move.
  *
  * Timings come from the index rather than Math.random() so the server and
  * the browser agree on every one.
@@ -17,24 +16,20 @@ const ART = { width: 1687, height: 1154 };
 const noise = (i: number, salt: number) =>
   ((i * 7919 + salt * 104729) % 997) / 997;
 
-/** The sparkles still baked into the art: centre and bounding box, in art px. */
+/**
+ * The sparkles on the clouds framing the sky (hero stars 11, 14, 15, 20):
+ * centre and bounding box in art px, plus the colour its glow takes. The
+ * open sky ones are left unlit so nothing flickers behind the countdown.
+ */
 const SPARKLES = [
-  { x: 1410, y: 645, w: 85, h: 66 },
-  { x: 711, y: 1111, w: 50, h: 48 },
-  { x: 1333, y: 115, w: 61, h: 65 },
-  { x: 828, y: 930, w: 58, h: 59 },
-  { x: 1047, y: 830, w: 35, h: 35 },
-  { x: 93, y: 160, w: 50, h: 30 },
-  { x: 282, y: 394, w: 39, h: 55 },
-  { x: 1317, y: 964, w: 48, h: 40 },
-  { x: 1257, y: 438, w: 42, h: 42 },
-  { x: 1517, y: 853, w: 34, h: 23 },
-  { x: 1018, y: 1029, w: 29, h: 28 },
-  { x: 41, y: 545, w: 19, h: 20 },
+  { x: 1333, y: 115, w: 61, h: 65, color: "242 133 97" },
+  { x: 93, y: 160, w: 50, h: 30, color: "252 217 118" },
+  { x: 282, y: 394, w: 39, h: 55, color: "242 134 98" },
+  { x: 41, y: 545, w: 19, h: 20, color: "238 178 105" },
 ] as const;
 
 /** Which of the sparkles flare briefly instead of breathing. */
-const GLINTS = new Set([2, 5, 8, 11]);
+const GLINTS = new Set([0, 3]);
 
 /**
  * Pinprick stars, scattered by the golden-ratio sequence so they spread
@@ -51,7 +46,7 @@ const pct = (value: number) => `${value.toFixed(2)}%`;
 
 export const SkyTwinkle = () => (
   <>
-    {SPARKLES.map(({ x, y, w, h }, i) => {
+    {SPARKLES.map(({ x, y, w, h, color }, i) => {
       const size = Math.max(w, h) * 2.3;
       const glint = GLINTS.has(i);
       return (
@@ -65,6 +60,7 @@ export const SkyTwinkle = () => (
             width: pct((size / ART.width) * 100),
             animationDuration: `${(glint ? 4 : 2.5) + noise(i, 2) * 1.5}s`,
             animationDelay: `-${(noise(i, 3) * 5).toFixed(2)}s`,
+            ["--glow" as string]: color,
           }}
         />
       );

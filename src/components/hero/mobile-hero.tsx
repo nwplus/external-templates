@@ -1,4 +1,3 @@
-import { ResponsiveArt } from "@/components/ui/responsive-art";
 import { HERO_CTA_LINKS, HERO_TAGLINE, HERO_TITLE } from "@/constants/hero";
 
 import Image from "next/image";
@@ -28,21 +27,8 @@ export const MobileHero = () => (
         priority
         className="absolute top-0 left-1/2 w-[200%] max-w-none h-auto -translate-x-1/2"
       />
-      {/* Laid out at 200vw, but it is soft glows on black: a candidate for a
-          little over the viewport width upscales without a visible cost, and
-          it is the first big paint on a phone, so the bytes matter. */}
-      <div className="absolute -top-[30%] left-1/2 w-[200%] -translate-x-1/2">
-        <ResponsiveArt
-          base="/assets/hero/desktop-sparkles"
-          widths={[1024, 1400, 1687, 2560, 3374]}
-          width={1687}
-          height={1154}
-          sizes="120vw"
-          media="(max-width: 767px)"
-          priority
-          className="block w-full max-w-none h-auto"
-        />
-        {/* The biggest sparkles drift over the rest; the art is two viewports wide here */}
+      {/* stars, two viewports wide */}
+      <div className="absolute -top-[30%] left-1/2 w-[200%] aspect-[1687/1154] -translate-x-1/2">
         <HeroStars scale={2} />
       </div>
     </div>

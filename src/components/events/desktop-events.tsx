@@ -30,7 +30,7 @@ export const DesktopEvents = () => (
     </Parallax>
 
     {/* Content: 1200px wide, or the window's width below xl */}
-    <div className="relative z-10 h-full top-0 left-0">
+    <div className="relative z-10 h-full top-0 left-0 @container">
       <div className="mx-auto w-300 max-xl:w-full max-xl:px-6 items-end grid grid-cols-2 text-white gap-20 overflow-visible">
         <div className="flex flex-col gap-3">
           {/* Copy */}
@@ -39,17 +39,17 @@ export const DesktopEvents = () => (
             <p className="text-[20px]">{EVENTS_DESCRIPTION}</p>
           </div>
 
-          {/* Sheep */}
+          {/* capped at the page margin so the legs don't get cut off. cqw not vw
+              bc vw counts the scrollbar */}
           <Parallax speed={-0.06}>
-            <div className="w-[138%] -ml-[38%]">
+            <div className="w-[min(138%,calc(100%+50cqw-600px))] -ml-[min(38%,calc(50cqw-600px))] max-xl:w-[calc(100%+1.5rem)] max-xl:-ml-6">
               <SheepLeft {...BUILD_DAY} />
             </div>
           </Parallax>
         </div>
-        {/* At xl this sheep reaches into the page margin. Below it there is
-            none, so it steps in far enough to keep its copy on screen. */}
+        {/* same cap, below xl there's no margin so it steps into the column gap */}
         <Parallax speed={-0.12}>
-          <div className="w-[138%] -translate-y-46 max-xl:-ml-[10%]">
+          <div className="w-[min(138%,calc(100%+50cqw-600px))] -translate-y-46 max-xl:-ml-[10%] max-xl:w-[calc(110%+1.5rem)]">
             <SheepRight {...LEARN_WEEK} />
           </div>
         </Parallax>

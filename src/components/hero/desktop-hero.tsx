@@ -1,5 +1,4 @@
 import { Parallax } from "@/components/ui/parallax";
-import { ResponsiveArt } from "@/components/ui/responsive-art";
 import { HERO_CTA_LINKS, HERO_TAGLINE, HERO_TITLE } from "@/constants/hero";
 
 import Image from "next/image";
@@ -12,23 +11,12 @@ export const DesktopHero = () => (
   <div className="bg-linear-to-b from-[#0B0F27] to-[#0C1637]">
     {/* Hero wrapper */}
     <div className="relative top-0 w-full">
-      {/* Sparkles: the largest thing painted first, so it is fetched eagerly */}
+      {/* no bg image to size this anymore, so the aspect is set here */}
       <Parallax
         speed={0.25}
         anchor="top"
-        className="absolute -top-30 left-0 w-full z-10"
+        className="absolute -top-30 left-0 w-full aspect-[1687/1154] z-10"
       >
-        <ResponsiveArt
-          base="/assets/hero/desktop-sparkles"
-          widths={[1024, 1400, 1687, 2560, 3374]}
-          width={1687}
-          height={1154}
-          sizes="100vw"
-          media="(min-width: 768px)"
-          priority
-          className="block w-full h-auto"
-        />
-        {/* The biggest sparkles drift over the rest, placed where they were cut from */}
         <HeroStars />
       </Parallax>
 

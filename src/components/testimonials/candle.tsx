@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 
 import "./candle.css";
+import { nookShape } from "./nook-shapes";
 
 /** The two jar candles, with where the wax surface sits in each drawing. */
 const CANDLE_ART = {
@@ -50,6 +51,7 @@ export const Candle = ({ variant, className }: CandleProps) => {
         width={art.width}
         height={art.height}
         className="block h-full w-full"
+        style={nookShape(art.src)}
       />
       {WISPS.map(({ duration, delay }) => (
         <span

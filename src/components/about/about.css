@@ -53,3 +53,36 @@
   background: #facb6b;
   opacity: 0;
 }
+
+/* little shuffle until the first click so ppl notice the bear */
+.moon-bear-waiting [data-part="bear"] {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: moon-bear-shuffle 4.5s ease-in-out 1.2s infinite;
+}
+
+@keyframes moon-bear-shuffle {
+  0%,
+  72%,
+  100% {
+    transform: rotate(0deg);
+  }
+  76% {
+    transform: rotate(-5deg);
+  }
+  81% {
+    transform: rotate(4deg);
+  }
+  86% {
+    transform: rotate(-2.5deg);
+  }
+  91% {
+    transform: rotate(1deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .moon-bear-waiting [data-part="bear"] {
+    animation: none;
+  }
+}

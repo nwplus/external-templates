@@ -6,6 +6,8 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { useRef } from "react";
 
+import { nookShape } from "./nook-shapes";
+
 /** Squash flat, spring back a little too tall, settle. */
 const squish: Keyframe[] = [
   { transform: "scale(1, 1)" },
@@ -29,7 +31,9 @@ type PillowProps = {
  * A cushion in the reading nook that squishes when it is poked. It scales
  * from its bottom edge so it stays put on the floor, and any turn the scene
  * gives it (`rotate-*`) still applies, since Tailwind sets that on its own
- * property rather than `transform`.
+ * property rather than `transform`. Only the drawing takes the click
+ * (nook-shapes.ts), so overlapping pillows each get clicked where you see
+ * them.
  */
 export const Pillow = ({
   src,
@@ -52,7 +56,7 @@ export const Pillow = ({
       onClick={onClick}
       ref={pillow}
       className={cn(
-        "absolute origin-bottom cursor-pointer rounded-[40%] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-star",
+        "pointer-events-none absolute origin-bottom cursor-pointer rounded-[40%] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-star",
         className
       )}
     >
@@ -61,7 +65,8 @@ export const Pillow = ({
         alt=""
         width={width}
         height={height}
-        className="block h-full w-full"
+        className="pointer-events-auto block h-full w-full"
+        style={nookShape(src)}
       />
     </button>
   );

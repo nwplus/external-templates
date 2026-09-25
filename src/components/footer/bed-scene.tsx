@@ -1,5 +1,6 @@
 "use client";
 
+import { HintBubble } from "@/components/ui/hint-bubble";
 import { cn } from "@/lib/utils";
 
 import { AnimatePresence } from "framer-motion";
@@ -110,7 +111,6 @@ const BedScene = () => {
       <div
         ref={bed}
         data-phone={showing ? "out" : "in"}
-        data-hint={hint || undefined}
         className={cn(
           "bed-art",
           BED_BOX,
@@ -160,7 +160,20 @@ const BedScene = () => {
               {letter}
             </span>
           ))}
-        {/* The phone's ping, in step with its buzz (nugget-run.css). */}
+        {hint && !showing && (
+          <HintBubble
+            touch="Tap to play!"
+            pointer="Click to play!"
+            className="top-[26.5%] left-[35.5%] text-[clamp(0.75rem,1.6cqw,1.125rem)]"
+          />
+        )}
+        {/* glow + ping are timed to the buzz in nugget-run.css */}
+        {!showing && (
+          <span
+            aria-hidden="true"
+            className="phone-glow pointer-events-none absolute top-[29.49%] left-[37.17%] block size-[11cqw] rounded-full"
+          />
+        )}
         {hint && !showing && (
           <span
             aria-hidden="true"

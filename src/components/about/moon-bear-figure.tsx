@@ -137,10 +137,14 @@ export const MoonBearFigure = ({
   const flyer = useRef<HTMLDivElement>(null);
   const sparks = useRef<(HTMLSpanElement | null)[]>([]);
   const [flight, setFlight] = useState<Flight | null>(null);
+  const [found, setFound] = useState(false);
   const casting = useRef(false);
+
+  const [minX, minY, viewWidth] = viewBox.split(/[\s,]+/).map(Number);
 
   const castRod = async () => {
     const svg = art.current;
+    setFound(true);
     if (!svg || casting.current) return;
     const part = (name: string) =>
       svg.querySelector<SVGGraphicsElement>(`[data-part="${name}"]`);
@@ -198,6 +202,7 @@ export const MoonBearFigure = ({
 
   const flyLap = () => {
     const svg = art.current;
+    setFound(true);
     if (!svg || flight) return;
     if (prefersLessMotion()) {
       play(svg, hop, { duration: 300, easing: "ease-out" });
@@ -213,7 +218,6 @@ export const MoonBearFigure = ({
     const w = Math.max(...boxes.map((b) => b.x + b.width)) - x;
     const h = Math.max(...boxes.map((b) => b.y + b.height)) - y;
     const rect = svg.getBoundingClientRect();
-    const [minX, minY, viewWidth] = viewBox.split(/[\s,]+/).map(Number);
     const scale = rect.width / viewWidth;
     const left = rect.left + (x - minX) * scale;
     const top = rect.top + (y - minY) * scale;
@@ -275,14 +279,14 @@ export const MoonBearFigure = ({
   }, [flight]);
 
   return (
-    <>
+    <div className={cn("pointer-events-none relative", className)}>
       <MoonBearArt
         ref={art}
         idPrefix={id}
         viewBox={viewBox}
         onMoon={flyLap}
         onBear={castRod}
-        className={cn("pointer-events-none", className)}
+        className={cn("block h-auto w-full", !found && "moon-bear-waiting")}
         style={flight ? { opacity: 0 } : undefined}
       />
       {flight &&
@@ -323,6 +327,6 @@ export const MoonBearFigure = ({
           </>,
           document.body
         )}
-    </>
+    </div>
   );
 };

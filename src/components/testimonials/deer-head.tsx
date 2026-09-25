@@ -1,12 +1,13 @@
 "use client";
 
-import { play } from "@/components/sponsors/ornament-art";
 import { cn } from "@/lib/utils";
 
 import Image from "next/image";
 import { useRef } from "react";
 
-import "./deer-head.css";
+import { blinkTwice } from "./blink";
+import "./blink.css";
+import { nookShape } from "./nook-shapes";
 
 /**
  * The face, placed as a share of the head's box. The desktop and phone
@@ -45,14 +46,6 @@ const EYES = [
   },
 ];
 
-/** Lids down, a beat shut, lids up. Played twice for a quick double blink. */
-const blink: Keyframe[] = [
-  { transform: "scaleY(1)" },
-  { transform: "scaleY(0.1)", offset: 0.4 },
-  { transform: "scaleY(0.1)", offset: 0.55 },
-  { transform: "scaleY(1)" },
-];
-
 /**
  * The deer's head and face. Clicking it makes the deer blink twice; left
  * alone it blinks on its own every seven seconds. The idle blink is a CSS
@@ -65,17 +58,7 @@ const blink: Keyframe[] = [
 export const DeerHead = ({ className }: { className: string }) => {
   const head = useRef<HTMLButtonElement>(null);
 
-  const onClick = () => {
-    head.current
-      ?.querySelectorAll("[data-part='eye']")
-      .forEach((eye) =>
-        play(eye, blink, {
-          duration: 200,
-          iterations: 2,
-          easing: "ease-in-out",
-        })
-      );
-  };
+  const onClick = () => blinkTwice(head.current);
 
   return (
     <button
@@ -84,7 +67,7 @@ export const DeerHead = ({ className }: { className: string }) => {
       onClick={onClick}
       ref={head}
       className={cn(
-        "absolute cursor-pointer rounded-[45%] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-star",
+        "pointer-events-none absolute cursor-pointer rounded-[45%] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-star",
         className
       )}
     >
@@ -93,7 +76,8 @@ export const DeerHead = ({ className }: { className: string }) => {
         alt=""
         width={116}
         height={106}
-        className="block h-full w-full"
+        className="pointer-events-auto block h-full w-full"
+        style={nookShape("/assets/testimonials/deer-head.svg")}
       />
       {Object.values(FACE).map((part) => (
         <Image
@@ -109,7 +93,7 @@ export const DeerHead = ({ className }: { className: string }) => {
         <span
           key={eye.src}
           className={cn(
-            "pointer-events-none absolute block origin-[50%_65%] motion-safe:animate-[deer-blink_7s_linear_infinite]",
+            "pointer-events-none absolute block origin-[50%_65%] motion-safe:animate-[plush-blink_7s_linear_infinite]",
             eye.className
           )}
         >

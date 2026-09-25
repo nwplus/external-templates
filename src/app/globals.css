@@ -425,7 +425,7 @@ html {
       transform: translateY(0) rotate(0deg);
     }
     50% {
-      transform: translateY(-6%) rotate(4deg);
+      transform: translateY(-3.5%) rotate(2deg);
     }
   }
 

@@ -5,61 +5,89 @@
  */
 
 /*
- * Until someone has looked at the game, the phone in the bear's hand buzzes
- * every few seconds, like a notification, and a ring pings out from it right
- * after. Both run on the same cycle, so they stay in step.
+ * The phone in the bear's hand double-buzzes every few seconds, like a phone
+ * on vibrate, and its screen glows brighter with each buzz. Until someone
+ * has opened the game, a ring also pings out right after. All three share
+ * one cycle so they stay in step.
  */
 @keyframes phone-buzz {
   0%,
-  78%,
-  92%,
+  60%,
+  71%,
+  74%,
+  85%,
   100% {
-    transform: rotate(0deg);
+    transform: translate(0, 0) rotate(0deg);
   }
+  62%,
+  66%,
+  76%,
   80% {
-    transform: rotate(-7deg);
+    transform: translate(-4%, 0) rotate(-4deg);
   }
+  64%,
+  68%,
+  78%,
   82% {
-    transform: rotate(6deg);
+    transform: translate(4%, 0) rotate(4deg);
   }
-  84% {
-    transform: rotate(-6deg);
+}
+
+@keyframes phone-glow {
+  0%,
+  56%,
+  100% {
+    opacity: 0.3;
+    transform: translate(-50%, -50%) scale(0.85);
   }
-  86% {
-    transform: rotate(5deg);
-  }
-  88% {
-    transform: rotate(-3deg);
-  }
-  90% {
-    transform: rotate(2deg);
+  66%,
+  80% {
+    opacity: 0.9;
+    transform: translate(-50%, -50%) scale(1.1);
   }
 }
 
 @keyframes phone-ping {
   0%,
-  80% {
+  62% {
     transform: translate(-50%, -50%) scale(0.4);
     opacity: 0;
   }
-  83% {
+  65% {
     opacity: 0.9;
   }
+  88%,
   100% {
     transform: translate(-50%, -50%) scale(2.2);
     opacity: 0;
   }
 }
 
+.phone-glow {
+  background: radial-gradient(
+    circle,
+    rgb(191 227 255 / 0.85) 0%,
+    rgb(191 227 255 / 0.3) 35%,
+    transparent 70%
+  );
+  mix-blend-mode: screen;
+  opacity: 0.5;
+  transform: translate(-50%, -50%);
+}
+
 @media (prefers-reduced-motion: no-preference) {
-  .bed-art[data-hint][data-phone="in"] [data-part="phone"] {
+  .bed-art[data-phone="in"] [data-part="phone"] {
     transform-box: fill-box;
     transform-origin: 50% 85%;
-    animation: phone-buzz 4.5s ease-in-out infinite;
+    animation: phone-buzz 4s linear infinite;
+  }
+
+  .phone-glow {
+    animation: phone-glow 4s ease-in-out infinite;
   }
 
   .phone-ping {
-    animation: phone-ping 4.5s ease-out infinite;
+    animation: phone-ping 4s ease-out infinite;
   }
 }
 
