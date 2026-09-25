@@ -45,7 +45,7 @@ const BADGE_COLORS = [
 const DESKTOP_QUERY = "(min-width: 1280px)";
 
 /** How long a picked tape takes to fly into the television's slot, in s. */
-const FLIGHT_DURATION = 0.55;
+const FLIGHT_DURATION = 0.6;
 
 /** The sheet the six framed pictures on the wall are drawn on. */
 const SHELF_FRAMES_SHEET = {
@@ -442,6 +442,7 @@ type Flight = {
   /** Bumped per click, so a new pick replaces a tape still in the air. */
   id: number;
   faq: FaqItem;
+  html: string;
   from: DOMRect;
   to: DOMRect;
   desktop: boolean;
@@ -455,53 +456,47 @@ const mostlyInView = (box: DOMRect) => {
 };
 
 /**
- * A copy of the picked tape flying from its stack into the television's slot:
- * a small arc up with a slight tilt, shrinking to the slot and fading as it
- * goes in. It is drawn on the page itself, in viewport coordinates, so no
- * layer of the room can clip it on the way.
+ * A copy of the picked tape flying into the television's slot: it glides
+ * over, scaled to fit the slot, then is pushed in as it fades. It is drawn on
+ * the page itself, in viewport coordinates, so no layer of the room can clip
+ * it on the way.
  */
 const TapeFlight = ({
-  flight: { faq, from, to },
+  flight: { html, from, to },
   onLand,
 }: {
   flight: Flight;
   onLand: () => void;
-}) => (
-  <motion.div
-    aria-hidden="true"
-    className="pointer-events-none fixed top-0 left-0 z-[800] flex items-center gap-2 overflow-hidden rounded-md bg-tape py-1.5 pr-2.5 pl-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.14)]"
-    initial={{
-      x: from.left,
-      y: from.top,
-      width: from.width,
-      height: from.height,
-    }}
-    animate={{
-      x: [from.left, (from.left + to.left) / 2, to.left],
-      y: [from.top, Math.min(from.top, to.top) - 32, to.top],
-      width: [from.width, (from.width + to.width) / 2, to.width],
-      height: [from.height, (from.height + to.height) / 2, to.height],
-      rotate: [0, -4, 0],
-      opacity: [1, 1, 0],
-    }}
-    transition={{
-      default: {
+}) => {
+  // scales around its center so just line the centers up
+  const scale = Math.min(to.width / from.width, to.height / from.height);
+  const x = to.left + (to.width - from.width) / 2;
+  const y = to.top + (to.height - from.height) / 2;
+
+  return (
+    <motion.div
+      aria-hidden="true"
+      inert
+      // re-picking the tape in the slot clones it greyed out, undo that
+      className="pointer-events-none fixed top-0 left-0 z-[800] flex rounded-md shadow-[0_8px_20px_rgba(0,0,0,0.35)] [&>button]:w-full [&>button]:opacity-100 [&>button]:grayscale-0"
+      style={{ width: from.width, height: from.height }}
+      initial={{ x: from.left, y: from.top, scale: 1, opacity: 1 }}
+      animate={{
+        x: [from.left, x, x],
+        y: [from.top, y, y],
+        scale: [1, scale, scale * 0.9],
+        opacity: [1, 1, 0],
+      }}
+      transition={{
         duration: FLIGHT_DURATION,
-        times: [0, 0.45, 1],
-        ease: "easeInOut",
-      },
-      opacity: { duration: FLIGHT_DURATION, times: [0, 0.8, 1] },
-    }}
-    onAnimationComplete={onLand}
-  >
-    <span className="shrink-0 rotate-180 font-body text-[9px] tracking-[0.2em] text-tape-label/60 uppercase [writing-mode:vertical-rl]">
-      VHS
-    </span>
-    <span className="min-w-0 flex-1 truncate rounded-xs border-y border-muted-cream/60 bg-cream-soft px-3 py-1 text-center font-body text-sm leading-snug text-ink">
-      {faq.question}
-    </span>
-  </motion.div>
-);
+        times: [0, 0.72, 1],
+        ease: [[0.65, 0, 0.35, 1], "easeIn"],
+      }}
+      onAnimationComplete={onLand}
+      dangerouslySetInnerHTML={{ __html: html }}
+    />
+  );
+};
 
 /**
  * The VHS room. From xl it is the design's bedroom: wall, cabinet, cloud
@@ -553,6 +548,7 @@ const FaqRoom = ({ layout }: { layout: FaqLayout<FaqItem> }) => {
     setFlight({
       id: flights.current,
       faq,
+      html: el.outerHTML,
       from: el.getBoundingClientRect(),
       to,
       desktop,
