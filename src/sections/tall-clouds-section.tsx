@@ -1,3 +1,4 @@
+import { PrizingSparkles } from "@/components/prizing/desktop-prizing";
 import { RoofFriends } from "@/components/prizing/roof-friends";
 import { ResponsiveArt } from "@/components/ui/responsive-art";
 
@@ -21,6 +22,10 @@ export default function TallCloudsSection({
   return (
     <div className="relative bg-linear-to-b from-[#12204D] to-[#28418D]">
       <div className="pointer-events-none absolute inset-0 z-0 hidden overflow-hidden md:block">
+        {/* prizing-sized box at the bottom */}
+        <div className="absolute bottom-0 left-0 w-full aspect-928/609">
+          <PrizingSparkles />
+        </div>
         <div className={ART_BOX}>
           <ResponsiveArt
             base="/assets/tall-clouds-section/desktop-tall-clouds"
