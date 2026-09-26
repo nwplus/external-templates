@@ -174,7 +174,7 @@ export const MobileHouse = () => {
       {/* % tracks the 393x710 house art; the beam runs from the lamp (~36%, 31%) off the right edge */}
       <div
         data-lit={lit}
-        className="absolute left-[75%] top-[35%] z-10 -translate-x-1/2 -translate-y-1/2"
+        className="hero-countdown-box absolute left-[75%] top-[35%] z-10 -translate-x-1/2 -translate-y-1/2"
       >
         <Countdown compact className="hero-countdown text-[9vw]" />
       </div>

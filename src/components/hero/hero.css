@@ -23,6 +23,28 @@
   transition: color 150ms ease;
 }
 
+/*
+ * With the lamp off the countdown sits straight on the starry sky, so a
+ * soft patch of blurred sky colour keeps the stars from crowding the digits.
+ * The mask feathers its edge so it reads as haze, not a panel.
+ */
+.hero-countdown-box::before {
+  content: "";
+  position: absolute;
+  inset: -18% -10%;
+  z-index: -1;
+  pointer-events: none;
+  background: rgb(11 17 44 / 0.65);
+  backdrop-filter: blur(10px);
+  mask-image: radial-gradient(closest-side, #000 55%, transparent 100%);
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+
+.hero-countdown-box[data-lit="false"]::before {
+  opacity: 1;
+}
+
 .hero-glow {
   transition: opacity 250ms ease;
 }
