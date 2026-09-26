@@ -21,10 +21,8 @@ import {
 } from "@/lib/faq-layout";
 import { cn } from "@/lib/utils";
 
-import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
-import { type RefObject, useRef, useState } from "react";
-import { createPortal } from "react-dom";
+import { useRef, useState } from "react";
 
 /**
  * Letters badged onto the wall tapes at positions 1..7, counted from the top
@@ -43,9 +41,6 @@ const BADGE_COLORS = [
  * query decides both, with no width left between them.
  */
 const DESKTOP_QUERY = "(min-width: 1280px)";
-
-/** How long a picked tape takes to fly into the television's slot, in s. */
-const FLIGHT_DURATION = 0.6;
 
 /** The sheet the six framed pictures on the wall are drawn on. */
 const SHELF_FRAMES_SHEET = {
@@ -120,12 +115,7 @@ const badgeFor = (position: number) =>
 
 type SelectProps = {
   selected: FaqItem | null;
-  /**
-   * Tapes out of their stack, greyed there: the one on its way to the
-   * television and the one playing on it, which goes back when the next lands.
-   */
-  out: (FaqItem | null)[];
-  onSelect: (faq: FaqItem, el: HTMLElement) => void;
+  onSelect: (faq: FaqItem) => void;
 };
 
 type StackProps = SelectProps & {
@@ -153,7 +143,6 @@ const TapeStack = ({
   badged = false,
   fromBottom = false,
   selected,
-  out,
   onSelect,
 }: StackProps) => (
   <ul
@@ -179,7 +168,6 @@ const TapeStack = ({
           <VhsTape
             faq={faq}
             selected={selected === faq}
-            taken={out.includes(faq)}
             {...(badged ? badgeFor(position) : {})}
             onSelect={onSelect}
           />
@@ -203,17 +191,11 @@ const TapeStack = ({
 const RoomWall = ({
   group,
   empty,
-  shown,
-  slotRef,
   selected,
-  out,
   onSelect,
 }: SelectProps & {
   group: FaqGroup<FaqItem> | null;
   empty: boolean;
-  /** The question on the television, which lags `selected` by the flight. */
-  shown: FaqItem | null;
-  slotRef: RefObject<HTMLParagraphElement | null>;
 }) => (
   <div className="relative z-40 aspect-[1531/592] w-full">
     <ResponsiveArt
@@ -268,7 +250,7 @@ const RoomWall = ({
     <TeddyBear className="absolute top-[77.2%] left-[73.61%] w-[10.25%]" />
     <LavaLamp className="absolute top-[38.85%] left-[77.33%] w-[19.73%]" />
     <div className="absolute top-[30.07%] left-[41.99%] w-[31.16%]">
-      <CrtTv selected={shown} empty={empty} slotRef={slotRef} />
+      <CrtTv selected={selected} empty={empty} />
     </div>
     {group && (
       <TapeStack
@@ -278,7 +260,6 @@ const RoomWall = ({
         fromBottom
         className="absolute bottom-[-4.22%] left-[24.17%] w-[36%] -translate-x-1/2"
         selected={selected}
-        out={out}
         onSelect={onSelect}
       />
     )}
@@ -295,7 +276,6 @@ const RoomWall = ({
 const Cabinet = ({
   shelf,
   selected,
-  out,
   onSelect,
 }: SelectProps & { shelf?: FaqGroup<FaqItem> }) => {
   const { left, right } = shelf
@@ -336,7 +316,6 @@ const Cabinet = ({
             fromBottom
             className="absolute bottom-[33.26%] left-[28.97%] w-[28%]"
             selected={selected}
-            out={out}
             onSelect={onSelect}
           />
           <TapeStack
@@ -346,7 +325,6 @@ const Cabinet = ({
             fromBottom
             className="absolute bottom-[27.12%] left-[57.67%] w-[33.1%]"
             selected={selected}
-            out={out}
             onSelect={onSelect}
           />
         </>
@@ -368,7 +346,6 @@ const MobileShelf = ({
   title,
   lamp,
   selected,
-  out,
   onSelect,
 }: SelectProps & {
   group: FaqGroup<FaqItem>;
@@ -424,7 +401,6 @@ const MobileShelf = ({
         lamp ? "min-h-[78vw] pl-14" : "pl-3"
       )}
       selected={selected}
-      out={out}
       onSelect={onSelect}
     />
     <Image
@@ -438,121 +414,28 @@ const MobileShelf = ({
   </div>
 );
 
-type Flight = {
-  /** Bumped per click, so a new pick replaces a tape still in the air. */
-  id: number;
-  faq: FaqItem;
-  html: string;
-  from: DOMRect;
-  to: DOMRect;
-  desktop: boolean;
-};
-
-/** Whether at least half of a box lies inside the viewport. */
-const mostlyInView = (box: DOMRect) => {
-  const w = Math.min(box.right, window.innerWidth) - Math.max(box.left, 0);
-  const h = Math.min(box.bottom, window.innerHeight) - Math.max(box.top, 0);
-  return w > 0 && h > 0 && w * h >= 0.5 * box.width * box.height;
-};
-
-/**
- * A copy of the picked tape flying into the television's slot: it glides
- * over, scaled to fit the slot, then is pushed in as it fades. It is drawn on
- * the page itself, in viewport coordinates, so no layer of the room can clip
- * it on the way.
- */
-const TapeFlight = ({
-  flight: { html, from, to },
-  onLand,
-}: {
-  flight: Flight;
-  onLand: () => void;
-}) => {
-  // scales around its center so just line the centers up
-  const scale = Math.min(to.width / from.width, to.height / from.height);
-  const x = to.left + (to.width - from.width) / 2;
-  const y = to.top + (to.height - from.height) / 2;
-
-  return (
-    <motion.div
-      aria-hidden="true"
-      inert
-      // re-picking the tape in the slot clones it greyed out, undo that
-      className="pointer-events-none fixed top-0 left-0 z-[800] flex rounded-md shadow-[0_8px_20px_rgba(0,0,0,0.35)] [&>button]:w-full [&>button]:opacity-100 [&>button]:grayscale-0"
-      style={{ width: from.width, height: from.height }}
-      initial={{ x: from.left, y: from.top, scale: 1, opacity: 1 }}
-      animate={{
-        x: [from.left, x, x],
-        y: [from.top, y, y],
-        scale: [1, scale, scale * 0.9],
-        opacity: [1, 1, 0],
-      }}
-      transition={{
-        duration: FLIGHT_DURATION,
-        times: [0, 0.72, 1],
-        ease: [[0.65, 0, 0.35, 1], "easeIn"],
-      }}
-      onAnimationComplete={onLand}
-      dangerouslySetInnerHTML={{ __html: html }}
-    />
-  );
-};
-
 /**
  * The VHS room. From xl it is the design's bedroom: wall, cabinet, cloud
  * band. Below xl the design drops the wall and stacks every category on its
  * own wooden shelf, with the television kept above them so a tapped question
  * still has somewhere to play.
- *
- * A picked tape is marked at once, but the television only plays it once its
- * copy has flown into the slot. The flight is skipped for reduced motion and
- * when the slot is off screen, where the tape could not be seen landing.
  */
 const FaqRoom = ({ layout }: { layout: FaqLayout<FaqItem> }) => {
   const [selected, setSelected] = useState<FaqItem | null>(null);
-  const [shown, setShown] = useState<FaqItem | null>(null);
-  const [flight, setFlight] = useState<Flight | null>(null);
-  const out = [flight?.faq ?? null, shown];
-  const flights = useRef(0);
-  const reduceMotion = useReducedMotion();
   const mobileTvRef = useRef<HTMLDivElement>(null);
-  const desktopSlotRef = useRef<HTMLParagraphElement>(null);
-  const mobileSlotRef = useRef<HTMLParagraphElement>(null);
   const empty = layout.tapestry === null && layout.shelves.length === 0;
   const groups = layout.tapestry
     ? [layout.tapestry, ...layout.shelves]
     : layout.shelves;
 
-  const show = (faq: FaqItem, desktop: boolean) => {
-    setShown(faq);
-    setFlight(null);
-    if (!desktop) {
+  const handleSelect = (faq: FaqItem) => {
+    setSelected(faq);
+    if (!window.matchMedia(DESKTOP_QUERY).matches) {
       mobileTvRef.current?.scrollIntoView({
         behavior: "smooth",
         block: "nearest",
       });
     }
-  };
-
-  const handleSelect = (faq: FaqItem, el: HTMLElement) => {
-    setSelected(faq);
-    const desktop = window.matchMedia(DESKTOP_QUERY).matches;
-    const to = (
-      desktop ? desktopSlotRef : mobileSlotRef
-    ).current?.getBoundingClientRect();
-    if (reduceMotion || !to || !mostlyInView(to)) {
-      show(faq, desktop);
-      return;
-    }
-    flights.current += 1;
-    setFlight({
-      id: flights.current,
-      faq,
-      html: el.outerHTML,
-      from: el.getBoundingClientRect(),
-      to,
-      desktop,
-    });
   };
 
   return (
@@ -563,10 +446,7 @@ const FaqRoom = ({ layout }: { layout: FaqLayout<FaqItem> }) => {
           <RoomWall
             group={layout.tapestry}
             empty={empty}
-            shown={shown}
-            slotRef={desktopSlotRef}
             selected={selected}
-            out={out}
             onSelect={handleSelect}
           />
         </LightboxGallery>
@@ -576,12 +456,11 @@ const FaqRoom = ({ layout }: { layout: FaqLayout<FaqItem> }) => {
               key={shelf.category}
               shelf={shelf}
               selected={selected}
-              out={out}
               onSelect={handleSelect}
             />
           ))
         ) : (
-          <Cabinet selected={selected} out={out} onSelect={handleSelect} />
+          <Cabinet selected={selected} onSelect={handleSelect} />
         )}
         {/* The cloud band starts behind the cabinet and closes the section. */}
         <Image
@@ -600,7 +479,7 @@ const FaqRoom = ({ layout }: { layout: FaqLayout<FaqItem> }) => {
           ref={mobileTvRef}
           className="mx-auto w-[92%] max-w-[520px] scroll-mt-6 pt-16 pb-8"
         >
-          <CrtTv selected={shown} empty={empty} slotRef={mobileSlotRef} />
+          <CrtTv selected={selected} empty={empty} />
         </div>
         {groups.map((group, i) => (
           <MobileShelf
@@ -610,7 +489,6 @@ const FaqRoom = ({ layout }: { layout: FaqLayout<FaqItem> }) => {
             title={i === 0}
             lamp={i === groups.length - 1}
             selected={selected}
-            out={out}
             onSelect={handleSelect}
           />
         ))}
@@ -626,16 +504,6 @@ const FaqRoom = ({ layout }: { layout: FaqLayout<FaqItem> }) => {
           className="relative z-20 -mt-[16%] block h-auto w-full"
         />
       </div>
-
-      {flight &&
-        createPortal(
-          <TapeFlight
-            key={flight.id}
-            flight={flight}
-            onLand={() => show(flight.faq, flight.desktop)}
-          />,
-          document.body
-        )}
     </>
   );
 };

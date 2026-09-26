@@ -17,9 +17,11 @@ const Footer = () => {
         It grows with the screen past the design's 1531px, like the room above.
         Everything inside is placed as a percentage of that box, so the clouds,
         the bed and the stars never drift apart from one another. The scene
-        takes no clicks except on the two mascots.
+        takes no clicks except on the two mascots. On phones it never sits
+        lower than 5.5rem, since the team row under it doesn't shrink with the
+        width and would otherwise end up on the clouds.
       */}
-      <div className="pointer-events-none absolute bottom-[10vw] left-0 aspect-[1531/2065] w-full xl:bottom-0">
+      <div className="pointer-events-none absolute bottom-[max(10vw,5.5rem)] left-0 aspect-[1531/2065] w-full xl:bottom-0">
         <CloudBorder />
         <BedScene />
         <StarField />
@@ -59,10 +61,11 @@ const Footer = () => {
             clicks through to the mascots in it. On the phone frame the text
             above keeps its size while the bed grows with the width, so from
             about 450px up it needs extra room to keep the headboard clear of
-            the land acknowledgement. */}
+            the land acknowledgement, plus however far the scene is lifted
+            past 10vw. */}
         <div
           aria-hidden
-          className="order-3 w-full flex-1 pb-[calc(84%_+_max(0px,22vw_-_99px))] xl:flex-none xl:pb-[72.8%]"
+          className="order-3 w-full flex-1 pb-[calc(84%_+_max(0px,22vw_-_99px)_+_max(0px,5.5rem_-_10vw))] xl:flex-none xl:pb-[72.8%]"
         />
 
         <div className="order-5 mt-[2%] w-full xl:mt-[2.5%]">

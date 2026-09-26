@@ -101,12 +101,14 @@ const BedScene = () => {
 
   return (
     <>
+      {/* Both frames fit it to the bed the same way, just scaled to each
+          BED_BOX: as wide as the pillows and centred behind them. */}
       <Image
         src="/assets/footer/backboard.svg"
         alt=""
         width={1026}
         height={450}
-        className="absolute left-[21.9%] top-[24%] h-auto w-[60.8%] max-w-none xl:left-[14.75%] xl:top-[29.5%] xl:w-[67%]"
+        className="absolute left-[10.21%] top-[31.22%] h-auto w-[75.82%] max-w-none xl:left-[14.75%] xl:top-[29.5%] xl:w-[67%]"
       />
       <div
         ref={bed}
