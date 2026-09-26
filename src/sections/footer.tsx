@@ -19,7 +19,7 @@ const Footer = () => {
         the bed and the stars never drift apart from one another. The scene
         takes no clicks except on the two mascots.
       */}
-      <div className="pointer-events-none absolute bottom-[10vw] left-0 aspect-[1531/2065] w-full xl:bottom-0">
+      <div className="pointer-events-none absolute bottom-[13vw] left-0 aspect-[1531/2065] w-full xl:bottom-0">
         <CloudBorder />
         <BedScene />
         <StarField />
