@@ -126,14 +126,16 @@ const BedScene = () => {
         <BedArt className="block h-auto w-full" />
       </div>
       <CloudBorder />
-      {/* Below xl the lowest star in the group, on the cloud band under the
-          blanket, would sit on the team heading, so there it is cut off. */}
+      {/* On the phone the bed is wider than the gap between the cloud
+          pillars, so the stars don't follow its scale: the group is sized to
+          sit on the part of the blanket that shows, 15% to 85% across, with
+          its top star where the bed's scale puts it. */}
       <Image
         src="/assets/footer/star-particles.svg"
         alt=""
         width={1166}
         height={578}
-        className="absolute left-[3.33%] top-[51.06%] h-auto w-[89.19%] max-w-none max-xl:[clip-path:inset(0_0_18.7%_0)] xl:left-[8.67%] xl:top-[47.03%] xl:w-[78.82%]"
+        className="absolute left-[13.95%] top-[51.33%] h-auto w-[72.3%] max-w-none xl:left-[8.67%] xl:top-[47.03%] xl:w-[78.82%]"
       />
       {/* The big star is its own image, kept where the group has it. */}
       <Image
@@ -141,7 +143,7 @@ const BedScene = () => {
         alt=""
         width={151}
         height={164}
-        className="absolute left-[21.3%] top-[59.31%] h-auto w-[11.56%] max-w-none xl:left-[24.55%] xl:top-[54.32%] xl:w-[10.22%]"
+        className="absolute left-[28.52%] top-[58.02%] h-auto w-[9.38%] max-w-none xl:left-[24.55%] xl:top-[54.32%] xl:w-[10.22%]"
       />
       <div className={cn(BED_BOX, "aspect-[1531/1504] @container")}>
         <AnimatePresence>
