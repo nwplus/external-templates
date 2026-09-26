@@ -54,8 +54,9 @@ const hasBlurb = (sponsor: SponsorDoc) =>
  * Turns the sponsor list into shelf rows following the design rule:
  * each blurb sponsor gets its own chalkboard shelf with books one side and the
  * sheep the other, then the remaining sponsors are sorted by tier and packed
- * into shelves of `framesPerShelf` picture frames with the plant one side and
- * books the other. Both pairs swap sides on every other row.
+ * into shelves of `framesPerShelf` picture frames, one tier per shelf, with
+ * the plant one side and books the other. Both pairs swap sides on every
+ * other row.
  *
  * The decoration-only shelf between the two groups is always included: the
  * narrow layout shows it and hides the shelf-end decorations, the wide layout
@@ -76,15 +77,26 @@ export function buildShelves(
     right: i % 2 === 0 ? "sheep" : "books-left",
   }));
 
+  // Each tier starts on a fresh shelf, so a tier that doesn't fill its last
+  // shelf never shares it with the next tier down.
+  const tiers = new Map<string, SponsorDoc[]>();
+  for (const sponsor of frames) {
+    const tier = tiers.get(sponsor.tier);
+    if (tier) tier.push(sponsor);
+    else tiers.set(sponsor.tier, [sponsor]);
+  }
+
   const frameShelves: ShelfSpec[] = [];
-  for (let i = 0; i < frames.length; i += framesPerShelf) {
-    const row = frameShelves.length;
-    frameShelves.push({
-      kind: "frames",
-      sponsors: frames.slice(i, i + framesPerShelf),
-      left: row % 2 === 0 ? "plant" : "books-right",
-      right: row % 2 === 0 ? "books-right" : "plant",
-    });
+  for (const tier of tiers.values()) {
+    for (let i = 0; i < tier.length; i += framesPerShelf) {
+      const row = frameShelves.length;
+      frameShelves.push({
+        kind: "frames",
+        sponsors: tier.slice(i, i + framesPerShelf),
+        left: row % 2 === 0 ? "plant" : "books-right",
+        right: row % 2 === 0 ? "books-right" : "plant",
+      });
+    }
   }
 
   if (cardShelves.length + frameShelves.length === 0) return [];

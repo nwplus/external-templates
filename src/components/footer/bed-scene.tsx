@@ -53,10 +53,13 @@ const wakeUp: Keyframe[] = [
  * with the arrow keys or by swiping, and Nugget can be tucked in, and woken
  * up again.
  *
- * Every offset is a percentage of the surrounding night scene: the base values
- * come from the phone frame, the xl ones from the desktop frame. The overlay
- * with the phone, the z's and the two click areas sits in the same box as the
- * bed, on top of the stars.
+ * Every offset is a percentage of the surrounding night scene. The xl values
+ * come from the desktop frame. On the phone the bed is the desktop bed scaled
+ * by 1.13157 and moved (BED_BOX), and the headboard and the stars get the same
+ * scale and move, so the pieces keep their places on the bed: phone = -6.476 +
+ * 1.13157 x desktop across, -2.16 + 1.13157 x desktop down. The overlay with
+ * the phone, the z's and the two click areas sits in the same box as the bed,
+ * on top of the stars.
  */
 const BedScene = () => {
   const bed = useRef<HTMLDivElement>(null);
@@ -106,7 +109,7 @@ const BedScene = () => {
         alt=""
         width={1026}
         height={450}
-        className="absolute left-[21.9%] top-[24%] h-auto w-[60.8%] max-w-none xl:left-[14.75%] xl:top-[29.5%] xl:w-[67%]"
+        className="absolute left-[10.21%] top-[31.22%] h-auto w-[75.82%] max-w-none xl:left-[14.75%] xl:top-[29.5%] xl:w-[67%]"
       />
       <div
         ref={bed}
@@ -123,22 +126,24 @@ const BedScene = () => {
         <BedArt className="block h-auto w-full" />
       </div>
       <CloudBorder />
+      {/* On the phone the bed is wider than the gap between the cloud
+          pillars, so the stars don't follow its scale: the group is sized to
+          sit on the part of the blanket that shows, 15% to 85% across, with
+          its top star where the bed's scale puts it. */}
       <Image
         src="/assets/footer/star-particles.svg"
         alt=""
         width={1166}
         height={578}
-        className="absolute left-[16%] top-[42.9%] h-auto w-[71.8%] max-w-none xl:left-[8.67%] xl:top-[47.03%] xl:w-[78.82%]"
+        className="absolute left-[13.95%] top-[51.33%] h-auto w-[72.3%] max-w-none xl:left-[8.67%] xl:top-[47.03%] xl:w-[78.82%]"
       />
-      {/* The big star is kept apart from the rest: on the phone frame its
-          place in the group lands on the bear's phone, so there it moves
-          down onto the blanket. On desktop it sits where the group has it. */}
+      {/* The big star is its own image, kept where the group has it. */}
       <Image
         src="/assets/footer/star-big.svg"
         alt=""
         width={151}
         height={164}
-        className="absolute left-[27.1%] top-[59.83%] h-auto w-[9.31%] max-w-none xl:left-[24.55%] xl:top-[54.32%] xl:w-[10.22%]"
+        className="absolute left-[28.52%] top-[58.02%] h-auto w-[9.38%] max-w-none xl:left-[24.55%] xl:top-[54.32%] xl:w-[10.22%]"
       />
       <div className={cn(BED_BOX, "aspect-[1531/1504] @container")}>
         <AnimatePresence>

@@ -79,11 +79,32 @@ describe("buildShelves", () => {
       mk("inkind-co", "inkind"),
       mk("platinum-co", "platinum"),
     ]);
-    const names =
-      shelves[0].kind === "frames"
-        ? shelves[0].sponsors.map((s) => s.name)
-        : [];
-    expect(names).toEqual(["platinum-co", "gold-co", "bronze-co"]);
+    expect(
+      sponsorShelves(shelves).flatMap((s) =>
+        s.kind === "frames" ? s.sponsors.map((sponsor) => sponsor.name) : []
+      )
+    ).toEqual(["platinum-co", "gold-co", "bronze-co", "inkind-co"]);
+  });
+
+  it("starts every tier on a fresh shelf instead of topping up the last one", () => {
+    // HackCamp 2026's frames: five silver, two bronze, three in-kind.
+    const shelves = buildShelves([
+      ...["n8n", "elevenlabs", "render", "featherless", "bcit"].map((n) =>
+        mk(n, "silver")
+      ),
+      ...["formation", "spin", "poppi"].map((n) => mk(n, "inkind")),
+      ...["investly", "rbc-gam"].map((n) => mk(n, "bronze")),
+    ]);
+    expect(
+      sponsorShelves(shelves).map((s) =>
+        s.kind === "frames" ? s.sponsors.map((sponsor) => sponsor.tier) : []
+      )
+    ).toEqual([
+      ["silver", "silver", "silver"],
+      ["silver", "silver"],
+      ["bronze", "bronze"],
+      ["inkind", "inkind", "inkind"],
+    ]);
   });
 
   it("treats a whitespace-only blurb as no blurb", () => {
@@ -115,11 +136,11 @@ describe("buildShelves", () => {
   it("sorts an unknown tier after every known tier", () => {
     const odd = { ...mk("odd", "gold"), tier: "mystery" as SponsorDoc["tier"] };
     const shelves = buildShelves([odd, mk("bronze-co", "bronze")]);
-    const names =
-      shelves[0].kind === "frames"
-        ? shelves[0].sponsors.map((s) => s.name)
-        : [];
-    expect(names).toEqual(["bronze-co", "odd"]);
+    expect(
+      sponsorShelves(shelves).map((s) =>
+        s.kind === "frames" ? s.sponsors.map((sponsor) => sponsor.name) : []
+      )
+    ).toEqual([["bronze-co"], ["odd"]]);
   });
 
   it("treats a missing blurb as no blurb", () => {
