@@ -154,28 +154,12 @@ const Testimonials = () => {
         style={nookShape("/assets/testimonials/deer-antler-back.svg")}
       />
       <Image
-        src="/assets/testimonials/deer-antlers.svg"
-        alt=""
-        width={71}
-        height={98}
-        className="absolute left-[42vw] top-[15.21vw] h-[6.41vw] w-[4.65vw]"
-        style={nookShape("/assets/testimonials/deer-antlers.svg")}
-      />
-      <Image
         src="/assets/testimonials/deer-body.svg"
         alt=""
         width={153}
         height={140}
         className="absolute left-[36.53vw] top-[27.01vw] h-[9.19vw] w-[10.04vw]"
         style={nookShape("/assets/testimonials/deer-body.svg")}
-      />
-      <Image
-        src="/assets/testimonials/deer-pyjamas.svg"
-        alt=""
-        width={78}
-        height={165}
-        className="absolute left-[39.68vw] top-[21.31vw] h-[10.79vw] w-[5.13vw]"
-        style={nookShape("/assets/testimonials/deer-pyjamas.svg")}
       />
       <Image
         src="/assets/testimonials/deer-ear-left.svg"
@@ -185,15 +169,31 @@ const Testimonials = () => {
         className="absolute left-[38.95vw] top-[20.43vw] h-[2.08vw] w-[1.96vw] rotate-[-5.37deg]"
         style={nookShape("/assets/testimonials/deer-ear-left.svg")}
       />
+      <DeerHead className="left-[39.14vw] top-[20.54vw] h-[6.93vw] w-[7.62vw]" />
+      {/* Stacked as in the design: the right antler and ear sit over the
+          head, and the pyjama layer lays the sleeping mask across both.
+          They let clicks through, so tapping the face still blinks. */}
+      <Image
+        src="/assets/testimonials/deer-antlers.svg"
+        alt=""
+        width={71}
+        height={98}
+        className="pointer-events-none absolute left-[42vw] top-[15.21vw] h-[6.41vw] w-[4.65vw]"
+      />
       <Image
         src="/assets/testimonials/deer-ear-right.svg"
         alt=""
         width={32}
         height={32}
-        className="absolute left-[43.91vw] top-[20.5vw] h-[2.1vw] w-[2.09vw] rotate-[-5.37deg]"
-        style={nookShape("/assets/testimonials/deer-ear-right.svg")}
+        className="pointer-events-none absolute left-[43.91vw] top-[20.5vw] h-[2.1vw] w-[2.09vw] rotate-[-5.37deg]"
       />
-      <DeerHead className="left-[39.14vw] top-[20.54vw] h-[6.93vw] w-[7.62vw]" />
+      <Image
+        src="/assets/testimonials/deer-pyjamas.svg"
+        alt=""
+        width={78}
+        height={165}
+        className="pointer-events-none absolute left-[39.68vw] top-[21.31vw] h-[10.79vw] w-[5.13vw]"
+      />
       <Image
         src="/assets/testimonials/deer-pyjama-cat.svg"
         alt=""
