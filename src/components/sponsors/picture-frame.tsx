@@ -9,9 +9,13 @@ import SponsorLogo from "./sponsor-logo";
  */
 export const matClass = "block p-[4.5%] shadow-[0_12px_28px_rgba(0,0,0,0.35)]";
 
-/** The cream mount the mat holds, lit from its edges. */
+/**
+ * The cream mount the mat holds, lit from its edges. A light logo (flagged
+ * by `SponsorLogo`) would disappear on cream, so its mount takes the night
+ * sky instead.
+ */
 export const mountClass =
-  "flex h-full w-full items-center justify-center bg-cream-light shadow-[inset_0_0_18px_rgba(0,0,0,0.2)]";
+  "flex h-full w-full items-center justify-center bg-cream-light shadow-[inset_0_0_18px_rgba(0,0,0,0.2)] has-[[data-light]]:bg-night-top";
 
 const PictureFrame = ({ sponsor }: { sponsor: SponsorDoc }) => {
   const frame = (

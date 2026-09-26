@@ -1,8 +1,6 @@
 import type { Decoration } from "@/lib/shelves";
 
-import Image from "next/image";
-
-import { DECORATION_ART } from "./shelf";
+import { ShelfOrnament } from "./shelf-ornament";
 
 /**
  * Where each decoration stands on the narrow layout's decoration-only shelf,
@@ -23,24 +21,17 @@ const ROW_HEIGHT = 48.9;
 
 /** The decorations lined up along a shelf of their own, narrow layout only. */
 const DecorationRow = ({ items }: { items: Decoration[] }) => (
-  <div
-    aria-hidden
-    className="pointer-events-none relative w-full"
-    style={{ paddingBottom: `${ROW_HEIGHT}%` }}
-  >
+  <div className="relative w-full" style={{ paddingBottom: `${ROW_HEIGHT}%` }}>
     {items.map((kind) => {
-      const art = DECORATION_ART[kind];
       const { left, width } = PLACEMENT[kind];
       return (
-        <Image
+        <div
           key={kind}
-          src={art.src}
-          alt=""
-          width={art.width}
-          height={art.height}
           style={{ left: `${left}%`, width: `${width}%` }}
-          className="absolute bottom-0 h-auto max-w-none"
-        />
+          className="absolute bottom-0"
+        >
+          <ShelfOrnament kind={kind} />
+        </div>
       );
     })}
   </div>

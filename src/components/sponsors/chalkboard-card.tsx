@@ -13,7 +13,8 @@ const ChalkboardCard = ({ sponsor }: { sponsor: SponsorDoc }) => {
       <div
         className={cn(
           mountClass,
-          "flex-col gap-[4%] px-[6%] py-[5%] text-center"
+          // The blurb shares the mount, so it turns light with it.
+          "flex-col gap-[4%] px-[6%] py-[5%] text-center text-ink has-[[data-light]]:text-cream"
         )}
       >
         <SponsorLogo
@@ -21,7 +22,7 @@ const ChalkboardCard = ({ sponsor }: { sponsor: SponsorDoc }) => {
           sponsor={sponsor}
           className="h-auto max-h-[22%] w-[45%] max-w-[70%]"
         />
-        <p className="font-body text-base leading-snug text-ink xl:text-xl">
+        <p className="font-body text-base leading-snug xl:text-[length:max(1.25rem,1.306vw)]">
           {sponsor.blurb}
         </p>
       </div>

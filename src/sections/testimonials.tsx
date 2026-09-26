@@ -1,6 +1,13 @@
 "use client";
 
+import { Candle } from "@/components/testimonials/candle";
+import { DeerHead } from "@/components/testimonials/deer-head";
+import { nookShape } from "@/components/testimonials/nook-shapes";
+import { Nugget } from "@/components/testimonials/nugget";
+import { Pillow } from "@/components/testimonials/pillow";
+import { TappableBear } from "@/components/testimonials/tappable-bear";
 import { type Testimonial, testimonials } from "@/constants/testimonials";
+import { cn } from "@/lib/utils";
 
 import Image from "next/image";
 import { useState } from "react";
@@ -62,10 +69,7 @@ const SpeechBubble = ({
       <span className="text-[0.96vw] font-bold leading-tight text-[#16224f]">
         {person.name}
       </span>
-      <span className="mt-[0.42vw] text-[0.83vw] leading-tight text-[#5a6396]">
-        {person.pronouns}
-      </span>
-      <span className="text-[0.83vw] leading-tight text-[#5a6396]">
+      <span className="mt-[0.3vw] text-[0.83vw] leading-tight text-[#5a6396]">
         {person.role}
       </span>
     </span>
@@ -75,6 +79,7 @@ const SpeechBubble = ({
 const Testimonials = () => {
   const [selected, setSelected] = useState(0);
   const person = testimonials[selected];
+  const shown = testimonials.slice(0, bubbles.length);
 
   return (
     <div
@@ -104,40 +109,40 @@ const Testimonials = () => {
         height={239}
         className="absolute left-[8.46vw] top-[24.21vw] h-[15.64vw] w-[43.52vw]"
       />
-      <Image
+      <Pillow
         src="/assets/testimonials/ruffled-cushion.svg"
-        alt=""
         width={149}
         height={92}
-        className="absolute left-[35.51vw] top-[21.72vw] h-[6vw] w-[9.77vw] rotate-[10deg]"
+        label="Ruffled cushion"
+        className="left-[35.51vw] top-[21.72vw] h-[6vw] w-[9.77vw] rotate-[10deg]"
       />
-      <Image
+      <Pillow
         src="/assets/testimonials/back-pillow.svg"
-        alt=""
         width={151}
         height={136}
-        className="absolute left-[18.19vw] top-[19.97vw] h-[8.89vw] w-[9.88vw]"
+        label="Back pillow"
+        className="left-[18.19vw] top-[19.97vw] h-[8.89vw] w-[9.88vw]"
       />
-      <Image
+      <Pillow
         src="/assets/testimonials/round-cushion.svg"
-        alt=""
         width={166}
         height={78}
-        className="absolute left-[24.33vw] top-[24.64vw] h-[5.07vw] w-[10.85vw]"
+        label="Round cushion"
+        className="left-[24.33vw] top-[24.64vw] h-[5.07vw] w-[10.85vw]"
       />
-      <Image
+      <Pillow
         src="/assets/testimonials/yellow-cushion.svg"
-        alt=""
         width={370}
         height={217}
-        className="absolute left-[10.57vw] top-[26.95vw] h-[14.23vw] w-[24.2vw]"
+        label="Yellow cushion"
+        className="left-[10.57vw] top-[26.95vw] h-[14.23vw] w-[24.2vw]"
       />
-      <Image
+      <Pillow
         src="/assets/testimonials/square-cushion.svg"
-        alt=""
         width={209}
         height={209}
-        className="absolute left-[35.75vw] top-[24.57vw] h-[13.65vw] w-[13.65vw]"
+        label="Square cushion"
+        className="left-[35.75vw] top-[24.57vw] h-[13.65vw] w-[13.65vw]"
       />
 
       <Image
@@ -146,6 +151,7 @@ const Testimonials = () => {
         width={41}
         height={89}
         className="absolute left-[39.33vw] top-[15.44vw] h-[5.84vw] w-[2.72vw] rotate-[-22.24deg]"
+        style={nookShape("/assets/testimonials/deer-antler-back.svg")}
       />
       <Image
         src="/assets/testimonials/deer-antlers.svg"
@@ -153,6 +159,7 @@ const Testimonials = () => {
         width={71}
         height={98}
         className="absolute left-[42vw] top-[15.21vw] h-[6.41vw] w-[4.65vw]"
+        style={nookShape("/assets/testimonials/deer-antlers.svg")}
       />
       <Image
         src="/assets/testimonials/deer-body.svg"
@@ -160,6 +167,7 @@ const Testimonials = () => {
         width={153}
         height={140}
         className="absolute left-[36.53vw] top-[27.01vw] h-[9.19vw] w-[10.04vw]"
+        style={nookShape("/assets/testimonials/deer-body.svg")}
       />
       <Image
         src="/assets/testimonials/deer-pyjamas.svg"
@@ -167,6 +175,7 @@ const Testimonials = () => {
         width={78}
         height={165}
         className="absolute left-[39.68vw] top-[21.31vw] h-[10.79vw] w-[5.13vw]"
+        style={nookShape("/assets/testimonials/deer-pyjamas.svg")}
       />
       <Image
         src="/assets/testimonials/deer-ear-left.svg"
@@ -174,6 +183,7 @@ const Testimonials = () => {
         width={30}
         height={32}
         className="absolute left-[38.95vw] top-[20.43vw] h-[2.08vw] w-[1.96vw] rotate-[-5.37deg]"
+        style={nookShape("/assets/testimonials/deer-ear-left.svg")}
       />
       <Image
         src="/assets/testimonials/deer-ear-right.svg"
@@ -181,106 +191,41 @@ const Testimonials = () => {
         width={32}
         height={32}
         className="absolute left-[43.91vw] top-[20.5vw] h-[2.1vw] w-[2.09vw] rotate-[-5.37deg]"
+        style={nookShape("/assets/testimonials/deer-ear-right.svg")}
       />
-      <Image
-        src="/assets/testimonials/deer-head.svg"
-        alt=""
-        width={116}
-        height={106}
-        className="absolute left-[39.14vw] top-[20.54vw] h-[6.93vw] w-[7.62vw]"
-      />
-      <Image
-        src="/assets/testimonials/deer-spots.svg"
-        alt=""
-        width={22}
-        height={14}
-        className="absolute left-[41.57vw] top-[20.89vw] h-[0.9vw] w-[1.47vw]"
-      />
-      <Image
-        src="/assets/testimonials/deer-muzzle.svg"
-        alt=""
-        width={47}
-        height={30}
-        className="absolute left-[40.49vw] top-[24.11vw] h-[1.99vw] w-[3.08vw]"
-      />
-      <Image
-        src="/assets/testimonials/deer-eye-left.svg"
-        alt=""
-        width={6}
-        height={9}
-        className="absolute left-[40.28vw] top-[23.76vw] h-[0.58vw] w-[0.39vw]"
-      />
-      <Image
-        src="/assets/testimonials/deer-eye-right.svg"
-        alt=""
-        width={6}
-        height={9}
-        className="absolute left-[43.28vw] top-[23.74vw] h-[0.59vw] w-[0.4vw]"
-      />
-      <Image
-        src="/assets/testimonials/deer-mouth.svg"
-        alt=""
-        width={18}
-        height={12}
-        className="absolute left-[41.25vw] top-[24.66vw] h-[0.76vw] w-[1.17vw]"
-      />
+      <DeerHead className="left-[39.14vw] top-[20.54vw] h-[6.93vw] w-[7.62vw]" />
       <Image
         src="/assets/testimonials/deer-pyjama-cat.svg"
         alt=""
         width={15}
         height={12}
         className="absolute left-[42.4vw] top-[28.72vw] h-[0.78vw] w-[1vw]"
+        style={nookShape("/assets/testimonials/deer-pyjama-cat.svg")}
       />
 
-      <Image
-        src="/assets/testimonials/bear-body.svg"
-        alt=""
-        width={138}
-        height={126}
-        className="absolute left-[12.64vw] top-[25.49vw] h-[8.22vw] w-[9.02vw] rotate-[-1.14deg]"
-      />
-      <Image
-        src="/assets/testimonials/bear-head.svg"
-        alt=""
-        width={116}
-        height={98}
-        className="absolute left-[13.3vw] top-[19.89vw] h-[6.4vw] w-[7.58vw]"
-      />
-      <Image
-        src="/assets/testimonials/bear-hat.svg"
-        alt=""
-        width={92}
-        height={48}
-        className="absolute left-[13.21vw] top-[17.96vw] h-[3.16vw] w-[6.02vw]"
+      <TappableBear
+        onClick={() => setSelected((i) => (i + 1) % shown.length)}
+        whileHover={{ y: "-0.3vw", scale: 1.04 }}
+        whileTap={{ scale: 0.97 }}
+        className="left-[12.64vw] top-[17.96vw] h-[15.75vw] w-[9.02vw]"
       />
 
-      <Image
-        src="/assets/testimonials/nugget.svg"
-        alt=""
-        width={181}
-        height={154}
-        className="absolute left-[24.84vw] top-[18.17vw] h-[10.06vw] w-[11.87vw]"
-      />
+      <Nugget className="left-[24.84vw] top-[18.17vw] h-[10.06vw] w-[11.87vw]" />
       <Image
         src="/assets/testimonials/light-box.svg"
         alt=""
         width={117}
         height={83}
         className="absolute left-[24.51vw] top-[28.72vw] h-[5.42vw] w-[7.63vw]"
+        style={nookShape("/assets/testimonials/light-box.svg")}
       />
-      <Image
-        src="/assets/testimonials/candle-large.svg"
-        alt=""
-        width={30}
-        height={30}
-        className="absolute left-[35.39vw] top-[27.17vw] h-[1.96vw] w-[1.95vw]"
+      <Candle
+        variant="large"
+        className="left-[35.39vw] top-[27.17vw] h-[1.96vw] w-[1.95vw]"
       />
-      <Image
-        src="/assets/testimonials/candle-small.svg"
-        alt=""
-        width={17}
-        height={21}
-        className="absolute left-[37.64vw] top-[27.01vw] h-[1.38vw] w-[1.08vw]"
+      <Candle
+        variant="small"
+        className="left-[37.64vw] top-[27.01vw] h-[1.38vw] w-[1.08vw]"
       />
 
       <Image
@@ -288,14 +233,14 @@ const Testimonials = () => {
         alt=""
         width={242}
         height={262}
-        className="absolute left-[5.24vw] top-[27.42vw] h-[17.15vw] w-[15.82vw]"
+        className="pointer-events-none absolute left-[5.24vw] top-[27.42vw] h-[17.15vw] w-[15.82vw]"
       />
-      <Image
+      <Pillow
         src="/assets/testimonials/oval-pillow.svg"
-        alt=""
         width={124}
         height={107}
-        className="absolute left-[28.58vw] top-[35.59vw] h-[7.02vw] w-[8.1vw]"
+        label="Oval pillow"
+        className="left-[28.58vw] top-[35.59vw] h-[7.02vw] w-[8.1vw]"
       />
       <Image
         src="/assets/testimonials/blanket-right.svg"
@@ -303,38 +248,41 @@ const Testimonials = () => {
         width={303}
         height={166}
         className="absolute left-[31.53vw] top-[31.49vw] h-[10.83vw] w-[19.82vw]"
+        style={nookShape("/assets/testimonials/blanket-right.svg")}
       />
-      <Image
+      <Pillow
         src="/assets/testimonials/foreground-pillow.svg"
-        alt=""
         width={193}
         height={133}
-        className="absolute left-[7.87vw] top-[33.78vw] h-[8.73vw] w-[12.61vw]"
+        label="Foreground pillow"
+        className="left-[7.87vw] top-[33.78vw] h-[8.73vw] w-[12.61vw]"
       />
-      <Image
+      <Pillow
         src="/assets/testimonials/star-pillow.svg"
-        alt=""
         width={126}
         height={112}
-        className="absolute left-[21.74vw] top-[35.04vw] h-[7.32vw] w-[8.25vw]"
+        label="Star pillow"
+        className="left-[21.74vw] top-[35.04vw] h-[7.32vw] w-[8.25vw]"
       />
-      <Image
+      <Pillow
         src="/assets/testimonials/log-pillow.svg"
-        alt=""
         width={196}
         height={118}
-        className="absolute left-[40.9vw] top-[33.08vw] h-[7.72vw] w-[12.85vw]"
+        label="Log pillow"
+        className="left-[40.9vw] top-[33.08vw] h-[7.72vw] w-[12.85vw]"
       />
 
+      {/* The lamp light lies over the whole nook, so it must let clicks
+          through to the pillows and the deer underneath. */}
       <div
-        className="absolute left-[16.3vw] top-[23.23vw] h-[16.62vw] w-[24.67vw] opacity-50 mix-blend-plus-lighter"
+        className="pointer-events-none absolute left-[16.3vw] top-[23.23vw] h-[16.62vw] w-[24.67vw] opacity-50 mix-blend-plus-lighter"
         style={{
           background:
             "radial-gradient(50% 50% at 50% 50%, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 100%)",
         }}
       />
       <div
-        className="absolute left-[26.11vw] top-[17.93vw] h-[16.62vw] w-[24.61vw] opacity-25 mix-blend-plus-lighter"
+        className="pointer-events-none absolute left-[26.11vw] top-[17.93vw] h-[16.62vw] w-[24.61vw] opacity-25 mix-blend-plus-lighter"
         style={{
           background:
             "radial-gradient(50% 50% at 50% 50%, rgba(255,223,141,1) 0%, rgba(255,223,141,0) 100%)",
@@ -344,11 +292,11 @@ const Testimonials = () => {
       <div className="absolute left-[8.12vw] top-0 flex w-[18.78vw] flex-col gap-[1.05vw] text-white">
         <h2 className="font-title text-[4.19vw] leading-none">Testimonials</h2>
         <p className="text-[1.31vw] leading-[1.4]">
-          Click on the speech bubbles to read
+          Click on the speech bubbles to read:
         </p>
       </div>
 
-      {testimonials.slice(0, bubbles.length).map((person, index) => (
+      {shown.map((person, index) => (
         <SpeechBubble
           key={person.name}
           bubble={bubbles[index]}
@@ -384,11 +332,15 @@ const Testimonials = () => {
         <p className="font-title text-[2.2vw] leading-none text-[#16224f]">
           {person.name}
         </p>
-        <p className="mt-[0.9vw] text-[1.15vw] leading-none text-[#5a6396]">
-          {person.pronouns} · {person.role}
+        <p className="mt-[0.6vw] text-[1.1vw] leading-none text-[#5a6396]">
+          {person.role}
         </p>
-        <div className="mt-[1.1vw] h-px w-[2.6vw] bg-[#1a3375]/25" />
-        <p className="mt-[1.2vw] text-[1.2vw] leading-[1.5] text-[#2b3055]">
+        <p
+          className={cn(
+            "mt-[1.3vw] leading-[1.5] text-[#2b3055]",
+            person.testimonial.length > 700 ? "text-[1.1vw]" : "text-[1.2vw]"
+          )}
+        >
           {person.testimonial}
         </p>
       </div>

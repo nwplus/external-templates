@@ -1,0 +1,249 @@
+/*
+ * The hero's lamp state. `data-lit` sits on the pieces that follow it: the
+ * countdown reads as dark text inside the beam while the lamp is on and as
+ * cream text on the night sky once it is off, and the spotlight glow fades
+ * away with the beam. Only colour and opacity move.
+ */
+.hero-countdown {
+  color: #0b1327;
+  text-shadow:
+    0 0 8px #ffda88,
+    0 0 20px #ffda88,
+    0 0 40px #ffda88;
+  transition: color 300ms ease;
+}
+
+[data-lit="false"] .hero-countdown,
+.hero-countdown [data-shaded="true"] {
+  color: #fff4d6;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.85);
+}
+
+.hero-countdown [data-shaded] {
+  transition: color 150ms ease;
+}
+
+.hero-glow {
+  transition: opacity 250ms ease;
+}
+
+.hero-glow[data-lit="false"] {
+  opacity: 0;
+}
+
+/*
+ * The hero's loose stars: a slow figure-of-eight drift with a little tilt,
+ * a touch roomier than the footer's float. Transform only; paused off screen
+ * by the motion gate like everything else, and off entirely under reduced
+ * motion.
+ */
+@keyframes hero-drift {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  30% {
+    transform: translate(2%, -7%) rotate(3.5deg);
+  }
+  65% {
+    transform: translate(-2%, -3%) rotate(-3deg);
+  }
+}
+
+/*
+ * Their twinkle, on top of the drift. Three animations (drift, twinkle,
+ * wiggle), so the inline timings in hero-stars.tsx come in that order. It
+ * only dims a little since the glow is baked into each image.
+ */
+@keyframes hero-star-twinkle {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+/*
+ * The sky's twinkle (sky-twinkle.tsx). A bloom is a soft glow over one of
+ * the sparkles, in that sparkle's colour (`--glow`, as "r g b"):
+ * breathing ones swell and fade gently, glints sit nearly dark and flare for
+ * a moment. Pinpricks are the faint stars scattered between them. Screen
+ * blending lets the glow brighten the sparkle instead of washing it out.
+ */
+.hero-bloom,
+.hero-glint {
+  background: radial-gradient(
+    circle,
+    rgb(var(--glow) / 0.8) 0%,
+    rgb(var(--glow) / 0.3) 28%,
+    transparent 68%
+  );
+  mix-blend-mode: screen;
+  opacity: 0.2;
+}
+
+.hero-pinprick {
+  background: #fff4d6;
+  box-shadow: 0 0 4px 1px rgb(255 244 214 / 0.6);
+  opacity: 0.5;
+}
+
+@keyframes hero-bloom {
+  0%,
+  100% {
+    opacity: 0.15;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 0.75;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes hero-glint {
+  0%,
+  100% {
+    opacity: 0.1;
+    transform: scale(0.8);
+  }
+  6% {
+    opacity: 0.95;
+    transform: scale(1.15);
+  }
+  18% {
+    opacity: 0.1;
+    transform: scale(0.8);
+  }
+}
+
+@keyframes hero-pinprick {
+  0%,
+  100% {
+    opacity: 0.15;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.2);
+  }
+}
+
+/*
+ * Light in the house's windows: a warm glow over each pane, dimming and
+ * catching unevenly like a lamp flame rather than pulsing. The wider halo
+ * spilling onto the wall is the pseudo-element, so it flickers with it.
+ */
+.hero-window {
+  background: radial-gradient(
+    closest-side,
+    rgb(255 233 176 / 0.9) 0%,
+    rgb(255 217 138 / 0.5) 45%,
+    transparent 100%
+  );
+  mix-blend-mode: screen;
+  opacity: 0.6;
+}
+
+.hero-window::after {
+  content: "";
+  position: absolute;
+  inset: -60%;
+  border-radius: 50%;
+  background: radial-gradient(
+    closest-side,
+    rgb(255 217 138 / 0.3) 0%,
+    transparent 100%
+  );
+}
+
+@keyframes hero-window-flicker {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  12% {
+    opacity: 0.78;
+  }
+  22% {
+    opacity: 0.45;
+  }
+  31% {
+    opacity: 0.85;
+  }
+  47% {
+    opacity: 0.55;
+  }
+  58% {
+    opacity: 0.7;
+  }
+  71% {
+    opacity: 0.32;
+  }
+  84% {
+    opacity: 0.8;
+  }
+}
+
+/*
+ * Now and then a star wiggles: still for most of its cycle, then a quick
+ * shake that dies away. It moves `rotate` rather than `transform`, so it adds
+ * to the drift's tilt instead of replacing it. Its timings are the third of
+ * each inline set.
+ */
+@keyframes hero-star-wiggle {
+  0%,
+  70%,
+  100% {
+    rotate: 0deg;
+  }
+  73% {
+    rotate: -6deg;
+  }
+  76% {
+    rotate: 4.5deg;
+  }
+  79% {
+    rotate: -3deg;
+  }
+  82% {
+    rotate: 1.5deg;
+  }
+  85% {
+    rotate: -0.5deg;
+  }
+  88% {
+    rotate: 0deg;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-star {
+    animation:
+      hero-drift 6s ease-in-out infinite,
+      hero-star-twinkle 3s ease-in-out infinite,
+      hero-star-wiggle 8s ease-in-out infinite;
+  }
+
+  .hero-bloom {
+    animation: hero-bloom 3.5s ease-in-out infinite;
+  }
+
+  .hero-glint {
+    animation: hero-glint 5s ease-in-out infinite;
+  }
+
+  .hero-pinprick {
+    animation: hero-pinprick 4s ease-in-out infinite;
+  }
+
+  .hero-window {
+    animation: hero-window-flicker 5s ease-in-out infinite;
+  }
+}
+
+/*
+ * The beam follows the cursor by a rotate that beam-follow.tsx writes onto
+ * the `.hero-beam-swing` layers each frame; there is nothing to style.
+ */

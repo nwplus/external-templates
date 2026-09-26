@@ -1,6 +1,6 @@
 export const teamMembers = [
   {
-    img: "/assets/footer/profiles/Tracy_La.png",
+    img: "/assets/footer/profiles/Tracy_La.webp",
     name: "Tracy La",
     emoji: "🍞",
     color: "#234036",
@@ -8,7 +8,7 @@ export const teamMembers = [
     social: "https://www.linkedin.com/in/tracy--la/",
   },
   {
-    img: "/assets/footer/profiles/Angela_Cheng.png",
+    img: "/assets/footer/profiles/Angela_Cheng.webp",
     name: "Angela Cheng",
     emoji: "🪷",
     color: "#9ADDFB",
@@ -16,7 +16,7 @@ export const teamMembers = [
     social: "https://www.linkedin.com/in/angela-cheng-/",
   },
   {
-    img: "/assets/footer/profiles/Caitlyn_Chan.png",
+    img: "/assets/footer/profiles/Caitlyn_Chan.webp",
     name: "Caitlyn Chan",
     emoji: "🤠",
     color: "#f5bf53",
@@ -24,7 +24,7 @@ export const teamMembers = [
     social: "linkedin.com/in/cait-chan/",
   },
   {
-    img: "/assets/footer/profiles/Jonathan_Cai.png",
+    img: "/assets/footer/profiles/Jonathan_Cai.webp",
     name: "Jonathan Cai",
     emoji: "🫨",
     color: "#01DACC",
@@ -32,7 +32,7 @@ export const teamMembers = [
     social: "https://www.linkedin.com/in/jonathan-cai-843873314/",
   },
   {
-    img: "/assets/footer/profiles/Hannah_Baek.png",
+    img: "/assets/footer/profiles/Hannah_Baek.webp",
     name: "Hannah Baek",
     emoji: "😽",
     color: "#91213a",
@@ -40,7 +40,7 @@ export const teamMembers = [
     social: "",
   },
   {
-    img: "/assets/footer/profiles/Stellar_Shar.png",
+    img: "/assets/footer/profiles/Stellar_Shar.webp",
     name: "Stellar Shar",
     emoji: "🪿",
     color: "#FFC0CB",
@@ -48,7 +48,7 @@ export const teamMembers = [
     social: "https://www.linkedin.com/in/stellar-shar-4005b219a/",
   },
   {
-    img: "/assets/footer/profiles/Roberta_Lee.png",
+    img: "/assets/footer/profiles/Roberta_Lee.webp",
     name: "Roberta Lee",
     emoji: "💗",
     color: "#FFAADC",
@@ -56,7 +56,7 @@ export const teamMembers = [
     social: "https://www.linkedin.com/in/roberta-lee-3381662ba/",
   },
   {
-    img: "/assets/footer/profiles/Anthony_Lu.png",
+    img: "/assets/footer/profiles/Anthony_Lu.webp",
     name: "Anthony Lu",
     emoji: "🥳",
     color: "#ABCDEF",
@@ -64,7 +64,7 @@ export const teamMembers = [
     social: "https://www.linkedin.com/in/anthony-h-lu/",
   },
   {
-    img: "/assets/footer/profiles/Sunny_Su.png",
+    img: "/assets/footer/profiles/Sunny_Su.webp",
     name: "Sunny Su",
     emoji: "💃",
     color: "#C6E2FF",
@@ -72,7 +72,7 @@ export const teamMembers = [
     social: "www.linkedin.com/in/sunnysu101",
   },
   {
-    img: "/assets/footer/profiles/Jennifer_Shui.png",
+    img: "/assets/footer/profiles/Jennifer_Shui.webp",
     name: "Jennifer Shui",
     emoji: "🦜",
     color: "#ABCFFF",
@@ -80,7 +80,7 @@ export const teamMembers = [
     social: "https://www.linkedin.com/in/jennifershui/",
   },
   {
-    img: "/assets/footer/profiles/Jagathi_Moturi.png",
+    img: "/assets/footer/profiles/Jagathi_Moturi.webp",
     name: "Jagathi Moturi",
     emoji: "🌟",
     color: "#ADD0B3",
@@ -88,7 +88,7 @@ export const teamMembers = [
     social: "linkedin.com/in/jagathi-moturi",
   },
   {
-    img: "/assets/footer/profiles/Tiffany_Nguyen.png",
+    img: "/assets/footer/profiles/Tiffany_Nguyen.webp",
     name: "Tiffany Nguyen",
     emoji: "🐞",
     color: "#6777B6",
@@ -96,7 +96,7 @@ export const teamMembers = [
     social: "www.linkedin.com/in/tiffany-nguyen-14b227216",
   },
   {
-    img: "/assets/footer/profiles/Connor_Young.png",
+    img: "/assets/footer/profiles/Connor_Young.webp",
     name: "Connor Young",
     emoji: "🐶",
     color: "#9cf0ff",
@@ -104,7 +104,7 @@ export const teamMembers = [
     social: "linkedin.com/in/conryoung",
   },
   {
-    img: "/assets/footer/profiles/Alan_Wu.png",
+    img: "/assets/footer/profiles/Alan_Wu.webp",
     name: "Alan Wu",
     emoji: "🫩",
     color: "#3eb489",
@@ -112,7 +112,7 @@ export const teamMembers = [
     social: "https://www.linkedin.com/in/alan-w-u/",
   },
   {
-    img: "/assets/footer/profiles/Yiming_Su.png",
+    img: "/assets/footer/profiles/Yiming_Su.webp",
     name: "Yiming Su",
     emoji: "🤤",
     color: "#702963",
@@ -120,7 +120,7 @@ export const teamMembers = [
     social: "ysu.dev",
   },
   {
-    img: "/assets/footer/profiles/Anna_Fang.png",
+    img: "/assets/footer/profiles/Anna_Fang.webp",
     name: "Anna Fang",
     emoji: "🎀",
     color: "#a76d52",
@@ -128,7 +128,7 @@ export const teamMembers = [
     social: "https://www.linkedin.com/in/anna-fang-5312a0235/",
   },
   {
-    img: "/assets/footer/profiles/Fabian_Siswanto.png",
+    img: "/assets/footer/profiles/Fabian_Siswanto.webp",
     name: "Fabian Siswanto",
     emoji: "💯",
     color: "#BFA98E",
@@ -136,7 +136,7 @@ export const teamMembers = [
     social: "https://www.linkedin.com/in/fabiansiswanto/",
   },
   {
-    img: "/assets/footer/profiles/Ramika_De_Silva.png",
+    img: "/assets/footer/profiles/Ramika_De_Silva.webp",
     name: "Ramika De Silva",
     emoji: "🦥",
     color: "#91C2C1",
@@ -144,7 +144,7 @@ export const teamMembers = [
     social: "https://www.linkedin.com/in/ramika-de-silva-4995b9203/",
   },
   {
-    img: "/assets/footer/profiles/Simon_Chen.png",
+    img: "/assets/footer/profiles/Simon_Chen.webp",
     name: "Simon Chen",
     emoji: "🐋",
     color: "#BED6EB",
@@ -152,7 +152,7 @@ export const teamMembers = [
     social: "https://www.linkedin.com/in/simonchen10/",
   },
   {
-    img: "/assets/footer/profiles/Corbin_Platti.png",
+    img: "/assets/footer/profiles/Corbin_Platti.webp",
     name: "Corbin Platti",
     emoji: "💰",
     color: "#fa02ee",
@@ -160,7 +160,7 @@ export const teamMembers = [
     social: "https://iamcorbin.com/",
   },
   {
-    img: "/assets/footer/profiles/Yash_Vasdev.png",
+    img: "/assets/footer/profiles/Yash_Vasdev.webp",
     name: "Yash Vasdev",
     emoji: "",
     color: "#01DACC",
@@ -168,7 +168,7 @@ export const teamMembers = [
     social: "",
   },
   {
-    img: "/assets/footer/profiles/Ariana_Zhassuzak.png",
+    img: "/assets/footer/profiles/Ariana_Zhassuzak.webp",
     name: "Ariana Zhassuzak",
     emoji: "🦢",
     color: "#FFF0F5",
@@ -176,7 +176,7 @@ export const teamMembers = [
     social: "",
   },
   {
-    img: "/assets/footer/profiles/Joyce_Park.png",
+    img: "/assets/footer/profiles/Joyce_Park.webp",
     name: "Joyce Park",
     emoji: "📚",
     color: "#01DACC",
@@ -184,7 +184,7 @@ export const teamMembers = [
     social: "https://joycesoyeonpark.wixsite.com/joyce-park",
   },
   {
-    img: "/assets/footer/profiles/Lilit_Vanyan.png",
+    img: "/assets/footer/profiles/Lilit_Vanyan.webp",
     name: "Lilit Vanyan",
     emoji: "💋",
     color: "#F2ACB9",
@@ -192,7 +192,7 @@ export const teamMembers = [
     social: "https://www.linkedin.com/in/lilit-vanyan-5626a2240/",
   },
   {
-    img: "/assets/footer/profiles/Daisy_Han.png",
+    img: "/assets/footer/profiles/Daisy_Han.webp",
     name: "Daisy Han",
     emoji: "😛",
     color: "#A7CCFF",
@@ -200,7 +200,7 @@ export const teamMembers = [
     social: "https://www.linkedin.com/in/daiisyhan/",
   },
   {
-    img: "/assets/footer/profiles/Claudio_Pires.png",
+    img: "/assets/footer/profiles/Claudio_Pires.webp",
     name: "Claudio Pires",
     emoji: "😴",
     color: "#278EF5",
@@ -208,7 +208,7 @@ export const teamMembers = [
     social: "https://www.linkedin.com/in/claudiopires-/",
   },
   {
-    img: "/assets/footer/profiles/Arnavdeep_Singh.png",
+    img: "/assets/footer/profiles/Arnavdeep_Singh.webp",
     name: "Arnavdeep Singh",
     emoji: "🐳",
     color: "#171C45",
@@ -216,7 +216,7 @@ export const teamMembers = [
     social: "https://www.linkedin.com/in/arnavdeep-singh/",
   },
   {
-    img: "/assets/footer/profiles/Dilna_Davi.png",
+    img: "/assets/footer/profiles/Dilna_Davi.webp",
     name: "Dilna Davi",
     emoji: "🗿",
     color: "#D1FCA4",
@@ -224,7 +224,7 @@ export const teamMembers = [
     social: "https://www.linkedin.com/in/dilna-davi",
   },
   {
-    img: "/assets/footer/profiles/Kashish_Garg.png",
+    img: "/assets/footer/profiles/Kashish_Garg.webp",
     name: "Kashish Garg",
     emoji: "🐨",
     color: "#01DACC",
@@ -232,7 +232,7 @@ export const teamMembers = [
     social: "https://www.linkedin.com/in/kashishgarg1/",
   },
   {
-    img: "/assets/footer/profiles/Elaine_Chen.png",
+    img: "/assets/footer/profiles/Elaine_Chen.webp",
     name: "Elaine Chen",
     emoji: "✨",
     color: "#7f4e5a",
@@ -240,7 +240,7 @@ export const teamMembers = [
     social: "www.linkedin.com/in/elaine-c-3ab8a2231",
   },
   {
-    img: "/assets/footer/profiles/Anna_Kovtunenko.png",
+    img: "/assets/footer/profiles/Anna_Kovtunenko.webp",
     name: "Anna Kovtunenko",
     emoji: "🌺",
     color: "#5e0808",
@@ -248,7 +248,7 @@ export const teamMembers = [
     social: "https://www.linkedin.com/in/anna-kovtunenko/",
   },
   {
-    img: "/assets/footer/profiles/Angela_Chiang.png",
+    img: "/assets/footer/profiles/Angela_Chiang.webp",
     name: "Angela Chiang",
     emoji: "🫡",
     color: "#00A3FF",
@@ -256,7 +256,7 @@ export const teamMembers = [
     social: "https://www.linkedin.com/in/a-hc-chiang/",
   },
   {
-    img: "/assets/footer/profiles/Sarah_Chenwang.png",
+    img: "/assets/footer/profiles/Sarah_Chenwang.webp",
     name: "Sarah Chenwang",
     emoji: "😛",
     color: "#cfe2f3",
@@ -264,7 +264,7 @@ export const teamMembers = [
     social: "",
   },
   {
-    img: "/assets/footer/profiles/Alexi_Manning.png",
+    img: "/assets/footer/profiles/Alexi_Manning.webp",
     name: "Alexi Manning",
     emoji: "🍥",
     color: "#e7c9f5",
@@ -272,7 +272,7 @@ export const teamMembers = [
     social: "",
   },
   {
-    img: "/assets/footer/profiles/Ruby_Ke.png",
+    img: "/assets/footer/profiles/Ruby_Ke.webp",
     name: "Ruby Ke",
     emoji: "🧸",
     color: "#FFF39C",
@@ -280,7 +280,7 @@ export const teamMembers = [
     social: "https://www.linkedin.com/in/ruby-ke/",
   },
   {
-    img: "/assets/footer/profiles/Geoff_Jiang.png",
+    img: "/assets/footer/profiles/Geoff_Jiang.webp",
     name: "Geoff Jiang",
     emoji: "🍻",
     color: "#7f11e0",
@@ -288,7 +288,7 @@ export const teamMembers = [
     social: "https://www.linkedin.com/in/geoff-jiang/",
   },
   {
-    img: "/assets/footer/profiles/Jae_Wu_Chun.png",
+    img: "/assets/footer/profiles/Jae_Wu_Chun.webp",
     name: "Jae Wu Chun",
     emoji: "",
     color: "#01DACC",
@@ -296,7 +296,7 @@ export const teamMembers = [
     social: "",
   },
   {
-    img: "/assets/footer/profiles/Daksh_Shahani.png",
+    img: "/assets/footer/profiles/Daksh_Shahani.webp",
     name: "Daksh Shahani",
     emoji: "👾",
     color: "#008581",
@@ -304,7 +304,7 @@ export const teamMembers = [
     social: "https://dakshitshahani.com",
   },
   {
-    img: "/assets/footer/profiles/Mackenzie_Dy.png",
+    img: "/assets/footer/profiles/Mackenzie_Dy.webp",
     name: "Mackenzie Dy",
     emoji: "🦖",
     color: "#4E2A84",
@@ -312,7 +312,7 @@ export const teamMembers = [
     social: "mackenziedy.com",
   },
   {
-    img: "/assets/footer/profiles/Leia_Chen.png",
+    img: "/assets/footer/profiles/Leia_Chen.webp",
     name: "Leia Chen",
     emoji: "🦭",
     color: "#13315c",
@@ -320,7 +320,7 @@ export const teamMembers = [
     social: "https://www.linkedin.com/in/leiahjchen/",
   },
   {
-    img: "/assets/footer/profiles/Jasper_He.png",
+    img: "/assets/footer/profiles/Jasper_He.webp",
     name: "Jasper He",
     emoji: "🌌",
     color: "#81b0cc",
@@ -328,7 +328,7 @@ export const teamMembers = [
     social: "https://linkedin.com/in/jasperjjhe",
   },
   {
-    img: "/assets/footer/profiles/Eric_Zuo.png",
+    img: "/assets/footer/profiles/Eric_Zuo.webp",
     name: "Eric Zuo",
     emoji: "🎲",
     color: "#4c06c4",
@@ -336,7 +336,7 @@ export const teamMembers = [
     social: "https://www.linkedin.com/in/ericzuo8/",
   },
   {
-    img: "/assets/footer/profiles/Shannon_Aurelia.png",
+    img: "/assets/footer/profiles/Shannon_Aurelia.webp",
     name: "Shannon Aurelia",
     emoji: "🩰",
     color: "#01DACC",
@@ -344,7 +344,7 @@ export const teamMembers = [
     social: "https://www.linkedin.com/in/shannon-aurelia-s/",
   },
   {
-    img: "/assets/footer/profiles/Keira_Wong.png",
+    img: "/assets/footer/profiles/Keira_Wong.webp",
     name: "Keira Wong",
     emoji: "🤍",
     color: "#000000",
@@ -352,7 +352,7 @@ export const teamMembers = [
     social: "https://www.linkedin.com/in/keirawong/",
   },
   {
-    img: "/assets/footer/profiles/Rachel_Wang.png",
+    img: "/assets/footer/profiles/Rachel_Wang.webp",
     name: "Rachel Wang",
     emoji: "😑",
     color: "#CBC3E3",
@@ -360,7 +360,7 @@ export const teamMembers = [
     social: "https://www.linkedin.com/in/rachel-wang-894626217/",
   },
   {
-    img: "/assets/footer/profiles/Lincoln_Lee.png",
+    img: "/assets/footer/profiles/Lincoln_Lee.webp",
     name: "Lincoln Lee",
     emoji: "🍦",
     color: "#bae5f9",
@@ -368,7 +368,7 @@ export const teamMembers = [
     social: "linkedin.com/in/lincoln-seungha-lee",
   },
   {
-    img: "/assets/footer/profiles/Eric_Shuai.png",
+    img: "/assets/footer/profiles/Eric_Shuai.webp",
     name: "Eric Shuai",
     emoji: "🤩",
     color: "#29cff0",
@@ -376,7 +376,7 @@ export const teamMembers = [
     social: "https://www.linkedin.com/in/ericshuai",
   },
   {
-    img: "/assets/footer/profiles/Gregory_Bian.png",
+    img: "/assets/footer/profiles/Gregory_Bian.webp",
     name: "Gregory Bian",
     emoji: "🀄",
     color: "#0000FF",
@@ -384,7 +384,7 @@ export const teamMembers = [
     social: "https://www.linkedin.com/in/gregorybian/",
   },
   {
-    img: "/assets/footer/profiles/Dhweya_Modi.png",
+    img: "/assets/footer/profiles/Dhweya_Modi.webp",
     name: "Dhweya Modi",
     emoji: "🥰",
     color: "#DBC8E2",
@@ -392,7 +392,7 @@ export const teamMembers = [
     social: "https://www.linkedin.com/in/dhweya-modi-12428a250/",
   },
   {
-    img: "/assets/footer/profiles/Daniel_Pan.png",
+    img: "/assets/footer/profiles/Daniel_Pan.webp",
     name: "Daniel Pan",
     emoji: "🤠",
     color: "#01DACC",
@@ -400,7 +400,7 @@ export const teamMembers = [
     social: "danielpanhead.com",
   },
   {
-    img: "/assets/footer/profiles/Avery_Chong.png",
+    img: "/assets/footer/profiles/Avery_Chong.webp",
     name: "Avery Chong",
     emoji: "☹️",
     color: "#414141",
@@ -408,7 +408,7 @@ export const teamMembers = [
     social: "",
   },
   {
-    img: "/assets/footer/profiles/Wakana_Kuwayama.png",
+    img: "/assets/footer/profiles/Wakana_Kuwayama.webp",
     name: "Wakana Kuwayama",
     emoji: "🫧",
     color: "#A8D5BA",

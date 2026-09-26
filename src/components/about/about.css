@@ -1,0 +1,88 @@
+/* The moon bear's moving parts, at rest. The Web Animations in
+   moon-bear-figure.tsx take them from here and hand them back: every run
+   ends on these values, so nothing is left filling forwards. Only transform
+   and opacity move; the figure never carries a filter. */
+
+.moon-bear-rod,
+.moon-bear-line,
+.moon-bear-hook-star {
+  transform-box: fill-box;
+}
+
+/* Swung round behind the bear's head, and invisible besides. */
+.moon-bear-rod {
+  opacity: 0;
+  transform: rotate(70deg);
+}
+
+/* Reeled in: scaled to nothing from the rod's tip. */
+.moon-bear-line {
+  transform-origin: 50% 0;
+  transform: scaleY(0);
+}
+
+/* It wiggles from where it hangs on the line: the notch between its top two
+   points, as shares of its own box (moon-bear-art.tsx STAR_KNOT). */
+.moon-bear-hook-star {
+  opacity: 0;
+  transform-origin: 52.83% 22.28%;
+}
+
+/* The copy that laps the page, and the sparks it leaves behind. Both are
+   `position: fixed` at the viewport's corner: with the element's box at the
+   origin, the path's coordinates are viewport coordinates whichever box the
+   browser measures `offset-path` from. */
+.moon-bear-flight,
+.moon-bear-spark {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  offset-rotate: auto;
+  offset-distance: 0%;
+  will-change: transform;
+}
+
+.moon-bear-flight {
+  z-index: 1100;
+}
+
+.moon-bear-spark {
+  z-index: 1099;
+  border-radius: 50%;
+  background: #facb6b;
+  opacity: 0;
+}
+
+/* little shuffle until the first click so ppl notice the bear */
+.moon-bear-waiting [data-part="bear"] {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: moon-bear-shuffle 4.5s ease-in-out 1.2s infinite;
+}
+
+@keyframes moon-bear-shuffle {
+  0%,
+  72%,
+  100% {
+    transform: rotate(0deg);
+  }
+  76% {
+    transform: rotate(-5deg);
+  }
+  81% {
+    transform: rotate(4deg);
+  }
+  86% {
+    transform: rotate(-2.5deg);
+  }
+  91% {
+    transform: rotate(1deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .moon-bear-waiting [data-part="bear"] {
+    animation: none;
+  }
+}

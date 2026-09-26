@@ -3,6 +3,10 @@ import { type StarContent, StarOverlay } from "./star-overlay";
 /**
  * `idPrefix` namespaces the inline SVG's gradient/filter ids: the desktop and
  * mobile trees both render this, and duplicate ids resolve to the hidden copy.
+ *
+ * The soft glow behind the star is its own SVG on its own layer: the twinkle
+ * fades that layer's opacity on the compositor, so the 40px blur is
+ * rasterised once instead of on every frame of the animation.
  */
 export const StarRight = ({
   value,
@@ -10,48 +14,173 @@ export const StarRight = ({
   idPrefix = "star-right",
 }: StarContent & { idPrefix?: string }) => (
   <div className="relative w-full">
+    <div
+      aria-hidden="true"
+      className="absolute inset-0 will-change-[opacity] motion-safe:animate-twinkle [animation-delay:-2s]"
+    >
+      <svg
+        className="block w-full h-auto"
+        width="641"
+        height="640"
+        viewBox="0 0 641 640"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g filter={`url(#${idPrefix}-filter0_f_5247_12858)`}>
+          <g filter={`url(#${idPrefix}-filter1_d_5247_12858)`}>
+            <path
+              d="M380.389 213.147L380.945 213.96L531.646 185.968L452.94 323.786L452.43 324.68L453.086 325.478L540.594 432.113L366.767 431.66L366.247 431.658L365.839 431.978L228.005 540.172L227.092 367.007L227.088 366.162L226.359 365.724L100.5 290.137L275.924 250.831L276.898 250.612L277.067 249.631L302.824 99.7336L380.389 213.147Z"
+              stroke="#B73A72"
+              strokeOpacity="0.2"
+              strokeWidth="3"
+              shapeRendering="crispEdges"
+            />
+          </g>
+          <path
+            d="M392.338 228.649L303.181 99.9252L348.851 337.661L392.338 228.649Z"
+            fill={`url(#${idPrefix}-paint0_radial_5247_12858)`}
+          />
+          <path
+            d="M450.423 329.853L527.25 193.659L331.849 340.683L450.423 329.853Z"
+            fill={`url(#${idPrefix}-paint1_radial_5247_12858)`}
+          />
+          <path
+            d="M377.544 430.613L535.913 432.681L311.708 333.036L377.544 430.613Z"
+            fill={`url(#${idPrefix}-paint2_radial_5247_12858)`}
+          />
+          <path
+            d="M227.238 376.726L225.282 532.457L326.408 311.897L227.238 376.726Z"
+            fill={`url(#${idPrefix}-paint3_radial_5247_12858)`}
+          />
+          <path
+            d="M261.309 255.282L106.648 288.849L348.075 335.487L261.309 255.282Z"
+            fill={`url(#${idPrefix}-paint4_radial_5247_12858)`}
+          />
+        </g>
+        <defs>
+          <filter
+            id={`${idPrefix}-filter0_f_5247_12858`}
+            x="16.5208"
+            y="15.833"
+            width="607.246"
+            height="607.418"
+            filterUnits="userSpaceOnUse"
+            colorInterpolationFilters="sRGB"
+          >
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
+            <feBlend
+              mode="normal"
+              in="SourceGraphic"
+              in2="BackgroundImageFix"
+              result="shape"
+            />
+            <feGaussianBlur
+              stdDeviation="40"
+              result="effect1_foregroundBlur_5247_12858"
+            />
+          </filter>
+          <filter
+            id={`${idPrefix}-filter1_d_5247_12858`}
+            x="93.5682"
+            y="95.833"
+            width="453.151"
+            height="453.323"
+            filterUnits="userSpaceOnUse"
+            colorInterpolationFilters="sRGB"
+          >
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
+            <feColorMatrix
+              in="SourceAlpha"
+              type="matrix"
+              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+              result="hardAlpha"
+            />
+            <feOffset dy="2.95256" />
+            <feGaussianBlur stdDeviation="1.47628" />
+            <feComposite in2="hardAlpha" operator="out" />
+            <feColorMatrix
+              type="matrix"
+              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+            />
+            <feBlend
+              mode="normal"
+              in2="BackgroundImageFix"
+              result="effect1_dropShadow_5247_12858"
+            />
+            <feBlend
+              mode="normal"
+              in="SourceGraphic"
+              in2="effect1_dropShadow_5247_12858"
+              result="shape"
+            />
+          </filter>
+          <radialGradient
+            id={`${idPrefix}-paint0_radial_5247_12858`}
+            cx="0"
+            cy="0"
+            r="1"
+            gradientTransform="matrix(22.8348 118.868 31.1045 -5.77766 357.12 213.016)"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop offset="0.769231" stopColor="#FACB6B" />
+            <stop offset="1" stopColor="#F06B33" />
+          </radialGradient>
+          <radialGradient
+            id={`${idPrefix}-paint1_radial_5247_12858`}
+            cx="0"
+            cy="0"
+            r="1"
+            gradientTransform="matrix(-97.7006 73.5119 19.236 24.7202 448.785 291.891)"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop offset="0.769231" stopColor="#FACB6B" />
+            <stop offset="1" stopColor="#F06B33" />
+          </radialGradient>
+          <radialGradient
+            id={`${idPrefix}-paint2_radial_5247_12858`}
+            cx="0"
+            cy="0"
+            r="1"
+            gradientTransform="matrix(-112.103 -49.8225 -13.0372 28.3643 410.774 411.223)"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop offset="0.769231" stopColor="#FACB6B" />
+            <stop offset="1" stopColor="#F06B33" />
+          </radialGradient>
+          <radialGradient
+            id={`${idPrefix}-paint3_radial_5247_12858`}
+            cx="0"
+            cy="0"
+            r="1"
+            gradientTransform="matrix(50.5631 -110.28 -28.8572 -12.7935 246.988 409.384)"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop offset="0.769231" stopColor="#FACB6B" />
+            <stop offset="1" stopColor="#F06B33" />
+          </radialGradient>
+          <radialGradient
+            id={`${idPrefix}-paint4_radial_5247_12858`}
+            cx="0"
+            cy="0"
+            r="1"
+            gradientTransform="matrix(120.714 23.3193 6.10201 -30.543 233.464 281.625)"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop offset="0.769231" stopColor="#FACB6B" />
+            <stop offset="1" stopColor="#F06B33" />
+          </radialGradient>
+        </defs>
+      </svg>
+    </div>
+
     <svg
-      className="block w-full h-auto"
+      className="relative block w-full h-auto"
       width="641"
       height="640"
       viewBox="0 0 641 640"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g
-        className="animate-twinkle [animation-delay:-2s]"
-        filter={`url(#${idPrefix}-filter0_f_5247_12858)`}
-      >
-        <g filter={`url(#${idPrefix}-filter1_d_5247_12858)`}>
-          <path
-            d="M380.389 213.147L380.945 213.96L531.646 185.968L452.94 323.786L452.43 324.68L453.086 325.478L540.594 432.113L366.767 431.66L366.247 431.658L365.839 431.978L228.005 540.172L227.092 367.007L227.088 366.162L226.359 365.724L100.5 290.137L275.924 250.831L276.898 250.612L277.067 249.631L302.824 99.7336L380.389 213.147Z"
-            stroke="#B73A72"
-            strokeOpacity="0.2"
-            strokeWidth="3"
-            shapeRendering="crispEdges"
-          />
-        </g>
-        <path
-          d="M392.338 228.649L303.181 99.9252L348.851 337.661L392.338 228.649Z"
-          fill={`url(#${idPrefix}-paint0_radial_5247_12858)`}
-        />
-        <path
-          d="M450.423 329.853L527.25 193.659L331.849 340.683L450.423 329.853Z"
-          fill={`url(#${idPrefix}-paint1_radial_5247_12858)`}
-        />
-        <path
-          d="M377.544 430.613L535.913 432.681L311.708 333.036L377.544 430.613Z"
-          fill={`url(#${idPrefix}-paint2_radial_5247_12858)`}
-        />
-        <path
-          d="M227.238 376.726L225.282 532.457L326.408 311.897L227.238 376.726Z"
-          fill={`url(#${idPrefix}-paint3_radial_5247_12858)`}
-        />
-        <path
-          d="M261.309 255.282L106.648 288.849L348.075 335.487L261.309 255.282Z"
-          fill={`url(#${idPrefix}-paint4_radial_5247_12858)`}
-        />
-      </g>
       <path
         d="M345.441 137.827L389.923 239.764L512.919 239.764L429.573 337.387L482.816 435.01L345.441 409.121L220.106 474.383L245.676 337.387L157.011 258.576L302.049 253.248L345.441 137.827Z"
         fill={`url(#${idPrefix}-paint5_radial_5247_12858)`}
@@ -95,62 +224,6 @@ export const StarRight = ({
       </g>
       <defs>
         <filter
-          id={`${idPrefix}-filter0_f_5247_12858`}
-          x="16.5208"
-          y="15.833"
-          width="607.246"
-          height="607.418"
-          filterUnits="userSpaceOnUse"
-          colorInterpolationFilters="sRGB"
-        >
-          <feFlood floodOpacity="0" result="BackgroundImageFix" />
-          <feBlend
-            mode="normal"
-            in="SourceGraphic"
-            in2="BackgroundImageFix"
-            result="shape"
-          />
-          <feGaussianBlur
-            stdDeviation="40"
-            result="effect1_foregroundBlur_5247_12858"
-          />
-        </filter>
-        <filter
-          id={`${idPrefix}-filter1_d_5247_12858`}
-          x="93.5682"
-          y="95.833"
-          width="453.151"
-          height="453.323"
-          filterUnits="userSpaceOnUse"
-          colorInterpolationFilters="sRGB"
-        >
-          <feFlood floodOpacity="0" result="BackgroundImageFix" />
-          <feColorMatrix
-            in="SourceAlpha"
-            type="matrix"
-            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-            result="hardAlpha"
-          />
-          <feOffset dy="2.95256" />
-          <feGaussianBlur stdDeviation="1.47628" />
-          <feComposite in2="hardAlpha" operator="out" />
-          <feColorMatrix
-            type="matrix"
-            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
-          />
-          <feBlend
-            mode="normal"
-            in2="BackgroundImageFix"
-            result="effect1_dropShadow_5247_12858"
-          />
-          <feBlend
-            mode="normal"
-            in="SourceGraphic"
-            in2="effect1_dropShadow_5247_12858"
-            result="shape"
-          />
-        </filter>
-        <filter
           id={`${idPrefix}-filter2_d_5247_12858`}
           x="202.922"
           y="188.465"
@@ -185,61 +258,6 @@ export const StarRight = ({
             result="shape"
           />
         </filter>
-        <radialGradient
-          id={`${idPrefix}-paint0_radial_5247_12858`}
-          cx="0"
-          cy="0"
-          r="1"
-          gradientTransform="matrix(22.8348 118.868 31.1045 -5.77766 357.12 213.016)"
-          gradientUnits="userSpaceOnUse"
-        >
-          <stop offset="0.769231" stopColor="#FACB6B" />
-          <stop offset="1" stopColor="#F06B33" />
-        </radialGradient>
-        <radialGradient
-          id={`${idPrefix}-paint1_radial_5247_12858`}
-          cx="0"
-          cy="0"
-          r="1"
-          gradientTransform="matrix(-97.7006 73.5119 19.236 24.7202 448.785 291.891)"
-          gradientUnits="userSpaceOnUse"
-        >
-          <stop offset="0.769231" stopColor="#FACB6B" />
-          <stop offset="1" stopColor="#F06B33" />
-        </radialGradient>
-        <radialGradient
-          id={`${idPrefix}-paint2_radial_5247_12858`}
-          cx="0"
-          cy="0"
-          r="1"
-          gradientTransform="matrix(-112.103 -49.8225 -13.0372 28.3643 410.774 411.223)"
-          gradientUnits="userSpaceOnUse"
-        >
-          <stop offset="0.769231" stopColor="#FACB6B" />
-          <stop offset="1" stopColor="#F06B33" />
-        </radialGradient>
-        <radialGradient
-          id={`${idPrefix}-paint3_radial_5247_12858`}
-          cx="0"
-          cy="0"
-          r="1"
-          gradientTransform="matrix(50.5631 -110.28 -28.8572 -12.7935 246.988 409.384)"
-          gradientUnits="userSpaceOnUse"
-        >
-          <stop offset="0.769231" stopColor="#FACB6B" />
-          <stop offset="1" stopColor="#F06B33" />
-        </radialGradient>
-        <radialGradient
-          id={`${idPrefix}-paint4_radial_5247_12858`}
-          cx="0"
-          cy="0"
-          r="1"
-          gradientTransform="matrix(120.714 23.3193 6.10201 -30.543 233.464 281.625)"
-          gradientUnits="userSpaceOnUse"
-        >
-          <stop offset="0.769231" stopColor="#FACB6B" />
-          <stop offset="1" stopColor="#F06B33" />
-        </radialGradient>
         <radialGradient
           id={`${idPrefix}-paint5_radial_5247_12858`}
           cx="0"

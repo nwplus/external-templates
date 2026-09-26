@@ -3,7 +3,7 @@ import { MobileStats } from "@/components/stats/mobile-stats";
 
 export default function Stats() {
   return (
-    <div id="stats">
+    <div id="stats" data-motion-scope>
       <div className="hidden md:block">
         <DesktopStats />
       </div>

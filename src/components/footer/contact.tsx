@@ -87,8 +87,8 @@ const Contact = () => {
   };
 
   return (
-    <div className="flex w-full flex-col items-center gap-6 xl:gap-8">
-      <div className="flex items-center gap-5 xl:gap-11">
+    <div className="flex w-full flex-col items-center gap-6 xl:gap-[max(2rem,2.09vw)]">
+      <div className="flex items-center gap-5 xl:gap-[max(2.75rem,2.874vw)]">
         {SOCIALS.map(({ href, label, Icon }) => (
           <a
             key={href}
@@ -98,12 +98,12 @@ const Contact = () => {
             aria-label={label}
             className="transition-opacity hover:opacity-80"
           >
-            <Icon className="size-7 xl:size-15" />
+            <Icon className="size-7 xl:size-[max(3.75rem,3.919vw)]" />
           </a>
         ))}
       </div>
 
-      <div className="flex flex-wrap justify-center gap-x-3 gap-y-2 font-body text-sm font-bold underline xl:gap-x-9 xl:text-3xl">
+      <div className="flex flex-wrap justify-center gap-x-3 gap-y-2 font-body text-sm font-bold underline xl:gap-x-[max(2.25rem,2.351vw)] xl:text-[length:max(1.875rem,1.96vw)]/[1.2]">
         {LINKS.map(({ href, label }) => {
           const external = href.startsWith("http");
           return (
@@ -120,7 +120,7 @@ const Contact = () => {
       </div>
 
       <form
-        className="flex w-full max-w-[45rem] flex-col gap-1"
+        className="flex w-full max-w-[45rem] flex-col gap-1 xl:max-w-[max(45rem,47.028vw)]"
         onSubmit={handleSubmit}
       >
         <label
@@ -130,7 +130,7 @@ const Contact = () => {
           Sign up for our newsletter!
         </label>
 
-        <div className="flex items-center gap-2 xl:gap-5">
+        <div className="flex items-center gap-2 xl:gap-[max(1.25rem,1.306vw)]">
           <input
             id="newsletter-email"
             type="email"
@@ -139,11 +139,11 @@ const Contact = () => {
             placeholder={
               isNarrow ? "Enter your email" : "Sign up for our newsletter!"
             }
-            className="grow rounded-2xl border border-white bg-cream-soft/70 px-5 py-2.5 font-body text-night-top placeholder:text-night-top focus:outline-none focus-visible:ring-2 focus-visible:ring-sun xl:text-xl"
+            className="grow rounded-2xl border border-white bg-cream-soft/70 px-5 py-2.5 font-body text-night-top placeholder:text-night-top focus:outline-none focus-visible:ring-2 focus-visible:ring-sun xl:rounded-[max(1rem,1.045vw)] xl:px-[max(1.25rem,1.306vw)] xl:py-[max(0.625rem,0.653vw)] xl:text-[length:max(1.25rem,1.306vw)]/[1.4]"
           />
           <Button
             type="submit"
-            className="h-auto shrink-0 rounded-[10px] bg-sun px-6 py-3 font-body text-sun-ink hover:bg-sun/90 xl:text-lg"
+            className="h-auto shrink-0 rounded-[10px] bg-sun px-6 py-3 font-body text-sun-ink hover:bg-sun/90 xl:rounded-[max(10px,0.653vw)] xl:px-[max(1.5rem,1.568vw)] xl:py-[max(0.75rem,0.784vw)] xl:text-[length:max(1.125rem,1.176vw)]/[1.5556]"
           >
             Submit
           </Button>
@@ -152,7 +152,7 @@ const Contact = () => {
 
       <p
         aria-live="polite"
-        className="min-h-5 font-body text-sm text-cream-soft"
+        className="min-h-5 font-body text-sm text-cream-soft xl:min-h-[max(1.25rem,1.306vw)] xl:text-[length:max(0.875rem,0.914vw)]/[1.4286]"
       >
         {inputMessage}
       </p>

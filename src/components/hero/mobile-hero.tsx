@@ -2,8 +2,9 @@ import { HERO_CTA_LINKS, HERO_TAGLINE, HERO_TITLE } from "@/constants/hero";
 
 import Image from "next/image";
 
-import { Countdown } from "./countdown";
 import { CtaLink } from "./cta-link";
+import { HeroStars } from "./hero-stars";
+import { MobileHouse } from "./house-light";
 
 // TODO(mobile): swap the scaled desktop top clouds / sparkles for mobile exports
 export const MobileHero = () => (
@@ -26,14 +27,10 @@ export const MobileHero = () => (
         priority
         className="absolute top-0 left-1/2 w-[200%] max-w-none h-auto -translate-x-1/2"
       />
-      <Image
-        src="/assets/hero/desktop-sparkles.svg"
-        alt=""
-        width={1687}
-        height={1154}
-        priority
-        className="absolute -top-[30%] left-1/2 w-[200%] max-w-none h-auto -translate-x-1/2"
-      />
+      {/* stars, two viewports wide */}
+      <div className="absolute -top-[30%] left-1/2 w-[200%] aspect-[1687/1154] -translate-x-1/2">
+        <HeroStars scale={2} />
+      </div>
     </div>
 
     <div className="relative z-10 flex flex-col items-center px-6 pt-40 text-center">
@@ -52,23 +49,7 @@ export const MobileHero = () => (
       </div>
     </div>
 
-    {/* House with the countdown sitting in its spotlight beam */}
-    <div className="relative z-10 -mt-14 -mb-20 w-full">
-      <Image
-        src="/assets/hero/mobile-house.svg"
-        alt="House"
-        width={393}
-        height={710}
-        priority
-        className="block w-full h-auto"
-      />
-      {/* % tracks the 393x710 house art; the beam runs from the lamp (~36%, 31%) off the right edge */}
-      <div className="absolute left-[75%] top-[35%] z-10 -translate-x-1/2 -translate-y-1/2">
-        <Countdown
-          compact
-          className="text-[9vw] text-[#0B1327] [text-shadow:0_0_8px_#FFDA88,0_0_20px_#FFDA88,0_0_40px_#FFDA88]"
-        />
-      </div>
-    </div>
+    {/* House with the countdown sitting in its spotlight beam; a tap switches the lamp */}
+    <MobileHouse />
   </div>
 );
