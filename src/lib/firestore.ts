@@ -1,5 +1,6 @@
 import {
   collection,
+  doc,
   getDocs,
   onSnapshot,
   query,
@@ -122,6 +123,73 @@ export function subscribeToSponsorsByHackathon(
     },
     (error) => {
       console.error("Error subscribing to sponsors:", error);
+    }
+  );
+}
+
+/** Raw shape of the `applicationDeadline` field on InternalWebsites/Portal. */
+type ApplicationDeadlineRaw =
+  | Timestamp
+  | Date
+  | string
+  | number
+  | { seconds: number; nanoseconds?: number }
+  | null
+  | undefined;
+
+const toDeadlineMs = (raw: ApplicationDeadlineRaw): number | null => {
+  if (raw == null) return null;
+  if (typeof raw === "number") {
+    // Firestore Timestamps in seconds are 10 digits; millis are 13.
+    const ms = raw < 1_000_000_000_000 ? raw * 1000 : raw;
+    return Number.isNaN(ms) ? null : ms;
+  }
+  if (typeof raw === "string") {
+    const ms = new Date(raw).getTime();
+    return Number.isNaN(ms) ? null : ms;
+  }
+  if (raw instanceof Date) {
+    const ms = raw.getTime();
+    return Number.isNaN(ms) ? null : ms;
+  }
+  if (typeof (raw as Timestamp).toMillis === "function") {
+    return (raw as Timestamp).toMillis();
+  }
+  if (typeof (raw as { seconds?: unknown }).seconds === "number") {
+    const { seconds, nanoseconds } = raw as {
+      seconds: number;
+      nanoseconds?: number;
+    };
+    return seconds * 1000 + Math.floor((nanoseconds ?? 0) / 1_000_000);
+  }
+  return null;
+};
+
+/**
+ * Live-subscribes to `InternalWebsites/Portal.applicationDeadline` so the hero
+ * countdown follows the CMS value without a redeploy. Accepts a Firestore
+ * Timestamp (the Portal field type), Date, ISO string, or epoch seconds/millis.
+ * Ignores missing/unparseable values so callers keep their fallback deadline.
+ */
+export function subscribeToApplicationDeadline(
+  onUpdate: (deadlineMs: number) => void,
+  onError?: (error: unknown) => void
+): Unsubscribe {
+  const portalRef = doc(db, "InternalWebsites", "Portal");
+  return onSnapshot(
+    portalRef,
+    (snapshot) => {
+      const ms = toDeadlineMs(
+        snapshot.data()?.applicationDeadline as ApplicationDeadlineRaw
+      );
+      if (ms !== null) onUpdate(ms);
+    },
+    (error) => {
+      console.error(
+        "Error subscribing to InternalWebsites/Portal.applicationDeadline:",
+        error
+      );
+      onError?.(error);
     }
   );
 }
