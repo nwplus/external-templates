@@ -16,12 +16,16 @@ export const MobileStats = () => (
 
     {/* Stars zig-zag down the page: left, right, left, each tucked under the last */}
     <div className="relative -mt-[8%] -mb-[10%]">
+      {/* Laid out at three times the width rather than scaled up, so Safari
+          rasterizes the stars at the size they're shown instead of blowing
+          up a bitmap; the offsets put its centre where a full-width strip
+          at top-[20%] would have it. */}
       <Image
         src="/assets/stats/desktop-small-stars.svg"
         alt=""
         width={1172}
         height={389}
-        className="pointer-events-none absolute top-[20%] left-0 z-0 w-full h-auto scale-300 rotate-90"
+        className="pointer-events-none absolute top-[20%] left-1/2 z-0 w-[300%] max-w-none h-auto -translate-x-1/2 -translate-y-1/3 rotate-90"
       />
       <div className="relative z-10 flex flex-col">
         <div className="w-[118%] -ml-[4%]">
