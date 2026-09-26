@@ -11,6 +11,7 @@ import { BedArt } from "./bed-art";
 import CloudBorder from "./cloud-border";
 import "./nugget-run.css";
 import { TurnedPhone } from "./phone-show";
+import { SoundRays } from "./sound-rays";
 
 /**
  * Where the bed sits in the night scene: phone frame, then desktop frame. The
@@ -61,6 +62,9 @@ const wakeUp: Keyframe[] = [
 const BedScene = () => {
   const bed = useRef<HTMLDivElement>(null);
   const [showing, setShowing] = useState(false);
+  // Off from the moment the phone leaves the bear's hand until the turned
+  // phone has finished flipping back into it.
+  const [phoneHome, setPhoneHome] = useState(true);
   const [tucked, setTucked] = useState(false);
   // Off until mounted, so a returning visitor never sees it flash on.
   const [hint, setHint] = useState(false);
@@ -75,6 +79,7 @@ const BedScene = () => {
 
   const togglePhone = () => {
     setShowing((on) => !on);
+    setPhoneHome(false);
     setHint(false);
     try {
       window.localStorage.setItem(SEEN_KEY, "1");
@@ -143,7 +148,7 @@ const BedScene = () => {
         className="absolute left-[27.1%] top-[59.83%] h-auto w-[9.31%] max-w-none xl:left-[24.55%] xl:top-[54.32%] xl:w-[10.22%]"
       />
       <div className={cn(BED_BOX, "aspect-[1531/1504] @container")}>
-        <AnimatePresence>
+        <AnimatePresence onExitComplete={() => setPhoneHome(true)}>
           {showing && <TurnedPhone key="phone" onClose={putPhoneAway} />}
         </AnimatePresence>
         {tucked &&
@@ -162,6 +167,13 @@ const BedScene = () => {
               {letter}
             </span>
           ))}
+        {/* The rays come from just off the phone's top corner (the art has it
+            at 533, 402 of 1531 x 1504). The hint bubble hangs over the same
+            spot, so they wait until it has gone, and they only sound while
+            the phone is actually in the bear's hand. */}
+        {!hint && phoneHome && (
+          <SoundRays className="pointer-events-none absolute top-[26.4%] left-[34.5%] h-auto w-[9cqw]" />
+        )}
         {hint && !showing && (
           <HintBubble
             touch="Tap to play!"
