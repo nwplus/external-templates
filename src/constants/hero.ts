@@ -2,7 +2,7 @@
 export const APPLICATION_DEADLINE = "Oct 10, 2026 23:59:59";
 
 export const HERO_TITLE = "HackCamp";
-export const HERO_TAGLINE = "Canada's largest beginner friendly hackathon";
+export const HERO_TAGLINE = "Canada's largest beginner friendly hackathon | Nov. 7-8, 2026";
 
 export const OG_IMAGE = {
   url: "/og-image.png",

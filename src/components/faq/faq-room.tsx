@@ -323,7 +323,7 @@ const Cabinet = ({
             label={shelf.category}
             offset={left.length}
             fromBottom
-            className="absolute bottom-[27.12%] left-[57.67%] w-[33.1%]"
+            className="absolute bottom-[33.26%] left-[57.67%] w-[33.1%]"
             selected={selected}
             onSelect={onSelect}
           />
