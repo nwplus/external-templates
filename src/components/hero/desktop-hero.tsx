@@ -1,5 +1,5 @@
 import { Parallax } from "@/components/ui/parallax";
-import { HERO_CTA_LINKS, HERO_TAGLINE, HERO_TITLE } from "@/constants/hero";
+import { HERO_CTA_LINKS, HERO_TAGLINE, HERO_LOCATION, HERO_TITLE } from "@/constants/hero";
 
 import Image from "next/image";
 
@@ -129,6 +129,9 @@ export const DesktopHero = () => (
           </h1>
           <h3 className="text-white text-[clamp(1.125rem,1.25vw,1.5rem)] leading-[calc(4/3)] -mt-[clamp(0.75rem,1.0417vw,1.25rem)]">
             {HERO_TAGLINE}
+          </h3>
+          <h3 className="text-white text-[clamp(1.125rem,1.25vw,1.5rem)] pt-1">
+            {HERO_LOCATION}
           </h3>
           <div className="flex gap-4 items-center pt-8">
             {HERO_CTA_LINKS.map((link) => (

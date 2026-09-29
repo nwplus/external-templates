@@ -1,4 +1,4 @@
-import { HERO_CTA_LINKS, HERO_TAGLINE, HERO_TITLE } from "@/constants/hero";
+import { HERO_CTA_LINKS, HERO_TAGLINE, HERO_LOCATION, HERO_TITLE } from "@/constants/hero";
 
 import Image from "next/image";
 
@@ -37,6 +37,7 @@ export const MobileHero = () => (
     <div className="relative z-20 flex flex-col items-center px-6 pt-40 text-center">
       <h1 className="font-title text-7xl uppercase">{HERO_TITLE}</h1>
       <h3 className="pt-1 text-base">{HERO_TAGLINE}</h3>
+      <h3 className="pt-1 text-base">{HERO_LOCATION}</h3>
       <div className="flex flex-wrap justify-center gap-3 pt-5">
         {HERO_CTA_LINKS.map((link) => (
           <CtaLink
