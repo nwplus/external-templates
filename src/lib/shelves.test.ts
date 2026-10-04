@@ -72,6 +72,27 @@ describe("buildShelves", () => {
     ]);
   });
 
+  it("puts manually ordered sponsors first, then the rest by tier", () => {
+    const shelves = buildShelves([
+      mk("unordered-bronze", "bronze"),
+      { ...mk("second", "title"), order: 1 },
+      mk("unordered-gold", "gold"),
+      { ...mk("first", "inkind"), order: 0 },
+      { ...mk("null-order", "title"), order: null },
+    ]);
+    expect(
+      sponsorShelves(shelves).flatMap((s) =>
+        s.kind === "frames" ? s.sponsors.map((sp) => sp.name) : []
+      )
+    ).toEqual([
+      "first",
+      "second",
+      "null-order",
+      "unordered-gold",
+      "unordered-bronze",
+    ]);
+  });
+
   it("orders non-blurb sponsors by tier regardless of input order", () => {
     const shelves = buildShelves([
       mk("bronze-co", "bronze"),

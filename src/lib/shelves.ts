@@ -44,7 +44,11 @@ const tierRank = (tier: string) => {
   return index === -1 ? TIER_ORDER.length : index;
 };
 
-const byTier = (a: SponsorDoc, b: SponsorDoc) =>
+const UNORDERED = Number.MAX_SAFE_INTEGER;
+
+/** Manual `order` first, then tier; sponsors without an `order` come last. */
+const byOrder = (a: SponsorDoc, b: SponsorDoc) =>
+  (a.order ?? UNORDERED) - (b.order ?? UNORDERED) ||
   tierRank(a.tier) - tierRank(b.tier);
 
 const hasBlurb = (sponsor: SponsorDoc) =>
@@ -53,7 +57,7 @@ const hasBlurb = (sponsor: SponsorDoc) =>
 /**
  * Turns the sponsor list into shelf rows following the design rule:
  * each blurb sponsor gets its own chalkboard shelf with books one side and the
- * sheep the other, then the remaining sponsors are sorted by tier and packed
+ * sheep the other, then the remaining sponsors are sorted by manual order, then tier, and packed
  * into shelves of `framesPerShelf` picture frames with the plant one side and
  * books the other. Both pairs swap sides on every other row.
  *
@@ -66,8 +70,8 @@ export function buildShelves(
   sponsors: SponsorDoc[],
   { framesPerShelf = FRAMES_PER_SHELF }: ShelfOptions = {}
 ): ShelfSpec[] {
-  const cards = sponsors.filter(hasBlurb).sort(byTier);
-  const frames = sponsors.filter((s) => !hasBlurb(s)).sort(byTier);
+  const cards = sponsors.filter(hasBlurb).sort(byOrder);
+  const frames = sponsors.filter((s) => !hasBlurb(s)).sort(byOrder);
 
   const cardShelves: ShelfSpec[] = cards.map((sponsor, i) => ({
     kind: "card",

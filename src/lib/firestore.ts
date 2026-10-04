@@ -28,6 +28,8 @@ export interface SponsorDoc {
   lastmodby?: string;
   link: string;
   name: string;
+  /** Manual position set in the admin; sponsors without one fall back to tier order. */
+  order?: number | null;
   tier:
     | "title"
     | "platinum"
