@@ -63,6 +63,41 @@
   }
 }
 
+/*
+ * The sound rays off the phone's top left (sound-rays.tsx) blink twice, off
+ * and on like a light, every two seconds: every other blink lands on the
+ * start of the buzz. Stepped, so they snap rather than fade, and each ray
+ * runs a touch behind the one before so the fan ripples outward.
+ */
+@keyframes sound-ray {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  27% {
+    opacity: 0;
+  }
+  32% {
+    opacity: 1;
+  }
+  41%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.sound-rays {
+  /* the point the rays meet at, inside the 84 x 73 box */
+  translate: -69% -68%;
+}
+
+.sound-ray {
+  /* stays put, and only a little quieter, when motion is reduced */
+  opacity: 0.85;
+}
+
 .phone-glow {
   background: radial-gradient(
     circle,
@@ -88,6 +123,12 @@
 
   .phone-ping {
     animation: phone-ping 4s ease-out infinite;
+  }
+
+  .sound-ray {
+    opacity: 0;
+    animation: sound-ray 2s steps(1, end) infinite;
+    animation-delay: calc(var(--ray) * 0.05s);
   }
 }
 

@@ -7,10 +7,7 @@ type VhsTapeProps = {
   /** Optional single letter shown in a small circle to the left of the label. */
   badge?: string;
   badgeColor?: string;
-  /** Greyed out while this tape is in, or flying to, the television's slot. */
-  taken?: boolean;
-  /** Also passes the tape's button, so the room can fly the tape from it. */
-  onSelect: (faq: FaqItem, el: HTMLElement) => void;
+  onSelect: (faq: FaqItem) => void;
 };
 
 /**
@@ -23,16 +20,16 @@ const VhsTape = ({
   selected,
   badge,
   badgeColor,
-  taken = false,
   onSelect,
 }: VhsTapeProps) => (
   <button
     type="button"
     aria-pressed={selected}
-    onClick={(e) => onSelect(faq, e.currentTarget)}
+    onClick={() => onSelect(faq)}
     className={cn(
       "flex max-w-full cursor-pointer items-center gap-2 rounded-md bg-tape py-1.5 pr-2.5 pl-2 text-left shadow-[inset_0_1px_0_rgba(255,255,255,0.14)] transition-[transform,opacity,filter] duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-star xl:gap-[0.5cqw] xl:py-[0.45cqw] xl:pr-[0.65cqw] xl:pl-[0.5cqw]",
-      taken ? "opacity-40 grayscale" : "hover:-translate-y-0.5"
+      // the playing tape is in the television, so its spot is greyed out
+      selected ? "opacity-40 grayscale" : "hover:-translate-y-0.5"
     )}
   >
     <span

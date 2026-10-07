@@ -4,14 +4,11 @@ import type { FaqItem } from "@/lib/faq-layout";
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import type { Ref } from "react";
 
 type CrtTvProps = {
   selected: FaqItem | null;
   /** True when there are no questions at all; swaps the idle prompt. */
   empty: boolean;
-  /** The tape slot, which the room flies a clicked tape into. */
-  slotRef?: Ref<HTMLParagraphElement>;
 };
 
 /**
@@ -20,7 +17,7 @@ type CrtTvProps = {
  * the answer inside the flat middle of the CRT, and the question on the tape
  * in the slot. Type is sized in `cqw` so it tracks the set at every width.
  */
-const CrtTv = ({ selected, empty, slotRef }: CrtTvProps) => (
+const CrtTv = ({ selected, empty }: CrtTvProps) => (
   <div className="relative @container w-full">
     <Image
       src="/assets/faq/tv.svg"
@@ -73,10 +70,7 @@ const CrtTv = ({ selected, empty, slotRef }: CrtTvProps) => (
     </div>
 
     {/* The tape in the slot carries the question being answered. */}
-    <p
-      ref={slotRef}
-      className="absolute top-[79.5%] left-[26%] flex h-[5.9%] w-[64.6%] items-center justify-center overflow-hidden px-[1.5cqw] text-center font-body text-[max(0.625rem,1.9cqw)] leading-[1.15] text-ink"
-    >
+    <p className="absolute top-[79.5%] left-[26%] flex h-[5.9%] w-[64.6%] items-center justify-center overflow-hidden px-[1.5cqw] text-center font-body text-[max(0.625rem,1.9cqw)] leading-[1.15] text-ink">
       <span className="truncate">{selected?.question}</span>
     </p>
   </div>

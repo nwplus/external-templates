@@ -2,7 +2,7 @@ import { APPLICATION_DEADLINE } from "@/constants/hero";
 
 import { useEffect, useState } from "react";
 
-const DEADLINE_MS = new Date(APPLICATION_DEADLINE).getTime();
+const FALLBACK_DEADLINE_MS = new Date(APPLICATION_DEADLINE).getTime();
 
 const twoify = (num: number) => num.toString().padStart(2, "0");
 
@@ -23,17 +23,50 @@ const getReturnValues = (countdown: number) => {
   return { days, hours, minutes, seconds };
 };
 
-/** Time remaining until {@link APPLICATION_DEADLINE}, refreshed every second. */
+/**
+ * Time remaining until applications close, refreshed every second.
+ *
+ * Starts from {@link APPLICATION_DEADLINE} so the hero renders immediately,
+ * then live-follows `InternalWebsites/Portal.applicationDeadline` in
+ * Firestore (the CMS source of truth) once it loads — no redeploy needed.
+ */
 export const useCountdown = () => {
-  const [countDown, setCountDown] = useState(DEADLINE_MS - Date.now());
+  const [deadlineMs, setDeadlineMs] = useState(FALLBACK_DEADLINE_MS);
+  const [now, setNow] = useState(() => Date.now());
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCountDown(DEADLINE_MS - Date.now());
+      setNow(Date.now());
     }, 1000);
 
     return () => clearInterval(interval);
   }, []);
 
-  return getReturnValues(countDown);
+  useEffect(() => {
+    let cancelled = false;
+    let unsubscribe: (() => void) | undefined;
+
+    const follow = async () => {
+      try {
+        const { subscribeToApplicationDeadline } =
+          await import("@/lib/firestore");
+        if (cancelled) return;
+        unsubscribe = subscribeToApplicationDeadline(setDeadlineMs);
+      } catch (error) {
+        console.error(
+          "Error subscribing to application deadline, keeping fallback:",
+          error
+        );
+      }
+    };
+
+    void follow();
+
+    return () => {
+      cancelled = true;
+      unsubscribe?.();
+    };
+  }, []);
+
+  return getReturnValues(deadlineMs - now);
 };
