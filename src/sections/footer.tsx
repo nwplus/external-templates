@@ -21,7 +21,7 @@ const Footer = () => {
         lower than 5.5rem, since the team row under it doesn't shrink with the
         width and would otherwise end up on the clouds.
       */}
-      <div className="pointer-events-none absolute bottom-[max(10vw,5.5rem)] left-0 aspect-[1531/2065] w-full xl:bottom-0">
+      <div className="pointer-events-none absolute bottom-[max(13vw,5.5rem)] left-0 aspect-[1531/2065] w-full xl:bottom-0">
         <CloudBorder />
         <BedScene />
         <StarField />

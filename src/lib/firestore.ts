@@ -168,7 +168,8 @@ const toDeadlineMs = (raw: ApplicationDeadlineRaw): number | null => {
 };
 
 /**
- * Live-subscribes to `InternalWebsites/Portal.applicationDeadline` so the hero
+ * Live-subscribes to `InternalWebsites/Portal.applicationDeadline.hackcamp`
+ * (the field is a map keyed by hackathon) so the hero
  * countdown follows the CMS value without a redeploy. Accepts a Firestore
  * Timestamp (the Portal field type), Date, ISO string, or epoch seconds/millis.
  * Ignores missing/unparseable values so callers keep their fallback deadline.
@@ -182,13 +183,13 @@ export function subscribeToApplicationDeadline(
     portalRef,
     (snapshot) => {
       const ms = toDeadlineMs(
-        snapshot.data()?.applicationDeadline as ApplicationDeadlineRaw
+        snapshot.data()?.applicationDeadline?.hackcamp as ApplicationDeadlineRaw
       );
       if (ms !== null) onUpdate(ms);
     },
     (error) => {
       console.error(
-        "Error subscribing to InternalWebsites/Portal.applicationDeadline:",
+        "Error subscribing to InternalWebsites/Portal.applicationDeadline.hackcamp:",
         error
       );
       onError?.(error);
