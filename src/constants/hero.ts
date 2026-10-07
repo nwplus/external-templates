@@ -1,5 +1,5 @@
-/** Countdown target shown in the hero. Fallback until Firestore InternalWebsites/Portal.applicationDeadline loads. */
-export const APPLICATION_DEADLINE = "Oct 10, 2026 23:59:59";
+/** Countdown target shown in the hero. Fallback until Firestore InternalWebsites/Portal.applicationDeadline.hackcamp loads. */
+export const APPLICATION_DEADLINE = "2026-10-10T23:59:59-07:00";
 
 export const HERO_TITLE = "HackCamp";
 export const HERO_TAGLINE = "Canada's largest beginner friendly hackathon";
