@@ -29,12 +29,17 @@ const getReturnValues = (countdown: number) => {
  * Starts from {@link APPLICATION_DEADLINE} so the hero renders immediately,
  * then live-follows `InternalWebsites/Portal.applicationDeadline.hackcamp` in
  * Firestore (the CMS source of truth) once it loads — no redeploy needed.
+ *
+ * Returns `null` until mounted: the site is a static export, so anything
+ * computed from `Date.now()` during render would be frozen at build time in
+ * the HTML and never corrected on hydration.
  */
 export const useCountdown = () => {
   const [deadlineMs, setDeadlineMs] = useState(FALLBACK_DEADLINE_MS);
-  const [now, setNow] = useState(() => Date.now());
+  const [now, setNow] = useState<number | null>(null);
 
   useEffect(() => {
+    setNow(Date.now());
     const interval = setInterval(() => {
       setNow(Date.now());
     }, 1000);
@@ -68,5 +73,5 @@ export const useCountdown = () => {
     };
   }, []);
 
-  return getReturnValues(deadlineMs - now);
+  return now === null ? null : getReturnValues(deadlineMs - now);
 };
