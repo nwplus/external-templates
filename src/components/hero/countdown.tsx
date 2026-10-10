@@ -3,6 +3,8 @@
 import { useCountdown } from "@/hooks/use-countdown";
 import { cn } from "@/lib/utils";
 
+const PLACEHOLDER = { days: "0", hours: "00", minutes: "00", seconds: "00" };
+
 type CountdownProps = {
   className?: string;
   /**
@@ -18,8 +20,11 @@ type CountdownProps = {
  * the whole block by setting a font-size (and colour) on `className`.
  */
 export const Countdown = ({ className, compact = false }: CountdownProps) => {
-  const { days, hours, minutes, seconds } = useCountdown();
-  const hasDays = Number(days) > 0;
+  const countdown = useCountdown();
+  // Before mount there's no "now" yet; reserve the usual days-remaining
+  // layout with hidden zeros so nothing shifts when the real values land.
+  const { days, hours, minutes, seconds } = countdown ?? PLACEHOLDER;
+  const hasDays = countdown === null || Number(days) > 0;
 
   const units: [label: string, value: string][] = [
     ...(hasDays ? [["Days", days] as [string, string]] : []),
@@ -33,7 +38,9 @@ export const Countdown = ({ className, compact = false }: CountdownProps) => {
       className={cn("flex flex-col gap-[0.08em] w-max items-center", className)}
     >
       <div className="font-title text-[0.37em]">Applications close in</div>
-      <div className="flex gap-[0.37em]">
+      <div
+        className={cn("flex gap-[0.37em]", countdown === null && "invisible")}
+      >
         {units.map(([label, value]) => (
           <div key={label} className="flex flex-col items-center">
             <div className="leading-none font-countdown">
@@ -43,11 +50,7 @@ export const Countdown = ({ className, compact = false }: CountdownProps) => {
                 widest one and the block stays still as the numbers tick.
               */}
               {[...value].map((digit, i) => (
-                <span
-                  key={i}
-                  className="inline-block w-[0.62em] text-center"
-                  suppressHydrationWarning
-                >
+                <span key={i} className="inline-block w-[0.62em] text-center">
                   {digit}
                 </span>
               ))}
