@@ -16,7 +16,7 @@ type CountdownProps = {
 };
 
 /**
- * "Applications close in" countdown. Every size inside is em-based, so scale
+ * "Learn day starts in" countdown. Every size inside is em-based, so scale
  * the whole block by setting a font-size (and colour) on `className`.
  */
 export const Countdown = ({ className, compact = false }: CountdownProps) => {
@@ -37,7 +37,7 @@ export const Countdown = ({ className, compact = false }: CountdownProps) => {
     <div
       className={cn("flex flex-col gap-[0.08em] w-max items-center", className)}
     >
-      <div className="font-title text-[0.37em]">Applications close in</div>
+      <div className="font-title text-[0.37em]">Learn day starts in</div>
       <div
         className={cn("flex gap-[0.37em]", countdown === null && "invisible")}
       >

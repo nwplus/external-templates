@@ -18,7 +18,7 @@ const PictureFrame = ({ sponsor }: { sponsor: SponsorDoc }) => {
     <div
       className={cn(
         matClass,
-        "aspect-[160/102] w-full bg-desk transition-transform duration-200 xl:aspect-[275/224] hover:-translate-y-1"
+        "aspect-160/102 w-full bg-desk transition-transform duration-200 xl:aspect-275/224 hover:-translate-y-1"
       )}
     >
       <div className={mountClass}>

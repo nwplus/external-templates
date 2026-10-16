@@ -16,10 +16,14 @@ const ChalkboardCard = ({ sponsor }: { sponsor: SponsorDoc }) => {
           "flex-col gap-[4%] px-[6%] py-[5%] text-center"
         )}
       >
+        {/*
+          Full width, height capped: object-contain lets a wide logo span the
+          whole width while a square one shrinks to fit the capped height.
+        */}
         <SponsorLogo
           key={sponsor.imgURL}
           sponsor={sponsor}
-          className="h-auto max-h-[22%] w-[45%] max-w-[70%]"
+          className="h-auto max-h-[200px] w-full"
         />
         <p className="font-body text-base leading-snug text-ink xl:text-[length:max(1.25rem,1.306vw)]">
           {sponsor.blurb}

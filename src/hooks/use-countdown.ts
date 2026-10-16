@@ -1,8 +1,8 @@
-import { APPLICATION_DEADLINE } from "@/constants/hero";
+import { LEARN_DAY_START } from "@/constants/hero";
 
 import { useEffect, useState } from "react";
 
-const FALLBACK_DEADLINE_MS = new Date(APPLICATION_DEADLINE).getTime();
+const TARGET_MS = new Date(LEARN_DAY_START).getTime();
 
 const twoify = (num: number) => num.toString().padStart(2, "0");
 
@@ -24,18 +24,13 @@ const getReturnValues = (countdown: number) => {
 };
 
 /**
- * Time remaining until applications close, refreshed every second.
- *
- * Starts from {@link APPLICATION_DEADLINE} so the hero renders immediately,
- * then live-follows `InternalWebsites/Portal.applicationDeadline.hackcamp` in
- * Firestore (the CMS source of truth) once it loads — no redeploy needed.
+ * Time remaining until {@link LEARN_DAY_START}, refreshed every second.
  *
  * Returns `null` until mounted: the site is a static export, so anything
  * computed from `Date.now()` during render would be frozen at build time in
  * the HTML and never corrected on hydration.
  */
 export const useCountdown = () => {
-  const [deadlineMs, setDeadlineMs] = useState(FALLBACK_DEADLINE_MS);
   const [now, setNow] = useState<number | null>(null);
 
   useEffect(() => {
@@ -47,31 +42,5 @@ export const useCountdown = () => {
     return () => clearInterval(interval);
   }, []);
 
-  useEffect(() => {
-    let cancelled = false;
-    let unsubscribe: (() => void) | undefined;
-
-    const follow = async () => {
-      try {
-        const { subscribeToApplicationDeadline } =
-          await import("@/lib/firestore");
-        if (cancelled) return;
-        unsubscribe = subscribeToApplicationDeadline(setDeadlineMs);
-      } catch (error) {
-        console.error(
-          "Error subscribing to application deadline, keeping fallback:",
-          error
-        );
-      }
-    };
-
-    void follow();
-
-    return () => {
-      cancelled = true;
-      unsubscribe?.();
-    };
-  }, []);
-
-  return now === null ? null : getReturnValues(deadlineMs - now);
+  return now === null ? null : getReturnValues(TARGET_MS - now);
 };
