@@ -25,7 +25,7 @@ const ChalkboardCard = ({ sponsor }: { sponsor: SponsorDoc }) => {
           sponsor={sponsor}
           className="h-auto max-h-[200px] w-full"
         />
-        <p className="font-body text-base leading-snug text-ink xl:text-[length:max(1.25rem,1.306vw)]">
+        <p className="pt-4 font-body text-base leading-snug text-ink xl:text-[length:max(1.25rem,1.306vw)]">
           {sponsor.blurb}
         </p>
       </div>
