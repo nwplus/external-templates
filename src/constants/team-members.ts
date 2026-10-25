@@ -176,6 +176,14 @@ export const teamMembers = [
     social: "",
   },
   {
+    img: "/assets/footer/profiles/Naomi_Ramrus.webp",
+    name: "Naomi Ramrus",
+    emoji: "😋",
+    color: "#01DACC",
+    title: "Sponsorship Coordinator",
+    social: "https://www.linkedin.com/in/naomi-ramrus-42a857310",
+  },
+  {
     img: "/assets/footer/profiles/Joyce_Park.webp",
     name: "Joyce Park",
     emoji: "📚",
@@ -206,6 +214,14 @@ export const teamMembers = [
     color: "#278EF5",
     title: "Marketing Coordinator",
     social: "https://www.linkedin.com/in/claudiopires-/",
+  },
+  {
+    img: "/assets/footer/profiles/Vaughn_Tan.webp",
+    name: "Vaughn Tan",
+    emoji: "🍀",
+    color: "#CCF0FF",
+    title: "Marketing Coordinator",
+    social: "",
   },
   {
     img: "/assets/footer/profiles/Arnavdeep_Singh.webp",
@@ -350,6 +366,14 @@ export const teamMembers = [
     color: "#000000",
     title: "EDI Director",
     social: "https://www.linkedin.com/in/keirawong/",
+  },
+  {
+    img: "/assets/footer/profiles/Michelle_Xie.webp",
+    name: "Michelle Xie",
+    emoji: "🦈",
+    color: "#ed2d57",
+    title: "EDI First Year Representative",
+    social: "https://www.linkedin.com/in/mkxie/",
   },
   {
     img: "/assets/footer/profiles/Rachel_Wang.webp",
