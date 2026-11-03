@@ -7,6 +7,7 @@ import { TeddyBear } from "@/components/faq/teddy-bear";
 import VhsTape from "@/components/faq/vhs-tape";
 import { LightboxGallery, LightboxTrigger } from "@/components/ui/lightbox";
 import { ResponsiveArt } from "@/components/ui/responsive-art";
+import { CTF_REPO_URL } from "@/constants/ctf";
 import {
   FAQ_FRAME_CAPTIONS,
   type FaqFrame,
@@ -208,6 +209,17 @@ const RoomWall = ({
       aria-hidden="true"
       className="pointer-events-none absolute top-0 left-[2.16%] h-auto w-[37.43%]"
     />
+    {/* The tapestry is the flag that starts the CTF: it opens The 3 AM Commit
+        repo. The link is cut to the cloth's outline, and it comes before the
+        tape pile so the tapes over the cloth's hem still take their clicks. */}
+    <a
+      href={CTF_REPO_URL}
+      target="_blank"
+      rel="noreferrer"
+      className="absolute top-0 left-[2.16%] aspect-[573/402] w-[37.43%] [clip-path:polygon(1%_12%,97%_4%,97.5%_96%,4%_91%)] outline-none focus-visible:bg-cream/10"
+    >
+      <span className="sr-only">The flag on the wall</span>
+    </a>
     <Image
       src="/assets/faq/window.svg"
       alt=""
