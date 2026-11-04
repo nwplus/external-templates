@@ -1,3 +1,4 @@
+import { MobilePrizingHouseLink } from "@/components/prizing/prizing-house-link";
 import { ResponsiveArt } from "@/components/ui/responsive-art";
 import { PRIZING_PARAGRAPHS, PRIZING_TITLE } from "@/constants/prizing";
 import { withEmphasis } from "@/lib/emphasis";
@@ -30,14 +31,17 @@ export const MobilePrizing = () => (
 
     {/* House on the hill closing out the section; the negative bottom margin lets the section
         edge (overflow-hidden) cut the hill just above the art's ragged bottom edge */}
-    <ResponsiveArt
-      base="/assets/prizing/mobile-house-hill"
-      widths={[800, 1200, 1600]}
-      width={1011}
-      height={1270}
-      sizes="100vw"
-      media="(max-width: 767px)"
-      className="pointer-events-none relative z-10 block w-full h-auto mt-2 -mb-[6%] [mask-image:linear-gradient(to_bottom,transparent,black_18%)]"
-    />
+    <div className="relative z-10 mt-2 -mb-[6%]">
+      <ResponsiveArt
+        base="/assets/prizing/mobile-house-hill"
+        widths={[800, 1200, 1600]}
+        width={1011}
+        height={1270}
+        sizes="100vw"
+        media="(max-width: 767px)"
+        className="pointer-events-none block w-full h-auto [mask-image:linear-gradient(to_bottom,transparent,black_18%)]"
+      />
+      <MobilePrizingHouseLink />
+    </div>
   </div>
 );
