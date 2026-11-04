@@ -1,5 +1,6 @@
 "use client";
 
+import { CTF_WEB_URL } from "@/constants/ctf";
 import { cn } from "@/lib/utils";
 
 import { motion, useReducedMotion } from "framer-motion";
@@ -273,10 +274,11 @@ export const LavaLamp = ({ className }: { className?: string }) => {
       </svg>
 
       {/* Only the lamp itself switches it, not the light around it. */}
-      <button
-        type="button"
+      <a
+        href={CTF_WEB_URL}
+        target="_blank"
+        rel="noopener noreferrer"
         aria-label="Lava lamp"
-        aria-pressed={lit}
         onClick={() => setLit((on) => !on)}
         className="pointer-events-auto absolute top-[29.9%] left-[37.7%] h-[70.1%] w-[25.2%] cursor-pointer rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-star"
       />
