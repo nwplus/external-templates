@@ -1,4 +1,5 @@
 import { PrizingSparkles } from "@/components/prizing/desktop-prizing";
+import { DesktopPrizingHouseLink } from "@/components/prizing/prizing-house-link";
 import { RoofFriends } from "@/components/prizing/roof-friends";
 import { ResponsiveArt } from "@/components/ui/responsive-art";
 
@@ -46,6 +47,7 @@ export default function TallCloudsSection({
           picture so the canvas coordinates line up. */}
       <div className="pointer-events-none absolute inset-0 z-20 hidden overflow-hidden md:block">
         <div className={ART_BOX}>
+          <DesktopPrizingHouseLink />
           <RoofFriends />
         </div>
       </div>
