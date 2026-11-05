@@ -1,8 +1,8 @@
-import { LEARN_DAY_START } from "@/constants/hero";
+import { BUILD_DAY_START } from "@/constants/hero";
 
 import { useEffect, useState } from "react";
 
-const TARGET_MS = new Date(LEARN_DAY_START).getTime();
+const TARGET_MS = new Date(BUILD_DAY_START).getTime();
 
 const twoify = (num: number) => num.toString().padStart(2, "0");
 
@@ -24,7 +24,7 @@ const getReturnValues = (countdown: number) => {
 };
 
 /**
- * Time remaining until {@link LEARN_DAY_START}, refreshed every second.
+ * Time remaining until {@link BUILD_DAY_START}, refreshed every second.
  *
  * Returns `null` until mounted: the site is a static export, so anything
  * computed from `Date.now()` during render would be frozen at build time in

@@ -1,5 +1,5 @@
-/** Countdown target shown in the hero: start of Learn Day (midnight PST). */
-export const LEARN_DAY_START = "2026-11-02T00:00:00-08:00";
+/** Countdown target shown in the hero: start of Build Day (9 AM PST). */
+export const BUILD_DAY_START = "2026-11-07T09:00:00-08:00";
 
 export const HERO_TITLE = "HackCamp";
 export const HERO_TAGLINE = "Canada's largest beginner friendly hackathon";
