@@ -1,5 +1,6 @@
 "use client";
 
+import { CTF_RADIO_URL } from "@/constants/ctf";
 import { cn } from "@/lib/utils";
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
@@ -155,10 +156,11 @@ export const Boombox = ({
           </h3>
         )}
 
-        <button
-          type="button"
-          aria-label="Play the radio"
-          aria-pressed={playing}
+        <a
+          href={CTF_RADIO_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Radio"
           onClick={() => setPlaying((on) => !on)}
           className="absolute inset-0 cursor-pointer rounded-[20%] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-star"
         />

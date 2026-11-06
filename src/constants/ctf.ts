@@ -9,3 +9,6 @@ export const CTF_WEB_URL = "https://web-no-door-here.ctf.hackcamp.nwplus.io";
 
 /** The next CTF entry point: the HackCamp mark on the prizing house. */
 export const CTF_PRIZING_URL = "https://moonbeam.ctf.hackcamp.nwplus.io";
+
+/** Snooze FM Radio. The radio on the FAQ cabinet links here. */
+export const CTF_RADIO_URL = "https://hackcamp-radio-prod.web.app";
