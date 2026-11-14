@@ -1,15 +1,10 @@
-import { DesktopHero } from "@/components/hero/desktop-hero";
-import { MobileHero } from "@/components/hero/mobile-hero";
+import { HeroScene } from "@/components/hero/hero-scene";
 
 export default function Hero() {
+  // TODO(mobile): swap in the phone layout ("fireworks hero mobile") once built
   return (
-    <div id="hero" data-motion-scope>
-      <div className="hidden md:block">
-        <DesktopHero />
-      </div>
-      <div className="block md:hidden">
-        <MobileHero />
-      </div>
-    </div>
+    <section id="hero" data-motion-scope>
+      <HeroScene />
+    </section>
   );
 }

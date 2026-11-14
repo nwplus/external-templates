@@ -1,16 +1,16 @@
 "use client";
 
-import { NAV_LINKS } from "@/constants/navbar";
+import { LIVE_PORTAL_URL, NAV_LINKS } from "@/constants/navbar";
 import { useHideOnScroll } from "@/hooks/use-hide-on-scroll";
 import { cn } from "@/lib/utils";
 
 import { Menu, X } from "lucide-react";
-import Image from "next/image";
 import { useState } from "react";
 
+import { navLinkClass } from "./desktop-navbar";
 import { scrollToSection } from "./scroll-to-section";
 
-// TODO(mobile): restyle once remaining mobile assets land (logo, type)
+// TODO(mobile): restyle once the mobile nav design lands
 export const MobileNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const hidden = useHideOnScroll() && !isOpen;
@@ -20,44 +20,46 @@ export const MobileNavbar = () => {
       <button
         type="button"
         aria-label={isOpen ? "Close menu" : "Open menu"}
+        aria-expanded={isOpen}
         onClick={() => setIsOpen((open) => !open)}
         className={cn(
-          "relative z-20 p-2 rounded-md transition duration-200 hover:opacity-60",
-          hidden && "-translate-y-[calc(100%+1rem)] pointer-events-none"
+          "relative z-20 rounded-md p-2 transition duration-200 hover:opacity-60",
+          hidden && "pointer-events-none -translate-y-[calc(100%+1rem)]"
         )}
       >
         {isOpen ? <X /> : <Menu />}
       </button>
 
       <nav
-        className={`fixed inset-x-0 top-0 z-10 transition-all duration-300 origin-top-right ${
+        inert={!isOpen}
+        className={cn(
+          "fixed inset-x-0 top-0 z-10 flex origin-top-right flex-col items-center gap-6 bg-night/95 px-6 pt-24 pb-12 text-xl shadow-[0_12px_32px_rgba(2,16,28,0.5)] transition-all duration-300",
           isOpen
-            ? "opacity-100 scale-100 translate-y-0"
-            : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
-        }`}
+            ? "translate-y-0 scale-100 opacity-100"
+            : "pointer-events-none -translate-y-2 scale-95 opacity-0"
+        )}
       >
-        <Image
-          src="/assets/navbar/mobile-background.svg"
-          alt=""
-          width={393}
-          height={756}
-          className="block w-full h-auto"
-        />
-        <div className="absolute inset-0 flex flex-col items-center justify-center gap-6 pb-[15%] font-title text-2xl uppercase">
-          {NAV_LINKS.map((link) => (
-            <button
-              type="button"
-              key={link.name}
-              onClick={() => {
-                scrollToSection(link.href);
-                setIsOpen(false);
-              }}
-              className="cursor-pointer active:underline"
-            >
-              {link.name}
-            </button>
-          ))}
-        </div>
+        <a
+          href={LIVE_PORTAL_URL}
+          target="_blank"
+          rel="noreferrer"
+          className="rounded-[10px] bg-linear-to-r from-[#16587c] to-[#1f8c88] px-4 py-2 font-bold shadow-[0_4px_0_#124866]"
+        >
+          Live Portal
+        </a>
+        {NAV_LINKS.map((link) => (
+          <button
+            type="button"
+            key={link.name}
+            onClick={() => {
+              scrollToSection(link.href);
+              setIsOpen(false);
+            }}
+            className={navLinkClass}
+          >
+            {link.name}
+          </button>
+        ))}
       </nav>
     </div>
   );
