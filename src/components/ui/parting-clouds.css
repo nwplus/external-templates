@@ -1,0 +1,18 @@
+/* Clouds gathered toward the middle until the visitor scrolls a little way
+   down, then all drift back to their places together, in the same time
+   (parting-clouds.tsx). */
+.parting-cloud {
+  translate: var(--from) 0;
+  transition: translate 1.6s cubic-bezier(0.25, 0.7, 0.3, 1);
+}
+
+.parting-clouds[data-parted] .parting-cloud {
+  translate: 0 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .parting-cloud {
+    translate: none;
+    transition: none;
+  }
+}

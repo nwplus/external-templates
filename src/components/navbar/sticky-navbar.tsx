@@ -1,12 +1,11 @@
 "use client";
 
-import { NAV_LINKS } from "@/constants/navbar";
 import { cn } from "@/lib/utils";
 
 import { useEffect, useState } from "react";
 
-import { navLinkClass, navRowClass } from "./desktop-navbar";
-import { NAV_JUMP, scrollToSection } from "./scroll-to-section";
+import { NavRow } from "./desktop-navbar";
+import { NAV_JUMP } from "./scroll-to-section";
 
 /** Below this the hero's own nav is on screen, so the bar stays away. */
 const REVEAL_AFTER = 160;
@@ -21,8 +20,8 @@ const JUMP_QUIET_MS = 1500;
  * soon as you scroll down or reach the top. Small wobbles (a trackpad's
  * jitter) are ignored, and so is the scrolling a nav link starts, so the bar
  * never pops over the section it just took you to. It moves by transform
- * only, and without a slide under reduced motion. Its links are the hero
- * nav's exactly (same type, size and spacing), so they sit where they did at
+ * only, and without a slide under reduced motion. Its row is the hero
+ * nav's exactly (same type, size and spacing), so it sits where it did at
  * the top. Desktop only; the phone layout keeps its fixed menu button.
  */
 export const StickyNavbar = () => {
@@ -84,21 +83,9 @@ export const StickyNavbar = () => {
     >
       <nav
         aria-label="Sections, pinned"
-        className={cn(
-          navRowClass,
-          "border-b border-white/5 bg-linear-to-b from-[#0b0f27]/95 to-[#0c1637]/90 shadow-[0_6px_24px_rgba(4,6,20,0.45)]"
-        )}
+        className="border-b border-white/5 bg-linear-to-b from-[#06344d]/95 to-[#0b3a5a]/90 py-[clamp(0.6rem,1.3vw,1.25rem)] shadow-[0_6px_24px_rgba(2,16,28,0.45)]"
       >
-        {NAV_LINKS.map((link) => (
-          <button
-            type="button"
-            key={link.name}
-            onClick={() => scrollToSection(link.href)}
-            className={navLinkClass}
-          >
-            {link.name}
-          </button>
-        ))}
+        <NavRow />
       </nav>
     </header>
   );

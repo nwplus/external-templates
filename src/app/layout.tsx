@@ -1,54 +1,47 @@
-import { OG_IMAGE } from "@/constants/hero";
-
 import type { Metadata } from "next";
-import { Arsenal } from "next/font/google";
-import localFont from "next/font/local";
+import { Hanken_Grotesk, Knewave } from "next/font/google";
 
 import "./globals.css";
 
-const arsenal = Arsenal({
+/*
+ * The design is set in HK Grotesk, which isn't on Google Fonts; Hanken
+ * Grotesk is its open-source successor and matches it at these sizes.
+ */
+const hankenGrotesk = Hanken_Grotesk({
   subsets: ["latin"],
-  weight: ["400", "700"],
-  // Nothing on the site sets italic, so the two italic faces are not loaded.
+  weight: ["400", "500", "700", "800"],
   style: ["normal"],
-  variable: "--font-arsenal",
-});
-
-const tovariSans = localFont({
-  src: "../../public/fonts/TovariSans.woff2",
-  weight: "700",
   display: "swap",
-  variable: "--font-tovari-sans",
+  variable: "--font-hanken-grotesk",
 });
 
-const midnightConstellations = localFont({
-  src: "../../public/fonts/MidnightConstellations.woff2",
-  weight: "700",
+const knewave = Knewave({
+  subsets: ["latin"],
+  weight: "400",
   display: "swap",
-  variable: "--font-midnight-constellations",
+  variable: "--font-knewave",
 });
 
-const siteUrl = "https://hackcamp.nwplus.io";
+const siteUrl = "https://nwhacks.io";
+const title = "nwHacks 2027";
 const metaDescription =
-  "This year, we are bringing you a 2-day in-person event where participants can learn new skills, connect with fellow tech enthusiasts, and build solutions to tackle challenges together.";
+  "nwHacks is Western Canada's largest hackathon. Join us in person on January 16-17, 2027 at the UBC Life Sciences Institute for a weekend of creativity, community, and innovation.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "HackCamp 2026",
+  title,
   description: metaDescription,
   openGraph: {
-    title: "HackCamp 2026",
+    title,
     description: metaDescription,
     url: siteUrl,
-    siteName: "HackCamp",
+    siteName: "nwHacks",
     type: "website",
-    images: [OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
-    title: "HackCamp 2026",
+    title,
     description: metaDescription,
-    images: [OG_IMAGE],
   },
 };
 
@@ -60,9 +53,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${tovariSans.variable} ${arsenal.variable} ${midnightConstellations.variable} antialiased`}
+      className={`${hankenGrotesk.variable} ${knewave.variable} antialiased`}
     >
-      <body className={arsenal.className}>{children}</body>
+      <body className={hankenGrotesk.className}>{children}</body>
     </html>
   );
 }

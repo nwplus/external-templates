@@ -1,7 +1,7 @@
 import { hideDuringNavJump } from "@/hooks/use-hide-on-scroll";
 
 /** Fired just before a nav link scrolls the page to its section. */
-export const NAV_JUMP = "hackcamp:nav-jump";
+export const NAV_JUMP = "nwhacks:nav-jump";
 
 /**
  * Smooth-scrolls to the section wrapper with the given id (see NAV_LINKS).

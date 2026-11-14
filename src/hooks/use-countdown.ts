@@ -1,46 +1,49 @@
-import { BUILD_DAY_START } from "@/constants/hero";
+"use client";
+
+import { type CountdownParts, toCountdownParts } from "@/lib/countdown";
 
 import { useEffect, useState } from "react";
 
-const TARGET_MS = new Date(BUILD_DAY_START).getTime();
-
-const twoify = (num: number) => num.toString().padStart(2, "0");
-
-const getReturnValues = (countdown: number) => {
-  if (countdown < 0) {
-    return { days: "0", hours: "00", minutes: "00", seconds: "00" };
-  }
-
-  const days = Math.floor(countdown / (1000 * 60 * 60 * 24)).toString();
-  const hours = twoify(
-    Math.floor((countdown % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
-  );
-  const minutes = twoify(
-    Math.floor((countdown % (1000 * 60 * 60)) / (1000 * 60))
-  );
-  const seconds = twoify(Math.floor((countdown % (1000 * 60)) / 1000));
-
-  return { days, hours, minutes, seconds };
-};
-
 /**
- * Time remaining until {@link BUILD_DAY_START}, refreshed every second.
+ * Time left until applications close, live-following
+ * `InternalWebsites/Portal.applicationDeadline.nwhacks` in Firestore (the CMS
+ * source of truth), so a new deadline shows without a redeploy.
  *
- * Returns `null` until mounted: the site is a static export, so anything
- * computed from `Date.now()` during render would be frozen at build time in
- * the HTML and never corrected on hydration.
+ * There is deliberately no hardcoded fallback date: until Firestore answers
+ * (or if it never does) this returns `null` and the hero keeps the slot empty.
+ * It is also `null` before mount, since the site is a static export and a
+ * `Date.now()` taken during render would be frozen into the HTML.
  */
-export const useCountdown = () => {
+export const useCountdown = (): CountdownParts | null => {
+  const [deadlineMs, setDeadlineMs] = useState<number | null>(null);
   const [now, setNow] = useState<number | null>(null);
 
   useEffect(() => {
-    setNow(Date.now());
-    const interval = setInterval(() => {
-      setNow(Date.now());
-    }, 1000);
+    let unsubscribe: (() => void) | undefined;
+    let cancelled = false;
+    // Firebase loads after the page is interactive rather than in the
+    // hero's first bundle.
+    import("@/lib/firestore")
+      .then(({ subscribeToApplicationDeadline }) => {
+        if (cancelled) return;
+        unsubscribe = subscribeToApplicationDeadline(setDeadlineMs);
+      })
+      .catch((error) => {
+        console.error("Couldn't load the application deadline:", error);
+      });
+    return () => {
+      cancelled = true;
+      unsubscribe?.();
+    };
+  }, []);
 
+  useEffect(() => {
+    setNow(Date.now());
+    // Minutes are the smallest unit shown; a second's lag is plenty.
+    const interval = setInterval(() => setNow(Date.now()), 1000);
     return () => clearInterval(interval);
   }, []);
 
-  return now === null ? null : getReturnValues(TARGET_MS - now);
+  if (deadlineMs === null || now === null) return null;
+  return toCountdownParts(deadlineMs - now);
 };

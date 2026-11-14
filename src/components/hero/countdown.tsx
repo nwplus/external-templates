@@ -3,59 +3,55 @@
 import { useCountdown } from "@/hooks/use-countdown";
 import { cn } from "@/lib/utils";
 
-const PLACEHOLDER = { days: "0", hours: "00", minutes: "00", seconds: "00" };
-
-type CountdownProps = {
-  className?: string;
-  /**
-   * Show at most three columns: Days / Hours / Minutes while days remain,
-   * then Hours / Minutes / Seconds on the final day. Without it, Seconds
-   * are always shown (four columns while days remain).
-   */
-  compact?: boolean;
-};
+const PLACEHOLDER = { days: "00", hours: "00", minutes: "00" };
 
 /**
- * "Build Day starts in" countdown. Every size inside is em-based, so scale
- * the whole block by setting a font-size (and colour) on `className`.
+ * "Applications close in:" with days / hrs / min (Figma "timer"). Every size
+ * inside is em-based off the 29px heading, so scale the whole block with a
+ * font-size on `className`. Until the deadline arrives from Firestore (there
+ * is no fallback date) the whole block keeps its space but stays hidden, so
+ * nothing shifts when it lands.
  */
-export const Countdown = ({ className, compact = false }: CountdownProps) => {
+export const Countdown = ({ className }: { className?: string }) => {
   const countdown = useCountdown();
-  // Before mount there's no "now" yet; reserve the usual days-remaining
-  // layout with hidden zeros so nothing shifts when the real values land.
-  const { days, hours, minutes, seconds } = countdown ?? PLACEHOLDER;
-  const hasDays = countdown === null || Number(days) > 0;
+  const { days, hours, minutes } = countdown ?? PLACEHOLDER;
 
   const units: [label: string, value: string][] = [
-    ...(hasDays ? [["Days", days] as [string, string]] : []),
-    ["Hours", hours],
-    ["Minutes", minutes],
-    ...(compact && hasDays ? [] : [["Seconds", seconds] as [string, string]]),
+    ["days", days],
+    ["hrs", hours],
+    ["min", minutes],
   ];
 
   return (
     <div
-      className={cn("flex flex-col gap-[0.08em] w-max items-center", className)}
+      aria-hidden={countdown === null || undefined}
+      className={cn(
+        "flex w-max flex-col items-center gap-[0.137em] font-medium text-white",
+        countdown === null && "invisible",
+        className
+      )}
     >
-      <div className="font-title text-[0.37em]">Build Day starts in</div>
-      <div
-        className={cn("flex gap-[0.37em]", countdown === null && "invisible")}
-      >
+      <p className="leading-[1.78] tracking-[-0.0144em]">
+        Applications close in:
+      </p>
+      <div className="flex items-end gap-[0.506em] pb-[0.308em]">
         {units.map(([label, value]) => (
-          <div key={label} className="flex flex-col items-center">
-            <div className="leading-none font-countdown">
+          <div key={label} className="flex w-[2.417em] flex-col items-center">
+            <span className="font-display text-[1.889em] leading-[1.15] tracking-[-0.0144em]">
               {/*
-                The font's numerals are all different widths (a 1 is three
-                quarters of a 7), so each digit sits in a slot as wide as the
-                widest one and the block stays still as the numbers tick.
+                Knewave's numerals are different widths, so each digit gets a
+                slot as wide as the widest one and the row stays still as the
+                minutes tick.
               */}
               {[...value].map((digit, i) => (
-                <span key={i} className="inline-block w-[0.62em] text-center">
+                <span key={i} className="inline-block w-[0.63em] text-center">
                   {digit}
                 </span>
               ))}
-            </div>
-            <div className="text-[0.185em]">{label}</div>
+            </span>
+            <span className="text-[0.6577em] leading-[1.2] tracking-[-0.0182em]">
+              {label}
+            </span>
           </div>
         ))}
       </div>

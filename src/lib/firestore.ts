@@ -40,7 +40,7 @@ export interface SponsorDoc {
     | "inkind";
 }
 
-export const CURRENT_HACKATHON = "HackCamp2026";
+export const CURRENT_HACKATHON = "nwHacks2027";
 
 /**
  * Fetches FAQ documents from Firestore for a specific hackathon
@@ -130,7 +130,7 @@ export function subscribeToSponsorsByHackathon(
 }
 
 /** Raw shape of the `applicationDeadline` field on InternalWebsites/Portal. */
-type ApplicationDeadlineRaw =
+export type ApplicationDeadlineRaw =
   | Timestamp
   | Date
   | string
@@ -139,7 +139,7 @@ type ApplicationDeadlineRaw =
   | null
   | undefined;
 
-const toDeadlineMs = (raw: ApplicationDeadlineRaw): number | null => {
+export const toDeadlineMs = (raw: ApplicationDeadlineRaw): number | null => {
   if (raw == null) return null;
   if (typeof raw === "number") {
     // Firestore Timestamps in seconds are 10 digits; millis are 13.
@@ -168,11 +168,12 @@ const toDeadlineMs = (raw: ApplicationDeadlineRaw): number | null => {
 };
 
 /**
- * Live-subscribes to `InternalWebsites/Portal.applicationDeadline.hackcamp`
+ * Live-subscribes to `InternalWebsites/Portal.applicationDeadline.nwhacks`
  * (the field is a map keyed by hackathon) so the hero
  * countdown follows the CMS value without a redeploy. Accepts a Firestore
  * Timestamp (the Portal field type), Date, ISO string, or epoch seconds/millis.
- * Ignores missing/unparseable values so callers keep their fallback deadline.
+ * Ignores missing/unparseable values, so callers keep showing nothing (or
+ * the last good value) rather than a wrong deadline.
  */
 export function subscribeToApplicationDeadline(
   onUpdate: (deadlineMs: number) => void,
@@ -183,13 +184,13 @@ export function subscribeToApplicationDeadline(
     portalRef,
     (snapshot) => {
       const ms = toDeadlineMs(
-        snapshot.data()?.applicationDeadline?.hackcamp as ApplicationDeadlineRaw
+        snapshot.data()?.applicationDeadline?.nwhacks as ApplicationDeadlineRaw
       );
       if (ms !== null) onUpdate(ms);
     },
     (error) => {
       console.error(
-        "Error subscribing to InternalWebsites/Portal.applicationDeadline.hackcamp:",
+        "Error subscribing to InternalWebsites/Portal.applicationDeadline.nwhacks:",
         error
       );
       onError?.(error);

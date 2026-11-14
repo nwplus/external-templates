@@ -1,23 +1,40 @@
-/** Countdown target shown in the hero: start of Build Day (9 AM PST). */
-export const BUILD_DAY_START = "2026-11-07T09:00:00-08:00";
+export const HERO_TITLE = "nwHacks";
+export const HERO_TAGLINE = "Western Canada’s Largest Hackathon";
+export const HERO_DATE_LOCATION = "January 16-17 @ UBC Life Sciences Institute";
 
-export const HERO_TITLE = "HackCamp";
-export const HERO_TAGLINE = "Canada's largest beginner friendly hackathon";
-export const HERO_LOCATION = "November 7-8, 2026 | In-Person Event @ UBC";
-
-export const OG_IMAGE = {
-  url: "/og-image.png",
-  width: 1200,
-  height: 630,
-  alt: `${HERO_TITLE} 2026: ${HERO_TAGLINE}`,
-};
-
-export interface CtaLinkItem {
+export interface RoleLink {
   label: string;
+  /** Left empty until the application forms are ready. */
   href: string;
+  /** Button face and the darker slab under it (Figma "button text hero"). */
+  face: string;
+  slab: string;
+  ink: string;
 }
 
-export const HERO_CTA_LINKS: CtaLinkItem[] = [
-  { label: "Register Now", href: "https://portal.nwplus.io" },
-  { label: "Become a Mentor", href: "https://forms.gle/v31pksqQmLozNRscA" },
+export const HERO_ROLE_LINKS: RoleLink[] = [
+  {
+    label: "Hacker",
+    href: "",
+    face: "#f2d69f",
+    slab: "#cf9f3e",
+    ink: "#07354e",
+  },
+  {
+    label: "Mentor",
+    href: "",
+    face: "#88a6e4",
+    slab: "#4f548a",
+    ink: "#103c5d",
+  },
+  {
+    label: "Volunteer",
+    href: "",
+    face: "#bbdea7",
+    slab: "#408679",
+    ink: "#1c4671",
+  },
 ];
+
+/** Left empty until the sponsorship package link is ready. */
+export const SPONSOR_LINK = { label: "Become a Sponsor", href: "" };
