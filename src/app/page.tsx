@@ -1,4 +1,5 @@
 import MotionGate from "@/components/motion-gate";
+import About from "@/sections/about";
 import Hero from "@/sections/hero";
 import Navbar from "@/sections/navbar";
 
@@ -7,6 +8,7 @@ export default function Home() {
     <div className="relative">
       <Navbar />
       <Hero />
+      <About />
       <MotionGate />
     </div>
   );
