@@ -1,0 +1,53 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="797" height="242.802" viewBox="0 0 797 242.802" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="Group 1423">
+<g id="Group 1425">
+<path id="Ellipse 1048" d="M216.74 172.649C216.782 183.988 203.731 179.691 192.69 179.733C181.65 179.774 169.617 184.486 169.575 173.148C169.532 161.809 180.436 152.129 193 152.082C205.564 152.035 216.697 161.311 216.74 172.649Z" fill="#60964C"/>
+<g id="Mask group">
+<mask id="mask0_0_50" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="30" y="175" width="739" height="57">
+<path id="Rectangle 3314" d="M30.4999 194.999C30.4999 194.999 93.4999 175.501 188 175.5C273.39 175.5 417.734 208.868 545.5 201.5C638.847 196.116 731 173 769 179.5C769 188.5 766.414 232 766.414 232H33.3022L30.4999 194.999Z" fill="#F2D69F"/>
+</mask>
+<g mask="url(#mask0_0_50)">
+<path id="Rectangle 3315" d="M30.4999 194.999C30.4999 194.999 93.4999 175.501 188 175.5C273.39 175.5 417.734 208.868 545.5 201.5C638.847 196.116 731 173 769 179.5C769 188.5 766.414 232 766.414 232H33.3022L30.4999 194.999Z" fill="#F2D69F"/>
+<ellipse id="Ellipse 1470" cx="482" cy="214" rx="451" ry="67" fill="url(#pattern0_0_50)" fill-opacity="0.92"/>
+</g>
+</g>
+<path id="Ellipse 1049" d="M134.336 181.608C134.072 187.318 127.814 188.509 122.725 188.274C117.636 188.04 112.323 186.477 112.587 180.767C112.85 175.058 118.117 170.436 123.908 170.703C129.7 170.97 134.599 175.898 134.336 181.608Z" fill="#60964C"/>
+<path id="Vector 4504" d="M780.5 11.5L764 231.5" stroke-width="9" stroke="url(#paint4_linear_0_50)"/>
+<path id="Vector 4503" d="M13.9999 7L33.9999 232" stroke-width="9" stroke="url(#paint5_linear_0_50)"/>
+</g>
+<path id="Rectangle 3298" d="M0 0H797L792.987 23H3.51101L0 0Z" fill="#628C94"/>
+</g>
+<defs>
+<radialGradient id="paint0_radial_0_50" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(636 82) rotate(156.489) scale(889.877 520.417)">
+<stop stop-color="#4F8BD9"/>
+<stop offset="1" stop-color="#38359F"/>
+</radialGradient>
+<linearGradient id="paint1_linear_0_50" x1="129.668" y1="81.427" x2="99.0533" y2="187" gradientUnits="userSpaceOnUse">
+<stop stop-color="#37ACFF"/>
+<stop offset="0.567308" stop-color="#61CB73"/>
+</linearGradient>
+<linearGradient id="paint2_linear_0_50" x1="87.8108" y1="103" x2="87.8108" y2="222" gradientUnits="userSpaceOnUse">
+<stop stop-color="#37ACFF"/>
+<stop offset="0.567308" stop-color="#61CB73"/>
+</linearGradient>
+<linearGradient id="paint3_linear_0_50" x1="165.182" y1="71.5544" x2="115.161" y2="234.248" gradientUnits="userSpaceOnUse">
+<stop stop-color="#37ACFF"/>
+<stop offset="0.567308" stop-color="#61CB73"/>
+</linearGradient>
+<linearGradient id="paint4_linear_0_50" x1="777" y1="-18" x2="774.838" y2="222.107" gradientUnits="userSpaceOnUse">
+<stop stop-color="#628C94"/>
+<stop offset="1" stop-color="#C6F6FF"/>
+</linearGradient>
+<linearGradient id="paint5_linear_0_50" x1="16.9999" y1="-20" x2="19.1616" y2="220.107" gradientUnits="userSpaceOnUse">
+<stop stop-color="#628C94"/>
+<stop offset="1" stop-color="#C6F6FF"/>
+</linearGradient>
+<pattern id="pattern0_0_50" patternUnits="userSpaceOnUse" patternTransform="matrix(36.456 0 0 11.9784 29.8799 145.88)" preserveAspectRatio="none" viewBox="-4 -4 130.2 42.78" width="1" height="1">
+<use xlink:href="#pattern0_0_50_inner" transform="translate(0 -42.78)"/>
+<use xlink:href="#pattern0_0_50_inner" transform="translate(65.1 -21.39)"/>
+<g id="pattern0_0_50_inner">
+<ellipse id="BIG RED FISH SCALE" cx="17.5" cy="11.5" rx="17.5" ry="11.5" fill="#DDAF54"/>
+</g>
+<use xlink:href="#pattern0_0_50_inner" transform="translate(65.1 21.39)"/>
+</pattern></defs>
+</svg>

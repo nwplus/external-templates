@@ -1,0 +1,62 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="165.615" height="88.8396" viewBox="0 0 165.615 88.8396" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="Group 1000003155">
+<g id="Vector 4430">
+<use xlink:href="#stroke0_0_102" fill="#E56F62"/>
+<use xlink:href="#stroke0_0_102" fill="url(#paint0_linear_0_102)"/>
+</g>
+<g id="Mask group">
+<path id="Ellipse 1369" d="M125.179 18.1232C125.179 24.8866 119.091 18.1232 105.863 18.1232C92.6349 18.1232 75.9879 20.6396 69.2918 23.446C65.0685 25.216 60.7929 23.446 62.8532 16.2348C58.4749 14.704 66.8271 8.9354 74.1851 6.13194C81.1387 -4.073 93.0962 1.54032 100.455 1.54032C116.937 4.09132 125.179 11.3598 125.179 18.1232Z" fill="url(#paint1_linear_0_102)"/>
+<mask id="mask0_0_102" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="9" width="166" height="80">
+<path id="Union" d="M113.849 9.79806C126.615 9.79806 136.242 15.9642 145.269 20.6145C156.455 26.3779 165.615 31.6141 165.615 41.218C165.615 49.2499 160.115 49.6377 151.945 55.1926C146.537 62.6613 128.949 71.5254 113.593 71.5256C95.9529 71.5256 78.0699 64.2727 66.959 56.7824L66.9746 56.9279C55.231 49.9231 51.3628 53.7517 45.4395 57.9582C24.8361 94.0141 3.46016 89.8937 3.45996 87.0608C3.45996 84.7944 6.20749 81.4802 7.58105 80.1067C9.22947 65.0664 18.7411 53.4081 23.291 49.4592C24.3207 49.2011 23.3921 46.1104 11.4434 35.8098C-0.506495 25.5081 -1.27393 15.893 1.04395 12.3733C3.31206 12.7164 4.18279 14.9597 7.58105 15.7209C22.1628 15.721 38.3868 21.9691 45.4395 30.1438C53.8603 39.9043 57.5145 36.1236 62.877 31.2707C73.3354 20.5145 93.8119 9.79806 113.849 9.79806Z" fill="#FFFCF1"/>
+</mask>
+<g mask="url(#mask0_0_102)">
+<path id="Union_2" d="M113.848 9.79613C126.615 9.79619 136.242 15.9622 145.268 20.6125C156.455 26.3759 165.614 31.6122 165.614 41.2161C165.614 45.524 158.179 52.1044 150.009 57.6594C144.601 65.1281 129.205 72.6359 113.848 72.636C95.5101 72.636 76.8034 64.3414 65.7458 56.218C54.9513 50.1961 51.1511 53.9 45.4391 57.9563C24.8358 94.0122 3.45983 89.8918 3.45964 87.0588C3.45964 84.7925 6.20717 81.4783 7.58073 80.1047C9.22915 65.0644 18.7408 53.4062 23.2907 49.4573C24.3203 49.1991 23.3917 46.1085 11.443 35.8079C-0.50682 25.5062 -1.27426 15.8911 1.04362 12.3713C3.31174 12.7145 4.18246 14.9578 7.58073 15.719C22.1625 15.7191 38.3865 21.9672 45.4391 30.1418C53.86 39.9024 57.5142 36.1217 62.8766 31.2688C73.3351 20.5126 93.8117 9.79613 113.848 9.79613Z" fill="url(#paint2_linear_0_102)"/>
+<g id="Ellipse 1476" filter="url(#filter0_g_0_102)">
+<path d="M71.0462 43.4379C14.224 34.1558 88.0491 63.4476 109.925 66.1865C126.932 64.5225 154.612 55.5241 145.859 29.0115C136.879 24.1162 127.16 30.7029 114.532 38.196C98.1065 45.1017 81.7462 47.4281 71.0462 43.4379Z" fill="url(#pattern0_0_102)" fill-opacity="0.36"/>
+</g>
+<path id="Vector 4587" d="M144.211 34.7161C148.052 35.197 168.152 42.5885 163.954 28.5153C166.036 18.805 145.037 16.5755 134.678 11.3046C134.678 11.3046 131.53 11.4503 120.739 10.0994C101.532 7.69471 79.7873 16.8957 68.3808 25.7639C56.9744 34.6321 46.2719 22.0756 39.3022 24.2917C31.9654 26.6246 31.6974 33.0939 40.5664 40.1652C49.4354 47.2365 33.561 52.8358 36.961 60.3063C40.361 67.7767 48.2322 61.1754 50.3672 57.1075C52.5022 53.0395 71.6972 42.2959 85.6504 47.9771C106.791 56.5847 116.865 41.0468 126.002 41.6488C135.139 42.2508 139.409 34.1149 144.211 34.7161Z" fill="#E56F62"/>
+<g id="Group 1400">
+<ellipse id="Ellipse 1026" cx="3.50547" cy="4.16899" rx="3.50547" ry="4.16899" transform="matrix(-1 0.000945389 -0.000950565 1 154.929 32.8181)" fill="white"/>
+<ellipse id="Ellipse 1027" cx="2.26768" cy="2.69691" rx="2.26768" ry="2.69691" transform="matrix(-1 0.000945389 -0.000950565 1 153.818 34.3528)" fill="#606060"/>
+</g>
+</g>
+</g>
+<path id="Vector 4428" d="M95.9889 70.1773C97.182 59.5686 112.895 53.1118 120.603 51.2095C120.603 51.2095 126.088 49.2282 127.492 51.5267C128.916 53.8576 124.454 57.8258 124.454 57.8258C113.373 81.9148 89.4885 82.9386 81.3278 76.4337C75.0454 71.4259 94.7959 80.786 95.9889 70.1773Z" fill="url(#paint3_linear_0_102)"/>
+<path id="Ellipse 1474" d="M123.704 15.9305C123.652 16.4803 122.918 17.8651 119.271 17.5204C115.625 17.1757 114.598 16.6289 114.65 16.079C114.702 15.5292 115.954 13.6912 119.601 14.0359C123.247 14.3806 123.756 15.3807 123.704 15.9305Z" fill="#FFE9E9"/>
+</g>
+<defs>
+<filter id="filter0_g_0_102" x="44.4695" y="21.7971" width="108.587" height="49.917" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feTurbulence type="fractalNoise" baseFrequency="0.0099999997764825821 0.0099999997764825821" numOctaves="3" seed="3002" />
+<feDisplacementMap in="shape" scale="11.055266380310059" xChannelSelector="R" yChannelSelector="G" result="displacedImage" width="100%" height="100%" />
+<feMerge result="effect1_texture_0_102">
+<feMergeNode in="displacedImage"/>
+</feMerge>
+</filter>
+<linearGradient id="paint0_linear_0_102" x1="59.966" y1="71.6765" x2="88.0634" y2="45.7831" gradientUnits="userSpaceOnUse">
+<stop stop-color="#DFA7A1"/>
+<stop offset="1" stop-color="#CA2E1D"/>
+</linearGradient>
+<linearGradient id="paint1_linear_0_102" x1="125.54" y1="10.7007" x2="58.4626" y2="-6.12524" gradientUnits="userSpaceOnUse">
+<stop stop-color="#E56F62"/>
+<stop offset="1" stop-color="white"/>
+</linearGradient>
+<linearGradient id="paint2_linear_0_102" x1="-76.2148" y1="33.6709" x2="161.552" y2="34.7167" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FFC1BA"/>
+<stop offset="1" stop-color="#FFFCF1"/>
+</linearGradient>
+<linearGradient id="paint3_linear_0_102" x1="85.6685" y1="80.6319" x2="109.819" y2="54.3012" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FFFCF1"/>
+<stop offset="1" stop-color="#E56F62"/>
+</linearGradient>
+<path id="stroke0_0_102" d="M70.1292 56.1932C78.4599 46.7529 90.6224 38.7835 98.8743 36.5003L100.901 46.9065C88.1122 74.1605 65.44 74.0864 56.7464 66.4548C50.0537 60.5797 60.5909 67.002 70.1292 56.1932Z"/>
+<pattern id="pattern0_0_102" patternUnits="userSpaceOnUse" patternTransform="matrix(-5.72512 2.40699 3.16347 7.52444 95.1514 22.9479)" preserveAspectRatio="none" viewBox="-4 -4 52.5 69" width="1" height="1">
+<use xlink:href="#pattern0_0_102_inner" transform="translate(-52.5 0)"/>
+<g id="pattern0_0_102_inner">
+<ellipse id="BIG RED FISH SCALE" cx="17.5" cy="11.5" rx="17.5" ry="11.5" fill="#E56F62"/>
+</g>
+<use xlink:href="#pattern0_0_102_inner" transform="translate(-26.25 34.5)"/>
+<use xlink:href="#pattern0_0_102_inner" transform="translate(26.25 34.5)"/>
+</pattern></defs>
+</svg>

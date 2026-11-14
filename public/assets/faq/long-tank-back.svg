@@ -1,0 +1,46 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="797" height="242.802" viewBox="0 0 797 242.802" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="Group 1423">
+<g id="Group 1425">
+<g id="Rectangle 3312">
+</g>
+<path id="Rectangle 3313" d="M19.5 55H776.5L766.414 232H33.3022L19.5 55Z" fill="url(#paint0_radial_0_50)"/>
+<g id="Group 1000003177">
+<circle id="Ellipse 1055" cx="84.4999" cy="83.5" r="3.5" fill="#C9E4F9"/>
+<path id="Star 8" d="M57.4999 63L60.606 74.9318L68.9999 78L60.606 80.3864L57.4999 93L54.3939 80.3864L45.9999 78L54.3939 74.9318L57.4999 63Z" fill="#C9E4F9"/>
+</g>
+</g>
+</g>
+<defs>
+<radialGradient id="paint0_radial_0_50" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(636 82) rotate(156.489) scale(889.877 520.417)">
+<stop stop-color="#4F8BD9"/>
+<stop offset="1" stop-color="#38359F"/>
+</radialGradient>
+<linearGradient id="paint1_linear_0_50" x1="129.668" y1="81.427" x2="99.0533" y2="187" gradientUnits="userSpaceOnUse">
+<stop stop-color="#37ACFF"/>
+<stop offset="0.567308" stop-color="#61CB73"/>
+</linearGradient>
+<linearGradient id="paint2_linear_0_50" x1="87.8108" y1="103" x2="87.8108" y2="222" gradientUnits="userSpaceOnUse">
+<stop stop-color="#37ACFF"/>
+<stop offset="0.567308" stop-color="#61CB73"/>
+</linearGradient>
+<linearGradient id="paint3_linear_0_50" x1="165.182" y1="71.5544" x2="115.161" y2="234.248" gradientUnits="userSpaceOnUse">
+<stop stop-color="#37ACFF"/>
+<stop offset="0.567308" stop-color="#61CB73"/>
+</linearGradient>
+<linearGradient id="paint4_linear_0_50" x1="777" y1="-18" x2="774.838" y2="222.107" gradientUnits="userSpaceOnUse">
+<stop stop-color="#628C94"/>
+<stop offset="1" stop-color="#C6F6FF"/>
+</linearGradient>
+<linearGradient id="paint5_linear_0_50" x1="16.9999" y1="-20" x2="19.1616" y2="220.107" gradientUnits="userSpaceOnUse">
+<stop stop-color="#628C94"/>
+<stop offset="1" stop-color="#C6F6FF"/>
+</linearGradient>
+<pattern id="pattern0_0_50" patternUnits="userSpaceOnUse" patternTransform="matrix(36.456 0 0 11.9784 29.8799 145.88)" preserveAspectRatio="none" viewBox="-4 -4 130.2 42.78" width="1" height="1">
+<use xlink:href="#pattern0_0_50_inner" transform="translate(0 -42.78)"/>
+<use xlink:href="#pattern0_0_50_inner" transform="translate(65.1 -21.39)"/>
+<g id="pattern0_0_50_inner">
+<ellipse id="BIG RED FISH SCALE" cx="17.5" cy="11.5" rx="17.5" ry="11.5" fill="#DDAF54"/>
+</g>
+<use xlink:href="#pattern0_0_50_inner" transform="translate(65.1 21.39)"/>
+</pattern></defs>
+</svg>
