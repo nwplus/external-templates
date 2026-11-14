@@ -9,8 +9,8 @@
         "root": [
           "dev-nwplus-root"
         ],
-        "hackcamp2026_dev": [
-          "dev-nwplus-hackcamp2026"
+        "nwhacks2027_dev": [
+          "dev-nwplus-nwhacks2027"
         ]
       }
     },
@@ -19,8 +19,8 @@
         "root": [
           "nwplus-root"
         ],
-        "hackcamp2026_main": [
-          "nwplus-hackcamp2026"
+        "nwhacks2027_main": [
+          "nwplus-nwhacks2027"
         ]
       }
     }

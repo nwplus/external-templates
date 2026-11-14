@@ -38,7 +38,7 @@
       ]
     },
     {
-      "target": "hackcamp2026_dev",
+      "target": "nwhacks2027_dev",
       "public": "out",
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
       "headers": [
@@ -75,7 +75,7 @@
       ]
     },
     {
-      "target": "hackcamp2026_main",
+      "target": "nwhacks2027_main",
       "public": "out",
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
       "headers": [
