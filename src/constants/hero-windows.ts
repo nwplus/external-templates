@@ -118,3 +118,159 @@ export const SLAT_TOWER_PATH =
 /** The tower made of tall vertical fins (Figma "Union"). */
 export const FIN_TOWER_PATH =
   "M1122.75 586.946H1114V74H1122.75V586.946ZM1149 586.946H1140.25V74H1149V586.946ZM1175.25 586.946H1166.5V74H1175.25V586.946ZM1201.5 586.946H1192.75V74H1201.5V586.946ZM1227.75 586.946H1219V74H1227.75V586.946ZM1254 586.946H1245.25V74H1254V586.946Z";
+
+/** A linear gradient's end points, in the coordinates of what it paints. */
+export type GradientLine = readonly [
+  x1: number,
+  y1: number,
+  x2: number,
+  y2: number,
+];
+
+/** One of the static striped towers, drawn at (x, y) in the skyline. */
+export type SkylineTower = {
+  d: string;
+  x: number;
+  y: number;
+  gradient: GradientLine;
+};
+
+/** Everything HeroWindows needs to draw one layout's skyline. */
+export type Skyline = {
+  /** The layer's own size; the scene places and scales the whole layer. */
+  width: number;
+  height: number;
+  /** Every window, panes and building bands alike. */
+  rects: readonly WindowRect[];
+  /** Rects at least this wide are building bands, which never light up. */
+  bandWidth: number;
+  /** The gradient across all the windows, in the layer's space. */
+  panes: GradientLine;
+  towers: readonly SkylineTower[];
+};
+
+export const DESKTOP_SKYLINE: Skyline = {
+  width: WINDOWS_VIEWBOX.width,
+  height: WINDOWS_VIEWBOX.height,
+  rects: WINDOW_RECTS,
+  bandWidth: 100,
+  panes: [506.76, 162.199, 507.096, 757.521],
+  towers: [
+    {
+      d: SLAT_TOWER_PATH,
+      x: 0,
+      y: 0,
+      gradient: [888.109, 150.665, 891.223, 729.168],
+    },
+    {
+      d: FIN_TOWER_PATH,
+      x: 0,
+      y: 0,
+      gradient: [1160.28, 188.034, 1163.3, 730.252],
+    },
+  ],
+};
+
+/*
+ * The phone skyline (Figma "mobile" > "hero" > "bkg windows", node
+ * 16162:29506): the same buildings, smaller and pulled in around the gate.
+ * Its 746 x 291 layer sits at (-328, 418) in the 402 x 1106 phone hero.
+ */
+
+/** 64 rows of slats split by a gap, alternate rows nudged 6px right (Figma
+ * "Subtract", 75 x 265.5), as one path. */
+const slatTowerPath = () => {
+  const rows = 64;
+  const pitch = (265.505 - 3.03) / (rows - 1);
+  const rect = (x1: number, x2: number, y: number) =>
+    `M${x1} ${y.toFixed(3)}H${x2}V${(y + 3.03).toFixed(3)}H${x1}Z`;
+  let d = "";
+  for (let row = 0; row < rows; row++) {
+    const y = row * pitch;
+    const nudged = row % 2 === 0;
+    d += rect(nudged ? 6 : 0, 31.004, y);
+    d += rect(44.007, nudged ? 75.015 : 69.015, y);
+  }
+  return d;
+};
+
+/** Six tall fins, 4.245 wide on a 12.734 pitch (Figma "Union", 68 x 249). */
+const finTowerPath = () =>
+  Array.from({ length: 6 }, (_, i) => {
+    const x = (i * 12.7339).toFixed(3);
+    return `M${x} 0h4.245v248.853h-4.245Z`;
+  }).join("");
+
+/** A block of equal windows, row by row. */
+const grid = (
+  xs: readonly number[],
+  ys: readonly number[],
+  w: number,
+  h: number,
+  skip: (col: number, row: number) => boolean = () => false
+): WindowRect[] =>
+  ys.flatMap((y, row) =>
+    xs.flatMap((x, col) => (skip(col, row) ? [] : [[x, y, w, h] as const]))
+  );
+
+export const MOBILE_SKYLINE: Skyline = {
+  width: 746.152,
+  height: 291.168,
+  rects: [
+    // Right-hand tower: 4 columns of 17 panes under a band across the top.
+    ...grid(
+      [669.3, 689.16, 709.02, 728.88],
+      [
+        21.88, 32.5, 44.4, 55.02, 66.92, 77.54, 89.45, 100.07, 110.68, 121.3,
+        133.21, 143.82, 155.73, 166.35, 178.25, 188.87,
+      ],
+      17.27,
+      8.69
+    ),
+    [669.02, 0, 77.14, 19.31],
+    // Left edge: a column of 12, and three in the next.
+    ...grid(
+      [0],
+      [
+        71.8, 90.37, 108.94, 127.5, 146.08, 164.64, 183.21, 201.78, 220.35,
+        238.92, 257.48, 276.05,
+      ],
+      23.37,
+      15.11
+    ),
+    [33.39, 71.8, 23.37, 15.11],
+    [33.39, 257.48, 23.37, 15.11],
+    [33.39, 276.05, 23.37, 15.11],
+    // Behind the gate: a few up top, then a block lower down.
+    [327.96, 46.57, 12.72, 16.21],
+    [344.91, 46.57, 12.72, 16.21],
+    [361.87, 46.57, 12.72, 16.21],
+    [361.87, 66.17, 12.72, 16.21],
+    ...grid(
+      [327.47, 344.43, 361.38, 378.34, 395.29],
+      [164.27, 183.87, 203.47, 223.07, 242.67],
+      12.72,
+      16.21,
+      (col, row) =>
+        (row === 1 && col % 2 === 1) ||
+        (row === 3 && col !== 0 && col !== 2) ||
+        (row === 4 && col !== 0)
+    ),
+  ],
+  bandWidth: 40,
+  panes: [253.129, 78.69, 270.088, 367.498],
+  towers: [
+    {
+      d: slatTowerPath(),
+      x: 400,
+      y: 13,
+      gradient: [24.795, 59.025, 26.306, 339.681],
+    },
+    {
+      d: finTowerPath(),
+      x: 546,
+      y: 22,
+      gradient: [22.451, 55.323, 23.916, 318.376],
+    },
+  ],
+};

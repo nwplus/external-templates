@@ -6,8 +6,12 @@ import { type CSSProperties, useEffect, useRef } from "react";
 const LANTERN_W = 47.689;
 const LANTERN_H = 67.722;
 
+/** The gate art's own width (gate.svg); lanterns are placed in its units. */
+const GATE_W = 848;
+
 type Lantern = {
-  /** Rotated bounding box in the 1512 x 1422 hero, as Figma reports it. */
+  /** Rotated bounding box, as Figma reports it, relative to the gate's
+   * top-left corner (the desktop hero has the gate at 630, 237). */
   box: [x: number, y: number, w: number, h: number];
   /** Resting tilt, as hung in the design. */
   tilt: number;
@@ -21,28 +25,28 @@ type Lantern = {
 
 const LANTERNS: Lantern[] = [
   {
-    box: [912.71, 485.27, 53.404, 71.283],
+    box: [282.71, 248.27, 53.404, 71.283],
     tilt: 5.02,
     period: 3.1,
     swing: 3.2,
     delay: -0.4,
   },
   {
-    box: [990.26, 486.31, 51.708, 70.15],
+    box: [360.26, 249.31, 51.708, 70.15],
     tilt: 3.5,
     period: 3.5,
     swing: 2.6,
     delay: -2.1,
   },
   {
-    box: [1068.39, 485.92, 50.32, 69.205],
+    box: [438.39, 248.92, 50.32, 69.205],
     tilt: -2.27,
     period: 2.8,
     swing: 3.0,
     delay: -1.3,
   },
   {
-    box: [1147, 485, 51.719, 70.157],
+    box: [517, 248, 51.719, 70.157],
     tilt: -3.51,
     period: 3.3,
     swing: 3.4,
@@ -77,21 +81,34 @@ type Motion = { body: number; bodyV: number; tassel: number; tasselV: number };
 
 const pct = (value: number, of: number) => `${(value / of) * 100}%`;
 
+/** A cursor to knock them with: a mouse or trackpad, not a finger. Touch
+ * screens just get the breeze. */
+const KNOCK_QUERY = "(hover: hover) and (pointer: fine)";
+
+type HeroLanternsProps = {
+  /** The scene's design frame, which the lanterns are placed in. */
+  frame: { width: number; height: number };
+  /** Where the gate sits in that frame: its top-left corner and width. */
+  gate: { x: number; y: number; width: number };
+};
+
 /**
- * The four red lanterns under the "Night Market" sign, positioned in the
- * hero's 1512 x 1422 space. Each is split at its joints (hook, tassel) into
+ * The four red lanterns under the "Night Market" sign, hung from the gate
+ * wherever the scene puts it. Each is split at its joints (hook, tassel) into
  * two layers of the same size. CSS keeps them swaying in the breeze (see
- * hero.css), and sweeping the cursor through one knocks it: the knock is
+ * hero.css), and sweeping a cursor through one knocks it: the knock is
  * simulated here and added on top through `--knock` / `--knock-tassel`.
  */
-export const HeroLanterns = () => {
+export const HeroLanterns = ({ frame, gate }: HeroLanternsProps) => {
   const layerRef = useRef<HTMLDivElement>(null);
+  const scale = gate.width / GATE_W;
 
   useEffect(() => {
     const layer = layerRef.current;
     const scene = layer?.parentElement;
     if (!layer || !scene) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (!window.matchMedia(KNOCK_QUERY).matches) return;
 
     const lanterns = Array.from(layer.children) as HTMLElement[];
     const motion: Motion[] = lanterns.map(() => ({
@@ -101,7 +118,7 @@ export const HeroLanterns = () => {
       tasselV: 0,
     }));
     let last: { x: number; y: number; t: number } | null = null;
-    let frame = 0;
+    let raf = 0;
     let then = 0;
 
     const step = (now: number) => {
@@ -137,7 +154,7 @@ export const HeroLanterns = () => {
           `${m.tassel.toFixed(2)}deg`
         );
       });
-      frame = moving ? requestAnimationFrame(step) : 0;
+      raf = moving ? requestAnimationFrame(step) : 0;
     };
 
     const onMove = (event: PointerEvent) => {
@@ -181,9 +198,9 @@ export const HeroLanterns = () => {
         }
       });
 
-      if (knocked && !frame) {
+      if (knocked && !raf) {
         then = performance.now();
-        frame = requestAnimationFrame(step);
+        raf = requestAnimationFrame(step);
       }
     };
     const onLeave = () => {
@@ -195,7 +212,7 @@ export const HeroLanterns = () => {
     return () => {
       scene.removeEventListener("pointermove", onMove);
       scene.removeEventListener("pointerleave", onLeave);
-      cancelAnimationFrame(frame);
+      cancelAnimationFrame(raf);
     };
   }, []);
 
@@ -211,9 +228,15 @@ export const HeroLanterns = () => {
           className="absolute"
           style={
             {
-              left: pct(x + w / 2 - LANTERN_W / 2, 1512),
-              top: pct(y + h / 2 - LANTERN_H / 2, 1422),
-              width: pct(LANTERN_W, 1512),
+              left: pct(
+                gate.x + (x + w / 2 - LANTERN_W / 2) * scale,
+                frame.width
+              ),
+              top: pct(
+                gate.y + (y + h / 2 - LANTERN_H / 2) * scale,
+                frame.height
+              ),
+              width: pct(LANTERN_W * scale, frame.width),
               aspectRatio: `${LANTERN_W} / ${LANTERN_H}`,
               rotate: `${tilt}deg`,
               "--period": `${period}s`,

@@ -8,10 +8,10 @@ import {
   HERO_TITLE,
   SPONSOR_LINK,
 } from "@/constants/hero";
-import { rasterArt } from "@/lib/raster-art";
+import { DESKTOP_SKYLINE } from "@/constants/hero-windows";
 import { cn } from "@/lib/utils";
 
-import { type CSSProperties, useState } from "react";
+import { useState } from "react";
 
 import { Countdown } from "./countdown";
 import { HeroClouds } from "./hero-clouds";
@@ -19,51 +19,15 @@ import { HeroFireworks } from "./hero-fireworks";
 import { HeroLanterns } from "./hero-lanterns";
 import { HeroWindows } from "./hero-windows";
 import "./hero.css";
+import { scenePlacer } from "./scene-art";
 
 /** The Figma "hero" frame; every layer is placed in these units. */
 const W = 1512;
 const H = 1422;
+const { pos, at, Art } = scenePlacer(W, H);
 
-/** Place a layer by its top-left corner in design px. */
-const pos = (x: number, y: number): CSSProperties => ({
-  left: `${(x / W) * 100}%`,
-  top: `${(y / H) * 100}%`,
-});
-
-/** Place a layer by its top-left corner and width in design px. */
-const at = (x: number, y: number, w: number): CSSProperties => ({
-  ...pos(x, y),
-  width: `${(w / W) * 100}%`,
-});
-
-type ArtProps = {
-  src: string;
-  /** The SVG's own size, which is also its size in the design. */
-  width: number;
-  height: number;
-  x: number;
-  y: number;
-  className?: string;
-};
-
-/** A static layer of the scene, exported from Figma (SVG, or WebP for the
- * characters: see rasterArt). */
-const Art = ({ src, width, height, x, y, className }: ArtProps) => (
-  // Plain <img>: the site is a static export, so next/image would add
-  // nothing but a wrapper.
-  // eslint-disable-next-line @next/next/no-img-element
-  <img
-    src={src}
-    {...rasterArt(src, width)}
-    alt=""
-    width={width}
-    height={height}
-    aria-hidden="true"
-    draggable={false}
-    className={cn("pointer-events-none absolute h-auto select-none", className)}
-    style={at(x, y, width)}
-  />
-);
+/** The gate (gate.svg, 848 x 475), which the lanterns hang from. */
+const GATE = { x: 630, y: 237, width: 848 };
 
 /**
  * The nwHacks 2027 hero: a night market gate at the end of the road, the
@@ -105,6 +69,7 @@ export const HeroScene = () => {
       />
 
       <HeroWindows
+        skyline={DESKTOP_SKYLINE}
         hidden={fireworks}
         className="pointer-events-none absolute h-auto"
         style={at(0, 111, 1512)}
@@ -177,7 +142,7 @@ export const HeroScene = () => {
         }
         onClick={toggleFireworks}
         className="group absolute aspect-[848/475] cursor-pointer focus-visible:rounded-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lamp"
-        style={at(630, 237, 848)}
+        style={at(GATE.x, GATE.y, GATE.width)}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
@@ -203,7 +168,7 @@ export const HeroScene = () => {
         />
       </button>
       {/* Lanterns hang under the sign, which is drawn over their hooks */}
-      <HeroLanterns />
+      <HeroLanterns frame={{ width: W, height: H }} gate={GATE} />
       <Art
         src="/assets/hero/sign.svg"
         width={848}
