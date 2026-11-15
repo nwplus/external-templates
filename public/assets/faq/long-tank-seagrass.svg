@@ -1,0 +1,44 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="797" height="242.802" viewBox="0 0 797 242.802" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="Group 1423">
+<g id="Group 1425">
+<g id="Group 1430">
+<path id="Vector 4305" d="M105.978 155.865C93.3991 160.5 101.269 183.832 109.399 190L117.987 191.672C115.701 189.104 98.7173 167.154 111.399 163.5C124.928 159.601 125.472 157.385 129.399 149.5C132.563 143.148 122.076 141.502 115.065 136.683C108.843 132.405 113.479 130.607 120.87 130.163C130.244 129.6 131.494 120.561 131.485 116.834C131.461 106.289 112.567 105.101 123.588 79.6639C101.471 102.184 126.997 109.036 121.047 118.884C120.074 124.327 99.2091 116.498 95.8026 128.246C92.3034 140.313 134.335 145.417 105.978 155.865Z" fill="url(#paint1_linear_0_50)"/>
+<path id="Vector 4306" d="M88.623 151C88.6229 162.019 68.3377 156.693 81.623 171.5C88.9766 179.696 94.9459 183.159 94.3377 188C93.2787 196.429 83.9515 202.054 114.123 206.5V222C62.623 196.5 94.3288 199.412 88.623 188C86.623 184 67.1185 172 67.1185 165.5C67.1185 156.087 67.475 158.994 75.1198 154.078C82.6211 149.254 75.3389 147.07 68.3377 144C57.4176 139.212 61.5529 129.831 67.1185 126.012C77.3377 119 84.8377 113 84.8377 103C89.8377 122 64.6181 128.677 73.6158 136.867C80.0165 142.693 88.623 140.272 88.623 151Z" fill="url(#paint2_linear_0_50)"/>
+<path id="Vector 4307" d="M107.7 186.802C84.1819 196.647 98.0998 223.51 105.664 231.328L120.39 232.308C118.379 228.944 102.942 202.195 116.581 195.821C131.132 189.021 124.04 195.722 129.2 184.302C133.356 175.103 157.573 170.097 152.629 160.165C147.778 150.42 160.621 150.663 167.936 146.113C187.89 133.701 166.53 105.808 166.53 105.808C166.53 105.808 162.972 98.0692 177.39 75.3077C166.488 89.4249 158.975 96.2115 157.89 105.808C156.385 119.121 168.98 124.95 162.339 133.701C154.521 144.005 146.046 136.038 140.89 152.808C135.594 170.034 129.2 177.802 107.7 186.802Z" fill="url(#paint3_linear_0_50)"/>
+</g>
+</g>
+</g>
+<defs>
+<radialGradient id="paint0_radial_0_50" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(636 82) rotate(156.489) scale(889.877 520.417)">
+<stop stop-color="#4F8BD9"/>
+<stop offset="1" stop-color="#38359F"/>
+</radialGradient>
+<linearGradient id="paint1_linear_0_50" x1="129.668" y1="81.427" x2="99.0533" y2="187" gradientUnits="userSpaceOnUse">
+<stop stop-color="#37ACFF"/>
+<stop offset="0.567308" stop-color="#61CB73"/>
+</linearGradient>
+<linearGradient id="paint2_linear_0_50" x1="87.8108" y1="103" x2="87.8108" y2="222" gradientUnits="userSpaceOnUse">
+<stop stop-color="#37ACFF"/>
+<stop offset="0.567308" stop-color="#61CB73"/>
+</linearGradient>
+<linearGradient id="paint3_linear_0_50" x1="165.182" y1="71.5544" x2="115.161" y2="234.248" gradientUnits="userSpaceOnUse">
+<stop stop-color="#37ACFF"/>
+<stop offset="0.567308" stop-color="#61CB73"/>
+</linearGradient>
+<linearGradient id="paint4_linear_0_50" x1="777" y1="-18" x2="774.838" y2="222.107" gradientUnits="userSpaceOnUse">
+<stop stop-color="#628C94"/>
+<stop offset="1" stop-color="#C6F6FF"/>
+</linearGradient>
+<linearGradient id="paint5_linear_0_50" x1="16.9999" y1="-20" x2="19.1616" y2="220.107" gradientUnits="userSpaceOnUse">
+<stop stop-color="#628C94"/>
+<stop offset="1" stop-color="#C6F6FF"/>
+</linearGradient>
+<pattern id="pattern0_0_50" patternUnits="userSpaceOnUse" patternTransform="matrix(36.456 0 0 11.9784 29.8799 145.88)" preserveAspectRatio="none" viewBox="-4 -4 130.2 42.78" width="1" height="1">
+<use xlink:href="#pattern0_0_50_inner" transform="translate(0 -42.78)"/>
+<use xlink:href="#pattern0_0_50_inner" transform="translate(65.1 -21.39)"/>
+<g id="pattern0_0_50_inner">
+<ellipse id="BIG RED FISH SCALE" cx="17.5" cy="11.5" rx="17.5" ry="11.5" fill="#DDAF54"/>
+</g>
+<use xlink:href="#pattern0_0_50_inner" transform="translate(65.1 21.39)"/>
+</pattern></defs>
+</svg>

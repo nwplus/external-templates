@@ -1,0 +1,31 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="410.946" height="252.999" viewBox="0 0 410.946 252.999" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Group 1419">
+<g id="Group 1418">
+<g id="Rectangle 3285">
+</g>
+<path id="Rectangle 3288" d="M26 76.97L394 62.9995L380.019 252.999L34.4885 243.686L26 76.97Z" fill="url(#paint0_radial_0_17)"/>
+<g id="sparkle bubbles" opacity="0.83">
+<path id="Star 7" d="M340.5 91.9995L343.606 103.931L352 106.999L343.606 109.386L340.5 121.999L337.394 109.386L329 106.999L337.394 103.931L340.5 91.9995Z" fill="white"/>
+<circle id="Ellipse 1047" cx="331.5" cy="82.4995" r="3.5" fill="white"/>
+<circle id="Ellipse 1364" cx="364.5" cy="91.4995" r="5.5" fill="white"/>
+</g>
+<path id="tank edge" d="M25 27.9995L36 238.999" stroke-width="9" stroke="url(#paint1_linear_0_17)"/>
+<path id="tank edge_2" d="M396 13.4995L382.5 249.999" stroke-width="9" stroke="url(#paint2_linear_0_17)"/>
+</g>
+<path id="Rectangle 3287" d="M0 17.5073L409.97 2.78665L408.544 25.7512L3.17452 40.2673L0 17.5073Z" fill="#628C94"/>
+</g>
+<defs>
+<radialGradient id="paint0_radial_0_17" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(333 188.499) rotate(168.915) scale(249.658 167.997)">
+<stop stop-color="#FDC0D2"/>
+<stop offset="1" stop-color="#7CADD2"/>
+</radialGradient>
+<linearGradient id="paint1_linear_0_17" x1="25" y1="-1.00054" x2="30.5" y2="238.999" gradientUnits="userSpaceOnUse">
+<stop stop-color="#628C94"/>
+<stop offset="1" stop-color="#C6F6FF"/>
+</linearGradient>
+<linearGradient id="paint2_linear_0_17" x1="401" y1="-17.0005" x2="389.25" y2="249.999" gradientUnits="userSpaceOnUse">
+<stop stop-color="#628C94"/>
+<stop offset="1" stop-color="#C6F6FF"/>
+</linearGradient>
+</defs>
+</svg>

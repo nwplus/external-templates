@@ -1,0 +1,430 @@
+/*
+ * FAQ aquarium motion (components/faq). Lengths use --u, one design px
+ * (faq-scene.tsx). Decorative loops stop under prefers-reduced-motion, and
+ * globals.css pauses them while the section is scrolled away.
+ */
+
+/* ---- Picking a tank ----------------------------------------------------
+ * The stack, jars, bricks, floor and long tank slide to their spots in the
+ * picked frames (--dx / --dy on each group). The giant tank, the deer and
+ * Nugget leave quickly and come back once the long tank is out of the way.
+ */
+
+.faq-move {
+  transition: translate 0.75s cubic-bezier(0.65, 0, 0.25, 1);
+}
+
+.faq-scene[data-faq-state="selected"] .faq-move {
+  translate: var(--dx) var(--dy);
+}
+
+.faq-idle-only {
+  transition:
+    opacity 0.45s ease 0.3s,
+    visibility 0s linear 0s;
+}
+
+.faq-scene[data-faq-state="selected"] .faq-idle-only {
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.35s ease,
+    visibility 0s linear 0.35s;
+}
+
+/* The wall's lighting differs a little between the frames: both versions
+   are drawn and cross-fade. */
+.faq-when-idle,
+.faq-when-selected {
+  transition: opacity 0.6s ease;
+}
+
+.faq-when-selected,
+.faq-scene[data-faq-state="selected"] .faq-when-idle {
+  opacity: 0;
+}
+
+.faq-scene[data-faq-state="selected"] .faq-when-selected {
+  opacity: 1;
+}
+
+/* The long tank makes room while an answer is open (or the list is long). */
+.faq-long-fade {
+  transition:
+    opacity 0.35s ease 0.15s,
+    visibility 0s linear 0s;
+}
+
+.faq-long-fade[data-faq-hidden] {
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.25s ease,
+    visibility 0s linear 0.25s;
+}
+
+/* ---- Topic tanks ------------------------------------------------------- */
+
+.faq-tank {
+  cursor: pointer;
+  transition: translate 0.2s ease;
+}
+
+.faq-tank:hover {
+  translate: 0 calc(-4 * var(--u));
+}
+
+.faq-tank:focus-visible {
+  outline: 3px solid var(--lamp);
+  outline-offset: calc(4 * var(--u));
+  border-radius: calc(10 * var(--u));
+}
+
+/* A picked tank's fish (and their bubbles) shrink away in a burst of
+   bubbles that wobble up to the waterline and pop. When another tank is
+   picked they come back behind a small puff. */
+.faq-fish-body {
+  transition:
+    opacity 0.3s ease,
+    scale 0.35s ease;
+}
+
+.faq-tank[data-phase="gone"] .faq-fish-body {
+  opacity: 0;
+  scale: 0.8;
+}
+
+.faq-tank[data-phase="back"] .faq-fish-body {
+  transition-delay: 0.25s;
+}
+
+.faq-burst-bubble {
+  opacity: 0;
+}
+
+.faq-tank[data-phase="gone"] .faq-burst-bubble {
+  animation: faq-burst var(--dur) cubic-bezier(0.33, 0.6, 0.45, 1) var(--delay)
+    both;
+}
+
+.faq-tank[data-phase="back"] .faq-burst-bubble {
+  animation: faq-puff 0.6s ease-out var(--delay) both;
+}
+
+@keyframes faq-burst {
+  0% {
+    opacity: 0;
+    scale: 0.2;
+    translate: 0 0;
+  }
+  12% {
+    opacity: 1;
+    scale: 1;
+  }
+  40% {
+    translate: var(--drift) calc(var(--rise) * -0.4);
+  }
+  70% {
+    translate: calc(var(--drift) * -0.6) calc(var(--rise) * -0.75);
+  }
+  88% {
+    opacity: 1;
+    scale: 1;
+    translate: calc(var(--drift) * 0.3) calc(var(--rise) * -1);
+  }
+  100% {
+    opacity: 0;
+    scale: 1.7;
+    translate: calc(var(--drift) * 0.3) calc(var(--rise) * -1);
+  }
+}
+
+@keyframes faq-puff {
+  0% {
+    opacity: 0;
+    scale: 0.3;
+    translate: 0 0;
+  }
+  25% {
+    opacity: 1;
+    scale: 1;
+  }
+  100% {
+    opacity: 0;
+    scale: 0.9;
+    translate: calc(var(--drift) * 0.5) calc(var(--rise) * -0.35);
+  }
+}
+
+/* ---- Idle loops ---------------------------------------------------------
+ * Every fish sways on its own clock (--sway-*, set per fish): the orange
+ * fish in the long tank quickly and widely, the rest slowly.
+ */
+
+.faq-sway {
+  animation: faq-sway var(--sway-dur) ease-in-out var(--sway-delay) infinite
+    alternate;
+}
+
+@keyframes faq-sway {
+  from {
+    rotate: calc(var(--sway-rot) * -1);
+    translate: calc(var(--sway-x) * -1) calc(var(--sway-y) * -1);
+  }
+  to {
+    rotate: var(--sway-rot);
+    translate: var(--sway-x) var(--sway-y);
+  }
+}
+
+/* Resting bubbles drift up and down a little. */
+.faq-bob {
+  animation: faq-bob var(--bob-dur) ease-in-out var(--bob-delay) infinite
+    alternate;
+}
+
+@keyframes faq-bob {
+  from {
+    translate: 0 calc(2 * var(--u));
+    opacity: 0.85;
+  }
+  to {
+    translate: 0 calc(-4 * var(--u));
+    opacity: 1;
+  }
+}
+
+/* Sea grass bends from its roots (--root). */
+.faq-grass {
+  transform-origin: var(--root);
+  animation: faq-grass var(--grass-dur) ease-in-out var(--grass-delay) infinite
+    alternate;
+}
+
+@keyframes faq-grass {
+  from {
+    transform: skewX(-4deg);
+  }
+  to {
+    transform: skewX(3deg);
+  }
+}
+
+/* The easter-egg fish blows its three bubbles one at a time, bottom first,
+   then they fade together. In the bubbles' own SVG units (design px). */
+.faq-blow-1,
+.faq-blow-2,
+.faq-blow-3 {
+  animation: 3.2s ease-in-out infinite;
+}
+
+.faq-blow-1 {
+  animation-name: faq-blow-1;
+}
+
+.faq-blow-2 {
+  animation-name: faq-blow-2;
+}
+
+.faq-blow-3 {
+  animation-name: faq-blow-3;
+}
+
+@keyframes faq-blow-1 {
+  0% {
+    opacity: 0;
+    translate: 0 4px;
+  }
+  8% {
+    opacity: 1;
+    translate: 0 0;
+  }
+  68% {
+    opacity: 1;
+    translate: 0 -5px;
+  }
+  80%,
+  100% {
+    opacity: 0;
+    translate: 0 -8px;
+  }
+}
+
+@keyframes faq-blow-2 {
+  0%,
+  13% {
+    opacity: 0;
+    translate: 0 4px;
+  }
+  21% {
+    opacity: 1;
+    translate: 0 0;
+  }
+  68% {
+    opacity: 1;
+    translate: 0 -4px;
+  }
+  80%,
+  100% {
+    opacity: 0;
+    translate: 0 -7px;
+  }
+}
+
+@keyframes faq-blow-3 {
+  0%,
+  26% {
+    opacity: 0;
+    translate: 0 4px;
+  }
+  34% {
+    opacity: 1;
+    translate: 0 0;
+  }
+  68% {
+    opacity: 1;
+    translate: 0 -3px;
+  }
+  80%,
+  100% {
+    opacity: 0;
+    translate: 0 -6px;
+  }
+}
+
+/* Inert for now: the click lands with the easter egg. */
+.faq-easter-egg {
+  pointer-events: auto;
+  cursor: pointer;
+  transition: scale 0.25s ease;
+}
+
+.faq-easter-egg:hover {
+  scale: 1.06;
+}
+
+/* ---- Random accents (use-idle-accents.ts) -------------------------------
+ * The scheduler sets data-accent-on for one run: an ordinary fish gets
+ * busy for a moment (a wiggle and a dart toward its nose, --dart), or a
+ * fish in Nugget's box hops up and flops back in. Kept small so they read as
+ * life in the tanks rather than pulling the eye.
+ */
+
+.faq-accent[data-accent="fish"][data-accent-on] {
+  animation: faq-dart 1.2s ease-in-out;
+}
+
+.faq-accent[data-accent="hop"][data-accent-on] {
+  animation: faq-hop 0.85s cubic-bezier(0.3, 0.7, 0.4, 1);
+}
+
+@keyframes faq-dart {
+  0%,
+  100% {
+    rotate: 0deg;
+    translate: 0 0;
+  }
+  12% {
+    rotate: -2.5deg;
+  }
+  26% {
+    rotate: 2.5deg;
+    translate: var(--dart) calc(-1 * var(--u));
+  }
+  40% {
+    rotate: -2deg;
+    translate: calc(var(--dart) * 1.4) 0;
+  }
+  56% {
+    rotate: 1.5deg;
+    translate: calc(var(--dart) * 1.1) calc(0.5 * var(--u));
+  }
+  75% {
+    rotate: -0.75deg;
+    translate: calc(var(--dart) * 0.5) 0;
+  }
+}
+
+@keyframes faq-hop {
+  0%,
+  100% {
+    translate: 0 0;
+    rotate: 0deg;
+    scale: 1;
+  }
+  15% {
+    translate: 0 calc(1.5 * var(--u));
+    scale: 1.02 0.97;
+  }
+  45% {
+    translate: 0 calc(-16 * var(--u));
+    rotate: var(--hop-rot);
+    scale: 1;
+  }
+  75% {
+    translate: 0 calc(1 * var(--u));
+    rotate: 0deg;
+  }
+  88% {
+    translate: 0 calc(-2 * var(--u));
+  }
+}
+
+/* ---- Questions --------------------------------------------------------- */
+
+.faq-panel {
+  transition:
+    opacity 0.3s ease,
+    visibility 0s linear 0s;
+}
+
+.faq-scene[data-faq-state="idle"] .faq-panel {
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.2s ease,
+    visibility 0s linear 0.2s;
+}
+
+.faq-question {
+  animation: faq-question-in 0.45s cubic-bezier(0.2, 0.7, 0.3, 1) both;
+  animation-delay: calc(var(--panel-delay) + var(--i) * 0.05s);
+}
+
+@keyframes faq-question-in {
+  from {
+    opacity: 0;
+    translate: 0 calc(16 * var(--u));
+  }
+}
+
+.faq-answer {
+  transition: grid-template-rows 0.3s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .faq-sway,
+  .faq-bob,
+  .faq-grass,
+  .faq-accent,
+  .faq-blow-1,
+  .faq-blow-2,
+  .faq-blow-3,
+  .faq-question,
+  .faq-burst-bubble {
+    animation: none !important;
+  }
+
+  .faq-move,
+  .faq-answer,
+  .faq-tank {
+    transition-duration: 0s;
+  }
+
+  .faq-tank:hover,
+  .faq-easter-egg:hover,
+  .faq-tank[data-phase="gone"] .faq-fish-body {
+    translate: none;
+    scale: none;
+  }
+}

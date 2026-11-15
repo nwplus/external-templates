@@ -1,0 +1,57 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="85.3186" height="23.526" viewBox="0 0 85.3186 23.526" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="Group 1402">
+<g id="Mask group">
+<mask id="mask0_0_62" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="86" height="24">
+<path id="Ellipse 1025" d="M17.2346 6.63724C15.7562 5.41979 13.6808 4.12687 11.3062 3.0137C6.2784 0.656901 1.81289 -0.00114066 1.33219 1.54385C0.851446 3.08891 4.53756 6.25199 9.56531 8.6088C9.75033 8.69552 9.93461 8.78 10.1179 8.86209C9.95991 8.88924 9.80088 8.91787 9.64102 8.94792C9.4241 8.98871 9.20559 9.0322 8.98575 9.07839C3.74572 10.1792 -0.270948 12.4001 0.0142997 14.0388C0.299547 15.6775 4.77869 16.1136 10.0187 15.0128C12.8427 14.4195 15.3112 13.5011 16.9427 12.5237C21.811 15.0128 25.6643 16.0686 29.7253 17.88L29.7225 17.9007C29.7225 17.9007 45.0199 23.4555 53.0151 23.5244C65.4307 23.6313 76.7317 18.5755 76.7317 18.5755C79.9014 16.622 85.3185 14.6873 85.3185 10.0942C85.3185 0.605536 61.4802 -0.155475 56.8019 0.0209777C44.4843 0.485401 30.0049 1.54386 17.2346 6.63724Z" fill="url(#paint0_linear_0_62)"/>
+</mask>
+<g mask="url(#mask0_0_62)">
+<path id="Ellipse 1026" d="M17.2346 6.63724C15.7562 5.41979 13.6808 4.12687 11.3062 3.0137C6.2784 0.656901 1.81289 -0.00114066 1.33219 1.54385C0.851446 3.08891 4.53756 6.25199 9.56531 8.6088C9.75033 8.69552 9.93461 8.78 10.1179 8.86209C9.95991 8.88924 9.80088 8.91787 9.64102 8.94792C9.4241 8.98871 9.20559 9.0322 8.98575 9.07839C3.74572 10.1792 -0.270948 12.4001 0.0142997 14.0388C0.299547 15.6775 4.77869 16.1136 10.0187 15.0128C12.8427 14.4195 15.3112 13.5011 16.9427 12.5237C21.811 15.0128 25.6643 16.0686 29.7253 17.88L29.7225 17.9007C29.7225 17.9007 45.0199 23.4555 53.0151 23.5244C65.4307 23.6313 76.7317 18.5755 76.7317 18.5755C79.9014 16.622 85.3185 14.6873 85.3185 10.0942C85.3185 0.605536 61.4802 -0.155475 56.8019 0.0209777C44.4843 0.485401 30.0049 1.54386 17.2346 6.63724Z" fill="url(#paint1_linear_0_62)"/>
+<g id="Vector 4556" filter="url(#filter0_g_0_62)">
+<path d="M-2.49592 4.6448C-8.76923 18.1334 24.5711 29.9869 31.0671 31.9347C34.2036 32.8751 62.7474 20.9072 72.7851 20.0147C71.5304 20.1262 57.4152 19.0736 61.1793 10.6045C61.5227 9.8318 26.1333 12.3582 12.874 9.34979C-3.18038 6.84054 0.959248 -2.78435 -2.49592 4.6448Z" fill="url(#pattern0_0_62)" fill-opacity="0.64"/>
+</g>
+<g id="Group 1400">
+<ellipse id="Ellipse 1026_2" cx="74.6504" cy="9.32289" rx="2.95427" ry="3.17825" fill="white"/>
+<ellipse id="Ellipse 1027" cx="74.6493" cy="9.32216" rx="1.47714" ry="1.58913" fill="#63140B"/>
+</g>
+<path id="Vector 4290" d="M62.6285 10.9686C62.2401 14.1023 63.7354 20.1192 72.8237 19.1164" stroke-width="1.2535" stroke-linecap="round" stroke="#E55544"/>
+</g>
+</g>
+<path id="Ellipse 1379" d="M43.8395 4.5828C43.8967 5.96751 48.0123 6.92188 53.0318 6.71446C58.0514 6.50703 62.0741 5.21636 62.0169 3.83165C61.9597 2.44695 57.7299 2.68562 52.7104 2.89305C47.6908 3.10047 43.7823 3.1981 43.8395 4.5828Z" fill="url(#paint3_linear_0_62)"/>
+</g>
+<defs>
+<filter id="filter0_g_0_62" x="-9.70179" y="-4.54283" width="88.9108" height="42.9541" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feTurbulence type="fractalNoise" baseFrequency="0.015940269455313683 0.015940269455313683" numOctaves="3" seed="9206" />
+<feDisplacementMap in="shape" scale="12.847963333129883" xChannelSelector="R" yChannelSelector="G" result="displacedImage" width="100%" height="100%" />
+<feMerge result="effect1_texture_0_62">
+<feMergeNode in="displacedImage"/>
+</feMerge>
+</filter>
+<linearGradient id="paint0_linear_0_62" x1="23.839" y1="11.9198" x2="10.6648" y2="10.9788" gradientUnits="userSpaceOnUse">
+<stop stop-color="#BBDEA7"/>
+<stop offset="1" stop-color="#E55544"/>
+</linearGradient>
+<linearGradient id="paint1_linear_0_62" x1="23.839" y1="11.9198" x2="10.6648" y2="10.9788" gradientUnits="userSpaceOnUse">
+<stop stop-color="#BBDEA7"/>
+<stop offset="1" stop-color="#E55544"/>
+</linearGradient>
+<linearGradient id="paint3_linear_0_62" x1="62.0414" y1="4.42452" x2="26.362" y2="5.01952" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FDFFFB"/>
+<stop offset="1" stop-color="#BBDEA7"/>
+</linearGradient>
+<pattern id="pattern0_0_62" patternUnits="userSpaceOnUse" patternTransform="matrix(3.2123 0 0 4.22189 -3.55384 1.60512)" preserveAspectRatio="none" viewBox="-4 -4 46.55 61.18" width="1" height="1">
+<use xlink:href="#pattern0_0_62_inner" transform="translate(-23.275 -30.59)"/>
+<use xlink:href="#pattern0_0_62_inner" transform="translate(23.275 -30.59)"/>
+<use xlink:href="#pattern0_0_62_inner" transform="translate(-46.55 0)"/>
+<g id="pattern0_0_62_inner">
+<ellipse id="small shiny fish scale" cx="17.5" cy="11.5" rx="17.5" ry="11.5" fill="url(#paint2_linear_0_62)"/>
+</g>
+<use xlink:href="#pattern0_0_62_inner" transform="translate(-23.275 30.59)"/>
+<use xlink:href="#pattern0_0_62_inner" transform="translate(23.275 30.59)"/>
+</pattern><linearGradient id="paint2_linear_0_62" x1="-3.99473" y1="22.4497" x2="45" y2="23" gradientUnits="userSpaceOnUse">
+<stop stop-color="#E55544"/>
+<stop offset="1" stop-color="#BBDEA7"/>
+</linearGradient>
+</defs>
+</svg>

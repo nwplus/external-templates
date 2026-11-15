@@ -1,0 +1,20 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="738.5" height="131.786" viewBox="0 0 738.5 131.786" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="Mask group">
+<mask id="mask0_0_46" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="739" height="132">
+<path id="Rectangle 3314" d="M0 45.4825C0 45.4825 63 0.00117656 157.5 1.08909e-08C242.89 -0.00106311 387.234 77.8303 515 60.6442C608.347 48.0879 700.5 -5.83124 738.5 9.32949C738.5 30.3224 735.914 131.786 735.914 131.786H2.80225L0 45.4825Z" fill="#F2D69F"/>
+</mask>
+<g mask="url(#mask0_0_46)">
+<path id="Rectangle 3315" d="M0 45.4825C0 45.4825 63 0.00117656 157.5 1.08909e-08C242.89 -0.00106311 387.234 77.8303 515 60.6442C608.347 48.0879 700.5 -5.83124 738.5 9.32949C738.5 30.3224 735.914 131.786 735.914 131.786H2.80225L0 45.4825Z" fill="#F2D69F"/>
+<ellipse id="Ellipse 1470" cx="459" cy="65.3867" rx="733.5" ry="109" fill="url(#pattern0_0_46)" fill-opacity="0.92"/>
+</g>
+</g>
+<defs>
+<pattern id="pattern0_0_46" patternUnits="userSpaceOnUse" patternTransform="matrix(41.664 0 0 13.6896 -275.78 -44.8933)" preserveAspectRatio="none" viewBox="-4 -4 130.2 42.78" width="1" height="1">
+<use xlink:href="#pattern0_0_46_inner" transform="translate(0 -42.78)"/>
+<use xlink:href="#pattern0_0_46_inner" transform="translate(65.1 -21.39)"/>
+<g id="pattern0_0_46_inner">
+<ellipse id="BIG RED FISH SCALE" cx="17.5" cy="11.5" rx="17.5" ry="11.5" fill="#DDAF54"/>
+</g>
+<use xlink:href="#pattern0_0_46_inner" transform="translate(65.1 21.39)"/>
+</pattern></defs>
+</svg>
