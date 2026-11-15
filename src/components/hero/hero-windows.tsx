@@ -1,26 +1,17 @@
 "use client";
 
-import {
-  FIN_TOWER_PATH,
-  SLAT_TOWER_PATH,
-  WINDOW_RECTS,
-  WINDOWS_VIEWBOX,
-} from "@/constants/hero-windows";
+import type { GradientLine, Skyline } from "@/constants/hero-windows";
 import { cn } from "@/lib/utils";
 
-import { type CSSProperties, useEffect, useRef } from "react";
+import { type CSSProperties, useEffect, useId, useMemo, useRef } from "react";
 
 /** Share of windows lit when the page loads. */
 const LIT_SHARE = 0.3;
 /** How often, in ms, some window changes. Each change is itself slow (see
- * PANE_TIMING), so the skyline stays lively without pulling the eye. */
+ * paneTiming), so the skyline stays lively without pulling the eye. */
 const TICK_MS = 550;
 /** Of those changes, the share that are a flicker rather than on/off. */
 const FLICKER_SHARE = 0.55;
-
-/** Window panes only: the wide band capping the right-hand tower is part of
- * the building, so it never lights up. */
-const PANES = WINDOW_RECTS.filter(([, , w]) => w < 100);
 
 /** A small seeded PRNG (mulberry32), so every pane gets the same timing on
  * the server and in the browser and hydration matches. */
@@ -33,10 +24,11 @@ const seeded = (seed: number) => () => {
 
 /** Each pane's own pace: how long it takes to switch on or off, how slowly
  * it breathes while lit, how bright it gets and how long a flicker lasts. */
-const PANE_TIMING = (() => {
+const paneTiming = (count: number) => {
   const rand = seeded(2027);
   const between = (lo: number, hi: number) => lo + (hi - lo) * rand();
-  return PANES.map(
+  return Array.from(
+    { length: count },
     () =>
       ({
         "--fade": `${between(1.8, 4.5).toFixed(2)}s`,
@@ -46,7 +38,7 @@ const PANE_TIMING = (() => {
         "--flicker": `${between(2.2, 4).toFixed(2)}s`,
       }) as CSSProperties
   );
-})();
+};
 
 const GRADIENT_STOPS = (
   <>
@@ -55,7 +47,26 @@ const GRADIENT_STOPS = (
   </>
 );
 
+/** A vertical-ish gradient from the sky's warm tone to blue, along `line`. */
+const Gradient = ({ id, line }: { id: string; line: GradientLine }) => {
+  const [x1, y1, x2, y2] = line;
+  return (
+    <linearGradient
+      id={id}
+      x1={x1}
+      y1={y1}
+      x2={x2}
+      y2={y2}
+      gradientUnits="userSpaceOnUse"
+    >
+      {GRADIENT_STOPS}
+    </linearGradient>
+  );
+};
+
 type HeroWindowsProps = {
+  /** Which layout's buildings to draw (constants/hero-windows.ts). */
+  skyline: Skyline;
   /** Faded out (and still) while the fireworks are up. */
   hidden?: boolean;
   className?: string;
@@ -70,11 +81,21 @@ type HeroWindowsProps = {
  * the CSS in hero.css animates), so the hero never re-renders for them.
  */
 export const HeroWindows = ({
+  skyline,
   hidden = false,
   className,
   style,
 }: HeroWindowsProps) => {
   const glowsRef = useRef<SVGGElement>(null);
+  // Both layouts' skylines are in the page, so their gradients need their
+  // own ids (useId's, minus the characters url() references trip on).
+  const id = `skyline${useId().replace(/[^\w-]/g, "")}`;
+  // Building bands are part of the building, so they never light up.
+  const panes = useMemo(
+    () => skyline.rects.filter(([, , w]) => w < skyline.bandWidth),
+    [skyline]
+  );
+  const timing = useMemo(() => paneTiming(panes.length), [panes]);
 
   // Light a random set once mounted (not during render, so the static HTML
   // and hydration agree).
@@ -116,7 +137,7 @@ export const HeroWindows = ({
 
   return (
     <svg
-      viewBox={`0 0 ${WINDOWS_VIEWBOX.width} ${WINDOWS_VIEWBOX.height}`}
+      viewBox={`0 0 ${skyline.width} ${skyline.height}`}
       fill="none"
       aria-hidden="true"
       data-hidden={hidden || undefined}
@@ -124,46 +145,29 @@ export const HeroWindows = ({
       style={style}
     >
       <defs>
-        <linearGradient
-          id="hero-slats"
-          x1="888.109"
-          y1="150.665"
-          x2="891.223"
-          y2="729.168"
-          gradientUnits="userSpaceOnUse"
-        >
-          {GRADIENT_STOPS}
-        </linearGradient>
-        <linearGradient
-          id="hero-fins"
-          x1="1160.28"
-          y1="188.034"
-          x2="1163.3"
-          y2="730.252"
-          gradientUnits="userSpaceOnUse"
-        >
-          {GRADIENT_STOPS}
-        </linearGradient>
-        <linearGradient
-          id="hero-panes"
-          x1="506.76"
-          y1="162.199"
-          x2="507.096"
-          y2="757.521"
-          gradientUnits="userSpaceOnUse"
-        >
-          {GRADIENT_STOPS}
-        </linearGradient>
+        {skyline.towers.map((tower, i) => (
+          <Gradient key={i} id={`${id}-tower-${i}`} line={tower.gradient} />
+        ))}
+        <Gradient id={`${id}-panes`} line={skyline.panes} />
       </defs>
-      <path d={SLAT_TOWER_PATH} fill="url(#hero-slats)" fillOpacity="0.5" />
-      <path d={FIN_TOWER_PATH} fill="url(#hero-fins)" fillOpacity="0.5" />
-      <g fill="url(#hero-panes)" fillOpacity="0.5">
-        {WINDOW_RECTS.map(([x, y, w, h], i) => (
+      {skyline.towers.map((tower, i) => (
+        <path
+          key={i}
+          d={tower.d}
+          transform={
+            tower.x || tower.y ? `translate(${tower.x} ${tower.y})` : undefined
+          }
+          fill={`url(#${id}-tower-${i})`}
+          fillOpacity="0.5"
+        />
+      ))}
+      <g fill={`url(#${id}-panes)`} fillOpacity="0.5">
+        {skyline.rects.map(([x, y, w, h], i) => (
           <rect key={i} x={x} y={y} width={w} height={h} />
         ))}
       </g>
       <g ref={glowsRef}>
-        {PANES.map(([x, y, w, h], i) => (
+        {panes.map(([x, y, w, h], i) => (
           <rect
             key={i}
             x={x}
@@ -171,7 +175,7 @@ export const HeroWindows = ({
             width={w}
             height={h}
             className="hero-window-glow"
-            style={PANE_TIMING[i]}
+            style={timing[i]}
           />
         ))}
       </g>

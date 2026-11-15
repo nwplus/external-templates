@@ -193,7 +193,34 @@
   opacity: 1;
 }
 
+/* ---- Phone hero (hero-scene-mobile.tsx) --------------------------------
+ * The fireworks frame has the scene sitting a little lower and its sky's
+ * glow lower and wider, so with the fireworks up the layers ease down by
+ * their `--shift` and the second sky fades in over the first.
+ */
+.hero-shift {
+  transition: translate 0.9s cubic-bezier(0.3, 0.6, 0.4, 1);
+}
+
+.hero-shift[data-on] {
+  translate: 0 var(--shift);
+}
+
+.hero-sky-fireworks {
+  opacity: 0;
+  transition: opacity 0.9s ease;
+}
+
+.hero-sky-fireworks[data-on] {
+  opacity: 1;
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .hero-shift,
+  .hero-sky-fireworks {
+    transition: none;
+  }
+
   .lantern-gust,
   .lantern-swing,
   .lantern-tassel,

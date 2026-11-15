@@ -1,4 +1,5 @@
-/** Every nwHacks 2027 scene is a full-width frame this many design px wide. */
+/** Every desktop nwHacks 2027 scene is a full-width frame this many design
+ * px wide; the phone scenes are 402. */
 const FRAME_W = 1512;
 
 /**
@@ -9,13 +10,17 @@ const FRAME_W = 1512;
  * Anything else (a plain SVG) gets nothing extra.
  *
  * `designW` is the art's width in design px; the scenes scale with the
- * viewport, so it shows at `designW / 1512` of the viewport's width.
+ * viewport, so it shows at `designW / frameW` of the viewport's width.
  */
-export const rasterArt = (src: string, designW: number) => {
+export const rasterArt = (
+  src: string,
+  designW: number,
+  frameW: number = FRAME_W
+) => {
   if (!src.endsWith("@2x.webp")) return {};
   const at3x = src.replace(/@2x\.webp$/, "@3x.webp");
   return {
     srcSet: `${src} ${Math.ceil(designW * 2)}w, ${at3x} ${Math.ceil(designW * 3)}w`,
-    sizes: `${((designW / FRAME_W) * 100).toFixed(3)}vw`,
+    sizes: `${((designW / frameW) * 100).toFixed(3)}vw`,
   };
 };
