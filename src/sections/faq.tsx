@@ -1,4 +1,6 @@
 import { FaqScene } from "@/components/faq/faq-scene";
+import { FaqSceneMobile } from "@/components/faq/faq-scene-mobile";
+import { ResponsiveScene } from "@/components/responsive-scene";
 import { faqsByCategory } from "@/lib/faq";
 import {
   CURRENT_HACKATHON,
@@ -18,11 +20,14 @@ const Faq = async () => {
   } catch {
     // Logged in getFAQsByHackathon; the fallback copy keeps the build going.
   }
+  const faqs = faqsByCategory(docs);
 
-  // TODO(mobile): phone layout once designed
   return (
     <section id="faq" data-motion-scope className="relative w-full">
-      <FaqScene faqs={faqsByCategory(docs)} />
+      <ResponsiveScene
+        desktop={<FaqScene faqs={faqs} />}
+        mobile={<FaqSceneMobile faqs={faqs} />}
+      />
     </section>
   );
 };

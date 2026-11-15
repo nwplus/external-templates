@@ -1,5 +1,6 @@
 export const FAQ_TITLE = "FAQs";
 export const FAQ_HINT = "Click on a tank to learn more";
+export const FAQ_HINT_TOUCH = "Tap on a tank to learn more";
 
 /** The three topic tanks, top to bottom, with the Firestore `category` each
  * one shows. */
