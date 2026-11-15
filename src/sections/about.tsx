@@ -1,10 +1,11 @@
 import { AboutScene } from "@/components/about/about-scene";
+import { AboutSceneMobile } from "@/components/about/about-scene-mobile";
+import { ResponsiveScene } from "@/components/responsive-scene";
 
 export default function About() {
-  // TODO(mobile): phone layout once designed
   return (
     <section id="about">
-      <AboutScene />
+      <ResponsiveScene desktop={<AboutScene />} mobile={<AboutSceneMobile />} />
     </section>
   );
 }

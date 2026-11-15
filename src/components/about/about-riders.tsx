@@ -4,36 +4,36 @@ import { rasterArt } from "@/lib/raster-art";
 
 import { useEffect, useRef } from "react";
 
-/** The riders layer (the bear, Nugget and the bike) as placed in Figma, in
- * the 1512 x 982 about frame. */
-const BOX = { x: 514, y: 470, w: 252, h: 222 };
+/** Where the riders cross, in one scene's design frame. */
+export type RidersPath = {
+  /** The scene's design frame. */
+  frame: { width: number; height: number };
+  /** The riders layer (the bear, Nugget and the bike) as placed in Figma. */
+  box: { x: number; y: number; w: number; h: number };
+  /** The deck's arch: the back rail is an ellipse (Figma "Ellipse 674"), and
+   * the riders follow its curve. */
+  arch: { cx: number; cy: number; rx: number; ry: number };
+  /** How far (design px) from their spot in the design they start, toward
+   * the right end, and how far they go on toward the left end. The bike
+   * faces left, so they ride forward. */
+  fromRight: number;
+  toLeft: number;
+};
+
 /** Where the wheels meet the deck, as a share of the box (the pivot). */
 const FEET = { x: 0.5, y: 0.88 };
-/** The deck's arch: the back rail is an ellipse (Figma "Ellipse 674"), and
- * the riders follow its curve. */
-const ARCH = { cx: 735.37, cy: 960.99, rx: 729.8, ry: 330.48 };
-/** How far (design px) from their spot in the design they start, toward the
- * right end, and how far they go on toward the left end. The bike faces
- * left, so they ride forward. */
-const FROM_RIGHT = 480;
-const TO_LEFT = 300;
 /** Share of the section's pass through the viewport over which they cross:
  * smaller is faster, and they rest at each end for the rest. */
 const SPAN = 0.7;
-/** Design px per cqw (the frame is 1512 wide, so 1cqw = 15.12px). */
-const PX_PER_CQW = 15.12;
 
-const deckY = (x: number) => {
-  const u = Math.max(-0.999, Math.min(0.999, (x - ARCH.cx) / ARCH.rx));
-  return ARCH.cy - ARCH.ry * Math.sqrt(1 - u * u);
+const deck = ({ cx, cy, rx, ry }: RidersPath["arch"], x: number) => {
+  const u = Math.max(-0.999, Math.min(0.999, (x - cx) / rx));
+  const root = Math.sqrt(1 - u * u);
+  return {
+    y: cy - ry * root,
+    angle: (Math.atan((ry * u) / (rx * root)) * 180) / Math.PI,
+  };
 };
-const deckAngle = (x: number) => {
-  const u = Math.max(-0.999, Math.min(0.999, (x - ARCH.cx) / ARCH.rx));
-  const slope = (ARCH.ry * u) / (ARCH.rx * Math.sqrt(1 - u * u));
-  return (Math.atan(slope) * 180) / Math.PI;
-};
-
-const FEET_X = BOX.x + BOX.w * FEET.x;
 
 /** How quickly the riders catch up with the scroll: they close about 63% of
  * the gap every this many seconds. Wheel scrolling moves the page in jumps
@@ -52,6 +52,9 @@ const progressFor = (rect: DOMRect, vh: number) => {
 };
 
 const SRC = "/assets/about/riders@2x.webp";
+/** The width (design px) the riders WebPs were rendered for: their box in
+ * the desktop frame. The phone scene draws the same art smaller. */
+const ART_W = 252;
 
 /**
  * The bear, Nugget and the bike, rolling over the arched bridge as the page
@@ -62,8 +65,9 @@ const SRC = "/assets/about/riders@2x.webp";
  * scroll puts them (FOLLOW_S), and the position is written straight to the
  * element's style, so React never re-renders for it.
  */
-export const AboutRiders = () => {
+export const AboutRiders = ({ path }: { path: RidersPath }) => {
   const ref = useRef<HTMLImageElement>(null);
+  const { frame, box } = path;
 
   useEffect(() => {
     const img = ref.current;
@@ -71,11 +75,18 @@ export const AboutRiders = () => {
     if (!img || !section) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
+    const { arch, fromRight, toLeft } = path;
+    // Design px per cqw: the scene is a container as wide as the frame.
+    const perCqw = path.frame.width / 100;
+    const feetX = path.box.x + path.box.w * FEET.x;
+    const home = deck(arch, feetX);
+
     const draw = (t: number) => {
-      const dx = t < 0 ? -t * FROM_RIGHT : -t * TO_LEFT;
-      const dy = deckY(FEET_X + dx) - deckY(FEET_X);
-      const tilt = deckAngle(FEET_X + dx) - deckAngle(FEET_X);
-      img.style.translate = `${(dx / PX_PER_CQW).toFixed(4)}cqw ${(dy / PX_PER_CQW).toFixed(4)}cqw`;
+      const dx = t < 0 ? -t * fromRight : -t * toLeft;
+      const there = deck(arch, feetX + dx);
+      const dy = there.y - home.y;
+      const tilt = there.angle - home.angle;
+      img.style.translate = `${(dx / perCqw).toFixed(4)}cqw ${(dy / perCqw).toFixed(4)}cqw`;
       img.style.rotate = `${tilt.toFixed(3)}deg`;
     };
 
@@ -118,24 +129,24 @@ export const AboutRiders = () => {
       window.removeEventListener("resize", onScroll);
       cancelAnimationFrame(frame);
     };
-  }, []);
+  }, [path]);
 
   return (
     // eslint-disable-next-line @next/next/no-img-element
     <img
       ref={ref}
       src={SRC}
-      {...rasterArt(SRC, BOX.w)}
+      {...rasterArt(SRC, ART_W, (frame.width * ART_W) / box.w)}
       alt=""
-      width={BOX.w}
-      height={BOX.h}
+      width={box.w}
+      height={box.h}
       aria-hidden="true"
       draggable={false}
       className="pointer-events-none absolute h-auto max-w-none select-none will-change-[translate,rotate]"
       style={{
-        left: `${(BOX.x / 1512) * 100}%`,
-        top: `${(BOX.y / 982) * 100}%`,
-        width: `${(BOX.w / 1512) * 100}%`,
+        left: `${(box.x / frame.width) * 100}%`,
+        top: `${(box.y / frame.height) * 100}%`,
+        width: `${(box.w / frame.width) * 100}%`,
         transformOrigin: `${FEET.x * 100}% ${FEET.y * 100}%`,
       }}
     />
