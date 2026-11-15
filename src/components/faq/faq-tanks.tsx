@@ -4,7 +4,7 @@ import type { CSSProperties } from "react";
 
 import { Art, boxStyle, u } from "./faq-art";
 import { bobStyle, burstBubbles, FishArt } from "./faq-fish";
-import { type Tank, type TankLabel, TANKS } from "./faq-layout";
+import { type Shift, type Tank, type TankLabel, TANKS } from "./faq-layout";
 
 /** "here" until first picked, "gone" while picked, "back" after that. */
 export type TankPhase = "here" | "gone" | "back";
@@ -57,6 +57,8 @@ type TopicTankProps = {
   phase: TankPhase;
   selected: boolean;
   onPick: (id: FaqCategoryId) => void;
+  /** Moves the whole tank from its desktop spot (design px). */
+  offset?: Shift;
 };
 
 /**
@@ -70,15 +72,19 @@ const TopicTank = ({
   phase,
   selected,
   onPick,
+  offset,
 }: TopicTankProps) => {
   const origin = { x: tank.x, y: tank.y };
+  const box = offset
+    ? { ...tank, x: tank.x + offset.dx, y: tank.y + offset.dy }
+    : tank;
   const seed = (index + 1) * 10;
 
   return (
     <button
       type="button"
       className="faq-tank absolute block appearance-none border-0 bg-transparent p-0 text-left"
-      style={boxStyle(tank)}
+      style={boxStyle(box)}
       data-phase={phase}
       aria-expanded={selected}
       aria-controls="faq-questions"
@@ -149,10 +155,17 @@ type TopicTanksProps = {
   selected: FaqCategoryId | null;
   phases: Record<FaqCategoryId, TankPhase>;
   onPick: (id: FaqCategoryId) => void;
+  /** Per-tank moves from the desktop stack (the phone stack staggers them). */
+  offsets?: Record<FaqCategoryId, Shift>;
 };
 
-/** The stack of three topic tanks on the left. */
-export const TopicTanks = ({ selected, phases, onPick }: TopicTanksProps) => (
+/** The stack of three topic tanks. */
+export const TopicTanks = ({
+  selected,
+  phases,
+  onPick,
+  offsets,
+}: TopicTanksProps) => (
   <>
     {TANKS.map((tank, i) => (
       <TopicTank
@@ -162,6 +175,7 @@ export const TopicTanks = ({ selected, phases, onPick }: TopicTanksProps) => (
         phase={phases[tank.id]}
         selected={selected === tank.id}
         onPick={onPick}
+        offset={offsets?.[tank.id]}
       />
     ))}
   </>

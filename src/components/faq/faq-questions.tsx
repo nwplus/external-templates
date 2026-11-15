@@ -10,10 +10,53 @@ import { type CSSProperties, forwardRef, Fragment } from "react";
 import { u } from "./faq-art";
 import { QUESTIONS } from "./faq-layout";
 
-const Answer = ({ text }: { text: string }) => (
+/** A question tab's measurements in design px (the scene's `--u`). */
+export type QuestionSizes = {
+  /** Space between questions. */
+  gap: number;
+  /** The slab under the tab: where it starts, and how far below the tab it
+   * shows. */
+  slabTop: number;
+  slabBelow: number;
+  minHeight: number;
+  padY: number;
+  padX: number;
+  radius: number;
+  textW: number;
+  fontSize: number;
+  /** The plus / minus: its box and the glyph. */
+  icon: number;
+  glyph: number;
+  /** How far the tab sinks on hover and when pressed. */
+  hover: number;
+  press: number;
+  answerSize: number;
+  answerPad: { top: number; x: number };
+};
+
+/** The desktop picked frames' tabs. */
+const DESKTOP_SIZES: QuestionSizes = {
+  gap: 20,
+  slabTop: 14,
+  slabBelow: 13,
+  minHeight: 54.689,
+  padY: 12,
+  padX: 34,
+  radius: 14,
+  textW: 394,
+  fontSize: 22,
+  icon: 27.217,
+  glyph: 19.212,
+  hover: 3,
+  press: 10,
+  answerSize: 20,
+  answerPad: { top: 20, x: 23 },
+};
+
+const Answer = ({ text, size }: { text: string; size: number }) => (
   <div
     className="flex flex-col leading-[1.3] font-medium text-white"
-    style={{ fontSize: u(20), gap: "1.3em" }}
+    style={{ fontSize: u(size), gap: "1.3em" }}
   >
     {parseAnswer(text).map((runs, p) => (
       <p key={p}>
@@ -45,14 +88,24 @@ type QuestionProps = {
   index: number;
   open: boolean;
   onToggle: () => void;
+  sizes: QuestionSizes;
 };
 
 /**
  * One question: a tab raised on a darker slab, like the design's buttons,
  * that opens its answer underneath.
  */
-const Question = ({ faq, id, index, open, onToggle }: QuestionProps) => (
-  <li className="faq-question" style={{ "--i": index } as CSSProperties}>
+const Question = ({ faq, id, index, open, onToggle, sizes }: QuestionProps) => (
+  <li
+    className="faq-question"
+    style={
+      {
+        "--i": index,
+        "--hover": u(sizes.hover),
+        "--press": u(sizes.press),
+      } as CSSProperties
+    }
+  >
     <h3>
       <button
         type="button"
@@ -61,40 +114,40 @@ const Question = ({ faq, id, index, open, onToggle }: QuestionProps) => (
         aria-controls={`${id}-a`}
         onClick={onToggle}
         className="group relative block w-full cursor-pointer text-left focus-visible:outline-none"
-        style={{ paddingBottom: u(13) }}
+        style={{ paddingBottom: u(sizes.slabBelow) }}
       >
         <span
           aria-hidden="true"
           className="absolute inset-x-0 bottom-0 bg-[#cf9f3e]"
-          style={{ top: u(14), borderRadius: u(14) }}
+          style={{ top: u(sizes.slabTop), borderRadius: u(sizes.radius) }}
         />
         <span
-          className="relative flex items-center justify-between bg-[#f2d69f] transition-transform duration-150 group-hover:translate-y-[calc(3*var(--u))] group-focus-visible:outline-3 group-focus-visible:outline-offset-2 group-focus-visible:outline-lamp group-active:translate-y-[calc(10*var(--u))]"
+          className="relative flex items-center justify-between bg-[#f2d69f] transition-transform duration-150 group-hover:translate-y-(--hover) group-focus-visible:outline-3 group-focus-visible:outline-offset-2 group-focus-visible:outline-lamp group-active:translate-y-(--press)"
           style={{
-            minHeight: u(54.689),
-            padding: `${u(12)} ${u(34)}`,
-            borderRadius: u(14),
+            minHeight: u(sizes.minHeight),
+            padding: `${u(sizes.padY)} ${u(sizes.padX)}`,
+            borderRadius: u(sizes.radius),
           }}
         >
           <span
             className="leading-[normal] font-medium text-[#821c1d]"
-            style={{ width: u(394), fontSize: u(22) }}
+            style={{ width: u(sizes.textW), fontSize: u(sizes.fontSize) }}
           >
             {faq.question}
           </span>
           <span
             aria-hidden="true"
             className="relative flex shrink-0 items-center justify-center"
-            style={{ width: u(27.217), height: u(27.217) }}
+            style={{ width: u(sizes.icon), height: u(sizes.icon) }}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={open ? "/assets/faq/minus.svg" : "/assets/faq/plus.svg"}
               alt=""
-              width={19.212}
-              height={19.212}
+              width={sizes.glyph}
+              height={sizes.glyph}
               draggable={false}
-              style={{ width: u(19.212), height: u(19.212) }}
+              style={{ width: u(sizes.glyph), height: u(sizes.glyph) }}
             />
           </span>
         </span>
@@ -109,8 +162,12 @@ const Question = ({ faq, id, index, open, onToggle }: QuestionProps) => (
       style={{ gridTemplateRows: open ? "1fr" : "0fr" }}
     >
       <div className="overflow-hidden">
-        <div style={{ padding: `${u(20)} ${u(23)} 0` }}>
-          <Answer text={faq.answer} />
+        <div
+          style={{
+            padding: `${u(sizes.answerPad.top)} ${u(sizes.answerPad.x)} 0`,
+          }}
+        >
+          <Answer text={faq.answer} size={sizes.answerSize} />
         </div>
       </div>
     </div>
@@ -127,6 +184,10 @@ type FaqQuestionsProps = {
   active: boolean;
   open: number | null;
   onToggle: (index: number) => void;
+  /** The column in the frame (design px); the desktop picked frames'
+   * unless given. */
+  column?: { x: number; y: number; w: number; bottomPad: number };
+  sizes?: QuestionSizes;
 };
 
 /**
@@ -135,7 +196,20 @@ type FaqQuestionsProps = {
  * the long tank.
  */
 export const FaqQuestions = forwardRef<HTMLUListElement, FaqQuestionsProps>(
-  ({ category, faqs, pickCount, delay, active, open, onToggle }, ref) => {
+  (
+    {
+      category,
+      faqs,
+      pickCount,
+      delay,
+      active,
+      open,
+      onToggle,
+      column = QUESTIONS,
+      sizes = DESKTOP_SIZES,
+    },
+    ref
+  ) => {
     const label = FAQ_CATEGORIES.find(({ id }) => id === category)?.label;
     return (
       <div
@@ -145,10 +219,10 @@ export const FaqQuestions = forwardRef<HTMLUListElement, FaqQuestionsProps>(
         inert={!active}
         className="faq-panel pointer-events-none relative z-10"
         style={{
-          marginLeft: u(QUESTIONS.x),
-          width: u(QUESTIONS.w),
-          paddingTop: u(QUESTIONS.y),
-          paddingBottom: u(QUESTIONS.bottomPad),
+          marginLeft: u(column.x),
+          width: u(column.w),
+          paddingTop: u(column.y),
+          paddingBottom: u(column.bottomPad),
         }}
       >
         {category && (
@@ -157,7 +231,10 @@ export const FaqQuestions = forwardRef<HTMLUListElement, FaqQuestionsProps>(
             ref={ref}
             className="pointer-events-auto flex flex-col"
             style={
-              { gap: u(20), "--panel-delay": `${delay}s` } as CSSProperties
+              {
+                gap: u(sizes.gap),
+                "--panel-delay": `${delay}s`,
+              } as CSSProperties
             }
           >
             {faqs.map((faq, i) => (
@@ -168,6 +245,7 @@ export const FaqQuestions = forwardRef<HTMLUListElement, FaqQuestionsProps>(
                 index={i}
                 open={open === i}
                 onToggle={() => onToggle(i)}
+                sizes={sizes}
               />
             ))}
           </ul>

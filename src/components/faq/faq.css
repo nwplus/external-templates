@@ -70,8 +70,12 @@
   transition: translate 0.2s ease;
 }
 
-.faq-tank:hover {
-  translate: 0 calc(-4 * var(--u));
+/* Only where there's a pointer to hover with: a tap would leave the tank
+   lifted. */
+@media (hover: hover) {
+  .faq-tank:hover {
+    translate: 0 calc(-4 * var(--u));
+  }
 }
 
 .faq-tank:focus-visible {
