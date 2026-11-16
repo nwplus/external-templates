@@ -12,8 +12,9 @@
   --zoom: clamp(0, calc((var(--p, 0) - 0.38) / 0.62), 1);
   /* Once the market is worth looking at, the doorway opens up to the whole
      frame, so the section hands over to testimonials at the same size. */
-  --open: clamp(0, calc((var(--zoom, 0) - 0.35) / 0.5), 1);
-  --open-k: calc(1 + var(--open) * 1.6);
+  --open: clamp(0, calc((var(--zoom, 0) - 0.02) / 0.98), 1);
+  --open-k: calc(1 + var(--open) * 1.35);
+  --scene-k: calc(1 + var(--open) * 1.35);
   --cue: clamp(0, calc(var(--p, 0) * 6), 1);
 }
 
@@ -44,27 +45,24 @@
   transform-origin: 50% 100%;
 }
 
-/* The doorway grows past the frame as the pin ends; scaling about the
-   frame's centre keeps the market where the next section will draw it. */
-.recap-opening {
-  transform: scale(var(--open-k));
-  transform-origin: 49.8% 30.05%;
+/* The whole garage pushes toward the doorway's centre: facade, door and
+   market all zoom at once, so the walk reads as one camera move. */
+.recap-scene-scale {
+  transform: scale(var(--scene-k));
+  transform-origin: 50.2% 64.3%;
   will-change: transform;
 }
 
-/* The market behind the door: small and far at first, filling more of the
-   opening as the door clears, then pushing toward the camera as the pin runs
-   out. Dividing by the doorway's growth keeps it at 1:1 with the frame. */
+/* The market sits a little back while the door is still rolling and lands
+   exactly where the next section draws it: dividing by the frame's growth
+   keeps it at 1:1 with the screen at the end. */
 .recap-street {
-  transform: scale(calc((0.85 + var(--zoom) * 0.3) / var(--open-k)));
+  transform: scale(calc((0.85 + var(--zoom) * 0.15) / var(--scene-k)));
   transform-origin: 50% 52%;
   will-change: transform;
 }
 
-/* The garage itself steps out of the way once the market takes the frame. */
-.recap-chrome {
-  opacity: clamp(0, calc(1 - var(--open) * 1.25), 1);
-}
+
 
 /* Night air sits on the market until the door is open. */
 .recap-street-shade {
@@ -167,6 +165,7 @@
     display: none;
   }
 
+  .recap-scene-scale,
   .recap-door,
   .recap-photos,
   .recap-street,

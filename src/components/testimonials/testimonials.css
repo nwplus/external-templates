@@ -52,7 +52,7 @@
 
 @keyframes testi-in-right {
   from {
-    transform: translateX(102%) rotate(2.4deg);
+    transform: translateX(165%) rotate(1.2deg);
   }
   to {
     transform: translateX(0) rotate(0deg);
@@ -61,7 +61,7 @@
 
 @keyframes testi-in-left {
   from {
-    transform: translateX(-102%) rotate(-2.4deg);
+    transform: translateX(-165%) rotate(-1.2deg);
   }
   to {
     transform: translateX(0) rotate(0deg);
@@ -73,7 +73,7 @@
     transform: translateX(0) rotate(0deg);
   }
   to {
-    transform: translateX(-102%) rotate(-2.4deg);
+    transform: translateX(-165%) rotate(-1.2deg);
   }
 }
 
@@ -82,7 +82,7 @@
     transform: translateX(0) rotate(0deg);
   }
   to {
-    transform: translateX(102%) rotate(2.4deg);
+    transform: translateX(165%) rotate(1.2deg);
   }
 }
 
