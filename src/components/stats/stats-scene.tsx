@@ -27,21 +27,26 @@ export const StatsScene = () => (
       box={STATS_DESKTOP.mentors}
       className="stats-rise"
       style={{ "--rise": "0.15s" } as React.CSSProperties}
+      fit="contain"
+      alt="Mentors"
     />
     <SceneLayer
       src="/assets/stats/hackers.webp"
       box={STATS_DESKTOP.hackers}
       className="stats-rise"
       style={{ "--rise": "0.3s" } as React.CSSProperties}
+      fit="contain"
+      alt="734 hackers"
     />
     <SceneLayer
       src="/assets/stats/bear.webp"
       box={STATS_DESKTOP.bear}
       className="stats-bear"
       style={{ "--rise": "0.45s" } as React.CSSProperties}
+      fit="contain"
     />
 
-    <p className="absolute top-[2.762%] left-1/2 w-[26.79%] -translate-x-1/2 text-center font-display text-[3.175cqw] leading-[1.2] text-[#ffe7ac] whitespace-nowrap">
+    <p className="absolute top-[2.762%] left-1/2 w-[26.79%] -translate-x-1/2 text-center font-display text-[3.175cqw] leading-[1.2] text-white whitespace-nowrap">
       Last year we had…
     </p>
 
@@ -54,12 +59,16 @@ export const StatsScene = () => (
       src="/assets/stats/recap-2027.webp"
       box={STATS_DESKTOP.recap2027}
       className="stats-arrow"
+      fit="contain"
+      alt="Watch the 2027 recap"
     />
     <SceneLayer
       src="/assets/stats/projects.webp"
       box={STATS_DESKTOP.projects}
       className="stats-rise"
       style={{ "--rise": "0.55s" } as React.CSSProperties}
+      fit="contain"
+      alt="182 projects"
     />
   </div>
 );

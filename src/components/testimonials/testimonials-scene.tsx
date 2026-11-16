@@ -37,7 +37,7 @@ export const TestimonialsScene = () => {
       data-selected={selected === null ? undefined : ""}
       className="@container relative aspect-[1512/982] w-full overflow-hidden bg-[#1b1a26]"
     >
-      <SceneLayer src="/assets/testimonials/bg.webp" box={L.bg} priority />
+      <SceneLayer src="/assets/testimonials/bg.webp" box={L.bg} className="testi-bg" priority />
 
       {/* Wide shot: the three carts, each a button. */}
       {STALLS.map((stall, index) => (
@@ -46,6 +46,8 @@ export const TestimonialsScene = () => {
           type="button"
           onClick={() => setSelected(index)}
           aria-label={`Read ${TESTIMONIALS[index].name}'s testimonial`}
+          aria-hidden={selected !== null}
+          tabIndex={selected === null ? 0 : -1}
           className="testi-base testi-stall absolute cursor-pointer"
           style={frameStyle(stall.base)}
         >
@@ -83,25 +85,38 @@ export const TestimonialsScene = () => {
       <div className="testi-stall absolute text-center" style={frameStyle(L.title)}>
         <h2
           ref={heading}
-          className="font-display text-[3.175cqw] leading-none text-[#ffe7ac] whitespace-nowrap"
+          className="font-display text-[3.175cqw] leading-none text-white whitespace-nowrap"
         >
           Testimonials
         </h2>
       </div>
 
-      {/* The bubble, with the tail aimed back at the cart. */}
+      {/* The tail is its own shape in the design (a wide wedge from the card
+          back to the cart), so it is drawn from that box rather than as a
+          corner of the card. */}
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+        className="testi-card absolute fill-[#f6e9e9]"
+        style={frameStyle(L.tail)}
+        data-open={person === null ? undefined : ""}
+      >
+        <path d="M100 0 L100 100 L0 62 L100 22 Z" />
+      </svg>
+
+      {/* The bubble. */}
       <div
         className="testi-card absolute"
         data-open={person === null ? undefined : ""}
         aria-hidden={person === null}
-        style={frameStyle(L.card)}
+        style={{ ...frameStyle(L.card), height: "auto" }}
       >
-        <div className="relative size-full rounded-[1.1cqw] bg-[#fdfbf7] shadow-[0_1.4cqw_3.2cqw_rgb(0_0_0_/_0.28)]">
-          <span
-            className="absolute top-[18%] -left-[3.4%] size-[6.2%] rotate-45 rounded-[0.35cqw] bg-[#fdfbf7]"
-            aria-hidden="true"
-          />
-          <p className="absolute inset-x-[7.8%] inset-y-[8%] flex flex-col justify-center text-[1.058cqw] leading-[1.42] text-[#2b2b33]">
+        <div
+          aria-live="polite"
+          className="relative w-full rounded-[1.1cqw] bg-[#f6e9e9] px-[7.8%] py-[7%] shadow-[0_1.4cqw_3.2cqw_rgb(0_0_0_/_0.28)]"
+        >
+          <p className="text-[1.058cqw] leading-[1.42] text-[#2b2b33]">
             {person?.quote}
           </p>
         </div>
@@ -109,7 +124,7 @@ export const TestimonialsScene = () => {
 
       <p
         className="testi-hint absolute text-center text-[1.323cqw] font-medium text-[#ffe7ac]/85"
-        style={frameStyle(L.hint)}
+        style={frameStyle(person === null ? L.hint : L.hintOpen)}
       >
         {person === null ? TESTIMONIALS_HINT : TESTIMONIALS_HINT_OPEN}
         {person === null && <span aria-hidden="true"> ▸</span>}

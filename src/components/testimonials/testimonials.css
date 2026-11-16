@@ -96,9 +96,21 @@
 }
 
 .testi-zoom {
-  transform: scale(calc(0.62 + var(--arrive) * 0.38));
+  transform: scale(calc(0.72 + var(--arrive) * 0.28));
   transform-origin: center;
   will-change: transform;
+}
+
+/* The street behind grows slower than the frame around it, so the arrival
+   reads as walking toward the stalls rather than zooming a picture. */
+.testi-bg {
+  transform: scale(calc(1.16 - var(--arrive) * 0.16));
+  transform-origin: 50% 58%;
+}
+
+.testi-vignette {
+  background: radial-gradient(66% 66% at 50% 46%, transparent 36%, #080b11 100%);
+  opacity: calc(1 - var(--arrive));
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -113,6 +125,15 @@
 
   .testi-zoom {
     transform: none;
+  }
+
+  /* No approach, so no distance shading either. */
+  .testi-bg {
+    transform: none;
+  }
+
+  .testi-vignette {
+    display: none;
   }
 }
 

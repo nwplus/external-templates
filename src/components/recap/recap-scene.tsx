@@ -21,11 +21,12 @@ export const RecapScene = () => {
   useScrollProgress(pin);
 
   return (
-    <div ref={pin} className="recap-pin relative h-[220vh]">
+    <div ref={pin} className="recap-pin relative h-[180vh]">
       <div className="recap-sticky flex h-screen items-center justify-center overflow-hidden bg-[#0b101c]">
         <div className="@container relative aspect-[1512/982] w-[min(100%,calc(100vh*1.5397))] overflow-hidden bg-[#0b101c]">
           <SceneLayer src="/assets/recap/wall.webp" box={RECAP_DESKTOP.wall} priority />
           <div className="recap-glow pointer-events-none absolute inset-0" />
+          <div className="recap-floor pointer-events-none absolute inset-0" />
           <SceneLayer
             src="/assets/recap/column-left.webp"
             box={RECAP_DESKTOP.columnLeft}
@@ -38,25 +39,25 @@ export const RecapScene = () => {
             src="/assets/recap/lights.webp"
             box={RECAP_DESKTOP.lights}
             className="recap-lights"
+            fit="contain"
           />
 
+          {/* The door and everything pinned to it roll up as one piece: the
+              polaroids are on the door in the design, so they leave with it
+              and reveal the lit garage behind. */}
           <div className="recap-door pointer-events-none absolute inset-0">
             <SceneLayer src="/assets/recap/door.webp" box={RECAP_DESKTOP.door} />
+            <SceneLayer src="/assets/recap/photos.webp" box={RECAP_DESKTOP.photos} />
             <SceneLayer
               src="/assets/recap/top-shadow.webp"
               box={RECAP_DESKTOP.topShadow}
               className="z-10"
             />
+            <SceneLayer
+              src="/assets/recap/door-shadow.webp"
+              box={RECAP_DESKTOP.doorShadow}
+            />
           </div>
-
-          <div className="recap-photos pointer-events-none absolute inset-0">
-            <SceneLayer src="/assets/recap/photos.webp" box={RECAP_DESKTOP.photos} />
-          </div>
-
-          <SceneLayer
-            src="/assets/recap/door-shadow.webp"
-            box={RECAP_DESKTOP.doorShadow}
-          />
           <SceneLayer
             src="/assets/recap/side-shadow-left.webp"
             box={RECAP_DESKTOP.sideShadowL}
@@ -71,7 +72,7 @@ export const RecapScene = () => {
           />
 
           <div className="recap-title absolute inset-x-0 top-[16.8%] flex flex-col items-center gap-[0.8cqw]">
-            <h2 className="font-display text-[3.175cqw] leading-none text-[#ffe7ac]">
+            <h2 className="font-display text-[3.175cqw] leading-none text-white">
               Recap
             </h2>
             <span className="recap-cue flex items-center gap-[0.4cqw] text-[0.95cqw] font-medium tracking-[0.14em] text-[#ffe7ac]/70 uppercase">

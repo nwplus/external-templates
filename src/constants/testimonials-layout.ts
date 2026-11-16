@@ -16,6 +16,7 @@ export const TESTIMONIALS_DESKTOP = {
   tail: { x: 47.877, y: 35.804, w: 8.439, h: 8.269 },
   title: { x: 36.442, y: 6.008, w: 27.183, h: 7.637 },
   hint: { x: 36.442, y: 13.646, w: 27.183, h: 2.749 },
+  hintOpen: { x: 60.582, y: 72.811, w: 25.86, h: 2.749 },
   arrows: { x: 64.153, y: 76.273, w: 17.923, h: 5.092 },
 } as const;
 

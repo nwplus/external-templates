@@ -54,10 +54,28 @@ export const TestimonialsSceneMobile = () => {
         );
       })}
 
+      {/* Tapping the cart is the phone equivalent of picking a stall on
+          desktop: it steps to the next person. */}
+      <button
+        type="button"
+        onClick={() => setIndex((i) => (i + 1) % TESTIMONIALS.length)}
+        aria-label="Next testimonial"
+        className="absolute cursor-pointer"
+        style={frameStyle(
+          index === 0
+            ? STALLS.pascale.stall
+            : index === 1
+              ? STALLS.vaibhav.stall
+              : STALLS.qazi.stall
+        )}
+      >
+        <span className="sr-only">Next testimonial</span>
+      </button>
+
       <div className="absolute" style={{ ...frameStyle(L.card), height: "auto" }}>
-        <div className="relative w-full rounded-[2.4cqw] bg-[#fdfbf7] px-[6%] py-[5%] shadow-[0_2cqw_5cqw_rgb(0_0_0_/_0.35)]">
+        <div className="relative w-full rounded-[2.4cqw] bg-[#f6e9e9] px-[6%] py-[5%] shadow-[0_2cqw_5cqw_rgb(0_0_0_/_0.35)]">
           <span
-            className="absolute top-[-2.2cqw] left-1/2 size-[4.4cqw] -translate-x-1/2 rotate-45 rounded-[0.6cqw] bg-[#fdfbf7]"
+            className="absolute top-[-2.2cqw] left-1/2 size-[4.4cqw] -translate-x-1/2 rotate-45 rounded-[0.6cqw] bg-[#f6e9e9]"
             aria-hidden="true"
           />
           <p className="text-[2.6cqw] leading-[1.36] text-[#2b2b33]">

@@ -27,7 +27,7 @@ export const StatsVideo = ({ box }: { box: Box }) => {
         draggable={false}
         className="stats-video-frame pointer-events-none absolute inset-0 size-full select-none"
       />
-      <div className="absolute inset-x-[3.8%] inset-y-[5.2%] overflow-hidden rounded-[0.5cqw] bg-[#050b12]">
+      <div className="absolute inset-[11.6%_8.8%_12%_9.7%] overflow-hidden rounded-[0.5cqw] bg-[#050b12]">
         {playing ? (
           <iframe
             className="size-full"
@@ -47,6 +47,7 @@ export const StatsVideo = ({ box }: { box: Box }) => {
               src={`https://i.ytimg.com/vi/${RECAP_VIDEO_ID}/maxresdefault.jpg`}
               alt=""
               aria-hidden="true"
+              loading="lazy"
               className="size-full object-cover opacity-80 transition-opacity duration-300 group-hover:opacity-100"
             />
             <span className="absolute inset-0 grid place-items-center">

@@ -4,7 +4,7 @@ import { TestimonialsSceneMobile } from "@/components/testimonials/testimonials-
 
 export default function Testimonials() {
   return (
-    <section id="testimonials">
+    <section id="testimonials" data-motion-scope>
       <ResponsiveScene
         desktop={<TestimonialsArrival />}
         mobile={<TestimonialsSceneMobile />}

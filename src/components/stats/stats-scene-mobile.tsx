@@ -15,31 +15,38 @@ export const StatsSceneMobile = () => (
       className="stats-clouds"
     />
 
-    <p className="absolute top-[3.97%] left-1/2 w-[62.94%] -translate-x-1/2 text-center font-display text-[6.3cqw] leading-[1.2] text-[#ffe7ac]">
+    <p className="absolute top-[3.97%] left-1/2 w-[62.94%] -translate-x-1/2 text-center font-display text-[6.3cqw] leading-[1.2] text-white">
       Last year we had…
     </p>
 
     <SceneLayer
       src="/assets/stats/projects.webp"
       box={STATS_MOBILE.projects}
+      fit="contain"
+      alt="182 projects"
       className="stats-rise"
       style={{ "--rise": "0.1s" } as React.CSSProperties}
     />
     <SceneLayer
       src="/assets/stats/mentors.webp"
       box={STATS_MOBILE.mentors}
+      fit="contain"
+      alt="Mentors"
       className="stats-rise"
       style={{ "--rise": "0.2s" } as React.CSSProperties}
     />
     <SceneLayer
       src="/assets/stats/bear.webp"
       box={STATS_MOBILE.bear}
+      fit="contain"
       className="stats-bear"
       style={{ "--rise": "0.3s" } as React.CSSProperties}
     />
     <SceneLayer
       src="/assets/stats/hackers.webp"
       box={STATS_MOBILE.hackers}
+      fit="contain"
+      alt="734 hackers"
       className="stats-rise"
       style={{ "--rise": "0.4s" } as React.CSSProperties}
     />
@@ -49,9 +56,11 @@ export const StatsSceneMobile = () => (
       className="stats-lanterns"
     />
     <SceneLayer
-      src="/assets/stats/recap-2027.webp"
+      src="/assets/stats/recap-2027-mobile.webp"
       box={STATS_MOBILE.recap2027}
       className="stats-arrow"
+      fit="contain"
+      alt="Watch the 2027 recap"
     />
 
     <StatsVideo box={STATS_MOBILE.video} />

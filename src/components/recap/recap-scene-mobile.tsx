@@ -33,7 +33,13 @@ export const RecapSceneMobile = () => (
       />
     ))}
 
-    <h2 className="absolute inset-x-0 top-[3.09%] text-center font-display text-[7.37cqw] leading-none text-[#ffe7ac]">
+    <SceneLayer
+      src="/assets/recap/mobile-lights.webp"
+      box={RECAP_MOBILE.lights}
+      fit="contain"
+    />
+
+    <h2 className="absolute inset-x-0 top-[3.09%] text-center font-display text-[7.37cqw] leading-none text-white">
       Recap
     </h2>
   </div>

@@ -4,7 +4,7 @@ import { ResponsiveScene } from "@/components/responsive-scene";
 
 export default function Recap() {
   return (
-    <section id="recap">
+    <section id="recap" data-motion-scope>
       <ResponsiveScene
         desktop={<RecapScene />}
         mobile={<RecapSceneMobile />}

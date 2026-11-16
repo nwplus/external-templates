@@ -13,12 +13,21 @@ export const SceneLayer = ({
   className,
   style,
   priority,
+  fit = "fill",
+  alt = "",
 }: {
   src: string;
   box: Box;
   className?: string;
   style?: CSSProperties;
   priority?: boolean;
+  /** "contain" keeps the art's own aspect inside the box. A few Figma
+   * exports carry glow past the node's box, so stretching them would distort
+   * the drawing; contain centres it instead. */
+  fit?: "fill" | "contain";
+  /** Only for art that carries meaning (the stats signs). Everything else
+   * stays decorative. */
+  alt?: string;
 }) => (
   <div className={cn("pointer-events-none absolute", className)} style={{ ...frameStyle(box), ...style }}>
     {/* Plain <img>: these are pre-cropped Figma exports, so next/image has
@@ -26,12 +35,12 @@ export const SceneLayer = ({
     {/* eslint-disable-next-line @next/next/no-img-element */}
     <img
       src={src}
-      alt=""
-      aria-hidden="true"
+      alt={alt}
+      aria-hidden={alt ? undefined : "true"}
       draggable={false}
       decoding={priority ? "sync" : "async"}
       loading={priority ? "eager" : "lazy"}
-      className="size-full select-none"
+      className={cn("size-full select-none", fit === "contain" && "object-contain")}
     />
   </div>
 );

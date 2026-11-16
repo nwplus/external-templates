@@ -1,6 +1,6 @@
 "use client";
 
-import { useScrollProgress } from "@/hooks/use-scroll-progress";
+import { smoothstep, useScrollProgress } from "@/hooks/use-scroll-progress";
 
 import { useRef } from "react";
 
@@ -13,7 +13,7 @@ import { TestimonialsScene } from "./testimonials-scene";
  */
 export const TestimonialsArrival = () => {
   const pin = useRef<HTMLDivElement>(null);
-  useScrollProgress(pin);
+  useScrollProgress(pin, smoothstep);
 
   return (
     <div ref={pin} className="testi-pin relative h-[220vh]">
@@ -21,14 +21,7 @@ export const TestimonialsArrival = () => {
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(62%_62%_at_50%_46%,#101725_0%,#070a10_78%)]" />
         {/* At a distance the street's rectangle melts into the dark; it
             sharpens back up as the scene fills the frame. */}
-        <div
-          className="pointer-events-none absolute inset-0"
-          style={{
-            background:
-              "radial-gradient(66% 66% at 50% 46%, transparent 36%, #080b11 100%)",
-            opacity: "calc(1 - var(--arrive))",
-          }}
-        />
+        <div className="testi-vignette pointer-events-none absolute inset-0" />
         <div className="testi-zoom relative w-[min(100%,calc(100vh*1.5397))] shadow-[0_6vh_18vh_rgb(0_0_0_/_0.55)]">
           <TestimonialsScene />
         </div>
