@@ -186,7 +186,7 @@ function SponsorsScene({ mobile }: { mobile: boolean }) {
       </h2>
       <div
         className="sponsor-introduction"
-        style={mobile ? box(70, 180, 263, 196) : box(343, 426, 826, 168)}
+        style={mobile ? box(70, 180, 263, 169) : box(343, 425, 826, 169)}
       >
         <p>
           {mobile ? (

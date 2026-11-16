@@ -66,7 +66,21 @@ function ProjectScene({ mobile }: { mobile: boolean }) {
                     }
                   : layer
               )
-            : PROJECT_DESKTOP
+            : PROJECT_DESKTOP.map((layer) => {
+                if (selected === null) return layer;
+                const state = ["red", "duck", "braille"][selected];
+                const activeFruit = [
+                  "Left Fruits",
+                  "Centre fruit",
+                  "Right Fruits",
+                ][selected];
+                return layer.name === "Tags" || layer.name === activeFruit
+                  ? {
+                      ...layer,
+                      src: `/assets/past-projects/desktop/selected-${state}-${layer.name === "Tags" ? "tags" : "fruits"}.svg`,
+                    }
+                  : layer;
+              })
         }
         width={width}
         height={height}

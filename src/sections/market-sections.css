@@ -18,7 +18,7 @@
   overflow: hidden;
   container-type: inline-size;
   color: white;
-  font-family: "HK Grotesk", var(--font-hanken-grotesk), sans-serif;
+  font-family: var(--font-hanken-grotesk), sans-serif;
 }
 .section-art {
   position: absolute;
@@ -188,7 +188,7 @@
   margin: 0;
 }
 .sponsor-introduction p + p {
-  margin-top: 2.6455cqw;
+  margin-top: 1.71958cqw;
 }
 .market-mobile .sponsor-introduction {
   font-size: 3.7313cqw;
