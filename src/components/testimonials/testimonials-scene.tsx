@@ -27,7 +27,7 @@ const STALLS = [
  *
  * The whole scene runs edge to edge; the recap opens onto the same picture.
  */
-export const TestimonialsScene = () => {
+export const TestimonialsScene = ({ bare = false }: { bare?: boolean }) => {
   const [selected, setSelected] = useState<number | null>(null);
   const [leaving, setLeaving] = useState<number | null>(null);
   const [direction, setDirection] = useState<1 | -1>(1);
@@ -50,7 +50,10 @@ export const TestimonialsScene = () => {
   return (
     <div
       data-selected={selected === null ? undefined : ""}
-      className="@container relative aspect-[1512/982] w-full overflow-hidden bg-[#1b1a26]"
+      className={cn(
+        "@container relative aspect-[1512/982] w-full overflow-hidden bg-[#1b1a26]",
+        bare && "pointer-events-none"
+      )}
     >
       <SceneLayer src="/assets/testimonials/bg.webp" box={L.bg} priority />
 
@@ -99,11 +102,14 @@ export const TestimonialsScene = () => {
         </div>
       ))}
 
-      <div className="testi-stall absolute text-center" style={frameStyle(L.title)}>
-        <h2 className="font-display text-[3.175cqw] leading-none text-white whitespace-nowrap">
-          Testimonials
-        </h2>
-      </div>
+      <div style={{ opacity: "var(--market-chrome, 1)" }}>
+      {!bare && (
+        <div className="testi-stall absolute text-center" style={frameStyle(L.title)}>
+          <h2 className="font-display text-[3.175cqw] leading-none text-white whitespace-nowrap">
+            Testimonials
+          </h2>
+        </div>
+      )}
 
       {/* The tail is its own shape in the design (a wide wedge from the card
           back to the cart), so it is drawn from that box rather than as a
@@ -139,23 +145,28 @@ export const TestimonialsScene = () => {
         </div>
       </div>
 
-      <p
-        className="testi-hint absolute text-center text-[1.323cqw] font-medium text-[#ffe7ac]/85"
-        style={frameStyle(person === null ? L.hint : L.hintOpen)}
-      >
-        {person === null ? TESTIMONIALS_HINT : TESTIMONIALS_HINT_OPEN}
-        {person === null && <span aria-hidden="true"> ▸</span>}
-      </p>
+      {!bare && (
+        <p
+          className="testi-hint absolute text-center text-[1.323cqw] font-medium text-[#ffe7ac]/85"
+          style={frameStyle(person === null ? L.hint : L.hintOpen)}
+        >
+          {person === null ? TESTIMONIALS_HINT : TESTIMONIALS_HINT_OPEN}
+          {person === null && <span aria-hidden="true"> ▸</span>}
+        </p>
+      )}
 
-      <div
-        className={cn("absolute", person === null && "invisible")}
-        style={frameStyle(L.arrows)}
-      >
-        <TestimonialArrows
-          count={TESTIMONIALS.length}
-          index={selected ?? 0}
-          onChange={go}
-        />
+      {!bare && (
+        <div
+          className={cn("absolute", person === null && "invisible")}
+          style={frameStyle(L.arrows)}
+        >
+          <TestimonialArrows
+            count={TESTIMONIALS.length}
+            index={selected ?? 0}
+            onChange={go}
+          />
+        </div>
+      )}
       </div>
     </div>
   );

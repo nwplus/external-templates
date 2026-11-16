@@ -13,8 +13,8 @@
   /* Once the market is worth looking at, the doorway opens up to the whole
      frame, so the section hands over to testimonials at the same size. */
   --open: clamp(0, calc((var(--zoom, 0) - 0.02) / 0.98), 1);
-  --open-k: calc(1 + var(--open) * 1.35);
-  --scene-k: calc(1 + var(--open) * 1.35);
+  --open-k: calc(1 + var(--open) * 0.18);
+  --facade-k: calc(1 + var(--open) * 3.2);
   --cue: clamp(0, calc(var(--p, 0) * 6), 1);
 }
 
@@ -45,10 +45,33 @@
   transform-origin: 50% 100%;
 }
 
-/* The whole garage pushes toward the doorway's centre: facade, door and
-   market all zoom at once, so the walk reads as one camera move. */
-.recap-scene-scale {
-  transform: scale(var(--scene-k));
+/* The market fills the doorway at every size, but it must land at 1:1 with
+   the screen while the doorway has grown past the frame, so it is scaled
+   back by the doorway's growth and lifted by the 9.26cqw between the
+   doorway's centre and the frame's. Measured from the doorway and frame
+   boxes, not eyeballed. */
+.recap-street {
+  width: 100%;
+  transform:
+    scale(calc((1 + 0.179 * var(--zoom)) / var(--open-k)))
+    translateY(calc(-9.26cqw * var(--open) * var(--open-k) / (1 + 0.179 * var(--zoom))));
+  transform-origin: 50% 50%;
+  will-change: transform;
+}
+
+/* The doorway grows past the frame as the pin ends, so the market — which
+   fills the doorway at every size — lands at 1:1 with the screen. */
+.recap-opening {
+  transform: scale(var(--open-k));
+  transform-origin: 50.2% 64.3%;
+  will-change: transform;
+}
+
+/* The facade zooms out past the camera, faster than the doorway opens, so
+   the wall leaves the frame while the market keeps growing into it. Both
+   zoom about the doorway's centre (50.2% 64.3% of the frame). */
+.recap-chrome {
+  transform: scale(var(--facade-k));
   transform-origin: 50.2% 64.3%;
   will-change: transform;
 }
@@ -56,12 +79,6 @@
 /* The market sits a little back while the door is still rolling and lands
    exactly where the next section draws it: dividing by the frame's growth
    keeps it at 1:1 with the screen at the end. */
-.recap-street {
-  transform: scale(calc((0.85 + var(--zoom) * 0.15) / var(--scene-k)));
-  transform-origin: 50% 52%;
-  will-change: transform;
-}
-
 
 
 /* Night air sits on the market until the door is open. */
@@ -165,7 +182,8 @@
     display: none;
   }
 
-  .recap-scene-scale,
+  .recap-chrome,
+  .recap-street,
   .recap-door,
   .recap-photos,
   .recap-street,

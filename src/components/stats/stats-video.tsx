@@ -27,7 +27,11 @@ export const StatsVideo = ({ box }: { box: Box }) => {
         draggable={false}
         className="stats-video-frame pointer-events-none absolute inset-0 size-full select-none"
       />
-      <div className="absolute inset-[12.033%_8.251%_12.241%_8.25%] overflow-hidden bg-[#050b12]">
+      {/* The screen (Rectangle 3346) is 1.6:1 and the video is 16:9, so the player
+        sits centred on the white screen and the mat shows around it, as the
+        design draws it. */}
+      <div className="absolute inset-[12.033%_8.251%_12.241%_8.25%] overflow-hidden bg-white">
+        <div className="absolute left-0 top-1/2 aspect-video w-full -translate-y-1/2 overflow-hidden">
         {playing ? (
           <iframe
             className="size-full"
@@ -64,6 +68,7 @@ export const StatsVideo = ({ box }: { box: Box }) => {
             <span className="sr-only">Play the nwHacks 2026 recap</span>
           </button>
         )}
+        </div>
       </div>
     </div>
   );

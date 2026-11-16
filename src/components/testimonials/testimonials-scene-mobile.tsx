@@ -26,7 +26,7 @@ export const TestimonialsSceneMobile = () => {
   const person = TESTIMONIALS[index];
 
   return (
-    <div className="@container relative aspect-[402/874] w-full overflow-hidden bg-[#1b1a26]">
+    <div id="testimonials" className="@container relative aspect-[402/874] w-full overflow-hidden bg-[#1b1a26]">
       <SceneLayer src="/assets/testimonials/mobile-bg.webp" box={L.bg} priority />
 
       {TESTIMONIALS.map((entry, stall) => {

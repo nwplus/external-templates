@@ -4,15 +4,12 @@ import { TestimonialsSceneMobile } from "@/components/testimonials/testimonials-
 
 export default function Testimonials() {
   return (
-    <section id="testimonials">
+    <section>
       <ResponsiveScene
-        /* The recap's last frame is the market at full width, so the section
-           takes over that screen instead of waiting for it to scroll away. */
-        desktop={
-          <div className="-mt-[100vh]">
-            <TestimonialsScene />
-          </div>
-        }
+        /* On desktop the testimonials page is the market inside the recap's
+           doorway — it is interactive as the zoom completes, so this section
+           only carries the anchor. */
+        desktop={<div className="h-px" aria-hidden="true" />}
         mobile={<TestimonialsSceneMobile />}
       />
     </section>
