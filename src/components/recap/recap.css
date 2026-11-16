@@ -1,12 +1,15 @@
 /*
- * Recap motion (components/recap). The section holds the page still while the
- * garage door rolls up, then lets go; --p (0..1, written by useScrollProgress)
- * drives it. Lights flicker in the background the whole time, as the design's
- * "window flicker in bkg" note asks.
+ * Recap motion (components/recap). The section pins while the garage door
+ * rolls up onto the night market, then lets go; --p (0..1, written by
+ * useScrollProgress) drives it. The lamps flicker as the design's "window
+ * flicker in bkg" note asks.
  */
 
 .recap-pin {
-  --door: clamp(0, calc((var(--p, 0) - 0.06) / 0.92), 1);
+  /* The door opens over the first half of the pin; the market then grows
+     toward the camera over the second half. */
+  --door: clamp(0, calc((var(--p, 0) - 0.04) / 0.62), 1);
+  --zoom: clamp(0, calc((var(--p, 0) - 0.38) / 0.62), 1);
   --cue: clamp(0, calc(var(--p, 0) * 6), 1);
 }
 
@@ -16,14 +19,18 @@
   height: 100vh;
 }
 
-/* The corrugated slab, with the polaroids pinned to it, rolls up out of the
-   frame; the photos drift a third as fast so they don't leave with it. */
-/* The door is a window onto the opening (layout in recap-scene.tsx), so the
-   slab rolls into the header instead of sliding across the facade above it. */
-
-.recap-door-inner {
-  transform: translateY(calc(var(--door) * -105%));
+/* The slab, with the polaroids pinned to it, rolls into the header. */
+.recap-door {
   will-change: transform;
+}
+
+.recap-slab,
+.recap-photos {
+  will-change: transform;
+}
+
+.recap-door {
+  transform: translateY(calc(var(--door) * -105%));
 }
 
 /* A breath of lag between the door and its cargo, so the wall of photos
@@ -33,22 +40,34 @@
   transform-origin: 50% 100%;
 }
 
-/* As the door clears, the garage behind it warms up, so the reveal isn't an
-   empty hole. */
-/* Daylight through the open door: a shaft under its lip, a warm pool on the
-   back wall, and a floor that catches both. */
+/* The market behind the door: small and far at first, filling more of the
+   opening as the door clears, then pushing toward the camera as the pin
+   runs out. */
+.recap-street {
+  transform: scale(calc(0.62 + var(--door) * 0.12 + var(--zoom) * 0.26));
+  transform-origin: 50% 52%;
+  will-change: transform;
+}
+
+/* Night air sits on the market until the door is open. */
+.recap-street-shade {
+  background: rgb(6 10 16 / 0.55);
+  opacity: calc(1 - var(--door) * 0.85);
+}
+
+/* Light through the opening, over everything behind the door. */
 .recap-glow {
   background:
     linear-gradient(
       180deg,
-      rgb(255 240 200 / 0.78) 0%,
-      rgb(255 226 168 / 0.3) 20%,
-      rgb(255 226 168 / 0) 46%
+      rgb(255 240 200 / 0.32) 0%,
+      rgb(255 226 168 / 0.12) 14%,
+      rgb(255 226 168 / 0) 40%
     ),
     radial-gradient(
-      58% 46% at 50% 26%,
-      rgb(255 236 186 / 0.85) 0%,
-      rgb(255 196 120 / 0.4) 50%,
+      58% 46% at 50% 24%,
+      rgb(255 236 186 / 0.55) 0%,
+      rgb(255 196 120 / 0.22) 50%,
       rgb(255 226 168 / 0) 74%
     ),
     /* The back wall falls off toward the corners, so the opening has shape
@@ -56,9 +75,9 @@
     radial-gradient(
       86% 78% at 50% 34%,
       rgb(10 15 24 / 0) 40%,
-      rgb(6 9 15 / 0.55) 100%
+      rgb(6 9 15 / 0.45) 100%
     );
-  opacity: calc(var(--door) * 0.95);
+  opacity: calc(var(--door) * 0.55);
 }
 
 .recap-floor {
@@ -103,24 +122,31 @@
 
 /* The two bulbs on the walls never sit quite still. */
 .recap-lights {
-  animation: recap-flicker 7s steps(1, end) infinite;
+  animation: recap-flicker 9s steps(1, end) infinite;
 }
 
 @keyframes recap-flicker {
   0%,
-  92%,
-  96%,
+  71%,
+  74%,
+  78%,
   100% {
     opacity: 1;
   }
-  93% {
-    opacity: 0.72;
+  72% {
+    opacity: 0;
   }
-  94% {
-    opacity: 1;
+  73% {
+    opacity: 0.6;
   }
-  95% {
-    opacity: 0.84;
+  75% {
+    opacity: 0;
+  }
+  76% {
+    opacity: 0.85;
+  }
+  77% {
+    opacity: 0.35;
   }
 }
 
@@ -152,11 +178,9 @@
     display: none;
   }
 
-  .recap-door {
-    transform: none;
-  }
-
+  .recap-door,
   .recap-photos,
+  .recap-street,
   .recap-title {
     transform: none;
     opacity: 1;

@@ -25,16 +25,20 @@ export const StatsScene = () => (
     <SceneLayer
       src="/assets/stats/mentors.webp"
       box={STATS_DESKTOP.mentors}
-      className="stats-rise"
-      style={{ "--rise": "0.15s" } as React.CSSProperties}
+      className="stats-rise stat-neon-halo"
+      style={
+        { "--rise": "0.15s", "--neon": "17.1s", "--neon-delay": "-3.4s" } as React.CSSProperties
+      }
       fit="contain"
       alt="68 mentors"
     />
     <SceneLayer
       src="/assets/stats/hackers.webp"
       box={STATS_DESKTOP.hackers}
-      className="stats-rise"
-      style={{ "--rise": "0.3s" } as React.CSSProperties}
+      className="stats-rise stat-neon-tube"
+      style={
+        { "--rise": "0.3s", "--neon": "11.3s", "--neon-delay": "-1.7s" } as React.CSSProperties
+      }
       fit="contain"
       alt="734 hackers"
     />
@@ -58,15 +62,18 @@ export const StatsScene = () => (
     <SceneLayer
       src="/assets/stats/recap-2027.webp"
       box={STATS_DESKTOP.recap2027}
-      className="stats-arrow"
+      className="stats-arrow stat-neon-halo"
+      style={{ "--neon": "23.9s", "--neon-delay": "-11.5s" } as React.CSSProperties}
       fit="contain"
       alt="Watch the 2027 recap"
     />
     <SceneLayer
       src="/assets/stats/projects.webp"
       box={STATS_DESKTOP.projects}
-      className="stats-rise"
-      style={{ "--rise": "0.55s" } as React.CSSProperties}
+      className="stats-rise stat-neon-tube"
+      style={
+        { "--rise": "0.55s", "--neon": "13.7s", "--neon-delay": "-6.2s" } as React.CSSProperties
+      }
       fit="contain"
       alt="182 projects"
     />

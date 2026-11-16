@@ -1,10 +1,10 @@
 /*
- * Testimonials motion (components/testimonials). Choosing a stall zooms its
- * art in and brings the quote card across; the arrows step through the three.
+ * Testimonials motion (components/testimonials). Choosing a stall slides its
+ * close-up in from the side you came from and the previous one out the other
+ * way; the arrows/dots step through the three.
  */
 
 .testi-stall,
-.testi-art,
 .testi-card,
 .testi-hint {
   transition:
@@ -23,16 +23,71 @@
   pointer-events: none;
 }
 
-/* Selected scene: only the chosen cart, a little further forward. */
+/* Close-up art: slides in from the right going forward, the left going back,
+   and the outgoing cart leaves the opposite way. */
 .testi-art {
   opacity: 0;
-  transform: scale(0.92) translateY(1.4cqw);
   pointer-events: none;
 }
 
 .testi-art[data-active] {
-  opacity: 1;
-  transform: scale(1) translateY(0);
+  animation: testi-in-right 0.52s cubic-bezier(0.2, 0.9, 0.25, 1) both;
+}
+
+.testi-art[data-active][data-dir="-1"] {
+  animation-name: testi-in-left;
+}
+
+.testi-art[data-leaving] {
+  animation: testi-out-left 0.5s cubic-bezier(0.4, 0, 0.6, 1) both;
+}
+
+.testi-art[data-leaving][data-dir="-1"] {
+  animation-name: testi-out-right;
+}
+
+@keyframes testi-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(22%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes testi-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-22%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes testi-out-left {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-22%);
+  }
+}
+
+@keyframes testi-out-right {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(22%);
+  }
 }
 
 /* The quote card swings in from the cart's side. */
@@ -83,72 +138,8 @@
     opacity 0.3s ease;
 }
 
-/* --- arriving from down the street (testimonials-arrival.tsx) ----------- */
-
-.testi-pin {
-  --arrive: clamp(0, var(--p, 0), 1);
-}
-
-.testi-sticky {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-}
-
-.testi-zoom {
-  transform: scale(calc(0.72 + var(--arrive) * 0.28));
-  transform-origin: center;
-  will-change: transform;
-  /* At a distance the scene's rectangle dissolves into the dark; the mask
-     opens to a clean edge as it fills the frame. */
-  --soft-edge: calc(24% + var(--arrive) * 110%);
-  mask-image: radial-gradient(
-    75% 75% at 50% 50%,
-    #000 var(--soft-edge),
-    transparent 100%
-  );
-}
-
-/* The street behind grows slower than the frame around it, so the arrival
-   reads as walking toward the stalls rather than zooming a picture. */
-.testi-bg {
-  transform: scale(calc(1.16 - var(--arrive) * 0.16));
-  transform-origin: 50% 58%;
-}
-
-.testi-vignette {
-  background: radial-gradient(66% 66% at 50% 46%, transparent 36%, #080b11 100%);
-  opacity: calc(1 - var(--arrive));
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .testi-pin {
-    height: auto;
-  }
-
-  .testi-sticky {
-    position: relative;
-    height: auto;
-  }
-
-  .testi-zoom {
-    transform: none;
-    mask-image: none;
-  }
-
-  /* No approach, so no distance shading either. */
-  .testi-bg {
-    transform: none;
-  }
-
-  .testi-vignette {
-    display: none;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .testi-stall,
-  .testi-art,
   .testi-card,
   .testi-hint {
     transition: opacity 0.2s linear;
@@ -157,6 +148,11 @@
   .testi-art,
   .testi-card {
     transform: none;
+  }
+
+  .testi-art[data-active],
+  .testi-art[data-leaving] {
+    animation: none;
   }
 
   .testi-art[data-active] > img {

@@ -145,6 +145,112 @@
   }
 }
 
+
+/* ---- neon failure ------------------------------------------------------
+ * Real neon stutters: the tube cuts for a few frames, over and over, at
+ * unpredictable moments. Each sign gets its own length and offset (below), so
+ * two never fail together, and some lose their halo while others lose their
+ * tube — the border dies on one, the content on the next.
+ */
+
+.stat-neon-tube {
+  animation: neon-tube-cut var(--neon, 11.3s) steps(1, end) infinite;
+  animation-delay: var(--neon-delay, 0s);
+}
+
+.stat-neon-halo {
+  animation: neon-halo-cut var(--neon, 17.1s) steps(1, end) infinite;
+  animation-delay: var(--neon-delay, 0s);
+}
+
+@keyframes neon-tube-cut {
+  0%,
+  20%,
+  20.15%,
+  20.3%,
+  20.45%,
+  20.6%,
+  20.75%,
+  20.9%,
+  46%,
+  46.15%,
+  46.3%,
+  46.45%,
+  71%,
+  71.15%,
+  71.3%,
+  71.45%,
+  71.6%,
+  71.75%,
+  92%,
+  92.15%,
+  92.3%,
+  100% {
+    filter: brightness(1);
+  }
+  20.075%,
+  20.225%,
+  20.375%,
+  20.525%,
+  20.675%,
+  20.825%,
+  46.075%,
+  46.225%,
+  46.375%,
+  71.075%,
+  71.225%,
+  71.375%,
+  71.525%,
+  71.675%,
+  92.075%,
+  92.225% {
+    filter: brightness(0.18);
+  }
+}
+
+@keyframes neon-halo-cut {
+  0%,
+  33%,
+  33.15%,
+  33.3%,
+  33.45%,
+  33.6%,
+  33.75%,
+  33.9%,
+  58%,
+  58.15%,
+  58.3%,
+  58.45%,
+  58.6%,
+  84%,
+  84.15%,
+  84.3%,
+  100% {
+    filter: drop-shadow(0 0 0.55cqw rgb(255 255 255 / 0.28));
+  }
+  33.075%,
+  33.225%,
+  33.375%,
+  33.525%,
+  33.675%,
+  33.825%,
+  58.075%,
+  58.225%,
+  58.375%,
+  58.525%,
+  84.075%,
+  84.225% {
+    filter: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stat-neon-tube,
+  .stat-neon-halo {
+    animation: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .stats-rise,
   .stats-clouds,

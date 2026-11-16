@@ -6,7 +6,7 @@ import { TESTIMONIALS_DESKTOP as L } from "@/constants/testimonials-layout";
 import { frameStyle } from "@/lib/frame";
 import { cn } from "@/lib/utils";
 
-import { useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { TestimonialArrows } from "./testimonial-arrows";
 
@@ -18,33 +18,48 @@ const STALLS = [
   { id: "vaibhav", base: L.vaibhavBase, selected: L.vaibhavSelected },
   { id: "qazi", base: L.qaziBase, selected: L.qaziSelected },
 ] as const;
+
 /**
- * The night market: three stalls on the street. Picking one brings it forward
- * and floats its quote card over the others; the arrows walk through all
- * three without going back to the wide shot.
+ * The night market: three stalls on the street. Picking one slides its
+ * close-up in — from the right when you go forward, from the left when you go
+ * back — while the previous one slides out the other way, and its quote card
+ * floats over the street.
  *
- * The section also arrives from a distance — see testimonials.tsx, which
- * scales this scene up as the recap's garage door finishes opening.
+ * The whole scene runs edge to edge; the recap opens onto the same picture.
  */
 export const TestimonialsScene = () => {
   const [selected, setSelected] = useState<number | null>(null);
-  const heading = useRef<HTMLHeadingElement>(null);
+  const [leaving, setLeaving] = useState<number | null>(null);
+  const [direction, setDirection] = useState<1 | -1>(1);
 
   const person = selected === null ? null : TESTIMONIALS[selected];
+
+  useEffect(() => {
+    if (leaving === null) return;
+    const timer = setTimeout(() => setLeaving(null), 560);
+    return () => clearTimeout(timer);
+  }, [leaving]);
+
+  const go = (next: number) => {
+    if (next === selected) return;
+    setLeaving(selected);
+    setDirection(selected === null || next > selected ? 1 : -1);
+    setSelected(next);
+  };
 
   return (
     <div
       data-selected={selected === null ? undefined : ""}
       className="@container relative aspect-[1512/982] w-full overflow-hidden bg-[#1b1a26]"
     >
-      <SceneLayer src="/assets/testimonials/bg.webp" box={L.bg} className="testi-bg" priority />
+      <SceneLayer src="/assets/testimonials/bg.webp" box={L.bg} priority />
 
       {/* Wide shot: the three carts, each a button. */}
       {STALLS.map((stall, index) => (
         <button
           key={stall.id}
           type="button"
-          onClick={() => setSelected(index)}
+          onClick={() => go(index)}
           aria-label={`Read ${TESTIMONIALS[index].name}'s testimonial`}
           aria-hidden={selected !== null}
           tabIndex={selected === null ? 0 : -1}
@@ -67,6 +82,8 @@ export const TestimonialsScene = () => {
         <div
           key={stall.id}
           data-active={selected === index ? "" : undefined}
+          data-leaving={leaving === index ? "" : undefined}
+          data-dir={direction}
           aria-hidden={selected !== index}
           className="testi-art absolute"
           style={frameStyle(stall.selected)}
@@ -83,10 +100,7 @@ export const TestimonialsScene = () => {
       ))}
 
       <div className="testi-stall absolute text-center" style={frameStyle(L.title)}>
-        <h2
-          ref={heading}
-          className="font-display text-[3.175cqw] leading-none text-white whitespace-nowrap"
-        >
+        <h2 className="font-display text-[3.175cqw] leading-none text-white whitespace-nowrap">
           Testimonials
         </h2>
       </div>
@@ -105,7 +119,6 @@ export const TestimonialsScene = () => {
         <path d="M100 4 L100 100 L0 72 L100 30 Z" />
       </svg>
 
-      {/* The bubble. */}
       {/* The card box is the design's slot; the card itself is as tall as its
           quote and centres in it, the way the three Figma states do. */}
       <div
@@ -141,7 +154,7 @@ export const TestimonialsScene = () => {
         <TestimonialArrows
           count={TESTIMONIALS.length}
           index={selected ?? 0}
-          onChange={(next) => setSelected(next)}
+          onChange={go}
         />
       </div>
     </div>

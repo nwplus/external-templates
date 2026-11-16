@@ -58,7 +58,8 @@ export const StatsSceneMobile = () => (
     <SceneLayer
       src="/assets/stats/recap-2027-mobile.webp"
       box={STATS_MOBILE.recap2027}
-      className="stats-arrow"
+      className="stats-arrow stat-neon-halo"
+      style={{ "--neon": "19.3s", "--neon-delay": "-8.1s" } as React.CSSProperties}
       fit="contain"
       alt="Watch the 2027 recap"
     />
