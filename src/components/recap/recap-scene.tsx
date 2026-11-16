@@ -51,7 +51,11 @@ export const RecapScene = () => {
               box={RECAP_DESKTOP.door}
               className="recap-slab"
             />
-            <SceneLayer src="/assets/recap/photos.webp" box={RECAP_DESKTOP.photos} />
+            <SceneLayer
+              src="/assets/recap/photos.webp"
+              box={RECAP_DESKTOP.photos}
+              className="recap-photos"
+            />
             <SceneLayer
               src="/assets/recap/top-shadow.webp"
               box={RECAP_DESKTOP.topShadow}

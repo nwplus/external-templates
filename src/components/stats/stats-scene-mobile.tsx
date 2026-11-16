@@ -15,7 +15,7 @@ export const StatsSceneMobile = () => (
       className="stats-clouds"
     />
 
-    <p className="absolute top-[3.97%] left-1/2 w-[62.94%] -translate-x-1/2 text-center font-display text-[6.3cqw] leading-[1.2] text-white">
+    <p className="absolute top-[7.9%] left-1/2 w-[62.94%] -translate-x-1/2 text-center font-display text-[6.3cqw] leading-[1.2] text-white">
       Last year we had…
     </p>
 

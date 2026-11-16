@@ -116,9 +116,11 @@ export const TestimonialsScene = () => {
           aria-live="polite"
           className="relative w-full rounded-[1.1cqw] bg-[#f6e9e9] px-[7.8%] py-[7%] shadow-[0_1.4cqw_3.2cqw_rgb(0_0_0_/_0.28)]"
         >
-          <p className="text-[1.058cqw] leading-[1.42] text-[#2b2b33]">
-            {person?.quote}
-          </p>
+          <div className="flex flex-col gap-[0.9em] text-[1.058cqw] leading-[1.42] text-[#2b2b33]">
+            {person?.quote.split("\n\n").map((paragraph, index) => (
+              <p key={index}>{paragraph}</p>
+            ))}
+          </div>
         </div>
       </div>
 
