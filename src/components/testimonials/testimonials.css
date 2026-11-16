@@ -99,6 +99,14 @@
   transform: scale(calc(0.72 + var(--arrive) * 0.28));
   transform-origin: center;
   will-change: transform;
+  /* At a distance the scene's rectangle dissolves into the dark; the mask
+     opens to a clean edge as it fills the frame. */
+  --soft-edge: calc(24% + var(--arrive) * 110%);
+  mask-image: radial-gradient(
+    75% 75% at 50% 50%,
+    #000 var(--soft-edge),
+    transparent 100%
+  );
 }
 
 /* The street behind grows slower than the frame around it, so the arrival
@@ -125,6 +133,7 @@
 
   .testi-zoom {
     transform: none;
+    mask-image: none;
   }
 
   /* No approach, so no distance shading either. */

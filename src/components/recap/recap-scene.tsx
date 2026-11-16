@@ -45,26 +45,47 @@ export const RecapScene = () => {
           {/* The door and everything pinned to it roll up as one piece: the
               polaroids are on the door in the design, so they leave with it
               and reveal the lit garage behind. */}
-          <div className="recap-door pointer-events-none absolute inset-0">
+          {/* A window the size of the garage opening, so the slab rolls into the
+              header instead of sliding across the facade above it. The inner
+              layer is pushed back out to full-frame coordinates, so the
+              design boxes keep their meaning. */}
+          <div
+            className="recap-door pointer-events-none absolute overflow-hidden"
+            style={{ left: "7.8%", top: "28.5%", width: "84.8%", height: "71.5%" }}
+          >
+            <div
+              className="recap-door-inner absolute"
+              style={{
+                left: "-9.199%",
+                top: "-39.86%",
+                width: "117.925%",
+                height: "139.86%",
+              }}
+            >
             <SceneLayer
               src="/assets/recap/door.webp"
               box={RECAP_DESKTOP.door}
+              priority
               className="recap-slab"
             />
             <SceneLayer
               src="/assets/recap/photos.webp"
               box={RECAP_DESKTOP.photos}
+              priority
               className="recap-photos"
             />
             <SceneLayer
               src="/assets/recap/top-shadow.webp"
               box={RECAP_DESKTOP.topShadow}
+              priority
               className="z-10"
             />
             <SceneLayer
               src="/assets/recap/door-shadow.webp"
               box={RECAP_DESKTOP.doorShadow}
+              priority
             />
+            </div>
           </div>
           <SceneLayer
             src="/assets/recap/side-shadow-left.webp"

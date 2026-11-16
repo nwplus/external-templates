@@ -31,7 +31,7 @@ export const StatsSceneMobile = () => (
       src="/assets/stats/mentors.webp"
       box={STATS_MOBILE.mentors}
       fit="contain"
-      alt="Mentors"
+      alt="68 mentors"
       className="stats-rise"
       style={{ "--rise": "0.2s" } as React.CSSProperties}
     />

@@ -28,7 +28,7 @@ export const StatsScene = () => (
       className="stats-rise"
       style={{ "--rise": "0.15s" } as React.CSSProperties}
       fit="contain"
-      alt="Mentors"
+      alt="68 mentors"
     />
     <SceneLayer
       src="/assets/stats/hackers.webp"

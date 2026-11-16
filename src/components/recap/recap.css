@@ -18,7 +18,10 @@
 
 /* The corrugated slab, with the polaroids pinned to it, rolls up out of the
    frame; the photos drift a third as fast so they don't leave with it. */
-.recap-door {
+/* The door is a window onto the opening (layout in recap-scene.tsx), so the
+   slab rolls into the header instead of sliding across the facade above it. */
+
+.recap-door-inner {
   transform: translateY(calc(var(--door) * -105%));
   will-change: transform;
 }

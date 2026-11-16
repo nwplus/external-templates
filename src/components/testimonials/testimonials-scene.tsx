@@ -106,11 +106,13 @@ export const TestimonialsScene = () => {
       </svg>
 
       {/* The bubble. */}
+      {/* The card box is the design's slot; the card itself is as tall as its
+          quote and centres in it, the way the three Figma states do. */}
       <div
-        className="testi-card absolute"
+        className="testi-card absolute flex items-center"
         data-open={person === null ? undefined : ""}
         aria-hidden={person === null}
-        style={{ ...frameStyle(L.card), height: "auto" }}
+        style={frameStyle(L.card)}
       >
         <div
           aria-live="polite"
