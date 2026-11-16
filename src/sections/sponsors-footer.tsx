@@ -6,7 +6,6 @@ import { sceneBox, SectionArt } from "@/components/section-art";
 import {
   MOBILE_DINING,
   MOBILE_RIDER,
-  RIDER_SHADOWS,
   TEAM_HEADINGS,
 } from "@/constants/market-interactions";
 import { SPONSORS_DESKTOP, SPONSORS_MOBILE } from "@/constants/section-art";
@@ -163,11 +162,7 @@ function SponsorsScene({ mobile }: { mobile: boolean }) {
         height={height}
       />
       <div className="rider-loop" aria-hidden="true">
-        <SectionArt
-          layers={[RIDER_SHADOWS[mobile ? 1 : 0], rider]}
-          width={width}
-          height={height}
-        />
+        <SectionArt layers={[rider]} width={width} height={height} />
       </div>
       <h2
         className="market-heading"

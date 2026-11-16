@@ -72,17 +72,18 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  animation: ride-street 18s linear infinite;
+  animation: ride-street 12s linear infinite;
+  animation-delay: -4s;
   animation-play-state: running;
   transform-origin: 0 0;
   will-change: transform;
 }
 @keyframes ride-street {
   from {
-    transform: translateX(-35%);
+    transform: translateX(-25%);
   }
   to {
-    transform: translateX(110%);
+    transform: translateX(85%);
   }
 }
 /* The Final-for-dev sticky note says Nugget rides by default. Keep this one
