@@ -46,7 +46,11 @@ export const RecapScene = () => {
               polaroids are on the door in the design, so they leave with it
               and reveal the lit garage behind. */}
           <div className="recap-door pointer-events-none absolute inset-0">
-            <SceneLayer src="/assets/recap/door.webp" box={RECAP_DESKTOP.door} />
+            <SceneLayer
+              src="/assets/recap/door.webp"
+              box={RECAP_DESKTOP.door}
+              className="recap-slab"
+            />
             <SceneLayer src="/assets/recap/photos.webp" box={RECAP_DESKTOP.photos} />
             <SceneLayer
               src="/assets/recap/top-shadow.webp"

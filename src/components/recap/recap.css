@@ -38,14 +38,14 @@
   background:
     linear-gradient(
       180deg,
-      rgb(255 236 190 / 0.5) 0%,
-      rgb(255 226 168 / 0.16) 18%,
+      rgb(255 240 200 / 0.78) 0%,
+      rgb(255 226 168 / 0.3) 20%,
       rgb(255 226 168 / 0) 46%
     ),
     radial-gradient(
       58% 46% at 50% 26%,
-      rgb(255 231 172 / 0.62) 0%,
-      rgb(255 196 120 / 0.26) 48%,
+      rgb(255 236 186 / 0.85) 0%,
+      rgb(255 196 120 / 0.4) 50%,
       rgb(255 226 168 / 0) 74%
     ),
     /* The back wall falls off toward the corners, so the opening has shape
@@ -66,7 +66,7 @@
       rgb(4 8 14 / 0.42) 76%,
       rgb(4 8 14 / 0.72) 100%
     ),
-    radial-gradient(120% 60% at 50% 104%, rgb(255 226 168 / 0.14) 0%, rgb(255 226 168 / 0) 60%);
+    radial-gradient(120% 60% at 50% 104%, rgb(255 226 168 / 0.3) 0%, rgb(255 226 168 / 0) 62%);
   opacity: calc(var(--door) * 0.9);
 }
 
@@ -145,8 +145,12 @@
     height: auto;
   }
 
-  .recap-door {
+  .recap-slab {
     display: none;
+  }
+
+  .recap-door {
+    transform: none;
   }
 
   .recap-photos,

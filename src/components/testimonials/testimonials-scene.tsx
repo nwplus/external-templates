@@ -102,7 +102,7 @@ export const TestimonialsScene = () => {
         style={frameStyle(L.tail)}
         data-open={person === null ? undefined : ""}
       >
-        <path d="M100 0 L100 100 L0 62 L100 22 Z" />
+        <path d="M100 4 L100 100 L0 72 L100 30 Z" />
       </svg>
 
       {/* The bubble. */}
