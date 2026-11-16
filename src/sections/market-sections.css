@@ -53,6 +53,16 @@
   top: 54.5611%;
   width: 28.64198%;
 }
+.collected-food.tanghulu {
+  left: -6.354%;
+  top: 49.05%;
+  width: 29.49%;
+}
+.collected-food.taiyaki {
+  left: 38.51%;
+  top: 0.171%;
+  width: 22.61%;
+}
 @media (width < 768px) {
   .food-collection {
     display: none;
@@ -63,18 +73,27 @@
   inset: 0;
   pointer-events: none;
   animation: ride-street 18s linear infinite;
+  animation-play-state: running;
+  transform-origin: 0 0;
+  will-change: transform;
 }
 @keyframes ride-street {
   from {
-    translate: -35% 0;
+    transform: translateX(-35%);
   }
   to {
-    translate: 110% 0;
+    transform: translateX(110%);
   }
+}
+/* The Final-for-dev sticky note says Nugget rides by default. Keep this one
+   loop live even when the generic section gate pauses other decoration. */
+.sponsors-wrapper[data-motion-scope]:not([data-onscreen]) .rider-loop {
+  animation-play-state: running;
 }
 @media (prefers-reduced-motion: reduce) {
   .rider-loop {
     animation: none;
+    transform: translateX(0);
   }
 }
 .market-heading {

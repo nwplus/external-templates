@@ -12,6 +12,7 @@ import {
   HERO_TITLE,
   SPONSOR_LINK,
 } from "@/constants/hero";
+import { useCollectFood } from "@/components/food-collection";
 import { MOBILE_SKYLINE } from "@/constants/hero-windows";
 import { cn } from "@/lib/utils";
 
@@ -111,11 +112,13 @@ const Shift = ({
  * out from the 402px design (1cqw = 4.02 design px).
  */
 export const HeroSceneMobile = () => {
+  const collectFood = useCollectFood();
   const [fireworks, setFireworks] = useState(false);
   const [fireworksLoaded, setFireworksLoaded] = useState(false);
 
   const toggleFireworks = () => {
     setFireworksLoaded(true);
+    if (!fireworks) collectFood("tanghulu");
     setFireworks((on) => !on);
   };
 

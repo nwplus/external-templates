@@ -2,7 +2,13 @@
 
 import { createContext, type ReactNode, useContext, useState } from "react";
 
-type Food = "mango-sticky-rice" | "laksa";
+type Food = "mango-sticky-rice" | "laksa" | "tanghulu" | "taiyaki";
+const FOOD_LABELS: Record<Food, string> = {
+  "mango-sticky-rice": "mango sticky rice",
+  laksa: "laksa",
+  tanghulu: "tanghulu",
+  taiyaki: "taiyaki",
+};
 const FoodCollectionContext = createContext<(food: Food) => void>(() => {});
 
 export function useCollectFood() {
@@ -22,7 +28,7 @@ export function FoodCollection({ children }: { children: ReactNode }) {
       <div
         className="food-collection"
         role="img"
-        aria-label={`Food tray${foods.length ? ` with ${foods.map((food) => (food === "laksa" ? "laksa" : "mango sticky rice")).join(" and ")}` : ": empty"}`}
+        aria-label={`Food tray${foods.length ? ` with ${foods.map((food) => FOOD_LABELS[food]).join(" and ")}` : ": empty"}`}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
@@ -43,7 +49,7 @@ export function FoodCollection({ children }: { children: ReactNode }) {
       </div>
       <span className="sr-only" role="status">
         {foods.length
-          ? `Collected: ${foods.map((food) => (food === "laksa" ? "laksa" : "mango sticky rice")).join(", ")}`
+          ? `Collected: ${foods.map((food) => FOOD_LABELS[food]).join(", ")}`
           : ""}
       </span>
     </FoodCollectionContext.Provider>

@@ -34,6 +34,8 @@ type ArtProps = {
   origin?: { x: number; y: number };
   className?: string;
   style?: CSSProperties;
+  onActivate?: () => void;
+  ariaLabel?: string;
   /** Wrappers between the box and the art (sway, accents). */
   wrap?: (art: ReactNode) => ReactNode;
 };
@@ -43,7 +45,15 @@ type ArtProps = {
  * characters and fish: see rasterArt). Rotated layers get
  * their bounding box from the design and the art drawn centred inside it.
  */
-export const Art = ({ layer, origin, className, style, wrap }: ArtProps) => {
+export const Art = ({
+  layer,
+  origin,
+  className,
+  style,
+  onActivate,
+  ariaLabel,
+  wrap,
+}: ArtProps) => {
   const { src, art, transform } = layer;
   const img = (
     // Plain <img>: a static export, so next/image adds nothing.
@@ -73,8 +83,23 @@ export const Art = ({ layer, origin, className, style, wrap }: ArtProps) => {
       className={cn(
         "pointer-events-none absolute",
         art && "flex items-center justify-center",
+        onActivate && "pointer-events-auto cursor-pointer",
         className
       )}
+      role={onActivate ? "button" : undefined}
+      tabIndex={onActivate ? 0 : undefined}
+      aria-label={onActivate ? ariaLabel : undefined}
+      onClick={onActivate}
+      onKeyDown={
+        onActivate
+          ? (event) => {
+              if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                onActivate();
+              }
+            }
+          : undefined
+      }
       style={{ ...boxStyle(layer, origin), ...style }}
     >
       {wrap ? wrap(img) : img}

@@ -1,5 +1,7 @@
 import type { CSSProperties } from "react";
 
+import { useCollectFood } from "@/components/food-collection";
+
 import { Art, boxStyle, shiftStyle } from "./faq-art";
 import { bobStyle, FishArt, grassStyle } from "./faq-fish";
 import { DEER, GIANT_TANK, LONG_TANK, NUGGET } from "./faq-layout";
@@ -14,6 +16,7 @@ const LONG_BOX = { x: 0, y: 0, w: LONG_TANK.w, h: LONG_TANK.h };
  * blows bubbles on a loop and is the (not yet wired) easter egg.
  */
 export const LongTank = ({ hidden }: { hidden: boolean }) => {
+  const collectFood = useCollectFood();
   const { blowerBubbles } = LONG_TANK;
   return (
     <div
@@ -48,7 +51,6 @@ export const LongTank = ({ hidden }: { hidden: boolean }) => {
             accent={false}
           />
         ))}
-        {/* TODO(easter-egg): clicking this fish does something later. */}
         <FishArt
           fish={LONG_TANK.blower}
           origin={LONG_ORIGIN}
@@ -56,6 +58,8 @@ export const LongTank = ({ hidden }: { hidden: boolean }) => {
           sway="special"
           accent={false}
           className="faq-easter-egg"
+          onActivate={() => collectFood("taiyaki")}
+          ariaLabel="Collect taiyaki"
         />
         <svg
           aria-hidden="true"
