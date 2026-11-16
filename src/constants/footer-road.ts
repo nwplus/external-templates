@@ -26,7 +26,7 @@ export const DESKTOP_ROAD_LAYERS: readonly ArtLayer[] = [
     "height": 62
   },
   {
-    "src": "/assets/sponsors/interactive/road-16179-1172.svg",
+    "src": "/assets/sponsors/interactive/centerline-desktop.png",
     "name": "Vector 4643",
     "x": 0,
     "y": 3975.462890625,
@@ -53,7 +53,7 @@ export const MOBILE_ROAD_LAYERS: readonly ArtLayer[] = [
     "height": 12.6953125
   },
   {
-    "src": "/assets/sponsors/interactive/road-16308-16088.svg",
+    "src": "/assets/sponsors/interactive/centerline-mobile.png",
     "name": "Vector 4643",
     "x": 0,
     "y": 2370.56640625,
