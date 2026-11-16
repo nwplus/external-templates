@@ -1,7 +1,7 @@
 "use client";
 
-import { SceneLayer } from "@/components/ui/scene-layer";
 import { TestimonialsScene } from "@/components/testimonials/testimonials-scene";
+import { SceneLayer } from "@/components/ui/scene-layer";
 import { RECAP_DESKTOP } from "@/constants/recap";
 import { useScrollProgress } from "@/hooks/use-scroll-progress";
 
@@ -9,31 +9,67 @@ import { useRef } from "react";
 
 import "./recap.css";
 
-/** The garage opening inside the desktop frame, as percentages: everything
- * that happens behind the door is clipped to it. */
-const OPENING = { left: 7.8, top: 28.5, width: 84.8, height: 71.5 };
-
-/**
- * The garage. The section pins while the corrugated door rolls up onto the
- * night market, then the camera walks through the doorway: the facade zooms
- * past faster than the doorway opens, so the market ends up filling the
- * screen — which is where the testimonials section hands over.
- *
- * `--p` is written by useScrollProgress as you scroll and recap.css turns it
- * into the door, the doorway's growth and the facade's exit.
- */
+/** The door lifts as the camera moves through the opening. All garage
+ * layers retain the original 1512 × 982 Figma coordinate system. */
 export const RecapScene = () => {
   const pin = useRef<HTMLDivElement>(null);
   useScrollProgress(pin);
 
   return (
     <div ref={pin} className="recap-pin relative h-[220vh]">
+      <div
+        id="testimonials"
+        className="recap-testimonials-anchor pointer-events-none absolute bottom-0 h-screen w-px"
+        aria-hidden="true"
+      />
       <div className="recap-sticky overflow-hidden bg-[#0b101c]">
-        <div className="@container absolute top-1/2 left-1/2 aspect-[1512/982] w-screen -translate-x-1/2 -translate-y-1/2">
+        <div className="recap-frame @container">
+          <div
+            className="recap-market absolute inset-0"
+            style={
+              { "--market-chrome": "var(--zoom, 1)" } as React.CSSProperties
+            }
+          >
+            <TestimonialsScene />
+          </div>
+          {/* Clip the moving slab, not its coordinate system. The door and
+              facade share one camera transform so the opening stays aligned. */}
+          <div className="recap-opening pointer-events-none absolute inset-0">
+            {/* The door and the polaroids pinned to it roll up as one. */}
+            <div className="recap-door absolute inset-0">
+              <SceneLayer
+                src="/assets/recap/door.webp"
+                box={RECAP_DESKTOP.door}
+                priority
+                className="recap-slab"
+              />
+              <SceneLayer
+                src="/assets/recap/photos.webp"
+                box={RECAP_DESKTOP.photos}
+                priority
+                className="recap-photos"
+              />
+              <SceneLayer
+                src="/assets/recap/top-shadow.webp"
+                box={RECAP_DESKTOP.topShadow}
+                priority
+                className="z-10"
+              />
+              <SceneLayer
+                src="/assets/recap/door-shadow.webp"
+                box={RECAP_DESKTOP.doorShadow}
+                priority
+              />
+            </div>
+          </div>
           {/* The facade zooms out past the camera, so it is one layer that all
               grows and leaves together; its origin is the doorway's centre. */}
-          <div className="recap-chrome absolute inset-0">
-            <SceneLayer src="/assets/recap/wall.webp" box={RECAP_DESKTOP.wall} priority />
+          <div className="recap-chrome pointer-events-none absolute inset-0">
+            <SceneLayer
+              src="/assets/recap/wall.webp"
+              box={RECAP_DESKTOP.wall}
+              priority
+            />
             <SceneLayer
               src="/assets/recap/column-left.webp"
               box={RECAP_DESKTOP.columnLeft}
@@ -71,66 +107,13 @@ export const RecapScene = () => {
                   className="recap-cue-arrow size-[1.1cqw] fill-none stroke-current stroke-2"
                   aria-hidden="true"
                 >
-                  <path d="M12 4v14m0 0 5-5m-5 5-5-5" strokeLinecap="round" strokeLinejoin="round" />
+                  <path
+                    d="M12 4v14m0 0 5-5m-5 5-5-5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
                 </svg>
               </span>
-            </div>
-          </div>
-
-          {/* Everything behind the door lives in this window, so none of it
-              spills onto the facade around the opening. */}
-          <div
-            className="recap-opening pointer-events-none absolute overflow-hidden"
-            style={{
-              left: `${OPENING.left}%`,
-              top: `${OPENING.top}%`,
-              width: `${OPENING.width}%`,
-              height: `${OPENING.height}%`,
-            }}
-          >
-            {/* The market fills the doorway at every size: as the doorway
-                grows with the pin it grows with it, and lands at 1:1 with the
-                frame when the doorway covers the frame. */}
-            <div
-              id="testimonials"
-              className="absolute inset-0 grid place-items-center overflow-hidden"
-              style={{ "--market-chrome": "var(--open, 1)" } as React.CSSProperties}
-            >
-              <div className="recap-street">
-                <TestimonialsScene />
-              </div>
-            </div>
-            <div className="recap-street-shade pointer-events-none absolute inset-0" />
-
-            {/* Daylight through the opening, over the market. */}
-            <div className="recap-glow pointer-events-none absolute inset-0" />
-            <div className="recap-floor pointer-events-none absolute inset-0" />
-
-            {/* The door and the polaroids pinned to it roll up as one. */}
-            <div className="recap-door absolute inset-0">
-              <SceneLayer
-                src="/assets/recap/door.webp"
-                box={RECAP_DESKTOP.door}
-                priority
-                className="recap-slab"
-              />
-              <SceneLayer
-                src="/assets/recap/photos.webp"
-                box={RECAP_DESKTOP.photos}
-                priority
-                className="recap-photos"
-              />
-              <SceneLayer
-                src="/assets/recap/top-shadow.webp"
-                box={RECAP_DESKTOP.topShadow}
-                priority
-                className="z-10"
-              />
-              <SceneLayer
-                src="/assets/recap/door-shadow.webp"
-                box={RECAP_DESKTOP.doorShadow}
-                priority
-              />
             </div>
           </div>
         </div>

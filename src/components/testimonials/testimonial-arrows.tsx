@@ -17,21 +17,34 @@ export const TestimonialArrows = ({
 }: {
   count: number;
   index: number;
-  onChange: (next: number) => void;
+  onChange: (next: number, direction?: 1 | -1) => void;
   className?: string;
 }) => {
-  const step = (delta: number) => onChange((index + delta + count) % count);
+  const step = (delta: 1 | -1) =>
+    onChange((index + delta + count) % count, delta);
 
   return (
-    <div className={cn("[container-type:size] flex h-full w-full items-center justify-between", className)}>
+    <div
+      className={cn(
+        "[container-type:size] flex h-full w-full items-center justify-between",
+        className
+      )}
+    >
       <button
         type="button"
         onClick={() => step(-1)}
         aria-label="Previous testimonial"
         className="testi-arrow grid h-full w-[104cqh] cursor-pointer place-items-center rounded-[18cqh] bg-[#ff5f57] shadow-[0_0.3vh_0.9vh_rgb(0_0_0_/_0.3)]"
       >
-        <svg viewBox="0 0 24 24" className="w-[45%] fill-none stroke-white stroke-[2.4]">
-          <path d="M15 5l-7 7 7 7" strokeLinecap="round" strokeLinejoin="round" />
+        <svg
+          viewBox="0 0 24 24"
+          className="w-[45%] fill-none stroke-white stroke-[2.4]"
+        >
+          <path
+            d="M15 5l-7 7 7 7"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
         </svg>
       </button>
 
@@ -57,7 +70,10 @@ export const TestimonialArrows = ({
         aria-label="Next testimonial"
         className="testi-arrow grid h-full w-[104cqh] cursor-pointer place-items-center rounded-[18cqh] bg-[#ff5f57] shadow-[0_0.3vh_0.9vh_rgb(0_0_0_/_0.3)]"
       >
-        <svg viewBox="0 0 24 24" className="w-[45%] fill-none stroke-white stroke-[2.4]">
+        <svg
+          viewBox="0 0 24 24"
+          className="w-[45%] fill-none stroke-white stroke-[2.4]"
+        >
           <path d="M9 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </button>

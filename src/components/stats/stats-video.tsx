@@ -1,14 +1,32 @@
 "use client";
 
-import { frameStyle, type Box } from "@/lib/frame";
+import { type Box, frameStyle } from "@/lib/frame";
 
 import { useState } from "react";
 
 /** nwHacks 2026's recap, the one the stats point at. */
 export const RECAP_VIDEO_ID = "xnldoFAWzaM";
 
+// Individual PNG render bounds relative to the 703 × 482 board in Figma.
+// The vectors sit in front of Rectangle 3346; exports include their strokes.
+const VIDEO_LAYERS = [
+  { name: "board", node: "15941:59218", x: -20, y: -20, w: 743, h: 522, z: 0 },
+  { name: "mat", node: "15941:59220", x: 27, y: 25, w: 649, h: 432, z: 1 },
+  { name: "screen", node: "15941:59221", x: 58, y: 58, w: 587, h: 365, z: 2 },
+  {
+    name: "trim-glow",
+    node: "15941:59222",
+    x: 36,
+    y: 31,
+    w: 636,
+    h: 420,
+    z: 4,
+  },
+  { name: "trim", node: "15941:59223", x: 39.5, y: 34.5, w: 629, h: 413, z: 5 },
+] as const;
+
 /**
- * The design's video board: a neon frame around a 16:9-ish screen. YouTube
+ * The design's video board: a neon frame around Rectangle 3346. YouTube
  * only loads once someone presses play (the poster is YouTube's own still),
  * so the section costs nothing until it's wanted.
  */
@@ -16,22 +34,34 @@ export const StatsVideo = ({ box }: { box: Box }) => {
   const [playing, setPlaying] = useState(false);
 
   return (
-    <div className="absolute" style={frameStyle(box)}>
-      {/* The exported board (frame + white screen); the player sits over the
-          screen so the neon corners still read around it. */}
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src="/assets/stats/video-frame.webp"
-        alt=""
-        aria-hidden="true"
-        draggable={false}
-        className="stats-video-frame pointer-events-none absolute inset-0 size-full select-none"
-      />
-      {/* The screen (Rectangle 3346) is 1.6:1 and the video is 16:9, so the player
-        sits centred on the white screen and the mat shows around it, as the
-        design draws it. */}
-      <div className="absolute inset-[12.033%_8.251%_12.241%_8.25%] overflow-hidden bg-white">
-        <div className="absolute left-0 top-1/2 aspect-video w-full -translate-y-1/2 overflow-hidden">
+    <div data-video-board className="absolute isolate" style={frameStyle(box)}>
+      {VIDEO_LAYERS.map((layer) => (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          key={layer.node}
+          src={`/assets/stats/video-${layer.name}.png`}
+          data-board-layer={layer.name}
+          data-figma-layer={layer.node}
+          alt=""
+          aria-hidden="true"
+          draggable={false}
+          className="pointer-events-none absolute max-w-none select-none"
+          style={{
+            left: `${(layer.x / 703) * 100}%`,
+            top: `${(layer.y / 482) * 100}%`,
+            width: `${(layer.w / 703) * 100}%`,
+            height: `${(layer.h / 482) * 100}%`,
+            zIndex: layer.z,
+          }}
+        />
+      ))}
+      {/* Rectangle 3346: (507,934,587,365) within the board at (449,876).
+          Both the poster and iframe occupy this exact rounded rectangle. */}
+      <div
+        data-figma-node="15941:59221"
+        className="absolute z-[3] inset-[12.033%_8.251%_12.241%_8.25%] overflow-hidden bg-black"
+        style={{ borderRadius: "2.555% / 4.11%" }}
+      >
         {playing ? (
           <iframe
             className="size-full"
@@ -54,21 +84,9 @@ export const StatsVideo = ({ box }: { box: Box }) => {
               loading="lazy"
               className="size-full object-cover opacity-80 transition-opacity duration-300 group-hover:opacity-100"
             />
-            <span className="absolute inset-0 grid place-items-center">
-              <span className="grid size-[5.2cqw] place-items-center rounded-full bg-[#ffe7ac] shadow-[0_0_1.6cqw_rgb(255_231_172_/_0.55)] transition-transform duration-300 group-hover:scale-110">
-                <svg
-                  viewBox="0 0 24 24"
-                  className="ml-[0.35cqw] size-[2.2cqw] fill-[#06344d]"
-                  aria-hidden="true"
-                >
-                  <path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86A1 1 0 0 0 8 5.14z" />
-                </svg>
-              </span>
-            </span>
             <span className="sr-only">Play the nwHacks 2026 recap</span>
           </button>
         )}
-        </div>
       </div>
     </div>
   );
