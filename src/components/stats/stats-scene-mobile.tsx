@@ -2,13 +2,16 @@ import { SceneLayer } from "@/components/ui/scene-layer";
 import { STATS_MOBILE } from "@/constants/stats";
 
 import { StatsVideo } from "./stats-video";
-
 import "./stats.css";
 
 /** The phone stats frame: the same signs stacked down one column. */
 export const StatsSceneMobile = () => (
   <div className="@container relative aspect-[402/1510] w-full overflow-hidden bg-[#08131f]">
-    <SceneLayer src="/assets/stats/texture.webp" box={STATS_MOBILE.texture} priority />
+    <SceneLayer
+      src="/assets/stats/texture.webp"
+      box={STATS_MOBILE.texture}
+      priority
+    />
     <SceneLayer
       src="/assets/stats/clouds.webp"
       box={STATS_MOBILE.clouds}
@@ -24,16 +27,28 @@ export const StatsSceneMobile = () => (
       box={STATS_MOBILE.projects}
       fit="contain"
       alt="182 projects"
-      className="stats-rise"
-      style={{ "--rise": "0.1s" } as React.CSSProperties}
+      className="stats-rise stat-neon-tube"
+      style={
+        {
+          "--rise": "0.1s",
+          "--neon": "13.7s",
+          "--neon-delay": "-6.2s",
+        } as React.CSSProperties
+      }
     />
     <SceneLayer
       src="/assets/stats/mentors.webp"
       box={STATS_MOBILE.mentors}
       fit="contain"
       alt="68 mentors"
-      className="stats-rise"
-      style={{ "--rise": "0.2s" } as React.CSSProperties}
+      className="stats-rise stat-neon-halo"
+      style={
+        {
+          "--rise": "0.2s",
+          "--neon": "17.1s",
+          "--neon-delay": "-3.4s",
+        } as React.CSSProperties
+      }
     />
     <SceneLayer
       src="/assets/stats/bear.webp"
@@ -47,8 +62,14 @@ export const StatsSceneMobile = () => (
       box={STATS_MOBILE.hackers}
       fit="contain"
       alt="734 hackers"
-      className="stats-rise"
-      style={{ "--rise": "0.4s" } as React.CSSProperties}
+      className="stats-rise stat-neon-tube"
+      style={
+        {
+          "--rise": "0.4s",
+          "--neon": "11.3s",
+          "--neon-delay": "-1.7s",
+        } as React.CSSProperties
+      }
     />
     <SceneLayer
       src="/assets/stats/lanterns.webp"
@@ -59,7 +80,9 @@ export const StatsSceneMobile = () => (
       src="/assets/stats/recap-2027-mobile.webp"
       box={STATS_MOBILE.recap2027}
       className="stats-arrow stat-neon-halo"
-      style={{ "--neon": "19.3s", "--neon-delay": "-8.1s" } as React.CSSProperties}
+      style={
+        { "--neon": "19.3s", "--neon-delay": "-8.1s" } as React.CSSProperties
+      }
       fit="contain"
       alt="Watch the 2027 recap"
     />

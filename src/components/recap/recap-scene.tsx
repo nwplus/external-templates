@@ -1,9 +1,12 @@
 "use client";
 
 import { TestimonialsScene } from "@/components/testimonials/testimonials-scene";
+import { LightboxGallery, LightboxTrigger } from "@/components/ui/lightbox";
 import { SceneLayer } from "@/components/ui/scene-layer";
 import { RECAP_DESKTOP } from "@/constants/recap";
+import { RECAP_DESKTOP_PHOTOS } from "@/constants/recap-photos";
 import { useScrollProgress } from "@/hooks/use-scroll-progress";
+import { frameStyle } from "@/lib/frame";
 
 import { useRef } from "react";
 
@@ -43,12 +46,30 @@ export const RecapScene = () => {
                 priority
                 className="recap-slab"
               />
-              <SceneLayer
-                src="/assets/recap/photos.webp"
-                box={RECAP_DESKTOP.photos}
-                priority
-                className="recap-photos"
-              />
+              <LightboxGallery>
+                {RECAP_DESKTOP_PHOTOS.map((photo) => (
+                  <LightboxTrigger
+                    key={photo.src}
+                    photo={{
+                      ...photo,
+                      src: photo.fullSrc,
+                      width: photo.fullWidth,
+                      height: photo.fullHeight,
+                      caption: photo.alt,
+                    }}
+                    className="recap-photo absolute"
+                    style={frameStyle(photo.box)}
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={photo.src}
+                      alt={photo.alt}
+                      draggable={false}
+                      className="size-full select-none"
+                    />
+                  </LightboxTrigger>
+                ))}
+              </LightboxGallery>
               <SceneLayer
                 src="/assets/recap/top-shadow.webp"
                 box={RECAP_DESKTOP.topShadow}

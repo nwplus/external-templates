@@ -14,7 +14,9 @@
     if (!ok) throw new Error(message);
   };
   const samples = [];
-  for (const progress of [0, 0.3, 0.52, 0.7, 0.95, 1, 0.7, 0, 1]) {
+  for (const progress of [
+    0, 0.3, 0.52, 0.7, 0.78, 0.8, 0.85, 0.9, 0.98, 1, 0.85, 0, 1,
+  ]) {
     scrollTo({ top: start + span * progress, behavior: "instant" });
     await settle();
     const frame = document
@@ -58,28 +60,48 @@
     const scene = document
       .querySelector(".recap-market > div")
       .getBoundingClientRect();
-    const t = Math.min(1, Math.max(0, (progress - 0.04) / 0.9));
+    const t = Math.min(1, Math.max(0, (progress - 0.04) / 0.56));
     const eased = t * t * (3 - 2 * t);
     const scale = scene.width / frame.width;
     check(
-      Math.abs(scale - (0.72 + 0.28 * eased)) < 0.002,
+      Math.abs(scale - (0.86 + 0.14 * eased)) < 0.002,
       "Testimonials did not grow with the opening"
     );
     const camera = new DOMMatrix(
       getComputedStyle(document.querySelector(".recap-chrome")).transform
     ).a;
-    const cameraT = Math.min(1, Math.max(0, (progress - 0.6) / 0.34));
+    const cameraT = Math.min(1, Math.max(0, (progress - 0.6) / 0.38));
     const cameraEase = cameraT * cameraT * (3 - 2 * cameraT);
     check(
       Math.abs(camera - (1 + 2 * cameraEase)) < 0.01,
-      "Camera did not wait until the final third"
+      "Camera did not wait until the door was two-thirds open"
     );
     const doorShift = new DOMMatrix(
       getComputedStyle(document.querySelector(".recap-door")).transform
     ).f;
+    const doorT = Math.min(1, Math.max(0, (progress - 0.04) / 0.9));
+    const doorEase = doorT * doorT * (3 - 2 * doorT);
     check(
-      Math.abs(doorShift / frame.height + 0.8 * eased) < 0.002,
+      Math.abs(doorShift / frame.height + 0.8 * doorEase) < 0.002,
       "Door is not synchronized with testimonial growth"
+    );
+    // The scaled market must cover the entire projected doorway, even
+    // before camera motion begins. Test all four edges, not only final size.
+    const inset = getComputedStyle(document.querySelector(".recap-market"))
+      .clipPath.match(/[\d.]+/g)
+      .map(Number);
+    const opening = {
+      left: market.left + (frame.width * (inset[3] ?? inset[1])) / 100,
+      right: market.right - (frame.width * inset[1]) / 100,
+      top: market.top + (frame.height * inset[0]) / 100,
+      bottom: market.bottom,
+    };
+    check(
+      scene.left <= opening.left + 1 &&
+        scene.right >= opening.right - 1 &&
+        scene.top <= opening.top + 1 &&
+        scene.bottom >= opening.bottom - 1,
+      "Testimonials edge is exposed inside the doorway"
     );
     samples.push({ progress, scale });
   }

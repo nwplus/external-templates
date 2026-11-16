@@ -102,6 +102,14 @@
   transform: translateX(0);
 }
 
+/* Only the active bubble accepts input; hidden/outgoing slides cannot
+   intercept text selection or the carousel controls. */
+.testi-slide[data-active] .testi-card:not(svg) {
+  pointer-events: auto;
+  cursor: text;
+  user-select: text;
+}
+
 /* A slow float on the active cart, so the scene isn't frozen. */
 .testi-art[data-active] > img {
   animation: testi-drift 10s ease-in-out infinite alternate;
@@ -152,6 +160,7 @@
     transform: none;
   }
 
+  .testi-slide[data-active],
   .testi-art[data-active],
   .testi-slide[data-leaving],
   .testi-art[data-leaving] {

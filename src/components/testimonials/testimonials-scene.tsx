@@ -12,6 +12,7 @@ import { cn } from "@/lib/utils";
 
 import { useState } from "react";
 
+import { PascaleCart } from "./pascale-cart";
 import { TestimonialArrows } from "./testimonial-arrows";
 import "./testimonials.css";
 
@@ -46,6 +47,7 @@ export const TestimonialsScene = ({ bare = false }: { bare?: boolean }) => {
 
   return (
     <div
+      data-lantern-scene
       data-selected={selected === null ? undefined : ""}
       className={cn(
         "@container relative aspect-[1512/982] w-full overflow-hidden bg-[#1b1a26]",
@@ -66,14 +68,20 @@ export const TestimonialsScene = ({ bare = false }: { bare?: boolean }) => {
           className="testi-base testi-stall absolute cursor-pointer"
           style={frameStyle(stall.base)}
         >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={`/assets/testimonials/${stall.id}-base.webp`}
-            alt=""
-            aria-hidden="true"
-            draggable={false}
-            className="size-full select-none transition-transform duration-300 hover:-translate-y-[0.4cqw]"
-          />
+          {stall.id === "pascale" ? (
+            <PascaleCart variant="base" />
+          ) : (
+            <>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={`/assets/testimonials/${stall.id}-base.webp`}
+                alt=""
+                aria-hidden="true"
+                draggable={false}
+                className="size-full select-none transition-transform duration-300 hover:-translate-y-[0.4cqw]"
+              />
+            </>
+          )}
         </button>
       ))}
 
@@ -97,14 +105,20 @@ export const TestimonialsScene = ({ bare = false }: { bare?: boolean }) => {
             className="testi-cart absolute"
             style={frameStyle(stall.selected)}
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={`/assets/testimonials/${stall.id}.webp`}
-              alt=""
-              aria-hidden="true"
-              draggable={false}
-              className="size-full select-none"
-            />
+            {stall.id === "pascale" ? (
+              <PascaleCart variant="selected" />
+            ) : (
+              <>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={`/assets/testimonials/${stall.id}.webp`}
+                  alt=""
+                  aria-hidden="true"
+                  draggable={false}
+                  className="size-full select-none"
+                />
+              </>
+            )}
           </div>
           <div style={{ opacity: "var(--market-chrome, 1)" }}>
             <svg

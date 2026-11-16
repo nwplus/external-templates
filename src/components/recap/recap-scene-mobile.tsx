@@ -1,5 +1,8 @@
+import { LightboxGallery, LightboxTrigger } from "@/components/ui/lightbox";
 import { SceneLayer } from "@/components/ui/scene-layer";
 import { RECAP_MOBILE } from "@/constants/recap";
+import { RECAP_DESKTOP_PHOTOS } from "@/constants/recap-photos";
+import { frameStyle } from "@/lib/frame";
 
 import "./recap.css";
 
@@ -21,17 +24,43 @@ const PHOTOS = [
 
 export const RecapSceneMobile = () => (
   <div className="@container relative aspect-[407/874] w-full overflow-hidden bg-[#0b101c]">
-    <SceneLayer src="/assets/recap/mobile-door.webp" box={RECAP_MOBILE.door} priority />
+    <SceneLayer
+      src="/assets/recap/mobile-door.webp"
+      box={RECAP_MOBILE.door}
+      priority
+    />
 
-    {PHOTOS.map((photo, index) => (
-      <SceneLayer
-        key={photo.src}
-        src={`/assets/recap/${photo.src}.webp`}
-        box={photo.box}
-        className="recap-mobile-photo"
-        style={{ animationDelay: `${index * 0.35}s` }}
-      />
-    ))}
+    <LightboxGallery>
+      {PHOTOS.map((photo, index) => {
+        const full = RECAP_DESKTOP_PHOTOS[[0, 1, 2, 3, 4, 5, 6, 8, 9][index]];
+        return (
+          <LightboxTrigger
+            key={photo.src}
+            photo={{
+              src: full.fullSrc,
+              rotation: full.rotation,
+              alt: `nwHacks recap photo ${index + 1}`,
+              caption: `nwHacks recap photo ${index + 1}`,
+              width: full.fullWidth,
+              height: full.fullHeight,
+            }}
+            className="recap-photo recap-mobile-photo absolute"
+            style={{
+              ...frameStyle(photo.box),
+              animationDelay: `${index * 0.35}s`,
+            }}
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={`/assets/recap/${photo.src}.webp`}
+              alt={`nwHacks recap photo ${index + 1}`}
+              draggable={false}
+              className="size-full select-none"
+            />
+          </LightboxTrigger>
+        );
+      })}
+    </LightboxGallery>
 
     <SceneLayer
       src="/assets/recap/mobile-lights.webp"

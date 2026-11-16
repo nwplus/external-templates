@@ -6,11 +6,12 @@
  */
 
 .recap-pin {
-  /* The door and market move first; the camera joins for the final third. */
-  --motion-t: clamp(0, calc((var(--p, 0) - 0.04) / 0.9), 1);
+  /* Start the camera when the door is about two-thirds open. */
+  --motion-t: clamp(0, calc((var(--p, 0) - 0.04) / 0.56), 1);
+  --door-t: clamp(0, calc((var(--p, 0) - 0.04) / 0.9), 1);
   --zoom: calc(var(--motion-t) * var(--motion-t) * (3 - 2 * var(--motion-t)));
-  --door: var(--zoom);
-  --camera-t: clamp(0, calc((var(--p, 0) - 0.6) / 0.34), 1);
+  --door: calc(var(--door-t) * var(--door-t) * (3 - 2 * var(--door-t)));
+  --camera-t: clamp(0, calc((var(--p, 0) - 0.6) / 0.38), 1);
   --camera-ease: calc(
     var(--camera-t) * var(--camera-t) * (3 - 2 * var(--camera-t))
   );
@@ -60,11 +61,11 @@
   );
 }
 
-/* Start farther inside the garage, centred in the doorway; arrive at the
-   full scene size and viewport centre as the door finishes lifting. */
+/* The initial 86% scene covers the 84.8% doorway, including its floor.
+   Reach full size before camera motion exposes the scene's outer edges. */
 .recap-market > div {
   transform: translateY(calc(14.3% * (1 - var(--zoom))))
-    scale(calc(0.72 + 0.28 * var(--zoom)));
+    scale(calc(0.86 + 0.14 * var(--zoom)));
   transform-origin: 50% 50%;
   will-change: transform;
 }
@@ -74,6 +75,14 @@
 .recap-title {
   opacity: clamp(0, calc(1 - var(--door) * 3.4), 1);
   transform: translateY(calc(var(--door) * -3cqw));
+}
+
+/* The facade ignores pointer events, but its live text remains selectable. */
+.recap-title h2,
+.recap-cue {
+  pointer-events: auto;
+  cursor: text;
+  user-select: text;
 }
 
 /* "keep scrolling" hint under the title, gone as soon as you do. */
@@ -99,6 +108,20 @@
 
 /* The two bulbs on the walls stay lit; only the stats neon fails. */
 
+/* Match HackCamp's gentle per-photo hover lift; touch opens the lightbox. */
+.recap-photo {
+  pointer-events: auto;
+}
+
+.recap-photo img {
+  transition: transform 200ms ease;
+}
+
+.recap-photo:hover img,
+.recap-photo:focus-visible img {
+  transform: scale(1.02);
+}
+
 /* Phone: the door stays put; the photos breathe so the wall feels alive. */
 .recap-mobile-photo {
   animation: recap-photo-float 9s ease-in-out infinite alternate;
@@ -114,6 +137,11 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .recap-photo img {
+    transition: none;
+    transform: none;
+  }
+
   .recap-pin {
     height: auto;
   }
