@@ -10,6 +10,10 @@
      toward the camera over the second half. */
   --door: clamp(0, calc((var(--p, 0) - 0.04) / 0.62), 1);
   --zoom: clamp(0, calc((var(--p, 0) - 0.38) / 0.62), 1);
+  /* Once the market is worth looking at, the doorway opens up to the whole
+     frame, so the section hands over to testimonials at the same size. */
+  --open: clamp(0, calc((var(--zoom, 0) - 0.35) / 0.5), 1);
+  --open-k: calc(1 + var(--open) * 1.6);
   --cue: clamp(0, calc(var(--p, 0) * 6), 1);
 }
 
@@ -40,21 +44,32 @@
   transform-origin: 50% 100%;
 }
 
+/* The doorway grows past the frame as the pin ends; scaling about the
+   frame's centre keeps the market where the next section will draw it. */
+.recap-opening {
+  transform: scale(var(--open-k));
+  transform-origin: 49.8% 30.05%;
+  will-change: transform;
+}
+
 /* The market behind the door: small and far at first, filling more of the
-   opening as the door clears, then pushing toward the camera as the pin
-   runs out. */
+   opening as the door clears, then pushing toward the camera as the pin runs
+   out. Dividing by the doorway's growth keeps it at 1:1 with the frame. */
 .recap-street {
-  /* Never smaller than the opening (0.85), so the street always fills the
-     doorway; the rest of the zoom is the walk toward it. */
-  transform: scale(calc(0.85 + var(--zoom) * 0.15));
+  transform: scale(calc((0.85 + var(--zoom) * 0.3) / var(--open-k)));
   transform-origin: 50% 52%;
   will-change: transform;
+}
+
+/* The garage itself steps out of the way once the market takes the frame. */
+.recap-chrome {
+  opacity: clamp(0, calc(1 - var(--open) * 1.25), 1);
 }
 
 /* Night air sits on the market until the door is open. */
 .recap-street-shade {
   background: rgb(6 10 16 / 0.55);
-  opacity: calc(1 - var(--door) * 0.85);
+  opacity: calc((1 - var(--door) * 0.85) * (1 - var(--open)));
 }
 
 /* Light through the opening, over everything behind the door. */
@@ -79,7 +94,7 @@
       rgb(10 15 24 / 0) 40%,
       rgb(6 9 15 / 0.45) 100%
     );
-  opacity: calc(var(--door) * 0.55);
+  opacity: calc(var(--door) * 0.55 * (1 - var(--open)));
 }
 
 .recap-floor {
@@ -91,7 +106,7 @@
       rgb(4 8 14 / 0.72) 100%
     ),
     radial-gradient(120% 60% at 50% 104%, rgb(255 226 168 / 0.3) 0%, rgb(255 226 168 / 0) 62%);
-  opacity: calc(var(--door) * 0.9);
+  opacity: calc(var(--door) * 0.9 * (1 - var(--open)));
 }
 
 /* The title sits on the door in the design, so it leaves early — the door
@@ -122,35 +137,7 @@
   }
 }
 
-/* The two bulbs on the walls never sit quite still. */
-.recap-lights {
-  animation: recap-flicker 9s steps(1, end) infinite;
-}
-
-@keyframes recap-flicker {
-  0%,
-  71%,
-  74%,
-  78%,
-  100% {
-    opacity: 1;
-  }
-  72% {
-    opacity: 0;
-  }
-  73% {
-    opacity: 0.6;
-  }
-  75% {
-    opacity: 0;
-  }
-  76% {
-    opacity: 0.85;
-  }
-  77% {
-    opacity: 0.35;
-  }
-}
+/* The two bulbs on the walls stay lit; only the stats neon fails. */
 
 /* Phone: the door stays put; the photos breathe so the wall feels alive. */
 .recap-mobile-photo {
@@ -192,7 +179,6 @@
     display: none;
   }
 
-  .recap-lights,
   .recap-mobile-photo {
     animation: none;
   }

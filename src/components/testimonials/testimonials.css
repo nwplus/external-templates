@@ -17,9 +17,11 @@
   opacity: 1;
 }
 
+/* The wide shot gets out of the way at once: the incoming cart is already
+   travelling, and fading the three carts through it looked like a pile-up. */
 [data-selected] .testi-base {
   opacity: 0;
-  transform: scale(0.97);
+  transition: none;
   pointer-events: none;
 }
 
@@ -31,7 +33,8 @@
 }
 
 .testi-art[data-active] {
-  animation: testi-in-right 0.52s cubic-bezier(0.2, 0.9, 0.25, 1) both;
+  opacity: 1;
+  animation: testi-in-right 0.55s cubic-bezier(0.33, 0, 0.2, 1) both;
 }
 
 .testi-art[data-active][data-dir="-1"] {
@@ -39,7 +42,8 @@
 }
 
 .testi-art[data-leaving] {
-  animation: testi-out-left 0.5s cubic-bezier(0.4, 0, 0.6, 1) both;
+  opacity: 1;
+  animation: testi-out-left 0.55s cubic-bezier(0.33, 0, 0.2, 1) both;
 }
 
 .testi-art[data-leaving][data-dir="-1"] {
@@ -48,45 +52,37 @@
 
 @keyframes testi-in-right {
   from {
-    opacity: 0;
-    transform: translateX(22%);
+    transform: translateX(102%) rotate(2.4deg);
   }
   to {
-    opacity: 1;
-    transform: translateX(0);
+    transform: translateX(0) rotate(0deg);
   }
 }
 
 @keyframes testi-in-left {
   from {
-    opacity: 0;
-    transform: translateX(-22%);
+    transform: translateX(-102%) rotate(-2.4deg);
   }
   to {
-    opacity: 1;
-    transform: translateX(0);
+    transform: translateX(0) rotate(0deg);
   }
 }
 
 @keyframes testi-out-left {
   from {
-    opacity: 1;
-    transform: translateX(0);
+    transform: translateX(0) rotate(0deg);
   }
   to {
-    opacity: 0;
-    transform: translateX(-22%);
+    transform: translateX(-102%) rotate(-2.4deg);
   }
 }
 
 @keyframes testi-out-right {
   from {
-    opacity: 1;
-    transform: translateX(0);
+    transform: translateX(0) rotate(0deg);
   }
   to {
-    opacity: 0;
-    transform: translateX(22%);
+    transform: translateX(102%) rotate(2.4deg);
   }
 }
 

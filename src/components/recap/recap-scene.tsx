@@ -30,7 +30,9 @@ export const RecapScene = () => {
     <div ref={pin} className="recap-pin relative h-[220vh]">
       <div className="recap-sticky overflow-hidden bg-[#0b101c]">
         <div className="@container absolute top-1/2 left-1/2 aspect-[1512/982] w-screen -translate-x-1/2 -translate-y-1/2">
-          <SceneLayer src="/assets/recap/wall.webp" box={RECAP_DESKTOP.wall} priority />
+          <div className="recap-chrome">
+            <SceneLayer src="/assets/recap/wall.webp" box={RECAP_DESKTOP.wall} priority />
+          </div>
 
           {/* Everything behind the door lives in this window, so none of it
               spills onto the facade above the opening. The inner layer is
@@ -94,36 +96,39 @@ export const RecapScene = () => {
             </div>
           </div>
 
-          <SceneLayer
-            src="/assets/recap/column-left.webp"
-            box={RECAP_DESKTOP.columnLeft}
-          />
-          <SceneLayer
-            src="/assets/recap/column-right.webp"
-            box={RECAP_DESKTOP.columnRight}
-          />
-          <SceneLayer
-            src="/assets/recap/side-shadow-left.webp"
-            box={RECAP_DESKTOP.sideShadowL}
-          />
-          <SceneLayer
-            src="/assets/recap/side-shadow-right.webp"
-            box={RECAP_DESKTOP.sideShadowR}
-          />
-          <SceneLayer
-            src="/assets/recap/right-door.webp"
-            box={RECAP_DESKTOP.rightDoor}
-          />
+          <div className="recap-chrome absolute inset-0">
+            <SceneLayer
+              src="/assets/recap/column-left.webp"
+              box={RECAP_DESKTOP.columnLeft}
+            />
+            <SceneLayer
+              src="/assets/recap/column-right.webp"
+              box={RECAP_DESKTOP.columnRight}
+            />
+            <SceneLayer
+              src="/assets/recap/side-shadow-left.webp"
+              box={RECAP_DESKTOP.sideShadowL}
+            />
+            <SceneLayer
+              src="/assets/recap/side-shadow-right.webp"
+              box={RECAP_DESKTOP.sideShadowR}
+            />
+            <SceneLayer
+              src="/assets/recap/right-door.webp"
+              box={RECAP_DESKTOP.rightDoor}
+            />
+          </div>
 
           {/* The lamps hang in front of the frame, as they do in the design. */}
-          <SceneLayer
-            src="/assets/recap/lights.webp"
-            box={RECAP_DESKTOP.lights}
-            className="recap-lights"
-            fit="contain"
-          />
+          <div className="recap-chrome absolute inset-0">
+            <SceneLayer
+              src="/assets/recap/lights.webp"
+              box={RECAP_DESKTOP.lights}
+              fit="contain"
+            />
+          </div>
 
-          <div className="recap-title absolute inset-x-0 top-[16.8%] flex flex-col items-center gap-[0.8cqw]">
+          <div className="recap-chrome recap-title absolute inset-x-0 top-[16.8%] flex flex-col items-center gap-[0.8cqw]">
             <h2 className="font-display text-[3.175cqw] leading-none text-white">
               Recap
             </h2>

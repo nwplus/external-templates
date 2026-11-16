@@ -27,7 +27,7 @@ export const StatsVideo = ({ box }: { box: Box }) => {
         draggable={false}
         className="stats-video-frame pointer-events-none absolute inset-0 size-full select-none"
       />
-      <div className="absolute inset-[11.6%_8.8%_12%_9.7%] overflow-hidden rounded-[0.5cqw] bg-[#050b12]">
+      <div className="absolute inset-[12.033%_8.251%_12.241%_8.25%] overflow-hidden bg-[#050b12]">
         {playing ? (
           <iframe
             className="size-full"

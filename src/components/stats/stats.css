@@ -154,96 +154,114 @@
  */
 
 .stat-neon-tube {
-  animation: neon-tube-cut var(--neon, 11.3s) steps(1, end) infinite;
+  animation: neon-tube-cut var(--neon, 16.9s) steps(1, end) infinite;
   animation-delay: var(--neon-delay, 0s);
 }
 
 .stat-neon-halo {
-  animation: neon-halo-cut var(--neon, 17.1s) steps(1, end) infinite;
+  animation: neon-halo-cut var(--neon, 25.3s) steps(1, end) infinite;
   animation-delay: var(--neon-delay, 0s);
 }
 
 @keyframes neon-tube-cut {
   0%,
-  20%,
-  20.15%,
-  20.3%,
-  20.45%,
-  20.6%,
-  20.75%,
-  20.9%,
+  18%,
+  18.25%,
+  18.5%,
+  18.75%,
+  19%,
+  19.25%,
+  19.5%,
   46%,
-  46.15%,
-  46.3%,
-  46.45%,
-  71%,
-  71.15%,
-  71.3%,
-  71.45%,
-  71.6%,
-  71.75%,
-  92%,
-  92.15%,
-  92.3%,
+  46.25%,
+  46.5%,
+  46.75%,
+  72%,
+  72.25%,
+  72.5%,
+  72.75%,
+  73%,
+  73.25%,
+  91%,
+  91.25%,
+  91.5%,
   100% {
     filter: brightness(1);
   }
-  20.075%,
-  20.225%,
-  20.375%,
-  20.525%,
-  20.675%,
-  20.825%,
-  46.075%,
-  46.225%,
+  18.125%,
+  18.375%,
+  18.625%,
+  18.875%,
+  19.125%,
+  19.375%,
+  46.125%,
   46.375%,
-  71.075%,
-  71.225%,
-  71.375%,
-  71.525%,
-  71.675%,
-  92.075%,
-  92.225% {
+  46.625%,
+  72.125%,
+  72.375%,
+  72.625%,
+  72.875%,
+  73.125%,
+  91.125%,
+  91.375% {
     filter: brightness(0.18);
   }
 }
 
 @keyframes neon-halo-cut {
   0%,
-  33%,
-  33.15%,
-  33.3%,
-  33.45%,
-  33.6%,
-  33.75%,
-  33.9%,
+  31%,
+  31.25%,
+  31.5%,
+  31.75%,
+  32%,
+  32.25%,
+  32.5%,
+  57%,
+  57.25%,
+  57.5%,
+  57.75%,
   58%,
-  58.15%,
-  58.3%,
-  58.45%,
-  58.6%,
-  84%,
-  84.15%,
-  84.3%,
+  58.25%,
+  83%,
+  83.25%,
+  83.5%,
   100% {
     filter: drop-shadow(0 0 0.55cqw rgb(255 255 255 / 0.28));
   }
-  33.075%,
-  33.225%,
-  33.375%,
-  33.525%,
-  33.675%,
-  33.825%,
-  58.075%,
-  58.225%,
-  58.375%,
-  58.525%,
-  84.075%,
-  84.225% {
+  31.125%,
+  31.375%,
+  31.625%,
+  31.875%,
+  32.125%,
+  32.375%,
+  57.125%,
+  57.375%,
+  57.625%,
+  57.875%,
+  83.125%,
+  83.375% {
     filter: none;
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .stat-neon-tube,
+  .stat-neon-halo {
+    animation: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stats-rise,
+  .stats-clouds,
+  .stats-lanterns,
+  .stats-arrow,
+  .stats-video-frame,
+  .stats-bear {
+    animation: none;
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   .stat-neon-tube,
   .stat-neon-halo {
