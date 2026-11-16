@@ -40,7 +40,7 @@ export function FoodCollection({ children }: { children: ReactNode }) {
           // eslint-disable-next-line @next/next/no-img-element
           <img
             key={food}
-            src={`/assets/sponsors/interactive/${food}.svg`}
+            src={`/assets/sponsors/interactive/${food}.svg?v=2`}
             alt=""
             data-food={food}
             className={`collected-food ${food}`}

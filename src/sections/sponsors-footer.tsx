@@ -9,6 +9,7 @@ import {
   TEAM_HEADINGS,
 } from "@/constants/market-interactions";
 import { SPONSORS_DESKTOP, SPONSORS_MOBILE } from "@/constants/section-art";
+import { DESKTOP_ROAD_LAYERS, MOBILE_ROAD_LAYERS } from "@/constants/footer-road";
 
 import { useId, useState } from "react";
 
@@ -150,17 +151,30 @@ function SponsorsScene({ mobile }: { mobile: boolean }) {
     : SPONSORS_DESKTOP.filter(
         (layer) => layer.name !== "Mascot / Nugget on Bike"
       );
+  const road = mobile ? MOBILE_ROAD_LAYERS : DESKTOP_ROAD_LAYERS;
+  const shadow = road.find((layer) => layer.name === "moped and nugget shadow")!;
+  const centerline = road.find((layer) => layer.name === "Vector 4643")!;
   return (
     <div
       className={`market-scene sponsors-scene ${mobile ? "market-mobile" : "market-desktop"}`}
       style={{ aspectRatio: `${width}/${height}` }}
     >
-      <SectionArt layers={artwork} width={width} height={height} />
+      <SectionArt
+        layers={artwork.flatMap((layer) => layer.name === "Footer / Road"
+          ? road.filter((part) => part !== shadow && part !== centerline)
+          : [layer])}
+        width={width}
+        height={height}
+      />
       <SectionArt
         layers={[TEAM_HEADINGS[mobile ? 1 : 0]]}
         width={width}
         height={height}
       />
+      <div className="rider-loop" aria-hidden="true">
+        <SectionArt layers={[shadow]} width={width} height={height} />
+      </div>
+      <SectionArt layers={[centerline]} width={width} height={height} />
       <div className="rider-loop" aria-hidden="true">
         <SectionArt layers={[rider]} width={width} height={height} />
       </div>
