@@ -1,0 +1,157 @@
+/*
+ * Stats motion (components/stats): the neon signs buzz, the lanterns sway,
+ * the clouds drift and the recap arrow pulses. Everything is decorative, so
+ * it stops under prefers-reduced-motion and globals.css pauses it while the
+ * section is scrolled away.
+ */
+
+/* Each sign arrives with the section, then keeps its own slow buzz. The
+   entry animation owns the transform, so the buzz only moves opacity. */
+.stats-rise {
+  animation-name: stats-rise, stats-buzz;
+  animation-duration: 0.9s, 6s;
+  animation-timing-function: cubic-bezier(0.2, 0.9, 0.25, 1), ease-in-out;
+  animation-fill-mode: both, none;
+  /* Each sign enters on its own beat (--rise), then buzzes. */
+  animation-delay: var(--rise, 0s), calc(var(--rise, 0s) + 0.9s);
+  animation-iteration-count: 1, infinite;
+}
+
+@keyframes stats-rise {
+  from {
+    opacity: 0;
+    transform: translateY(1.2cqw) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Neon doesn't sit at one brightness; it hums. */
+@keyframes stats-buzz {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  7% {
+    opacity: 0.86;
+  }
+  11% {
+    opacity: 1;
+  }
+  43% {
+    opacity: 0.94;
+  }
+  47% {
+    opacity: 1;
+  }
+  71% {
+    opacity: 0.88;
+  }
+  74% {
+    opacity: 1;
+  }
+}
+
+.stats-clouds {
+  animation: stats-cloud-drift 90s ease-in-out infinite alternate;
+}
+
+@keyframes stats-cloud-drift {
+  from {
+    transform: translateX(-1.4%);
+  }
+  to {
+    transform: translateX(1.4%);
+  }
+}
+
+/* Hanging lanterns swing from their hook, not their middle. */
+.stats-lanterns {
+  transform-origin: 50% 0;
+  animation: stats-sway 8s ease-in-out infinite alternate;
+}
+
+@keyframes stats-sway {
+  from {
+    transform: rotate(-1.6deg);
+  }
+  to {
+    transform: rotate(1.6deg);
+  }
+}
+
+/* The RECAP 2027 arrow breathes toward the video. */
+.stats-arrow {
+  animation:
+    stats-arrow-in 1s cubic-bezier(0.2, 0.9, 0.25, 1) both,
+    stats-arrow-pulse 3.4s ease-in-out 1s infinite;
+}
+
+@keyframes stats-arrow-in {
+  from {
+    opacity: 0;
+    transform: translate(-2.5cqw, -1.5cqw);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes stats-arrow-pulse {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 0.2cqw rgb(255 90 80 / 0.35));
+  }
+  50% {
+    filter: drop-shadow(0 0 1.1cqw rgb(255 90 80 / 0.75));
+  }
+}
+
+/* The video frame's neon corners.
+   A soft glow, never a hard pulse: the video itself is the bright thing. */
+.stats-video-frame {
+  animation: stats-frame-glow 5s ease-in-out infinite alternate;
+}
+
+@keyframes stats-frame-glow {
+  from {
+    filter: drop-shadow(0 0 0.15cqw rgb(120 210 255 / 0.25));
+  }
+  to {
+    filter: drop-shadow(0 0 0.7cqw rgb(120 210 255 / 0.55));
+  }
+}
+
+/* Nugget's bear sign floats the way the hero's lantern does. */
+.stats-bear {
+  animation-name: stats-rise, stats-bear-bob;
+  animation-duration: 0.9s, 7s;
+  animation-timing-function: cubic-bezier(0.2, 0.9, 0.25, 1), ease-in-out;
+  animation-fill-mode: both, none;
+  animation-delay: var(--rise, 0.35s), calc(var(--rise, 0.35s) + 1s);
+  animation-iteration-count: 1, infinite;
+  animation-direction: normal, alternate;
+}
+
+@keyframes stats-bear-bob {
+  from {
+    translate: 0 0;
+  }
+  to {
+    translate: 0 -0.6cqw;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stats-rise,
+  .stats-clouds,
+  .stats-lanterns,
+  .stats-arrow,
+  .stats-video-frame,
+  .stats-bear {
+    animation: none;
+  }
+}

@@ -1,0 +1,135 @@
+/*
+ * Testimonials motion (components/testimonials). Choosing a stall zooms its
+ * art in and brings the quote card across; the arrows step through the three.
+ */
+
+.testi-stall,
+.testi-art,
+.testi-card,
+.testi-hint {
+  transition:
+    opacity 0.45s ease,
+    transform 0.7s cubic-bezier(0.2, 0.9, 0.25, 1);
+}
+
+/* Base scene: the three carts as the design draws them. */
+.testi-base {
+  opacity: 1;
+}
+
+[data-selected] .testi-base {
+  opacity: 0;
+  transform: scale(0.97);
+  pointer-events: none;
+}
+
+/* Selected scene: only the chosen cart, a little further forward. */
+.testi-art {
+  opacity: 0;
+  transform: scale(0.92) translateY(1.4cqw);
+  pointer-events: none;
+}
+
+.testi-art[data-active] {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+/* The quote card swings in from the cart's side. */
+.testi-card {
+  opacity: 0;
+  transform: translateX(-2.4cqw) rotate(-1.2deg);
+}
+
+.testi-card[data-open] {
+  opacity: 1;
+  transform: translateX(0) rotate(0deg);
+}
+
+/* A slow float on the active cart, so the scene isn't frozen. */
+.testi-art[data-active] > img {
+  animation: testi-drift 10s ease-in-out infinite alternate;
+}
+
+@keyframes testi-drift {
+  from {
+    translate: 0 0;
+  }
+  to {
+    translate: 0 -0.5cqw;
+  }
+}
+
+.testi-arrow {
+  transition:
+    transform 0.18s ease,
+    filter 0.18s ease;
+}
+
+.testi-arrow:hover {
+  transform: translateY(-0.12cqw);
+  filter: brightness(1.12);
+}
+
+.testi-arrow:active {
+  transform: translateY(0) scale(0.94);
+}
+
+/* The dots: the current one stretches into a pill. */
+.testi-dot {
+  transition:
+    width 0.3s cubic-bezier(0.2, 0.9, 0.25, 1),
+    background-color 0.3s ease,
+    opacity 0.3s ease;
+}
+
+/* --- arriving from down the street (testimonials-arrival.tsx) ----------- */
+
+.testi-pin {
+  --arrive: clamp(0, var(--p, 0), 1);
+}
+
+.testi-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+.testi-zoom {
+  transform: scale(calc(0.62 + var(--arrive) * 0.38));
+  transform-origin: center;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .testi-pin {
+    height: auto;
+  }
+
+  .testi-sticky {
+    position: relative;
+    height: auto;
+  }
+
+  .testi-zoom {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .testi-stall,
+  .testi-art,
+  .testi-card,
+  .testi-hint {
+    transition: opacity 0.2s linear;
+  }
+
+  .testi-art,
+  .testi-card {
+    transform: none;
+  }
+
+  .testi-art[data-active] > img {
+    animation: none;
+  }
+}

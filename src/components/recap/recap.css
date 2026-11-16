@@ -1,0 +1,131 @@
+/*
+ * Recap motion (components/recap). The section holds the page still while the
+ * garage door rolls up, then lets go; --p (0..1, written by useScrollProgress)
+ * drives it. Lights flicker in the background the whole time, as the design's
+ * "window flicker in bkg" note asks.
+ */
+
+.recap-pin {
+  --door: clamp(0, calc((var(--p, 0) - 0.05) / 0.62), 1);
+  --cue: clamp(0, calc(var(--p, 0) * 6), 1);
+}
+
+.recap-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+/* The corrugated slab, with the polaroids pinned to it, rolls up out of the
+   frame; the photos drift a third as fast so they don't leave with it. */
+.recap-door {
+  transform: translateY(calc(var(--door) * -134%));
+  will-change: transform;
+}
+
+.recap-photos {
+  transform: translateY(calc(var(--door) * -11%)) scale(calc(1 + var(--door) * 0.03));
+  will-change: transform;
+}
+
+/* As the door clears, the garage behind it warms up, so the reveal isn't an
+   empty hole. */
+.recap-glow {
+  background: radial-gradient(
+    54% 44% at 50% 30%,
+    rgb(255 231 172 / 0.72) 0%,
+    rgb(255 196 120 / 0.3) 46%,
+    rgb(255 226 168 / 0) 72%
+  );
+  opacity: calc(var(--door) * 0.95);
+}
+
+.recap-title {
+  opacity: calc(1 - var(--door) * 0.9);
+  transform: translateY(calc(var(--door) * -2.2cqw));
+}
+
+/* "keep scrolling" hint under the title, gone as soon as you do. */
+.recap-cue {
+  opacity: calc(1 - var(--cue));
+}
+
+.recap-cue-arrow {
+  animation: recap-cue 1.8s ease-in-out infinite;
+}
+
+@keyframes recap-cue {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.55;
+  }
+  50% {
+    transform: translateY(0.5cqw);
+    opacity: 1;
+  }
+}
+
+/* The two bulbs on the walls never sit quite still. */
+.recap-lights {
+  animation: recap-flicker 7s steps(1, end) infinite;
+}
+
+@keyframes recap-flicker {
+  0%,
+  92%,
+  96%,
+  100% {
+    opacity: 1;
+  }
+  93% {
+    opacity: 0.72;
+  }
+  94% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 0.84;
+  }
+}
+
+/* Phone: the door stays put; the photos breathe so the wall feels alive. */
+.recap-mobile-photo {
+  animation: recap-photo-float 9s ease-in-out infinite alternate;
+}
+
+@keyframes recap-photo-float {
+  from {
+    translate: 0 0;
+  }
+  to {
+    translate: 0 -0.8cqw;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .recap-pin {
+    height: auto;
+  }
+
+  .recap-sticky {
+    position: relative;
+    height: auto;
+  }
+
+  .recap-door {
+    display: none;
+  }
+
+  .recap-photos,
+  .recap-title {
+    transform: none;
+    opacity: 1;
+  }
+
+  .recap-cue,
+  .recap-lights,
+  .recap-mobile-photo {
+    animation: none;
+  }
+}
