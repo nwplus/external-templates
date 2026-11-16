@@ -1,0 +1,12 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="1154" height="500" viewBox="0 0 1154 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Food Truck">
+<path id="Union" d="M1154 438.667H845.144C836.735 473.846 805.089 500 767.334 500C729.579 500 697.933 473.846 689.524 438.667H225.144C216.735 473.846 185.089 500 147.334 500C103.151 500 67.334 464.183 67.334 420C67.334 412.853 68.2731 405.926 70.0312 399.333H33.333V411.999H0V378.666H13.333V271.999L128 221.999L195.334 2.83301V0H1154V438.667Z" fill="url(#paint0_linear_0_4)"/>
+<rect id="Rectangle 3741" x="418" y="77" width="251" height="132" fill="#273A48"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_0_4" x1="577" y1="0" x2="577" y2="500" gradientUnits="userSpaceOnUse">
+<stop stop-color="#132331"/>
+<stop offset="1" stop-color="#112B41"/>
+</linearGradient>
+</defs>
+</svg>

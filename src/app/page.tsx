@@ -3,6 +3,8 @@ import About from "@/sections/about";
 import Faq from "@/sections/faq";
 import Hero from "@/sections/hero";
 import Navbar from "@/sections/navbar";
+import PastProjects from "@/sections/past-projects";
+import SponsorsFooter from "@/sections/sponsors-footer";
 
 export default function Home() {
   return (
@@ -10,7 +12,9 @@ export default function Home() {
       <Navbar />
       <Hero />
       <About />
+      <PastProjects />
       <Faq />
+      <SponsorsFooter />
       <MotionGate />
     </div>
   );

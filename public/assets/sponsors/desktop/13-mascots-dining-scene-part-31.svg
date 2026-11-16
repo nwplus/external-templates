@@ -1,0 +1,67 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="298.5" height="205" viewBox="0 0 298.5 205" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Dining Table / Illustration">
+<g id="wooden stand">
+<ellipse id="shadow" cx="228" cy="155.5" rx="17" ry="5.5" fill="#11181E"/>
+<ellipse id="shadow_2" cx="256" cy="199.5" rx="17" ry="5.5" fill="#11181E"/>
+<ellipse id="shadow_3" cx="46" cy="199.5" rx="17" ry="5.5" fill="#11181E"/>
+<path id="Rectangle 3186" d="M238.5 4L224.682 6.5V157H238.5V4Z" fill="url(#paint0_linear_0_74)"/>
+<path id="Rectangle 3786" d="M219.5 8L224.682 6.5V157L219.5 154V8Z" fill="url(#paint1_linear_0_74)"/>
+</g>
+<g id="wooden stand_2">
+<path id="Rectangle 3186_2" d="M63.5 0L77.3182 2.5V153H63.5V0Z" fill="url(#paint2_linear_0_74)"/>
+<path id="Rectangle 3786_2" d="M82.5 4L77.3182 2.5V153L82.5 150V4Z" fill="url(#paint3_linear_0_74)"/>
+</g>
+<g id="wooden stand_3">
+<path id="Rectangle 3186_3" d="M265.5 46L251.682 48.5V199H265.5V46Z" fill="url(#paint4_linear_0_74)"/>
+<path id="Rectangle 3786_3" d="M246.5 50L251.682 48.5V199L246.5 196V50Z" fill="url(#paint5_linear_0_74)"/>
+</g>
+<g id="wooden stand_4">
+<path id="Rectangle 3186_4" d="M36.5 46L50.3182 48.5V199H36.5V46Z" fill="url(#paint6_linear_0_74)"/>
+<path id="Rectangle 3786_4" d="M55.5 50L50.3182 48.5V199L55.5 196V50Z" fill="url(#paint7_linear_0_74)"/>
+</g>
+<path id="Rectangle 2801" d="M59 0L0 45V61H298.5V45L248.5 0H59Z" fill="#5C3815"/>
+<path id="Rectangle 2812" d="M59 0L2.5 45H298.5L248.5 0H59Z" fill="url(#paint8_linear_0_74)"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_0_74" x1="224.682" y1="4" x2="224.682" y2="157" gradientUnits="userSpaceOnUse">
+<stop stop-color="#5C3815"/>
+<stop offset="1" stop-color="#C2772D"/>
+</linearGradient>
+<linearGradient id="paint1_linear_0_74" x1="224.682" y1="4" x2="224.682" y2="157" gradientUnits="userSpaceOnUse">
+<stop offset="0.668269" stop-color="#5C3815"/>
+<stop offset="0.9999" stop-color="#965C22"/>
+<stop offset="1" stop-color="#C2772D"/>
+</linearGradient>
+<linearGradient id="paint2_linear_0_74" x1="77.3182" y1="-3.28879e-08" x2="77.3182" y2="153" gradientUnits="userSpaceOnUse">
+<stop stop-color="#5C3815"/>
+<stop offset="1" stop-color="#C2772D"/>
+</linearGradient>
+<linearGradient id="paint3_linear_0_74" x1="77.3182" y1="5.77544e-08" x2="77.3182" y2="153" gradientUnits="userSpaceOnUse">
+<stop offset="0.668269" stop-color="#5C3815"/>
+<stop offset="0.9999" stop-color="#965C22"/>
+<stop offset="1" stop-color="#C2772D"/>
+</linearGradient>
+<linearGradient id="paint4_linear_0_74" x1="251.682" y1="46" x2="251.682" y2="199" gradientUnits="userSpaceOnUse">
+<stop stop-color="#5C3815"/>
+<stop offset="1" stop-color="#C2772D"/>
+</linearGradient>
+<linearGradient id="paint5_linear_0_74" x1="251.682" y1="46" x2="251.682" y2="199" gradientUnits="userSpaceOnUse">
+<stop offset="0.668269" stop-color="#5C3815"/>
+<stop offset="0.9999" stop-color="#965C22"/>
+<stop offset="1" stop-color="#C2772D"/>
+</linearGradient>
+<linearGradient id="paint6_linear_0_74" x1="50.3182" y1="46" x2="50.3182" y2="199" gradientUnits="userSpaceOnUse">
+<stop stop-color="#5C3815"/>
+<stop offset="1" stop-color="#C2772D"/>
+</linearGradient>
+<linearGradient id="paint7_linear_0_74" x1="50.3182" y1="46" x2="50.3182" y2="199" gradientUnits="userSpaceOnUse">
+<stop offset="0.668269" stop-color="#5C3815"/>
+<stop offset="0.9999" stop-color="#965C22"/>
+<stop offset="1" stop-color="#C2772D"/>
+</linearGradient>
+<linearGradient id="paint8_linear_0_74" x1="187.5" y1="-11.5" x2="156" y2="88" gradientUnits="userSpaceOnUse">
+<stop stop-color="#C2772D"/>
+<stop offset="1" stop-color="#5C3815"/>
+</linearGradient>
+</defs>
+</svg>
