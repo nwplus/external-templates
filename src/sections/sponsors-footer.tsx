@@ -1,6 +1,7 @@
 "use client";
 
 import { useCollectFood } from "@/components/food-collection";
+import { FooterTeam } from "@/components/footer-team";
 import { ResponsiveScene } from "@/components/responsive-scene";
 import { sceneBox, SectionArt } from "@/components/section-art";
 import {
@@ -160,9 +161,13 @@ function SponsorsScene({ mobile }: { mobile: boolean }) {
       style={{ aspectRatio: `${width}/${height}` }}
     >
       <SectionArt
-        layers={artwork.flatMap((layer) => layer.name === "Footer / Road"
-          ? road.filter((part) => part !== shadow && part !== centerline)
-          : [layer])}
+        layers={artwork
+          .filter((layer) => layer.name !== "Team / Portrait Row")
+          .flatMap((layer) =>
+            layer.name === "Footer / Road"
+              ? road.filter((part) => part !== shadow && part !== centerline)
+              : [layer]
+          )}
         width={width}
         height={height}
       />
@@ -175,6 +180,13 @@ function SponsorsScene({ mobile }: { mobile: boolean }) {
         <SectionArt layers={[shadow]} width={width} height={height} />
       </div>
       <SectionArt layers={[centerline]} width={width} height={height} />
+      <FooterTeam
+        style={
+          mobile
+            ? box(0, 2379.435546875, 402, 38.48500061035156)
+            : box(0, 4006, 1512, 86)
+        }
+      />
       <div className="rider-loop" aria-hidden="true">
         <SectionArt layers={[rider]} width={width} height={height} />
       </div>

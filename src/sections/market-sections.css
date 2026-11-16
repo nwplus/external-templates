@@ -26,6 +26,53 @@
   user-select: none;
   max-width: none;
 }
+.footer-team {
+  position: absolute;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+  z-index: 2;
+}
+.footer-team::-webkit-scrollbar {
+  display: none;
+}
+.footer-team-track {
+  display: flex;
+  gap: 1.85185185cqw;
+  width: max-content;
+  height: 100%;
+  padding-inline: 1.85185185cqw;
+}
+.footer-team-portrait {
+  display: block;
+  flex: 0 0 5.68783069cqw;
+  width: 5.68783069cqw;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 0.33068783cqw;
+}
+.footer-team-portrait img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.footer-team:focus-visible,
+.footer-team-portrait:focus-visible {
+  outline: 2px solid #ffe7ac;
+  outline-offset: -2px;
+}
+.market-mobile .footer-team-track {
+  gap: 3.1170398cqw;
+  padding-inline: 0;
+  margin-left: -2.86555504cqw;
+}
+.market-mobile .footer-team-portrait {
+  flex-basis: 9.57338324cqw;
+  width: 9.57338324cqw;
+  border-radius: 0.55659204cqw;
+}
 .food-collection {
   position: absolute;
   left: 8.39947%;
