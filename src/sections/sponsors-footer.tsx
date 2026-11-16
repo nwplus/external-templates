@@ -1,7 +1,14 @@
 "use client";
 
+import { useCollectFood } from "@/components/food-collection";
 import { ResponsiveScene } from "@/components/responsive-scene";
 import { sceneBox, SectionArt } from "@/components/section-art";
+import {
+  MOBILE_DINING,
+  MOBILE_RIDER,
+  RIDER_SHADOWS,
+  TEAM_HEADINGS,
+} from "@/constants/market-interactions";
 import { SPONSORS_DESKTOP, SPONSORS_MOBILE } from "@/constants/section-art";
 
 import { useId, useState } from "react";
@@ -10,8 +17,6 @@ import "./market-sections.css";
 
 const INTRO =
   "nwHacks is more than just a hackathon; it's a place that supports and fosters a community for the next generation of tech leaders.";
-const CONTACT =
-  "If you're interested in collaborating with us or speaking at one of our events, please reach out at";
 const SOCIALS = [
   {
     name: "Instagram",
@@ -124,21 +129,46 @@ function FooterContact() {
 }
 
 function SponsorsScene({ mobile }: { mobile: boolean }) {
+  const collectFood = useCollectFood();
   const [slide, setSlide] = useState(0);
+  const selectSlide = (index: number) => {
+    setSlide(index);
+    if (index === 5) collectFood("laksa");
+  };
   const width = mobile ? 402 : 1512;
   const height = mobile ? 2450 : 4139;
   const box = (x: number, y: number, w: number, h: number) =>
     sceneBox(x, y, w, h, width, height);
+  const rider = mobile
+    ? MOBILE_RIDER
+    : SPONSORS_DESKTOP.find(
+        (layer) => layer.name === "Mascot / Nugget on Bike"
+      )!;
+  const artwork = mobile
+    ? SPONSORS_MOBILE.flatMap((layer) =>
+        layer.name === "Mascots / Dining Scene" ? MOBILE_DINING : [layer]
+      )
+    : SPONSORS_DESKTOP.filter(
+        (layer) => layer.name !== "Mascot / Nugget on Bike"
+      );
   return (
     <div
       className={`market-scene sponsors-scene ${mobile ? "market-mobile" : "market-desktop"}`}
       style={{ aspectRatio: `${width}/${height}` }}
     >
+      <SectionArt layers={artwork} width={width} height={height} />
       <SectionArt
-        layers={mobile ? SPONSORS_MOBILE : SPONSORS_DESKTOP}
+        layers={[TEAM_HEADINGS[mobile ? 1 : 0]]}
         width={width}
         height={height}
       />
+      <div className="rider-loop" aria-hidden="true">
+        <SectionArt
+          layers={[RIDER_SHADOWS[mobile ? 1 : 0], rider]}
+          width={width}
+          height={height}
+        />
+      </div>
       <h2
         className="market-heading"
         style={mobile ? box(70, 117, 263, 51) : box(343, 322, 826, 78)}
@@ -149,9 +179,38 @@ function SponsorsScene({ mobile }: { mobile: boolean }) {
         className="sponsor-introduction"
         style={mobile ? box(70, 180, 263, 196) : box(343, 426, 826, 168)}
       >
-        <p>{INTRO}</p>
         <p>
-          {CONTACT}{" "}
+          {mobile ? (
+            <>
+              nwHacks is more than just a<br />
+              hackathon; it&apos;s a place that supports
+              <br />
+              and fosters a community for the next
+              <br />
+              generation of tech leaders.
+            </>
+          ) : (
+            INTRO
+          )}
+        </p>
+        <p>
+          {mobile ? (
+            <>
+              If you&apos;re interested in collaborating
+              <br />
+              with us or speaking at one of our
+              <br />
+              events, please reach out at
+              <br />
+            </>
+          ) : (
+            <>
+              If you&apos;re interested in collaborating with us or speaking at
+              one of our events, please reach
+              <br />
+              out at{" "}
+            </>
+          )}
           <a href="mailto:sponsorship@nwplus.io">sponsorship@nwplus.io</a>.
         </p>
       </div>
@@ -169,7 +228,7 @@ function SponsorsScene({ mobile }: { mobile: boolean }) {
           className="sponsor-next"
           type="button"
           aria-label="Next featured sponsor"
-          onClick={() => setSlide((slide + 1) % 6)}
+          onClick={() => selectSlide((slide + 1) % 6)}
         />
         <div className="sponsor-dots">
           {Array.from({ length: 6 }, (_, index) => (
@@ -179,7 +238,7 @@ function SponsorsScene({ mobile }: { mobile: boolean }) {
               type="button"
               aria-label={`Featured sponsor slide ${index + 1}`}
               aria-pressed={slide === index}
-              onClick={() => setSlide(index)}
+              onClick={() => selectSlide(index)}
             />
           ))}
         </div>
@@ -199,7 +258,7 @@ function SponsorsScene({ mobile }: { mobile: boolean }) {
         style={mobile ? box(0, 1508, 402, 942) : box(0, 2750, 1512, 1389)}
       >
         <FooterContact />
-        <h2 className="team-heading">Meet the minds behind nwHacks</h2>
+        <h2 className="sr-only">Meet the minds behind nwHacks</h2>
         <p className="footer-copyright">Copyright © nwHacks 2026</p>
       </footer>
     </div>
@@ -213,6 +272,7 @@ export default function SponsorsFooter() {
       id="sponsors"
       className="sponsors-wrapper"
       aria-label="Sponsors and footer"
+      data-motion-scope
     >
       <span id="contact" className="contact-anchor" aria-hidden="true" />
       <ResponsiveScene

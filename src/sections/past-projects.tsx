@@ -1,5 +1,6 @@
 "use client";
 
+import { useCollectFood } from "@/components/food-collection";
 import { SELECTED_LAYERS } from "@/components/market-art/selected-projects";
 import { ResponsiveScene } from "@/components/responsive-scene";
 import { sceneBox, SectionArt } from "@/components/section-art";
@@ -11,6 +12,7 @@ import { useState } from "react";
 import "./market-sections.css";
 
 function ProjectScene({ mobile }: { mobile: boolean }) {
+  const collectFood = useCollectFood();
   const [selected, setSelected] = useState<number | null>(null);
   const width = mobile ? 402 : 1512;
   const height = mobile ? 874 : 982;
@@ -83,7 +85,10 @@ function ProjectScene({ mobile }: { mobile: boolean }) {
           style={box(x, y, w, h)}
           aria-label={`View ${PAST_PROJECTS[index].name}`}
           aria-pressed={selected === index}
-          onClick={() => setSelected(selected === index ? null : index)}
+          onClick={() => {
+            setSelected(selected === index ? null : index);
+            if (index === 1) collectFood("mango-sticky-rice");
+          }}
         />
       ))}
       {project && !mobile && (

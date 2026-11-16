@@ -26,6 +26,57 @@
   user-select: none;
   max-width: none;
 }
+.food-collection {
+  position: absolute;
+  left: 8.39947%;
+  top: 49.925337vw;
+  width: 10.33658%;
+  aspect-ratio: 156.2890625 / 112.1036377;
+  pointer-events: none;
+}
+.food-tray {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.collected-food {
+  position: absolute;
+  height: auto;
+}
+.collected-food.mango-sticky-rice {
+  left: 18.64198%;
+  top: 54.90534%;
+  width: 38.12085%;
+}
+.collected-food.laksa {
+  left: 66.91358%;
+  top: 54.5611%;
+  width: 28.64198%;
+}
+@media (width < 768px) {
+  .food-collection {
+    display: none;
+  }
+}
+.rider-loop {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  animation: ride-street 18s linear infinite;
+}
+@keyframes ride-street {
+  from {
+    translate: -35% 0;
+  }
+  to {
+    translate: 110% 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rider-loop {
+    animation: none;
+  }
+}
 .market-heading {
   position: absolute;
   margin: 0;
@@ -209,6 +260,7 @@
   object-fit: contain;
 }
 .footer-links {
+  font-family: "Space Grotesk", sans-serif;
   display: flex;
   justify-content: space-between;
   width: 97.52%;
@@ -232,23 +284,24 @@
 .newsletter input {
   min-width: 0;
   flex: 1;
-  background: #dedbcd;
-  color: #a52b28;
+  background: #fff6e5;
+  opacity: 0.85;
+  color: #942829;
   border: 0;
   border-radius: 0.5cqw;
   padding: 0 1.0125cqw;
   font-size: 1.0582cqw;
 }
 .newsletter input::placeholder {
-  color: #a52b28;
+  color: #942829;
   opacity: 1;
 }
 .newsletter button {
-  background: #f6d893;
+  background: #f2d69f;
   border: 0;
   border-radius: 0.4cqw;
-  color: #a52b28;
-  box-shadow: 0 0.2646cqw #c39635;
+  color: #942829;
+  box-shadow: 0 0.2646cqw #cf9f3e;
   padding: 0 0.9cqw;
   font-weight: 700;
   font-size: 1.1905cqw;
@@ -274,6 +327,7 @@
   margin: 0;
   text-align: center;
   font-size: 1.2889cqw;
+  font-weight: 700;
 }
 .market-mobile .footer-contact {
   left: 11.6915%;
@@ -312,7 +366,7 @@
   font-size: 2.9851cqw;
   border-radius: 1.2cqw;
   padding: 0 2.2cqw;
-  box-shadow: 0 0.8cqw #c39635;
+  box-shadow: 0 0.8cqw #cf9f3e;
 }
 .market-mobile .land-acknowledgement {
   margin-top: 4.9751cqw;
