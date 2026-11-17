@@ -1,0 +1,187 @@
+/*
+ * Recap motion (components/recap). The section pins while the garage door
+ * rolls up onto the night market, then lets go; --p (0..1, written by
+ * useScrollProgress) drives it. The lamps flicker as the design's "window
+ * flicker in bkg" note asks.
+ */
+
+.recap-pin {
+  /* Start the camera when the door is about two-thirds open. */
+  --motion-t: clamp(0, calc((var(--p, 0) - 0.04) / 0.56), 1);
+  --door-t: clamp(0, calc((var(--p, 0) - 0.04) / 0.9), 1);
+  --zoom: calc(var(--motion-t) * var(--motion-t) * (3 - 2 * var(--motion-t)));
+  --door: calc(var(--door-t) * var(--door-t) * (3 - 2 * var(--door-t)));
+  --camera-t: clamp(0, calc((var(--p, 0) - 0.6) / 0.38), 1);
+  --camera-ease: calc(
+    var(--camera-t) * var(--camera-t) * (3 - 2 * var(--camera-t))
+  );
+  --camera: calc(1 + var(--camera-ease) * 2);
+  --cue: clamp(0, calc(var(--p, 0) * 6), 1);
+}
+
+.recap-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+.recap-frame {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* Cover the viewport while preserving the Figma scene's proportions. */
+  width: max(100%, calc(100vh * 1512 / 982));
+  aspect-ratio: 1512 / 982;
+  transform: translate(-50%, -50%);
+}
+
+.recap-chrome,
+.recap-opening {
+  transform: scale(var(--camera));
+  transform-origin: 50.2% 64.3%;
+  will-change: transform;
+}
+
+.recap-opening {
+  clip-path: inset(28.5% 7.4% 0 7.8%);
+}
+
+.recap-door {
+  transform: translateY(calc(var(--door) * -80%));
+  will-change: transform;
+}
+
+/* Project the very same doorway onto the market behind it.
+   Insets reach zero as the garage passes beyond the viewport edges. */
+.recap-market {
+  clip-path: inset(
+    max(0%, calc(28.5% - 35.8% * (var(--camera) - 1)))
+      max(0%, calc(7.4% - 42.4% * (var(--camera) - 1))) 0
+      max(0%, calc(7.8% - 42.4% * (var(--camera) - 1)))
+  );
+}
+
+/* The initial 86% scene covers the 84.8% doorway, including its floor.
+   Reach full size before camera motion exposes the scene's outer edges. */
+.recap-market > div {
+  transform: translateY(calc(14.3% * (1 - var(--zoom))))
+    scale(calc(0.86 + 0.14 * var(--zoom)));
+  transform-origin: 50% 50%;
+  will-change: transform;
+}
+
+/* The title sits on the door in the design, so it leaves early — the door
+   and its photos slide straight through it otherwise. */
+.recap-title {
+  opacity: clamp(0, calc(1 - var(--door) * 3.4), 1);
+  transform: translateY(calc(var(--door) * -3cqw));
+}
+
+/* The facade ignores pointer events, but its live text remains selectable. */
+.recap-title h2,
+.recap-cue {
+  pointer-events: auto;
+  cursor: text;
+  user-select: text;
+}
+
+/* "keep scrolling" hint under the title, gone as soon as you do. */
+.recap-cue {
+  opacity: calc(1 - var(--cue));
+}
+
+.recap-cue-arrow {
+  animation: recap-cue 1.8s ease-in-out infinite;
+}
+
+@keyframes recap-cue {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.55;
+  }
+  50% {
+    transform: translateY(0.5cqw);
+    opacity: 1;
+  }
+}
+
+/* The two bulbs on the walls stay lit; only the stats neon fails. */
+
+/* Match HackCamp's gentle per-photo hover lift; touch opens the lightbox. */
+.recap-photo {
+  pointer-events: auto;
+}
+
+.recap-photo img {
+  transition: transform 200ms ease;
+}
+
+.recap-photo:hover img,
+.recap-photo:focus-visible img {
+  transform: scale(1.02);
+}
+
+/* Phone: the door stays put; the photos breathe so the wall feels alive. */
+.recap-mobile-photo {
+  animation: recap-photo-float 9s ease-in-out infinite alternate;
+}
+
+@keyframes recap-photo-float {
+  from {
+    translate: 0 0;
+  }
+  to {
+    translate: 0 -0.8cqw;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .recap-photo img {
+    transition: none;
+    transform: none;
+  }
+
+  .recap-pin {
+    height: auto;
+  }
+
+  .recap-sticky {
+    position: relative;
+    height: auto;
+  }
+
+  .recap-frame {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    transform: none;
+  }
+
+  .recap-testimonials-anchor {
+    top: 0;
+    bottom: auto;
+    height: 1px;
+  }
+
+  .recap-market {
+    position: relative;
+    clip-path: none;
+    --market-chrome: 1 !important;
+  }
+
+  .recap-market > div {
+    transform: none;
+  }
+
+  .recap-chrome,
+  .recap-opening,
+  .recap-cue {
+    display: none;
+  }
+
+  .recap-mobile-photo {
+    animation: none;
+  }
+}

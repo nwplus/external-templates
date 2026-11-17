@@ -53,3 +53,31 @@ body {
 [data-motion-scope]:not([data-onscreen]) * {
   animation-play-state: paused;
 }
+
+/* Keep live copy selectable on both layouts, including Safari/iOS.
+   Decorative images and carousel controls keep their own input behavior. */
+:where(#stats, #recap, #testimonials, [role="dialog"])
+  :is(h1, h2, h3, p, figcaption, .recap-cue) {
+  -webkit-user-select: text;
+  user-select: text;
+  cursor: text;
+}
+
+/* The glyphs remain in the illustration; these spans supply selection/copy. */
+.artwork-label {
+  color: transparent;
+  -webkit-user-select: text;
+  user-select: text;
+  pointer-events: auto;
+  cursor: text;
+}
+.artwork-label::selection {
+  color: white;
+  background: #176ea7cc;
+}
+.testi-slide:not([data-active]) .artwork-label,
+.testi-base[aria-hidden="true"] .artwork-label {
+  pointer-events: none;
+  -webkit-user-select: none;
+  user-select: none;
+}

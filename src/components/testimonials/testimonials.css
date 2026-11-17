@@ -1,0 +1,177 @@
+/*
+ * Testimonials motion (components/testimonials). Choosing a stall slides its
+ * close-up in from the side you came from and the previous one out the other
+ * way; the arrows/dots step through the three.
+ */
+
+.testi-stall,
+.testi-card,
+.testi-hint {
+  transition:
+    opacity 0.45s ease,
+    transform 0.7s cubic-bezier(0.2, 0.9, 0.25, 1);
+}
+
+/* Base scene: the three carts as the design draws them. */
+.testi-base {
+  opacity: 1;
+}
+
+/* The wide shot gets out of the way at once: the incoming cart is already
+   travelling, and fading the three carts through it looked like a pile-up. */
+[data-selected] .testi-base {
+  opacity: 0;
+  transition: none;
+  pointer-events: none;
+}
+
+/* Close-up art: slides in from the right going forward, the left going back,
+   and the outgoing cart leaves the opposite way. */
+.testi-slide,
+.testi-art {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.testi-slide[data-active],
+.testi-art[data-active] {
+  opacity: 1;
+  animation: testi-in-right 0.55s cubic-bezier(0.33, 0, 0.2, 1) both;
+}
+
+.testi-slide[data-active][data-dir="-1"],
+.testi-art[data-active][data-dir="-1"] {
+  animation-name: testi-in-left;
+}
+
+.testi-slide[data-leaving],
+.testi-art[data-leaving] {
+  opacity: 1;
+  animation: testi-out-left 0.55s cubic-bezier(0.33, 0, 0.2, 1) both;
+}
+
+.testi-slide[data-leaving][data-dir="-1"],
+.testi-art[data-leaving][data-dir="-1"] {
+  animation-name: testi-out-right;
+}
+
+@keyframes testi-in-right {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes testi-in-left {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes testi-out-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes testi-out-right {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+/* The quote card swings in from the cart's side. */
+.testi-card {
+  opacity: 0;
+  transform: translateX(-2.4cqw) rotate(-1.2deg);
+}
+
+.testi-card[data-open] {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Only the active bubble accepts input; hidden/outgoing slides cannot
+   intercept text selection or the carousel controls. */
+.testi-slide[data-active] .testi-card:not(svg) {
+  pointer-events: auto;
+  cursor: text;
+  user-select: text;
+}
+
+/* A slow float on the active cart, so the scene isn't frozen. */
+.testi-art[data-active] > img {
+  animation: testi-drift 10s ease-in-out infinite alternate;
+}
+
+@keyframes testi-drift {
+  from {
+    translate: 0 0;
+  }
+  to {
+    translate: 0 -0.5cqw;
+  }
+}
+
+.testi-arrow {
+  transition:
+    transform 0.18s ease,
+    filter 0.18s ease;
+}
+
+.testi-arrow:hover {
+  transform: translateY(-0.12cqw);
+  filter: brightness(1.12);
+}
+
+.testi-arrow:active {
+  transform: translateY(0) scale(0.94);
+}
+
+/* The dots: the current one stretches into a pill. */
+.testi-dot {
+  transition:
+    width 0.3s cubic-bezier(0.2, 0.9, 0.25, 1),
+    background-color 0.3s ease,
+    opacity 0.3s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .testi-stall,
+  .testi-card,
+  .testi-hint {
+    transition: opacity 0.2s linear;
+  }
+
+  .testi-slide,
+  .testi-art,
+  .testi-card {
+    transform: none;
+  }
+
+  .testi-slide[data-active],
+  .testi-art[data-active],
+  .testi-slide[data-leaving],
+  .testi-art[data-leaving] {
+    animation: none;
+  }
+
+  .testi-slide[data-leaving] {
+    display: none;
+  }
+
+  .testi-art[data-active] > img {
+    animation: none;
+  }
+}
