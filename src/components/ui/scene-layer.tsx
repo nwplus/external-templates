@@ -1,7 +1,9 @@
-import { frameStyle, type Box } from "@/lib/frame";
+import { type Box, frameStyle } from "@/lib/frame";
 import { cn } from "@/lib/utils";
 
 import type { CSSProperties } from "react";
+
+import { ArtworkText } from "./artwork-text";
 
 /**
  * One exported Figma layer, placed by its box in the frame. The art keeps the
@@ -29,7 +31,10 @@ export const SceneLayer = ({
    * stays decorative. */
   alt?: string;
 }) => (
-  <div className={cn("pointer-events-none absolute", className)} style={{ ...frameStyle(box), ...style }}>
+  <div
+    className={cn("pointer-events-none absolute", className)}
+    style={{ ...frameStyle(box), ...style }}
+  >
     {/* Plain <img>: these are pre-cropped Figma exports, so next/image has
         nothing to add that the export didn't already bake in. */}
     {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -40,7 +45,11 @@ export const SceneLayer = ({
       draggable={false}
       decoding={priority ? "sync" : "async"}
       loading={priority ? "eager" : "lazy"}
-      className={cn("size-full select-none", fit === "contain" && "object-contain")}
+      className={cn(
+        "size-full select-none",
+        fit === "contain" && "object-contain"
+      )}
     />
+    <ArtworkText asset={src.split("/").pop() ?? ""} />
   </div>
 );

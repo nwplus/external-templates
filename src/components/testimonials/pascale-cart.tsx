@@ -1,5 +1,6 @@
 "use client";
 
+import { ArtworkText } from "@/components/ui/artwork-text";
 import { PASCALE_LAYERS } from "@/constants/pascale-layers";
 import { useLanternMotion } from "@/hooks/use-lantern-motion";
 import { frameStyle } from "@/lib/frame";
@@ -68,6 +69,7 @@ export const PascaleCart = ({
             </div>
           ))}
       </div>
+      <ArtworkText asset={`pascale-${variant}`} />
     </div>
   );
 };

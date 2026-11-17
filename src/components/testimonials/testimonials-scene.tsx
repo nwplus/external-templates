@@ -1,5 +1,6 @@
 "use client";
 
+import { ArtworkText } from "@/components/ui/artwork-text";
 import { SceneLayer } from "@/components/ui/scene-layer";
 import {
   TESTIMONIALS,
@@ -80,6 +81,7 @@ export const TestimonialsScene = ({ bare = false }: { bare?: boolean }) => {
                 draggable={false}
                 className="size-full select-none transition-transform duration-300 hover:-translate-y-[0.4cqw]"
               />
+              <ArtworkText asset={`${stall.id}-base.webp`} />
             </>
           )}
         </button>
@@ -117,6 +119,7 @@ export const TestimonialsScene = ({ bare = false }: { bare?: boolean }) => {
                   draggable={false}
                   className="size-full select-none"
                 />
+                <ArtworkText asset={`${stall.id}.webp`} />
               </>
             )}
           </div>
