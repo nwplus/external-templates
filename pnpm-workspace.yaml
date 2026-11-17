@@ -1,8 +1,6 @@
 minimumReleaseAge: 10080
 minimumReleaseAgeStrict: true
 minimumReleaseAgeIgnoreMissingTime: false
-trustPolicy: no-downgrade
-trustLockfile: false
 blockExoticSubdeps: true
 ignoreScripts: true
 allowBuilds: {}
