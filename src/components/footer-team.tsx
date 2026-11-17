@@ -29,8 +29,11 @@ export function FooterTeam({ style }: { style: CSSProperties }) {
       aria-label="Meet the nwHacks team; scroll horizontally for more portraits"
       tabIndex={0}
     >
-      <div className="footer-team-track">
-        {teamMembers.map((member) => {
+      <div
+        className="footer-team-track"
+        style={{ animationDuration: `${teamMembers.length * 3.5}s` }}
+      >
+        {[...teamMembers, ...teamMembers].map((member, index) => {
           const label = `${member.name}, ${member.title}`;
           const href = profileHref(member.social);
           const portrait = (
@@ -44,7 +47,9 @@ export function FooterTeam({ style }: { style: CSSProperties }) {
           };
           return href ? (
             <a
-              key={member.name}
+              key={`${member.name}-${index}`}
+              aria-hidden={index >= teamMembers.length ? true : undefined}
+              tabIndex={index >= teamMembers.length ? -1 : undefined}
               className="footer-team-portrait"
               style={style}
               href={href}
@@ -56,7 +61,8 @@ export function FooterTeam({ style }: { style: CSSProperties }) {
             </a>
           ) : (
             <span
-              key={member.name}
+              key={`${member.name}-${index}`}
+              aria-hidden={index >= teamMembers.length ? true : undefined}
               className="footer-team-portrait"
               style={style}
               title={label}

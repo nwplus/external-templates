@@ -42,7 +42,20 @@
   gap: 1.85185185cqw;
   width: max-content;
   height: 100%;
-  padding-inline: 1.85185185cqw;
+  padding-left: 1.85185185cqw;
+  animation: footer-team-marquee linear infinite;
+}
+.footer-team:hover .footer-team-track,
+.footer-team:focus-within .footer-team-track {
+  animation-play-state: paused;
+}
+@keyframes footer-team-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .footer-team-track { animation: none; }
+  .footer-team-track [aria-hidden="true"] { display: none; }
 }
 .footer-team-portrait {
   display: block;
@@ -66,6 +79,7 @@
 .market-mobile .footer-team-track {
   gap: 3.1170398cqw;
   padding-inline: 0;
+  padding-right: 3.1170398cqw;
   margin-left: -2.86555504cqw;
 }
 .market-mobile .footer-team-portrait {
