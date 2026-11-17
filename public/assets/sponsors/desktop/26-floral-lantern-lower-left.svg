@@ -1,0 +1,69 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="291" height="380" viewBox="0 0 291 380" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="Floral Lantern / Lower Left">
+<g id="glow">
+<path id="Ellipse 1427" d="M291 165.5C291 259.993 231.745 331 145.5 331C59.2547 331 0 259.993 0 165.5C0 71.0072 52.2245 0 145.5 0C238.775 0 291 71.0072 291 165.5Z" fill="#F8EDD9" fill-opacity="0.15"/>
+<path id="Ellipse 1426" d="M276 164.5C276 243.753 229.439 308 144 308C58.5612 308 12 243.753 12 164.5C12 85.2471 56.4642 21 144 21C231.536 21 276 85.2471 276 164.5Z" fill="#F8EDD9" fill-opacity="0.15"/>
+</g>
+<g id="Group 1000003170">
+<path id="Vector 4530" d="M137 313L119 374" stroke-width="4" stroke-linecap="round" stroke="#313C52"/>
+<path id="Vector 4531" d="M145 315L145.5 378" stroke-width="4" stroke-linecap="round" stroke="#313C52"/>
+<path id="Vector 4532" d="M153 313L170 374" stroke-width="4" stroke-linecap="round" stroke="#313C52"/>
+<ellipse id="Ellipse 1424" cx="144.5" cy="302" rx="8" ry="7" fill="#F8EDD9"/>
+</g>
+<path id="Rectangle 3683" d="M93.8008 285.523C93.8008 288.285 96.0394 290.523 98.8008 290.523H188.801C191.562 290.523 193.801 288.285 193.801 285.523V270.523H93.8008V285.523Z" fill="#642520"/>
+<path id="Rectangle 2842" d="M49 117.566C49 85.6272 74.0194 59.2333 105.943 58.2676C119.39 57.8608 133.227 57.5645 145 57.5645C156.773 57.5645 170.61 57.8608 184.057 58.2676C215.981 59.2333 241 85.6273 241 117.566V214.277C241 247.415 214.137 274.277 181 274.277H109C75.8629 274.277 49 247.414 49 214.277V117.566Z" fill="#F8EDD9"/>
+<path id="Rectangle 3682" d="M94 45C94 42.2386 96.2386 40 99 40H189C191.761 40 194 42.2386 194 45V60H94V45Z" fill="#642520"/>
+<path id="Vector 4658" d="M141.5 19C141.5 17.6193 142.619 16.5 144 16.5C145.381 16.5 146.5 17.6193 146.5 19H144H141.5ZM144 41H141.5V19H144H146.5V41H144Z" fill="#642520"/>
+<g id="Mask group">
+<mask id="mask0_0_4" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="49" y="57" width="192" height="218">
+<path id="Rectangle 2843" d="M49 117.566C49 85.6272 74.0194 59.2332 105.943 58.2675C119.39 57.8607 133.227 57.5644 145 57.5644C156.773 57.5644 170.61 57.8607 184.057 58.2675C215.981 59.2332 241 85.6272 241 117.566V214.277C241 247.414 214.137 274.277 181 274.277H109C75.8629 274.277 49 247.414 49 214.277V117.566Z" fill="#FFF9F9"/>
+</mask>
+<g mask="url(#mask0_0_4)">
+<path id="Rectangle 3682_2" d="M129 59H41V290L145 284.5C94 265.5 76.5 110.5 129 59Z" fill="#F8F1E3"/>
+<path id="Vector 4525" d="M44.5 88.5H251" stroke="#DBC69B"/>
+<path id="Vector 4526" d="M38 125H251.5" stroke="#DBC69B"/>
+<path id="Vector 4527" d="M35 166H263.5" stroke="#DBC69B"/>
+<path id="Vector 4528" d="M33 209H258.5" stroke="#DBC69B"/>
+<path id="Vector 4529" d="M36 244H253.5" stroke="#DBC69B"/>
+<g id="flower print">
+<path id="Rectangle 3681" d="M194 43H278V274H194C213.791 240.997 219.347 100.994 194 43Z" fill="#F4E2C0"/>
+<g id="Repeat group 1" filter="url(#filter0_d_0_4)">
+<g id="Repeat group 1_inner" data-figma-trr="r5u1.19-0f">
+<g id="Ellipse 1062" filter="url(#filter1_d_0_4)">
+<path d="M163.5 130.439C163.5 140.961 155.521 151.446 145.403 161.564C135.286 151.851 126 139.342 126 130.439C126 119.917 135.628 115.465 145.239 115.465C154.849 115.465 163.5 119.917 163.5 130.439Z" fill="#313C52"/>
+</g>
+<path id="Polygon 17" d="M145.403 161.564C145.403 161.564 140.268 147.592 142.932 144.305C144.5 142.998 146 142.998 147.874 144.305C150.539 147.592 145.403 161.564 145.403 161.564Z" fill="white"/>
+</g>
+<use xlink:href="#Repeat%20group%201_inner" transform="translate(257.928 -22.9383) rotate(72)"/>
+<use xlink:href="#Repeat%20group%201_inner" transform="translate(359.448 215.278) rotate(144)"/>
+<use xlink:href="#Repeat%20group%201_inner" transform="translate(164.262 385.442) rotate(-144)"/>
+<use xlink:href="#Repeat%20group%201_inner" transform="translate(-57.8886 252.393) rotate(-72)"/>
+</g>
+<ellipse id="Ellipse 1063" cx="145" cy="165.5" rx="6" ry="5.5" fill="#1B212D"/>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<filter id="filter0_d_0_4" x="86.816" y="112.101" width="115.868" height="115.868" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="4"/>
+<feGaussianBlur stdDeviation="2"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 0.995257 0 0 0 0 0.995257 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_4"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_4" result="shape"/>
+</filter>
+<filter id="filter1_d_0_4" x="122" y="115.465" width="45.5" height="54.0988" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="4"/>
+<feGaussianBlur stdDeviation="2"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_4"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_4" result="shape"/>
+</filter>
+</defs>
+</svg>

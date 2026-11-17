@@ -11,6 +11,15 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
+/** Public Firebase web config is supplied by the deployment environment. */
+export const firebaseConfigured = Boolean(
+  firebaseConfig.apiKey &&
+    firebaseConfig.authDomain &&
+    firebaseConfig.projectId &&
+    firebaseConfig.messagingSenderId &&
+    firebaseConfig.appId
+);
+
 // Initialize Firebase only if it hasn't been initialized already
 const app =
   getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];

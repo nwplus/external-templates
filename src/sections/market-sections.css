@@ -1,0 +1,498 @@
+@font-face {
+  font-family: "HK Grotesk";
+  src: url("/assets/fonts/HKGrotesk-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "HK Grotesk";
+  src: url("/assets/fonts/HKGrotesk-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+.market-scene {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  container-type: inline-size;
+  color: white;
+  font-family: var(--font-hanken-grotesk), sans-serif;
+}
+.section-art {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  max-width: none;
+}
+.footer-team {
+  position: absolute;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+  z-index: 2;
+}
+.footer-team::-webkit-scrollbar {
+  display: none;
+}
+.footer-team-track {
+  display: flex;
+  gap: 1.85185185cqw;
+  width: max-content;
+  height: 100%;
+  padding-left: 1.85185185cqw;
+  animation: footer-team-marquee linear infinite;
+}
+.footer-team:hover .footer-team-track,
+.footer-team:focus-within .footer-team-track {
+  animation-play-state: paused;
+}
+@keyframes footer-team-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .footer-team-track { animation: none; }
+  .footer-team-track [aria-hidden="true"] { display: none; }
+}
+.footer-team-portrait {
+  display: block;
+  flex: 0 0 5.68783069cqw;
+  width: 5.68783069cqw;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 0.33068783cqw;
+}
+.footer-team-portrait img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.footer-team:focus-visible,
+.footer-team-portrait:focus-visible {
+  outline: 2px solid #ffe7ac;
+  outline-offset: -2px;
+}
+.market-mobile .footer-team-track {
+  gap: 3.1170398cqw;
+  padding-inline: 0;
+  padding-right: 3.1170398cqw;
+  margin-left: -2.86555504cqw;
+}
+.market-mobile .footer-team-portrait {
+  flex-basis: 9.57338324cqw;
+  width: 9.57338324cqw;
+  border-radius: 0.55659204cqw;
+}
+.food-collection {
+  position: absolute;
+  left: 8.39947%;
+  top: 49.925337vw;
+  width: 10.33658%;
+  aspect-ratio: 156.2890625 / 112.1036377;
+  pointer-events: none;
+}
+.food-tray {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.collected-food {
+  position: absolute;
+  height: auto;
+}
+.collected-food.mango-sticky-rice {
+  left: 18.64198%;
+  top: 54.90534%;
+  width: 38.12085%;
+}
+.collected-food.laksa {
+  left: 66.91358%;
+  top: 54.5611%;
+  width: 28.64198%;
+}
+.collected-food.tanghulu {
+  left: -6.354%;
+  top: 49.05%;
+  width: 29.49%;
+}
+.collected-food.taiyaki {
+  left: 38.51%;
+  top: 0.171%;
+  width: 22.61%;
+}
+@media (width < 768px) {
+  .food-collection {
+    display: none;
+  }
+}
+.rider-loop {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  animation: ride-street 12s linear infinite;
+  animation-delay: -4s;
+  animation-play-state: running;
+  transform-origin: 0 0;
+  will-change: transform;
+}
+@keyframes ride-street {
+  from {
+    transform: translateX(-25%);
+  }
+  to {
+    transform: translateX(85%);
+  }
+}
+/* The Final-for-dev sticky note says Nugget rides by default. Keep this one
+   loop live even when the generic section gate pauses other decoration. */
+.sponsors-wrapper[data-motion-scope]:not([data-onscreen]) .rider-loop {
+  animation-play-state: running;
+}
+@media (prefers-reduced-motion: reduce) {
+  .rider-loop {
+    animation: none;
+    transform: translateX(0);
+  }
+}
+.market-heading {
+  position: absolute;
+  margin: 0;
+  text-align: center;
+  font-family: var(--font-knewave), sans-serif;
+  font-weight: 400;
+  font-size: 3.1746cqw;
+  line-height: 1.625;
+}
+.market-mobile .market-heading {
+  font-size: 7.4627cqw;
+  line-height: 1.7;
+}
+.project-scene {
+  background: linear-gradient(180deg, #1b2033 0%, #20676c 50%, #a75f60 100%);
+}
+.project-scene.market-mobile {
+  background: linear-gradient(
+    180deg,
+    #203348 0%,
+    #20676c 50%,
+    #20666b 73.28%,
+    #312b26 100%
+  );
+}
+.fruit-target {
+  position: absolute;
+  z-index: 2;
+  cursor: pointer;
+  border: 0;
+  border-radius: 8%;
+  background: transparent;
+}
+.fruit-target:focus-visible {
+  outline: 3px solid var(--lamp);
+  outline-offset: 4px;
+}
+.fruit-target:hover {
+  background: rgb(255 231 172 / 0.06);
+}
+.project-detail {
+  position: absolute;
+  margin: 0;
+  font-size: 1.0582cqw;
+  font-weight: 500;
+  line-height: 1.3125;
+  z-index: 3;
+}
+.project-link {
+  text-decoration: underline;
+}
+.market-mobile .project-detail {
+  font-size: 3.9801cqw;
+  line-height: 1.3125;
+}
+.market-mobile .project-prompt {
+  font-size: 3.7313cqw;
+  line-height: 1.4;
+  text-align: center;
+}
+.sponsors-scene {
+  background: linear-gradient(
+    180deg,
+    #062d49 -7.5359%,
+    #4e6287 16.654%,
+    #ffb883 47.7466%,
+    #ef9656 61.5663%,
+    #013654 73.26%
+  );
+}
+.sponsors-scene.market-mobile {
+  background: linear-gradient(
+    180deg,
+    #062d49 0%,
+    #4e6287 19.9538%,
+    #ffb883 44.5263%,
+    #ef9656 64.1191%,
+    #013654 74.7337%
+  );
+}
+.sponsor-introduction {
+  position: absolute;
+  text-align: center;
+  font-size: 1.32275cqw;
+  font-weight: 500;
+  line-height: 1.3;
+}
+.sponsor-introduction p {
+  margin: 0;
+}
+.sponsor-introduction p + p {
+  margin-top: 1.71958cqw;
+}
+.market-mobile .sponsor-introduction {
+  font-size: 3.7313cqw;
+  line-height: 1.333333;
+}
+.market-mobile .sponsor-introduction p + p {
+  margin-top: 4.9751cqw;
+}
+.sponsor-carousel {
+  position: absolute;
+}
+.sponsor-next {
+  position: absolute;
+  right: 8%;
+  top: 40%;
+  width: 7%;
+  height: 20%;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.sponsor-dots {
+  position: absolute;
+  top: 89%;
+  left: 39%;
+  width: 20%;
+  height: 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffecc3;
+}
+.sponsor-dots button {
+  border: 0;
+  border-radius: 50%;
+  background: #ffb82e;
+  width: 0.7cqw;
+  height: 0.7cqw;
+  padding: 0;
+  cursor: pointer;
+}
+.sponsor-dots button.active {
+  background: #d51e25;
+}
+.market-mobile .sponsor-dots button {
+  width: 1.2cqw;
+  height: 1.2cqw;
+}
+.sponsor-carousel button:focus-visible,
+.scene-footer a:focus-visible,
+.scene-footer input:focus-visible {
+  outline: 2px solid white;
+  outline-offset: 4px;
+}
+.scene-footer {
+  position: absolute;
+  pointer-events: none;
+}
+.scene-footer a,
+.scene-footer input,
+.scene-footer button {
+  pointer-events: auto;
+}
+.footer-contact {
+  position: absolute;
+  left: 49.4709%;
+  top: 58.8193%;
+  width: 45.3704%;
+  font-size: 1.0582cqw;
+  font-weight: 500;
+  line-height: 1.3125;
+}
+.footer-socials {
+  display: flex;
+  width: 66.547%;
+  gap: 2.2cqw;
+  align-items: center;
+  height: 3.5942cqw;
+}
+.footer-socials a {
+  display: block;
+  flex: 1;
+  min-width: 0;
+}
+.footer-socials img {
+  display: block;
+  width: 100%;
+  height: 3.5942cqw;
+  object-fit: contain;
+}
+.footer-links {
+  font-family: "Space Grotesk", sans-serif;
+  display: flex;
+  justify-content: space-between;
+  width: 97.52%;
+  margin-top: 0.79365cqw;
+  font-size: 1.7857cqw;
+  font-weight: 700;
+  line-height: 1.6;
+}
+.footer-links a {
+  text-decoration: underline;
+  text-underline-offset: 0.12em;
+  white-space: nowrap;
+}
+.newsletter {
+  display: flex;
+  width: 88.63%;
+  height: 2.6227cqw;
+  margin-top: 0.79365cqw;
+  gap: 1.0582cqw;
+}
+.newsletter input {
+  min-width: 0;
+  flex: 1;
+  background: #fff6e5;
+  opacity: 0.85;
+  color: #942829;
+  border: 0;
+  border-radius: 0.5cqw;
+  padding: 0 1.0125cqw;
+  font-size: 1.0582cqw;
+}
+.newsletter input::placeholder {
+  color: #942829;
+  opacity: 1;
+}
+.newsletter button {
+  background: #f2d69f;
+  border: 0;
+  border-radius: 0.4cqw;
+  color: #942829;
+  box-shadow: 0 0.2646cqw #cf9f3e;
+  padding: 0 0.9cqw;
+  font-weight: 700;
+  font-size: 1.1905cqw;
+}
+.land-acknowledgement {
+  margin: 2.4471cqw 0 0;
+}
+.team-heading {
+  position: absolute;
+  left: 29.4974%;
+  top: 83.3693%;
+  font-size: 2.7778cqw;
+  line-height: 1.4;
+  margin: 0;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.footer-copyright {
+  position: absolute;
+  top: 97.55%;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  text-align: center;
+  font-size: 1.2889cqw;
+  font-weight: 700;
+}
+.market-mobile .footer-contact {
+  left: 11.6915%;
+  top: 0;
+  width: 76.6169%;
+  font-size: 3.7313cqw;
+  line-height: 1.3333;
+}
+.market-mobile .footer-socials {
+  width: 88.3117%;
+  height: 8.0545cqw;
+  margin-inline: auto;
+  gap: 5.6269cqw;
+}
+.market-mobile .footer-socials img {
+  height: 8.0545cqw;
+}
+.market-mobile .footer-links {
+  width: 100%;
+  margin-top: 1.99005cqw;
+  font-size: 3.20053cqw;
+  line-height: 1.478;
+}
+.market-mobile .newsletter {
+  width: 100%;
+  height: 7.9602cqw;
+  margin-top: 4.135cqw;
+  gap: 2.90155cqw;
+}
+.market-mobile .newsletter input {
+  font-size: 2.6534cqw;
+  border-radius: 1.5cqw;
+  padding: 0 2.539cqw;
+}
+.market-mobile .newsletter button {
+  font-size: 2.9851cqw;
+  border-radius: 1.2cqw;
+  padding: 0 2.2cqw;
+  box-shadow: 0 0.8cqw #cf9f3e;
+}
+.market-mobile .land-acknowledgement {
+  margin-top: 4.9751cqw;
+  text-align: center;
+}
+.market-mobile .team-heading {
+  left: 0;
+  top: 88.2033%;
+  width: 100%;
+  text-align: center;
+  font-size: 4.6754cqw;
+  line-height: 1.4;
+}
+.market-mobile .footer-copyright {
+  top: 97.5945%;
+  font-size: 2.16943cqw;
+}
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("/assets/fonts/SpaceGrotesk.ttf") format("truetype");
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+}
+.project-scene.market-desktop .market-heading {
+  line-height: 1.0625;
+}
+.sponsor-dots {
+  top: 75.55%;
+  left: 41.948%;
+  width: 16.641%;
+  height: 1.876%;
+}
+.sponsors-wrapper {
+  position: relative;
+  container-type: inline-size;
+}
+.contact-anchor {
+  position: absolute;
+  top: 235.912698cqw;
+  left: 0;
+  pointer-events: none;
+}
+@media (width < 48rem) {
+  .contact-anchor {
+    top: 375.124378cqw;
+  }
+}

@@ -1,0 +1,12 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="15.4049" height="15.625" viewBox="0 0 15.4049 15.625" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Left Ear">
+<path id="Outer Ear" d="M2.92638 0.189626C-2.43118 9.55821 2.74364 10.3154 3.87194 13.546C5.35388 17.7891 17.2555 9.59325 14.4518 7.88991C11.6482 6.18657 14.1906 1.66525 2.92638 0.189626Z" fill="url(#paint0_linear_0_352)"/>
+<path id="Inner Ear" d="M4.54806 3.8204C4.86408 2.91894 6.2187 2.39294 8.83258 4.20523C9.15354 4.42776 11.9975 6.17486 12.0932 7.69443C12.2128 9.59389 7.92791 11.6789 6.34527 11.3915C4.76263 11.104 6.015 10.1995 4.39222 8.74617C2.76945 7.29284 4.15303 4.94722 4.54806 3.8204Z" fill="#F5DFCD"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_0_352" x1="4.52995" y1="6.49594" x2="-92.7346" y2="-32.4236" gradientUnits="userSpaceOnUse">
+<stop stop-color="#D2B299"/>
+<stop offset="1" stop-color="#6C5B4F"/>
+</linearGradient>
+</defs>
+</svg>
