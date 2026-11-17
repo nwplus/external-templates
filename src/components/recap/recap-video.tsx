@@ -5,8 +5,8 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { useState } from "react";
 
-const VIDEO_ID = "3AQoV3BiRpc";
-const TITLE = "HackCamp 2025 recap";
+const VIDEO_ID = "_xDV_BZAIaQ";
+const TITLE = "HackCamp 2026 recap";
 
 /**
  * The recap video as its poster frame with a play button. YouTube's player
