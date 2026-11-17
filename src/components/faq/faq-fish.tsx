@@ -62,6 +62,8 @@ type FishArtProps = {
   accent?: boolean;
   className?: string;
   style?: CSSProperties;
+  onActivate?: () => void;
+  ariaLabel?: string;
 };
 
 /**
@@ -77,12 +79,16 @@ export const FishArt = ({
   accent = true,
   className,
   style,
+  onActivate,
+  ariaLabel,
 }: FishArtProps) => (
   <Art
     layer={fish}
     origin={origin}
     className={className}
     style={style}
+    onActivate={onActivate}
+    ariaLabel={ariaLabel}
     wrap={(img) => (
       <div
         className="faq-accent flex size-full items-center justify-center"

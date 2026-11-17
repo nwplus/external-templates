@@ -9,10 +9,11 @@ import {
   where,
 } from "firebase/firestore";
 
-import { db } from "./firebase";
+import { db, firebaseConfigured } from "./firebase";
 
 export interface FAQDoc {
-  hackathonIds: string[];
+  /** Firestore field used by the production query below. */
+  hackathonIDs: string[];
   category: string;
   question: string;
   answer: string;
@@ -50,6 +51,7 @@ export const CURRENT_HACKATHON = "nwHacks2027";
 export async function getFAQsByHackathon(
   hackathonId: string
 ): Promise<FAQDoc[]> {
+  if (!firebaseConfigured) return [];
   try {
     const faqsRef = collection(db, "FAQ");
     const q = query(
@@ -90,6 +92,7 @@ export function groupFAQsByCategory(faqs: FAQDoc[]): Record<string, FAQDoc[]> {
 export async function getSponsorsByHackathon(
   hackathonName: string
 ): Promise<SponsorDoc[]> {
+  if (!firebaseConfigured) return [];
   try {
     const sponsorsRef = collection(db, "Hackathons", hackathonName, "Sponsors");
     const querySnapshot = await getDocs(sponsorsRef);
@@ -116,6 +119,7 @@ export function subscribeToSponsorsByHackathon(
   hackathonName: string,
   onUpdate: (sponsors: SponsorDoc[]) => void
 ): Unsubscribe {
+  if (!firebaseConfigured) return () => {};
   const sponsorsRef = collection(db, "Hackathons", hackathonName, "Sponsors");
   return onSnapshot(
     sponsorsRef,
@@ -179,6 +183,7 @@ export function subscribeToApplicationDeadline(
   onUpdate: (deadlineMs: number) => void,
   onError?: (error: unknown) => void
 ): Unsubscribe {
+  if (!firebaseConfigured) return () => {};
   const portalRef = doc(db, "InternalWebsites", "Portal");
   return onSnapshot(
     portalRef,

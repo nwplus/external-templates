@@ -1,0 +1,16 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="65.7617" height="49.3203" viewBox="0 0 65.7617 49.3203" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Antlers">
+<path id="Right Antler" d="M57.0841 4.61117C69.9057 8.91138 53.9512 33.2298 49.1809 45.831C45.9252 47.6016 39.329 46.3071 42.0496 39.918C45.4504 31.9317 35.5412 24.1477 38.1987 18.7461C40.8562 13.3445 47.7371 32.6663 48.386 25.0377C50.0366 5.63382 52.364 3.02811 57.0841 4.61117Z" fill="url(#paint0_linear_0_429)"/>
+<path id="Left Antler" d="M8.76808 4.87029C-4.1605 8.842 11.4195 34.2156 15.8624 46.9344C19.0713 48.7875 25.6988 47.6616 23.1443 41.2052C19.9511 33.1348 29.7987 24.9499 27.2818 19.4823C24.7648 14.0147 17.3866 33.1546 16.9351 25.512C15.7868 6.07238 13.5276 3.40816 8.76808 4.87029Z" fill="url(#paint1_linear_0_429)"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_0_429" x1="106.969" y1="-118.429" x2="46.5145" y2="53.8232" gradientUnits="userSpaceOnUse">
+<stop stop-color="#2A1D13"/>
+<stop offset="1" stop-color="#796658"/>
+</linearGradient>
+<linearGradient id="paint1_linear_0_429" x1="-38.711" y1="-121.404" x2="18.0512" y2="55.1815" gradientUnits="userSpaceOnUse">
+<stop stop-color="#2A1D13"/>
+<stop offset="1" stop-color="#796658"/>
+</linearGradient>
+</defs>
+</svg>

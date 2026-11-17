@@ -1,6 +1,7 @@
 "use client";
 
 import { SlabButton } from "@/components/ui/slab-button";
+import { useCollectFood } from "@/components/food-collection";
 import {
   HERO_DATE_LOCATION,
   HERO_ROLE_LINKS,
@@ -40,12 +41,14 @@ const GATE = { x: 630, y: 237, width: 848 };
  * out from the 1512px design, so 1cqw = 15.12 design px.
  */
 export const HeroScene = () => {
+  const collectFood = useCollectFood();
   const [fireworks, setFireworks] = useState(false);
   // The fireworks art loads on the first click and then stays mounted.
   const [fireworksLoaded, setFireworksLoaded] = useState(false);
 
   const toggleFireworks = () => {
     setFireworksLoaded(true);
+    if (!fireworks) collectFood("tanghulu");
     setFireworks((on) => !on);
   };
 

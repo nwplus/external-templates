@@ -1,0 +1,25 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="293.246" height="294.562" viewBox="0 0 293.246 294.562" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="Repeat group 5" filter="url(#filter0_g_0_36)">
+<g id="Repeat group 5_inner" data-figma-trr="r8u1.7-0f">
+<path id="Vector 4659" d="M148.821 1.34353C148.196 1.32902 147.572 1.31451 146.947 1.3C146.801 3.10767 146.66 4.91547 146.524 6.72338C145.302 22.9946 144.502 39.2756 144.123 55.5665C143.745 71.8573 143.789 88.1579 144.254 104.468C144.305 106.281 144.362 108.093 144.424 109.905C145.049 109.92 145.674 109.934 146.299 109.949C146.445 108.141 146.586 106.334 146.722 104.526C147.944 88.2544 148.744 71.9734 149.122 55.6825C149.5 39.3917 149.457 23.0911 148.992 6.7807C148.94 4.96843 148.883 3.15604 148.821 1.34353Z" fill="#FCEF04"/>
+</g>
+<use xlink:href="#Repeat%20group%205_inner" transform="translate(147.554 -60.3476) rotate(45)"/>
+<use xlink:href="#Repeat%20group%205_inner" transform="translate(294.562 1.31635) rotate(90)"/>
+<use xlink:href="#Repeat%20group%205_inner" transform="translate(354.91 148.87) rotate(135)"/>
+<use xlink:href="#Repeat%20group%205_inner" transform="translate(293.246 295.878) rotate(-180)"/>
+<use xlink:href="#Repeat%20group%205_inner" transform="translate(145.692 356.226) rotate(-135)"/>
+<use xlink:href="#Repeat%20group%205_inner" transform="translate(-1.31635 294.562) rotate(-90)"/>
+<use xlink:href="#Repeat%20group%205_inner" transform="translate(-61.6639 147.008) rotate(-45)"/>
+</g>
+<defs>
+<filter id="filter0_g_0_36" x="-1.3" y="2.6077e-08" width="295.846" height="295.862" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feTurbulence type="fractalNoise" baseFrequency="0.0099999997764825821 0.0099999997764825821" numOctaves="3" seed="2177" />
+<feDisplacementMap in="shape" scale="2.5999999046325684" xChannelSelector="R" yChannelSelector="G" result="displacedImage" width="100%" height="100%" />
+<feMerge result="effect1_texture_0_36">
+<feMergeNode in="displacedImage"/>
+</feMerge>
+</filter>
+</defs>
+</svg>
