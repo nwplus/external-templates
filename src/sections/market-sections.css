@@ -37,6 +37,19 @@
 .footer-team::-webkit-scrollbar {
   display: none;
 }
+.footer-team-caption {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  text-align: center;
+  font-size: 0.8cqw;
+  line-height: 1;
+  z-index: 2;
+}
+@media (width < 1280px) {
+  .footer-team-caption { display: none; }
+}
 .footer-team-track {
   display: flex;
   gap: 1.85185185cqw;
