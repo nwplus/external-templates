@@ -2,7 +2,7 @@
 
 import { teamMembers } from "@/constants/team-members";
 
-import type { CSSProperties } from "react";
+import { useState, type CSSProperties } from "react";
 
 function profileHref(value: string): string | undefined {
   const trimmed = value.trim();
@@ -21,7 +21,9 @@ function profileHref(value: string): string | undefined {
 
 /** Repository portraits occupy the reference design's original team slots. */
 export function FooterTeam({ style }: { style: CSSProperties }) {
+  const [selectedProfile, setSelectedProfile] = useState<(typeof teamMembers)[number] | null>(null);
   return (
+    <>
     <div
       className="footer-team"
       style={style}
@@ -56,6 +58,10 @@ export function FooterTeam({ style }: { style: CSSProperties }) {
               title={label}
               target="_blank"
               rel="noopener noreferrer"
+              onMouseEnter={() => setSelectedProfile(member)}
+              onMouseLeave={() => setSelectedProfile(null)}
+              onFocus={() => setSelectedProfile(member)}
+              onBlur={() => setSelectedProfile(null)}
             >
               {portrait}
             </a>
@@ -66,6 +72,11 @@ export function FooterTeam({ style }: { style: CSSProperties }) {
               className="footer-team-portrait"
               style={style}
               title={label}
+              tabIndex={index >= teamMembers.length ? -1 : 0}
+              onMouseEnter={() => setSelectedProfile(member)}
+              onMouseLeave={() => setSelectedProfile(null)}
+              onFocus={() => setSelectedProfile(member)}
+              onBlur={() => setSelectedProfile(null)}
             >
               {portrait}
             </span>
@@ -73,5 +84,12 @@ export function FooterTeam({ style }: { style: CSSProperties }) {
         })}
       </div>
     </div>
+    <p
+      className="footer-team-caption"
+      style={{ top: `calc(${style.top} + ${style.height})` }}
+    >
+      {selectedProfile && <><b>{selectedProfile.name}</b>{" "}{selectedProfile.emoji}{" "}{selectedProfile.title}</>}
+    </p>
+    </>
   );
 }

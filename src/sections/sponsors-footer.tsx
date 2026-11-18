@@ -171,11 +171,13 @@ function SponsorsScene({ mobile }: { mobile: boolean }) {
         width={width}
         height={height}
       />
-      <SectionArt
-        layers={[TEAM_HEADINGS[mobile ? 1 : 0]]}
-        width={width}
-        height={height}
-      />
+      <div className="footer-team-heading-art" aria-hidden="true">
+        <SectionArt
+          layers={[TEAM_HEADINGS[mobile ? 1 : 0]]}
+          width={width}
+          height={height}
+        />
+      </div>
       <div className="rider-loop" aria-hidden="true">
         <SectionArt layers={[shadow]} width={width} height={height} />
       </div>
@@ -187,7 +189,7 @@ function SponsorsScene({ mobile }: { mobile: boolean }) {
             : box(0, 4006, 1512, 86)
         }
       />
-      <div className="rider-loop" aria-hidden="true">
+      <div className="rider-loop rider-body" aria-hidden="true">
         <SectionArt layers={[rider]} width={width} height={height} />
       </div>
       <h2

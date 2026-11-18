@@ -37,6 +37,19 @@
 .footer-team::-webkit-scrollbar {
   display: none;
 }
+.footer-team-caption {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  text-align: center;
+  font-size: 0.8cqw;
+  line-height: 1;
+  z-index: 2;
+}
+@media (width < 1280px) {
+  .footer-team-caption { display: none; }
+}
 .footer-team-track {
   display: flex;
   gap: 1.85185185cqw;
@@ -138,6 +151,15 @@
   animation-play-state: running;
   transform-origin: 0 0;
   will-change: transform;
+}
+.footer-team-heading-art {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+.rider-body {
+  z-index: 3;
 }
 @keyframes ride-street {
   from {
