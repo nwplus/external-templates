@@ -43,12 +43,22 @@
   width: 100%;
   margin: 0;
   text-align: center;
-  font-size: 0.8cqw;
-  line-height: 1;
+  margin-top: 16px;
+  font-size: max(16px, 1.045cqw);
+  line-height: 24px;
   z-index: 2;
 }
 @media (width < 1280px) {
   .footer-team-caption { display: none; }
+}
+@media (width >= 1280px) {
+  .sponsors-wrapper {
+    padding-bottom: 96px;
+    overflow: hidden;
+    background: #2e3046;
+  }
+  .sponsors-scene { overflow: visible; }
+  .footer-copyright { transform: translateY(64px); }
 }
 .footer-team-track {
   display: flex;
