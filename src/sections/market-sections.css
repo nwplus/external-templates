@@ -152,6 +152,15 @@
   transform-origin: 0 0;
   will-change: transform;
 }
+.footer-team-heading-art {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+.rider-body {
+  z-index: 3;
+}
 @keyframes ride-street {
   from {
     transform: translateX(-25%);
