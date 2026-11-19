@@ -43,7 +43,7 @@ const RIDERS: RidersPath = {
  * of it. */
 const CLOUDS: PartingCloud[] = [
   { src: `${M}/cloud-right.svg`, x: 223, y: 14, w: 380, h: 121, from: -170 },
-  { src: `${M}/cloud-bottom.svg`, x: 173, y: 808, w: 399, h: 115, from: -150 },
+  { src: `${M}/cloud-bottom.svg`, x: 173, y: 808, w: 399, h: 86, from: -150 },
   { src: `${M}/cloud-left.svg`, x: -190, y: -38, w: 385, h: 121, from: 150 },
 ];
 
@@ -54,7 +54,7 @@ const CLOUDS: PartingCloud[] = [
  * cross and the clouds part as on desktop.
  */
 export const AboutSceneMobile = () => (
-  <div className="@container relative aspect-[402/874] w-full overflow-hidden bg-[#11364f]">
+  <div className="@container relative aspect-[402/874] w-full z-10 [clip-path:inset(0_0_-6%)] bg-[#11364f]">
     <AboutLayer src={`${M}/scene-back.svg`} frame={FRAME} />
     <AboutDeer frame={FRAME} {...DEER} />
     <AboutRiders path={RIDERS} />

@@ -1,13 +1,13 @@
-/* Geometry lifted from the nwHacks 2027 Figma ("Final for dev"), expressed as a
- * percentage of its frame, so a scene keeps the design's proportions at any
- * width: 1% of x is 1% of the frame's width, 1% of y is 1% of its height. */
+/* Layer positions and sizes are percentages of the corresponding frame
+ * dimension so they scale with the scene. */
 
 
 /** Layers inside the desktop stats frame. */
 export const STATS_DESKTOP_FRAME = { width: 1512, height: 1412 };
 
 export const STATS_DESKTOP = {
-  texture: { x: -9.094, y: -31.622, w: 109.425, h: 105.666 },
+  // Align the perspective lines with the bottom edge of the About artwork.
+  texture: { x: -9.094, y: -31.831, w: 109.493, h: 105.666 },
   clouds: { x: -12.037, y: -2.408, w: 136.019, h: 102.408 },
   video: { x: 29.696, y: 62.04, w: 46.495, h: 34.136 },
   mentors: { x: 71.23, y: 12.394, w: 23.068, h: 48.298 },
@@ -22,7 +22,8 @@ export const STATS_DESKTOP = {
 export const STATS_MOBILE_FRAME = { width: 402, height: 1510 };
 
 export const STATS_MOBILE = {
-  texture: { x: -41.095, y: -15.695, w: 176.965, h: 42.49 },
+  // The phone crops the same texture to a different part of the perspective.
+  texture: { x: -40.217, y: -15.674, w: 175.451, h: 42.49 },
   clouds: { x: -23.881, y: -1.06, w: 156.468, h: 82.046 },
   projects: { x: 16.667, y: 11.06, w: 66.692, h: 10.132 },
   mentors: { x: 48.507, y: 23.642, w: 43.383, h: 22.583 },

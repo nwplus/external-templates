@@ -55,6 +55,8 @@
 }
 
 .stats-clouds {
+  /* The About cloud now spans the seam and replaces this top lobe. */
+  clip-path: inset(4.8% 0 0);
   animation: stats-cloud-drift 90s ease-in-out infinite alternate;
 }
 
