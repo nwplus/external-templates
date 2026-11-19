@@ -41,7 +41,7 @@ const CLOUDS: PartingCloud[] = [
     x: 834,
     y: 830,
     w: 956,
-    h: 270,
+    h: 190,
     from: -260,
   },
   {
@@ -65,7 +65,7 @@ const CLOUDS: PartingCloud[] = [
  * hero's.
  */
 export const AboutScene = () => (
-  <div className="@container relative aspect-[1512/982] w-full overflow-hidden bg-[#1b3a62]">
+  <div className="@container relative aspect-[1512/982] w-full z-10 [clip-path:inset(0_0_-6%)] bg-[#1b3a62]">
     <AboutLayer src="/assets/about/scene-back.svg" frame={FRAME} />
     <AboutDeer frame={FRAME} {...DEER} />
     <AboutRiders path={RIDERS} />
