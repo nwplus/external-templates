@@ -4,6 +4,27 @@
  * scrolled away.
  */
 
+/* ---- Fitting short screens (hero-scene.tsx) ---------------------------
+ * The frame keeps the design's proportions, so on wide, short laptop screens
+ * the first screen shows the gate but cuts the characters off at the road.
+ * There, up to 80 design px of empty sky under the navbar is cropped, just
+ * enough for the first screen to reach 900 design px down (their faces).
+ * Margin percentages are of the width: 59.52% is 900px of the 1512px frame,
+ * and 5.29% is 80px. Tall screens crop nothing.
+ *
+ * The striped tower's top is only 29px into the skyline, so past 40px of
+ * crop the skyline drops by the rest to stay clear of the navbar, behind
+ * the hill; everything else stays put. Inside the frame cqw is % of its
+ * width, so this is the same crop, less 40px (2.65cqw).
+ */
+.hero-frame {
+  margin-top: calc(-1 * clamp(0px, 59.52% - 100svh, 5.29%));
+}
+
+.hero-skyline {
+  translate: 0 max(0px, clamp(0px, 59.52cqw - 100svh, 5.29cqw) - 2.65cqw);
+}
+
 /* ---- Skyline windows (hero-windows.tsx) -------------------------------- */
 
 .hero-windows {
