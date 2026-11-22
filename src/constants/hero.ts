@@ -1,6 +1,6 @@
 export const HERO_TITLE = "nwHacks";
-export const HERO_TAGLINE = "Western Canada’s Largest Hackathon";
-export const HERO_DATE_LOCATION = "January 16-17 @ UBC Life Sciences Institute";
+export const HERO_TAGLINE = "Western Canada’s Premier Hackathon";
+export const HERO_DATE_LOCATION = "January 16-17 | UBC Life Sciences Institute";
 
 export interface RoleLink {
   label: string;
