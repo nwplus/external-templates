@@ -8,7 +8,7 @@ import { sceneBox, SectionArt } from "@/components/section-art";
 import { PAST_PROJECTS } from "@/constants/past-projects";
 import { PROJECT_DESKTOP, PROJECT_MOBILE } from "@/constants/section-art";
 
-import { Fragment, useState } from "react";
+import { Fragment, useRef, useState } from "react";
 
 import "./market-sections.css";
 
@@ -24,23 +24,38 @@ const MANGO_POP = {
 function ProjectScene({ mobile }: { mobile: boolean }) {
   const collectFood = useCollectFood();
   const [selected, setSelected] = useState<number | null>(null);
+  const selectionRequest = useRef(0);
+  const selectProject = async (index: number) => {
+    const request = ++selectionRequest.current;
+    const next = selected === index ? null : index;
+    const state = ["red", "duck", "braille"][index];
+    const sources = mobile
+      ? [
+          next === null
+            ? "/assets/past-projects/mobile/13-fruits.svg"
+            : `/assets/past-projects/mobile/fruit-selection-${index}.svg`,
+        ]
+      : [
+          ...PROJECT_DESKTOP.map((layer) => layer.src),
+          `/assets/past-projects/desktop/selected-${state}-tags.svg`,
+          `/assets/past-projects/desktop/selected-${state}-fruits.svg`,
+          ...SELECTED_LAYERS.map((layer) => layer.src),
+        ];
+    await Promise.all(
+      sources.map(async (src) => {
+        const image = new Image();
+        image.src = src;
+        await image.decode();
+      })
+    ).catch(() => undefined);
+    if (request === selectionRequest.current) setSelected(next);
+  };
   const width = mobile ? 402 : 1512;
   const height = mobile ? 874 : 982;
   const project = selected === null ? null : PAST_PROJECTS[selected];
   const box = (x: number, y: number, w: number, h: number) =>
     sceneBox(x, y, w, h, width, height);
-  const detailPositions = mobile
-    ? [
-        [83, 307, 84, 353, 238, 455],
-        [82, 310, 82, 346, 237, 452],
-        [81, 311, 82, 351, 237, 471],
-      ]
-    : [
-        [1068, 457, 1069, 503, 1223, 605],
-        [1068, 454, 1068, 490, 1223, 596],
-        [1067, 447, 1068, 487, 1223, 607],
-      ];
-  const positions = detailPositions[selected ?? 0];
+  const layout = project?.[mobile ? "mobile" : "desktop"];
   const selectedArt =
     selected === 0
       ? [SELECTED_LAYERS[0], SELECTED_LAYERS[1]]
@@ -112,7 +127,7 @@ function ProjectScene({ mobile }: { mobile: boolean }) {
             aria-label={`View ${PAST_PROJECTS[index].name}`}
             aria-pressed={selected === index}
             onClick={(event) => {
-              setSelected(selected === index ? null : index);
+              void selectProject(index);
               if (index === 1)
                 collectFood("mango-sticky-rice", event.currentTarget);
             }}
@@ -153,34 +168,38 @@ function ProjectScene({ mobile }: { mobile: boolean }) {
       )}
       <div aria-live="polite" aria-atomic="true">
         {project ? (
-          <>
-            <h3
-              className="project-detail"
-              style={box(positions[0], positions[1], 240, 21)}
-            >
-              {project.name}
-            </h3>
+          <div
+            className="project-panel"
+            style={box(
+              layout!.x,
+              layout!.y,
+              241,
+              87 + layout!.descriptionHeight + layout!.awardHeight
+            )}
+          >
+            <h3>{project.name}</h3>
             <p
-              className="project-detail"
-              style={box(
-                positions[2],
-                positions[3],
-                240,
-                selected === 0 ? 84 : 105
-              )}
+              style={{
+                minHeight: `${(layout!.descriptionHeight / width) * 100}cqw`,
+              }}
             >
               {project.description}
             </p>
+            <p
+              className="project-award"
+              style={{ minHeight: `${(layout!.awardHeight / width) * 100}cqw` }}
+            >
+              {mobile ? project.mobileAward : project.award}
+            </p>
             <a
-              className="project-detail project-link"
-              style={box(positions[4], positions[5], 85, 21)}
+              className="project-link"
               href={project.href}
               target="_blank"
               rel="noopener noreferrer"
             >
               Learn more<span className="sr-only"> about {project.name}</span>
             </a>
-          </>
+          </div>
         ) : (
           <p
             className="project-detail project-prompt"

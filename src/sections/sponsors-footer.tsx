@@ -6,12 +6,15 @@ import { FooterTeam } from "@/components/footer-team";
 import { ResponsiveScene } from "@/components/responsive-scene";
 import { sceneBox, SectionArt } from "@/components/section-art";
 import {
-  MOBILE_DINING,
-  MOBILE_RIDER,
-  TEAM_HEADINGS,
-} from "@/constants/market-interactions";
+  DESKTOP_RIDER_PARTS,
+  MOBILE_RIDER_PARTS,
+} from "@/constants/footer-rider";
+import {
+  DESKTOP_ROAD_LAYERS,
+  MOBILE_ROAD_LAYERS,
+} from "@/constants/footer-road";
+import { MOBILE_DINING, TEAM_HEADINGS } from "@/constants/market-interactions";
 import { SPONSORS_DESKTOP, SPONSORS_MOBILE } from "@/constants/section-art";
-import { DESKTOP_ROAD_LAYERS, MOBILE_ROAD_LAYERS } from "@/constants/footer-road";
 import { cn } from "@/lib/utils";
 
 import { useId, useState } from "react";
@@ -114,7 +117,7 @@ function FooterContact() {
         </button>
       </form>
       <p className="land-acknowledgement">
-        nwHacks 2026 will be taking place on xʷməθkʷəy̓əm (Musqueam) and
+        nwHacks 2027 will be taking place on xʷməθkʷəy̓əm (Musqueam) and
         səlilwətaɬ (Tsleil-Waututh) territory. As we build tomorrow&apos;s tech
         community, we recognize our responsibility to understand and respect
         Indigenous histories. To learn more, visit{" "}
@@ -131,12 +134,6 @@ function FooterContact() {
   );
 }
 
-/** The carousel's next arrow, in the carousel art's own coordinates. */
-const DESKTOP_ARROW =
-  "M744.492 280.014C745.136 280.403 745.136 281.338 744.492 281.727L717.784 297.843C716.963 298.339 715.982 297.506 716.339 296.616L722.488 281.242C722.584 281.004 722.584 280.738 722.488 280.499L716.339 265.125C715.982 264.235 716.963 263.402 717.784 263.898L744.492 280.014Z";
-const MOBILE_ARROW =
-  "M335.583 126.217C335.873 126.392 335.873 126.813 335.583 126.989L323.544 134.253C323.174 134.477 322.732 134.101 322.893 133.7L325.664 126.77C325.707 126.663 325.707 126.543 325.664 126.435L322.893 119.505C322.732 119.104 323.174 118.729 323.544 118.952L335.583 126.217Z";
-
 function SponsorsScene({ mobile }: { mobile: boolean }) {
   const collectFood = useCollectFood();
   const [slide, setSlide] = useState(0);
@@ -150,11 +147,7 @@ function SponsorsScene({ mobile }: { mobile: boolean }) {
   const height = mobile ? 2450 : 4139;
   const box = (x: number, y: number, w: number, h: number) =>
     sceneBox(x, y, w, h, width, height);
-  const rider = mobile
-    ? MOBILE_RIDER
-    : SPONSORS_DESKTOP.find(
-        (layer) => layer.name === "Mascot / Nugget on Bike"
-      )!;
+  const riderParts = mobile ? MOBILE_RIDER_PARTS : DESKTOP_RIDER_PARTS;
   const artwork = mobile
     ? SPONSORS_MOBILE.flatMap((layer) =>
         layer.name === "Mascots / Dining Scene" ? MOBILE_DINING : [layer]
@@ -163,7 +156,9 @@ function SponsorsScene({ mobile }: { mobile: boolean }) {
         (layer) => layer.name !== "Mascot / Nugget on Bike"
       );
   const road = mobile ? MOBILE_ROAD_LAYERS : DESKTOP_ROAD_LAYERS;
-  const shadow = road.find((layer) => layer.name === "moped and nugget shadow")!;
+  const shadow = road.find(
+    (layer) => layer.name === "moped and nugget shadow"
+  )!;
   const centerline = road.find((layer) => layer.name === "Vector 4643")!;
   return (
     <div
@@ -172,7 +167,11 @@ function SponsorsScene({ mobile }: { mobile: boolean }) {
     >
       <SectionArt
         layers={artwork
-          .filter((layer) => layer.name !== "Team / Portrait Row")
+          .filter(
+            (layer) =>
+              layer.name !== "Team / Portrait Row" &&
+              layer.name !== "Fireworks / Illustration"
+          )
           .flatMap((layer) =>
             layer.name === "Footer / Road"
               ? road.filter((part) => part !== shadow && part !== centerline)
@@ -181,6 +180,15 @@ function SponsorsScene({ mobile }: { mobile: boolean }) {
         width={width}
         height={height}
       />
+      <div className="footer-fireworks" aria-hidden="true">
+        <SectionArt
+          layers={artwork.filter(
+            (layer) => layer.name === "Fireworks / Illustration"
+          )}
+          width={width}
+          height={height}
+        />
+      </div>
       <div className="footer-team-heading-art" aria-hidden="true">
         <SectionArt
           layers={[TEAM_HEADINGS[mobile ? 1 : 0]]}
@@ -200,7 +208,14 @@ function SponsorsScene({ mobile }: { mobile: boolean }) {
         }
       />
       <div className="rider-loop rider-body" aria-hidden="true">
-        <SectionArt layers={[rider]} width={width} height={height} />
+        {riderParts.map((part) => (
+          <div
+            key={part.src}
+            className={part.name === "wheel" ? "rider-wheel" : "contents"}
+          >
+            <SectionArt layers={[part]} width={width} height={height} />
+          </div>
+        ))}
       </div>
       <h2
         className="market-heading"
@@ -261,20 +276,38 @@ function SponsorsScene({ mobile }: { mobile: boolean }) {
           className="sponsor-next"
           type="button"
           aria-label="Next featured sponsor"
-          onClick={(event) =>
-            selectSlide((slide + 1) % 6, event.currentTarget)
+          onClick={(event) => selectSlide((slide + 1) % 6, event.currentTarget)}
+        />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          className="sponsor-arrow"
+          src={
+            mobile
+              ? "/assets/sponsors/interactive/carousel-arrow-mobile.svg"
+              : "/assets/sponsors/interactive/carousel-arrow.svg"
+          }
+          alt=""
+          aria-hidden="true"
+          style={
+            mobile
+              ? sceneBox(
+                  322.859375,
+                  118.884765625,
+                  12.94140625,
+                  15.435546875,
+                  386.83660888671875,
+                  254.16015625
+                )
+              : sceneBox(
+                  716.263671875,
+                  263.75,
+                  28.7109375,
+                  34.2421875,
+                  858.1995239257812,
+                  563.8564453125
+                )
           }
         />
-        {/* The arrow, lifted out of the carousel art so it can nudge
-            forward now and then (and on hover of the button before it). */}
-        <svg
-          className="sponsor-arrow"
-          viewBox={mobile ? "0 0 386.836 254.16" : "0 0 858.199 563.856"}
-          preserveAspectRatio="none"
-          aria-hidden="true"
-        >
-          <path d={mobile ? MOBILE_ARROW : DESKTOP_ARROW} />
-        </svg>
         <div className="sponsor-dots">
           {Array.from({ length: 6 }, (_, index) => (
             <button
@@ -323,7 +356,7 @@ function SponsorsScene({ mobile }: { mobile: boolean }) {
       >
         <FooterContact />
         <h2 className="sr-only">Meet the minds behind nwHacks</h2>
-        <p className="footer-copyright">Copyright © nwHacks 2026</p>
+        <p className="footer-copyright">Copyright © nwHacks 2027</p>
       </footer>
     </div>
   );
