@@ -175,3 +175,40 @@
     animation: none;
   }
 }
+
+/* Vaibhav's cart wheel (a tray easter egg) winds on two turns a click. */
+.testi-wheel img {
+  transition: rotate 1.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Every 6s the wheel rocks back a quarter turn and settles. */
+.testi-wheel-rock {
+  animation: testi-wheel-rock 6s ease-in-out infinite 2s;
+}
+
+@keyframes testi-wheel-rock {
+  0%,
+  80%,
+  100% {
+    rotate: 0deg;
+  }
+  87% {
+    rotate: 90deg;
+  }
+  93% {
+    rotate: -12deg;
+  }
+  97% {
+    rotate: 4deg;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .testi-wheel img {
+    transition: none;
+  }
+
+  .testi-wheel-rock {
+    animation: none;
+  }
+}

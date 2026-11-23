@@ -1,5 +1,7 @@
 "use client";
 
+import { useCollectFood } from "@/components/food-collection";
+import { EggSparkle } from "@/components/food-egg";
 import { TestimonialsScene } from "@/components/testimonials/testimonials-scene";
 import { LightboxGallery, LightboxTrigger } from "@/components/ui/lightbox";
 import { SceneLayer } from "@/components/ui/scene-layer";
@@ -7,16 +9,21 @@ import { RECAP_DESKTOP } from "@/constants/recap";
 import { RECAP_DESKTOP_PHOTOS } from "@/constants/recap-photos";
 import { useScrollProgress } from "@/hooks/use-scroll-progress";
 import { frameStyle } from "@/lib/frame";
+import { cn } from "@/lib/utils";
 
 import { useRef } from "react";
 
 import "./recap.css";
+
+/** The food flyer pinned to the door: opening it is a tray easter egg. */
+const FOOD_FLYER = "/assets/recap/desktop-photo-8.png";
 
 /** The door lifts as the camera moves through the opening. All garage
  * layers retain the original 1512 × 982 Figma coordinate system. */
 export const RecapScene = () => {
   const pin = useRef<HTMLDivElement>(null);
   useScrollProgress(pin);
+  const collectFood = useCollectFood();
 
   return (
     <div ref={pin} className="recap-pin relative h-[220vh]">
@@ -50,6 +57,12 @@ export const RecapScene = () => {
                 {RECAP_DESKTOP_PHOTOS.map((photo) => (
                   <LightboxTrigger
                     key={photo.src}
+                    onClosed={
+                      photo.src === FOOD_FLYER
+                        ? (flyer) =>
+                            collectFood("strawberry-mini-pancakes", flyer)
+                        : undefined
+                    }
                     photo={{
                       ...photo,
                       src: photo.fullSrc,
@@ -57,7 +70,10 @@ export const RecapScene = () => {
                       height: photo.fullHeight,
                       caption: photo.alt,
                     }}
-                    className="recap-photo absolute"
+                    className={cn(
+                      "recap-photo absolute",
+                      photo.src === FOOD_FLYER && "recap-flyer"
+                    )}
                     style={frameStyle(photo.box)}
                   >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -67,6 +83,14 @@ export const RecapScene = () => {
                       draggable={false}
                       className="size-full select-none"
                     />
+                    {photo.src === FOOD_FLYER && (
+                      <EggSparkle
+                        food="strawberry-mini-pancakes"
+                        x={82}
+                        y={10}
+                        size={1}
+                      />
+                    )}
                   </LightboxTrigger>
                 ))}
               </LightboxGallery>

@@ -1,6 +1,7 @@
 import type { CSSProperties } from "react";
 
 import { useCollectFood } from "@/components/food-collection";
+import { EggSparkle } from "@/components/food-egg";
 
 import { Art, boxStyle, shiftStyle } from "./faq-art";
 import { bobStyle, FishArt, grassStyle } from "./faq-fish";
@@ -13,7 +14,7 @@ const LONG_BOX = { x: 0, y: 0, w: LONG_TANK.w, h: LONG_TANK.h };
  * The long tank of orange fish: top right in the idle scene, under the
  * questions once a tank is picked, and out of the way while an answer is
  * open. All three fish sway at the quick "special" tempo; the middle one
- * blows bubbles on a loop and is the (not yet wired) easter egg.
+ * blows bubbles on a loop and gives the taiyaki (a tray easter egg).
  */
 export const LongTank = ({ hidden }: { hidden: boolean }) => {
   const collectFood = useCollectFood();
@@ -58,9 +59,15 @@ export const LongTank = ({ hidden }: { hidden: boolean }) => {
           sway="special"
           accent={false}
           className="faq-easter-egg"
-          onActivate={() => collectFood("taiyaki")}
+          onActivate={(fish) => collectFood("taiyaki", fish)}
           ariaLabel="Collect taiyaki"
         />
+        <div
+          className="pointer-events-none absolute"
+          style={boxStyle(LONG_TANK.blower, LONG_ORIGIN)}
+        >
+          <EggSparkle food="taiyaki" x={30} y={18} />
+        </div>
         <svg
           aria-hidden="true"
           className="absolute overflow-visible"

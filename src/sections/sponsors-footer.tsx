@@ -1,6 +1,7 @@
 "use client";
 
 import { useCollectFood } from "@/components/food-collection";
+import { EggSparkle } from "@/components/food-egg";
 import { FooterTeam } from "@/components/footer-team";
 import { ResponsiveScene } from "@/components/responsive-scene";
 import { sceneBox, SectionArt } from "@/components/section-art";
@@ -11,6 +12,7 @@ import {
 } from "@/constants/market-interactions";
 import { SPONSORS_DESKTOP, SPONSORS_MOBILE } from "@/constants/section-art";
 import { DESKTOP_ROAD_LAYERS, MOBILE_ROAD_LAYERS } from "@/constants/footer-road";
+import { cn } from "@/lib/utils";
 
 import { useId, useState } from "react";
 
@@ -129,12 +131,20 @@ function FooterContact() {
   );
 }
 
+/** The carousel's next arrow, in the carousel art's own coordinates. */
+const DESKTOP_ARROW =
+  "M744.492 280.014C745.136 280.403 745.136 281.338 744.492 281.727L717.784 297.843C716.963 298.339 715.982 297.506 716.339 296.616L722.488 281.242C722.584 281.004 722.584 280.738 722.488 280.499L716.339 265.125C715.982 264.235 716.963 263.402 717.784 263.898L744.492 280.014Z";
+const MOBILE_ARROW =
+  "M335.583 126.217C335.873 126.392 335.873 126.813 335.583 126.989L323.544 134.253C323.174 134.477 322.732 134.101 322.893 133.7L325.664 126.77C325.707 126.663 325.707 126.543 325.664 126.435L322.893 119.505C322.732 119.104 323.174 118.729 323.544 118.952L335.583 126.217Z";
+
 function SponsorsScene({ mobile }: { mobile: boolean }) {
   const collectFood = useCollectFood();
   const [slide, setSlide] = useState(0);
-  const selectSlide = (index: number) => {
+  /** The last slide is a tray easter egg: the laksa flies from `origin`,
+   * the arrow or dot that got there. */
+  const selectSlide = (index: number, origin: HTMLElement) => {
     setSlide(index);
-    if (index === 5) collectFood("laksa");
+    if (index === 5) collectFood("laksa", origin);
   };
   const width = mobile ? 402 : 1512;
   const height = mobile ? 2450 : 4139;
@@ -251,18 +261,49 @@ function SponsorsScene({ mobile }: { mobile: boolean }) {
           className="sponsor-next"
           type="button"
           aria-label="Next featured sponsor"
-          onClick={() => selectSlide((slide + 1) % 6)}
+          onClick={(event) =>
+            selectSlide((slide + 1) % 6, event.currentTarget)
+          }
         />
+        {/* The arrow, lifted out of the carousel art so it can nudge
+            forward now and then (and on hover of the button before it). */}
+        <svg
+          className="sponsor-arrow"
+          viewBox={mobile ? "0 0 386.836 254.16" : "0 0 858.199 563.856"}
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <path d={mobile ? MOBILE_ARROW : DESKTOP_ARROW} />
+        </svg>
         <div className="sponsor-dots">
           {Array.from({ length: 6 }, (_, index) => (
             <button
               key={index}
-              className={slide === index ? "active" : undefined}
+              className={cn(
+                slide === index && "active",
+                index === 5 && "sponsor-dot-bowl"
+              )}
               type="button"
               aria-label={`Featured sponsor slide ${index + 1}`}
               aria-pressed={slide === index}
-              onClick={() => selectSlide(index)}
-            />
+              onClick={(event) => selectSlide(index, event.currentTarget)}
+            >
+              {/* The last dot is a little bowl: what's on that slide. */}
+              {index === 5 && (
+                <>
+                  <svg viewBox="0 0 12 10" aria-hidden="true">
+                    <path d="M7.2 3.6 11.4.4M5.6 3.6 9.6.9" />
+                    <path d="M.6 4.4h10.8a5.4 5.4 0 0 1-10.8 0Z" />
+                  </svg>
+                  <EggSparkle
+                    food="laksa"
+                    x={70}
+                    y={-60}
+                    size={mobile ? 2 : 0.8}
+                  />
+                </>
+              )}
+            </button>
           ))}
         </div>
         <span className="sr-only" aria-live="polite">

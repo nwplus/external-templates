@@ -34,7 +34,8 @@ type ArtProps = {
   origin?: { x: number; y: number };
   className?: string;
   style?: CSSProperties;
-  onActivate?: () => void;
+  /** Makes the layer a button; gets the layer's element when pressed. */
+  onActivate?: (target: HTMLElement) => void;
   ariaLabel?: string;
   /** Wrappers between the box and the art (sway, accents). */
   wrap?: (art: ReactNode) => ReactNode;
@@ -89,13 +90,13 @@ export const Art = ({
       role={onActivate ? "button" : undefined}
       tabIndex={onActivate ? 0 : undefined}
       aria-label={onActivate ? ariaLabel : undefined}
-      onClick={onActivate}
+      onClick={onActivate && ((event) => onActivate(event.currentTarget))}
       onKeyDown={
         onActivate
           ? (event) => {
               if (event.key === "Enter" || event.key === " ") {
                 event.preventDefault();
-                onActivate();
+                onActivate(event.currentTarget);
               }
             }
           : undefined

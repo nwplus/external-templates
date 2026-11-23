@@ -218,7 +218,9 @@ export const Lightbox = ({
   );
 };
 
-const OpenPhoto = createContext<((photo: LightboxPhoto) => void) | null>(null);
+const OpenPhoto = createContext<
+  ((photo: LightboxPhoto, onClosed?: () => void) => void) | null
+>(null);
 
 /**
  * One lightbox shared by every trigger inside it. The sections stay server
@@ -229,11 +231,19 @@ const OpenPhoto = createContext<((photo: LightboxPhoto) => void) | null>(null);
 export const LightboxGallery = ({ children }: { children: ReactNode }) => {
   const [photo, setPhoto] = useState<LightboxPhoto | null>(null);
   const [open, setOpen] = useState(false);
-  const show = useCallback((next: LightboxPhoto) => {
+  const onClosed = useRef<(() => void) | undefined>(undefined);
+  const show = useCallback((next: LightboxPhoto, then?: () => void) => {
+    onClosed.current = then;
     setPhoto(next);
     setOpen(true);
   }, []);
-  const close = useCallback(() => setOpen(false), []);
+  const close = useCallback(() => {
+    setOpen(false);
+    const then = onClosed.current;
+    onClosed.current = undefined;
+    // After the page behind is unlocked, so it's back where it was drawn.
+    if (then) requestAnimationFrame(then);
+  }, []);
 
   return (
     <OpenPhoto.Provider value={show}>
@@ -245,6 +255,9 @@ export const LightboxGallery = ({ children }: { children: ReactNode }) => {
 
 type TriggerProps = {
   photo: LightboxPhoto;
+  /** Runs once the opened photo is closed again, with this trigger (the
+   * recap's food flyer is a tray easter egg, and the food flies from it). */
+  onClosed?: (trigger: HTMLButtonElement) => void;
   className?: string;
   style?: CSSProperties;
   children?: ReactNode;
@@ -257,6 +270,7 @@ type TriggerProps = {
  */
 export const LightboxTrigger = ({
   photo,
+  onClosed,
   className,
   style,
   children,
@@ -266,7 +280,10 @@ export const LightboxTrigger = ({
     <button
       type="button"
       aria-label={`Open photo: ${photo.alt}`}
-      onClick={() => show?.(photo)}
+      onClick={(event) => {
+        const trigger = event.currentTarget;
+        show?.(photo, onClosed && (() => onClosed(trigger)));
+      }}
       className={cn(
         "group cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lamp",
         className

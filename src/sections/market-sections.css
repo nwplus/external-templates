@@ -110,13 +110,34 @@
   width: 9.57338324cqw;
   border-radius: 0.55659204cqw;
 }
+/* The tray stays in the bottom-left corner while the page scrolls. Desktop
+ * sizes come from Figma "fireworks hero w empty tray" (1512 x 986): 156 wide,
+ * 127 from the left and 119 from the bottom, scaled with the viewport. */
 .food-collection {
-  position: absolute;
-  left: 8.39947%;
-  top: 49.925337vw;
-  width: 10.33658%;
-  aspect-ratio: 156.2890625 / 112.1036377;
+  position: fixed;
+  left: 8.39947vw;
+  bottom: max(7.8724vw, env(safe-area-inset-bottom));
+  z-index: 800;
+  width: 10.33658vw;
+  aspect-ratio: 157.718 / 113.128;
   pointer-events: none;
+  /* Slides in from past the left edge once the hero has settled. */
+  animation: tray-slide-in 0.8s cubic-bezier(0.22, 1.2, 0.36, 1) 1s both;
+  /* It squashes onto its base when food lands (FoodCollection). */
+  transform-origin: 50% 100%;
+}
+@keyframes tray-slide-in {
+  from {
+    translate: calc(-100% - 10vw) 0;
+  }
+}
+/* No tray in the phone frames: keep it a thumb's width in the corner. */
+@media (width < 768px) {
+  .food-collection {
+    left: 4vw;
+    bottom: max(4vw, env(safe-area-inset-bottom));
+    width: 24vw;
+  }
 }
 .food-tray {
   position: absolute;
@@ -126,30 +147,243 @@
 .collected-food {
   position: absolute;
   height: auto;
+  max-width: none;
 }
-.collected-food.mango-sticky-rice {
-  left: 18.64198%;
-  top: 54.90534%;
-  width: 38.12085%;
+.collected-food[data-landed] {
+  animation: food-land 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) both;
 }
-.collected-food.laksa {
-  left: 66.91358%;
-  top: 54.5611%;
-  width: 28.64198%;
+@keyframes food-land {
+  from {
+    opacity: 0;
+    transform: translateY(-60%) scale(0.6);
+  }
 }
-.collected-food.tanghulu {
-  left: -6.354%;
-  top: 49.05%;
-  width: 29.49%;
+/* Food on its way from an egg to the tray, over the whole screen: FoodFlight
+ * places each plate by transform, every frame. */
+.food-flight {
+  position: fixed;
+  inset: 0;
+  z-index: 801;
+  pointer-events: none;
 }
-.collected-food.taiyaki {
-  left: 38.51%;
-  top: 0.171%;
-  width: 22.61%;
+.food-flight .collected-food {
+  left: 0;
+  top: 0;
+  will-change: transform;
 }
-@media (width < 768px) {
-  .food-collection {
+/* Steam off the hot dishes: two thin wisps curl up, stretch and fade,
+ * then the dish rests a long while (one puff per 15s). */
+.tray-steam {
+  position: absolute;
+  width: 16%;
+  aspect-ratio: 3 / 5;
+  translate: -50% -100%;
+  pointer-events: none;
+}
+.tray-wisp {
+  position: absolute;
+  bottom: 0;
+  width: 50%;
+  height: 100%;
+  overflow: visible;
+  fill: none;
+  stroke: #fffaf0;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  filter: blur(0.6px);
+  mask-image: linear-gradient(to top, transparent, #000 25%, #000 45%, transparent);
+  opacity: 0;
+  transform-origin: 50% 100%;
+  animation: tray-wisp 15s ease-out infinite;
+  animation-delay: var(--steam-delay, 0s);
+}
+.tray-wisp:nth-child(1) {
+  left: 5%;
+}
+.tray-wisp:nth-child(2) {
+  left: 45%;
+  --drift: 25%;
+  animation-delay: calc(var(--steam-delay, 0s) + 0.6s);
+}
+@keyframes tray-wisp {
+  0% {
+    opacity: 0;
+    transform: translate(0, 15%) scale(0.8, 0.5);
+  }
+  5% {
+    opacity: 0.75;
+  }
+  20%,
+  100% {
+    opacity: 0;
+    transform: translate(var(--drift, -15%), -35%) scale(1.1, 1.2);
+  }
+}
+/* An egg's glint (EggSparkle): a four-point star and a small one beside
+ * it, twinkling when the tray picks it. */
+.egg-sparkle {
+  position: absolute;
+  z-index: 5;
+  width: var(--sparkle-size, 1.1cqw);
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  pointer-events: none;
+}
+.egg-sparkle svg {
+  position: absolute;
+  inset: 0;
+  fill: #fff7d6;
+  filter: drop-shadow(0 0 0.25cqw #ffd56b);
+  scale: 0;
+}
+.egg-sparkle .egg-sparkle-small {
+  inset: auto;
+  left: 80%;
+  top: -30%;
+  width: 45%;
+  height: 45%;
+}
+.egg-sparkle[data-on] svg {
+  animation: egg-glint 1.1s ease-in-out;
+}
+.egg-sparkle[data-on] .egg-sparkle-small {
+  animation-delay: 0.25s;
+}
+@keyframes egg-glint {
+  0% {
+    scale: 0;
+    rotate: 0deg;
+    opacity: 0;
+  }
+  40% {
+    scale: 1;
+    opacity: 1;
+  }
+  100% {
+    scale: 0;
+    rotate: 90deg;
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .food-collection,
+  .collected-food[data-landed],
+  .egg-sparkle[data-on] svg {
+    animation: none;
+  }
+  .tray-steam {
     display: none;
+  }
+}
+/* Easter eggs: art that gives a food when clicked. Art inside drawn with
+ * `egg-art` grows a little on hover, like the FAQ's orange fish. */
+.food-egg {
+  cursor: pointer;
+  border-radius: 0.5cqw;
+}
+.food-egg .egg-art {
+  transition: scale 0.25s ease;
+}
+.food-egg:hover .egg-art,
+.food-egg:focus-visible .egg-art {
+  scale: 1.06;
+}
+.food-egg:focus-visible {
+  outline: 2px solid var(--color-lamp, #ffd56b);
+  outline-offset: 2px;
+}
+/* A wisp of steam off an egg, puffed by its own rule. */
+.egg-steam {
+  position: absolute;
+  overflow: visible;
+  stroke: #fff9ee;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  pointer-events: none;
+}
+.egg-steam path {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+}
+.egg-steam path:nth-child(2) {
+  animation-delay: 0.3s;
+}
+@keyframes egg-steam-puff {
+  0% {
+    opacity: 0;
+    transform: translateY(25%) scale(0.9, 0.7);
+  }
+  25% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-45%) scale(1.15, 1.1);
+  }
+}
+
+/* About: the deer lifts its kwek kwek for a nibble now and then (pivoting
+ * on its grip at the skewer's foot); on hover it holds it up, steaming. */
+.about-kwek-art {
+  transform-origin: 46.4% 49.4%;
+  animation: kwek-nibble 7s ease-in-out infinite 2s;
+  transition:
+    rotate 0.3s ease,
+    scale 0.3s ease;
+}
+@keyframes kwek-nibble {
+  0%,
+  78%,
+  100% {
+    rotate: 0deg;
+  }
+  83% {
+    rotate: -12deg;
+  }
+  86% {
+    rotate: -7deg;
+  }
+  89% {
+    rotate: -12deg;
+  }
+  94% {
+    rotate: 0deg;
+  }
+}
+.about-kwek:hover .about-kwek-art,
+.about-kwek:focus-visible .about-kwek-art {
+  animation: none;
+  rotate: -14deg;
+  scale: 1.06;
+}
+.about-kwek-steam {
+  left: 22%;
+  top: -42%;
+  width: 32%;
+}
+.about-kwek:hover .about-kwek-steam path,
+.about-kwek:focus-visible .about-kwek-steam path {
+  animation: egg-steam-puff 1.4s ease-out infinite;
+}
+.about-kwek:hover .about-kwek-steam path:nth-child(2),
+.about-kwek:focus-visible .about-kwek-steam path:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+/* The sign's own neon flicker animates the button's filter, so the hover
+ * glow goes on the art inside it. */
+.bao-sign-art {
+  transition: filter 0.25s ease;
+}
+.bao-sign:hover .bao-sign-art,
+.bao-sign:focus-visible .bao-sign-art {
+  filter: brightness(1.18) drop-shadow(0 0 0.6cqw rgb(255 214 120 / 0.85));
+}
+@media (prefers-reduced-motion: reduce) {
+  .about-kwek-art,
+  .egg-steam path {
+    animation: none !important;
   }
 }
 .rider-loop {
@@ -229,6 +463,57 @@
 }
 .fruit-target:hover {
   background: rgb(255 231 172 / 0.06);
+}
+/* The mango easter egg: hidden under the clip's bottom edge (the top of
+ * the pile), it hops out every 7s, and peeks out while its fruit is
+ * hovered. */
+.mango-pop {
+  position: absolute;
+  z-index: 1;
+  /* Only the bottom edge hides it; the sides and top stay open so the
+   * mango isn't cut as it tilts. */
+  clip-path: inset(-100% -100% 0 -100%);
+  pointer-events: none;
+}
+.mango-pop img {
+  position: absolute;
+  bottom: 0;
+  max-width: none;
+  height: auto;
+  translate: 0 100%;
+  transform-origin: 50% 100%;
+  animation: mango-hop 7s ease-in-out infinite 3s;
+  transition: translate 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+@keyframes mango-hop {
+  0%,
+  84%,
+  100% {
+    translate: 0 100%;
+    rotate: 0deg;
+  }
+  89% {
+    translate: 0 6%;
+    rotate: -12deg;
+  }
+  92% {
+    translate: 0 14%;
+    rotate: -4deg;
+  }
+  96% {
+    translate: 0 100%;
+    rotate: 0deg;
+  }
+}
+.fruit-target:hover + .mango-pop img,
+.fruit-target:focus-visible + .mango-pop img {
+  animation: none;
+  translate: 0 38%;
+}
+@media (prefers-reduced-motion: reduce) {
+  .mango-pop img {
+    animation: none;
+  }
 }
 .project-detail {
   position: absolute;
@@ -325,6 +610,83 @@
 }
 .sponsor-dots button.active {
   background: #d51e25;
+}
+/* The last dot is a bowl (the laksa easter egg), drawn in the dots'
+ * colours. */
+.sponsor-dots button.sponsor-dot-bowl {
+  position: relative;
+  width: 1.1cqw;
+  height: 0.9cqw;
+  border-radius: 0;
+  background: none;
+  color: #ffb82e;
+  transition: scale 0.2s ease;
+}
+.sponsor-dots button.sponsor-dot-bowl.active {
+  color: #d51e25;
+}
+.sponsor-dots button.sponsor-dot-bowl:hover {
+  scale: 1.2;
+}
+.sponsor-dot-bowl svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.sponsor-dot-bowl path {
+  fill: currentColor;
+}
+.sponsor-dot-bowl path:first-child {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 0.9;
+  stroke-linecap: round;
+}
+.market-mobile .sponsor-dots button.sponsor-dot-bowl {
+  width: 1.9cqw;
+  height: 1.55cqw;
+}
+/* The next arrow nudges forward twice every 5s, and leans forward while its
+ * button is hovered. */
+.sponsor-arrow {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+.sponsor-arrow path {
+  fill: #f6b83b;
+  transform-box: fill-box;
+  animation: sponsor-arrow-nudge 5s ease-in-out infinite 2s;
+  transition: translate 0.2s ease;
+}
+@keyframes sponsor-arrow-nudge {
+  0%,
+  80%,
+  100% {
+    translate: 0 0;
+  }
+  85%,
+  93% {
+    translate: 35% 0;
+  }
+  89%,
+  97% {
+    translate: 0 0;
+  }
+}
+.sponsor-next:hover + .sponsor-arrow path,
+.sponsor-next:focus-visible + .sponsor-arrow path {
+  animation: none;
+  translate: 30% 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .sponsor-arrow path {
+    animation: none;
+  }
 }
 .market-mobile .sponsor-dots button {
   width: 1.2cqw;

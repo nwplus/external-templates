@@ -1,15 +1,25 @@
 "use client";
 
 import { useCollectFood } from "@/components/food-collection";
+import { EggSparkle } from "@/components/food-egg";
 import { SELECTED_LAYERS } from "@/components/market-art/selected-projects";
 import { ResponsiveScene } from "@/components/responsive-scene";
 import { sceneBox, SectionArt } from "@/components/section-art";
 import { PAST_PROJECTS } from "@/constants/past-projects";
 import { PROJECT_DESKTOP, PROJECT_MOBILE } from "@/constants/section-art";
 
-import { useState } from "react";
+import { Fragment, useState } from "react";
 
 import "./market-sections.css";
+
+/** A mango that hops out of the centre fruit now and then (the mango
+ * sticky rice easter egg), off the pile's left shoulder so it clears the
+ * sign. `clip` (design px) ends a little into the pile, so the mango rises
+ * from behind it; `mango` is its left edge and width there. */
+const MANGO_POP = {
+  desktop: { clip: [386, 280, 62, 92], mango: [2, 57] },
+  mobile: { clip: [268, 614, 60, 47], mango: [8.8, 42.4] },
+} as const;
 
 function ProjectScene({ mobile }: { mobile: boolean }) {
   const collectFood = useCollectFood();
@@ -37,6 +47,8 @@ function ProjectScene({ mobile }: { mobile: boolean }) {
       : selected === 1
         ? [SELECTED_LAYERS[3]]
         : [SELECTED_LAYERS[2]];
+  const mango = MANGO_POP[mobile ? "mobile" : "desktop"];
+  const [clipX, clipY, clipW, clipH] = mango.clip;
   const targets = mobile
     ? [
         [36, 492, 121, 261],
@@ -92,18 +104,49 @@ function ProjectScene({ mobile }: { mobile: boolean }) {
         Past Projects
       </h2>
       {targets.map(([x, y, w, h], index) => (
-        <button
-          key={PAST_PROJECTS[index].name}
-          type="button"
-          className="fruit-target"
-          style={box(x, y, w, h)}
-          aria-label={`View ${PAST_PROJECTS[index].name}`}
-          aria-pressed={selected === index}
-          onClick={() => {
-            setSelected(selected === index ? null : index);
-            if (index === 1) collectFood("mango-sticky-rice");
-          }}
-        />
+        <Fragment key={PAST_PROJECTS[index].name}>
+          <button
+            type="button"
+            className="fruit-target"
+            style={box(x, y, w, h)}
+            aria-label={`View ${PAST_PROJECTS[index].name}`}
+            aria-pressed={selected === index}
+            onClick={(event) => {
+              setSelected(selected === index ? null : index);
+              if (index === 1)
+                collectFood("mango-sticky-rice", event.currentTarget);
+            }}
+          >
+            {index === 1 && (
+              <EggSparkle
+                food="mango-sticky-rice"
+                x={mobile ? 46 : 40}
+                y={mobile ? 4 : 8}
+                size={mobile ? 2.8 : 1.1}
+              />
+            )}
+          </button>
+          {/* Right after its target, so hovering the target lifts it. */}
+          {index === 1 && selected !== 1 && (
+            <span
+              className="mango-pop"
+              style={box(clipX, clipY, clipW, clipH)}
+              aria-hidden="true"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/assets/past-projects/mango@2x.webp"
+                srcSet="/assets/past-projects/mango@2x.webp 2x, /assets/past-projects/mango@3x.webp 3x"
+                alt=""
+                draggable={false}
+                style={{
+                  left: `${(mango.mango[0] / clipW) * 100}%`,
+                  width: `${(mango.mango[1] / clipW) * 100}%`,
+                }}
+              />
+            </span>
+          )}
+        </Fragment>
       ))}
       {project && !mobile && (
         <SectionArt layers={selectedArt} width={width} height={height} />

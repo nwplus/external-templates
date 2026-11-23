@@ -62,7 +62,7 @@ type FishArtProps = {
   accent?: boolean;
   className?: string;
   style?: CSSProperties;
-  onActivate?: () => void;
+  onActivate?: (target: HTMLElement) => void;
   ariaLabel?: string;
 };
 

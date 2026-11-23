@@ -1,6 +1,7 @@
 import { SceneLayer } from "@/components/ui/scene-layer";
 import { STATS_MOBILE } from "@/constants/stats";
 
+import { BaoSign } from "./bao-sign";
 import { StatsVideo } from "./stats-video";
 import "./stats.css";
 
@@ -22,20 +23,7 @@ export const StatsSceneMobile = () => (
       Last year we had…
     </p>
 
-    <SceneLayer
-      src="/assets/stats/projects.webp"
-      box={STATS_MOBILE.projects}
-      fit="contain"
-      alt="182 projects"
-      className="stats-rise stat-neon-tube"
-      style={
-        {
-          "--rise": "0.1s",
-          "--neon": "13.7s",
-          "--neon-delay": "-6.2s",
-        } as React.CSSProperties
-      }
-    />
+    <BaoSign box={STATS_MOBILE.projects} rise="0.1s" sparkleSize={2.8} />
     <SceneLayer
       src="/assets/stats/mentors.webp"
       box={STATS_MOBILE.mentors}

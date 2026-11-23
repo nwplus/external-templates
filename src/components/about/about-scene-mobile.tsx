@@ -4,7 +4,7 @@ import {
 } from "@/components/ui/parting-clouds";
 import { ABOUT_PARAGRAPHS_MOBILE, ABOUT_TITLE } from "@/constants/about";
 
-import { AboutDeer, AboutLayer } from "./about-art";
+import { AboutDeer, AboutKwekKwek, AboutLayer } from "./about-art";
 import { AboutRiders, type RidersPath } from "./about-riders";
 
 /** The Figma phone frame ("about us" in "mobile"). */
@@ -24,7 +24,9 @@ const fromBike = (x: number, y: number) => ({
 });
 
 /** The deer on the back rail. */
-const DEER = { ...fromBike(785, 460), w: 110 * S };
+const DEER = { ...fromBike(795.052, 464.777), w: 115 * S };
+/** The kwek kwek in its hand. */
+const KWEK_KWEK = { ...fromBike(807.537, 554.489), scale: S };
 
 /** The bridge is the desktop one scaled too, and so is its arch. */
 const RIDERS: RidersPath = {
@@ -57,6 +59,8 @@ export const AboutSceneMobile = () => (
   <div className="@container relative aspect-[402/874] w-full z-10 [clip-path:inset(0_0_-6%)] bg-[#11364f]">
     <AboutLayer src={`${M}/scene-back.svg`} frame={FRAME} />
     <AboutDeer frame={FRAME} {...DEER} />
+    {/* In the deer's paw, so the riders and front rail pass over it. */}
+    <AboutKwekKwek frame={FRAME} {...KWEK_KWEK} />
     <AboutRiders path={RIDERS} />
     <AboutLayer src={`${M}/scene-front.svg`} frame={FRAME} />
 

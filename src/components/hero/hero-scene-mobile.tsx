@@ -16,9 +16,15 @@ import { useCollectFood } from "@/components/food-collection";
 import { MOBILE_SKYLINE } from "@/constants/hero-windows";
 import { cn } from "@/lib/utils";
 
-import { type CSSProperties, type ReactNode, useState } from "react";
+import {
+  type CSSProperties,
+  type MouseEvent,
+  type ReactNode,
+  useState,
+} from "react";
 
 import { Countdown } from "./countdown";
+import { GateEggArt } from "./gate-egg";
 import { HeroFireworks } from "./hero-fireworks";
 import { HeroLanterns } from "./hero-lanterns";
 import { HeroWindows } from "./hero-windows";
@@ -116,9 +122,9 @@ export const HeroSceneMobile = () => {
   const [fireworks, setFireworks] = useState(false);
   const [fireworksLoaded, setFireworksLoaded] = useState(false);
 
-  const toggleFireworks = () => {
+  const toggleFireworks = (event: MouseEvent<HTMLButtonElement>) => {
     setFireworksLoaded(true);
-    if (!fireworks) collectFood("tanghulu");
+    if (!fireworks) collectFood("tanghulu", event.currentTarget);
     setFireworks((on) => !on);
   };
 
@@ -207,6 +213,7 @@ export const HeroSceneMobile = () => {
               fireworks && "is-off"
             )}
           />
+          <GateEggArt fireworks={fireworks} sparkleSize={3} />
         </button>
         <HeroLanterns frame={{ width: W, height: H }} gate={GATE} />
         <Art

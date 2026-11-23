@@ -12,10 +12,11 @@ import {
 import { DESKTOP_SKYLINE } from "@/constants/hero-windows";
 import { cn } from "@/lib/utils";
 
-import { useState } from "react";
+import { type MouseEvent, useState } from "react";
 
 import { Countdown } from "./countdown";
 import { HeroClouds } from "./hero-clouds";
+import { GateEggArt } from "./gate-egg";
 import { HeroFireworks } from "./hero-fireworks";
 import { HeroLanterns } from "./hero-lanterns";
 import { HeroWindows } from "./hero-windows";
@@ -46,9 +47,9 @@ export const HeroScene = () => {
   // The fireworks art loads on the first click and then stays mounted.
   const [fireworksLoaded, setFireworksLoaded] = useState(false);
 
-  const toggleFireworks = () => {
+  const toggleFireworks = (event: MouseEvent<HTMLButtonElement>) => {
     setFireworksLoaded(true);
-    if (!fireworks) collectFood("tanghulu");
+    if (!fireworks) collectFood("tanghulu", event.currentTarget);
     setFireworks((on) => !on);
   };
 
@@ -170,6 +171,7 @@ export const HeroScene = () => {
             fireworks && "is-off"
           )}
         />
+        <GateEggArt fireworks={fireworks} sparkleSize={1.2} />
       </button>
       {/* Lanterns hang under the sign, which is drawn over their hooks */}
       <HeroLanterns frame={{ width: W, height: H }} gate={GATE} />

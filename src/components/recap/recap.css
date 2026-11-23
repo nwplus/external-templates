@@ -185,3 +185,41 @@
     animation: none;
   }
 }
+
+/* The food flyer (a tray easter egg) catches a draught every 7s, swinging
+ * from its top edge where it's pinned; on hover it lifts off the door. */
+.recap-flyer img {
+  transform-origin: 50% 0;
+  animation: recap-flyer-flutter 7s ease-in-out infinite 1.5s;
+  transition:
+    transform 200ms ease,
+    rotate 250ms ease,
+    filter 250ms ease;
+}
+@keyframes recap-flyer-flutter {
+  0%,
+  82%,
+  100% {
+    rotate: 0deg;
+  }
+  86% {
+    rotate: 4deg;
+  }
+  90% {
+    rotate: -3deg;
+  }
+  94% {
+    rotate: 1.5deg;
+  }
+}
+.recap-flyer:hover img,
+.recap-flyer:focus-visible img {
+  animation: none;
+  rotate: -3deg;
+  filter: drop-shadow(0.3cqw 0.5cqw 0.4cqw rgb(0 0 0 / 0.45));
+}
+@media (prefers-reduced-motion: reduce) {
+  .recap-flyer img {
+    animation: none;
+  }
+}
