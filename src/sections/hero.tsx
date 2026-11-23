@@ -4,7 +4,8 @@ import { ResponsiveScene } from "@/components/responsive-scene";
 
 export default function Hero() {
   return (
-    <section id="hero" data-motion-scope>
+    // overflow-hidden clips the sky .hero-frame crops off on short screens.
+    <section id="hero" data-motion-scope className="overflow-hidden">
       <ResponsiveScene desktop={<HeroScene />} mobile={<HeroSceneMobile />} />
     </section>
   );

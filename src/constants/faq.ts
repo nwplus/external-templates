@@ -27,8 +27,7 @@ export type FaqsByCategory = Record<FaqCategoryId, FaqEntry[]>;
 
 /**
  * Shown for any tank Firestore has nothing for (no FAQ docs are tagged
- * nwHacks2027 yet). The questions follow the Figma frames. "What is a
- * hackathon?" uses the design's answer; the rest copy the nwHacks 2025 docs.
+ * nwHacks2027 yet). The copy follows the nwHacks 2027 website copy doc.
  */
 export const FAQ_FALLBACK: FaqsByCategory = {
   general: [
@@ -39,9 +38,7 @@ export const FAQ_FALLBACK: FaqsByCategory = {
     },
     {
       question: "How much does it cost?",
-      // TODO(content): eligibility dates are still the 2025 ones.
-      answer:
-        "nwHacks is 100% free for all participants. However, registration is strictly limited to high school students, university students, and recent graduates i.e. students with an expected graduation date later than January 2025 or anyone who graduated within one year of January 2025.",
+      answer: "nwHacks is 100% free for all participants.",
     },
     {
       question: "What if I don't have any experience?",
@@ -51,25 +48,24 @@ export const FAQ_FALLBACK: FaqsByCategory = {
     {
       question: "Is nwHacks just for developers?",
       answer:
-        "nwHacks is open to students of all roles, whether that's dev, design, PM, and more!",
+        "Nope! nwHacks is open to students of all roles, whether that’s dev, design, PM, and more. Great projects are more than just their code!",
     },
     {
       question: "I’m a high schooler/new graduate - can I attend?",
-      // TODO(content): graduation cut-off is still the 2025 one.
       answer:
-        "Yes, we are excited to invite high school students and post-secondary students from all disciplines! Great projects are more than just their code. New graduates are welcome as long as your graduation date is within one year of January 2025.",
+        "Yes, we are excited to invite high school students, post-secondary students from all disciplines, and recent graduates who graduated within one year of January 2027.",
     },
   ],
   teams: [
     {
       question: "How big can my team be?",
       answer:
-        "nwHacks accepts submissions from team of 1-4 people in size. Although we strongly recommend that you join a team, you may participate by yourself as a solo team.",
+        "nwHacks accepts submissions from teams of 1-4 people in size. Although we strongly recommend that you join a team, you may participate by yourself as a solo team.",
     },
     {
       question: "Is there a theme for nwHacks?",
       answer:
-        "We do not have themes or tracks for projects this year. There are several event and sponsor prizes that a team may win, but the sky is the limit!",
+        "We do not have themes or tracks for projects this year. There are several event and sponsor prizes that a team may win.",
     },
     {
       question: "What happens if I don't have a team?",
@@ -78,9 +74,8 @@ export const FAQ_FALLBACK: FaqsByCategory = {
     },
     {
       question: "When can I start hacking?",
-      // TODO(content): the 2025 date and time; 2027 runs January 16-17.
       answer:
-        "Hacking is only allowed to begin after Opening Ceremonies on January 18th at 12:00pm PST. Before that time, you are welcome to brainstorm ideas and create a GitHub repository, but nothing can be designed, coded, or initialized for the project prior to the start of the hacking period.",
+        "Hacking is only allowed to begin after Opening Ceremonies on January 16th at 12:00pm PST. Before that time, you are welcome to brainstorm ideas, but nothing can be designed, coded, or initialized for the project prior to the start of the hacking period.",
     },
     {
       question: "Can I work on previous projects?",

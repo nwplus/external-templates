@@ -1,13 +1,18 @@
 "use client";
 
-import type { GradientLine, Skyline } from "@/constants/hero-windows";
+import {
+  type GradientLine,
+  type Skyline,
+  towerPanes,
+} from "@/constants/hero-windows";
 import { cn } from "@/lib/utils";
 
 import { type CSSProperties, useEffect, useId, useMemo, useRef } from "react";
 
 /** Share of windows lit when the page loads. */
 const LIT_SHARE = 0.3;
-/** How often, in ms, some window changes. Each change is itself slow (see
+/** How often, in ms, one of every 100 windows changes (so each window keeps
+ * its pace however many there are). Each change is itself slow (see
  * paneTiming), so the skyline stays lively without pulling the eye. */
 const TICK_MS = 550;
 /** Of those changes, the share that are a flicker rather than on/off. */
@@ -74,8 +79,8 @@ type HeroWindowsProps = {
 };
 
 /**
- * The skyline behind the gate (Figma "bkg windows"). The towers are static,
- * but every window is its own rect with a warm glow over it, so windows can
+ * The skyline behind the gate (Figma "bkg windows"). Every window, and every
+ * stripe of the striped towers, has its own warm glow over it, so they can
  * switch on and off, breathe while lit and now and then flicker, each at its
  * own slow pace. The changes are made straight on the DOM (data attributes
  * the CSS in hero.css animates), so the hero never re-renders for them.
@@ -90,9 +95,13 @@ export const HeroWindows = ({
   // Both layouts' skylines are in the page, so their gradients need their
   // own ids (useId's, minus the characters url() references trip on).
   const id = `skyline${useId().replace(/[^\w-]/g, "")}`;
-  // Building bands are part of the building, so they never light up.
+  // Building bands are part of the building, so they never light up; the
+  // towers' stripes do.
   const panes = useMemo(
-    () => skyline.rects.filter(([, , w]) => w < skyline.bandWidth),
+    () => [
+      ...skyline.rects.filter(([, , w]) => w < skyline.bandWidth),
+      ...skyline.towers.flatMap(towerPanes),
+    ],
     [skyline]
   );
   const timing = useMemo(() => paneTiming(panes.length), [panes]);
@@ -117,6 +126,7 @@ export const HeroWindows = ({
     };
     group.addEventListener("animationend", onEnd);
 
+    const tick = (TICK_MS * 100) / glows.length;
     const interval = setInterval(() => {
       if (document.hidden) return;
       const glow = glows[Math.floor(Math.random() * glows.length)];
@@ -127,7 +137,7 @@ export const HeroWindows = ({
       } else {
         glow.dataset.lit = "";
       }
-    }, TICK_MS);
+    }, tick);
 
     return () => {
       clearInterval(interval);

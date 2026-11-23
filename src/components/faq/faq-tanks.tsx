@@ -90,7 +90,7 @@ const TopicTank = ({
       aria-controls="faq-questions"
       onClick={() => onPick(tank.id)}
     >
-      {tank.back.map((layer) => (
+      {((!offset && tank.liftBack) || tank.back).map((layer) => (
         <Art key={layer.src} layer={layer} origin={origin} />
       ))}
       {tank.bubbles && (

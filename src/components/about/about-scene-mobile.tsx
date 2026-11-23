@@ -2,7 +2,7 @@ import {
   type PartingCloud,
   PartingClouds,
 } from "@/components/ui/parting-clouds";
-import { ABOUT_PARAGRAPHS, ABOUT_TITLE } from "@/constants/about";
+import { ABOUT_PARAGRAPHS_MOBILE, ABOUT_TITLE } from "@/constants/about";
 
 import { AboutDeer, AboutLayer } from "./about-art";
 import { AboutRiders, type RidersPath } from "./about-riders";
@@ -60,12 +60,12 @@ export const AboutSceneMobile = () => (
     <AboutRiders path={RIDERS} />
     <AboutLayer src={`${M}/scene-front.svg`} frame={FRAME} />
 
-    <div className="absolute top-[15.56%] left-1/2 flex w-[77.11%] -translate-x-1/2 flex-col items-center gap-[2.985cqw] text-center text-white">
+    <div className="absolute top-[10.07%] left-1/2 flex w-[77.11%] -translate-x-1/2 flex-col items-center gap-[2.985cqw] text-center text-white">
       <h2 className="font-display text-[7.463cqw] leading-[1.267] font-normal text-balance">
         {ABOUT_TITLE}
       </h2>
-      <div className="flex w-[90.65%] flex-col gap-[4.975cqw] text-[3.731cqw] leading-[1.333] font-medium">
-        {ABOUT_PARAGRAPHS.map((paragraph) => (
+      <div className="flex flex-col gap-[4.975cqw] text-[3.731cqw] leading-[1.333] font-medium">
+        {ABOUT_PARAGRAPHS_MOBILE.map((paragraph) => (
           <p key={paragraph}>{paragraph}</p>
         ))}
       </div>

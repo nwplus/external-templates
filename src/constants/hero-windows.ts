@@ -2,7 +2,8 @@
  * Background windows of the hero skyline (Figma "bkg windows", node 16015:9002),
  * in the layer's own 1512 x 601 space (its top edge sits 111px down the 1422px
  * hero). Each window is its own [x, y, width, height] so it can flicker on its
- * own; the striped towers never change, so they stay single paths.
+ * own; each striped tower is one path, and its stripes light up the same way
+ * (towerPanes).
  */
 export const WINDOWS_VIEWBOX = { width: 1512, height: 601, top: 111 } as const;
 
@@ -127,13 +128,40 @@ export type GradientLine = readonly [
   y2: number,
 ];
 
-/** One of the static striped towers, drawn at (x, y) in the skyline. */
+/** One of the striped towers, drawn at (x, y) in the skyline. */
 export type SkylineTower = {
+  /** One rect per stripe, in absolute M/H/V commands only. */
   d: string;
   x: number;
   y: number;
   gradient: GradientLine;
+  /** How many panes each stripe lights up as: 1 for short slats, more for
+   * tall fins, which would look like neon tubes lit whole. */
+  floors: number;
 };
+
+/** The tower's stripes as panes in the skyline's space, so they flicker
+ * like the windows: each subpath's bounding box, cut into `floors`. */
+export const towerPanes = ({ d, x, y, floors }: SkylineTower): WindowRect[] =>
+  d
+    .split("M")
+    .filter(Boolean)
+    .flatMap((sub) => {
+      const [x0, y0, ...steps] = sub.match(/[HV]|-?[\d.]+/g) ?? [];
+      const xs = [Number(x0)];
+      const ys = [Number(y0)];
+      for (let i = 0; i < steps.length; i += 2) {
+        (steps[i] === "H" ? xs : ys).push(Number(steps[i + 1]));
+      }
+      const left = Math.min(...xs);
+      const top = Math.min(...ys);
+      const width = Math.max(...xs) - left;
+      const floor = (Math.max(...ys) - top) / floors;
+      return Array.from(
+        { length: floors },
+        (_, i) => [x + left, y + top + i * floor, width, floor] as const
+      );
+    });
 
 /** Everything HeroWindows needs to draw one layout's skyline. */
 export type Skyline = {
@@ -161,12 +189,14 @@ export const DESKTOP_SKYLINE: Skyline = {
       x: 0,
       y: 0,
       gradient: [888.109, 150.665, 891.223, 729.168],
+      floors: 1,
     },
     {
       d: FIN_TOWER_PATH,
       x: 0,
       y: 0,
       gradient: [1160.28, 188.034, 1163.3, 730.252],
+      floors: 12,
     },
   ],
 };
@@ -197,8 +227,8 @@ const slatTowerPath = () => {
 /** Six tall fins, 4.245 wide on a 12.734 pitch (Figma "Union", 68 x 249). */
 const finTowerPath = () =>
   Array.from({ length: 6 }, (_, i) => {
-    const x = (i * 12.7339).toFixed(3);
-    return `M${x} 0h4.245v248.853h-4.245Z`;
+    const x = i * 12.7339;
+    return `M${x.toFixed(3)} 0H${(x + 4.245).toFixed(3)}V248.853H${x.toFixed(3)}Z`;
   }).join("");
 
 /** A block of equal windows, row by row. */
@@ -265,12 +295,14 @@ export const MOBILE_SKYLINE: Skyline = {
       x: 400,
       y: 13,
       gradient: [24.795, 59.025, 26.306, 339.681],
+      floors: 1,
     },
     {
       d: finTowerPath(),
       x: 546,
       y: 22,
       gradient: [22.451, 55.323, 23.916, 318.376],
+      floors: 8,
     },
   ],
 };
