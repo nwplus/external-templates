@@ -113,7 +113,8 @@ export const BRICKS: { shift: Shift; bricks: Brick[] }[] = [
  * their fish differently, which wasn't intended: the idle design is used in
  * both. */
 export const JARS = {
-  layer: { src: `${A}/jars.svg`, x: 205, y: 86, w: 314, h: 150 },
+  // Set into the General lid, so they still rest on it while it lifts.
+  layer: { src: `${A}/jars.svg`, x: 205, y: 90, w: 314, h: 150 },
   shift: { dx: -26, dy: 40 },
 } as const;
 
@@ -146,6 +147,10 @@ export type Tank = {
   bubble: string;
   /** Glass, water and rim, drawn under the fish. */
   back: Layer[];
+  /** Replaces `back` in the desktop stack, where a hover lifts the tank: the
+   * glass runs on behind the lid below, so the lift doesn't bare its bottom.
+   * The phone stack is staggered (and has no hover), so it keeps `back`. */
+  liftBack?: Layer[];
   fish: Fish[];
   /** The tank's resting bubbles, which go with its fish. */
   bubbles?: Layer;
@@ -168,6 +173,9 @@ export const TANKS: Tank[] = [
     bubble: "rgb(255 255 255 / 0.75)",
     back: [
       { src: `${A}/general-tank.svg`, x: 146, y: 232, w: 407, h: 227.881 },
+    ],
+    liftBack: [
+      { src: `${A}/general-tank-tall.svg`, x: 146, y: 232, w: 407, h: 240 },
     ],
     bubbles: { src: `${A}/general-bubbles.svg`, x: 305, y: 360, w: 43, h: 59 },
     fish: [
