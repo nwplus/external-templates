@@ -4,7 +4,7 @@ import {
 } from "@/components/ui/parting-clouds";
 import { ABOUT_PARAGRAPHS, ABOUT_TITLE } from "@/constants/about";
 
-import { AboutDeer, AboutLayer } from "./about-art";
+import { AboutDeer, AboutKwekKwek, AboutLayer } from "./about-art";
 import { AboutRiders, type RidersPath } from "./about-riders";
 
 /** The Figma frame ("MacBook Pro 14" - 22"); the art is drawn at this size. */
@@ -13,7 +13,9 @@ const H = 982;
 const FRAME = { width: W, height: H };
 
 /** The deer on the back rail (art/about/deer.svg's box in the frame). */
-const DEER = { x: 785, y: 460, w: 110 };
+const DEER = { x: 795.052, y: 464.777, w: 115 };
+/** The kwek kwek in its hand (art/about/kwek-kwek.svg's box). */
+const KWEK_KWEK = { x: 807.537, y: 554.489, scale: 1 };
 
 const RIDERS: RidersPath = {
   frame: FRAME,
@@ -68,6 +70,8 @@ export const AboutScene = () => (
   <div className="@container relative aspect-[1512/982] w-full z-10 [clip-path:inset(0_0_-6%)] bg-[#1b3a62]">
     <AboutLayer src="/assets/about/scene-back.svg" frame={FRAME} />
     <AboutDeer frame={FRAME} {...DEER} />
+    {/* In the deer's paw, so the riders and front rail pass over it. */}
+    <AboutKwekKwek frame={FRAME} {...KWEK_KWEK} />
     <AboutRiders path={RIDERS} />
     <AboutLayer src="/assets/about/scene-front.svg" frame={FRAME} />
 
