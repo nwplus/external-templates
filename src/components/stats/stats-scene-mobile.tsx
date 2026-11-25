@@ -23,56 +23,56 @@ export const StatsSceneMobile = () => (
       Last year we had…
     </p>
 
-    <BaoSign box={STATS_MOBILE.projects} rise="0.1s" sparkleSize={2.8} />
+    <BaoSign mobile box={STATS_MOBILE.projects} rise="0.1s" sparkleSize={2.8} />
     <SceneLayer
-      src="/assets/stats/mentors.webp"
-      box={STATS_MOBILE.mentors}
+      src="/assets/stats/mentors-mobile-final.svg"
+      alt="43 mentors"
       fit="contain"
-      alt="68 mentors"
+      box={STATS_MOBILE.mentors}
       className="stats-rise stat-neon-halo"
       style={
         {
           "--rise": "0.2s",
-          "--neon": "17.1s",
+          "--neon": "8.3s",
           "--neon-delay": "-3.4s",
         } as React.CSSProperties
       }
     />
     <SceneLayer
-      src="/assets/stats/bear.webp"
+      src="/assets/stats/bear-final.svg"
       box={STATS_MOBILE.bear}
       fit="contain"
       className="stats-bear"
       style={{ "--rise": "0.3s" } as React.CSSProperties}
     />
     <SceneLayer
-      src="/assets/stats/hackers.webp"
-      box={STATS_MOBILE.hackers}
+      src="/assets/stats/hackers-mobile-final.svg"
+      alt="631 hackers"
       fit="contain"
-      alt="734 hackers"
+      box={STATS_MOBILE.hackers}
       className="stats-rise stat-neon-tube"
       style={
         {
           "--rise": "0.4s",
-          "--neon": "11.3s",
+          "--neon": "6.7s",
           "--neon-delay": "-1.7s",
         } as React.CSSProperties
       }
     />
     <SceneLayer
-      src="/assets/stats/lanterns.webp"
+      src="/assets/stats/lanterns-final.svg"
       box={STATS_MOBILE.lanterns}
       className="stats-lanterns"
     />
     <SceneLayer
-      src="/assets/stats/recap-2027-mobile.webp"
-      box={STATS_MOBILE.recap2027}
+      src="/assets/stats/recap-arrow-mobile-final.svg"
+      box={STATS_MOBILE.recapArrow}
       className="stats-arrow stat-neon-halo"
       style={
-        { "--neon": "19.3s", "--neon-delay": "-8.1s" } as React.CSSProperties
+        { "--neon": "9.1s", "--neon-delay": "-8.1s" } as React.CSSProperties
       }
       fit="contain"
-      alt="Watch the 2027 recap"
+      alt="Watch the recap"
     />
 
     <StatsVideo box={STATS_MOBILE.video} />

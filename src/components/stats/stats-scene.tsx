@@ -8,8 +8,7 @@ import "./stats.css";
 
 /**
  * "Last year we had…": the neon scoreboard hanging over the night skyline.
- * The numbers are the design's own signs (734 hackers, the mentors banner,
- * the 68-hour badge), with the recap video underneath and the RECAP 2027
+ * The neon signs sit above the recap video, with the recap
  * arrow pointing at it.
  */
 export const StatsScene = () => (
@@ -24,27 +23,27 @@ export const StatsScene = () => (
     <StatsVideo box={STATS_DESKTOP.video} />
 
     <SceneLayer
-      src="/assets/stats/mentors.webp"
+      src="/assets/stats/mentors-final.svg"
+      alt="43 mentors"
+      fit="contain"
       box={STATS_DESKTOP.mentors}
       className="stats-rise stat-neon-halo"
       style={
-        { "--rise": "0.15s", "--neon": "17.1s", "--neon-delay": "-3.4s" } as React.CSSProperties
+        { "--rise": "0.15s", "--neon": "8.3s", "--neon-delay": "-3.4s" } as React.CSSProperties
       }
-      fit="contain"
-      alt="68 mentors"
     />
     <SceneLayer
-      src="/assets/stats/hackers.webp"
+      src="/assets/stats/hackers-final.svg"
+      alt="631 hackers"
+      fit="contain"
       box={STATS_DESKTOP.hackers}
       className="stats-rise stat-neon-tube"
       style={
-        { "--rise": "0.3s", "--neon": "11.3s", "--neon-delay": "-1.7s" } as React.CSSProperties
+        { "--rise": "0.3s", "--neon": "6.7s", "--neon-delay": "-1.7s" } as React.CSSProperties
       }
-      fit="contain"
-      alt="734 hackers"
     />
     <SceneLayer
-      src="/assets/stats/bear.webp"
+      src="/assets/stats/bear-final.svg"
       box={STATS_DESKTOP.bear}
       className="stats-bear"
       style={{ "--rise": "0.45s" } as React.CSSProperties}
@@ -56,17 +55,17 @@ export const StatsScene = () => (
     </p>
 
     <SceneLayer
-      src="/assets/stats/lanterns.webp"
+      src="/assets/stats/lanterns-final.svg"
       box={STATS_DESKTOP.lanterns}
       className="stats-lanterns"
     />
     <SceneLayer
-      src="/assets/stats/recap-2027.webp"
-      box={STATS_DESKTOP.recap2027}
+      src="/assets/stats/recap-arrow-final.svg"
+      box={STATS_DESKTOP.recapArrow}
       className="stats-arrow stat-neon-halo"
-      style={{ "--neon": "23.9s", "--neon-delay": "-11.5s" } as React.CSSProperties}
+      style={{ "--neon": "9.1s", "--neon-delay": "-11.5s" } as React.CSSProperties}
       fit="contain"
-      alt="Watch the 2027 recap"
+      alt="Watch the recap"
     />
     <BaoSign box={STATS_DESKTOP.projects} rise="0.55s" sparkleSize={1.1} />
   </div>

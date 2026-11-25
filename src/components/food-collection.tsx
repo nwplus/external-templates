@@ -75,7 +75,7 @@ const PLATES: Plate[] = [
   { food: "taiyaki", src: "taiyaki.svg?v=2", x: 71.457, y: 4.284, w: 36 },
   {
     food: "strawberry-mini-pancakes",
-    src: "strawberry-mini-pancakes.webp",
+    src: "strawberry-pancakes.png",
     x: 62.502,
     y: 27.02,
     w: 43,

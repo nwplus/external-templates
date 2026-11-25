@@ -41,7 +41,7 @@ export const PASCALE_LAYERS = {
       },
     },
     {
-      src: "/assets/testimonials/pascale-selected-4.png",
+      src: "/assets/testimonials/pascale-lantern-1.png",
       lantern: true,
       box: {
         x: 0.0,
@@ -51,7 +51,7 @@ export const PASCALE_LAYERS = {
       },
     },
     {
-      src: "/assets/testimonials/pascale-selected-5.png",
+      src: "/assets/testimonials/pascale-lantern-2.png",
       lantern: true,
       box: {
         x: 0.7912725910665793,
@@ -61,7 +61,7 @@ export const PASCALE_LAYERS = {
       },
     },
     {
-      src: "/assets/testimonials/pascale-selected-6.png",
+      src: "/assets/testimonials/pascale-lantern-3.png",
       lantern: true,
       box: {
         x: 0.9510878047257858,
@@ -91,7 +91,7 @@ export const PASCALE_LAYERS = {
       },
     },
     {
-      src: "/assets/testimonials/pascale-selected-9.png",
+      src: "/assets/testimonials/pascale-lantern-4.png",
       lantern: true,
       box: {
         x: 79.73031182695009,
@@ -101,7 +101,7 @@ export const PASCALE_LAYERS = {
       },
     },
     {
-      src: "/assets/testimonials/pascale-selected-10.png",
+      src: "/assets/testimonials/pascale-lantern-5.png",
       lantern: true,
       box: {
         x: 79.58797640228485,
@@ -138,7 +138,7 @@ export const PASCALE_LAYERS = {
       },
     },
     {
-      src: "/assets/testimonials/pascale-base-3.png",
+      src: "/assets/testimonials/pascale-lantern-1.png",
       lantern: true,
       box: {
         x: 0.0,
@@ -148,7 +148,7 @@ export const PASCALE_LAYERS = {
       },
     },
     {
-      src: "/assets/testimonials/pascale-base-4.png",
+      src: "/assets/testimonials/pascale-lantern-2.png",
       lantern: true,
       box: {
         x: 0.7914454861526454,
@@ -158,7 +158,7 @@ export const PASCALE_LAYERS = {
       },
     },
     {
-      src: "/assets/testimonials/pascale-base-5.png",
+      src: "/assets/testimonials/pascale-lantern-3.png",
       lantern: true,
       box: {
         x: 0.9514602326096719,
@@ -188,7 +188,7 @@ export const PASCALE_LAYERS = {
       },
     },
     {
-      src: "/assets/testimonials/pascale-base-8.png",
+      src: "/assets/testimonials/pascale-lantern-4.png",
       lantern: true,
       box: {
         x: 79.7304849662616,
@@ -198,7 +198,7 @@ export const PASCALE_LAYERS = {
       },
     },
     {
-      src: "/assets/testimonials/pascale-base-9.png",
+      src: "/assets/testimonials/pascale-lantern-5.png",
       lantern: true,
       box: {
         x: 79.58772671206954,
@@ -225,7 +225,7 @@ export const PASCALE_LAYERS = {
       },
     },
     {
-      src: "/assets/testimonials/pascale-mobile-2.png",
+      src: "/assets/testimonials/pascale-lantern-1.png",
       lantern: true,
       box: {
         x: 0.0,
@@ -235,7 +235,7 @@ export const PASCALE_LAYERS = {
       },
     },
     {
-      src: "/assets/testimonials/pascale-mobile-3.png",
+      src: "/assets/testimonials/pascale-lantern-2.png",
       lantern: true,
       box: {
         x: 0.7915847301557575,
@@ -245,7 +245,7 @@ export const PASCALE_LAYERS = {
       },
     },
     {
-      src: "/assets/testimonials/pascale-mobile-4.png",
+      src: "/assets/testimonials/pascale-lantern-3.png",
       lantern: true,
       box: {
         x: 0.9513999438149641,
@@ -275,7 +275,7 @@ export const PASCALE_LAYERS = {
       },
     },
     {
-      src: "/assets/testimonials/pascale-mobile-7.png",
+      src: "/assets/testimonials/pascale-lantern-4.png",
       lantern: true,
       box: {
         x: 79.73031182695009,
@@ -285,7 +285,7 @@ export const PASCALE_LAYERS = {
       },
     },
     {
-      src: "/assets/testimonials/pascale-mobile-8.png",
+      src: "/assets/testimonials/pascale-lantern-5.png",
       lantern: true,
       box: {
         x: 79.58797640228485,

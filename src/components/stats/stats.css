@@ -147,110 +147,43 @@
   }
 }
 
-
-/* ---- neon failure ------------------------------------------------------
- * Real neon stutters: the tube cuts for a few frames, over and over, at
- * unpredictable moments. Each sign gets its own length and offset (below), so
- * two never fail together, and some lose their halo while others lose their
- * tube — the border dies on one, the content on the next.
- */
+/* Animate the sign art independently of the entry and sway animations. */
+.stat-neon-tube > img,
+.stat-neon-halo > img,
+.stats-bear > img,
+.stats-lanterns > img,
+[data-video-board]
+  > :is([data-board-layer="trim"], [data-board-layer="trim-glow"]) {
+  animation: stats-neon-flicker var(--neon, 9s) steps(1, end)
+    var(--neon-delay, -2s) infinite;
+}
 
 .stat-neon-tube {
-  animation: neon-tube-cut var(--neon, 16.9s) steps(1, end) infinite;
-  animation-delay: var(--neon-delay, 0s);
+  --neon-dim: 0.45;
 }
 
-.stat-neon-halo {
-  animation: neon-halo-cut var(--neon, 25.3s) steps(1, end) infinite;
-  animation-delay: var(--neon-delay, 0s);
+.stats-bear {
+  --neon: 8.7s;
+  --neon-delay: -4.1s;
 }
 
-@keyframes neon-tube-cut {
+.stats-lanterns {
+  --neon: 9.7s;
+  --neon-delay: -2.7s;
+}
+
+@keyframes stats-neon-flicker {
   0%,
-  18%,
-  18.25%,
-  18.5%,
-  18.75%,
-  19%,
-  19.25%,
-  19.5%,
-  46%,
-  46.25%,
-  46.5%,
-  46.75%,
-  72%,
-  72.25%,
-  72.5%,
-  72.75%,
-  73%,
-  73.25%,
-  91%,
-  91.25%,
-  91.5%,
+  17%,
+  47%,
+  83%,
   100% {
     filter: brightness(1);
   }
-  18.125%,
-  18.375%,
-  18.625%,
-  18.875%,
-  19.125%,
-  19.375%,
-  46.125%,
-  46.375%,
-  46.625%,
-  72.125%,
-  72.375%,
-  72.625%,
-  72.875%,
-  73.125%,
-  91.125%,
-  91.375% {
-    filter: brightness(0.18);
-  }
-}
-
-@keyframes neon-halo-cut {
-  0%,
-  31%,
-  31.25%,
-  31.5%,
-  31.75%,
-  32%,
-  32.25%,
-  32.5%,
-  57%,
-  57.25%,
-  57.5%,
-  57.75%,
-  58%,
-  58.25%,
-  83%,
-  83.25%,
-  83.5%,
-  100% {
-    filter: drop-shadow(0 0 0.55cqw rgb(255 255 255 / 0.28));
-  }
-  31.125%,
-  31.375%,
-  31.625%,
-  31.875%,
-  32.125%,
-  32.375%,
-  57.125%,
-  57.375%,
-  57.625%,
-  57.875%,
-  83.125%,
-  83.375% {
-    filter: none;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .stat-neon-tube,
-  .stat-neon-halo {
-    animation: none;
+  13%,
+  42%,
+  80% {
+    filter: brightness(var(--neon-dim, 0.6));
   }
 }
 
@@ -260,24 +193,13 @@
   .stats-lanterns,
   .stats-arrow,
   .stats-video-frame,
-  .stats-bear {
-    animation: none;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .stat-neon-tube,
-  .stat-neon-halo {
-    animation: none;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .stats-rise,
-  .stats-clouds,
-  .stats-lanterns,
-  .stats-arrow,
-  .stats-video-frame,
-  .stats-bear {
+  .stats-bear,
+  .stat-neon-tube > img,
+  .stat-neon-halo > img,
+  .stats-bear > img,
+  .stats-lanterns > img,
+  [data-video-board]
+    > :is([data-board-layer="trim"], [data-board-layer="trim-glow"]) {
     animation: none;
   }
 }

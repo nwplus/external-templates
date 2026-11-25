@@ -18,14 +18,13 @@ export const PascaleCart = ({
   const lanterns = useRef<HTMLDivElement>(null);
   useLanternMotion(lanterns);
   const layers = PASCALE_LAYERS[variant];
-  const image = (src: string, className = "", style?: CSSProperties) => (
+  const image = (src: string) => (
     // eslint-disable-next-line @next/next/no-img-element
     <img
       src={src}
       alt=""
       draggable={false}
-      className={`absolute inset-0 size-full select-none ${className}`}
-      style={style}
+      className="absolute inset-0 size-full select-none"
     />
   );
   return (
@@ -60,10 +59,7 @@ export const PascaleCart = ({
             >
               <div className="lantern-gust size-full">
                 <div className="lantern-swing relative size-full">
-                  {image(layer.src, "", { clipPath: "inset(0 0 30% 0)" })}
-                  {image(layer.src, "lantern-tassel", {
-                    clipPath: "inset(70% 0 0 0)",
-                  })}
+                  {image(layer.src)}
                 </div>
               </div>
             </div>

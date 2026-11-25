@@ -5,6 +5,8 @@
 export const TESTIMONIALS_DESKTOP_FRAME = { width: 1512, height: 982 };
 
 export const TESTIMONIALS_DESKTOP = {
+  sponsorShadow: { x: 3.836, y: 73.829, w: 25.463, h: 11.507 },
+  mentorShadow: { x: 36.772, y: 75.356, w: 25, h: 11.507 },
   bg: { x: -34.921, y: -33.299, w: 135.119, h: 133.299 },
   pascaleBase: { x: 0.0, y: 23.727, w: 32.937, h: 56.976 },
   vaibhavBase: { x: 31.944, y: 25.458, w: 36.786, h: 56.253 },

@@ -391,13 +391,12 @@
   animation-delay: 0.5s;
 }
 
-/* The sign's own neon flicker animates the button's filter, so the hover
- * glow goes on the art inside it. */
-.bao-sign-art {
+/* The image flickers independently of the button's hover glow. */
+.bao-sign {
   transition: filter 0.25s ease;
 }
-.bao-sign:hover .bao-sign-art,
-.bao-sign:focus-visible .bao-sign-art {
+.bao-sign:hover,
+.bao-sign:focus-visible {
   filter: brightness(1.18) drop-shadow(0 0 0.6cqw rgb(255 214 120 / 0.85));
 }
 @media (prefers-reduced-motion: reduce) {

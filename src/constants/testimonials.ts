@@ -17,7 +17,7 @@ export const TESTIMONIALS: Testimonial[] = [
     name: "Pascale Walters (she/her)",
     role: "Sponsor",
     quote:
-      "One idea that the developer relations and marketing teams [at Mappedin] had was to reach out to hackathons and have students use our products to get some initial feedback and show what potential use cases could be. nwHacks in particular is a Canadian hackathon and it’s a good size, so it worked out for me since I was in Vancouver and I could pop down to UBC and say hi.\n\nI truly value mentoring other people. I always jumped at the opportunity when I was an undergrad student, and in grad school, I participated as a hacker and then also as a mentor. So, coming back as a sponsor is pretty cool and it feels like I’m giving back because I’ve been there — I can offer some advice on what it’s like.\n\nnwHacks has been fantastic. The engagement and enthusiasm of the hackers have been so inspiring to me, and I’ve been encouraging people to reach out to me or connect with me on LinkedIn.",
+      "“One idea that the developer relations and marketing teams [at Mappedin] had was to reach out to hackathons and have students use our products to get some initial feedback and show what potential use cases could be. nwHacks in particular is a Canadian hackathon and it’s a good size, so it worked out for me since I was in Vancouver and I could pop down to UBC and say hi.\n\nI truly value mentoring other people. I always jumped at the opportunity when I was an undergrad student, and in grad school, I participated as a hacker and then also as a mentor. So, coming back as a sponsor is pretty cool and it feels like I’m giving back because I’ve been there — I can offer some advice on what it’s like.\n\nnwHacks has been fantastic. The engagement and enthusiasm of the hackers have been so inspiring to me, and I’ve been encouraging people to reach out to me or connect with me on LinkedIn.”",
   },
   {
     id: "vaibhav",
@@ -37,4 +37,4 @@ export const TESTIMONIALS: Testimonial[] = [
 
 export const TESTIMONIALS_HINT = "Click on a stall to learn more";
 export const TESTIMONIALS_HINT_OPEN = "Click, navigate, and view other testimonials";
-export const TESTIMONIALS_HINT_TOUCH = "Tap, navigate, and view other testimonials";
+export const TESTIMONIALS_HINT_TOUCH = "Use the arrows to browse testimonials";

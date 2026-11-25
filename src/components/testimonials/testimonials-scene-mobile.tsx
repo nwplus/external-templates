@@ -36,9 +36,8 @@ export const TestimonialsSceneMobile = () => {
 
   return (
     <div
-      id="testimonials"
       data-lantern-scene
-      className="@container relative aspect-[402/874] w-full overflow-hidden bg-[#1b1a26]"
+      className="testi-scene @container relative aspect-[402/874] w-full overflow-hidden bg-[#1b1a26]"
     >
       <SceneLayer
         src="/assets/testimonials/mobile-bg.webp"

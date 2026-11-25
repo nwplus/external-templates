@@ -2,6 +2,7 @@
 
 import { type Box, frameStyle } from "@/lib/frame";
 
+import { Play } from "lucide-react";
 import { useState } from "react";
 
 /** nwHacks 2026's recap, the one the stats point at. */
@@ -74,7 +75,8 @@ export const StatsVideo = ({ box }: { box: Box }) => {
           <button
             type="button"
             onClick={() => setPlaying(true)}
-            className="group relative size-full cursor-pointer"
+            className="group relative size-full cursor-pointer focus-visible:outline-2 focus-visible:-outline-offset-4 focus-visible:outline-white"
+            aria-label="Play the nwHacks 2026 recap"
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -84,7 +86,14 @@ export const StatsVideo = ({ box }: { box: Box }) => {
               loading="lazy"
               className="size-full object-cover opacity-80 transition-opacity duration-300 group-hover:opacity-100"
             />
-            <span className="sr-only">Play the nwHacks 2026 recap</span>
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 grid place-items-center"
+            >
+              <span className="grid size-12 place-items-center rounded-full bg-black/85 text-white shadow-lg transition-colors group-hover:bg-black group-focus-visible:bg-black">
+                <Play className="size-5 fill-current" />
+              </span>
+            </span>
           </button>
         )}
       </div>
