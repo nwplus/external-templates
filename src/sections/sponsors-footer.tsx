@@ -1,16 +1,21 @@
 "use client";
 
 import { useCollectFood } from "@/components/food-collection";
+import { EggSparkle } from "@/components/food-egg";
 import { FooterTeam } from "@/components/footer-team";
 import { ResponsiveScene } from "@/components/responsive-scene";
 import { sceneBox, SectionArt } from "@/components/section-art";
 import {
-  MOBILE_DINING,
-  MOBILE_RIDER,
-  TEAM_HEADINGS,
-} from "@/constants/market-interactions";
+  DESKTOP_RIDER_PARTS,
+  MOBILE_RIDER_PARTS,
+} from "@/constants/footer-rider";
+import {
+  DESKTOP_ROAD_LAYERS,
+  MOBILE_ROAD_LAYERS,
+} from "@/constants/footer-road";
+import { MOBILE_DINING, TEAM_HEADINGS } from "@/constants/market-interactions";
 import { SPONSORS_DESKTOP, SPONSORS_MOBILE } from "@/constants/section-art";
-import { DESKTOP_ROAD_LAYERS, MOBILE_ROAD_LAYERS } from "@/constants/footer-road";
+import { cn } from "@/lib/utils";
 
 import { useId, useState } from "react";
 
@@ -112,7 +117,7 @@ function FooterContact() {
         </button>
       </form>
       <p className="land-acknowledgement">
-        nwHacks 2026 will be taking place on xʷməθkʷəy̓əm (Musqueam) and
+        nwHacks 2027 will be taking place on xʷməθkʷəy̓əm (Musqueam) and
         səlilwətaɬ (Tsleil-Waututh) territory. As we build tomorrow&apos;s tech
         community, we recognize our responsibility to understand and respect
         Indigenous histories. To learn more, visit{" "}
@@ -132,19 +137,17 @@ function FooterContact() {
 function SponsorsScene({ mobile }: { mobile: boolean }) {
   const collectFood = useCollectFood();
   const [slide, setSlide] = useState(0);
-  const selectSlide = (index: number) => {
+  /** The last slide is a tray easter egg: the laksa flies from `origin`,
+   * the arrow or dot that got there. */
+  const selectSlide = (index: number, origin: HTMLElement) => {
     setSlide(index);
-    if (index === 5) collectFood("laksa");
+    if (index === 5) collectFood("laksa", origin);
   };
   const width = mobile ? 402 : 1512;
   const height = mobile ? 2450 : 4139;
   const box = (x: number, y: number, w: number, h: number) =>
     sceneBox(x, y, w, h, width, height);
-  const rider = mobile
-    ? MOBILE_RIDER
-    : SPONSORS_DESKTOP.find(
-        (layer) => layer.name === "Mascot / Nugget on Bike"
-      )!;
+  const riderParts = mobile ? MOBILE_RIDER_PARTS : DESKTOP_RIDER_PARTS;
   const artwork = mobile
     ? SPONSORS_MOBILE.flatMap((layer) =>
         layer.name === "Mascots / Dining Scene" ? MOBILE_DINING : [layer]
@@ -153,7 +156,9 @@ function SponsorsScene({ mobile }: { mobile: boolean }) {
         (layer) => layer.name !== "Mascot / Nugget on Bike"
       );
   const road = mobile ? MOBILE_ROAD_LAYERS : DESKTOP_ROAD_LAYERS;
-  const shadow = road.find((layer) => layer.name === "moped and nugget shadow")!;
+  const shadow = road.find(
+    (layer) => layer.name === "moped and nugget shadow"
+  )!;
   const centerline = road.find((layer) => layer.name === "Vector 4643")!;
   return (
     <div
@@ -162,7 +167,11 @@ function SponsorsScene({ mobile }: { mobile: boolean }) {
     >
       <SectionArt
         layers={artwork
-          .filter((layer) => layer.name !== "Team / Portrait Row")
+          .filter(
+            (layer) =>
+              layer.name !== "Team / Portrait Row" &&
+              layer.name !== "Fireworks / Illustration"
+          )
           .flatMap((layer) =>
             layer.name === "Footer / Road"
               ? road.filter((part) => part !== shadow && part !== centerline)
@@ -171,6 +180,15 @@ function SponsorsScene({ mobile }: { mobile: boolean }) {
         width={width}
         height={height}
       />
+      <div className="footer-fireworks" aria-hidden="true">
+        <SectionArt
+          layers={artwork.filter(
+            (layer) => layer.name === "Fireworks / Illustration"
+          )}
+          width={width}
+          height={height}
+        />
+      </div>
       <div className="footer-team-heading-art" aria-hidden="true">
         <SectionArt
           layers={[TEAM_HEADINGS[mobile ? 1 : 0]]}
@@ -190,7 +208,14 @@ function SponsorsScene({ mobile }: { mobile: boolean }) {
         }
       />
       <div className="rider-loop rider-body" aria-hidden="true">
-        <SectionArt layers={[rider]} width={width} height={height} />
+        {riderParts.map((part) => (
+          <div
+            key={part.src}
+            className={part.name === "wheel" ? "rider-wheel" : "contents"}
+          >
+            <SectionArt layers={[part]} width={width} height={height} />
+          </div>
+        ))}
       </div>
       <h2
         className="market-heading"
@@ -251,18 +276,67 @@ function SponsorsScene({ mobile }: { mobile: boolean }) {
           className="sponsor-next"
           type="button"
           aria-label="Next featured sponsor"
-          onClick={() => selectSlide((slide + 1) % 6)}
+          onClick={(event) => selectSlide((slide + 1) % 6, event.currentTarget)}
+        />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          className="sponsor-arrow"
+          src={
+            mobile
+              ? "/assets/sponsors/interactive/carousel-arrow-mobile.svg"
+              : "/assets/sponsors/interactive/carousel-arrow.svg"
+          }
+          alt=""
+          aria-hidden="true"
+          style={
+            mobile
+              ? sceneBox(
+                  322.859375,
+                  118.884765625,
+                  12.94140625,
+                  15.435546875,
+                  386.83660888671875,
+                  254.16015625
+                )
+              : sceneBox(
+                  716.263671875,
+                  263.75,
+                  28.7109375,
+                  34.2421875,
+                  858.1995239257812,
+                  563.8564453125
+                )
+          }
         />
         <div className="sponsor-dots">
           {Array.from({ length: 6 }, (_, index) => (
             <button
               key={index}
-              className={slide === index ? "active" : undefined}
+              className={cn(
+                slide === index && "active",
+                index === 5 && "sponsor-dot-bowl"
+              )}
               type="button"
               aria-label={`Featured sponsor slide ${index + 1}`}
               aria-pressed={slide === index}
-              onClick={() => selectSlide(index)}
-            />
+              onClick={(event) => selectSlide(index, event.currentTarget)}
+            >
+              {/* The last dot is a little bowl: what's on that slide. */}
+              {index === 5 && (
+                <>
+                  <svg viewBox="0 0 12 10" aria-hidden="true">
+                    <path d="M7.2 3.6 11.4.4M5.6 3.6 9.6.9" />
+                    <path d="M.6 4.4h10.8a5.4 5.4 0 0 1-10.8 0Z" />
+                  </svg>
+                  <EggSparkle
+                    food="laksa"
+                    x={70}
+                    y={-60}
+                    size={mobile ? 2 : 0.8}
+                  />
+                </>
+              )}
+            </button>
           ))}
         </div>
         <span className="sr-only" aria-live="polite">
@@ -282,7 +356,7 @@ function SponsorsScene({ mobile }: { mobile: boolean }) {
       >
         <FooterContact />
         <h2 className="sr-only">Meet the minds behind nwHacks</h2>
-        <p className="footer-copyright">Copyright © nwHacks 2026</p>
+        <p className="footer-copyright">Copyright © nwHacks 2027</p>
       </footer>
     </div>
   );

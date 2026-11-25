@@ -2,9 +2,9 @@ import {
   type PartingCloud,
   PartingClouds,
 } from "@/components/ui/parting-clouds";
-import { ABOUT_PARAGRAPHS, ABOUT_TITLE } from "@/constants/about";
+import { ABOUT_PARAGRAPHS_MOBILE, ABOUT_TITLE } from "@/constants/about";
 
-import { AboutDeer, AboutLayer } from "./about-art";
+import { AboutDeer, AboutKwekKwek, AboutLayer } from "./about-art";
 import { AboutRiders, type RidersPath } from "./about-riders";
 
 /** The Figma phone frame ("about us" in "mobile"). */
@@ -24,7 +24,9 @@ const fromBike = (x: number, y: number) => ({
 });
 
 /** The deer on the back rail. */
-const DEER = { ...fromBike(785, 460), w: 110 * S };
+const DEER = { ...fromBike(795.052, 464.777), w: 115 * S };
+/** The kwek kwek in its hand. */
+const KWEK_KWEK = { ...fromBike(807.537, 554.489), scale: S };
 
 /** The bridge is the desktop one scaled too, and so is its arch. */
 const RIDERS: RidersPath = {
@@ -57,15 +59,17 @@ export const AboutSceneMobile = () => (
   <div className="@container relative aspect-[402/874] w-full z-10 [clip-path:inset(0_0_-6%)] bg-[#11364f]">
     <AboutLayer src={`${M}/scene-back.svg`} frame={FRAME} />
     <AboutDeer frame={FRAME} {...DEER} />
+    {/* In the deer's paw, so the riders and front rail pass over it. */}
+    <AboutKwekKwek frame={FRAME} {...KWEK_KWEK} />
     <AboutRiders path={RIDERS} />
     <AboutLayer src={`${M}/scene-front.svg`} frame={FRAME} />
 
-    <div className="absolute top-[15.56%] left-1/2 flex w-[77.11%] -translate-x-1/2 flex-col items-center gap-[2.985cqw] text-center text-white">
+    <div className="absolute top-[10.07%] left-1/2 flex w-[77.11%] -translate-x-1/2 flex-col items-center gap-[2.985cqw] text-center text-white">
       <h2 className="font-display text-[7.463cqw] leading-[1.267] font-normal text-balance">
         {ABOUT_TITLE}
       </h2>
-      <div className="flex w-[90.65%] flex-col gap-[4.975cqw] text-[3.731cqw] leading-[1.333] font-medium">
-        {ABOUT_PARAGRAPHS.map((paragraph) => (
+      <div className="flex flex-col gap-[4.975cqw] text-[3.731cqw] leading-[1.333] font-medium">
+        {ABOUT_PARAGRAPHS_MOBILE.map((paragraph) => (
           <p key={paragraph}>{paragraph}</p>
         ))}
       </div>

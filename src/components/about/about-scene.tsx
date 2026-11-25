@@ -2,9 +2,9 @@ import {
   type PartingCloud,
   PartingClouds,
 } from "@/components/ui/parting-clouds";
-import { ABOUT_BODY, ABOUT_TITLE } from "@/constants/about";
+import { ABOUT_PARAGRAPHS, ABOUT_TITLE } from "@/constants/about";
 
-import { AboutDeer, AboutLayer } from "./about-art";
+import { AboutDeer, AboutKwekKwek, AboutLayer } from "./about-art";
 import { AboutRiders, type RidersPath } from "./about-riders";
 
 /** The Figma frame ("MacBook Pro 14" - 22"); the art is drawn at this size. */
@@ -13,7 +13,9 @@ const H = 982;
 const FRAME = { width: W, height: H };
 
 /** The deer on the back rail (art/about/deer.svg's box in the frame). */
-const DEER = { x: 785, y: 460, w: 110 };
+const DEER = { x: 795.052, y: 464.777, w: 115 };
+/** The kwek kwek in its hand (art/about/kwek-kwek.svg's box). */
+const KWEK_KWEK = { x: 807.537, y: 554.489, scale: 1 };
 
 const RIDERS: RidersPath = {
   frame: FRAME,
@@ -68,14 +70,23 @@ export const AboutScene = () => (
   <div className="@container relative aspect-[1512/982] w-full z-10 [clip-path:inset(0_0_-6%)] bg-[#1b3a62]">
     <AboutLayer src="/assets/about/scene-back.svg" frame={FRAME} />
     <AboutDeer frame={FRAME} {...DEER} />
+    {/* In the deer's paw, so the riders and front rail pass over it. */}
+    <AboutKwekKwek frame={FRAME} {...KWEK_KWEK} />
     <AboutRiders path={RIDERS} />
     <AboutLayer src="/assets/about/scene-front.svg" frame={FRAME} />
 
-    <div className="absolute top-[13.54%] left-1/2 flex w-[41.73%] -translate-x-1/2 flex-col items-center gap-[1.455cqw] text-center text-white">
+    <div className="absolute top-[4.58%] left-1/2 flex w-[52.51%] -translate-x-1/2 flex-col items-center gap-[1.1cqw] text-center text-white">
       <h2 className="font-display text-[2.746cqw] leading-[1.213] font-normal whitespace-nowrap">
         {ABOUT_TITLE}
       </h2>
-      <p className="text-[1.323cqw] leading-[1.3] font-medium">{ABOUT_BODY}</p>
+      {/* The closing line (the night market) is set narrower, 648 of 794. */}
+      <div className="flex flex-col items-center gap-[1.19cqw] text-[1.323cqw] leading-[1.3] font-medium">
+        {ABOUT_PARAGRAPHS.map((paragraph) => (
+          <p key={paragraph} className="last:w-[81.61%]">
+            {paragraph}
+          </p>
+        ))}
+      </div>
     </div>
 
     <PartingClouds clouds={CLOUDS} width={W} height={H} />

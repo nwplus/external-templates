@@ -1,0 +1,27 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="407" height="240" viewBox="0 0 407 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="tank bkg">
+<g id="Group 1421">
+<g id="Rectangle 3284">
+</g>
+<path id="water" d="M22 49H389.5L380.37 232L39.67 238L22 49Z" fill="url(#paint0_radial_0_51)"/>
+<line id="Line 41" x1="158.5" y1="84.5" x2="194.5" y2="84.5" stroke-width="3" stroke-linecap="round" stroke="white"/>
+<path id="Vector 4502" d="M19 9.5L38.52 239.5" stroke-width="9" stroke="url(#paint1_linear_0_51)"/>
+<path id="Vector 4503" d="M391.5 14L380.39 231" stroke-width="9" stroke="url(#paint2_linear_0_51)"/>
+</g>
+<path id="Rectangle 3291" d="M0 0H407L404.459 22H3.5568L0 0Z" fill="#628C94"/>
+</g>
+<defs>
+<radialGradient id="paint0_radial_0_51" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(82 198) rotate(-24.1639) scale(245.512 509.75)">
+<stop stop-color="#BBDEA7"/>
+<stop offset="1" stop-color="#60A8DE"/>
+</radialGradient>
+<linearGradient id="paint1_linear_0_51" x1="12" y1="-13.5" x2="31.527" y2="223.451" gradientUnits="userSpaceOnUse">
+<stop stop-color="#628C94"/>
+<stop offset="1" stop-color="#C6F6FF"/>
+</linearGradient>
+<linearGradient id="paint2_linear_0_51" x1="391" y1="2.5" x2="386.25" y2="219" gradientUnits="userSpaceOnUse">
+<stop stop-color="#628C94"/>
+<stop offset="1" stop-color="#C6F6FF"/>
+</linearGradient>
+</defs>
+</svg>

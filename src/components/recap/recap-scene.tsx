@@ -1,6 +1,6 @@
 "use client";
 
-import { useCollectFood } from "@/components/food-collection";
+import { FoodEgg } from "@/components/food-egg";
 import { TestimonialsScene } from "@/components/testimonials/testimonials-scene";
 import { LightboxGallery, LightboxTrigger } from "@/components/ui/lightbox";
 import { SceneLayer } from "@/components/ui/scene-layer";
@@ -16,7 +16,6 @@ import "./recap.css";
 /** The door lifts as the camera moves through the opening. All garage
  * layers retain the original 1512 × 982 Figma coordinate system. */
 export const RecapScene = () => {
-  const collectFood = useCollectFood();
   const pin = useRef<HTMLDivElement>(null);
   useScrollProgress(pin);
 
@@ -55,19 +54,19 @@ export const RecapScene = () => {
                       return <SceneLayer key={photo.src} {...photo} />;
                     }
                     return (
-                      <button
+                      <FoodEgg
                         key={photo.src}
-                        type="button"
-                        aria-label="Add strawberry pancakes to the food tray"
-                        onClick={() => collectFood("strawberry-pancakes")}
-                        className="recap-photo absolute cursor-pointer"
-                        style={frameStyle(photo.box)}
+                        food="strawberry-mini-pancakes"
+                        box={photo.box}
+                        label="Add strawberry pancakes to the food tray"
+                        className="recap-photo recap-flyer"
+                        sparkle={{ x: 82, y: 10, size: 1 }}
                       >
                         <SceneLayer
                           src={photo.src}
                           box={{ x: 0, y: 0, w: 100, h: 100 }}
                         />
-                      </button>
+                      </FoodEgg>
                     );
                   }
                   return (

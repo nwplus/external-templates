@@ -1,6 +1,7 @@
 import { SceneLayer } from "@/components/ui/scene-layer";
 import { STATS_DESKTOP } from "@/constants/stats";
 
+import { BaoSign } from "./bao-sign";
 import { StatsVideo } from "./stats-video";
 
 import "./stats.css";
@@ -66,15 +67,6 @@ export const StatsScene = () => (
       fit="contain"
       alt="Watch the recap"
     />
-    <SceneLayer
-      src="/assets/stats/projects-final.svg"
-      alt="169 projects"
-      fit="contain"
-      box={STATS_DESKTOP.projects}
-      className="stats-rise stat-neon-tube"
-      style={
-        { "--rise": "0.55s", "--neon": "7.4s", "--neon-delay": "-6.2s" } as React.CSSProperties
-      }
-    />
+    <BaoSign box={STATS_DESKTOP.projects} rise="0.55s" sparkleSize={1.1} />
   </div>
 );

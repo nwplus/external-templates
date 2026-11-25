@@ -16,6 +16,7 @@ import { useState } from "react";
 import { PascaleCart } from "./pascale-cart";
 import { TestimonialArrows } from "./testimonial-arrows";
 import "./testimonials.css";
+import { VaibhavWheel } from "./vaibhav-wheel";
 
 /** Which base/scene box belongs to each person. */
 const STALLS = [
@@ -130,6 +131,9 @@ export const TestimonialsScene = ({ bare = false }: { bare?: boolean }) => {
                   className="size-full select-none"
                 />
                 <ArtworkText asset={`${stall.id}.webp`} />
+                {stall.id === "vaibhav" && (
+                  <VaibhavWheel active={selected === index} sparkleSize={1} />
+                )}
               </>
             )}
           </div>

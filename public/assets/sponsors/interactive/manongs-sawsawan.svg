@@ -1,0 +1,42 @@
+<svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="fireworks hero w filled tray">
+<g id="filled food tray">
+<g id="manong&#39;s sawsawan" filter="url(#filter0_d_15868_12425)">
+<circle id="Ellipse 1331" cx="11.7801" cy="11.7801" r="11.7801" fill="#FFF9F0"/>
+<circle id="Ellipse 1332" cx="11.7797" cy="11.7797" r="9.81679" fill="url(#paint1_radial_15868_12425)"/>
+<rect id="Rectangle 3347" x="7.91406" y="5.88965" width="0.981681" height="1.47252" transform="rotate(45.1363 7.91406 5.88965)" fill="#98B86B"/>
+<rect id="Rectangle 3351" x="8.83398" y="17.0947" width="0.981681" height="1.47252" transform="rotate(-24.4473 8.83398 17.0947)" fill="#98B86B"/>
+<rect id="Rectangle 3352" x="16.7578" y="16.7891" width="0.981681" height="1.47252" transform="rotate(-94.0309 16.7578 16.7891)" fill="#98B86B"/>
+<rect id="Rectangle 3353" x="13.7031" y="11.5059" width="0.981681" height="1.47252" transform="rotate(-163.614 13.7031 11.5059)" fill="#98B86B"/>
+<rect id="Rectangle 3357" x="5.66797" y="10.8418" width="0.981681" height="1.47252" transform="rotate(134.1 5.66797 10.8418)" fill="#98B86B"/>
+<rect id="Rectangle 3358" x="19.0703" y="8.83496" width="0.981681" height="1.47252" transform="rotate(71.814 19.0703 8.83496)" fill="#98B86B"/>
+<rect id="Rectangle 3348" x="13.7441" y="7.16406" width="0.981684" height="0.791681" transform="rotate(-17.3469 13.7441 7.16406)" fill="#98B86B"/>
+<rect id="Rectangle 3349" x="4.9082" y="14.71" width="0.981684" height="0.791681" transform="rotate(-79.83 4.9082 14.71)" fill="#98B86B"/>
+<rect id="Rectangle 3350" x="11.5742" y="12.0244" width="0.981684" height="0.791681" transform="rotate(-142.313 11.5742 12.0244)" fill="#98B86B"/>
+<rect id="Rectangle 3354" x="13.8711" y="15.5029" width="0.981684" height="0.791681" transform="rotate(169.601 13.8711 15.5029)" fill="#98B86B"/>
+<rect id="Rectangle 3355" x="20.8223" y="12.1943" width="0.981684" height="0.791681" transform="rotate(121.515 20.8223 12.1943)" fill="#98B86B"/>
+<rect id="Rectangle 3356" x="11.5586" y="3.92676" width="0.981684" height="0.791681" transform="rotate(73.4293 11.5586 3.92676)" fill="#98B86B"/>
+</g>
+</g>
+</g>
+<defs>
+<filter id="filter0_d_15868_12425" x="0" y="0" width="24.1409" height="24.1404" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dx="0.58033" dy="0.58033"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.306659 0 0 0 0 0.306659 0 0 0 0 0.306659 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_15868_12425"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_15868_12425" result="shape"/>
+</filter>
+<radialGradient id="paint0_radial_15868_12425" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1064 778.5) rotate(88.5107) scale(599.227 985.904)">
+<stop stop-color="#BFA48B"/>
+<stop offset="0.59595" stop-color="#305693"/>
+<stop offset="1" stop-color="#06344D"/>
+</radialGradient>
+<radialGradient id="paint1_radial_15868_12425" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(11.7797 11.7797) rotate(90) scale(17.1794)">
+<stop offset="0.389423" stop-color="#653C20"/>
+<stop offset="1" stop-color="#BF5F1E"/>
+</radialGradient>
+</defs>
+</svg>

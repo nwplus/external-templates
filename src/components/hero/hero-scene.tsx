@@ -12,10 +12,11 @@ import {
 import { DESKTOP_SKYLINE } from "@/constants/hero-windows";
 import { cn } from "@/lib/utils";
 
-import { useState } from "react";
+import { type MouseEvent, useState } from "react";
 
 import { Countdown } from "./countdown";
 import { HeroClouds } from "./hero-clouds";
+import { GateEggArt } from "./gate-egg";
 import { HeroFireworks } from "./hero-fireworks";
 import { HeroLanterns } from "./hero-lanterns";
 import { HeroWindows } from "./hero-windows";
@@ -46,14 +47,14 @@ export const HeroScene = () => {
   // The fireworks art loads on the first click and then stays mounted.
   const [fireworksLoaded, setFireworksLoaded] = useState(false);
 
-  const toggleFireworks = () => {
+  const toggleFireworks = (event: MouseEvent<HTMLButtonElement>) => {
     setFireworksLoaded(true);
-    if (!fireworks) collectFood("tanghulu");
+    if (!fireworks) collectFood("tanghulu", event.currentTarget);
     setFireworks((on) => !on);
   };
 
   return (
-    <div className="@container relative aspect-[1512/1422] w-full overflow-hidden bg-[radial-gradient(47.72%_41.82%_at_69.97%_53.46%,#bfa48b_0%,#305693_59.6%,#06344d_100%)]">
+    <div className="hero-frame @container relative aspect-[1512/1422] w-full overflow-hidden bg-[radial-gradient(47.72%_41.82%_at_69.97%_53.46%,#bfa48b_0%,#305693_59.6%,#06344d_100%)]">
       {/* Behind the ground: what the fireworks reveal */}
       <Art
         src="/assets/hero/mountains.svg"
@@ -63,19 +64,20 @@ export const HeroScene = () => {
         y={614}
         className={cn("hero-mountains", fireworks && "is-shown")}
       />
+      {/* The skyline, behind the ground so it can drop behind the hill
+          (hero.css) */}
+      <HeroWindows
+        skyline={DESKTOP_SKYLINE}
+        hidden={fireworks}
+        className="hero-skyline pointer-events-none absolute h-auto"
+        style={at(0, 111, 1512)}
+      />
       <Art
         src="/assets/hero/ground.svg"
         width={1512}
         height={731}
         x={0}
         y={691}
-      />
-
-      <HeroWindows
-        skyline={DESKTOP_SKYLINE}
-        hidden={fireworks}
-        className="pointer-events-none absolute h-auto"
-        style={at(0, 111, 1512)}
       />
 
       <HeroFireworks
@@ -169,6 +171,7 @@ export const HeroScene = () => {
             fireworks && "is-off"
           )}
         />
+        <GateEggArt fireworks={fireworks} sparkleSize={1.2} />
       </button>
       {/* Lanterns hang under the sign, which is drawn over their hooks */}
       <HeroLanterns frame={{ width: W, height: H }} gate={GATE} />

@@ -4,6 +4,27 @@
  * scrolled away.
  */
 
+/* ---- Fitting short screens (hero-scene.tsx) ---------------------------
+ * The frame keeps the design's proportions, so on wide, short laptop screens
+ * the first screen shows the gate but cuts the characters off at the road.
+ * There, up to 80 design px of empty sky under the navbar is cropped, just
+ * enough for the first screen to reach 900 design px down (their faces).
+ * Margin percentages are of the width: 59.52% is 900px of the 1512px frame,
+ * and 5.29% is 80px. Tall screens crop nothing.
+ *
+ * The striped tower's top is only 29px into the skyline, so past 40px of
+ * crop the skyline drops by the rest to stay clear of the navbar, behind
+ * the hill; everything else stays put. Inside the frame cqw is % of its
+ * width, so this is the same crop, less 40px (2.65cqw).
+ */
+.hero-frame {
+  margin-top: calc(-1 * clamp(0px, 59.52% - 100svh, 5.29%));
+}
+
+.hero-skyline {
+  translate: 0 max(0px, clamp(0px, 59.52cqw - 100svh, 5.29cqw) - 2.65cqw);
+}
+
 /* ---- Skyline windows (hero-windows.tsx) -------------------------------- */
 
 .hero-windows {
@@ -229,5 +250,40 @@
   .hero-fireworks[data-on] .firework-trail-reveal,
   .hero-fireworks[data-on] .firework-burst {
     animation: none;
+  }
+}
+
+/* The gate's easter egg (GateEggArt): a wave of light runs along the roof
+ * bulbs every 8s. */
+.hero-gate-wave {
+  filter: brightness(1.9) drop-shadow(0 0 0.4cqw #ffd56b);
+  mask-image: linear-gradient(
+    100deg,
+    transparent 42%,
+    #000 50%,
+    transparent 58%
+  );
+  mask-size: 300% 100%;
+  mask-repeat: no-repeat;
+  mask-position: 100% 0;
+  animation: gate-wave 8s ease-in-out infinite 3s;
+  transition: opacity 0.35s ease-out;
+}
+.hero-gate-wave.is-off {
+  opacity: 0;
+}
+@keyframes gate-wave {
+  0% {
+    mask-position: 100% 0;
+  }
+  22%,
+  100% {
+    mask-position: 0% 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-gate-wave {
+    animation: none;
+    opacity: 0;
   }
 }

@@ -13,6 +13,7 @@ import { useState } from "react";
 import { PascaleCart } from "./pascale-cart";
 import { TestimonialArrows } from "./testimonial-arrows";
 import "./testimonials.css";
+import { VaibhavWheel } from "./vaibhav-wheel";
 
 /** One stall at a time on the phone, with the quote underneath. */
 const STALLS = {
@@ -43,6 +44,25 @@ export const TestimonialsSceneMobile = () => {
         box={L.bg}
         priority
       />
+
+      {/* Tapping the cart is the phone equivalent of picking a stall on
+          desktop: it steps to the next person. It sits under the slides,
+          which let taps through, so Vaibhav's wheel can take its own. */}
+      <button
+        type="button"
+        onClick={() => go((index + 1) % TESTIMONIALS.length, 1)}
+        aria-label="Next testimonial (tap cart)"
+        className="absolute cursor-pointer"
+        style={frameStyle(
+          index === 0
+            ? STALLS.pascale.stall
+            : index === 1
+              ? STALLS.vaibhav.stall
+              : STALLS.qazi.stall
+        )}
+      >
+        <span className="sr-only">Next testimonial</span>
+      </button>
 
       {TESTIMONIALS.map((entry, stall) => {
         const boxes = STALLS[entry.id];
@@ -81,6 +101,14 @@ export const TestimonialsSceneMobile = () => {
                 box={boxes.stall}
                 className="testi-cart"
               />
+            )}
+            {entry.id === "vaibhav" && (
+              <div
+                className="pointer-events-none absolute"
+                style={frameStyle(boxes.stall)}
+              >
+                <VaibhavWheel active={stall === index} sparkleSize={2.8} />
+              </div>
             )}
             <div
               className="testi-card absolute"
