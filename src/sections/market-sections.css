@@ -430,29 +430,6 @@
   inset: 0;
   pointer-events: none;
 }
-.footer-fireworks img {
-  animation: footer-fireworks 5s linear infinite;
-}
-@keyframes footer-fireworks {
-  0%,
-  5% {
-    clip-path: inset(100% 0 0);
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
-  45%,
-  65% {
-    clip-path: inset(0);
-    opacity: 1;
-  }
-  95%,
-  100% {
-    clip-path: inset(0);
-    opacity: 0;
-  }
-}
 .rider-wheel img {
   animation: scooter-wheel 1s linear infinite;
   transform-origin: center !important;

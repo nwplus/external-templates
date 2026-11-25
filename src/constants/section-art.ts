@@ -465,7 +465,7 @@ export const SPONSORS_DESKTOP: readonly ArtLayer[] = [
     transform: "matrix(1,0,0,1,0,0)",
   },
   {
-    src: "/assets/sponsors/interactive/export-16179-8539.png",
+    src: "/assets/sponsors/interactive/fireworks-desktop-animated.svg",
     x: 133,
     y: 2754.671875,
     width: 1239,
@@ -611,7 +611,7 @@ export const PROJECT_MOBILE: readonly ArtLayer[] = [
 
 export const SPONSORS_MOBILE: readonly ArtLayer[] = [
   {
-    src: "/assets/sponsors/interactive/export-16311-4219.png",
+    src: "/assets/sponsors/interactive/fireworks-mobile-animated.svg",
     x: 0,
     y: 1839.451171875,
     width: 396,
