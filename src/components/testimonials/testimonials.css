@@ -4,6 +4,11 @@
  * way; the arrows/dots step through the three.
  */
 
+.testi-scene {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
 .testi-stall,
 .testi-card,
 .testi-hint {

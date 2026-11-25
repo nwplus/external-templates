@@ -2,12 +2,18 @@
 
 import { createContext, type ReactNode, useContext, useState } from "react";
 
-type Food = "mango-sticky-rice" | "laksa" | "tanghulu" | "taiyaki";
+type Food =
+  | "mango-sticky-rice"
+  | "laksa"
+  | "tanghulu"
+  | "taiyaki"
+  | "strawberry-pancakes";
 const FOOD_LABELS: Record<Food, string> = {
   "mango-sticky-rice": "mango sticky rice",
   laksa: "laksa",
   tanghulu: "tanghulu",
   taiyaki: "taiyaki",
+  "strawberry-pancakes": "strawberry pancakes",
 };
 const FoodCollectionContext = createContext<(food: Food) => void>(() => {});
 
@@ -40,7 +46,11 @@ export function FoodCollection({ children }: { children: ReactNode }) {
           // eslint-disable-next-line @next/next/no-img-element
           <img
             key={food}
-            src={`/assets/sponsors/interactive/${food}.svg?v=2`}
+            src={
+              food === "strawberry-pancakes"
+                ? "/assets/sponsors/interactive/strawberry-pancakes.png"
+                : `/assets/sponsors/interactive/${food}.svg?v=2`
+            }
             alt=""
             data-food={food}
             className={`collected-food ${food}`}

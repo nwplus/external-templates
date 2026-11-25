@@ -35,9 +35,8 @@ export const TestimonialsSceneMobile = () => {
 
   return (
     <div
-      id="testimonials"
       data-lantern-scene
-      className="@container relative aspect-[402/874] w-full overflow-hidden bg-[#1b1a26]"
+      className="testi-scene @container relative aspect-[402/874] w-full overflow-hidden bg-[#1b1a26]"
     >
       <SceneLayer
         src="/assets/testimonials/mobile-bg.webp"
@@ -106,24 +105,6 @@ export const TestimonialsSceneMobile = () => {
           </div>
         );
       })}
-
-      {/* Tapping the cart is the phone equivalent of picking a stall on
-          desktop: it steps to the next person. */}
-      <button
-        type="button"
-        onClick={() => go((index + 1) % TESTIMONIALS.length, 1)}
-        aria-label="Next testimonial (tap cart)"
-        className="absolute cursor-pointer"
-        style={frameStyle(
-          index === 0
-            ? STALLS.pascale.stall
-            : index === 1
-              ? STALLS.vaibhav.stall
-              : STALLS.qazi.stall
-        )}
-      >
-        <span className="sr-only">Next testimonial</span>
-      </button>
 
       <p
         className="absolute text-center text-[3.4cqw] font-medium text-[#ffe7ac]/85"

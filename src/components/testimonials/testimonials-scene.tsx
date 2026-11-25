@@ -51,11 +51,21 @@ export const TestimonialsScene = ({ bare = false }: { bare?: boolean }) => {
       data-lantern-scene
       data-selected={selected === null ? undefined : ""}
       className={cn(
-        "@container relative aspect-[1512/982] w-full overflow-hidden bg-[#1b1a26]",
+        "testi-scene @container relative aspect-[1512/982] w-full overflow-hidden bg-[#1b1a26]",
         bare && "pointer-events-none"
       )}
     >
       <SceneLayer src="/assets/testimonials/bg.webp" box={L.bg} priority />
+      <SceneLayer
+        src="/assets/testimonials/sponsor-shadow.svg"
+        box={L.sponsorShadow}
+        className="testi-base"
+      />
+      <SceneLayer
+        src="/assets/testimonials/mentor-shadow.svg"
+        box={L.mentorShadow}
+        className="testi-base"
+      />
 
       {/* Wide shot: the three carts, each a button. */}
       {STALLS.map((stall, index) => (

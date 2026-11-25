@@ -46,28 +46,32 @@
   clip-path: inset(28.5% 7.4% 0 7.8%);
 }
 
+.recap-doorway-trim {
+  /* Match the top edge of the doorway cutout in wall.webp. */
+  clip-path: inset(29.13% 0 0);
+}
+
 .recap-door {
   transform: translateY(calc(var(--door) * -80%));
   will-change: transform;
 }
 
-/* Project the very same doorway onto the market behind it.
-   Insets reach zero as the garage passes beyond the viewport edges. */
+/* Project the doorway onto the market behind it.
+   The right edge ends inside the solid rail so the market cannot show
+   through its join with the wood. Scale that edge from the camera origin. */
 .recap-market {
   clip-path: inset(
     max(0%, calc(28.5% - 35.8% * (var(--camera) - 1)))
-      max(0%, calc(7.4% - 42.4% * (var(--camera) - 1))) 0
+      max(0%, calc(8% - 41.8% * (var(--camera) - 1))) 0
       max(0%, calc(7.8% - 42.4% * (var(--camera) - 1)))
   );
 }
 
-/* The initial 86% scene covers the 84.8% doorway, including its floor.
-   Reach full size before camera motion exposes the scene's outer edges. */
 .recap-market > div {
-  transform: translateY(calc(14.3% * (1 - var(--zoom))))
-    scale(calc(0.86 + 0.14 * var(--zoom)));
-  transform-origin: 50% 50%;
-  will-change: transform;
+  /* Hold the market in its landing position while the doorway zooms away.
+     Offset the center crop on wide screens to keep the heading visible. */
+  --heading-offset: max(0px, calc((100% - 100vh) / 2 - 6% + 3vh));
+  transform: translateY(var(--heading-offset));
 }
 
 /* The title sits on the door in the design, so it leaves early — the door

@@ -147,6 +147,11 @@
   top: 0.171%;
   width: 22.61%;
 }
+.collected-food.strawberry-pancakes {
+  left: 39.63%;
+  top: 22.2%;
+  width: 23.38%;
+}
 @media (width < 768px) {
   .food-collection {
     display: none;

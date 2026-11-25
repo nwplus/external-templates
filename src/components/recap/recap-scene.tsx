@@ -1,5 +1,6 @@
 "use client";
 
+import { useCollectFood } from "@/components/food-collection";
 import { TestimonialsScene } from "@/components/testimonials/testimonials-scene";
 import { LightboxGallery, LightboxTrigger } from "@/components/ui/lightbox";
 import { SceneLayer } from "@/components/ui/scene-layer";
@@ -15,6 +16,7 @@ import "./recap.css";
 /** The door lifts as the camera moves through the opening. All garage
  * layers retain the original 1512 × 982 Figma coordinate system. */
 export const RecapScene = () => {
+  const collectFood = useCollectFood();
   const pin = useRef<HTMLDivElement>(null);
   useScrollProgress(pin);
 
@@ -47,31 +49,53 @@ export const RecapScene = () => {
                 className="recap-slab"
               />
               <LightboxGallery>
-                {RECAP_DESKTOP_PHOTOS.map((photo) => (
-                  <LightboxTrigger
-                    key={photo.src}
-                    photo={{
-                      ...photo,
-                      src: photo.fullSrc,
-                      width: photo.fullWidth,
-                      height: photo.fullHeight,
-                      caption: photo.alt,
-                    }}
-                    className="recap-photo absolute"
-                    style={frameStyle(photo.box)}
-                  >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={photo.src}
-                      alt={photo.alt}
-                      draggable={false}
-                      className="size-full select-none"
-                    />
-                  </LightboxTrigger>
-                ))}
+                {RECAP_DESKTOP_PHOTOS.map((photo) => {
+                  if ("kind" in photo) {
+                    if (photo.kind === "illustration") {
+                      return <SceneLayer key={photo.src} {...photo} />;
+                    }
+                    return (
+                      <button
+                        key={photo.src}
+                        type="button"
+                        aria-label="Add strawberry pancakes to the food tray"
+                        onClick={() => collectFood("strawberry-pancakes")}
+                        className="recap-photo absolute cursor-pointer"
+                        style={frameStyle(photo.box)}
+                      >
+                        <SceneLayer
+                          src={photo.src}
+                          box={{ x: 0, y: 0, w: 100, h: 100 }}
+                        />
+                      </button>
+                    );
+                  }
+                  return (
+                    <LightboxTrigger
+                      key={photo.src}
+                      photo={{
+                        ...photo,
+                        src: photo.fullSrc,
+                        width: photo.fullWidth,
+                        height: photo.fullHeight,
+                        caption: photo.alt,
+                      }}
+                      className="recap-photo absolute"
+                      style={frameStyle(photo.box)}
+                    >
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={photo.src}
+                        alt={photo.alt}
+                        draggable={false}
+                        className="size-full select-none"
+                      />
+                    </LightboxTrigger>
+                  );
+                })}
               </LightboxGallery>
               <SceneLayer
-                src="/assets/recap/top-shadow.webp"
+                src="/assets/recap/top-shadow-final.svg"
                 box={RECAP_DESKTOP.topShadow}
                 priority
                 className="z-10"
@@ -99,18 +123,20 @@ export const RecapScene = () => {
               src="/assets/recap/column-right.webp"
               box={RECAP_DESKTOP.columnRight}
             />
-            <SceneLayer
-              src="/assets/recap/side-shadow-left.webp"
-              box={RECAP_DESKTOP.sideShadowL}
-            />
-            <SceneLayer
-              src="/assets/recap/side-shadow-right.webp"
-              box={RECAP_DESKTOP.sideShadowR}
-            />
-            <SceneLayer
-              src="/assets/recap/right-door.webp"
-              box={RECAP_DESKTOP.rightDoor}
-            />
+            <div className="recap-doorway-trim absolute inset-0">
+              <SceneLayer
+                src="/assets/recap/side-shadow-left-final.svg"
+                box={RECAP_DESKTOP.sideShadowL}
+              />
+              <SceneLayer
+                src="/assets/recap/side-shadow-right-final.svg"
+                box={RECAP_DESKTOP.sideShadowR}
+              />
+              <SceneLayer
+                src="/assets/recap/right-rail-final.svg"
+                box={RECAP_DESKTOP.rightDoor}
+              />
+            </div>
             {/* The lamps hang in front of the frame, as they do in the design. */}
             <SceneLayer
               src="/assets/recap/lights.webp"

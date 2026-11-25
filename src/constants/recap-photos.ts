@@ -65,7 +65,8 @@ export const RECAP_DESKTOP_PHOTOS = [
   },
   {
     src: "/assets/recap/desktop-photo-5.png",
-    alt: "nwHacks recap photo 5",
+    alt: "Night market illustration",
+    kind: "illustration",
     width: 251,
     height: 180,
     box: {
@@ -113,7 +114,8 @@ export const RECAP_DESKTOP_PHOTOS = [
   },
   {
     src: "/assets/recap/desktop-photo-8.png",
-    alt: "nwHacks recap photo 8",
+    alt: "Strawberry pancakes",
+    kind: "pancakes",
     width: 129,
     height: 121,
     box: {
@@ -145,7 +147,8 @@ export const RECAP_DESKTOP_PHOTOS = [
   },
   {
     src: "/assets/recap/desktop-photo-10.png",
-    alt: "nwHacks recap photo 10",
+    alt: "Cycling mascots illustration",
+    kind: "illustration",
     width: 222,
     height: 141,
     box: {

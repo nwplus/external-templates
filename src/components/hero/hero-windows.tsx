@@ -74,8 +74,8 @@ type HeroWindowsProps = {
 };
 
 /**
- * The skyline behind the gate (Figma "bkg windows"). The towers are static,
- * but every window is its own rect with a warm glow over it, so windows can
+ * The skyline behind the gate (Figma "bkg windows"). Each pane, slat and fin
+ * has its own warm glow, so windows can
  * switch on and off, breathe while lit and now and then flicker, each at its
  * own slow pace. The changes are made straight on the DOM (data attributes
  * the CSS in hero.css animates), so the hero never re-renders for them.
@@ -95,12 +95,24 @@ export const HeroWindows = ({
     () => skyline.rects.filter(([, , w]) => w < skyline.bandWidth),
     [skyline]
   );
-  const timing = useMemo(() => paneTiming(panes.length), [panes]);
+  // Each closed subpath in the exported tower silhouettes is one window.
+  const towerPanes = useMemo(
+    () =>
+      skyline.towers.flatMap(({ d, x, y }) =>
+        (d.match(/M[^M]+/g) ?? []).map((path) => ({ path, x, y }))
+      ),
+    [skyline]
+  );
+  const timing = useMemo(
+    () => paneTiming(panes.length + towerPanes.length),
+    [panes.length, towerPanes.length]
+  );
 
   // Light a random set once mounted (not during render, so the static HTML
   // and hydration agree).
   useEffect(() => {
-    const glows = glowsRef.current?.querySelectorAll<SVGRectElement>("rect");
+    const glows =
+      glowsRef.current?.querySelectorAll<SVGElement>(".hero-window-glow");
     glows?.forEach((glow) => {
       if (Math.random() < LIT_SHARE) glow.dataset.lit = "";
     });
@@ -111,9 +123,12 @@ export const HeroWindows = ({
     if (!group || hidden) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    const glows = Array.from(group.querySelectorAll<SVGRectElement>("rect"));
+    const glows = Array.from(
+      group.querySelectorAll<SVGElement>(".hero-window-glow")
+    );
+    if (!glows.length) return;
     const onEnd = (event: AnimationEvent) => {
-      delete (event.target as SVGRectElement).dataset.flicker;
+      delete (event.target as SVGElement).dataset.flicker;
     };
     group.addEventListener("animationend", onEnd);
 
@@ -176,6 +191,15 @@ export const HeroWindows = ({
             height={h}
             className="hero-window-glow"
             style={timing[i]}
+          />
+        ))}
+        {towerPanes.map(({ path, x, y }, i) => (
+          <path
+            key={i}
+            d={path}
+            transform={`translate(${x} ${y})`}
+            className="hero-window-glow"
+            style={timing[panes.length + i]}
           />
         ))}
       </g>

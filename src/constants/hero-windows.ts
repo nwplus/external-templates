@@ -2,7 +2,7 @@
  * Background windows of the hero skyline (Figma "bkg windows", node 16015:9002),
  * in the layer's own 1512 x 601 space (its top edge sits 111px down the 1422px
  * hero). Each window is its own [x, y, width, height] so it can flicker on its
- * own; the striped towers never change, so they stay single paths.
+ * own. The striped towers retain one closed subpath per slat or fin.
  */
 export const WINDOWS_VIEWBOX = { width: 1512, height: 601, top: 111 } as const;
 
@@ -127,7 +127,7 @@ export type GradientLine = readonly [
   y2: number,
 ];
 
-/** One of the static striped towers, drawn at (x, y) in the skyline. */
+/** One of the striped towers, drawn at (x, y) in the skyline. */
 export type SkylineTower = {
   d: string;
   x: number;
