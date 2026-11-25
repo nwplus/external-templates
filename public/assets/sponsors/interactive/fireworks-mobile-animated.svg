@@ -4,7 +4,7 @@
 <path d="M268.748 60.6074C238.097 68.4774 205.581 149.662 202.682 188.597" stroke="#FBD218" stroke-width="1.24262" stroke-dasharray="0.04 2.9" mask="url(#footer-trail-2)" stroke-linecap="round" class="footer-trail" style="--delay:1.8s"/>
 <path d="M316.832 89.377C281.384 106.267 265.097 140.489 260.672 176.379" stroke="white" stroke-width="1.65683" stroke-dasharray="0.04 2.9" mask="url(#footer-trail-3)" stroke-linecap="round" class="footer-trail" style="--delay:2.0s"/>
 <path d="M212.621 103.686C228.568 110.313 253.23 175.081 251.764 199.367" stroke="#2EF584" stroke-width="1.24262" stroke-dasharray="0.04 2.9" mask="url(#footer-trail-4)" stroke-linecap="round" class="footer-trail" style="--delay:1.4s"/>
-<g filter="url(#filter0_g_16311_4219)" class="footer-burst" style="--delay:1.1s">
+<g class="footer-burst" style="--delay:1.1s"><g filter="url(#filter0_g_16311_4219)">
 <g id="Repeat group 4_inner" data-figma-trr="r8u2.2-0f">
 <path d="M54.3017 29.113C54.0433 29.1288 53.7849 29.1446 53.5265 29.1605C53.509 29.581 53.4937 30.0014 53.4806 30.4217C53.3622 34.2041 53.4182 37.9758 53.6487 41.7369C53.8791 45.498 54.284 49.2483 54.8633 52.988C54.9277 53.4035 54.9942 53.8189 55.0628 54.2342C55.3212 54.2183 55.5796 54.2025 55.838 54.1867C55.8555 53.7661 55.8708 53.3457 55.884 52.9255C56.0023 49.143 55.9463 45.3713 55.7158 41.6102C55.4854 37.8492 55.0805 34.0988 54.5012 30.3591C54.4368 29.9436 54.3703 29.5282 54.3017 29.113Z" fill="#F8E80D"/>
 </g>
@@ -15,8 +15,8 @@
 <use xlink:href="#Repeat%20group%204_inner" transform="translate(44.3777 156.89) rotate(-135)"/>
 <use xlink:href="#Repeat%20group%204_inner" transform="translate(-14.5723 123.936) rotate(-90)"/>
 <use xlink:href="#Repeat%20group%204_inner" transform="translate(-32.9541 58.95) rotate(-45)"/>
-</g>
-<g filter="url(#filter1_g_16311_4219)" class="footer-burst" style="--delay:2.7s">
+</g></g>
+<g class="footer-burst" style="--delay:2.7s"><g filter="url(#filter1_g_16311_4219)">
 <g id="Repeat group 3_inner" data-figma-trr="r8u1.5-0f">
 <path d="M261.564 31.4451C261.369 31.5156 261.174 31.586 260.979 31.6564C261.071 32.0111 261.164 32.3651 261.259 32.7186C262.112 35.8998 263.097 39.0334 264.213 42.1194C265.329 45.2055 266.577 48.2441 267.956 51.235C268.109 51.5674 268.264 51.8991 268.42 52.2303C268.615 52.1598 268.81 52.0894 269.004 52.019C268.913 51.6643 268.82 51.3103 268.725 50.9568C267.872 47.7756 266.887 44.642 265.771 41.556C264.655 38.4699 263.407 35.4313 262.028 32.4404C261.875 32.108 261.72 31.7763 261.564 31.4451Z" fill="#F89D0A"/>
 </g>
@@ -27,8 +27,8 @@
 <use xlink:href="#Repeat%20group%203_inner" transform="translate(421.402 289.086) rotate(-135)"/>
 <use xlink:href="#Repeat%20group%203_inner" transform="translate(213.305 327.841) rotate(-90)"/>
 <use xlink:href="#Repeat%20group%203_inner" transform="translate(38.7544 208.097) rotate(-45)"/>
-</g>
-<g filter="url(#filter2_g_16311_4219)" class="footer-burst" style="--delay:2.5s">
+</g></g>
+<g class="footer-burst" style="--delay:2.5s"><g filter="url(#filter2_g_16311_4219)">
 <g id="Repeat group 6_inner" data-figma-trr="r8u1.5-0f">
 <path d="M240.78 111.052C240.634 111.104 240.488 111.157 240.341 111.21C240.441 111.562 240.542 111.913 240.644 112.264C241.563 115.421 242.581 118.543 243.697 121.629C244.813 124.715 246.027 127.766 247.341 130.78C247.487 131.115 247.634 131.45 247.782 131.784C247.928 131.731 248.074 131.678 248.22 131.625C248.121 131.274 248.02 130.922 247.918 130.572C246.999 127.414 245.981 124.293 244.865 121.206C243.749 118.12 242.534 115.07 241.221 112.055C241.075 111.72 240.928 111.386 240.78 111.052Z" fill="#FFB219"/>
 </g>
@@ -39,8 +39,8 @@
 <use xlink:href="#Repeat%20group%206_inner" transform="translate(329.775 410.293) rotate(-135)"/>
 <use xlink:href="#Repeat%20group%206_inner" transform="translate(113.014 386.71) rotate(-90)"/>
 <use xlink:href="#Repeat%20group%206_inner" transform="translate(-23.5833 216.761) rotate(-45)"/>
-</g>
-<g filter="url(#filter3_g_16311_4219)" class="footer-burst" style="--delay:2.7s">
+</g></g>
+<g class="footer-burst" style="--delay:2.7s"><g filter="url(#filter3_g_16311_4219)">
 <g id="Repeat group 2_inner" data-figma-trr="r8u1.9-0f">
 <path d="M268.304 0.538598C268.045 0.551928 267.787 0.565259 267.528 0.57859C267.519 1.23633 267.512 1.89397 267.507 2.55149C267.462 8.46917 267.592 14.3779 267.896 20.2776C268.2 26.1772 268.679 32.0679 269.332 37.9496C269.405 38.6032 269.479 39.2566 269.556 39.9099C269.815 39.8965 270.073 39.8832 270.332 39.8699C270.341 39.2121 270.348 38.5545 270.353 37.897C270.398 31.9793 270.268 26.0706 269.964 20.1709C269.66 14.2712 269.181 8.38052 268.528 2.49883C268.455 1.84531 268.381 1.1919 268.304 0.538598Z" fill="#74F809"/>
 </g>
@@ -51,49 +51,49 @@
 <use xlink:href="#Repeat%20group%202_inner" transform="translate(418.371 288.471) rotate(-135)"/>
 <use xlink:href="#Repeat%20group%202_inner" transform="translate(211.342 326.518) rotate(-90)"/>
 <use xlink:href="#Repeat%20group%202_inner" transform="translate(38.0467 207.029) rotate(-45)"/>
-</g>
-<g filter="url(#filter4_g_16311_4219)" class="footer-burst" style="--delay:1.5s">
+</g></g>
+<g class="footer-burst" style="--delay:1.5s"><g filter="url(#filter4_g_16311_4219)">
 <circle cx="114.962" cy="106.47" r="23.4943" stroke="#FFFB00" stroke-width="4.14208" stroke-dasharray="1.24 8.28"/>
-</g>
-<g filter="url(#filter5_g_16311_4219)" class="footer-burst" style="--delay:2.1s">
+</g></g>
+<g class="footer-burst" style="--delay:2.1s"><g filter="url(#filter5_g_16311_4219)">
 <circle cx="180.817" cy="66.5673" r="23.4943" stroke="#FF8800" stroke-width="4.14208" stroke-dasharray="1.24 8.28"/>
-</g>
-<g filter="url(#filter6_g_16311_4219)" class="footer-burst" style="--delay:1.9s">
+</g></g>
+<g class="footer-burst" style="--delay:1.9s"><g filter="url(#filter6_g_16311_4219)">
 <circle cx="172.231" cy="131.018" r="13.6615" stroke="#0073FF" stroke-width="4.14208" stroke-dasharray="1.24 7.46"/>
-</g>
-<g filter="url(#filter7_g_16311_4219)" class="footer-burst" style="--delay:3.3s">
+</g></g>
+<g class="footer-burst" style="--delay:3.3s"><g filter="url(#filter7_g_16311_4219)">
 <circle cx="356.559" cy="135.167" r="19.8819" stroke="#00EEFF" stroke-width="8.28415" stroke-dasharray="1.24 7.46"/>
-</g>
-<g filter="url(#filter8_g_16311_4219)" class="footer-burst" style="--delay:1.3s">
+</g></g>
+<g class="footer-burst" style="--delay:1.3s"><g filter="url(#filter8_g_16311_4219)">
 <circle cx="69.6994" cy="129.139" r="14.6816" stroke="#0073FF" stroke-width="12.4262" stroke-dasharray="0.83 6.21"/>
-</g>
-<g filter="url(#filter9_g_16311_4219)" class="footer-burst" style="--delay:2.9s">
+</g></g>
+<g class="footer-burst" style="--delay:2.9s"><g filter="url(#filter9_g_16311_4219)">
 <circle cx="334.041" cy="75.9929" r="13.6983" transform="rotate(-21.3159 334.041 75.9929)" stroke="#0073FF" stroke-width="12.4262" stroke-dasharray="1.24 10.36"/>
-</g>
-<g filter="url(#filter10_g_16311_4219)" class="footer-burst" style="--delay:1.7s">
+</g></g>
+<g class="footer-burst" style="--delay:1.7s"><g filter="url(#filter10_g_16311_4219)">
 <circle cx="141.533" cy="61.9494" r="43.7561" stroke="#FDFDF2" stroke-width="1.24262" stroke-linecap="round" stroke-dasharray="0 4.97"/>
-</g>
-<g filter="url(#filter11_g_16311_4219)" class="footer-burst" style="--delay:2.9s">
+</g></g>
+<g class="footer-burst" style="--delay:2.9s"><g filter="url(#filter11_g_16311_4219)">
 <circle cx="333.303" cy="76.45" r="34.614" stroke="#FDFDF2" stroke-width="2.07104" stroke-linecap="round" stroke-dasharray="0 4.97"/>
-</g>
-<g filter="url(#filter12_g_16311_4219)" class="footer-burst" style="--delay:2.3s">
+</g></g>
+<g class="footer-burst" style="--delay:2.3s"><g filter="url(#filter12_g_16311_4219)">
 <circle cx="208.45" cy="105.271" r="35.8898" stroke="#26F7F0" stroke-width="2.07104" stroke-linecap="round" stroke-dasharray="0 6.21"/>
-</g>
-<g filter="url(#filter13_g_16311_4219)" class="footer-burst" style="--delay:1.3s">
+</g></g>
+<g class="footer-burst" style="--delay:1.3s"><g filter="url(#filter13_g_16311_4219)">
 <ellipse cx="69.6968" cy="129.384" rx="17.9449" ry="18.1907" stroke="#B826F7" stroke-width="2.48525" stroke-linecap="round" stroke-dasharray="0 6.21"/>
-</g>
-<g filter="url(#filter14_g_16311_4219)" class="footer-burst" style="--delay:2.9s">
+</g></g>
+<g class="footer-burst" style="--delay:2.9s"><g filter="url(#filter14_g_16311_4219)">
 <circle cx="334.286" cy="75.7505" r="8.3579" stroke="#00D5FF" stroke-width="1.65683" stroke-linecap="round" stroke-dasharray="0 6.21"/>
-</g>
-<g filter="url(#filter15_g_16311_4219)" class="footer-burst" style="--delay:2.5s">
+</g></g>
+<g class="footer-burst" style="--delay:2.5s"><g filter="url(#filter15_g_16311_4219)">
 <circle cx="251.224" cy="137.226" r="12.7827" stroke="#FF7700" stroke-width="1.65683" stroke-linecap="round" stroke-dasharray="0 8.28"/>
-</g>
-<g filter="url(#filter16_g_16311_4219)" class="footer-burst" style="--delay:3.1s">
+</g></g>
+<g class="footer-burst" style="--delay:3.1s"><g filter="url(#filter16_g_16311_4219)">
 <circle cx="351.028" cy="127.885" r="43.7561" stroke="#F61AC2" stroke-width="2.07104" stroke-linecap="round" stroke-dasharray="0 4.97"/>
-</g>
-<g filter="url(#filter17_g_16311_4219)" class="footer-burst" style="--delay:0.9s">
+</g></g>
+<g class="footer-burst" style="--delay:0.9s"><g filter="url(#filter17_g_16311_4219)">
 <circle cx="42.7561" cy="64.6018" r="43.7561" stroke="#FA1AF6" stroke-width="2.07104" stroke-linecap="round" stroke-dasharray="0 4.97"/>
-</g>
+</g></g>
 <defs>
 <filter id="filter0_g_16311_4219" x="14.0182" y="28.5748" width="81.3269" height="81.3426" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
 <feFlood flood-opacity="0" result="BackgroundImageFix"/>
