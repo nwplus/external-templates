@@ -288,14 +288,6 @@ export const teamMembers = [
     social: "",
   },
   {
-    img: "/assets/footer/profiles/Ruby_Ke.webp",
-    name: "Ruby Ke",
-    emoji: "🧸",
-    color: "#FFF39C",
-    title: "Designer",
-    social: "https://www.linkedin.com/in/ruby-ke/",
-  },
-  {
     img: "/assets/footer/profiles/Geoff_Jiang.webp",
     name: "Geoff Jiang",
     emoji: "🍻",

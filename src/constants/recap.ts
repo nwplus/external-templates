@@ -15,7 +15,8 @@ export const RECAP_DESKTOP = {
   photos: { x: 13.69, y: 31.772, w: 76.131, h: 62.811 },
   sideShadowL: { x: 8.796, y: 28.615, w: 2.778, h: 71.385 },
   sideShadowR: { x: 88.426, y: 28.513, w: 2.778, h: 71.385 },
-  rightDoor: { x: 90.013, y: 27.495, w: 2.354, h: 73.523 },
+  // Overlap the wood cutout slightly to cover the rail's translucent edge.
+  rightDoor: { x: 90.013, y: 27.495, w: 2.65, h: 73.523 },
 } as const;
 
 /** Layers inside the phone recap frame (407x874). */
@@ -23,6 +24,8 @@ export const RECAP_MOBILE_FRAME = { width: 407, height: 874 };
 
 export const RECAP_MOBILE = {
   door: { x: 1.229, y: 0.0, w: 98.771, h: 100.0 },
+  doorBottom: { x: 1.229, y: 94.966, w: 98.771, h: 5.034 },
+  doorHandle: { x: 41.523, y: 96.568, w: 21.867, h: 1.945 },
   photo1: { x: 49.877, y: 29.863, w: 46.781, h: 12.357 },
   photo2: { x: 3.686, y: 45.423, w: 45.725, h: 17.849 },
   photo3: { x: 14.251, y: 12.929, w: 40.541, h: 18.65 },

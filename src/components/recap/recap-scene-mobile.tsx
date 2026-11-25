@@ -33,6 +33,18 @@ export const RecapSceneMobile = () => (
     <LightboxGallery>
       {PHOTOS.map((photo, index) => {
         const full = RECAP_DESKTOP_PHOTOS[[0, 1, 2, 3, 4, 5, 6, 8, 9][index]];
+        if ("kind" in full) {
+          return (
+            <SceneLayer
+              key={photo.src}
+              src={`/assets/recap/${photo.src}.webp`}
+              box={photo.box}
+              alt={full.alt}
+              className="recap-mobile-photo"
+              style={{ animationDelay: `${index * 0.35}s` }}
+            />
+          );
+        }
         return (
           <LightboxTrigger
             key={photo.src}
@@ -66,6 +78,15 @@ export const RecapSceneMobile = () => (
       src="/assets/recap/mobile-lights.webp"
       box={RECAP_MOBILE.lights}
       fit="contain"
+    />
+
+    <SceneLayer
+      src="/assets/recap/mobile-door-bottom.svg"
+      box={RECAP_MOBILE.doorBottom}
+    />
+    <SceneLayer
+      src="/assets/recap/mobile-door-handle.svg"
+      box={RECAP_MOBILE.doorHandle}
     />
 
     <h2 className="absolute inset-x-0 top-[3.09%] text-center font-display text-[7.37cqw] leading-none text-white">
